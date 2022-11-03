@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[393],{909:function(e,s,l){"use strict";l.r(s);var n={name:"docs-demo-six-tile-304",mounted(){}},t=l(38),a=Object(t.a)(n,(function(){var e=this._self._c;return e("div",{staticClass:"demo my-app"},[e("six-tile",{attrs:{label:"Medium","icon-name":"home",closeable:"false"}})],1)}),[],!1,null,null,null);s.default=a.exports}}]);

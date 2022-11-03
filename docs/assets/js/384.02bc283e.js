@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[384],{902:function(t,e,a){"use strict";a.r(e);var s={name:"docs-demo-six-textarea-297",mounted(){}},n=a(38),o=Object(n.a)(s,(function(){var t=this._self._c;return t("div",{staticClass:"demo my-app"},[t("six-textarea",{attrs:{label:"Comments"}})],1)}),[],!1,null,null,null);e.default=o.exports}}]);

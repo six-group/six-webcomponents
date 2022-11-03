@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[210],{725:function(e,n,s){"use strict";s.r(n);var a={name:"docs-demo-six-language-switcher-172",mounted(){}},t=s(38),i=Object(t.a)(a,(function(){var e=this._self._c;return e("div",{staticClass:"demo my-app"},[e("six-language-switcher")],1)}),[],!1,null,null,null);n.default=i.exports}}]);

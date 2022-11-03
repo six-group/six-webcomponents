@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[144],{658:function(e,l,s){"use strict";s.r(l);var a={name:"docs-demo-six-file-upload-109",mounted(){}},o=s(38),t=Object(o.a)(a,(function(){var e=this._self._c;return e("div",{staticClass:"demo my-app"},[e("six-file-upload",{attrs:{label:"some custom label"}})],1)}),[],!1,null,null,null);l.default=t.exports}}]);
