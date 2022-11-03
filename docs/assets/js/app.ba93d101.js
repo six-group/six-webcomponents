@@ -604,7 +604,7 @@
         return s.d(t, "a", t), t
     }, s.o = function (e, t) {
         return Object.prototype.hasOwnProperty.call(e, t)
-    }, s.p = "/", s.oe = function (e) {
+    }, s.p = "", s.oe = function (e) {
         throw console.error(e), e
     };
     var l = window.webpackJsonp = window.webpackJsonp || [], a = l.push.bind(l);
