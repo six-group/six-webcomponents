@@ -35,7 +35,7 @@
             t.push(n[2] = o);
             var i, l = document.createElement("script");
             l.charset = "utf-8", l.timeout = 120, s.nc && l.setAttribute("nonce", s.nc), l.src = function (e) {
-                return s.p + "assets/js/" + ({3: "polyfills-core-js", 4: "polyfills-dom"}[e] || e) + "." + {
+                return "assets/js/" + ({3: "polyfills-core-js", 4: "polyfills-dom"}[e] || e) + "." + {
                     1: "d922dea7",
                     3: "5e2dbe64",
                     4: "f7516174",
