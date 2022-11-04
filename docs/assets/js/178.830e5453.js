@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[178],{694:function(n,s,t){"use strict";t.r(s);var e={name:"docs-demo-six-input-144",mounted(){}},i=t(38),u=Object(i.a)(e,(function(){var n=this._self._c;return n("div",{staticClass:"demo my-app"},[n("six-input")],1)}),[],!1,null,null,null);s.default=u.exports}}]);

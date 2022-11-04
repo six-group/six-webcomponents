@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[236],{590:function(s,e,n){"use strict";n.r(e);var t={name:"docs-demo-six-progress-ring-202",mounted(){}},r=n(10),o=Object(r.a)(t,(function(){var s=this._self._c;return s("div",{staticClass:"demo my-app"},[s("six-progress-ring",{attrs:{percentage:"50","stroke-width":"10"}})],1)}),[],!1,null,null,null);e.default=o.exports}}]);

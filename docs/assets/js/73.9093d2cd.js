@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[73],{425:function(e,n,s){"use strict";s.r(n);var t={name:"docs-demo-six-datepicker-38",mounted(){}},a=s(10),i=Object(a.a)(t,(function(){var e=this._self._c;return e("div",{staticClass:"demo my-app"},[e("six-datepicker")],1)}),[],!1,null,null,null);n.default=i.exports}}]);

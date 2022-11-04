@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[54],{569:function(t,n,s){"use strict";s.r(n);var o={name:"docs-demo-six-button-19",mounted(){}},u=s(38),e=Object(u.a)(o,(function(){var t=this._self._c;return t("div",{staticClass:"demo my-app"},[t("six-button",[this._v("Button")])],1)}),[],!1,null,null,null);n.default=e.exports}}]);

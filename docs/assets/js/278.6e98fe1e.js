@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[278],{794:function(n,t,e){"use strict";e.r(t);var s={name:"docs-demo-six-range-221",mounted(){}},a=e(38),o=Object(a.a)(s,(function(){var n=this._self._c;return n("div",{staticClass:"demo my-app"},[n("six-range",{attrs:{min:"0",max:"100",step:"1",tooltip:"none"}})],1)}),[],!1,null,null,null);t.default=o.exports}}]);

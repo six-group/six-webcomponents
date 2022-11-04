@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[230],{583:function(s,e,n){"use strict";n.r(e);var r={name:"docs-demo-six-progress-bar-196",mounted(){}},t=n(10),a=Object(t.a)(r,(function(){var s=this._self._c;return s("div",{staticClass:"demo my-app"},[s("six-progress-bar",{attrs:{percentage:"50"}})],1)}),[],!1,null,null,null);e.default=a.exports}}]);

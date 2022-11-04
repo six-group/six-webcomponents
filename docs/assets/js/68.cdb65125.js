@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[68],{583:function(e,s,c){"use strict";c.r(s);var n={name:"docs-demo-six-checkbox-33",mounted(){}},o=c(38),t=Object(o.a)(n,(function(){var e=this._self._c;return e("div",{staticClass:"demo my-app"},[e("six-checkbox",[this._v("Checkbox")])],1)}),[],!1,null,null,null);s.default=t.exports}}]);
