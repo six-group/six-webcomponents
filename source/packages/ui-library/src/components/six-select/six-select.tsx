@@ -713,6 +713,9 @@ export class SixSelect {
   }
 
   private hasSelection() {
-    return this.multiple ? this.value.length > 0 : this.value !== '';
+    if (this.multiple) {
+      return Array.isArray(this.value) ? this.value.length > 0 : false;
+    }
+    return this.value !== '';
   }
 }
