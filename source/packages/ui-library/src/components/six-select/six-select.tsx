@@ -309,10 +309,14 @@ export class SixSelect {
     return this.getItems().length > 0;
   }
 
-  getValueAsArray() {
-    const values = Array.isArray(this.value) ? this.value : [this.value];
+  getValueAsStringArray() {
+    const values = this.getValueAsArray();
     // enforce that the values are converted to 'string' before the value is compared
     return values.map(String);
+  }
+
+  getValueAsArray() {
+    return Array.isArray(this.value) ? this.value : [this.value];
   }
 
   handleBlur() {
@@ -416,19 +420,18 @@ export class SixSelect {
 
   handleMenuSelect(event: CustomEvent) {
     const item = event.detail.item;
-
-    const getValue = () => {
-      if (this.multiple) {
-        return this.value.includes(item.value)
-          ? (this.value as []).filter((v) => v !== item.value)
-          : [...this.value, item.value];
-      } else {
-        return item.value;
+    if (this.multiple) {
+      if (this.value == null || this.value === '') {
+        this.value = [];
+      } else if (!Array.isArray(this.value)) {
+        this.value = [this.value];
       }
-    };
-
-    this.value = getValue();
-
+      this.value = this.value.includes(item.value)
+        ? this.value.filter((v) => v !== item.value)
+        : [...this.value, item.value];
+    } else {
+      this.value = item.value;
+    }
     this.syncItemsFromValue();
   }
 
@@ -480,7 +483,7 @@ export class SixSelect {
 
   syncItemsFromValue() {
     const items = this.getItems();
-    const value = this.getValueAsArray();
+    const value = this.getValueAsStringArray();
 
     // Sync checked states
     items.forEach((item) => (item.checked = value.includes(item.value)));
@@ -561,7 +564,7 @@ export class SixSelect {
     const checkedItems = items.filter((item) => item.checked);
     const checkedValues = checkedItems.map((item) => item.value);
     this.value = this.multiple
-      ? this.getValueAsArray().filter((val) => checkedValues.includes(val))
+      ? this.getValueAsStringArray().filter((val) => checkedValues.includes(val))
       : checkedValues.length > 0
       ? checkedValues[0]
       : '';
