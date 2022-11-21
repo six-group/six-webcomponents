@@ -155,7 +155,7 @@ export class SixSelect {
   @Prop() virtualScroll = false;
 
   /** The default value the select will be reverted to when reset is executed */
-  @Prop() defaultValue: string | string[] = null;
+  @Prop() defaultValue: string | string[] | undefined;
 
   @Watch('disabled')
   handleDisabledChange() {
@@ -280,7 +280,7 @@ export class SixSelect {
   /** Resets the formcontrol */
   @Method()
   async reset() {
-    this.value = this.defaultValue;
+    this.clearValues();
     this.customErrorText = '';
     this.customValidation = false;
     this.input.setCustomValidity('');
