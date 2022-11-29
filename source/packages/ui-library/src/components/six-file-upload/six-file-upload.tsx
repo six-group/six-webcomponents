@@ -1,8 +1,14 @@
 import { Component, Element, Event, EventEmitter, h, Listen, Prop, State } from '@stencil/core';
 
-export interface SixFileUploadSuccessPayload {
+interface ISingleFile {
   file: File;
 }
+
+interface IMultipleFiles {
+  files: FileList;
+}
+
+export type SixFileUploadSuccessPayload = ISingleFile | IMultipleFiles;
 
 export interface SixFileUploadFailurePayload {
   reason: string;
@@ -37,6 +43,9 @@ export class SixFileUpload {
 
   /** Accepted MIME-Types. */
   @Prop() readonly accept: string;
+
+  /** More than one file allowed. */
+  @Prop() readonly multiple: boolean;
 
   /** Allowed max file size in bytes. */
   @Prop() readonly maxFileSize: number | undefined = undefined;
@@ -85,21 +94,35 @@ export class SixFileUpload {
       return;
     }
 
-    const file = files.item(0);
-
-    if (!file) {
+    if (files.length === 0) {
       return;
     }
 
-    if (this.accept && this.accept !== file.type) {
-      return this.fileUploadFailureEvent.emit({ reason: 'File has invalid MIME type.' });
+    if (!this.multiple && files.length > 1) {
+      return this.fileUploadFailureEvent.emit({ reason: 'Only one file is allowed.' });
     }
 
-    if (this.maxFileSize && file.size > this.maxFileSize) {
-      return this.fileUploadFailureEvent.emit({ reason: 'File is too big.' });
+    for (const file of files) {
+      if (!file) {
+        return;
+      }
+
+      const acceptedTypesList = this.accept && this.accept.replace(/\s/g, '').split(',');
+
+      if (this.accept && acceptedTypesList.indexOf(file.type) === -1) {
+        const reason = files.length > 1 ? 'One or more files have invalid MIME type.' : 'File has invalid MIME type.';
+        return this.fileUploadFailureEvent.emit({ reason });
+      }
+
+      if (this.maxFileSize && file.size > this.maxFileSize) {
+        const reason = files.length > 1 ? 'One or more files are too big' : 'File is too big.';
+        return this.fileUploadFailureEvent.emit({ reason });
+      }
     }
 
-    this.fileUploadSuccessEvent.emit({ file });
+    const objectToEmit: SixFileUploadSuccessPayload = this.multiple ? { files } : { file: files.item(0) };
+
+    this.fileUploadSuccessEvent.emit(objectToEmit);
   };
 
   componentDidLoad() {
@@ -177,6 +200,7 @@ export class SixFileUpload {
               name="resume"
               disabled={this.disabled}
               accept={this.accept}
+              multiple={this.multiple}
               onChange={this.onChange}
               ref={(el) => (this.fileInput = el)}
             />

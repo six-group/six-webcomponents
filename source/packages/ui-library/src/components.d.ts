@@ -612,6 +612,10 @@ export namespace Components {
           * Allowed max file size in bytes.
          */
         "maxFileSize": number | undefined;
+        /**
+          * More than one file allowed.
+         */
+        "multiple": boolean;
     }
     interface SixFooter {
     }
@@ -2939,6 +2943,10 @@ declare namespace LocalJSX {
           * Allowed max file size in bytes.
          */
         "maxFileSize"?: number | undefined;
+        /**
+          * More than one file allowed.
+         */
+        "multiple"?: boolean;
         /**
           * Triggers when an uploaded file doesn't match MIME type or max file size.
          */
