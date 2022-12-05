@@ -17,8 +17,8 @@
     <div class="container">
       <h2>Icons</h2>
       <p>
-        SIX UI Library supports all available material design icons. You can search
-        for icons <a href="https://fonts.google.com/icons?selected=Material+Icons" target="_blank">here</a>.
+        SIX UI Library supports all available material design icons. You can search for icons
+        <a href="https://fonts.google.com/icons?selected=Material+Icons" target="_blank">here</a>.
       </p>
       <section class="demo">
         <six-icon class="margin-right">face</six-icon>
@@ -39,9 +39,7 @@
 
       <h3>Type</h3>
 
-      <p>
-        You can choose different executions of the material icons. By default try sticking to the outlined icons.
-      </p>
+      <p>You can choose different executions of the material icons. By default try sticking to the outlined icons.</p>
 
       <h4>Outlined icons</h4>
 
@@ -58,7 +56,6 @@
       <six-icon class="margin-right" filled>sick</six-icon>
       <six-icon class="margin-right" filled>fort</six-icon>
       <six-icon class="margin-right" filled>castle</six-icon>
-
 
       <h3>Sizing</h3>
       <p>The icons are available in different sizes. Default size is medium (24px).</p>
@@ -151,9 +148,9 @@
           </div>
           <div id="icon-showcase" style="max-height: 70vh; overflow: scroll">
             <h1 style="margin-left: 1rem">Outlined</h1>
-            <div id="icon-showcase-outlined" style="display: flex; flex-wrap: wrap;"></div>
+            <div id="icon-showcase-outlined" style="display: flex; flex-wrap: wrap"></div>
             <h1 style="margin-left: 1rem">Filled</h1>
-            <div id="icon-showcase-filled" style="display: flex; flex-wrap: wrap;"></div>
+            <div id="icon-showcase-filled" style="display: flex; flex-wrap: wrap"></div>
           </div>
         </div>
         <script type="module">
@@ -163,28 +160,30 @@
 
           const showcaseFilled = document.getElementById('icon-showcase-filled');
           const showcaseOutlined = document.getElementById('icon-showcase-outlined');
-          const getIcons = (filled) => icons
-            .split(';')
-            .map(
-              (i) =>
-                `<div data-option="${i}" style="word-break: break-all; margin: 1em; padding: 1em; height: 7.5em; width: 10em; text-align: center; background-color: rgba(164,164,164,0.04);"><six-icon size="xLarge" filled="${filled}">${i}</six-icon><div style="padding: 0.5em;">${i}</div></div>`,
-            )
-            .join('\n');
+          const getIcons = (filled) =>
+            icons
+              .split(';')
+              .map(
+                (i) =>
+                  `<div data-option="${i}" style="word-break: break-all; margin: 1em; padding: 1em; height: 7.5em; width: 10em; text-align: center; background-color: rgba(164,164,164,0.04);"><six-icon size="xLarge" filled="${filled}">${i}</six-icon><div style="padding: 0.5em;">${i}</div></div>`,
+              )
+              .join('\n');
           showcaseFilled.innerHTML = getIcons(true);
           showcaseOutlined.innerHTML = getIcons(false);
 
           iconSearch.addEventListener('six-input-input', (event) => {
-            const searchForType = (type) => Array.from(document.getElementById(type).children).forEach((n) => {
-              const iconLabel = n.getAttribute('data-option');
-              const searchTerms = iconSearch.value.trim().split(' ');
-              const labelContainsAllSearchTerms =
-                searchTerms.filter((s) => iconLabel.includes(s)).length === searchTerms.length;
-              if (!labelContainsAllSearchTerms) {
-                n.style.display = 'none';
-              } else {
-                n.style.display = 'initial';
-              }
-            });
+            const searchForType = (type) =>
+              Array.from(document.getElementById(type).children).forEach((n) => {
+                const iconLabel = n.getAttribute('data-option');
+                const searchTerms = iconSearch.value.trim().split(' ');
+                const labelContainsAllSearchTerms =
+                  searchTerms.filter((s) => iconLabel.includes(s)).length === searchTerms.length;
+                if (!labelContainsAllSearchTerms) {
+                  n.style.display = 'none';
+                } else {
+                  n.style.display = 'initial';
+                }
+              });
 
             searchForType('icon-showcase-filled');
             searchForType('icon-showcase-outlined');

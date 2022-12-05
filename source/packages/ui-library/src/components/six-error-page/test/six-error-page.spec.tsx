@@ -1,5 +1,5 @@
-import {newSpecPage} from '@stencil/core/testing';
-import {SixErrorPage} from '../six-error-page';
+import { newSpecPage } from '@stencil/core/testing';
+import { SixErrorPage } from '../six-error-page';
 
 describe('six-error-page', () => {
   it('should render right page for error code 403 in english', async () => {
