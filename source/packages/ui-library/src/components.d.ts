@@ -1020,6 +1020,10 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * Returns a text label based on the contents of the menu item's default slot.
+         */
+        "getTextLabel": () => Promise<string>;
+        /**
           * Removes focus from the button.
          */
         "removeFocus": () => Promise<void>;
