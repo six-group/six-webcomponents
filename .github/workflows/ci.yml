@@ -18,7 +18,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: source/ui-library
+        working-directory: source/packages/ui-library
 
     steps:
       - name: Checkout 🛎
