@@ -1,0 +1,26 @@
+@import 'src/global/component';
+
+:host {
+  display: block;
+}
+
+.six-sidebar-item-group--childless::part(content) {
+  padding: 0 !important;
+}
+
+.six-sidebar-item-group--subgroup::part(header) {
+  background-color: transparent !important;
+}
+
+.six-sidebar-item-group__header-icon {
+  margin-left: 16px;
+  transform: translate(0px, -3px);
+}
+
+.six-sidebar-details__header {
+  display: flex;
+}
+
+.six-sidebar-details__header-icon {
+  margin-right: 1em;
+}

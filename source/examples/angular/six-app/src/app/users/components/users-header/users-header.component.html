@@ -1,0 +1,15 @@
+<header class="users-header">
+  <six-icon size="large">supervisor_account</six-icon>
+  <span class="users-header__title">Users</span>
+  <p>
+    Table could be constructed either from <code>ui-library</code> building blocks or directly supplying the data to
+    <code>six-table</code> component. Two different fetching models are represented here.
+  </p>
+  <six-button (click)="usersFacade.toggleTableType()">
+    {{ fetchServerModel ? 'Server' : 'UI' }}
+  </six-button>
+  <span>
+    <ng-template #fetchOnce>Fetch once and do all sorting and filtering locally.</ng-template>
+    <ng-container *ngIf="fetchServerModel; else fetchOnce">Fetch on every sort or filter update.</ng-container>
+  </span>
+</header>

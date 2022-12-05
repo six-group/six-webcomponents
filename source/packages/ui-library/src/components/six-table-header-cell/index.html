@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <script type="module" src="/build/ui-library.esm.js"></script>
+    <script nomodule src="/build/ui-library.js"></script>
+    <link rel="stylesheet" href="/build/ui-library.css" />
+    <title>Table Header Cell</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Table Header Cell</h2>
+
+      <p>Defines a cell as header of a group of table cells.</p>
+
+      <section class="demo">
+        <six-table>
+          <six-table-header>
+            <six-table-header-cell>ID</six-table-header-cell>
+            <six-table-header-cell>Name</six-table-header-cell>
+            <six-table-header-cell>Description</six-table-header-cell>
+          </six-table-header>
+        </six-table>
+      </section>
+
+      <h3>Sorting</h3>
+
+      <p>Provide the column name and one of the <code>sort</code> modes to render a sort icon.</p>
+      <p>The <code>six-table-header-cell-sort-updated</code> event contains updated sort mode.</p>
+
+      <section class="demo">
+        <six-table id="sorting">
+          <six-table-header>
+            <six-table-header-cell name="id" sort="none">ID</six-table-header-cell>
+            <six-table-header-cell name="name" sort="asc">Name</six-table-header-cell>
+            <six-table-header-cell name="description" sort="desc">Description</six-table-header-cell>
+          </six-table-header>
+        </six-table>
+
+        <six-dialog id="dialog">
+          <pre></pre>
+        </six-dialog>
+
+        <script type="module">
+          (() => {
+            const getElements = (e) =>
+              Object.entries(e).reduce((e, [r, t]) => ({ ...e, [r]: document.querySelector(t) }), {});
+
+            const Select = getElements({
+              id: 'six-table#sorting six-table-header-cell[name="id"]',
+              name: 'six-table#sorting six-table-header-cell[name="name"]',
+              description: 'six-table#sorting six-table-header-cell[name="description"]',
+              dialog: 'six-dialog#dialog',
+              detail: 'six-dialog#dialog pre',
+            });
+
+            const log = ({ type, detail }) => {
+              Select.dialog.label = type;
+              Select.detail.innerHTML = JSON.stringify({ detail }, null, 2);
+              Select.dialog.show();
+            };
+
+            Select.id.addEventListener('six-table-header-cell-sort-updated', log);
+            Select.name.addEventListener('six-table-header-cell-sort-updated', log);
+            Select.description.addEventListener('six-table-header-cell-sort-updated', log);
+          })();
+        </script>
+      </section>
+
+      <h3>Filtering</h3>
+
+      <p>
+        Provide the column name and one of the <code>filter</code> modes to render a filter icon. The initial
+        <code>value</code> is optional.
+      </p>
+      <p>The <code>six-table-header-cell-filter-updated</code> event contains updated filter model.</p>
+
+      <section class="demo">
+        <six-table id="filtering">
+          <six-table-header>
+            <six-table-header-cell>ID</six-table-header-cell>
+            <six-table-header-cell name="name" filter="in" value="Initial value...">Name</six-table-header-cell>
+            <six-table-header-cell name="description" filter="ne">Description</six-table-header-cell>
+          </six-table-header>
+        </six-table>
+
+        <six-dialog id="dialog">
+          <pre></pre>
+        </six-dialog>
+
+        <script type="module">
+          (() => {
+            const getElements = (e) =>
+              Object.entries(e).reduce((e, [r, t]) => ({ ...e, [r]: document.querySelector(t) }), {});
+
+            const Select = getElements({
+              id: 'six-table#filtering six-table-header-cell[name="id"]',
+              name: 'six-table#filtering six-table-header-cell[name="name"]',
+              description: 'six-table#filtering six-table-header-cell[name="description"]',
+              dialog: 'six-dialog#dialog',
+              detail: 'six-dialog#dialog pre',
+            });
+
+            const log = ({ type, detail }) => {
+              Select.dialog.label = type;
+              Select.detail.innerHTML = JSON.stringify({ detail }, null, 2);
+              Select.dialog.show();
+            };
+
+            Select.name.addEventListener('six-table-header-cell-filter-updated', log);
+            Select.description.addEventListener('six-table-header-cell-filter-updated', log);
+          })();
+        </script>
+      </section>
+    </div>
+  </body>
+</html>

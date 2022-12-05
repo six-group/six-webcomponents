@@ -1,0 +1,274 @@
+@import 'src/global/component';
+@import '../../functional-components/form-control/form-control';
+
+:host {
+  display: block;
+}
+
+.input {
+  display: inline-flex;
+  align-items: stretch;
+  justify-content: start;
+  position: relative;
+  width: 100%;
+  font-family: var(--six-font-family);
+  font-weight: var(--six-input-font-weight);
+  letter-spacing: var(--six-input-letter-spacing);
+  background-color: var(--six-input-background-color);
+  border: solid var(--six-border-width) var(--six-input-border-color);
+  vertical-align: middle;
+  overflow: hidden;
+  transition: var(--six-transition-fast) color, var(--six-transition-fast) border, var(--six-transition-fast) box-shadow;
+  cursor: text;
+
+  &--line {
+    border: none;
+    border-bottom: solid var(--six-border-width) var(--six-input-border-color);
+  }
+
+  &:hover:not(.input--disabled) {
+    background-color: var(--six-input-background-color-hover);
+    border-color: var(--six-input-border-color-hover);
+
+    .input__control {
+      color: var(--six-input-color-hover);
+    }
+  }
+
+  &.input--focused:not(.input--disabled) {
+    background-color: var(--six-input-background-color-focus);
+
+    border-bottom-color: var(--six-input-border-color-focus);
+    box-shadow: 0 1px 0 0 var(--six-input-border-color-focus);
+
+    &:not(.input--line) {
+      border-color: var(--six-input-border-color-focus);
+      box-shadow: var(--six-input-focus-shadow);
+    }
+
+    .input__control {
+      color: var(--six-input-color-focus);
+    }
+  }
+
+  &.input--disabled {
+    background-color: var(--six-input-background-color-disabled);
+    border-color: var(--six-input-border-color-disabled);
+    cursor: not-allowed;
+
+    .input__control {
+      color: var(--six-input-color-disabled);
+
+      &::placeholder {
+        color: var(--six-input-placeholder-color-disabled);
+      }
+    }
+  }
+
+  &.input--invalid:not(.input--disabled):not(.input--focused) {
+    border-bottom-color: var(--six-input-border-color-danger);
+
+    &:not(.input--line) {
+      border-color: var(--six-input-border-color-danger);
+    }
+  }
+}
+
+.input__control {
+  flex: 1 1 auto;
+  font-family: inherit;
+  font-size: var(--six-input-font-size-medium);
+  font-weight: inherit;
+  min-width: 0;
+  color: var(--six-input-color);
+  border: none;
+  background: none;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+  cursor: inherit;
+  -webkit-appearance: none;
+
+  &::-webkit-search-decoration,
+  &::-webkit-search-cancel-button,
+  &::-webkit-search-results-button,
+  &::-webkit-search-results-decoration {
+    -webkit-appearance: none;
+  }
+
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    box-shadow: 0 0 0 var(--six-height-large) var(--six-input-background-color-hover) inset !important;
+    -webkit-text-fill-color: var(--six-color-primary-500);
+  }
+
+  &::placeholder {
+    color: var(--six-input-placeholder-color);
+    user-select: none;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &::-ms-reveal {
+    display: none;
+  }
+}
+
+.input__prefix,
+.input__suffix {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  cursor: default;
+
+  ::slotted(six-icon) {
+    color: var(--six-input-icon-color);
+  }
+}
+
+.input {
+  &.input--disabled {
+    ::slotted(six-icon) {
+      cursor: not-allowed;
+    }
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Size modifiers
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+.input--small {
+  border-radius: var(--six-input-border-radius-small);
+  font-size: var(--six-input-font-size-small);
+  height: var(--six-height-small);
+
+  .input__control {
+    height: calc(var(--six-height-small) - var(--six-border-width) * 2);
+    margin: 0 var(--six-input-spacing-small);
+  }
+
+  .input__control__prefix {
+    margin: 0 var(--six-input-prefix-spacing-small);
+  }
+
+  .input__clear,
+  .input__password-toggle {
+    margin-right: var(--six-input-spacing-small);
+  }
+
+  .input__prefix ::slotted(*) {
+    margin-left: var(--six-input-prefix-spacing-small);
+  }
+
+  .input__suffix ::slotted(*) {
+    margin-right: var(--six-input-prefix-spacing-small);
+  }
+}
+
+.input--medium {
+  border-radius: var(--six-input-border-radius-medium);
+  font-size: var(--six-input-font-size-medium);
+  height: var(--six-height-medium);
+
+  .input__control {
+    height: calc(var(--six-height-medium) - var(--six-border-width) * 2);
+    margin: 0 var(--six-input-spacing-medium);
+  }
+
+  .input__control__prefix {
+    margin: 0 var(--six-input-prefix-spacing-medium);
+  }
+
+  .input__clear,
+  .input__password-toggle {
+    margin-right: var(--six-input-spacing-medium);
+  }
+
+  .input__prefix ::slotted(*) {
+    margin-left: var(--six-input-prefix-spacing-medium);
+  }
+
+  .input__suffix ::slotted(*) {
+    margin-right: var(--six-input-prefix-spacing-medium);
+  }
+}
+
+.input--large {
+  border-radius: var(--six-input-border-radius-large);
+  font-size: var(--six-input-font-size-large);
+  height: var(--six-height-large);
+
+  .input__control {
+    height: calc(var(--six-height-large) - var(--six-border-width) * 2);
+    margin: 0 var(--six-input-spacing-large);
+  }
+
+  .input__control__prefix {
+    margin: 0 var(--six-input-prefix-spacing-large);
+  }
+
+  .input__clear,
+  .input__password-toggle {
+    margin-right: var(--six-input-spacing-large);
+  }
+
+  .input__prefix ::slotted(*) {
+    margin-left: var(--six-input-prefix-spacing-large);
+  }
+
+  .input__suffix ::slotted(*) {
+    margin-right: var(--six-input-prefix-spacing-large);
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Pill modifier
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+.input--pill {
+  &.input--small {
+    border-radius: var(--six-height-small);
+  }
+
+  &.input--medium {
+    border-radius: var(--six-height-medium);
+  }
+
+  &.input--large {
+    border-radius: var(--six-height-large);
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Clearable + Password Toggle
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+.input__clear,
+.input__password-toggle {
+  display: inline-flex;
+  align-items: center;
+  font-size: inherit;
+  color: var(--six-input-icon-color);
+  border: none;
+  background: none;
+  padding: 0;
+  transition: var(--six-transition-fast) color;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--six-input-icon-color-hover);
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.input--empty .input__clear {
+  visibility: hidden;
+}

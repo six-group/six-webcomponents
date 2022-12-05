@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <script type="module" src="/build/ui-library.esm.js"></script>
+    <script nomodule src="/build/ui-library.js"></script>
+    <link rel="stylesheet" href="/build/ui-library.css" />
+    <title>six-menu</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Menu</h2>
+      <p>Menus provide a list of options for the user to choose from.</p>
+
+      <p>
+        Use <a href="six-menu-item.html">menu items</a>, <a href="six-menu-divider">menu dividers</a>, and
+        <a href="six-menu-label.html">menu labels</a> to compose a menu.
+      </p>
+
+      <section class="demo">
+        <six-menu style="max-width: 200px">
+          <script type="module">
+            let menuElement = document.querySelector('six-menu');
+            menuElement.addEventListener('six-menu-item-selected', (event) => {
+              alert(event.detail.name);
+            });
+          </script>
+
+          <six-menu-item value="undo">Undo</six-menu-item>
+          <six-menu-item value="redo">Redo</six-menu-item>
+          <six-menu-divider></six-menu-divider>
+          <six-menu-item value="cut">Cut</six-menu-item>
+          <six-menu-item value="copy">Copy</six-menu-item>
+          <six-menu-item value="paste">Paste</six-menu-item>
+          <six-menu-item value="delete">Delete</six-menu-item>
+        </six-menu>
+      </section>
+
+      <h3>Remove Box Shadow</h3>
+
+      <p>
+        There might be certain scenarios like e.g. when using the six-menu within a restricted outer container where you
+        want to remove the box-shadow, or else it will give a weird artefact. In such a scenario simply put the
+        <code>remove-box-shadow</code>
+        attribute on the six-menu
+      </p>
+
+      <p>Compare the following examples by scrolling to the right.</p>
+
+      <section class="demo">
+        <div style="max-width: 10rem; margin-bottom: 2.5rem">
+          <div style="font-weight: bold">With box-shadow (showing ugly artefact)</div>
+          <div style="overflow: auto">
+            <six-menu>
+              <six-menu-item value="val1">some quite long or even very long label</six-menu-item>
+            </six-menu>
+          </div>
+        </div>
+        <div style="max-width: 10rem">
+          <div style="font-weight: bold">Without box-shadow (no artefact)</div>
+          <div style="overflow: auto">
+            <six-menu remove-box-shadow>
+              <six-menu-item value="val1">some quite long or even very long label</six-menu-item>
+            </six-menu>
+          </div>
+        </div>
+      </section>
+
+      <h2>Passing items via attribute</h2>
+
+      <p>
+        If you don't want to create a <code>six-menu-item</code> but simply want to pass an array with all options, you
+        can do so via the <code>items</code> attribute.
+      </p>
+
+      <section class="demo">
+        <six-menu id="six-menu-dynamic-options"> </six-menu>
+        <script type="module">
+          const sixMenuDynamicOptions = document.getElementById('six-menu-dynamic-options');
+          sixMenuDynamicOptions.items = Array.from(Array(10).keys()).map((idx) => ({
+            label: `label ${idx}`,
+            value: `value ${idx}`,
+          }));
+        </script>
+      </section>
+
+      <h2>Define the number of items shown</h2>
+
+      <p>There might be scenarios where you want to define the number of items shown.</p>
+
+      <section class="demo">
+        <six-menu id="six-menu-scrollable" items-shown="2"> </six-menu>
+        <script type="module">
+          const sixMenuDynamicOptions = document.getElementById('six-menu-scrollable');
+          sixMenuDynamicOptions.items = Array.from(Array(10).keys()).map((idx) => ({
+            label: `label ${idx}`,
+            value: `value ${idx}`,
+          }));
+        </script>
+      </section>
+
+      <h2>Virtual scrolling</h2>
+
+      <p>
+        If you have a lot of items in the menu (40'000 in the following example), rendering all of them might lead to
+        some performance issues. To avoid such issues use <code>virtual-scroll</code>
+      </p>
+
+      <p>
+        By default virtual scrolling will show 5 items, however you can adjust the number of items shown with
+        <code>items-shown</code>
+      </p>
+
+      <section class="demo">
+        <six-menu id="six-menu-virtualscroll" virtual-scroll> </six-menu>
+        <script type="module">
+          const sixMenuDynamicOptions = document.getElementById('six-menu-virtualscroll');
+          sixMenuDynamicOptions.items = Array.from(Array(40000).keys()).map((idx) => ({
+            label: `label ${idx}`,
+            value: `value ${idx}`,
+          }));
+        </script>
+      </section>
+    </div>
+  </body>
+</html>

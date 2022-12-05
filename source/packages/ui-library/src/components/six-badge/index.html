@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <script type="module" src="/build/ui-library.esm.js"></script>
+    <script nomodule src="/build/ui-library.js"></script>
+    <link rel="stylesheet" href="/build/ui-library.css" />
+    <title>Badge</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Badge</h1>
+      <p>Badges are used to draw attention and display statuses or counts.</p>
+      <section class="demo">
+        <six-badge>Badge</six-badge>
+      </section>
+
+      <h2>Examples</h2>
+      <h3>Types</h3>
+      <p>Set the <code>type</code> attribute to change the badge's type.</p>
+      <section class="demo">
+        <six-badge>Badge</six-badge>
+      </section>
+
+      <h3>Pill Badges</h3>
+      <p>Use the <code>pill</code> attribute to give badges rounded edges.</p>
+      <section class="demo">
+        <six-badge type="primary" pill>Primary</six-badge>
+        <six-badge type="info" pill>Info</six-badge>
+        <six-badge type="success" pill>Success</six-badge>
+        <six-badge type="warning" pill>Warning</six-badge>
+        <six-badge type="danger" pill>Danger</six-badge>
+        <six-badge type="action" pill>Action</six-badge>
+      </section>
+
+      <h3>Pulsating Badges</h3>
+      <p>Use the <code>pulse</code> attribute to draw attention to the badge with a subtle animation.</p>
+      <section class="demo">
+        <div class="badge-pulse">
+          <six-badge type="primary" pill pulse>1</six-badge>
+          <six-badge type="info" pill pulse>1</six-badge>
+          <six-badge type="success" pill pulse>1</six-badge>
+          <six-badge type="warning" pill pulse>1</six-badge>
+          <six-badge type="danger" pill pulse>1</six-badge>
+          <six-badge type="action" pill pulse>1</six-badge>
+        </div>
+
+        <style>
+          .badge-pulse six-badge:not(:last-of-type) {
+            margin-right: 1rem;
+          }
+        </style>
+      </section>
+
+      <h3>With Buttons</h3>
+      <p>
+        One of the most common use cases for badges is attaching them to buttons. To make this easier, badges will be
+        automatically positioned at the top-right when they're a child of a button.
+      </p>
+      <section class="demo">
+        <six-button>
+          Requests
+          <six-badge pill>30</six-badge>
+        </six-button>
+
+        <six-button style="margin-left: 1rem">
+          Warnings
+          <six-badge type="warning" pill>8</six-badge>
+        </six-button>
+
+        <six-button style="margin-left: 1rem">
+          Errors
+          <six-badge type="danger" pill>6</six-badge>
+        </six-button>
+      </section>
+
+      <h3>With Menu Items</h3>
+      <p>
+        When including badges in menu items, use the <code>suffix</code> slot to make sure they're aligned correctly.
+      </p>
+
+      <section class="demo">
+        <six-menu
+          style="
+            max-width: 240px;
+            border: solid 1px var(--six-panel-border-color);
+            border-radius: var(--six-border-radius-medium);
+          "
+        >
+          <six-menu-label>Messages</six-menu-label>
+          <six-menu-item>Comments <six-badge slot="suffix" pill>4</six-badge></six-menu-item>
+          <six-menu-item>Replies <six-badge slot="suffix" pill>12</six-badge></six-menu-item>
+        </six-menu>
+      </section>
+    </div>
+  </body>
+</html>

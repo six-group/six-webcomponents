@@ -1,0 +1,9 @@
+.six-files-list {
+  &__container {
+    padding: 1rem;
+
+    & :last-child {
+      padding-bottom: 0;
+    }
+  }
+}

@@ -1,0 +1,16 @@
+:root {
+  --content-margin: 1rem;
+}
+
+[slot='main'] {
+  margin: var(--content-margin);
+  text-align: center;
+}
+
+#content-buttons six-button {
+  margin-right: 1rem;
+}
+
+#users-table-container {
+  width: calc(100% - 2 * var(--content-margin));
+}

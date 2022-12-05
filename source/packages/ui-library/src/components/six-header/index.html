@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <script type="module" src="/build/ui-library.esm.js"></script>
+    <script nomodule src="/build/ui-library.js"></script>
+    <link rel="stylesheet" href="/build/ui-library.css" />
+    <title>six-header</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Header Features</h2>
+
+      <p>To define the elements which will be shown in the profile dropdown use the <code>profile-menu</code> slot</p>
+
+      <p>To define a profile picture simply set the settings for <code>six-avatar</code></p>
+      <p>
+        To define the content of the drawer menu (opens when clicking on the hamburger menu) use the
+        <code>menu-content</code> slot.
+      </p>
+      <p>
+        SIX header provides multiple events that can be listened from the outside. Select for example an entry from the
+        app-switcher dropdown and you should see it in the output text below the header.
+      </p>
+      <p>
+        To listen to the selected app-switcher element simply register a listener on
+        <code>six-header-app-switcher-select</code>. You can also listen on the <code>six-header-app-name-clicked</code>
+        event to detect a click on the currently selected application's name.
+      </p>
+
+      <section class="demo">
+        <six-root>
+          <six-header show-search slot="header" shift-content>
+            <!--search-->
+            <six-search-field slot="search-field" placeholder="Search for some 'a' ..." clearable>
+              <div id="search-results"></div>
+            </six-search-field>
+            <!--notifications-->
+            <six-icon-button slot="notifications" name="notifications_none">
+              <six-badge type="danger" pill>99</six-badge>
+            </six-icon-button>
+            <!--app switcher-->
+            <six-menu slot="app-switcher-menu">
+              <six-menu-item checked>Custody</six-menu-item>
+              <six-menu-item>Swiss Interbank Clearing</six-menu-item>
+              <six-menu-item>Tri-Party Agent</six-menu-item>
+              <six-menu-item>Financial Information</six-menu-item>
+            </six-menu>
+            <!--profile-->
+            <six-menu slot="profile-menu">
+              <six-menu-item><b>Cat Kittens</b><br />cat.kitty.kittens@themCatsBeCool.com</six-menu-item>
+              <six-menu-item><b>Language</b><br /><six-language-switcher></six-language-switcher></six-menu-item>
+              <six-menu-item>Change password</six-menu-item>
+              <six-menu-item id="logout">Logout</six-menu-item>
+            </six-menu>
+            <!--avatar-->
+            <six-avatar
+              image="https://images.unsplash.com/photo-1529778873920-4da4926a72c2?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80"
+              slot="profile-avatar"
+            >
+            </six-avatar>
+            <!--custom components-->
+
+            <six-icon-button name="shopping_cart" />
+          </six-header>
+          <section slot="main">
+            <six-card>
+              <h1>Main content</h1>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet atque blanditiis culpa cum earum error,
+                fuga laboriosam nam nisi pariatur rem tempora unde voluptatem? Consequuntur dicta fugit numquam
+                obcaecati perferendis?
+              </p>
+            </six-card>
+          </section>
+        </six-root>
+
+        <six-dialog label="Dialog" class="dialog-overview">
+          <pre></pre>
+          <six-button slot="footer" type="primary">Close</six-button>
+        </six-dialog>
+
+        <style>
+          section[slot='main'] six-card {
+            width: 100%;
+          }
+
+          six-search-field div article {
+            background-color: var(--six-color-white);
+            padding: 0.6rem;
+          }
+        </style>
+
+        <script type="module">
+          const el = Object.entries({
+            header: 'six-header',
+            dialog: 'six-dialog',
+            dialogClose: 'six-dialog six-button',
+            search: 'six-search-field',
+            searchResults: 'six-search-field div',
+            notifications: '[slot="notifications"]',
+            notificationsBadge: 'six-badge',
+            logout: '#logout',
+          }).reduce((acc, [k, v]) => ({ ...acc, [k]: document.querySelector(v) }), {});
+
+          // logging
+          const log = ({ type, detail }) => {
+            const { selectedLabel } = detail;
+
+            if (selectedLabel.trim() === 'Language') {
+              return;
+            }
+
+            el.dialog.label = type;
+            el.dialog.querySelector('pre').innerHTML = JSON.stringify({ detail }, null, 2);
+            el.dialog.show();
+          };
+
+          el.header.addEventListener('six-header-hamburger-menu-clicked', log);
+          el.header.addEventListener('six-header-app-name-clicked', log);
+          el.header.addEventListener('six-header-app-switcher-select', log);
+          el.header.addEventListener('six-header-profile-select', log);
+          el.notifications.addEventListener('click', log);
+
+          // close dialog
+          el.dialogClose.addEventListener('click', () => el.dialog.hide());
+
+          // search
+          el.search.addEventListener('six-search-field-change', ({ detail }) => {
+            const term = detail.value;
+            getResults(term).then((results) => {
+              el.searchResults.innerHTML = results
+                .map((result) => {
+                  const highlighted = result.replaceAll(term, `<b>${term}</b>`);
+                  return `<article>${highlighted} <six-button type="link">...</six-button></article>`;
+                })
+                .join('');
+            });
+          });
+
+          const text =
+            'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi eveniet labore nemo nihil quae soluta sunt temporibus vitae voluptas voluptatem? Amet eius eveniet libero, minus odio officia pariatur provident tenetur.';
+
+          const getResults = (value) => {
+            const MAX_ITEMS = 3;
+            const TIMEOUT = 1000;
+            return new Promise((resolve) => {
+              const results = value
+                ? text
+                    .split([', '])
+                    .filter((item) => item.includes(value.trim()))
+                    .slice(0, MAX_ITEMS)
+                : [];
+              setTimeout(() => resolve(results), TIMEOUT);
+            });
+          };
+
+          // logout
+          el.logout.addEventListener('click', (event) => {
+            event.stopPropagation();
+            el.header.remove();
+          });
+
+          // notifications
+          let count = 99;
+
+          const updateNotifications = () =>
+            setTimeout(() => {
+              const delta = getRandomInt(-9, 9);
+              count += count + delta >= 0 && count + delta <= 99 ? delta : 0;
+              el.notificationsBadge.innerText = count;
+              updateNotifications();
+            }, getRandomInt(300, 3000));
+
+          // MDN
+          const getRandomInt = (min, max) => {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+          };
+
+          updateNotifications();
+        </script>
+      </section>
+
+      <h3>Replace Logo</h3>
+      <p>
+        In case you don't want the Six Logo, you have the functionality to replace the Logo with
+        <code>slot="logo"</code>.
+      </p>
+      <section class="demo">
+        <six-root>
+          <six-header show-search slot="header" shift-content>
+            <!--avatar-->
+            <img src="https://www.bolsasymercados.es/images/Base/Logo.svg?v=Six" slot="logo" height="20px" />
+          </six-header>
+          <section slot="main"></section>
+        </six-root>
+      </section>
+
+      <!-- START NEW EXAMPLE -->
+
+      <h3>Set Search Open status</h3>
+
+      <p>You can enforce the search bar to be open or closed by setting the <code>open-search</code> property</p>
+
+      <section class="demo">
+        <six-button id="search-toggle-attribute-btn">Toggle Search via Attribute</six-button>
+        <six-button id="search-toggle-method-btn">Toggle Search via Method</six-button>
+
+        <six-root>
+          <six-header show-search slot="header" shift-content open-search="true" id="search-toggle-header">
+            <six-search-field slot="search-field" placeholder="Search for something" clearable>
+              <div></div>
+            </six-search-field>
+          </six-header>
+        </six-root>
+
+        <script type="module">
+          const header = document.getElementById('search-toggle-header');
+
+          const toggleAttributeBtn = document.getElementById('search-toggle-attribute-btn');
+          toggleAttributeBtn.addEventListener('click', () => {
+            const currentValue = header.attributes['open-search'].value === 'true';
+            header.setAttribute('open-search', String(!currentValue));
+          });
+
+          const toggleMethodBtn = document.getElementById('search-toggle-method-btn');
+          toggleMethodBtn.addEventListener('click', async () => {
+            const openState = await header.getIsSearchOpen();
+            await header.setSearchOpenState(!openState);
+          });
+        </script>
+      </section>
+
+      <!-- START NEW EXAMPLE -->
+
+      <h3>Execute callback on logo clicked</h3>
+      <p>
+        In case you want to e.g. navigate to the dashboard when the header logo is clicked simply listen to the
+        <code>six-header-logo-clicked</code> event and set the <code>clickable-logo</code> attribute
+      </p>
+      <section class="demo">
+        <six-root>
+          <six-header show-search slot="header" shift-content id="clickableLogoHeader" clickable-logo> </six-header>
+          <section slot="main"></section>
+        </six-root>
+        <script type="module">
+          const header = document.getElementById('clickableLogoHeader');
+          header.addEventListener('six-header-logo-clicked', () => {
+            alert('logo clicked');
+          });
+        </script>
+      </section>
+
+      <!-- START NEW EXAMPLE -->
+    </div>
+  </body>
+</html>

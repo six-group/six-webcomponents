@@ -1,0 +1,326 @@
+@import 'src/global/component';
+@import '../../functional-components/form-control/form-control';
+@import 'src/global/mixins/hidden';
+@import 'src/global/mixins/hide-scrollbar';
+
+:host {
+  display: block;
+}
+
+.select {
+  display: block;
+}
+
+.select__box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: start;
+  position: relative;
+  width: 100%;
+  font-family: var(--six-font-family);
+  font-weight: var(--six-input-font-weight);
+  font-size: var(--six-input-font-size-medium);
+  letter-spacing: var(--six-input-letter-spacing);
+  background-color: var(--six-input-background-color);
+  border: solid var(--six-border-width) var(--six-input-border-color);
+  vertical-align: middle;
+  overflow: hidden;
+  transition: var(--six-transition-fast) color, var(--six-transition-fast) border, var(--six-transition-fast) box-shadow;
+  cursor: pointer;
+
+  &--line {
+    border: none;
+    border-bottom: solid var(--six-border-width) var(--six-input-border-color);
+  }
+
+  &--autocomplete {
+    border: none;
+    overflow: initial;
+  }
+}
+
+.select:not(.select--disabled) .select__box:hover {
+  background-color: var(--six-input-background-color-hover);
+  color: var(--six-input-color-hover);
+
+  border-bottom-color: var(--six-input-border-color-hover);
+
+  &:not(.select__box--line) {
+    border-color: var(--six-input-border-color-hover);
+  }
+}
+
+.select:not(.select--disabled) .select__box:focus {
+  background-color: var(--six-input-background-color-focus);
+  outline: none;
+  color: var(--six-input-color-focus);
+
+  border-bottom-color: var(--six-input-border-color-focus);
+  box-shadow: 0 1px 0 0 var(--six-input-border-color-focus);
+
+  &:not(.select__box--line) {
+    border-color: var(--six-input-border-color-focus);
+    box-shadow: var(--six-input-focus-shadow);
+  }
+}
+
+.select--disabled {
+  .select__box {
+    background-color: var(--six-input-background-color-disabled);
+    color: var(--six-input-color-disabled);
+    cursor: not-allowed;
+    outline: none;
+
+    &:not(.select__box--line) {
+      border-color: var(--six-input-border-color-disabled);
+    }
+  }
+
+  .select__tags,
+  .select__clear {
+    pointer-events: none;
+  }
+}
+
+.select--invalid:not(.select--disabled):not(.select--focused) {
+  .select__box {
+    border-bottom-color: var(--six-input-border-color-danger);
+
+    &:not(.input--line) {
+      border-color: var(--six-input-border-color-danger);
+    }
+  }
+}
+
+.select__label {
+  flex-shrink: 1;
+  flex-grow: 1;
+  align-items: center;
+  user-select: none;
+  width: 0; /* needed for firefox because due to "white-space: nowrap" the default is set to max-content */
+
+  @include hide-scrollbar;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+.select__clear {
+  flex-shrink: 0;
+  flex-grow: 0;
+  display: inline;
+}
+
+.select__icon {
+  flex-shrink: 0;
+  flex-grow: 0;
+  display: inline;
+  transition: var(--six-transition-medium) transform ease;
+}
+
+.select--open .select__icon {
+  transform: rotate(-180deg);
+}
+
+// Placeholder
+.select--placeholder-visible .select__label {
+  color: var(--six-input-placeholder-color);
+}
+
+.select--disabled.select--placeholder-visible .select__label {
+  color: var(--six-input-placeholder-color-disabled);
+}
+
+// Tags
+.select__tags {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: left;
+  margin-left: var(--six-spacing-xx-small);
+}
+
+// Hidden input (for form control validation to show)
+.select__hidden-select {
+  @include visually-hidden();
+}
+
+.select__input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Size modifiers
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+.select--small {
+  .select__box {
+    border-radius: var(--six-input-border-radius-small);
+    font-size: var(--six-input-font-size-small);
+    min-height: var(--six-height-small);
+
+    &--line {
+      border: none;
+      border-bottom: solid var(--six-border-width) var(--six-input-border-color);
+    }
+  }
+
+  .select__label {
+    margin: 0 var(--six-input-spacing-small);
+  }
+
+  .select__clear {
+    margin-right: var(--six-spacing-xxx-small);
+  }
+
+  .select__icon {
+    margin-right: var(--six-spacing-x-small);
+  }
+
+  .select__tags {
+    padding-bottom: 2px;
+
+    six-tag {
+      padding-top: 2px;
+    }
+
+    six-tag:not(:last-of-type) {
+      margin-right: var(--six-spacing-xx-small);
+    }
+  }
+
+  &.select--has-tags .select__label {
+    margin-left: 0;
+  }
+}
+
+.select--medium {
+  .select__box {
+    border-radius: var(--six-input-border-radius-medium);
+    font-size: var(--six-input-font-size-medium);
+    min-height: var(--six-height-medium);
+
+    &--line {
+      border: none;
+      border-bottom: solid var(--six-border-width) var(--six-input-border-color);
+    }
+  }
+
+  .select__label {
+    margin: 0 var(--six-input-spacing-medium);
+  }
+
+  .select__clear {
+    margin-right: var(--six-spacing-xxx-small);
+  }
+
+  .select__icon {
+    margin-right: var(--six-spacing-x-small);
+  }
+
+  .select__tags {
+    padding-bottom: 3px;
+
+    six-tag {
+      padding-top: 3px;
+    }
+
+    six-tag:not(:last-of-type) {
+      margin-right: var(--six-spacing-xx-small);
+    }
+  }
+
+  &.select--has-tags .select__label {
+    margin-left: 0;
+  }
+}
+
+.select--large {
+  .select__box {
+    border-radius: var(--six-input-border-radius-large);
+    font-size: var(--six-input-font-size-large);
+    min-height: var(--six-height-large);
+
+    &--line {
+      border: none;
+      border-bottom: solid var(--six-border-width) var(--six-input-border-color);
+    }
+  }
+
+  .select__label {
+    margin: 0 var(--six-input-spacing-large);
+  }
+
+  .select__clear {
+    margin-right: var(--six-spacing-xxx-small);
+  }
+
+  .select__icon {
+    margin-right: var(--six-spacing-x-small);
+  }
+
+  .select__tags {
+    padding-bottom: 4px;
+
+    six-tag {
+      padding-top: 4px;
+    }
+
+    six-tag:not(:last-of-type) {
+      margin-right: var(--six-spacing-xx-small);
+    }
+  }
+
+  &.select--has-tags .select__label {
+    margin-left: 0;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Pill modifier
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+.select--pill {
+  &.select--small .select__box {
+    border-radius: var(--six-height-small);
+  }
+
+  &.select--medium .select__box {
+    border-radius: var(--six-height-medium);
+  }
+
+  &.select--large .select__box {
+    border-radius: var(--six-height-large);
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Menu
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+.select {
+  &__menu {
+    max-width: 50vw;
+    width: fit-content;
+
+    &--filtered {
+      // fixes problem where when filter is enabled the popup has the width of the input field but the menu has the width
+      // of the trigger element and we thus get weird UI glitches when trigger is narrower than filter input field
+      width: 100% !important;
+    }
+
+    &--hidden {
+      // hide the menu panel if there are no menu items
+      display: none;
+    }
+  }
+}
+
+// fixes problem where six-select height changes when size="small" and clearing button is visible
+six-icon-button::part(base) {
+  padding-top: 0;
+  padding-bottom: 0;
+}

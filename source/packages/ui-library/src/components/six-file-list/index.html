@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <script type="module" src="/build/ui-library.esm.js"></script>
+    <script nomodule src="/build/ui-library.js"></script>
+    <link rel="stylesheet" href="/build/ui-library.css" />
+    <title>six-file-list</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2>File List</h2>
+
+      <p><code>six-file-list</code> is a simple container to show to hold the different items</p>
+
+      <section class="demo">
+        <six-file-list>
+          <six-file-list-item identifier="id_1" name="file_1.pdf"></six-file-list-item>
+          <six-file-list-item identifier="id_2" name="file_2.pdf" date="23.09.2021, 09:12"></six-file-list-item>
+          <six-file-list-item
+            identifier="id_3"
+            name="file_3.pdf"
+            date="03.12.2021, 10:22"
+            size="75680"
+          ></six-file-list-item>
+          <six-file-list-item
+            identifier="id_4"
+            name="file_4.pdf"
+            date="02.10.2021, 12:25"
+            size="77590"
+            nodownload
+          ></six-file-list-item>
+          <six-file-list-item
+            identifier="id_5"
+            name="file_5.pdf"
+            date="11.07.2021, 10:32"
+            size="72040"
+            nodelete
+          ></six-file-list-item>
+        </six-file-list>
+      </section>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <script type="module" src="/build/ui-library.esm.js"></script>
+    <script nomodule src="/build/ui-library.js"></script>
+    <link rel="stylesheet" href="/build/ui-library.css" />
+    <title>Time Picker</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>SIX Time Picker</h1>
+
+      <p>The <code>six-timepicker</code> can be used to select the time.</p>
+
+      <p>
+        By default the time will be displayed as <code>HH:mm:ss</code> and you can either directly modify the time in
+        the input field, or via the picker component in the popup
+      </p>
+
+      <section class="demo">
+        <six-timepicker></six-timepicker>
+        <style>
+          six-timepicker {
+            max-width: 15rem;
+          }
+        </style>
+      </section>
+
+      <h2>Time Formats</h2>
+
+      <p>
+        You can choose one of the valid formats to define what options should be displayed (default is
+        <code>HH:mm:ss</code>):
+      </p>
+
+      <section class="demo">
+        <div class="format-example">
+          <six-timepicker format="HH:mm:ss" placeholder="HH:mm:ss"></six-timepicker>
+          <six-timepicker format="hh:mm:ss:aa" placeholder="hh:mm:ss:aa"></six-timepicker>
+          <six-timepicker format="HH:mm:ss:ms" placeholder="HH:mm:ss:ms"></six-timepicker>
+          <six-timepicker format="hh:mm:ss:ms:aa" placeholder="hh:mm:ss:ms:aa"></six-timepicker>
+          <six-timepicker format="HH:mm" placeholder="HH:mm"></six-timepicker>
+          <six-timepicker format="hh:mm:aa" placeholder="hh:mm:aa"></six-timepicker>
+          <six-timepicker format="HH" placeholder="HH"></six-timepicker>
+          <six-timepicker format="hh:aa" placeholder="hh:aa"></six-timepicker>
+          <six-timepicker format="mm" placeholder="mm"></six-timepicker>
+          <six-timepicker format="ss" placeholder="ss"></six-timepicker>
+          <six-timepicker format="ms" placeholder="ms"></six-timepicker>
+        </div>
+        <style>
+          .format-example {
+            display: flex;
+            flex-wrap: wrap;
+          }
+
+          .format-example > * {
+            margin-right: 1.5rem;
+            margin-bottom: 1.5rem;
+          }
+
+          six-timepicker {
+            max-width: 15rem;
+          }
+        </style>
+      </section>
+
+      <h2>Setting the value</h2>
+
+      <p>If you don't set a custom value the default value for the <code>timepicker</code> will be the current time.</p>
+
+      <section class="demo">
+        <div style="display: flex; flex-wrap: wrap">
+          <six-card class="time-format-item">
+            <div>HH:mm:ss</div>
+            <six-timepicker format="HH:mm:ss" value="13:32:35"></six-timepicker>
+          </six-card>
+          <six-card class="time-format-item">
+            <div>hh:mm:ss:aa</div>
+            <six-timepicker format="hh:mm:ss:aa" value="11:59:35:AM"></six-timepicker>
+          </six-card>
+          <six-card class="time-format-item">
+            <div>HH:mm:ss:ms</div>
+            <six-timepicker format="HH:mm:ss:ms" value="23:11:53:999"></six-timepicker>
+          </six-card>
+          <six-card class="time-format-item">
+            <div>hh:mm:ss:ms:aa</div>
+            <six-timepicker format="hh:mm:ss:ms:aa" value="05:32:35:273:AM"></six-timepicker>
+          </six-card>
+          <six-card class="time-format-item">
+            <div>HH:mm</div>
+            <six-timepicker format="HH:mm" value="22:13"></six-timepicker>
+          </six-card>
+          <six-card class="time-format-item">
+            <div>hh:mm:aa</div>
+            <six-timepicker format="hh:mm:aa" value="10:53:PM"></six-timepicker>
+          </six-card>
+          <six-card class="time-format-item">
+            <div>HH</div>
+            <six-timepicker format="HH" value="05"></six-timepicker>
+          </six-card>
+          <six-card class="time-format-item">
+            <div>hh:aa</div>
+            <six-timepicker format="hh:aa" value="08:AM"></six-timepicker>
+          </six-card>
+          <six-card class="time-format-item">
+            <div>mm</div>
+            <six-timepicker format="mm" value="59"></six-timepicker>
+          </six-card>
+          <six-card class="time-format-item">
+            <div>ss</div>
+            <six-timepicker format="ss" value="11"></six-timepicker>
+          </six-card>
+          <six-card class="time-format-item">
+            <div>ms</div>
+            <six-timepicker format="ms" value="254"></six-timepicker>
+          </six-card>
+          <style>
+            .time-format-item {
+              width: 15rem;
+              text-align: center;
+              padding: 1rem 0.5rem;
+              display: flex;
+              flex-wrap: wrap;
+              align-items: center;
+              justify-content: center;
+              margin: 0.75rem;
+            }
+
+            .time-format-item > *:first-child {
+              width: 15rem;
+              font-weight: bold;
+              margin-bottom: 0.5rem;
+            }
+
+            six-timepicker {
+              max-width: 15rem;
+            }
+          </style>
+        </div>
+      </section>
+
+      <h2>Different Separator</h2>
+
+      <p>You can define a different separator by adding the <code>separator</code> attribute</p>
+
+      <p>
+        However, please note that the time string you provide must always have a colon (":") and cannot have a different
+        separator
+      </p>
+
+      <section class="demo">
+        <six-timepicker separator="-"></six-timepicker>
+        <style>
+          six-timepicker {
+            max-width: 15rem;
+          }
+        </style>
+      </section>
+
+      <h2>Timeout & Interval</h2>
+
+      <p>
+        If you keep a navigation button pressed, the items will switch faster. By default the timeout is set to
+        <code>300ms</code>
+        and the interval is set to <code>35ms</code>.
+      </p>
+
+      <p>Feel free to adjust these numbers to your need:</p>
+
+      <section class="demo">
+        <six-timepicker></six-timepicker>
+        <br />
+        <six-timepicker timeout="500" interval="150"></six-timepicker>
+        <br />
+        <six-timepicker timeout="0" interval="1"></six-timepicker>
+        <style>
+          six-timepicker {
+            max-width: 15rem;
+          }
+        </style>
+      </section>
+
+      <h2>Placeholder</h2>
+      <p>You can define the timepickers placeholder via <code>placeholder</code></p>
+      <section class="demo">
+        <six-timepicker placeholder="HH:mm:ss"></six-timepicker>
+        <style>
+          six-timepicker {
+            max-width: 15rem;
+          }
+        </style>
+      </section>
+
+      <h2>Readonly State</h2>
+      <p>
+        If you want to force the user to use the popup instead of manually enter a time, you can simply add the
+        <code>readonly</code> property
+      </p>
+      <section class="demo">
+        <six-timepicker readonly></six-timepicker>
+        <style>
+          six-timepicker {
+            max-width: 15rem;
+          }
+        </style>
+      </section>
+
+      <h2>Disabled State</h2>
+      <p>
+        To disable the timepicker i.e. nothing will happen when clicking the input field, simply add the
+        <code>disabled</code> property
+      </p>
+      <section class="demo">
+        <six-timepicker disabled></six-timepicker>
+        <style>
+          six-timepicker {
+            max-width: 15rem;
+          }
+        </style>
+      </section>
+
+      <h3>Clearable</h3>
+      <p>Add the <code>clearable</code> property to add a clear button when the input has content.</p>
+
+      <section class="demo">
+        <six-timepicker clearable></six-timepicker>
+        <style>
+          six-timepicker {
+            max-width: 15rem;
+          }
+        </style>
+      </section>
+
+      <h2>Sizes</h2>
+      <p>Use the <code>size</code> attribute to change the timepicker size.</p>
+      <section class="demo">
+        <six-timepicker size="small" clearable></six-timepicker>
+        <br />
+        <six-timepicker size="medium" clearable></six-timepicker>
+        <br />
+        <six-timepicker size="large" clearable></six-timepicker>
+        <style>
+          six-timepicker {
+            max-width: 15rem;
+          }
+        </style>
+      </section>
+
+      <h2>Inline State</h2>
+      <p>If you wish you can have the timepicker as an inline component i.e. the popup will always be open</p>
+      <section class="demo">
+        <six-timepicker inline="true"></six-timepicker>
+        <style>
+          six-timepicker {
+            max-width: 15rem;
+          }
+        </style>
+      </section>
+
+      <h2>Placement</h2>
+
+      <p>
+        By default the timepicker will render either below or above the input field depending on the available space.
+      </p>
+
+      <p>If you want to enforce a certain placement you can use the <code>placement</code> attribute</p>
+
+      <section class="demo">
+        <six-timepicker placement="bottom"></six-timepicker>
+        <br />
+        <six-timepicker placement="top"></six-timepicker>
+        <style>
+          six-timepicker {
+            max-width: 15rem;
+          }
+        </style>
+      </section>
+
+      <h2>Icon position</h2>
+      <p>Could be adjusted providing <code>icon-position</code> property.</p>
+
+      <section class="demo">
+        <six-timepicker icon-position="right"></six-timepicker>
+        <br />
+        <six-timepicker icon-position="right" clearable></six-timepicker>
+        <br />
+        <six-timepicker icon-position="right" custom-icon clearable>
+          <img
+            style="height: 24px"
+            slot="custom-icon"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Sketch_Logo.svg/1133px-Sketch_Logo.svg.png"
+            alt="customicon"
+          />
+        </six-timepicker>
+        <style>
+          six-timepicker {
+            max-width: 15rem;
+          }
+        </style>
+      </section>
+
+      <h2>Custom icon</h2>
+      <p>The slot <code>custom-icon</code> is used to provide a custom timepicker icon.</p>
+
+      <section class="demo">
+        <six-timepicker custom-icon>
+          <img
+            style="height: 24px"
+            slot="custom-icon"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Sketch_Logo.svg/1133px-Sketch_Logo.svg.png"
+            alt="customicon"
+          />
+        </six-timepicker>
+        <style>
+          six-timepicker {
+            max-width: 15rem;
+          }
+        </style>
+      </section>
+
+      <h2>Hoisting</h2>
+      <p>
+        Dropdown panels will be clipped if they're inside a container that has overflow: auto|hidden. The hoist
+        attribute forces the panel to use a fixed positioning strategy, allowing it to break out of the container. In
+        this case, the panel will be positioned relative to its containing block, which is usually the viewport unless
+        an ancestor uses a transform, perspective, or filter.
+      </p>
+      <section class="demo">
+        <div style="overflow: hidden; border: solid 1px grey; padding: 0.5em; display: flex">
+          <six-timepicker placement="bottom" placeholder="no hoisting"></six-timepicker>
+          <six-timepicker hoist placement="bottom" placeholder="with hoisting"></six-timepicker>
+        </div>
+        <style>
+          six-timepicker {
+            max-width: 15rem;
+          }
+        </style>
+      </section>
+
+      <h2>Custom Default Time</h2>
+
+      <p>You can define a custom default time which will be shown on first appearance of the popup</p>
+
+      <section class="demo">
+        <six-timepicker default-time="23:00:00"></six-timepicker>
+        <style>
+          six-timepicker {
+            max-width: 15rem;
+          }
+        </style>
+      </section>
+
+      <h2>Dynamic changes</h2>
+
+      <p>The timepicker value can be changed dynamically by setting the <code>value</code> attribute.</p>
+
+      <section class="demo">
+        <six-timepicker id="dynamic-timepicker"></six-timepicker>
+        <div style="margin-top: 1rem">
+          <span style="font-weight: bold">Selected: </span
+          ><span id="dynamic-timepicker-selected">No Time selected yet!</span>
+        </div>
+        <div style="margin-top: 1rem">
+          <six-button id="dynamic-timepicker-btn1">20:13:22</six-button>
+          <six-button id="dynamic-timepicker-btn2">13:33:59</six-button>
+          <six-button id="dynamic-timepicker-btn3">02:30:00</six-button>
+        </div>
+        <script type="module">
+          const timepicker = document.getElementById('dynamic-timepicker');
+          const selectedTime = document.getElementById('dynamic-timepicker-selected');
+
+          const btn1 = document.getElementById('dynamic-timepicker-btn1');
+          btn1.addEventListener('click', () => (timepicker.value = '20:13:22'));
+
+          const btn2 = document.getElementById('dynamic-timepicker-btn2');
+          btn2.addEventListener('click', () => (timepicker.value = '13:33:59'));
+
+          const btn3 = document.getElementById('dynamic-timepicker-btn3');
+          btn3.addEventListener('click', () => (timepicker.value = '02:30:00'));
+
+          timepicker.addEventListener('six-timepicker-change', ({ detail }) => {
+            selectedTime.innerHTML = `${detail.valueAsString}`;
+          });
+        </script>
+        <style>
+          six-timepicker {
+            max-width: 15rem;
+          }
+        </style>
+      </section>
+
+      <h2>Events</h2>
+
+      <p>
+        You can listen to the timepicker change event. The event will give you the <code>changedProperty</code>
+        e.g. 'hours', 'minutes', 'seconds' etc.
+      </p>
+      <p>
+        Additionally you get the current value of the timepicker (not only the changed property), from where you can
+        also read the updated property e.g. <code>value.hours</code>. And you can get the whole time as a string e.g.
+        <code>15:37:25:692</code>
+      </p>
+
+      <section class="demo">
+        <div style="display: flex">
+          <six-timepicker id="timepicker-event-example" format="HH:mm:ss:ms"></six-timepicker>
+          <pre style="margin-left: 1.5rem">Fired Event: <span id="event-change-example-selected-time"></span></pre>
+        </div>
+        <script type="module">
+          const timepicker = document.getElementById('timepicker-event-example');
+          const changeEventTime = document.getElementById('event-change-example-selected-time');
+
+          timepicker.addEventListener('six-timepicker-change', ({ detail }) => {
+            changeEventTime.innerHTML = JSON.stringify(detail, null, 4);
+          });
+        </script>
+        <style>
+          six-timepicker {
+            max-width: 15rem;
+          }
+        </style>
+      </section>
+
+      <p>In the following you also find an event example for the 12-hour-clock:</p>
+
+      <section class="demo">
+        <div style="display: flex">
+          <six-timepicker id="timepicker-event-example-12h" format="hh:mm:ss:ms:aa"></six-timepicker>
+          <pre style="margin-left: 1.5rem">Fired Event: <span id="event-example-selected-time-12h"></span></pre>
+        </div>
+        <script type="module">
+          const timepicker = document.getElementById('timepicker-event-example-12h');
+          const selectedTime = document.getElementById('event-example-selected-time-12h');
+
+          timepicker.addEventListener('six-timepicker-change', ({ detail }) => {
+            selectedTime.innerHTML = JSON.stringify(detail, null, 4);
+          });
+        </script>
+        <style>
+          six-timepicker {
+            max-width: 15rem;
+          }
+        </style>
+      </section>
+
+      <p>
+        If you keep the navigation button pressed, there will be a lot of change events fired. If you don't want to
+        listen to all of these events but want to "wait" until the user landed on their desired time, then use
+        <code>six-timepicker-change-debounced</code>
+        instead.
+      </p>
+
+      <section class="demo">
+        <div style="display: flex">
+          <six-timepicker id="timepicker-event-debounced-example" format="HH:mm:ss:ms"></six-timepicker>
+          <pre style="margin-left: 1.5rem">Fired Event: <span id="event-debounced-example-selected-time"></span></pre>
+        </div>
+        <script type="module">
+          const timepicker = document.getElementById('timepicker-event-debounced-example');
+          const selectedTime = document.getElementById('event-debounced-example-selected-time');
+
+          timepicker.addEventListener('six-timepicker-change-debounced', ({ detail }) => {
+            selectedTime.innerHTML = JSON.stringify(detail, null, 4);
+          });
+        </script>
+        <style>
+          six-timepicker {
+            max-width: 15rem;
+          }
+        </style>
+      </section>
+
+      <h2>Validation</h2>
+
+      <p>Of course you can also use the timepicker in a form.</p>
+
+      <section class="demo" style="width: 500px">
+        <six-form class="input-validation-required">
+          <six-timepicker
+            name="arrivalTime"
+            error-text="Time of Arrival is missing or invalid"
+            label="Time of Arrival"
+            required
+          ></six-timepicker>
+          <br /><br />
+          <six-button type="primary" submit>Submit</six-button>
+          <six-button type="primary" reset>Reset</six-button>
+        </six-form>
+
+        <script type="module">
+          const formRequired = document.querySelector('.input-validation-required');
+          formRequired.addEventListener('six-form-submit', () => alert('All fields are valid!'));
+        </script>
+        <style>
+          six-timepicker {
+            max-width: 15rem;
+          }
+        </style>
+      </section>
+
+      <h3>Open State</h3>
+      <p>If you wish you can have the timepicker open on startup. It will close as usual (clicking outside etc.)</p>
+      <section class="demo">
+        <six-timepicker open="true" placement="bottom"></six-timepicker>
+        <style>
+          six-timepicker {
+            max-width: 15rem;
+          }
+        </style>
+      </section>
+    </div>
+  </body>
+</html>

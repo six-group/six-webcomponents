@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./main.css" />
+    <link rel="stylesheet" href="ui-library/ui-library.css" />
+    <script type="module" src="ui-library/ui-library.esm.js"></script>
+    <title>Pure JS Demo App</title>
+  </head>
+  <body>
+    <six-root id="root">
+      <six-header id="header" slot="header" shift-content="true">
+        <!--quick search-->
+        <six-search-field slot="search-field">
+          <div></div>
+        </six-search-field>
+        <!--notifications-->
+        <six-icon-button id="header-button-toggle-right-sidebar" slot="notifications" name="notifications_none">
+          <six-badge type="danger" pill>99</six-badge>
+        </six-icon-button>
+        <!--app switcher-->
+        <six-menu slot="app-switcher-menu">
+          <six-menu-item>LongAppName1</six-menu-item>
+          <six-menu-item>LongAppName2</six-menu-item>
+          <six-menu-item>VeryVeryLongApp3</six-menu-item>
+          <six-menu-item>App4</six-menu-item>
+        </six-menu>
+        <!--profile-->
+        <six-menu slot="profile-menu">
+          <six-menu-item><b>Cat Kittens</b><br />cat.kitty.kittens@themCatsBeCool.com</six-menu-item>
+          <six-menu-item>Change password</six-menu-item>
+          <six-menu-item>Logout</six-menu-item>
+        </six-menu>
+        <!--avatar-->
+        <six-avatar image="https://images.unsplash.com/photo-1529778873920-4da4926a72c2?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" slot="profile-avatar"></six-avatar>
+      </six-header>
+
+      <six-sidebar id="left-sidebar" slot="left-sidebar" position="left" open>
+        <six-sidebar-item-group icon="home" name="Home" router-link="/dashboard"></six-sidebar-item-group>
+        <six-sidebar-item-group icon="supervisor_account" name="Users" router-link="/users"></six-sidebar-item-group>
+      </six-sidebar>
+
+      <section slot="main" router-outlet></section>
+
+      <six-sidebar id="right-sidebar" slot="right-sidebar" position="right">
+        <template id="template-task">
+          <six-card>
+            <h3>Task</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aliquid aperiam, beatae debitis delectus deleniti eius enim est ex facilis id incidunt modi nostrum
+              odio, repudiandae sed velit vitae, voluptas.
+            </p>
+          </six-card>
+        </template>
+      </six-sidebar>
+
+      <six-footer slot="footer"></six-footer>
+    </six-root>
+  </body>
+  <script type="module" src="./main.js" defer></script>
+</html>

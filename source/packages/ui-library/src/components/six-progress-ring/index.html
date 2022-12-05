@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <script type="module" src="/build/ui-library.esm.js"></script>
+    <script nomodule src="/build/ui-library.js"></script>
+    <link rel="stylesheet" href="/build/ui-library.css" />
+    <title>six-progress-ring</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2>SixProgressRing</h2>
+
+      <p>Progress rings are used to show the progress of a determinate operation in a circular fashion.</p>
+      <section class="demo" style="width: 300px">
+        <six-progress-ring percentage="50"></six-progress-ring>
+      </section>
+
+      <h2>Examples</h2>
+
+      <h3>Size</h3>
+      <p>Use the <code>--size</code> attribute to set the diameter of the progress ring.</p>
+      <section class="demo" style="width: 300px">
+        <six-progress-ring percentage="50" size="200"></six-progress-ring>
+      </section>
+
+      <h3>Stroke Width</h3>
+      <p>Use the <code>stroke-width</code> attribute to set the width of the progress ring's indicator.</p>
+      <section class="demo" style="width: 300px">
+        <six-progress-ring percentage="50" stroke-width="10"></six-progress-ring>
+      </section>
+
+      <h3>Colors</h3>
+      <p>
+        To change the color, use the <code>--track-color</code> and <code>--indicator-color</code> custom properties.
+      </p>
+      <section class="demo" style="width: 300px">
+        <six-progress-ring percentage="50" style="--track-color: tomato; --indicator-color: green"></six-progress-ring>
+      </section>
+
+      <h3>Labels</h3>
+      <p>Use the default slot to show a label.</p>
+      <section class="demo" style="width: 300px">
+        <six-progress-ring percentage="50" size="200" class="progress-ring-labels" style="margin-bottom: 0.5rem"
+          >50%</six-progress-ring
+        >
+
+        <br />
+
+        <six-button size="small" circle><six-icon size="small">remove</six-icon></six-button>
+        <six-button size="small" circle><six-icon size="small">add</six-icon></six-button>
+
+        <script type="module">
+          const progressRing = document.querySelector('.progress-ring-labels');
+          const subtractButton = progressRing.nextElementSibling.nextElementSibling;
+          const addButton = subtractButton.nextElementSibling;
+
+          addButton.addEventListener('click', () => {
+            const percentage = Math.min(100, progressRing.percentage + 10);
+            progressRing.percentage = percentage;
+            progressRing.textContent = `${percentage}%`;
+          });
+
+          subtractButton.addEventListener('click', () => {
+            const percentage = Math.max(0, progressRing.percentage - 10);
+            progressRing.percentage = percentage;
+            progressRing.textContent = `${percentage}%`;
+          });
+        </script>
+      </section>
+    </div>
+  </body>
+</html>

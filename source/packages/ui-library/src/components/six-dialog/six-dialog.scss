@@ -1,0 +1,117 @@
+@import 'src/global/component';
+@import 'src/global/mixins/hidden';
+
+/**
+ * @prop --width: The preferred width of the dialog. Note that the dialog will shrink to accommodate smaller screens.
+ */
+:host {
+  --width: 31rem;
+
+  display: contents;
+}
+
+.dialog {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: var(--six-z-index-dialog);
+  color: var(--six-color-web-rock-900);
+
+  &:not(.dialog--visible) {
+    @include hidden;
+  }
+}
+
+.dialog__panel {
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+  width: var(--width);
+  max-width: calc(100% - var(--six-spacing-xx-large));
+  max-height: calc(100% - var(--six-spacing-xx-large));
+  background-color: var(--six-panel-background-color);
+  border-radius: var(--six-border-radius-medium);
+  box-shadow: var(--six-shadow-x-large);
+  opacity: 0;
+  transform: scale(0.8);
+  transition: var(--six-transition-medium) opacity, var(--six-transition-medium) transform;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+// Ensure there's enough vertical padding for phones that don't update vh when chrome appears (e.g. iPhone)
+@media screen and (max-width: 420px) {
+  .dialog__panel {
+    max-height: 80vh;
+  }
+}
+
+.dialog--open .dialog__panel {
+  display: flex;
+  opacity: 1;
+  transform: none;
+}
+
+.dialog__header {
+  flex: 0 0 auto;
+  display: flex;
+}
+
+.dialog__title {
+  flex: 1 1 auto;
+  font-size: var(--six-font-size-x-large);
+  font-weight: var(--six-font-weight-bold);
+  line-height: var(--six-line-height-dense);
+  padding: var(--six-spacing-large) var(--six-spacing-large) var(--six-spacing-small);
+}
+
+.dialog__close {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  font-size: var(--six-font-size-x-large);
+  padding: 0 var(--six-spacing-x-small);
+}
+
+.dialog__body {
+  flex: 1 1 auto;
+  padding: var(--six-spacing-small) var(--six-spacing-large) var(--six-spacing-large);
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.dialog__footer {
+  flex: 0 0 auto;
+  text-align: right;
+  padding: var(--six-spacing-large);
+
+  ::slotted(six-button:not(:first-of-type)) {
+    margin-left: var(--six-spacing-xx-small);
+  }
+}
+
+.dialog:not(.dialog--has-footer) .dialog__footer {
+  display: none;
+}
+
+.dialog__overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: var(--six-overlay-background-color);
+  opacity: 0;
+  transition: var(--six-transition-medium) opacity;
+}
+
+.dialog--open .dialog__overlay {
+  opacity: 0.8;
+}

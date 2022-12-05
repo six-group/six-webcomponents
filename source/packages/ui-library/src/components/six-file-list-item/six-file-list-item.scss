@@ -1,0 +1,44 @@
+.six-files-list-item {
+  padding-bottom: 0.5rem;
+
+  &__name {
+    color: var(--six-color-action-600);
+    cursor: pointer;
+
+    &--disabled {
+      cursor: inherit;
+      color: var(--six-color-web-rock-500);
+    }
+
+    &:hover:not(&--disabled) {
+      color: var(--six-color-action-500);
+    }
+  }
+
+  &__date {
+    padding-left: 1rem;
+    color: var(--six-color-web-rock-600);
+  }
+
+  &__size {
+    padding-left: 1rem;
+    color: var(--six-color-web-rock-600);
+  }
+
+  &__icon {
+    padding-left: 0.5rem;
+    display: inline-block;
+    transform: translateY(-1px);
+    cursor: pointer;
+    color: var(--six-color-web-rock-600);
+
+    &--disabled {
+      cursor: not-allowed;
+      color: var(--six-color-web-rock-500);
+    }
+
+    &:hover:not(&--disabled) {
+      color: var(--six-color-web-rock-900);
+    }
+  }
+}

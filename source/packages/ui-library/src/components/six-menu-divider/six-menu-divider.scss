@@ -1,0 +1,10 @@
+@import 'src/global/component';
+
+:host {
+  display: block;
+}
+
+.menu-divider {
+  border-top: solid var(--six-border-width) var(--six-menu-divider-color);
+  margin: 0;
+}

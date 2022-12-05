@@ -1,0 +1,14 @@
+[
+  {
+    "dependency": "shoelace",
+    "type": "clone",
+    "url": "https://shoelace.style/",
+    "license": "MIT"
+  },
+  {
+    "dependency": "balois/design-system",
+    "type": "inspiration & partial copy",
+    "url": "https://github.com/baloise/design-system",
+    "license": "Apache"
+  }
+]

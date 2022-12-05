@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <script type="module" src="/build/ui-library.esm.js"></script>
+    <script nomodule src="/build/ui-library.js"></script>
+    <link rel="stylesheet" href="/build/ui-library.css" />
+    <title>Error page</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>six-error-page</h1>
+
+      <p>The <code>six-error-page</code> can be used to show the different errors.</p>
+
+      <h2>Error Pages</h2>
+
+      <p>Set attribute <code>error-code</code> to show proper error page.</p>
+
+      <h3>Default Errors</h3>
+
+
+      <h2>Forbidden Access</h2>
+
+      <section class="demo">
+        <six-error-page error-code="403" language="en"></six-error-page>
+        <six-error-page error-code="403" language="de"></six-error-page>
+      </section>
+
+      <h2>Not Found</h2>
+
+      <section class="demo">
+        <six-error-page error-code="404" language="en"></six-error-page>
+        <six-error-page error-code="404" language="de"></six-error-page>
+      </section>
+
+      <h2>Internal Server Error</h2>
+
+      <section class="demo">
+        <six-error-page error-code="500" language="en"></six-error-page>
+        <six-error-page error-code="500" language="de"></six-error-page>
+      </section>
+
+      <h3>Custom Error Message</h3>
+
+      <section class="demo">
+        <six-error-page custom-title="my title" id="custom-error-message" custom-icon="home"></six-error-page>
+        <script type="module">
+          const sixErrorPage = document.getElementById('custom-error-message');
+          sixErrorPage.customDescription = ['My', 'Description'];
+        </script>
+      </section>
+    </div>
+  </body>
+</html>

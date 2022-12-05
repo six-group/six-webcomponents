@@ -1,0 +1,32 @@
+/* https://www.paulirish.com/2012/box-sizing-border-box-ftw/ */
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+html,
+body {
+  margin: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Noto Sans', sans-serif;
+}
+
+code {
+  background: rgba(0, 0, 0, 0.04);
+  padding: 0.2rem;
+  border-radius: 3px;
+  font-weight: bold;
+}
+
+.warn {
+  border-left: solid 3px var(--six-color-warning-700);
+  background: rgba(0, 0, 0, 0.02);
+  padding: 1rem;
+}

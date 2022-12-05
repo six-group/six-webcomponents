@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <script type="module" src="/build/ui-library.esm.js"></script>
+    <script nomodule src="/build/ui-library.js"></script>
+    <link rel="stylesheet" href="/build/ui-library.css" />
+    <title>six-menu-divider</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Menu Divider</h2>
+      <p>Menu dividers are used to visually group menu items.</p>
+      <section class="demo">
+        <six-menu
+          style="
+            max-width: 200px;
+            border: solid 1px var(--six-panel-border-color);
+            border-radius: var(--six-border-radius-medium);
+          "
+        >
+          <six-menu-item value="1">Option 1</six-menu-item>
+          <six-menu-item value="2">Option 2</six-menu-item>
+          <six-menu-divider></six-menu-divider>
+          <six-menu-item value="3">Option 3</six-menu-item>
+          <six-menu-item value="4">Option 4</six-menu-item>
+          <six-menu-divider></six-menu-divider>
+          <six-menu-item value="5">Option 5</six-menu-item>
+          <six-menu-item value="6">Option 6</six-menu-item>
+        </six-menu>
+      </section>
+    </div>
+  </body>
+</html>

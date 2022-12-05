@@ -1,0 +1,12 @@
+@import '~@six/ui-library/dist/ui-library/ui-library.css';
+
+*,
+*:before,
+*:after {
+  /* TODO: tx4u9 investigate */
+  box-sizing: border-box;
+}
+
+#root {
+  height: 100vh;
+}

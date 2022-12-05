@@ -1,0 +1,55 @@
+@import 'src/global/component';
+
+:host {
+  display: inline-block;
+}
+
+.tab {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--six-font-family);
+  font-size: var(--six-font-size-small);
+  font-weight: var(--six-font-weight-semibold);
+  border-radius: 4px;
+  color: var(--six-tab-color);
+  padding: var(--six-spacing-medium) var(--six-spacing-large);
+  white-space: nowrap;
+  user-select: none;
+  cursor: pointer;
+  transition: var(--six-transition-fast) box-shadow, var(--six-transition-fast) color;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus:not(.tab--disabled) {
+    color: var(--six-tab-color-active);
+  }
+
+  &.tab--active:not(.tab--disabled) {
+    color: var(--six-tab-color-active);
+    font-weight: var(--six-font-weight-bold);
+  }
+
+  &.tab--closable {
+    padding-right: var(--six-spacing-small);
+  }
+
+  &.tab--disabled {
+    color: var(--six-tab-color-disabled);
+    cursor: not-allowed;
+  }
+
+  &:hover:not(.tab--disabled) {
+    color: var(--six-tab-color-hover);
+  }
+}
+
+.tab__close-button {
+  font-size: var(--six-font-size-large);
+  margin-left: var(--six-spacing-xx-small);
+
+  &::part(base) {
+    padding: var(--six-spacing-xxx-small);
+  }
+}

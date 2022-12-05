@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <script type="module" src="/build/ui-library.esm.js"></script>
+    <script nomodule src="/build/ui-library.js"></script>
+    <link rel="stylesheet" href="/build/ui-library.css" />
+    <title>six-group-label</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Label</h2>
+
+      <p>
+        Labels can be used to create a common label for several subcomponents. Please be aware: If only one subcomponent
+        is used, the subcomponent's own label should be used!
+      </p>
+      <section class="demo" style="width: 300px">
+        <six-group-label label="Common label">
+          <six-layout-grid columns="2">
+            <six-radio name="option" checked>Option 1</six-radio>
+            <six-radio name="option">Option 2</six-radio>
+          </six-layout-grid>
+        </six-group-label>
+      </section>
+
+      <h2>Examples</h2>
+
+      <h3>Disabled</h3>
+      <p>Use the <code>disabled</code> prop to show a disabled label.</p>
+      <section class="demo" style="width: 300px">
+        <six-group-label label="Common label" disabled>
+          <six-layout-grid columns="2">
+            <six-input value="field1" disabled></six-input>
+            <six-input value="field2" disabled></six-input>
+          </six-layout-grid>
+        </six-group-label>
+      </section>
+
+      <h3>Sizes</h3>
+      <p>Use the <code>size</code> attribute to change the label's size.</p>
+      <section class="demo" style="width: 300px">
+        <six-group-label label="Common label" size="small">
+          <six-layout-grid columns="2">
+            <six-input placeholder="Small" size="small"></six-input>
+            <six-input placeholder="Small" size="small"></six-input>
+          </six-layout-grid>
+        </six-group-label>
+        <br />
+        <six-group-label label="Common label" size="medium">
+          <six-layout-grid columns="2">
+            <six-input placeholder="Medium" size="medium"></six-input>
+            <six-input placeholder="Medium" size="medium"></six-input>
+          </six-layout-grid>
+        </six-group-label>
+        <br />
+        <six-group-label label="Common label" size="large">
+          <six-layout-grid columns="2">
+            <six-input placeholder="Large" size="large"></six-input>
+            <six-input placeholder="Large" size="large"></six-input>
+          </six-layout-grid>
+        </six-group-label>
+      </section>
+
+      <h3>Help Text</h3>
+      <p>
+        Add descriptive help text to a select with the <code>help-text</code> attribute. For help texts that contain
+        HTML, use the help-text slot instead.
+      </p>
+      <section class="demo" style="width: 300px">
+        <six-group-label label="Common label" help-text="Please tell us what you think.">
+          <six-layout-grid columns="2">
+            <six-input value="field1"></six-input>
+            <six-input value="field2"></six-input>
+          </six-layout-grid>
+        </six-group-label>
+      </section>
+    </div>
+  </body>
+</html>

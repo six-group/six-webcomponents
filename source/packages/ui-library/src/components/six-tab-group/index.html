@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <script type="module" src="/build/ui-library.esm.js"></script>
+    <script nomodule src="/build/ui-library.js"></script>
+    <link rel="stylesheet" href="/build/ui-library.css" />
+    <title>six-tab-group</title>
+  </head>
+  <body>
+    <div class="container">
+      <h3>Tab groups organize content into a container that shows one section at a time.</h3>
+      <p>
+        Tab groups make use of tabs and tab panels. Each tab must be slotted into the <code>nav</code> slot and its
+        panel must refer to a tab <code>panel</code> of the same name.
+      </p>
+      <section class="demo">
+        <six-tab-group>
+          <six-tab slot="nav" panel="general">General</six-tab>
+          <six-tab slot="nav" panel="custom">Custom</six-tab>
+          <six-tab slot="nav" panel="advanced">Advanced</six-tab>
+          <six-tab slot="nav" panel="disabled" disabled>Disabled</six-tab>
+
+          <six-tab-panel style="background-color: #f1f1f1" name="general">This is the general tab panel.</six-tab-panel>
+          <six-tab-panel style="background-color: #f1f1f1" name="custom">This is the custom tab panel.</six-tab-panel>
+          <six-tab-panel style="background-color: #f1f1f1" name="advanced"
+            >This is the advanced tab panel.</six-tab-panel
+          >
+          <six-tab-panel style="background-color: #f1f1f1" name="disabled">This is a disabled tab panel.</six-tab-panel>
+        </six-tab-group>
+      </section>
+
+      <h2>Examples</h2>
+
+      <h3>Separator line</h3>
+      <p>
+        If the background color of your panels is white, you maybe want a thin line between the tabs and panels. For
+        this, just set a border on the shadow part <code>tabs</code>.
+      </p>
+      <section class="demo">
+        <six-tab-group class="tab-group-with-line">
+          <six-tab slot="nav" panel="general">General</six-tab>
+          <six-tab slot="nav" panel="custom">Custom</six-tab>
+          <six-tab slot="nav" panel="advanced">Advanced</six-tab>
+          <six-tab slot="nav" panel="disabled" disabled>Disabled</six-tab>
+
+          <six-tab-panel name="general">This is the general tab panel.</six-tab-panel>
+          <six-tab-panel name="custom">This is the custom tab panel.</six-tab-panel>
+          <six-tab-panel name="advanced">This is the advanced tab panel.</six-tab-panel>
+          <six-tab-panel name="disabled">This is a disabled tab panel.</six-tab-panel>
+        </six-tab-group>
+
+        <style>
+          .tab-group-with-line::part(tabs) {
+            border-bottom: solid 2px #f1f1f1;
+          }
+        </style>
+      </section>
+
+      <h3>Tabs on Bottom</h3>
+      <p>Tabs can be shown on the bottom by setting <code>placement</code> to <code>bottom</code>.</p>
+      <section class="demo">
+        <six-tab-group placement="bottom">
+          <six-tab slot="nav" panel="general">General</six-tab>
+          <six-tab slot="nav" panel="custom">Custom</six-tab>
+          <six-tab slot="nav" panel="advanced">Advanced</six-tab>
+          <six-tab slot="nav" panel="disabled" disabled>Disabled</six-tab>
+
+          <six-tab-panel name="general">This is the general tab panel.</six-tab-panel>
+          <six-tab-panel name="custom">This is the custom tab panel.</six-tab-panel>
+          <six-tab-panel name="advanced">This is the advanced tab panel.</six-tab-panel>
+          <six-tab-panel name="disabled">This is a disabled tab panel.</six-tab-panel>
+        </six-tab-group>
+      </section>
+
+      <h3>Tabs on Left</h3>
+      <p>Tabs can be shown on the left by setting <code>placement</code> to <code>left</code>.</p>
+      <section class="demo">
+        <six-tab-group placement="left">
+          <six-tab slot="nav" panel="general">General</six-tab>
+          <six-tab slot="nav" panel="custom">Custom</six-tab>
+          <six-tab slot="nav" panel="advanced">Advanced</six-tab>
+          <six-tab slot="nav" panel="disabled" disabled>Disabled</six-tab>
+
+          <six-tab-panel name="general">This is the general tab panel.</six-tab-panel>
+          <six-tab-panel name="custom">This is the custom tab panel.</six-tab-panel>
+          <six-tab-panel name="advanced">This is the advanced tab panel.</six-tab-panel>
+          <six-tab-panel name="disabled">This is a disabled tab panel.</six-tab-panel>
+        </six-tab-group>
+      </section>
+
+      <h3>Tabs on Right</h3>
+      <p>Tabs can be shown on the right by setting <code>placement</code> to <code>right</code>.</p>
+      <section class="demo">
+        <six-tab-group placement="right">
+          <six-tab slot="nav" panel="general">General</six-tab>
+          <six-tab slot="nav" panel="custom">Custom</six-tab>
+          <six-tab slot="nav" panel="advanced">Advanced</six-tab>
+          <six-tab slot="nav" panel="disabled" disabled>Disabled</six-tab>
+
+          <six-tab-panel name="general">This is the general tab panel.</six-tab-panel>
+          <six-tab-panel name="custom">This is the custom tab panel.</six-tab-panel>
+          <six-tab-panel name="advanced">This is the advanced tab panel.</six-tab-panel>
+          <six-tab-panel name="disabled">This is a disabled tab panel.</six-tab-panel>
+        </six-tab-group>
+      </section>
+
+      <h3>Closable Tabs</h3>
+      <p>
+        Add the <code>closable</code> prop to a tab to show a close button. This example shows how you can dynamically
+        remove tabs from the DOM when the close button is activated.
+      </p>
+      <section class="demo">
+        <six-tab-group class="tabs-closable">
+          <six-tab slot="nav" panel="general">General</six-tab>
+          <six-tab slot="nav" panel="closable-1" closable>Closable 1</six-tab>
+          <six-tab slot="nav" panel="closable-2" closable>Closable 2</six-tab>
+          <six-tab slot="nav" panel="closable-3" closable>Closable 3</six-tab>
+
+          <six-tab-panel name="general">This is the general tab panel.</six-tab-panel>
+          <six-tab-panel name="closable-1">This is the first closable tab panel.</six-tab-panel>
+          <six-tab-panel name="closable-2">This is the second closable tab panel.</six-tab-panel>
+          <six-tab-panel name="closable-3">This is the third closable tab panel.</six-tab-panel>
+        </six-tab-group>
+
+        <script type="module">
+          const tabGroup = document.querySelector('.tabs-closable');
+
+          tabGroup.addEventListener('six-close', async (event) => {
+            const tab = event.target;
+            const panel = tabGroup.querySelector(`six-tab-panel[name="${tab.panel}"]`);
+
+            // Show the previous tab if the tab is currently active
+            if (tab.active) {
+              tabGroup.show(tab.previousElementSibling.panel);
+            }
+
+            // Remove the tab + panel
+            tab.remove();
+            panel.remove();
+          });
+        </script>
+      </section>
+
+      <h3>Scrolling Tabs</h3>
+      <p>When there are more tabs than horizontal space allows, the nav will be scrollable..</p>
+      <section class="demo">
+        <six-tab-group>
+          <six-tab slot="nav" panel="tab-1">Tab 1</six-tab>
+          <six-tab slot="nav" panel="tab-2">Tab 2</six-tab>
+          <six-tab slot="nav" panel="tab-3">Tab 3</six-tab>
+          <six-tab slot="nav" panel="tab-4">Tab 4</six-tab>
+          <six-tab slot="nav" panel="tab-5">Tab 5</six-tab>
+          <six-tab slot="nav" panel="tab-6">Tab 6</six-tab>
+          <six-tab slot="nav" panel="tab-7">Tab 7</six-tab>
+          <six-tab slot="nav" panel="tab-8">Tab 8</six-tab>
+          <six-tab slot="nav" panel="tab-9">Tab 9</six-tab>
+          <six-tab slot="nav" panel="tab-10">Tab 10</six-tab>
+          <six-tab slot="nav" panel="tab-11">Tab 11</six-tab>
+          <six-tab slot="nav" panel="tab-12">Tab 12</six-tab>
+          <six-tab slot="nav" panel="tab-13">Tab 13</six-tab>
+          <six-tab slot="nav" panel="tab-14">Tab 14</six-tab>
+          <six-tab slot="nav" panel="tab-15">Tab 15</six-tab>
+          <six-tab slot="nav" panel="tab-16">Tab 16</six-tab>
+          <six-tab slot="nav" panel="tab-17">Tab 17</six-tab>
+          <six-tab slot="nav" panel="tab-18">Tab 18</six-tab>
+          <six-tab slot="nav" panel="tab-19">Tab 19</six-tab>
+          <six-tab slot="nav" panel="tab-20">Tab 20</six-tab>
+
+          <six-tab-panel name="tab-1">Tab panel 1</six-tab-panel>
+          <six-tab-panel name="tab-2">Tab panel 2</six-tab-panel>
+          <six-tab-panel name="tab-3">Tab panel 3</six-tab-panel>
+          <six-tab-panel name="tab-4">Tab panel 4</six-tab-panel>
+          <six-tab-panel name="tab-5">Tab panel 5</six-tab-panel>
+          <six-tab-panel name="tab-6">Tab panel 6</six-tab-panel>
+          <six-tab-panel name="tab-7">Tab panel 7</six-tab-panel>
+          <six-tab-panel name="tab-8">Tab panel 8</six-tab-panel>
+          <six-tab-panel name="tab-9">Tab panel 9</six-tab-panel>
+          <six-tab-panel name="tab-10">Tab panel 10</six-tab-panel>
+          <six-tab-panel name="tab-11">Tab panel 11</six-tab-panel>
+          <six-tab-panel name="tab-12">Tab panel 12</six-tab-panel>
+          <six-tab-panel name="tab-13">Tab panel 13</six-tab-panel>
+          <six-tab-panel name="tab-14">Tab panel 14</six-tab-panel>
+          <six-tab-panel name="tab-15">Tab panel 15</six-tab-panel>
+          <six-tab-panel name="tab-16">Tab panel 16</six-tab-panel>
+          <six-tab-panel name="tab-17">Tab panel 17</six-tab-panel>
+          <six-tab-panel name="tab-18">Tab panel 18</six-tab-panel>
+          <six-tab-panel name="tab-19">Tab panel 19</six-tab-panel>
+          <six-tab-panel name="tab-20">Tab panel 20</six-tab-panel>
+        </six-tab-group>
+      </section>
+
+      <h3>Manual Activation</h3>
+      <p>
+        When focused, keyboard users can press "Left" or "Right" to select the desired tab. By default, the
+        corresponding tab panel will be shown immediately (automatic activation). You can change this behavior by
+        setting <code>activation="manual"</code> which will require the user to press "Space" or "Enter" before showing
+        the tab panel (manual activation).
+      </p>
+      <section class="demo">
+        <six-tab-group activation="manual">
+          <six-tab slot="nav" panel="general">General</six-tab>
+          <six-tab slot="nav" panel="custom">Custom</six-tab>
+          <six-tab slot="nav" panel="advanced">Advanced</six-tab>
+          <six-tab slot="nav" panel="disabled" disabled>Disabled</six-tab>
+
+          <six-tab-panel name="general">This is the general tab panel.</six-tab-panel>
+          <six-tab-panel name="custom">This is the custom tab panel.</six-tab-panel>
+          <six-tab-panel name="advanced">This is the advanced tab panel.</six-tab-panel>
+          <six-tab-panel name="disabled">This is a disabled tab panel.</six-tab-panel>
+        </six-tab-group>
+      </section>
+    </div>
+  </body>
+</html>

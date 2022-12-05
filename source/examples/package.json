@@ -1,0 +1,24 @@
+{
+  "name": "examples",
+  "private": true,
+  "license" : "Apache-2.0",
+  "subPackages": [
+    "angular/six-app",
+    "react/six-app",
+    "vue/six-app",
+    "no-magic-just-pure-js/six-app"
+  ],
+  "scripts": {
+    "postinstall": "subpkg install",
+    "build": "subpkg run build",
+    "clean": "subpkg run clean",
+    "angular:start": "npm --prefix angular/six-app start",
+    "react:start": "npm --prefix react/six-app start",
+    "vue:start": "npm --prefix vue/six-app start",
+    "js:start": "npm --prefix no-magic-just-pure-js/six-app start"
+  },
+  "devDependencies": {
+    "subpackage": "^1.1.0"
+  },
+  "dependencies": {}
+}

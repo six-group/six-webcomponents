@@ -1,0 +1,138 @@
+@import 'src/global/component';
+@import '../../functional-components/form-control/form-control';
+
+:host {
+  display: block;
+}
+
+.textarea {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  font-family: var(--six-font-family);
+  font-weight: var(--six-input-font-weight);
+  line-height: var(--six-line-height-normal);
+  letter-spacing: var(--six-input-letter-spacing);
+  background-color: var(--six-input-background-color);
+  border: solid var(--six-border-width) var(--six-input-border-color);
+  vertical-align: middle;
+  transition: var(--six-transition-fast) color, var(--six-transition-fast) border, var(--six-transition-fast) box-shadow;
+  cursor: text;
+
+  &:hover:not(.textarea--disabled) {
+    background-color: var(--six-input-background-color-hover);
+    border-color: var(--six-input-border-color-hover);
+
+    .textarea__control {
+      color: var(--six-input-color-hover);
+    }
+  }
+
+  &.textarea--focused:not(.textarea--disabled) {
+    background-color: var(--six-input-background-color-focus);
+    box-shadow: var(--six-input-focus-shadow);
+    border-color: var(--six-input-border-color-focus);
+    color: var(--six-input-color-focus);
+
+    .textarea__control {
+      color: var(--six-input-color-focus);
+    }
+  }
+
+  &.textarea--disabled {
+    background-color: var(--six-input-background-color-disabled);
+    border-color: var(--six-input-border-color-disabled);
+    cursor: not-allowed;
+
+    .textarea__control {
+      color: var(--six-input-color-disabled);
+
+      &::placeholder {
+        color: var(--six-input-placeholder-color-disabled);
+      }
+    }
+  }
+}
+
+.textarea__control {
+  flex: 1 1 auto;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: 1.4;
+  color: var(--sl-input-color);
+  border: none;
+  background: none;
+  box-shadow: none;
+  cursor: inherit;
+  -webkit-appearance: none;
+
+  &::-webkit-search-decoration,
+  &::-webkit-search-cancel-button,
+  &::-webkit-search-results-button,
+  &::-webkit-search-results-decoration {
+    -webkit-appearance: none;
+  }
+
+  &::placeholder {
+    color: var(--six-input-placeholder-color);
+    user-select: none;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.textarea--invalid:not(.textarea--disabled):not(.textarea--focused) {
+  border-color: var(--six-input-border-color-danger);
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Size modifiers
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+.textarea--small {
+  border-radius: var(--six-input-border-radius-small);
+  font-size: var(--six-input-font-size-small);
+
+  .textarea__control {
+    padding: 0.5em var(--six-input-spacing-small);
+  }
+}
+
+.textarea--medium {
+  border-radius: var(--six-input-border-radius-medium);
+  font-size: var(--six-input-font-size-medium);
+
+  .textarea__control {
+    padding: 0.5em var(--six-input-spacing-medium);
+  }
+}
+
+.textarea--large {
+  border-radius: var(--six-input-border-radius-large);
+  font-size: var(--six-input-font-size-large);
+
+  .textarea__control {
+    padding: 0.5em var(--six-input-spacing-large);
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Resize types
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+.textarea--resize-none .textarea__control {
+  resize: none;
+}
+
+.textarea--resize-vertical .textarea__control {
+  resize: vertical;
+}
+
+.textarea--resize-auto .textarea__control {
+  height: auto;
+  resize: none;
+}

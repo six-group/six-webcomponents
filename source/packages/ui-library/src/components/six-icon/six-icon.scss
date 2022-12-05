@@ -1,0 +1,69 @@
+@import 'src/global/component';
+
+:host {
+  display: inline;
+}
+
+.material-icons {
+  vertical-align: middle;
+  font-weight: normal;
+  font-style: normal;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+.material-icons-filled {
+  font-family: 'Material Icons';
+}
+
+.material-icons-outlined {
+  font-family: 'Material Icons Outlined';
+}
+
+.icon {
+  &--xsmall {
+    font-size: 12px;
+  }
+
+  &--small {
+    font-size: 18px;
+  }
+
+  &--medium {
+    font-size: 24px;
+  }
+
+  &--large {
+    font-size: 36px;
+  }
+
+  &--xlarge {
+    font-size: 48px;
+  }
+
+  &--xxlarge {
+    font-size: 72px;
+  }
+
+  &--xxxlarge {
+    font-size: 96px;
+  }
+
+  &--inherit {
+    font-size: 1.5em;
+  }
+}

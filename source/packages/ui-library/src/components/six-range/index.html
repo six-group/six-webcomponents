@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <script type="module" src="/build/ui-library.esm.js"></script>
+    <script nomodule src="/build/ui-library.js"></script>
+    <link rel="stylesheet" href="/build/ui-library.css" />
+    <title>six-range</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Range</h2>
+
+      <p>Ranges allow the user to select a single value within a given range using a slider.</p>
+      <section class="demo" style="width: 300px">
+        <six-range min="0" max="100" step="1"></six-range>
+      </section>
+
+      <p class="warn">
+        This component doesn't work with standard forms. Use <a href="six-form.html">six-form</a> instead.
+      </p>
+
+      <h2>Examples</h2>
+
+      <h3>Disabled</h3>
+      <p>Use the <code>disabled</code> prop to disable a slider.</p>
+      <section class="demo" style="width: 300px">
+        <six-range min="0" max="100" step="1" disabled></six-range>
+      </section>
+
+      <h3>Tooltip Placement</h3>
+      <p>
+        By default, the tooltip is shown on top. Set <code>tooltip</code> to <code>bottom</code> to show it below the
+        slider.
+      </p>
+      <section class="demo" style="width: 300px">
+        <six-range min="0" max="100" step="1" tooltip="bottom"></six-range>
+      </section>
+
+      <h3>Disable the Tooltip</h3>
+      <p>To disable the tooltip, set <code>tooltip</code> to <code>none</code>.</p>
+      <section class="demo" style="width: 300px">
+        <six-range min="0" max="100" step="1" tooltip="none"></six-range>
+      </section>
+
+      <h3>Custom Tooltip Formatter</h3>
+      <p>
+        You can change the tooltip's content by setting the <code>tooltipFormatter</code> prop to a function that
+        accepts the range's value as an argument.
+      </p>
+      <section class="demo" style="width: 300px">
+        <six-range min="0" max="100" step="1" class="range-with-custom-formatter"></six-range>
+
+        <script>
+          const range = document.querySelector('.range-with-custom-formatter');
+          range.tooltipFormatter = (value) => `Total - ${value}%`;
+        </script>
+      </section>
+
+      <h3>Labels</h3>
+      <p>
+        Use the <code>label</code> attribute to give the range an accessible label. For labels that contain HTML, use
+        the label <code>slot</code> instead.
+      </p>
+      <section class="demo" style="width: 300px">
+        <six-range label="Volume" min="0" max="100"></six-range>
+      </section>
+
+      <h3>Help Text</h3>
+      <p>
+        Add descriptive help text to a range with the <code>help-text</code> attribute. For help texts that contain
+        HTML, use the <code>help-text</code> slot instead.
+      </p>
+      <section class="demo" style="width: 300px">
+        <six-range label="Volume" help-text="Controls the volume of the current song." min="0" max="100"></six-range>
+      </section>
+
+      <h3>Custom Styling</h3>
+      <p>
+        Add styling attributes e.g. <code>--track-height, --track-color, --thumb-size, --thumb-color</code> attribute to
+        customize the appearance of the range.
+      </p>
+      <section class="demo" style="width: 300px">
+        <six-range
+          min="0"
+          max="100"
+          step="1"
+          style="
+            --thumb-size: 20px;
+            --track-height: 6px;
+            --track-color: var(--six-color-danger-800);
+            --thumb-color: var(--six-color-danger-800);
+          "
+        ></six-range>
+      </section>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <script type="module" src="/build/ui-library.esm.js"></script>
+    <script nomodule src="/build/ui-library.js"></script>
+    <link rel="stylesheet" href="/build/ui-library.css" />
+    <title>six-sidebar-group</title>
+  </head>
+  <body>
+    <style>
+      .demo {
+        max-width: 20rem;
+        padding: 1rem;
+      }
+    </style>
+    <div class="container">
+      <h2>six sidebar group</h2>
+
+      <section class="demo">
+        <six-sidebar-item-group icon="description" name="Upload" value="upload">
+          <six-sidebar-item value="data">Data</six-sidebar-item>
+          <six-sidebar-item value="history">History</six-sidebar-item>
+          <six-sidebar-item-group icon="settings" name="Settings">
+            <six-sidebar-item value="data">Data</six-sidebar-item>
+            <six-sidebar-item value="history">History</six-sidebar-item>
+          </six-sidebar-item-group>
+        </six-sidebar-item-group>
+        <six-sidebar-item-group icon="task" name="Tasks" value="tasks">
+          <six-sidebar-item value="open">Open</six-sidebar-item>
+          <six-sidebar-item value="closed">Closed</six-sidebar-item>
+        </six-sidebar-item-group>
+        <six-sidebar-item-group icon="ac_unit" name="Transactions" value="transactions"></six-sidebar-item-group>
+        <six-sidebar-item-group name="Reclaims" value="reclaims"></six-sidebar-item-group>
+      </section>
+
+      <h3>Custom summary icon</h3>
+      <p>Use <code>summary-icon</code> property to set custom summary icon name.</p>
+      <section class="demo">
+        <six-sidebar-item-group icon="description" name="Upload" value="upload" summary-icon="settings">
+          <six-sidebar-item value="data">Data</six-sidebar-item>
+          <six-sidebar-item value="history">History</six-sidebar-item>
+          <six-sidebar-item-group icon="settings" name="Settings">
+            <six-sidebar-item value="data">Data</six-sidebar-item>
+            <six-sidebar-item value="history">History</six-sidebar-item>
+          </six-sidebar-item-group>
+        </six-sidebar-item-group>
+        <six-sidebar-item-group icon="task" name="Tasks" value="tasks">
+          <six-sidebar-item value="open">Open</six-sidebar-item>
+          <six-sidebar-item value="closed">Closed</six-sidebar-item>
+        </six-sidebar-item-group>
+        <six-sidebar-item-group icon="ac_unit" name="Transactions" value="transactions"></six-sidebar-item-group>
+        <six-sidebar-item-group name="Reclaims" value="reclaims" summary-icon="settings"></six-sidebar-item-group>
+      </section>
+
+      <p>Use <code>summary-icon</code> property to set custom summary icon name.</p>
+      <section class="demo">
+        <six-sidebar-item-group icon="description" name="Upload" value="upload">
+          <b slot="summary-icon">99%</b>
+          <six-sidebar-item value="data">Data</six-sidebar-item>
+          <six-sidebar-item value="history">History</six-sidebar-item>
+          <six-sidebar-item-group icon="settings" name="Settings">
+            <six-sidebar-item value="data">Data</six-sidebar-item>
+            <six-sidebar-item value="history">History</six-sidebar-item>
+          </six-sidebar-item-group>
+        </six-sidebar-item-group>
+        <six-sidebar-item-group icon="task" name="Tasks" value="tasks">
+          <six-sidebar-item value="open">Open</six-sidebar-item>
+          <six-sidebar-item value="closed">Closed</six-sidebar-item>
+        </six-sidebar-item-group>
+        <six-sidebar-item-group icon="ac_unit" name="Transactions" value="transactions"></six-sidebar-item-group>
+        <six-sidebar-item-group name="Reclaims" value="reclaims">
+          <b slot="summary-icon">99%</b>
+        </six-sidebar-item-group>
+      </section>
+    </div>
+  </body>
+</html>

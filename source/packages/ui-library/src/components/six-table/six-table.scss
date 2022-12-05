@@ -1,0 +1,46 @@
+@import 'src/global/component';
+
+//$six-table-loading-overlay: rgba(0, 0, 0, 0.12);
+$six-table-loading-spinner: scale(3);
+
+:host {
+  display: table;
+  border-collapse: collapse;
+  user-select: none;
+  border: none;
+  width: 100%;
+  height: 100%;
+}
+
+:host([loading]) {
+  border-collapse: separate;
+}
+
+:host([striped]) {
+  six-table-row:nth-child(odd):not(:hover),
+  ::slotted(six-table-row:nth-child(odd):not(:hover)) {
+    background-color: var(--six-table-row-background-color);
+  }
+}
+
+:host(:not(striped)) {
+  ::slotted(six-table-row) {
+    border-bottom: solid 1px var(--six-table-row-border-color);
+  }
+}
+
+.loading {
+  position: absolute;
+  //background-color: $six-table-loading-overlay;
+  background-color: var(--six-table-background-color);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.loading six-spinner {
+  top: calc(50% - 0.5em);
+  left: 50%;
+  transform: $six-table-loading-spinner;
+}

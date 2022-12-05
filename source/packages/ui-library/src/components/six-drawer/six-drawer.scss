@@ -1,0 +1,159 @@
+@import 'src/global/component';
+@import 'src/global/mixins/hidden';
+
+/**
+ * @prop --size: The preferred size of the drawer. This will be applied to the drawer's width or height depending on its
+ *   `placement`. Note that the drawer will shrink to accommodate smaller screens.
+ */
+:host {
+  --size: 25rem;
+
+  display: contents;
+}
+
+.drawer {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+
+  &:not(.drawer--visible) {
+    @include hidden;
+  }
+}
+
+.drawer--contained {
+  position: absolute;
+  z-index: initial;
+}
+
+.drawer--fixed {
+  position: fixed;
+  z-index: var(--six-z-index-drawer);
+}
+
+.drawer__panel {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+  max-width: 100%;
+  max-height: 100%;
+  background-color: var(--six-drawer-background-color);
+  color: var(--six-drawer-color);
+  box-shadow: var(--six-shadow-x-large);
+  transition: var(--six-transition-medium) transform;
+  overflow: auto;
+  pointer-events: all;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.drawer--top .drawer__panel {
+  top: 0;
+  right: auto;
+  bottom: auto;
+  left: 0;
+  width: 100%;
+  height: var(--size);
+  transform: translate(0, -100%);
+}
+
+.drawer--right .drawer__panel {
+  top: 0;
+  right: 0;
+  bottom: auto;
+  left: auto;
+  width: var(--size);
+  height: 100%;
+  transform: translate(100%, 0);
+}
+
+.drawer--bottom .drawer__panel {
+  top: auto;
+  right: auto;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: var(--size);
+  transform: translate(0, 100%);
+}
+
+.drawer--left .drawer__panel {
+  top: 0;
+  right: auto;
+  bottom: auto;
+  left: 0;
+  width: var(--size);
+  height: 100%;
+  transform: translate(-100%, 0);
+}
+
+.drawer--open .drawer__panel {
+  // don't use translate here or it will cause problems with popovers inside the drawer e.g. dropdown, select etc.
+  transform: none;
+}
+
+.drawer__header {
+  display: flex;
+}
+
+.drawer__title {
+  flex: 1 1 auto;
+  font-size: var(--six-font-size-large);
+  line-height: var(--six-line-height-dense);
+  padding: var(--six-spacing-large);
+}
+
+.drawer__close {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  font-size: var(--six-font-size-x-large);
+  padding: 0 var(--six-spacing-large);
+}
+
+.drawer__body {
+  flex: 1 1 auto;
+  padding: var(--six-spacing-large);
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.drawer__footer {
+  text-align: right;
+  padding: var(--six-spacing-large);
+
+  ::slotted(six-button:not(:last-of-type)) {
+    margin-right: var(--six-spacing-x-small);
+  }
+}
+
+.drawer:not(.drawer--has-footer) .drawer__footer {
+  display: none;
+}
+
+.drawer__overlay {
+  display: block;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: var(--six-overlay-background-color);
+  opacity: 0;
+  transition: var(--six-transition-medium) opacity;
+  pointer-events: all;
+}
+
+.drawer--contained .drawer__overlay {
+  position: absolute;
+}
+
+.drawer--open .drawer__overlay {
+  opacity: 0.4;
+}

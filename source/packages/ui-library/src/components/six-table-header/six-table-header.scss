@@ -1,0 +1,11 @@
+@import 'src/global/component';
+
+:host {
+  display: table-header-group;
+  cursor: pointer;
+  font-family: var(--six-font-family);
+  font-weight: var(--six-font-weight-bold);
+  color: var(--six-table-header-color);
+  border-bottom: solid 2px var(--six-table-header-border-color);
+  padding: 0.75rem;
+}

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <script type="module" src="/build/ui-library.esm.js"></script>
+    <script nomodule src="/build/ui-library.js"></script>
+    <link rel="stylesheet" href="/build/ui-library.css" />
+    <title>Language Switcher</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>SIX Language Switcher</h1>
+      <p>The <code>six-language-switcher</code> can switch between languages.</p>
+      <p>The selected language is covered in colour.</p>
+      <section class="demo">
+        <six-language-switcher></six-language-switcher>
+      </section>
+
+      <h2>Define Selectable Languages</h2>
+      <p>
+        You can define the languages you want to be able to choose from, by passing your language array via
+        <code>languages</code>
+      </p>
+      <section class="demo">
+        <six-language-switcher id="custom-language-set"></six-language-switcher>
+        <div style="margin-top: 1rem">
+          <span style="font-weight: bold">selected language: </span><span id="selected-language">nothing selected</span>
+        </div>
+        <script type="module">
+          const languageSwitcher = document.getElementById('custom-language-set');
+          const selectedLanguage = document.getElementById('selected-language');
+          languageSwitcher.languages = ['FR', 'IT', 'DE'];
+
+          languageSwitcher.addEventListener('six-language-switcher-change', (event) => {
+            const { detail } = event;
+            selectedLanguage.innerText = detail;
+          });
+        </script>
+      </section>
+
+      <h2>Setting a selected language</h2>
+
+      <p>By using the attribute <code>selected</code> you can define which language should be selected</p>
+
+      <section class="demo">
+        <six-language-switcher selected="DE"></six-language-switcher>
+      </section>
+
+      <h2>Handling asynchronous setting of languages</h2>
+
+      <p>
+        In cases where you fetch the languages array e.g. from a backend, there might be a scenario where the
+        <code>six-language-switcher</code> is rendered before you can set the languages array.
+      </p>
+
+      <p>
+        However, as you can see in this example, the <code>six-language-switcher</code> supports setting languages at a
+        later stage.
+      </p>
+
+      <section class="demo">
+        <six-language-switcher id="async-six-lang-switcher"></six-language-switcher>
+        <script type="module">
+          const langSwitcher = document.getElementById('async-six-lang-switcher');
+          setTimeout(() => (langSwitcher.languages = ['FR', 'IT', 'DE']), 250);
+        </script>
+      </section>
+
+      <h2>Custom Output</h2>
+
+      <section class="demo">
+        <six-language-switcher id="custom-output"></six-language-switcher>
+        <div style="margin-top: 1rem">
+          <span style="font-weight: bold">selected language: </span
+          ><span id="selected-language-custom-output">nothing selected</span>
+        </div>
+        <script type="module">
+          const languageSwitcher = document.getElementById('custom-output');
+          const selectedLanguage = document.getElementById('selected-language-custom-output');
+          languageSwitcher.languages = [
+            { key: 'FR', value: 'French' },
+            { key: 'IT', value: 'Italian' },
+            { key: 'DE', value: 'German' },
+          ];
+          languageSwitcher.addEventListener('six-language-switcher-change', (event) => {
+            const { detail } = event;
+            selectedLanguage.innerText = detail;
+          });
+        </script>
+      </section>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+.six-error-page {
+  &__title {
+    display: flex;
+    justify-content: center;
+    font-size: var(--six-font-size-xx-large);
+    font-weight: bold;
+    margin-bottom: var(--six-spacing-large);
+  }
+
+  &__description {
+    & > * {
+      text-align: center;
+    }
+  }
+
+  &__icon-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__icon::part(icon) {
+    background-color: var(--six-color-web-rock-300);
+  }
+}

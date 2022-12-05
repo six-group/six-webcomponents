@@ -1,0 +1,127 @@
+@import 'src/global/component';
+
+:host {
+  display: inline-block;
+}
+
+.tile {
+  &--small {
+    --tile-size: 80px;
+    --tile-padding-size: var(--six-spacing-medium);
+  }
+
+  &--medium {
+    --tile-size: 120px;
+    --tile-padding-size: var(--six-spacing-large);
+  }
+
+  &--large {
+    --tile-size: 160px;
+    --tile-padding-size: var(--six-spacing-x-large);
+  }
+
+  min-height: var(--tile-size);
+  width: var(--tile-size);
+
+  background-color: var(--six-color-clay-50);
+
+  display: inline-grid;
+  grid-template-columns: 100%;
+  grid-template-areas:
+    'header'
+    'middle'
+    'footer';
+
+  &:not(.tile--visible) {
+    visibility: hidden;
+  }
+
+  &--elevated {
+    border: 0;
+    box-shadow: var(--six-elevation-8dp);
+  }
+}
+
+.tile__header {
+  grid-area: header;
+  height: 5%;
+  justify-self: right;
+  display: flex;
+  justify-content: right;
+  opacity: 0;
+  transition: var(--six-transition-fast) opacity;
+
+  .tile:hover > & {
+    opacity: 1;
+  }
+
+  &--hidden {
+    visibility: hidden;
+  }
+
+  six-icon-button {
+    margin-top: -6px;
+    margin-right: -6px;
+    margin-bottom: -16px;
+  }
+}
+
+.tile__body {
+  grid-area: middle;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+
+  six-icon::part(base) {
+    padding: 0;
+  }
+
+  &--small {
+    @extend .tile__body;
+    --tile-padding-size: var(--six-spacing-medium);
+  }
+
+  &--medium {
+    @extend .tile__body;
+    --tile-padding-size: var(--six-spacing-large);
+  }
+
+  &--large {
+    @extend .tile__body;
+    --tile-padding-size: var(--six-spacing-x-large);
+  }
+
+  padding-left: var(--tile-padding-size);
+  padding-right: var(--tile-padding-size);
+}
+
+.tile__footer {
+  grid-area: footer;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: var(--six-font-weight-normal);
+  color: var(--six-color-web-rock-900);
+
+  &--small {
+    @extend .tile__footer;
+    font-size: var(--six-font-size-xxx-small);
+  }
+
+  &--medium {
+    @extend .tile__footer;
+    font-size: var(--six-font-size-xx-small);
+  }
+
+  &--large {
+    @extend .tile__footer;
+    font-size: var(--six-font-size-small);
+  }
+
+  .label__footer {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: calc(var(--tile-size) - 2em);
+    text-align: center;
+  }
+}

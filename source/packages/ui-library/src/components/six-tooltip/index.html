@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <script type="module" src="/build/ui-library.esm.js"></script>
+    <script nomodule src="/build/ui-library.js"></script>
+    <link rel="stylesheet" href="/build/ui-library.css" />
+    <title>six-tooltip</title>
+  </head>
+  <body>
+    <div class="container">
+      <p>
+        A tooltip's target is its
+        <code>first child element</code>
+        , so you should only wrap one element inside of the tooltip. If you need the tooltip to show up for multiple
+        elements, nest them inside a container first.
+      </p>
+
+      <p>
+        Tooltips use
+        <code>display: contents</code>
+        so they won't interfere with how elements are positioned in a flex or grid layout.
+      </p>
+
+      <section class="demo">
+        <six-tooltip content="This is a tooltip">
+          <six-button>Hover Me</six-button>
+        </six-tooltip>
+      </section>
+
+      <h2>Placement</h2>
+
+      <p>
+        Use the
+        <code>placement</code>
+        attribute to set the preferred placement of the tooltip.
+      </p>
+
+      <section class="demo">
+        <div class="tooltip-placement-example">
+          <div class="tooltip-placement-example-row">
+            <six-tooltip content="top-start" placement="top-start">
+              <six-button></six-button>
+            </six-tooltip>
+
+            <six-tooltip content="top" placement="top">
+              <six-button></six-button>
+            </six-tooltip>
+
+            <six-tooltip content="top-end" placement="top-end">
+              <six-button></six-button>
+            </six-tooltip>
+          </div>
+
+          <div class="tooltip-placement-example-row">
+            <six-tooltip content="left-start" placement="left-start">
+              <six-button></six-button>
+            </six-tooltip>
+
+            <six-tooltip content="right-start" placement="right-start" style="margin-left: 400px">
+              <six-button></six-button>
+            </six-tooltip>
+          </div>
+
+          <div class="tooltip-placement-example-row">
+            <six-tooltip content="left" placement="left">
+              <six-button></six-button>
+            </six-tooltip>
+
+            <six-tooltip content="right" placement="right">
+              <six-button></six-button>
+            </six-tooltip>
+          </div>
+
+          <div class="tooltip-placement-example-row">
+            <six-tooltip content="left-end" placement="left-end">
+              <six-button></six-button>
+            </six-tooltip>
+
+            <six-tooltip content="right-end" placement="right-end">
+              <six-button></six-button>
+            </six-tooltip>
+          </div>
+
+          <div class="tooltip-placement-example-row">
+            <six-tooltip content="bottom-start" placement="bottom-start">
+              <six-button></six-button>
+            </six-tooltip>
+
+            <six-tooltip content="bottom" placement="bottom">
+              <six-button></six-button>
+            </six-tooltip>
+
+            <six-tooltip content="bottom-end" placement="bottom-end">
+              <six-button></six-button>
+            </six-tooltip>
+          </div>
+        </div>
+
+        <style>
+          .tooltip-placement-example {
+            width: 250px;
+          }
+
+          .tooltip-placement-example-row::after {
+            content: '';
+            display: table;
+            clear: both;
+          }
+
+          .tooltip-placement-example six-button {
+            float: left;
+            width: 2.5rem;
+            margin-right: 0.25rem;
+            margin-bottom: 0.25rem;
+          }
+
+          .tooltip-placement-example [placement='top-start'] six-button,
+          .tooltip-placement-example [placement='bottom-start'] six-button {
+            margin-left: calc(40px + 0.25rem);
+          }
+
+          .tooltip-placement-example [placement^='right'] six-button {
+            margin-left: calc((40px * 3) + (0.25rem * 3));
+          }
+        </style>
+      </section>
+
+      <h2>Click Trigger</h2>
+
+      <p>
+        Set the
+        <code>trigger</code>
+        attribute to `click` to toggle the tooltip on click instead of hover.
+      </p>
+
+      <section class="demo">
+        <six-tooltip content="Click again to dismiss" trigger="click">
+          <six-button>Click to Toggle</six-button>
+        </six-tooltip>
+      </section>
+
+      <h2>Manual Trigger</h2>
+
+      <p>
+        Tooltips can be controller programmatically by setting the <code>trigger</code> attribute to `manual`. Use the
+        <code>open</code> prop to control when the tooltip is shown.
+      </p>
+
+      <section class="demo">
+        <six-button style="margin-right: 4rem">Toggle Manually</six-button>
+
+        <six-tooltip content="This is an avatar" trigger="manual" class="manual-tooltip">
+          <six-avatar></six-avatar>
+        </six-tooltip>
+
+        <script type="module">
+          let tooltip = document.querySelector('.manual-tooltip');
+          let toggle = tooltip.previousElementSibling;
+
+          toggle.addEventListener('click', () => (tooltip.open = !tooltip.open));
+        </script>
+      </section>
+
+      <h2>Remove Arrows</h2>
+
+      <p>
+        You can control the size of tooltip arrows by overriding the <code>--sl-tooltip-arrow-size</code> design token.
+      </p>
+
+      <section class="demo">
+        <div style="--six-tooltip-arrow-size: 0">
+          <six-tooltip content="This is a tooltip">
+            <six-button>Above</six-button>
+          </six-tooltip>
+
+          <six-tooltip content="This is a tooltip" placement="bottom">
+            <six-button>Below</six-button>
+          </six-tooltip>
+        </div>
+      </section>
+
+      <h2>HTML in Tooltips</h2>
+
+      <p>Use the <code>content</code> slot to create tooltips with HTML content.</p>
+
+      <section class="demo">
+        <six-tooltip>
+          <div slot="content">I'm not <strong>just</strong> a tooltip,<br />I'm a <em>tooltip</em> with HTML!</div>
+          <six-button>Hover me</six-button>
+        </six-tooltip>
+      </section>
+
+      <h2>Disabled State</h2>
+
+      <p>To disable showing the tooltip simply add the <code>disabled</code> attribute</p>
+
+      <section class="demo">
+        <six-tooltip id="six-tooltip-disabled-example" content="This is a tooltip" disabled>
+          <six-button>Hover Me</six-button>
+        </six-tooltip>
+
+        <div style="margin-top: 0.5rem">
+          <six-switch id="tooltip-disable-switch">Tooltip Disabled</six-switch>
+        </div>
+
+        <script type="module">
+          const tooltip = document.getElementById('six-tooltip-disabled-example');
+          const tooltipSwitch = document.getElementById('tooltip-disable-switch');
+
+          tooltipSwitch.addEventListener('six-switch-change', ({ detail }) => {
+            tooltipSwitch.innerText = detail ? 'Tooltip Enabled' : 'Tooltip Disabled';
+            tooltip.disabled = !detail;
+          });
+        </script>
+      </section>
+    </div>
+  </body>
+</html>
