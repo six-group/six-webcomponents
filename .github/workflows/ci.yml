@@ -49,7 +49,7 @@ jobs:
         run: npm ci
 
       - name: Run linter 👀
-        run: npm lint
+        run: npm run lint
 
       - name: Run tests 🧪
         run: npm run test:inclCoverage
