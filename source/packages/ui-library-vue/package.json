@@ -3,7 +3,7 @@
   "sideEffects": false,
   "version": "3.0.0-build-202209191043",
   "description": "Vue specific wrapper for component-library",
-  "license" : "Apache-2.0",
+  "license": "Apache-2.0",
   "scripts": {
     "test": "jest",
     "build": "npm run clean && npm run compile",
@@ -29,6 +29,6 @@
     "vue": "^3.1.1"
   },
   "dependencies": {
-    "@six/ui-library": "3.0.0-build-202209191043"
+    "@six/ui-library": "file:../ui-library"
   }
 }

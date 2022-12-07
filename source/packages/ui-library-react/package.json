@@ -3,7 +3,7 @@
   "sideEffects": false,
   "version": "3.0.0-build-202209191043",
   "description": "React specific wrapper for component-library",
-  "license" : "Apache-2.0",
+  "license": "Apache-2.0",
   "scripts": {
     "build": "npm run clean && npm run compile",
     "clean": "rimraf dist",
@@ -27,12 +27,12 @@
     "np": "^7.4.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "typescript": "^4.2.4",
-    "rimraf": "^3.0.2"
+    "rimraf": "^3.0.2",
+    "typescript": "^4.2.4"
   },
   "dependencies": {
     "@popperjs/core": "^2.9.2",
-    "@six/ui-library": "3.0.0-build-202209191043"
+    "@six/ui-library": "file:../ui-library"
   },
   "peerDependencies": {
     "react": "^17.0.2",
