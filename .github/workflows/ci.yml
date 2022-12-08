@@ -3,7 +3,7 @@ name: ci
 on:
   push:
     branches:
-      - '**'
+      - main
   pull_request:
     branches:
       - main
@@ -33,11 +33,12 @@ jobs:
           cache: 'npm'
           cache-dependency-path: package-lock.json
 
-      - name: Get npm cache directory
+      - name: Set output
         id: npm-cache-dir
-        run: |
-          echo "::set-output name=dir::$(npm config get cache)"
-      - uses: actions/cache@v3
+        run: echo "::set-output name=dir::$(npm config get cache)" >> $GITHUB_OUTPUT
+
+      - name: Cache node_modules 📦
+        uses: actions/cache@v3
         id: npm-cache # use this to check for `cache-hit` ==> if: steps.npm-cache.outputs.cache-hit != 'true'
         with:
           path: ${{ steps.npm-cache-dir.outputs.dir }}
@@ -45,150 +46,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-ns
 
-      - name: Run installation 🏗
+      - name: Run installation 👨🏻‍💻
         run: npm ci
 
       - name: Run linter 👀
         run: npm run lint
 
-      - name: Run build 📦
+      - name: Run build 🏗
         run: npm run build
-
-#
-#  build-react-app:
-#    runs-on: ${{ matrix.os }}
-#    defaults:
-#      run:
-#        working-directory: source/examples/react/six-app
-#
-#    steps:
-#      - name: Checkout 🛎
-#        uses: actions/checkout@v3
-#
-#      - name: Setup node env 🏗
-#        uses: actions/setup-node@v3
-#        with:
-#          node-version: ${{ matrix.node }}
-#          cache: 'npm'
-#          cache-dependency-path: package-lock.json
-#
-#      - name: Run linter 👀
-#        run: npm lint
-#
-#      - name: Run tests 🧪
-#        run: && npm run test:inclCoverage
-#
-#  build-vue-app:
-#    runs-on: ${{ matrix.os }}
-#    defaults:
-#      run:
-#        working-directory: source/examples/vue/six-app
-#
-#    steps:
-#      - name: Checkout 🛎
-#        uses: actions/checkout@v3
-#
-#      - name: Setup node env 🏗
-#        uses: actions/setup-node@v3
-#        with:
-#          node-version: ${{ matrix.node }}
-#          cache: 'npm'
-#          cache-dependency-path: package-lock.json
-#
-#      - name: Get npm cache directory
-#        id: npm-cache-dir
-#        run: |
-#          echo "::set-output name=dir::$(npm config get cache)"
-#      - uses: actions/cache@v3
-#        id: npm-cache # use this to check for `cache-hit` ==> if: steps.npm-cache.outputs.cache-hit != 'true'
-#        with:
-#          path: ${{ steps.npm-cache-dir.outputs.dir }}
-#          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-#          restore-keys: |
-#            ${{ runner.os }}-node-ns
-#
-#      - name: Run linter 👀
-#        run: npm lint
-#
-#      - name: Run tests 🧪
-#        run: npm test
-#
-#  build-angular-app:
-#    runs-on: ${{ matrix.os }}
-#    defaults:
-#      run:
-#        working-directory: source/examples/angular/six-app
-#
-#    steps:
-#      - name: Checkout 🛎
-#        uses: actions/checkout@v3
-#
-#      - name: Setup node env 🏗
-#        uses: actions/setup-node@v3
-#        with:
-#          node-version: ${{ matrix.node }}
-#          cache: 'npm'
-#          cache-dependency-path: package-lock.json
-#
-#      - name: Get npm cache directory
-#        id: npm-cache-dir
-#        run: |
-#          echo "::set-output name=dir::$(npm config get cache)"
-#      - uses: actions/cache@v3
-#        id: npm-cache # use this to check for `cache-hit` ==> if: steps.npm-cache.outputs.cache-hit != 'true'
-#        with:
-#          path: ${{ steps.npm-cache-dir.outputs.dir }}
-#          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-#          restore-keys: |
-#            ${{ runner.os }}-node-ns
-#
-#      - name: Run linter 👀
-#        run: npm lint
-#
-#      - name: Run tests 🧪
-#        run: npm test
-
-#
-#
-#    strategy:
-#      matrix:
-#        os: [ubuntu-latest]
-#        node: [16]
-#
-#    steps:
-#      - name: Checkout 🛎
-#        uses: actions/checkout@v3
-#
-#      - name: Setup node env 🏗
-#        uses: actions/setup-node@v3
-#        with:
-#          node-version: ${{ matrix.node }}
-#          cache: 'npm'
-#          cache-dependency-path: package-lock.json
-#
-#      - name: Get npm cache directory
-#        id: npm-cache-dir
-#        run: |
-#          echo "::set-output name=dir::$(npm config get cache)"
-#      - uses: actions/cache@v3
-#        id: npm-cache # use this to check for `cache-hit` ==> if: steps.npm-cache.outputs.cache-hit != 'true'
-#        with:
-#          path: ${{ steps.npm-cache-dir.outputs.dir }}
-#          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-#          restore-keys: |
-#            ${{ runner.os }}-node-
-
-#      - name: restore lerna
-#        uses: actions/cache@v3
-#        with:
-#          path: '**/node_modules'
-#          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
-
-#      - name: Deploy to Github Pages 🚀
-#        uses: JamesIves/github-pages-deploy-action@3.6.2
-#        with:
-#          GITHUB_TOKEN: ${{ secrets.TOKEN }}
-#          BRANCH: gh-pages # The branch the action should deploy to.
-#          FOLDER: docs # The folder that the build-storybook script generates files.
-#          CLEAN: true # Automatically remove deleted files from the deploy branch
-#          TARGET_FOLDER: docs # The folder that we serve vitepress doc from
