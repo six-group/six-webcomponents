@@ -1,0 +1,21 @@
+.language-switcher {
+  &__container {
+    display: flex;
+  }
+
+  &__separator {
+    padding: 0 0.25rem;
+  }
+
+  &__label {
+    cursor: pointer;
+
+    &:hover {
+      color: var(--six-color-red);
+    }
+
+    &--selected {
+      color: var(--six-color-red);
+    }
+  }
+}

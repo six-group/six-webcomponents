@@ -1,0 +1,34 @@
+<form [formGroup]="form" *ngIf="form">
+  <!-- error-text overrides validation error message (attribute binding https://angular.io/guide/attribute-binding) -->
+  <six-input label="Name" formControlName="name" appCustomControl [attr.error-text]="errorText" required></six-input>
+  <!-- error-text overrides validation error message -->
+  <six-input
+    label="E-mail"
+    formControlName="email"
+    appCustomControl
+    error-text="This field is required!"
+    required
+  ></six-input>
+  <six-datepicker label="Birthdate" formControlName="birthdate" appCustomControl></six-datepicker>
+  <six-input label="Username" formControlName="username" appCustomControl></six-input>
+  <!-- conditional form handling -->
+  <six-select label="Role" formControlName="role" appCustomControl>
+    <six-menu-item value="admin">Administrator</six-menu-item>
+    <six-menu-item value="user">User</six-menu-item>
+    <six-menu-item>Not defined</six-menu-item>
+  </six-select>
+  <six-checkbox formControlName="important" appCustomControl>Important</six-checkbox>
+  <six-input type="password" label="Password" formControlName="password" appCustomControl required></six-input>
+  <six-input
+    type="password"
+    label="Confirm password"
+    formControlName="passwordConfirmation"
+    appCustomControl
+    required
+  ></six-input>
+  <p>
+    <six-radio name="radio" value="1" formControlName="radio" appCustomControl>Option 1</six-radio>&nbsp;
+    <six-radio name="radio" value="2" formControlName="radio" appCustomControl>Option 2</six-radio>&nbsp;
+    <six-radio name="radio" value="3" formControlName="radio" appCustomControl>Option 3</six-radio>&nbsp;
+  </p>
+</form>

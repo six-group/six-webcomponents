@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <script type="module" src="/build/ui-library.esm.js"></script>
+    <script nomodule src="/build/ui-library.js"></script>
+    <link rel="stylesheet" href="/build/ui-library.css" />
+    <title>six-details</title>
+  </head>
+  <body>
+    <div class="container">
+      <p>Details show a brief summary and expand to show additional content.</p>
+      <section class="demo">
+        <six-details summary="Toggle Me">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat.
+        </six-details>
+      </section>
+
+      <h2>Examples</h2>
+
+      <h3>Custom summary icon</h3>
+      <p>Use <code>summary-icon</code> slot to provide custom summary icon content.</p>
+      <section class="demo">
+        <six-details summary="Toggle Me">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat.
+          <span slot="summary-icon"><b>99%</b></span>
+        </six-details>
+      </section>
+
+      <p>Use <code>summary-icon</code> property to set the desired summary icon.</p>
+      <section class="demo">
+        <six-details summary="Toggle Me" summary-icon="settings">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat.
+        </six-details>
+      </section>
+
+      <p>
+        Use <code>summary-icon-size</code> slot to customize the icon size. With "inherit" the icon size depends on the
+        font-size.
+      </p>
+      <section class="demo">
+        <div class="details-icon-size-example-1">
+          <six-details summary="Toggle Me" summary-icon-size="inherit">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat.
+          </six-details>
+        </div>
+
+        <style>
+          .details-icon-size-example-1 six-details::part(header) {
+            font-size: var(--six-font-size-medium);
+          }
+        </style>
+      </section>
+      <p></p>
+      <section class="demo">
+        <div class="details-icon-size-example-2">
+          <six-details summary="Toggle Me" summary-icon-size="inherit">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat.
+          </six-details>
+        </div>
+
+        <style>
+          .details-icon-size-example-2 six-details::part(header) {
+            font-size: var(--six-font-size-xx-large);
+          }
+        </style>
+      </section>
+
+      <h3>Disabled</h3>
+      <p>Use the <code>disable</code> attribute to prevent the details from expanding.</p>
+      <section class="demo">
+        <six-details summary="Disabled" disabled>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat.
+        </six-details>
+      </section>
+
+      <h3>Grouping Details</h3>
+      <p>
+        Details are designed to function independently, but you can simulate a group or "accordion" where only one is
+        shown at a time by listening for the <code>six-show</code> event.
+      </p>
+      <section class="demo">
+        <div class="details-group-example">
+          <six-details summary="First" open>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat.
+          </six-details>
+
+          <six-details summary="Second">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat.
+          </six-details>
+
+          <six-details summary="Third">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat.
+          </six-details>
+        </div>
+
+        <script type="module">
+          const container = document.querySelector('.details-group-example');
+
+          // Close all other details when one is shown
+          container.addEventListener('six-details-show', (event) => {
+            [...container.querySelectorAll('six-details')].map((details) => (details.open = event.target === details));
+          });
+        </script>
+
+        <style>
+          .details-group-example six-details:not(:last-of-type) {
+            margin-bottom: var(--six-spacing-xx-small);
+          }
+        </style>
+      </section>
+
+      <h3>Programmatically control six-details</h3>
+
+      <p>
+        You can easily control a six-detail by simply setting the corresponding open attribute. Try it by clicking on
+        one of the buttons.
+      </p>
+
+      <section class="demo">
+        <div
+          id="buttonbar-programmatic-example"
+          style="
+            display: flex;
+            justify-content: space-evenly;
+            margin-top: 1em;
+            margin-bottom: 1em;
+            padding: 0 25vw 0 25vw;
+          "
+        >
+          <six-button>First</six-button>
+          <six-button>Second</six-button>
+          <six-button>Third</six-button>
+        </div>
+
+        <div class="details-programmatic-example">
+          <six-details summary="First" open>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat.
+          </six-details>
+
+          <six-details summary="Second">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat.
+          </six-details>
+
+          <six-details summary="Third">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat.
+          </six-details>
+        </div>
+
+        <script type="module">
+          const container = document.querySelector('.details-programmatic-example');
+
+          const sixDetails = container.querySelectorAll('six-details');
+
+          // Close all other details when one is shown
+          container.addEventListener('six-details-show', (event) => {
+            [...sixDetails].map((details) => (details.open = event.target === details));
+          });
+
+          const sixButtons = document.getElementById('buttonbar-programmatic-example').querySelectorAll('six-button');
+
+          for (let i = 0; i < sixDetails.length; i++) {
+            sixButtons[i].onclick = () => {
+              sixDetails[i].open = true;
+            };
+          }
+        </script>
+
+        <style>
+          .details-group-example six-details:not(:last-of-type) {
+            margin-bottom: var(--six-spacing-xx-small);
+          }
+        </style>
+      </section>
+    </div>
+  </body>
+</html>

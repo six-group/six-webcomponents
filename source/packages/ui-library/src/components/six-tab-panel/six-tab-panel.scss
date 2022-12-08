@@ -1,0 +1,11 @@
+@import 'src/global/component';
+
+:host {
+  display: block;
+  font-family: var(--six-font-family);
+}
+
+.tab-panel {
+  border: solid 1px transparent;
+  padding: 20px 20px;
+}

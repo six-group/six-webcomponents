@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <script type="module" src="/build/ui-library.esm.js"></script>
+    <script nomodule src="/build/ui-library.js"></script>
+    <link rel="stylesheet" href="/build/ui-library.css" />
+    <title>six-tag</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Tag</h2>
+
+      <p>Tags are used as labels to organize things or to indicate a selection.</p>
+      <section class="demo">
+        <six-tag type="primary">Primary</six-tag>
+        <six-tag type="info">Info</six-tag>
+        <six-tag type="success">Success</six-tag>
+        <six-tag type="warning">Warning</six-tag>
+        <six-tag type="danger">Danger</six-tag>
+        <six-tag type="action">Action</six-tag>
+      </section>
+
+      <h2>Examples</h2>
+
+      <h3>Sizes</h3>
+      <p>Use the <code>size</code> prop to change a tab's size.</p>
+      <section class="demo">
+        <six-tag size="small">Small</six-tag>
+        <six-tag size="medium">Medium</six-tag>
+        <six-tag size="large">Large</six-tag>
+      </section>
+
+      <h3>Pill</h3>
+      <p>Use the <code>pill</code> to give tabs rounded edges.</p>
+      <section class="demo">
+        <six-tag size="small" pill>Small</six-tag>
+        <six-tag size="medium" pill>Medium</six-tag>
+        <six-tag size="large" pill>Large</six-tag>
+      </section>
+
+      <h3>Clearable</h3>
+      <p>Use the <code>clearable</code> attribute to add a clear button to the tag.</p>
+      <section class="demo">
+        <div class="tags-clearable">
+          <six-tag size="small" clearable>Small</six-tag>
+          <six-tag size="medium" clearable>Medium</six-tag>
+          <six-tag size="large" clearable>Large</six-tag>
+        </div>
+
+        <script type="module">
+          const div = document.querySelector('.tags-clearable');
+
+          div.addEventListener('six-clear', (event) => {
+            const tag = event.target;
+            tag.style.opacity = '0';
+            setTimeout(() => (tag.style.opacity = '1'), 2000);
+          });
+        </script>
+
+        <style>
+          .tags-clearable six-tag {
+            transition: var(--six-transition-medium) opacity;
+          }
+        </style>
+      </section>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+@import 'src/global/component';
+
+:host {
+  display: table-cell;
+  padding: var(--six-spacing-medium) var(--six-spacing-medium) var(--six-spacing-x-small);
+  font-size: var(--six-font-size-small);
+}
+
+six-icon {
+  vertical-align: text-top;
+  width: 1.5rem;
+}
+
+.header {
+  &:hover,
+  &--selected {
+    .header__trigger-icon {
+      opacity: 1;
+    }
+  }
+
+  &__trigger-icon {
+    color: var(--six-color-web-rock-600);
+    opacity: 0;
+  }
+
+  &__trigger-icon-box {
+    float: right;
+  }
+}
+
+[slot='prefix'] {
+  font-size: 1.5em;
+}
+
+six-dropdown::part(panel) {
+  overflow: inherit;
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" name="viewport" />
+    <script src="/build/ui-library.esm.js" type="module"></script>
+    <script nomodule src="/build/ui-library.js"></script>
+    <link href="/build/ui-library.css" rel="stylesheet" />
+    <title>six-switch</title>
+  </head>
+  <body>
+    <div class="container">
+      <p>Stage Indicators allow user to know which stage he is currently on</p>
+      <section class="demo">
+        <six-stage-indicator stage="DEV"> DEV-webcomponents-123.3.2 </six-stage-indicator>
+      </section>
+
+      <h2>Examples</h2>
+
+      <h3>Stage</h3>
+      <p>Use the <code>stage</code> attribute to display a certain stage</p>
+      <section class="demo">
+        <six-stage-indicator stage="DEV"> DEV-webcomponents-123.3.2 </six-stage-indicator>
+        <six-stage-indicator stage="ITU"> ITU-webcomponents-123.3.2 </six-stage-indicator>
+        <six-stage-indicator stage="ETU"> ETU-webcomponents-123.3.2 </six-stage-indicator>
+        <six-stage-indicator stage="ACCEPTANCE"> ACCEPTANCE-webcomponents-123.3.2 </six-stage-indicator>
+        <six-stage-indicator stage="PROD"> PROD-webcomponents-123.3.2 </six-stage-indicator>
+      </section>
+    </div>
+  </body>
+</html>

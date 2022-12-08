@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <script type="module" src="/build/ui-library.esm.js"></script>
+    <script nomodule src="/build/ui-library.js"></script>
+    <link rel="stylesheet" href="/build/ui-library.css" />
+    <title>six-icon</title>
+  </head>
+  <body>
+    <div class="container">
+      <section class="demo">
+        <six-icon-button name="settings" label="Settings"></six-icon-button>
+        <six-icon-button name="tune" label="Options"></six-icon-button>
+        <six-icon-button name="cancel" label="Close"></six-icon-button>
+      </section>
+
+      <h2>Sizes</h2>
+
+      <p>Icon buttons inherit their parent element's <code>font-size</code>.</p>
+
+      <section class="demo">
+        <six-icon-button name="edit" label="Edit" size="xSmall"></six-icon-button>
+        <six-icon-button name="edit" label="Edit" size="small"></six-icon-button>
+        <six-icon-button name="edit" label="Edit" size="medium"></six-icon-button>
+        <six-icon-button name="edit" label="Edit" size="large"></six-icon-button>
+        <six-icon-button name="edit" label="Edit" size="xLarge"></six-icon-button>
+      </section>
+
+      <h2>Colors</h2>
+
+      <p>
+        Icon buttons are designed to have a uniform appearance, so their color is not inherited. However, you can still
+        customize them by styling the <code>base</code> part.
+      </p>
+
+      <section class="demo">
+        <div class="icon-button-color">
+          <six-icon-button name="format_bold" label="Bold"></six-icon-button>
+          <six-icon-button name="format_italic" label="Italic"></six-icon-button>
+          <six-icon-button name="format_underline" label="Underline"></six-icon-button>
+        </div>
+
+        <style>
+          .icon-button-color six-icon-button::part(base) {
+            color: #b00091;
+          }
+
+          .icon-button-color six-icon-button::part(base):hover,
+          .icon-button-color six-icon-button::part(base):focus {
+            color: #c913aa;
+          }
+
+          .icon-button-color six-icon-button::part(base):active {
+            color: #960077;
+          }
+        </style>
+      </section>
+
+      <h2>Icon Button with Tooltip</h2>
+
+      <p>Wrap a tooltip around an icon button to provide contextual information to the user.</p>
+
+      <section class="demo">
+        <six-tooltip content="Settings">
+          <six-icon-button name="settings" label="Settings" onClick="alert('clicked')"></six-icon-button>
+        </six-tooltip>
+      </section>
+
+      <h2>Disabled</h2>
+
+      <section class="demo">
+        <six-tooltip content="Settings">
+          <six-icon-button name="settings" label="Settings" onClick="alert('clicked')" disabled></six-icon-button>
+        </six-tooltip>
+      </section>
+
+      <h2>Icon Button with Badge</h2>
+
+      <p>
+        Often icon buttons are combined with badges to signal new entries. For this simply add a
+        <code>six-badge</code> to the slot
+      </p>
+
+      <section class="demo">
+        <div>
+          <six-icon-button name="email" label="Email" size="xSmall"
+            ><six-badge type="primary" pill>6</six-badge></six-icon-button
+          >
+          <six-icon-button name="email" label="Email" size="small"
+            ><six-badge type="primary" pill>6</six-badge></six-icon-button
+          >
+          <six-icon-button name="email" label="Email" size="medium"
+            ><six-badge type="primary" pill>6</six-badge></six-icon-button
+          >
+          <six-icon-button name="email" label="Email" size="large"
+            ><six-badge type="primary" pill>6</six-badge></six-icon-button
+          >
+          <six-icon-button name="email" label="Email" size="xLarge"
+            ><six-badge type="primary" pill>6</six-badge></six-icon-button
+          >
+        </div>
+
+        <div>
+          <six-icon-button name="chat" label="Chat" size="xSmall"
+            ><six-badge type="success" pill>6</six-badge></six-icon-button
+          >
+          <six-icon-button name="chat" label="Chat" size="small"
+            ><six-badge type="success" pill>6</six-badge></six-icon-button
+          >
+          <six-icon-button name="chat" label="Chat" size="medium"
+            ><six-badge type="success" pill>6</six-badge></six-icon-button
+          >
+          <six-icon-button name="chat" label="Chat" size="large"
+            ><six-badge type="success" pill>6</six-badge></six-icon-button
+          >
+          <six-icon-button name="chat" label="Chat" size="xLarge"
+            ><six-badge type="success" pill>6</six-badge></six-icon-button
+          >
+        </div>
+
+        <div>
+          <six-icon-button name="event" label="Event" size="xSmall"
+            ><six-badge type="action" pill>6</six-badge></six-icon-button
+          >
+          <six-icon-button name="event" label="Event" size="small"
+            ><six-badge type="action" pill>6</six-badge></six-icon-button
+          >
+          <six-icon-button name="event" label="Event" size="medium"
+            ><six-badge type="action" pill>6</six-badge></six-icon-button
+          >
+          <six-icon-button name="event" label="Event" size="large"
+            ><six-badge type="action" pill>6</six-badge></six-icon-button
+          >
+          <six-icon-button name="event" label="Event" size="xLarge"
+            ><six-badge type="action" pill>6</six-badge></six-icon-button
+          >
+        </div>
+
+        <div>
+          <six-icon-button name="person_outline" label="Person" size="xSmall"
+            ><six-badge type="warning" pill>6</six-badge></six-icon-button
+          >
+          <six-icon-button name="person_outline" label="Person" size="small"
+            ><six-badge type="warning" pill>6</six-badge></six-icon-button
+          >
+          <six-icon-button name="person_outline" label="Person" size="medium"
+            ><six-badge type="warning" pill>6</six-badge></six-icon-button
+          >
+          <six-icon-button name="person_outline" label="Person" size="large"
+            ><six-badge type="warning" pill>6</six-badge></six-icon-button
+          >
+          <six-icon-button name="person_outline" label="Person" size="xLarge"
+            ><six-badge type="warning" pill>6</six-badge></six-icon-button
+          >
+        </div>
+
+        <div>
+          <six-icon-button name="notifications_none" label="Notifications" size="xSmall"
+            ><six-badge type="danger" pill>6</six-badge></six-icon-button
+          >
+          <six-icon-button name="notifications_none" label="Notifications" size="small"
+            ><six-badge type="danger" pill>6</six-badge></six-icon-button
+          >
+          <six-icon-button name="notifications_none" label="Notifications" size="medium"
+            ><six-badge type="danger" pill>6</six-badge></six-icon-button
+          >
+          <six-icon-button name="notifications_none" label="Notifications" size="large"
+            ><six-badge type="danger" pill>6</six-badge></six-icon-button
+          >
+          <six-icon-button name="notifications_none" label="Notifications" size="xLarge"
+            ><six-badge type="danger" pill>6</six-badge></six-icon-button
+          >
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

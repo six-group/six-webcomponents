@@ -1,0 +1,59 @@
+@import 'src/global/mixins/scrollbar';
+
+:host {
+  display: block;
+  overflow: hidden;
+  height: inherit;
+}
+
+.six-root {
+  display: grid;
+  grid-template: auto 1fr auto / auto 1fr auto;
+  height: 100%;
+
+  &__container {
+    &--padded {
+      padding: var(--six-spacing-xxx-large);
+    }
+  }
+
+  &__left-sidebar {
+    height: 100%;
+    overflow: scroll;
+    grid-column: 1 / 2;
+  }
+
+  &__right-sidebar {
+    height: 100%;
+    overflow: scroll;
+    grid-column: 3 / 4;
+  }
+
+  nav {
+    overflow: hidden;
+  }
+}
+
+header {
+  grid-column: 1 / 4;
+  position: sticky;
+  top: 0;
+  z-index: var(--six-z-index-header);
+  // border fix
+  margin-right: 2px;
+}
+
+main {
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  grid-column: 2 / 3;
+  overflow: auto;
+}
+
+footer {
+  grid-column: 1 / 4;
+}

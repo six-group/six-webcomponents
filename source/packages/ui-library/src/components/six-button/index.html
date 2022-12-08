@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <script type="module" src="/build/ui-library.esm.js"></script>
+    <script nomodule src="/build/ui-library.js"></script>
+    <link rel="stylesheet" href="/build/ui-library.css" />
+    <title>Button</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Button</h1>
+      <p>Buttons represent actions that are available to the user.</p>
+      <section class="demo">
+        <six-button>Button</six-button>
+      </section>
+
+      <h2>Examples</h2>
+      <h3>Types</h3>
+      <p>Use the <code>type</code> attribute to set the button's type.</p>
+      <section class="demo">
+        <six-button>Primary</six-button>
+        <six-button type="secondary">Secondary</six-button>
+        <six-button type="link">Link</six-button>
+        <six-button type="success">Success</six-button>
+        <six-button type="warning">Warning</six-button>
+        <six-button type="danger">Danger</six-button>
+        <six-button type="action">Action</six-button>
+      </section>
+
+      <p>Notice on different background colors that the Link button has no background</p>
+
+      <section class="demo">
+        <div style="padding: 1em; background-color: #f6f6f6">
+          <six-button>Primary</six-button>
+          <six-button type="secondary">Secondary</six-button>
+          <six-button type="link">Link</six-button>
+          <six-button type="success">Success</six-button>
+          <six-button type="warning">Warning</six-button>
+          <six-button type="danger">Danger</six-button>
+          <six-button type="action">Action</six-button>
+        </div>
+        <div style="padding: 1em; background-color: #262626">
+          <six-button>Primary</six-button>
+          <six-button type="secondary">Secondary</six-button>
+          <six-button type="link">Link</six-button>
+          <six-button type="success">Success</six-button>
+          <six-button type="warning">Warning</six-button>
+          <six-button type="danger">Danger</six-button>
+          <six-button type="action">Action</six-button>
+        </div>
+      </section>
+
+      <h3>Sizes</h3>
+      <p>Use the <code>size</code> prop to change a button's size.</p>
+      <section class="demo">
+        <six-button size="small">Small</six-button>
+        <six-button size="medium">Medium</six-button>
+        <six-button size="large">Large</six-button>
+      </section>
+
+      <h3>Pill Buttons</h3>
+      <p>Use the <code>pill</code> prop to give buttons rounded edges.</p>
+      <section class="demo">
+        <six-button size="small" pill>Small</six-button>
+        <six-button size="medium" pill>Medium</six-button>
+        <six-button size="large" pill>Large</six-button>
+      </section>
+
+      <h3>Circle buttons</h3>
+      <p>Use the <code>circle</code> prop to create circular icon buttons.</p>
+      <section class="demo">
+        <six-button size="small" circle>
+          <six-icon size="xSmall">settings</six-icon>
+        </six-button>
+        <six-button size="small" circle>
+          <six-icon size="small">settings</six-icon>
+        </six-button>
+        <six-button size="medium" circle>
+          <six-icon size="small">settings</six-icon>
+        </six-button>
+        <six-button size="large" circle>
+          <six-icon size="medium">settings</six-icon>
+        </six-button>
+        <six-button size="large" circle>
+          <six-icon size="large">settings</six-icon>
+        </six-button>
+        <six-button size="large" circle>
+          <six-icon size="xLarge">settings</six-icon>
+        </six-button>
+      </section>
+
+      <h3>Link Buttons</h3>
+      <p>
+        Use the <code>link</code> type to create text buttons that share the same size as regular buttons but don't have
+        backgrounds or borders.
+      </p>
+      <section class="demo">
+        <six-button type="link" size="small">Small</six-button>
+        <six-button type="link" size="medium">Medium</six-button>
+        <six-button type="link" size="large">Large</six-button>
+      </section>
+
+      <h3>Link buttons</h3>
+      <p>
+        It's often helpful to have a button that works like a link. This is possible by setting the
+        <code>href</code> attribute, which will make the component render an <code>&lt;a&gt;</code> under the hood. This
+        gives you all the default link behavior the browser provides (e.g. <kbd>CMD/CTRL/SHIFT + CLICK</kbd>) and
+        exposes the <code>target</code> and <code>download</code> attributes.
+      </p>
+      <section class="demo">
+        <six-button href="https://www.six-group.com/">Link</six-button>
+        <six-button href="https://www.six-group.com/" target="_blank">New Window</six-button>
+        <six-button href="/assets/images/wordmark.svg" download="wordmark.svg">Download</six-button>
+        <six-button href="https://www.six-group.com/" disabled>Disabled</six-button>
+      </section>
+      <p class="warn">
+        When a <code>target</code> is set, the link will receive <code>rel="noreferrer noopener"</code>
+        <a href="https://mathiasbynens.github.io/rel-noopener/" target="_blank" rel="noopener">for security reasons</a>.
+      </p>
+
+      <h3>Setting a Custom Width</h3>
+      <p>
+        As expected, buttons can be given a custom width by setting its <code>width</code>. This is useful for making
+        buttons span the full width of their container on smaller screens.
+      </p>
+      <section class="demo">
+        <six-button type="secondary" size="small" style="width: 100%; margin-bottom: 1rem">Small</six-button>
+        <six-button type="secondary" size="medium" style="width: 100%; margin-bottom: 1rem">Medium</six-button>
+        <six-button type="secondary" size="large" style="width: 100%">Large</six-button>
+      </section>
+
+      <h3>Prefix and Suffix Icons</h3>
+      <p>Use the <code>prefix</code> and <code>suffix</code> slots to add icons.</p>
+      <section class="demo">
+        <six-button size="small">
+          <!-- <six-icon slot="prefix">settings</six-icon>-->
+          <span slot="prefix"><six-icon size="xSmall">settings</six-icon></span>
+          Settings
+        </six-button>
+
+        <six-button size="small">
+          <span slot="suffix"><six-icon size="xSmall">refresh</six-icon></span>
+          Refresh
+        </six-button>
+
+        <six-button size="small">
+          <span slot="prefix"><six-icon size="xSmall">settings</six-icon></span>
+          <span slot="suffix"><six-icon size="xSmall">refresh</six-icon></span>
+          Open
+        </six-button>
+
+        <br /><br />
+
+        <six-button>
+          <span slot="prefix"><six-icon size="small">settings</six-icon></span>
+          Settings
+        </six-button>
+
+        <six-button>
+          <span slot="suffix"><six-icon size="small">refresh</six-icon></span>
+          Refresh
+        </six-button>
+
+        <six-button>
+          <span slot="prefix"><six-icon size="small">settings</six-icon></span>
+          <span slot="suffix"><six-icon size="small">refresh</six-icon></span>
+          Open
+        </six-button>
+
+        <br /><br />
+
+        <six-button size="large">
+          <span slot="prefix"><six-icon size="medium">settings</six-icon></span>
+          Settings
+        </six-button>
+
+        <six-button size="large">
+          <span slot="suffix"><six-icon size="medium">refresh</six-icon></span>
+          Refresh
+        </six-button>
+
+        <six-button size="large">
+          <span slot="prefix"><six-icon size="medium">settings</six-icon></span>
+          <span slot="suffix"><six-icon size="medium">refresh</six-icon></span>
+          Open
+        </six-button>
+      </section>
+
+      <h3>Caret</h3>
+      <p>
+        Use the <code>caret</code> prop to add a dropdown indicator when a button will trigger a dropdown, menu, or
+        popover.
+      </p>
+      <section class="demo">
+        <six-button size="small" caret>Small</six-button>
+        <six-button size="medium" caret>Medium</six-button>
+        <six-button size="large" caret>Large</six-button>
+      </section>
+
+      <h3>Loading</h3>
+      <p>
+        Use the <code>loading</code> prop to make a button busy. The width will remain the same as before, preventing
+        adjacent elements from moving around. Clicks will be suppressed until the loading state is removed.
+      </p>
+      <section class="demo">
+        <six-button type="secondary" loading>Secondary</six-button>
+        <six-button loading>Primary</six-button>
+      </section>
+
+      <h3>Disabled</h3>
+      <p>
+        Use the <code>disabled</code> prop to disable a button. Clicks will be suppressed until the disabled state is
+        removed.
+      </p>
+      <section class="demo">
+        <six-tooltip content="My Toolip">
+          <six-button disabled onclick="alert('should not appear')">Primary</six-button>
+        </six-tooltip>
+        <six-button type="secondary" disabled>Secondary</six-button>
+        <six-button type="link" disabled>Link</six-button>
+        <six-button type="success" disabled>Success</six-button>
+        <six-button type="warning" disabled>Warning</six-button>
+        <six-button type="danger" disabled>Danger</six-button>
+        <six-button type="action" disabled>Action</six-button>
+      </section>
+    </div>
+  </body>
+</html>

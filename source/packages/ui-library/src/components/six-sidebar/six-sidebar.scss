@@ -1,0 +1,51 @@
+@import 'src/global/component';
+@import 'src/global/mixins/hidden';
+@import 'src/global/mixins/scrollbar';
+
+:host {
+  display: block;
+  height: 100%;
+}
+
+.sidebar {
+  &__container {
+    // scroll
+    height: 100%;
+    overflow: auto;
+
+    &.sidebar--open {
+      box-shadow: var(--six-elevation-1dp);
+    }
+
+    &:not(.sidebar--visible) {
+      @include hidden;
+    }
+  }
+
+  &--left {
+    color: var(--six-sidebar-color);
+    background-color: var(--six-sidebar-background-color);
+    // collapse
+    transition: var(--six-transition-medium) margin-left;
+    // six background
+    background-size: 300vw 70%;
+    background-position: bottom;
+    background-repeat: no-repeat;
+  }
+
+  &--right {
+    // collapse
+    transition: var(--six-transition-medium) margin-right;
+  }
+
+  // if the sidebar is embedded within six-root it cuts-off the border styling, for thus we need to guarante a margin
+  &--open {
+    &.sidebar--left {
+      margin-right: 2px;
+    }
+
+    &.sidebar--right {
+      margin-left: 2px;
+    }
+  }
+}

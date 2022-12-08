@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <script type="module" src="/build/ui-library.esm.js"></script>
+    <script nomodule src="/build/ui-library.js"></script>
+    <link rel="stylesheet" href="/build/ui-library.css" />
+    <title>six-layout-grid</title>
+  </head>
+  <body>
+    <div class="container">
+      <p>By default a 12 column grid is provided for the component's content.</p>
+      <section class="demo">
+        <six-layout-grid>
+          <div>Col 1</div>
+          <div>Col 2</div>
+          <div style="grid-column: span 4">Col 3 - 6</div>
+          <div>Col 7</div>
+          <div style="grid-column: span 5">Col 8 - 12</div>
+          <div style="grid-column: span 7">Col 1 - 7</div>
+          <div>Col 8</div>
+          <div style="grid-column: span 3">Col 9 - 11</div>
+          <div>Col 12</div>
+        </six-layout-grid>
+      </section>
+
+      <p>Set the <code>columns</code> attribute to provide a grid with a custom number of columns.</p>
+      <section class="demo">
+        <six-layout-grid columns="6">
+          <div>Col 1</div>
+          <div>Col 2</div>
+          <div style="grid-column: span 4">Col 3 - 6</div>
+          <div>Col 1</div>
+          <div style="grid-column: span 5">Col 2 - 6</div>
+        </six-layout-grid>
+      </section>
+
+      <p>The following styles are used to better visualize the example.</p>
+      <section class="demo">
+        <style>
+          six-layout-grid div {
+            text-align: center;
+            border: 1px solid #000;
+            line-height: 50px;
+          }
+        </style>
+      </section>
+    </div>
+  </body>
+</html>

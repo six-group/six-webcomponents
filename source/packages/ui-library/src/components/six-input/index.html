@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <script type="module" src="/build/ui-library.esm.js"></script>
+    <script nomodule src="/build/ui-library.js"></script>
+    <link rel="stylesheet" href="/build/ui-library.css" />
+    <title>six-input</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Input</h2>
+
+      <p>basic input field</p>
+
+      <section class="demo">
+        <six-input></six-input>
+      </section>
+
+      <div style="margin-bottom: 1em"></div>
+
+      <six-alert type="warning" open>
+        <six-icon slot="icon">warning</six-icon>
+        This component doesn't work with standard forms. Use
+        <a href="six-form.html">six-form</a>
+        instead.
+      </six-alert>
+
+      <div style="margin-bottom: 1em"></div>
+
+      <six-alert type="info" open>
+        <six-icon slot="icon">warning</six-icon>
+        Please refer to the section on
+        <a href="six-form.html#form-control-validation">form control validation</a>
+        to learn how to do client-side validation
+      </six-alert>
+
+      <h2>Placeholders</h2>
+
+      <p>
+        Use the
+        <code>placeholder</code>
+        attribute to add a placeholder.
+      </p>
+
+      <section class="demo">
+        <six-input placeholder="Type something"></six-input>
+      </section>
+
+      <h2>Clearable</h2>
+
+      <p>
+        Add the
+        <code>clearable</code>
+        prop to add a clear button when the input has content.
+      </p>
+
+      <section class="demo">
+        <six-input placeholder="Clearable" size="small" clearable></six-input>
+        <br />
+        <six-input placeholder="Clearable" size="medium" clearable></six-input>
+        <br />
+        <six-input placeholder="Clearable" size="large" clearable></six-input>
+      </section>
+
+      <h2>Toggle Password</h2>
+
+      <p>
+        Add the
+        <code>toggle-password</code>
+        prop to add a toggle button that will show the password when activated.
+      </p>
+
+      <section class="demo">
+        <six-input type="password" placeholder="Password Toggle" size="small" toggle-password></six-input>
+        <br />
+        <six-input type="password" placeholder="Password Toggle" size="medium" toggle-password></six-input>
+        <br />
+        <six-input type="password" placeholder="Password Toggle" size="large" toggle-password></six-input>
+      </section>
+
+      <h2>Numbers</h2>
+
+      <p>By default when using type number it allows you to only use integers</p>
+
+      <section class="demo">
+        <six-input type="number" placeholder="Integers..."></six-input>
+      </section>
+
+      <p>
+        However, you might want to be able to use decimal numbers, in this case simply define a <code>pattern</code> and
+        a <code>step</code>:
+      </p>
+
+      <section class="demo">
+        <six-input type="number" placeholder="Decimal Numbers..." pattern="[0-9]+([\.,][0-9]+)?" step="0.1"></six-input>
+      </section>
+
+      <h2>Line</h2>
+
+      <p>
+        Use the
+        <code>line</code>
+        prop to render inputs line style.
+      </p>
+
+      <section class="demo">
+        <six-input line></six-input>
+      </section>
+
+      <h2>Pill</h2>
+
+      <p>
+        Use the
+        <code>pill</code>
+        prop to give inputs rounded edges.
+      </p>
+
+      <section class="demo">
+        <six-input placeholder="Small" size="small" pill></six-input>
+        <br />
+        <six-input placeholder="Medium" size="medium" pill></six-input>
+        <br />
+        <six-input placeholder="Large" size="large" pill></six-input>
+      </section>
+
+      <h2>Disabled</h2>
+
+      <p>
+        Use the
+        <code>disabled</code>
+        attribute to disable an input.
+      </p>
+
+      <section class="demo">
+        <six-input placeholder="Write here your first name" size="small" label="Name" help-text="Help text" disabled>
+        </six-input>
+        <br />
+        <six-input placeholder="Write here your first name" size="medium" label="Name" help-text="Help text" disabled>
+        </six-input>
+        <br />
+        <six-input placeholder="Write here your first name" size="large" label="Name" help-text="Help text" disabled>
+        </six-input>
+      </section>
+
+      <h2>Sizes</h2>
+
+      <p>
+        Use the
+        <code>size</code>
+        attribute to change an input's size.
+      </p>
+
+      <section class="demo">
+        <six-input placeholder="Small" size="small"></six-input>
+        <br />
+        <six-input placeholder="Medium" size="medium"></six-input>
+        <br />
+        <six-input placeholder="Large" size="large"></six-input>
+      </section>
+
+      <h2>Prefix & Suffix Icons</h2>
+
+      <p>
+        Use the
+        <code>prefix</code>
+        and
+        <code>suffix</code>
+        slots to add icons.
+      </p>
+
+      <section class="demo">
+        <six-input placeholder="Small" size="small">
+          <six-icon slot="prefix" size="xSmall">local_offer</six-icon>
+          <six-icon slot="suffix" size="xSmall">settings</six-icon>
+        </six-input>
+        <br />
+        <six-input placeholder="Medium" size="medium">
+          <six-icon slot="prefix" size="small">local_offer</six-icon>
+          <six-icon slot="suffix" size="small">settings</six-icon>
+        </six-input>
+        <br />
+        <six-input placeholder="Large" size="large">
+          <six-icon slot="prefix" size="medium">local_offer</six-icon>
+          <six-icon slot="suffix" size="medium">settings</six-icon>
+        </six-input>
+      </section>
+
+      <h2>Labels</h2>
+
+      <p>
+        Use the
+        <code>label</code>
+        attribute to give the input an accessible label. For labels that contain HTML, use the
+        <code>label</code>
+        slot instead.
+      </p>
+
+      <section class="demo">
+        <six-input label="What is your name?"></six-input>
+        <six-input
+          ><div slot="label">What is <span style="color: red">your</span> name?</div></six-input
+        >
+      </section>
+
+      <h2>Help Text</h2>
+
+      <p>
+        Add descriptive help text to an input with the
+        <code>help-text</code>
+        attribute. For help texts that contain HTML, use the
+        <code>help-text</code>
+        slot instead.
+      </p>
+
+      <section class="demo">
+        <six-input label="Name" help-text="Help text"> </six-input>
+      </section>
+
+      <h2>Events Discalimer</h2>
+
+      <p>The events of our webcommponents should follow native web elements as much as possible.</p>
+
+      <p>
+        This means input, change and blur should be fired the same as when using native elements: Input is fired on
+        input, and change and blur are fired when leaving the input
+      </p>
+
+      <p><code>six-input-input</code> is emitted when the user enters data (not emitted on dynamic value changes)</p>
+
+      <p>
+        <code>six-input-change</code> is emitted when the user presses enter or leaves the form after filling in data
+      </p>
+
+      <p><code>six-input-blur</code> is emitted when the user leaves the form</p>
+
+      <p>
+        <code>six-input-value-change</code> is emitted whenever the value changes. This could be because the user enters
+        data or because the value was dynamically changed
+      </p>
+
+      <p>You can play with the following native and six-input elements to see that the event firing is the same</p>
+
+      <section class="demo">
+        <div style="font-size: 1rem; font-weight: bold; padding-bottom: 1rem">Native Input Element</div>
+        <input type="text" id="native-input" name="type" />
+        <div style="padding-bottom: 0.5rem">
+          <div style="padding-top: 1rem">Event Firing History:</div>
+          <ul id="native-events-list"></ul>
+        </div>
+
+        <div style="font-size: 1rem; font-weight: bold; padding-bottom: 1rem">SIX Input Element</div>
+        <six-input label="Events" help-text="Check what event is fired when..." id="events-input" clearable></six-input>
+        <six-button style="padding-top: 0.5rem" id="event-setting-btn">Set Value</six-button>
+        <div style="padding-bottom: 0.5rem">
+          <div style="padding-top: 1rem">Event Firing History:</div>
+          <ul id="events-list"></ul>
+        </div>
+        <div style="padding-bottom: 0.5rem">
+          <div style="padding-top: 1rem">Event Firing History for six-input-value-change:</div>
+          <ul id="events-list-value-change"></ul>
+        </div>
+
+        <script type="module">
+          const nativeInput = document.getElementById('native-input');
+          const inputEl = document.getElementById('events-input');
+          const eventList = document.getElementById('events-list');
+          const eventListValueChange = document.getElementById('events-list-value-change');
+          const nativeEventList = document.getElementById('native-events-list');
+          const eventSettingBtn = document.getElementById('event-setting-btn');
+
+          const logEvent = (eventName, el, color) => (event) => {
+            const value = event.target.value;
+            el.innerHTML = `${el.innerHTML}<li><span style="font-weight: bold; color: ${color};">${eventName}:</span> ${value}</li>`;
+          };
+          inputEl.addEventListener('six-input-input', logEvent('input', eventList, 'blue'));
+          inputEl.addEventListener('six-input-change', logEvent('change', eventList, 'red'));
+          inputEl.addEventListener('six-input-blur', logEvent('blur', eventList, 'green'));
+          inputEl.addEventListener('six-input-value-change', logEvent('value-change', eventListValueChange));
+
+          nativeInput.addEventListener('input', logEvent('input', nativeEventList, 'blue'));
+          nativeInput.addEventListener('change', logEvent('change', nativeEventList, 'red'));
+          nativeInput.addEventListener('blur', logEvent('blur', nativeEventList, 'green'));
+
+          eventSettingBtn.addEventListener('click', () => {
+            const someString = 'dynamically set value';
+            inputEl.value = someString;
+            nativeInput.value = someString;
+          });
+        </script>
+      </section>
+    </div>
+  </body>
+</html>

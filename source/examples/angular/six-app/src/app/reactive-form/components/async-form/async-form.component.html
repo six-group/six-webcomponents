@@ -1,0 +1,123 @@
+<div class="flexbox-parent">
+  <div class="flexbox-item fill-area content flexbox-item-grow">
+    <div class="app-page-container">
+
+      <h2>Reactive Forms</h2>
+
+      <p>
+        The following form is a showcase for the functionality of custom-control directive which allows to use the six
+        webcomponents in combination with reactive forms.
+      </p>
+
+      <p>
+        Play around with the form to discover how the capability of reactive forms are working in combination with six
+        webcomponents:
+      </p>
+
+      <ul>
+        <li>
+          Write a single character into the "username" input field
+          <ul>
+            <li>
+              Syncronous validation for username is trigger and an error message will be shown on the username input
+              field because the username requires at least two characters
+            </li>
+          </ul>
+        </li>
+        <li>
+          Write user into the "username" input field and wait a moment
+          <ul>
+            <li>
+              Asyncronous validation for username is triggered and an error message will be shown on the username input
+              field because this user already exists
+            </li>
+          </ul>
+        </li>
+        <li>
+          Write a "user1" into the username input field and "password1" into the password input field and press the
+          submit button
+          <ul>
+            <li>The form will be successfully submitted</li>
+          </ul>
+        </li>
+        <li>
+          Write a "user1" into the username input field and "password1" into the password input field and press the
+          reset button
+          <ul>
+            <li>The form will be successfully reset</li>
+          </ul>
+        </li>
+        <li>
+          Write a "error" into the username input field and "password1" into the password input field and press submit
+          <ul>
+            <li>
+              Asyncronous validation after submit will be triggered and an error message will be shown on the username
+              input field
+            </li>
+            <li>
+              Now press the reset button
+              <ul>
+                <li>The whole form should again have initial state</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          Make the form show any error and press reset
+          <ul>
+            <li>The form will be reset and no error message should be shown anymore</li>
+          </ul>
+        </li>
+        <li>
+          Play around with start date and end date. An error message will be shown when the end date is before the start
+          date
+        </li>
+      </ul>
+
+      <form [formGroup]="form">
+        <div>
+          <six-input label="Username" placeholder="Username" formControlName="username" appCustomControl required>
+          </six-input>
+          <six-input label="Password" placeholder="Password" formControlName="password" appCustomControl required>
+          </six-input>
+          <six-input label="Notes" placeholder="Notes" formControlName="notes" appCustomControl> </six-input>
+          <six-datepicker
+            label="Start Date"
+            placeholder="Start Date"
+            formControlName="startDate"
+            appCustomControl
+            required
+            date-format="yyyy-mm-dd"
+          ></six-datepicker>
+          <six-datepicker
+            label="End Date"
+            placeholder="End Date"
+            formControlName="endDate"
+            appCustomControl
+            required
+            date-format="yyyy-mm-dd"
+          ></six-datepicker>
+        </div>
+
+        <p *ngIf="formTestFacade.lastError$ | async as error" class="err">
+          {{ 'Could not submit the form.' | translate }}
+        </p>
+
+        <div class="form-test__actions">
+          <six-button [disabled]="submitDisabled" [loading]="loading$ | async" (click)="submitForm()" submit
+            >submit
+          </six-button>
+          <six-button (click)="resetForm()">reset</six-button>
+        </div>
+      </form>
+
+      <div
+        [ngClass]="{ form__status: true, 'form__status--valid': !form.invalid, 'form__status--invalid': form.invalid }"
+      >
+        Form Status: {{ form.invalid ? 'invalid' : 'valid' }}
+      </div>
+
+      <app-debug-form [form]="form"></app-debug-form>
+    </div>
+  </div>
+</div>

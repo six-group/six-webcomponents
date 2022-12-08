@@ -1,0 +1,73 @@
+@import 'src/global/component';
+
+:host {
+  display: block;
+}
+
+.menu-item {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  font-family: var(--six-font-sans);
+  font-size: var(--six-font-size-small);
+  font-weight: var(--six-font-weight-normal);
+  line-height: var(--six-line-height-normal);
+  letter-spacing: var(--six-letter-spacing-normal);
+  text-align: left;
+  color: var(--six-input-color);
+  border-radius: var(--six-border-radius-medium);
+  padding: var(--six-spacing-medium) var(--six-spacing-medium);
+  transition: var(--six-transition-fast) fill;
+  user-select: none;
+  white-space: nowrap;
+  cursor: pointer;
+
+  &.menu-item--focused:not(.menu-item--disabled) {
+    outline: none;
+    background-color: var(--six-menu-item-background-color);
+  }
+
+  &.menu-item--disabled {
+    outline: none;
+    color: var(--six-input-color-disabled);
+    cursor: not-allowed;
+  }
+
+  .menu-item__label {
+    flex: 1 1 auto;
+    align-self: center;
+  }
+
+  .menu-item__prefix {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+
+    ::slotted(:last-child) {
+      margin-right: 0.5em;
+    }
+  }
+
+  .menu-item__suffix {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+
+    ::slotted(:first-child) {
+      margin-left: 0.5em;
+    }
+  }
+
+  .menu-item__check {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    margin-left: var(--six-spacing-small);
+    visibility: hidden;
+    font-size: inherit;
+  }
+}
+
+.menu-item--checked .menu-item__check {
+  visibility: visible;
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <script type="module" src="/build/ui-library.esm.js"></script>
+    <script nomodule src="/build/ui-library.js"></script>
+    <link rel="stylesheet" href="/build/ui-library.css" />
+    <title>six-main-container</title>
+  </head>
+  <body>
+    <div class="container">
+      <p>
+        The SIX main container can be used to get consistent, dynamic, horizontal margins for the content of the main
+        area in <a href="six-root.html">six-root</a>.
+      </p>
+      <section class="demo">
+        <six-main-container class="show-margin">
+          <div>This is the main content area.</div>
+        </six-main-container>
+      </section>
+
+      <p>Set the <code>padded="false"</code> attribute to remove the top and bottom padding.</p>
+      <section class="demo">
+        <six-main-container padded="false">
+          <div>This is the main content area without top or bottom padding.</div>
+        </six-main-container>
+      </section>
+
+      <p>The following styles are used to better visualize the example.</p>
+      <section class="demo">
+        <style>
+          six-main-container {
+            background-color: var(--six-color-web-rock-100);
+          }
+          six-main-container.show-margin::part(left-margin),
+          six-main-container.show-margin::part(right-margin) {
+            background-color: rgba(106, 227, 0, 0.1);
+          }
+          six-main-container::part(content) {
+            line-height: 200px;
+          }
+          six-main-container > div {
+            text-align: center;
+            background-color: rgba(33, 150, 243, 0.1);
+            border: 1px solid #000;
+          }
+        </style>
+      </section>
+    </div>
+  </body>
+</html>

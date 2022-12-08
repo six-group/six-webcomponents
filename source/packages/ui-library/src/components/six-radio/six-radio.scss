@@ -1,0 +1,87 @@
+@import 'src/global/component';
+
+:host {
+  display: inline-block;
+}
+
+.radio {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--six-font-family);
+  font-size: var(--six-input-font-size-medium);
+  font-weight: var(--six-input-font-weight);
+  color: var(--six-input-color);
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.radio__icon {
+  display: inline-flex;
+  width: var(--six-selection-control-toggle-size);
+  height: var(--six-selection-control-toggle-size);
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.radio__control {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--six-selection-control-toggle-size);
+  height: var(--six-selection-control-toggle-size);
+  border: solid var(--six-border-width) var(--six-input-border-color);
+  border-radius: 50%;
+  background-color: var(--six-input-background-color);
+  color: transparent;
+  transition: var(--six-transition-fast) border-color, var(--six-transition-fast) background-color,
+    var(--six-transition-fast) color, var(--six-transition-fast) box-shadow;
+
+  input[type='radio'] {
+    position: absolute;
+    opacity: 0;
+    padding: 0;
+    margin: 0;
+    pointer-events: none;
+  }
+}
+
+// Hover
+.radio:not(.radio--checked):not(.radio--disabled) .radio__control:hover {
+  border-color: var(--six-input-border-color-hover);
+}
+
+// Checked
+.radio--checked .radio__control {
+  color: var(--six-selection-control-color);
+  border-color: var(--six-selection-control-color);
+}
+
+// Checked + hover
+.radio.radio--checked:not(.radio--disabled) .radio__control:hover {
+  color: var(--six-input-border-color-focus);
+  border-color: var(--six-input-border-color-focus);
+}
+
+// Disabled
+.radio--disabled {
+  cursor: not-allowed;
+  color: var(--six-input-color-disabled);
+
+  .radio__control {
+    border-color: var(--six-input-border-color-disabled);
+  }
+
+  &.radio--checked .radio__control {
+    color: var(--six-selection-control-color-disabled);
+  }
+}
+
+.radio__label {
+  line-height: var(--six-selection-control-toggle-size);
+  margin-left: 0.5em;
+  user-select: none;
+}

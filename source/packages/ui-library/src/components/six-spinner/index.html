@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <script type="module" src="/build/ui-library.esm.js"></script>
+    <script nomodule src="/build/ui-library.js"></script>
+    <link rel="stylesheet" href="/build/ui-library.css" />
+    <title>Spinner</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Spinner</h1>
+      <p>Spinners are used to show the progress of an indeterminate operation.</p>
+      <section class="demo">
+        <six-spinner></six-spinner>
+      </section>
+
+      <h2>Examples</h2>
+      <h3>Size</h3>
+      <p>
+        Spinners are sized relative to the current font size. To change their size, set the
+        <code>font-size</code> property on the spinner itself or on a parent element as shown below.
+      </p>
+      <section class="demo">
+        <six-spinner></six-spinner>
+        <six-spinner style="font-size: 2rem"></six-spinner>
+        <six-spinner style="font-size: 3rem"></six-spinner>
+      </section>
+
+      <h3>Stroke Width</h3>
+      <p>The width of the spinner can be changed by setting the <code>--stroke-width</code> custom property.</p>
+      <section class="demo">
+        <six-spinner style="font-size: 2rem; --stroke-width: 6px"></six-spinner>
+      </section>
+
+      <h3>Color</h3>
+      <p>
+        The spinner's colors can be changed by setting the <code>--indicator-color</code> and
+        <code>--track-color</code> custom properties.
+      </p>
+      <section class="demo">
+        <six-spinner style="font-size: 2rem; --indicator-color: green"></six-spinner>
+      </section>
+
+      <h3>SIX Logo</h3>
+      <p>Spinner can be configured as animated SIX logo.</p>
+      <section class="demo">
+        <six-spinner six="true"></six-spinner>
+      </section>
+    </div>
+  </body>
+</html>

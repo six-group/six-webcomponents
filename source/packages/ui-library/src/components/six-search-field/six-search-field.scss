@@ -1,0 +1,13 @@
+@import 'src/global/component';
+
+:host {
+  display: block;
+}
+
+.search-box {
+  z-index: var(--six-z-index-search-field);
+
+  &__icon {
+    cursor: pointer;
+  }
+}

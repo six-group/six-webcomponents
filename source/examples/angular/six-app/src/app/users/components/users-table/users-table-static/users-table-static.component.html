@@ -1,0 +1,20 @@
+<six-table [loading]="loading">
+  <six-table-header>
+    <six-table-header-cell
+      *ngFor="let column of columns; trackBy: byKey"
+      [name]="column.key"
+      [sort]="column.sort"
+      [filter]="column.filter"
+      [value]="column.value"
+      (six-table-header-cell-sort-updated)="usersFacade.updateSort($event)"
+      (six-table-header-cell-filter-updated)="usersFacade.updateFilter($event)"
+    >
+      {{ column.name }}
+    </six-table-header-cell>
+  </six-table-header>
+  <six-table-row *ngFor="let user of users" (click)="usersFacade.selectUser(user.id)">
+    <six-table-cell *ngFor="let key of keys">
+      {{ user[key] }}
+    </six-table-cell>
+  </six-table-row>
+</six-table>

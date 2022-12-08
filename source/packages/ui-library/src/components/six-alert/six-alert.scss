@@ -1,0 +1,106 @@
+@import 'src/global/component';
+@import 'src/global/mixins/hidden';
+
+/**
+ * @prop --box-shadow: The alert's box shadow.
+ */
+:host {
+  display: contents;
+
+  // For better DX, we'll reset the margin here so the base part can inherit it
+  margin: 0;
+}
+
+.alert {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  background-color: var(--six-color-white);
+  border: solid 1px var(--six-color-web-rock-200);
+  border-top-width: 3px;
+  border-radius: var(--six-border-radius-medium);
+  box-shadow: var(--box-shadow);
+  font-family: var(--six-font-sans);
+  font-size: var(--six-font-size-small);
+  font-weight: var(--six-font-weight-normal);
+  line-height: 1.6;
+  color: var(--six-color-web-rock-700);
+  opacity: 0;
+  transform: scale(0.9);
+  transition: var(--six-transition-medium) opacity ease, var(--six-transition-medium) transform ease;
+  margin: inherit;
+
+  &:not(.alert--visible) {
+    @include hidden;
+  }
+}
+
+.alert--open {
+  opacity: 1;
+  transform: none;
+}
+
+.alert__icon {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  font-size: var(--six-font-size-large);
+
+  ::slotted(*) {
+    margin-left: var(--six-spacing-large);
+  }
+}
+
+.alert--primary {
+  border-top-color: var(--six-color-web-rock-900);
+
+  .alert__icon {
+    color: var(--six-color-web-rock-900);
+  }
+}
+
+.alert--success {
+  border-top-color: var(--six-color-success-600);
+
+  .alert__icon {
+    color: var(--six-color-success-600);
+  }
+}
+
+.alert--info {
+  border-top-color: var(--six-color-action-500);
+
+  .alert__icon {
+    color: var(--six-color-action-500);
+  }
+}
+
+.alert--warning {
+  border-top-color: var(--six-color-warning-800);
+
+  .alert__icon {
+    color: var(--six-color-warning-800);
+  }
+}
+
+.alert--danger {
+  border-top-color: var(--six-color-danger-900);
+
+  .alert__icon {
+    color: var(--six-color-danger-900);
+  }
+}
+
+.alert__message {
+  flex: 1 1 auto;
+  padding: var(--six-spacing-large);
+  overflow: hidden;
+}
+
+.alert__close {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  font-size: var(--six-font-size-large);
+  padding-right: var(--six-spacing-medium);
+}

@@ -1,0 +1,16 @@
+@import 'src/global/component';
+
+:host {
+  display: block;
+}
+
+.menu-label {
+  font-family: var(--six-font-sans);
+  font-size: var(--six-font-size-small);
+  font-weight: var(--six-font-weight-normal);
+  line-height: var(--six-line-height-normal);
+  letter-spacing: var(--six-letter-spacing-normal);
+  color: var(--six-input-label-color);
+  padding: var(--six-spacing-xx-small) var(--six-spacing-small);
+  user-select: none;
+}

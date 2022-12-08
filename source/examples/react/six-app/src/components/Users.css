@@ -1,0 +1,21 @@
+.users {
+  /* TODO: tx4u9 investigate */
+  padding-bottom: 7rem;
+}
+
+.users__header span {
+  font-weight: bold;
+  font-size: larger;
+  position: relative;
+  top: -0.6rem;
+  margin-left: 0.6rem;
+}
+
+.users__table {
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.users__table--loading {
+  min-height: 10rem;
+}

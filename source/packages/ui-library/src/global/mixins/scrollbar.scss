@@ -1,0 +1,20 @@
+@mixin custom-scrollbar-chrome {
+  ::-webkit-scrollbar {
+    width: 0.5rem;
+    height: 0.5rem;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--six-color-web-rock-200);
+    border-radius: 20px;
+    border: 6px solid transparent;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--six-color-web-rock-400);
+  }
+}

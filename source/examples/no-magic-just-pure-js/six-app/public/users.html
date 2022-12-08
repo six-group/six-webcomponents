@@ -1,0 +1,57 @@
+<h2>Users</h2>
+<p>
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam veniam nulla aut ipsa harum, ab cupiditate nesciunt eum quam at ratione, nisi deleniti, nam consequuntur impedit
+  cum? Exercitationem, iure inventore.
+</p>
+<six-card id="users-table-container">
+  <six-table id="users-table"></six-table>
+</six-card>
+<script type="module" script-outlet>
+  let data = {
+    columns: {
+      name: 'Name',
+      email: 'E-mail',
+      phone: 'Phone',
+      username: 'Username',
+      website: 'Website',
+    },
+    sort: {
+      name: 'none',
+      email: 'none',
+    },
+    filter: {
+      username: {
+        in: '',
+      },
+    },
+    quickFilter: '',
+    rows: [],
+  };
+
+  window.run({
+    usersTable: ({ usersTable }) => {
+      usersTable.addEventListener('six-table-ready', () => {
+        usersTable.setAttribute('loading', '');
+        fetch('users.json')
+          .then(res => res.json())
+          .then(users => {
+            data.rows = users;
+            usersTable.setData(data);
+            usersTable.removeAttribute('loading');
+          })
+          .catch(err => console.error(err));
+        usersTable.setData(data);
+      });
+
+      usersTable.addEventListener('six-table-header-cell-sort-updated', ({ detail }) => {
+        data = { ...data, sort: { ...data.sort, ...detail } };
+        usersTable.setData(data);
+      });
+
+      usersTable.addEventListener('six-table-header-cell-filter-updated', ({ detail }) => {
+        data = { ...data, filter: { ...data.filter, ...detail } };
+        usersTable.setData(data);
+      });
+    },
+  });
+</script>

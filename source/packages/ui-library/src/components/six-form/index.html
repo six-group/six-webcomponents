@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <script type="module" src="/build/ui-library.esm.js"></script>
+    <script nomodule src="/build/ui-library.js"></script>
+    <link rel="stylesheet" href="/build/ui-library.css" />
+    <title>six-form</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Forms</h2>
+
+      <p>Forms collect data that can easily be processed and sent to a server.</p>
+      <p>
+        All SIX components make use of a
+        <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM">shadow DOM</a> to
+        encapsulate markup, styles, and behavior. One caveat of this approach is that native
+        <code>&lt;form&gt;</code> elements will not recognize SIX form controls.
+      </p>
+      <p>
+        This component solves that problem by serializing both SIX form controls and native form controls when the form
+        is submitted. The resulting form data is exposed in the <code>six-form-submit</code> event as a
+        <a href="https://developer.mozilla.org/en-US/docs/Web/API/FormData">FormData</a> object in
+        <code>event.detail.formData</code>. You can also find an array of form controls in
+        <code>event.detail.formControls</code>.
+      </p>
+      <p>
+        SIX forms (based on <a href="https://shoelace.style/components/form">Shoelace Forms</a>) don't make use of
+        <code>action</code> and <code>method</code> attributes and they don't submit the same was as native
+        <code>forms</code>. To handle submission, you need to listen for the <code>six-form-submit</code> event as shown
+        in the example below and make an XHR request with the resulting form data.
+      </p>
+
+      <section class="demo" style="width: 500px">
+        <six-form class="form-overview">
+          <six-input name="name" type="text" label="Name"></six-input>
+          <br />
+          <six-select name="favorite" label="Select your favorite">
+            <six-menu-item value="birds">Birds</six-menu-item>
+            <six-menu-item value="cats">Cats</six-menu-item>
+            <six-menu-item value="dogs">Dogs</six-menu-item>
+          </six-select>
+          <br />
+          <six-radio name="option" value="option1" checked>Option 1</six-radio><br />
+          <six-radio name="option" value="option2">Option 2</six-radio><br />
+          <six-radio name="option" value="option3">Option 3</six-radio><br />
+          <six-radio name="option" value="option4">Option 4</six-radio>
+          <br /><br />
+          <six-checkbox name="agree" value="yes" label="Terms and conditions"> I totally agree </six-checkbox>
+          <br /><br />
+          <six-range name="range" label="Range"></six-range>
+          <br /><br />
+          <six-datepicker
+            name="birthday"
+            error-text="Birthday is required"
+            label="Birthday"
+            value="2021-07-14"
+          ></six-datepicker>
+          <br /><br />
+          <six-button submit>Submit</six-button>
+          <six-button reset>Reset</six-button>
+        </six-form>
+
+        <script type="module">
+          const form = document.querySelector('.form-overview');
+
+          // Watch for the slSubmit event
+          form.addEventListener('six-form-submit', (event) => {
+            const formData = event.detail.formData;
+            let output = '';
+
+            //
+            // Example 1: Post data to a server and wait for a JSON response
+            //
+            fetch('https://jsonplaceholder.typicode.com/posts', {
+              method: 'POST',
+              body: formData,
+            })
+              .then((response) => response.json())
+              .then((result) => {
+                console.log('Success:', result);
+              })
+              .catch((error) => {
+                console.error('Error:', error);
+              });
+
+            //
+            // Example 2: Output all form control names + values
+            //
+            for (const entry of formData.entries()) {
+              output += `${entry[0]}: ${entry[1]}\n`;
+            }
+            alert(output);
+
+            //
+            // Example 3: Get all form controls that were serialized as
+            // an array of HTML elements
+            //
+            console.log(event.detail.formControls);
+          });
+        </script>
+      </section>
+
+      <h2>Form Control Validation</h2>
+
+      <p>
+        Client-side validation can be enabled through the browser's
+        <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5/Constraint_validation"
+          >Constraint Validation API</a
+        >
+        for many form controls. You can enable it using props such as <code>required</code>, <code>pattern</code>,
+        <code>minlength</code>, and <code>maxlength</code>. As the user interacts with the form control, the
+        <code>invalid</code>
+        attribute will reflect its validity based on its current value and the constraints that have been defined.
+      </p>
+      <p>
+        When a form control is invalid, the containing form will not be submitted. Instead, the browser will show the
+        user a relevant error message. If you don't want to use client-side validation, you can suppress this behavior
+        by adding <code>novalidate</code> to the <code>&lt;form&gt;</code> element.
+      </p>
+      <p>
+        All form controls support validation, but not all validation props are available for every component. Refer to a
+        component's documentation to see which validation props it supports.
+      </p>
+      <p>
+        Note that validity is not checked until the user interacts with the control or its containing form is submitted.
+        This prevents required controls from being rendered as invalid right away, which can result in a poor user
+        experience. If you need this behavior, set the invalid attribute initially.
+      </p>
+
+      <p class="warn">
+        Client-side validation can be used to improve the UX of forms, but it is not a replacement for server-side
+        validation. <b>You should always validate and sanitize user input on the server!</b>
+      </p>
+
+      <h3>Required Fields (submit always active to report validation errors)</h3>
+      <p>
+        To make a field <code>required</code>, use the required prop. The form will not be submitted if a required form
+        control is empty.
+      </p>
+      <p>
+        In this example the submit button is always active. The user can press it to see whether (and why) some fields
+        are invalid.
+      </p>
+      <section class="demo" style="width: 500px">
+        <six-form class="input-validation-required">
+          <six-input name="firstName" required>
+            <span slot="label">FirstName</span>
+            <div slot="error-text">FirstName is required</div>
+            <small slot="help-text">We like to you know your name</small>
+          </six-input>
+          <br />
+          <six-input name="lastName" error-text="LastName is required" label="LastName" required line> </six-input>
+          <br />
+          <six-select label="Favorite Animal" clearable required>
+            <six-menu-item value="birds">Birds</six-menu-item>
+            <six-menu-item value="cats">Cats</six-menu-item>
+            <six-menu-item value="dogs">Dogs</six-menu-item>
+            <six-menu-item value="other">Other</six-menu-item>
+            <div slot="error-text">Please choose a value</div>
+          </six-select>
+          <br />
+          <six-textarea name="comment" error-text="Comment is required" label="Comment" required></six-textarea>
+          <br />
+          <six-checkbox error-text="Can't you read?" required label="This Checkbox is required"
+            >Check me before submitting</six-checkbox
+          >
+          <br />
+          <six-range error-text="Range is required" label="Range" required></six-range>
+          <br />
+          <six-datepicker
+            name="birthday"
+            error-text="Birthday is missing or invalid"
+            label="Birthday"
+            required
+          ></six-datepicker>
+          <br /><br />
+          <six-button type="primary" submit>Submit</six-button>
+          <six-button type="primary" reset>Reset</six-button>
+        </six-form>
+
+        <script type="module">
+          const formRequired = document.querySelector('.input-validation-required');
+          formRequired.addEventListener('six-form-submit', () => alert('All fields are valid!'));
+        </script>
+      </section>
+
+      <h3>Required Fields (submit is disabled till form is valid)</h3>
+      <p>
+        To make a field <code>required</code>, use the required prop. The form will not be submitted if a required form
+        control is empty.
+      </p>
+      <p>In this example the submit button is disabled, till the form is valid.</p>
+      <section class="demo" style="width: 500px">
+        <six-form class="input-validation-disabled-required">
+          <six-input name="firstName" label="FirstName" required>
+            <div slot="error-text">FirstName is required</div>
+            <small slot="help-text">We like to you know your name</small>
+          </six-input>
+          <br />
+          <six-input name="lastName" error-text="LastName is required" label="LastName" required line> </six-input>
+          <br />
+          <six-select label="Favorite Animal" clearable required>
+            <six-menu-item value="birds">Birds</six-menu-item>
+            <six-menu-item value="cats">Cats</six-menu-item>
+            <six-menu-item value="dogs">Dogs</six-menu-item>
+            <six-menu-item value="other">Other</six-menu-item>
+            <div slot="error-text">Please choose a value</div>
+          </six-select>
+          <br />
+          <six-textarea name="comment" error-text="Comment is required" label="Comment" required></six-textarea>
+          <br />
+          <six-checkbox error-text="Can't you read?" required label="This Checkbox is required"
+            >Check me before submitting</six-checkbox
+          >
+          <br />
+          <six-range error-text="Range is required" label="Range" required></six-range>
+          <br />
+          <six-datepicker
+            name="birthday"
+            error-text="Birthday is missing or invalid"
+            label="Birthday"
+            required
+          ></six-datepicker>
+          <br /><br />
+          <six-button type="primary" submit class="input-validation-required-disabled-button" disabled
+            >Submit</six-button
+          >
+        </six-form>
+
+        <script type="module">
+          const formRequired = document.querySelector('.input-validation-disabled-required');
+          formRequired.addEventListener('six-form-submit', () => alert('All fields are valid!'));
+          const submitButton = document.querySelector('.input-validation-required-disabled-button');
+          formRequired.addEventListener('six-form-change', (event) => (submitButton.disabled = !event.detail.valid));
+        </script>
+      </section>
+
+      <h3>Input Patterns</h3>
+      <p>
+        To restrict a value to a specific pattern, use the <code>pattern</code> attribute. This example only allows the
+        letters A-Z, so the form will not submit if a number or symbol is entered. This only works with
+        <code>&lt;six-input&gt;</code> elements.
+      </p>
+      <section class="demo" style="width: 500px">
+        <six-form class="input-validation-pattern">
+          <six-input name="letters" required label="Letters (default)" pattern="[A-Za-z]+"></six-input>
+          <br />
+          <six-input
+            name="letters"
+            required
+            label="Letters (error-on-blur)"
+            error-on-blur="true"
+            pattern="[A-Za-z]+"
+          ></six-input>
+          <br />
+          <six-input
+            name="letters"
+            required
+            label="Letters (error-on-blur and error-text)"
+            error-text="Invalid Format"
+            error-on-blur="true"
+            pattern="[A-Za-z]+"
+          ></six-input>
+          <br />
+          <six-button type="primary" submit>Submit</six-button>
+          <six-button type="primary" reset>Reset</six-button>
+        </six-form>
+
+        <script type="module">
+          const formPattern = document.querySelector('.input-validation-pattern');
+          formPattern.addEventListener('six-form-submit', () => alert('All fields are valid!'));
+        </script>
+      </section>
+
+      <h3>Input Types</h3>
+      <p>Some input types will automatically trigger constraints, such as <code>email</code> and <code>url</code>.</p>
+      <section class="demo" style="width: 500px">
+        <six-form class="input-validation-type">
+          <six-input type="email" label="Email (default)" placeholder="you@example.com" required></six-input>
+          <br />
+          <six-input
+            type="email"
+            label="Email (error-on-blur)"
+            error-on-blur="true"
+            placeholder="you@example.com"
+            required
+          ></six-input>
+          <br />
+          <six-input
+            type="email"
+            label="Email (error-on-blur and error-text)"
+            error-on-blur="true"
+            error-text="Invalid Email Format"
+            placeholder="you@example.com"
+            required
+          ></six-input>
+          <br />
+          <six-input type="url" label="URL (default)" placeholder="https://example.com/" required></six-input>
+          <br />
+          <six-input
+            type="url"
+            label="URL (error-on-blur)"
+            error-on-blur="true"
+            placeholder="https://example.com/"
+            required
+          ></six-input>
+          <br />
+          <six-input
+            type="url"
+            label="URL (error-on-blur and error-text)"
+            error-on-blur="true"
+            placeholder="https://example.com/"
+            required
+          >
+            <div slot="error-text">Invalid URL Format</div>
+          </six-input>
+          <br />
+          <six-button type="primary" submit>Submit</six-button>
+          <six-button type="primary" reset>Reset</six-button>
+        </six-form>
+
+        <script type="module">
+          const formTypes = document.querySelector('.input-validation-type');
+          formTypes.addEventListener('six-form-submit', () => alert('All fields are valid!'));
+        </script>
+      </section>
+
+      <h3>Custom Validation</h3>
+      <p>
+        To create a custom validation error, use the <code>setCustomValidity</code> method. The form will not be
+        submitted when this method is called with anything other than an empty string, and its message will be shown by
+        the browser as the validation error. To make the input valid again, call the method a second time with an empty
+        string as the argument.
+      </p>
+      <section class="demo" style="width: 500px">
+        <six-form class="input-validation-custom">
+          <six-input label="Type 'six-test'" required></six-input>
+          <br />
+          <six-button type="primary" submit>Submit</six-button>
+          <six-button type="primary" reset>Reset</six-button>
+        </six-form>
+
+        <script type="module">
+          const formCustom = document.querySelector('.input-validation-custom');
+          const inputCustom = formCustom.querySelector('six-input');
+
+          formCustom.addEventListener('six-form-submit', () => alert('All fields are valid!'));
+          inputCustom.addEventListener('six-input-input', () => {
+            if (inputCustom.value === 'six-test') {
+              inputCustom.setCustomValidity('');
+            } else {
+              inputCustom.setCustomValidity("Hey, you're supposed to type 'six-test' before submitting this!");
+            }
+          });
+        </script>
+      </section>
+
+      <h3>Custom Validation Styles</h3>
+      <p>
+        The <code>invalid</code> attribute reflects the form control's validity, so you can style invalid fields using
+        the <code>[invalid]</code> selector. The example below demonstrates how you can give erroneous fields a
+        different appearance. Type something other than "six-test" to demonstrate this.
+      </p>
+      <section class="demo" style="width: 500px">
+        <six-input class="custom-input" required pattern="six-test">
+          <small slot="help-text">Please enter "six-test" to continue</small>
+        </six-input>
+
+        <style>
+          .custom-input[invalid]:not([disabled])::part(label),
+          .custom-input[invalid]:not([disabled])::part(error-text),
+          .custom-input[invalid]:not([disabled])::part(help-text) {
+            color: var(--six-color-warning-700);
+          }
+
+          .custom-input[invalid]:not([disabled])::part(base) {
+            border-color: var(--six-color-warning-800);
+          }
+
+          .custom-input[invalid] {
+            --focus-ring: 0 0 0 var(--six-focus-ring-width) var(--six-color-warning-800);
+          }
+        </style>
+      </section>
+
+      <h3>Third-party Validation</h3>
+      <p>
+        To opt out of the browser's built-in validation and use your own, add the <code>novalidate</code> attribute to
+        the form. This will ignore all constraints and prevent the browser from showing its own warnings when form
+        controls are invalid.
+      </p>
+      <p>
+        Remember that the <code>invalid</code> prop on form controls reflects validity as defined by the Constraint
+        Validation API. You can set it initially, but the <code>invalid</code> prop will update as the user interacts
+        with the form control. As such, you should not rely on it to set invalid styles using a custom validation
+        library.
+      </p>
+      <p>Instead, toggle a class and target it in your stylesheet as shown below.</p>
+      <div style="width: 500px; background-color: var(--six-color-web-rock-200)">
+        <pre>
+
+      &lt;six-form novalidate&gt;
+        &lt;six-input class="invalid"&gt;&lt;/six-input&gt;
+      &lt;/six-form&gt;
+
+      &lt;style&gt;
+        six-input.invalid {
+        ...
+        }
+      &lt;/style&gt;
+    </pre
+        >
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <script type="module" src="/build/ui-library.esm.js"></script>
+    <script nomodule src="/build/ui-library.js"></script>
+    <link rel="stylesheet" href="/build/ui-library.css" />
+    <title>six-file-upload</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2>File Upload</h2>
+
+      <section class="demo">
+        <six-file-upload id="six-file-upload-success-id"></six-file-upload>
+        <six-file-list id="six-file-list"> </six-file-list>
+
+        <script type="module">
+          const fileUpload = document.getElementById('six-file-upload-success-id');
+          const fileList = document.getElementById('six-file-list');
+          let counter = 0;
+
+          fileUpload.addEventListener('six-file-upload-success', ({ detail }) => {
+            const file = detail.file;
+
+            const item = Object.assign(document.createElement('six-file-list-item'), {
+              id: String(counter++),
+              name: file.name,
+              size: file.size,
+              date: new Date().toLocaleDateString(),
+            });
+
+            item.addEventListener('six-file-list-item-remove', ({ detail }) => {
+              const childToRemove = fileList.querySelector(`[name="${detail.name}"]`);
+              fileList.removeChild(childToRemove);
+            });
+
+            item.addEventListener('six-file-list-item-download', ({ detail }) => {
+              alert(`download file ${detail.name}`);
+            });
+
+            fileList.append(item);
+          });
+
+          const showEvent = ({ type, detail }) => alert(`[ ${type} ] ${detail}`);
+          fileUpload.addEventListener('six-file-upload-failure', showEvent);
+        </script>
+      </section>
+
+      <h3>Label</h3>
+
+      <p>You can define a custom label via the <code>label</code> attribute</p>
+
+      <section class="demo">
+        <six-file-upload label="some custom label"></six-file-upload>
+      </section>
+
+      <h3>Disabled File Upload</h3>
+
+      <section class="demo">
+        <six-file-upload disabled></six-file-upload>
+      </section>
+
+      <h3>Compact File Upload</h3>
+
+      <section class="demo">
+        <six-file-upload compact></six-file-upload>
+      </section>
+    </div>
+  </body>
+</html>

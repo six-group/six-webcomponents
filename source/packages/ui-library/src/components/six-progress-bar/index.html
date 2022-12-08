@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <script type="module" src="/build/ui-library.esm.js"></script>
+    <script nomodule src="/build/ui-library.js"></script>
+    <link rel="stylesheet" href="/build/ui-library.css" />
+    <title>six-progress-bar</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2>SixProgressBar</h2>
+
+      <p>Progress bars are used to show the status of an ongoing operation.</p>
+      <section class="demo" style="width: 300px">
+        <six-progress-bar percentage="50"></six-progress-bar>
+      </section>
+
+      <h2>Examples</h2>
+
+      <h3>Custom Height</h3>
+      <p>Use the <code>--height</code> custom property to set the progress bar's height.</p>
+      <section class="demo" style="width: 300px">
+        <six-progress-bar percentage="50" style="--height: 6px"></six-progress-bar>
+      </section>
+
+      <h3>Labels</h3>
+      <p>Use the default slot to show a label.</p>
+      <section class="demo" style="width: 300px">
+        <six-progress-bar percentage="50" class="progress-bar-labels">50%</six-progress-bar>
+
+        <br />
+
+        <six-button size="small" circle><six-icon size="small">remove</six-icon></six-button>
+        <six-button size="small" circle><six-icon size="small">add</six-icon></six-button>
+
+        <script type="module">
+          const progressBar = document.querySelector('.progress-bar-labels');
+          const subtractButton = progressBar.nextElementSibling.nextElementSibling;
+          const addButton = subtractButton.nextElementSibling;
+
+          addButton.addEventListener('click', () => {
+            const percentage = Math.min(100, progressBar.percentage + 10);
+            progressBar.percentage = percentage;
+            progressBar.textContent = `${percentage}%`;
+          });
+
+          subtractButton.addEventListener('click', () => {
+            const percentage = Math.max(0, progressBar.percentage - 10);
+            progressBar.percentage = percentage;
+            progressBar.textContent = `${percentage}%`;
+          });
+        </script>
+      </section>
+
+      <h3>Indeterminate</h3>
+      <p>
+        The <code>indeterminate</code> attribute can be used to inform the user that the operation is pending, but its
+        status cannot currently be determined. In this state, <code>percentage</code> is ignored and the label, if
+        present, will not be shown.
+      </p>
+      <section class="demo" style="width: 300px">
+        <six-progress-bar indeterminate></six-progress-bar>
+      </section>
+    </div>
+  </body>
+</html>

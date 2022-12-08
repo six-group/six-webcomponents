@@ -1,0 +1,25 @@
+$margin-default-width: 10rem;
+$content-default-width: 60rem;
+$content-min-width: 48rem;
+$content-max-width: 100rem;
+
+:host {
+  display: flex;
+  flex-wrap: nowrap;
+  min-width: fit-content;
+}
+
+.left-margin,
+.right-margin {
+  flex: 1 6 $margin-default-width;
+  min-width: var(--six-spacing-xxx-large);
+}
+
+.content {
+  flex: 6 1 $content-default-width;
+  min-width: $content-min-width;
+  max-width: $content-max-width;
+  &--padded {
+    padding: var(--six-spacing-xxx-large) 0;
+  }
+}

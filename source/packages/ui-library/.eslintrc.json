@@ -1,0 +1,23 @@
+{
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "extends": [
+    "plugin:@stencil/recommended",
+    "prettier"
+  ],
+  "plugins": ["prettier"],
+  "rules": {
+    "prettier/prettier": ["error"],
+    "@stencil/decorators-style": [
+      "error", {
+        "prop": "ignore",
+        "state": "ignore",
+        "element": "ignore",
+        "event": "ignore",
+        "method": "multiline",
+        "watch": "multiline",
+        "listen": "multiline"
+      }]
+  }
+}

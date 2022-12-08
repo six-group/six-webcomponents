@@ -1,0 +1,16 @@
+<six-dialog #dialog>
+  <pre></pre>
+  <six-button slot="footer" type="primary" (click)="coreFacade.closeDialog()">Close</six-button>
+</six-dialog>
+<six-root (six-root-collapsed)="onSixRootCollapsed($event)">
+  <app-header slot="header" (toggleLeftSidebar)="coreFacade.toggleLeftSidebar()"></app-header>
+  <app-left-sidebar slot="left-sidebar" [open]="coreFacade.leftSidebarOpen$ | async"></app-left-sidebar>
+  <app-right-sidebar
+    slot="right-sidebar"
+    [open]="coreFacade.rightSidebarOpen$ | async"
+    [tasks]="coreFacade.tasks$ | async"
+  ></app-right-sidebar>
+  <section slot="main">
+    <router-outlet></router-outlet>
+  </section>
+</six-root>

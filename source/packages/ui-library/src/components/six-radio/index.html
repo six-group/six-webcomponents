@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <script type="module" src="/build/ui-library.esm.js"></script>
+    <script nomodule src="/build/ui-library.js"></script>
+    <link rel="stylesheet" href="/build/ui-library.css" />
+    <title>six-radio</title>
+  </head>
+  <body>
+    <div class="container">
+      <p>Radios allow the user to select one option from a group of many.</p>
+      <section class="demo">
+        <six-radio>Radio</six-radio>
+      </section>
+
+      <h2>Examples</h2>
+
+      <h3>Checked</h3>
+      <p>Use the <code>checked</code> attribute to activate the radio.</p>
+      <section class="demo">
+        <six-radio checked>Checked</six-radio>
+      </section>
+
+      <h3>Disabled</h3>
+      <p>Use the <code>disabled</code> attribute to disable the radio.</p>
+      <section class="demo">
+        <six-radio checked disabled>Disabled</six-radio>
+        <six-radio disabled>Disabled</six-radio>
+      </section>
+
+      <h3>Grouping Radios</h3>
+      <p>Radios are grouped based on their <code>name</code> attribute and scoped to the nearest form.</p>
+      <section class="demo">
+        <six-radio name="option" checked>Option 1</six-radio><br />
+        <six-radio name="option">Option 2</six-radio><br />
+        <six-radio name="option">Option 3</six-radio><br />
+        <six-radio name="option">Option 4</six-radio>
+      </section>
+    </div>
+  </body>
+</html>

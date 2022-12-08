@@ -1,0 +1,25 @@
+@import 'src/global/component';
+
+:host {
+  display: block;
+}
+
+.menu {
+  padding: 0 0;
+  border: none;
+  box-shadow: var(--six-elevation-2dp);
+
+  &:focus {
+    outline: none;
+  }
+
+  &--noshadow {
+    box-shadow: none;
+  }
+
+  &__wrapper {
+    &--scrollable {
+      overflow-y: auto;
+    }
+  }
+}

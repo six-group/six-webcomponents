@@ -1,0 +1,9 @@
+six-input,
+six-select,
+six-checkbox {
+  margin-bottom: 1rem;
+}
+
+six-radio {
+  margin-right: 0.6rem;
+}

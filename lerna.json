@@ -1,0 +1,6 @@
+{
+  "packages": [
+    "source/packages/*"
+  ],
+  "version": "3.0.0-build-202209191043"
+}

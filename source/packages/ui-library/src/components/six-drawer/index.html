@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <script type="module" src="/build/ui-library.esm.js"></script>
+    <script nomodule src="/build/ui-library.js"></script>
+    <link rel="stylesheet" href="/build/ui-library.css" />
+    <title>six-drawer</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Basic Drawer</h2>
+      <p></p>
+      <section class="demo">
+        <six-drawer label="Drawer" class="drawer-overview">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          <six-button slot="footer">Close</six-button>
+        </six-drawer>
+
+        <six-button>Open Drawer</six-button>
+
+        <script type="module">
+          (() => {
+            let drawer = document.querySelector('.drawer-overview');
+            let openButton = drawer.nextElementSibling;
+            let closeButton = drawer.querySelector('six-button');
+
+            openButton.addEventListener('click', () => drawer.show());
+            closeButton.addEventListener('click', () => drawer.hide());
+          })();
+        </script>
+      </section>
+
+      <h2>Slide in From Left</h2>
+      <p>To make the drawer slide in from the left, set the <code>placement</code> attribute to <code>left</code>.</p>
+      <section class="demo">
+        <six-drawer label="Drawer" placement="left" class="drawer-placement-left">
+          This drawer slides in from the left.
+          <six-button slot="footer">Close</six-button>
+        </six-drawer>
+
+        <six-button>Open Drawer</six-button>
+
+        <script type="module">
+          (() => {
+            let drawer = document.querySelector('.drawer-placement-left');
+            let openButton = drawer.nextElementSibling;
+            let closeButton = drawer.querySelector('six-button');
+
+            openButton.addEventListener('click', () => drawer.show());
+            closeButton.addEventListener('click', () => drawer.hide());
+          })();
+        </script>
+      </section>
+
+      <h2>Slide in From Top</h2>
+      <p>
+        To make the drawer slide in from the top, set the
+        <code>placement</code>
+        attribute to
+        <code>top</code>
+        .
+      </p>
+      <section class="demo">
+        <six-drawer label="Drawer" placement="top" class="drawer-placement-top">
+          This drawer slides in from the top.
+          <six-button slot="footer">Close</six-button>
+        </six-drawer>
+
+        <six-button>Open Drawer</six-button>
+
+        <script type="module">
+          (() => {
+            let drawer = document.querySelector('.drawer-placement-top');
+            let openButton = drawer.nextElementSibling;
+            let closeButton = drawer.querySelector('six-button');
+
+            openButton.addEventListener('click', () => drawer.show());
+            closeButton.addEventListener('click', () => drawer.hide());
+          })();
+        </script>
+      </section>
+
+      <h2>Slide in From Bottom</h2>
+      <p>
+        To make the drawer slide in from the bottom, set the
+        <code>placement</code>
+        attribute to
+        <code>bottom</code>
+        .
+      </p>
+      <section class="demo">
+        <six-drawer label="Drawer" placement="bottom" class="drawer-placement-bottom">
+          This drawer slides in from the bottom.
+          <six-button slot="footer">Close</six-button>
+        </six-drawer>
+
+        <six-button>Open Drawer</six-button>
+
+        <script type="module">
+          (() => {
+            let drawer = document.querySelector('.drawer-placement-bottom');
+            let openButton = drawer.nextElementSibling;
+            let closeButton = drawer.querySelector('six-button');
+
+            openButton.addEventListener('click', () => drawer.show());
+            closeButton.addEventListener('click', () => drawer.hide());
+          })();
+        </script>
+      </section>
+
+      <h2>Contained to an Element</h2>
+      <p>
+        By default, the drawer slides out of its
+        <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block#Identifying_the_containing_block"
+          >containing block</a
+        >, which is usually the viewport. To make the drawer slide out of its parent element, add the
+        <code>contained</code>
+        prop and
+        <code>position: relative</code>
+        to the parent.
+      </p>
+
+      <section class="demo">
+        <div
+          style="
+            position: relative;
+            border: solid 2px var(--six-panel-border-color);
+            height: 300px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+          "
+        >
+          The drawer will be contained to this box. This content won't shift or be affected in any way when the drawer
+          opens.
+
+          <six-drawer label="Drawer" contained class="drawer-contained" style="--size: 50%">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            <six-button slot="footer">Close</six-button>
+          </six-drawer>
+        </div>
+
+        <six-button>Open Drawer</six-button>
+
+        <script type="module">
+          (() => {
+            let drawer = document.querySelector('.drawer-contained');
+            let openButton = drawer.parentElement.nextElementSibling;
+            let closeButton = drawer.querySelector('six-button');
+
+            openButton.addEventListener('click', () => drawer.show());
+            closeButton.addEventListener('click', () => drawer.hide());
+          })();
+        </script>
+      </section>
+
+      <h2>Custom Size</h2>
+
+      <p>
+        Use the
+        <code>--size</code>
+        custom property to set the drawer's size. This will be applied to the drawer's width or height depending on its
+        <code>placement</code>
+      </p>
+
+      <section class="demo">
+        <six-drawer label="Drawer" class="drawer-custom-size" style="--size: 50vw">
+          This drawer is always 50% of the viewport.
+          <six-button slot="footer">Close</six-button>
+        </six-drawer>
+
+        <six-button>Open Drawer</six-button>
+
+        <script type="module">
+          (() => {
+            let drawer = document.querySelector('.drawer-custom-size');
+            let openButton = drawer.nextElementSibling;
+            let closeButton = drawer.querySelector('six-button');
+
+            openButton.addEventListener('click', () => drawer.show());
+            closeButton.addEventListener('click', () => drawer.hide());
+          })();
+        </script>
+      </section>
+
+      <h2>Scrolling</h2>
+
+      <p>
+        By design, a drawer's height will never exceed 100% of its container. As such, drawers will not scroll with the
+        page to ensure the header and footer are always accessible to the user.
+      </p>
+
+      <section class="demo">
+        <six-drawer label="Drawer" class="drawer-scrolling">
+          <div style="height: 150vh; border: dashed 2px var(--six-color-web-rock-200); padding: 0 1rem">
+            <p>Scroll down and give it a try! 👇</p>
+          </div>
+          <six-button slot="footer">Close</six-button>
+        </six-drawer>
+
+        <six-button>Open Drawer</six-button>
+
+        <script type="module">
+          (() => {
+            let drawer = document.querySelector('.drawer-scrolling');
+            let openButton = drawer.nextElementSibling;
+            let closeButton = drawer.querySelector('six-button');
+
+            openButton.addEventListener('click', () => drawer.show());
+            closeButton.addEventListener('click', () => drawer.hide());
+          })();
+        </script>
+      </section>
+
+      <h2>Ignoring Clicks on the Overlay</h2>
+
+      <p>
+        By default, drawers are closed when the user clicks or taps on the overlay. To prevent this behavior, cancel the
+        <code>six-overlay-dismiss</code>
+        event.
+      </p>
+
+      <section class="demo">
+        <six-drawer label="Drawer" class="drawer-no-overlay-dismiss">
+          This drawer will not be closed when you click outside of it.
+          <six-button slot="footer">Close</six-button>
+        </six-drawer>
+
+        <six-button>Open Drawer</six-button>
+
+        <script type="module">
+          (() => {
+            let drawer = document.querySelector('.drawer-no-overlay-dismiss');
+            let openButton = drawer.nextElementSibling;
+            let closeButton = drawer.querySelector('six-button');
+
+            openButton.addEventListener('click', () => drawer.show());
+            closeButton.addEventListener('click', () => drawer.hide());
+
+            drawer.addEventListener('six-drawer-overlay-dismiss', (event) => event.preventDefault());
+          })();
+        </script>
+      </section>
+
+      <h2>Customizing Initial Focus</h2>
+
+      <p>
+        By default, the drawer's panel will gain focus when opened. To set focus on a different element, listen for the
+        <code>six-initial-focus</code>
+        event.
+      </p>
+
+      <section class="demo">
+        <six-drawer label="Drawer" class="drawer-focus">
+          <six-input placeholder="I will have focus when the drawer is opened"></six-input>
+          <six-button slot="footer">Close</six-button>
+        </six-drawer>
+
+        <six-button>Open Drawer</six-button>
+
+        <script type="module">
+          (() => {
+            let drawer = document.querySelector('.drawer-focus');
+            let input = drawer.querySelector('six-input');
+            let openButton = drawer.nextElementSibling;
+            let closeButton = drawer.querySelector('six-button');
+
+            openButton.addEventListener('click', () => drawer.show());
+            closeButton.addEventListener('click', () => drawer.hide());
+
+            drawer.addEventListener('six-drawer-initial-focus', (event) => {
+              event.preventDefault();
+              input.setFocus({ preventScroll: true });
+            });
+          })();
+        </script>
+      </section>
+    </div>
+  </body>
+</html>

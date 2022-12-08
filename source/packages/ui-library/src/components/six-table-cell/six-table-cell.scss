@@ -1,0 +1,7 @@
+@import 'src/global/component';
+
+:host {
+  display: table-cell;
+  padding: var(--six-spacing-medium);
+  font-size: var(--six-font-size-small);
+}

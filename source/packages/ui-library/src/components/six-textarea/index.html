@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <script type="module" src="/build/ui-library.esm.js"></script>
+    <script nomodule src="/build/ui-library.js"></script>
+    <link rel="stylesheet" href="/build/ui-library.css" />
+    <title>six-textarea</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Textarea</h2>
+
+      <p>Textareas collect data from the user and allow multiple lines of text.</p>
+      <section class="demo" style="width: 300px">
+        <six-textarea></six-textarea>
+      </section>
+
+      <p class="warn">
+        This component doesn't work with standard forms. Use <a href="six-form.html">six-form</a> instead.
+      </p>
+
+      <p class="warn">
+        Please refer to the section on <a href="six-form.html#form-control-validation">form control validation</a> to
+        learn how to do client-side validation.
+      </p>
+
+      <h2>Examples</h2>
+
+      <h3>Rows</h3>
+      <p>Use the <code>rows</code> attribute to change the number of text rows that get shown.</p>
+      <section class="demo" style="width: 300px">
+        <six-textarea rows="2"></six-textarea>
+      </section>
+
+      <h3>Placeholders</h3>
+      <p>Use the <code>placeholder</code> attribute to add a placeholder.</p>
+      <section class="demo" style="width: 300px">
+        <six-textarea placeholder="Type something"></six-textarea>
+      </section>
+
+      <h3>Disabled</h3>
+      <p>Use the <code>disabled</code> prop to disable an input.</p>
+      <section class="demo" style="width: 300px">
+        <six-textarea placeholder="Textarea" disabled></six-textarea>
+      </section>
+
+      <h3>Sizes</h3>
+      <p>Use the <code>size</code> attribute to change a textarea's size.</p>
+      <section class="demo" style="width: 300px">
+        <six-textarea placeholder="Small" size="small"></six-textarea>
+        <br />
+        <six-textarea placeholder="Medium" size="medium"></six-textarea>
+        <br />
+        <six-textarea placeholder="Large" size="large"></six-textarea>
+      </section>
+
+      <h3>Labels</h3>
+      <p>
+        Use the <code>label</code> attribute to give the textarea an accessible label. For labels that contain HTML, use
+        the label <code>slot</code> instead.
+      </p>
+      <section class="demo" style="width: 300px">
+        <six-textarea label="Comments"></six-textarea>
+      </section>
+
+      <h3>Help Text</h3>
+      <p>
+        Add descriptive help text to a select with the <code>help-text</code> attribute. For help texts that contain
+        HTML, use the help-text slot instead.
+      </p>
+      <section class="demo" style="width: 300px">
+        <six-textarea label="Feedback" help-text="Please tell us what you think."> </six-textarea>
+      </section>
+
+      <h3>Prevent Resizing</h3>
+      <p>
+        By default, textareas can be resized vertically by the user. To prevent resizing, set the
+        <code>resize</code> attribute to <code>none</code>.
+      </p>
+      <section class="demo" style="width: 300px">
+        <six-textarea resize="none"></six-textarea>
+      </section>
+
+      <h3>Expand with Content</h3>
+      <p>
+        Textareas will automatically resize to expand to fit their content when <code>resize</code> is set to
+        <code>auto</code>.
+      </p>
+      <section class="demo" style="width: 300px">
+        <six-textarea resize="auto"></six-textarea>
+      </section>
+
+      <h2>Events Discalimer</h2>
+
+      <p>The events of our webcommponents should follow native web elements as much as possible.</p>
+
+      <p>
+        This means input, change and blur should be fired the same as when using native elements: Input is fired on
+        input, and change and blur are fired when leaving the input
+      </p>
+
+      <p><code>six-input-input</code> is emitted when the user enters data (not emitted on dynamic value changes)</p>
+
+      <p>
+        <code>six-input-change</code> is emitted when the user presses enter or leaves the form after filling in data
+      </p>
+
+      <p><code>six-input-blur</code> is emitted when the user leaves the form</p>
+
+      <p>
+        <code>six-input-value-change</code> is emitted whenever the value changes. This could be because the user enters
+        data or because the value was dynamically changed
+      </p>
+
+      <p>You can play with the following native and six-input elements to see that the event firing is the same</p>
+
+      <section class="demo">
+        <div style="font-size: 1rem; font-weight: bold; padding-bottom: 1rem">Native Input Element</div>
+        <textarea type="text" id="native-textarea" name="type"></textarea>
+        <div style="padding-bottom: 0.5rem">
+          <div style="padding-top: 1rem">Event Firing History:</div>
+          <ul id="native-events-list"></ul>
+        </div>
+
+        <div style="font-size: 1rem; font-weight: bold; padding-bottom: 1rem">SIX Input Element</div>
+        <six-textarea
+          label="Events"
+          help-text="Check what event is fired when..."
+          id="custom-six-textarea"
+        ></six-textarea>
+        <six-button style="padding-top: 0.5rem" id="event-setting-btn">Set Value</six-button>
+        <div style="padding-bottom: 0.5rem">
+          <div style="padding-top: 1rem">Event Firing History:</div>
+          <ul id="events-list"></ul>
+        </div>
+        <div style="padding-bottom: 0.5rem">
+          <div style="padding-top: 1rem">Event Firing History for six-textarea-value-change:</div>
+          <ul id="events-list-value-change"></ul>
+        </div>
+
+        <script type="module">
+          const nativeTextarea = document.getElementById('native-textarea');
+          const inputEl = document.getElementById('custom-six-textarea');
+          const eventList = document.getElementById('events-list');
+          const eventListValueChange = document.getElementById('events-list-value-change');
+          const nativeEventList = document.getElementById('native-events-list');
+          const eventSettingBtn = document.getElementById('event-setting-btn');
+
+          const logEvent = (eventName, el, color) => (event) => {
+            const value = event.target.value;
+            el.innerHTML = `${el.innerHTML}<li><span style="font-weight: bold; color: ${color};">${eventName}:</span> ${value}</li>`;
+          };
+          inputEl.addEventListener('six-textarea-input', logEvent('input', eventList, 'blue'));
+          inputEl.addEventListener('six-textarea-change', logEvent('change', eventList, 'red'));
+          inputEl.addEventListener('six-textarea-blur', logEvent('blur', eventList, 'green'));
+          inputEl.addEventListener('six-textarea-value-change', logEvent('value-change', eventListValueChange));
+
+          nativeTextarea.addEventListener('input', logEvent('input', nativeEventList, 'blue'));
+          nativeTextarea.addEventListener('change', logEvent('change', nativeEventList, 'red'));
+          nativeTextarea.addEventListener('blur', logEvent('blur', nativeEventList, 'green'));
+
+          eventSettingBtn.addEventListener('click', () => {
+            const someString = 'dynamically set value';
+            inputEl.value = someString;
+            nativeTextarea.value = someString;
+          });
+        </script>
+      </section>
+    </div>
+  </body>
+</html>
