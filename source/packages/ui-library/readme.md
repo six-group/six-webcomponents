@@ -126,7 +126,6 @@ And the code examples are wrapped in `<div class="container"></div>`:
     <!-- Auto Generated Below -->
     ```
 
-
 ### Prepare
 
 Before creating a new version make sure that:

@@ -13,12 +13,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.ref }}
       - uses: actions/setup-node@v3
         with:
           node-version: 16
           registry-url: 'https://registry.npmjs.org'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-      - run: echo //registry.npmjs.org/:_authToken=${{secrets.NPM_PUBLISH_TOKEN}} > .npmrc
       - run: npm install
-      - run: lerna publish --yes --no-verify-access
+      - run: lerna publish --yes --no-verify-access --registry https://registry.npmjs.org/:_authToken=${{secrets.NPM_PUBLISH_TOKEN}}
 
