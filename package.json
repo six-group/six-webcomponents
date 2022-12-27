@@ -11,10 +11,8 @@
     "release": "npm run clean && node scripts/release.js"
   },
   "devDependencies": {
-    "execa": "^6.1.0",
     "lerna": "^4.0.0",
     "lerna-changelog": "^2.2.0",
-    "minimist": "^1.2.7",
     "semver": "^7.3.8",
     "subpackage": "^1.1.0"
   },
