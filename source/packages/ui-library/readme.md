@@ -4,7 +4,7 @@
 
 This is the actual UI components library.
 
-The webcomponents here are built with stencil
+The Webcomponents here are built with Stencil.
 
 ## Stencil
 
