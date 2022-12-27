@@ -2,5 +2,18 @@
   "packages": [
     "source/packages/*"
   ],
-  "version": "3.0.0-build-202209191043"
+  "command": {
+    "version": {
+      "ignoreChanges": [
+        "*.md",
+        "*.mdx"
+      ],
+      "message": "chore(release): [skip ci]"
+    },
+    "publish": {
+      "conventionalCommits": true,
+      "createRelease": "github"
+    }
+  },
+  "version": "3.0.0-beta"
 }
