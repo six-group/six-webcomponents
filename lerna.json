@@ -2,18 +2,5 @@
   "packages": [
     "source/packages/*"
   ],
-  "command": {
-    "version": {
-      "ignoreChanges": [
-        "*.md",
-        "*.mdx"
-      ],
-      "message": "chore(release): [skip ci]"
-    },
-    "publish": {
-      "conventionalCommits": true,
-      "createRelease": "github"
-    }
-  },
   "version": "3.0.0-beta"
 }
