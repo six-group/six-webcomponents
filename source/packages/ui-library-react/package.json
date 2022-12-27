@@ -1,5 +1,5 @@
 {
-  "name": "@six/ui-library-react",
+  "name": "@six-group/ui-library-react",
   "sideEffects": false,
   "version": "3.0.0-beta.1.1",
   "description": "React specific wrapper for component-library",
@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.9.2",
-    "@six/ui-library": "file:../ui-library"
+    "@six-group/ui-library": "file:../ui-library"
   },
   "peerDependencies": {
     "react": "^17.0.2",
