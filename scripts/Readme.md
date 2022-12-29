@@ -23,7 +23,3 @@ The defaultScript:
 The deployScript:
 * executes `npm i` on the documentation
 * executes `npm run build` on the documentation
-* [build the docker](../docs/Dockerfile) image for the documentation
-* push the docker image
-* run docker prune (we no longer need the image locally in the build agent)
-* The image should then be automatically picked up by openshift within the next 15min 

@@ -108,7 +108,8 @@ const main = async () => {
     },
   });
 
-  /*  if (process.argv.includes('--update-deps')) {
+  /*  TODO needs to be configured together with demo app setup
+  if (process.argv.includes('--update-deps')) {
     await updateDemos(version);
   }*/
 
