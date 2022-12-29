@@ -119,7 +119,7 @@ And the code examples are wrapped in `<div class="container"></div>`:
     </body>
     </html>
     ``` 
-* additionally you need to have the an `EXAMPLES` comment in your readme.md:
+* additionally you need to have an `EXAMPLES` comment in your readme.md:
     ```
     <!-- EXAMPLES -->
     
