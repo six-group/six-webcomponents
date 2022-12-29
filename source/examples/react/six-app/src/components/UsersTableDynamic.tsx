@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { SixTable } from '@six/ui-library-react/dist/components';
+import { SixTable } from '@six-group/ui-library-react/dist/components';
 // feature
 import { User } from '../types/user';
 

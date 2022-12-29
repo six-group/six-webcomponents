@@ -1,5 +1,5 @@
 import { Component, Input, TrackByFunction } from '@angular/core';
-import { FilterModel, SortModel } from '@six/ui-library/dist/types/components/six-table/types';
+import { FilterModel, SortModel } from '@six-group/ui-library/dist/types/components/six-table/types';
 import { changeDetection } from '~/change-detection-strategy';
 import { encapsulation } from '~/view-encapsulation';
 import { User } from '~/app/users/providers/users.service';

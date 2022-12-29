@@ -64,12 +64,12 @@ export const config: Config = {
   ],
   outputTargets: [
     reactOutputTarget({
-      componentCorePackage: '@six/ui-library',
+      componentCorePackage: '@six-group/ui-library',
       proxiesFile: '../ui-library-react/src/components.ts',
       includeDefineCustomElements: true,
     }),
     vueOutputTarget({
-      componentCorePackage: '@six/ui-library',
+      componentCorePackage: '@six-group/ui-library',
       proxiesFile: '../ui-library-vue/src/components.ts',
       componentModels: vueComponentModels,
       includeDefineCustomElements: true,

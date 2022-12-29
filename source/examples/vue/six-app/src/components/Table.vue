@@ -15,7 +15,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { SixTable, SixTableHeader, SixTableHeaderCell, SixTableCell, SixTableRow } from '@six/ui-library-vue';
+import { SixTable, SixTableHeader, SixTableHeaderCell, SixTableCell, SixTableRow } from '@six-group/ui-library-vue';
 
 export default defineComponent({
   name: 'AppTable',

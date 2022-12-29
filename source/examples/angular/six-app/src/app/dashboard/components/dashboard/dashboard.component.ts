@@ -8,7 +8,7 @@ import { CoreFacade } from '~/app/core/providers';
   template: `
     <div class="dashboard">
       <h1>Demo</h1>
-      <p>This is an <b>Angular Demo App</b> using <b>@six/ui-library</b></p>
+      <p>This is an <b>Angular Demo App</b> using <b>@six-group/ui-library</b></p>
       <p class="dashboard__actions">
         <six-button (click)="coreFacade.toggleLeftSidebar()"> Toggle left sidebar </six-button>
         <six-button [loading]="coreFacade.tasksLoading$ | async" (click)="coreFacade.toggleRightSidebar()">

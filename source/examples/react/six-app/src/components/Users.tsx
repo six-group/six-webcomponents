@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { SixCard, SixDialog, SixDrawer } from '@six/ui-library-react/dist/components';
+import { SixCard, SixDialog, SixDrawer } from '@six-group/ui-library-react/dist/components';
 // types
 import { User } from '../types/user';
 // hooks

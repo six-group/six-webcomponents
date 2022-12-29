@@ -1,4 +1,4 @@
-import { FilterModel, Item } from '@six/ui-library/dist/types/components/six-table/types';
+import { FilterModel, Item } from '@six-group/ui-library/dist/types/components/six-table/types';
 import { Invalid } from './is';
 import { FilterMode } from './table';
 

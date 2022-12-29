@@ -5,12 +5,10 @@ const { isBranch } = require('./lib/git');
 const main = async () => {
   await executeScript(`
     npm ci
-    cd ${config['@six-group/ui-library']} && npm run lint
-    cd ${config['@six-group/ui-library']} && npm run test:inclCoverage
+    cd source/packages/ui-library && npm run lint
+    cd source/packages/ui-library && npm run test:inclCoverage
     npm run clean
     npm run build
-    cd ${config.docs} && npm ci
-    cd ${config.docs} && npm run build
     npm run publish
   `);
 

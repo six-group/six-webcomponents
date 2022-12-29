@@ -7,7 +7,7 @@ import {
   SixMenuItem,
   SixCheckbox,
   SixRadio,
-} from '@six/ui-library-react/dist/components';
+} from '@six-group/ui-library-react/dist/components';
 // feature
 import { getControlValue } from '../utils/forms';
 import { User } from '../types/user';
@@ -57,9 +57,11 @@ const UserForm = ({ user, updateUser }: UserFormProps) => {
 
   const [form, setForm] = useState<FormState>(getInitialState(user));
 
-  const handleChange = (key: keyof FormState) => ({ target }: CustomEvent) => {
-    setForm({ ...form, [key]: getControlValue(target) });
-  };
+  const handleChange =
+    (key: keyof FormState) =>
+    ({ target }: CustomEvent) => {
+      setForm({ ...form, [key]: getControlValue(target) });
+    };
 
   const handleUpdate = async () => {
     if (await formRef.current?.submit()) {

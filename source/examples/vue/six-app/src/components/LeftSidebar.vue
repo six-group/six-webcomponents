@@ -13,7 +13,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { SixSidebar, SixSidebarItemGroup } from '@six/ui-library-vue';
+import { SixSidebar, SixSidebarItemGroup } from '@six-group/ui-library-vue';
 
 export default defineComponent({
   name: 'AppLeftSidebar',

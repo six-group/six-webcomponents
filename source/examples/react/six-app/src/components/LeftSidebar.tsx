@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { SixSidebar, SixSidebarItemGroup } from '@six/ui-library-react/dist/components';
+import { SixSidebar, SixSidebarItemGroup } from '@six-group/ui-library-react/dist/components';
 
 interface ActiveLinkProps {
   to: string;

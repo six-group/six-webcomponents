@@ -1,4 +1,4 @@
-import { Columns } from '@six/ui-library/dist/types/components/six-table/types';
+import { Columns } from '@six-group/ui-library/dist/types/components/six-table/types';
 import { User } from '~/app/users/providers/users.service';
 
 export enum SortDirection {

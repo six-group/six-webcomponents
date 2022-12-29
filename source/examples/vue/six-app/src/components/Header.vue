@@ -43,7 +43,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { SixHeader, SixSearchField, SixIconButton, SixBadge, SixMenu, SixMenuItem, SixAvatar } from '@six/ui-library-vue';
+import { SixHeader, SixSearchField, SixIconButton, SixBadge, SixMenu, SixMenuItem, SixAvatar } from '@six-group/ui-library-vue';
 
 export default defineComponent({
   name: 'AppHeader',
