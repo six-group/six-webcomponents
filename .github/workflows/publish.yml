@@ -27,9 +27,16 @@ jobs:
         with:
             node-version: ${{ matrix.node }}
             cache: 'npm'
+            cache-dependency-path: package-lock.json
 
-      - name: Run installation 👨🏻‍💻
-        run: npm ci
+      - name: Cache node_modules 📦
+        uses: actions/cache@v3
+        id: npm-cache # use this to check for `cache-hit` ==> if: steps.npm-cache.outputs.cache-hit != 'true'
+        with:
+          path: ${{ steps.npm-cache-dir.outputs.dir }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
 
-      - name: Publish to npm 📦
-        run: npm run publish
+      - name: Run installation 👨🏻‍💻 & Publish to npm 📦
+        run: npm run buildCI

@@ -1,4 +1,3 @@
-const { getPublishedVersions } = require('./lib/registry-check');
 const { config } = require('./lib/config');
 const { executeScript } = require('./lib/execute');
 const { isBranch } = require('./lib/git');
@@ -16,7 +15,6 @@ const main = async () => {
   `);
 
   // disabled e2e tests because currently there is an issue with puppeteer trying to launch firefox instead of chrome
-  // I added a story to the backlog so current development is not blocked
   // reenable with:
   // cd ${config['@six-group/ui-library']} && npm run test:e2e
 
@@ -26,7 +24,7 @@ const main = async () => {
       cd ${config.docs} && npm run build
     `);
   }
-  // build demo apps
+  // TODO build demo apps --> needs to be adjusted for Github
   if (await isBranch(['develop'])) {
     await executeScript(`
       cd ${config['angular-demo']} && npm ci

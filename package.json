@@ -2,6 +2,7 @@
   "name": "root",
   "private": true,
   "scripts": {
+    "buildCI": "node scripts/buildCI.js",
     "publish": "node scripts/publish.js",
     "postinstall": "lerna bootstrap",
     "build": "lerna run build",
