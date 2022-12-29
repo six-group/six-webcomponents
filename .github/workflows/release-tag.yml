@@ -1,25 +1,28 @@
-name: publish
 on:
   push:
-    tags:
-      - 'v[0-9]+.[0-9]+.[0-9]+*'
+    branches:
+      - main
+#    tags:
+#      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+
+name: Create Release
 
 env:
-  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   PUPPETEER_SKIP_DOWNLOAD: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@master
+      - name: Create Release for Tag
+        id: release_tag
+        uses: yyx990803/release-tag@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          ref: ${{ github.ref }}
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          registry-url: 'https://registry.npmjs.org'
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-      - run: npm install
-      - run: lerna publish --yes --no-verify-access --registry https://registry.npmjs.org/:_authToken=${{secrets.NPM_PUBLISH_TOKEN}}
+          tag_name: ${{ github.ref }}
+          body: |
+            Please refer to [CHANGELOG.md](https://github.com/six-group/six-webcomponents/blob/main/source/packages/ui-library/CHANGELOG.md) for details.
 

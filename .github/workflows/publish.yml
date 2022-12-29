@@ -1,0 +1,35 @@
+on:
+  push:
+    branches:
+      - feature/ci-cd-publish-release-tag
+    tags:
+      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+
+name: Publish Release to NPM
+
+env:
+  PUPPETEER_SKIP_DOWNLOAD: true
+  NPM_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+
+jobs:
+  build-release:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ ubuntu-latest ]
+        node: [ 16 ]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup node env 🏗
+        uses: actions/setup-node@v3
+        with:
+            node-version: ${{ matrix.node }}
+            cache: 'npm'
+
+      - name: Run installation 👨🏻‍💻
+        run: npm ci
+
+      - name: Publish to npm 📦
+        run: npm run publish
