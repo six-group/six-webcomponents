@@ -1,7 +1,7 @@
 {
   "name": "@six-group/ui-library-react",
   "sideEffects": false,
-  "version": "3.0.0-beta.1.4",
+  "version": "3.0.0-beta.1.5",
   "description": "React specific wrapper for component-library",
   "license": "Apache-2.0",
   "scripts": {
