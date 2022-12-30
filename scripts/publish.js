@@ -20,7 +20,7 @@ const config = {
   'docs': 'docs',
 };
 
-const publishPackage = async (version, package, { preprocess } = defaultPublishPackageOptions) => {
+const publishPackage = async (version, package, directory, { preprocess } = defaultPublishPackageOptions) => {
   const versions = await getPublishedVersions(package);
 
   if (versions.includes(version)) {
@@ -36,7 +36,7 @@ const publishPackage = async (version, package, { preprocess } = defaultPublishP
 
   await preprocess();
 
-  const currentPackage = config[package];
+  const currentPackage = directory;
 
   await executeScript(`
     cd ${currentPackage} && npm i
@@ -97,9 +97,9 @@ const main = async () => {
 
   const version = await getPackageVersion(config['@six-group/ui-library']);
 
-  await publishPackage(version, '@six-group/ui-library');
+  await publishPackage(version, '@six-group/ui-library', config['@six-group/ui-library']);
 
-  await publishPackage(version, '@six-group/ui-library-react', {
+  await publishPackage(version, '@six-group/ui-library-react', config['@six-group/ui-library-react'], {
     preprocess: async () => {
       await updatePackage(config['@six-group/ui-library-react'], {
         version,
@@ -110,7 +110,7 @@ const main = async () => {
     },
   });
 
-  await publishPackage(version, '@six-group/ui-library-vue', {
+  await publishPackage(version, '@six-group/ui-library-vue', config['@six-group/ui-library-vue'], {
     preprocess: async () => {
       await updatePackage(config['@six-group/ui-library-vue'], {
         version,
