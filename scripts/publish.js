@@ -1,5 +1,5 @@
 const { getPublishedVersions } = require('./lib/registry-check');
-const { config } = require('./lib/config');
+// const { config } = require('./lib/config');
 const { executeCommand } = require('./lib/execute');
 const { executeScript } = require('./lib/execute');
 const { tag } = require('./lib/git');
@@ -8,6 +8,18 @@ const { getPackageVersion, updatePackage } = require('./lib/package');
 const defaultPublishPackageOptions = {
   preprocess: async () => {},
 };
+
+const config = {
+  '@six-group-group/ui-library': 'source/packages/ui-library',
+  '@six-group/ui-library-react': 'source/packages/ui-library-react',
+  '@six-group/ui-library-vue': 'source/packages/ui-library-vue',
+  'angular-demo': 'source/examples/angular/six-app',
+  'react-demo': 'source/examples/react/six-app',
+  'vue-demo': 'source/examples/vue/six-app',
+  'js-demo': 'source/examples/no-magic-just-pure-js/six-app',
+  'docs': 'docs',
+};
+
 
 const publishPackage = async (version, package, { preprocess } = defaultPublishPackageOptions) => {
   const versions = await getPublishedVersions(package);

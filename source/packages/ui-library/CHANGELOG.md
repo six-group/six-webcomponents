@@ -1,6 +1,6 @@
 # Changelog
 
-## [3.*-next](https://github.com/six-group/six-webcomponents)
+## [3.*-beta](https://github.com/six-group/six-webcomponents)
 
 **Deprecated:**
 
