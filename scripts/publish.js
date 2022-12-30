@@ -20,7 +20,6 @@ const config = {
   'docs': 'docs',
 };
 
-
 const publishPackage = async (version, package, { preprocess } = defaultPublishPackageOptions) => {
   const versions = await getPublishedVersions(package);
 
@@ -37,10 +36,12 @@ const publishPackage = async (version, package, { preprocess } = defaultPublishP
 
   await preprocess();
 
+  const currentPackage = config[package];
+
   await executeScript(`
-    cd ${config[package]} && npm i
-    cd ${config[package]} && npm run build
-    cd ${config[package]} && npm publish --registry https://registry.npmjs.org/ --access public --dry-run
+    cd ${currentPackage} && npm i
+    cd ${currentPackage} && npm run build
+    cd ${currentPackage} && npm publish --registry https://registry.npmjs.org/ --access public --dry-run
   `);
 };
 
