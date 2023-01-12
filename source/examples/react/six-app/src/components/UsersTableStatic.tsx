@@ -5,11 +5,11 @@ import {
   SixTableRow,
   SixTable,
   SixTableHeaderCell,
-} from '@six/ui-library-react/dist/components';
+} from '@six-group/ui-library-react/dist/components';
 // types
 import { User } from '../types/user';
-import { FilterMode } from '@six/ui-library/dist/types/components/six-table-header-cell/types';
-import { FilterModel, SortModel } from '@six/ui-library/dist/types/components/six-table/types';
+import { FilterMode } from '@six-group/ui-library/dist/types/components/six-table-header-cell/types';
+import { FilterModel, SortModel } from '@six-group/ui-library/dist/types/components/six-table/types';
 import { byKey } from '../utils/prop-or';
 
 interface UsersTableStaticProps {

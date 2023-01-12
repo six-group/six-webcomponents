@@ -16,7 +16,7 @@ app.get('/users.json', (req, res) => {
 });
 
 app.use('/', express.static(path.join(__dirname, '../public')));
-app.use('/ui-library', express.static(path.join(__dirname, '../node_modules/@six/ui-library/dist/ui-library')));
+app.use('/ui-library', express.static(path.join(__dirname, '../node_modules/@six-group/ui-library/dist/ui-library')));
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/index.html'));

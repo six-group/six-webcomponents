@@ -1,5 +1,11 @@
 import React from 'react';
-import { SixMenu, SixMenuItem, SixAvatar, SixHeader, SixSearchField } from '@six/ui-library-react/dist/components';
+import {
+  SixMenu,
+  SixMenuItem,
+  SixAvatar,
+  SixHeader,
+  SixSearchField,
+} from '@six-group/ui-library-react/dist/components';
 // components
 import Notifications from './Notifications';
 import { useTasks } from '../hooks/use-tasks';

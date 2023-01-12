@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
-import { SixRootCollapsedPayload } from '@six/ui-library/dist/types/components/six-root/six-root';
+import { SixRootCollapsedPayload } from '@six-group/ui-library/dist/types/components/six-root/six-root';
 import { changeDetection } from '../change-detection-strategy';
 import { encapsulation } from '../view-encapsulation';
 import { CoreFacade } from './core/providers';

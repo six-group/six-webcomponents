@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { SixSidebar, SixCard } from '@six/ui-library-react/dist/components';
+import { SixSidebar, SixCard } from '@six-group/ui-library-react/dist/components';
 
 const TASKS = 99;
 

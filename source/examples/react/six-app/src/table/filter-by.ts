@@ -1,5 +1,5 @@
-import { FilterMode } from '@six/ui-library/dist/types/components/six-table-header-cell/types';
-import { FilterModel, Item } from '@six/ui-library/dist/types/components/six-table/types';
+import { FilterMode } from '@six-group/ui-library/dist/types/components/six-table-header-cell/types';
+import { FilterModel, Item } from '@six-group/ui-library/dist/types/components/six-table/types';
 import { Invalid } from './is';
 
 type Filter = (a: string, b: string) => boolean;
@@ -11,36 +11,38 @@ const modes: Record<FilterMode, Filter> = {
   [FilterMode.NotEquals]: (a, b) => a !== b,
 };
 
-export const filterBy = <T extends Item>(filterModel: FilterModel<T>) => (item: T): boolean => {
-  const keys = Object.keys(filterModel);
+export const filterBy =
+  <T extends Item>(filterModel: FilterModel<T>) =>
+  (item: T): boolean => {
+    const keys = Object.keys(filterModel);
 
-  if (keys.length === 0) {
-    return true;
-  }
-
-  for (const key of keys) {
-    const filter = filterModel[key];
-
-    if (!filter) {
+    if (keys.length === 0) {
       return true;
     }
 
-    for (const [mode, term] of Object.entries(filter)) {
-      if (Invalid.Term(term)) {
-        continue;
+    for (const key of keys) {
+      const filter = filterModel[key];
+
+      if (!filter) {
+        return true;
       }
 
-      const value = String(item[key] ?? '');
+      for (const [mode, term] of Object.entries(filter)) {
+        if (Invalid.Term(term)) {
+          continue;
+        }
 
-      if (Invalid.Term(value)) {
-        continue;
-      }
+        const value = String(item[key] ?? '');
 
-      if (!modes[mode as FilterMode](value, term)) {
-        return false;
+        if (Invalid.Term(value)) {
+          continue;
+        }
+
+        if (!modes[mode as FilterMode](value, term)) {
+          return false;
+        }
       }
     }
-  }
 
-  return true;
-};
+    return true;
+  };

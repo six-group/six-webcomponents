@@ -1,6 +1,6 @@
 import { createEntityAdapter, EntityState } from '@ngrx/entity';
 import { createReducer, on } from '@ngrx/store';
-import { FilterModel, SortModel } from '@six/ui-library/dist/types/components/six-table/types';
+import { FilterModel, SortModel } from '@six-group/ui-library/dist/types/components/six-table/types';
 import { User } from '../providers/users.service';
 import * as Actions from './users.actions';
 

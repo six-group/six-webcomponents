@@ -6,8 +6,8 @@ import { sortBy } from '../utils/sort-by';
 import { filterBy } from '../utils/filter-by';
 import { quickFilterBy } from '../utils/quick-filter-by';
 import { keys } from '../utils/table';
-import { FilterModel, SortModel } from '@six/ui-library/dist/types/components/six-table/types';
-import { Item } from '@six/ui-library/dist/types/components/six-table/types';
+import { FilterModel, SortModel } from '@six-group/ui-library/dist/types/components/six-table/types';
+import { Item } from '@six-group/ui-library/dist/types/components/six-table/types';
 import { fetchDelay } from '~/app/utils/fetch-delay';
 
 export interface User extends Item {

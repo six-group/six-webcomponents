@@ -19,7 +19,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { SixForm, SixInput, SixSelect, SixMenuItem, SixCheckbox, SixRadio } from '@six/ui-library-vue';
+import { SixForm, SixInput, SixSelect, SixMenuItem, SixCheckbox, SixRadio } from '@six-group/ui-library-vue';
 
 export default defineComponent({
   name: 'AppUserForm',

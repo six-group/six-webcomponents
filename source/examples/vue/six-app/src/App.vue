@@ -13,7 +13,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { SixRoot } from '@six/ui-library-vue';
+import { SixRoot } from '@six-group/ui-library-vue';
 import AppHeader from './components/Header.vue';
 import AppLeftSidebar from './components/LeftSidebar.vue';
 import AppRightSidebar from './components/RightSidebar.vue';
@@ -49,7 +49,7 @@ export default defineComponent({
 </script>
 
 <style>
-@import '~@six/ui-library/dist/ui-library/ui-library.css';
+@import '~@six-group/ui-library/dist/ui-library/ui-library.css';
 
 * {
   box-sizing: border-box;

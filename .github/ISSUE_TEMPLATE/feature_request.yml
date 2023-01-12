@@ -11,7 +11,6 @@ body:
          or are unsure if this is really a bug, make sure to:
         
         - Read the [docs](https://six-group.github.io/six-webcomponents/)
-         - Ask on [GitHub Discussions](https://github.com/vuejs/core/discussions)
 
          Also try to search for your issue - another user may have already requested something similar!
 
@@ -22,7 +21,7 @@ body:
       description: |
         Explain your use case, context, and rationale behind this feature request. More importantly, what is the **end user experience** you are trying to build that led to the need for this feature?
 
-        An important design goal of Vue is keeping the API surface small and straightforward. In general, we only consider adding new features that solve a problem that cannot be easily dealt with using existing APIs (i.e. not just an alternative way of doing things that can already be done). The problem should also be common enough to justify the addition.
+        An important design goal of six-webcomponents is keeping the API surface small and straightforward. In general, we only consider adding new features that solve a problem that cannot be easily dealt with using existing APIs (i.e. not just an alternative way of doing things that can already be done). The problem should also be common enough to justify the addition.
       placeholder: Problem description
     validations:
       required: true

@@ -32,7 +32,7 @@
     "@ngrx/store": "^12.0.0",
     "@ngrx/store-devtools": "^12.0.0",
     "@popperjs/core": "^2.9.2",
-    "@six/ui-library": "2.1.0",
+    "@six-group/ui-library": "2.1.0",
     "immer": "^9.0.2",
     "rxjs": "~6.6.0",
     "sass-lint": "^1.13.1",

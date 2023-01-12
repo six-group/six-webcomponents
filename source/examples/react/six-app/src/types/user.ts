@@ -1,5 +1,5 @@
-import { FilterMode, SortDirection } from '@six/ui-library/dist/types/components/six-table-header-cell/types';
-import { FilterModel, SortModel } from '@six/ui-library/dist/types/components/six-table/types';
+import { FilterMode, SortDirection } from '@six-group/ui-library/dist/types/components/six-table-header-cell/types';
+import { FilterModel, SortModel } from '@six-group/ui-library/dist/types/components/six-table/types';
 
 export interface User {
   id: string;

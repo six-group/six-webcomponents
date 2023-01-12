@@ -1,4 +1,4 @@
-import { Item } from '@six/ui-library/dist/types/components/six-table/types';
+import { Item } from '@six-group/ui-library/dist/types/components/six-table/types';
 import { Invalid } from './is';
 
 export const quickFilterBy =

@@ -9,7 +9,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { SixSidebar, SixCard } from '@six/ui-library-vue';
+import { SixSidebar, SixCard } from '@six-group/ui-library-vue';
 
 export default defineComponent({
   name: 'AppRightSidebar',

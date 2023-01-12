@@ -8,3 +8,11 @@ given a version number MAJOR.MINOR.PATCH, increment the:
 * PATCH version when you make backwards compatible bug fixes.
 
 See [Semantic Versioning](https://semver.org/) for more details.
+
+## Creating a new version on Github
+
+* Create a branch from main with the prefix release/... and do a PR against main
+* Execute npm run version:nopush in your local branch and go through the release setup
+* Review the made changes after the execution
+* Push the commit and made tags to Github
+* Review the results from the release dry-run

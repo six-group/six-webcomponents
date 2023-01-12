@@ -1,5 +1,5 @@
 import React from 'react';
-import { SixIconButton, SixBadge, SixSpinner } from '@six/ui-library-react/dist/components';
+import { SixIconButton, SixBadge, SixSpinner } from '@six-group/ui-library-react/dist/components';
 // feature
 import './Notifications.css';
 

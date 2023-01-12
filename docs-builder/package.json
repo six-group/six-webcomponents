@@ -1,7 +1,7 @@
 {
-  "name": "@six/ui-library-docs",
+  "name": "@six-group/ui-library-docs",
   "version": "0.0.1",
-  "description": "Stencil Component Library following the SIX style guide",
+  "description": "Docs for Stencil Component Library following the SIX style guide",
   "license": "Apache-2.0",
   "main": "index.js",
   "repository": "https://github.com/six-group/six-webcomponents",

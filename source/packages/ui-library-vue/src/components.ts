@@ -3,9 +3,9 @@
 /* auto-generated vue proxies */
 import { defineContainer } from './vue-component-lib/utils';
 
-import type { JSX } from '@six/ui-library';
+import type { JSX } from '@six-group/ui-library';
 
-import { defineCustomElements } from '@six/ui-library/loader';
+import { defineCustomElements } from '@six-group/ui-library/loader';
 
 defineCustomElements();
 

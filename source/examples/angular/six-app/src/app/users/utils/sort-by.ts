@@ -1,4 +1,4 @@
-import { Item, SortModel } from '@six/ui-library/dist/types/components/six-table/types';
+import { Item, SortModel } from '@six-group/ui-library/dist/types/components/six-table/types';
 import { SortDirection } from './table';
 
 const unordered = (value?: SortDirection) => value === SortDirection.None;

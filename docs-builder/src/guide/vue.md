@@ -8,7 +8,7 @@ First you need to install the Vue specific library module.
 This is a wrapper around the ui-library which makes the integration of the Web Components very easy.
 Additionally, you will be able to use <code>v-model</code> on some components.  
 ```bash
-npm install @six/ui-library-vue --save
+npm install @six-group/ui-library-vue --save
 ```
 
 ### Import style sheet
@@ -16,7 +16,7 @@ You need to import the SIX style into your project.
 Just link it in the `<style>` section of your main component: `src/App.vue`
 ```js
 <style>
-@import '~@six/ui-library/dist/ui-library/ui-library.css';
+@import '~@six-group/ui-library/dist/ui-library/ui-library.css';
 </style>
 ```
 
@@ -34,7 +34,7 @@ module.exports = {
       new CopyWebpackPlugin(
       [
         {
-          from: 'node_modules/@six/ui-library/dist/ui-library/assets',
+          from: 'node_modules/@six-group/ui-library/dist/ui-library/assets',
           to: 'assets'
         }
       ]
@@ -47,7 +47,7 @@ module.exports = {
 
 ### Usage
 Using the library in your Vue component is very easy.
-Just import the Six component you want to use from `@six/ui-library-vue` and add it to the `components: {}`
+Just import the Six component you want to use from `@six-group/ui-library-vue` and add it to the `components: {}`
 section of your own component. Here is a short example:
 ```vue
 <template>
@@ -67,7 +67,7 @@ section of your own component. Here is a short example:
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { SixForm, SixInput, SixSelect, SixMenuItem, SixCheckbox, SixButton } from '@six/ui-library-vue';
+import { SixForm, SixInput, SixSelect, SixMenuItem, SixCheckbox, SixButton } from '@six-group/ui-library-vue';
 
 export default defineComponent({
   name: 'AppUserForm',

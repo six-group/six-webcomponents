@@ -6,3 +6,5 @@ src/.vuepress/components/docs-demo-six-*
 src/.vuepress/public/components/assets
 src/.vuepress/public/components/*.js
 src/CHANGELOG.md
+node_modules
+.npmrc

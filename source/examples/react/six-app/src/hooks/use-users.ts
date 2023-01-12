@@ -6,7 +6,7 @@ import { filterBy } from '../table/filter-by';
 import { quickFilterBy } from '../table/quick-filter-by';
 import { sortBy } from '../table/sort-by';
 import { environment } from '../environment';
-import { FilterModel, SortModel } from '@six/ui-library/dist/types/components/six-table/types';
+import { FilterModel, SortModel } from '@six-group/ui-library/dist/types/components/six-table/types';
 
 interface UseUsersProps {
   sortModel: SortModel<User>;
