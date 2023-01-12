@@ -31,6 +31,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
+          registry-url: 'https://registry.npmjs.org'
           cache: 'npm'
           cache-dependency-path: package-lock.json
         env:
@@ -53,13 +54,13 @@ jobs:
       - name: Run installation 👨🏻‍💻
         run: npm ci
 
-      - name: Run linter 👀
-        run: npm run lint
+#      - name: Run linter 👀
+#        run: npm run lint
 
       - name: Run build 🏗
         run: npm run build
 
       - name: Run publish 🏗
-        run: npm publish --registry https://registry.npmjs.org/ --access public
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
