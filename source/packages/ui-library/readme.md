@@ -16,13 +16,13 @@ Stencil components are just Web Components, so they work in any major framework 
 
 ## Getting Started
 
-To start building a new web component using Stencil:
+To start building a new webcomponent using Stencil:
 
 ```bash
 npm run generate six-name-of-new-component
 ```
 
-this will create a new folder containing everything necessary for you to develop a new component
+This will create a new folder containing everything necessary for you to develop a new component
 
 
 To run the unit tests for the components, run:
