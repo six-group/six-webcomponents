@@ -1,7 +1,7 @@
 {
   "name": "@six-group/ui-library-vue",
   "sideEffects": false,
-  "version": "3.0.0-beta.1.9",
+  "version": "3.0.0-beta.1.10",
   "description": "Vue specific wrapper for component-library",
   "license": "Apache-2.0",
   "scripts": {
