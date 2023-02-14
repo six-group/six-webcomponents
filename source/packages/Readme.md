@@ -14,5 +14,5 @@ See [Semantic Versioning](https://semver.org/) for more details.
 * Create a branch from main with the prefix release/... and do a PR against main
 * Execute npm run version:nopush in your local branch and go through the release setup
 * Review the made changes after the execution
-* Push the commit and made tags to Github
+* Push the commit and created tags to Github
 * Review the results from the release dry-run

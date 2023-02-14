@@ -56,13 +56,30 @@ jobs:
       - name: Run installation 👨🏻‍💻
         run: npm ci
 
-#      - name: Run linter 👀
-#        run: npm run lint
-
-      - name: Run build 🏗
+      - name: Run build ui-library 🏗
         run: npm run build
 
-      - name: Run publish 🏗
+      - name: Run publish ui-library 🏗
         run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+
+      - name: Run build for ui-library/react 🏗
+        run: npm run build
+        working-directory: source/packages/ui-library-react
+
+      - name: Run publish ui-library/react 🏗
+        run: npm publish --access public
+        working-directory: source/packages/ui-library-react
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+
+      - name: Run build for ui-library/vue 🏗
+        run: npm run build
+        working-directory: source/packages/ui-library-vue
+
+      - name: Run publish ui-library/vue 🏗
+        run: npm publish --access public
+        working-directory: source/packages/ui-library-vue
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
