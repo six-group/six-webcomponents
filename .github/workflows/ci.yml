@@ -64,6 +64,10 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
 
+      - name: Run installation in ui-library/react 👨🏻‍💻
+        run: npm ci
+        working-directory: source/packages/ui-library-react
+
       - name: Run build for ui-library/react 🏗
         run: npm run build
         working-directory: source/packages/ui-library-react
@@ -73,6 +77,10 @@ jobs:
         working-directory: source/packages/ui-library-react
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+
+      - name: Run installation in ui-library/vue 👨🏻‍💻
+        run: npm ci
+        working-directory: source/packages/ui-library-vue
 
       - name: Run build for ui-library/vue 🏗
         run: npm run build
