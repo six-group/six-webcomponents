@@ -4,7 +4,7 @@
 
 This is the actual UI components library.
 
-The webcomponents here are built with stencil
+The Webcomponents in this library are built with Stencil.
 
 ## Stencil
 
@@ -16,13 +16,13 @@ Stencil components are just Web Components, so they work in any major framework 
 
 ## Getting Started
 
-To start building a new web component using Stencil:
+To start building a new webcomponent using Stencil:
 
 ```bash
 npm run generate six-name-of-new-component
 ```
 
-this will create a new folder containing everything necessary for you to develop a new component
+This will create a new folder containing everything necessary for you to develop a new component
 
 
 To run the unit tests for the components, run:
@@ -83,7 +83,7 @@ component and compare it with previous screenshots. You can find the screenshots
 
 When a screenshot test fails you can open the [compare.html](./screenshot/compare.html) which will present you what changed.
 
-When you actually redesigend the component and expect the changes simply delete the old images.
+When you actually redesigned the component and expect the changes simply delete the old images.
 
 The screenshot tests are not run in the build because the tests seem to always fail in the build and it's very hard to 
 figure out what exactly differs there. So if you want to validate the components are still working properly run it locally:
@@ -119,13 +119,12 @@ And the code examples are wrapped in `<div class="container"></div>`:
     </body>
     </html>
     ``` 
-* additionally you need to have the an `EXAMPLES` comment in your readme.md:
+* additionally you need to have an `EXAMPLES` comment in your readme.md:
     ```
     <!-- EXAMPLES -->
     
     <!-- Auto Generated Below -->
     ```
-
 
 ### Prepare
 

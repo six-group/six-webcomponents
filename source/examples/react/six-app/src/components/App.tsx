@@ -1,5 +1,5 @@
 import React, { useState, Suspense } from 'react';
-import { SixRoot, SixSpinner } from '@six/ui-library-react/dist/components';
+import { SixRoot, SixSpinner } from '@six-group/ui-library-react/dist/components';
 // styles
 import './App.css';
 // components
@@ -8,7 +8,7 @@ import RightSidebar from './RightSidebar';
 import LeftSidebar from './LeftSidebar';
 import Header from './Header';
 // types
-import { SixRootCollapsedPayload } from '@six/ui-library/dist/types/components/six-root/six-root';
+import { SixRootCollapsedPayload } from '@six-group/ui-library/dist/types/components/six-root/six-root';
 // hooks
 import { useModalState } from '../hooks/use-modal-state';
 import { Route, Routes } from 'react-router-dom';

@@ -21,7 +21,7 @@ A component collection includes a main function that is used to load the compone
 That function is called `defineCustomElements()` and it needs to be called once during the bootstrapping of your application.
 One convenient place to do this is in `main.ts` as such:
 ```ts
-import { defineCustomElements } from '@six/ui-library/loader';
+import { defineCustomElements } from '@six-group/ui-library/loader';
 ...
 defineCustomElements();
 ```
@@ -30,7 +30,7 @@ defineCustomElements();
 You need to import the SIX style into your project.
 In Angular this can be done in the global style sheet file `src/style.scss`
 ```scss
-@import "~@six/ui-library/dist/ui-library/ui-library.css";
+@import "~@six-group/ui-library/dist/ui-library/ui-library.css";
 ```
 
 ### Import assets
@@ -42,7 +42,7 @@ Please add this lines into your `angular.json`
     ...
     {
         "glob": "*",
-        "input": "./node_modules/@six/ui-library/dist/ui-library/assets",
+        "input": "./node_modules/@six-group/ui-library/dist/ui-library/assets",
         "output": "assets/"
     }
 ],

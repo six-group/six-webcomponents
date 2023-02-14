@@ -26,7 +26,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { SixCard, SixIcon, SixDrawer, SixButton } from '@six/ui-library-vue';
+import { SixCard, SixIcon, SixDrawer, SixButton } from '@six-group/ui-library-vue';
 import AppTable from '@/components/Table.vue';
 import UserForm from '@/components/UserForm.vue';
 import Service from '@/service';

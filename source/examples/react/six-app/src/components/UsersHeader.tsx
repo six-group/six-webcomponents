@@ -1,4 +1,4 @@
-import { SixIcon, SixButton } from '@six/ui-library-react/dist/components';
+import { SixIcon, SixButton } from '@six-group/ui-library-react/dist/components';
 // feature
 import './UsersHeader.css';
 
@@ -17,7 +17,8 @@ const UsersHeader = ({ fetchServerModel, toggleTableType }: UsersHeaderProps) =>
       <SixIcon size="large">supervisor_account</SixIcon>
       <span className="users-header__title">Users</span>
       <p>
-        Table could be constructed either from <code>ui-library</code> building blocks or directly supplying the data to <code>six-table</code> component. Two different fetching models are represented here.
+        Table could be constructed either from <code>ui-library</code> building blocks or directly supplying the data to{' '}
+        <code>six-table</code> component. Two different fetching models are represented here.
       </p>
       <SixButton onClick={toggleTableType}>{fetchServerModel ? 'Server' : 'UI'}</SixButton>
       <span>{text}</span>

@@ -40,7 +40,7 @@ function copy_dist_and_loader {
   assert_exist "$src_loader"
   assert_exist "$src_dist"
 
-  dst="$1/node_modules/@six/ui-library"
+  dst="$1/node_modules/@six-group/ui-library"
 
   dst_cache="$1/.angular/cache"
   dst_loader="$dst/loader"

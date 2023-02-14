@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { FilterModel, SortModel } from '@six/ui-library/dist/types/components/six-table/types';
+import { FilterModel, SortModel } from '@six-group/ui-library/dist/types/components/six-table/types';
 import { User } from '../providers/users.service';
 
 export const fetchAll = createAction('[Users] Fetch All');

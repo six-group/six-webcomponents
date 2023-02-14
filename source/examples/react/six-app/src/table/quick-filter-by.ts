@@ -1,18 +1,20 @@
-import { Item } from '@six/ui-library/dist/types/components/six-table/types';
+import { Item } from '@six-group/ui-library/dist/types/components/six-table/types';
 import { Invalid } from './is';
 
-export const quickFilterBy = <T extends Item>(keys: string[], value?: string) => (item: T): boolean => {
-  if (Invalid.Term(value)) {
-    return true;
-  }
+export const quickFilterBy =
+  <T extends Item>(keys: string[], value?: string) =>
+  (item: T): boolean => {
+    if (Invalid.Term(value)) {
+      return true;
+    }
 
-  const term = value.toLowerCase();
+    const term = value.toLowerCase();
 
-  const source = keys
-    .map((key) => item[key] ?? '')
-    .map(String)
-    .join()
-    .toLowerCase();
+    const source = keys
+      .map((key) => item[key] ?? '')
+      .map(String)
+      .join()
+      .toLowerCase();
 
-  return source.includes(term);
-};
+    return source.includes(term);
+  };

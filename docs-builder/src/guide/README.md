@@ -13,7 +13,7 @@ If you found a bug or something doesn't work as expected feel free to open a [Gi
 To use the SIX Web Components in your project you need to log into artifactory first to obtain an access token.
 In the second step just add the library as a dependency to your package.json. Both can be done with:
 ```bash
-npm install @six/ui-library --save
+npm install @six-group/ui-library --save
 ```
 After the download is finished just follow the instructions for the specific framework your project is build with:
 [Angular](angular.html), [React](react.html) or [Vue](vue.html)

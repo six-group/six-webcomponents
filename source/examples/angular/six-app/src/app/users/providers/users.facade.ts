@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { FilterModel, SortModel } from '@six/ui-library/dist/types/components/six-table/types';
+import { FilterModel, SortModel } from '@six-group/ui-library/dist/types/components/six-table/types';
 import { CoreFacade } from '~/app/core/providers';
 
 // feature

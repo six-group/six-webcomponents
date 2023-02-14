@@ -3,9 +3,9 @@
 /* auto-generated react proxies */
 import { createReactComponent } from './react-component-lib';
 
-import type { JSX } from '@six/ui-library';
+import type { JSX } from '@six-group/ui-library';
 
-import { defineCustomElements } from '@six/ui-library/loader';
+import { defineCustomElements } from '@six-group/ui-library/loader';
 
 defineCustomElements();
 export const SetAttributes = /*@__PURE__*/createReactComponent<JSX.SetAttributes, HTMLSetAttributesElement>('set-attributes');

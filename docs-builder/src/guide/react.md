@@ -8,10 +8,10 @@ React uses a thin wrapper around web components that provides correct typings fo
 
 Before installing web components make sure your `npm` is set up.
 
-Install web components `@six/ui-library` and web components wrapper library for React `@six/ui-library-react`.
+Install web components `@six-group/ui-library` and web components wrapper library for React `@six-group/ui-library-react`.
 
 ```bash
-npm install @six/ui-library@0.0.1 @six/ui-library-react@0.0.1
+npm install @six-group/ui-library@0.0.1 @six-group/ui-library-react@0.0.1
 ```
 
 ## Assets and files
@@ -44,8 +44,8 @@ module.exports = {
     addWebpackPlugin(
       new CopyWebpackPlugin({
         patterns: [
-          { from: 'node_modules/@six/ui-library/dist/ui-library/assets', to: 'assets' },
-          { from: 'node_modules/@six/ui-library/dist/ui-library/files', to: 'files' },
+          { from: 'node_modules/@six-group/ui-library/dist/ui-library/assets', to: 'assets' },
+          { from: 'node_modules/@six-group/ui-library/dist/ui-library/files', to: 'files' },
         ],
       })
     ),
@@ -65,7 +65,7 @@ Include web components styles in the `index.tsx`
 import React from 'react';
 
 // styles
-import '@six/ui-library/dist/ui-library/ui-library.css';
+import '@six-group/ui-library/dist/ui-library/ui-library.css';
 
 ...
 ```
@@ -85,13 +85,13 @@ Basic setup `App.tsx`
 import React, { useState } from 'react';
 import './App.css';
 // root
-import { SixRoot } from '@six/ui-library-react/dist';
+import { SixRoot } from '@six-group/ui-library-react/dist';
 // header
-import { SixHeader, SixMenu, SixMenuItem, SixAvatar } from '@six/ui-library-react/dist';
+import { SixHeader, SixMenu, SixMenuItem, SixAvatar } from '@six-group/ui-library-react/dist';
 // sidebar
-import { SixSidebar, SixSidebarItemGroup } from '@six/ui-library-react/dist';
+import { SixSidebar, SixSidebarItemGroup } from '@six-group/ui-library-react/dist';
 // types
-import { SixRootCollapsedEvent } from '@six/ui-library/dist/types/components/six-root/six-root';
+import { SixRootCollapsedEvent } from '@six-group/ui-library/dist/types/components/six-root/six-root';
 
 const Header = () => {
   return (

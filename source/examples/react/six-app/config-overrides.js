@@ -7,7 +7,7 @@ const { include } = require('./tsconfig.json');
 
 // exports to fix
 const webComponentsEnumDefinitions = {
-  'node_modules/@six/ui-library/dist/types/components/six-table-header-cell': ['types'],
+  'node_modules/@six-group/ui-library/dist/types/components/six-table-header-cell': ['types'],
 };
 
 const copyWebComponentsEnumDefinitions = async () => {
@@ -31,8 +31,8 @@ module.exports = {
     addWebpackPlugin(
       new CopyWebpackPlugin({
         patterns: [
-          { from: 'node_modules/@six/ui-library/dist/ui-library/assets', to: 'assets' },
-          { from: 'node_modules/@six/ui-library/dist/ui-library/files', to: 'files' },
+          { from: 'node_modules/@six-group/ui-library/dist/ui-library/assets', to: 'assets' },
+          { from: 'node_modules/@six-group/ui-library/dist/ui-library/files', to: 'files' },
         ],
       })
     ),
