@@ -23,7 +23,7 @@ log.txt
 .versions/
 node_modules/
 $RECYCLE.BIN/
-!.npmrc
+!.back_npmrc
 
 .DS_Store
 Thumbs.db
