@@ -1,8 +1,6 @@
 {
   "name": "root",
   "scripts": {
-    "buildCI": "node scripts/buildCI.js",
-    "publish": "node scripts/publish.js",
     "postinstall": "lerna bootstrap",
     "build": "lerna run build",
     "version:nopush": "lerna version --no-push",
