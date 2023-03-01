@@ -27,9 +27,11 @@ jobs:
 
       - name: Run installation 👨🏻‍💻
         run: npm ci
+        working-directory: source/packages/ui-library
 
       - name: Run build ui-library 🏗
         run: npm run build
+        working-directory: source/packages/ui-library
 
       - name: Run publish ui-library 🏗
         run: npm publish --access public
