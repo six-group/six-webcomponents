@@ -119,7 +119,9 @@ export class SixTooltip {
   }
 
   disconnectedCallback() {
-    this.popover.destroy();
+    if (this.popover) {
+      this.popover.destroy();
+    }
 
     this.host.removeEventListener('blur', this.handleBlur, true);
     this.host.removeEventListener('click', this.handleClick, true);

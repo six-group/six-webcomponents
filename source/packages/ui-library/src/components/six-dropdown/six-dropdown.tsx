@@ -220,7 +220,7 @@ export class SixDropdown {
 
     if (this.hasBeenInitialized && !this.popover) {
       // there was a weird bug when using six-dropdown inside an ag-grid filter. When closing the ag-grid filter
-      // disconnectedCallback() is executed. However since componentDidLoad() will not be rerendered the popover was had
+      // disconnectedCallback() is executed. However, since componentDidLoad() will not be rerendered the popover had
       // no longer a connected transitionEnd callback to the dropdown. To fix this, we have this sanity check here,
       // to re-initialize the popover in case the component has already been initialized but the popover is undefined.
       this.initializePopover();
@@ -328,13 +328,11 @@ export class SixDropdown {
 
   private handleFilteringForSlotItems(lowerCaseFilterTerm: string) {
     const menuItems = this.getMenuItems();
-    menuItems.forEach((menuItem) => {
-      const lowerCaseMenuItemValue = menuItem?.value?.toLowerCase();
-      const lowerCaseMenuText = menuItem?.innerText?.toLowerCase();
-
+    menuItems.forEach(async (menuItem) => {
       // hide all elements which don't contain the entered substring
       const elementContainsFilterTerm =
-        lowerCaseMenuItemValue?.includes(lowerCaseFilterTerm) || lowerCaseMenuText?.includes(lowerCaseFilterTerm);
+        menuItem?.value?.toLowerCase()?.includes(lowerCaseFilterTerm) ||
+        (await menuItem?.getTextLabel())?.toLowerCase()?.includes(lowerCaseFilterTerm);
 
       menuItem.style.display = elementContainsFilterTerm ? 'unset' : 'none';
     });

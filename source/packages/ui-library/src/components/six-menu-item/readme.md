@@ -16,6 +16,16 @@
 
 ## Methods
 
+### `getTextLabel() => Promise<string>`
+
+Returns a text label based on the contents of the menu item's default slot.
+
+#### Returns
+
+Type: `Promise<string>`
+
+
+
 ### `removeFocus() => Promise<void>`
 
 Removes focus from the button.

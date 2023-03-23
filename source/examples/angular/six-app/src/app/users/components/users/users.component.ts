@@ -13,7 +13,7 @@ export const initialUserFormValues = {
   id: '',
   name: '',
   email: '',
-  birthdate: '',
+  birthdate: null,
   username: '',
   role: 'user',
   important: true,

@@ -1,4 +1,5 @@
 import { Component, Method, Prop, State, h } from '@stencil/core';
+import { getTextContent } from '../../utils/slot';
 
 /**
  * @since 1.0
@@ -24,6 +25,7 @@ import { Component, Method, Prop, State, h } from '@stencil/core';
 })
 export class SixMenuItem {
   menuItem: HTMLElement;
+  defaultSlot: HTMLSlotElement;
 
   @State() hasFocus = false;
 
@@ -53,6 +55,12 @@ export class SixMenuItem {
   @Method()
   async removeFocus() {
     this.menuItem.blur();
+  }
+
+  /** Returns a text label based on the contents of the menu item's default slot. */
+  @Method()
+  getTextLabel() {
+    return Promise.resolve(getTextContent(this.defaultSlot));
   }
 
   handleBlur() {
@@ -96,7 +104,7 @@ export class SixMenuItem {
         </span>
 
         <span part="label" class="menu-item__label">
-          <slot />
+          <slot ref={(el) => (this.defaultSlot = el as HTMLSlotElement)} />
         </span>
 
         <span part="suffix" class="menu-item__suffix">

@@ -612,6 +612,10 @@ export namespace Components {
           * Allowed max file size in bytes.
          */
         "maxFileSize": number | undefined;
+        /**
+          * More than one file allowed.
+         */
+        "multiple": boolean;
     }
     interface SixFooter {
     }
@@ -1016,6 +1020,10 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * Returns a text label based on the contents of the menu item's default slot.
+         */
+        "getTextLabel": () => Promise<string>;
+        /**
           * Removes focus from the button.
          */
         "removeFocus": () => Promise<void>;
@@ -1240,7 +1248,7 @@ export namespace Components {
         /**
           * The default value the select will be reverted to when reset is executed
          */
-        "defaultValue": string | string[];
+        "defaultValue": string | string[] | undefined;
         /**
           * Set to true to disable the select control.
          */
@@ -2940,6 +2948,10 @@ declare namespace LocalJSX {
          */
         "maxFileSize"?: number | undefined;
         /**
+          * More than one file allowed.
+         */
+        "multiple"?: boolean;
+        /**
           * Triggers when an uploaded file doesn't match MIME type or max file size.
          */
         "onSix-file-upload-failure"?: (event: CustomEvent<SixFileUploadFailurePayload>) => void;
@@ -3551,7 +3563,7 @@ declare namespace LocalJSX {
         /**
           * The default value the select will be reverted to when reset is executed
          */
-        "defaultValue"?: string | string[];
+        "defaultValue"?: string | string[] | undefined;
         /**
           * Set to true to disable the select control.
          */
