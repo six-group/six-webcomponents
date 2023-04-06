@@ -72,3 +72,11 @@ jobs:
       - name: Run build for ui-library/vue 🏗
         run: npm run build
         working-directory: source/packages/ui-library-vue
+
+      - name: Run installation in docs-builder 👨🏻‍💻
+        run: npm ci
+        working-directory: docs-builder
+
+      - name: Run build for docs-builder 🏗
+        run: npm run build
+        working-directory: docs-builder
