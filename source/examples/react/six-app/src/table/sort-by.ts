@@ -1,14 +1,14 @@
 import { SortDirection } from '@six-group/ui-library/dist/types/components/six-table-header-cell/types';
 import { Item, SortModel } from '@six-group/ui-library/dist/types/components/six-table/types';
 
-const unordered = (value?: SortDirection) => value === SortDirection.None;
+const unordered = (value?: SortDirection) => value === 'none';
 
 type Comparator = (a: unknown, b: unknown) => number;
 
 const comparators: Record<SortDirection, Comparator> = {
-  [SortDirection.Asc]: (a, b) => String(a).localeCompare(String(b)),
-  [SortDirection.Desc]: (a, b) => String(b).localeCompare(String(a)),
-  [SortDirection.None]: () => 0,
+  asc: (a, b) => String(a).localeCompare(String(b)),
+  desc: (a, b) => String(b).localeCompare(String(a)),
+  none: () => 0,
 };
 
 export const sortBy =

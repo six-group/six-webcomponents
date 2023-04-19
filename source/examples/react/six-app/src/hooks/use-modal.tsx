@@ -1,10 +1,11 @@
-import React, { useState, useCallback, ReactNode } from 'react';
+import React, { ReactNode, useCallback, useState } from 'react';
 
 interface ModalComponentProps {
   open?: boolean;
   label?: string;
   'onSix-drawer-hide'?: (event: CustomEvent) => void;
   'onSix-dialog-hide'?: (event: CustomEvent) => void;
+  children: ReactNode;
 }
 
 export const useModal = (ModalComponent: React.FC<ModalComponentProps>) => {

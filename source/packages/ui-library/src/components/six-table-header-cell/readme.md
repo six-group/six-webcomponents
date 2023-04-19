@@ -7,12 +7,12 @@
 
 ## Properties
 
-| Property | Attribute | Description                                                             | Type                                                                                         | Default     |
-| -------- | --------- | ----------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | ----------- |
-| `filter` | `filter`  | Filter mode. Applied only when set.                                     | `FilterMode.Equals \| FilterMode.Includes \| FilterMode.NotEquals \| FilterMode.NotIncludes` | `undefined` |
-| `name`   | `name`    | Table row property name. Used in the custom events to identify the row. | `string`                                                                                     | `undefined` |
-| `sort`   | `sort`    | Sort direction. Applied only when set.                                  | `SortDirection.Asc \| SortDirection.Desc \| SortDirection.None`                              | `undefined` |
-| `value`  | `value`   | Filter value. Applied only when filter mode is set.                     | `string`                                                                                     | `undefined` |
+| Property | Attribute | Description                                                             | Type                           | Default     |
+| -------- | --------- | ----------------------------------------------------------------------- | ------------------------------ | ----------- |
+| `filter` | `filter`  | Filter mode. Applied only when set.                                     | `"eq" \| "in" \| "ne" \| "ni"` | `undefined` |
+| `name`   | `name`    | Table row property name. Used in the custom events to identify the row. | `string`                       | `undefined` |
+| `sort`   | `sort`    | Sort direction. Applied only when set.                                  | `"asc" \| "desc" \| "none"`    | `undefined` |
+| `value`  | `value`   | Filter value. Applied only when filter mode is set.                     | `string`                       | `undefined` |
 
 
 ## Events

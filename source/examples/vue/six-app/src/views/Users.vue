@@ -5,21 +5,21 @@
       <span class="users-header__title">Users</span>
       <p>
         Table could be constructed either from <code>ui-library</code> building blocks or directly supplying the data to
-        <code>six-table</code> component.<br/>
+        <code>six-table</code> component.<br />
         This demo app is using the first approach.
       </p>
     </header>
     <six-card class="users__table">
-      <app-table :columns="columns" :users="users" @userSelected="selectUser"></app-table>
+      <AppTable :columns="columns" :users="users" @userSelected="selectUser"></AppTable>
     </six-card>
     <six-drawer
-        :label="`User #${selectedUser.id}`"
-        :open="showDrawer"
-        @six-drawer-overlay-dismiss="showDrawer=false"
-        @six-drawer-after-hide="storeData"
+      :label="`User #${selectedUser.id}`"
+      :open="showDrawer"
+      @six-drawer-overlay-dismiss="showDrawer = false"
+      @six-drawer-after-hide="storeData"
     >
-      <app-user-form :user="selectedUser"></app-user-form>
-      <six-button slot="footer" @click="showDrawer=false">Submit</six-button>
+      <AppUserForm :user="selectedUser"></AppUserForm>
+      <six-button slot="footer" @click="showDrawer = false">Submit</six-button>
     </six-drawer>
   </div>
 </template>
@@ -35,11 +35,11 @@ import AppUserForm from '@/components/UserForm.vue';
 export default defineComponent({
   name: 'Users',
   components: { AppUserForm, SixCard, SixIcon, SixDrawer, SixButton, AppTable, UserForm },
-  created () {
-    this.fetchData()
+  created() {
+    this.fetchData();
   },
   watch: {
-    '$route': 'fetchData' // call again the method if the route changes
+    $route: 'fetchData', // call again the method if the route changes
   },
   methods: {
     async fetchData() {
@@ -49,12 +49,12 @@ export default defineComponent({
       console.log(JSON.stringify(this.selectedUser));
     },
     selectUser(selectedId: string) {
-      const user = this.users.find( ({ id }) => id === selectedId );
+      const user = this.users.find(({ id }) => id === selectedId);
       if (user) {
         this.selectedUser = user;
         this.showDrawer = true;
       }
-    }
+    },
   },
   data() {
     return {
@@ -63,18 +63,17 @@ export default defineComponent({
         { key: 'email', value: 'E-Mail' },
         { key: 'phone', value: 'Phone' },
         { key: 'username', value: 'Username' },
-        { key: 'website', value: 'Website' }
+        { key: 'website', value: 'Website' },
       ],
       users: [],
       selectedUser: {},
       showDrawer: false,
-    }
-  }
+    };
+  },
 });
 </script>
 
 <style scoped lang="scss">
-
 .users {
   padding: 1rem;
 
@@ -103,5 +102,4 @@ export default defineComponent({
     font-weight: bold !important;
   }
 }
-
 </style>

@@ -1,10 +1,10 @@
 import React from 'react';
 import {
-  SixTableHeader,
-  SixTableCell,
-  SixTableRow,
   SixTable,
+  SixTableCell,
+  SixTableHeader,
   SixTableHeaderCell,
+  SixTableRow,
 } from '@six-group/ui-library-react/dist/components';
 // types
 import { User } from '../types/user';
@@ -66,7 +66,9 @@ const UsersTableStatic = ({
 
   const rows = users.map((user) => {
     const cells = Object.keys(User.columns).map((name) => {
-      return <SixTableCell key={name}>{user[name as keyof User]}</SixTableCell>;
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      return <SixTableCell key={name}>{user[name]}</SixTableCell>;
     });
 
     return (

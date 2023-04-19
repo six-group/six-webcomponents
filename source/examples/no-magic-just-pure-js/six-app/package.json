@@ -1,5 +1,5 @@
 {
-  "name": "six-app",
+  "name": "@six-group/ui-library-js-app",
   "version": "2.1.0",
   "description": "No magic, no frameworks just pure JS.",
   "scripts": {
@@ -10,9 +10,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "express": "^4.17.1"
+    "express": "^4.18.2"
   },
   "dependencies": {
-    "@six-group/ui-library": "2.1.0"
+    "@six-group/ui-library": "file:../../../packages/ui-library"
   }
 }

@@ -1,4 +1,3 @@
-import { FilterMode, SortDirection } from '@six-group/ui-library/dist/types/components/six-table-header-cell/types';
 import { FilterModel, SortModel } from '@six-group/ui-library/dist/types/components/six-table/types';
 
 export interface User {
@@ -35,13 +34,13 @@ export namespace User {
   };
 
   export const sort: SortModel<User> = {
-    name: SortDirection.None,
-    email: SortDirection.None,
+    name: 'none',
+    email: 'none',
   };
 
   export const filter: FilterModel<User> = {
     username: {
-      [FilterMode.Includes]: '',
+      in: '',
     },
   };
 }

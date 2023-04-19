@@ -1,4 +1,4 @@
-import React, { useState, Suspense } from 'react';
+import React, { Suspense, useState } from 'react';
 import { SixRoot, SixSpinner } from '@six-group/ui-library-react/dist/components';
 // styles
 import './App.css';

@@ -5,10 +5,10 @@ import { Invalid } from './is';
 type Filter = (a: string, b: string) => boolean;
 
 const modes: Record<FilterMode, Filter> = {
-  [FilterMode.Includes]: (a, b) => a.includes(b),
-  [FilterMode.NotIncludes]: (a, b) => !a.includes(b),
-  [FilterMode.Equals]: (a, b) => a === b,
-  [FilterMode.NotEquals]: (a, b) => a !== b,
+  in: (a, b) => a.includes(b),
+  ni: (a, b) => !a.includes(b),
+  eq: (a, b) => a === b,
+  ne: (a, b) => a !== b,
 };
 
 export const filterBy =
