@@ -172,7 +172,7 @@ export class SixDrawer {
               this.panel.focus();
             }
           },
-          { once: true },
+          { once: true }
         );
       }
     }

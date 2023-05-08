@@ -64,7 +64,7 @@ describe('six-textarea', () => {
       expect.objectContaining({
         detail: undefined,
         type: 'six-textarea-blur',
-      }),
+      })
     );
 
     // when
@@ -78,7 +78,7 @@ describe('six-textarea', () => {
       expect.objectContaining({
         detail: undefined,
         type: 'six-textarea-blur',
-      }),
+      })
     );
   });
 
@@ -96,7 +96,7 @@ describe('six-textarea', () => {
       expect.objectContaining({
         detail: undefined,
         type: 'six-textarea-focus',
-      }),
+      })
     );
 
     // when
@@ -110,7 +110,7 @@ describe('six-textarea', () => {
       expect.objectContaining({
         detail: undefined,
         type: 'six-textarea-focus',
-      }),
+      })
     );
   });
 
@@ -128,7 +128,7 @@ describe('six-textarea', () => {
       expect.objectContaining({
         detail: undefined,
         type: 'six-textarea-input',
-      }),
+      })
     );
 
     // when
@@ -142,7 +142,7 @@ describe('six-textarea', () => {
       expect.objectContaining({
         detail: undefined,
         type: 'six-textarea-input',
-      }),
+      })
     );
   });
 });

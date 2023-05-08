@@ -19,7 +19,7 @@ describe('six-badge', () => {
         '<six-badge type="success" pill>Success</six-badge>\n' +
         '<six-badge type="warning" pill>Warning</six-badge>\n' +
         '<six-badge type="danger" pill>Danger</six-badge>\n' +
-        '<six-badge type="action" pill>Action</six-badge>',
+        '<six-badge type="action" pill>Action</six-badge>'
     );
 
     await page.setViewport({ width: 520, height: 120 });

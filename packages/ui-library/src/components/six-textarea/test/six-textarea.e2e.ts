@@ -214,7 +214,7 @@ describe('six-textarea', () => {
         '    <br>\n' +
         '    <six-textarea placeholder="Medium" size="medium"></six-textarea>\n' +
         '    <br>\n' +
-        '    <six-textarea placeholder="Large" size="large"></six-textarea>',
+        '    <six-textarea placeholder="Large" size="large"></six-textarea>'
     );
 
     await page.setViewport({ width: 520, height: 450 });

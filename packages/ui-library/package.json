@@ -31,8 +31,6 @@
     "clean": "rimraf dist loader www docs",
     "lint": "eslint src/components/**/*{.ts,.tsx}",
     "lint:fix": "eslint --fix src/**/*{.ts,.tsx}",
-    "prettier": "prettier --check src/**/*{.ts,.tsx,.html,.css,.scss}",
-    "prettier:fix": "prettier --write src/**/*{.ts,.tsx,.html,.css,.scss}",
     "codeclean": "npm run lint:fix && npm run prettier:fix"
   },
   "dependencies": {
@@ -57,7 +55,6 @@
     "jest": "^26.6.3",
     "jest-cli": "^26.6.3",
     "material-icons": "^1.12.0",
-    "prettier": "2.3.1",
     "puppeteer": "^13.3.2",
     "puppeteer-core": "^13.3.2",
     "replace-in-file": "^6.2.0",

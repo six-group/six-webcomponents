@@ -17,7 +17,7 @@ describe('six-menu-label', () => {
       '<six-menu style="max-width: 200px; border: solid 1px var(--six-panel-border-color); border-radius: var(--six-border-radius-medium);">' +
         '<six-menu-label>Fruit</six-menu-label>' +
         '<six-menu-item value="apple">Apple</six-menu-item>' +
-        '</six-menu>',
+        '</six-menu>'
     );
 
     await page.setViewport({ width: 520, height: 120 });

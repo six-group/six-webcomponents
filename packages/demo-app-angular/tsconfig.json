@@ -17,11 +17,7 @@
     "importHelpers": true,
     "target": "es2017",
     "module": "esnext",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "paths": {
       "~/*": ["src/*"]
     }

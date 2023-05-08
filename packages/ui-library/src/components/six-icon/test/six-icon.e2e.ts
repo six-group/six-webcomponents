@@ -18,7 +18,7 @@ describe('six-icon', () => {
         '<six-icon>favorite</six-icon>' +
         '<six-icon>backup</six-icon>' +
         '<six-icon>delete</six-icon>' +
-        '<six-icon>language</six-icon>',
+        '<six-icon>language</six-icon>'
     );
 
     await page.setViewport({ width: 150, height: 30 });

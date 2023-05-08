@@ -200,7 +200,7 @@ export class SixSidebar {
 
     if (index < 0 || index > menuItemsOnRootLevel.length - 1) {
       console.error(
-        `Tried to access sidebar menu item by index, but provided index out of range. Provided index: ${index}`,
+        `Tried to access sidebar menu item by index, but provided index out of range. Provided index: ${index}`
       );
       return;
     }

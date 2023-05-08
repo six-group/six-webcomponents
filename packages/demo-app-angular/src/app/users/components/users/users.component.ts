@@ -56,7 +56,7 @@ export class UsersComponent implements OnInit, OnDestroy {
         form: getAbstractControlProps(this.form),
         controls: Object.keys(this.form.controls).reduce(
           (acc, name) => ({
-          ...acc,
+            ...acc,
             [name]: getAbstractControlProps(this.form.controls[name]),
           }),
           {}

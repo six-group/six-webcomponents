@@ -55,7 +55,7 @@ export const parseTimeString = (timeStr: string, format: SixTimeFormat): SixTime
 
   if (!isValidTimeString(timeStr, format)) {
     console.error(
-      `Timestring did not match expected format.\nExpected format: ${format}\nReceived timestring: ${timeStr}`,
+      `Timestring did not match expected format.\nExpected format: ${format}\nReceived timestring: ${timeStr}`
     );
   }
 

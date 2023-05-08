@@ -17,7 +17,7 @@ describe('six-main-container', () => {
         return { top: rect.top, left: rect.left, width: rect.width, height: rect.height };
       },
       component,
-      selector,
+      selector
     );
   }
 

@@ -1,8 +1,8 @@
 # six-sidebar
+
 Sidebars are used in combination with the <a href="six-root.html">six-root</a> layout. They are used for static menus on the left or right
 of the main content.
-If you want the user to execute an intermediary task and force a context-switch use six-drawer instead. 
-
+If you want the user to execute an intermediary task and force a context-switch use six-drawer instead.
 
 <!-- EXAMPLES -->
 

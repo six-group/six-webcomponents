@@ -1,6 +1,5 @@
 # six-sidebar-item-group
 
-
 <!-- EXAMPLES -->
 
 <!-- Auto Generated Below -->

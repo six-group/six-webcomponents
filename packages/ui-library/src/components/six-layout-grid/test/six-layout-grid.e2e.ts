@@ -13,7 +13,7 @@ describe('six-layout-grid', () => {
         return { top: rect.top, left: rect.left, width: rect.width, height: rect.height };
       },
       component,
-      selector,
+      selector
     );
   }
 
@@ -24,7 +24,7 @@ describe('six-layout-grid', () => {
         return cmpEl.style.getPropertyValue(cssVar);
       },
       component,
-      cssVar,
+      cssVar
     );
   }
 

@@ -1,6 +1,6 @@
 # Changelog
 
-## [3.*-beta](https://github.com/six-group/six-webcomponents)
+## [3.\*-beta](https://github.com/six-group/six-webcomponents)
 
 **Deprecated:**
 
@@ -8,7 +8,7 @@
 
 - **Implemented New Features and Enhancements:**
 - six-language-switcher: Added new component to switch language
-- six-checkbox: Add six-label to six-checkbox as param or slot (*breaking change: Due to naming conflict six-checkbox::part(label) got renamed to six-checkbox::part(text))
+- six-checkbox: Add six-label to six-checkbox as param or slot (\*breaking change: Due to naming conflict six-checkbox::part(label) got renamed to six-checkbox::part(text))
 - six-table: Extend table functionality
 - six-table: Drag column to reorder
 - six-table: Customized list of displayed columns
@@ -33,7 +33,7 @@
 - six-select: now supports virtual scrolling
 - six-dropdown: now allows to pass items via attribute instead of only via slot
 - six-dropdown: now supports virtual scrolling
-- six-menu: now allow to define the number of menu items shown (scrollable menu) 
+- six-menu: now allow to define the number of menu items shown (scrollable menu)
 - six-menu: now supports virtual scrolling
 
 **Fixed bugs:**
@@ -80,8 +80,8 @@
 - six-form: removed support for native html tags
 - six-tile: added event handlers for slots of six-tile
 - angular custom directive: bugfix handling of date fields
-- six-input: change behaviour when six-input-change is fired (*breaking change)
-- six-textarea: change behaviour when six-textarea-change is fired (*breaking change)
+- six-input: change behaviour when six-input-change is fired (\*breaking change)
+- six-textarea: change behaviour when six-textarea-change is fired (\*breaking change)
 - six-datepicker: fixed problem where one could not delete date
 - six-datepicker: fixed problem where datepicker was not able to handle invalid value input
 - six-select: change event is fired during initialization of component

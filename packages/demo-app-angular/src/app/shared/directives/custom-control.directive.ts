@@ -1,4 +1,4 @@
-import { Directive, ElementRef, forwardRef, Host, OnDestroy, Optional, Renderer2, SkipSelf, } from '@angular/core';
+import { Directive, ElementRef, forwardRef, Host, OnDestroy, Optional, Renderer2, SkipSelf } from '@angular/core';
 import { AbstractControl, ControlContainer, ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
@@ -73,18 +73,15 @@ export class CustomControlDirective implements ControlValueAccessor, OnDestroy {
     this.onTouched();
   }
 
-  onChange: OnChange = () => {
-  };
+  onChange: OnChange = () => {};
 
-  onTouched = () => {
-  };
+  onTouched = () => {};
 
   constructor(
     readonly renderer: Renderer2,
     readonly ref: ElementRef,
     @Optional() @Host() @SkipSelf() readonly parent: ControlContainer
-  ) {
-  }
+  ) {}
 
   get control(): AbstractControl {
     const name = getFormControlName(this.ref);
@@ -142,7 +139,7 @@ export class CustomControlDirective implements ControlValueAccessor, OnDestroy {
 
       setRefInvalid();
     } else {
-      console.log(`[ updateValidity remove attribute ]`, {error, element: this.ref.nativeElement});
+      console.log(`[ updateValidity remove attribute ]`, { error, element: this.ref.nativeElement });
       this.renderer.removeAttribute(this.ref.nativeElement, 'invalid');
       this.ref.nativeElement.setCustomValidity('');
     }

@@ -328,7 +328,7 @@ export const isInRange = (date: Date | undefined, minDate: Date | undefined, max
 const validateTwoDates = (
   first: any,
   second: Date | string | undefined,
-  validateFn: (irst: Date, second: Date) => boolean,
+  validateFn: (irst: Date, second: Date) => boolean
 ) => {
   if (isNil(first) && isNil(second)) {
     return false;

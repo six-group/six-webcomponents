@@ -1,11 +1,11 @@
 <template>
   <six-table striped>
     <six-table-header>
-      <six-table-header-cell  v-for="column in columns" name="{{ column.key }}">
+      <six-table-header-cell v-for="column in columns" name="{{ column.key }}">
         {{ column.value }}
       </six-table-header-cell>
     </six-table-header>
-    <six-table-row  v-for="user in users" @click="$emit('userSelected', user.id)">
+    <six-table-row v-for="user in users" @click="$emit('userSelected', user.id)">
       <six-table-cell v-for="column in columns">
         {{ user[column.key] }}
       </six-table-cell>
@@ -20,9 +20,8 @@ import { SixTable, SixTableHeader, SixTableHeaderCell, SixTableCell, SixTableRow
 export default defineComponent({
   name: 'AppTable',
   components: { SixTable, SixTableHeader, SixTableHeaderCell, SixTableCell, SixTableRow },
-  props: [ 'columns', 'users' ]
+  props: ['columns', 'users'],
 });
 </script>
 
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>

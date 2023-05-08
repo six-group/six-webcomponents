@@ -39,10 +39,7 @@
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
       "disableOptimisticBPs": true,
-      "skipFiles": [
-          "${workspaceFolder}/node_modules/**/*.js",
-          "<node_internals>/**/*.js"
-      ],
+      "skipFiles": ["${workspaceFolder}/node_modules/**/*.js", "<node_internals>/**/*.js"],
       "windows": {
         "program": "${workspaceFolder}/node_modules/@stencil/core/bin/stencil"
       }

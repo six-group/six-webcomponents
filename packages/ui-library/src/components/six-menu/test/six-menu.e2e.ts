@@ -15,7 +15,7 @@ describe('six-menu', () => {
       '<six-menu>' +
         '<six-menu-item value="entry1">entry1</six-menu-item>' +
         '<six-menu-item class="second" value="entry2">entry2</six-menu-item>' +
-        '</six-menu>',
+        '</six-menu>'
     );
 
     const sixSelect = await page.spyOnEvent('six-menu-item-selected');
@@ -33,7 +33,7 @@ describe('six-menu', () => {
         '<six-menu-item value="entry1">entry1</six-menu-item>' +
         '<six-menu-item value="entry2">entry2</six-menu-item>' +
         '<six-menu-item value="entry3">entry3</six-menu-item>' +
-        '</six-menu>',
+        '</six-menu>'
     );
 
     const sixSelect = await page.spyOnEvent('six-menu-item-selected');
@@ -58,7 +58,7 @@ describe('six-menu', () => {
         '<six-menu-item value="entry1">entry1</six-menu-item>' +
         '<six-menu-item value="entry2">entry2</six-menu-item>' +
         '<six-menu-item value="entry3">entry3</six-menu-item>' +
-        '</six-menu>',
+        '</six-menu>'
     );
 
     const sixSelect = await page.spyOnEvent('six-menu-item-selected');
@@ -86,7 +86,7 @@ describe('six-menu', () => {
       '<six-menu style="max-width: 200px; border: solid 1px var(--six-panel-border-color); border-radius: var(--six-border-radius-medium);">' +
         '<six-menu-item value="apple">Apple</six-menu-item>' +
         '<six-menu-item value="apple">Orange</six-menu-item>' +
-        '</six-menu>',
+        '</six-menu>'
     );
 
     await page.setViewport({ width: 520, height: 120 });

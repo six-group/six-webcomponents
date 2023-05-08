@@ -221,7 +221,7 @@ export class SixTextarea {
   async setSelectionRange(
     selectionStart: number,
     selectionEnd: number,
-    selectionDirection: 'forward' | 'backward' | 'none' = 'none',
+    selectionDirection: 'forward' | 'backward' | 'none' = 'none'
   ) {
     return this.textarea.setSelectionRange(selectionStart, selectionEnd, selectionDirection);
   }
@@ -232,7 +232,7 @@ export class SixTextarea {
     replacement: string,
     start: number,
     end: number,
-    selectMode: 'select' | 'start' | 'end' | 'preserve' = 'preserve',
+    selectMode: 'select' | 'start' | 'end' | 'preserve' = 'preserve'
   ) {
     this.textarea.setRangeText(replacement, start, end, selectMode);
 

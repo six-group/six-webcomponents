@@ -1,5 +1,6 @@
 # six-root
-Six root gives you a [basic layout](https://en.wikipedia.org/wiki/Holy_grail_(web_design)) skeleton.
+
+Six root gives you a [basic layout](<https://en.wikipedia.org/wiki/Holy_grail_(web_design)>) skeleton.
 
 <!-- EXAMPLES -->
 

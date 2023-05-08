@@ -129,7 +129,7 @@ export class SixRadio {
     if (!this.name) return [];
 
     return [...form.querySelectorAll('six-radio')].filter(
-      (radio: HTMLSixRadioElement) => radio.name === this.name,
+      (radio: HTMLSixRadioElement) => radio.name === this.name
     ) as HTMLSixRadioElement[];
   }
 

@@ -158,7 +158,7 @@ export class SixDialog {
               this.panel.focus();
             }
           },
-          { once: true },
+          { once: true }
         );
       }
     }

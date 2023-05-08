@@ -175,7 +175,7 @@ describe('six-select', () => {
         ' <six-menu-item value="option-1">Option 1</six-menu-item>' +
         ' <six-menu-item value="option-2">Option 2</six-menu-item>' +
         ' <six-menu-item value="option-3">Option 3</six-menu-item>' +
-        '</six-select>',
+        '</six-select>'
     );
 
     await page.setViewport({ width: 520, height: 120 });
@@ -196,7 +196,7 @@ describe('six-select', () => {
         ' <six-menu-item value="option-1">Option 1</six-menu-item>' +
         ' <six-menu-item value="option-2">Option 2</six-menu-item>' +
         ' <six-menu-item value="option-3">Option 3</six-menu-item>' +
-        '</six-select>',
+        '</six-select>'
     );
 
     await page.setViewport({ width: 520, height: 120 });
@@ -217,7 +217,7 @@ describe('six-select', () => {
         ' <six-menu-item value="option-1">Option 1</six-menu-item>' +
         ' <six-menu-item value="option-2">Option 2</six-menu-item>' +
         ' <six-menu-item value="option-3">Option 3</six-menu-item>' +
-        '</six-select>',
+        '</six-select>'
     );
 
     await page.setViewport({ width: 520, height: 120 });
@@ -238,7 +238,7 @@ describe('six-select', () => {
         ' <six-menu-item value="option-1">Option 1</six-menu-item>' +
         ' <six-menu-item value="option-2">Option 2</six-menu-item>' +
         ' <six-menu-item value="option-3">Option 3</six-menu-item>' +
-        '</six-select>',
+        '</six-select>'
     );
 
     await page.setViewport({ width: 520, height: 120 });
@@ -259,7 +259,7 @@ describe('six-select', () => {
         ' <six-menu-item value="option-1">Option 1</six-menu-item>' +
         ' <six-menu-item value="option-2">Option 2</six-menu-item>' +
         ' <six-menu-item value="option-3">Option 3</six-menu-item>' +
-        '</six-select>',
+        '</six-select>'
     );
 
     await page.setViewport({ width: 520, height: 120 });
@@ -292,7 +292,7 @@ describe('six-select', () => {
         '<six-menu-item value="option-1">Option 1</six-menu-item>' +
         '<six-menu-item value="option-2">Option 2</six-menu-item>' +
         '<six-menu-item value="option-3">Option 3</six-menu-item>' +
-        '</six-select>',
+        '</six-select>'
     );
 
     await page.setViewport({ width: 520, height: 240 });
@@ -313,7 +313,7 @@ describe('six-select', () => {
         '<six-menu-item value="option-1">Novice</six-menu-item>' +
         '<six-menu-item value="option-2">Intermediate</six-menu-item>' +
         '<six-menu-item value="option-3">Advanced</six-menu-item>' +
-        '</six-select>',
+        '</six-select>'
     );
 
     await page.setViewport({ width: 520, height: 120 });

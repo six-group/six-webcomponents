@@ -169,7 +169,7 @@ export class SixTooltip {
   getTarget() {
     // Get the first child that isn't a <style> or content slot
     const target = [...this.host.children].find(
-      (el) => el.tagName.toLowerCase() !== 'style' && el.getAttribute('slot') !== 'content',
+      (el) => el.tagName.toLowerCase() !== 'style' && el.getAttribute('slot') !== 'content'
     ) as HTMLElement;
 
     if (!target) {

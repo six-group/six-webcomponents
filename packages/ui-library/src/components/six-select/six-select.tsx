@@ -245,7 +245,7 @@ export class SixSelect {
         this.clearValues();
         this.sixChange.emit({ value: enteredValue, isSelected: false });
         event.stopPropagation();
-      }, this.inputDebounce),
+      }, this.inputDebounce)
     );
 
     this.input.value = this.hasSelection() ? this.displayLabel : '';
@@ -523,7 +523,7 @@ export class SixSelect {
         this.displayTags.push(
           <six-tag exportparts="base:tag" type="info" size={this.size}>
             +{total - this.maxTagsVisible}
-          </six-tag>,
+          </six-tag>
         );
       }
     } else {

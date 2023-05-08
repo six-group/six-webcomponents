@@ -10,7 +10,7 @@ The Webcomponents in this library are built with Stencil.
 
 Stencil is a compiler for building fast web apps using Web Components.
 
-Stencil combines the best concepts of the most popular frontend frameworks into a compile-time rather than run-time tool.  Stencil takes TypeScript, JSX, a tiny virtual DOM layer, efficient one-way data binding, an asynchronous rendering pipeline (similar to React Fiber), and lazy-loading out of the box, and generates 100% standards-based Web Components that run in any browser supporting the Custom Elements v1 spec.
+Stencil combines the best concepts of the most popular frontend frameworks into a compile-time rather than run-time tool. Stencil takes TypeScript, JSX, a tiny virtual DOM layer, efficient one-way data binding, an asynchronous rendering pipeline (similar to React Fiber), and lazy-loading out of the box, and generates 100% standards-based Web Components that run in any browser supporting the Custom Elements v1 spec.
 
 Stencil components are just Web Components, so they work in any major framework or with no framework at all.
 
@@ -23,7 +23,6 @@ npm run generate six-name-of-new-component
 ```
 
 This will create a new folder containing everything necessary for you to develop a new component
-
 
 To run the unit tests for the components, run:
 
@@ -62,8 +61,8 @@ If you want to do some more advanced debugging you can also use `page.evaluate`.
 
 ```javascript
 await page.evaluate(() => {
-    console.log('this is some evaluation');
-    debugger;
+  console.log('this is some evaluation');
+  debugger;
 });
 ```
 
@@ -73,19 +72,19 @@ and run the same command as above:
 npm run test:debug components/six-button/test/six-button.e2e.ts
 ```
 
-FYI: There seems to be some weird bug when using `page.evaluate` where the browser first stops in a ghost breakpoint and 
+FYI: There seems to be some weird bug when using `page.evaluate` where the browser first stops in a ghost breakpoint and
 you have to reload the browser (Ctrl + R) to get to your evaluation endpoint.
 
 ### Visual Diff Testing
 
-The flag `--screenshot` allows to run visual diff e2e tests. When we run these tests we will make a screenshot of the 
+The flag `--screenshot` allows to run visual diff e2e tests. When we run these tests we will make a screenshot of the
 component and compare it with previous screenshots. You can find the screenshots in [this image folder](./screenshot/images).
 
 When a screenshot test fails you can open the [compare.html](./screenshot/compare.html) which will present you what changed.
 
 When you actually redesigned the component and expect the changes simply delete the old images.
 
-The screenshot tests are not run in the build because the tests seem to always fail in the build and it's very hard to 
+The screenshot tests are not run in the build because the tests seem to always fail in the build and it's very hard to
 figure out what exactly differs there. So if you want to validate the components are still working properly run it locally:
 
 `npm run test:inclScrnsht`
@@ -94,10 +93,10 @@ figure out what exactly differs there. So if you want to validate the components
 
 To see the documentation for your component you need to do the following:
 
-* add an `index.html` to your component folder
-* the `index.html` should have the following structure, where a div with the `container` class surrounds all your examples.
-And the code examples are wrapped in `<div class="container"></div>`:
-    ```html
+- add an `index.html` to your component folder
+- the `index.html` should have the following structure, where a div with the `container` class surrounds all your examples.
+  And the code examples are wrapped in `<div class="container"></div>`:
+  `html
     <!DOCTYPE html>
     <html dir="ltr" lang="en">
     <head>
@@ -118,37 +117,40 @@ And the code examples are wrapped in `<div class="container"></div>`:
     </div>
     </body>
     </html>
-    ``` 
-* additionally you need to have an `EXAMPLES` comment in your readme.md:
-    ```
-    <!-- EXAMPLES -->
-    
-    <!-- Auto Generated Below -->
-    ```
+    `
+- additionally you need to have an `EXAMPLES` comment in your readme.md:
+
+  ```
+  <!-- EXAMPLES -->
+
+  <!-- Auto Generated Below -->
+  ```
 
 ### Prepare
 
 Before creating a new version make sure that:
-* you built the projects to be publish (dist folder should be updated)
-* you updated [CHANGELOG.md](CHANGELOG.md)
-* you know which version to update to
-    * our library follows [Semantic Versioning](https://semver.org/) so follow this guide to decide what kind of version update you will bring:
-        * <b>MAJOR</b> version when you make incompatible API changes 
-            * <b>=></b> Users of the SIX Web Components Library must adapt their code to use the new version.
-        * <b>MINOR</b> version when you add functionality in a backwards compatible manner, and 
-            * <b>=></b> Users of the SIX Web Component Library can use new features but must not adapt their existing code.
-        * <b>PATCH</b> version when you make backwards compatible bug fixes. 
-            * <b>=></b> Users of the SIX Web Component Library get a bug fixed but must not adapt their existing code.
-        
+
+- you built the projects to be publish (dist folder should be updated)
+- you updated [CHANGELOG.md](CHANGELOG.md)
+- you know which version to update to
+  - our library follows [Semantic Versioning](https://semver.org/) so follow this guide to decide what kind of version update you will bring:
+    - <b>MAJOR</b> version when you make incompatible API changes
+      - <b>=></b> Users of the SIX Web Components Library must adapt their code to use the new version.
+    - <b>MINOR</b> version when you add functionality in a backwards compatible manner, and
+      - <b>=></b> Users of the SIX Web Component Library can use new features but must not adapt their existing code.
+    - <b>PATCH</b> version when you make backwards compatible bug fixes.
+      - <b>=></b> Users of the SIX Web Component Library get a bug fixed but must not adapt their existing code.
 
 There are different ways how to create a new version:
 
-* manually increase the version in the `package.json` and `package-lock.json`
-* use `npm version [<newversion> | major | minor | patch | premajor | preminor | prepatch | prerelease [--preid=<prerelease-id>] | from-git]`
-    * [see here for more details](https://docs.npmjs.com/updating-your-published-package-version-number)
-* [use lerna publish](https://lerna.js.org/)
+- manually increase the version in the `package.json` and `package-lock.json`
+- use `npm version [<newversion> | major | minor | patch | premajor | preminor | prepatch | prerelease [--preid=<prerelease-id>] | from-git]`
+  - [see here for more details](https://docs.npmjs.com/updating-your-published-package-version-number)
+- [use lerna publish](https://lerna.js.org/)
 
 No matter what kind of method you use to bump the version make sure that the different packages are in sync - always publish these together:
-* ui-library
-- ui-library-react
-- ui-library-vue
+
+- ui-library
+
+* ui-library-react
+* ui-library-vue

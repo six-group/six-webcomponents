@@ -18,7 +18,7 @@ describe('six-switch', () => {
         '<six-switch checked>Checked</six-switch>' +
         '<six-switch disabled>Disabled</six-switch>' +
         '<six-switch checked disabled>Checked Disabled</six-switch>' +
-        '<six-switch style="--width: 80px; --height: 32px; --thumb-size: 26px;">Big</six-switch>',
+        '<six-switch style="--width: 80px; --height: 32px; --thumb-size: 26px;">Big</six-switch>'
     );
     await page.setViewport({ width: 800, height: 100 });
 

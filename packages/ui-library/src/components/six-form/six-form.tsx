@@ -222,7 +222,7 @@ export class SixForm {
     const formData = await this.getFormData();
     const formControls = await this.getFormControls();
     const formControlsThatReport = formControls.filter(
-      (el: HTMLFormElement) => typeof el.reportValidity === 'function',
+      (el: HTMLFormElement) => typeof el.reportValidity === 'function'
     ) as any;
 
     if (!this.novalidate) {
@@ -250,7 +250,7 @@ export class SixForm {
       .filter((el: HTMLFormElement) => typeof el.checkValidity === 'function')
       .map((el: HTMLFormElement) => el.checkValidity());
     const invalidControls = await Promise.all(validationTasks).then((results) =>
-      results.filter((valid) => valid === false),
+      results.filter((valid) => valid === false)
     );
     return invalidControls.length == 0;
   }
@@ -294,7 +294,7 @@ export class SixForm {
       this.sixChange.emit({
         valid: isValid,
         formControl: el,
-      }),
+      })
     );
   }
 

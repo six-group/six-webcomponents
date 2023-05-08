@@ -1,6 +1,5 @@
 # six-avatar
 
-
 <!-- EXAMPLES -->
 
 <!-- Auto Generated Below -->

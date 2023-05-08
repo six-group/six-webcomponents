@@ -93,7 +93,7 @@ describe('<six-range>', () => {
     const page: E2EPage = await newE2EPage();
 
     await page.setContent(
-      '<six-range label="Volume" help-text="Controls the volume of the current song." min="50" max="100" step="1"></six-range>',
+      '<six-range label="Volume" help-text="Controls the volume of the current song." min="50" max="100" step="1"></six-range>'
     );
 
     await page.$eval('six-range', (elm: any) => (elm.value = 55));
@@ -112,7 +112,7 @@ describe('<six-range>', () => {
     const page: E2EPage = await newE2EPage();
 
     await page.setContent(
-      '<six-range label="Volume" help-text="Controls the volume of the current song." min="0" max="100" step="1" disabled></six-range>',
+      '<six-range label="Volume" help-text="Controls the volume of the current song." min="0" max="100" step="1" disabled></six-range>'
     );
 
     await page.setViewport({ width: 520, height: 120 });

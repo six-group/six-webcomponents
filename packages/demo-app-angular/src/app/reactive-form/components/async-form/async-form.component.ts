@@ -54,7 +54,7 @@ export class AsyncFormComponent {
             map((exist) => {
               if (exist) {
                 const message = this.translatePipe.transform(`Username '${exist?.username}' already exist.`);
-                return {[message]: true};
+                return { [message]: true };
               }
               return null;
             })
@@ -69,7 +69,7 @@ export class AsyncFormComponent {
       }
 
       if (isPastDate(control.value)) {
-        return {pastDate: true};
+        return { pastDate: true };
       }
 
       return null;
@@ -81,7 +81,7 @@ export class AsyncFormComponent {
 
       const areInvalidDates = areUnorderedDates(form.controls.startDate.value, form.controls.endDate.value);
       if (areInvalidDates) {
-        form.controls.endDate.setErrors({'End date should not be before start date': true});
+        form.controls.endDate.setErrors({ 'End date should not be before start date': true });
       }
     },
   };
@@ -134,7 +134,7 @@ export class AsyncFormComponent {
           if (isValidationErrors(err)) {
             for (const [name, error] of Object.entries(err)) {
               const message = this.translatePipe.transform(error);
-              this.form.get(name)?.setErrors({[message]: true});
+              this.form.get(name)?.setErrors({ [message]: true });
             }
           }
           return throwError(err);

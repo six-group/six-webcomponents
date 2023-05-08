@@ -16,7 +16,7 @@ describe('six-tag', () => {
     await page.setContent(
       '<six-tag size="small">Small</six-tag>' +
         '<six-tag size="medium">Medium</six-tag>' +
-        '<six-tag size="large">Large</six-tag>',
+        '<six-tag size="large">Large</six-tag>'
     );
 
     await page.setViewport({ width: 520, height: 120 });
@@ -35,7 +35,7 @@ describe('six-tag', () => {
     await page.setContent(
       '<six-tag size="small" pill>Small</six-tag>' +
         '<six-tag size="medium" pill>Medium</six-tag>' +
-        '<six-tag size="large" pill>Large</six-tag>',
+        '<six-tag size="large" pill>Large</six-tag>'
     );
 
     await page.setViewport({ width: 520, height: 120 });
@@ -57,7 +57,7 @@ describe('six-tag', () => {
         '<six-tag type="success">Success</six-tag>' +
         '<six-tag type="action">Action</six-tag>' +
         '<six-tag type="warning">Warning</six-tag>' +
-        '<six-tag type="danger">Danger</six-tag>',
+        '<six-tag type="danger">Danger</six-tag>'
     );
 
     await page.setViewport({ width: 520, height: 120 });

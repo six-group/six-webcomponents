@@ -322,7 +322,7 @@ export class SixDropdown {
     this._options = this.options.filter(
       (option) =>
         (option.label && String(option.label)?.toLowerCase()?.includes(lowerCaseFilterTerm)) ||
-        (option.value && String(option.value)?.toLowerCase()?.includes(lowerCaseFilterTerm)),
+        (option.value && String(option.value)?.toLowerCase()?.includes(lowerCaseFilterTerm))
     );
   }
 

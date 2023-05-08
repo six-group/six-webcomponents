@@ -546,7 +546,7 @@ export class SixDatepicker {
     newDate.setHours(
       time[SixTimePropertyName.HOURS],
       time[SixTimePropertyName.MINUTES],
-      time[SixTimePropertyName.SECONDS],
+      time[SixTimePropertyName.SECONDS]
     );
 
     this.updateValue(newDate);

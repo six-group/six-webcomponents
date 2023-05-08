@@ -10,7 +10,9 @@
     "clean": "npm run clean --workspaces",
     "clean:locks": "find . -name 'package-lock.json' -type f -prune -exec rm '{}' +",
     "clean:modules": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +",
-    "clean:radical": "npm run clean:modules && npm run clean:locks && npm cache clear --force && npm cache verify"
+    "clean:radical": "npm run clean:modules && npm run clean:locks && npm cache clear --force && npm cache verify",
+    "prettier:check": "prettier --check .",
+    "prettier:write": "prettier --write ."
   },
   "workspaces": [
     "packages/ui-library",

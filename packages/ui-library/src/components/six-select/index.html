@@ -350,8 +350,8 @@
 
       <h3>Async Filtering</h3>
       <p>
-        You might have a usecase where the full list of items in the dropdown would be too large and you need to call
-        a backend when filtering the dropdown
+        You might have a usecase where the full list of items in the dropdown would be too large and you need to call a
+        backend when filtering the dropdown
       </p>
       <p>In such a scenario simply add the <code>async-filter</code> attribute to your dropdown component</p>
       <p>If you want to change the default debounce timeout use e.g. <code>filter-debounce="500"</code></p>
@@ -550,7 +550,7 @@
 
             // otherwise if a text has been entered filter for all options which contain the entered text
             virtualAutocomplete.options = allOptions.filter(
-              (option) => option.label.includes(enteredText) || option.value.includes(enteredText),
+              (option) => option.label.includes(enteredText) || option.value.includes(enteredText)
             );
           });
         </script>

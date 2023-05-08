@@ -1,5 +1,5 @@
 six-header {
-  six-badge:not([type="danger"])::part(base) {
+  six-badge:not([type='danger'])::part(base) {
     background: none;
   }
 }

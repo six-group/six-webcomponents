@@ -7,8 +7,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint \"src/**/*.{js,ts,tsx}\"",
-    "format": "prettier \"src/**/*.{json,md,html,css,js,ts,tsx}\" --write"
+    "lint": "eslint \"src/**/*.{js,ts,tsx}\""
   },
   "dependencies": {
     "@six-group/ui-library": "*",
@@ -38,8 +37,7 @@
     "eslint": "^8.39.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "prettier": "^2.8.8"
+    "eslint-plugin-react-hooks": "^4.6.0"
   },
   "eslintConfig": {
     "extends": [

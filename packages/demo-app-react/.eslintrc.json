@@ -18,12 +18,7 @@
     "@typescript-eslint/ban-types": "off",
     "@typescript-eslint/no-namespace": "off"
   },
-  "plugins": [
-    "react",
-    "import",
-    "jsx-a11y",
-    "react-hooks"
-  ],
+  "plugins": ["react", "import", "jsx-a11y", "react-hooks"],
   "parserOptions": {
     "ecmaVersion": 2020,
     "sourceType": "module",
@@ -43,13 +38,7 @@
     },
     "import/resolver": {
       "node": {
-        "extensions": [
-          ".js",
-          ".jsx",
-          ".ts",
-          ".tsx",
-          ".d.ts"
-        ]
+        "extensions": [".js", ".jsx", ".ts", ".tsx", ".d.ts"]
       }
     }
   }

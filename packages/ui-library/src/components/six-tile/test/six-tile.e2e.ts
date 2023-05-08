@@ -81,7 +81,7 @@ describe('six-tile', () => {
         '<six-tile label="Medium" icon-name="home"></six-tile>' +
         '<six-tile label="Medium" icon-name="home" disabled="true"></six-tile>' +
         '<six-tile label="Medium" icon-name="home" closeable="false"></six-tile>' +
-        '<six-tile label="Large" icon-name="home" size="large"></six-tile>',
+        '<six-tile label="Large" icon-name="home" size="large"></six-tile>'
     );
 
     await page.setViewport({ width: 800, height: 200 });

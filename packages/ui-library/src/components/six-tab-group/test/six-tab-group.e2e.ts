@@ -147,7 +147,7 @@ describe('six-tab-group', () => {
         '<six-tab-panel name="custom">This is the custom tab panel.</six-tab-panel>' +
         '<six-tab-panel name="advanced">This is the advanced tab panel.</six-tab-panel>' +
         '<six-tab-panel name="disabled">This is a disabled tab panel.</six-tab-panel>' +
-        '</six-tab-group>',
+        '</six-tab-group>'
     );
     await page.setViewport({ width: 600, height: 150 });
 
@@ -172,7 +172,7 @@ describe('six-tab-group', () => {
         '<six-tab-panel name="custom">This is the custom tab panel.</six-tab-panel>' +
         '<six-tab-panel name="advanced">This is the advanced tab panel.</six-tab-panel>' +
         '<six-tab-panel name="disabled">This is a disabled tab panel.</six-tab-panel>' +
-        '</six-tab-group>',
+        '</six-tab-group>'
     );
     await page.setViewport({ width: 600, height: 150 });
 
@@ -197,7 +197,7 @@ describe('six-tab-group', () => {
         '<six-tab-panel name="custom">This is the custom tab panel.</six-tab-panel>' +
         '<six-tab-panel name="advanced">This is the advanced tab panel.</six-tab-panel>' +
         '<six-tab-panel name="disabled">This is a disabled tab panel.</six-tab-panel>' +
-        '</six-tab-group>',
+        '</six-tab-group>'
     );
     await page.setViewport({ width: 600, height: 250 });
 
@@ -222,7 +222,7 @@ describe('six-tab-group', () => {
         '<six-tab-panel name="custom">This is the custom tab panel.</six-tab-panel>' +
         '<six-tab-panel name="advanced">This is the advanced tab panel.</six-tab-panel>' +
         '<six-tab-panel name="disabled">This is a disabled tab panel.</six-tab-panel>' +
-        '</six-tab-group>',
+        '</six-tab-group>'
     );
     await page.setViewport({ width: 600, height: 250 });
 

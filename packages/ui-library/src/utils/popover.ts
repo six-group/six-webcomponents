@@ -41,7 +41,7 @@ export default class Popover {
         onAfterHide: () => {},
         onTransitionEnd: () => {},
       },
-      options,
+      options
     );
 
     this.isVisible = false;

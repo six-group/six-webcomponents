@@ -19,7 +19,7 @@ describe('six-checkbox', () => {
         '<six-checkbox indeterminate>Indeterminate</six-checkbox>' +
         '<six-checkbox disabled>Disabled</six-checkbox>' +
         '<six-checkbox checked disabled>Checked Disabled</six-checkbox>' +
-        '<six-checkbox indeterminate disabled>Indeterminate Disabled</six-checkbox>',
+        '<six-checkbox indeterminate disabled>Indeterminate Disabled</six-checkbox>'
     );
     await page.setViewport({ width: 800, height: 100 });
 

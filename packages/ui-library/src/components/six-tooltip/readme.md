@@ -1,4 +1,5 @@
 # six-tooltip
+
 Tooltips display additional information based on a specific action.
 
 <!-- EXAMPLES -->

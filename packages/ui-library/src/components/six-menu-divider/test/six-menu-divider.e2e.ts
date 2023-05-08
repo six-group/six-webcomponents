@@ -18,7 +18,7 @@ describe('six-menu-divider', () => {
         '<six-menu-item value="apple">Apple</six-menu-item>' +
         '<six-menu-divider></six-menu-divider>' +
         '<six-menu-item value="apple">Orange</six-menu-item>' +
-        '</six-menu>',
+        '</six-menu>'
     );
 
     await page.setViewport({ width: 520, height: 120 });

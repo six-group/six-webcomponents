@@ -17,7 +17,7 @@ describe('six-radio', () => {
       '<six-radio>Radio</six-radio>' +
         '<six-radio checked>Checked</six-radio>' +
         '<six-radio checked disabled>Checked Disabled</six-radio>' +
-        '<six-radio disabled>Disabled</six-radio>',
+        '<six-radio disabled>Disabled</six-radio>'
     );
     await page.setViewport({ width: 800, height: 100 });
 
@@ -33,7 +33,7 @@ describe('six-radio', () => {
     await page.setContent(
       '<six-radio value="one" name="option">Equipo Cuatro</six-radio>' +
         '<six-radio value="two" name="option">NOrigami</six-radio>' +
-        '<six-radio value="three" name="option" checked>Snowman</six-radio>',
+        '<six-radio value="three" name="option" checked>Snowman</six-radio>'
     );
     const sixChange = await page.spyOnEvent('six-radio-change');
 

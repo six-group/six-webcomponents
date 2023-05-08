@@ -221,7 +221,7 @@ export class SixTimepicker {
       this.host,
       'six-timepicker-change',
       debounce(this.handleSixTimepickerChangeDebounced, this.debounce),
-      DEBOUNCE_TIMEPICKER_LISTENER,
+      DEBOUNCE_TIMEPICKER_LISTENER
     );
   }
 
@@ -292,7 +292,7 @@ export class SixTimepicker {
       this.host,
       'six-timepicker-change',
       debounce(this.handleSixTimepickerChangeDebounced, this.debounce),
-      DEBOUNCE_TIMEPICKER_LISTENER,
+      DEBOUNCE_TIMEPICKER_LISTENER
     );
     this.eventListeners.add(this.inputElement, 'six-input-input', debounce(this.handleInputChange, this.debounce));
   }
@@ -402,7 +402,7 @@ export class SixTimepicker {
   private setupInternalTime() {
     if (this.is12HourClock() && !this.format.includes(TIME_FORMAT_CHAR.PERIOD)) {
       console.error(
-        `${TAG} You provided a 12-hour-clock format but are missing the period (am or pm) in the time-format-string!`,
+        `${TAG} You provided a 12-hour-clock format but are missing the period (am or pm) in the time-format-string!`
       );
     }
 

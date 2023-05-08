@@ -1,10 +1,10 @@
 <template>
-    <six-sidebar position="right" :open="open">
-      <six-card v-for="task in tasks">
-        <h3>Task #{{ task.id }}</h3>
-        <p>{{ task.title }}</p>
-      </six-card>
-    </six-sidebar>
+  <six-sidebar position="right" :open="open">
+    <six-card v-for="task in tasks">
+      <h3>Task #{{ task.id }}</h3>
+      <p>{{ task.title }}</p>
+    </six-card>
+  </six-sidebar>
 </template>
 
 <script lang="ts">
@@ -14,7 +14,7 @@ import { SixSidebar, SixCard } from '@six-group/ui-library-vue';
 export default defineComponent({
   name: 'AppRightSidebar',
   components: { SixSidebar, SixCard },
-  props: [ 'open', 'tasks' ]
+  props: ['open', 'tasks'],
 });
 </script>
 

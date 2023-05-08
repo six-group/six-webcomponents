@@ -251,7 +251,7 @@ export class SixInput {
   async setSelectionRange(
     selectionStart: number,
     selectionEnd: number,
-    selectionDirection: 'forward' | 'backward' | 'none' = 'none',
+    selectionDirection: 'forward' | 'backward' | 'none' = 'none'
   ) {
     return this.input.setSelectionRange(selectionStart, selectionEnd, selectionDirection);
   }
@@ -262,7 +262,7 @@ export class SixInput {
     replacement: string,
     start: number,
     end: number,
-    selectMode: 'select' | 'start' | 'end' | 'preserve' = 'preserve',
+    selectMode: 'select' | 'start' | 'end' | 'preserve' = 'preserve'
   ) {
     this.input.setRangeText(replacement, start, end, selectMode);
 

@@ -1,8 +1,7 @@
 # six-stage-indicator
 
 <!-- EXAMPLES -->
-    
-   
+
 <!-- Auto Generated Below -->
 
 

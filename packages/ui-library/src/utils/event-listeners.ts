@@ -17,7 +17,7 @@ export class EventListeners {
     el: T,
     name: string,
     listener: EventListenerOrEventListenerObject,
-    identifier = null,
+    identifier = null
   ) => {
     this.eventListeners.push({ el, name, listener, identifier });
     el.addEventListener(name, listener);
@@ -26,7 +26,7 @@ export class EventListeners {
   remove = <T extends DocumentAndElementEventHandlers>(
     el: T,
     name: string,
-    listener: EventListenerOrEventListenerObject,
+    listener: EventListenerOrEventListenerObject
   ) => {
     const sameItem = equals({ el, name, listener });
     this.eventListeners = this.getFilteredEventListeners(sameItem);

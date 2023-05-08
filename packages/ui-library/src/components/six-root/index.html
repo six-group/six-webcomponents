@@ -304,7 +304,7 @@
                     ? t.flatMap((s) => Array.from(document.querySelectorAll(s)))
                     : document.querySelector(t),
                 }),
-                {},
+                {}
               );
 
             const Select = getElements({
@@ -319,7 +319,7 @@
             });
 
             Select.header.addEventListener('six-header-hamburger-menu-clicked', () =>
-              Select.leftSidebar.toggleAttribute('open'),
+              Select.leftSidebar.toggleAttribute('open')
             );
 
             Select.leftSidebar.addEventListener('six-sidebar-hide', () => (Select.header.openHamburgerMenu = false));

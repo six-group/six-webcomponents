@@ -71,7 +71,7 @@ export class SixTable {
 
   constructor() {
     console.warn(
-      'six-table will be removed with the next table. Use fate table instead. In case of any question contact Daniel Häusler',
+      'six-table will be removed with the next table. Use fate table instead. In case of any question contact Daniel Häusler'
     );
   }
 

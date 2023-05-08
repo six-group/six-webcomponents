@@ -2,8 +2,8 @@ let state = {
   elements: {},
 };
 
-window.run = components => {
-  const camelToKebapCase = str => str.replace(/[A-Z]/g, letter => `-${letter.toLowerCase()}`);
+window.run = (components) => {
+  const camelToKebapCase = (str) => str.replace(/[A-Z]/g, (letter) => `-${letter.toLowerCase()}`);
 
   const elements = Object.entries(components).reduce((acc, [key, component]) => {
     const selector = camelToKebapCase(key);
@@ -26,7 +26,7 @@ run({
       const task = templateTask.content.cloneNode(true);
       return task;
     });
-    tasks.forEach(task => {
+    tasks.forEach((task) => {
       rightSidebar.appendChild(task);
     });
   },
@@ -45,15 +45,15 @@ run({
   },
 });
 
-const load = url => {
+const load = (url) => {
   fetch(url)
-    .then(res => res.text())
-    .then(html => {
+    .then((res) => res.text())
+    .then((html) => {
       document.querySelector('[router-outlet]').innerHTML = html;
       document
         .querySelector('[router-outlet]')
         .querySelectorAll('[script-outlet]')
-        .forEach(script => {
+        .forEach((script) => {
           const prev = document.querySelector('[script-outlet]');
           if (prev.parentNode === document.body) {
             document.body.removeChild(prev);
@@ -82,7 +82,7 @@ const router = () => {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('[router-link]').forEach(routerLink => {
+  document.querySelectorAll('[router-link]').forEach((routerLink) => {
     window.addEventListener('popstate', router);
     routerLink.onclick = () => {
       const url = routerLink.getAttribute('router-link');

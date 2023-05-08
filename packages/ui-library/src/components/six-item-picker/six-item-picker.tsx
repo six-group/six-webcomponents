@@ -167,7 +167,7 @@ export class SixItemPicker {
       this.host,
       'six-item-picker-change',
       debounce(this.handleSixItemPickerChangeDebounced, this.debounce),
-      DEBOUNCE_ITEM_PICKER_LISTENER,
+      DEBOUNCE_ITEM_PICKER_LISTENER
     );
   }
 
@@ -197,7 +197,7 @@ export class SixItemPicker {
       this.host,
       'six-item-picker-change',
       debounce(this.handleSixItemPickerChangeDebounced, this.debounce),
-      DEBOUNCE_ITEM_PICKER_LISTENER,
+      DEBOUNCE_ITEM_PICKER_LISTENER
     );
   }
 
@@ -373,7 +373,7 @@ export class SixItemPicker {
 
     if (params.isRoundtripPossible()) {
       console.error(
-        `${TAG} Item picker is expected to perform a roundtrip, but either max or min value is missing so a roundtrip is not possible`,
+        `${TAG} Item picker is expected to perform a roundtrip, but either max or min value is missing so a roundtrip is not possible`
       );
       return;
     }
@@ -384,7 +384,7 @@ export class SixItemPicker {
     }
 
     console.warn(
-      `${TAG} Roundtrip is not allowed, but was still triggered, please report this issue to the developer of six-item-picker`,
+      `${TAG} Roundtrip is not allowed, but was still triggered, please report this issue to the developer of six-item-picker`
     );
   }
 

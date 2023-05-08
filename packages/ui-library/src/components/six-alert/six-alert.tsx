@@ -148,7 +148,7 @@ export class SixAlert {
             toastStack.remove();
           }
         },
-        { once: true },
+        { once: true }
       );
     });
   }
