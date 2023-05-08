@@ -12,63 +12,16 @@ env:
 
 jobs:
   build-libs:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ ubuntu-latest ]
-        node: [ 16 ]
-
-    defaults:
-      run:
-        working-directory: source/packages/ui-library
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout 🛎
-        uses: actions/checkout@v3
-
-      - name: Setup node env 🏗
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node }}
+          node-version: 16
           registry-url: 'https://registry.npmjs.org'
           cache: 'npm'
-          cache-dependency-path: package-lock.json
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Get npm cache directory
-        id: npm-cache-dir
-        shell: bash
-        run: |
-              echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
-
-      - name: Cache node_modules 📦
-        uses: actions/cache@v3
-        id: npm-cache # use this to check for `cache-hit` ==> if: steps.npm-cache.outputs.cache-hit != 'true'
-        with:
-          path: ${{ steps.npm-cache-dir.outputs.dir }}
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
-      - name: Run installation 👨🏻‍💻
-        run: npm ci
-
-      - name: Run build ui-library 🏗
-        run: npm run build
-
-      - name: Run installation in ui-library/react 👨🏻‍💻
-        run: npm ci
-        working-directory: source/packages/ui-library-react
-
-      - name: Run build for ui-library/react 🏗
-        run: npm run build
-        working-directory: source/packages/ui-library-react
-
-      - name: Run installation in ui-library/vue 👨🏻‍💻
-        run: npm ci
-        working-directory: source/packages/ui-library-vue
-
-      - name: Run build for ui-library/vue 🏗
-        run: npm run build
-        working-directory: source/packages/ui-library-vue
+      - run: npm ci
+      - run: npm run build
