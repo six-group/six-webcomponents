@@ -1,19 +1,24 @@
 {
-  "name": "root",
+  "name": "@six-group/workspace",
   "scripts": {
-    "buildCI": "node scripts/buildCI.js",
-    "publish": "node scripts/publish.js",
-    "postinstall": "lerna bootstrap",
-    "build": "lerna run build",
-    "version:nopush": "lerna version --no-push",
-    "clean": "lerna run clean",
+    "build": "npm run build --workspaces",
+    "build-lib": "npm run build -w packages/ui-library -w packages/ui-library-react -w packages/ui-library-vue",
+    "clean": "npm run clean --workspaces",
     "clean:locks": "find . -name 'package-lock.json' -type f -prune -exec rm '{}' +",
     "clean:modules": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +",
     "clean:radical": "npm run clean:modules && npm run clean:locks && npm cache clear --force && npm cache verify"
   },
+  "workspaces": [
+    "packages/ui-library",
+    "packages/ui-library-react",
+    "packages/ui-library-vue",
+    "packages/demo-app-angular",
+    "packages/demo-app-react",
+    "packages/demo-app-vue",
+    "packages/demo-app-js"
+  ],
   "devDependencies": {
-    "lerna": "^6.3.0",
-    "subpackage": "^1.1.0"
+    "prettier": "^2.8.8"
   },
   "license": "Apache-2.0"
 }
