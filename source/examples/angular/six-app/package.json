@@ -1,13 +1,12 @@
 {
-  "name": "six-app",
+  "name": "@six-group/ui-library-angular-app",
   "version": "2.1.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "start:3000": "ng serve --port 3000",
     "build": "ng build --base-href=/demos/angular-demo/",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
+    "test": " ng test",
     "clean": "rimraf dist",
     "// format": "",
     "prettier": "prettier \"src/**/*.{json,md,html,css,js,ts,tsx}\" --write",
@@ -32,13 +31,13 @@
     "@ngrx/store": "^12.0.0",
     "@ngrx/store-devtools": "^12.0.0",
     "@popperjs/core": "^2.9.2",
-    "@six-group/ui-library": "2.1.0",
+    "@six-group/ui-library": "file:../../../packages/ui-library",
+    "date-fns": "^2.28.0",
     "immer": "^9.0.2",
     "rxjs": "~6.6.0",
     "sass-lint": "^1.13.1",
     "tslib": "^2.1.0",
-    "zone.js": "~0.11.4",
-    "date-fns": "^2.28.0"
+    "zone.js": "~0.11.4"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~12.0.2",
@@ -60,9 +59,9 @@
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
-    "rimraf": "^3.0.2",
     "prettier": "2.3.1",
     "pretty-quick": "^3.1.0",
+    "rimraf": "^3.0.2",
     "typescript": "~4.2.3"
   }
 }

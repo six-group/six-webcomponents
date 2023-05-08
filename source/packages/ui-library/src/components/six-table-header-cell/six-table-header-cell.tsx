@@ -62,7 +62,7 @@ export class SixTableHeaderCell {
     const sort = this.sort && (
       <six-icon
         filled={true}
-        class={{ 'header__trigger-icon': this.sort === SortDirection.None }}
+        class={{ 'header__trigger-icon': this.sort === 'none' }}
         onClick={this.handleSortNext}
         data-testid={`table-sort-${this.name}`}
       >

@@ -1,7 +1,7 @@
-import { CompareModel, Item, SortModel, Comparator } from '../types';
+import { Comparator, CompareModel, Item, SortModel } from '../types';
 import { SortDirection } from '../../six-table-header-cell/types';
 
-const unordered = (value: SortDirection) => value === SortDirection.None;
+const unordered = (value: SortDirection) => value === 'none';
 
 const DEFAULT_COMPARATOR: Comparator<unknown> = (a, b) => String(a).localeCompare(String(b));
 
@@ -16,15 +16,15 @@ export const sortBy =
 
     return [...items].sort((a, b) => {
       return Object.entries(sort).reduce((acc, [k, v], index) => {
-        if (v === SortDirection.None) {
+        if (v === 'none') {
           return acc;
         }
 
         const comparator = compare[k];
 
         const direction = {
-          [SortDirection.Asc]: +1,
-          [SortDirection.Desc]: -1,
+          asc: +1,
+          desc: -1,
         }[v];
 
         if (comparator) {

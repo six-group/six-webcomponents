@@ -29,6 +29,30 @@ import { FilterMode, SortDirection } from "./components/six-table-header-cell/ty
 import { SixTableHeaderCellFilterUpdatedPayload, SixTableHeaderCellSortUpdatedPayload } from "./components/six-table-header-cell/six-table-header-cell";
 import { SixTimeFormat } from "./components/six-timepicker/six-time-format";
 import { SixTimepickerChange } from "./components/six-timepicker/six-timepicker";
+export { EmptyPayload } from "./utils/types";
+export { SixDateFormats } from "./components/six-datepicker/six-date-formats";
+export { SixDatepickerSelectPayload } from "./components/six-datepicker/six-datepicker";
+export { SixMenuItemData } from "./components/six-menu/six-menu";
+export { SixDropdownAsyncFilterPayload, SixDropdownAutoFilterPayload, SixDropdownScrollPayload } from "./components/six-dropdown/six-dropdown";
+export { SixFileListDownloadPayload, SixFileListRemovePayload } from "./components/six-file-list-item/six-file-list-item";
+export { SixFileUploadFailurePayload, SixFileUploadSuccessPayload } from "./components/six-file-upload/six-file-upload";
+export { SixFormChangePayload, SixFormSubmitPayload } from "./components/six-form/six-form";
+export { SixHeaderAppSwitcherSelectPayload, SixHeaderProfileSelectPayload, SixHeaderSearchFieldToggle } from "./components/six-header/six-header";
+export { ItemPickerPaddingDirection, ItemPickerType } from "./components/six-item-picker/types";
+export { SixItemPickerChangePayload } from "./components/six-item-picker/six-item-picker";
+export { SixLanguageSwitcherChangePayload, SixLanguageSwitcherInput } from "./components/six-language-switcher/six-language-switcher";
+export { SixMenuItemData as SixMenuItemData1, SixMenuItemSelectedPayload } from "./components/six-menu/six-menu";
+export { StageType } from "./components/six-stage-indicator/six-stage-indicator";
+export { SixRootCollapsedPayload } from "./components/six-root/six-root";
+export { SixSearchFieldChangePayload } from "./components/six-search-field/six-search-field";
+export { SixSelectChangePayload } from "./components/six-select/six-select";
+export { StageType as StageType1 } from "./components/six-stage-indicator/six-stage-indicator";
+export { SixTabHidePayload, SixTabShowPayload } from "./components/six-tab-group/six-tab-group";
+export { Data, Item, TableCellClickedPayload, TableReadyPayload, TableRowClickedPayload } from "./components/six-table/types";
+export { FilterMode, SortDirection } from "./components/six-table-header-cell/types";
+export { SixTableHeaderCellFilterUpdatedPayload, SixTableHeaderCellSortUpdatedPayload } from "./components/six-table-header-cell/six-table-header-cell";
+export { SixTimeFormat } from "./components/six-timepicker/six-time-format";
+export { SixTimepickerChange } from "./components/six-timepicker/six-timepicker";
 export namespace Components {
     interface SetAttributes {
         /**
@@ -36,6 +60,11 @@ export namespace Components {
          */
         "value": {};
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixAlert {
         /**
           * Set to true to make the alert closable.
@@ -66,6 +95,11 @@ export namespace Components {
          */
         "type": 'primary' | 'success' | 'info' | 'warning' | 'danger';
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixAvatar {
         /**
           * Alternative text for the image.
@@ -84,6 +118,11 @@ export namespace Components {
          */
         "shape": 'circle' | 'square' | 'rounded';
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixBadge {
         /**
           * Set to true to draw a pill-style badge with rounded edges.
@@ -98,6 +137,11 @@ export namespace Components {
          */
         "type": 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'info' | 'action';
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixButton {
         /**
           * Set to true to draw the button with a caret for use with dropdowns, popovers, etc.
@@ -164,8 +208,17 @@ export namespace Components {
          */
         "value": string;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     */
     interface SixCard {
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixCheckbox {
         /**
           * Checks for validity.
@@ -232,6 +285,10 @@ export namespace Components {
          */
         "value": string;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     */
     interface SixDatepicker {
         /**
           * Callback to determine which date in the datepicker should be selectable. the callback function will get a datestring as an argument, e.g. '2021-07-04'  Usage e.g.: const datepicker = document.getElementById('allowed-date-picker'); datepicker.allowedDates = datestring => parseInt(datestring.split('-')[2], 10) % 2 === 0;
@@ -358,6 +415,11 @@ export namespace Components {
          */
         "value"?: Date | null;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixDetails {
         /**
           * Set to true to prevent the user from toggling the details.
@@ -404,6 +466,11 @@ export namespace Components {
     | 'xxLarge'
     | 'xxxLarge';
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixDialog {
         /**
           * Hides the dialog
@@ -426,6 +493,11 @@ export namespace Components {
          */
         "show": () => Promise<void>;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixDrawer {
         /**
           * By default, the drawer slides out of its containing block (usually the viewport). To make the drawer slide out of its parent element, set this prop and add `position: relative` to the parent.
@@ -456,6 +528,11 @@ export namespace Components {
          */
         "show": () => Promise<void>;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixDropdown {
         /**
           * Set to true to allow async filtering. When you enter something in the search field the component will only emit an event but not filter any elements itself. You can then simply listen to the 'six-async-filter-fired' event to manage the shown menu-items yourself
@@ -563,8 +640,16 @@ export namespace Components {
          */
         "language": 'en' | 'de';
     }
+    /**
+     * @since 2.0.0
+     * @status experimental
+     */
     interface SixFileList {
     }
+    /**
+     * @since 2.0.0
+     * @status experimental
+     */
     interface SixFileListItem {
         /**
           * The date when the file was uploaded
@@ -591,6 +676,10 @@ export namespace Components {
          */
         "size": number;
     }
+    /**
+     * @since 2.0.0
+     * @status experimental
+     */
     interface SixFileUpload {
         /**
           * Accepted MIME-Types.
@@ -617,8 +706,17 @@ export namespace Components {
          */
         "multiple": boolean;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     */
     interface SixFooter {
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixForm {
         /**
           * Checks for validity.
@@ -645,6 +743,10 @@ export namespace Components {
          */
         "submit": () => Promise<boolean>;
     }
+    /**
+     * @since 1.1
+     * @status stable
+     */
     interface SixGroupLabel {
         /**
           * Set to true to disable the label.
@@ -667,6 +769,10 @@ export namespace Components {
          */
         "size": 'small' | 'medium' | 'large';
     }
+    /**
+     * @since 1.0
+     * @status stable
+     */
     interface SixHeader {
         /**
           * Set whether the logo should be clickable
@@ -693,6 +799,10 @@ export namespace Components {
          */
         "shiftContent": boolean;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     */
     interface SixIcon {
         /**
           * If set to true the default material outlined icons are not used.
@@ -710,6 +820,11 @@ export namespace Components {
     | 'xxLarge'
     | 'xxxLarge';
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixIconButton {
         /**
           * Set to true to disable the button.
@@ -732,6 +847,11 @@ export namespace Components {
          */
         "size": 'xSmall' | 'small' | 'medium' | 'large' | 'xLarge' | 'xxLarge' | 'xxxLarge';
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixInput {
         /**
           * The input's autocaptialize attribute.
@@ -898,6 +1018,10 @@ export namespace Components {
          */
         "value": string;
     }
+    /**
+     * @since 2.0.0
+     * @status experimental
+     */
     interface SixItemPicker {
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `six-item-picker-change-debounced` event. If you want your change debounce event to not trigger when keeping the nav button pressed before, make sure debounce is a bit bigger than timeout, otherwise keeping the button pressed will trigger the event twice: once you click (and keep pressed) and once you release
@@ -966,18 +1090,31 @@ export namespace Components {
          */
         "selected"?: string;
     }
+    /**
+     * @since 1.01
+     * @status stable
+     */
     interface SixLayoutGrid {
         /**
           * Set the number of grid columns
          */
         "columns": any;
     }
+    /**
+     * @since 1.01
+     * @status stable
+     */
     interface SixMainContainer {
         /**
           * Set to false to remove top and bottom padding.
          */
         "padded": boolean;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixMenu {
         /**
           * Used for virtual scrolling Define how many items should be rendered in the DOM when using virtual scrolling
@@ -986,7 +1123,7 @@ export namespace Components {
         /**
           * Set the options to be shown in the dropdown
          */
-        "items": SixMenuItemData[] | null;
+        "items": SixMenuItemData1[] | null;
         /**
           * Defines how many items should be shown. If the number of items is larger than this properties a scrollbar will be shown
          */
@@ -1008,8 +1145,18 @@ export namespace Components {
          */
         "virtualScroll": boolean;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixMenuDivider {
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixMenuItem {
         /**
           * Set to true to draw the item in a checked state.
@@ -1036,14 +1183,28 @@ export namespace Components {
          */
         "value": string;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixMenuLabel {
     }
+    /**
+     * @since 1.1
+     * @status stable
+     */
     interface SixPicto {
         /**
           * Defines the size of the icon.
          */
         "size": 'xSmall' | 'small' | 'medium' | 'large' | 'xLarge' | 'xxLarge' | 'xxxLarge' | '4xl';
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixProgressBar {
         /**
           * When true, percentage is ignored, the label is hidden, and the progress bar is drawn in an indeterminate state.
@@ -1054,6 +1215,11 @@ export namespace Components {
          */
         "percentage": number;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixProgressRing {
         /**
           * The current progress percentage, 0 - 100.
@@ -1068,6 +1234,11 @@ export namespace Components {
          */
         "strokeWidth": number;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixRadio {
         /**
           * Checks for validity.
@@ -1114,6 +1285,11 @@ export namespace Components {
          */
         "value": string;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixRange {
         /**
           * Set to true to disable the input.
@@ -1188,6 +1364,10 @@ export namespace Components {
          */
         "value": number;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     */
     interface SixRoot {
         /**
           * Breakpoint for smaller screens when the right sidebar is collapsed by default.
@@ -1206,6 +1386,10 @@ export namespace Components {
          */
         "version": string;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     */
     interface SixSearchField {
         /**
           * Set to true to add a clear button when the input is populated.
@@ -1228,6 +1412,11 @@ export namespace Components {
          */
         "value": string;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixSelect {
         /**
           * Set to true to allow async filtering. When you enter something in the search field the component will only emit an event but not filter any elements itself. You can then simply listen to the 'six-async-filter-fired' event to manage the shown menu-items yourself
@@ -1350,6 +1539,10 @@ export namespace Components {
          */
         "virtualScroll": boolean;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     */
     interface SixSidebar {
         /**
           * Hides the sidebar
@@ -1388,6 +1581,10 @@ export namespace Components {
          */
         "width": string;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     */
     interface SixSidebarItem {
         /**
           * Set to true to draw the sidebar item in a disabled state.
@@ -1402,6 +1599,10 @@ export namespace Components {
          */
         "value": string;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     */
     interface SixSidebarItemGroup {
         /**
           * Icon of the group
@@ -1421,6 +1622,11 @@ export namespace Components {
          */
         "value": string;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixSpinner {
         /**
           * Indicates if the spinner is shown as animated SIX logo or simple spinner.
@@ -1431,8 +1637,13 @@ export namespace Components {
         /**
           * The indicators value attribute
          */
-        "stage": StageType;
+        "stage": StageType1;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixSwitch {
         /**
           * Checks for validity.
@@ -1483,6 +1694,11 @@ export namespace Components {
          */
         "value": string;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixTab {
         /**
           * Set to true to draw the tab in an active state.
@@ -1509,6 +1725,11 @@ export namespace Components {
          */
         "setFocus": (options?: FocusOptions) => Promise<void>;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixTabGroup {
         /**
           * Disables the scroll arrows that appear when tabs overflow.
@@ -1523,6 +1744,11 @@ export namespace Components {
          */
         "show": (panel: string) => Promise<void>;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixTabPanel {
         /**
           * When true, the tab panel will be shown.
@@ -1533,6 +1759,11 @@ export namespace Components {
          */
         "name": string;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * @Deprecated - six-table will be removed with the next table. Use fate table instead.
+     */
     interface SixTable {
         /**
           * Set to true to display loading indicator.
@@ -1544,10 +1775,22 @@ export namespace Components {
          */
         "striped": boolean;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     */
     interface SixTableCell {
     }
+    /**
+     * @since 1.0
+     * @status stable
+     */
     interface SixTableHeader {
     }
+    /**
+     * @since 1.0
+     * @status stable
+     */
     interface SixTableHeaderCell {
         /**
           * Filter mode. Applied only when set.
@@ -1566,8 +1809,17 @@ export namespace Components {
          */
         "value": string;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     */
     interface SixTableRow {
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixTag {
         /**
           * Set to true to make the tag clearable.
@@ -1586,6 +1838,11 @@ export namespace Components {
          */
         "type": 'primary' | 'success' | 'info' | 'warning' | 'danger' | 'action' | 'text';
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixTextarea {
         /**
           * The textarea's autocaptialize attribute.
@@ -1712,6 +1969,10 @@ export namespace Components {
          */
         "value": string;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     */
     interface SixTile {
         /**
           * Flag, whether the tile is closeable.
@@ -1750,6 +2011,10 @@ export namespace Components {
          */
         "size": 'small' | 'medium' | 'large';
     }
+    /**
+     * @since 2.0.0
+     * @status experimental
+     */
     interface SixTimepicker {
         /**
           * Checks for validity.
@@ -1856,6 +2121,11 @@ export namespace Components {
          */
         "value"?: string | null;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixTooltip {
         /**
           * The tooltip's content. Alternatively, you can use the content slot.
@@ -1906,6 +2176,134 @@ export namespace Components {
         "trigger": string;
     }
 }
+export interface SixAlertCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSixAlertElement;
+}
+export interface SixButtonCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSixButtonElement;
+}
+export interface SixCheckboxCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSixCheckboxElement;
+}
+export interface SixDatepickerCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSixDatepickerElement;
+}
+export interface SixDetailsCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSixDetailsElement;
+}
+export interface SixDialogCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSixDialogElement;
+}
+export interface SixDrawerCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSixDrawerElement;
+}
+export interface SixDropdownCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSixDropdownElement;
+}
+export interface SixFileListItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSixFileListItemElement;
+}
+export interface SixFileUploadCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSixFileUploadElement;
+}
+export interface SixFormCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSixFormElement;
+}
+export interface SixHeaderCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSixHeaderElement;
+}
+export interface SixInputCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSixInputElement;
+}
+export interface SixItemPickerCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSixItemPickerElement;
+}
+export interface SixLanguageSwitcherCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSixLanguageSwitcherElement;
+}
+export interface SixMenuCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSixMenuElement;
+}
+export interface SixRadioCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSixRadioElement;
+}
+export interface SixRangeCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSixRangeElement;
+}
+export interface SixRootCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSixRootElement;
+}
+export interface SixSearchFieldCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSixSearchFieldElement;
+}
+export interface SixSelectCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSixSelectElement;
+}
+export interface SixSidebarCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSixSidebarElement;
+}
+export interface SixSwitchCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSixSwitchElement;
+}
+export interface SixTabCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSixTabElement;
+}
+export interface SixTabGroupCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSixTabGroupElement;
+}
+export interface SixTableCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSixTableElement;
+}
+export interface SixTableHeaderCellCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSixTableHeaderCellElement;
+}
+export interface SixTagCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSixTagElement;
+}
+export interface SixTextareaCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSixTextareaElement;
+}
+export interface SixTileCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSixTileElement;
+}
+export interface SixTimepickerCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSixTimepickerElement;
+}
+export interface SixTooltipCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSixTooltipElement;
+}
 declare global {
     interface HTMLSetAttributesElement extends Components.SetAttributes, HTMLStencilElement {
     }
@@ -1913,66 +2311,119 @@ declare global {
         prototype: HTMLSetAttributesElement;
         new (): HTMLSetAttributesElement;
     };
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface HTMLSixAlertElement extends Components.SixAlert, HTMLStencilElement {
     }
     var HTMLSixAlertElement: {
         prototype: HTMLSixAlertElement;
         new (): HTMLSixAlertElement;
     };
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface HTMLSixAvatarElement extends Components.SixAvatar, HTMLStencilElement {
     }
     var HTMLSixAvatarElement: {
         prototype: HTMLSixAvatarElement;
         new (): HTMLSixAvatarElement;
     };
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface HTMLSixBadgeElement extends Components.SixBadge, HTMLStencilElement {
     }
     var HTMLSixBadgeElement: {
         prototype: HTMLSixBadgeElement;
         new (): HTMLSixBadgeElement;
     };
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface HTMLSixButtonElement extends Components.SixButton, HTMLStencilElement {
     }
     var HTMLSixButtonElement: {
         prototype: HTMLSixButtonElement;
         new (): HTMLSixButtonElement;
     };
+    /**
+     * @since 1.0
+     * @status stable
+     */
     interface HTMLSixCardElement extends Components.SixCard, HTMLStencilElement {
     }
     var HTMLSixCardElement: {
         prototype: HTMLSixCardElement;
         new (): HTMLSixCardElement;
     };
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface HTMLSixCheckboxElement extends Components.SixCheckbox, HTMLStencilElement {
     }
     var HTMLSixCheckboxElement: {
         prototype: HTMLSixCheckboxElement;
         new (): HTMLSixCheckboxElement;
     };
+    /**
+     * @since 1.0
+     * @status stable
+     */
     interface HTMLSixDatepickerElement extends Components.SixDatepicker, HTMLStencilElement {
     }
     var HTMLSixDatepickerElement: {
         prototype: HTMLSixDatepickerElement;
         new (): HTMLSixDatepickerElement;
     };
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface HTMLSixDetailsElement extends Components.SixDetails, HTMLStencilElement {
     }
     var HTMLSixDetailsElement: {
         prototype: HTMLSixDetailsElement;
         new (): HTMLSixDetailsElement;
     };
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface HTMLSixDialogElement extends Components.SixDialog, HTMLStencilElement {
     }
     var HTMLSixDialogElement: {
         prototype: HTMLSixDialogElement;
         new (): HTMLSixDialogElement;
     };
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface HTMLSixDrawerElement extends Components.SixDrawer, HTMLStencilElement {
     }
     var HTMLSixDrawerElement: {
         prototype: HTMLSixDrawerElement;
         new (): HTMLSixDrawerElement;
     };
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface HTMLSixDropdownElement extends Components.SixDropdown, HTMLStencilElement {
     }
     var HTMLSixDropdownElement: {
@@ -1985,66 +2436,113 @@ declare global {
         prototype: HTMLSixErrorPageElement;
         new (): HTMLSixErrorPageElement;
     };
+    /**
+     * @since 2.0.0
+     * @status experimental
+     */
     interface HTMLSixFileListElement extends Components.SixFileList, HTMLStencilElement {
     }
     var HTMLSixFileListElement: {
         prototype: HTMLSixFileListElement;
         new (): HTMLSixFileListElement;
     };
+    /**
+     * @since 2.0.0
+     * @status experimental
+     */
     interface HTMLSixFileListItemElement extends Components.SixFileListItem, HTMLStencilElement {
     }
     var HTMLSixFileListItemElement: {
         prototype: HTMLSixFileListItemElement;
         new (): HTMLSixFileListItemElement;
     };
+    /**
+     * @since 2.0.0
+     * @status experimental
+     */
     interface HTMLSixFileUploadElement extends Components.SixFileUpload, HTMLStencilElement {
     }
     var HTMLSixFileUploadElement: {
         prototype: HTMLSixFileUploadElement;
         new (): HTMLSixFileUploadElement;
     };
+    /**
+     * @since 1.0
+     * @status stable
+     */
     interface HTMLSixFooterElement extends Components.SixFooter, HTMLStencilElement {
     }
     var HTMLSixFooterElement: {
         prototype: HTMLSixFooterElement;
         new (): HTMLSixFooterElement;
     };
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface HTMLSixFormElement extends Components.SixForm, HTMLStencilElement {
     }
     var HTMLSixFormElement: {
         prototype: HTMLSixFormElement;
         new (): HTMLSixFormElement;
     };
+    /**
+     * @since 1.1
+     * @status stable
+     */
     interface HTMLSixGroupLabelElement extends Components.SixGroupLabel, HTMLStencilElement {
     }
     var HTMLSixGroupLabelElement: {
         prototype: HTMLSixGroupLabelElement;
         new (): HTMLSixGroupLabelElement;
     };
+    /**
+     * @since 1.0
+     * @status stable
+     */
     interface HTMLSixHeaderElement extends Components.SixHeader, HTMLStencilElement {
     }
     var HTMLSixHeaderElement: {
         prototype: HTMLSixHeaderElement;
         new (): HTMLSixHeaderElement;
     };
+    /**
+     * @since 1.0
+     * @status stable
+     */
     interface HTMLSixIconElement extends Components.SixIcon, HTMLStencilElement {
     }
     var HTMLSixIconElement: {
         prototype: HTMLSixIconElement;
         new (): HTMLSixIconElement;
     };
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface HTMLSixIconButtonElement extends Components.SixIconButton, HTMLStencilElement {
     }
     var HTMLSixIconButtonElement: {
         prototype: HTMLSixIconButtonElement;
         new (): HTMLSixIconButtonElement;
     };
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface HTMLSixInputElement extends Components.SixInput, HTMLStencilElement {
     }
     var HTMLSixInputElement: {
         prototype: HTMLSixInputElement;
         new (): HTMLSixInputElement;
     };
+    /**
+     * @since 2.0.0
+     * @status experimental
+     */
     interface HTMLSixItemPickerElement extends Components.SixItemPicker, HTMLStencilElement {
     }
     var HTMLSixItemPickerElement: {
@@ -2057,108 +2555,190 @@ declare global {
         prototype: HTMLSixLanguageSwitcherElement;
         new (): HTMLSixLanguageSwitcherElement;
     };
+    /**
+     * @since 1.01
+     * @status stable
+     */
     interface HTMLSixLayoutGridElement extends Components.SixLayoutGrid, HTMLStencilElement {
     }
     var HTMLSixLayoutGridElement: {
         prototype: HTMLSixLayoutGridElement;
         new (): HTMLSixLayoutGridElement;
     };
+    /**
+     * @since 1.01
+     * @status stable
+     */
     interface HTMLSixMainContainerElement extends Components.SixMainContainer, HTMLStencilElement {
     }
     var HTMLSixMainContainerElement: {
         prototype: HTMLSixMainContainerElement;
         new (): HTMLSixMainContainerElement;
     };
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface HTMLSixMenuElement extends Components.SixMenu, HTMLStencilElement {
     }
     var HTMLSixMenuElement: {
         prototype: HTMLSixMenuElement;
         new (): HTMLSixMenuElement;
     };
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface HTMLSixMenuDividerElement extends Components.SixMenuDivider, HTMLStencilElement {
     }
     var HTMLSixMenuDividerElement: {
         prototype: HTMLSixMenuDividerElement;
         new (): HTMLSixMenuDividerElement;
     };
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface HTMLSixMenuItemElement extends Components.SixMenuItem, HTMLStencilElement {
     }
     var HTMLSixMenuItemElement: {
         prototype: HTMLSixMenuItemElement;
         new (): HTMLSixMenuItemElement;
     };
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface HTMLSixMenuLabelElement extends Components.SixMenuLabel, HTMLStencilElement {
     }
     var HTMLSixMenuLabelElement: {
         prototype: HTMLSixMenuLabelElement;
         new (): HTMLSixMenuLabelElement;
     };
+    /**
+     * @since 1.1
+     * @status stable
+     */
     interface HTMLSixPictoElement extends Components.SixPicto, HTMLStencilElement {
     }
     var HTMLSixPictoElement: {
         prototype: HTMLSixPictoElement;
         new (): HTMLSixPictoElement;
     };
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface HTMLSixProgressBarElement extends Components.SixProgressBar, HTMLStencilElement {
     }
     var HTMLSixProgressBarElement: {
         prototype: HTMLSixProgressBarElement;
         new (): HTMLSixProgressBarElement;
     };
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface HTMLSixProgressRingElement extends Components.SixProgressRing, HTMLStencilElement {
     }
     var HTMLSixProgressRingElement: {
         prototype: HTMLSixProgressRingElement;
         new (): HTMLSixProgressRingElement;
     };
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface HTMLSixRadioElement extends Components.SixRadio, HTMLStencilElement {
     }
     var HTMLSixRadioElement: {
         prototype: HTMLSixRadioElement;
         new (): HTMLSixRadioElement;
     };
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface HTMLSixRangeElement extends Components.SixRange, HTMLStencilElement {
     }
     var HTMLSixRangeElement: {
         prototype: HTMLSixRangeElement;
         new (): HTMLSixRangeElement;
     };
+    /**
+     * @since 1.0
+     * @status stable
+     */
     interface HTMLSixRootElement extends Components.SixRoot, HTMLStencilElement {
     }
     var HTMLSixRootElement: {
         prototype: HTMLSixRootElement;
         new (): HTMLSixRootElement;
     };
+    /**
+     * @since 1.0
+     * @status stable
+     */
     interface HTMLSixSearchFieldElement extends Components.SixSearchField, HTMLStencilElement {
     }
     var HTMLSixSearchFieldElement: {
         prototype: HTMLSixSearchFieldElement;
         new (): HTMLSixSearchFieldElement;
     };
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface HTMLSixSelectElement extends Components.SixSelect, HTMLStencilElement {
     }
     var HTMLSixSelectElement: {
         prototype: HTMLSixSelectElement;
         new (): HTMLSixSelectElement;
     };
+    /**
+     * @since 1.0
+     * @status stable
+     */
     interface HTMLSixSidebarElement extends Components.SixSidebar, HTMLStencilElement {
     }
     var HTMLSixSidebarElement: {
         prototype: HTMLSixSidebarElement;
         new (): HTMLSixSidebarElement;
     };
+    /**
+     * @since 1.0
+     * @status stable
+     */
     interface HTMLSixSidebarItemElement extends Components.SixSidebarItem, HTMLStencilElement {
     }
     var HTMLSixSidebarItemElement: {
         prototype: HTMLSixSidebarItemElement;
         new (): HTMLSixSidebarItemElement;
     };
+    /**
+     * @since 1.0
+     * @status stable
+     */
     interface HTMLSixSidebarItemGroupElement extends Components.SixSidebarItemGroup, HTMLStencilElement {
     }
     var HTMLSixSidebarItemGroupElement: {
         prototype: HTMLSixSidebarItemGroupElement;
         new (): HTMLSixSidebarItemGroupElement;
     };
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface HTMLSixSpinnerElement extends Components.SixSpinner, HTMLStencilElement {
     }
     var HTMLSixSpinnerElement: {
@@ -2171,84 +2751,148 @@ declare global {
         prototype: HTMLSixStageIndicatorElement;
         new (): HTMLSixStageIndicatorElement;
     };
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface HTMLSixSwitchElement extends Components.SixSwitch, HTMLStencilElement {
     }
     var HTMLSixSwitchElement: {
         prototype: HTMLSixSwitchElement;
         new (): HTMLSixSwitchElement;
     };
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface HTMLSixTabElement extends Components.SixTab, HTMLStencilElement {
     }
     var HTMLSixTabElement: {
         prototype: HTMLSixTabElement;
         new (): HTMLSixTabElement;
     };
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface HTMLSixTabGroupElement extends Components.SixTabGroup, HTMLStencilElement {
     }
     var HTMLSixTabGroupElement: {
         prototype: HTMLSixTabGroupElement;
         new (): HTMLSixTabGroupElement;
     };
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface HTMLSixTabPanelElement extends Components.SixTabPanel, HTMLStencilElement {
     }
     var HTMLSixTabPanelElement: {
         prototype: HTMLSixTabPanelElement;
         new (): HTMLSixTabPanelElement;
     };
+    /**
+     * @since 1.0
+     * @status stable
+     * @Deprecated - six-table will be removed with the next table. Use fate table instead.
+     */
     interface HTMLSixTableElement extends Components.SixTable, HTMLStencilElement {
     }
     var HTMLSixTableElement: {
         prototype: HTMLSixTableElement;
         new (): HTMLSixTableElement;
     };
+    /**
+     * @since 1.0
+     * @status stable
+     */
     interface HTMLSixTableCellElement extends Components.SixTableCell, HTMLStencilElement {
     }
     var HTMLSixTableCellElement: {
         prototype: HTMLSixTableCellElement;
         new (): HTMLSixTableCellElement;
     };
+    /**
+     * @since 1.0
+     * @status stable
+     */
     interface HTMLSixTableHeaderElement extends Components.SixTableHeader, HTMLStencilElement {
     }
     var HTMLSixTableHeaderElement: {
         prototype: HTMLSixTableHeaderElement;
         new (): HTMLSixTableHeaderElement;
     };
+    /**
+     * @since 1.0
+     * @status stable
+     */
     interface HTMLSixTableHeaderCellElement extends Components.SixTableHeaderCell, HTMLStencilElement {
     }
     var HTMLSixTableHeaderCellElement: {
         prototype: HTMLSixTableHeaderCellElement;
         new (): HTMLSixTableHeaderCellElement;
     };
+    /**
+     * @since 1.0
+     * @status stable
+     */
     interface HTMLSixTableRowElement extends Components.SixTableRow, HTMLStencilElement {
     }
     var HTMLSixTableRowElement: {
         prototype: HTMLSixTableRowElement;
         new (): HTMLSixTableRowElement;
     };
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface HTMLSixTagElement extends Components.SixTag, HTMLStencilElement {
     }
     var HTMLSixTagElement: {
         prototype: HTMLSixTagElement;
         new (): HTMLSixTagElement;
     };
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface HTMLSixTextareaElement extends Components.SixTextarea, HTMLStencilElement {
     }
     var HTMLSixTextareaElement: {
         prototype: HTMLSixTextareaElement;
         new (): HTMLSixTextareaElement;
     };
+    /**
+     * @since 1.0
+     * @status stable
+     */
     interface HTMLSixTileElement extends Components.SixTile, HTMLStencilElement {
     }
     var HTMLSixTileElement: {
         prototype: HTMLSixTileElement;
         new (): HTMLSixTileElement;
     };
+    /**
+     * @since 2.0.0
+     * @status experimental
+     */
     interface HTMLSixTimepickerElement extends Components.SixTimepicker, HTMLStencilElement {
     }
     var HTMLSixTimepickerElement: {
         prototype: HTMLSixTimepickerElement;
         new (): HTMLSixTimepickerElement;
     };
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface HTMLSixTooltipElement extends Components.SixTooltip, HTMLStencilElement {
     }
     var HTMLSixTooltipElement: {
@@ -2323,6 +2967,11 @@ declare namespace LocalJSX {
          */
         "value"?: {};
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixAlert {
         /**
           * Set to true to make the alert closable.
@@ -2335,19 +2984,19 @@ declare namespace LocalJSX {
         /**
           * Emitted after the alert closes and all transitions are complete.
          */
-        "onSix-alert-after-hide"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-alert-after-hide"?: (event: SixAlertCustomEvent<EmptyPayload>) => void;
         /**
           * Emitted after the alert opens and all transitions are complete.
          */
-        "onSix-alert-after-show"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-alert-after-show"?: (event: SixAlertCustomEvent<EmptyPayload>) => void;
         /**
           * Emitted when the alert closes. Calling `event.preventDefault()` will prevent it from being closed.
          */
-        "onSix-alert-hide"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-alert-hide"?: (event: SixAlertCustomEvent<EmptyPayload>) => void;
         /**
           * Emitted when the alert opens. Calling `event.preventDefault()` will prevent it from being opened.
          */
-        "onSix-alert-show"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-alert-show"?: (event: SixAlertCustomEvent<EmptyPayload>) => void;
         /**
           * Indicates whether or not the alert is open. You can use this in lieu of the show/hide methods.
          */
@@ -2357,6 +3006,11 @@ declare namespace LocalJSX {
          */
         "type"?: 'primary' | 'success' | 'info' | 'warning' | 'danger';
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixAvatar {
         /**
           * Alternative text for the image.
@@ -2375,6 +3029,11 @@ declare namespace LocalJSX {
          */
         "shape"?: 'circle' | 'square' | 'rounded';
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixBadge {
         /**
           * Set to true to draw a pill-style badge with rounded edges.
@@ -2389,6 +3048,11 @@ declare namespace LocalJSX {
          */
         "type"?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'info' | 'action';
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixButton {
         /**
           * Set to true to draw the button with a caret for use with dropdowns, popovers, etc.
@@ -2421,11 +3085,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when the button loses focus.
          */
-        "onSix-button-blur"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-button-blur"?: (event: SixButtonCustomEvent<EmptyPayload>) => void;
         /**
           * Emitted when the button gains focus.
          */
-        "onSix-button-focus"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-button-focus"?: (event: SixButtonCustomEvent<EmptyPayload>) => void;
         /**
           * Set to true to draw a pill-style button with rounded edges.
          */
@@ -2455,8 +3119,17 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     */
     interface SixCard {
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixCheckbox {
         /**
           * Set to true to draw the checkbox in a checked state.
@@ -2493,15 +3166,15 @@ declare namespace LocalJSX {
         /**
           * Emitted when the control loses focus.
          */
-        "onSix-checkbox-blur"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-checkbox-blur"?: (event: SixCheckboxCustomEvent<EmptyPayload>) => void;
         /**
           * Emitted when the control's checked state changes.
          */
-        "onSix-checkbox-change"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-checkbox-change"?: (event: SixCheckboxCustomEvent<EmptyPayload>) => void;
         /**
           * Emitted when the control gains focus.
          */
-        "onSix-checkbox-focus"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-checkbox-focus"?: (event: SixCheckboxCustomEvent<EmptyPayload>) => void;
         /**
           * Set to true to make the checkbox a required field.
          */
@@ -2511,6 +3184,10 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     */
     interface SixDatepicker {
         /**
           * Callback to determine which date in the datepicker should be selectable. the callback function will get a datestring as an argument, e.g. '2021-07-04'  Usage e.g.: const datepicker = document.getElementById('allowed-date-picker'); datepicker.allowedDates = datestring => parseInt(datestring.split('-')[2], 10) % 2 === 0;
@@ -2587,15 +3264,15 @@ declare namespace LocalJSX {
         /**
           * Emitted when a option got selected.
          */
-        "onSix-datepicker-blur"?: (event: CustomEvent<SixDatepickerSelectPayload>) => void;
+        "onSix-datepicker-blur"?: (event: SixDatepickerCustomEvent<SixDatepickerSelectPayload>) => void;
         /**
           * Emitted when the clear button is activated.
          */
-        "onSix-datepicker-clear"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-datepicker-clear"?: (event: SixDatepickerCustomEvent<EmptyPayload>) => void;
         /**
           * Emitted when a option got selected.
          */
-        "onSix-datepicker-select"?: (event: CustomEvent<SixDatepickerSelectPayload>) => void;
+        "onSix-datepicker-select"?: (event: SixDatepickerCustomEvent<SixDatepickerSelectPayload>) => void;
         /**
           * Indicates whether or not the calendar dropdown is open on startup. You can use this in lieu of the show/hide methods.
          */
@@ -2629,6 +3306,11 @@ declare namespace LocalJSX {
          */
         "value"?: Date | null;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixDetails {
         /**
           * Set to true to prevent the user from toggling the details.
@@ -2642,19 +3324,19 @@ declare namespace LocalJSX {
         /**
           * Emitted after the details closes and all transitions are complete.
          */
-        "onSix-details-after-hide"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-details-after-hide"?: (event: SixDetailsCustomEvent<EmptyPayload>) => void;
         /**
           * Emitted after the details opens and all transitions are complete.
          */
-        "onSix-details-after-show"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-details-after-show"?: (event: SixDetailsCustomEvent<EmptyPayload>) => void;
         /**
           * Emitted when the details closes. Calling `event.preventDefault()` will prevent it from being closed.
          */
-        "onSix-details-hide"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-details-hide"?: (event: SixDetailsCustomEvent<EmptyPayload>) => void;
         /**
           * Emitted when the details opens. Calling `event.preventDefault()` will prevent it from being opened.
          */
-        "onSix-details-show"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-details-show"?: (event: SixDetailsCustomEvent<EmptyPayload>) => void;
         /**
           * Indicates whether or not the details is open. You can use this in lieu of the show/hide methods.
          */
@@ -2683,6 +3365,11 @@ declare namespace LocalJSX {
     | 'xxLarge'
     | 'xxxLarge';
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixDialog {
         /**
           * The dialog's label as displayed in the header. You should always include a relevant label even when using `no-header`, as it is required for proper accessibility.
@@ -2695,32 +3382,37 @@ declare namespace LocalJSX {
         /**
           * Emitted after the dialog closes and all transitions are complete.
          */
-        "onSix-dialog-after-hide"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-dialog-after-hide"?: (event: SixDialogCustomEvent<EmptyPayload>) => void;
         /**
           * Emitted after the dialog opens and all transitions are complete.
          */
-        "onSix-dialog-after-show"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-dialog-after-show"?: (event: SixDialogCustomEvent<EmptyPayload>) => void;
         /**
           * Emitted when the dialog closes. Calling `event.preventDefault()` will prevent it from being closed.
          */
-        "onSix-dialog-hide"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-dialog-hide"?: (event: SixDialogCustomEvent<EmptyPayload>) => void;
         /**
           * Emitted when the dialog opens and the panel gains focus. Calling `event.preventDefault()` will prevent focus and allow you to set it on a different element in the dialog, such as an input or button.
          */
-        "onSix-dialog-initial-focus"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-dialog-initial-focus"?: (event: SixDialogCustomEvent<EmptyPayload>) => void;
         /**
           * Emitted when the overlay is clicked. Calling `event.preventDefault()` will prevent the dialog from closing.
          */
-        "onSix-dialog-overlay-dismiss"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-dialog-overlay-dismiss"?: (event: SixDialogCustomEvent<EmptyPayload>) => void;
         /**
           * Emitted when the dialog opens. Calling `event.preventDefault()` will prevent it from being opened.
          */
-        "onSix-dialog-show"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-dialog-show"?: (event: SixDialogCustomEvent<EmptyPayload>) => void;
         /**
           * Indicates whether or not the dialog is open. You can use this in lieu of the show/hide methods.
          */
         "open"?: boolean;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixDrawer {
         /**
           * By default, the drawer slides out of its containing block (usually the viewport). To make the drawer slide out of its parent element, set this prop and add `position: relative` to the parent.
@@ -2737,27 +3429,27 @@ declare namespace LocalJSX {
         /**
           * Emitted after the drawer closes and all transitions are complete.
          */
-        "onSix-drawer-after-hide"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-drawer-after-hide"?: (event: SixDrawerCustomEvent<EmptyPayload>) => void;
         /**
           * Emitted after the drawer opens and all transitions are complete.
          */
-        "onSix-drawer-after-show"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-drawer-after-show"?: (event: SixDrawerCustomEvent<EmptyPayload>) => void;
         /**
           * Emitted when the drawer closes. Calling `event.preventDefault()` will prevent it from being closed.
          */
-        "onSix-drawer-hide"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-drawer-hide"?: (event: SixDrawerCustomEvent<EmptyPayload>) => void;
         /**
           * Emitted when the drawer opens and the panel gains focus. Calling `event.preventDefault()` will prevent focus and allow you to set it on a different element in the drawer, such as an input or button.
          */
-        "onSix-drawer-initial-focus"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-drawer-initial-focus"?: (event: SixDrawerCustomEvent<EmptyPayload>) => void;
         /**
           * Emitted when the overlay is clicked. Calling `event.preventDefault()` will prevent the drawer from closing.
          */
-        "onSix-drawer-overlay-dismiss"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-drawer-overlay-dismiss"?: (event: SixDrawerCustomEvent<EmptyPayload>) => void;
         /**
           * Emitted when the drawer opens. Calling `event.preventDefault()` will prevent it from being opened.
          */
-        "onSix-drawer-show"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-drawer-show"?: (event: SixDrawerCustomEvent<EmptyPayload>) => void;
         /**
           * Indicates whether or not the drawer is open. You can use this in lieu of the show/hide methods.
          */
@@ -2767,6 +3459,11 @@ declare namespace LocalJSX {
          */
         "placement"?: 'top' | 'right' | 'bottom' | 'left';
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixDropdown {
         /**
           * Set to true to allow async filtering. When you enter something in the search field the component will only emit an event but not filter any elements itself. You can then simply listen to the 'six-async-filter-fired' event to manage the shown menu-items yourself
@@ -2811,31 +3508,31 @@ declare namespace LocalJSX {
         /**
           * Emitted when the async filter is triggered
          */
-        "onSix-async-filter-fired"?: (event: CustomEvent<SixDropdownAsyncFilterPayload>) => void;
+        "onSix-async-filter-fired"?: (event: SixDropdownCustomEvent<SixDropdownAsyncFilterPayload>) => void;
         /**
           * Emitted after the dropdown closes and all transitions are complete.
          */
-        "onSix-dropdown-after-hide"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-dropdown-after-hide"?: (event: SixDropdownCustomEvent<EmptyPayload>) => void;
         /**
           * Emitted after the dropdown opens and all transitions are complete.
          */
-        "onSix-dropdown-after-show"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-dropdown-after-show"?: (event: SixDropdownCustomEvent<EmptyPayload>) => void;
         /**
           * Emitted when the auto filter is triggered
          */
-        "onSix-dropdown-auto-filter-fired"?: (event: CustomEvent<SixDropdownAutoFilterPayload>) => void;
+        "onSix-dropdown-auto-filter-fired"?: (event: SixDropdownCustomEvent<SixDropdownAutoFilterPayload>) => void;
         /**
           * Emitted when the dropdown closes. Calling `event.preventDefault()` will prevent it from being closed.
          */
-        "onSix-dropdown-hide"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-dropdown-hide"?: (event: SixDropdownCustomEvent<EmptyPayload>) => void;
         /**
           * Emitted when the user scrolls inside dropdown panel.
          */
-        "onSix-dropdown-scroll"?: (event: CustomEvent<SixDropdownScrollPayload>) => void;
+        "onSix-dropdown-scroll"?: (event: SixDropdownCustomEvent<SixDropdownScrollPayload>) => void;
         /**
           * Emitted when the dropdown opens. Calling `event.preventDefault()` will prevent it from being opened.
          */
-        "onSix-dropdown-show"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-dropdown-show"?: (event: SixDropdownCustomEvent<EmptyPayload>) => void;
         /**
           * Indicates whether or not the dropdown is open. You can use this in lieu of the show/hide methods.
          */
@@ -2890,8 +3587,16 @@ declare namespace LocalJSX {
          */
         "language"?: 'en' | 'de';
     }
+    /**
+     * @since 2.0.0
+     * @status experimental
+     */
     interface SixFileList {
     }
+    /**
+     * @since 2.0.0
+     * @status experimental
+     */
     interface SixFileListItem {
         /**
           * The date when the file was uploaded
@@ -2916,16 +3621,20 @@ declare namespace LocalJSX {
         /**
           * Triggered on file download.
          */
-        "onSix-file-list-item-download"?: (event: CustomEvent<SixFileListDownloadPayload>) => void;
+        "onSix-file-list-item-download"?: (event: SixFileListItemCustomEvent<SixFileListDownloadPayload>) => void;
         /**
           * Triggered on file remove.
          */
-        "onSix-file-list-item-remove"?: (event: CustomEvent<SixFileListRemovePayload>) => void;
+        "onSix-file-list-item-remove"?: (event: SixFileListItemCustomEvent<SixFileListRemovePayload>) => void;
         /**
           * The file size. This number will be divided by 1024 to show the filesize in KB
          */
         "size"?: number;
     }
+    /**
+     * @since 2.0.0
+     * @status experimental
+     */
     interface SixFileUpload {
         /**
           * Accepted MIME-Types.
@@ -2954,14 +3663,23 @@ declare namespace LocalJSX {
         /**
           * Triggers when an uploaded file doesn't match MIME type or max file size.
          */
-        "onSix-file-upload-failure"?: (event: CustomEvent<SixFileUploadFailurePayload>) => void;
+        "onSix-file-upload-failure"?: (event: SixFileUploadCustomEvent<SixFileUploadFailurePayload>) => void;
         /**
           * Triggers when a file is added.
          */
-        "onSix-file-upload-success"?: (event: CustomEvent<SixFileUploadSuccessPayload>) => void;
+        "onSix-file-upload-success"?: (event: SixFileUploadCustomEvent<SixFileUploadSuccessPayload>) => void;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     */
     interface SixFooter {
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixForm {
         /**
           * Prevent the form from validating inputs before submitting.
@@ -2970,16 +3688,20 @@ declare namespace LocalJSX {
         /**
           * Emitted when the control's value changes.
          */
-        "onSix-form-change"?: (event: CustomEvent<SixFormChangePayload>) => void;
+        "onSix-form-change"?: (event: SixFormCustomEvent<SixFormChangePayload>) => void;
         /**
           * Emitted when the forms values are reset.
          */
-        "onSix-form-reset"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-form-reset"?: (event: SixFormCustomEvent<EmptyPayload>) => void;
         /**
           * Emitted when the form is submitted. This event will not be emitted if any form control inside of it is in an invalid state, unless the form has the `novalidate` attribute. Note that there is never a need to prevent this event, since it doen't send a GET or POST request like native forms. To "prevent" submission, use a conditional around the XHR request you use to submit the form's data with.
          */
-        "onSix-form-submit"?: (event: CustomEvent<SixFormSubmitPayload>) => void;
+        "onSix-form-submit"?: (event: SixFormCustomEvent<SixFormSubmitPayload>) => void;
     }
+    /**
+     * @since 1.1
+     * @status stable
+     */
     interface SixGroupLabel {
         /**
           * Set to true to disable the label.
@@ -3002,6 +3724,10 @@ declare namespace LocalJSX {
          */
         "size"?: 'small' | 'medium' | 'large';
     }
+    /**
+     * @since 1.0
+     * @status stable
+     */
     interface SixHeader {
         /**
           * Set whether the logo should be clickable
@@ -3010,27 +3736,27 @@ declare namespace LocalJSX {
         /**
           * Emitted when the name of the selected app is clicked.
          */
-        "onSix-header-app-name-clicked"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-header-app-name-clicked"?: (event: SixHeaderCustomEvent<EmptyPayload>) => void;
         /**
           * Emitted when a menu item is in the app switcher menu is selected.
          */
-        "onSix-header-app-switcher-select"?: (event: CustomEvent<SixHeaderAppSwitcherSelectPayload>) => void;
+        "onSix-header-app-switcher-select"?: (event: SixHeaderCustomEvent<SixHeaderAppSwitcherSelectPayload>) => void;
         /**
           * Emitted when the hamburger menu is clicked.
          */
-        "onSix-header-hamburger-menu-clicked"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-header-hamburger-menu-clicked"?: (event: SixHeaderCustomEvent<EmptyPayload>) => void;
         /**
           * Emitted when the header logo is clicked.
          */
-        "onSix-header-logo-clicked"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-header-logo-clicked"?: (event: SixHeaderCustomEvent<EmptyPayload>) => void;
         /**
           * Emitted when a menu item is in the profile menu is selected.
          */
-        "onSix-header-profile-select"?: (event: CustomEvent<SixHeaderProfileSelectPayload>) => void;
+        "onSix-header-profile-select"?: (event: SixHeaderCustomEvent<SixHeaderProfileSelectPayload>) => void;
         /**
           * Emitted when search field is toggled.
          */
-        "onSix-header-search-field-toggle"?: (event: CustomEvent<SixHeaderSearchFieldToggle>) => void;
+        "onSix-header-search-field-toggle"?: (event: SixHeaderCustomEvent<SixHeaderSearchFieldToggle>) => void;
         /**
           * Set the hamburger menu icon to open or closed state
          */
@@ -3044,6 +3770,10 @@ declare namespace LocalJSX {
          */
         "shiftContent"?: boolean;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     */
     interface SixIcon {
         /**
           * If set to true the default material outlined icons are not used.
@@ -3061,6 +3791,11 @@ declare namespace LocalJSX {
     | 'xxLarge'
     | 'xxxLarge';
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixIconButton {
         /**
           * Set to true to disable the button.
@@ -3083,6 +3818,11 @@ declare namespace LocalJSX {
          */
         "size"?: 'xSmall' | 'small' | 'medium' | 'large' | 'xLarge' | 'xxLarge' | 'xxxLarge';
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixInput {
         /**
           * The input's autocaptialize attribute.
@@ -3159,27 +3899,27 @@ declare namespace LocalJSX {
         /**
           * Emitted when the control loses focus. Access the new value via event.target.value.
          */
-        "onSix-input-blur"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-input-blur"?: (event: SixInputCustomEvent<EmptyPayload>) => void;
         /**
           * Emitted when the control's value changes. Access the new value via event.target.value.
          */
-        "onSix-input-change"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-input-change"?: (event: SixInputCustomEvent<EmptyPayload>) => void;
         /**
           * Emitted when the clear button is activated.
          */
-        "onSix-input-clear"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-input-clear"?: (event: SixInputCustomEvent<EmptyPayload>) => void;
         /**
           * Emitted when the control gains focus.
          */
-        "onSix-input-focus"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-input-focus"?: (event: SixInputCustomEvent<EmptyPayload>) => void;
         /**
           * Emitted when the control receives input. Access the new value via event.target.value.
          */
-        "onSix-input-input"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-input-input"?: (event: SixInputCustomEvent<EmptyPayload>) => void;
         /**
           * Emitted whenever the value changes. Access the new value via event.target.value. six-input-value-change will emit whenever the value changes. So be it on input or when dynamically set. six-input-input will only be emitted when the user enters data, but not when a value is dynamically set. six-input-change will only be emitted when the user either presses enter or leaves the input field after entering some data.
          */
-        "onSix-input-value-change"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-input-value-change"?: (event: SixInputCustomEvent<EmptyPayload>) => void;
         /**
           * A pattern to validate input against.
          */
@@ -3225,6 +3965,10 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    /**
+     * @since 2.0.0
+     * @status experimental
+     */
     interface SixItemPicker {
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `six-item-picker-change-debounced` event. If you want your change debounce event to not trigger when keeping the nav button pressed before, make sure debounce is a bit bigger than timeout, otherwise keeping the button pressed will trigger the event twice: once you click (and keep pressed) and once you release
@@ -3249,11 +3993,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when the item picker's value changes
          */
-        "onSix-item-picker-change"?: (event: CustomEvent<SixItemPickerChangePayload>) => void;
+        "onSix-item-picker-change"?: (event: SixItemPickerCustomEvent<SixItemPickerChangePayload>) => void;
         /**
           * Emitted when the item picker's value changes, but debounced
          */
-        "onSix-item-picker-change-debounced"?: (event: CustomEvent<SixItemPickerChangePayload>) => void;
+        "onSix-item-picker-change-debounced"?: (event: SixItemPickerCustomEvent<SixItemPickerChangePayload>) => void;
         /**
           * Defines whether the items should be padded
          */
@@ -3299,24 +4043,37 @@ declare namespace LocalJSX {
         /**
           * Emitted when the language switchers value changes
          */
-        "onSix-language-switcher-change"?: (event: CustomEvent<SixLanguageSwitcherChangePayload>) => void;
+        "onSix-language-switcher-change"?: (event: SixLanguageSwitcherCustomEvent<SixLanguageSwitcherChangePayload>) => void;
         /**
           * The language which should be shown as selected
          */
         "selected"?: string;
     }
+    /**
+     * @since 1.01
+     * @status stable
+     */
     interface SixLayoutGrid {
         /**
           * Set the number of grid columns
          */
         "columns"?: any;
     }
+    /**
+     * @since 1.01
+     * @status stable
+     */
     interface SixMainContainer {
         /**
           * Set to false to remove top and bottom padding.
          */
         "padded"?: boolean;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixMenu {
         /**
           * Used for virtual scrolling Define how many items should be rendered in the DOM when using virtual scrolling
@@ -3325,7 +4082,7 @@ declare namespace LocalJSX {
         /**
           * Set the options to be shown in the dropdown
          */
-        "items"?: SixMenuItemData[] | null;
+        "items"?: SixMenuItemData1[] | null;
         /**
           * Defines how many items should be shown. If the number of items is larger than this properties a scrollbar will be shown
          */
@@ -3333,7 +4090,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a menu item is selected.
          */
-        "onSix-menu-item-selected"?: (event: CustomEvent<SixMenuItemSelectedPayload>) => void;
+        "onSix-menu-item-selected"?: (event: SixMenuCustomEvent<SixMenuItemSelectedPayload>) => void;
         /**
           * Set to true to remove the box-shadow
          */
@@ -3347,8 +4104,18 @@ declare namespace LocalJSX {
          */
         "virtualScroll"?: boolean;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixMenuDivider {
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixMenuItem {
         /**
           * Set to true to draw the item in a checked state.
@@ -3363,14 +4130,28 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixMenuLabel {
     }
+    /**
+     * @since 1.1
+     * @status stable
+     */
     interface SixPicto {
         /**
           * Defines the size of the icon.
          */
         "size"?: 'xSmall' | 'small' | 'medium' | 'large' | 'xLarge' | 'xxLarge' | 'xxxLarge' | '4xl';
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixProgressBar {
         /**
           * When true, percentage is ignored, the label is hidden, and the progress bar is drawn in an indeterminate state.
@@ -3381,6 +4162,11 @@ declare namespace LocalJSX {
          */
         "percentage"?: number;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixProgressRing {
         /**
           * The current progress percentage, 0 - 100.
@@ -3395,6 +4181,11 @@ declare namespace LocalJSX {
          */
         "strokeWidth"?: number;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixRadio {
         /**
           * Set to true to draw the radio in a checked state.
@@ -3415,20 +4206,25 @@ declare namespace LocalJSX {
         /**
           * Emitted when the control loses focus.
          */
-        "onSix-radio-blur"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-radio-blur"?: (event: SixRadioCustomEvent<EmptyPayload>) => void;
         /**
           * Emitted when the control's checked state changes.
          */
-        "onSix-radio-change"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-radio-change"?: (event: SixRadioCustomEvent<EmptyPayload>) => void;
         /**
           * Emitted when the control gains focus.
          */
-        "onSix-radio-focus"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-radio-focus"?: (event: SixRadioCustomEvent<EmptyPayload>) => void;
         /**
           * The radio's value attribute.
          */
         "value"?: string;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixRange {
         /**
           * Set to true to disable the input.
@@ -3469,15 +4265,15 @@ declare namespace LocalJSX {
         /**
           * Emitted when the control loses focus.
          */
-        "onSix-range-blur"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-range-blur"?: (event: SixRangeCustomEvent<EmptyPayload>) => void;
         /**
           * Emitted when the control's value changes.
          */
-        "onSix-range-change"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-range-change"?: (event: SixRangeCustomEvent<EmptyPayload>) => void;
         /**
           * Emitted when the control gains focus.
          */
-        "onSix-range-focus"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-range-focus"?: (event: SixRangeCustomEvent<EmptyPayload>) => void;
         /**
           * Set to true to make the input a required field.
          */
@@ -3499,6 +4295,10 @@ declare namespace LocalJSX {
          */
         "value"?: number;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     */
     interface SixRoot {
         /**
           * Breakpoint for smaller screens when the right sidebar is collapsed by default.
@@ -3507,7 +4307,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when display size is updated.
          */
-        "onSix-root-collapsed"?: (event: CustomEvent<SixRootCollapsedPayload>) => void;
+        "onSix-root-collapsed"?: (event: SixRootCustomEvent<SixRootCollapsedPayload>) => void;
         /**
           * Defines whether the content section should be padded
          */
@@ -3521,6 +4321,10 @@ declare namespace LocalJSX {
          */
         "version"?: string;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     */
     interface SixSearchField {
         /**
           * Set to true to add a clear button when the input is populated.
@@ -3537,7 +4341,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a search is triggered
          */
-        "onSix-search-field-change"?: (event: CustomEvent<SixSearchFieldChangePayload>) => void;
+        "onSix-search-field-change"?: (event: SixSearchFieldCustomEvent<SixSearchFieldChangePayload>) => void;
         /**
           * The input's placeholder text.
          */
@@ -3547,6 +4351,11 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixSelect {
         /**
           * Set to true to allow async filtering. When you enter something in the search field the component will only emit an event but not filter any elements itself. You can then simply listen to the 'six-async-filter-fired' event to manage the shown menu-items yourself
@@ -3627,15 +4436,15 @@ declare namespace LocalJSX {
         /**
           * Emitted when the control loses focus.
          */
-        "onSix-select-blur"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-select-blur"?: (event: SixSelectCustomEvent<EmptyPayload>) => void;
         /**
           * Emitted when the control's value changes.
          */
-        "onSix-select-change"?: (event: CustomEvent<SixSelectChangePayload>) => void;
+        "onSix-select-change"?: (event: SixSelectCustomEvent<SixSelectChangePayload>) => void;
         /**
           * Emitted when the control gains focus.
          */
-        "onSix-select-focus"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-select-focus"?: (event: SixSelectCustomEvent<EmptyPayload>) => void;
         /**
           * Set the options to be shown in the dropdown (alternative to setting the elements via html)
          */
@@ -3665,27 +4474,31 @@ declare namespace LocalJSX {
          */
         "virtualScroll"?: boolean;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     */
     interface SixSidebar {
         /**
           * Emitted after the sidebar closes and all transitions are complete.
          */
-        "onSix-sidebar-after-hide"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-sidebar-after-hide"?: (event: SixSidebarCustomEvent<EmptyPayload>) => void;
         /**
           * Emitted after the sidebar opens and all transitions are complete.
          */
-        "onSix-sidebar-after-show"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-sidebar-after-show"?: (event: SixSidebarCustomEvent<EmptyPayload>) => void;
         /**
           * Emitted when the sidebar closes. Calling `event.preventDefault()` will prevent it from being closed.
          */
-        "onSix-sidebar-hide"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-sidebar-hide"?: (event: SixSidebarCustomEvent<EmptyPayload>) => void;
         /**
           * Emitted when the sidebar opens and the panel gains focus. Calling `event.preventDefault()` will prevent focus and allow you to set it on a different element in the sidebar, such as an input or button.
          */
-        "onSix-sidebar-initial-focus"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-sidebar-initial-focus"?: (event: SixSidebarCustomEvent<EmptyPayload>) => void;
         /**
           * Emitted when the sidebar opens. Calling `event.preventDefault()` will prevent it from being opened.
          */
-        "onSix-sidebar-show"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-sidebar-show"?: (event: SixSidebarCustomEvent<EmptyPayload>) => void;
         /**
           * Indicates whether or not the sidebar is open. You can use this in lieu of the show/hide methods.
          */
@@ -3703,6 +4516,10 @@ declare namespace LocalJSX {
          */
         "width"?: string;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     */
     interface SixSidebarItem {
         /**
           * Set to true to draw the sidebar item in a disabled state.
@@ -3717,6 +4534,10 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     */
     interface SixSidebarItemGroup {
         /**
           * Icon of the group
@@ -3736,6 +4557,11 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixSpinner {
         /**
           * Indicates if the spinner is shown as animated SIX logo or simple spinner.
@@ -3746,8 +4572,13 @@ declare namespace LocalJSX {
         /**
           * The indicators value attribute
          */
-        "stage"?: StageType;
+        "stage"?: StageType1;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixSwitch {
         /**
           * Set to true to draw the switch in a checked state.
@@ -3768,15 +4599,15 @@ declare namespace LocalJSX {
         /**
           * Emitted when the control loses focus.
          */
-        "onSix-switch-blur"?: (event: CustomEvent<boolean>) => void;
+        "onSix-switch-blur"?: (event: SixSwitchCustomEvent<boolean>) => void;
         /**
           * Emitted when the control's checked state changes.
          */
-        "onSix-switch-change"?: (event: CustomEvent<boolean>) => void;
+        "onSix-switch-change"?: (event: SixSwitchCustomEvent<boolean>) => void;
         /**
           * Emitted when the control gains focus.
          */
-        "onSix-switch-focus"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-switch-focus"?: (event: SixSwitchCustomEvent<EmptyPayload>) => void;
         /**
           * Set to true to make the switch a required field.
          */
@@ -3786,6 +4617,11 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixTab {
         /**
           * Set to true to draw the tab in an active state.
@@ -3802,12 +4638,17 @@ declare namespace LocalJSX {
         /**
           * Emitted when the tab is closable and the close button is activated.
          */
-        "onSix-tab-close"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-tab-close"?: (event: SixTabCustomEvent<EmptyPayload>) => void;
         /**
           * The name of the tab panel the tab will control. The panel must be located in the same tab group.
          */
         "panel"?: string;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixTabGroup {
         /**
           * Disables the scroll arrows that appear when tabs overflow.
@@ -3816,16 +4657,21 @@ declare namespace LocalJSX {
         /**
           * Emitted when a tab is hidden.
          */
-        "onSix-tab-hide"?: (event: CustomEvent<SixTabHidePayload>) => void;
+        "onSix-tab-hide"?: (event: SixTabGroupCustomEvent<SixTabHidePayload>) => void;
         /**
           * Emitted when a tab is shown.
          */
-        "onSix-tab-show"?: (event: CustomEvent<SixTabShowPayload>) => void;
+        "onSix-tab-show"?: (event: SixTabGroupCustomEvent<SixTabShowPayload>) => void;
         /**
           * The placement of the tabs.
          */
         "placement"?: 'top' | 'bottom' | 'left' | 'right';
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixTabPanel {
         /**
           * When true, the tab panel will be shown.
@@ -3836,6 +4682,11 @@ declare namespace LocalJSX {
          */
         "name"?: string;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * @Deprecated - six-table will be removed with the next table. Use fate table instead.
+     */
     interface SixTable {
         /**
           * Set to true to display loading indicator.
@@ -3844,24 +4695,36 @@ declare namespace LocalJSX {
         /**
           * Emitted when table cell is clicked.
          */
-        "onSix-table-cell-clicked"?: (event: CustomEvent<TableCellClickedPayload<Item>>) => void;
+        "onSix-table-cell-clicked"?: (event: SixTableCustomEvent<TableCellClickedPayload<Item>>) => void;
         /**
           * Emitted when table is ready.
          */
-        "onSix-table-ready"?: (event: CustomEvent<TableReadyPayload>) => void;
+        "onSix-table-ready"?: (event: SixTableCustomEvent<TableReadyPayload>) => void;
         /**
           * Emitted when table row is clicked.
          */
-        "onSix-table-row-clicked"?: (event: CustomEvent<TableRowClickedPayload<Item>>) => void;
+        "onSix-table-row-clicked"?: (event: SixTableCustomEvent<TableRowClickedPayload<Item>>) => void;
         /**
           * Set to true to stripe the table.
          */
         "striped"?: boolean;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     */
     interface SixTableCell {
     }
+    /**
+     * @since 1.0
+     * @status stable
+     */
     interface SixTableHeader {
     }
+    /**
+     * @since 1.0
+     * @status stable
+     */
     interface SixTableHeaderCell {
         /**
           * Filter mode. Applied only when set.
@@ -3874,11 +4737,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when filter model is updated.
          */
-        "onSix-table-header-cell-filter-updated"?: (event: CustomEvent<SixTableHeaderCellFilterUpdatedPayload>) => void;
+        "onSix-table-header-cell-filter-updated"?: (event: SixTableHeaderCellCustomEvent<SixTableHeaderCellFilterUpdatedPayload>) => void;
         /**
           * Emitted when sort model is updated.
          */
-        "onSix-table-header-cell-sort-updated"?: (event: CustomEvent<SixTableHeaderCellSortUpdatedPayload>) => void;
+        "onSix-table-header-cell-sort-updated"?: (event: SixTableHeaderCellCustomEvent<SixTableHeaderCellSortUpdatedPayload>) => void;
         /**
           * Sort direction. Applied only when set.
          */
@@ -3888,8 +4751,17 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     */
     interface SixTableRow {
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixTag {
         /**
           * Set to true to make the tag clearable.
@@ -3898,7 +4770,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the clear button is activated.
          */
-        "onSix-tag-clear"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-tag-clear"?: (event: SixTagCustomEvent<EmptyPayload>) => void;
         /**
           * Set to true to draw a pill-style tag with rounded edges.
          */
@@ -3912,6 +4784,11 @@ declare namespace LocalJSX {
          */
         "type"?: 'primary' | 'success' | 'info' | 'warning' | 'danger' | 'action' | 'text';
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixTextarea {
         /**
           * The textarea's autocaptialize attribute.
@@ -3972,23 +4849,23 @@ declare namespace LocalJSX {
         /**
           * Emitted when the control loses focus. Access the new value via event.target.value.
          */
-        "onSix-textarea-blur"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-textarea-blur"?: (event: SixTextareaCustomEvent<EmptyPayload>) => void;
         /**
           * Emitted when the control's value changes. Access the new value via event.target.value.
          */
-        "onSix-textarea-change"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-textarea-change"?: (event: SixTextareaCustomEvent<EmptyPayload>) => void;
         /**
           * Emitted when the control gains focus.
          */
-        "onSix-textarea-focus"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-textarea-focus"?: (event: SixTextareaCustomEvent<EmptyPayload>) => void;
         /**
           * Emitted when the control receives input. Access the new value via event.target.value.
          */
-        "onSix-textarea-input"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-textarea-input"?: (event: SixTextareaCustomEvent<EmptyPayload>) => void;
         /**
           * Emitted whenever the value changes. Access the new value via event.target.value. six-textarea-value-change will emit whenever the value changes. So be it on textarea or when dynamically set. six-textarea-input will only be emitted when the user enters data, but not when a value is dynamically set. six-textarea-change will only be emitted when the user either presses enter or leaves the textarea field after entering some data.
          */
-        "onSix-textarea-value-change"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-textarea-value-change"?: (event: SixTextareaCustomEvent<EmptyPayload>) => void;
         /**
           * The textarea's placeholder text.
          */
@@ -4022,6 +4899,10 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     */
     interface SixTile {
         /**
           * Flag, whether the tile is closeable.
@@ -4050,16 +4931,20 @@ declare namespace LocalJSX {
         /**
           * Emitted when the tile was closed.
          */
-        "onSix-tile-closed"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-tile-closed"?: (event: SixTileCustomEvent<EmptyPayload>) => void;
         /**
           * Emitted when the tile is selected.
          */
-        "onSix-tile-selected"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-tile-selected"?: (event: SixTileCustomEvent<EmptyPayload>) => void;
         /**
           * The tile's size.
          */
         "size"?: 'small' | 'medium' | 'large';
     }
+    /**
+     * @since 2.0.0
+     * @status experimental
+     */
     interface SixTimepicker {
         /**
           * Set to true to add a clear button when the input is populated.
@@ -4116,15 +5001,15 @@ declare namespace LocalJSX {
         /**
           * Emitted when the timepicker's value changes
          */
-        "onSix-timepicker-change"?: (event: CustomEvent<SixTimepickerChange>) => void;
+        "onSix-timepicker-change"?: (event: SixTimepickerCustomEvent<SixTimepickerChange>) => void;
         /**
           * Emitted when the timepicker's value changes, but debounced
          */
-        "onSix-timepicker-change-debounced"?: (event: CustomEvent<SixTimepickerChange>) => void;
+        "onSix-timepicker-change-debounced"?: (event: SixTimepickerCustomEvent<SixTimepickerChange>) => void;
         /**
           * Emitted when the clear button is activated.
          */
-        "onSix-timepicker-clear"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-timepicker-clear"?: (event: SixTimepickerCustomEvent<EmptyPayload>) => void;
         /**
           * Indicates whether or not the timepicker dropdown is open on startup. You can use this in lieu of the show/hide methods.
          */
@@ -4162,6 +5047,11 @@ declare namespace LocalJSX {
          */
         "value"?: string | null;
     }
+    /**
+     * @since 1.0
+     * @status stable
+     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+     */
     interface SixTooltip {
         /**
           * The tooltip's content. Alternatively, you can use the content slot.
@@ -4178,19 +5068,19 @@ declare namespace LocalJSX {
         /**
           * Emitted after the tooltip has hidden and all transitions are complete.
          */
-        "onSix-tooltip-after-hide"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-tooltip-after-hide"?: (event: SixTooltipCustomEvent<EmptyPayload>) => void;
         /**
           * Emitted after the tooltip has shown and all transitions are complete.
          */
-        "onSix-tooltip-after-show"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-tooltip-after-show"?: (event: SixTooltipCustomEvent<EmptyPayload>) => void;
         /**
           * Emitted when the tooltip begins to hide. Calling `event.preventDefault()` will prevent it from being hidden.
          */
-        "onSix-tooltip-hide"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-tooltip-hide"?: (event: SixTooltipCustomEvent<EmptyPayload>) => void;
         /**
           * Emitted when the tooltip begins to show. Calling `event.preventDefault()` will prevent it from being shown.
          */
-        "onSix-tooltip-show"?: (event: CustomEvent<EmptyPayload>) => void;
+        "onSix-tooltip-show"?: (event: SixTooltipCustomEvent<EmptyPayload>) => void;
         /**
           * Indicates whether or not the tooltip is open. You can use this in lieu of the show/hide methods.
          */
@@ -4285,62 +5175,308 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "set-attributes": LocalJSX.SetAttributes & JSXBase.HTMLAttributes<HTMLSetAttributesElement>;
+            /**
+             * @since 1.0
+             * @status stable
+             * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+             */
             "six-alert": LocalJSX.SixAlert & JSXBase.HTMLAttributes<HTMLSixAlertElement>;
+            /**
+             * @since 1.0
+             * @status stable
+             * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+             */
             "six-avatar": LocalJSX.SixAvatar & JSXBase.HTMLAttributes<HTMLSixAvatarElement>;
+            /**
+             * @since 1.0
+             * @status stable
+             * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+             */
             "six-badge": LocalJSX.SixBadge & JSXBase.HTMLAttributes<HTMLSixBadgeElement>;
+            /**
+             * @since 1.0
+             * @status stable
+             * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+             */
             "six-button": LocalJSX.SixButton & JSXBase.HTMLAttributes<HTMLSixButtonElement>;
+            /**
+             * @since 1.0
+             * @status stable
+             */
             "six-card": LocalJSX.SixCard & JSXBase.HTMLAttributes<HTMLSixCardElement>;
+            /**
+             * @since 1.0
+             * @status stable
+             * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+             */
             "six-checkbox": LocalJSX.SixCheckbox & JSXBase.HTMLAttributes<HTMLSixCheckboxElement>;
+            /**
+             * @since 1.0
+             * @status stable
+             */
             "six-datepicker": LocalJSX.SixDatepicker & JSXBase.HTMLAttributes<HTMLSixDatepickerElement>;
+            /**
+             * @since 1.0
+             * @status stable
+             * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+             */
             "six-details": LocalJSX.SixDetails & JSXBase.HTMLAttributes<HTMLSixDetailsElement>;
+            /**
+             * @since 1.0
+             * @status stable
+             * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+             */
             "six-dialog": LocalJSX.SixDialog & JSXBase.HTMLAttributes<HTMLSixDialogElement>;
+            /**
+             * @since 1.0
+             * @status stable
+             * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+             */
             "six-drawer": LocalJSX.SixDrawer & JSXBase.HTMLAttributes<HTMLSixDrawerElement>;
+            /**
+             * @since 1.0
+             * @status stable
+             * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+             */
             "six-dropdown": LocalJSX.SixDropdown & JSXBase.HTMLAttributes<HTMLSixDropdownElement>;
             "six-error-page": LocalJSX.SixErrorPage & JSXBase.HTMLAttributes<HTMLSixErrorPageElement>;
+            /**
+             * @since 2.0.0
+             * @status experimental
+             */
             "six-file-list": LocalJSX.SixFileList & JSXBase.HTMLAttributes<HTMLSixFileListElement>;
+            /**
+             * @since 2.0.0
+             * @status experimental
+             */
             "six-file-list-item": LocalJSX.SixFileListItem & JSXBase.HTMLAttributes<HTMLSixFileListItemElement>;
+            /**
+             * @since 2.0.0
+             * @status experimental
+             */
             "six-file-upload": LocalJSX.SixFileUpload & JSXBase.HTMLAttributes<HTMLSixFileUploadElement>;
+            /**
+             * @since 1.0
+             * @status stable
+             */
             "six-footer": LocalJSX.SixFooter & JSXBase.HTMLAttributes<HTMLSixFooterElement>;
+            /**
+             * @since 1.0
+             * @status stable
+             * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+             */
             "six-form": LocalJSX.SixForm & JSXBase.HTMLAttributes<HTMLSixFormElement>;
+            /**
+             * @since 1.1
+             * @status stable
+             */
             "six-group-label": LocalJSX.SixGroupLabel & JSXBase.HTMLAttributes<HTMLSixGroupLabelElement>;
+            /**
+             * @since 1.0
+             * @status stable
+             */
             "six-header": LocalJSX.SixHeader & JSXBase.HTMLAttributes<HTMLSixHeaderElement>;
+            /**
+             * @since 1.0
+             * @status stable
+             */
             "six-icon": LocalJSX.SixIcon & JSXBase.HTMLAttributes<HTMLSixIconElement>;
+            /**
+             * @since 1.0
+             * @status stable
+             * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+             */
             "six-icon-button": LocalJSX.SixIconButton & JSXBase.HTMLAttributes<HTMLSixIconButtonElement>;
+            /**
+             * @since 1.0
+             * @status stable
+             * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+             */
             "six-input": LocalJSX.SixInput & JSXBase.HTMLAttributes<HTMLSixInputElement>;
+            /**
+             * @since 2.0.0
+             * @status experimental
+             */
             "six-item-picker": LocalJSX.SixItemPicker & JSXBase.HTMLAttributes<HTMLSixItemPickerElement>;
             "six-language-switcher": LocalJSX.SixLanguageSwitcher & JSXBase.HTMLAttributes<HTMLSixLanguageSwitcherElement>;
+            /**
+             * @since 1.01
+             * @status stable
+             */
             "six-layout-grid": LocalJSX.SixLayoutGrid & JSXBase.HTMLAttributes<HTMLSixLayoutGridElement>;
+            /**
+             * @since 1.01
+             * @status stable
+             */
             "six-main-container": LocalJSX.SixMainContainer & JSXBase.HTMLAttributes<HTMLSixMainContainerElement>;
+            /**
+             * @since 1.0
+             * @status stable
+             * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+             */
             "six-menu": LocalJSX.SixMenu & JSXBase.HTMLAttributes<HTMLSixMenuElement>;
+            /**
+             * @since 1.0
+             * @status stable
+             * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+             */
             "six-menu-divider": LocalJSX.SixMenuDivider & JSXBase.HTMLAttributes<HTMLSixMenuDividerElement>;
+            /**
+             * @since 1.0
+             * @status stable
+             * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+             */
             "six-menu-item": LocalJSX.SixMenuItem & JSXBase.HTMLAttributes<HTMLSixMenuItemElement>;
+            /**
+             * @since 1.0
+             * @status stable
+             * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+             */
             "six-menu-label": LocalJSX.SixMenuLabel & JSXBase.HTMLAttributes<HTMLSixMenuLabelElement>;
+            /**
+             * @since 1.1
+             * @status stable
+             */
             "six-picto": LocalJSX.SixPicto & JSXBase.HTMLAttributes<HTMLSixPictoElement>;
+            /**
+             * @since 1.0
+             * @status stable
+             * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+             */
             "six-progress-bar": LocalJSX.SixProgressBar & JSXBase.HTMLAttributes<HTMLSixProgressBarElement>;
+            /**
+             * @since 1.0
+             * @status stable
+             * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+             */
             "six-progress-ring": LocalJSX.SixProgressRing & JSXBase.HTMLAttributes<HTMLSixProgressRingElement>;
+            /**
+             * @since 1.0
+             * @status stable
+             * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+             */
             "six-radio": LocalJSX.SixRadio & JSXBase.HTMLAttributes<HTMLSixRadioElement>;
+            /**
+             * @since 1.0
+             * @status stable
+             * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+             */
             "six-range": LocalJSX.SixRange & JSXBase.HTMLAttributes<HTMLSixRangeElement>;
+            /**
+             * @since 1.0
+             * @status stable
+             */
             "six-root": LocalJSX.SixRoot & JSXBase.HTMLAttributes<HTMLSixRootElement>;
+            /**
+             * @since 1.0
+             * @status stable
+             */
             "six-search-field": LocalJSX.SixSearchField & JSXBase.HTMLAttributes<HTMLSixSearchFieldElement>;
+            /**
+             * @since 1.0
+             * @status stable
+             * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+             */
             "six-select": LocalJSX.SixSelect & JSXBase.HTMLAttributes<HTMLSixSelectElement>;
+            /**
+             * @since 1.0
+             * @status stable
+             */
             "six-sidebar": LocalJSX.SixSidebar & JSXBase.HTMLAttributes<HTMLSixSidebarElement>;
+            /**
+             * @since 1.0
+             * @status stable
+             */
             "six-sidebar-item": LocalJSX.SixSidebarItem & JSXBase.HTMLAttributes<HTMLSixSidebarItemElement>;
+            /**
+             * @since 1.0
+             * @status stable
+             */
             "six-sidebar-item-group": LocalJSX.SixSidebarItemGroup & JSXBase.HTMLAttributes<HTMLSixSidebarItemGroupElement>;
+            /**
+             * @since 1.0
+             * @status stable
+             * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+             */
             "six-spinner": LocalJSX.SixSpinner & JSXBase.HTMLAttributes<HTMLSixSpinnerElement>;
             "six-stage-indicator": LocalJSX.SixStageIndicator & JSXBase.HTMLAttributes<HTMLSixStageIndicatorElement>;
+            /**
+             * @since 1.0
+             * @status stable
+             * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+             */
             "six-switch": LocalJSX.SixSwitch & JSXBase.HTMLAttributes<HTMLSixSwitchElement>;
+            /**
+             * @since 1.0
+             * @status stable
+             * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+             */
             "six-tab": LocalJSX.SixTab & JSXBase.HTMLAttributes<HTMLSixTabElement>;
+            /**
+             * @since 1.0
+             * @status stable
+             * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+             */
             "six-tab-group": LocalJSX.SixTabGroup & JSXBase.HTMLAttributes<HTMLSixTabGroupElement>;
+            /**
+             * @since 1.0
+             * @status stable
+             * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+             */
             "six-tab-panel": LocalJSX.SixTabPanel & JSXBase.HTMLAttributes<HTMLSixTabPanelElement>;
+            /**
+             * @since 1.0
+             * @status stable
+             * @Deprecated - six-table will be removed with the next table. Use fate table instead.
+             */
             "six-table": LocalJSX.SixTable & JSXBase.HTMLAttributes<HTMLSixTableElement>;
+            /**
+             * @since 1.0
+             * @status stable
+             */
             "six-table-cell": LocalJSX.SixTableCell & JSXBase.HTMLAttributes<HTMLSixTableCellElement>;
+            /**
+             * @since 1.0
+             * @status stable
+             */
             "six-table-header": LocalJSX.SixTableHeader & JSXBase.HTMLAttributes<HTMLSixTableHeaderElement>;
+            /**
+             * @since 1.0
+             * @status stable
+             */
             "six-table-header-cell": LocalJSX.SixTableHeaderCell & JSXBase.HTMLAttributes<HTMLSixTableHeaderCellElement>;
+            /**
+             * @since 1.0
+             * @status stable
+             */
             "six-table-row": LocalJSX.SixTableRow & JSXBase.HTMLAttributes<HTMLSixTableRowElement>;
+            /**
+             * @since 1.0
+             * @status stable
+             * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+             */
             "six-tag": LocalJSX.SixTag & JSXBase.HTMLAttributes<HTMLSixTagElement>;
+            /**
+             * @since 1.0
+             * @status stable
+             * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+             */
             "six-textarea": LocalJSX.SixTextarea & JSXBase.HTMLAttributes<HTMLSixTextareaElement>;
+            /**
+             * @since 1.0
+             * @status stable
+             */
             "six-tile": LocalJSX.SixTile & JSXBase.HTMLAttributes<HTMLSixTileElement>;
+            /**
+             * @since 2.0.0
+             * @status experimental
+             */
             "six-timepicker": LocalJSX.SixTimepicker & JSXBase.HTMLAttributes<HTMLSixTimepickerElement>;
+            /**
+             * @since 1.0
+             * @status stable
+             * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+             */
             "six-tooltip": LocalJSX.SixTooltip & JSXBase.HTMLAttributes<HTMLSixTooltipElement>;
         }
     }

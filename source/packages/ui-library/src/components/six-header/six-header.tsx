@@ -1,16 +1,4 @@
-import {
-  Component,
-  Element,
-  Event,
-  EventEmitter,
-  getAssetPath,
-  h,
-  Host,
-  Method,
-  Prop,
-  State,
-  Watch,
-} from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import { EventListeners } from '../../utils/event-listeners';
 import { getAvailableSlots } from '../../utils/slot';
 import { EmptyPayload } from '../../utils/types';
@@ -275,7 +263,14 @@ export class SixHeader {
         }}
         ref={this.setupLogo}
       >
-        <img src={getAssetPath(`./assets/six-logo.svg`)} height="20" alt="SIX" />
+        <svg height="20" viewBox="0 0 90 26" xmlns="http://www.w3.org/2000/svg">
+          <title>SIX</title>
+          <g fill="#DE3919" fill-rule="nonzero">
+            <path d="m22.798 3.869c1.82-2.168 4.549-3.545 7.6-3.545h6.807v4.961h-6.807c-1.526 0-2.89.689-3.8 1.771l-12.19 14.526c-1.82 2.166-4.549 3.545-7.6 3.545h-6.808v-4.961h6.808c1.525 0 2.889-.689 3.799-1.773l12.191-14.525" />
+            <path d="m42.16.324h5.21v24.806h-5.21z" />
+            <path d="m66.743 3.869l4.195 4.999 4.195-4.999c1.819-2.168 4.549-3.545 7.6-3.545h6.806v4.961h-6.806c-1.526 0-2.89.689-3.8 1.771l-4.758 5.669 4.758 5.669c.91 1.084 2.274 1.773 3.8 1.773h6.806v4.961h-6.806c-3.051 0-5.781-1.379-7.6-3.545l-4.195-4.999-4.195 4.999c-1.82 2.166-4.55 3.545-7.6 3.545h-6.807v-4.961h6.807c1.525 0 2.889-.689 3.799-1.773l4.758-5.669-4.758-5.669c-.91-1.083-2.274-1.771-3.799-1.771h-6.807v-4.961h6.807c3.05 0 5.78 1.378 7.6 3.545" />
+          </g>
+        </svg>
       </section>
     );
 

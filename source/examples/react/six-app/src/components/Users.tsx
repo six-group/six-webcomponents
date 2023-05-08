@@ -19,7 +19,11 @@ interface UsersProps {
 }
 
 const Users = ({ search, setSearch }: UsersProps) => {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   const drawer = useModal(SixDrawer);
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   const dialog = useModal(SixDialog);
 
   const [fetchServerModel, setFetchServerModel] = useState(false);

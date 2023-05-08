@@ -1,12 +1,2 @@
-export enum SortDirection {
-  None = 'none',
-  Asc = 'asc',
-  Desc = 'desc',
-}
-
-export enum FilterMode {
-  Equals = 'eq',
-  NotEquals = 'ne',
-  Includes = 'in',
-  NotIncludes = 'ni',
-}
+export type SortDirection = 'none' | 'asc' | 'desc';
+export type FilterMode = 'eq' | 'ne' | 'in' | 'ni';
