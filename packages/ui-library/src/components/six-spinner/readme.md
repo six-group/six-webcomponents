@@ -33,13 +33,11 @@
 ### Used by
 
  - [six-button](../six-button)
- - [six-table](../six-table)
 
 ### Graph
 ```mermaid
 graph TD;
   six-button --> six-spinner
-  six-table --> six-spinner
   style six-spinner fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

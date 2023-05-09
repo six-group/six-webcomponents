@@ -1,6 +1,4 @@
-import { Component, Input } from '@angular/core';
-import { changeDetection } from '~/change-detection-strategy';
-import { encapsulation } from '~/view-encapsulation';
+import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-left-sidebar',
@@ -15,8 +13,8 @@ import { encapsulation } from '~/view-encapsulation';
       ></six-sidebar-item-group>
     </six-sidebar>
   `,
-  changeDetection,
-  encapsulation,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class LeftSidebarComponent {
   @Input() open?: boolean | null;

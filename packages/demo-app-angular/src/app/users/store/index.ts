@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { State, reducer } from './users.reducer';
+import { reducer, State } from './users.reducer';
 
 export * from './users.actions';
 export * from './users.effects';

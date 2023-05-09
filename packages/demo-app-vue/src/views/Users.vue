@@ -3,11 +3,6 @@
     <header class="users-header">
       <six-icon size="large">supervisor_account</six-icon>
       <span class="users-header__title">Users</span>
-      <p>
-        Table could be constructed either from <code>ui-library</code> building blocks or directly supplying the data to
-        <code>six-table</code> component.<br />
-        This demo app is using the first approach.
-      </p>
     </header>
     <six-card class="users__table">
       <AppTable :columns="columns" :users="users" @userSelected="selectUser"></AppTable>

@@ -4,21 +4,6 @@ Find the deployed Angular Demo App [here](TODO).
 
 ## Initial setup
 
-### Including the Custom Elements Schema
-
-Including the `CUSTOM_ELEMENTS_SCHEMA` in the module allows the use of the web components in the HTML markup
-without the compiler producing errors. This code should be added into the `AppModule` and in every other modules that use
-your custom elements. Here is an example of adding it to `AppModule`:
-
-```ts
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
-...
-@NgModule({
-    ...
-    schemas: [CUSTOM_ELEMENTS_SCHEMA]
-})
-```
-
 ### Calling defineCustomElements
 
 A component collection includes a main function that is used to load the components in the collection.
@@ -37,7 +22,7 @@ You need to import the SIX style into your project.
 In Angular this can be done in the global style sheet file `src/style.scss`
 
 ```scss
-@import '~@six-group/ui-library/dist/ui-library/ui-library.css';
+@import '@six-group/ui-library/dist/ui-library/ui-library.css';
 ```
 
 ### Import assets

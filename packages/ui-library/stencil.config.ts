@@ -2,6 +2,7 @@ import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
 import { reactOutputTarget } from '@stencil/react-output-target';
 import { ComponentModelConfig, vueOutputTarget } from '@stencil/vue-output-target';
+import { angularOutputTarget } from '@stencil/angular-output-target';
 
 /**
  * Vue Component Models
@@ -73,6 +74,11 @@ export const config: Config = {
       proxiesFile: '../ui-library-vue/src/components.ts',
       componentModels: vueComponentModels,
       includeDefineCustomElements: true,
+    }),
+    angularOutputTarget({
+      componentCorePackage: '@six-group/ui-library',
+      directivesProxyFile: '../ui-library-angular/projects/ui-library-angular/src/lib/stencil-generated/components.ts',
+      directivesArrayFile: '../ui-library-angular/projects/ui-library-angular/src/lib/stencil-generated/index.ts',
     }),
     {
       type: 'dist',

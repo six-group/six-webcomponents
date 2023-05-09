@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
+import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
@@ -9,10 +9,12 @@ import { TasksModule } from './tasks/tasks.module';
 import { components } from './components';
 import { providers } from './providers';
 import { root } from './store';
+import { UiLibraryAngularModule } from '@six-group/ui-library-angular';
 
 @NgModule({
   imports: [
     CommonModule,
+    UiLibraryAngularModule,
     RouterModule,
     StoreModule.forRoot(root, {}),
     EffectsModule.forRoot([]),
@@ -24,7 +26,6 @@ import { root } from './store';
   ],
   declarations: [...components],
   exports: [...components],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class CoreModule {
   constructor(@Optional() @SkipSelf() parentModule: CoreModule) {

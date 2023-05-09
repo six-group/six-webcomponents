@@ -555,34 +555,6 @@ export const SixTabPanel = /*@__PURE__*/ defineContainer<JSX.SixTabPanel>('six-t
 ]);
 
 
-export const SixTable = /*@__PURE__*/ defineContainer<JSX.SixTable>('six-table', undefined, [
-  'striped',
-  'loading',
-  'six-table-ready',
-  'six-table-row-clicked',
-  'six-table-cell-clicked'
-]);
-
-
-export const SixTableCell = /*@__PURE__*/ defineContainer<JSX.SixTableCell>('six-table-cell', undefined);
-
-
-export const SixTableHeader = /*@__PURE__*/ defineContainer<JSX.SixTableHeader>('six-table-header', undefined);
-
-
-export const SixTableHeaderCell = /*@__PURE__*/ defineContainer<JSX.SixTableHeaderCell>('six-table-header-cell', undefined, [
-  'name',
-  'sort',
-  'filter',
-  'value',
-  'six-table-header-cell-sort-updated',
-  'six-table-header-cell-filter-updated'
-]);
-
-
-export const SixTableRow = /*@__PURE__*/ defineContainer<JSX.SixTableRow>('six-table-row', undefined);
-
-
 export const SixTag = /*@__PURE__*/ defineContainer<JSX.SixTag>('six-tag', undefined, [
   'type',
   'size',

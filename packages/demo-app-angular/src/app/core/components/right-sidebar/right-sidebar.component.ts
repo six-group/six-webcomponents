@@ -1,6 +1,4 @@
-import { Component, Input } from '@angular/core';
-import { changeDetection } from '~/change-detection-strategy';
-import { encapsulation } from '~/view-encapsulation';
+import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
 import { Task } from '~/app/core/tasks/providers/tasks.service';
 
 @Component({
@@ -14,8 +12,8 @@ import { Task } from '~/app/core/tasks/providers/tasks.service';
     </six-sidebar>
   `,
   styleUrls: ['./right-sidebar.component.scss'],
-  changeDetection,
-  encapsulation,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class RightSidebarComponent {
   @Input() open?: boolean | null;

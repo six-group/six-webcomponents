@@ -206,13 +206,6 @@ body > div.container {
   --six-tab-border-width: 2px;
   --six-tab-border-color-active: var(--six-color-web-rock-900);
   --six-tab-border-width-active: 3px;
-
-  --six-table-background-color: var(--six-color-web-rock-100);
-  --six-table-header-color: var(--six-color-web-rock-900);
-  --six-table-header-border-color: var(--six-color-web-rock-900);
-  --six-table-row-background-color: var(--six-color-web-rock-100);
-  --six-table-row-background-color-hover: var(--six-color-clay-50);
-  --six-table-row-border-color: var(--six-color-web-rock-400);
 }
 
 [hidden] {

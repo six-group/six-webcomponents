@@ -1,28 +1,13 @@
 <div class="users">
-  <app-users-header [fetchServerModel]="usersFacade.fetchServerModel$ | async"></app-users-header>
+  <app-users-header></app-users-header>
   <six-card class="users__table" [class.users__table--loading]="usersFacade.loading$ | async">
-    <!-- fetch once, update locally -->
-    <ng-template #fetchOnce>
-      <app-users-table-dynamic
-        [users]="usersFacade.users$ | async"
-        [loading]="usersFacade.loading$ | async"
-        [quickSearch]="coreFacade.quickSearch$ | async"
-        [sort]="usersFacade.sort$ | async"
-        [filter]="usersFacade.filter$ | async"
-      ></app-users-table-dynamic>
-    </ng-template>
-    <!-- fetch on every update -->
     <app-users-table-static
-      *ngIf="usersFacade.fetchServerModel$ | async; else fetchOnce"
-      [users]="usersFacade.users$ | async"
-      [loading]="usersFacade.loading$ | async"
-      [quickSearch]="coreFacade.quickSearch$ | async"
-      [sort]="usersFacade.sort$ | async"
-      [filter]="usersFacade.filter$ | async"
+      [users]="(usersFacade.users$ | async)!"
+      [loading]="(usersFacade.loading$ | async)!"
     ></app-users-table-static>
   </six-card>
   <six-drawer
-    [label]="usersFacade.selectedUser$ | async | user"
+    [label]="(usersFacade.selectedUser$ | async)! | user"
     [open]="usersFacade.drawerOpen$ | async"
     (six-drawer-hide)="usersFacade.closeDrawer()"
   >

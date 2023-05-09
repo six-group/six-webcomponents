@@ -24,9 +24,6 @@ import { SixSearchFieldChangePayload } from "./components/six-search-field/six-s
 import { SixSelectChangePayload } from "./components/six-select/six-select";
 import { StageType as StageType1 } from "./components/six-stage-indicator/six-stage-indicator";
 import { SixTabHidePayload, SixTabShowPayload } from "./components/six-tab-group/six-tab-group";
-import { Data, Item, TableCellClickedPayload, TableReadyPayload, TableRowClickedPayload } from "./components/six-table/types";
-import { FilterMode, SortDirection } from "./components/six-table-header-cell/types";
-import { SixTableHeaderCellFilterUpdatedPayload, SixTableHeaderCellSortUpdatedPayload } from "./components/six-table-header-cell/six-table-header-cell";
 import { SixTimeFormat } from "./components/six-timepicker/six-time-format";
 import { SixTimepickerChange } from "./components/six-timepicker/six-timepicker";
 export { EmptyPayload } from "./utils/types";
@@ -48,9 +45,6 @@ export { SixSearchFieldChangePayload } from "./components/six-search-field/six-s
 export { SixSelectChangePayload } from "./components/six-select/six-select";
 export { StageType as StageType1 } from "./components/six-stage-indicator/six-stage-indicator";
 export { SixTabHidePayload, SixTabShowPayload } from "./components/six-tab-group/six-tab-group";
-export { Data, Item, TableCellClickedPayload, TableReadyPayload, TableRowClickedPayload } from "./components/six-table/types";
-export { FilterMode, SortDirection } from "./components/six-table-header-cell/types";
-export { SixTableHeaderCellFilterUpdatedPayload, SixTableHeaderCellSortUpdatedPayload } from "./components/six-table-header-cell/six-table-header-cell";
 export { SixTimeFormat } from "./components/six-timepicker/six-time-format";
 export { SixTimepickerChange } from "./components/six-timepicker/six-timepicker";
 export namespace Components {
@@ -1762,62 +1756,6 @@ export namespace Components {
     /**
      * @since 1.0
      * @status stable
-     * @Deprecated - six-table will be removed with the next table. Use fate table instead.
-     */
-    interface SixTable {
-        /**
-          * Set to true to display loading indicator.
-         */
-        "loading": boolean;
-        "setData": <T extends Item>(value: Data<T>) => Promise<void>;
-        /**
-          * Set to true to stripe the table.
-         */
-        "striped": boolean;
-    }
-    /**
-     * @since 1.0
-     * @status stable
-     */
-    interface SixTableCell {
-    }
-    /**
-     * @since 1.0
-     * @status stable
-     */
-    interface SixTableHeader {
-    }
-    /**
-     * @since 1.0
-     * @status stable
-     */
-    interface SixTableHeaderCell {
-        /**
-          * Filter mode. Applied only when set.
-         */
-        "filter": FilterMode;
-        /**
-          * Table row property name. Used in the custom events to identify the row.
-         */
-        "name": keyof Item;
-        /**
-          * Sort direction. Applied only when set.
-         */
-        "sort": SortDirection;
-        /**
-          * Filter value. Applied only when filter mode is set.
-         */
-        "value": string;
-    }
-    /**
-     * @since 1.0
-     * @status stable
-     */
-    interface SixTableRow {
-    }
-    /**
-     * @since 1.0
-     * @status stable
      * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
      */
     interface SixTag {
@@ -2275,14 +2213,6 @@ export interface SixTabCustomEvent<T> extends CustomEvent<T> {
 export interface SixTabGroupCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLSixTabGroupElement;
-}
-export interface SixTableCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLSixTableElement;
-}
-export interface SixTableHeaderCellCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLSixTableHeaderCellElement;
 }
 export interface SixTagCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -2798,57 +2728,6 @@ declare global {
     /**
      * @since 1.0
      * @status stable
-     * @Deprecated - six-table will be removed with the next table. Use fate table instead.
-     */
-    interface HTMLSixTableElement extends Components.SixTable, HTMLStencilElement {
-    }
-    var HTMLSixTableElement: {
-        prototype: HTMLSixTableElement;
-        new (): HTMLSixTableElement;
-    };
-    /**
-     * @since 1.0
-     * @status stable
-     */
-    interface HTMLSixTableCellElement extends Components.SixTableCell, HTMLStencilElement {
-    }
-    var HTMLSixTableCellElement: {
-        prototype: HTMLSixTableCellElement;
-        new (): HTMLSixTableCellElement;
-    };
-    /**
-     * @since 1.0
-     * @status stable
-     */
-    interface HTMLSixTableHeaderElement extends Components.SixTableHeader, HTMLStencilElement {
-    }
-    var HTMLSixTableHeaderElement: {
-        prototype: HTMLSixTableHeaderElement;
-        new (): HTMLSixTableHeaderElement;
-    };
-    /**
-     * @since 1.0
-     * @status stable
-     */
-    interface HTMLSixTableHeaderCellElement extends Components.SixTableHeaderCell, HTMLStencilElement {
-    }
-    var HTMLSixTableHeaderCellElement: {
-        prototype: HTMLSixTableHeaderCellElement;
-        new (): HTMLSixTableHeaderCellElement;
-    };
-    /**
-     * @since 1.0
-     * @status stable
-     */
-    interface HTMLSixTableRowElement extends Components.SixTableRow, HTMLStencilElement {
-    }
-    var HTMLSixTableRowElement: {
-        prototype: HTMLSixTableRowElement;
-        new (): HTMLSixTableRowElement;
-    };
-    /**
-     * @since 1.0
-     * @status stable
      * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
      */
     interface HTMLSixTagElement extends Components.SixTag, HTMLStencilElement {
@@ -2948,11 +2827,6 @@ declare global {
         "six-tab": HTMLSixTabElement;
         "six-tab-group": HTMLSixTabGroupElement;
         "six-tab-panel": HTMLSixTabPanelElement;
-        "six-table": HTMLSixTableElement;
-        "six-table-cell": HTMLSixTableCellElement;
-        "six-table-header": HTMLSixTableHeaderElement;
-        "six-table-header-cell": HTMLSixTableHeaderCellElement;
-        "six-table-row": HTMLSixTableRowElement;
         "six-tag": HTMLSixTagElement;
         "six-textarea": HTMLSixTextareaElement;
         "six-tile": HTMLSixTileElement;
@@ -4685,81 +4559,6 @@ declare namespace LocalJSX {
     /**
      * @since 1.0
      * @status stable
-     * @Deprecated - six-table will be removed with the next table. Use fate table instead.
-     */
-    interface SixTable {
-        /**
-          * Set to true to display loading indicator.
-         */
-        "loading"?: boolean;
-        /**
-          * Emitted when table cell is clicked.
-         */
-        "onSix-table-cell-clicked"?: (event: SixTableCustomEvent<TableCellClickedPayload<Item>>) => void;
-        /**
-          * Emitted when table is ready.
-         */
-        "onSix-table-ready"?: (event: SixTableCustomEvent<TableReadyPayload>) => void;
-        /**
-          * Emitted when table row is clicked.
-         */
-        "onSix-table-row-clicked"?: (event: SixTableCustomEvent<TableRowClickedPayload<Item>>) => void;
-        /**
-          * Set to true to stripe the table.
-         */
-        "striped"?: boolean;
-    }
-    /**
-     * @since 1.0
-     * @status stable
-     */
-    interface SixTableCell {
-    }
-    /**
-     * @since 1.0
-     * @status stable
-     */
-    interface SixTableHeader {
-    }
-    /**
-     * @since 1.0
-     * @status stable
-     */
-    interface SixTableHeaderCell {
-        /**
-          * Filter mode. Applied only when set.
-         */
-        "filter"?: FilterMode;
-        /**
-          * Table row property name. Used in the custom events to identify the row.
-         */
-        "name"?: keyof Item;
-        /**
-          * Emitted when filter model is updated.
-         */
-        "onSix-table-header-cell-filter-updated"?: (event: SixTableHeaderCellCustomEvent<SixTableHeaderCellFilterUpdatedPayload>) => void;
-        /**
-          * Emitted when sort model is updated.
-         */
-        "onSix-table-header-cell-sort-updated"?: (event: SixTableHeaderCellCustomEvent<SixTableHeaderCellSortUpdatedPayload>) => void;
-        /**
-          * Sort direction. Applied only when set.
-         */
-        "sort"?: SortDirection;
-        /**
-          * Filter value. Applied only when filter mode is set.
-         */
-        "value"?: string;
-    }
-    /**
-     * @since 1.0
-     * @status stable
-     */
-    interface SixTableRow {
-    }
-    /**
-     * @since 1.0
-     * @status stable
      * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
      */
     interface SixTag {
@@ -5158,11 +4957,6 @@ declare namespace LocalJSX {
         "six-tab": SixTab;
         "six-tab-group": SixTabGroup;
         "six-tab-panel": SixTabPanel;
-        "six-table": SixTable;
-        "six-table-cell": SixTableCell;
-        "six-table-header": SixTableHeader;
-        "six-table-header-cell": SixTableHeaderCell;
-        "six-table-row": SixTableRow;
         "six-tag": SixTag;
         "six-textarea": SixTextarea;
         "six-tile": SixTile;
@@ -5424,32 +5218,6 @@ declare module "@stencil/core" {
              * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
              */
             "six-tab-panel": LocalJSX.SixTabPanel & JSXBase.HTMLAttributes<HTMLSixTabPanelElement>;
-            /**
-             * @since 1.0
-             * @status stable
-             * @Deprecated - six-table will be removed with the next table. Use fate table instead.
-             */
-            "six-table": LocalJSX.SixTable & JSXBase.HTMLAttributes<HTMLSixTableElement>;
-            /**
-             * @since 1.0
-             * @status stable
-             */
-            "six-table-cell": LocalJSX.SixTableCell & JSXBase.HTMLAttributes<HTMLSixTableCellElement>;
-            /**
-             * @since 1.0
-             * @status stable
-             */
-            "six-table-header": LocalJSX.SixTableHeader & JSXBase.HTMLAttributes<HTMLSixTableHeaderElement>;
-            /**
-             * @since 1.0
-             * @status stable
-             */
-            "six-table-header-cell": LocalJSX.SixTableHeaderCell & JSXBase.HTMLAttributes<HTMLSixTableHeaderCellElement>;
-            /**
-             * @since 1.0
-             * @status stable
-             */
-            "six-table-row": LocalJSX.SixTableRow & JSXBase.HTMLAttributes<HTMLSixTableRowElement>;
             /**
              * @since 1.0
              * @status stable

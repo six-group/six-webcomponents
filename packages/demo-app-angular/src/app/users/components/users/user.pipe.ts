@@ -3,7 +3,7 @@ import { User } from '../../providers/users.service';
 
 @Pipe({ name: 'user' })
 export class UserPipe implements PipeTransform {
-  transform(user?: User | null) {
+  transform(user?: User) {
     return `User #${user?.id}`;
   }
 }

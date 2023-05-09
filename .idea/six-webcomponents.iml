@@ -2,7 +2,10 @@
 <module type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
-    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/packages/ui-library-angular/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/ui-library-angular/tmp" />
+    </content>
     <content url="file://$MODULE_DIR$/source/packages/ui-library-angular/dist" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

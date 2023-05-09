@@ -18,7 +18,7 @@ const Users = React.lazy(() => import('./Users'));
 const App = () => {
   const leftSidebar = useModalState(true);
   const rightSidebar = useModalState(false);
-  const [search, setSearch] = useState('');
+  const [, setSearch] = useState('');
 
   const handleCollapsed = ({ detail }: CustomEvent<SixRootCollapsedPayload>) => {
     if (detail.collapsed === leftSidebar.isOpen) {
@@ -38,7 +38,7 @@ const App = () => {
               path="/"
               element={<Home toggleLeftSidebar={leftSidebar.toggle} toggleRightSidebar={rightSidebar.toggle} />}
             />
-            <Route path="/users" element={<Users search={search} setSearch={setSearch} />} />
+            <Route path="/users" element={<Users />} />
           </Routes>
         </Suspense>
       </section>

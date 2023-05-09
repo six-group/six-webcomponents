@@ -1,5 +1,3 @@
-import { FilterModel, SortModel } from '@six-group/ui-library/dist/types/components/six-table/types';
-
 export interface User {
   id: string;
   name: string;
@@ -31,16 +29,5 @@ export namespace User {
     phone: 'Phone',
     username: 'Username',
     website: 'Website',
-  };
-
-  export const sort: SortModel<User> = {
-    name: 'none',
-    email: 'none',
-  };
-
-  export const filter: FilterModel<User> = {
-    username: {
-      in: '',
-    },
   };
 }

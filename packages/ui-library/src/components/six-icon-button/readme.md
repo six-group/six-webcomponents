@@ -36,7 +36,6 @@ Icons buttons are simple, icon-only buttons that can be used for actions and in 
  - [six-select](../six-select)
  - [six-tab](../six-tab)
  - [six-tab-group](../six-tab-group)
- - [six-table-header-cell](../six-table-header-cell)
  - [six-tag](../six-tag)
  - [six-tile](../six-tile)
 
@@ -55,7 +54,6 @@ graph TD;
   six-select --> six-icon-button
   six-tab --> six-icon-button
   six-tab-group --> six-icon-button
-  six-table-header-cell --> six-icon-button
   six-tag --> six-icon-button
   six-tile --> six-icon-button
   style six-icon-button fill:#f9f,stroke:#333,stroke-width:4px

@@ -1,9 +1,7 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Observable, throwError } from 'rxjs';
 import { catchError, first, map, switchMap, tap } from 'rxjs/operators';
-import { changeDetection } from '~/change-detection-strategy';
-import { encapsulation } from '~/view-encapsulation';
 // feature
 import { Is, validatorWithCustomMessage } from '~/app/reactive-form/util';
 import { ReactiveFormFacade } from '~/app/reactive-form/reactive-form.facade';
@@ -33,8 +31,8 @@ const areUnorderedDates = (startDate: Date, endDate: Date) => {
 @Component({
   styleUrls: ['./async-form.component.scss'],
   templateUrl: './async-form.component.html',
-  changeDetection,
-  encapsulation,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class AsyncFormComponent {
   readonly loading$ = this.formTestFacade.loading$;

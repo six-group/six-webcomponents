@@ -1,14 +1,12 @@
-import { Component, Output, EventEmitter } from '@angular/core';
-import { changeDetection } from '~/change-detection-strategy';
-import { encapsulation } from '~/view-encapsulation';
+import { ChangeDetectionStrategy, Component, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
 import { CoreFacade } from '../../providers';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  changeDetection,
-  encapsulation,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class HeaderComponent {
   @Output() toggleLeftSidebar = new EventEmitter();

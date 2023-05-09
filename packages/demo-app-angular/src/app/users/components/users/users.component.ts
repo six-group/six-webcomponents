@@ -1,6 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { changeDetection } from '~/change-detection-strategy';
-import { encapsulation } from '~/view-encapsulation';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { UsersFacade } from '../../providers';
 import { CoreFacade } from '~/app/core/providers';
 import { FormBuilder } from '@angular/forms';
@@ -28,8 +26,8 @@ const equals = <T>(a: T, b: T) => JSON.stringify(a) === JSON.stringify(b);
   selector: 'app-users-view',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss'],
-  changeDetection,
-  encapsulation,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class UsersComponent implements OnInit, OnDestroy {
   readonly destroy$ = new Subject();
@@ -57,6 +55,7 @@ export class UsersComponent implements OnInit, OnDestroy {
         controls: Object.keys(this.form.controls).reduce(
           (acc, name) => ({
             ...acc,
+            // @ts-ignore
             [name]: getAbstractControlProps(this.form.controls[name]),
           }),
           {}
@@ -73,6 +72,7 @@ export class UsersComponent implements OnInit, OnDestroy {
         distinctUntilChanged(equals),
         tap(() => {
           ['name', 'email', 'username'].forEach((name) => {
+            // @ts-ignore
             this.form.controls.role.value ? this.form.controls[name].enable() : this.form.controls[name].disable();
           });
         }),
@@ -82,6 +82,6 @@ export class UsersComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.destroy$.next();
+    this.destroy$.next(0);
   }
 }

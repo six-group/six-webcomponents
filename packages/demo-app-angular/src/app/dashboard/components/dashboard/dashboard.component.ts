@@ -1,6 +1,4 @@
-import { Component } from '@angular/core';
-import { changeDetection } from '~/change-detection-strategy';
-import { encapsulation } from '~/view-encapsulation';
+import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
 import { CoreFacade } from '~/app/core/providers';
 
 @Component({
@@ -19,8 +17,8 @@ import { CoreFacade } from '~/app/core/providers';
     </div>
   `,
   styleUrls: ['./dashboard.component.scss'],
-  changeDetection,
-  encapsulation,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class DashboardComponent {
   constructor(readonly coreFacade: CoreFacade) {}

@@ -1,13 +1,13 @@
 import { CommonModule } from '@angular/common';
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 // feature
 import { components } from './components';
 import { directives } from './directives';
+import { UiLibraryAngularModule } from '@six-group/ui-library-angular';
 
 @NgModule({
-  imports: [CommonModule],
+  imports: [CommonModule, UiLibraryAngularModule],
   declarations: [...components, ...directives],
   exports: [...components, ...directives],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class SharedModule {}

@@ -1,17 +1,10 @@
-import { Component, Input } from '@angular/core';
-import { changeDetection } from '~/change-detection-strategy';
-import { encapsulation } from '~/view-encapsulation';
-import { UsersFacade } from '../../providers';
+import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-users-header',
   templateUrl: './users-header.component.html',
   styleUrls: ['./users-header.component.scss'],
-  changeDetection,
-  encapsulation,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.ShadowDom,
 })
-export class UsersHeaderComponent {
-  @Input() fetchServerModel?: boolean | null;
-
-  constructor(readonly usersFacade: UsersFacade) {}
-}
+export class UsersHeaderComponent {}

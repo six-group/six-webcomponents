@@ -214,7 +214,6 @@ Type: `Promise<void>`
  - [six-dropdown](../six-dropdown)
  - [six-search-field](../six-search-field)
  - [six-select](../six-select)
- - [six-table-header-cell](../six-table-header-cell)
  - [six-timepicker](../six-timepicker)
 
 ### Depends on
@@ -229,7 +228,6 @@ graph TD;
   six-dropdown --> six-input
   six-search-field --> six-input
   six-select --> six-input
-  six-table-header-cell --> six-input
   six-timepicker --> six-input
   style six-input fill:#f9f,stroke:#333,stroke-width:4px
 ```

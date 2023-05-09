@@ -1,7 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { changeDetection } from '~/change-detection-strategy';
-import { encapsulation } from '~/view-encapsulation';
 import { User } from '../../providers/users.service';
 import { initialUserFormValues } from '~/app/users/components/users/users.component';
 
@@ -9,8 +7,8 @@ import { initialUserFormValues } from '~/app/users/components/users/users.compon
   selector: 'app-user-form',
   templateUrl: './user-form.component.html',
   styleUrls: ['./user-form.component.scss'],
-  changeDetection,
-  encapsulation,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class UserFormComponent {
   readonly errorText = 'This field is required!';

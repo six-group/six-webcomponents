@@ -8,3 +8,5 @@ packages/**/components.ts
 packages/**/components.d.ts
 packages/ui-library/loader
 packages/ui-library/docs
+.angular
+stencil-generated

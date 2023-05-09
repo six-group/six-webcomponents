@@ -97,7 +97,6 @@ Type: `Promise<void>`
 
  - [six-header](../six-header)
  - [six-select](../six-select)
- - [six-table-header-cell](../six-table-header-cell)
 
 ### Depends on
 
@@ -116,7 +115,6 @@ graph TD;
   six-menu --> six-menu-item
   six-header --> six-dropdown
   six-select --> six-dropdown
-  six-table-header-cell --> six-dropdown
   style six-dropdown fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
