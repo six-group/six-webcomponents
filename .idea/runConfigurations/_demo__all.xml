@@ -1,0 +1,8 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="[demo] all" type="CompoundRunConfigurationType">
+    <toRun name="[demo] angular" type="js.build_tools.npm" />
+    <toRun name="[demo] react" type="js.build_tools.npm" />
+    <toRun name="[demo] vue" type="js.build_tools.npm" />
+    <method v="2" />
+  </configuration>
+</component>
