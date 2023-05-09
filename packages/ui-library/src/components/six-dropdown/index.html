@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <script type="module" src="/build/ui-library.esm.js"></script>
+    <script nomodule src="/build/ui-library.js"></script>
+    <link rel="stylesheet" href="/build/ui-library.css" />
+    <title>six-dropdown</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Dropdown</h2>
+      <p>Dropdowns expose additional content that "drops down" in a panel.</p>
+
+      <p>
+        Dropdowns consist of a trigger and a panel. By default, activating the trigger will expose the panel and
+        interacting outside of the panel will close it. The API gives you complete control over showing, hiding, and
+        positioning the panel.
+      </p>
+
+      <p>
+        Dropdowns are designed to work well with <a href="six-menu.html">menus</a> to provide a list of actions the user
+        can trigger. If you're looking for a component to provide some options inside a form, you should have a look at
+        <a href="six-select.html">six-select</a>.
+      </p>
+      <section class="demo">
+        <six-dropdown>
+          <six-avatar
+            image="https://images.unsplash.com/photo-1559715541-5daf8a0296d0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1792&q=80"
+            slot="trigger"
+          ></six-avatar>
+          <six-menu>
+            <six-menu-item>Dropdown Item 1</six-menu-item>
+            <six-menu-item>Dropdown Item 2</six-menu-item>
+            <six-menu-item>Dropdown Item 3</six-menu-item>
+            <six-menu-divider></six-menu-divider>
+            <six-menu-item checked>Checked</six-menu-item>
+            <six-menu-item disabled>Disabled</six-menu-item>
+            <six-menu-divider></six-menu-divider>
+            <six-menu-item>
+              Prefix
+              <six-icon slot="prefix">favorite</six-icon>
+            </six-menu-item>
+            <six-menu-item>
+              Suffix Icon
+              <six-icon slot="suffix">face</six-icon>
+            </six-menu-item>
+          </six-menu>
+        </six-dropdown>
+      </section>
+
+      <h2>Demos</h2>
+
+      <h3>Text Only Button</h3>
+      <p>Of course the trigger button can be just a link button as well</p>
+      <section class="demo">
+        <six-dropdown placement="top-start">
+          <six-button type="link" caret slot="trigger">Edit</six-button>
+          <six-menu>
+            <six-menu-item>Cut</six-menu-item>
+            <six-menu-item>Copy</six-menu-item>
+            <six-menu-item>Paste</six-menu-item>
+            <six-menu-divider></six-menu-divider>
+            <six-menu-item>Find</six-menu-item>
+            <six-menu-item>Replace</six-menu-item>
+          </six-menu>
+        </six-dropdown>
+      </section>
+
+      <h3>Placement</h3>
+      <p>
+        The preferred placement of the dropdown can be set with the <code>placement</code> attribute. Note that the
+        actual position may vary to ensure the panel remains in the viewport.
+      </p>
+      <section class="demo">
+        <six-dropdown placement="top-start">
+          <six-button slot="trigger" caret>Edit</six-button>
+          <six-menu>
+            <six-menu-item>Cut</six-menu-item>
+            <six-menu-item>Copy</six-menu-item>
+            <six-menu-item>Paste</six-menu-item>
+            <six-menu-divider></six-menu-divider>
+            <six-menu-item>Find</six-menu-item>
+            <six-menu-item>Replace</six-menu-item>
+          </six-menu>
+        </six-dropdown>
+      </section>
+
+      <h3>Distance</h3>
+      <p>
+        The distance from the panel to the trigger can be customized using the <code>distance</code> attribute. This
+        value is specified in pixels.
+      </p>
+      <section class="demo">
+        <six-dropdown distance="30">
+          <six-button slot="trigger" caret>Edit</six-button>
+          <six-menu>
+            <six-menu-item>Cut</six-menu-item>
+            <six-menu-item>Copy</six-menu-item>
+            <six-menu-item>Paste</six-menu-item>
+            <six-menu-divider></six-menu-divider>
+            <six-menu-item>Find</six-menu-item>
+            <six-menu-item>Replace</six-menu-item>
+          </six-menu>
+        </six-dropdown>
+      </section>
+
+      <h3>Skidding</h3>
+      <p>
+        The offset of the panel along the trigger can be customized using the <code>skidding</code> attribute. This
+        value is specified in pixels.
+      </p>
+      <section class="demo">
+        <six-dropdown skidding="30">
+          <six-button slot="trigger" caret>Edit</six-button>
+          <six-menu>
+            <six-menu-item>Cut</six-menu-item>
+            <six-menu-item>Copy</six-menu-item>
+            <six-menu-item>Paste</six-menu-item>
+            <six-menu-divider></six-menu-divider>
+            <six-menu-item>Find</six-menu-item>
+            <six-menu-item>Replace</six-menu-item>
+          </six-menu>
+        </six-dropdown>
+      </section>
+
+      <h3>Hoisting</h3>
+      <p>
+        Dropdown panels will be clipped if they're inside a container that has <code>overflow: auto|hidden</code>. The
+        <code>hoist</code> attribute forces the panel to use a fixed positioning strategy, allowing it to break out of
+        the container. In this case, the panel will be positioned relative to its containing block, which is usually the
+        viewport unless an ancestor uses a <code>transform</code>, <code>perspective</code>, or <code>filter</code>.
+      </p>
+      <section class="demo">
+        <div class="dropdown-hoist">
+          <six-dropdown>
+            <six-button slot="trigger" caret>No Hoist</six-button>
+            <six-menu>
+              <six-menu-item>Item 1</six-menu-item>
+              <six-menu-item>Item 2</six-menu-item>
+              <six-menu-item>Item 3</six-menu-item>
+            </six-menu>
+          </six-dropdown>
+
+          <six-dropdown hoist>
+            <six-button slot="trigger" caret>Hoist</six-button>
+            <six-menu>
+              <six-menu-item>Item 1</six-menu-item>
+              <six-menu-item>Item 2</six-menu-item>
+              <six-menu-item>Item 3</six-menu-item>
+            </six-menu>
+          </six-dropdown>
+        </div>
+
+        <style>
+          .dropdown-hoist {
+            border: solid 2px var(--six-panel-border-color);
+            padding: var(--six-spacing-medium);
+            overflow: hidden;
+          }
+        </style>
+      </section>
+
+      <h3>Getting the Selected Item</h3>
+      <p>
+        When dropdowns are used with <a href="six-menu.html">menus</a>, you can listen for the
+        <code>six-select</code> event to determine which menu item was selected. The menu item element will be exposed
+        in <code>event.detail.item</code>. You can set <code>value</code> props to make it easier to identify commands.
+      </p>
+      <section class="demo">
+        <div class="dropdown-selection">
+          <six-dropdown>
+            <six-button slot="trigger" caret>Edit</six-button>
+            <six-menu>
+              <six-menu-item value="cut">Cut</six-menu-item>
+              <six-menu-item value="copy">Copy</six-menu-item>
+              <six-menu-item value="paste">Paste</six-menu-item>
+            </six-menu>
+          </six-dropdown>
+        </div>
+
+        <script type="module">
+          const container0 = document.querySelector('.dropdown-selection');
+          const dropdown = container0.querySelector('six-dropdown');
+
+          dropdown.addEventListener('six-menu-item-selected', (event) => {
+            let selectedItem = event.detail.item;
+            console.log(selectedItem.value);
+          });
+        </script>
+      </section>
+
+      <p>
+        Alternatively, you can listen for the <code>click</code> event on individual menu items. Note that, using this
+        approach, disabled menu items will still emit a <code>click</code> event.
+      </p>
+
+      <section class="demo">
+        <div class="dropdown-selection-alt">
+          <six-dropdown>
+            <six-button slot="trigger" caret>Edit</six-button>
+            <six-menu>
+              <six-menu-item value="cut">Cut</six-menu-item>
+              <six-menu-item value="copy">Copy</six-menu-item>
+              <six-menu-item value="paste">Paste</six-menu-item>
+            </six-menu>
+          </six-dropdown>
+        </div>
+
+        <script type="module">
+          const container1 = document.querySelector('.dropdown-selection-alt');
+          const cut = container1.querySelector('six-menu-item[value="cut"]');
+          const copy = container1.querySelector('six-menu-item[value="copy"]');
+          const paste = container1.querySelector('six-menu-item[value="paste"]');
+
+          cut.addEventListener('click', () => console.log('cut'));
+          copy.addEventListener('click', () => console.log('copy'));
+          paste.addEventListener('click', () => console.log('paste'));
+        </script>
+      </section>
+
+      <h3>Using an avatar as a trigger</h3>
+      <p>You can use any arbitrary content as trigger element, however it needs to be tabbable (tabIndex > -1)</p>
+      <section class="demo">
+        <div class="dropdown-selection">
+          <six-dropdown>
+            <six-avatar
+              image="https://images.unsplash.com/photo-1529778873920-4da4926a72c2?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80"
+              slot="trigger"
+            ></six-avatar>
+            <six-menu>
+              <six-menu-item value="cut">Cut</six-menu-item>
+              <six-menu-item value="copy">Copy</six-menu-item>
+              <six-menu-item value="paste">Paste</six-menu-item>
+            </six-menu>
+          </six-dropdown>
+        </div>
+      </section>
+
+      <h3>Enable Filtering Items</h3>
+      <p>You can filter the the items shown by simply adding <code>filter</code> to six-dropdown</p>
+      <p>
+        You can also pass a custom placeholder with <code>filter-placeholder</code> to be shown in the filter input
+        field (will be 'Filter...' by default)
+      </p>
+      <p>If you want to change the default debounce timeout use e.g. <code>filter-debounce="500"</code></p>
+      <section class="demo">
+        <six-dropdown filter filter-placeholder="Search">
+          <six-button slot="trigger" caret>Dropdown</six-button>
+          <six-menu>
+            <six-menu-item value="AUSTRALIA">Australia</six-menu-item>
+            <six-menu-item value="BRAZIL">Brazil</six-menu-item>
+            <six-menu-item value="CHINA">China</six-menu-item>
+            <six-menu-item value="EGYPT">Egypt</six-menu-item>
+            <six-menu-item value="FRANCE">France</six-menu-item>
+            <six-menu-item value="GERMANY">Germany</six-menu-item>
+            <six-menu-item value="INDIA">India</six-menu-item>
+            <six-menu-item value="JAPAN">Japan</six-menu-item>
+            <six-menu-item value="SPAIN">Spain</six-menu-item>
+            <six-menu-item value="UNITED_STATES">United States</six-menu-item>
+          </six-menu>
+        </six-dropdown>
+      </section>
+
+      <h3>Async Filtering</h3>
+      <p>
+        You might have a usecase where the full list of of items in the dropdown would be too large and you need to call
+        a backend when filtering the dropdown
+      </p>
+      <p>In such a scenario simply add the <code>async-filter</code> attribute to your dropdown component</p>
+      <p>If you want to change the default debounce timeout use e.g. <code>filter-debounce="500"</code></p>
+      <section class="demo">
+        <six-dropdown id="async-dropdown" async-filter filter-placeholder="Search">
+          <six-button slot="trigger" caret>Dropdown</six-button>
+          <six-menu id="async-menu">
+            <six-menu-item value="search_list_prompt">Use search to show entries</six-menu-item>
+          </six-menu>
+        </six-dropdown>
+        <script type="module">
+          const asyncDropdown = document.querySelector('#async-dropdown');
+          const asyncMenu = document.querySelector('#async-menu');
+
+          for (let i = 0; i < 500; i++) {
+            const child = document.createElement('six-menu-item');
+            child.innerText = `Value ${i}`;
+            child.value = `value-${i}`;
+            asyncMenu.appendChild(child);
+          }
+
+          const removeAllChildNodes = (parent) => {
+            while (parent.firstChild) {
+              parent.removeChild(parent.firstChild);
+            }
+          };
+
+          asyncDropdown.addEventListener('six-async-filter-fired', ($event) => {
+            const filterValue = $event.detail.filterValue;
+
+            removeAllChildNodes(asyncMenu);
+
+            const numberOfHits = Math.floor(Math.random() * 25) + 3;
+            for (let i = 0; i < numberOfHits; i++) {
+              const child = document.createElement('six-menu-item');
+              child.innerText = `Value ${filterValue} ${i}`;
+              child.value = `value-${filterValue}-${i}`;
+              asyncMenu.appendChild(child);
+            }
+          });
+        </script>
+      </section>
+
+      <h3>Infinite Scrolling</h3>
+
+      <p>
+        If you have huge amounts of data you want to present in the dropdown you can't render all at once or it will
+        crash your browser. For these usescases listen to the scroll event to decide which data to present
+      </p>
+
+      <section class="demo">
+        <six-dropdown id="infinite-scoll-dropdown">
+          <six-button slot="trigger" caret>Dropdown</six-button>
+          <six-menu id="infinite-scroll-menu"> </six-menu>
+        </six-dropdown>
+        <script type="module">
+          const asyncDropdown = document.querySelector('#infinite-scoll-dropdown');
+          const asyncMenu = document.querySelector('#infinite-scroll-menu');
+
+          let id = 0;
+
+          for (let i = 0; i < 20; i++) {
+            const child = document.createElement('six-menu-item');
+            child.innerText = `Value ${id}`;
+            child.value = `value-${id}`;
+            asyncMenu.appendChild(child);
+            id++;
+          }
+
+          asyncDropdown.addEventListener('six-dropdown-scroll', ($event) => {
+            const { scrollRatio } = $event.detail;
+
+            // add new elements once we reach almost bottom
+            if (scrollRatio > 0.8) {
+              for (let i = 0; i < 20; i++) {
+                const child = document.createElement('six-menu-item');
+                child.innerText = `Value ${id}`;
+                child.value = `value-${id}`;
+                asyncMenu.appendChild(child);
+                id++;
+              }
+            }
+          });
+        </script>
+      </section>
+
+      <h2>Passing items via options attribute</h2>
+
+      <p>
+        If you don't want to create a <code>six-menu-item</code> but simply want to pass an array with all options, you
+        can do so via the <code>options</code> attribute.
+      </p>
+
+      <section class="demo">
+        <six-dropdown id="six-dropdown-dynamic-options">
+          <six-button slot="trigger" caret>Dropdown</six-button>
+        </six-dropdown>
+        <script type="module">
+          const sixDropdownDynamicOptions = document.getElementById('six-dropdown-dynamic-options');
+          sixDropdownDynamicOptions.options = Array.from(Array(100).keys()).map((idx) => ({
+            label: `label ${idx}`,
+            value: `value ${idx}`,
+          }));
+        </script>
+      </section>
+
+      <h2>Virtual scrolling</h2>
+
+      <p>
+        If you have a lot of items in the menu (40'000 in the following example), rendering all of them might lead to
+        some performance issues. To avoid such issues use <code>virtual-scroll</code>
+      </p>
+
+      <section class="demo">
+        <six-dropdown id="six-dropdown-virtual-scrolling" virtual-scroll>
+          <six-button slot="trigger" caret>Dropdown</six-button>
+        </six-dropdown>
+        <script type="module">
+          const sixDropdownVirtualScrolling = document.getElementById('six-dropdown-virtual-scrolling');
+          sixDropdownVirtualScrolling.options = Array.from(Array(40000).keys()).map((idx) => ({
+            label: `label ${idx}`,
+            value: `value ${idx}`,
+          }));
+        </script>
+        <style>
+          six-dropdown::part(menu) {
+            min-width: 160px;
+          }
+        </style>
+      </section>
+
+      <h3>Virtual scrolling with filter</h3>
+
+      <p>To make your virtually scrolled list filterable simply add the <code>filter</code> attribute</p>
+
+      <section class="demo">
+        <six-dropdown id="six-dropdown-virtual-scrolling-filtered" virtual-scroll filter>
+          <six-button slot="trigger" caret>Dropdown</six-button>
+        </six-dropdown>
+        <script type="module">
+          const sixDropdownVirtualScrolling = document.getElementById('six-dropdown-virtual-scrolling-filtered');
+          sixDropdownVirtualScrolling.options = Array.from(Array(40000).keys()).map((idx) => ({
+            label: `label ${idx}`,
+            value: `value ${idx}`,
+          }));
+
+          sixDropdownVirtualScrolling.addEventListener('six-menu-item-selected', (e) =>
+            alert(`selected ${e.detail.name}`)
+          );
+        </script>
+        <style>
+          six-dropdown::part(menu) {
+            min-width: 160px;
+          }
+        </style>
+      </section>
+    </div>
+  </body>
+</html>

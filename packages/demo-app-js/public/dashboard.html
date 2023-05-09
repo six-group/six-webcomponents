@@ -1,0 +1,23 @@
+<h2>Dashboard</h2>
+<p>
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam veniam nulla aut ipsa harum, ab cupiditate nesciunt
+  eum quam at ratione, nisi deleniti, nam consequuntur impedit cum? Exercitationem, iure inventore.
+</p>
+<section id="content-buttons">
+  <six-button id="button-toggle-left-sidebar">Toggle left sidebar</six-button>
+  <six-button id="button-toggle-right-sidebar">Toggle right sidebar</six-button>
+</section>
+<script type="module" script-outlet>
+  window.run({
+    buttonToggleLeftSidebar: ({ buttonToggleLeftSidebar, leftSidebar }) => {
+      buttonToggleLeftSidebar.addEventListener('click', () => {
+        leftSidebar.toggleAttribute('open');
+      });
+    },
+    buttonToggleRightSidebar: ({ buttonToggleRightSidebar, rightSidebar }) => {
+      buttonToggleRightSidebar.addEventListener('click', () => {
+        rightSidebar.toggleAttribute('open');
+      });
+    },
+  });
+</script>

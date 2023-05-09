@@ -44,13 +44,16 @@ async function processNode(node, component) {
     case 'section': {
       const tag = `docs-demo-${component.tag}-${INDEX++}`;
       const numLeftWhiteSpace = node.innerHTML.replace(/[\n\r]/g, '').search(/\S|$/);
-      const content = node.innerHTML.split(NEWLINE).map((l) => l.substring(numLeftWhiteSpace)).join(NEWLINE);
+      const content = node.innerHTML
+        .split(NEWLINE)
+        .map((l) => l.substring(numLeftWhiteSpace))
+        .join(NEWLINE);
       const example = [`<${tag}></${tag}>`, NEWLINE + NEWLINE, '```html', content, '```', NEWLINE].join('');
       await writeDemoComponent(tag, node);
       return example;
     }
     default:
-      return (node.nodeType === NodeType.ELEMENT_NODE) ? turndownService.turndown(node.outerHTML) : '';
+      return node.nodeType === NodeType.ELEMENT_NODE ? turndownService.turndown(node.outerHTML) : '';
   }
 }
 
@@ -82,11 +85,10 @@ async function writeSidebar(components) {
 async function transformToMarkdown(component) {
   const root = parse(component.html);
   const container = root.querySelector('.container');
-  const promises = container.childNodes
-    .map((node) => processNode(node, component));
+  const promises = container.childNodes.map((node) => processNode(node, component));
 
   const examples = await Promise.all(promises);
-  component.md = component.md.replace(/\(\.\.\/(.*?)\)/g, '\($1\.html\)'); // fix dependencies links for doc
+  component.md = component.md.replace(/\(\.\.\/(.*?)\)/g, '($1.html)'); // fix dependencies links for doc
   return component.md.replace('<!-- EXAMPLES -->', examples.join(NEWLINE));
 }
 
@@ -105,4 +107,4 @@ async function writeMarkdown(component) {
     component.md = await transformToMarkdown(component);
     await writeMarkdown(component);
   }
-}());
+})();

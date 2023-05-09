@@ -55,7 +55,9 @@ module.exports = {
       },
       {
         text: `v${version} ${version.includes('RC') ? short : ''}`,
-        link: `https://github.com/six-group/six-webcomponents/tree/${version.includes("RC") ? '' : '?at=refs%2Ftags%2F' + version}`,
+        link: `https://github.com/six-group/six-webcomponents/tree/${
+          version.includes('RC') ? '' : '?at=refs%2Ftags%2F' + version
+        }`,
       },
     ],
     sidebar: {

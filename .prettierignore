@@ -1,0 +1,10 @@
+.idea
+node_modules
+dist
+build
+www
+packages/ui-library/src/**/readme.md
+packages/**/components.ts
+packages/**/components.d.ts
+packages/ui-library/loader
+packages/ui-library/docs
