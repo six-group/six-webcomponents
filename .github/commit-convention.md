@@ -64,11 +64,11 @@ If the commit reverts a previous commit, it should begin with `revert: `, follow
 
 If the prefix is `feat` or `fix`, it will appear in the changelog. However, if there is any [BREAKING CHANGE](#footer), the commit will always appear in the changelog.
 
-Other prefixes are up to your discretion. Suggested prefixes are `docs`, `chore`, `style`, `refactor`, and `test` for non-changelog related tasks.
+Other prefixes are up to your discretion. Suggested prefixes are `docs`, `chore`, `build`, `style`, `refactor`, and `test` for non-changelog related tasks.
 
 ### Scope
 
-The scope could be anything specifying the place of the commit change. For example `core`, `compiler`, `ssr`, `v-model`, `transition` etc...
+The scope could be anything specifying the place of the commit change. For example `core`, `component`, etc...
 
 ### Subject
 

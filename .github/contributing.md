@@ -54,20 +54,17 @@ Hi! I'm really excited that you are interested in contributing to Vue.js. Before
 
 ## Development Setup
 
-You will need [Node.js](https://nodejs.org) **version 16+**, and [PNPM](https://pnpm.io) **version 7+**.
+You will need [Node.js](https://nodejs.org) **version 16+**, and [NPM](https://www.npmjs.com/package/npm) **version 8**.
 
-We also recommend installing [ni](https://github.com/antfu/ni) to help switching between repos using different package managers. `ni` also provides the handy `nr` command which running npm scripts easier.
-
-After cloning the repo, run:
+After cloning the repo, run in root directory::
 
 ```bash
-$ pnpm i # install the dependencies of the project
+$ npm install # install the dependencies of the project
 ```
 
 A high level overview of tools used:
 
 - [TypeScript](https://www.typescriptlang.org/) as the development language
-- [Rollup](https://rollupjs.org) for bundling
 - [Jest](https://jestjs.io/) for unit testing
 - [Prettier](https://prettier.io/) for code formatting
 
@@ -80,12 +77,6 @@ This repository employs a [monorepo](https://en.wikipedia.org/wiki/Monorepo) set
 - `ui-library-react`: <tbd>
 
 - `ui-library-vue`: <tbd>
-
-This is made possible via several configurations:
-
-- For TypeScript, `compilerOptions.paths` in `tsconfig.json`
-- For Jest, `moduleNameMapper` in `jest.config.js`
-- For plain Node.js, they are linked using [PNPM Workspaces](https://pnpm.io/workspaces).
 
 ## Contributing Tests
 

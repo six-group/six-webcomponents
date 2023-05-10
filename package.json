@@ -2,8 +2,9 @@
   "name": "@six-group/workspace",
   "scripts": {
     "build": "npm run build --workspaces",
-    "build-lib": "npm run build                 -w packages/ui-library -w packages/ui-library-react -w packages/ui-library-vue",
-    "publish-lib": "npm publish --access public -w packages/ui-library -w packages/ui-library-react -w packages/ui-library-vue",
+    "build-lib": "npm run build                               -w packages/ui-library -w packages/ui-library-react -w packages/ui-library-vue",
+    "publish-lib": "npm publish --access public               -w packages/ui-library -w packages/ui-library-react -w packages/ui-library-vue",
+    "publish-lib:dry": "npm publish --dry-run --access public -w packages/ui-library -w packages/ui-library-react -w packages/ui-library-vue",
     "demo:angular": "npm start -w packages/demo-app-angular",
     "demo:react": "npm start -w packages/demo-app-react",
     "demo:vue": "npm start -w packages/demo-app-vue",
