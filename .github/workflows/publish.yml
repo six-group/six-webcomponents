@@ -10,13 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     ## if: github.ref == 'refs/heads/main'
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
-      - name: Setup node env 🏗
-        uses: actions/setup-node@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: 16
           registry-url: 'https://registry.npmjs.org'
@@ -24,18 +22,14 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Run installation 👨🏻‍💻
-        run: npm ci
+      - run: npm ci
 
-      - name: Run build 🏗
-        run: npm run build-lib
+      - run: npm run build
 
-      - name: Run dry publish of libraries 🏗
-        run: npm run publish-lib:dry
+      - run: npm run publish-lib:dry
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
 
-      - name: Run publish libraries 🏗
-        run: npm run publish-lib
+      - run: npm run publish-lib
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
