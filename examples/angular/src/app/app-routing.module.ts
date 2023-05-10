@@ -1,7 +1,6 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { TasksGuard } from './core/tasks/providers/tasks.guard';
-import { InputTestComponent } from '~/app/input-test/input-test.component';
 
 const ROUTES: Routes = [
   {
@@ -24,10 +23,6 @@ const ROUTES: Routes = [
   {
     path: 'reactive-form',
     loadChildren: () => import('./reactive-form/reactive-form.module').then((m) => m.ReactiveFormModule),
-  },
-  {
-    path: 'input-test',
-    component: InputTestComponent,
   },
 ];
 

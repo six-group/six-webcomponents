@@ -7,11 +7,10 @@ import { CoreModule } from './core/core.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UiLibraryAngularModule } from '@six-group/ui-library-angular';
-import { InputTestComponent } from './input-test/input-test.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, InputTestComponent],
+  declarations: [AppComponent],
   imports: [
     CommonModule,
     BrowserModule,
