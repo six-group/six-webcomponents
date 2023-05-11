@@ -13,7 +13,8 @@
     "clean:modules": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +",
     "clean:radical": "npm run clean:modules && npm run clean:locks && npm cache clear --force && npm cache verify",
     "prettier:check": "prettier --check .",
-    "prettier:write": "prettier --write ."
+    "prettier:write": "prettier --write .",
+    "release": "commit-and-tag-version"
   },
   "workspaces": [
     "packages/ui-library",
@@ -25,6 +26,7 @@
     "packages/demo-app-js"
   ],
   "devDependencies": {
+    "commit-and-tag-version": "^11.2.1",
     "prettier": "^2.8.8"
   },
   "license": "Apache-2.0"
