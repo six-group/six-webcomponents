@@ -1,0 +1,39 @@
+:root {
+  --six-color-red: #de3919;
+  --six-color-black: #000;
+  --six-color-white: #fff;
+
+  --six-color-web-rock-900: #262626;
+  --six-color-web-rock-800: #484848;
+  --six-color-web-rock-700: #676767;
+  --six-color-web-rock-600: #7b7b7b;
+  --six-color-web-rock-500: #a5a5a5;
+  --six-color-web-rock-400: #c3c3c3;
+  --six-color-web-rock-300: #e5e5e5;
+  --six-color-web-rock-200: #f1f1f1;
+  --six-color-web-rock-100: #f6f6f6;
+  --six-color-web-rock-50: #fbfbfb;
+
+  --six-color-clay-200: #ada398;
+  --six-color-clay-50: #ebe8e7;
+
+  --six-color-danger-900: #c52c0f;
+  --six-color-danger-800: #de3919;
+  --six-color-danger-light-to-be-defined: #f58c78;
+
+  --six-color-warning-800: #ef9f25;
+  --six-color-warning-700: #f2b72c;
+  --six-color-warning-light-to-be-defined: #f9deb4;
+
+  --six-color-success-600: #58d200;
+  --six-color-success-500: #6ae300;
+  --six-color-success-light-to-be-defined: #aaff6c;
+
+  --six-color-action-600: #1f87e5;
+  --six-color-action-500: #2196f3;
+  --six-color-action-light-to-be-defined: #a8d0f5;
+
+  --six-color-inactive: #c3c3c3;
+
+  --six-focus-ring-color: var(--six-color-web-rock-400);
+}

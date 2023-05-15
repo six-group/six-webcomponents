@@ -1,13 +1,14 @@
 {
   "name": "@six-group/workspace",
+  "version": "4.0.0-beta.0",
   "scripts": {
     "build": "npm run build --workspaces",
-    "build-lib": "npm run build                               -w packages/ui-library -w packages/ui-library-react -w packages/ui-library-vue",
-    "publish-lib": "npm publish --access public               -w packages/ui-library -w packages/ui-library-react -w packages/ui-library-vue",
-    "publish-lib:dry": "npm publish --dry-run --access public -w packages/ui-library -w packages/ui-library-react -w packages/ui-library-vue",
-    "demo:angular": "npm start -w packages/demo-app-angular",
-    "demo:react": "npm start -w packages/demo-app-react",
-    "demo:vue": "npm start -w packages/demo-app-vue",
+    "build:libraries": "npm run build -w libraries",
+    "publish-lib": "npm publish --access public -w packages/ui-library -w packages/ui-library-react -w packages/ui-library-vue -w packages/ui-library-angular",
+    "publish-lib:dry": "npm run publish-lib -- --dry-run",
+    "demo:vue": "npm start -w examples/vue",
+    "demo:react": "npm start -w examples/react",
+    "demo:angular": "npm start -w examples/angular",
     "clean": "npm run clean --workspaces",
     "clean:locks": "find . -name 'package-lock.json' -type f -prune -exec rm '{}' +",
     "clean:modules": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +",
@@ -16,13 +17,14 @@
     "prettier:write": "prettier --write ."
   },
   "workspaces": [
-    "packages/ui-library",
-    "packages/ui-library-react",
-    "packages/ui-library-vue",
-    "packages/demo-app-angular",
-    "packages/demo-app-react",
-    "packages/demo-app-vue",
-    "packages/demo-app-js"
+    "libraries/ui-library",
+    "libraries/ui-library-react",
+    "libraries/ui-library-vue",
+    "libraries/ui-library-angular",
+    "examples/angular",
+    "examples/react",
+    "examples/vue",
+    "examples/js"
   ],
   "devDependencies": {
     "prettier": "^2.8.8"

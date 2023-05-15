@@ -1,0 +1,25 @@
+{
+  "name": "@six-group/ui-library-angular",
+  "version": "4.0.0-beta.0",
+  "scripts": {
+    "ng": "ng",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development"
+  },
+  "peerDependencies": {
+    "@angular/common": "^15.2.0",
+    "@angular/core": "^15.2.0",
+    "@six-group/ui-library": "*"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^15.2.8",
+    "@angular/cli": "~15.2.6",
+    "@angular/compiler-cli": "^15.2.0",
+    "ng-packagr": "^15.2.2",
+    "typescript": "~4.9.4"
+  },
+  "sideEffects": false
+}

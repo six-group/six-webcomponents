@@ -1,0 +1,108 @@
+<template>
+  <div class="users">
+    <header class="users-header">
+      <six-icon size="large">supervisor_account</six-icon>
+      <span class="users-header__title">Users</span>
+    </header>
+    <six-card class="users__table">
+      <AppTable :columns="columns" :users="users" @userSelected="selectUser"></AppTable>
+    </six-card>
+    <six-drawer
+      v-if="selectedUser"
+      :label="`User #${selectedUser.id}`"
+      :open="showDrawer"
+      @six-drawer-overlay-dismiss="showDrawer = false"
+      @six-drawer-after-hide="storeData"
+    >
+      <AppUserForm :user="selectedUser"></AppUserForm>
+      <six-button slot="footer" @click="showDrawer = false">Submit</six-button>
+    </six-drawer>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent } from 'vue';
+import { SixButton, SixCard, SixDrawer, SixIcon } from '@six-group/ui-library-vue';
+import AppTable from '@/components/Table.vue';
+import UserForm from '@/components/UserForm.vue';
+import AppUserForm from '@/components/UserForm.vue';
+import Service, { type User } from '@/service';
+
+interface Data {
+  columns: { key: string; value: string }[];
+  users: User[];
+  selectedUser: User | null;
+  showDrawer: boolean;
+}
+
+export default defineComponent({
+  name: 'Users',
+  components: { AppUserForm, SixCard, SixIcon, SixDrawer, SixButton, AppTable, UserForm },
+  created() {
+    this.fetchData();
+  },
+  watch: {
+    $route: 'fetchData', // call again the method if the route changes
+  },
+  methods: {
+    async fetchData() {
+      this.users = await Service.fetchUsers();
+    },
+    storeData() {
+      console.log(JSON.stringify(this.selectedUser));
+    },
+    selectUser(selectedId: number) {
+      const user = this.users.find(({ id }) => id === selectedId);
+      if (user) {
+        this.selectedUser = user;
+        this.showDrawer = true;
+      }
+    },
+  },
+  data(): Data {
+    return {
+      columns: [
+        { key: 'name', value: 'Name' },
+        { key: 'email', value: 'E-Mail' },
+        { key: 'phone', value: 'Phone' },
+        { key: 'username', value: 'Username' },
+        { key: 'website', value: 'Website' },
+      ],
+      users: [],
+      selectedUser: null,
+      showDrawer: false,
+    };
+  },
+});
+</script>
+
+<style scoped lang="scss">
+.users {
+  padding: 1rem;
+
+  &__table {
+    margin-top: 1rem;
+    width: 100%;
+
+    &--loading {
+      min-height: 10rem;
+    }
+  }
+}
+
+.users-header {
+  &__title {
+    font-weight: bold;
+    font-size: larger;
+    position: relative;
+    top: -0.6rem;
+    margin-left: 0.6rem;
+  }
+  code {
+    background: rgba(0, 0, 0, 0.04);
+    padding: 0.2rem;
+    border-radius: 3px;
+    font-weight: bold !important;
+  }
+}
+</style>

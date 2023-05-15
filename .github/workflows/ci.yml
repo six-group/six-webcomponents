@@ -26,3 +26,5 @@ jobs:
       - run: npm ci
       - run: npm run prettier:check
       - run: npm run build
+      - name: verify clean build
+        run: git diff --exit-code
