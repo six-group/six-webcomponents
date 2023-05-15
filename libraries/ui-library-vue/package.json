@@ -5,7 +5,6 @@
   "description": "Vue specific wrapper for component-library",
   "license": "Apache-2.0",
   "scripts": {
-    "test": "jest",
     "build": "npm run clean && npm run compile",
     "clean": "rimraf dist",
     "compile": "npm run tsc",
