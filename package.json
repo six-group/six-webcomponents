@@ -3,9 +3,7 @@
   "version": "4.0.0-beta.0",
   "scripts": {
     "build": "npm run build --workspaces",
-    "build:libraries": "npm run build -w libraries",
-    "publish-lib": "npm publish --access public -w packages/ui-library -w packages/ui-library-react -w packages/ui-library-vue -w packages/ui-library-angular",
-    "publish-lib:dry": "npm run publish-lib -- --dry-run",
+    "build:lib": "npm run build -w libraries",
     "demo:vue": "npm start -w examples/vue",
     "demo:react": "npm start -w examples/react",
     "demo:angular": "npm start -w examples/angular",
