@@ -27,7 +27,7 @@ jobs:
           npm run build -w libraries/ui-library-angular
 
       - name: publish
-      - run: |
+        run: |
           npm publish libraries/ui-library/
           npm publish libraries/ui-library-react/
           npm publish libraries/ui-library-vue/
