@@ -770,7 +770,7 @@ export class SixInput {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['six-input-change', 'six-input-clear', 'six-input-input', 'six-input-focus', 'six-input-blur', 'six-input-value-change']);
+    proxyOutputs(this, this.el, ['six-input-change', 'six-input-clear', 'six-input-input', 'six-input-focus', 'six-input-blur']);
   }
 }
 
@@ -798,14 +798,6 @@ export declare interface SixInput extends Components.SixInput {
    * Emitted when the control loses focus. Access the new value via event.target.value.
    */
   'six-input-blur': EventEmitter<CustomEvent<ISixInputEmptyPayload>>;
-  /**
-   * Emitted whenever the value changes. Access the new value via event.target.value.
-six-input-value-change will emit whenever the value changes.
-So be it on input or when dynamically set. six-input-input will only be emitted when the user enters data,
-but not when a value is dynamically set. six-input-change will only be emitted when the user either presses enter
-or leaves the input field after entering some data.
-   */
-  'six-input-value-change': EventEmitter<CustomEvent<ISixInputEmptyPayload>>;
 }
 
 

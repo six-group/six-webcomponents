@@ -19,7 +19,7 @@ describe('six-input', () => {
                   <span class="input__prefix" part="prefix">
                     <slot name="prefix"></slot>
                   </span>
-                  <input aria-describedby="input-help-text-1" aria-invalid="false" aria-labelledby="input-label-1" class="input__control" data-testid="input-control" id="input-1" part="input" type="text" value="" size="1">
+                  <input aria-describedby="input-help-text-1" aria-invalid="false" aria-labelledby="input-label-1" autocapitalize="off" autocomplete="off" autocorrect="off" class="input__control" data-testid="input-control" id="input-1" part="input" size="1" type="text" value="">
                   <span class="input__suffix" part="suffix">
                     <slot name="suffix"></slot>
                   </span>
