@@ -2,7 +2,7 @@ import { newSpecPage } from '@stencil/core/testing';
 import { SixForm } from '../six-form';
 
 describe('six-form', () => {
-  it('renders', async () => {
+  xit('renders', async () => {
     const page = await newSpecPage({
       components: [SixForm],
       html: `

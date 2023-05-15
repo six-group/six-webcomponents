@@ -54,16 +54,16 @@ There are example apps for Angular, React, Vue and pure JavaScript. You can find
 
 ## Structure
 
-| Module                      | Description                                                          |
-| --------------------------- | -------------------------------------------------------------------- |
-| `packages/ui-library`       | Core UI component library build with Stencil                         |
-| `packages/ui-library-react` | React component module based on the the core library                 |
-| `packages/ui-library-vue`   | Vue component module based on the the core library                   |
-| `packages/demo-app-angular` | Angular demo app showing some components and features of ui-library  |
-| `packages/demo-app-react`   | React demo app showing some components and features of ui-library    |
-| `packages/demo-app-vue`     | Vue.js demo app showing some components and features of ui-library   |
-| `packages/demo-app-js`      | Plain JS demo app showing some components and features of ui-library |
-| `docs`                      | API documentation built with VuePress                                |
+| Module                       | Description                                                          |
+| ---------------------------- | -------------------------------------------------------------------- |
+| `libraries/ui-library`       | Core UI component library build with Stencil                         |
+| `libraries/ui-library-react` | React component module based on the the core library                 |
+| `libraries/ui-library-vue`   | Vue component module based on the the core library                   |
+| `examples/demo-app-angular`  | Angular demo app showing some components and features of ui-library  |
+| `examples/demo-app-react`    | React demo app showing some components and features of ui-library    |
+| `examples/demo-app-vue`      | Vue.js demo app showing some components and features of ui-library   |
+| `examples/demo-app-js`       | Plain JS demo app showing some components and features of ui-library |
+| `docs`                       | API documentation built with VuePress                                |
 
 ## Credits
 

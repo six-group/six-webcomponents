@@ -4,6 +4,7 @@
   "scripts": {
     "build": "npm run build --workspaces",
     "build:lib": "npm run build -w libraries",
+    "test:unit": "npm run test -w libraries/ui-library\"",
     "demo:vue": "npm start -w examples/vue",
     "demo:react": "npm start -w examples/react",
     "demo:angular": "npm start -w examples/angular",
