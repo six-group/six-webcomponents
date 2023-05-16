@@ -1,2 +1,1 @@
-puppeteer_chromium_revision=907457
 //registry.npmjs.org/:_authToken=${secrets.NPM_PUBLISH_TOKEN}

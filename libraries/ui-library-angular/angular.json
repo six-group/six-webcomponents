@@ -25,5 +25,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }
