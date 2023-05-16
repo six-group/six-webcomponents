@@ -17,15 +17,19 @@
   </six-form>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import { defineComponent } from 'vue';
 import { SixCheckbox, SixForm, SixInput, SixMenuItem, SixRadio, SixSelect } from '@six-group/ui-library-vue';
 
-export default defineComponent({
+import type { User } from '@/service';
+
+defineComponent({
   name: 'AppUserForm',
-  components: { SixForm, SixInput, SixSelect, SixMenuItem, SixCheckbox, SixRadio },
-  props: ['user'],
 });
+
+defineProps<{
+  user: User;
+}>();
 </script>
 
 <style scoped lang="scss">

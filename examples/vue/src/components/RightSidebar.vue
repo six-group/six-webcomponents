@@ -21,6 +21,7 @@ export default defineComponent({
 <style scoped lang="scss">
 six-sidebar {
   background-color: var(--six-color-web-rock-100);
+  height: calc(100vh - 3.75rem);
 }
 
 six-card {

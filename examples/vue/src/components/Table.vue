@@ -1,30 +1,39 @@
 <template>
-  <table>
+  <div class="loader" v-if="props.loading" style="display: flex; justify-content: center">
+    <SixSpinner></SixSpinner>
+  </div>
+  <table v-else>
     <thead>
       <tr>
-        <th v-for="column in columns" name="{{ column.key }}">
+        <th v-for="column in props.columns" name="{{ column.key }}">
           {{ column.value }}
         </th>
       </tr>
     </thead>
     <tbody>
-      <tr v-for="user in users" @click="$emit('userSelected', user.id)">
+      <tr v-for="user in props.users" @click="$emit('userSelected', user.id)">
         <td v-for="column in columns">
-          {{ user[column.key] }}
+          {{ (user as any)[column.key] }}
         </td>
       </tr>
     </tbody>
   </table>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import { defineComponent } from 'vue';
+import type { User } from '@/service';
+import { SixSpinner } from '@six-group/ui-library-vue';
 
-export default defineComponent({
+defineComponent({
   name: 'AppTable',
-  components: {},
-  props: ['columns', 'users'],
 });
+
+const props = defineProps<{
+  columns: { key: string; value: string }[];
+  users: User[];
+  loading?: boolean;
+}>();
 </script>
 
 <style scoped lang="scss">

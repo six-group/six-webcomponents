@@ -12,41 +12,38 @@
   </six-root>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script setup lang="ts">
+import { defineComponent, watch, ref, onMounted } from 'vue';
 import { SixRoot } from '@six-group/ui-library-vue';
 import AppHeader from './components/Header.vue';
 import AppLeftSidebar from './components/LeftSidebar.vue';
 import AppRightSidebar from './components/RightSidebar.vue';
 import Service from './service';
+import { useRoute } from 'vue-router';
 
-export default defineComponent({
+defineComponent({
   name: 'App',
-  created() {
-    this.fetchData();
-  },
-  watch: {
-    $route: 'fetchData', // call again the method if the route changes
-  },
-  components: { SixRoot, AppHeader, AppLeftSidebar, AppRightSidebar },
-  methods: {
-    async fetchData() {
-      this.tasks = await Service.fetchTasks();
-    },
-    updateCollapsed({ detail }: CustomEvent<{ collapsed: boolean }>) {
-      if (detail.collapsed === this.showLeftSidebar) {
-        this.showLeftSidebar = !detail.collapsed;
-      }
-    },
-  },
-  data() {
-    return {
-      tasks: [],
-      showLeftSidebar: true,
-      showRightSidebar: false,
-    };
-  },
 });
+
+const route = useRoute();
+
+const tasks = ref([]);
+const showLeftSidebar = ref(true);
+const showRightSidebar = ref(false);
+
+watch(route, () => fetchData());
+
+const fetchData = async () => {
+  tasks.value = await Service.fetchTasks();
+};
+
+const updateCollapsed = ({ detail }: CustomEvent<{ collapsed: boolean }>) => {
+  if (detail.collapsed === showLeftSidebar.value) {
+    showLeftSidebar.value = !detail.collapsed;
+  }
+};
+
+onMounted(() => fetchData());
 </script>
 
 <style>

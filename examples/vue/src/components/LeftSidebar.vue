@@ -10,15 +10,17 @@
   </six-sidebar>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import { defineComponent } from 'vue';
 import { SixSidebar, SixSidebarItemGroup } from '@six-group/ui-library-vue';
 
-export default defineComponent({
+defineComponent({
   name: 'AppLeftSidebar',
-  components: { SixSidebar, SixSidebarItemGroup },
-  props: ['open'],
 });
+
+defineProps<{
+  open: boolean;
+}>();
 </script>
 
 <style scoped lang="scss">

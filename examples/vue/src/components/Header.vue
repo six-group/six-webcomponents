@@ -11,7 +11,7 @@
     ></six-search-field>
 
     <six-icon-button slot="notifications" name="notifications_none" @click="$emit('toggleRightSidebar')">
-      <six-badge type="danger" pill>{{ notifications }}</six-badge>
+      <six-badge type="danger" pill>{{ props.notifications }}</six-badge>
     </six-icon-button>
 
     <div slot="menu-content">
@@ -19,10 +19,7 @@
     </div>
 
     <six-menu slot="app-switcher-menu">
-      <six-menu-item>App1</six-menu-item>
-      <six-menu-item>App2</six-menu-item>
-      <six-menu-item>App3</six-menu-item>
-      <six-menu-item>App4</six-menu-item>
+      <six-menu-item v-for="i in 4">App {{ i }}</six-menu-item>
     </six-menu>
 
     <six-menu slot="profile-menu">
@@ -36,7 +33,7 @@
   </six-header>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import { defineComponent } from 'vue';
 import {
   SixAvatar,
@@ -48,11 +45,13 @@ import {
   SixSearchField,
 } from '@six-group/ui-library-vue';
 
-export default defineComponent({
+defineComponent({
   name: 'AppHeader',
-  components: { SixHeader, SixSearchField, SixIconButton, SixBadge, SixMenu, SixMenuItem, SixAvatar },
-  props: ['notifications'],
 });
+
+const props = defineProps<{
+  notifications?: number;
+}>();
 </script>
 
 <style scoped lang="scss">

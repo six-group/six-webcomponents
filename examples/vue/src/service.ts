@@ -5,7 +5,15 @@ export interface User {
   email: string;
   phone: string;
   website: string;
+
+  role?: Role;
+  important?: boolean;
+  password?: string;
+  option?: UserOption;
 }
+
+export type Role = 'Administrator' | 'User';
+export type UserOption = 'Option 1' | 'Option 2' | 'Option 3';
 
 export default new (class {
   async fetchTasks() {
@@ -15,6 +23,10 @@ export default new (class {
 
   async fetchUsers(): Promise<User[]> {
     const response = await fetch('https://jsonplaceholder.typicode.com/users');
-    return await response.json();
+    const result = await response.json();
+    // Add some fake timeout
+    await new Promise((r) => setTimeout(r, 1000));
+
+    return result;
   }
 })();

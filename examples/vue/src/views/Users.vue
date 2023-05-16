@@ -5,75 +5,74 @@
       <span class="users-header__title">Users</span>
     </header>
     <six-card class="users__table">
-      <AppTable :columns="columns" :users="users" @userSelected="selectUser"></AppTable>
+      <AppTable :columns="columns" :users="users" :loading="loadingUsers" @userSelected="selectUser"></AppTable>
     </six-card>
     <six-drawer
       v-if="selectedUser"
       :label="`User #${selectedUser.id}`"
       :open="showDrawer"
-      @six-drawer-overlay-dismiss="showDrawer = false"
+      @six-drawer-overlay-dismiss="onDrawerDismiss"
       @six-drawer-after-hide="storeData"
     >
       <AppUserForm :user="selectedUser"></AppUserForm>
       <six-button slot="footer" @click="showDrawer = false">Submit</six-button>
     </six-drawer>
+    <pre>{{ selectedUser }}</pre>
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script setup lang="ts">
+import { defineComponent, onMounted, ref, watch, type Ref } from 'vue';
 import { SixButton, SixCard, SixDrawer, SixIcon } from '@six-group/ui-library-vue';
 import AppTable from '@/components/Table.vue';
-import UserForm from '@/components/UserForm.vue';
 import AppUserForm from '@/components/UserForm.vue';
 import Service, { type User } from '@/service';
+import { useRoute } from 'vue-router';
 
-interface Data {
-  columns: { key: string; value: string }[];
-  users: User[];
-  selectedUser: User | null;
-  showDrawer: boolean;
-}
-
-export default defineComponent({
+defineComponent({
   name: 'Users',
-  components: { AppUserForm, SixCard, SixIcon, SixDrawer, SixButton, AppTable, UserForm },
-  created() {
-    this.fetchData();
-  },
-  watch: {
-    $route: 'fetchData', // call again the method if the route changes
-  },
-  methods: {
-    async fetchData() {
-      this.users = await Service.fetchUsers();
-    },
-    storeData() {
-      console.log(JSON.stringify(this.selectedUser));
-    },
-    selectUser(selectedId: number) {
-      const user = this.users.find(({ id }) => id === selectedId);
-      if (user) {
-        this.selectedUser = user;
-        this.showDrawer = true;
-      }
-    },
-  },
-  data(): Data {
-    return {
-      columns: [
-        { key: 'name', value: 'Name' },
-        { key: 'email', value: 'E-Mail' },
-        { key: 'phone', value: 'Phone' },
-        { key: 'username', value: 'Username' },
-        { key: 'website', value: 'Website' },
-      ],
-      users: [],
-      selectedUser: null,
-      showDrawer: false,
-    };
-  },
 });
+
+const users: Ref<User[]> = ref([]);
+const selectedUser: Ref<User | null> = ref(null);
+const showDrawer: Ref<boolean> = ref(false);
+
+const columns: { key: string; value: string }[] = [
+  { key: 'name', value: 'Name' },
+  { key: 'email', value: 'E-Mail' },
+  { key: 'phone', value: 'Phone' },
+  { key: 'username', value: 'Username' },
+  { key: 'website', value: 'Website' },
+];
+
+const loadingUsers = ref(false);
+
+const route = useRoute();
+
+const fetchData = async () => {
+  loadingUsers.value = true;
+  users.value = await Service.fetchUsers();
+  loadingUsers.value = false;
+};
+
+const storeData = () => console.log(JSON.stringify(selectedUser.value));
+
+const selectUser = (selectedId: number) => {
+  const user = users.value.find(({ id }) => id === selectedId);
+  if (user) {
+    selectedUser.value = user;
+    showDrawer.value = true;
+  }
+};
+
+const onDrawerDismiss = () => {
+  showDrawer.value = false;
+  selectedUser.value = null;
+};
+
+onMounted(() => fetchData());
+
+watch(route, () => fetchData());
 </script>
 
 <style scoped lang="scss">
