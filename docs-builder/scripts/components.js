@@ -4,7 +4,7 @@ const { parse, NodeType } = require('node-html-parser');
 const TurndownService = require('turndown');
 
 const NEWLINE = '\n';
-const LIB_PATH = path.join(__dirname, '../../source/packages/ui-library');
+const LIB_PATH = path.join(__dirname, '../../libraries/ui-library');
 const turndownService = new TurndownService({ headingStyle: 'atx' });
 
 let INDEX = 0;

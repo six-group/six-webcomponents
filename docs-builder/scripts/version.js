@@ -1,7 +1,7 @@
 const git = require('git-rev-sync');
 const fse = require('fs-extra');
 const log = require('simple-node-logger').createSimpleLogger();
-const { version } = require('../../source/packages/ui-library/package');
+const { version } = require('../../libraries/ui-library/package.json');
 
 const short = git.short();
 

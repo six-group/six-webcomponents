@@ -2,7 +2,7 @@ const path = require('path');
 const fse = require('fs-extra');
 const log = require('simple-node-logger').createSimpleLogger();
 
-const UI_LIBRARY_PATH = path.join(__dirname, '../../source/packages/ui-library');
+const UI_LIBRARY_PATH = path.join(__dirname, '../../libraries/ui-library');
 
 (async function main() {
   log.info('copy resources...');

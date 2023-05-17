@@ -165,7 +165,7 @@ export class MyFormComponent {
 ```
 
 The code for the custom directive `appCustomControl` has to be copied manually into your project. It can be found here:
-[custom-control.directive.ts](TODO)
+[custom-control.directive.ts](https://github.com/six-group/six-webcomponents/blob/main/examples/angular/src/app/shared/directives/custom-control.directive.ts)
 
 ### Calling methods of a six web component
 
