@@ -25,7 +25,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - run: npm ci
       - run: npm run test:unit
-      - run: npm run prettier:check
       - run: npm run build
+      - run: npm run prettier:check
       - name: verify clean build
         run: git diff --exit-code
