@@ -1,6 +1,6 @@
 # Six Webcomponents Contributing Guide
 
-Hi! I'm really excited that you are interested in contributing to Vue.js. Before submitting your contribution, please make sure to take a moment and read through the following guidelines:
+Hi! I'm really excited that you are interested in contributing to the SIX Webcomponents. Before submitting your contribution, please make sure to take a moment and read through the following guidelines:
 
 - [Issue Reporting Guidelines](#issue-reporting-guidelines)
 - [Pull Request Guidelines](#pull-request-guidelines)
@@ -46,11 +46,6 @@ Hi! I'm really excited that you are interested in contributing to Vue.js. Before
   - Is the code perf-sensitive (e.g. in "hot paths" like component updates or the vdom patch function?)
 
     - If the branch is dev-only, performance is less of a concern.
-
-  - Check how much extra bundle size the change introduces.
-    - Make sure to put dev-only code in `__DEV__` branches so they are tree-shakable.
-    - Runtime code is more sensitive to size increase than compiler code.
-    - Make sure it doesn't accidentally cause dev-only or compiler-only code branches to be included in the runtime build. Notable case is that some functions in `@vue/shared` are compiler-only and should not be used in runtime code, e.g. `isHTMLTag` and `isSVGTag`.
 
 ## Development Setup
 

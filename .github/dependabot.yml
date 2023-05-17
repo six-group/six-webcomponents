@@ -10,4 +10,4 @@ updates:
     # Check the npm registry for updates once every month
     schedule:
       interval: 'monthly'
-    open-pull-requests-limit: 5
+    open-pull-requests-limit: 1
