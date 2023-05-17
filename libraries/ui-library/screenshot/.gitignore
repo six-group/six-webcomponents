@@ -1,5 +1,0 @@
-# the screeshot test runner automatically adds this gitignore.
-However we would like to share the images to know how our components changed so we leave the gitignore and simply keep everything commented
-#images
-#builds
-#compare.html
