@@ -61,6 +61,7 @@
   },
   "jest": {
     "preset": "@stencil/core/testing",
+    "testRunner": "jasmine2",
     "roots": [
       "<rootDir>/src"
     ]
