@@ -1,8 +1,8 @@
 import { newSpecPage, SpecPage } from '@stencil/core/testing';
 import { SixTextarea } from '../six-textarea';
 
-interface TypedSpecPage<T> extends Omit<SpecPage, 'root'> {
-  root?: HTMLElement & T;
+interface TypedSpecPage<T> extends SpecPage {
+  root: HTMLElement & T;
 }
 
 describe('six-textarea', () => {
@@ -22,9 +22,13 @@ describe('six-textarea', () => {
       supportsShadowDom: true,
     })) as TypedSpecPage<SixTextarea>;
 
-    textarea = page.root.shadowRoot.querySelector('textarea');
-
-    textarea.checkValidity = jest.fn();
+    const element = page.root.shadowRoot?.querySelector('textarea');
+    if (element != null) {
+      textarea = element;
+      textarea.checkValidity = jest.fn();
+      return;
+    }
+    fail('textarea not found');
   });
 
   it('renders', async () => {
@@ -37,7 +41,7 @@ describe('six-textarea', () => {
              <slot name="label"></slot>
            </label>
            <div class="form-control__input">
-             <div class="textarea textarea--empty textarea--medium textarea--resize-vertical" part="base"><textarea aria-labelledby="textarea-label-1" class="textarea__control" id="textarea-1" part="textarea" rows="4" value=""></textarea>
+             <div class="textarea textarea--empty textarea--medium textarea--resize-vertical" part="base"><textarea aria-labelledby="textarea-label-1" autocapitalize="off" autocorrect="off" class="textarea__control" id="textarea-1" part="textarea" rows="4" value=""></textarea>
              </div>
            </div>
            <div aria-hidden="true" class="form-control__error-text" id="input-error-text-1" part="error-text"></div>

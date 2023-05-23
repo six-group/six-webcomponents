@@ -1559,7 +1559,7 @@ export class SixTextarea {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['six-textarea-change', 'six-textarea-input', 'six-textarea-focus', 'six-textarea-blur', 'six-textarea-value-change']);
+    proxyOutputs(this, this.el, ['six-textarea-change', 'six-textarea-input', 'six-textarea-focus', 'six-textarea-blur']);
   }
 }
 
@@ -1583,14 +1583,6 @@ export declare interface SixTextarea extends Components.SixTextarea {
    * Emitted when the control loses focus. Access the new value via event.target.value.
    */
   'six-textarea-blur': EventEmitter<CustomEvent<ISixTextareaEmptyPayload>>;
-  /**
-   * Emitted whenever the value changes. Access the new value via event.target.value.
-six-textarea-value-change will emit whenever the value changes.
-So be it on textarea or when dynamically set. six-textarea-input will only be emitted when the user enters data,
-but not when a value is dynamically set. six-textarea-change will only be emitted when the user either presses enter
-or leaves the textarea field after entering some data.
-   */
-  'six-textarea-value-change': EventEmitter<CustomEvent<ISixTextareaEmptyPayload>>;
 }
 
 
