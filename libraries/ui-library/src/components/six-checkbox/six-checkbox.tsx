@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, Method, Prop, State, Watch, h, Element } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Method, Prop, State, Watch } from '@stencil/core';
 import FormControl from '../../functional-components/form-control/form-control';
 import { hasSlot } from '../../utils/slot';
 import { EmptyPayload } from '../../utils/types';
@@ -28,27 +28,32 @@ let id = 0;
   shadow: true,
 })
 export class SixCheckbox {
-  inputId = `checkbox-${++id}`;
-  labelId = `checkbox-label-${id}`;
-  textId = `checkbox-text-${id}`;
-  errorTextId = `input-error-text-${id}`;
-  input: HTMLInputElement;
-  customErrorText = '';
-  customValidation = false;
+  private inputId = `checkbox-${++id}`;
+  private labelId = `checkbox-label-${id}`;
+  private textId = `checkbox-text-${id}`;
+  private errorTextId = `input-error-text-${id}`;
+  private nativeInput?: HTMLInputElement;
+  private customErrorText = '';
+  private customValidation = false;
+  private eventListeners = new EventListeners();
 
-  readonly eventListeners = new EventListeners();
-
-  @Element() host: HTMLSixCheckboxElement;
+  @Element() host!: HTMLSixCheckboxElement;
 
   @State() hasFocus = false;
   @State() hasLabelSlot = false;
   @State() hasErrorTextSlot = false;
 
   /** The checkbox's name attribute. */
-  @Prop() name: string;
+  @Prop() name = '';
 
-  /** The checkbox's value attribute. */
-  @Prop() value: string;
+  /**
+   * The value of the checkbox does not mean if it's checked or not, use the `checked`
+   * property for that.
+   *
+   * The value of a checkbox is analogous to the value of an `<input type="checkbox">`,
+   * it's only used when the checkbox participates in a native `<form>`.
+   */
+  @Prop() value = 'on';
 
   /** Set to true to disable the checkbox. */
   @Prop() disabled = false;
@@ -75,23 +80,23 @@ export class SixCheckbox {
   @Prop() errorOnBlur = false;
 
   /** Emitted when the control loses focus. */
-  @Event({ eventName: 'six-checkbox-blur' }) sixBlur: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-checkbox-blur' }) sixBlur!: EventEmitter<EmptyPayload>;
 
   /** Emitted when the control's checked state changes. */
-  @Event({ eventName: 'six-checkbox-change' }) sixChange: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-checkbox-change' }) sixChange!: EventEmitter<EmptyPayload>;
 
   /** Emitted when the control gains focus. */
-  @Event({ eventName: 'six-checkbox-focus' }) sixFocus: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-checkbox-focus' }) sixFocus!: EventEmitter<EmptyPayload>;
 
   @Watch('checked')
   @Watch('indeterminate')
   handleCheckedChange() {
-    if (!this.input) {
+    if (this.nativeInput == null) {
       return;
     }
-    this.input.checked = this.checked;
-    this.input.indeterminate = this.indeterminate;
-    this.invalid = !this.input.checkValidity();
+    this.nativeInput.checked = this.checked;
+    this.nativeInput.indeterminate = this.indeterminate;
+    this.invalid = !this.nativeInput.checkValidity();
     this.sixChange.emit();
   }
 
@@ -105,17 +110,11 @@ export class SixCheckbox {
   private defaultState = false;
 
   connectedCallback() {
-    this.handleChange = this.handleChange.bind(this);
-    this.handleBlur = this.handleBlur.bind(this);
-    this.handleFocus = this.handleFocus.bind(this);
-    this.handleMouseDown = this.handleMouseDown.bind(this);
-    this.handleInvalid = this.handleInvalid.bind(this);
-
-    this.host.shadowRoot.addEventListener('slotchange', this.handleSlotChange);
+    this.host.shadowRoot?.addEventListener('slotchange', this.handleSlotChange);
   }
 
   disconnectedCallback() {
-    this.host.shadowRoot.removeEventListener('slotchange', this.handleSlotChange);
+    this.host.shadowRoot?.removeEventListener('slotchange', this.handleSlotChange);
     this.eventListeners.removeAll();
   }
 
@@ -125,10 +124,16 @@ export class SixCheckbox {
   }
 
   componentDidLoad() {
-    this.input.indeterminate = this.indeterminate;
-    this.eventListeners.add(this.input, 'invalid', (event) => {
-      if (this.customValidation || (!this.hasErrorTextSlot && !this.errorText && !this.customErrorText)) {
-        this.customErrorText = this.input.validationMessage;
+    const nativeInput = this.nativeInput;
+    if (nativeInput == null) {
+      return;
+    }
+
+    nativeInput.indeterminate = this.indeterminate;
+    this.eventListeners.add(nativeInput, 'invalid', (event) => {
+      this.invalid = true;
+      if (this.customValidation || (!this.hasErrorTextSlot && this.errorText === '' && this.customErrorText === '')) {
+        this.customErrorText = nativeInput.validationMessage;
       }
       event.preventDefault();
     });
@@ -137,25 +142,28 @@ export class SixCheckbox {
   /** Sets focus on the checkbox. */
   @Method()
   async setFocus(options?: FocusOptions) {
-    this.input.focus(options);
+    this.nativeInput?.focus(options);
   }
 
   /** Removes focus from the checkbox. */
   @Method()
   async removeFocus() {
-    this.input.blur();
+    this.nativeInput?.blur();
   }
 
   /** Checks for validity and shows the browser's validation message if the control is invalid. */
   @Method()
   async reportValidity() {
-    return this.input.reportValidity();
+    return this.nativeInput?.reportValidity();
   }
 
   /** Checks for validity. */
   @Method()
   async checkValidity() {
-    return this.input.validity.valid;
+    if (this.nativeInput == null) {
+      return true;
+    }
+    return this.nativeInput.validity.valid;
   }
 
   /** Sets a custom validation message. If `message` is not empty, the field will be considered invalid. */
@@ -163,8 +171,10 @@ export class SixCheckbox {
   async setCustomValidity(message: string) {
     this.customErrorText = '';
     this.customValidation = message !== '';
-    this.input.setCustomValidity(message);
-    this.invalid = !this.input.checkValidity();
+    if (this.nativeInput != null) {
+      this.nativeInput.setCustomValidity(message);
+      this.invalid = !this.nativeInput.checkValidity();
+    }
   }
 
   /** Resets the formcontrol */
@@ -173,41 +183,39 @@ export class SixCheckbox {
     this.checked = this.defaultState;
     this.customErrorText = '';
     this.customValidation = false;
-    this.input.setCustomValidity('');
+    this.nativeInput?.setCustomValidity('');
     this.invalid = false;
   }
 
-  handleChange() {
-    this.checked = this.input.checked;
-    this.indeterminate = false;
-  }
+  private handleChange = () => {
+    if (this.nativeInput != null) {
+      this.checked = this.nativeInput.checked;
+      this.indeterminate = false;
+    }
+  };
 
-  handleBlur() {
+  private handleBlur = () => {
     this.hasFocus = false;
     this.sixBlur.emit();
-  }
+  };
 
-  handleFocus() {
+  private handleFocus = () => {
     this.hasFocus = true;
     this.sixFocus.emit();
-  }
+  };
 
-  handleMouseDown(event: MouseEvent) {
+  private handleMouseDown = (event: MouseEvent) => {
     // Prevent clicks on the label from briefly blurring the input
     event.preventDefault();
-    this.input.focus();
-  }
+    this.nativeInput?.focus();
+  };
 
-  handleInvalid() {
-    this.invalid = true;
-  }
-
-  handleSlotChange() {
+  private handleSlotChange() {
     this.hasErrorTextSlot = hasSlot(this.host, 'error-text');
     this.hasLabelSlot = hasSlot(this.host, 'label');
   }
 
-  displayError() {
+  private displayError() {
     return this.invalid && (!this.errorOnBlur || !this.hasFocus);
   }
 
@@ -219,7 +227,7 @@ export class SixCheckbox {
         labelId={this.labelId}
         hasLabelSlot={this.hasLabelSlot}
         errorTextId={this.errorTextId}
-        errorText={this.customErrorText ? this.customErrorText : this.errorText}
+        errorText={this.customErrorText != null ? this.customErrorText : this.errorText}
         hasErrorTextSlot={this.hasErrorTextSlot}
         size="medium"
         disabled={this.disabled}
@@ -270,7 +278,7 @@ export class SixCheckbox {
             )}
 
             <input
-              ref={(el) => (this.input = el)}
+              ref={(el) => (this.nativeInput = el)}
               id={this.inputId}
               type="checkbox"
               name={this.name}
@@ -284,7 +292,6 @@ export class SixCheckbox {
               onChange={this.handleChange}
               onBlur={this.handleBlur}
               onFocus={this.handleFocus}
-              onInvalid={this.handleInvalid}
             />
           </span>
 

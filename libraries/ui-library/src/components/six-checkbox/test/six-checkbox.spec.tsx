@@ -17,7 +17,7 @@ describe('six-checkbox', () => {
              <div class="form-control__input">
                <label class="checkbox" htmlfor="checkbox-1" part="base">
                  <span class="checkbox__control" part="control">
-                   <input aria-checked="false" aria-labelledby="checkbox-label-1" id="checkbox-1" role="checkbox" type="checkbox">
+                   <input aria-checked="false" aria-labelledby="checkbox-label-1" id="checkbox-1" role="checkbox" type="checkbox" value="on">
                  </span>
                  <span class="checkbox__text" id="checkbox-text-1" part="text">
                    <slot></slot>
@@ -61,7 +61,7 @@ describe('six-checkbox', () => {
                       </g>
                     </svg>
                   </span>
-                  <input id="checkbox-2" type="checkbox" role="checkbox" aria-checked="true" aria-labelledby="checkbox-label-2" checked="">
+                  <input id="checkbox-2" type="checkbox" role="checkbox" aria-checked="true" aria-labelledby="checkbox-label-2" checked="" value="on">
                 </span>
                 <span part="text" id="checkbox-text-2" class="checkbox__text">
                   <slot></slot>
