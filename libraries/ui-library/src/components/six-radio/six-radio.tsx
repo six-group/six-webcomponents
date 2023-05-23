@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Method, Prop, State, Watch, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Method, Prop, State, Watch } from '@stencil/core';
 import { EmptyPayload } from '../../utils/types';
 
 let id = 0;
@@ -23,19 +23,19 @@ let id = 0;
   shadow: true,
 })
 export class SixRadio {
-  inputId = `radio-${++id}`;
-  labelId = `radio-label-${id}`;
-  input: HTMLInputElement;
+  private inputId = `radio-${++id}`;
+  private labelId = `radio-label-${id}`;
+  private nativeInput?: HTMLInputElement;
 
-  @Element() host: HTMLSixRadioElement;
+  @Element() host!: HTMLSixRadioElement;
 
   @State() hasFocus = false;
 
   /** The radio's name attribute. */
-  @Prop() name: string;
+  @Prop() name = '';
 
   /** The radio's value attribute. */
-  @Prop() value: string;
+  @Prop() value = 'on';
 
   /** Set to true to disable the radio. */
   @Prop() disabled = false;
@@ -54,31 +54,23 @@ export class SixRadio {
     if (this.checked) {
       this.getSiblingRadios().map((radio) => (radio.checked = false));
     }
-    if (this.input) {
-      this.input.checked = this.checked;
+    if (this.nativeInput != null) {
+      this.nativeInput.checked = this.checked;
       this.sixChange.emit();
     }
   }
 
   /** Emitted when the control loses focus. */
-  @Event({ eventName: 'six-radio-blur' }) sixBlur: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-radio-blur' }) sixBlur!: EventEmitter<EmptyPayload>;
 
   /** Emitted when the control's checked state changes. */
-  @Event({ eventName: 'six-radio-change' }) sixChange: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-radio-change' }) sixChange!: EventEmitter<EmptyPayload>;
 
   /** Emitted when the control gains focus. */
-  @Event({ eventName: 'six-radio-focus' }) sixFocus: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-radio-focus' }) sixFocus!: EventEmitter<EmptyPayload>;
 
   /** default state whether the radio button should be checked or not when resetting */
   private defaultState = false;
-
-  connectedCallback() {
-    this.handleClick = this.handleClick.bind(this);
-    this.handleBlur = this.handleBlur.bind(this);
-    this.handleFocus = this.handleFocus.bind(this);
-    this.handleKeyDown = this.handleKeyDown.bind(this);
-    this.handleMouseDown = this.handleMouseDown.bind(this);
-  }
 
   componentWillLoad() {
     this.defaultState = this.checked;
@@ -87,71 +79,78 @@ export class SixRadio {
   /** Sets focus on the radio. */
   @Method()
   async setFocus(options?: FocusOptions) {
-    this.input.focus(options);
+    this.nativeInput?.focus(options);
   }
 
   /** Removes focus from the radio. */
   @Method()
   async removeFocus() {
-    this.input.blur();
+    this.nativeInput?.blur();
   }
 
   /** Checks for validity and shows the browser's validation message if the control is invalid. */
   @Method()
   async reportValidity() {
-    return this.input.reportValidity();
+    return this.nativeInput?.reportValidity();
   }
 
   /** Checks for validity. */
   @Method()
   async checkValidity() {
-    return this.input.validity.valid;
+    if (this.nativeInput == null) {
+      return true;
+    }
+    return this.nativeInput.validity.valid;
   }
 
   /** Sets a custom validation message. If `message` is not empty, the field will be considered invalid. */
   @Method()
   async setCustomValidity(message: string) {
-    this.input.setCustomValidity(message);
-    this.invalid = !this.input.checkValidity();
+    if (this.nativeInput != null) {
+      this.nativeInput.setCustomValidity(message);
+      this.invalid = !this.nativeInput.checkValidity();
+    }
   }
 
   /** Resets the formcontrol */
   @Method()
   async reset() {
     this.checked = this.defaultState;
-    this.input.setCustomValidity('');
+    this.nativeInput?.setCustomValidity('');
     this.invalid = false;
   }
 
-  getAllRadios() {
+  private getAllRadios() {
     const form = this.host.closest('six-form, form') || document.body;
 
-    if (!this.name) return [];
+    if (this.name === '') return [];
 
     return [...form.querySelectorAll('six-radio')].filter(
       (radio: HTMLSixRadioElement) => radio.name === this.name
     ) as HTMLSixRadioElement[];
   }
 
-  getSiblingRadios() {
+  private getSiblingRadios() {
     return this.getAllRadios().filter((radio) => radio !== this.host) as HTMLSixRadioElement[];
   }
 
-  handleClick() {
-    this.checked = this.input.checked;
-  }
+  private handleClick = () => {
+    if (this.nativeInput != null) {
+      this.checked = this.nativeInput.checked;
+    }
+  };
 
-  handleBlur() {
+  private handleBlur = () => {
     this.hasFocus = false;
     this.sixBlur.emit();
-  }
+  };
 
-  handleFocus() {
+  private handleFocus = () => {
     this.hasFocus = true;
     this.sixFocus.emit();
-  }
+  };
 
-  handleKeyDown(event: KeyboardEvent) {
+  private handleKeyDown = (event: KeyboardEvent) => {
     if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(event.key)) {
       const radios = this.getAllRadios().filter((radio) => !radio.disabled);
       const incr = ['ArrowUp', 'ArrowLeft'].includes(event.key) ? -1 : 1;
@@ -165,13 +164,13 @@ export class SixRadio {
 
       event.preventDefault();
     }
-  }
+  };
 
-  handleMouseDown(event: MouseEvent) {
+  private handleMouseDown = (event: MouseEvent) => {
     // Prevent clicks on the label from briefly blurring the input
     event.preventDefault();
-    this.input.focus();
-  }
+    this.nativeInput?.focus();
+  };
 
   render() {
     return (
@@ -199,7 +198,7 @@ export class SixRadio {
           </span>
 
           <input
-            ref={(el) => (this.input = el)}
+            ref={(el) => (this.nativeInput = el)}
             id={this.inputId}
             type="radio"
             name={this.name}
