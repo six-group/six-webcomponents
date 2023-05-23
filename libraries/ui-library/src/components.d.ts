@@ -858,7 +858,7 @@ export namespace Components {
         /**
           * The input's autocorrect attribute.
          */
-        "autocorrect": string;
+        "autocorrect": 'on' | 'off';
         /**
           * The input's autofocus attribute.
          */
@@ -890,7 +890,7 @@ export namespace Components {
         /**
           * Returns the native input's validity
          */
-        "getValidity": () => Promise<ValidityState>;
+        "getValidity": () => Promise<ValidityState | undefined>;
         /**
           * The input's help text. Alternatively, you can use the help-text slot.
          */
@@ -898,7 +898,7 @@ export namespace Components {
         /**
           * The input's inputmode attribute.
          */
-        "inputmode": 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
+        "inputmode"?: 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
         /**
           * This will be true when the control is in an invalid state. Validity is determined by props such as `type`, `required`, `minlength`, `maxlength`, and `pattern` using the browser's constraint validation API.
          */
@@ -918,19 +918,19 @@ export namespace Components {
         /**
           * The input's maximum value.
          */
-        "max": number;
+        "max"?: number;
         /**
           * The maximum length of input that will be considered valid.
          */
-        "maxlength": number;
+        "maxlength"?: number;
         /**
           * The input's minimum value.
          */
-        "min": number;
+        "min"?: number;
         /**
           * The minimum length of input that will be considered valid.
          */
-        "minlength": number;
+        "minlength"?: number;
         /**
           * The input's name attribute.
          */
@@ -938,7 +938,7 @@ export namespace Components {
         /**
           * A pattern to validate input against.
          */
-        "pattern": string;
+        "pattern"?: string;
         /**
           * Set to true to draw a pill-style input with rounded edges.
          */
@@ -946,7 +946,7 @@ export namespace Components {
         /**
           * The input's placeholder text.
          */
-        "placeholder": string;
+        "placeholder"?: string;
         /**
           * Set to true to make the input readonly.
          */
@@ -998,7 +998,7 @@ export namespace Components {
         /**
           * The input's step attribute.
          */
-        "step": number;
+        "step"?: number;
         /**
           * Set to true to add a password toggle button for password inputs.
          */
@@ -3709,7 +3709,7 @@ declare namespace LocalJSX {
         /**
           * The input's autocorrect attribute.
          */
-        "autocorrect"?: string;
+        "autocorrect"?: 'on' | 'off';
         /**
           * The input's autofocus attribute.
          */
@@ -3790,10 +3790,6 @@ declare namespace LocalJSX {
           * Emitted when the control receives input. Access the new value via event.target.value.
          */
         "onSix-input-input"?: (event: SixInputCustomEvent<EmptyPayload>) => void;
-        /**
-          * Emitted whenever the value changes. Access the new value via event.target.value. six-input-value-change will emit whenever the value changes. So be it on input or when dynamically set. six-input-input will only be emitted when the user enters data, but not when a value is dynamically set. six-input-change will only be emitted when the user either presses enter or leaves the input field after entering some data.
-         */
-        "onSix-input-value-change"?: (event: SixInputCustomEvent<EmptyPayload>) => void;
         /**
           * A pattern to validate input against.
          */

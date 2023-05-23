@@ -305,8 +305,7 @@ export const SixInput = /*@__PURE__*/ defineContainer<JSX.SixInput, JSX.SixInput
   'six-input-clear',
   'six-input-input',
   'six-input-focus',
-  'six-input-blur',
-  'six-input-value-change'
+  'six-input-blur'
 ],
 'value', 'six-input-change');
 

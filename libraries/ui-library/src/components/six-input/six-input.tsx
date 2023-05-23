@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Method, Prop, State, Watch, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Method, Prop, State, Watch } from '@stencil/core';
 import FormControl from '../../functional-components/form-control/form-control';
 import { hasSlot } from '../../utils/slot';
 import { EmptyPayload } from '../../utils/types';
@@ -44,17 +44,16 @@ let id = 0;
   shadow: true,
 })
 export class SixInput {
-  inputId = `input-${++id}`;
-  labelId = `input-label-${id}`;
-  helpTextId = `input-help-text-${id}`;
-  errorTextId = `input-error-text-${id}`;
-  input: HTMLInputElement;
-  customErrorText = '';
-  customValidation = false;
+  private inputId = `input-${++id}`;
+  private labelId = `input-label-${id}`;
+  private helpTextId = `input-help-text-${id}`;
+  private errorTextId = `input-error-text-${id}`;
+  private nativeInput?: HTMLInputElement;
+  private customErrorText = '';
+  private customValidation = false;
+  private eventListeners = new EventListeners();
 
-  readonly eventListeners = new EventListeners();
-
-  @Element() host: HTMLSixInputElement;
+  @Element() host!: HTMLSixInputElement;
 
   @State() hasFocus = false;
   @State() hasHelpTextSlot = false;
@@ -87,7 +86,7 @@ export class SixInput {
   @Prop() errorText = '';
 
   /** The input's placeholder text. */
-  @Prop() placeholder: string;
+  @Prop() placeholder?: string;
 
   /** Set to true to disable the input. */
   @Prop({ reflect: true }) disabled = false;
@@ -96,40 +95,40 @@ export class SixInput {
   @Prop({ reflect: true }) readonly = false;
 
   /** The minimum length of input that will be considered valid. */
-  @Prop({ reflect: true }) minlength: number;
+  @Prop({ reflect: true }) minlength?: number;
 
   /** The maximum length of input that will be considered valid. */
-  @Prop({ reflect: true }) maxlength: number;
+  @Prop({ reflect: true }) maxlength?: number;
 
   /** The input's minimum value. */
-  @Prop({ reflect: true }) min: number;
+  @Prop({ reflect: true }) min?: number;
 
   /** The input's maximum value. */
-  @Prop({ reflect: true }) max: number;
+  @Prop({ reflect: true }) max?: number;
 
   /** The input's step attribute. */
-  @Prop({ reflect: true }) step: number;
+  @Prop({ reflect: true }) step?: number;
 
   /** A pattern to validate input against. */
-  @Prop({ reflect: true }) pattern: string;
+  @Prop({ reflect: true }) pattern?: string;
 
   /** Set to true to make the input a required field. */
-  @Prop({ reflect: true }) required: boolean;
+  @Prop({ reflect: true }) required = false;
 
   /** The input's autocaptialize attribute. */
-  @Prop() autocapitalize: string;
+  @Prop() autocapitalize = 'off';
 
   /** The input's autocorrect attribute. */
-  @Prop() autocorrect: string;
+  @Prop() autocorrect: 'on' | 'off' = 'off';
 
   /** The input's autocomplete attribute. */
-  @Prop() autocomplete: string;
+  @Prop() autocomplete = 'off';
 
   /** The input's autofocus attribute. */
-  @Prop() autofocus: boolean;
+  @Prop() autofocus = false;
 
   /** Enables spell checking on the input. */
-  @Prop() spellcheck: boolean;
+  @Prop() spellcheck = false;
 
   /**
    * This will be true when the control is in an invalid state. Validity is determined by props such as `type`,
@@ -144,7 +143,7 @@ export class SixInput {
   @Prop() togglePassword = false;
 
   /** The input's inputmode attribute. */
-  @Prop() inputmode: 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
+  @Prop() inputmode?: 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
 
   /** Set to render as line */
   @Prop() line = false;
@@ -161,89 +160,81 @@ export class SixInput {
 
   @Watch('value')
   handleValueChange() {
-    if (!this.input) {
-      return;
+    this.value = this.getValue();
+    if (this.nativeInput != null) {
+      if (this.nativeInput.value !== this.value) {
+        this.nativeInput.value = this.value;
+      }
+      this.invalid = !this.nativeInput.checkValidity();
     }
-    this.input.value = this.value;
-    this.invalid = !this.input.checkValidity();
-    this.sixValueChange.emit();
   }
 
   /** Emitted when the control's value changes. Access the new value via event.target.value. */
-  @Event({ eventName: 'six-input-change' }) sixChange: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-input-change' }) sixChange!: EventEmitter<EmptyPayload>;
 
   /** Emitted when the clear button is activated. */
-  @Event({ eventName: 'six-input-clear' }) sixClear: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-input-clear' }) sixClear!: EventEmitter<EmptyPayload>;
 
   /** Emitted when the control receives input. Access the new value via event.target.value.  */
-  @Event({ eventName: 'six-input-input' }) sixInput: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-input-input' }) sixInput!: EventEmitter<EmptyPayload>;
 
   /** Emitted when the control gains focus. */
-  @Event({ eventName: 'six-input-focus' }) sixFocus: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-input-focus' }) sixFocus!: EventEmitter<EmptyPayload>;
 
   /** Emitted when the control loses focus. Access the new value via event.target.value. */
-  @Event({ eventName: 'six-input-blur' }) sixBlur: EventEmitter<EmptyPayload>;
-
-  /**
-   * Emitted whenever the value changes. Access the new value via event.target.value.
-   * six-input-value-change will emit whenever the value changes.
-   * So be it on input or when dynamically set. six-input-input will only be emitted when the user enters data,
-   * but not when a value is dynamically set. six-input-change will only be emitted when the user either presses enter
-   * or leaves the input field after entering some data.
-   * */
-  @Event({ eventName: 'six-input-value-change' }) sixValueChange: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-input-blur' }) sixBlur!: EventEmitter<EmptyPayload>;
 
   /** defaultValue which the input will be reverted to when executing reset */
   private defaultValue = '';
 
   connectedCallback() {
-    this.handleChange = this.handleChange.bind(this);
-    this.handleInput = this.handleInput.bind(this);
-    this.handleInvalid = this.handleInvalid.bind(this);
-    this.handleBlur = this.handleBlur.bind(this);
-    this.handleFocus = this.handleFocus.bind(this);
-    this.handleClearClick = this.handleClearClick.bind(this);
-    this.handlePasswordToggle = this.handlePasswordToggle.bind(this);
-    this.handleSlotChange = this.handleSlotChange.bind(this);
-
-    this.host.shadowRoot.addEventListener('slotchange', this.handleSlotChange);
+    this.host.shadowRoot?.addEventListener('slotchange', this.handleSlotChange);
   }
 
   componentWillLoad() {
-    this.defaultValue = this.value;
+    this.defaultValue = this.getValue();
     this.handleSlotChange();
   }
 
   componentDidLoad() {
-    this.eventListeners.add(this.input, 'invalid', (event) => {
-      if (this.customValidation || (!this.hasErrorTextSlot && !this.errorText && !this.customErrorText)) {
-        this.customErrorText = this.input.validationMessage;
+    const nativeInput = this.nativeInput;
+    if (nativeInput == null) {
+      return;
+    }
+    this.eventListeners.add(nativeInput, 'invalid', (event) => {
+      this.invalid = true;
+      if (this.customValidation || (!this.hasErrorTextSlot && this.errorText === '' && this.customErrorText === '')) {
+        this.customErrorText = nativeInput.validationMessage;
       }
       event.preventDefault();
     });
   }
 
   disconnectedCallback() {
-    this.host.shadowRoot.removeEventListener('slotchange', this.handleSlotChange);
+    this.host.shadowRoot?.removeEventListener('slotchange', this.handleSlotChange);
     this.eventListeners.removeAll();
+  }
+
+  private getValue(): string {
+    return (this.value ?? '').toString();
   }
 
   /** Sets focus on the input. */
   @Method()
   async setFocus(options?: FocusOptions) {
-    this.input.focus(options);
+    this.nativeInput?.focus(options);
   }
 
   /** Removes focus from the input. */
   @Method()
   async removeFocus() {
-    this.input.blur();
+    this.nativeInput?.blur();
   }
 
   /** Selects all the text in the input. */
   @Method()
   async select() {
-    return this.input.select();
+    return this.nativeInput?.select();
   }
 
   /** Sets the start and end positions of the text selection (0-based). */
@@ -253,7 +244,7 @@ export class SixInput {
     selectionEnd: number,
     selectionDirection: 'forward' | 'backward' | 'none' = 'none'
   ) {
-    return this.input.setSelectionRange(selectionStart, selectionEnd, selectionDirection);
+    return this.nativeInput?.setSelectionRange(selectionStart, selectionEnd, selectionDirection);
   }
 
   /** Replaces a range of text with a new string. */
@@ -264,10 +255,14 @@ export class SixInput {
     end: number,
     selectMode: 'select' | 'start' | 'end' | 'preserve' = 'preserve'
   ) {
-    this.input.setRangeText(replacement, start, end, selectMode);
+    if (this.nativeInput == null) {
+      return;
+    }
 
-    if (this.value !== this.input.value) {
-      this.value = this.input.value;
+    this.nativeInput.setRangeText(replacement, start, end, selectMode);
+    const value = this.getValue();
+    if (value !== this.nativeInput.value) {
+      this.value = this.nativeInput.value;
       this.sixChange.emit();
       this.sixInput.emit();
     }
@@ -276,13 +271,16 @@ export class SixInput {
   /** Checks for validity and shows the browser's validation message if the control is invalid. */
   @Method()
   async reportValidity() {
-    return this.input.reportValidity();
+    return this.nativeInput?.reportValidity();
   }
 
   /** Checks for validity. */
   @Method()
-  async checkValidity() {
-    return this.input.validity.valid;
+  async checkValidity(): Promise<boolean> {
+    if (this.nativeInput == null) {
+      return true;
+    }
+    return this.nativeInput.validity.valid;
   }
 
   /** Sets a custom validation message. If `message` is not empty, the field will be considered invalid. */
@@ -290,26 +288,34 @@ export class SixInput {
   async setCustomValidity(message: string) {
     this.customErrorText = '';
     this.customValidation = message !== '';
-    this.input.setCustomValidity(message);
-    this.invalid = !this.input.checkValidity();
+    if (this.nativeInput != null) {
+      this.nativeInput.setCustomValidity(message);
+      this.invalid = !this.nativeInput.checkValidity();
+    }
   }
 
   /** Returns the native input's validity */
   @Method()
-  async getValidity() {
-    return this.input.validity;
+  async getValidity(): Promise<ValidityState | undefined> {
+    return this?.nativeInput?.validity;
   }
 
   /** Returns the native input's validity */
   @Method()
-  async isValid() {
-    return this.input.validity.valid;
+  async isValid(): Promise<boolean> {
+    if (this.nativeInput == null) {
+      return true;
+    }
+    return this.nativeInput.validity.valid;
   }
 
   /** Returns the native input's validationMessage */
   @Method()
   async getValidationMessage() {
-    return this.input.validationMessage;
+    if (this.nativeInput == null) {
+      return '';
+    }
+    return this.nativeInput.validationMessage;
   }
 
   /** Resets the formcontrol */
@@ -318,55 +324,58 @@ export class SixInput {
     this.value = this.defaultValue;
     this.customErrorText = '';
     this.customValidation = false;
-    this.input.setCustomValidity('');
+    if (this.nativeInput != null) {
+      this.nativeInput.setCustomValidity('');
+    }
     this.invalid = false;
   }
 
-  handleChange() {
-    this.value = this.input.value;
-    this.sixChange.emit();
-  }
+  private handleChange = () => {
+    if (this.nativeInput != null) {
+      this.value = this.nativeInput.value;
+      this.sixChange.emit();
+    }
+  };
 
-  handleInput() {
-    this.value = this.input.value;
-    this.sixInput.emit();
-  }
+  private handleInput = () => {
+    if (this.nativeInput != null) {
+      this.value = this.nativeInput.value;
+      this.sixInput.emit();
+    }
+  };
 
-  handleInvalid() {
-    this.invalid = true;
-  }
-
-  handleBlur() {
+  private handleBlur = () => {
     this.hasFocus = false;
     this.sixBlur.emit();
-  }
+  };
 
-  handleFocus() {
+  private handleFocus = () => {
     this.hasFocus = true;
     this.sixFocus.emit();
-  }
+  };
 
-  handleClearClick(event: MouseEvent) {
+  private handleClearClick = (event: MouseEvent) => {
     this.value = '';
     this.sixClear.emit();
     this.sixInput.emit();
     this.sixChange.emit();
-    this.input.focus();
-
+    if (this.nativeInput != null) {
+      this.nativeInput.focus();
+    }
     event.stopPropagation();
-  }
+  };
 
-  handlePasswordToggle() {
+  private handlePasswordToggle = () => {
     this.isPasswordVisible = !this.isPasswordVisible;
-  }
+  };
 
-  handleSlotChange() {
+  private handleSlotChange = () => {
     this.hasHelpTextSlot = hasSlot(this.host, 'help-text');
     this.hasErrorTextSlot = hasSlot(this.host, 'error-text');
     this.hasLabelSlot = hasSlot(this.host, 'label');
-  }
+  };
 
-  displayError() {
+  private displayError() {
     return this.invalid && (!this.errorOnBlur || !this.hasFocus);
   }
 
@@ -381,7 +390,7 @@ export class SixInput {
         helpText={this.helpText}
         hasHelpTextSlot={this.hasHelpTextSlot}
         errorTextId={this.errorTextId}
-        errorText={this.customErrorText ? this.customErrorText : this.errorText}
+        errorText={this.customErrorText != null ? this.customErrorText : this.errorText}
         hasErrorTextSlot={this.hasErrorTextSlot}
         size={this.size}
         disabled={this.disabled}
@@ -403,7 +412,7 @@ export class SixInput {
             'input--pill': this.pill,
             'input--disabled': this.disabled,
             'input--focused': this.hasFocus,
-            'input--empty': this.value?.length === 0,
+            'input--empty': this.getValue().length === 0,
             'input--invalid': this.invalid,
           }}
         >
@@ -413,7 +422,7 @@ export class SixInput {
 
           <input
             part="input"
-            ref={(el) => (this.input = el)}
+            ref={(el) => (this.nativeInput = el)}
             id={this.inputId}
             size={1} // needed for firefox to overrule the default of 20
             class={{
@@ -444,7 +453,6 @@ export class SixInput {
             aria-invalid={this.invalid ? 'true' : 'false'}
             onChange={this.handleChange}
             onInput={this.handleInput}
-            onInvalid={this.handleInvalid}
             onFocus={this.handleFocus}
             onBlur={this.handleBlur}
             data-testid="input-control"
