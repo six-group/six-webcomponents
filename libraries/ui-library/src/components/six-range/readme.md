@@ -18,11 +18,11 @@
 | `max`              | `max`           | The input's max attribute.                                                                                                                                   | `number`                      | `100`                                 |
 | `min`              | `min`           | The input's min attribute.                                                                                                                                   | `number`                      | `0`                                   |
 | `name`             | `name`          | The input's name attribute.                                                                                                                                  | `string`                      | `''`                                  |
-| `required`         | `required`      | Set to true to make the input a required field.                                                                                                              | `boolean`                     | `undefined`                           |
+| `required`         | `required`      | Set to true to make the input a required field.                                                                                                              | `boolean`                     | `false`                               |
 | `step`             | `step`          | The input's step attribute.                                                                                                                                  | `number`                      | `1`                                   |
 | `tooltip`          | `tooltip`       | The preferred placedment of the tooltip.                                                                                                                     | `"bottom" \| "none" \| "top"` | `'top'`                               |
 | `tooltipFormatter` | --              | A function used to format the tooltip's value.                                                                                                               | `(value: number) => string`   | `(value: number) => value.toString()` |
-| `value`            | `value`         | The input's value attribute.                                                                                                                                 | `number`                      | `undefined`                           |
+| `value`            | `value`         | The input's value attribute.                                                                                                                                 | `number`                      | `0`                                   |
 
 
 ## Events
