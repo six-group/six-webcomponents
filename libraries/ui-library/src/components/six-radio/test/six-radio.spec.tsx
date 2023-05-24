@@ -21,7 +21,7 @@ describe('six-radio', () => {
                   </g>
                 </svg>
               </span>
-              <input aria-checked="false" aria-labelledby="radio-label-1" id="radio-1" role="radio" type="radio">
+              <input aria-checked="false" aria-labelledby="radio-label-1" id="radio-1" role="radio" type="radio" value="on">
             </span>
             <span class="radio__label" id="radio-label-1" part="label">
               <slot></slot>
@@ -51,7 +51,7 @@ describe('six-radio', () => {
                   </g>
                 </svg>
               </span>
-              <input aria-checked="true" aria-labelledby="radio-label-2" checked="" id="radio-2" role="radio" type="radio">
+              <input aria-checked="true" aria-labelledby="radio-label-2" checked="" id="radio-2" role="radio" type="radio" value="on">
             </span>
             <span class="radio__label" id="radio-label-2" part="label">
               <slot></slot>

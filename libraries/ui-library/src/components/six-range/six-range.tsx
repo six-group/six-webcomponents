@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Method, Prop, State, Watch, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Method, Prop, State, Watch } from '@stencil/core';
 import FormControl from '../../functional-components/form-control/form-control';
 import { hasSlot } from '../../utils/slot';
 import { EmptyPayload } from '../../utils/types';
@@ -26,20 +26,19 @@ let id = 0;
   shadow: true,
 })
 export class SixRange {
-  inputId = `input-${++id}`;
-  labelId = `input-label-${id}`;
-  helpTextId = `input-help-text-${id}`;
-  errorTextId = `input-error-text-${id}`;
-  resizeObserver: ResizeObserver;
+  private inputId = `input-${++id}`;
+  private labelId = `input-label-${id}`;
+  private helpTextId = `input-help-text-${id}`;
+  private customErrorText = '';
+  private customValidation = false;
+  private errorTextId = `input-error-text-${id}`;
+  private eventListeners = new EventListeners();
+  private resizeObserver?: ResizeObserver;
 
-  output: HTMLElement;
-  input: HTMLInputElement;
-  customErrorText = '';
-  customValidation = false;
+  private output?: HTMLElement;
+  private nativeInput?: HTMLInputElement;
 
-  readonly eventListeners = new EventListeners();
-
-  @Element() host: HTMLSixRangeElement;
+  @Element() host!: HTMLSixRangeElement;
 
   @State() hasFocus = false;
   @State() hasHelpTextSlot = false;
@@ -51,10 +50,10 @@ export class SixRange {
   @Prop() name = '';
 
   /** The input's value attribute. */
-  @Prop({ mutable: true }) value: number;
+  @Prop({ mutable: true }) value = 0;
 
   /** Set to true to make the input a required field. */
-  @Prop({ reflect: true }) required: boolean;
+  @Prop({ reflect: true }) required = false;
 
   /** The range's label. Alternatively, you can use the label slot. */
   @Prop() label = '';
@@ -93,13 +92,13 @@ export class SixRange {
   @Prop() errorOnBlur = false;
 
   /** Emitted when the control's value changes. */
-  @Event({ eventName: 'six-range-change' }) sixChange: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-range-change' }) sixChange!: EventEmitter<EmptyPayload>;
 
   /** Emitted when the control loses focus. */
-  @Event({ eventName: 'six-range-blur' }) sixBlur: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-range-blur' }) sixBlur!: EventEmitter<EmptyPayload>;
 
   /** Emitted when the control gains focus. */
-  @Event({ eventName: 'six-range-focus' }) sixFocus: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-range-focus' }) sixFocus!: EventEmitter<EmptyPayload>;
 
   /** default value the slider will be reverted to when reset is executed */
   private defaultValue = 0;
@@ -112,61 +111,55 @@ export class SixRange {
   }
 
   @Watch('value')
+  @Watch('min')
+  @Watch('max')
   handleValueChange() {
-    if (this.input) {
-      this.input.value = this.value as any;
-      this.calculateColorRunnableTrack();
+    this.update();
+    if (this.nativeInput != null) {
+      this.invalid = !this.nativeInput.checkValidity();
     }
-    // In rare cases, the watcher may be called before render so we need to make sure the input exists
-    this.invalid = this.input ? !this.input.checkValidity() : false;
   }
 
   connectedCallback() {
-    this.handleInput = this.handleInput.bind(this);
-    this.handleBlur = this.handleBlur.bind(this);
-    this.handleFocus = this.handleFocus.bind(this);
-    this.handleSlotChange = this.handleSlotChange.bind(this);
-    this.handleTouchStart = this.handleTouchStart.bind(this);
-
-    this.host.shadowRoot.addEventListener('slotchange', this.handleSlotChange);
+    this.host.shadowRoot?.addEventListener('slotchange', this.handleSlotChange);
   }
 
   componentWillLoad() {
-    if (this.value === undefined || this.value === null) this.value = this.min;
-    if (this.value < this.min) this.value = this.min;
-    if (this.value > this.max) this.value = this.max;
+    this.update();
     this.defaultValue = this.value;
-
     this.handleSlotChange();
   }
 
   componentDidLoad() {
-    this.syncTooltip();
-    this.calculateColorRunnableTrack();
-    this.resizeObserver = new ResizeObserver(() => this.syncTooltip());
-    this.eventListeners.add(this.input, 'invalid', (event) => {
-      if (this.customValidation || (!this.hasErrorTextSlot && !this.errorText && !this.customErrorText)) {
-        this.customErrorText = this.input.validationMessage;
+    const nativeInput = this.nativeInput;
+    if (nativeInput == null) {
+      return;
+    }
+    this.update();
+    this.resizeObserver = new ResizeObserver(() => this.update());
+    this.eventListeners.add(nativeInput, 'invalid', (event) => {
+      if (this.customValidation || (!this.hasErrorTextSlot && this.errorText === '' && this.customErrorText === '')) {
+        this.customErrorText = nativeInput.validationMessage;
       }
       event.preventDefault();
     });
   }
 
   disconnectedCallback() {
-    this.host.shadowRoot.removeEventListener('slotchange', this.handleSlotChange);
+    this.host.shadowRoot?.removeEventListener('slotchange', this.handleSlotChange);
     this.eventListeners.removeAll();
   }
 
   /** Sets focus on the input. */
   @Method()
   async setFocus(options?: FocusOptions) {
-    this.input.focus(options);
+    this.nativeInput?.focus(options);
   }
 
   /** Removes focus from the input. */
   @Method()
   async removeFocus() {
-    this.input.blur();
+    this.nativeInput?.blur();
   }
 
   /** Sets a custom validation message. If `message` is not empty, the field will be considered invalid. */
@@ -174,8 +167,10 @@ export class SixRange {
   async setCustomValidity(message: string) {
     this.customErrorText = '';
     this.customValidation = message !== '';
-    this.input.setCustomValidity(message);
-    this.invalid = !this.input.checkValidity();
+    if (this.nativeInput != null) {
+      this.nativeInput.setCustomValidity(message);
+      this.invalid = !this.nativeInput.checkValidity();
+    }
   }
 
   /** Resets the formcontrol */
@@ -184,78 +179,115 @@ export class SixRange {
     this.value = this.defaultValue;
     this.customErrorText = '';
     this.customValidation = false;
-    this.input.setCustomValidity('');
+    this.nativeInput?.setCustomValidity('');
     this.invalid = false;
   }
 
-  handleInput() {
-    this.value = Number(this.input.value);
-    this.sixChange.emit();
+  private handleInput = () => {
+    if (this.nativeInput != null) {
+      this.update(parseFloat(this.nativeInput.value));
+    }
+    requestAnimationFrame(() => {
+      this.sixChange.emit();
+    });
+  };
 
-    requestAnimationFrame(() => this.syncTooltip());
-    requestAnimationFrame(() => this.calculateColorRunnableTrack());
-  }
-
-  handleBlur() {
+  private handleBlur = () => {
     this.hasFocus = false;
     this.hasTooltip = false;
     this.sixBlur.emit();
-    this.resizeObserver.unobserve(this.input);
-  }
+    if (this.nativeInput != null) {
+      this.resizeObserver?.unobserve(this.nativeInput);
+    }
+  };
 
-  handleFocus() {
+  private handleFocus = () => {
     this.hasFocus = true;
     this.hasTooltip = true;
     this.sixFocus.emit();
-    this.resizeObserver.observe(this.input);
-  }
+    if (this.nativeInput != null) {
+      this.resizeObserver?.observe(this.nativeInput);
+    }
+  };
 
-  handleSlotChange() {
+  private handleSlotChange = () => {
     this.hasHelpTextSlot = hasSlot(this.host, 'help-text');
     this.hasErrorTextSlot = hasSlot(this.host, 'error-text');
     this.hasLabelSlot = hasSlot(this.host, 'label');
-  }
+  };
 
-  handleTouchStart() {
+  private handleTouchStart = () => {
     this.setFocus();
-  }
+  };
 
-  displayError() {
+  private displayError() {
     return this.invalid && (!this.errorOnBlur || !this.hasFocus);
   }
 
-  syncTooltip() {
-    if (this.tooltip !== 'none') {
-      const percent = Math.max(0, (this.value - this.min) / (this.max - this.min));
-      const inputWidth = this.input.offsetWidth;
+  private syncTooltip(min: number, max: number, value: number) {
+    if (this.tooltip !== 'none' && this.nativeInput != null && this.output != null) {
+      const percent = Math.max(0, (value - min) / (max - min));
+      const inputWidth = this.nativeInput.offsetWidth;
       const tooltipWidth = this.output.offsetWidth;
-      const thumbSize = getComputedStyle(this.input).getPropertyValue('--thumb-size');
+      const thumbSize = getComputedStyle(this.nativeInput).getPropertyValue('--thumb-size');
       const x = `calc(${inputWidth * percent}px - calc(calc(${percent} * ${thumbSize}) - calc(${thumbSize} / 2)))`;
       this.output.style.transform = `translateX(${x})`;
       this.output.style.marginLeft = `-${tooltipWidth / 2}px`;
     }
   }
 
+  private isFirefox() {
+    return navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+  }
+
+  private update(updateValue?: number) {
+    if (updateValue != null) {
+      this.value = updateValue;
+    }
+
+    const min = Number(this.min) ?? 0;
+    const max = Number(this.max) ?? 0;
+    let value;
+    const parsedValue = parseFloat(this.value as never);
+    if (isNaN(parsedValue)) {
+      value = this.getDefaultValue(min, max);
+    } else {
+      value = parsedValue;
+    }
+
+    if (this.nativeInput != null) {
+      // The value may have constraints, so we set the native control's
+      // value and sync it back to ensure it adheres to min, max, and step
+      // properly.
+      this.nativeInput.value = value.toString();
+      this.value = parseFloat(this.nativeInput.value);
+    } else {
+      this.value = value;
+    }
+    this.calculateColorRunnableTrack(min, max, this.value);
+    this.syncTooltip(min, max, this.value);
+  }
+
+  /**
+   * from https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range#value
+   */
+  private getDefaultValue(min: number, max: number): number {
+    return max < min ? min : min + (max - min) / 2;
+  }
+
   /**
    * For Firefox this functionality is not needed because it is supported by standard CSS.
    */
-  calculateColorRunnableTrack() {
-    if (!this.isFirefox()) {
-      const value = parseInt(this.input.value, 10);
-      const min = parseInt(this.input.min, 10);
-      const max = parseInt(this.input.max, 10);
+  private calculateColorRunnableTrack(min: number, max: number, value: number) {
+    if (!this.isFirefox() && this.nativeInput != null) {
       const percent = Math.ceil(((value - min) / (max - min)) * 100);
-      this.input.style.background =
+      this.nativeInput.style.background =
         '-webkit-linear-gradient(left, var(--track-color) 0%, var(--track-color) ' +
         percent +
         '%, var(--six-color-web-rock-300) ' +
         percent +
         '%)';
     }
-  }
-
-  isFirefox() {
-    return navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
   }
 
   render() {
@@ -270,7 +302,7 @@ export class SixRange {
         hasHelpTextSlot={this.hasHelpTextSlot}
         size="medium"
         errorTextId={this.errorTextId}
-        errorText={this.customErrorText ? this.customErrorText : this.errorText}
+        errorText={this.customErrorText != null ? this.customErrorText : this.errorText}
         hasErrorTextSlot={this.hasErrorTextSlot}
         disabled={this.disabled}
         required={this.required}
@@ -292,7 +324,7 @@ export class SixRange {
         >
           <input
             part="input"
-            ref={(el) => (this.input = el)}
+            ref={(el) => (this.nativeInput = el)}
             type="range"
             class="range__control"
             name={this.name}

@@ -215,10 +215,6 @@ export class SixInput {
     this.eventListeners.removeAll();
   }
 
-  private getValue(): string {
-    return (this.value ?? '').toString();
-  }
-
   /** Sets focus on the input. */
   @Method()
   async setFocus(options?: FocusOptions) {
@@ -258,10 +254,8 @@ export class SixInput {
     if (this.nativeInput == null) {
       return;
     }
-
     this.nativeInput.setRangeText(replacement, start, end, selectMode);
-    const value = this.getValue();
-    if (value !== this.nativeInput.value) {
+    if (this.getValue() !== this.nativeInput.value) {
       this.value = this.nativeInput.value;
       this.sixChange.emit();
       this.sixInput.emit();
@@ -324,9 +318,7 @@ export class SixInput {
     this.value = this.defaultValue;
     this.customErrorText = '';
     this.customValidation = false;
-    if (this.nativeInput != null) {
-      this.nativeInput.setCustomValidity('');
-    }
+    this.nativeInput?.setCustomValidity('');
     this.invalid = false;
   }
 
@@ -377,6 +369,10 @@ export class SixInput {
 
   private displayError() {
     return this.invalid && (!this.errorOnBlur || !this.hasFocus);
+  }
+
+  private getValue(): string {
+    return (this.value ?? '').toString();
   }
 
   render() {
@@ -439,7 +435,7 @@ export class SixInput {
             min={this.min}
             max={this.max}
             step={this.step}
-            value={this.value}
+            value={this.getValue()}
             autoCapitalize={this.autocapitalize}
             autoComplete={this.autocomplete}
             autoCorrect={this.autocorrect}

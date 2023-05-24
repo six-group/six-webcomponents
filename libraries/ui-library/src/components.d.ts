@@ -275,7 +275,7 @@ export namespace Components {
          */
         "setFocus": (options?: FocusOptions) => Promise<void>;
         /**
-          * The checkbox's value attribute.
+          * The value of the checkbox does not mean if it's checked or not, use the `checked` property for that.  The value of a checkbox is analogous to the value of an `<input type="checkbox">`, it's only used when the checkbox participates in a native `<form>`.
          */
         "value": string;
     }
@@ -1793,7 +1793,7 @@ export namespace Components {
         /**
           * The textarea's autocorrect attribute.
          */
-        "autocorrect": string;
+        "autocorrect": 'on' | 'off';
         /**
           * The textarea's autofocus attribute.
          */
@@ -1821,7 +1821,7 @@ export namespace Components {
         /**
           * The textarea's inputmode attribute.
          */
-        "inputmode": 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
+        "inputmode"?: 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
         /**
           * This will be true when the control is in an invalid state. Validity is determined by props such as `required`, `minlength`, and `maxlength` using the browser's constraint validation API.
          */
@@ -1833,11 +1833,11 @@ export namespace Components {
         /**
           * The maximum length of input that will be considered valid.
          */
-        "maxlength": number;
+        "maxlength"?: number;
         /**
           * The minimum length of input that will be considered valid.
          */
-        "minlength": number;
+        "minlength"?: number;
         /**
           * The textarea's name attribute.
          */
@@ -1845,7 +1845,7 @@ export namespace Components {
         /**
           * The textarea's placeholder text.
          */
-        "placeholder": string;
+        "placeholder"?: string;
         /**
           * Set to true for a readonly textarea.
          */
@@ -3054,7 +3054,7 @@ declare namespace LocalJSX {
          */
         "required"?: boolean;
         /**
-          * The checkbox's value attribute.
+          * The value of the checkbox does not mean if it's checked or not, use the `checked` property for that.  The value of a checkbox is analogous to the value of an `<input type="checkbox">`, it's only used when the checkbox participates in a native `<form>`.
          */
         "value"?: string;
     }
@@ -4596,7 +4596,7 @@ declare namespace LocalJSX {
         /**
           * The textarea's autocorrect attribute.
          */
-        "autocorrect"?: string;
+        "autocorrect"?: 'on' | 'off';
         /**
           * The textarea's autofocus attribute.
          */
@@ -4657,10 +4657,6 @@ declare namespace LocalJSX {
           * Emitted when the control receives input. Access the new value via event.target.value.
          */
         "onSix-textarea-input"?: (event: SixTextareaCustomEvent<EmptyPayload>) => void;
-        /**
-          * Emitted whenever the value changes. Access the new value via event.target.value. six-textarea-value-change will emit whenever the value changes. So be it on textarea or when dynamically set. six-textarea-input will only be emitted when the user enters data, but not when a value is dynamically set. six-textarea-change will only be emitted when the user either presses enter or leaves the textarea field after entering some data.
-         */
-        "onSix-textarea-value-change"?: (event: SixTextareaCustomEvent<EmptyPayload>) => void;
         /**
           * The textarea's placeholder text.
          */

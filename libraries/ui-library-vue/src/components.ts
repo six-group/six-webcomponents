@@ -589,8 +589,7 @@ export const SixTextarea = /*@__PURE__*/ defineContainer<JSX.SixTextarea, JSX.Si
   'six-textarea-change',
   'six-textarea-input',
   'six-textarea-focus',
-  'six-textarea-blur',
-  'six-textarea-value-change'
+  'six-textarea-blur'
 ],
 'value', 'six-textarea-change');
 
