@@ -1455,7 +1455,7 @@ export namespace Components {
         /**
           * The filter's placeholder text.
          */
-        "filterPlaceholder": string;
+        "filterPlaceholder"?: string;
         /**
           * The select's help text. Alternatively, you can use the help-text slot.
          */

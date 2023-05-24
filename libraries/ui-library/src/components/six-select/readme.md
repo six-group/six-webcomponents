@@ -118,8 +118,8 @@ Type: `Promise<void>`
 
 ### Depends on
 
-- [six-menu-item](../six-menu-item)
 - [six-tag](../six-tag)
+- [six-menu-item](../six-menu-item)
 - [six-dropdown](../six-dropdown)
 - [six-icon-button](../six-icon-button)
 - [six-icon](../six-icon)
@@ -129,16 +129,16 @@ Type: `Promise<void>`
 ### Graph
 ```mermaid
 graph TD;
-  six-select --> six-menu-item
   six-select --> six-tag
+  six-select --> six-menu-item
   six-select --> six-dropdown
   six-select --> six-icon-button
   six-select --> six-icon
   six-select --> six-input
   six-select --> six-menu
-  six-menu-item --> six-icon
   six-tag --> six-icon-button
   six-icon-button --> six-icon
+  six-menu-item --> six-icon
   six-dropdown --> six-menu-item
   six-dropdown --> six-input
   six-dropdown --> six-menu
