@@ -219,10 +219,6 @@ export namespace Components {
          */
         "checkValidity": () => Promise<boolean>;
         /**
-          * Set to true to draw the checkbox in a checked state.
-         */
-        "checked": boolean;
-        /**
           * Set to true to disable the checkbox.
          */
         "disabled": boolean;
@@ -277,7 +273,7 @@ export namespace Components {
         /**
           * The checkbox's value attribute.
          */
-        "value": string;
+        "value"?: boolean;
     }
     /**
      * @since 1.0
@@ -918,7 +914,7 @@ export namespace Components {
         /**
           * The input's maximum value.
          */
-        "max"?: number;
+        "max"?: string | number;
         /**
           * The maximum length of input that will be considered valid.
          */
@@ -926,7 +922,7 @@ export namespace Components {
         /**
           * The input's minimum value.
          */
-        "min"?: number;
+        "min"?: string | number;
         /**
           * The minimum length of input that will be considered valid.
          */
@@ -1274,6 +1270,7 @@ export namespace Components {
           * Sets focus on the radio.
          */
         "setFocus": (options?: FocusOptions) => Promise<void>;
+        "type": string;
         /**
           * The radio's value attribute.
          */
@@ -3006,10 +3003,6 @@ declare namespace LocalJSX {
      */
     interface SixCheckbox {
         /**
-          * Set to true to draw the checkbox in a checked state.
-         */
-        "checked"?: boolean;
-        /**
           * Set to true to disable the checkbox.
          */
         "disabled"?: boolean;
@@ -3056,7 +3049,7 @@ declare namespace LocalJSX {
         /**
           * The checkbox's value attribute.
          */
-        "value"?: string;
+        "value"?: boolean;
     }
     /**
      * @since 1.0
@@ -3753,7 +3746,7 @@ declare namespace LocalJSX {
         /**
           * The input's maximum value.
          */
-        "max"?: number;
+        "max"?: string | number;
         /**
           * The maximum length of input that will be considered valid.
          */
@@ -3761,7 +3754,7 @@ declare namespace LocalJSX {
         /**
           * The input's minimum value.
          */
-        "min"?: number;
+        "min"?: string | number;
         /**
           * The minimum length of input that will be considered valid.
          */
@@ -4085,6 +4078,7 @@ declare namespace LocalJSX {
           * Emitted when the control gains focus.
          */
         "onSix-radio-focus"?: (event: SixRadioCustomEvent<EmptyPayload>) => void;
+        "type"?: string;
         /**
           * The radio's value attribute.
          */

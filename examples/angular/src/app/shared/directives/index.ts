@@ -1,3 +1,4 @@
-import { CustomControlDirective } from './custom-control.directive';
+import { SixInputValueAccessor } from './six-input.value-accessor';
+import { SixRadioValueAccessor } from './six-radio.value-accessor';
 
-export const directives = [CustomControlDirective];
+export const directives = [SixInputValueAccessor, SixRadioValueAccessor];

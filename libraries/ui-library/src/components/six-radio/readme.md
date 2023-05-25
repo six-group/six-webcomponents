@@ -13,6 +13,7 @@
 | `disabled` | `disabled` | Set to true to disable the radio.                                                                                                                            | `boolean` | `false`     |
 | `invalid`  | `invalid`  | This will be true when the control is in an invalid state. Validity in range inputs is determined by the message provided by the `setCustomValidity` method. | `boolean` | `false`     |
 | `name`     | `name`     | The radio's name attribute.                                                                                                                                  | `string`  | `undefined` |
+| `type`     | `type`     |                                                                                                                                                              | `string`  | `'radio'`   |
 | `value`    | `value`    | The radio's value attribute.                                                                                                                                 | `string`  | `undefined` |
 
 

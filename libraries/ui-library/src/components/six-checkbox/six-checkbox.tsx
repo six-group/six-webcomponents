@@ -1,8 +1,9 @@
-import { Component, Event, EventEmitter, Method, Prop, State, Watch, h, Element } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Method, Prop, State, Watch } from '@stencil/core';
 import FormControl from '../../functional-components/form-control/form-control';
 import { hasSlot } from '../../utils/slot';
 import { EmptyPayload } from '../../utils/types';
 import { EventListeners } from '../../utils/event-listeners';
+import { Events } from '../../utils/events';
 
 let id = 0;
 
@@ -48,7 +49,7 @@ export class SixCheckbox {
   @Prop() name: string;
 
   /** The checkbox's value attribute. */
-  @Prop() value: string;
+  @Prop({ mutable: true, reflect: true }) value?: boolean;
 
   /** Set to true to disable the checkbox. */
   @Prop() disabled = false;
@@ -61,9 +62,6 @@ export class SixCheckbox {
 
   /** The checkbox's error text. Alternatively, you can use the error-text slot. */
   @Prop() errorText = '';
-
-  /** Set to true to draw the checkbox in a checked state. */
-  @Prop({ mutable: true, reflect: true }) checked = false;
 
   /** Set to true to draw the checkbox in an indeterminate state. */
   @Prop({ mutable: true, reflect: true }) indeterminate = false;
@@ -83,16 +81,18 @@ export class SixCheckbox {
   /** Emitted when the control gains focus. */
   @Event({ eventName: 'six-checkbox-focus' }) sixFocus: EventEmitter<EmptyPayload>;
 
-  @Watch('checked')
+  @Watch('value')
   @Watch('indeterminate')
   handleCheckedChange() {
     if (!this.input) {
       return;
     }
-    this.input.checked = this.checked;
+    this.input.checked = this.value;
     this.input.indeterminate = this.indeterminate;
     this.invalid = !this.input.checkValidity();
     this.sixChange.emit();
+    Events.input(this.host);
+    Events.change(this.host);
   }
 
   @Watch('errorText')
@@ -120,7 +120,7 @@ export class SixCheckbox {
   }
 
   componentWillLoad() {
-    this.defaultState = this.checked;
+    this.defaultState = this.value;
     this.handleSlotChange();
   }
 
@@ -170,7 +170,7 @@ export class SixCheckbox {
   /** Resets the formcontrol */
   @Method()
   async reset() {
-    this.checked = this.defaultState;
+    this.value = this.defaultState;
     this.customErrorText = '';
     this.customValidation = false;
     this.input.setCustomValidity('');
@@ -178,18 +178,22 @@ export class SixCheckbox {
   }
 
   handleChange() {
-    this.checked = this.input.checked;
+    this.value = this.input.checked;
     this.indeterminate = false;
+    Events.input(this.host);
+    Events.change(this.host);
   }
 
   handleBlur() {
     this.hasFocus = false;
     this.sixBlur.emit();
+    Events.blur(this.host);
   }
 
   handleFocus() {
     this.hasFocus = true;
     this.sixFocus.emit();
+    Events.focus(this.host);
   }
 
   handleMouseDown(event: MouseEvent) {
@@ -230,7 +234,7 @@ export class SixCheckbox {
           part="base"
           class={{
             checkbox: true,
-            'checkbox--checked': this.checked,
+            'checkbox--checked': this.value,
             'checkbox--disabled': this.disabled,
             'checkbox--focused': this.hasFocus,
             'checkbox--invalid': this.invalid,
@@ -240,7 +244,7 @@ export class SixCheckbox {
           onMouseDown={this.handleMouseDown}
         >
           <span part="control" class="checkbox__control">
-            {this.checked && (
+            {this.value && (
               <span part="checked-icon" class="checkbox__icon">
                 <svg viewBox="0 0 16 16">
                   <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round">
@@ -255,7 +259,7 @@ export class SixCheckbox {
               </span>
             )}
 
-            {!this.checked && this.indeterminate && (
+            {!this.value && this.indeterminate && (
               <span part="indeterminate-icon" class="checkbox__icon">
                 <svg viewBox="0 0 16 16">
                   <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round">
@@ -274,12 +278,11 @@ export class SixCheckbox {
               id={this.inputId}
               type="checkbox"
               name={this.name}
-              value={this.value}
-              checked={this.checked}
+              checked={this.value}
               disabled={this.disabled}
               required={this.required}
               role="checkbox"
-              aria-checked={this.checked ? 'true' : 'false'}
+              aria-checked={this.value ? 'true' : 'false'}
               aria-labelledby={this.labelId}
               onChange={this.handleChange}
               onBlur={this.handleBlur}

@@ -9,7 +9,6 @@
 
 | Property        | Attribute       | Description                                                                                               | Type      | Default     |
 | --------------- | --------------- | --------------------------------------------------------------------------------------------------------- | --------- | ----------- |
-| `checked`       | `checked`       | Set to true to draw the checkbox in a checked state.                                                      | `boolean` | `false`     |
 | `disabled`      | `disabled`      | Set to true to disable the checkbox.                                                                      | `boolean` | `false`     |
 | `errorOnBlur`   | `error-on-blur` | Set to display the error text on blur and not when typing                                                 | `boolean` | `false`     |
 | `errorText`     | `error-text`    | The checkbox's error text. Alternatively, you can use the error-text slot.                                | `string`  | `''`        |
@@ -18,7 +17,7 @@
 | `label`         | `label`         | The checkbox label. Alternatively, you can use the label slot.                                            | `string`  | `''`        |
 | `name`          | `name`          | The checkbox's name attribute.                                                                            | `string`  | `undefined` |
 | `required`      | `required`      | Set to true to make the checkbox a required field.                                                        | `boolean` | `false`     |
-| `value`         | `value`         | The checkbox's value attribute.                                                                           | `string`  | `undefined` |
+| `value`         | `value`         | The checkbox's value attribute.                                                                           | `boolean` | `undefined` |
 
 
 ## Events

@@ -3,6 +3,7 @@ import FormControl from '../../functional-components/form-control/form-control';
 import { hasSlot } from '../../utils/slot';
 import { EmptyPayload } from '../../utils/types';
 import { EventListeners } from '../../utils/event-listeners';
+import { Events } from '../../utils/events';
 
 const ICON_SIZES: Record<'small' | 'medium' | 'large', 'xSmall' | 'small' | 'medium'> = {
   large: 'medium',
@@ -101,10 +102,10 @@ export class SixInput {
   @Prop({ reflect: true }) maxlength?: number;
 
   /** The input's minimum value. */
-  @Prop({ reflect: true }) min?: number;
+  @Prop({ reflect: true }) min?: string | number;
 
   /** The input's maximum value. */
-  @Prop({ reflect: true }) max?: number;
+  @Prop({ reflect: true }) max?: string | number;
 
   /** The input's step attribute. */
   @Prop({ reflect: true }) step?: number;
@@ -334,6 +335,8 @@ export class SixInput {
     if (this.nativeInput != null) {
       this.value = this.nativeInput.value;
       this.sixChange.emit();
+      Events.input(this.host);
+      Events.change(this.host);
     }
   };
 
@@ -341,17 +344,20 @@ export class SixInput {
     if (this.nativeInput != null) {
       this.value = this.nativeInput.value;
       this.sixInput.emit();
+      Events.input(this.host);
     }
   };
 
   private handleBlur = () => {
     this.hasFocus = false;
     this.sixBlur.emit();
+    Events.blur(this.host);
   };
 
   private handleFocus = () => {
     this.hasFocus = true;
     this.sixFocus.emit();
+    Events.focus(this.host);
   };
 
   private handleClearClick = (event: MouseEvent) => {

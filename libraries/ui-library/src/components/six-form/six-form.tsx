@@ -82,13 +82,8 @@ export class SixForm {
       {
         tag: 'six-checkbox',
         serialize: (el: HTMLSixCheckboxElement, formData) =>
-          el.name && el.checked && !el.disabled ? formData.append(el.name, el.value) : null,
+          el.name && el.value && !el.disabled ? formData.append(el.name, 'on') : null,
         changeEventName: 'six-checkbox-change',
-      },
-      {
-        tag: 'six-color-picker',
-        serialize: (el: HTMLSixCheckboxElement, formData) =>
-          el.name && !el.disabled ? formData.append(el.name, el.value) : null,
       },
       {
         tag: 'six-input',

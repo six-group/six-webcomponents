@@ -173,7 +173,7 @@ export declare interface SixCard extends Components.SixCard {}
 
 
 @ProxyCmp({
-  inputs: ['checked', 'disabled', 'errorOnBlur', 'errorText', 'indeterminate', 'invalid', 'label', 'name', 'required', 'value'],
+  inputs: ['disabled', 'errorOnBlur', 'errorText', 'indeterminate', 'invalid', 'label', 'name', 'required', 'value'],
   methods: ['setFocus', 'removeFocus', 'reportValidity', 'checkValidity', 'setCustomValidity', 'reset']
 })
 @Component({
@@ -181,7 +181,7 @@ export declare interface SixCard extends Components.SixCard {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['checked', 'disabled', 'errorOnBlur', 'errorText', 'indeterminate', 'invalid', 'label', 'name', 'required', 'value'],
+  inputs: ['disabled', 'errorOnBlur', 'errorText', 'indeterminate', 'invalid', 'label', 'name', 'required', 'value'],
 })
 export class SixCheckbox {
   protected el: HTMLElement;
@@ -1072,7 +1072,7 @@ export declare interface SixProgressRing extends Components.SixProgressRing {}
 
 
 @ProxyCmp({
-  inputs: ['checked', 'disabled', 'invalid', 'name', 'value'],
+  inputs: ['checked', 'disabled', 'invalid', 'name', 'type', 'value'],
   methods: ['setFocus', 'removeFocus', 'reportValidity', 'checkValidity', 'setCustomValidity', 'reset']
 })
 @Component({
@@ -1080,7 +1080,7 @@ export declare interface SixProgressRing extends Components.SixProgressRing {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['checked', 'disabled', 'invalid', 'name', 'value'],
+  inputs: ['checked', 'disabled', 'invalid', 'name', 'type', 'value'],
 })
 export class SixRadio {
   protected el: HTMLElement;

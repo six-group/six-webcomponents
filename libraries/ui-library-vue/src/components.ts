@@ -71,7 +71,6 @@ export const SixCheckbox = /*@__PURE__*/ defineContainer<JSX.SixCheckbox, JSX.Si
   'required',
   'label',
   'errorText',
-  'checked',
   'indeterminate',
   'invalid',
   'errorOnBlur',
@@ -395,6 +394,7 @@ export const SixRadio = /*@__PURE__*/ defineContainer<JSX.SixRadio, JSX.SixRadio
   'disabled',
   'checked',
   'invalid',
+  'type',
   'six-radio-blur',
   'six-radio-change',
   'six-radio-focus'
