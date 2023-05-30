@@ -5,46 +5,31 @@ export interface MenuItem {
 export function getValue(value: unknown, multiple: boolean, menuItems: MenuItem[]): string | string[] {
   if (multiple) {
     if (Array.isArray(value)) {
-      return menuItems.filter((item) => value.includes(item.value)).map((item) => item.value);
-    } else if (typeof value === 'string') {
-      return menuItems.filter((item) => value === item.value).map((item) => item.value);
+      return getSelectedValues(value, menuItems);
     } else {
-      return [];
-    }
-  } else {
-    if (typeof value === 'string') {
-      return menuItems.find((item) => value === item.value)?.value ?? '';
-    } else {
-      return '';
+      return getSelectedValuesFromString(value, menuItems);
     }
   }
+
+  return getSelectedMenuItem(value, menuItems)?.value ?? '';
 }
 
 export function isValidValue(value: unknown, multiple: boolean, menuItems: MenuItem[]): boolean {
+  if (value === '') {
+    return true;
+  }
+
   if (multiple) {
     if (Array.isArray(value)) {
       if (value.length === 0) {
         return true;
       }
-      return menuItems.filter((item) => value.includes(item.value)).map((item) => item.value).length == value.length;
-    } else if (typeof value === 'string') {
-      if (value === '') {
-        return true;
-      }
-      return menuItems.filter((item) => value === item.value).map((item) => item.value).length > 0;
-    } else {
-      return false;
+      return getSelectedValues(value, menuItems).length === value.length;
     }
+    return getSelectedValuesFromString(value, menuItems).length > 0;
   }
 
-  if (typeof value === 'string') {
-    if (value === '') {
-      return true;
-    }
-    return menuItems.find((item) => value === item.value) != null;
-  } else {
-    return false;
-  }
+  return getSelectedMenuItem(value, menuItems) != null;
 }
 
 export function valueEquals(a: string | string[], b: string | string[]): boolean {
@@ -61,4 +46,16 @@ export function isValueEmpty(value: string | string[]): boolean {
     return value.length === 0;
   }
   return value === '';
+}
+
+function getSelectedValues(values: unknown[], menuItems: MenuItem[]): string[] {
+  return menuItems.filter((menuItem) => values.includes(menuItem.value)).map((menuItem) => menuItem.value);
+}
+
+function getSelectedValuesFromString(value: unknown, menuItems: MenuItem[]): string[] {
+  return menuItems.filter((menuItem) => value === menuItem.value).map((menuItem) => menuItem.value);
+}
+
+function getSelectedMenuItem(value: unknown, menuItems: MenuItem[]): MenuItem {
+  return menuItems.find((item) => value === item.value);
 }
