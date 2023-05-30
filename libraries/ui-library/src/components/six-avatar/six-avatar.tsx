@@ -33,13 +33,9 @@ export class SixAvatar {
   /** The shape of the avatar. */
   @Prop() shape: 'circle' | 'square' | 'rounded' = 'circle';
 
-  connectedCallback() {
-    this.handleImageError = this.handleImageError.bind(this);
-  }
-
-  handleImageError() {
+  private handleImageError = () => {
     this.hasError = true;
-  }
+  };
 
   render() {
     return (
@@ -55,7 +51,7 @@ export class SixAvatar {
         aria-label={this.alt}
         tabIndex={0}
       >
-        {!this.initials && (
+        {this.initials === '' && (
           <div part="icon" class="avatar__icon">
             <slot name="icon">
               <six-icon>person</six-icon>
