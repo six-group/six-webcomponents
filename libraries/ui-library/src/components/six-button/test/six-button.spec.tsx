@@ -29,7 +29,7 @@ describe('six-button', () => {
       <six-button size="medium" type="primary">
         <mock:shadow-root>
          <div>
-          <button class="button button--primary button--medium" part="base" type="button" data-testid="button">
+          <button class="button button--primary button--medium" part="base" type="button" data-testid="button" value="">
             <span part="prefix" class="button__prefix">
               <slot name="prefix"></slot>
             </span>

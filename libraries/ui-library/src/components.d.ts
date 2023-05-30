@@ -152,11 +152,11 @@ export namespace Components {
         /**
           * Tells the browser to download the linked file as this filename. Only used when `href` is set.
          */
-        "download": string;
+        "download"?: string;
         /**
           * When set, the underlying button will be rendered as an `<a>` with this `href` instead of a `<button>`.
          */
-        "href": string;
+        "href"?: string;
         /**
           * Set to true to draw the button in a loading state.
          */
@@ -192,7 +192,7 @@ export namespace Components {
         /**
           * Tells the browser where to open the link. Only used when `href` is set.
          */
-        "target": '_blank' | '_parent' | '_self' | '_top';
+        "target"?: '_blank' | '_parent' | '_self' | '_top';
         /**
           * The button's type.
          */
@@ -257,7 +257,7 @@ export namespace Components {
         /**
           * Checks for validity and shows the browser's validation message if the control is invalid.
          */
-        "reportValidity": () => Promise<boolean | undefined>;
+        "reportValidity": () => Promise<boolean>;
         /**
           * Set to true to make the checkbox a required field.
          */
@@ -379,7 +379,7 @@ export namespace Components {
         /**
           * Checks for validity and shows the browser's validation message if the control is invalid.
          */
-        "reportValidity": () => Promise<boolean | undefined>;
+        "reportValidity": () => Promise<boolean>;
         /**
           * Set to true to make the input a required field.
          */
@@ -958,7 +958,7 @@ export namespace Components {
         /**
           * Checks for validity and shows the browser's validation message if the control is invalid.
          */
-        "reportValidity": () => Promise<boolean | undefined>;
+        "reportValidity": () => Promise<boolean>;
         /**
           * Set to true to make the input a required field.
          */
@@ -970,7 +970,7 @@ export namespace Components {
         /**
           * Selects all the text in the input.
          */
-        "select": () => Promise<void | undefined>;
+        "select": () => Promise<void>;
         /**
           * Sets a custom validation message. If `message` is not empty, the field will be considered invalid.
          */
@@ -986,7 +986,7 @@ export namespace Components {
         /**
           * Sets the start and end positions of the text selection (0-based).
          */
-        "setSelectionRange": (selectionStart: number, selectionEnd: number, selectionDirection?: 'forward' | 'backward' | 'none') => Promise<void | undefined>;
+        "setSelectionRange": (selectionStart: number, selectionEnd: number, selectionDirection?: 'forward' | 'backward' | 'none') => Promise<void>;
         /**
           * The input's size.
          */
@@ -1261,7 +1261,7 @@ export namespace Components {
         /**
           * Checks for validity and shows the browser's validation message if the control is invalid.
          */
-        "reportValidity": () => Promise<boolean | undefined>;
+        "reportValidity": () => Promise<boolean>;
         /**
           * Resets the formcontrol
          */
@@ -1507,7 +1507,7 @@ export namespace Components {
         /**
           * Checks for validity and shows the browser's validation message if the control is invalid.
          */
-        "reportValidity": () => Promise<boolean | undefined>;
+        "reportValidity": () => Promise<boolean>;
         /**
           * The select's required attribute.
          */
@@ -1857,7 +1857,7 @@ export namespace Components {
         /**
           * Checks for validity and shows the browser's validation message if the control is invalid.
          */
-        "reportValidity": () => Promise<boolean | undefined>;
+        "reportValidity": () => Promise<boolean>;
         /**
           * The textarea's required attribute.
          */
@@ -1877,7 +1877,7 @@ export namespace Components {
         /**
           * Selects all the text in the input.
          */
-        "select": () => Promise<void | undefined>;
+        "select": () => Promise<void>;
         /**
           * Sets a custom validation message. If `message` is not empty, the field will be considered invalid.
          */
@@ -1893,7 +1893,7 @@ export namespace Components {
         /**
           * Sets the start and end positions of the text selection (0-based).
          */
-        "setSelectionRange": (selectionStart: number, selectionEnd: number, selectionDirection?: 'forward' | 'backward' | 'none') => Promise<void | undefined>;
+        "setSelectionRange": (selectionStart: number, selectionEnd: number, selectionDirection?: 'forward' | 'backward' | 'none') => Promise<void>;
         /**
           * The textarea's size.
          */
@@ -2029,7 +2029,7 @@ export namespace Components {
         /**
           * Checks for validity and shows the browser's validation message if the control is invalid.
          */
-        "reportValidity": () => Promise<boolean | undefined>;
+        "reportValidity": () => Promise<boolean>;
         /**
           * Set to true to make the input a required field.
          */
