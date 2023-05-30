@@ -3,6 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { combineLatest, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { getAbstractControlProps } from '~/app/reactive-form/util';
+import { changeDetection, encapsulation } from '~/app/shared';
 
 type AsyncInput<T> = T | null | undefined;
 
@@ -16,6 +17,8 @@ const isDefined = <T>(value: AsyncInput<T>): value is T => value !== null && val
       <pre [hidden]="closed">{{ info$ | async | json }}</pre>
     </div>
   `,
+  changeDetection,
+  encapsulation,
 })
 export class DebugFormComponent implements OnChanges {
   @Input() form: AsyncInput<FormGroup>;

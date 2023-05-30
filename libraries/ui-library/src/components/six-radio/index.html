@@ -33,11 +33,39 @@
       <h3>Grouping Radios</h3>
       <p>Radios are grouped based on their <code>name</code> attribute and scoped to the nearest form.</p>
       <section class="demo">
-        <six-radio name="option" checked>Option 1</six-radio><br />
-        <six-radio name="option">Option 2</six-radio><br />
-        <six-radio name="option">Option 3</six-radio><br />
-        <six-radio name="option">Option 4</six-radio>
+        <p id="radio-group">
+          <six-radio name="option" value="1" checked>Option 1</six-radio>
+          <six-radio name="option" value="2">Option 2</six-radio>
+          <six-radio name="option" value="3">Option 3</six-radio>
+          <six-radio name="option" value="4">Option 4</six-radio>
+        </p>
+        <h5>Select an option to update radio group</h5>
+        <p>
+          <six-select id="select-value" value="1">
+            <six-menu-item value="1">Option 1</six-menu-item>
+            <six-menu-item value="2">Option 2</six-menu-item>
+            <six-menu-item value="3">Option 3</six-menu-item>
+            <six-menu-item value="4">Option 4</six-menu-item>
+          </six-select>
+        </p>
       </section>
+      <style>
+        #select-value {
+          width: 10rem;
+        }
+      </style>
+      <script type="module">
+        (() => {
+          const group = document.getElementById('radio-group');
+          const select = document.getElementById('select-value');
+
+          select.addEventListener('input', (event) => {
+            Array.from(group.children).forEach((radio) => {
+              radio.value = event.target.value;
+            });
+          });
+        })();
+      </script>
     </div>
   </body>
 </html>

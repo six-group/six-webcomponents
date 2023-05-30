@@ -394,7 +394,6 @@ export const SixRadio = /*@__PURE__*/ defineContainer<JSX.SixRadio, JSX.SixRadio
   'disabled',
   'checked',
   'invalid',
-  'type',
   'six-radio-blur',
   'six-radio-change',
   'six-radio-focus'

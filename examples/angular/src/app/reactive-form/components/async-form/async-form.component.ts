@@ -1,13 +1,13 @@
-import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
+import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Observable, throwError } from 'rxjs';
 import { catchError, first, map, switchMap, tap } from 'rxjs/operators';
-// feature
 import { Is, validatorWithCustomMessage } from '~/app/reactive-form/util';
 import { ReactiveFormFacade } from '~/app/reactive-form/reactive-form.facade';
 import { MockTranslatePipe } from '~/app/reactive-form/pipes/mock-translate.pipe';
 import { CreateUserDto } from '~/app/reactive-form/models';
 import { compareAsc } from 'date-fns';
+import { changeDetection, encapsulation } from '~/app/shared';
 
 const initialFormState: CreateUserDto = {
   username: 'username',
@@ -31,8 +31,8 @@ const areUnorderedDates = (startDate: Date, endDate: Date) => {
 @Component({
   styleUrls: ['./async-form.component.scss'],
   templateUrl: './async-form.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.ShadowDom,
+  changeDetection,
+  encapsulation,
 })
 export class AsyncFormComponent {
   readonly loading$ = this.formTestFacade.loading$;

@@ -1,5 +1,7 @@
-import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Task } from '~/app/core/tasks/providers/tasks.service';
+import { changeDetection, encapsulation } from '~/app/shared';
+import { AsyncInput } from '~/app/utils/async-input';
 
 @Component({
   selector: 'app-right-sidebar',
@@ -12,10 +14,10 @@ import { Task } from '~/app/core/tasks/providers/tasks.service';
     </six-sidebar>
   `,
   styleUrls: ['./right-sidebar.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.ShadowDom,
+  changeDetection,
+  encapsulation,
 })
 export class RightSidebarComponent {
-  @Input() open?: boolean | null;
-  @Input() tasks?: Task[] | null;
+  @Input() open: AsyncInput<boolean>;
+  @Input() tasks: AsyncInput<Task[]>;
 }

@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
+import { Component } from '@angular/core';
 import { CoreFacade } from '~/app/core/providers';
+import { changeDetection, encapsulation } from '~/app/shared';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,7 +9,7 @@ import { CoreFacade } from '~/app/core/providers';
       <h1>Demo</h1>
       <p>This is an <b>Angular Demo App</b> using <b>@six-group/ui-library</b></p>
       <p class="dashboard__actions">
-        <six-button (click)="coreFacade.toggleLeftSidebar()"> Toggle left sidebar </six-button>
+        <six-button (click)="coreFacade.toggleLeftSidebar()"> Toggle left sidebar</six-button>
         <six-button [loading]="coreFacade.tasksLoading$ | async" (click)="coreFacade.toggleRightSidebar()">
           Toggle right sidebar
           <six-badge type="danger" pill>{{ coreFacade.tasksCount$ | async }}</six-badge>
@@ -17,8 +18,8 @@ import { CoreFacade } from '~/app/core/providers';
     </div>
   `,
   styleUrls: ['./dashboard.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.ShadowDom,
+  changeDetection,
+  encapsulation,
 })
 export class DashboardComponent {
   constructor(readonly coreFacade: CoreFacade) {}

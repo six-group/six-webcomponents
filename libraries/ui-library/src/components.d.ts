@@ -1270,7 +1270,6 @@ export namespace Components {
           * Sets focus on the radio.
          */
         "setFocus": (options?: FocusOptions) => Promise<void>;
-        "type": string;
         /**
           * The radio's value attribute.
          */
@@ -4078,7 +4077,6 @@ declare namespace LocalJSX {
           * Emitted when the control gains focus.
          */
         "onSix-radio-focus"?: (event: SixRadioCustomEvent<EmptyPayload>) => void;
-        "type"?: string;
         /**
           * The radio's value attribute.
          */

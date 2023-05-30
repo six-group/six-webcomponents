@@ -50,20 +50,27 @@ export class SixRadio {
    */
   @Prop({ mutable: true, reflect: true }) invalid = false;
 
-  @Prop() type = 'radio';
-
   @Watch('checked')
   handleCheckedChange() {
     if (this.checked) {
-      console.log(`handleCheckedChange ${this.value}`);
       this.getSiblingRadios().map((radio) => (radio.checked = false));
-      this.host.dispatchEvent(new InputEvent('input', { bubbles: true, cancelable: true }));
-      this.host.dispatchEvent(new InputEvent('change', { bubbles: true, cancelable: true }));
+      Events.change(this.host);
+      Events.input(this.host);
     }
     if (this.input) {
       this.input.checked = this.checked;
       this.sixChange.emit();
     }
+  }
+
+  @Watch('value')
+  handleValueChange() {
+    this.getSiblingRadios().map((radio) => {
+      if (radio.value === this.value) {
+        radio.checked = true;
+      }
+    });
+    this.value = this.defaultValue;
   }
 
   /** Emitted when the control loses focus. */
@@ -77,6 +84,7 @@ export class SixRadio {
 
   /** default state whether the radio button should be checked or not when resetting */
   private defaultState = false;
+  private defaultValue = '';
 
   connectedCallback() {
     this.handleClick = this.handleClick.bind(this);
@@ -88,6 +96,7 @@ export class SixRadio {
 
   componentWillLoad() {
     this.defaultState = this.checked;
+    this.defaultValue = this.value;
   }
 
   /** Sets focus on the radio. */

@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { changeDetection, encapsulation } from '~/app/shared';
+import { AsyncInput } from '~/app/utils/async-input';
 
 @Component({
   selector: 'app-loading-badge',
@@ -12,10 +14,10 @@ import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@a
       <six-spinner></six-spinner>
     </six-badge>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.ShadowDom,
+  changeDetection,
+  encapsulation,
 })
 export class LoadingBadgeComponent {
-  @Input() loading?: boolean | null;
-  @Input() count?: number | null;
+  @Input() loading: AsyncInput<boolean>;
+  @Input() count: AsyncInput<number>;
 }

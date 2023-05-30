@@ -1,23 +1,34 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { UsersFacade } from '../../providers';
-import { CoreFacade } from '~/app/core/providers';
 import { FormBuilder } from '@angular/forms';
 import { CustomValidators } from './custom-validation';
-import { combineLatest, Subject } from 'rxjs';
-import { distinctUntilChanged, map, takeUntil, tap } from 'rxjs/operators';
-import { getAbstractControlProps } from '~/app/reactive-form/util';
+import { Subject } from 'rxjs';
+import { distinctUntilChanged, takeUntil, tap } from 'rxjs/operators';
+import { User } from '~/app/users/providers/users.service';
+import { changeDetection, encapsulation } from '~/app/shared';
 
-export const initialUserFormValues = {
+interface UserForm extends User {
+  birthdate: Date | null;
+  role: string;
+  important: boolean;
+  password: string;
+  passwordConfirmation: string;
+  radio: string;
+}
+
+export const initialUserFormValues: UserForm = {
   id: '',
   name: '',
   email: '',
-  birthdate: null,
+  birthdate: new Date(),
+  phone: '',
   username: '',
   role: 'user',
   important: true,
   password: '',
   passwordConfirmation: '',
   radio: '2',
+  website: '',
 };
 
 const equals = <T>(a: T, b: T) => JSON.stringify(a) === JSON.stringify(b);
@@ -26,8 +37,8 @@ const equals = <T>(a: T, b: T) => JSON.stringify(a) === JSON.stringify(b);
   selector: 'app-users-view',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.ShadowDom,
+  changeDetection,
+  encapsulation,
 })
 export class UsersComponent implements OnInit, OnDestroy {
   readonly destroy$ = new Subject();
@@ -48,23 +59,7 @@ export class UsersComponent implements OnInit, OnDestroy {
     radio: [initialUserFormValues.radio, [CustomValidators.undefined]],
   });
 
-  readonly info$ = combineLatest([this.form.statusChanges, this.form.valueChanges]).pipe(
-    map(() => {
-      return {
-        form: getAbstractControlProps(this.form),
-        controls: Object.keys(this.form.controls).reduce(
-          (acc, name) => ({
-            ...acc,
-            // @ts-ignore
-            [name]: getAbstractControlProps(this.form.controls[name]),
-          }),
-          {}
-        ),
-      };
-    })
-  );
-
-  constructor(readonly usersFacade: UsersFacade, readonly coreFacade: CoreFacade, readonly fb: FormBuilder) {}
+  constructor(readonly usersFacade: UsersFacade, readonly fb: FormBuilder) {}
 
   ngOnInit() {
     this.form.valueChanges

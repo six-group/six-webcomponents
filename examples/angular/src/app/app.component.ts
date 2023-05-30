@@ -1,13 +1,7 @@
-import {
-  AfterViewInit,
-  ChangeDetectionStrategy,
-  Component,
-  ElementRef,
-  ViewChild,
-  ViewEncapsulation,
-} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { SixRootCollapsedPayload } from '@six-group/ui-library/dist/types/components/six-root/six-root';
 import { CoreFacade } from './core/providers';
+import { changeDetection, encapsulation } from '~/app/shared';
 
 const isSixRootCollapsedEvent = (e?: unknown): e is CustomEvent<SixRootCollapsedPayload> =>
   typeof (e as CustomEvent<SixRootCollapsedPayload>)?.detail?.collapsed === 'boolean';
@@ -16,8 +10,8 @@ const isSixRootCollapsedEvent = (e?: unknown): e is CustomEvent<SixRootCollapsed
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.ShadowDom,
+  changeDetection,
+  encapsulation,
 })
 export class AppComponent implements AfterViewInit {
   @ViewChild('dialog') dialog?: ElementRef<HTMLSixDialogElement>;

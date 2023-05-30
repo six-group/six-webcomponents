@@ -2,12 +2,12 @@
   <app-users-header></app-users-header>
   <six-card class="users__table" [class.users__table--loading]="usersFacade.loading$ | async">
     <app-users-table-static
-      [users]="(usersFacade.users$ | async)!"
-      [loading]="(usersFacade.loading$ | async)!"
+      [users]="usersFacade.users$ | async"
+      [loading]="usersFacade.loading$ | async"
     ></app-users-table-static>
   </six-card>
   <six-drawer
-    [label]="(usersFacade.selectedUser$ | async)! | user"
+    [label]="usersFacade.selectedUser$ | async"
     [open]="usersFacade.drawerOpen$ | async"
     (six-drawer-hide)="usersFacade.closeDrawer()"
   >

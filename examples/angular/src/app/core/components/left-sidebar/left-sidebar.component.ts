@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { changeDetection, encapsulation } from '~/app/shared';
+import { AsyncInput } from '~/app/utils/async-input';
 
 @Component({
   selector: 'app-left-sidebar',
@@ -13,9 +15,9 @@ import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@a
       ></six-sidebar-item-group>
     </six-sidebar>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.ShadowDom,
+  changeDetection,
+  encapsulation,
 })
 export class LeftSidebarComponent {
-  @Input() open?: boolean | null;
+  @Input() open: AsyncInput<boolean>;
 }
