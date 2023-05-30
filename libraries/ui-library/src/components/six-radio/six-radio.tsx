@@ -65,6 +65,10 @@ export class SixRadio {
 
   @Watch('value')
   handleValueChange() {
+    console.log(
+      `[ six-checkbox ] handleValueChange, value=${this.value}, defaultValue=${this.defaultValue}`,
+      this.host
+    );
     this.getSiblingRadios().map((radio) => {
       if (radio.value === this.value) {
         radio.checked = true;

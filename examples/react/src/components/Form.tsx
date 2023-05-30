@@ -7,6 +7,7 @@ interface FormControlProps<T extends FieldValues> {
   label: string;
   name: FieldPath<T>;
   value: string;
+  checked?: boolean;
   onInput: (event: unknown) => void;
 }
 
@@ -26,8 +27,22 @@ export const Form = <T extends FieldValues>({ control, names, children }: Wrappe
             <Controller
               control={control}
               name={child.props.name}
-              render={({ field: { value, onChange } }) => {
-                return React.cloneElement(child, { label, value, onInput: onChange });
+              render={({ field: { value, onChange: onInput } }) => {
+                if (child.props.value) {
+                  return React.cloneElement(child, {
+                    label,
+                    // for radio keep value and set checked
+                    value: child.props.value,
+                    checked: value === child.props.value,
+                    onInput,
+                  });
+                } else {
+                  return React.cloneElement(child, {
+                    label,
+                    value: value,
+                    onInput,
+                  });
+                }
               }}
             />
           );

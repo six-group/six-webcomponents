@@ -13,6 +13,9 @@ import { useModalState } from '../hooks/use-modal-state';
 import { Route, Routes } from 'react-router-dom';
 // modules
 const Users = React.lazy(() => import('./Users'));
+import { defineCustomElements } from '@six-group/ui-library/loader';
+
+defineCustomElements().catch(console.error);
 
 const App = () => {
   const leftSidebar = useModalState(true);

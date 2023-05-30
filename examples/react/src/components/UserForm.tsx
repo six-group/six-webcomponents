@@ -72,7 +72,7 @@ const UserForm = ({ user, updateUser }: UserFormProps) => {
         <six-input required type="password" name="passwordConfirmation" />
         {['1', '2', '3'].map((value) => {
           return (
-            <six-radio key={value} name="radio">
+            <six-radio name="radio" key={value} value={value}>
               {'Option ' + value}
             </six-radio>
           );
