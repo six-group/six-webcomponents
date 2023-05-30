@@ -14,8 +14,20 @@ type CustomElement<CustomElement> = Partial<
 declare global {
   namespace JSX {
     interface IntrinsicElements {
+      'six-root': CustomElement<HTMLSixRootElement>;
+      'six-header': CustomElement<HTMLSixHeaderElement>;
+      'six-search-field': CustomElement<HTMLSixSearchFieldElement>;
+      'six-avatar': CustomElement<HTMLSixAvatarElement>;
+      'six-card': CustomElement<HTMLSixCardElement>;
+      'six-icon': CustomElement<HTMLSixIconElement>;
+      'six-icon-button': CustomElement<HTMLSixIconButtonElement>;
+      'six-badge': CustomElement<HTMLSixBadgeElement>;
+      'six-spinner': CustomElement<HTMLSixSpinnerElement>;
+      'six-sidebar': CustomElement<HTMLSixSidebarElement>;
+      'six-sidebar-item-group': CustomElement<HTMLSixSidebarItemGroupElement>;
       'six-input': CustomElement<HTMLSixInputElement>;
       'six-select': CustomElement<HTMLSixSelectElement>;
+      'six-menu': CustomElement<HTMLSixMenuElement>;
       'six-menu-item': CustomElement<HTMLSixMenuItemElement>;
       'six-checkbox': CustomElement<HTMLSixCheckboxElement>;
       'six-radio': CustomElement<HTMLSixRadioElement>;

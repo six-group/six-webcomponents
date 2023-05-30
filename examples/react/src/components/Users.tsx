@@ -1,5 +1,5 @@
 import React from 'react';
-import { SixCard, SixDialog, SixDrawer } from '@six-group/ui-library-react/dist/components';
+import { SixDialog, SixDrawer } from '@six-group/ui-library-react/dist/components';
 // types
 import { User } from '../types/user';
 // hooks
@@ -40,9 +40,9 @@ const Users = () => {
   return (
     <div className="users">
       <UsersHeader />
-      <SixCard className={`users__table ${loading ? 'users__table--loading' : ''}`}>
+      <six-card className={`users__table ${loading ? 'users__table--loading' : ''}`}>
         <UsersTableStatic users={users} loading={loading} selectUser={selectUser} />
-      </SixCard>
+      </six-card>
       <drawer.Component />
       <dialog.Component />
     </div>

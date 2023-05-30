@@ -1,6 +1,4 @@
 import React from 'react';
-import { SixBadge, SixButton } from '@six-group/ui-library-react/dist/components';
-// feature
 import { useTasks } from '../hooks/use-tasks';
 import './Home.css';
 
@@ -19,13 +17,13 @@ const Home = ({ toggleLeftSidebar, toggleRightSidebar }: DashboardProps) => {
         This is a <b>React Demo App</b> using <b>@six-group/ui-library</b>
       </p>
       <p className="dashboard__actions">
-        <SixButton onClick={toggleLeftSidebar}>Toggle left sidebar</SixButton>
-        <SixButton onClick={toggleRightSidebar} loading={loading}>
+        <six-button onClick={toggleLeftSidebar}>Toggle left sidebar</six-button>
+        <six-button onClick={toggleRightSidebar} loading={loading}>
           Toggle right sidebar
-          <SixBadge type="danger" pill>
+          <six-badge type="danger" pill>
             {tasks.length}
-          </SixBadge>
-        </SixButton>
+          </six-badge>
+        </six-button>
       </p>
     </div>
   );

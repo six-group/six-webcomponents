@@ -12,7 +12,7 @@ import { Components } from '@six-group/ui-library';
 })
 @Component({
   selector: 'set-attributes',
-  changeDetection
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['value'],
@@ -35,7 +35,7 @@ export declare interface SetAttributes extends Components.SetAttributes {}
 })
 @Component({
   selector: 'six-alert',
-  changeDetection
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['closable', 'duration', 'open', 'type'],
@@ -77,7 +77,7 @@ export declare interface SixAlert extends Components.SixAlert {
 })
 @Component({
   selector: 'six-avatar',
-  changeDetection
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['alt', 'image', 'initials', 'shape'],
@@ -99,7 +99,7 @@ export declare interface SixAvatar extends Components.SixAvatar {}
 })
 @Component({
   selector: 'six-badge',
-  changeDetection
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['pill', 'pulse', 'type'],
@@ -122,7 +122,7 @@ export declare interface SixBadge extends Components.SixBadge {}
 })
 @Component({
   selector: 'six-button',
-  changeDetection
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['caret', 'circle', 'disabled', 'download', 'href', 'loading', 'name', 'pill', 'reset', 'size', 'submit', 'target', 'type', 'value'],
@@ -155,7 +155,7 @@ export declare interface SixButton extends Components.SixButton {
 })
 @Component({
   selector: 'six-card',
-  changeDetection
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: [],
@@ -178,7 +178,7 @@ export declare interface SixCard extends Components.SixCard {}
 })
 @Component({
   selector: 'six-checkbox',
-  changeDetection
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['disabled', 'errorOnBlur', 'errorText', 'indeterminate', 'invalid', 'label', 'name', 'required', 'value'],
@@ -217,7 +217,7 @@ export declare interface SixCheckbox extends Components.SixCheckbox {
 })
 @Component({
   selector: 'six-datepicker',
-  changeDetection
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['allowedDates', 'clearable', 'closeOnSelect', 'containingElement', 'dateFormat', 'debounce', 'defaultDate', 'disabled', 'errorOnBlur', 'errorText', 'hoist', 'iconPosition', 'inline', 'label', 'locale', 'max', 'min', 'name', 'open', 'placeholder', 'placement', 'readonly', 'required', 'size', 'type', 'value'],
@@ -257,7 +257,7 @@ export declare interface SixDatepicker extends Components.SixDatepicker {
 })
 @Component({
   selector: 'six-details',
-  changeDetection
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['disabled', 'hasContent', 'inline', 'open', 'selectableEmpty', 'summary', 'summaryIcon', 'summaryIconSize'],
@@ -300,7 +300,7 @@ export declare interface SixDetails extends Components.SixDetails {
 })
 @Component({
   selector: 'six-dialog',
-  changeDetection
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['label', 'noHeader', 'open'],
@@ -352,7 +352,7 @@ allow you to set it on a different element in the dialog, such as an input or bu
 })
 @Component({
   selector: 'six-drawer',
-  changeDetection
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['contained', 'label', 'noHeader', 'open', 'placement'],
@@ -404,7 +404,7 @@ allow you to set it on a different element in the drawer, such as an input or bu
 })
 @Component({
   selector: 'six-dropdown',
-  changeDetection
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['asyncFilter', 'autofocusFilter', 'closeOnSelect', 'containingElement', 'disableHideOnEnterAndSpace', 'distance', 'filter', 'filterDebounce', 'filterPlaceholder', 'hoist', 'open', 'options', 'placement', 'skidding', 'virtualScroll'],
@@ -461,7 +461,7 @@ export declare interface SixDropdown extends Components.SixDropdown {
 })
 @Component({
   selector: 'six-error-page',
-  changeDetection
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['customDescription', 'customIcon', 'customTitle', 'errorCode', 'language'],
@@ -482,7 +482,7 @@ export declare interface SixErrorPage extends Components.SixErrorPage {}
 })
 @Component({
   selector: 'six-file-list',
-  changeDetection
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: [],
@@ -504,7 +504,7 @@ export declare interface SixFileList extends Components.SixFileList {}
 })
 @Component({
   selector: 'six-file-list-item',
-  changeDetection
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['date', 'identifier', 'name', 'nodelete', 'nodownload', 'size'],
@@ -539,7 +539,7 @@ export declare interface SixFileListItem extends Components.SixFileListItem {
 })
 @Component({
   selector: 'six-file-upload',
-  changeDetection
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['accept', 'compact', 'disabled', 'label', 'maxFileSize', 'multiple'],
@@ -573,7 +573,7 @@ export declare interface SixFileUpload extends Components.SixFileUpload {
 })
 @Component({
   selector: 'six-footer',
-  changeDetection
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: [],
@@ -596,7 +596,7 @@ export declare interface SixFooter extends Components.SixFooter {}
 })
 @Component({
   selector: 'six-form',
-  changeDetection
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['novalidate'],
@@ -639,7 +639,7 @@ around the XHR request you use to submit the form's data with.
 })
 @Component({
   selector: 'six-group-label',
-  changeDetection
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['disabled', 'helpText', 'label', 'required', 'size'],
@@ -662,7 +662,7 @@ export declare interface SixGroupLabel extends Components.SixGroupLabel {}
 })
 @Component({
   selector: 'six-header',
-  changeDetection
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['clickableLogo', 'openHamburgerMenu', 'openSearch', 'shiftContent'],
@@ -715,7 +715,7 @@ export declare interface SixHeader extends Components.SixHeader {
 })
 @Component({
   selector: 'six-icon',
-  changeDetection
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['filled', 'size'],
@@ -737,7 +737,7 @@ export declare interface SixIcon extends Components.SixIcon {}
 })
 @Component({
   selector: 'six-icon-button',
-  changeDetection
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['disabled', 'html', 'label', 'name', 'size'],
@@ -760,7 +760,7 @@ export declare interface SixIconButton extends Components.SixIconButton {}
 })
 @Component({
   selector: 'six-input',
-  changeDetection
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['autocapitalize', 'autocomplete', 'autocorrect', 'autofocus', 'clearable', 'disabled', 'errorOnBlur', 'errorText', 'helpText', 'inputmode', 'invalid', 'label', 'line', 'max', 'maxlength', 'min', 'minlength', 'name', 'pattern', 'pill', 'placeholder', 'readonly', 'required', 'size', 'spellcheck', 'step', 'togglePassword', 'type', 'value'],
@@ -806,7 +806,7 @@ export declare interface SixInput extends Components.SixInput {
 })
 @Component({
   selector: 'six-item-picker',
-  changeDetection
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['debounce', 'interval', 'items', 'max', 'min', 'padded', 'paddingChar', 'paddingDirection', 'paddingLength', 'roundtrip', 'step', 'timeout', 'type', 'value'],
@@ -840,7 +840,7 @@ export declare interface SixItemPicker extends Components.SixItemPicker {
 })
 @Component({
   selector: 'six-language-switcher',
-  changeDetection
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['languages', 'selected'],
@@ -870,7 +870,7 @@ export declare interface SixLanguageSwitcher extends Components.SixLanguageSwitc
 })
 @Component({
   selector: 'six-layout-grid',
-  changeDetection
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['columns'],
@@ -892,7 +892,7 @@ export declare interface SixLayoutGrid extends Components.SixLayoutGrid {}
 })
 @Component({
   selector: 'six-main-container',
-  changeDetection
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['padded'],
@@ -915,7 +915,7 @@ export declare interface SixMainContainer extends Components.SixMainContainer {}
 })
 @Component({
   selector: 'six-menu',
-  changeDetection
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['itemSize', 'items', 'itemsShown', 'removeBoxShadow', 'scrollingDebounce', 'virtualScroll'],
@@ -944,7 +944,7 @@ export declare interface SixMenu extends Components.SixMenu {
 })
 @Component({
   selector: 'six-menu-divider',
-  changeDetection
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: [],
@@ -967,7 +967,7 @@ export declare interface SixMenuDivider extends Components.SixMenuDivider {}
 })
 @Component({
   selector: 'six-menu-item',
-  changeDetection
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['checked', 'disabled', 'value'],
@@ -988,7 +988,7 @@ export declare interface SixMenuItem extends Components.SixMenuItem {}
 })
 @Component({
   selector: 'six-menu-label',
-  changeDetection
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: [],
@@ -1010,7 +1010,7 @@ export declare interface SixMenuLabel extends Components.SixMenuLabel {}
 })
 @Component({
   selector: 'six-picto',
-  changeDetection
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['size'],
@@ -1032,7 +1032,7 @@ export declare interface SixPicto extends Components.SixPicto {}
 })
 @Component({
   selector: 'six-progress-bar',
-  changeDetection
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['indeterminate', 'percentage'],
@@ -1054,7 +1054,7 @@ export declare interface SixProgressBar extends Components.SixProgressBar {}
 })
 @Component({
   selector: 'six-progress-ring',
-  changeDetection
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['percentage', 'size', 'strokeWidth'],
@@ -1077,7 +1077,7 @@ export declare interface SixProgressRing extends Components.SixProgressRing {}
 })
 @Component({
   selector: 'six-radio',
-  changeDetection
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['checked', 'disabled', 'invalid', 'name', 'value'],
@@ -1116,7 +1116,7 @@ export declare interface SixRadio extends Components.SixRadio {
 })
 @Component({
   selector: 'six-range',
-  changeDetection
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['disabled', 'errorOnBlur', 'errorText', 'helpText', 'invalid', 'label', 'max', 'min', 'name', 'required', 'step', 'tooltip', 'tooltipFormatter', 'value'],
@@ -1154,7 +1154,7 @@ export declare interface SixRange extends Components.SixRange {
 })
 @Component({
   selector: 'six-root',
-  changeDetection
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['breakpoint', 'padded', 'stage', 'version'],
@@ -1184,7 +1184,7 @@ export declare interface SixRoot extends Components.SixRoot {
 })
 @Component({
   selector: 'six-search-field',
-  changeDetection
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['clearable', 'debounce', 'disabled', 'placeholder', 'value'],
@@ -1215,7 +1215,7 @@ export declare interface SixSearchField extends Components.SixSearchField {
 })
 @Component({
   selector: 'six-select',
-  changeDetection
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['asyncFilter', 'autocomplete', 'clearable', 'defaultValue', 'disabled', 'errorOnBlur', 'errorText', 'filter', 'filterDebounce', 'filterPlaceholder', 'helpText', 'hoist', 'inputDebounce', 'invalid', 'label', 'line', 'maxTagsVisible', 'multiple', 'name', 'options', 'pill', 'placeholder', 'required', 'size', 'value', 'virtualScroll'],
@@ -1255,7 +1255,7 @@ export declare interface SixSelect extends Components.SixSelect {
 })
 @Component({
   selector: 'six-sidebar',
-  changeDetection
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['open', 'position', 'toggled', 'width'],
@@ -1302,7 +1302,7 @@ allow you to set it on a different element in the sidebar, such as an input or b
 })
 @Component({
   selector: 'six-sidebar-item',
-  changeDetection
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['disabled', 'selected', 'value'],
@@ -1324,7 +1324,7 @@ export declare interface SixSidebarItem extends Components.SixSidebarItem {}
 })
 @Component({
   selector: 'six-sidebar-item-group',
-  changeDetection
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['icon', 'name', 'open', 'summaryIcon', 'value'],
@@ -1346,7 +1346,7 @@ export declare interface SixSidebarItemGroup extends Components.SixSidebarItemGr
 })
 @Component({
   selector: 'six-spinner',
-  changeDetection
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['six'],
@@ -1368,7 +1368,7 @@ export declare interface SixSpinner extends Components.SixSpinner {}
 })
 @Component({
   selector: 'six-stage-indicator',
-  changeDetection
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['stage'],
@@ -1391,7 +1391,7 @@ export declare interface SixStageIndicator extends Components.SixStageIndicator 
 })
 @Component({
   selector: 'six-switch',
-  changeDetection
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['checked', 'disabled', 'invalid', 'name', 'required', 'value'],
@@ -1430,7 +1430,7 @@ export declare interface SixSwitch extends Components.SixSwitch {
 })
 @Component({
   selector: 'six-tab',
-  changeDetection
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['active', 'closable', 'disabled', 'panel'],
@@ -1461,7 +1461,7 @@ export declare interface SixTab extends Components.SixTab {
 })
 @Component({
   selector: 'six-tab-group',
-  changeDetection
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['noScrollControls', 'placement'],
@@ -1496,7 +1496,7 @@ export declare interface SixTabGroup extends Components.SixTabGroup {
 })
 @Component({
   selector: 'six-tab-panel',
-  changeDetection
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['active', 'name'],
@@ -1518,7 +1518,7 @@ export declare interface SixTabPanel extends Components.SixTabPanel {}
 })
 @Component({
   selector: 'six-tag',
-  changeDetection
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['clearable', 'pill', 'size', 'type'],
@@ -1549,7 +1549,7 @@ export declare interface SixTag extends Components.SixTag {
 })
 @Component({
   selector: 'six-textarea',
-  changeDetection
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['autocapitalize', 'autocomplete', 'autocorrect', 'autofocus', 'disabled', 'errorOnBlur', 'errorText', 'helpText', 'inputmode', 'invalid', 'label', 'maxlength', 'minlength', 'name', 'placeholder', 'readonly', 'required', 'resize', 'rows', 'size', 'spellcheck', 'value'],
@@ -1600,7 +1600,7 @@ or leaves the textarea field after entering some data.
 })
 @Component({
   selector: 'six-tile',
-  changeDetection
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['closeable', 'disableTooltip', 'disabled', 'elevated', 'iconName', 'label', 'size'],
@@ -1635,7 +1635,7 @@ export declare interface SixTile extends Components.SixTile {
 })
 @Component({
   selector: 'six-timepicker',
-  changeDetection
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['clearable', 'debounce', 'defaultTime', 'disabled', 'errorOnBlur', 'errorText', 'format', 'hoist', 'iconPosition', 'inline', 'interval', 'label', 'name', 'open', 'placeholder', 'placement', 'readonly', 'required', 'separator', 'size', 'timeout', 'value'],
@@ -1675,7 +1675,7 @@ export declare interface SixTimepicker extends Components.SixTimepicker {
 })
 @Component({
   selector: 'six-tooltip',
-  changeDetection
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['content', 'disabled', 'distance', 'open', 'placement', 'skidding', 'trigger'],
