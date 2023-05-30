@@ -5,6 +5,7 @@ import { EmptyPayload } from '../../utils/types';
 import { EventListeners } from '../../utils/event-listeners';
 import { debounce, DEFAULT_DEBOUNCE_FAST } from '../../utils/execution-control';
 import { SixMenuItemData } from '../six-menu/six-menu';
+import { Events } from '../../utils/events';
 
 export interface SixSelectChangePayload {
   value: string | string[];
@@ -184,7 +185,7 @@ export class SixSelect {
     this.syncItemsFromValue();
     if (this.input) {
       this.sixChange.emit({ value: this.value, isSelected: true });
-      this.host.dispatchEvent(new InputEvent('input', { bubbles: true, cancelable: true, composed: true }));
+      Events.update(this.host);
     }
   }
 
@@ -245,7 +246,7 @@ export class SixSelect {
         const enteredValue = this.input.value;
         this.clearValues();
         this.sixChange.emit({ value: enteredValue, isSelected: false });
-        this.host.dispatchEvent(new InputEvent('input', { bubbles: true, cancelable: true, composed: true }));
+        Events.update(this.host);
         event.stopPropagation();
       }, this.inputDebounce)
     );
@@ -324,13 +325,13 @@ export class SixSelect {
   handleBlur() {
     this.hasFocus = false;
     this.sixBlur.emit();
-    this.host.dispatchEvent(new FocusEvent('blur', { bubbles: true, cancelable: true, composed: true }));
+    Events.blur(this.host);
   }
 
   handleFocus() {
     this.hasFocus = true;
     this.sixFocus.emit();
-    this.host.dispatchEvent(new FocusEvent('focus', { bubbles: true, cancelable: true, composed: true }));
+    Events.focus(this.host);
   }
 
   handleInvalid() {

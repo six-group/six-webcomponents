@@ -54,8 +54,7 @@ export class SixRadio {
   handleCheckedChange() {
     if (this.checked) {
       this.getSiblingRadios().map((radio) => (radio.checked = false));
-      Events.change(this.host);
-      Events.input(this.host);
+      Events.update(this.host);
     }
     if (this.input) {
       this.input.checked = this.checked;

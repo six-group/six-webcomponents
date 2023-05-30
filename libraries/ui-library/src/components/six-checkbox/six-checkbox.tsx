@@ -91,8 +91,7 @@ export class SixCheckbox {
     this.input.indeterminate = this.indeterminate;
     this.invalid = !this.input.checkValidity();
     this.sixChange.emit();
-    Events.input(this.host);
-    Events.change(this.host);
+    Events.update(this.host);
   }
 
   @Watch('errorText')
@@ -180,8 +179,7 @@ export class SixCheckbox {
   handleChange() {
     this.value = this.input.checked;
     this.indeterminate = false;
-    Events.input(this.host);
-    Events.change(this.host);
+    Events.update(this.host);
   }
 
   handleBlur() {

@@ -27,6 +27,7 @@ import { DaySelection } from './components/day-selection';
 import { YearSelection } from './components/year-selection';
 import { SixTimepickerChange } from '../six-timepicker/six-timepicker';
 import { SixTimePropertyName } from '../six-timepicker/six-timepicker.types';
+import { Events } from '../../utils/events';
 
 const NUMBER_OF_YEARS_SHOWN = 25;
 
@@ -238,6 +239,7 @@ export class SixDatepicker {
     this.selectedDate = this.value;
     this.updatePointerDates();
     this.sixSelect.emit(this.value);
+    Events.update(this.host);
   }
 
   /**
@@ -628,6 +630,7 @@ export class SixDatepicker {
     }
 
     this.sixBlur.emit(this.value);
+    Events.blur(this.host);
   };
 
   componentWillLoad() {

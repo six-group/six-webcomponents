@@ -335,8 +335,7 @@ export class SixInput {
     if (this.nativeInput != null) {
       this.value = this.nativeInput.value;
       this.sixChange.emit();
-      Events.input(this.host);
-      Events.change(this.host);
+      Events.update(this.host);
     }
   };
 
@@ -344,7 +343,7 @@ export class SixInput {
     if (this.nativeInput != null) {
       this.value = this.nativeInput.value;
       this.sixInput.emit();
-      Events.input(this.host);
+      Events.update(this.host);
     }
   };
 
