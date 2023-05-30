@@ -24,7 +24,7 @@ import { SixSearchFieldChangePayload } from "./components/six-search-field/six-s
 import { SixSelectChangePayload } from "./components/six-select/six-select";
 import { StageType as StageType1 } from "./components/six-stage-indicator/six-stage-indicator";
 import { SixTabHidePayload, SixTabShowPayload } from "./components/six-tab-group/six-tab-group";
-import { SixTimeFormat } from "./components/six-timepicker/six-time-format";
+import { TimeFormat } from "./utils/time.util";
 import { SixTimepickerChange } from "./components/six-timepicker/six-timepicker";
 export { EmptyPayload } from "./utils/types";
 export { SixDateFormats } from "./components/six-datepicker/six-date-formats";
@@ -45,7 +45,7 @@ export { SixSearchFieldChangePayload } from "./components/six-search-field/six-s
 export { SixSelectChangePayload } from "./components/six-select/six-select";
 export { StageType as StageType1 } from "./components/six-stage-indicator/six-stage-indicator";
 export { SixTabHidePayload, SixTabShowPayload } from "./components/six-tab-group/six-tab-group";
-export { SixTimeFormat } from "./components/six-timepicker/six-time-format";
+export { TimeFormat } from "./utils/time.util";
 export { SixTimepickerChange } from "./components/six-timepicker/six-timepicker";
 export namespace Components {
     interface SetAttributes {
@@ -303,7 +303,7 @@ export namespace Components {
         /**
           * The dropdown will close when the user interacts outside of this element (e.g. clicking).
          */
-        "containingElement": HTMLElement;
+        "containingElement"?: HTMLElement;
         /**
           * Define the dateFormat. Valid formats are: 'dd.mm.yyyy' 'yyyy-mm-dd' 'dd-mm-yyyy' 'dd/mm/yyyy' 'yyyy/mm/dd' 'dd.mm.yy' 'yy-mm-dd' 'dd-mm-yy' 'dd/mm/yy' 'yy/mm/dd'
          */
@@ -315,7 +315,7 @@ export namespace Components {
         /**
           * The date to defines where the datepicker popup starts. The prop accepts ISO 8601 date strings (YYYY-MM-DD).
          */
-        "defaultDate"?: string | null;
+        "defaultDate"?: string;
         /**
           * If `true` the component is disabled.
          */
@@ -351,11 +351,11 @@ export namespace Components {
         /**
           * The maximum datetime allowed. Value must be a date object
          */
-        "max"?: Date | null;
+        "max"?: Date;
         /**
           * The minimum datetime allowed. Value must be a date object
          */
-        "min"?: Date | null;
+        "min"?: Date;
         /**
           * The input's name attribute.
          */
@@ -367,11 +367,11 @@ export namespace Components {
         /**
           * The placeholder defines what text to be shown on the input element
          */
-        "placeholder"?: string | null;
+        "placeholder"?: string;
         /**
           * The enforced placement of the dropdown panel.
          */
-        "placement": 'top' | 'bottom';
+        "placement"?: 'top' | 'bottom';
         /**
           * If `true` the user can only select a date via the component in the popup, but not directly edit the input field.
          */
@@ -391,7 +391,7 @@ export namespace Components {
         /**
           * Selects an option
          */
-        "select": (datestring: string) => Promise<void>;
+        "select": (datestring?: string) => Promise<void>;
         /**
           * Sets a custom validation message. If `message` is not empty, the field will be considered invalid.
          */
@@ -407,7 +407,7 @@ export namespace Components {
         /**
           * The value of the form field, which accepts a date object.
          */
-        "value"?: Date | null;
+        "value"?: Date;
     }
     /**
      * @since 1.0
@@ -1969,7 +1969,7 @@ export namespace Components {
         /**
           * The defaultTime defines the default setting for the timepicker when you open the popup. Default time must match the provided format.
          */
-        "defaultTime"?: string | null;
+        "defaultTime"?: string;
         /**
           * If `true` the component is disabled.
          */
@@ -1985,7 +1985,7 @@ export namespace Components {
         /**
           * Define the time format. Valid formats are:  HH:mm:ss hh:mm:ss:aa HH:mm:ss:ms hh:mm:ss:ms:aa HH:mm hh:mm:aa HH hh:aa mm ss ms  where HH is the 24 hour format and hh is the 12 hour format  Please notice that when using the 12-hour-clock (hh) you always need a period indicator (aa). So the time can be parsed as either am or pm
          */
-        "format": SixTimeFormat;
+        "format": TimeFormat;
         /**
           * Enable this option to prevent the panel from being clipped when the component is placed inside a container with `overflow: auto|scroll`.
          */
@@ -1995,7 +1995,7 @@ export namespace Components {
          */
         "iconPosition": 'left' | 'right';
         /**
-          * Indicates whether or not the timepicker should be shown as an inline (always open) component
+          * Indicates whether the timepicker should be shown as an inline (always open) component
          */
         "inline": boolean;
         /**
@@ -2011,17 +2011,17 @@ export namespace Components {
          */
         "name": string;
         /**
-          * Indicates whether or not the timepicker dropdown is open on startup. You can use this in lieu of the show/hide methods.
+          * Indicates whether the timepicker dropdown is open on startup. You can use this in lieu of the show/hide methods.
          */
         "open": boolean;
         /**
           * The placeholder defines what text to be shown on the input element
          */
-        "placeholder"?: string | null;
+        "placeholder"?: string;
         /**
           * The enforced placement of the dropdown panel.
          */
-        "placement": 'top' | 'bottom';
+        "placement"?: 'top' | 'bottom';
         /**
           * If `true` the user can only select a time via the timepicker but not directly edit the input field.
          */
@@ -2057,7 +2057,7 @@ export namespace Components {
         /**
           * The value of the timepicker provided as a string. The string mast match the provided format (or default format)
          */
-        "value"?: string | null;
+        "value": string;
     }
     /**
      * @since 1.0
@@ -3090,7 +3090,7 @@ declare namespace LocalJSX {
         /**
           * The date to defines where the datepicker popup starts. The prop accepts ISO 8601 date strings (YYYY-MM-DD).
          */
-        "defaultDate"?: string | null;
+        "defaultDate"?: string;
         /**
           * If `true` the component is disabled.
          */
@@ -3126,11 +3126,11 @@ declare namespace LocalJSX {
         /**
           * The maximum datetime allowed. Value must be a date object
          */
-        "max"?: Date | null;
+        "max"?: Date;
         /**
           * The minimum datetime allowed. Value must be a date object
          */
-        "min"?: Date | null;
+        "min"?: Date;
         /**
           * The input's name attribute.
          */
@@ -3154,7 +3154,7 @@ declare namespace LocalJSX {
         /**
           * The placeholder defines what text to be shown on the input element
          */
-        "placeholder"?: string | null;
+        "placeholder"?: string;
         /**
           * The enforced placement of the dropdown panel.
          */
@@ -3178,7 +3178,7 @@ declare namespace LocalJSX {
         /**
           * The value of the form field, which accepts a date object.
          */
-        "value"?: Date | null;
+        "value"?: Date;
     }
     /**
      * @since 1.0
@@ -4748,7 +4748,7 @@ declare namespace LocalJSX {
         /**
           * The defaultTime defines the default setting for the timepicker when you open the popup. Default time must match the provided format.
          */
-        "defaultTime"?: string | null;
+        "defaultTime"?: string;
         /**
           * If `true` the component is disabled.
          */
@@ -4764,7 +4764,7 @@ declare namespace LocalJSX {
         /**
           * Define the time format. Valid formats are:  HH:mm:ss hh:mm:ss:aa HH:mm:ss:ms hh:mm:ss:ms:aa HH:mm hh:mm:aa HH hh:aa mm ss ms  where HH is the 24 hour format and hh is the 12 hour format  Please notice that when using the 12-hour-clock (hh) you always need a period indicator (aa). So the time can be parsed as either am or pm
          */
-        "format"?: SixTimeFormat;
+        "format"?: TimeFormat;
         /**
           * Enable this option to prevent the panel from being clipped when the component is placed inside a container with `overflow: auto|scroll`.
          */
@@ -4774,7 +4774,7 @@ declare namespace LocalJSX {
          */
         "iconPosition"?: 'left' | 'right';
         /**
-          * Indicates whether or not the timepicker should be shown as an inline (always open) component
+          * Indicates whether the timepicker should be shown as an inline (always open) component
          */
         "inline"?: boolean;
         /**
@@ -4802,13 +4802,13 @@ declare namespace LocalJSX {
          */
         "onSix-timepicker-clear"?: (event: SixTimepickerCustomEvent<EmptyPayload>) => void;
         /**
-          * Indicates whether or not the timepicker dropdown is open on startup. You can use this in lieu of the show/hide methods.
+          * Indicates whether the timepicker dropdown is open on startup. You can use this in lieu of the show/hide methods.
          */
         "open"?: boolean;
         /**
           * The placeholder defines what text to be shown on the input element
          */
-        "placeholder"?: string | null;
+        "placeholder"?: string;
         /**
           * The enforced placement of the dropdown panel.
          */
@@ -4836,7 +4836,7 @@ declare namespace LocalJSX {
         /**
           * The value of the timepicker provided as a string. The string mast match the provided format (or default format)
          */
-        "value"?: string | null;
+        "value"?: string;
     }
     /**
      * @since 1.0

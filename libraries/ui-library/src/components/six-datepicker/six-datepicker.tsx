@@ -12,6 +12,7 @@ import {
   month,
   now,
   PointerDate,
+  rangeAround,
   seconds,
   toDate,
   year,
@@ -26,7 +27,12 @@ import { MonthSelection } from './components/month-selection';
 import { DaySelection } from './components/day-selection';
 import { YearSelection } from './components/year-selection';
 import { SixTimepickerChange } from '../six-timepicker/six-timepicker';
-import { SixTimePropertyName } from '../six-timepicker/six-timepicker.types';
+import {
+  adjustPopupForHoisting,
+  adjustPopupForSmallScreens,
+  calcIsDropDownContentUp,
+  movePopup,
+} from '../../utils/popup';
 
 const NUMBER_OF_YEARS_SHOWN = 25;
 
@@ -51,21 +57,6 @@ enum SelectionMode {
   YEAR = 'year',
 }
 
-const getYearSelectionAroundYear = (year: number): number[][] => {
-  const numberOfElementsPerRow = 5;
-  return Array.from(new Array(NUMBER_OF_YEARS_SHOWN).keys())
-    .map((n) => n + year - Math.floor(NUMBER_OF_YEARS_SHOWN / 2))
-    .reduce((curr, item, index) => {
-      if (index % numberOfElementsPerRow === 0) {
-        curr.push([]);
-      }
-
-      curr[curr.length - 1].push(item);
-
-      return curr;
-    }, []);
-};
-
 /**
  * @since 1.0
  * @status stable
@@ -78,18 +69,13 @@ const getYearSelectionAroundYear = (year: number): number[][] => {
   shadow: true,
 })
 export class SixDatepicker {
-  private readonly eventListeners = new EventListeners();
+  private eventListeners = new EventListeners();
+  private inputElement?: HTMLSixInputElement;
+  private popup?: HTMLElement;
+  private wrapper?: HTMLElement;
+  private selectedDate?: Date;
 
-  private inputElement: HTMLSixInputElement;
-
-  private popup: HTMLElement;
-
-  private wrapper: HTMLElement;
-
-  @Element()
-  readonly host: HTMLSixDatepickerElement;
-
-  private selectedDate: Date | null = null;
+  @Element() host!: HTMLSixDatepickerElement;
 
   @State() private pointerDate = SixDatepicker.getCurrentDateAsPointer();
   @State() selectionMode: SelectionMode = SelectionMode.DAY;
@@ -134,12 +120,12 @@ export class SixDatepicker {
   /**
    * The minimum datetime allowed. Value must be a date object
    */
-  @Prop() min?: Date | null = null;
+  @Prop() min?: Date;
 
   /**
    * The maximum datetime allowed. Value must be a date object
    */
-  @Prop() max?: Date | null = null;
+  @Prop() max?: Date;
 
   /**
    * Closes the datepicker dropdown after selection
@@ -149,31 +135,31 @@ export class SixDatepicker {
   /**
    * The enforced placement of the dropdown panel.
    */
-  @Prop() placement: 'top' | 'bottom';
+  @Prop() placement?: 'top' | 'bottom';
 
   /** Datepicker size. */
   @Prop() size: 'small' | 'medium' | 'large' = 'medium';
 
   /** Set to true to make the input a required field. */
-  @Prop({ reflect: true }) required: boolean;
+  @Prop({ reflect: true }) required = false;
 
   /**
    * The date to defines where the datepicker popup starts. The prop accepts ISO 8601 date strings (YYYY-MM-DD).
    */
-  @Prop() defaultDate?: string | null;
+  @Prop() defaultDate?: string;
 
   /**
    * The placeholder defines what text to be shown on the input element
    */
-  @Prop() placeholder?: string | null;
+  @Prop() placeholder?: string;
 
   /**
    * The value of the form field, which accepts a date object.
    */
-  @Prop({ mutable: true }) value?: Date | null = null;
+  @Prop({ mutable: true }) value?: Date;
 
   /** The dropdown will close when the user interacts outside of this element (e.g. clicking). */
-  @Prop() containingElement: HTMLElement;
+  @Prop() containingElement?: HTMLElement;
 
   /** Define the dateFormat. Valid formats are:
    * 'dd.mm.yyyy'
@@ -228,11 +214,9 @@ export class SixDatepicker {
    */
   @Watch('value')
   protected valueChanged() {
-    // map unreadable values to undefined to make the datepicker fault-tolerant
-    if (this.isValidValue()) {
-      console.warn('Encountered unreadable date, will map to undefined. Received value', this.value);
+    if (this.value != null && !isValidDate(this.value)) {
+      console.warn('invalid date value: ', this.value);
       this.value = undefined;
-      return;
     }
 
     this.selectedDate = this.value;
@@ -243,32 +227,36 @@ export class SixDatepicker {
   /**
    * Emitted when a option got selected.
    */
-  @Event({ eventName: 'six-datepicker-select' }) sixSelect: EventEmitter<SixDatepickerSelectPayload>;
+  @Event({ eventName: 'six-datepicker-select' }) sixSelect!: EventEmitter<SixDatepickerSelectPayload>;
 
   /**
    * Emitted when the clear button is activated.
    */
-  @Event({ eventName: 'six-datepicker-clear' }) sixClear: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-datepicker-clear' }) sixClear!: EventEmitter<EmptyPayload>;
 
   /**
    * Emitted when a option got selected.
    */
-  @Event({ eventName: 'six-datepicker-blur' }) sixBlur: EventEmitter<SixDatepickerSelectPayload>;
+  @Event({ eventName: 'six-datepicker-blur' }) sixBlur!: EventEmitter<SixDatepickerSelectPayload>;
 
   @Listen('resize', { target: 'window' })
   async resizeHandler() {
-    this.calcIsDropDownContentUp();
+    this.updateDropdownDirection();
     this.moveOpenHoistedPopup();
     this.adjustPopupPosition();
   }
 
   @Listen('scroll', { target: 'window' })
   async scrollHandler() {
-    this.calcIsDropDownContentUp();
+    this.updateDropdownDirection();
     this.moveOpenHoistedPopup();
   }
 
-  private defaultValue: Date = null;
+  private defaultValue?: Date;
+
+  private moveOpenHoistedPopup() {
+    movePopup(this.hoist, this.open, this.popup, this.inputElement, this.wrapper, MIN_POPUP_HEIGHT);
+  }
 
   get container() {
     return this.containingElement || this.host;
@@ -282,39 +270,29 @@ export class SixDatepicker {
   /** Checks for validity and shows the browser's validation message if the control is invalid. */
   @Method()
   async reportValidity() {
-    return this.inputElement.reportValidity();
+    return this.inputElement?.reportValidity();
   }
 
   /** Checks for validity. */
   @Method()
   async checkValidity() {
-    return this.inputElement.checkValidity();
+    return this.inputElement?.checkValidity();
   }
 
   /** Sets a custom validation message. If `message` is not empty, the field will be considered invalid. */
   @Method()
   async setCustomValidity(message: string) {
-    await this.inputElement.setCustomValidity(message);
+    await this.inputElement?.setCustomValidity(message);
   }
 
   /** Resets the formcontrol */
   @Method()
   async reset() {
     this.value = this.defaultValue;
-    this.inputElement.value = formatDate(this.defaultValue, this.dateFormat);
-    await this.inputElement.reset();
-  }
-
-  private isValidValue() {
-    if (this.value === undefined || this.value === null) {
-      return false;
+    if (this.inputElement != null) {
+      this.inputElement.value = formatDate(this.defaultValue, this.dateFormat);
+      await this.inputElement.reset();
     }
-
-    if (!(this.value instanceof Date)) {
-      return true;
-    }
-
-    return this.value instanceof Date && isNaN(this.value as any);
   }
 
   get calendarGrid() {
@@ -330,24 +308,18 @@ export class SixDatepicker {
     });
   }
 
-  private calcIsDropDownContentUp() {
-    if (!this.inputElement || !this.wrapper) {
+  private updateDropdownDirection() {
+    if (this.inputElement == null || this.wrapper == null) {
       return;
     }
-
-    const inputBoundingRect = this.inputElement.getBoundingClientRect();
-    const wrapperBoundingRect = this.wrapper.getBoundingClientRect();
-    const minPopupHeight = Math.max(wrapperBoundingRect.height, MIN_POPUP_HEIGHT);
-
-    const moreSpaceInTop = inputBoundingRect.y > window.innerHeight / 2;
-    this.isDropDownContentUp = moreSpaceInTop && window.innerHeight < inputBoundingRect.bottom + minPopupHeight;
+    this.isDropDownContentUp = calcIsDropDownContentUp(this.inputElement, this.wrapper, MIN_POPUP_HEIGHT);
   }
 
   private getMonthStringForIndex(index: number) {
     return i18nDate[this.locale].months[index];
   }
 
-  private previousUnit() {
+  private previousUnit = () => {
     if (this.selectionMode === SelectionMode.DAY) {
       this.previousMonth();
     } else if (this.selectionMode === SelectionMode.MONTH) {
@@ -355,7 +327,7 @@ export class SixDatepicker {
     } else if (this.selectionMode === SelectionMode.YEAR) {
       this.previousYearGroup();
     }
-  }
+  };
 
   private previousYear() {
     this.pointerDate = { ...this.pointerDate, year: this.pointerDate.year - 1 };
@@ -380,7 +352,7 @@ export class SixDatepicker {
     }
   }
 
-  private nextUnit() {
+  private nextUnit = () => {
     if (this.selectionMode === SelectionMode.DAY) {
       this.nextMonth();
     } else if (this.selectionMode === SelectionMode.MONTH) {
@@ -388,7 +360,7 @@ export class SixDatepicker {
     } else if (this.selectionMode === SelectionMode.YEAR) {
       this.nextYearGroup();
     }
-  }
+  };
 
   private nextMonth() {
     if (this.pointerDate.month === 11) {
@@ -413,7 +385,7 @@ export class SixDatepicker {
     this.pointerDate = { ...this.pointerDate, year: this.pointerDate.year + NUMBER_OF_YEARS_SHOWN };
   }
 
-  openCalendar() {
+  private openCalendar() {
     if (!this.open && !this.disabled) {
       this.open = true;
       this.setupEventListenersForOpenPopup();
@@ -425,22 +397,23 @@ export class SixDatepicker {
     this.eventListeners.add(document, 'mousedown', this.handleDocumentMouseDown);
   }
 
-  handleDocumentKeyDown = (event: KeyboardEvent) => {
+  private handleDocumentKeyDown = (event: Event) => {
+    const keyboardEvent = event as KeyboardEvent;
     // Close when escape is pressed
-    if (this.open && event.key === 'Escape') {
-      event.stopPropagation();
+    if (this.open && keyboardEvent.key === 'Escape') {
+      keyboardEvent.stopPropagation();
       this.closePopup();
-      void this.inputElement.setFocus();
+      void this.inputElement?.setFocus();
     }
 
     // Handle tabbing
-    if (event.key === 'Tab') {
+    if (keyboardEvent.key === 'Tab') {
       this.closePopup();
     }
   };
 
-  handleDocumentMouseDown = (event: MouseEvent) => {
-    // Close when clicking outside of the containing element
+  private handleDocumentMouseDown = (event: Event) => {
+    // Close when clicking outside the containing element
     const path = event.composedPath() as EventTarget[];
     if (!path.includes(this.container)) {
       this.closePopup();
@@ -448,11 +421,11 @@ export class SixDatepicker {
     }
   };
 
-  handleClearClick(event: MouseEvent) {
+  private handleClearClick = async (event: MouseEvent) => {
     event.stopPropagation();
-    void this.select(undefined);
+    await this.select(undefined);
     this.sixClear.emit();
-  }
+  };
 
   private closePopup() {
     if (this.inline) {
@@ -479,7 +452,7 @@ export class SixDatepicker {
     }
   }
 
-  private differsFromPointerDate(date: Date): boolean {
+  private differsFromPointerDate(date?: Date): boolean {
     return (
       this.pointerDate.day !== day(date) ||
       this.pointerDate.month !== month(date) ||
@@ -490,24 +463,24 @@ export class SixDatepicker {
     );
   }
 
-  private getPointerDate() {
+  private getPointerDate(): Date | undefined {
     if (this.selectedDate !== undefined && this.selectedDate !== null) {
       return this.selectedDate;
     }
-
     if (isNil(this.defaultDate)) {
       return now();
-    } else {
-      return this.defaultDate && toDate(this.defaultDate, this.dateFormat);
+    } else if (this.defaultDate != null) {
+      return toDate(this.defaultDate, this.dateFormat);
     }
+    return undefined;
   }
 
-  private updateValue(newDate: Date | undefined | null) {
+  private updateValue(newDate?: Date) {
     this.displayCustomMessage(true);
     this.updateIfChanged(newDate);
   }
 
-  updateIfChanged(newDate: Date) {
+  private updateIfChanged(newDate?: Date) {
     if (this.value?.getTime() === newDate?.getTime()) {
       return;
     }
@@ -519,12 +492,12 @@ export class SixDatepicker {
    * Selects an option
    */
   @Method()
-  async select(datestring: string) {
-    if (!datestring) {
+  async select(datestring?: string) {
+    if (datestring == null) {
       this.updateValue(undefined);
     } else {
       const newDate = toDate(datestring, this.dateFormat);
-      newDate.setHours(this.pointerDate.hours, this.pointerDate.minutes, this.pointerDate.seconds);
+      newDate?.setHours(this.pointerDate.hours, this.pointerDate.minutes, this.pointerDate.seconds);
       this.updateValue(newDate);
     }
 
@@ -535,44 +508,51 @@ export class SixDatepicker {
     }
   }
 
-  onTimepickerChange = (sixTimepickerChange: CustomEvent<SixTimepickerChange>) => {
+  private onTimepickerChange = (sixTimepickerChange: CustomEvent<SixTimepickerChange>) => {
     const time = sixTimepickerChange.detail.value;
     const newDate = new Date();
 
-    if (this.selectedDate) {
+    if (this.selectedDate != null) {
       newDate.setFullYear(this.selectedDate.getFullYear(), this.selectedDate.getMonth(), this.selectedDate.getDate());
     }
 
-    newDate.setHours(
-      time[SixTimePropertyName.HOURS],
-      time[SixTimePropertyName.MINUTES],
-      time[SixTimePropertyName.SECONDS]
-    );
+    if (time != null) {
+      const hours = time.hours;
+      const minutes = time.minutes;
+      const seconds = time.seconds;
+      if (hours != null) {
+        newDate.setHours(hours, minutes, seconds);
+      }
+    }
 
     this.updateValue(newDate);
     this.updatePointerDates();
   };
 
-  onClickDateCell = (cell: CalendarCell) => {
+  private onClickDateCell = (cell: CalendarCell) => {
     if (!cell.isDisabled) {
       void this.select(cell.dateString);
     }
   };
 
-  onClickMonthCell = (selectedMonth: string) => {
+  private onClickMonthCell = (selectedMonth: string) => {
     const month = i18nDate[this.locale].monthsShort.findIndex((monthShort) => monthShort === selectedMonth);
     this.pointerDate = { ...this.pointerDate, month };
     this.selectionMode = SelectionMode.DAY;
   };
 
-  onClickYearCell = (year: number) => {
+  private onClickYearCell = (year: number) => {
     this.pointerDate = { ...this.pointerDate, year };
     this.selectionMode = SelectionMode.DAY;
   };
 
-  handleInputChange = (event: Event) => {
-    const inputValue = this.inputElement.value;
+  private handleInputChange = (event: Event) => {
+    if (this.inputElement == null) {
+      return;
+    }
+    event.stopPropagation();
 
+    const inputValue = this.inputElement.value;
     if (!isValidDateString(inputValue, this.dateFormat)) {
       return;
     }
@@ -592,17 +572,16 @@ export class SixDatepicker {
     }
 
     this.updateIfChanged(inputValueDate);
-    event.stopPropagation();
 
     const datesOnly = inputValue.replace(/[^\d]/g, '');
 
-    let isDateValid = !inputValue;
+    let isDateValid = inputValue !== '';
 
     if (inputValue && datesOnly.length >= 6) {
       const date = toDate(inputValue, this.dateFormat);
-      const datestring = formatDate(date, this.dateFormat);
-      if (isValidDateString(datestring, this.dateFormat)) {
-        this.selectedDate = toDate(datestring, this.dateFormat);
+      const dateAsString = formatDate(date, this.dateFormat);
+      if (isValidDateString(dateAsString, this.dateFormat)) {
+        this.selectedDate = toDate(dateAsString, this.dateFormat);
         this.updatePointerDates();
         this.updateValue(this.selectedDate);
         isDateValid = true;
@@ -611,18 +590,18 @@ export class SixDatepicker {
     this.displayCustomMessage(isDateValid);
   };
 
-  handleOnBlur = (event: Event) => {
+  private handleOnBlur = (event: Event) => {
     // clear the value if the user deleted the date
-    if (this.inputElement.value === '' && isValidDate(this.value)) {
+    if (this.inputElement?.value === '' && isValidDate(this.value)) {
       this.value = undefined;
     }
 
     event.stopPropagation();
-    const inputValue = this.inputElement.value;
+    const inputValue = this.inputElement?.value;
     const inputValueDate = toDate(inputValue, this.dateFormat);
     const formattedDate = formatDate(this.value, this.dateFormat);
 
-    if (inputValueDate && inputValue !== formattedDate) {
+    if (this.inputElement != null && inputValueDate != null && inputValue !== formattedDate) {
       // properly format date if necessary
       this.inputElement.value = formattedDate;
     }
@@ -631,8 +610,6 @@ export class SixDatepicker {
   };
 
   componentWillLoad() {
-    this.validateProps();
-
     this.defaultValue = this.value;
     this.selectedDate = this.value;
     this.updatePointerDates();
@@ -647,29 +624,21 @@ export class SixDatepicker {
     }
   }
 
-  private validateProps() {
-    if (this.value !== null && this.value !== undefined && !(this.value instanceof Date)) {
-      throw new Error('Datepicker no longer supports strings as value. Use a date object instead!');
-    }
-
-    if (this.min !== null && this.min !== undefined && !(this.min instanceof Date)) {
-      throw new Error('Datepicker no longer supports strings as min. Use a date object instead!');
-    }
-
-    if (this.max !== null && this.max !== undefined && !(this.max instanceof Date)) {
-      throw new Error('Datepicker no longer supports strings as min. Use a date object instead!');
-    }
-  }
-
   componentDidLoad() {
-    this.eventListeners.add(this.inputElement, 'six-input-input', debounce(this.handleInputChange, this.debounce));
-    this.eventListeners.add(this.inputElement, 'six-input-blur', this.handleOnBlur);
+    if (this.inputElement != null) {
+      this.eventListeners.add(this.inputElement, 'six-input-input', debounce(this.handleInputChange, this.debounce));
+      this.eventListeners.add(this.inputElement, 'six-input-blur', this.handleOnBlur);
+    }
   }
 
-  renderHeader() {
+  componentDidRender() {
+    this.adjustPopupPosition();
+  }
+
+  private renderHeader() {
     return (
       <header class="datepicker-header" part="header">
-        <div class="datepicker-header__btn prev" onClick={() => this.previousUnit()}>
+        <div class="datepicker-header__btn prev" onClick={this.previousUnit}>
           <svg viewBox="0 5 13 13" width="14" height="23">
             <path d="M11.67 3.87L9.9 2.1 0 12l9.9 9.9 1.77-1.77L3.54 12z" />
           </svg>
@@ -706,7 +675,7 @@ export class SixDatepicker {
           )}
         </div>
 
-        <div class="datepicker-header__btn next" onClick={() => this.nextUnit()}>
+        <div class="datepicker-header__btn next" onClick={this.nextUnit}>
           <svg viewBox="5 5 13 13" width="14" height="23">
             <path d="M5.88 4.12L13.76 12l-7.88 7.88L8 22l10-10L8 2z" />
           </svg>
@@ -715,7 +684,7 @@ export class SixDatepicker {
     );
   }
 
-  renderBody() {
+  private renderBody() {
     switch (this.selectionMode) {
       case SelectionMode.DAY:
         return (
@@ -737,7 +706,7 @@ export class SixDatepicker {
         return (
           <YearSelection
             selectedDate={this.selectedDate}
-            yearSelection={getYearSelectionAroundYear(this.pointerDate.year)}
+            yearSelection={rangeAround(this.pointerDate.year, NUMBER_OF_YEARS_SHOWN)}
             onClickYearCell={this.onClickYearCell}
           />
         );
@@ -804,7 +773,7 @@ export class SixDatepicker {
           error-on-blur={this.errorOnBlur}
           onClick={() => this.openCalendar()}
           size={this.size}
-          class={{ 'input--empty': !this.value }}
+          class={{ 'input--empty': this.value == null }}
         >
           {this.renderCustomIcon()}
           {this.renderClearable()}
@@ -826,7 +795,7 @@ export class SixDatepicker {
             ref={(el) => (this.popup = el)}
             class={{
               datepicker__popup: true,
-              'datepicker__popup--is-up': this.placement ? this.placement === 'top' : this.isDropDownContentUp,
+              'datepicker__popup--is-up': this.placement != null ? this.placement === 'top' : this.isDropDownContentUp,
               'datepicker__popup--is-inline': this.inline,
             }}
           >
@@ -855,127 +824,15 @@ export class SixDatepicker {
   }
 
   private adjustPopupPosition() {
-    this.adjustPopupForHoisting();
-    this.adjustPopupForSmallScreens();
-  }
-
-  /*
-   * The position of the hoisted datepicker needs to be correctly calculated since the position changes to fixed.
-   * Thus if the user scrolls or adjusts the screen size we need to recalculate the datepicker position.
-   */
-  private moveOpenHoistedPopup() {
-    if (!this.hoist || !this.open) {
-      return;
-    }
-
-    const popupBoundingClientRect = this.popup.getBoundingClientRect();
-    const popupHeight = popupBoundingClientRect.height;
-    const inputBoundingClientRect = this.inputElement.getBoundingClientRect();
-    const inputTop = inputBoundingClientRect.top;
-    const inputHeight = inputBoundingClientRect.height;
-
-    this.calcIsDropDownContentUp();
-
-    if (this.isDropDownContentUp) {
-      this.popup.style.top = `${inputTop - popupHeight}px`;
-    } else {
-      this.popup.style.top = `${inputTop + inputHeight}px`;
-    }
-  }
-
-  /*
-   * For small screens the datepicker popup could be cut-off even though there might still be space within the viewport.
-   * This is because the popup is always aligned with the trigger input field. However in the scenario of small screens
-   * we should reposition the popup to use the space available.
-   */
-  private adjustPopupForSmallScreens() {
-    // execute after dropdown has been rendered to make sure the popup reference is correctly set
-    setTimeout(() => {
-      if (!this.popup) {
-        return;
-      }
-
-      const popupBoundingClientRect = this.popup.getBoundingClientRect();
-
-      const setPopupAsFixPosition = () => {
-        // apply screen position to fixed popup
-        this.popup.style.position = 'fixed';
-        ['top', 'left', 'width', 'height'].forEach((property) => {
-          this.popup.style[property] = `${popupBoundingClientRect[property]}px`;
-        });
-      };
-
-      if (
-        popupBoundingClientRect.y < 0 &&
-        window.innerHeight - popupBoundingClientRect.height > 0 &&
-        Math.abs(popupBoundingClientRect.y) <= popupBoundingClientRect.height
-      ) {
-        // handle case where popup is cut-off on top but there is still space available
-
-        setPopupAsFixPosition();
-        this.popup.style.top = '0px';
-      } else if (
-        window.innerHeight < popupBoundingClientRect.y + popupBoundingClientRect.height &&
-        window.innerHeight > popupBoundingClientRect.height &&
-        Math.abs(popupBoundingClientRect.y - window.innerHeight) <= popupBoundingClientRect.height
-      ) {
-        // handle case where popup is cut-off at the bottom but there is still space available above
-        // apply screen position to fixed popup
-        setPopupAsFixPosition();
-        this.popup.style.top = `${window.innerHeight - popupBoundingClientRect.height}px`;
-      }
-
-      if (
-        window.innerWidth < popupBoundingClientRect.x + popupBoundingClientRect.width &&
-        window.innerWidth > popupBoundingClientRect.width &&
-        Math.abs(popupBoundingClientRect.x - window.innerWidth) <= popupBoundingClientRect.width
-      ) {
-        // handle case where popup is cut-off to the right
-        setPopupAsFixPosition();
-        this.popup.style.left = `${window.innerWidth - popupBoundingClientRect.width}px`;
-      }
-    }, 0);
-  }
-
-  /*
-   * If the popup is hoisted we popup is hoisted its position will change to fix to not be clipped of by a containing container.
-   * To render the popup correctly we render it normally, and then assign this screenposition to the fixed popup
-   */
-  private adjustPopupForHoisting() {
-    if (!this.hoist) {
-      return;
-    }
-
-    // execute after dropdown has been rendered to make sure the popup reference is correctly set
-    setTimeout(() => {
-      if (!this.popup) {
-        return;
-      }
-
-      // take a snapshot of normally rendered popup
-      const popupBoundingClientRect = this.popup.getBoundingClientRect();
-
-      // apply screen position to fixed popup
-      this.popup.style.position = 'fixed';
-      ['top', 'left', 'width', 'height'].forEach((property) => {
-        this.popup.style[property] = `${popupBoundingClientRect[property]}px`;
-      });
-
-      const inputBoundingClientRect = this.inputElement.getBoundingClientRect();
-      const inputTop = inputBoundingClientRect.top;
-      const popupTop = popupBoundingClientRect.top;
-
-      this.calcIsDropDownContentUp();
-      // check screen position to check whether the popup should be moved above or below the trigger element
-      if (this.isDropDownContentUp && inputTop < popupTop) {
-        //  move popup above input field if datepicker is at bottom of screen
-        this.popup.style.top = `${popupTop - popupBoundingClientRect.height - inputBoundingClientRect.height}px`;
-      }
-    }, 0);
-  }
-
-  connectedCallback() {
-    this.handleClearClick = this.handleClearClick.bind(this);
+    adjustPopupForHoisting(
+      this.hoist,
+      this.popup,
+      this.inputElement,
+      this.wrapper,
+      MIN_POPUP_HEIGHT,
+      (isUp) => (this.isDropDownContentUp = isUp)
+    );
+    adjustPopupForSmallScreens(this.popup);
   }
 
   disconnectedCallback() {
@@ -983,13 +840,13 @@ export class SixDatepicker {
   }
 
   private displayCustomMessage(valid: boolean) {
-    if (!this.inputElement) {
+    if (this.inputElement == null) {
       return;
     }
     if (valid) {
       void this.setCustomValidity('');
     } else {
-      const message = this.errorText ? this.errorText : 'Invalid date format';
+      const message = this.errorText != null ? this.errorText : 'Invalid date format';
       void this.setCustomValidity(message);
     }
   }

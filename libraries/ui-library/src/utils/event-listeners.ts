@@ -17,7 +17,7 @@ export class EventListeners {
     el: T,
     name: string,
     listener: EventListenerOrEventListenerObject,
-    identifier = null
+    identifier: string | null | undefined = null
   ) => {
     this.eventListeners.push({ el, name, listener, identifier });
     el.addEventListener(name, listener);

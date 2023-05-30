@@ -2,6 +2,7 @@ import { Component, Element, Event, EventEmitter, h, Prop, State, Watch } from '
 import { ItemPickerPaddingDirection, ItemPickerType } from './types';
 import { debounce, DEFAULT_DEBOUNCE_FAST, DEFAULT_DEBOUNCE_INSANELY_FAST } from '../../utils/execution-control';
 import { EventListeners } from '../../utils/event-listeners';
+import { TimePeriod } from '../../utils/time.util';
 
 type StringItemIndex = { [key: string]: number };
 
@@ -69,7 +70,7 @@ const TAG = `[SIX-ITEM-PICKER]`;
 const subtract = (a: number, b: number) => a - b;
 const add = (a: number, b: number) => a + b;
 
-export type SixItemPickerChangePayload = number | string;
+export type SixItemPickerChangePayload = number | string | boolean | TimePeriod;
 
 const DEBOUNCE_ITEM_PICKER_LISTENER = 'debounced-item-picker';
 

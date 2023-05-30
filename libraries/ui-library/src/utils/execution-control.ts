@@ -18,11 +18,11 @@ export const DEFAULT_DEBOUNCE_SLOW = 600;
  * @param callback
  * @param timeout
  */
-export const debounce = (callback: Function, timeout = DEFAULT_DEBOUNCE_FAST) => {
+export const debounce = <T>(callback: (x: T) => void, timeout = DEFAULT_DEBOUNCE_FAST) => {
   let timer: NodeJS.Timeout;
-  return <T>(...args: T[]) => {
+  return (args: T) => {
     clearTimeout(timer);
-    timer = setTimeout(() => callback.apply(this, args), timeout);
+    timer = setTimeout(() => callback(args), timeout);
   };
 };
 

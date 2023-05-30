@@ -19,12 +19,29 @@ import {
   newDateString,
   pad,
   parseDate,
+  rangeAround,
   toDate,
   year,
 } from './date-util';
 import { SixDateFormats } from '../components/six-datepicker/six-date-formats';
 
 describe('date-util helpers', () => {
+  describe('rangeAround', () => {
+    it('returns range around 2023', () => {
+      expect(rangeAround(2023, 25)).toStrictEqual([
+        [2011, 2012, 2013, 2014, 2015],
+        [2016, 2017, 2018, 2019, 2020],
+        [2021, 2022, 2023, 2024, 2025],
+        [2026, 2027, 2028, 2029, 2030],
+        [2031, 2032, 2033, 2034, 2035],
+      ]);
+    });
+
+    it('returns range around 0', () => {
+      expect(rangeAround(0, 6)).toStrictEqual([[-3, -2, -1, 0, 1], [2]]);
+    });
+  });
+
   describe('pad', () => {
     it('should properly pad a single digit', async () => {
       // given

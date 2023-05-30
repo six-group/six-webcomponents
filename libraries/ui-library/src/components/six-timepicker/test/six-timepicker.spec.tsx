@@ -17,7 +17,7 @@ describe('six-timepicker', () => {
     <six-timepicker>
     <mock:shadow-root>
       <div class="timepicker__container" part="container">
-        <six-input class="input--empty" error-text="" label="" part="input" size="medium">
+        <six-input class="input--empty" error-text="" label="" part="input" size="medium" value="">
           <span class="prefix" part="icon" slot="prefix">
             <six-icon size="medium">
               watch_later
@@ -30,8 +30,10 @@ describe('six-timepicker', () => {
    `);
 
     // when setting a value and opening the popup
-    page.root.value = '20:00:00';
-    page.root.shadowRoot.querySelector('six-input').click();
+    if (page.root?.shadowRoot != null) {
+      page.root.value = '20:00:00';
+      page.root.shadowRoot.querySelector('six-input')?.click();
+    }
     await page.waitForChanges();
 
     // then expect the correct time to be rendered
@@ -168,7 +170,7 @@ describe('six-timepicker', () => {
     <six-timepicker default-time="13:20:59" open="">
     <mock:shadow-root>
       <div class="timepicker__container" part="container">
-        <six-input class="input--empty" error-text="" label="" part="input" size="medium">
+        <six-input class="input--empty" error-text="" label="" part="input" size="medium" value="">
           <span class="prefix" part="icon" slot="prefix">
             <six-icon size="medium">
               watch_later
@@ -341,7 +343,7 @@ describe('six-timepicker', () => {
 <six-timepicker placeholder="HH:mm:ss">
   <mock:shadow-root>
     <div class="timepicker__container" part="container">
-      <six-input class="input--empty" error-text="" label="" part="input" placeholder="HH:mm:ss" size="medium">
+      <six-input class="input--empty" error-text="" label="" part="input" placeholder="HH:mm:ss" size="medium" value="">
         <span class="prefix" part="icon" slot="prefix">
           <six-icon size="medium">
             watch_later
@@ -425,7 +427,7 @@ describe('six-timepicker', () => {
 <six-timepicker size="small">
   <mock:shadow-root>
     <div class="timepicker__container" part="container">
-      <six-input class="input--empty" error-text="" label="" part="input" size="small">
+      <six-input class="input--empty" error-text="" label="" part="input" size="small" value="">
         <span class="prefix" part="icon" slot="prefix">
           <six-icon size="small">
             watch_later
@@ -438,7 +440,9 @@ describe('six-timepicker', () => {
    `);
 
     // when changing size
-    page.root.size = 'medium';
+    if (page.root != null) {
+      page.root.size = 'medium';
+    }
     await page.waitForChanges();
 
     // then expect medium sized timepicker
@@ -446,7 +450,7 @@ describe('six-timepicker', () => {
 <six-timepicker size="small">
   <mock:shadow-root>
     <div class="timepicker__container" part="container">
-      <six-input class="input--empty" error-text="" label="" part="input" size="medium">
+      <six-input class="input--empty" error-text="" label="" part="input" size="medium" value="">
         <span class="prefix" part="icon" slot="prefix">
           <six-icon size="medium">
             watch_later
@@ -459,7 +463,9 @@ describe('six-timepicker', () => {
    `);
 
     // when changing size
-    page.root.size = 'large';
+    if (page.root != null) {
+      page.root.size = 'large';
+    }
     await page.waitForChanges();
 
     // then expect medium sized timepicker
@@ -467,7 +473,7 @@ describe('six-timepicker', () => {
 <six-timepicker size="small">
   <mock:shadow-root>
     <div class="timepicker__container" part="container">
-      <six-input class="input--empty" error-text="" label="" part="input" size="large">
+      <six-input class="input--empty" error-text="" label="" part="input" size="large" value="">
         <span class="prefix" part="icon" slot="prefix">
           <six-icon size="medium">
             watch_later
