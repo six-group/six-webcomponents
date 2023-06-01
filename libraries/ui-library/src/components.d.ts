@@ -1434,7 +1434,7 @@ export namespace Components {
         /**
           * The default value the select will be reverted to when reset is executed
          */
-        "defaultValue": string | string[] | undefined;
+        "defaultValue": string | string[];
         /**
           * Set to true to disable the select control.
          */
@@ -4251,7 +4251,7 @@ declare namespace LocalJSX {
         /**
           * The default value the select will be reverted to when reset is executed
          */
-        "defaultValue"?: string | string[] | undefined;
+        "defaultValue"?: string | string[];
         /**
           * Set to true to disable the select control.
          */
