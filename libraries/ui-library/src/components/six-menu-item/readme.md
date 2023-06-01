@@ -73,7 +73,6 @@ Type: `Promise<void>`
 
  - [six-dropdown](../six-dropdown)
  - [six-menu](../six-menu)
- - [six-select](../six-select)
 
 ### Depends on
 
@@ -85,7 +84,6 @@ graph TD;
   six-menu-item --> six-icon
   six-dropdown --> six-menu-item
   six-menu --> six-menu-item
-  six-select --> six-menu-item
   style six-menu-item fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

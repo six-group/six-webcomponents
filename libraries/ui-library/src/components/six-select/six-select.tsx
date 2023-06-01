@@ -54,6 +54,7 @@ export class SixSelect {
   private inputElement?: HTMLSixInputElement;
   private menu?: HTMLSixMenuElement;
   private resizeObserver?: ResizeObserver;
+  private renderedOnce = false;
 
   private eventListeners = new EventListeners();
 
@@ -179,7 +180,11 @@ export class SixSelect {
 
   @Watch('value')
   handleValueChange(newValue: unknown, oldValue: unknown) {
-    let items = this.options ?? this.getItems();
+    if (!this.renderedOnce) {
+      return;
+    }
+
+    const items = this.getItems();
 
     // normalize invalid values. This will re-trigger this watch handler
     if (!isValidValue(newValue, this.multiple, items)) {
@@ -198,40 +203,43 @@ export class SixSelect {
   }
 
   private update() {
+    if (!this.renderedOnce || this.inputElement == null) {
+      return;
+    }
     const items = this.getItems();
-    this.value = getValue(this.value, this.multiple, this.options ?? items);
+    this.value = getValue(this.value, this.multiple, items);
+
+    // update touched state and validation (using hidden six-input)
+    if (!isValueEmpty(this.value)) {
+      this.touched = true;
+    }
+    if (this.touched) {
+      this.inputElement.value = Array.isArray(this.value) ? this.value.join(',') : this.value;
+      this.inputElement.checkValidity().then((valid) => (this.invalid = !valid));
+    }
 
     if (!Array.isArray(this.value)) {
-      // Sync checked states
+      // tags are not displayed for single select
+      this.displayTags = [];
+
+      // update checked state of menu items
       items.forEach((item) => (item.checked = false));
-      const item = items.find((item) => this.value.includes(item.value));
+      const item = items.find((item) => this.value === item.value);
       if (item != null) {
         item.checked = true;
       }
 
-      // Sync input element content
-      this.displayLabel = this.extractLabelForSelectedItem([this.value], items);
-      this.displayTags = [];
-      const hasSelection = !isValueEmpty(this.value);
-      if (hasSelection) {
-        this.touched = true;
-      }
-      if (this.inputElement && this.touched) {
-        if (!this.autocomplete) {
-          this.inputElement.value = hasSelection ? this.displayLabel : '';
-        } else if (hasSelection) {
-          this.inputElement.value = this.value;
-        }
-        this.inputElement.checkValidity().then((valid) => (this.invalid = !valid));
-      }
+      // update displayed label
+      this.displayLabel = this.getItemLabel(item);
     } else {
-      // Sync checked states
+      // multiselect is using tags instead of display label
+      this.displayLabel = '';
+
+      // update checked state of menu items
       items.forEach((item) => (item.checked = this.value.includes(item.value)));
 
-      // Sync display label
-      const checkedItems: HTMLSixMenuItemElement[] = [];
-      this.value.forEach((val) => items.map((item) => (item.value === val ? checkedItems.push(item) : null)));
-
+      // update displayed tags
+      const checkedItems: HTMLSixMenuItemElement[] = items.filter((item) => item.checked);
       this.displayTags = checkedItems.map((item) => {
         return (
           <six-tag
@@ -254,29 +262,15 @@ export class SixSelect {
         );
       });
 
+      // display '+1' if more tags are selected than displayed
       if (this.maxTagsVisible > 0 && this.displayTags.length > this.maxTagsVisible) {
         const total = this.displayTags.length;
-        this.displayLabel = '';
         this.displayTags = this.displayTags.slice(0, this.maxTagsVisible);
         this.displayTags.push(
           <six-tag exportparts="base:tag" type="info" size={this.size}>
             +{total - this.maxTagsVisible}
           </six-tag>
         );
-      }
-
-      // Sync input element content
-      const hasSelection = !isValueEmpty(this.value);
-      if (hasSelection) {
-        this.touched = true;
-      }
-      if (this.inputElement && this.touched) {
-        if (!this.autocomplete) {
-          this.inputElement.value = hasSelection ? this.displayLabel : '';
-        } else if (hasSelection) {
-          this.inputElement.value = this.value.join(',');
-        }
-        this.inputElement.checkValidity().then((valid) => (this.invalid = !valid));
       }
     }
   }
@@ -326,6 +320,15 @@ export class SixSelect {
     );
   }
 
+  componentDidRender() {
+    if (!this.renderedOnce) {
+      // need to re-render once to ensure that 'six-menu-item' children in slot
+      // are rendered and correctly returned in `getItems()`.
+      this.renderedOnce = true;
+      setTimeout(() => this.update());
+    }
+  }
+
   disconnectedCallback() {
     this.host.shadowRoot?.removeEventListener('slotchange', this.handleSlotChange);
     this.eventListeners.removeAll();
@@ -364,7 +367,10 @@ export class SixSelect {
     this.invalid = false;
   }
 
-  private getItemLabel(item: HTMLSixMenuItemElement): string {
+  private getItemLabel(item?: HTMLSixMenuItemElement): string {
+    if (item == null) {
+      return '';
+    }
     const slot = item.shadowRoot?.querySelector('slot:not([name])') as HTMLSlotElement;
     if (slot != null) {
       return getTextContent(slot);
@@ -375,10 +381,9 @@ export class SixSelect {
   }
 
   private getItems(): HTMLSixMenuItemElement[] {
-    if (this.options !== null) {
-      return this.options.map((option) => <six-menu-item value={option.value}>{option.label}</six-menu-item>);
+    if (this.options != null && this.menu?.shadowRoot != null) {
+      return [...this.menu.shadowRoot.querySelectorAll('six-menu-item')];
     }
-
     return [...this.host.querySelectorAll('six-menu-item')];
   }
 
@@ -530,22 +535,8 @@ export class SixSelect {
     }
   }
 
-  private extractLabelForSelectedItem(value: string[], items: HTMLSixMenuItemElement[]): string {
-    if (value.length === 0 || (value.length === 1 && value[0] === '')) {
-      return '';
-    }
-
-    if (this.options !== null) {
-      const selectedOption = this.options.find((item) => item.value === value[0]);
-      return selectedOption?.value || '';
-    }
-
-    const checkedItem = items.find((item) => item.value === value[0]);
-    return checkedItem ? this.getItemLabel(checkedItem) : '';
-  }
-
   private toggleItem(item: HTMLSixMenuItemElement) {
-    const value = getValue(this.value, this.multiple, this.options ?? this.getItems());
+    const value = getValue(this.value, this.multiple, this.getItems());
     if (Array.isArray(value)) {
       const itemFound = value.find((v) => v === item.value);
       if (itemFound == null) {
