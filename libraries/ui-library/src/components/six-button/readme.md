@@ -15,14 +15,14 @@
 | `download` | `download` | Tells the browser to download the linked file as this filename. Only used when `href` is set.          | `string`                                                                               | `undefined` |
 | `href`     | `href`     | When set, the underlying button will be rendered as an `<a>` with this `href` instead of a `<button>`. | `string`                                                                               | `undefined` |
 | `loading`  | `loading`  | Set to true to draw the button in a loading state.                                                     | `boolean`                                                                              | `false`     |
-| `name`     | `name`     | An optional name for the button. Ignored when `href` is set.                                           | `string`                                                                               | `undefined` |
+| `name`     | `name`     | An optional name for the button. Ignored when `href` is set.                                           | `string`                                                                               | `''`        |
 | `pill`     | `pill`     | Set to true to draw a pill-style button with rounded edges.                                            | `boolean`                                                                              | `false`     |
 | `reset`    | `reset`    | Indicates if activating the button should reset the form.                                              | `boolean`                                                                              | `false`     |
 | `size`     | `size`     | The button's size.                                                                                     | `"large" \| "medium" \| "small"`                                                       | `'medium'`  |
 | `submit`   | `submit`   | Indicates if activating the button should submit the form. Ignored when `href` is set.                 | `boolean`                                                                              | `false`     |
 | `target`   | `target`   | Tells the browser where to open the link. Only used when `href` is set.                                | `"_blank" \| "_parent" \| "_self" \| "_top"`                                           | `undefined` |
 | `type`     | `type`     | The button's type.                                                                                     | `"action" \| "danger" \| "link" \| "primary" \| "secondary" \| "success" \| "warning"` | `'primary'` |
-| `value`    | `value`    | An optional value for the button. Ignored when `href` is set.                                          | `string`                                                                               | `undefined` |
+| `value`    | `value`    | An optional value for the button. Ignored when `href` is set.                                          | `string`                                                                               | `''`        |
 
 
 ## Events

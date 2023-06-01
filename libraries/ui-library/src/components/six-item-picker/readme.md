@@ -27,10 +27,10 @@
 
 ## Events
 
-| Event                              | Description                                                 | Type                            |
-| ---------------------------------- | ----------------------------------------------------------- | ------------------------------- |
-| `six-item-picker-change`           | Emitted when the item picker's value changes                | `CustomEvent<number \| string>` |
-| `six-item-picker-change-debounced` | Emitted when the item picker's value changes, but debounced | `CustomEvent<number \| string>` |
+| Event                              | Description                                                 | Type                                       |
+| ---------------------------------- | ----------------------------------------------------------- | ------------------------------------------ |
+| `six-item-picker-change`           | Emitted when the item picker's value changes                | `CustomEvent<boolean \| number \| string>` |
+| `six-item-picker-change-debounced` | Emitted when the item picker's value changes, but debounced | `CustomEvent<boolean \| number \| string>` |
 
 
 ## Shadow Parts
