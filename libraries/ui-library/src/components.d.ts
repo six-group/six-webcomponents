@@ -482,7 +482,7 @@ export namespace Components {
          */
         "noHeader": boolean;
         /**
-          * Indicates whether or not the dialog is open. You can use this in lieu of the show/hide methods.
+          * Indicates whether the dialog is open. You can use this in lieu of the show/hide methods.
          */
         "open": boolean;
         /**
@@ -513,7 +513,7 @@ export namespace Components {
          */
         "noHeader": boolean;
         /**
-          * Indicates whether or not the drawer is open. You can use this in lieu of the show/hide methods.
+          * Indicates whether the drawer is open. You can use this in lieu of the show/hide methods.
          */
         "open": boolean;
         /**
@@ -3284,7 +3284,7 @@ declare namespace LocalJSX {
          */
         "onSix-dialog-show"?: (event: SixDialogCustomEvent<EmptyPayload>) => void;
         /**
-          * Indicates whether or not the dialog is open. You can use this in lieu of the show/hide methods.
+          * Indicates whether the dialog is open. You can use this in lieu of the show/hide methods.
          */
         "open"?: boolean;
     }
@@ -3331,7 +3331,7 @@ declare namespace LocalJSX {
          */
         "onSix-drawer-show"?: (event: SixDrawerCustomEvent<EmptyPayload>) => void;
         /**
-          * Indicates whether or not the drawer is open. You can use this in lieu of the show/hide methods.
+          * Indicates whether the drawer is open. You can use this in lieu of the show/hide methods.
          */
         "open"?: boolean;
         /**

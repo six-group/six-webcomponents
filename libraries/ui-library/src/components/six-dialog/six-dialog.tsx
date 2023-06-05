@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Method, Prop, State, Watch, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Method, Prop, State, Watch } from '@stencil/core';
 import { lockBodyScrolling, unlockBodyScrolling } from '../../utils/scroll';
 import { hasSlot } from '../../utils/slot';
 import { isPreventScrollSupported } from '../../utils/support';
@@ -35,19 +35,19 @@ let id = 0;
   shadow: true,
 })
 export class SixDialog {
-  componentId = `dialog-${++id}`;
-  dialog: HTMLElement;
-  modal: Modal;
-  panel: HTMLElement;
-  willShow = false;
-  willHide = false;
+  private componentId = `dialog-${++id}`;
+  private dialog?: HTMLElement;
+  private modal?: Modal;
+  private panel?: HTMLElement;
+  private willShow = false;
+  private willHide = false;
 
-  @Element() host: HTMLSixDialogElement;
+  @Element() host!: HTMLSixDialogElement;
 
   @State() hasFooter = false;
   @State() isVisible = false;
 
-  /** Indicates whether or not the dialog is open. You can use this in lieu of the show/hide methods. */
+  /** Indicates whether the dialog is open. You can use this in lieu of the show/hide methods. */
   @Prop({ mutable: true, reflect: true }) open = false;
 
   /**
@@ -68,35 +68,29 @@ export class SixDialog {
   }
 
   /** Emitted when the dialog opens. Calling `event.preventDefault()` will prevent it from being opened. */
-  @Event({ eventName: 'six-dialog-show' }) sixShow: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-dialog-show' }) sixShow!: EventEmitter<EmptyPayload>;
 
   /** Emitted after the dialog opens and all transitions are complete. */
-  @Event({ eventName: 'six-dialog-after-show' }) sixAfterShow: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-dialog-after-show' }) sixAfterShow!: EventEmitter<EmptyPayload>;
 
   /** Emitted when the dialog closes. Calling `event.preventDefault()` will prevent it from being closed. */
-  @Event({ eventName: 'six-dialog-hide' }) sixHide: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-dialog-hide' }) sixHide!: EventEmitter<EmptyPayload>;
 
   /** Emitted after the dialog closes and all transitions are complete. */
-  @Event({ eventName: 'six-dialog-after-hide' }) sixAfterHide: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-dialog-after-hide' }) sixAfterHide!: EventEmitter<EmptyPayload>;
 
   /**
    * Emitted when the dialog opens and the panel gains focus. Calling `event.preventDefault()` will prevent focus and
    * allow you to set it on a different element in the dialog, such as an input or button.
    */
-  @Event({ eventName: 'six-dialog-initial-focus' }) sixInitialFocus: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-dialog-initial-focus' }) sixInitialFocus!: EventEmitter<EmptyPayload>;
 
   /** Emitted when the overlay is clicked. Calling `event.preventDefault()` will prevent the dialog from closing. */
-  @Event({ eventName: 'six-dialog-overlay-dismiss' }) sixOverlayDismiss: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-dialog-overlay-dismiss' }) sixOverlayDismiss!: EventEmitter<EmptyPayload>;
 
   connectedCallback() {
-    this.handleCloseClick = this.handleCloseClick.bind(this);
-    this.handleTransitionEnd = this.handleTransitionEnd.bind(this);
-    this.handleKeyDown = this.handleKeyDown.bind(this);
-    this.handleOverlayClick = this.handleOverlayClick.bind(this);
-    this.handleSlotChange = this.handleSlotChange.bind(this);
-
     this.modal = new Modal(this.host, {
-      onFocusOut: () => this.panel.focus(),
+      onFocusOut: () => this.panel?.focus(),
     });
   }
 
@@ -116,9 +110,10 @@ export class SixDialog {
   /** Shows the dialog */
   @Method()
   async show() {
-    if (this.willShow) {
+    if (this.willShow || this.modal == null || this.panel == null || this.dialog == null) {
       return;
     }
+    const panel = this.panel;
 
     const sixShow = this.sixShow.emit();
     if (sixShow.defaultPrevented) {
@@ -139,7 +134,7 @@ export class SixDialog {
         requestAnimationFrame(() => {
           const sixInitialFocus = this.sixInitialFocus.emit();
           if (!sixInitialFocus.defaultPrevented) {
-            this.panel.focus({ preventScroll: true });
+            panel.focus({ preventScroll: true });
           }
         });
       } else {
@@ -155,7 +150,7 @@ export class SixDialog {
           () => {
             const sixInitialFocus = this.sixInitialFocus.emit();
             if (!sixInitialFocus.defaultPrevented) {
-              this.panel.focus();
+              panel.focus();
             }
           },
           { once: true }
@@ -167,7 +162,7 @@ export class SixDialog {
   /** Hides the dialog */
   @Method()
   async hide() {
-    if (this.willHide) {
+    if (this.willHide || this.modal == null) {
       return;
     }
 
@@ -184,29 +179,29 @@ export class SixDialog {
     unlockBodyScrolling(this.host);
   }
 
-  handleCloseClick() {
+  private handleCloseClick = () => {
     this.hide();
-  }
+  };
 
-  handleKeyDown(event: KeyboardEvent) {
+  private handleKeyDown = (event: KeyboardEvent) => {
     if (event.key === 'Escape') {
       this.hide();
     }
-  }
+  };
 
-  handleOverlayClick() {
+  private handleOverlayClick = () => {
     const sixOverlayDismiss = this.sixOverlayDismiss.emit();
 
     if (!sixOverlayDismiss.defaultPrevented) {
       this.hide();
     }
-  }
+  };
 
-  handleSlotChange() {
+  private handleSlotChange = () => {
     this.hasFooter = hasSlot(this.host, 'footer');
-  }
+  };
 
-  handleTransitionEnd(event: TransitionEvent) {
+  private handleTransitionEnd = (event: TransitionEvent) => {
     const target = event.target as HTMLElement;
 
     // Ensure we only emit one event when the target element is no longer visible
@@ -216,7 +211,7 @@ export class SixDialog {
       this.willHide = false;
       this.open ? this.sixAfterShow.emit() : this.sixAfterHide.emit();
     }
-  }
+  };
 
   render() {
     return (
