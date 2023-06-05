@@ -17,9 +17,9 @@ interface FormControl {
 
   serialize(el: HTMLFormElement | HTMLElement, formData: FormData): void;
 
-  click?(event: MouseEvent): any;
+  click?(event: MouseEvent): void;
 
-  keyDown?(event: KeyboardEvent): any;
+  keyDown?(event: KeyboardEvent): void;
 
   changeEventName?: string;
 }
@@ -40,10 +40,9 @@ interface FormControl {
   shadow: true,
 })
 export class SixForm {
-  form: HTMLElement;
-  formControls: FormControl[];
-
-  readonly eventListeners = new EventListeners();
+  private form?: HTMLElement;
+  private formControls: FormControl[] = [];
+  private eventListeners = new EventListeners();
 
   /** Prevent the form from validating inputs before submitting. */
   @Prop() novalidate = false;
@@ -54,13 +53,13 @@ export class SixForm {
    * event, since it doen't send a GET or POST request like native forms. To "prevent" submission, use a conditional
    * around the XHR request you use to submit the form's data with.
    */
-  @Event({ eventName: 'six-form-submit' }) sixSubmit: EventEmitter<SixFormSubmitPayload>;
+  @Event({ eventName: 'six-form-submit' }) sixSubmit!: EventEmitter<SixFormSubmitPayload>;
 
   /** Emitted when the control's value changes. */
-  @Event({ eventName: 'six-form-change' }) sixChange: EventEmitter<SixFormChangePayload>;
+  @Event({ eventName: 'six-form-change' }) sixChange!: EventEmitter<SixFormChangePayload>;
 
   /** Emitted when the forms values are reset. */
-  @Event({ eventName: 'six-form-reset' }) sixReset: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-form-reset' }) sixReset!: EventEmitter<EmptyPayload>;
 
   connectedCallback() {
     this.formControls = [
@@ -104,7 +103,7 @@ export class SixForm {
       {
         tag: 'six-datepicker',
         serialize: (el: HTMLSixDatepickerElement, formData) =>
-          el.name && !el.disabled ? formData.append(el.name, el.value?.toISOString()) : null,
+          el.name && !el.disabled && el.value != null ? formData.append(el.name, el.value?.toISOString()) : null,
         keyDown: (event) => {
           if (event.key === 'Enter' && !event.defaultPrevented) {
             this.submit();
@@ -133,7 +132,7 @@ export class SixForm {
           if (el.name && !el.disabled) {
             if (el.multiple) {
               const selectedOptions = [...el.value];
-              if (selectedOptions.length) {
+              if (selectedOptions.length > 0) {
                 selectedOptions.map((value) => formData.append(el.name, value));
               } else {
                 formData.append(el.name, '');
@@ -169,9 +168,6 @@ export class SixForm {
         changeEventName: 'six-timepicker-change',
       },
     ];
-
-    this.handleClick = this.handleClick.bind(this);
-    this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
   disconnectedCallback() {
@@ -185,7 +181,7 @@ export class SixForm {
   private appendChangeListener(el: HTMLFormElement) {
     const tag = el.tagName.toLowerCase();
     for (const formControl of this.formControls) {
-      if (formControl.tag === tag && formControl.changeEventName) {
+      if (formControl.tag === tag && formControl.changeEventName != null) {
         this.eventListeners.add(el as HTMLElement, formControl.changeEventName, () => this.handleChange(el));
       }
     }
@@ -204,12 +200,18 @@ export class SixForm {
 
   /** Gets all form control elements (native and custom). */
   @Method()
-  async getFormControls() {
+  async getFormControls(): Promise<HTMLFormElement[]> {
+    if (this.form == null) {
+      return [];
+    }
     const slot = this.form.querySelector('slot');
+    if (slot == null) {
+      return [];
+    }
     const tags = this.formControls.map((control) => control.tag);
     return slot
       .assignedElements({ flatten: true })
-      .reduce((all, el) => all.concat(el, [...el.querySelectorAll('*')]), [])
+      .reduce((all, el) => all.concat(el, [...el.querySelectorAll('*')]), [] as Element[])
       .filter((el) => tags.includes(el.tagName.toLowerCase())) as HTMLFormElement[];
   }
 
@@ -223,7 +225,7 @@ export class SixForm {
     const formControls = await this.getFormControls();
     const formControlsThatReport = formControls.filter(
       (el: HTMLFormElement) => typeof el.reportValidity === 'function'
-    ) as any;
+    );
 
     if (!this.novalidate) {
       let isValid = true;
@@ -267,29 +269,29 @@ export class SixForm {
     this.sixReset.emit();
   }
 
-  handleClick(event: MouseEvent) {
+  private handleClick = (event: MouseEvent) => {
     const target = event.target as HTMLFormElement;
     const tag = target.tagName.toLowerCase();
 
     for (const formControl of this.formControls) {
-      if (formControl.tag === tag && formControl.click) {
+      if (formControl.tag === tag && formControl.click != null) {
         formControl.click(event);
       }
     }
-  }
+  };
 
-  handleKeyDown(event: KeyboardEvent) {
+  private handleKeyDown = (event: KeyboardEvent) => {
     const target = event.target as HTMLFormElement;
     const tag = target.tagName.toLowerCase();
 
     for (const formControl of this.formControls) {
-      if (formControl.tag === tag && formControl.keyDown) {
+      if (formControl.tag === tag && formControl.keyDown != null) {
         formControl.keyDown(event);
       }
     }
-  }
+  };
 
-  handleChange(el: HTMLFormElement) {
+  private handleChange(el: HTMLFormElement) {
     this.checkValidity().then((isValid) =>
       this.sixChange.emit({
         valid: isValid,
@@ -298,7 +300,7 @@ export class SixForm {
     );
   }
 
-  serializeElement(el: HTMLFormElement, formData: FormData) {
+  private serializeElement(el: HTMLFormElement, formData: FormData) {
     const tag = el.tagName.toLowerCase();
 
     for (const formControl of this.formControls) {
