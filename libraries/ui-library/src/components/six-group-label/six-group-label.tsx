@@ -23,11 +23,11 @@ let id = 0;
   shadow: true,
 })
 export class SixGroupLabel {
-  wrapperLabelId = `label-${++id}`;
-  labelId = `label-label-${id}`;
-  helpTextId = `label-help-text-${id}`;
+  private wrapperLabelId = `label-${++id}`;
+  private labelId = `label-label-${id}`;
+  private helpTextId = `label-help-text-${id}`;
 
-  @Element() host: HTMLSixGroupLabelElement;
+  @Element() host!: HTMLSixGroupLabelElement;
 
   @State() hasHelpTextSlot = false;
   @State() hasLabelSlot = false;
@@ -45,7 +45,7 @@ export class SixGroupLabel {
   @Prop({ reflect: true }) disabled = false;
 
   /** The label's required attribute. */
-  @Prop({ reflect: true }) required: boolean;
+  @Prop({ reflect: true }) required = false;
 
   @Watch('helpText')
   @Watch('label')
@@ -54,8 +54,7 @@ export class SixGroupLabel {
   }
 
   connectedCallback() {
-    this.handleSlotChange = this.handleSlotChange.bind(this);
-    this.host.shadowRoot.addEventListener('slotchange', this.handleSlotChange);
+    this.host.shadowRoot?.addEventListener('slotchange', this.handleSlotChange);
   }
 
   componentWillLoad() {
@@ -63,13 +62,13 @@ export class SixGroupLabel {
   }
 
   disconnectedCallback() {
-    this.host.shadowRoot.removeEventListener('slotchange', this.handleSlotChange);
+    this.host.shadowRoot?.removeEventListener('slotchange', this.handleSlotChange);
   }
 
-  handleSlotChange() {
+  private handleSlotChange = () => {
     this.hasLabelSlot = hasSlot(this.host, 'label');
     this.hasHelpTextSlot = hasSlot(this.host, 'help-text');
-  }
+  };
 
   render() {
     return (
