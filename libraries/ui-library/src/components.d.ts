@@ -671,7 +671,7 @@ export namespace Components {
         /**
           * The file size. This number will be divided by 1024 to show the filesize in KB
          */
-        "size": number;
+        "size"?: number;
     }
     /**
      * @since 2.0.0
