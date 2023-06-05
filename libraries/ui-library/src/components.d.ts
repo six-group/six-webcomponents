@@ -419,6 +419,9 @@ export namespace Components {
           * Set to true to prevent the user from toggling the details.
          */
         "disabled": boolean;
+        /**
+          * Set to false when you want to hide the summary icon and disable the open/close mechanism. Usually not needed, but used internally by 'six-sidebar-item-group'
+         */
         "hasContent": boolean;
         /**
           * Hides the detail body
@@ -429,7 +432,7 @@ export namespace Components {
          */
         "inline": boolean;
         /**
-          * Indicates whether or not the details is open. You can use this in lieu of the show/hide methods.
+          * Indicates whether the details is open. You can use this in lieu of the show/hide methods.
          */
         "open": boolean;
         /**
@@ -447,7 +450,7 @@ export namespace Components {
         /**
           * The summary icon to show in the details header. If you need to display HTML, use the `summary-icon` slot instead.
          */
-        "summaryIcon": string;
+        "summaryIcon"?: string;
         /**
           * The icon's size.
          */
@@ -3190,6 +3193,9 @@ declare namespace LocalJSX {
           * Set to true to prevent the user from toggling the details.
          */
         "disabled"?: boolean;
+        /**
+          * Set to false when you want to hide the summary icon and disable the open/close mechanism. Usually not needed, but used internally by 'six-sidebar-item-group'
+         */
         "hasContent"?: boolean;
         /**
           * Set to true when you want to use six-details inline e.g. in a sidebar
@@ -3212,7 +3218,7 @@ declare namespace LocalJSX {
          */
         "onSix-details-show"?: (event: SixDetailsCustomEvent<EmptyPayload>) => void;
         /**
-          * Indicates whether or not the details is open. You can use this in lieu of the show/hide methods.
+          * Indicates whether the details is open. You can use this in lieu of the show/hide methods.
          */
         "open"?: boolean;
         /**
