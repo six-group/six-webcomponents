@@ -546,7 +546,7 @@ export namespace Components {
         /**
           * The dropdown will close when the user interacts outside of this element (e.g. clicking).
          */
-        "containingElement": HTMLElement;
+        "containingElement"?: HTMLElement;
         /**
           * The panel can be opend/closed by pressing the spacebar or the enter key. In some cases you might want to avoid this
          */
@@ -576,15 +576,15 @@ export namespace Components {
          */
         "hoist": boolean;
         /**
-          * Indicates whether or not the dropdown is open. You can use this in lieu of the show/hide methods.
+          * Indicates whether the dropdown is open. You can use this in lieu of the show/hide methods.
          */
         "open": boolean;
         /**
           * Set the options to be shown in the dropdown (alternative to setting the elements via html)
          */
-        "options": SixMenuItemData[] | null;
+        "options": SixMenuItemData[];
         /**
-          * The preferred placement of the dropdown panel. Note that the actual placement may vary as needed to keep the panel inside of the viewport.
+          * The preferred placement of the dropdown panel. Note that the actual placement may vary as needed to keep the panel inside the viewport.
          */
         "placement": | 'top'
     | 'top-start'
@@ -3414,15 +3414,15 @@ declare namespace LocalJSX {
          */
         "onSix-dropdown-show"?: (event: SixDropdownCustomEvent<EmptyPayload>) => void;
         /**
-          * Indicates whether or not the dropdown is open. You can use this in lieu of the show/hide methods.
+          * Indicates whether the dropdown is open. You can use this in lieu of the show/hide methods.
          */
         "open"?: boolean;
         /**
           * Set the options to be shown in the dropdown (alternative to setting the elements via html)
          */
-        "options"?: SixMenuItemData[] | null;
+        "options"?: SixMenuItemData[];
         /**
-          * The preferred placement of the dropdown panel. Note that the actual placement may vary as needed to keep the panel inside of the viewport.
+          * The preferred placement of the dropdown panel. Note that the actual placement may vary as needed to keep the panel inside the viewport.
          */
         "placement"?: | 'top'
     | 'top-start'
