@@ -1,30 +1,9 @@
 //
-// Given a slot, this function iterates over all of its assigned element and text nodes and returns the concatenated
-// HTML as a string. This is useful because we can't use slot.innerHTML as an alternative.
-//
-export function getInnerHTML(slot: HTMLSlotElement): string {
-  const nodes = slot.assignedNodes({ flatten: true });
-  let html = '';
-
-  [...nodes].map((node) => {
-    if (node.nodeType === Node.ELEMENT_NODE) {
-      html += (node as HTMLElement).outerHTML;
-    }
-
-    if (node.nodeType === Node.TEXT_NODE) {
-      html += node.textContent;
-    }
-  });
-
-  return html;
-}
-
-//
 // Given a slot, this function iterates over all of its assigned text nodes and returns the concatenated text as a
 // string. This is useful because we can't use slot.textContent as an alternative.
 //
 export function getTextContent(slot: HTMLSlotElement): string {
-  const nodes = slot ? slot.assignedNodes({ flatten: true }) : [];
+  const nodes = slot != null ? slot.assignedNodes({ flatten: true }) : [];
   let text = '';
 
   [...nodes].map((node) => {
@@ -42,13 +21,13 @@ export function getTextContent(slot: HTMLSlotElement): string {
 //
 export function hasSlot(el: HTMLElement, name?: string): boolean {
   // Look for a named slot
-  if (name) {
+  if (name != null && name !== '') {
     return el.querySelector(`[slot="${name}"]`) !== null;
   }
 
   // Look for a default slot
   return Array.from(el.childNodes).some((node) => {
-    if (node.nodeType === node.TEXT_NODE && node.textContent.trim() !== '') {
+    if (node.nodeType === node.TEXT_NODE && node.textContent?.trim() !== '') {
       return true;
     }
 
@@ -63,16 +42,9 @@ export function hasSlot(el: HTMLElement, name?: string): boolean {
   });
 }
 
-type AvailableSlots<T> = { readonly [K in keyof T]: boolean };
-
-const fromPairs = <T extends string>(acc, [k, v]: [T, boolean]) => ({ ...acc, [k]: v });
-
-export const getAvailableSlots =
-  <T extends object>(slots: T) =>
-  <E extends HTMLElement>(host: E): AvailableSlots<T> =>
-    Object.values(slots)
-      .map((name) => [name, hasSlot(host, name)])
-      .reduce(fromPairs, {} as AvailableSlots<T>);
-
 export const getSlotChildren = <T extends HTMLElement>(el: HTMLElement) =>
   el.querySelector('slot')?.assignedElements({ flatten: true }) as T[];
+
+export function getSlot(element: HTMLElement, slotName: string): HTMLElement | null {
+  return element.querySelector(`[slot="${slotName}"]`);
+}

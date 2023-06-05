@@ -105,15 +105,12 @@
           }).reduce((acc, [k, v]) => ({ ...acc, [k]: document.querySelector(v) }), {});
 
           // logging
-          const log = ({ type, detail }) => {
-            const { selectedLabel } = detail;
-
-            if (selectedLabel.trim() === 'Language') {
+          const log = (event) => {
+            if (event.detail?.selectedLabel?.trim() === 'Language') {
               return;
             }
-
-            el.dialog.label = type;
-            el.dialog.querySelector('pre').innerHTML = JSON.stringify({ detail }, null, 2);
+            el.dialog.label = event.type;
+            el.dialog.querySelector('pre').innerHTML = JSON.stringify(event.detail, null, 2);
             el.dialog.show();
           };
 
