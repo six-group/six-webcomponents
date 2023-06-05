@@ -1,27 +1,30 @@
 import { Component, h, Prop } from '@stencil/core';
 
-enum ERROR_CODE {
-  FORBIDDEN = 403,
-  NOT_FOUND = 404,
-  INTERNAL_SERVER_ERROR = 500,
-}
-const TITLE_PER_ERROR_CODE = {
-  [ERROR_CODE.FORBIDDEN]: {
+type ErrorCode = 403 | 404 | 500;
+
+const TITLE_PER_ERROR_CODE: Record<
+  ErrorCode,
+  {
+    en: string;
+    de: string;
+  }
+> = {
+  403: {
     en: 'Access Denied',
     de: 'Kein Zugriff',
   },
-  [ERROR_CODE.NOT_FOUND]: {
+  404: {
     en: 'Not Found',
     de: 'Seite nicht gefunden',
   },
-  [ERROR_CODE.INTERNAL_SERVER_ERROR]: {
+  500: {
     en: 'Ooops!',
     de: 'Ups!',
   },
 };
 
-const DESCRIPTION_PER_ERROR_CODE = {
-  [ERROR_CODE.FORBIDDEN]: {
+const DESCRIPTION_PER_ERROR_CODE: Record<ErrorCode, { en: string[]; de: string[] }> = {
+  403: {
     en: [
       'You don’t have permission to access this page. ',
       'Please contact an administrator or click the SIX logo on top left.',
@@ -31,11 +34,11 @@ const DESCRIPTION_PER_ERROR_CODE = {
       'Bitte wenden Sie sich an einen Administrator oder klicken Sie auf das SIX-Logo oben links.',
     ],
   },
-  [ERROR_CODE.NOT_FOUND]: {
+  404: {
     en: ['We have not found the page you requested.', 'Please click the SIX logo on top left.'],
     de: ['Wir haben die angeforderte Seite nicht gefunden.', 'Bitte klicken Sie auf das SIX-Logo oben links.'],
   },
-  [ERROR_CODE.INTERNAL_SERVER_ERROR]: {
+  500: {
     en: ['Sorry, we messed up! We try to fix this.', 'Please click the SIX logo on top left.'],
     de: [
       'Sorry, das war unser Fehler! Wir versuchen das zu beheben.',
@@ -60,7 +63,7 @@ export class SixErrorPage {
   /**
    * Defines error Code and thus displays the proper error page.
    */
-  @Prop() errorCode: number;
+  @Prop() errorCode?: 404 | 403 | 500;
 
   /**
    * Defines language and thus displays the proper error page in the selected language.
@@ -83,33 +86,33 @@ export class SixErrorPage {
   @Prop() customIcon?: string;
 
   private getIconName() {
-    if (this.customIcon !== undefined) {
+    if (this.customIcon != null) {
       return this.customIcon;
     }
 
-    if (this.errorCode === undefined) {
+    if (this.errorCode == null) {
       return;
     }
 
-    if (this.errorCode === ERROR_CODE.FORBIDDEN) {
+    if (this.errorCode === 403) {
       return 'lock';
     }
 
-    if (this.errorCode === ERROR_CODE.NOT_FOUND) {
+    if (this.errorCode === 404) {
       return 'find-in-page';
     }
 
-    if (this.errorCode === ERROR_CODE.INTERNAL_SERVER_ERROR) {
+    if (this.errorCode === 500) {
       return 'sentiment-dissatisfied';
     }
   }
 
-  private getErrorTitle() {
-    if (this.customTitle !== undefined) {
+  private getErrorTitle(): string | undefined {
+    if (this.customTitle != null) {
       return this.customTitle;
     }
 
-    if (this.errorCode === undefined) {
+    if (this.errorCode == null) {
       return;
     }
 
@@ -117,17 +120,21 @@ export class SixErrorPage {
   }
 
   private getErrorDescription() {
-    if (this.errorCode === undefined && this.customDescription === undefined) {
+    if (this.errorCode == null && this.customDescription == null) {
       return;
     }
 
-    const descriptions = this.getDescriptions();
+    const descriptions = this.getDescriptions() ?? [];
     return descriptions.map((errorMessage) => <div>{errorMessage}</div>);
   }
 
   private getDescriptions() {
     if (this.customDescription !== undefined) {
       return this.customDescription;
+    }
+
+    if (this.errorCode == null) {
+      return;
     }
 
     return DESCRIPTION_PER_ERROR_CODE[this.errorCode][this.language];

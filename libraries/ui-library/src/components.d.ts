@@ -631,7 +631,7 @@ export namespace Components {
         /**
           * Defines error Code and thus displays the proper error page.
          */
-        "errorCode": number;
+        "errorCode"?: 404 | 403 | 500;
         /**
           * Defines language and thus displays the proper error page in the selected language.
          */
@@ -3461,7 +3461,7 @@ declare namespace LocalJSX {
         /**
           * Defines error Code and thus displays the proper error page.
          */
-        "errorCode"?: number;
+        "errorCode"?: 404 | 403 | 500;
         /**
           * Defines language and thus displays the proper error page in the selected language.
          */
