@@ -1546,7 +1546,7 @@ export namespace Components {
          */
         "hide": () => Promise<void>;
         /**
-          * Indicates whether or not the sidebar is open. You can use this in lieu of the show/hide methods.
+          * Indicates whether the sidebar is open. You can use this in lieu of the show/hide methods.
          */
         "open": boolean;
         /**
@@ -1609,11 +1609,14 @@ export namespace Components {
           * Title of item group
          */
         "name": string;
+        /**
+          * Indicates whether the sidebar is shown
+         */
         "open": boolean;
         /**
           * Custom summary icon name.
          */
-        "summaryIcon": string;
+        "summaryIcon"?: string;
         /**
           * A unique value to store in the sidebar item of the group label. This can be used as a way to identify sidebar items when selected.
          */
@@ -4376,7 +4379,7 @@ declare namespace LocalJSX {
          */
         "onSix-sidebar-show"?: (event: SixSidebarCustomEvent<EmptyPayload>) => void;
         /**
-          * Indicates whether or not the sidebar is open. You can use this in lieu of the show/hide methods.
+          * Indicates whether the sidebar is open. You can use this in lieu of the show/hide methods.
          */
         "open"?: boolean;
         /**
@@ -4423,6 +4426,9 @@ declare namespace LocalJSX {
           * Title of item group
          */
         "name"?: string;
+        /**
+          * Indicates whether the sidebar is shown
+         */
         "open"?: boolean;
         /**
           * Custom summary icon name.

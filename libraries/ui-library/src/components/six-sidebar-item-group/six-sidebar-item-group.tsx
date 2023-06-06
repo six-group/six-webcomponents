@@ -5,7 +5,7 @@ import { hasSlot } from '../../utils/slot';
  * @since 1.0
  * @status stable
  *
- * @slot - Used to define the nested side bar [group] items.
+ * @slot - Used to define the nested sidebar [group] items.
  */
 
 @Component({
@@ -14,7 +14,7 @@ import { hasSlot } from '../../utils/slot';
   shadow: true,
 })
 export class SixSidebarItemGroup {
-  @Element() readonly host: HTMLSixSidebarItemGroupElement;
+  @Element() readonly host!: HTMLSixSidebarItemGroupElement;
 
   @State() hasItems = false;
 
@@ -27,10 +27,13 @@ export class SixSidebarItemGroup {
   /** A unique value to store in the sidebar item of the group label. This can be used as a way to identify sidebar items when selected. */
   @Prop({ reflect: true }) value = '';
 
+  /** Indicates whether the sidebar is shown */
   @Prop({ reflect: true }) open = false;
 
   /** Custom summary icon name. */
-  @Prop() summaryIcon: string;
+  @Prop() summaryIcon?: string;
+
+  @State() summaryIconHasContent = false;
 
   connectedCallback() {
     this.handleSlotChange = this.handleSlotChange.bind(this);
@@ -40,17 +43,15 @@ export class SixSidebarItemGroup {
     this.handleSlotChange();
   }
 
-  handleSlotChange() {
+  private handleSlotChange() {
     this.hasItems = hasSlot(this.host);
   }
 
-  isSubgroup() {
-    return !!this.host.parentElement.closest('six-sidebar-item-group');
+  private isSubgroup() {
+    return this.host.parentElement?.closest('six-sidebar-item-group') != null;
   }
 
-  @State() summaryIconHasContent: boolean;
-
-  provideSlot = (name: string) => {
+  private provideSlot = (name: string) => {
     if (this.summaryIconHasContent) {
       return (
         <div slot={name}>
@@ -63,8 +64,10 @@ export class SixSidebarItemGroup {
       <slot
         name={name}
         onSlotchange={() => {
-          this.summaryIconHasContent =
-            this.host.shadowRoot.querySelector<HTMLSlotElement>(`slot[name="${name}"]`).assignedNodes().length > 0;
+          const slot = this.host.shadowRoot?.querySelector<HTMLSlotElement>(`slot[name="${name}"]`);
+          if (slot != null) {
+            this.summaryIconHasContent = slot.assignedNodes().length > 0;
+          }
         }}
       ></slot>
     );

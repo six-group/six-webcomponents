@@ -45,6 +45,7 @@ export function hasSlot(el: HTMLElement, name?: string): boolean {
 export const getSlotChildren = <T extends HTMLElement>(el: HTMLElement) =>
   el.querySelector('slot')?.assignedElements({ flatten: true }) as T[];
 
-export function getSlot(element: HTMLElement, slotName: string): HTMLElement | null {
+export function getSlot(element: ParentNode | null | undefined, slotName: string): HTMLElement | null {
+  if (element == null) return null;
   return element.querySelector(`[slot="${slotName}"]`);
 }

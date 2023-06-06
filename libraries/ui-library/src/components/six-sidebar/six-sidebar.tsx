@@ -2,7 +2,8 @@ import { Component, Event, EventEmitter, h, Method, Prop, State, Watch } from '@
 import { EmptyPayload } from '../../utils/types';
 import { scrollIntoView } from '../../utils/scroll';
 
-const isSidebarItemGroup = (node: Element) => node.tagName.toLowerCase() === 'six-sidebar-item-group';
+const isSidebarItemGroup = (node?: Element | null): boolean =>
+  node?.tagName?.toLowerCase() === 'six-sidebar-item-group';
 
 /**
  * @since 1.0
@@ -17,49 +18,49 @@ const isSidebarItemGroup = (node: Element) => node.tagName.toLowerCase() === 'si
   shadow: true,
 })
 export class SixSidebar {
-  willShow = false;
-  willHide = false;
+  private willShow = false;
+  private willHide = false;
 
-  sidebar: HTMLElement;
+  private sidebar?: HTMLElement;
 
   @State() isVisible = false;
 
   /** Sidebar position */
   @Prop() position: 'left' | 'right' = 'left';
 
-  /** Indicates whether or not the sidebar is open. You can use this in lieu of the show/hide methods. */
+  /** Indicates whether the sidebar is open. You can use this in lieu of the show/hide methods. */
   @Prop({ mutable: true, reflect: true }) open = false;
 
   /** Sidebar width */
-  @Prop() width: string = '16rem';
+  @Prop() width = '16rem';
 
   /** Define whether sidebar is toggled meaning only one menu can be open at the same time*/
-  @Prop() toggled: boolean = false;
+  @Prop() toggled = false;
 
   /** Emitted when the sidebar opens. Calling `event.preventDefault()` will prevent it from being opened. */
-  @Event({ eventName: 'six-sidebar-show' }) sixShow: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-sidebar-show' }) sixShow!: EventEmitter<EmptyPayload>;
 
   /** Emitted after the sidebar opens and all transitions are complete. */
-  @Event({ eventName: 'six-sidebar-after-show' }) sixAfterShow: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-sidebar-after-show' }) sixAfterShow!: EventEmitter<EmptyPayload>;
 
   /** Emitted when the sidebar closes. Calling `event.preventDefault()` will prevent it from being closed. */
-  @Event({ eventName: 'six-sidebar-hide' }) sixHide: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-sidebar-hide' }) sixHide!: EventEmitter<EmptyPayload>;
 
   /** Emitted after the sidebar closes and all transitions are complete. */
-  @Event({ eventName: 'six-sidebar-after-hide' }) sixAfterHide: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-sidebar-after-hide' }) sixAfterHide!: EventEmitter<EmptyPayload>;
 
   /**
    * Emitted when the sidebar opens and the panel gains focus. Calling `event.preventDefault()` will prevent focus and
    * allow you to set it on a different element in the sidebar, such as an input or button.
    */
-  @Event({ eventName: 'six-sidebar-initial-focus' }) sixInitialFocus: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-sidebar-initial-focus' }) sixInitialFocus!: EventEmitter<EmptyPayload>;
 
   @Watch('open')
   handleOpenChange() {
     this.open ? this.show() : this.hide();
   }
 
-  handleTransitionEnd = (event: TransitionEvent) => {
+  private handleTransitionEnd = (event: TransitionEvent) => {
     const target = event.target as HTMLElement;
 
     // Ensure we only emit one event when the target element is no longer visible
@@ -83,51 +84,56 @@ export class SixSidebar {
   }
 
   disconnectedCallback() {
-    this.sidebar.removeEventListener('six-details-show', this.closeSiblingDetailsOnShow);
+    this.sidebar?.removeEventListener('six-details-show', this.closeSiblingDetailsOnShow);
   }
 
-  private closeSiblingDetailsOnShow = (event: CustomEvent<EmptyPayload>) => {
+  private closeSiblingDetailsOnShow = (event: Event) => {
     const clickedMenuItem = event.target as HTMLElement;
-    scrollIntoView(clickedMenuItem, this.sidebar);
+    if (this.sidebar != null) {
+      scrollIntoView(clickedMenuItem, this.sidebar);
+    }
 
-    const closeAllSiblingsBySiblingProperty = (getSibling: (node: Element) => Element) => {
-      let node: Element = clickedMenuItem;
-
-      while (getSibling(node) !== null) {
+    const closeAllSiblingsBySiblingProperty = (
+      getSibling: (node: Element | null | undefined) => Element | null | undefined
+    ) => {
+      let node: Element | null | undefined = clickedMenuItem;
+      while (getSibling(node) != null) {
         node = getSibling(node);
         if (isSidebarItemGroup(node)) {
-          node.shadowRoot.querySelector('six-details').open = false;
+          const detailsElement = node?.shadowRoot?.querySelector('six-details');
+          if (detailsElement != null) {
+            detailsElement.open = false;
+          }
         }
       }
     };
 
     // close all previous siblings
-    closeAllSiblingsBySiblingProperty((node) => node.previousElementSibling);
+    closeAllSiblingsBySiblingProperty((node) => node?.previousElementSibling);
     // close all further siblings
-    closeAllSiblingsBySiblingProperty((node) => node.nextElementSibling);
+    closeAllSiblingsBySiblingProperty((node) => node?.nextElementSibling);
   };
 
   private setupTogglableMenuItems() {
-    if (!this.toggled) {
-      return;
-    }
-
+    if (!this.toggled || this.sidebar == null) return;
     this.markAllMenuItemsAsSelectableEmpty();
-
     this.sidebar.addEventListener('six-details-show', this.closeSiblingDetailsOnShow);
   }
 
   private markAllMenuItemsAsSelectableEmpty() {
     // when you have a toggled menu you also want to close other menu items when you click on an item without children
     // nice benefit this item will then also be highlighted
-    const slot = this.sidebar.querySelector('slot');
-    const nodes = slot.assignedElements();
+    const slot = this.sidebar?.querySelector('slot');
+    const nodes = slot?.assignedElements() || [];
 
     // since we don't just want to make the top level empty menuItems selectable in toggled mode,
     // but also nested items we need to traverse the whole menu item tree
     const menuItems = [];
     while (nodes.length > 0) {
       const node = nodes.pop();
+      if (node?.shadowRoot == null) {
+        continue;
+      }
 
       // collect six-details in the current shadowDOM
       const menuItemsForCurrentNode = node.shadowRoot.querySelectorAll('six-details');
@@ -193,29 +199,37 @@ export class SixSidebar {
   /** Allows to select a menu item programmatically by index */
   @Method()
   async selectItemByIndex(index: number) {
-    const slot = this.sidebar.querySelector('slot');
-    const menuItemsOnRootLevel: HTMLSixDetailsElement[] = slot
-      .assignedElements()
-      .map((el) => el.shadowRoot.querySelector('six-details'));
+    if (this.sidebar == null) return;
 
+    const slot = this.sidebar.querySelector('slot');
+    const menuItemsOnRootLevel: HTMLSixDetailsElement[] = (slot?.assignedElements() || []).flatMap((el) => {
+      const detailsElement = el.shadowRoot?.querySelector('six-details');
+      if (detailsElement == null) {
+        return [];
+      }
+      return [detailsElement];
+    });
     if (index < 0 || index > menuItemsOnRootLevel.length - 1) {
       console.error(
         `Tried to access sidebar menu item by index, but provided index out of range. Provided index: ${index}`
       );
       return;
     }
-
     await menuItemsOnRootLevel[index].show();
   }
 
   /** Allows to select a menu item programmatically by name */
   @Method()
   async selectItemByName(value: string) {
-    const slot = this.sidebar.querySelector('slot');
-    const sidebarItemGroups = slot.assignedElements() as HTMLSixSidebarItemGroupElement[];
+    const slot = this.sidebar?.querySelector('slot');
+    const sidebarItemGroups = slot?.assignedElements() as HTMLSixSidebarItemGroupElement[];
+    if (sidebarItemGroups == null) {
+      return;
+    }
+
     const indexOfSelectedElement = sidebarItemGroups.findIndex((el) => el?.name === value);
-    const selectedItem = sidebarItemGroups[indexOfSelectedElement].shadowRoot.querySelector('six-details');
-    await selectedItem.show();
+    const selectedItem = sidebarItemGroups.at(indexOfSelectedElement)?.shadowRoot?.querySelector('six-details');
+    await selectedItem?.show();
   }
 
   private resetTransitionVariables() {
