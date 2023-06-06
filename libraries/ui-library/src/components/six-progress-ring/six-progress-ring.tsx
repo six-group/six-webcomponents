@@ -18,7 +18,7 @@ import { Component, h, Prop, Watch } from '@stencil/core';
   shadow: true,
 })
 export class SixProgressRing {
-  indicator: SVGCircleElement;
+  indicator?: SVGCircleElement;
 
   /** The size of the progress ring in pixels. */
   @Prop() size = 128;
@@ -27,7 +27,7 @@ export class SixProgressRing {
   @Prop() strokeWidth = 4;
 
   /** The current progress percentage, 0 - 100. */
-  @Prop() percentage: number;
+  @Prop() percentage = 0;
 
   @Watch('percentage')
   handlePercentageChange() {
@@ -38,10 +38,9 @@ export class SixProgressRing {
     this.updateProgress();
   }
 
-  updateProgress() {
-    if (!this.indicator.r) {
-      return;
-    }
+  private updateProgress() {
+    if (this.indicator?.r == null) return;
+
     const radius = this.indicator.r.baseVal.value;
     const circumference = radius * 2 * Math.PI;
     const offset = circumference - (this.percentage / 100) * circumference;
@@ -65,7 +64,7 @@ export class SixProgressRing {
           />
 
           <circle
-            ref={(el: SVGCircleElement) => (this.indicator = el)}
+            ref={(el) => (this.indicator = el as SVGCircleElement)}
             class="progress-ring__indicator"
             stroke-width={this.strokeWidth}
             stroke-linecap="round"
