@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Host, Method, Prop, Watch, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, Watch } from '@stencil/core';
 import Popover from '../../utils/popover';
 import { EmptyPayload } from '../../utils/types';
 
@@ -22,21 +22,21 @@ let id = 0;
   shadow: true,
 })
 export class SixTooltip {
-  componentId = `tooltip-${++id}`;
-  isVisible = false;
-  popover: Popover;
-  tooltipPositioner: HTMLElement;
-  target: HTMLElement;
-  tooltip: any;
+  private componentId = `tooltip-${++id}`;
+  private isVisible = false;
+  private popover?: Popover;
+  private tooltipPositioner?: HTMLElement;
+  private target?: HTMLElement;
+  private tooltip?: HTMLElement;
 
-  @Element() host: HTMLSixTooltipElement;
+  @Element() host!: HTMLSixTooltipElement;
 
   /** The tooltip's content. Alternatively, you can use the content slot. */
   @Prop() content = '';
 
   /**
    * The preferred placement of the tooltip. Note that the actual placement may vary as needed to keep the tooltip
-   * inside of the viewport.
+   * inside the viewport.
    */
   @Prop() placement:
     | 'top'
@@ -52,13 +52,13 @@ export class SixTooltip {
     | 'left-start'
     | 'left-end' = 'top';
 
-  /** Set to true to disable the tooltip so it won't show when triggered. */
+  /** Set to true to disable the tooltip, so it won't show when triggered. */
   @Prop() disabled = false;
 
   /** The distance in pixels from which to offset the tooltip away from its target. */
   @Prop() distance = 10;
 
-  /** Indicates whether or not the tooltip is open. You can use this in lieu of the show/hide methods. */
+  /** Indicates whether the tooltip is open. You can use this in lieu of the show/hide methods. */
   @Prop({ mutable: true, reflect: true }) open = false;
 
   /** The distance in pixels from which to offset the tooltip along its target. */
@@ -77,28 +77,19 @@ export class SixTooltip {
   }
 
   /** Emitted when the tooltip begins to show. Calling `event.preventDefault()` will prevent it from being shown. */
-  @Event({ eventName: 'six-tooltip-show' }) sixShow: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-tooltip-show' }) sixShow!: EventEmitter<EmptyPayload>;
 
   /** Emitted after the tooltip has shown and all transitions are complete. */
-  @Event({ eventName: 'six-tooltip-after-show' }) sixAfterShow: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-tooltip-after-show' }) sixAfterShow!: EventEmitter<EmptyPayload>;
 
   /** Emitted when the tooltip begins to hide. Calling `event.preventDefault()` will prevent it from being hidden. */
-  @Event({ eventName: 'six-tooltip-hide' }) sixHide: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-tooltip-hide' }) sixHide!: EventEmitter<EmptyPayload>;
 
   /** Emitted after the tooltip has hidden and all transitions are complete. */
-  @Event({ eventName: 'six-tooltip-after-hide' }) sixAfterHide: EventEmitter<EmptyPayload>;
-
-  connectedCallback() {
-    this.handleBlur = this.handleBlur.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-    this.handleFocus = this.handleFocus.bind(this);
-    this.handleKeyDown = this.handleKeyDown.bind(this);
-    this.handleMouseOver = this.handleMouseOver.bind(this);
-    this.handleMouseOut = this.handleMouseOut.bind(this);
-    this.handleSlotChange = this.handleSlotChange.bind(this);
-  }
+  @Event({ eventName: 'six-tooltip-after-hide' }) sixAfterHide!: EventEmitter<EmptyPayload>;
 
   componentDidLoad() {
+    if (this.tooltipPositioner == null) return;
     this.target = this.getTarget();
     this.popover = new Popover(this.target, this.tooltipPositioner);
     this.syncOptions();
@@ -119,7 +110,7 @@ export class SixTooltip {
   }
 
   disconnectedCallback() {
-    if (this.popover) {
+    if (this.popover != null) {
       this.popover.destroy();
     }
 
@@ -144,7 +135,7 @@ export class SixTooltip {
 
     this.isVisible = true;
     this.open = true;
-    this.popover.show();
+    this.popover?.show();
   }
 
   /** Shows the tooltip. */
@@ -163,78 +154,80 @@ export class SixTooltip {
 
     this.isVisible = false;
     this.open = false;
-    this.popover.hide();
+    this.popover?.hide();
   }
 
-  getTarget() {
+  private getTarget() {
     // Get the first child that isn't a <style> or content slot
     const target = [...this.host.children].find(
       (el) => el.tagName.toLowerCase() !== 'style' && el.getAttribute('slot') !== 'content'
     ) as HTMLElement;
 
-    if (!target) {
+    if (target == null) {
       throw new Error('Invalid tooltip target: no child element was found.');
     }
 
     return target;
   }
 
-  handleBlur() {
+  private handleBlur = () => {
     if (this.hasTrigger('focus')) {
       this.hide();
     }
-  }
+  };
 
-  handleClick() {
+  private handleClick = () => {
     if (this.hasTrigger('click')) {
       this.open ? this.hide() : this.show();
     }
-  }
+  };
 
-  handleFocus() {
+  private handleFocus = () => {
     if (this.hasTrigger('focus')) {
       this.show();
     }
-  }
+  };
 
-  handleKeyDown(event: KeyboardEvent) {
+  private handleKeyDown = (event: KeyboardEvent) => {
     // Pressing escape when the target element has focus should dismiss the tooltip
     if (this.open && event.key === 'Escape') {
       event.stopPropagation();
       this.hide();
     }
-  }
+  };
 
-  handleMouseOver() {
+  private handleMouseOver = () => {
     if (this.hasTrigger('hover')) {
       this.show();
     }
-  }
+  };
 
-  handleMouseOut() {
+  private handleMouseOut = () => {
     if (this.hasTrigger('hover')) {
       this.hide();
     }
-  }
+  };
 
-  handleSlotChange() {
+  private handleSlotChange = () => {
     const oldTarget = this.target;
     const newTarget = this.getTarget();
 
     if (newTarget !== oldTarget) {
-      if (oldTarget) {
+      if (oldTarget != null) {
         oldTarget.removeAttribute('aria-describedby');
       }
       newTarget.setAttribute('aria-describedby', this.componentId);
     }
-  }
+  };
 
-  hasTrigger(triggerType: string) {
+  private hasTrigger(triggerType: string) {
     const triggers = this.trigger.split(' ');
     return triggers.includes(triggerType);
   }
 
-  syncOptions() {
+  private syncOptions() {
+    if (this.popover == null) return;
+
     this.popover.setOptions({
       placement: this.placement,
       distance: this.distance,

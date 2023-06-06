@@ -2076,7 +2076,7 @@ export namespace Components {
          */
         "content": string;
         /**
-          * Set to true to disable the tooltip so it won't show when triggered.
+          * Set to true to disable the tooltip, so it won't show when triggered.
          */
         "disabled": boolean;
         /**
@@ -2088,11 +2088,11 @@ export namespace Components {
          */
         "hide": () => Promise<void>;
         /**
-          * Indicates whether or not the tooltip is open. You can use this in lieu of the show/hide methods.
+          * Indicates whether the tooltip is open. You can use this in lieu of the show/hide methods.
          */
         "open": boolean;
         /**
-          * The preferred placement of the tooltip. Note that the actual placement may vary as needed to keep the tooltip inside of the viewport.
+          * The preferred placement of the tooltip. Note that the actual placement may vary as needed to keep the tooltip inside the viewport.
          */
         "placement": | 'top'
     | 'top-start'
@@ -4861,7 +4861,7 @@ declare namespace LocalJSX {
          */
         "content"?: string;
         /**
-          * Set to true to disable the tooltip so it won't show when triggered.
+          * Set to true to disable the tooltip, so it won't show when triggered.
          */
         "disabled"?: boolean;
         /**
@@ -4885,11 +4885,11 @@ declare namespace LocalJSX {
          */
         "onSix-tooltip-show"?: (event: SixTooltipCustomEvent<EmptyPayload>) => void;
         /**
-          * Indicates whether or not the tooltip is open. You can use this in lieu of the show/hide methods.
+          * Indicates whether the tooltip is open. You can use this in lieu of the show/hide methods.
          */
         "open"?: boolean;
         /**
-          * The preferred placement of the tooltip. Note that the actual placement may vary as needed to keep the tooltip inside of the viewport.
+          * The preferred placement of the tooltip. Note that the actual placement may vary as needed to keep the tooltip inside the viewport.
          */
         "placement"?: | 'top'
     | 'top-start'
