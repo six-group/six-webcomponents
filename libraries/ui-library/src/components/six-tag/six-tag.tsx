@@ -1,4 +1,4 @@
-import { Component, h, Prop, EventEmitter, Event } from '@stencil/core';
+import { Component, Event, EventEmitter, h, Prop } from '@stencil/core';
 import { EmptyPayload } from '../../utils/types';
 
 /**
@@ -20,8 +20,6 @@ import { EmptyPayload } from '../../utils/types';
   shadow: true,
 })
 export class SixTag {
-  tag: HTMLElement;
-
   /** The tag's type. */
   @Prop({ reflect: true }) type: 'primary' | 'success' | 'info' | 'warning' | 'danger' | 'action' | 'text' = 'primary';
 
@@ -35,20 +33,15 @@ export class SixTag {
   @Prop({ reflect: true }) clearable = false;
 
   /** Emitted when the clear button is activated. */
-  @Event({ eventName: 'six-tag-clear' }) sixClear: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-tag-clear' }) sixClear!: EventEmitter<EmptyPayload>;
 
-  connectedCallback() {
-    this.handleClearClick = this.handleClearClick.bind(this);
-  }
-
-  handleClearClick() {
+  private handleClearClick = () => {
     this.sixClear.emit();
-  }
+  };
 
   render() {
     return (
       <span
-        ref={(el) => (this.tag = el)}
         part="base"
         class={{
           tag: true,
