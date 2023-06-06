@@ -257,7 +257,7 @@ export namespace Components {
         /**
           * Checks for validity and shows the browser's validation message if the control is invalid.
          */
-        "reportValidity": () => Promise<boolean>;
+        "reportValidity": () => Promise<boolean | undefined>;
         /**
           * Set to true to make the checkbox a required field.
          */
@@ -291,7 +291,7 @@ export namespace Components {
         /**
           * Checks for validity.
          */
-        "checkValidity": () => Promise<boolean>;
+        "checkValidity": () => Promise<boolean | undefined>;
         /**
           * Set to true to add a clear button when the input is populated.
          */
@@ -379,7 +379,7 @@ export namespace Components {
         /**
           * Checks for validity and shows the browser's validation message if the control is invalid.
          */
-        "reportValidity": () => Promise<boolean>;
+        "reportValidity": () => Promise<boolean | undefined>;
         /**
           * Set to true to make the input a required field.
          */
@@ -961,7 +961,7 @@ export namespace Components {
         /**
           * Checks for validity and shows the browser's validation message if the control is invalid.
          */
-        "reportValidity": () => Promise<boolean>;
+        "reportValidity": () => Promise<boolean | undefined>;
         /**
           * Set to true to make the input a required field.
          */
@@ -973,7 +973,7 @@ export namespace Components {
         /**
           * Selects all the text in the input.
          */
-        "select": () => Promise<void>;
+        "select": () => Promise<void | undefined>;
         /**
           * Sets a custom validation message. If `message` is not empty, the field will be considered invalid.
          */
@@ -989,7 +989,7 @@ export namespace Components {
         /**
           * Sets the start and end positions of the text selection (0-based).
          */
-        "setSelectionRange": (selectionStart: number, selectionEnd: number, selectionDirection?: 'forward' | 'backward' | 'none') => Promise<void>;
+        "setSelectionRange": (selectionStart: number, selectionEnd: number, selectionDirection?: 'forward' | 'backward' | 'none') => Promise<void | undefined>;
         /**
           * The input's size.
          */
@@ -1264,7 +1264,7 @@ export namespace Components {
         /**
           * Checks for validity and shows the browser's validation message if the control is invalid.
          */
-        "reportValidity": () => Promise<boolean>;
+        "reportValidity": () => Promise<boolean | undefined>;
         /**
           * Resets the formcontrol
          */
@@ -1426,7 +1426,7 @@ export namespace Components {
         /**
           * Checks for validity.
          */
-        "checkValidity": () => Promise<boolean>;
+        "checkValidity": () => Promise<boolean | undefined>;
         /**
           * Set to true to add a clear button when the select is populated.
          */
@@ -1510,7 +1510,7 @@ export namespace Components {
         /**
           * Checks for validity and shows the browser's validation message if the control is invalid.
          */
-        "reportValidity": () => Promise<boolean>;
+        "reportValidity": () => Promise<boolean | undefined>;
         /**
           * The select's required attribute.
          */
@@ -1648,7 +1648,7 @@ export namespace Components {
         /**
           * Checks for validity.
          */
-        "checkValidity": () => Promise<boolean>;
+        "checkValidity": () => Promise<boolean | undefined>;
         /**
           * Set to true to draw the switch in a checked state.
          */
@@ -1672,7 +1672,7 @@ export namespace Components {
         /**
           * Checks for validity and shows the browser's validation message if the control is invalid.
          */
-        "reportValidity": () => Promise<boolean>;
+        "reportValidity": () => Promise<boolean | undefined>;
         /**
           * Set to true to make the switch a required field.
          */
@@ -1863,7 +1863,7 @@ export namespace Components {
         /**
           * Checks for validity and shows the browser's validation message if the control is invalid.
          */
-        "reportValidity": () => Promise<boolean>;
+        "reportValidity": () => Promise<boolean | undefined>;
         /**
           * The textarea's required attribute.
          */
@@ -1883,7 +1883,7 @@ export namespace Components {
         /**
           * Selects all the text in the input.
          */
-        "select": () => Promise<void>;
+        "select": () => Promise<void | undefined>;
         /**
           * Sets a custom validation message. If `message` is not empty, the field will be considered invalid.
          */
@@ -1899,7 +1899,7 @@ export namespace Components {
         /**
           * Sets the start and end positions of the text selection (0-based).
          */
-        "setSelectionRange": (selectionStart: number, selectionEnd: number, selectionDirection?: 'forward' | 'backward' | 'none') => Promise<void>;
+        "setSelectionRange": (selectionStart: number, selectionEnd: number, selectionDirection?: 'forward' | 'backward' | 'none') => Promise<void | undefined>;
         /**
           * The textarea's size.
          */
@@ -1963,7 +1963,7 @@ export namespace Components {
         /**
           * Checks for validity.
          */
-        "checkValidity": () => Promise<boolean>;
+        "checkValidity": () => Promise<boolean | undefined>;
         /**
           * Set to true to add a clear button when the input is populated.
          */
@@ -2035,7 +2035,7 @@ export namespace Components {
         /**
           * Checks for validity and shows the browser's validation message if the control is invalid.
          */
-        "reportValidity": () => Promise<boolean>;
+        "reportValidity": () => Promise<boolean | undefined>;
         /**
           * Set to true to make the input a required field.
          */
