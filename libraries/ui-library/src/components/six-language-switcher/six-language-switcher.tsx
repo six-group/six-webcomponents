@@ -43,7 +43,7 @@ export class SixLanguageSwitcher {
   /**
    * Emitted when the language switchers value changes
    */
-  @Event({ eventName: 'six-language-switcher-change' }) sixChange: EventEmitter<SixLanguageSwitcherChangePayload>;
+  @Event({ eventName: 'six-language-switcher-change' }) sixChange!: EventEmitter<SixLanguageSwitcherChangePayload>;
 
   componentWillLoad() {
     if (this.selected === undefined) {
@@ -77,7 +77,7 @@ export class SixLanguageSwitcher {
         {this.languages.map((lang, index) => {
           const language = typeof lang === 'string' ? lang : lang.key;
           return (
-            <div onClick={this.handleLanguageSwitching(language, lang.value)}>
+            <div onClick={this.handleLanguageSwitching(language, typeof lang === 'string' ? lang : lang.value)}>
               <span
                 part="label"
                 class={{

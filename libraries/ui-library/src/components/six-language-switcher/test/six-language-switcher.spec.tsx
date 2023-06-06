@@ -13,7 +13,7 @@ describe('SIX Language Switcher', () => {
     const page = await newSpecPage(config);
 
     // then
-    expect(page.root.selected).toEqual('EN');
+    expect(page?.root?.selected).toEqual('EN');
     expect(page.root).toEqualHtml(`
     <six-language-switcher selected="EN">
       <mock:shadow-root>
@@ -54,11 +54,13 @@ describe('SIX Language Switcher', () => {
 
     // when
     const page = await newSpecPage(config);
-    page.root.languages = ['IT', 'AR', 'BG'];
+    if (page?.root != null) {
+      page.root.languages = ['IT', 'AR', 'BG'];
+    }
     await page.waitForChanges();
 
     // then
-    expect(page.root.selected).toEqual('IT');
+    expect(page?.root?.selected).toEqual('IT');
     expect(page.root).toEqualHtml(`
     <six-language-switcher selected="IT">
       <mock:shadow-root>
@@ -101,7 +103,7 @@ describe('SIX Language Switcher', () => {
     const page = await newSpecPage(config);
 
     // then
-    expect(page.root.selected).toEqual('DE');
+    expect(page?.root?.selected).toEqual('DE');
     expect(page.root).toEqualHtml(`
     <six-language-switcher selected="DE">
       <mock:shadow-root>
@@ -142,11 +144,13 @@ describe('SIX Language Switcher', () => {
 
     // when
     const page = await newSpecPage(config);
-    page.root.selected = 'DE';
+    if (page.root != null) {
+      page.root.selected = 'DE';
+    }
     await page.waitForChanges();
 
     // then
-    expect(page.root.selected).toEqual('DE');
+    expect(page?.root?.selected).toEqual('DE');
     expect(page.root).toEqualHtml(`
     <six-language-switcher selected="DE">
       <mock:shadow-root>
@@ -186,11 +190,15 @@ describe('SIX Language Switcher', () => {
     };
     // when
     const page = await newSpecPage(config);
-    page.root.languages = ['IT', 'AR', 'BG'];
+    if (page.root != null) {
+      page.root.languages = ['IT', 'AR', 'BG'];
+    }
     await page.waitForChanges();
-    page.root.selected = 'BG';
+    if (page.root != null) {
+      page.root.selected = 'BG';
+    }
 
     // then
-    expect(page.root.selected).toEqual('BG');
+    expect(page?.root?.selected).toEqual('BG');
   });
 });
