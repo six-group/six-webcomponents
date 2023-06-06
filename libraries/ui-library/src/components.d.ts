@@ -1095,7 +1095,7 @@ export namespace Components {
         /**
           * Set the number of grid columns
          */
-        "columns": any;
+        "columns"?: number;
     }
     /**
      * @since 1.01
@@ -3933,7 +3933,7 @@ declare namespace LocalJSX {
         /**
           * Set the number of grid columns
          */
-        "columns"?: any;
+        "columns"?: number;
     }
     /**
      * @since 1.01

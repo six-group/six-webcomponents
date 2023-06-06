@@ -1,4 +1,4 @@
-import { Component, Element, Host, h, Prop, Watch } from '@stencil/core';
+import { Component, Element, h, Host, Prop, Watch } from '@stencil/core';
 
 /**
  * @since 1.01
@@ -13,15 +13,17 @@ import { Component, Element, Host, h, Prop, Watch } from '@stencil/core';
   shadow: true,
 })
 export class SixLayoutGrid {
-  @Element() host: HTMLSixLayoutGridElement;
+  @Element() host!: HTMLSixLayoutGridElement;
 
   /** Set the number of grid columns */
-  @Prop() columns;
+  @Prop({ mutable: true }) columns?: number;
 
   @Watch('columns')
   handleColumnsChange() {
-    const columns = this.columns ? this.columns : 12;
-    this.host.style.setProperty('--no-of-columns', String(columns));
+    if (typeof this.columns !== 'number' || this.columns === 0) {
+      this.columns = 12;
+    }
+    this.host.style.setProperty('--no-of-columns', String(this.columns));
   }
 
   componentWillLoad() {
