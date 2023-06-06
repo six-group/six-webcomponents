@@ -65,10 +65,12 @@ describe('six-menu', () => {
     });
 
     // when
-    page.root.items = Array.from(Array(3).keys()).map((idx) => ({
-      label: `label ${idx}`,
-      value: `value ${idx}`,
-    }));
+    if (page.root != null) {
+      page.root.items = Array.from(Array(3).keys()).map((idx) => ({
+        label: `label ${idx}`,
+        value: `value ${idx}`,
+      }));
+    }
     await page.waitForChanges();
 
     // then
