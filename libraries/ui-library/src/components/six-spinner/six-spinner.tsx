@@ -17,7 +17,7 @@ export class SixSpinner {
   /** Indicates if the spinner is shown as animated SIX logo or simple spinner. */
   @Prop() six = false;
 
-  renderSIXLogo() {
+  private renderSIXLogo() {
     return (
       <span class="six-spinner" aria-busy="true" aria-live="polite">
         <div class="six-spinner__container">
@@ -35,7 +35,7 @@ export class SixSpinner {
     );
   }
 
-  renderSimple() {
+  private renderSimple() {
     return <span part="base" class="spinner" aria-busy="true" aria-live="polite" />;
   }
 
