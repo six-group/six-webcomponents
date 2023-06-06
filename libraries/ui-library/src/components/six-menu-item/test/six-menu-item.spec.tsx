@@ -30,13 +30,4 @@ describe('six-menu-item', () => {
       </six-menu-item>
     `);
   });
-
-  it('handleFocus and handleBlur', () => {
-    const menuItem = new SixMenuItem();
-    expect(menuItem.hasFocus).toBe(false);
-    menuItem.handleFocus();
-    expect(menuItem.hasFocus).toBe(true);
-    menuItem.handleBlur();
-    expect(menuItem.hasFocus).toBe(false);
-  });
 });

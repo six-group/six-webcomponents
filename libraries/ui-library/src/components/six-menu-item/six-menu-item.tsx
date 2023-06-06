@@ -1,4 +1,4 @@
-import { Component, Method, Prop, State, h } from '@stencil/core';
+import { Component, h, Method, Prop, State } from '@stencil/core';
 import { getTextContent } from '../../utils/slot';
 
 /**
@@ -24,8 +24,8 @@ import { getTextContent } from '../../utils/slot';
   shadow: true,
 })
 export class SixMenuItem {
-  menuItem: HTMLElement;
-  defaultSlot: HTMLSlotElement;
+  private menuItem?: HTMLElement;
+  private defaultSlot?: HTMLSlotElement;
 
   @State() hasFocus = false;
 
@@ -48,13 +48,13 @@ export class SixMenuItem {
   /** Sets focus on the button. */
   @Method()
   async setFocus(options?: FocusOptions) {
-    this.menuItem.focus(options);
+    this.menuItem?.focus(options);
   }
 
   /** Removes focus from the button. */
   @Method()
   async removeFocus() {
-    this.menuItem.blur();
+    this.menuItem?.blur();
   }
 
   /** Returns a text label based on the contents of the menu item's default slot. */
@@ -63,20 +63,20 @@ export class SixMenuItem {
     return Promise.resolve(getTextContent(this.defaultSlot));
   }
 
-  handleBlur() {
+  private handleBlur() {
     this.hasFocus = false;
   }
 
-  handleFocus() {
+  private handleFocus() {
     this.hasFocus = true;
   }
 
-  handleMouseEnter() {
-    this.setFocus();
+  private handleMouseEnter() {
+    return this.setFocus();
   }
 
-  handleMouseLeave() {
-    this.removeFocus();
+  private handleMouseLeave() {
+    return this.removeFocus();
   }
 
   render() {
@@ -93,7 +93,7 @@ export class SixMenuItem {
         role="menuitem"
         aria-disabled={this.disabled ? 'true' : 'false'}
         aria-checked={this.checked ? 'true' : 'false'}
-        tabIndex={!this.disabled ? 0 : null}
+        tabIndex={!this.disabled ? 0 : undefined}
         onFocus={this.handleFocus}
         onBlur={this.handleBlur}
         onMouseEnter={this.handleMouseEnter}
