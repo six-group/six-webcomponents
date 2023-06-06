@@ -1,4 +1,4 @@
-import { h } from '@stencil/core';
+import { h, VNode } from '@stencil/core';
 
 export interface FormControlProps {
   /** The input id, used to map the input to the label */
@@ -13,7 +13,7 @@ export interface FormControlProps {
   /** The label text (if the label slot isn't used) */
   label?: string;
 
-  /** Whether or not a label slot has been provided. */
+  /** Whether a label slot has been provided. */
   hasLabelSlot?: boolean;
 
   /** The help text id, used to map the input to the help text */
@@ -22,7 +22,7 @@ export interface FormControlProps {
   /** The help text (if the help-text slot isn't used) */
   helpText?: string;
 
-  /** Whether or not a help text slot has been provided. */
+  /** Whether a help text slot has been provided. */
   hasHelpTextSlot?: boolean;
 
   /** The error text id, used to map the input to the help text */
@@ -31,7 +31,7 @@ export interface FormControlProps {
   /** The error text (if the error-text slot isn't used) */
   errorText?: string;
 
-  /** Whether or not a error text slot has been provided. */
+  /** Whether a error text slot has been provided. */
   hasErrorTextSlot?: boolean;
 
   /** Set to true to disable the input. */
@@ -47,10 +47,10 @@ export interface FormControlProps {
   onLabelClick?: (event: MouseEvent) => void;
 }
 
-const FormControl = (props: FormControlProps, children) => {
-  const hasLabel = props.label ? true : props.hasLabelSlot;
-  const hasHelpText = props.helpText ? true : props.hasHelpTextSlot;
-  /** ErrorTextAttribute has precedence if non empty value is provided or if slot is not set */
+const FormControl = (props: FormControlProps, children: VNode[]) => {
+  const hasLabel = props.label != null && props.label.trim() !== '' ? true : props.hasLabelSlot ?? false;
+  const hasHelpText = props.helpText != null && props.helpText.trim() !== '' ? true : props.hasHelpTextSlot ?? false;
+  /** ErrorTextAttribute has precedence if non-empty value is provided or if slot is not set */
   const useErrorTextAttribute = (props.errorText && props.errorText !== '') || !props.hasErrorTextSlot;
 
   return (
@@ -63,9 +63,9 @@ const FormControl = (props: FormControlProps, children) => {
         'form-control--large': props.size === 'large',
         'form-control--has-label': hasLabel,
         'form-control--has-help-text': hasHelpText,
-        'form-control--has-error-text': props.displayError,
-        'form-control--disabled': props.disabled,
-        'form-control--invalid': props.displayError && !props.disabled,
+        'form-control--has-error-text': props.displayError ?? false,
+        'form-control--disabled': props.disabled ?? false,
+        'form-control--invalid': (props.displayError ?? false) && !props.disabled,
       }}
     >
       <label
@@ -73,7 +73,7 @@ const FormControl = (props: FormControlProps, children) => {
         id={props.labelId}
         class={{
           'form-control__label': true,
-          'form-control__label__required': props.required,
+          'form-control__label__required': props.required ?? false,
         }}
         htmlFor={props.inputId}
         aria-hidden={hasLabel ? 'false' : 'true'}
