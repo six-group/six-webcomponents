@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Method, Prop, State, Watch, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Method, Prop, State, Watch } from '@stencil/core';
 import { getOffset } from '../../utils/offset';
 import { scrollIntoView } from '../../utils/scroll';
 import { focusVisible } from '../../utils/focus-visible';
@@ -23,7 +23,7 @@ export interface SixTabHidePayload {
  * @part base - The component's base wrapper.
  * @part nav - The tab group navigation container.
  * @part tabs - The container that wraps the slotted tabs.
- * @part active-tab-indicator - An element that displays the currently selected tab. This is a child of the tabs container.
+ * @part active-tab-indicator - An element that displays the currently selected tab. This is a child of the tab's container.
  * @part body - The tab group body where tab panels are slotted in.
  * @part scroll-button - The previous and next scroll buttons that appear when tabs are scrollable.
  */
@@ -33,16 +33,16 @@ export interface SixTabHidePayload {
   shadow: true,
 })
 export class SixTabGroup {
-  activeTab: HTMLSixTabElement;
-  activeTabIndicator: HTMLElement;
-  body: HTMLElement;
-  mutationObserver: MutationObserver;
-  nav: HTMLElement;
-  resizeObserver: ResizeObserver;
-  tabGroup: HTMLElement;
-  tabs: HTMLElement;
+  private activeTab?: HTMLSixTabElement;
+  private activeTabIndicator?: HTMLElement;
+  private body?: HTMLElement;
+  private mutationObserver?: MutationObserver;
+  private nav?: HTMLElement;
+  private resizeObserver?: ResizeObserver;
+  private tabGroup?: HTMLElement;
+  private tabs?: HTMLElement;
 
-  @Element() host: HTMLSixTabGroupElement;
+  @Element() host!: HTMLSixTabGroupElement;
 
   @State() hasScrollControls = false;
 
@@ -63,20 +63,14 @@ export class SixTabGroup {
   }
 
   /** Emitted when a tab is shown. */
-  @Event({ eventName: 'six-tab-show' }) sixTabShow: EventEmitter<SixTabShowPayload>;
+  @Event({ eventName: 'six-tab-show' }) sixTabShow!: EventEmitter<SixTabShowPayload>;
 
   /** Emitted when a tab is hidden. */
-  @Event({ eventName: 'six-tab-hide' }) sixTabHide: EventEmitter<SixTabHidePayload>;
-
-  connectedCallback() {
-    this.handleClick = this.handleClick.bind(this);
-    this.handleKeyDown = this.handleKeyDown.bind(this);
-    this.handleScrollLeft = this.handleScrollLeft.bind(this);
-    this.handleScrollRight = this.handleScrollRight.bind(this);
-    this.syncActiveTabIndicator = this.syncActiveTabIndicator.bind(this);
-  }
+  @Event({ eventName: 'six-tab-hide' }) sixTabHide!: EventEmitter<SixTabHidePayload>;
 
   componentDidLoad() {
+    if (this.tabGroup == null || this.nav == null) return;
+
     // Set initial tab state when the tabs first become visible
     const observer = new IntersectionObserver((entries, observer) => {
       if (entries[0].intersectionRatio > 0) {
@@ -97,7 +91,7 @@ export class SixTabGroup {
     this.mutationObserver = new MutationObserver((mutations) => {
       if (
         mutations.some((mutation) => {
-          return !['aria-labelledby', 'aria-controls'].includes(mutation.attributeName);
+          return !['aria-labelledby', 'aria-controls'].includes(mutation.attributeName ?? '');
         })
       ) {
         setTimeout(() => this.setAriaLabels());
@@ -107,6 +101,10 @@ export class SixTabGroup {
   }
 
   disconnectedCallback() {
+    if (this.mutationObserver == null || this.tabGroup == null || this.nav == null || this.resizeObserver == null) {
+      return;
+    }
+
     this.mutationObserver.disconnect();
     focusVisible.unobserve(this.tabGroup);
     this.resizeObserver.unobserve(this.nav);
@@ -118,33 +116,35 @@ export class SixTabGroup {
     const tabs = this.getAllTabs();
     const tab = tabs.find((el) => el.panel === panel);
 
-    if (tab) {
+    if (tab != null) {
       this.setActiveTab(tab);
     }
   }
 
-  getAllTabs(includeDisabled = false) {
-    const slot = this.tabs.querySelector('slot');
+  private getAllTabs(includeDisabled = false): HTMLSixTabElement[] {
+    const slot = this.tabs?.querySelector('slot');
+    if (slot == null) return [];
 
-    return [...slot.assignedElements()].filter((el: any) => {
+    return [...slot.assignedElements()].filter((el: Element) => {
       return includeDisabled
         ? el.tagName.toLowerCase() === 'six-tab'
-        : el.tagName.toLowerCase() === 'six-tab' && !el.disabled;
+        : el.tagName.toLowerCase() === 'six-tab' && !(el as HTMLSixTabElement).disabled;
     }) as [HTMLSixTabElement];
   }
 
-  getAllPanels() {
-    const slot = this.body.querySelector('slot');
-    return [...slot.assignedElements()].filter((el: any) => el.tagName.toLowerCase() === 'six-tab-panel') as [
+  private getAllPanels(): HTMLSixTabPanelElement[] {
+    const slot = this.body?.querySelector('slot');
+    if (slot == null) return [];
+    return [...slot.assignedElements()].filter((el: Element) => el.tagName.toLowerCase() === 'six-tab-panel') as [
       HTMLSixTabPanelElement
     ];
   }
 
-  getActiveTab() {
+  private getActiveTab() {
     return this.getAllTabs().find((el) => el.active);
   }
 
-  handleClick(event: MouseEvent) {
+  private handleClick = (event: MouseEvent) => {
     const target = event.target as HTMLElement;
     const tab = target.closest('six-tab');
     const tabGroup = tab?.closest('six-tab-group');
@@ -154,12 +154,14 @@ export class SixTabGroup {
       return false;
     }
 
-    if (tab) {
+    if (tab != null) {
       this.setActiveTab(tab);
     }
-  }
+  };
 
-  handleKeyDown(event: KeyboardEvent) {
+  private handleKeyDown = (event: KeyboardEvent) => {
+    if (this.nav == null) return;
+
     const target = event.target as HTMLElement;
     const tab = target.closest('six-tab');
     const tabGroup = tab?.closest('six-tab-group');
@@ -171,7 +173,7 @@ export class SixTabGroup {
 
     // Activate a tab
     if (['Enter', ' '].includes(event.key)) {
-      if (tab) {
+      if (tab != null) {
         this.setActiveTab(tab);
         event.preventDefault();
       }
@@ -179,7 +181,7 @@ export class SixTabGroup {
 
     // Move focus left or right
     if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End'].includes(event.key)) {
-      const activeEl = document.activeElement as any;
+      const activeEl = document.activeElement as HTMLSixTabElement;
 
       if (activeEl && activeEl.tagName.toLowerCase() === 'six-tab') {
         const tabs = this.getAllTabs();
@@ -204,36 +206,44 @@ export class SixTabGroup {
         event.preventDefault();
       }
     }
-  }
+  };
 
-  handleScrollLeft() {
+  private handleScrollLeft = () => {
+    if (this.nav == null) return;
+
     this.nav.scroll({
       left: this.nav.scrollLeft - this.nav.clientWidth,
       behavior: 'smooth',
     });
-  }
+  };
 
-  handleScrollRight() {
+  private handleScrollRight = () => {
+    if (this.nav == null) return;
+
     this.nav.scroll({
       left: this.nav.scrollLeft + this.nav.clientWidth,
       behavior: 'smooth',
     });
-  }
+  };
 
-  updateScrollControls() {
+  private updateScrollControls() {
+    if (this.nav == null) return;
+
     this.hasScrollControls = this.noScrollControls
       ? false
       : ['top', 'bottom'].includes(this.placement) && this.nav.scrollWidth > this.nav.clientWidth;
   }
 
-  setActiveTab(tab: HTMLSixTabElement, emitEvents = true) {
-    if (tab && tab !== this.activeTab && !tab.disabled) {
+  private setActiveTab(tab: HTMLSixTabElement, emitEvents = true) {
+    if (this.nav == null) return;
+
+    if (tab != null && tab !== this.activeTab && !tab.disabled) {
       const previousTab = this.activeTab;
       this.activeTab = tab;
 
       // Sync tabs and panels
       this.getAllTabs().map((el) => (el.active = el === this.activeTab));
-      this.getAllPanels().map((el) => (el.active = el.name === this.activeTab.panel));
+      this.getAllPanels().map((el) => (el.active = el.name === this.activeTab?.panel));
       this.syncActiveTabIndicator();
 
       if (['top', 'bottom'].includes(this.placement)) {
@@ -242,7 +252,7 @@ export class SixTabGroup {
 
       // Emit events
       if (emitEvents) {
-        if (previousTab) {
+        if (previousTab != null) {
           this.sixTabHide.emit({ name: previousTab.panel });
         }
 
@@ -251,24 +261,26 @@ export class SixTabGroup {
     }
   }
 
-  setAriaLabels() {
+  private setAriaLabels() {
     const tabs = this.getAllTabs();
     const panels = this.getAllPanels();
 
     // Link each tab with its corresponding panel
     tabs.map((tab) => {
       const panel = panels.find((el) => el.name === tab.panel);
-      if (panel) {
-        tab.setAttribute('aria-controls', panel.getAttribute('id'));
-        panel.setAttribute('aria-labelledby', tab.getAttribute('id'));
+      if (panel != null) {
+        tab.setAttribute('aria-controls', panel.getAttribute('id') ?? '');
+        panel.setAttribute('aria-labelledby', tab.getAttribute('id') ?? '');
       }
     });
   }
 
-  syncActiveTabIndicator() {
+  private syncActiveTabIndicator = () => {
+    if (this.activeTabIndicator == null || this.nav == null) return;
+
     const tab = this.getActiveTab();
 
-    if (tab) {
+    if (tab != null) {
       this.activeTabIndicator.style.display = 'block';
     } else {
       this.activeTabIndicator.style.display = 'none';
@@ -285,18 +297,18 @@ export class SixTabGroup {
       case 'top':
       case 'bottom':
         this.activeTabIndicator.style.width = `${width}px`;
-        this.activeTabIndicator.style.height = null;
+        this.activeTabIndicator.style.height = '';
         this.activeTabIndicator.style.transform = `translateX(${offsetLeft}px)`;
         break;
 
       case 'left':
       case 'right':
-        this.activeTabIndicator.style.width = null;
+        this.activeTabIndicator.style.width = '';
         this.activeTabIndicator.style.height = `${height}px`;
         this.activeTabIndicator.style.transform = `translateY(${offsetTop}px)`;
         break;
     }
-  }
+  };
 
   render() {
     return (

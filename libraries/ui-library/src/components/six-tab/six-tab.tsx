@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Host, Method, Prop, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Method, Prop } from '@stencil/core';
 import { EmptyPayload } from '../../utils/types';
 
 let id = 0;
@@ -21,10 +21,10 @@ let id = 0;
   shadow: true,
 })
 export class SixTab {
-  componentId = `tab-${++id}`;
-  tab: HTMLElement;
+  private componentId = `tab-${++id}`;
+  private tab?: HTMLElement;
 
-  @Element() host: HTMLSixTabElement;
+  @Element() host!: HTMLSixTabElement;
 
   /** The name of the tab panel the tab will control. The panel must be located in the same tab group. */
   @Prop({ reflect: true }) panel = '';
@@ -39,7 +39,7 @@ export class SixTab {
   @Prop({ reflect: true }) disabled = false;
 
   /** Emitted when the tab is closable and the close button is activated. */
-  @Event({ eventName: 'six-tab-close' }) sixClose: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-tab-close' }) sixClose!: EventEmitter<EmptyPayload>;
 
   connectedCallback() {
     this.handleCloseClick = this.handleCloseClick.bind(this);
@@ -48,16 +48,16 @@ export class SixTab {
   /** Sets focus to the tab. */
   @Method()
   async setFocus(options?: FocusOptions) {
-    this.tab.focus(options);
+    this.tab?.focus(options);
   }
 
   /** Removes focus from the tab. */
   @Method()
   async removeFocus() {
-    this.tab.blur();
+    this.tab?.blur();
   }
 
-  handleCloseClick() {
+  private handleCloseClick() {
     this.sixClose.emit();
   }
 
