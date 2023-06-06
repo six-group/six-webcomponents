@@ -95,6 +95,7 @@ export class SixCheckbox {
       return;
     }
     this.nativeInput.checked = this.checked;
+    this.checked = this.nativeInput.checked;
     this.nativeInput.indeterminate = this.indeterminate;
     this.invalid = !this.nativeInput.checkValidity();
     this.sixChange.emit();

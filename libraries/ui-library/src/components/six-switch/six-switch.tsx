@@ -23,17 +23,17 @@ let id = 0;
   shadow: true,
 })
 export class SixSwitch {
-  switchId = `switch-${++id}`;
-  labelId = `switch-label-${id}`;
-  input: HTMLInputElement;
+  private switchId = `switch-${++id}`;
+  private labelId = `switch-label-${id}`;
+  private inputElement?: HTMLInputElement;
 
   @State() hasFocus = false;
 
   /** The switch's name attribute. */
-  @Prop() name: string;
+  @Prop() name = '';
 
   /** The switch's value attribute. */
-  @Prop() value: string;
+  @Prop() value = 'on';
 
   /** Set to true to disable the switch. */
   @Prop() disabled = false;
@@ -49,29 +49,24 @@ export class SixSwitch {
 
   @Watch('checked')
   handleCheckedChange() {
-    this.input.checked = this.checked;
+    if (this.inputElement != null) {
+      this.inputElement.checked = this.checked;
+      this.checked = this.inputElement.checked;
+    }
     this.sixChange.emit(this.checked);
   }
 
   /** Emitted when the control loses focus. */
-  @Event({ eventName: 'six-switch-blur' }) sixBlur: EventEmitter<boolean>;
+  @Event({ eventName: 'six-switch-blur' }) sixBlur!: EventEmitter<boolean>;
 
   /** Emitted when the control's checked state changes. */
-  @Event({ eventName: 'six-switch-change' }) sixChange: EventEmitter<boolean>;
+  @Event({ eventName: 'six-switch-change' }) sixChange!: EventEmitter<boolean>;
 
   /** Emitted when the control gains focus. */
-  @Event({ eventName: 'six-switch-focus' }) sixFocus: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-switch-focus' }) sixFocus!: EventEmitter<EmptyPayload>;
 
   /** default value the switch will be reverted to when reset is executed */
   private defaultValue = '';
-
-  connectedCallback() {
-    this.handleClick = this.handleClick.bind(this);
-    this.handleBlur = this.handleBlur.bind(this);
-    this.handleFocus = this.handleFocus.bind(this);
-    this.handleKeyDown = this.handleKeyDown.bind(this);
-    this.handleMouseDown = this.handleMouseDown.bind(this);
-  }
 
   componentWillLoad() {
     this.defaultValue = this.value;
@@ -80,57 +75,61 @@ export class SixSwitch {
   /** Sets focus on the switch. */
   @Method()
   async setFocus(options?: FocusOptions) {
-    this.input.focus(options);
+    this.inputElement?.focus(options);
   }
 
   /** Removes focus from the switch. */
   @Method()
   async removeFocus() {
-    this.input.blur();
+    this.inputElement?.blur();
   }
 
   /** Checks for validity and shows the browser's validation message if the control is invalid. */
   @Method()
   async reportValidity() {
-    return this.input.reportValidity();
+    return this.inputElement?.reportValidity();
   }
 
   /** Checks for validity. */
   @Method()
   async checkValidity() {
-    return this.input.validity.valid;
+    return this.inputElement?.validity.valid;
   }
 
   /** Sets a custom validation message. If `message` is not empty, the field will be considered invalid. */
   @Method()
   async setCustomValidity(message: string) {
-    this.input.setCustomValidity(message);
-    this.invalid = !this.input.checkValidity();
+    if (this.inputElement != null) {
+      this.inputElement.setCustomValidity(message);
+      this.invalid = !this.inputElement.checkValidity();
+    }
   }
 
   /** Resets the formcontrol */
   @Method()
   async reset() {
     this.value = this.defaultValue;
-    this.input.setCustomValidity('');
+    this.inputElement?.setCustomValidity('');
     this.invalid = false;
   }
 
-  handleClick() {
-    this.checked = this.input.checked;
-  }
+  private handleClick = () => {
+    if (this.inputElement != null) {
+      this.checked = this.inputElement.checked;
+    }
+  };
 
-  handleBlur() {
+  private handleBlur = () => {
     this.hasFocus = false;
     this.sixBlur.emit(this.checked);
-  }
+  };
 
-  handleFocus() {
+  private handleFocus = () => {
     this.hasFocus = true;
     this.sixFocus.emit();
-  }
+  };
 
-  handleKeyDown(event: KeyboardEvent) {
+  private handleKeyDown = (event: KeyboardEvent) => {
     if (event.key === 'ArrowLeft') {
       event.preventDefault();
       this.checked = false;
@@ -140,13 +139,13 @@ export class SixSwitch {
       event.preventDefault();
       this.checked = true;
     }
-  }
+  };
 
-  handleMouseDown(event: MouseEvent) {
+  private handleMouseDown = (event: MouseEvent) => {
     // Prevent clicks on the label from briefly blurring the input
     event.preventDefault();
-    this.input.focus();
-  }
+    this.inputElement?.focus();
+  };
 
   render() {
     return (
@@ -165,7 +164,7 @@ export class SixSwitch {
           <span part="thumb" class="switch__thumb" />
 
           <input
-            ref={(el) => (this.input = el)}
+            ref={(el) => (this.inputElement = el)}
             id={this.switchId}
             type="checkbox"
             name={this.name}
