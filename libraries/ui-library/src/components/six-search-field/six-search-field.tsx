@@ -20,7 +20,7 @@ export interface SixSearchFieldChangePayload {
 })
 export class SixSearchField {
   /** The input's placeholder text. */
-  @Prop() placeholder: string;
+  @Prop() placeholder?: string;
 
   /** Debounce time in milliseconds, default is 300 ms */
   @Prop({ reflect: true }) debounce = DEFAULT_DEBOUNCE_FAST;
@@ -35,27 +35,32 @@ export class SixSearchField {
   @Prop() clearable = false;
 
   /** Emitted when a search is triggered */
-  @Event({ eventName: 'six-search-field-change' }) searchFieldChange: EventEmitter<SixSearchFieldChangePayload>;
+  @Event({ eventName: 'six-search-field-change' }) searchFieldChange!: EventEmitter<SixSearchFieldChangePayload>;
 
-  inputElement: HTMLSixInputElement;
+  private inputElement?: HTMLSixInputElement;
 
-  readonly eventListeners = new EventListeners();
+  private eventListeners = new EventListeners();
 
-  handleInputChange = () => {
-    this.searchFieldChange.emit({ value: this.inputElement.value });
+  private handleInputChange = () => {
+    if (this.inputElement != null) {
+      this.searchFieldChange.emit({ value: this.inputElement.value });
+    }
   };
 
   @Watch('value')
   handleValueChange() {
-    if (this.inputElement) {
+    if (this.inputElement != null) {
       this.inputElement.value = this.value;
     }
   }
 
   componentDidLoad() {
+    if (this.inputElement == null) return;
+
     this.eventListeners.add(this.inputElement, 'six-input-input', debounce(this.handleInputChange, this.debounce));
-    this.eventListeners.add(this.inputElement, 'keydown', (event: KeyboardEvent) => {
-      if (event.key === 'Enter') {
+    this.eventListeners.add(this.inputElement, 'keydown', (event: Event) => {
+      const keyboardEvent = event as KeyboardEvent;
+      if (keyboardEvent.key === 'Enter') {
         // emit immediately
         this.handleInputChange();
       }

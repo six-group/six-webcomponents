@@ -1403,7 +1403,7 @@ export namespace Components {
         /**
           * The input's placeholder text.
          */
-        "placeholder": string;
+        "placeholder"?: string;
         /**
           * The input's value attribute.
          */
