@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, h, Method, Prop, State } from '@stencil/core';
 import { EmptyPayload } from '../../utils/types';
-import { hasSlot } from '../../utils/slot';
+import { getSlot, hasSlot } from '../../utils/slot';
 
 /**
  * @since 1.0
@@ -13,13 +13,13 @@ import { hasSlot } from '../../utils/slot';
   shadow: true,
 })
 export class SixTile {
-  @Element() host: HTMLSixTileElement;
+  @Element() host!: HTMLSixTileElement;
 
   /** The tile's label. */
   @Prop() label = '';
 
   /** The icon's name. */
-  @Prop() iconName;
+  @Prop() iconName?: string;
 
   /** Flag, whether the tile is closeable. */
   @Prop() closeable = true;
@@ -28,7 +28,7 @@ export class SixTile {
   @Prop() elevated = false;
 
   /** Enables tile tooltip for tiles */
-  @Prop() disableTooltip: boolean = true;
+  @Prop() disableTooltip = true;
 
   /** Set to true to disable the tile. */
   @Prop({ reflect: true }) disabled = false;
@@ -39,10 +39,10 @@ export class SixTile {
   @State() visible = true;
 
   /** Emitted when the tile was closed. */
-  @Event({ eventName: 'six-tile-closed' }) sixTileClose: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-tile-closed' }) sixTileClose!: EventEmitter<EmptyPayload>;
 
   /** Emitted when the tile is selected. */
-  @Event({ eventName: 'six-tile-selected' }) sixTileSelected: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-tile-selected' }) sixTileSelected!: EventEmitter<EmptyPayload>;
 
   /** Hides the tile */
   @Method()
@@ -60,28 +60,24 @@ export class SixTile {
 
   @State() hasLabelSlot = false;
 
-  connectedCallback() {
-    this.handleSlotChange = this.handleSlotChange.bind(this);
-  }
-
   componentWillLoad() {
     this.handleSlotChange();
   }
 
-  handleSlotChange() {
+  private handleSlotChange = () => {
     this.hasIconSlot = hasSlot(this.host, 'icon');
     this.hasLabelSlot = hasSlot(this.host, 'label');
 
     if (this.hasIconSlot) {
-      let slot: HTMLElement = this.host.querySelector(`[slot="icon"]`);
-      slot.addEventListener('click', this.handleClickEvent);
+      const slot = getSlot(this.host, 'icon');
+      slot?.addEventListener('click', this.handleClickEvent);
     }
 
     if (this.hasLabelSlot) {
-      let slot: HTMLElement = this.host.querySelector(`[slot="label"]`);
-      slot.addEventListener('click', this.handleClickEvent);
+      const slot = getSlot(this.host, 'label');
+      slot?.addEventListener('click', this.handleClickEvent);
     }
-  }
+  };
 
   render() {
     return (

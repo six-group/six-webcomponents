@@ -1941,7 +1941,7 @@ export namespace Components {
         /**
           * The icon's name.
          */
-        "iconName": any;
+        "iconName"?: string;
         /**
           * The tile's label.
          */
@@ -4726,7 +4726,7 @@ declare namespace LocalJSX {
         /**
           * The icon's name.
          */
-        "iconName"?: any;
+        "iconName"?: string;
         /**
           * The tile's label.
          */
