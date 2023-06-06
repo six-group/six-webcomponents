@@ -1,15 +1,11 @@
 import { newSpecPage } from '@stencil/core/testing';
 import { SixRoot } from '../six-root';
 
-class ResizeObserverMock {
-  // tslint:disable-next-line: no-empty
-  observe() {}
-
-  // tslint:disable-next-line: no-empty
-  disconnect() {}
-}
-
-global.ResizeObserver = ResizeObserverMock as any;
+global.ResizeObserver = jest.fn().mockImplementation(() => ({
+  observe: jest.fn(),
+  unobserve: jest.fn(),
+  disconnect: jest.fn(),
+}));
 
 describe('six-root', () => {
   it('renders', async () => {

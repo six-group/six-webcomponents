@@ -11,8 +11,8 @@ export interface SixRootCollapsedPayload {
  *
  * @slot header - Used to define the header component.
  * @slot main - Used to define the components in the main area.
- * @slot left-sidebar - Used to define the side bar on the left side.
- * @slot right-sidebar - Used to define the side bar on the right side.
+ * @slot left-sidebar - Used to define the sidebar on the left side.
+ * @slot right-sidebar - Used to define the sidebar on the right side.
  * @slot footer - Used to define the footer component.
  */
 
@@ -22,7 +22,7 @@ export interface SixRootCollapsedPayload {
   shadow: true,
 })
 export class SixRoot {
-  @Element() host: HTMLSixRootElement;
+  @Element() host!: HTMLSixRootElement;
 
   /** Breakpoint for smaller screens when the right sidebar is collapsed by default. */
   @Prop() breakpoint = 1024;
@@ -37,11 +37,11 @@ export class SixRoot {
   @Prop() version = '';
 
   /** Emitted when display size is updated. */
-  @Event({ eventName: 'six-root-collapsed' }) collapsedEvent: EventEmitter<SixRootCollapsedPayload>;
+  @Event({ eventName: 'six-root-collapsed' }) collapsedEvent!: EventEmitter<SixRootCollapsedPayload>;
 
-  @State() collapse: boolean;
+  @State() collapse = false;
 
-  resizeObserver = new ResizeObserver(([host]) => {
+  private resizeObserver = new ResizeObserver(([host]) => {
     const { width } = host.contentRect;
     this.collapse = width < this.breakpoint;
   });
