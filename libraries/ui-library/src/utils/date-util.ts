@@ -209,17 +209,19 @@ export const getFirstDayOfTheWeek = (date: Date) => {
 /**
  * Returns `true` when the year of the dates are the same
  */
-export const isSameYear = (a: Date, b: Date) => a?.getFullYear() === b?.getFullYear();
+export const isSameYear = (a: Date | undefined, b: Date | undefined) => a?.getFullYear() === b?.getFullYear();
 
 /**
  * Returns `true` when the month of the dates are the same
  */
-export const isSameMonth = (a: Date, b: Date) => isSameYear(a, b) && a?.getMonth() === b?.getMonth();
+export const isSameMonth = (a: Date | undefined, b: Date | undefined) =>
+  isSameYear(a, b) && a?.getMonth() === b?.getMonth();
 
 /**
  * Returns `true` when the day of the dates are the same
  */
-export const isSameDay = (a: Date, b: Date) => isSameMonth(a, b) && a?.getDate() === b?.getDate();
+export const isSameDay = (a: Date | undefined, b: Date | undefined) =>
+  isSameMonth(a, b) && a?.getDate() === b?.getDate();
 
 /**
  * Returns `true` when the week of the dates are the same
@@ -266,7 +268,7 @@ export const newDateString = (yearOrDate: Date | number, month?: number, day?: n
 /**
  * Returns `true` if the given datestring is valid
  */
-export const isValidDateString = (datestring: string, format: string) => {
+export const isValidDateString = (datestring: string | undefined, format: string) => {
   if (!isString(datestring) || !isString(format)) {
     return false;
   }
@@ -748,7 +750,10 @@ const getCleanDateString = (dirtyDateString: string, format: string) => {
     .join(separator);
 };
 
-const getDateParts = (dirtyDateString: string, format: string) => {
+const getDateParts: (dirtyDateString: string, format: string) => Partial<ParseFlagMark> = (
+  dirtyDateString: string,
+  format: string
+) => {
   const dateString = getCleanDateString(dirtyDateString, format);
 
   return makeParser(dateString, format);
@@ -789,7 +794,9 @@ export interface CalendarGridArgs {
   selectedDate?: Date;
 }
 
-export const createCalendarGrid = (calendarGridArguments: CalendarGridArgs) => {
+export const createCalendarGrid: (calendarGridArguments: CalendarGridArgs) => CalendarCell[][] = (
+  calendarGridArguments: CalendarGridArgs
+) => {
   const { firstDateOfBox, allowedDates, dateFormat, selectedDate, minDate, maxDate, pointerDate } =
     calendarGridArguments;
 

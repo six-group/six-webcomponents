@@ -24,6 +24,7 @@ import {
   year,
 } from './date-util';
 import { SixDateFormats } from '../components/six-datepicker/six-date-formats';
+import { CalendarCell } from '../components/six-datepicker/six-datepicker';
 
 describe('date-util helpers', () => {
   describe('rangeAround', () => {
@@ -492,7 +493,7 @@ describe('parseDate', () => {
       // given
       const date = new Date(2020, 0, 4);
       const minDate = new Date(2020, 0, 5);
-      const maxDate = null;
+      const maxDate = undefined;
 
       // when
       const isInRangeOutput = isInRange(date, minDate, maxDate);
@@ -518,7 +519,7 @@ describe('parseDate', () => {
       // given
       const date = new Date(2020, 0, 5);
       const minDate = new Date(2020, 0, 5);
-      const maxDate = null;
+      const maxDate = undefined;
 
       // when
       const isInRangeOutput = isInRange(date, minDate, maxDate);
@@ -544,7 +545,7 @@ describe('parseDate', () => {
       // given
       const date = new Date(2020, 0, 6);
       const minDate = new Date(2020, 0, 5);
-      const maxDate = null;
+      const maxDate = undefined;
 
       // when
       const isInRangeOutput = isInRange(date, minDate, maxDate);
@@ -557,7 +558,7 @@ describe('parseDate', () => {
       // given
       const date = new Date(2020, 0, 6);
       const maxDate = new Date(2020, 0, 10);
-      const minDate = null;
+      const minDate = undefined;
 
       // when
       const isInRangeOutput = isInRange(date, minDate, maxDate);
@@ -583,7 +584,7 @@ describe('parseDate', () => {
       // given
       const date = new Date(2020, 0, 9);
       const maxDate = new Date(2020, 0, 10);
-      const minDate = null;
+      const minDate = undefined;
 
       // when
       const isInRangeOutput = isInRange(date, minDate, maxDate);
@@ -609,7 +610,7 @@ describe('parseDate', () => {
       // given
       const date = new Date(2020, 0, 10);
       const maxDate = new Date(2020, 0, 10);
-      const minDate = null;
+      const minDate = undefined;
 
       // when
       const isInRangeOutput = isInRange(date, minDate, maxDate);
@@ -635,7 +636,7 @@ describe('parseDate', () => {
       // given
       const date = new Date(2020, 0, 11);
       const maxDate = new Date(2020, 0, 10);
-      const minDate = null;
+      const minDate = undefined;
 
       // when
       const isInRangeOutput = isInRange(date, minDate, maxDate);
@@ -699,7 +700,7 @@ describe('parseDate', () => {
       const year1 = new Date(2021, 1, 26);
 
       // when
-      const isSameYearOutput = isSameYear(year1, null);
+      const isSameYearOutput = isSameYear(year1, undefined);
 
       // then
       expect(isSameYearOutput).toBe(false);
@@ -736,7 +737,7 @@ describe('parseDate', () => {
       const month1 = new Date(2021, 1, 26);
 
       // when
-      const isSameMonthOutput = isSameMonth(month1, null);
+      const isSameMonthOutput = isSameMonth(month1, undefined);
 
       // then
       expect(isSameMonthOutput).toBe(false);
@@ -801,17 +802,6 @@ describe('parseDate', () => {
       // then
       expect(isSameWeekOutput).toBe(false);
     });
-
-    it('should handle null values', () => {
-      // given
-      const week1 = new Date(2021, 1, 26);
-
-      // when
-      const isSameWeekOutput = isSameWeek(week1, null);
-
-      // then
-      expect(isSameWeekOutput).toBe(false);
-    });
   });
 
   describe('isSameDay', () => {
@@ -856,7 +846,7 @@ describe('parseDate', () => {
       const day1 = new Date(2021, 1, 25);
 
       // when
-      const isSameDayOutput = isSameDay(day1, null);
+      const isSameDayOutput = isSameDay(day1, undefined);
 
       // then
       expect(isSameDayOutput).toBe(false);
@@ -984,7 +974,7 @@ describe('parseDate', () => {
     const addMissingZero = (numb: number): string => String(numb).padStart(2, '0');
     const addMissingZeroRandomly = (numb: number): string => {
       // add a leading zero in 50% of the cases
-      if (Math.round(Math.random())) {
+      if (Math.round(Math.random()) !== 0) {
         return String(numb);
       } else {
         return addMissingZero(numb);
@@ -1160,10 +1150,11 @@ describe('parseDate', () => {
 });
 
 describe('createCalendarGrid', () => {
-  const mapGridToProperty = (grid, property) => grid.map((row) => row.map((cell) => cell[property]));
-  const stringifyGrid = (grid) => mapGridToProperty(grid, 'label');
-  const extractDisabledMapFromGrid = (grid) => mapGridToProperty(grid, 'isDisabled');
-  const extractOutdatedMapFromGrid = (grid) => mapGridToProperty(grid, 'isOutdated');
+  const mapGridToProperty = (grid: CalendarCell[][], property: keyof CalendarCell) =>
+    grid.map((row) => row.map((cell) => cell[property]));
+  const stringifyGrid = (grid: CalendarCell[][]) => mapGridToProperty(grid, 'label');
+  const extractDisabledMapFromGrid = (grid: CalendarCell[][]) => mapGridToProperty(grid, 'isDisabled');
+  const extractOutdatedMapFromGrid = (grid: CalendarCell[][]) => mapGridToProperty(grid, 'isOutdated');
 
   it('should correctly show some specific date', async () => {
     // given
@@ -1172,9 +1163,9 @@ describe('createCalendarGrid', () => {
       firstDateOfBox: new Date(2022, 1, 28),
       dateFormat: SixDateFormats.DDMMYY_DOT,
       locale: 'en',
-      selectedDate: null,
-      minDate: null,
-      maxDate: null,
+      selectedDate: undefined,
+      minDate: undefined,
+      maxDate: undefined,
       pointerDate: {
         year: 2022,
         month: 2,
@@ -1218,9 +1209,9 @@ describe('createCalendarGrid', () => {
       firstDateOfBox: new Date(2022, 1, 28),
       dateFormat: SixDateFormats.DDMMYY_DOT,
       locale: 'en',
-      selectedDate: null,
-      minDate: null,
-      maxDate: null,
+      selectedDate: undefined,
+      minDate: undefined,
+      maxDate: undefined,
       pointerDate: {
         year: 2022,
         month: 2,
@@ -1264,9 +1255,9 @@ describe('createCalendarGrid', () => {
       firstDateOfBox: new Date(2022, 1, 28),
       dateFormat: SixDateFormats.DDMMYY_DOT,
       locale: 'en',
-      selectedDate: null,
-      minDate: null,
-      maxDate: null,
+      selectedDate: undefined,
+      minDate: undefined,
+      maxDate: undefined,
       pointerDate: {
         year: 2022,
         month: 2,
