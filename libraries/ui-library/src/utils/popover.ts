@@ -14,14 +14,13 @@
 // - Popper uses `translate3d` to position elements, so adding a transition to the `transform` property may have an
 //   undesired effect when the element is shown and when its placement changes.
 //
-import { createPopper } from '@popperjs/core';
-import { PopperInstance } from './popper';
+import { createPopper, Instance } from '@popperjs/core';
 
 export default class Popover {
   anchor: HTMLElement;
   isVisible: boolean;
   popover: HTMLElement;
-  popper?: PopperInstance;
+  popper?: Instance;
   options: PopoverOptions;
 
   constructor(anchor: HTMLElement, popover: HTMLElement, options?: PopoverOptions) {

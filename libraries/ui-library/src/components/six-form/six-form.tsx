@@ -66,7 +66,7 @@ export class SixForm {
       {
         tag: 'six-button',
         serialize: (el: HTMLSixButtonElement, formData) =>
-          el.name && !el.disabled ? formData.append(el.name, el.value) : null,
+          el.name !== '' && !el.disabled ? formData.append(el.name, el.value) : null,
         click: (event) => {
           const target = event.target as HTMLSixButtonElement;
           if (target.submit) {
@@ -81,18 +81,18 @@ export class SixForm {
       {
         tag: 'six-checkbox',
         serialize: (el: HTMLSixCheckboxElement, formData) =>
-          el.name && el.checked && !el.disabled ? formData.append(el.name, el.value) : null,
+          el.name !== '' && el.checked && !el.disabled ? formData.append(el.name, el.value) : null,
         changeEventName: 'six-checkbox-change',
       },
       {
         tag: 'six-color-picker',
         serialize: (el: HTMLSixCheckboxElement, formData) =>
-          el.name && !el.disabled ? formData.append(el.name, el.value) : null,
+          el.name !== '' && !el.disabled ? formData.append(el.name, el.value) : null,
       },
       {
         tag: 'six-input',
         serialize: (el: HTMLSixInputElement, formData) =>
-          el.name && !el.disabled ? formData.append(el.name, el.value) : null,
+          el.name !== '' && !el.disabled ? formData.append(el.name, el.value) : null,
         keyDown: (event) => {
           if (event.key === 'Enter' && !event.defaultPrevented) {
             this.submit();
@@ -103,7 +103,7 @@ export class SixForm {
       {
         tag: 'six-datepicker',
         serialize: (el: HTMLSixDatepickerElement, formData) =>
-          el.name && !el.disabled && el.value != null ? formData.append(el.name, el.value?.toISOString()) : null,
+          el.name !== '' && !el.disabled && el.value != null ? formData.append(el.name, el.value?.toISOString()) : null,
         keyDown: (event) => {
           if (event.key === 'Enter' && !event.defaultPrevented) {
             this.submit();
@@ -114,13 +114,13 @@ export class SixForm {
       {
         tag: 'six-radio',
         serialize: (el: HTMLSixRadioElement, formData) =>
-          el.name && el.checked && !el.disabled ? formData.append(el.name, el.value) : null,
+          el.name !== '' && el.checked && !el.disabled ? formData.append(el.name, el.value) : null,
         changeEventName: 'six-radio-change',
       },
       {
         tag: 'six-range',
         serialize: (el: HTMLSixRangeElement, formData) => {
-          if (el.name && !el.disabled) {
+          if (el.name !== '' && !el.disabled) {
             formData.append(el.name, el.value + '');
           }
         },
@@ -129,7 +129,7 @@ export class SixForm {
       {
         tag: 'six-select',
         serialize: (el: HTMLSixSelectElement, formData) => {
-          if (el.name && !el.disabled) {
+          if (el.name !== '' && !el.disabled) {
             if (el.multiple) {
               const selectedOptions = [...el.value];
               if (selectedOptions.length > 0) {
@@ -147,19 +147,19 @@ export class SixForm {
       {
         tag: 'six-switch',
         serialize: (el: HTMLSixSwitchElement, formData) =>
-          el.name && el.checked && !el.disabled ? formData.append(el.name, el.value) : null,
+          el.name !== '' && el.checked && !el.disabled ? formData.append(el.name, el.value) : null,
         changeEventName: 'six-switch-change',
       },
       {
         tag: 'six-textarea',
         serialize: (el: HTMLSixTextareaElement, formData) =>
-          el.name && !el.disabled ? formData.append(el.name, el.value) : null,
+          el.name !== '' && !el.disabled ? formData.append(el.name, el.value) : null,
         changeEventName: 'six-textarea-change',
       },
       {
         tag: 'six-timepicker',
         serialize: (el: HTMLSixTimepickerElement, formData) =>
-          el.name && !el.disabled ? formData.append(el.name, el.value) : null,
+          el.name !== '' && !el.disabled ? formData.append(el.name, el.value) : null,
         keyDown: (event) => {
           if (event.key === 'Enter' && !event.defaultPrevented) {
             this.submit();

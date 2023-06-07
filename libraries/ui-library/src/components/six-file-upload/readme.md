@@ -7,14 +7,14 @@
 
 ## Properties
 
-| Property      | Attribute       | Description                                  | Type      | Default     |
-| ------------- | --------------- | -------------------------------------------- | --------- | ----------- |
-| `accept`      | `accept`        | Accepted MIME-Types.                         | `string`  | `undefined` |
-| `compact`     | `compact`       | Set to true if file control should be small. | `boolean` | `false`     |
-| `disabled`    | `disabled`      | Set when button is disabled.                 | `boolean` | `false`     |
-| `label`       | `label`         | Label of the drop area.                      | `string`  | `undefined` |
-| `maxFileSize` | `max-file-size` | Allowed max file size in bytes.              | `number`  | `undefined` |
-| `multiple`    | `multiple`      | More than one file allowed.                  | `boolean` | `undefined` |
+| Property      | Attribute       | Description                                  | Type                  | Default     |
+| ------------- | --------------- | -------------------------------------------- | --------------------- | ----------- |
+| `accept`      | `accept`        | Accepted MIME-Types.                         | `string \| undefined` | `undefined` |
+| `compact`     | `compact`       | Set to true if file control should be small. | `boolean`             | `false`     |
+| `disabled`    | `disabled`      | Set when button is disabled.                 | `boolean`             | `false`     |
+| `label`       | `label`         | Label of the drop area.                      | `string \| undefined` | `undefined` |
+| `maxFileSize` | `max-file-size` | Allowed max file size in bytes.              | `number \| undefined` | `undefined` |
+| `multiple`    | `multiple`      | More than one file allowed.                  | `boolean`             | `false`     |
 
 
 ## Events

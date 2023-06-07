@@ -9,12 +9,12 @@ Six root gives you a [basic layout](<https://en.wikipedia.org/wiki/Holy_grail_(w
 
 ## Properties
 
-| Property     | Attribute    | Description                                                                    | Type                                                | Default |
-| ------------ | ------------ | ------------------------------------------------------------------------------ | --------------------------------------------------- | ------- |
-| `breakpoint` | `breakpoint` | Breakpoint for smaller screens when the right sidebar is collapsed by default. | `number`                                            | `1024`  |
-| `padded`     | `padded`     | Defines whether the content section should be padded                           | `boolean`                                           | `true`  |
-| `stage`      | `stage`      | Defines the stage of the application                                           | `"ACCEPTANCE" \| "DEV" \| "ETU" \| "ITU" \| "PROD"` | `null`  |
-| `version`    | `version`    | Defines the version of the application                                         | `string`                                            | `''`    |
+| Property     | Attribute    | Description                                                                    | Type                                                        | Default |
+| ------------ | ------------ | ------------------------------------------------------------------------------ | ----------------------------------------------------------- | ------- |
+| `breakpoint` | `breakpoint` | Breakpoint for smaller screens when the right sidebar is collapsed by default. | `number`                                                    | `1024`  |
+| `padded`     | `padded`     | Defines whether the content section should be padded                           | `boolean`                                                   | `true`  |
+| `stage`      | `stage`      | Defines the stage of the application                                           | `"ACCEPTANCE" \| "DEV" \| "ETU" \| "ITU" \| "PROD" \| null` | `null`  |
+| `version`    | `version`    | Defines the version of the application                                         | `string`                                                    | `''`    |
 
 
 ## Events
@@ -30,9 +30,9 @@ Six root gives you a [basic layout](<https://en.wikipedia.org/wiki/Holy_grail_(w
 | ----------------- | ----------------------------------------------- |
 | `"footer"`        | Used to define the footer component.            |
 | `"header"`        | Used to define the header component.            |
-| `"left-sidebar"`  | Used to define the side bar on the left side.   |
+| `"left-sidebar"`  | Used to define the sidebar on the left side.    |
 | `"main"`          | Used to define the components in the main area. |
-| `"right-sidebar"` | Used to define the side bar on the right side.  |
+| `"right-sidebar"` | Used to define the sidebar on the right side.   |
 
 
 ## Shadow Parts

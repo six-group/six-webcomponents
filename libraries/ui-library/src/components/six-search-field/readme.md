@@ -7,13 +7,13 @@
 
 ## Properties
 
-| Property      | Attribute     | Description                                                    | Type      | Default                 |
-| ------------- | ------------- | -------------------------------------------------------------- | --------- | ----------------------- |
-| `clearable`   | `clearable`   | Set to true to add a clear button when the input is populated. | `boolean` | `false`                 |
-| `debounce`    | `debounce`    | Debounce time in milliseconds, default is 300 ms               | `number`  | `DEFAULT_DEBOUNCE_FAST` |
-| `disabled`    | `disabled`    | Set to true to disable the input.                              | `boolean` | `false`                 |
-| `placeholder` | `placeholder` | The input's placeholder text.                                  | `string`  | `undefined`             |
-| `value`       | `value`       | The input's value attribute.                                   | `string`  | `''`                    |
+| Property      | Attribute     | Description                                                    | Type                  | Default                 |
+| ------------- | ------------- | -------------------------------------------------------------- | --------------------- | ----------------------- |
+| `clearable`   | `clearable`   | Set to true to add a clear button when the input is populated. | `boolean`             | `false`                 |
+| `debounce`    | `debounce`    | Debounce time in milliseconds, default is 300 ms               | `number`              | `DEFAULT_DEBOUNCE_FAST` |
+| `disabled`    | `disabled`    | Set to true to disable the input.                              | `boolean`             | `false`                 |
+| `placeholder` | `placeholder` | The input's placeholder text.                                  | `string \| undefined` | `undefined`             |
+| `value`       | `value`       | The input's value attribute.                                   | `string`              | `''`                    |
 
 
 ## Events

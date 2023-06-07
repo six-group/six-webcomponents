@@ -47,13 +47,13 @@ Type: `Promise<void>`
 
 
 
-### `reportValidity() => Promise<boolean>`
+### `reportValidity() => Promise<boolean | undefined>`
 
 Checks for validity and shows the browser's validation message if the control is invalid.
 
 #### Returns
 
-Type: `Promise<boolean>`
+Type: `Promise<boolean | undefined>`
 
 
 

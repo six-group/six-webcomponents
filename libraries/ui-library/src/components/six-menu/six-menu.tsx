@@ -47,7 +47,7 @@ export class SixMenu {
   private menu?: HTMLElement;
   private menuWrapper?: HTMLElement;
   private typeToSelectString = '';
-  private typeToSelectTimeout!: NodeJS.Timeout;
+  private typeToSelectTimeout?: number;
 
   @Element() host!: HTMLSixMenuElement;
 
@@ -150,7 +150,7 @@ export class SixMenu {
 
     // set menu height to proper height once the item is rendered.
     const menuItemHeight = this.menu?.querySelector('six-menu-item')?.clientHeight;
-    if (menuItemHeight && menuItemHeight > 0) {
+    if (menuItemHeight != null && menuItemHeight > 0) {
       this.sixMenuItemHeight = menuItemHeight;
     }
   }

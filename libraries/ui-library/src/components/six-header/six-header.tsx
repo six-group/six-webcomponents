@@ -143,32 +143,36 @@ export class SixHeader {
     }
   }
 
-  private setupMenu = (el: HTMLSixIconButtonElement) => {
+  private setupMenu = (el?: HTMLSixIconButtonElement) => {
+    if (el == null) return;
+
     this.eventListeners.add(el, 'click', () => this.sixHamburgerClick.emit());
   };
 
-  private setupLogo = (el: HTMLSixIconButtonElement) => {
-    if (!this.clickableLogo) {
-      return;
-    }
+  private setupLogo = (el?: HTMLElement) => {
+    if (!this.clickableLogo || el == null) return;
 
     this.eventListeners.add(el, 'click', () => this.sixLogoClick.emit());
   };
 
-  private setupProfile = (el: HTMLSixDropdownElement) => {
+  private setupProfile = (el?: HTMLSixDropdownElement) => {
+    if (el == null) return;
+
     this.eventListeners.add(el, 'six-dropdown-show', this.selectSection(Section.Profile));
     this.eventListeners.add(el, 'six-dropdown-hide', this.selectSection(Section.None));
-    this.eventListeners.add(el, 'six-menu-item-selected', (event: CustomEvent) => {
-      const { name, item } = event.detail;
+    this.eventListeners.add(el, 'six-menu-item-selected', (event: Event) => {
+      const { name, item } = (event as CustomEvent).detail;
       this.sixProfileSelect.emit({ selectedLabel: item.innerText, name, item });
     });
   };
 
-  private setupAppSwitcher = (el: HTMLSixDropdownElement) => {
+  private setupAppSwitcher = (el?: HTMLSixDropdownElement) => {
+    if (el == null) return;
+
     this.eventListeners.add(el, 'six-dropdown-show', this.selectSection(Section.AppSwitcher));
     this.eventListeners.add(el, 'six-dropdown-hide', this.selectSection(Section.None));
-    this.eventListeners.add(el, 'six-menu-item-selected', (event: CustomEvent) => {
-      const { name, item } = event.detail;
+    this.eventListeners.add(el, 'six-menu-item-selected', (event: Event) => {
+      const { name, item } = (event as CustomEvent).detail;
       this.selectedApp = item.innerText;
       this.sixAppSwitcherSelect.emit({ selectedLabel: item.innerText, name, item });
     });
@@ -198,12 +202,15 @@ export class SixHeader {
     }
   }
 
-  private getSelectedApp() {
+  private getSelectedApp(): string | undefined {
     // there are more concise ways to select the first checked menu item, but this is one that works for jest
-    const element = this.host.querySelector(`[slot="${Slot.AppSwitcher}"]`);
+    const element = getSlot(this.host, Slot.AppSwitcher);
+    if (element == null) {
+      return undefined;
+    }
     const items = Array.from(element.querySelectorAll('six-menu-item'));
     const firstCheckedMenuItem = items.find((item: HTMLElement) => item.hasAttribute('checked'));
-    return firstCheckedMenuItem?.textContent;
+    return firstCheckedMenuItem?.textContent ?? undefined;
   }
 
   disconnectedCallback() {

@@ -179,7 +179,7 @@ export class SixSelect {
 
   @Watch('value')
   handleValueChange(newValue: unknown, oldValue: unknown) {
-    let items = this.options ?? this.getItems();
+    const items = this.options ?? this.getItems();
 
     // normalize invalid values. This will re-trigger this watch handler
     if (!isValidValue(newValue, this.multiple, items)) {
@@ -638,7 +638,7 @@ export class SixSelect {
             onKeyDown={this.handleKeyDown}
           >
             <span class="select__label">
-              {this.displayTags.length ? (
+              {this.displayTags.length > 0 ? (
                 <span part="tags" class="select__tags">
                   {this.displayTags}
                 </span>

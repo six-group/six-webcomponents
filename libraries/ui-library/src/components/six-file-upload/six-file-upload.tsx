@@ -111,7 +111,7 @@ export class SixFileUpload {
         return this.failure.emit({ reason });
       }
 
-      if (this.maxFileSize && file.size > this.maxFileSize) {
+      if (this.maxFileSize != null && file.size > this.maxFileSize) {
         const reason = files.length > 1 ? 'One or more files are too big' : 'File is too big.';
         return this.failure.emit({ reason });
       }

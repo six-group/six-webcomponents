@@ -18,7 +18,7 @@ import { Component, h, Prop, Watch } from '@stencil/core';
   shadow: true,
 })
 export class SixProgressRing {
-  indicator?: SVGCircleElement;
+  private indicator?: SVGCircleElement;
 
   /** The size of the progress ring in pixels. */
   @Prop() size = 128;

@@ -577,7 +577,7 @@ export class SixDatepicker {
 
     let isDateValid = inputValue !== '';
 
-    if (inputValue && datesOnly.length >= 6) {
+    if (datesOnly.length >= 6) {
       const date = toDate(inputValue, this.dateFormat);
       const dateAsString = formatDate(date, this.dateFormat);
       if (isValidDateString(dateAsString, this.dateFormat)) {

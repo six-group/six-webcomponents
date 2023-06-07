@@ -5,6 +5,7 @@ import { isDate, isNil, isString } from './type-check';
 import { SixDateFormats } from '../components/six-datepicker/six-date-formats';
 import { CalendarCell } from '../components/six-datepicker/six-datepicker';
 
+export type DateLocale = typeof i18nDate.en;
 export const i18nDate = {
   en: {
     months: [
@@ -311,17 +312,13 @@ export const isInRange = (date: Date | undefined, minDate: Date | undefined, max
     return false;
   }
 
-  if (maxDate && maxDate < date) {
-    return false;
-  }
-
-  return true;
+  return !(maxDate && maxDate < date);
 };
 
 const validateTwoDates = (
-  first: any,
+  first: unknown,
   second: Date | string | undefined,
-  validateFn: (irst: Date, second: Date) => boolean
+  validateFn: (_: Date, second: Date) => boolean
 ) => {
   if (isNil(first) && isNil(second)) {
     return false;
@@ -344,7 +341,7 @@ const validateTwoDates = (
  * isBefore(new Date(2020, 1, 1), new Date(2020, 3, 1)) // true
  * ```
  */
-export const isBefore = (date: any, beforeDate: Date | string | undefined): boolean =>
+export const isBefore = (_, beforeDate: Date | string | undefined): boolean =>
   validateTwoDates(date, beforeDate, (first, second) => first < second);
 
 /**
@@ -354,7 +351,7 @@ export const isBefore = (date: any, beforeDate: Date | string | undefined): bool
  * isAfter(new Date(2020, 5, 1), new Date(2020, 3, 1)) // true
  * ```
  */
-export const isAfter = (date: any, afterDate: Date | string | undefined): boolean =>
+export const isAfter = (date: Date, afterDate: Date | string | undefined): boolean =>
   validateTwoDates(date, afterDate, (first, second) => first > second);
 
 /**
@@ -470,7 +467,7 @@ const daylightSavingAdjust = (date): Date => {
 const getDaysCountInMonth = (month: number, year: number) =>
   32 - daylightSavingAdjust(new Date(year, month, 32)).getDate();
 
-export const parseDate = (value: any, format: string, locale: string): Date => {
+export const parseDate = (value: unknown, format: string, locale: string): Date => {
   if (format == null || value == null) {
     throw 'Invalid arguments';
   }
@@ -608,7 +605,7 @@ export const parseDate = (value: any, format: string, locale: string): Date => {
   return date;
 };
 
-const FORMATTING_TOKENS = /(\[[^\[]*\])|(mm|dd|yyyy|yy|hh|MM|ss|.)/g;
+const FORMATTING_TOKENS = /(\[[^\[]*])|(mm|dd|yyyy|yy|hh|MM|ss|.)/g;
 
 const TWO_NUMERICS_REGEX = /\d\d/; // 00 - 99
 const FOUR_NUMERICS_REGEX = /\d{4}/; // 0000 - 9999
@@ -631,9 +628,9 @@ interface ParseFlagMark {
   date: Date;
 }
 
-type ParseFlagCallBackReturn = any;
+type ParseFlagCallBackReturn = unknown;
 
-type ParseFlagRegExp = RegExp | ((locale: any) => RegExp);
+type ParseFlagRegExp = RegExp | ((_) => RegExp);
 type ParseFlagCallBack = (input: string) => ParseFlagCallBackReturn;
 
 interface ParseFlag {
@@ -690,7 +687,7 @@ const getFullInputArray = (input: Array<number | undefined>, backupDate = new Da
     if (input[i] === undefined) {
       result[i] = useBackup ? backupArr[i] : result[i];
     } else {
-      result[i] = input[i]!;
+      result[i] = input[i];
       useBackup = false;
     }
   }
@@ -719,8 +716,8 @@ const makeParser = (dateString: string, format: string) => {
   for (let i = 0; i < length; i += 1) {
     const token = tokens[i];
     const parseTo = parseFlags[token];
-    if (!parseTo) {
-      const word = token.replace(/^\[|\]$/g, '');
+    if (parseTo != null) {
+      const word = token.replace(/^\[|]$/g, '');
       if (dateString.indexOf(word) === 0) {
         dateString = dateString.substr(word.length);
       } else {
