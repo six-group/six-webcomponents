@@ -1,4 +1,4 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+/* eslint-disable */
 // @ts-nocheck
 
 import { isDate, isNil, isString } from './type-check';
@@ -312,13 +312,17 @@ export const isInRange = (date: Date | undefined, minDate: Date | undefined, max
     return false;
   }
 
-  return !(maxDate && maxDate < date);
+  if (maxDate && maxDate < date) {
+    return false;
+  }
+
+  return true;
 };
 
 const validateTwoDates = (
-  first: unknown,
+  first: any,
   second: Date | string | undefined,
-  validateFn: (_: Date, second: Date) => boolean
+  validateFn: (irst: Date, second: Date) => boolean
 ) => {
   if (isNil(first) && isNil(second)) {
     return false;
@@ -341,7 +345,7 @@ const validateTwoDates = (
  * isBefore(new Date(2020, 1, 1), new Date(2020, 3, 1)) // true
  * ```
  */
-export const isBefore = (_, beforeDate: Date | string | undefined): boolean =>
+export const isBefore = (date: any, beforeDate: Date | string | undefined): boolean =>
   validateTwoDates(date, beforeDate, (first, second) => first < second);
 
 /**
@@ -351,7 +355,7 @@ export const isBefore = (_, beforeDate: Date | string | undefined): boolean =>
  * isAfter(new Date(2020, 5, 1), new Date(2020, 3, 1)) // true
  * ```
  */
-export const isAfter = (date: Date, afterDate: Date | string | undefined): boolean =>
+export const isAfter = (date: any, afterDate: Date | string | undefined): boolean =>
   validateTwoDates(date, afterDate, (first, second) => first > second);
 
 /**
@@ -467,7 +471,7 @@ const daylightSavingAdjust = (date): Date => {
 const getDaysCountInMonth = (month: number, year: number) =>
   32 - daylightSavingAdjust(new Date(year, month, 32)).getDate();
 
-export const parseDate = (value: unknown, format: string, locale: string): Date => {
+export const parseDate = (value: any, format: string, locale: string): Date => {
   if (format == null || value == null) {
     throw 'Invalid arguments';
   }
@@ -481,22 +485,23 @@ export const parseDate = (value: unknown, format: string, locale: string): Date 
   let dim;
   let extra;
   let iValue = 0;
-  const shortYearCutoff = 100;
+  let shortYearCutoff = 100;
   let year = -1;
   let month = -1;
   let day = -1;
-  const doy = -1;
+  let doy = -1;
   let literal = false;
-  const lookAhead = (match: string, len = 2) => {
+  let date: Date;
+  let lookAhead = (match: string, len = 2) => {
     const increment = len - 1;
-    const matches = iFormat + increment < format.length && format.charAt(iFormat + increment) === match;
+    let matches = iFormat + increment < format.length && format.charAt(iFormat + increment) === match;
     if (matches) {
       iFormat += increment;
     }
     return matches;
   };
-  const getNumber = (match, len = 2) => {
-    const isDoubled = lookAhead(match, len),
+  let getNumber = (match, len = 2) => {
+    let isDoubled = lookAhead(match, len),
       size = match === '@' ? 14 : match === '!' ? 20 : match === 'y' && isDoubled ? 4 : match === 'o' ? 3 : 2,
       minSize = match === 'y' ? size : 1,
       digits = new RegExp('^\\d{' + minSize + ',' + size + '}'),
@@ -507,10 +512,10 @@ export const parseDate = (value: unknown, format: string, locale: string): Date 
     iValue += num[0].length;
     return parseInt(num[0], 10);
   };
-  const getName = (match, shortNames, longNames) => {
+  let getName = (match, shortNames, longNames) => {
     let index = -1;
-    const arr = lookAhead(match) ? longNames : shortNames;
-    const names = [];
+    let arr = lookAhead(match) ? longNames : shortNames;
+    let names = [];
 
     for (let i = 0; i < arr.length; i++) {
       names.push([i, arr[i]]);
@@ -520,7 +525,7 @@ export const parseDate = (value: unknown, format: string, locale: string): Date 
     });
 
     for (let i = 0; i < names.length; i++) {
-      const name = names[i][1];
+      let name = names[i][1];
       if (value.substr(iValue, name.length).toLowerCase() === name.toLowerCase()) {
         index = names[i][0];
         iValue += name.length;
@@ -534,7 +539,7 @@ export const parseDate = (value: unknown, format: string, locale: string): Date 
       throw 'Unknown name at position ' + iValue;
     }
   };
-  const checkLiteral = () => {
+  let checkLiteral = () => {
     if (value.charAt(iValue) !== format.charAt(iFormat)) {
       throw 'Unexpected literal at position ' + iValue;
     }
@@ -597,7 +602,7 @@ export const parseDate = (value: unknown, format: string, locale: string): Date 
     } while (true);
   }
 
-  const date = daylightSavingAdjust(new Date(year, month - 1, day));
+  date = daylightSavingAdjust(new Date(year, month - 1, day));
   if (date.getFullYear() !== year || date.getMonth() + 1 !== month || date.getDate() !== day) {
     throw 'Invalid date'; // E.g. 31/02/00
   }
@@ -605,7 +610,7 @@ export const parseDate = (value: unknown, format: string, locale: string): Date 
   return date;
 };
 
-const FORMATTING_TOKENS = /(\[[^\[]*])|(mm|dd|yyyy|yy|hh|MM|ss|.)/g;
+const FORMATTING_TOKENS = /(\[[^\[]*\])|(mm|dd|yyyy|yy|hh|MM|ss|.)/g;
 
 const TWO_NUMERICS_REGEX = /\d\d/; // 00 - 99
 const FOUR_NUMERICS_REGEX = /\d{4}/; // 0000 - 9999
@@ -628,9 +633,9 @@ interface ParseFlagMark {
   date: Date;
 }
 
-type ParseFlagCallBackReturn = unknown;
+type ParseFlagCallBackReturn = any;
 
-type ParseFlagRegExp = RegExp | ((_) => RegExp);
+type ParseFlagRegExp = RegExp | ((locale: any) => RegExp);
 type ParseFlagCallBack = (input: string) => ParseFlagCallBackReturn;
 
 interface ParseFlag {
@@ -687,7 +692,7 @@ const getFullInputArray = (input: Array<number | undefined>, backupDate = new Da
     if (input[i] === undefined) {
       result[i] = useBackup ? backupArr[i] : result[i];
     } else {
-      result[i] = input[i];
+      result[i] = input[i]!;
       useBackup = false;
     }
   }
@@ -716,8 +721,8 @@ const makeParser = (dateString: string, format: string) => {
   for (let i = 0; i < length; i += 1) {
     const token = tokens[i];
     const parseTo = parseFlags[token];
-    if (parseTo != null) {
-      const word = token.replace(/^\[|]$/g, '');
+    if (!parseTo) {
+      const word = token.replace(/^\[|\]$/g, '');
       if (dateString.indexOf(word) === 0) {
         dateString = dateString.substr(word.length);
       } else {
