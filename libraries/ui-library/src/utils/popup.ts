@@ -105,7 +105,7 @@ export function movePopup(
   wrapper: HTMLElement | undefined,
   minPopupHeight: number
 ) {
-  if (!hoist || !open || popup == null || inputElement == null) {
+  if (!hoist || !open || popup == null || inputElement == null || wrapper == null) {
     return;
   }
   const popupBoundingClientRect = popup.getBoundingClientRect();

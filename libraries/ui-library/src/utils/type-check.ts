@@ -4,5 +4,3 @@ export const isString = (value: unknown): value is string => typeof value === 's
 export const isNil = (value: unknown): value is undefined | null => value == null;
 
 export const isDate = (value: unknown): value is Date => value instanceof Date;
-
-export const isNumber = (value: unknown): value is number => value === 'number';

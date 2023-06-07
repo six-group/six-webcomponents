@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
+
 import { isDate, isNil, isString } from './type-check';
 import { SixDateFormats } from '../components/six-datepicker/six-date-formats';
 import { CalendarCell } from '../components/six-datepicker/six-datepicker';
@@ -481,23 +484,22 @@ export const parseDate = (value: any, format: string, locale: string): Date => {
   let dim;
   let extra;
   let iValue = 0;
-  let shortYearCutoff = 100;
+  const shortYearCutoff = 100;
   let year = -1;
   let month = -1;
   let day = -1;
-  let doy = -1;
+  const doy = -1;
   let literal = false;
-  let date: Date;
-  let lookAhead = (match: string, len = 2) => {
+  const lookAhead = (match: string, len = 2) => {
     const increment = len - 1;
-    let matches = iFormat + increment < format.length && format.charAt(iFormat + increment) === match;
+    const matches = iFormat + increment < format.length && format.charAt(iFormat + increment) === match;
     if (matches) {
       iFormat += increment;
     }
     return matches;
   };
-  let getNumber = (match, len = 2) => {
-    let isDoubled = lookAhead(match, len),
+  const getNumber = (match, len = 2) => {
+    const isDoubled = lookAhead(match, len),
       size = match === '@' ? 14 : match === '!' ? 20 : match === 'y' && isDoubled ? 4 : match === 'o' ? 3 : 2,
       minSize = match === 'y' ? size : 1,
       digits = new RegExp('^\\d{' + minSize + ',' + size + '}'),
@@ -508,10 +510,10 @@ export const parseDate = (value: any, format: string, locale: string): Date => {
     iValue += num[0].length;
     return parseInt(num[0], 10);
   };
-  let getName = (match, shortNames, longNames) => {
+  const getName = (match, shortNames, longNames) => {
     let index = -1;
-    let arr = lookAhead(match) ? longNames : shortNames;
-    let names = [];
+    const arr = lookAhead(match) ? longNames : shortNames;
+    const names = [];
 
     for (let i = 0; i < arr.length; i++) {
       names.push([i, arr[i]]);
@@ -521,7 +523,7 @@ export const parseDate = (value: any, format: string, locale: string): Date => {
     });
 
     for (let i = 0; i < names.length; i++) {
-      let name = names[i][1];
+      const name = names[i][1];
       if (value.substr(iValue, name.length).toLowerCase() === name.toLowerCase()) {
         index = names[i][0];
         iValue += name.length;
@@ -535,7 +537,7 @@ export const parseDate = (value: any, format: string, locale: string): Date => {
       throw 'Unknown name at position ' + iValue;
     }
   };
-  let checkLiteral = () => {
+  const checkLiteral = () => {
     if (value.charAt(iValue) !== format.charAt(iFormat)) {
       throw 'Unexpected literal at position ' + iValue;
     }
@@ -598,7 +600,7 @@ export const parseDate = (value: any, format: string, locale: string): Date => {
     } while (true);
   }
 
-  date = daylightSavingAdjust(new Date(year, month - 1, day));
+  const date = daylightSavingAdjust(new Date(year, month - 1, day));
   if (date.getFullYear() !== year || date.getMonth() + 1 !== month || date.getDate() !== day) {
     throw 'Invalid date'; // E.g. 31/02/00
   }

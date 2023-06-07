@@ -7,7 +7,7 @@
 const listeners = new WeakMap();
 
 export function observe(el: HTMLElement) {
-  if (!el) return;
+  if (el == null) return;
 
   const keys = ['Tab', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Home', 'End', 'PageDown', 'PageUp'];
   const is = (event: KeyboardEvent) => {
@@ -25,7 +25,7 @@ export function observe(el: HTMLElement) {
 }
 
 export function unobserve(el: HTMLElement) {
-  if (!el) return;
+  if (el == null) return;
 
   const listener = listeners.get(el);
 
