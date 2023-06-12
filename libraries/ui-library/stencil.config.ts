@@ -77,8 +77,8 @@ export const config: Config = {
     }),
     angularOutputTarget({
       componentCorePackage: '@six-group/ui-library',
-      directivesProxyFile: '../ui-library-angular/projects/ui-library-angular/src/lib/stencil-generated/components.ts',
-      directivesArrayFile: '../ui-library-angular/projects/ui-library-angular/src/lib/stencil-generated/index.ts',
+      directivesProxyFile: '../ui-library-angular/src/lib/stencil-generated/components.ts',
+      directivesArrayFile: '../ui-library-angular/src/lib/stencil-generated/index.ts',
     }),
     {
       type: 'dist',
