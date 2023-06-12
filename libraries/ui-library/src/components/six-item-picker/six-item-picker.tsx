@@ -277,14 +277,14 @@ export class SixItemPicker {
   }
 
   private previousStringItem() {
-    const value = this.value as string;
-    const minLetter = this.min as string;
+    const value = String(this.value);
+    const minLetter = String(this.min);
 
     this.changeValue({
       isNextItemAllowed: () =>
         minLetter === undefined || this.getStringItemIndex(value) > this.getStringItemIndex(minLetter),
       getNextItem: () => this.getNextItemByOperation(subtract),
-      getRoundtripItem: () => this.max as string,
+      getRoundtripItem: () => String(this.max),
       isRoundtripPossible: () => this.max == null && this.roundtrip,
     });
   }
@@ -313,20 +313,20 @@ export class SixItemPicker {
   }
 
   private nextStringItem() {
-    const value = this.value as string;
-    const maxLetter = this.max as string;
+    const value = String(this.value);
+    const maxLetter = String(this.max);
 
     this.changeValue({
       isNextItemAllowed: () =>
         maxLetter === undefined || this.getStringItemIndex(value) < this.getStringItemIndex(maxLetter),
       getNextItem: () => this.getNextItemByOperation(add),
-      getRoundtripItem: () => this.min as string,
+      getRoundtripItem: () => String(this.min),
       isRoundtripPossible: () => this.min === undefined && this.roundtrip,
     });
   }
 
   private getNextItemByOperation(operation: (a: number, b: number) => number) {
-    const value = this.value as string;
+    const value = String(this.value);
     const nextIndexCandidate = operation(this.getStringItemIndex(value), this.step);
     const numberOfItems = this._items.length;
     const nextIndex = ((nextIndexCandidate % numberOfItems) + numberOfItems) % numberOfItems;

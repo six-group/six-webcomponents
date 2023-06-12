@@ -33,7 +33,6 @@ export const debounce = <T>(callback: (x: T) => void, timeout = DEFAULT_DEBOUNCE
 export const debounceEvent = (event: EventEmitter, timeout: number): EventEmitter => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const original = (event as any)._original || event;
-  // @typescript-eslint/no-explicit-any
   const emit = debounce(original.emit.bind(original), timeout) as (_: unknown) => CustomEvent;
   return {
     _original: event,
