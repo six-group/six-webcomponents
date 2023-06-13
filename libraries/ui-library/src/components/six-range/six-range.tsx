@@ -29,8 +29,6 @@ export class SixRange {
   private inputId = `input-${++id}`;
   private labelId = `input-label-${id}`;
   private helpTextId = `input-help-text-${id}`;
-  private customErrorText = '';
-  private customValidation = false;
   private errorTextId = `input-error-text-${id}`;
   private eventListeners = new EventListeners();
   private resizeObserver?: ResizeObserver;
@@ -43,7 +41,6 @@ export class SixRange {
   @State() hasFocus = false;
   @State() hasHelpTextSlot = false;
   @State() hasLabelSlot = false;
-  @State() hasErrorTextSlot = false;
   @State() hasTooltip = false;
 
   /** The input's name attribute. */
@@ -52,26 +49,23 @@ export class SixRange {
   /** The input's value attribute. */
   @Prop({ mutable: true }) value = 0;
 
-  /** Set to true to make the input a required field. */
-  @Prop({ reflect: true }) required = false;
-
-  /** The range's label. Alternatively, you can use the label slot. */
-  @Prop() label = '';
+  /** Set to true to show an asterisk beneath the label. */
+  @Prop() required = false;
 
   /** The range's help text. Alternatively, you can use the help-text slot. */
   @Prop() helpText = '';
 
-  /** The input's error text. Alternatively, you can use the error-text slot. */
-  @Prop() errorText = '';
-
   /** Set to true to disable the input. */
   @Prop() disabled = false;
 
-  /**
-   * This will be true when the control is in an invalid state. Validity in range inputs is determined by the message
-   * provided by the `setCustomValidity` method.
-   */
-  @Prop({ mutable: true, reflect: true }) invalid = false;
+  /** The label text. */
+  @Prop() label = '';
+
+  /** The error message shown, if `invalid` is set to true.  */
+  @Prop() errorText = '';
+
+  /** If this property is set to true and an error message is provided by `errorText`, the error message is displayed.  */
+  @Prop({ reflect: true }) invalid = false;
 
   /** The input's min attribute. */
   @Prop() min = 0;
@@ -88,9 +82,6 @@ export class SixRange {
   /** A function used to format the tooltip's value. */
   @Prop() tooltipFormatter = (value: number) => value.toString();
 
-  /** Set to display the error text on blur and not when typing */
-  @Prop() errorOnBlur = false;
-
   /** Emitted when the control's value changes. */
   @Event({ eventName: 'six-range-change' }) sixChange!: EventEmitter<EmptyPayload>;
 
@@ -99,9 +90,6 @@ export class SixRange {
 
   /** Emitted when the control gains focus. */
   @Event({ eventName: 'six-range-focus' }) sixFocus!: EventEmitter<EmptyPayload>;
-
-  /** default value the slider will be reverted to when reset is executed */
-  private defaultValue = 0;
 
   @Watch('label')
   @Watch('errorText')
@@ -115,9 +103,6 @@ export class SixRange {
   @Watch('max')
   handleValueChange() {
     this.update();
-    if (this.nativeInput != null) {
-      this.invalid = !this.nativeInput.checkValidity();
-    }
   }
 
   connectedCallback() {
@@ -126,7 +111,6 @@ export class SixRange {
 
   componentWillLoad() {
     this.update();
-    this.defaultValue = this.value;
     this.handleSlotChange();
   }
 
@@ -137,12 +121,6 @@ export class SixRange {
     }
     this.update();
     this.resizeObserver = new ResizeObserver(() => this.update());
-    this.eventListeners.add(nativeInput, 'invalid', (event) => {
-      if (this.customValidation || (!this.hasErrorTextSlot && this.errorText === '' && this.customErrorText === '')) {
-        this.customErrorText = nativeInput.validationMessage;
-      }
-      event.preventDefault();
-    });
   }
 
   disconnectedCallback() {
@@ -160,27 +138,6 @@ export class SixRange {
   @Method()
   async removeFocus() {
     this.nativeInput?.blur();
-  }
-
-  /** Sets a custom validation message. If `message` is not empty, the field will be considered invalid. */
-  @Method()
-  async setCustomValidity(message: string) {
-    this.customErrorText = '';
-    this.customValidation = message !== '';
-    if (this.nativeInput != null) {
-      this.nativeInput.setCustomValidity(message);
-      this.invalid = !this.nativeInput.checkValidity();
-    }
-  }
-
-  /** Resets the formcontrol */
-  @Method()
-  async reset() {
-    this.value = this.defaultValue;
-    this.customErrorText = '';
-    this.customValidation = false;
-    this.nativeInput?.setCustomValidity('');
-    this.invalid = false;
   }
 
   private handleInput = () => {
@@ -212,17 +169,12 @@ export class SixRange {
 
   private handleSlotChange = () => {
     this.hasHelpTextSlot = hasSlot(this.host, 'help-text');
-    this.hasErrorTextSlot = hasSlot(this.host, 'error-text');
     this.hasLabelSlot = hasSlot(this.host, 'label');
   };
 
   private handleTouchStart = () => {
     this.setFocus();
   };
-
-  private displayError() {
-    return this.invalid && (!this.errorOnBlur || !this.hasFocus);
-  }
 
   private syncTooltip(min: number, max: number, value: number) {
     if (this.tooltip !== 'none' && this.nativeInput != null && this.output != null) {
@@ -302,11 +254,10 @@ export class SixRange {
         hasHelpTextSlot={this.hasHelpTextSlot}
         size="medium"
         errorTextId={this.errorTextId}
-        errorText={this.customErrorText != null ? this.customErrorText : this.errorText}
-        hasErrorTextSlot={this.hasErrorTextSlot}
+        errorText={this.errorText}
         disabled={this.disabled}
         required={this.required}
-        displayError={this.displayError()}
+        displayError={this.invalid}
       >
         <div
           part="base"

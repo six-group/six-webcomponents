@@ -33,15 +33,12 @@ export class SixCheckbox {
   private textId = `checkbox-text-${id}`;
   private errorTextId = `input-error-text-${id}`;
   private nativeInput?: HTMLInputElement;
-  private customErrorText = '';
-  private customValidation = false;
   private eventListeners = new EventListeners();
 
   @Element() host!: HTMLSixCheckboxElement;
 
   @State() hasFocus = false;
   @State() hasLabelSlot = false;
-  @State() hasErrorTextSlot = false;
 
   /** The checkbox's name attribute. */
   @Prop() name = '';
@@ -58,26 +55,23 @@ export class SixCheckbox {
   /** Set to true to disable the checkbox. */
   @Prop() disabled = false;
 
-  /** Set to true to make the checkbox a required field. */
+  /** Set to true to show an asterisk beneath the label. */
   @Prop() required = false;
 
-  /** The checkbox label. Alternatively, you can use the label slot. */
+  /** The label text. */
   @Prop() label = '';
 
-  /** The checkbox's error text. Alternatively, you can use the error-text slot. */
+  /** The error message shown, if `invalid` is set to true.  */
   @Prop() errorText = '';
+
+  /** If this property is set to true and an error message is provided by `errorText`, the error message is displayed.  */
+  @Prop({ reflect: true }) invalid = false;
 
   /** Set to true to draw the checkbox in a checked state. */
   @Prop({ mutable: true, reflect: true }) checked = false;
 
   /** Set to true to draw the checkbox in an indeterminate state. */
   @Prop({ mutable: true, reflect: true }) indeterminate = false;
-
-  /** This will be true when the control is in an invalid state. Validity is determined by the `required` prop. */
-  @Prop({ mutable: true, reflect: true }) invalid = false;
-
-  /** Set to display the error text on blur and not when typing */
-  @Prop() errorOnBlur = false;
 
   /** Emitted when the control loses focus. */
   @Event({ eventName: 'six-checkbox-blur' }) sixBlur!: EventEmitter<EmptyPayload>;
@@ -97,7 +91,6 @@ export class SixCheckbox {
     this.nativeInput.checked = this.checked;
     this.checked = this.nativeInput.checked;
     this.nativeInput.indeterminate = this.indeterminate;
-    this.invalid = !this.nativeInput.checkValidity();
     this.sixChange.emit();
   }
 
@@ -112,6 +105,9 @@ export class SixCheckbox {
 
   connectedCallback() {
     this.host.shadowRoot?.addEventListener('slotchange', this.handleSlotChange);
+    this.eventListeners.forward('six-checkbox-change', 'change', this.host);
+    this.eventListeners.forward('six-checkbox-blur', 'blur', this.host);
+    this.eventListeners.forward('six-checkbox-focus', 'focus', this.host);
   }
 
   disconnectedCallback() {
@@ -131,13 +127,6 @@ export class SixCheckbox {
     }
 
     nativeInput.indeterminate = this.indeterminate;
-    this.eventListeners.add(nativeInput, 'invalid', (event) => {
-      this.invalid = true;
-      if (this.customValidation || (!this.hasErrorTextSlot && this.errorText === '' && this.customErrorText === '')) {
-        this.customErrorText = nativeInput.validationMessage;
-      }
-      event.preventDefault();
-    });
   }
 
   /** Sets focus on the checkbox. */
@@ -152,40 +141,10 @@ export class SixCheckbox {
     this.nativeInput?.blur();
   }
 
-  /** Checks for validity and shows the browser's validation message if the control is invalid. */
-  @Method()
-  async reportValidity() {
-    return this.nativeInput?.reportValidity();
-  }
-
-  /** Checks for validity. */
-  @Method()
-  async checkValidity() {
-    if (this.nativeInput == null) {
-      return true;
-    }
-    return this.nativeInput.validity.valid;
-  }
-
-  /** Sets a custom validation message. If `message` is not empty, the field will be considered invalid. */
-  @Method()
-  async setCustomValidity(message: string) {
-    this.customErrorText = '';
-    this.customValidation = message !== '';
-    if (this.nativeInput != null) {
-      this.nativeInput.setCustomValidity(message);
-      this.invalid = !this.nativeInput.checkValidity();
-    }
-  }
-
   /** Resets the formcontrol */
   @Method()
   async reset() {
     this.checked = this.defaultState;
-    this.customErrorText = '';
-    this.customValidation = false;
-    this.nativeInput?.setCustomValidity('');
-    this.invalid = false;
   }
 
   private handleChange = () => {
@@ -212,12 +171,7 @@ export class SixCheckbox {
   };
 
   private handleSlotChange() {
-    this.hasErrorTextSlot = hasSlot(this.host, 'error-text');
     this.hasLabelSlot = hasSlot(this.host, 'label');
-  }
-
-  private displayError() {
-    return this.invalid && (!this.errorOnBlur || !this.hasFocus);
   }
 
   render() {
@@ -228,12 +182,11 @@ export class SixCheckbox {
         labelId={this.labelId}
         hasLabelSlot={this.hasLabelSlot}
         errorTextId={this.errorTextId}
-        errorText={this.customErrorText != null ? this.customErrorText : this.errorText}
-        hasErrorTextSlot={this.hasErrorTextSlot}
+        errorText={this.errorText}
         size="medium"
         disabled={this.disabled}
         required={this.required}
-        displayError={this.displayError()}
+        displayError={this.invalid}
       >
         <label
           part="base"

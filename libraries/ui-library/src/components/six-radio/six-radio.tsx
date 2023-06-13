@@ -1,5 +1,6 @@
 import { Component, Element, Event, EventEmitter, h, Method, Prop, State, Watch } from '@stencil/core';
 import { EmptyPayload } from '../../utils/types';
+import { EventListeners } from '../../utils/event-listeners';
 
 let id = 0;
 
@@ -26,6 +27,7 @@ export class SixRadio {
   private inputId = `radio-${++id}`;
   private labelId = `radio-label-${id}`;
   private nativeInput?: HTMLInputElement;
+  private eventListeners = new EventListeners();
 
   @Element() host!: HTMLSixRadioElement;
 
@@ -35,7 +37,7 @@ export class SixRadio {
   @Prop() name = '';
 
   /** The radio's value attribute. */
-  @Prop() value = 'on';
+  @Prop({ reflect: true }) value = 'on';
 
   /** Set to true to disable the radio. */
   @Prop() disabled = false;
@@ -43,11 +45,8 @@ export class SixRadio {
   /** Set to true to draw the radio in a checked state. */
   @Prop({ mutable: true, reflect: true }) checked = false;
 
-  /**
-   * This will be true when the control is in an invalid state. Validity in range inputs is determined by the message
-   * provided by the `setCustomValidity` method.
-   */
-  @Prop({ mutable: true, reflect: true }) invalid = false;
+  /** If this property is set to true and an error message is provided by `errorText`, the error message is displayed.  */
+  @Prop({ reflect: true }) invalid = false;
 
   @Watch('checked')
   handleCheckedChange() {
@@ -57,6 +56,13 @@ export class SixRadio {
     if (this.nativeInput != null) {
       this.nativeInput.checked = this.checked;
       this.sixChange.emit();
+    }
+  }
+
+  @Watch('name')
+  handleNameChange(name: string) {
+    if (this.nativeInput != null) {
+      this.nativeInput.name = name;
     }
   }
 
@@ -72,8 +78,18 @@ export class SixRadio {
   /** default state whether the radio button should be checked or not when resetting */
   private defaultState = false;
 
+  connectedCallback() {
+    this.eventListeners.forward('six-radio-change', 'change', this.host);
+    this.eventListeners.forward('six-radio-blur', 'blur', this.host);
+    this.eventListeners.forward('six-radio-focus', 'focus', this.host);
+  }
+
   componentWillLoad() {
     this.defaultState = this.checked;
+  }
+
+  disconnectedCallback() {
+    this.eventListeners.removeAll();
   }
 
   /** Sets focus on the radio. */
@@ -88,36 +104,10 @@ export class SixRadio {
     this.nativeInput?.blur();
   }
 
-  /** Checks for validity and shows the browser's validation message if the control is invalid. */
-  @Method()
-  async reportValidity() {
-    return this.nativeInput?.reportValidity();
-  }
-
-  /** Checks for validity. */
-  @Method()
-  async checkValidity() {
-    if (this.nativeInput == null) {
-      return true;
-    }
-    return this.nativeInput.validity.valid;
-  }
-
-  /** Sets a custom validation message. If `message` is not empty, the field will be considered invalid. */
-  @Method()
-  async setCustomValidity(message: string) {
-    if (this.nativeInput != null) {
-      this.nativeInput.setCustomValidity(message);
-      this.invalid = !this.nativeInput.checkValidity();
-    }
-  }
-
   /** Resets the formcontrol */
   @Method()
   async reset() {
     this.checked = this.defaultState;
-    this.nativeInput?.setCustomValidity('');
-    this.invalid = false;
   }
 
   private getAllRadios() {

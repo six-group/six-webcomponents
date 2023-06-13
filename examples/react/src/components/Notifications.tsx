@@ -1,5 +1,4 @@
 import React from 'react';
-import { SixIconButton, SixBadge, SixSpinner } from '@six-group/ui-library-react/dist/components';
 // feature
 import './Notifications.css';
 
@@ -11,21 +10,21 @@ interface NotificationsProps {
 
 const Notifications = ({ loading, notifications, toggleNotifications }: NotificationsProps) => {
   const badge = loading ? (
-    <SixBadge pill>
-      <SixSpinner />
-    </SixBadge>
+    <six-badge pill>
+      <six-spinner />
+    </six-badge>
   ) : (
     notifications && (
-      <SixBadge type="danger" pill>
+      <six-badge type="danger" pill>
         {notifications}
-      </SixBadge>
+      </six-badge>
     )
   );
 
   return (
-    <SixIconButton slot="notifications" name="notifications_none" onClick={toggleNotifications}>
+    <six-icon-button slot="notifications" name="notifications_none" onClick={toggleNotifications}>
       {badge}
-    </SixIconButton>
+    </six-icon-button>
   );
 };
 

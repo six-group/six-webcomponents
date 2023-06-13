@@ -19,7 +19,6 @@ export const DIRECTIVES = [
   d.SixFileListItem,
   d.SixFileUpload,
   d.SixFooter,
-  d.SixForm,
   d.SixGroupLabel,
   d.SixHeader,
   d.SixIcon,

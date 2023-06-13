@@ -57,4 +57,21 @@ export class EventListeners {
       }
     }
   };
+
+  forward(from: string, to: 'input' | 'change' | 'blur' | 'focus', host: HTMLElement) {
+    switch (to) {
+      case 'input':
+        this.add(host, from, () => host.dispatchEvent(new InputEvent(to, { bubbles: true, cancelable: true })));
+        break;
+      case 'change':
+        this.add(host, from, () => host.dispatchEvent(new InputEvent(to, { bubbles: true, cancelable: true })));
+        break;
+      case 'blur':
+        this.add(host, from, () => host.dispatchEvent(new FocusEvent(to, { bubbles: true, cancelable: true })));
+        break;
+      case 'focus':
+        this.add(host, from, () => host.dispatchEvent(new FocusEvent(to, { bubbles: true, cancelable: true })));
+        break;
+    }
+  }
 }

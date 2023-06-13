@@ -1,38 +1,35 @@
-import {
-  AfterViewInit,
-  ChangeDetectionStrategy,
-  Component,
-  ElementRef,
-  ViewChild,
-  ViewEncapsulation,
-} from '@angular/core';
-import { SixRootCollapsedPayload } from '@six-group/ui-library/dist/types/components/six-root/six-root';
-import { CoreFacade } from './core/providers';
-
-const isSixRootCollapsedEvent = (e?: unknown): e is CustomEvent<SixRootCollapsedPayload> =>
-  typeof (e as CustomEvent<SixRootCollapsedPayload>)?.detail?.collapsed === 'boolean';
+import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Task, TasksService } from './services/tasks.service';
+import { SixDialog } from '@six-group/ui-library-angular';
+import { SixMenuItemSelectedPayload } from '@six-group/ui-library';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.ShadowDom,
 })
-export class AppComponent implements AfterViewInit {
-  @ViewChild('dialog') dialog?: ElementRef<HTMLSixDialogElement>;
+export class AppComponent implements OnInit {
+  @ViewChild('dialog') dialog!: SixDialog;
 
-  onSixRootCollapsed = (e: Event) => {
-    if (isSixRootCollapsedEvent(e)) {
-      this.coreFacade.setLeftSidebar(!e.detail.collapsed);
-    }
-  };
+  leftSidebarOpen = true;
+  rightSidebarOpen = false;
+  tasks$!: Observable<Task[]>;
+  dialogContent: { label: string; text: any } = { label: '', text: '' };
 
-  constructor(readonly coreFacade: CoreFacade) {}
+  constructor(private tasksService: TasksService) {}
 
-  ngAfterViewInit() {
-    if (this.dialog) {
-      this.coreFacade.dialog = this.dialog.nativeElement;
-    }
+  ngOnInit() {
+    this.tasks$ = this.tasksService.fetchAll();
+  }
+
+  showEvent(event: CustomEvent<SixMenuItemSelectedPayload>) {
+    this.dialogContent = { label: event.type, text: event.detail };
+    return this.dialog.show();
+  }
+
+  closeDialog() {
+    return this.dialog.hide();
   }
 }

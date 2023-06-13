@@ -173,15 +173,15 @@ export declare interface SixCard extends Components.SixCard {}
 
 
 @ProxyCmp({
-  inputs: ['checked', 'disabled', 'errorOnBlur', 'errorText', 'indeterminate', 'invalid', 'label', 'name', 'required', 'value'],
-  methods: ['setFocus', 'removeFocus', 'reportValidity', 'checkValidity', 'setCustomValidity', 'reset']
+  inputs: ['checked', 'disabled', 'errorText', 'indeterminate', 'invalid', 'label', 'name', 'required', 'value'],
+  methods: ['setFocus', 'removeFocus', 'reset']
 })
 @Component({
   selector: 'six-checkbox',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['checked', 'disabled', 'errorOnBlur', 'errorText', 'indeterminate', 'invalid', 'label', 'name', 'required', 'value'],
+  inputs: ['checked', 'disabled', 'errorText', 'indeterminate', 'invalid', 'label', 'name', 'required', 'value'],
 })
 export class SixCheckbox {
   protected el: HTMLElement;
@@ -212,15 +212,15 @@ export declare interface SixCheckbox extends Components.SixCheckbox {
 
 
 @ProxyCmp({
-  inputs: ['allowedDates', 'clearable', 'closeOnSelect', 'containingElement', 'dateFormat', 'debounce', 'defaultDate', 'disabled', 'errorOnBlur', 'errorText', 'hoist', 'iconPosition', 'inline', 'label', 'locale', 'max', 'min', 'name', 'open', 'placeholder', 'placement', 'readonly', 'required', 'size', 'type', 'value'],
-  methods: ['reportValidity', 'checkValidity', 'setCustomValidity', 'reset', 'select']
+  inputs: ['allowedDates', 'clearable', 'closeOnSelect', 'containingElement', 'dateFormat', 'debounce', 'defaultDate', 'disabled', 'errorText', 'hoist', 'iconPosition', 'inline', 'invalid', 'label', 'locale', 'max', 'min', 'name', 'open', 'placeholder', 'placement', 'readonly', 'required', 'size', 'type', 'value'],
+  methods: ['setFocus', 'select']
 })
 @Component({
   selector: 'six-datepicker',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['allowedDates', 'clearable', 'closeOnSelect', 'containingElement', 'dateFormat', 'debounce', 'defaultDate', 'disabled', 'errorOnBlur', 'errorText', 'hoist', 'iconPosition', 'inline', 'label', 'locale', 'max', 'min', 'name', 'open', 'placeholder', 'placement', 'readonly', 'required', 'size', 'type', 'value'],
+  inputs: ['allowedDates', 'clearable', 'closeOnSelect', 'containingElement', 'dateFormat', 'debounce', 'defaultDate', 'disabled', 'errorText', 'hoist', 'iconPosition', 'inline', 'invalid', 'label', 'locale', 'max', 'min', 'name', 'open', 'placeholder', 'placement', 'readonly', 'required', 'size', 'type', 'value'],
 })
 export class SixDatepicker {
   protected el: HTMLElement;
@@ -591,50 +591,6 @@ export declare interface SixFooter extends Components.SixFooter {}
 
 
 @ProxyCmp({
-  inputs: ['novalidate'],
-  methods: ['getFormData', 'getFormControls', 'submit', 'checkValidity', 'reset']
-})
-@Component({
-  selector: 'six-form',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['novalidate'],
-})
-export class SixForm {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['six-form-submit', 'six-form-change', 'six-form-reset']);
-  }
-}
-
-
-import type { SixFormSubmitPayload as ISixFormSixFormSubmitPayload } from '@six-group/ui-library';
-import type { SixFormChangePayload as ISixFormSixFormChangePayload } from '@six-group/ui-library';
-import type { EmptyPayload as ISixFormEmptyPayload } from '@six-group/ui-library';
-
-export declare interface SixForm extends Components.SixForm {
-  /**
-   * Emitted when the form is submitted. This event will not be emitted if any form control inside of it is in an
-invalid state, unless the form has the `novalidate` attribute. Note that there is never a need to prevent this
-event, since it doen't send a GET or POST request like native forms. To "prevent" submission, use a conditional
-around the XHR request you use to submit the form's data with.
-   */
-  'six-form-submit': EventEmitter<CustomEvent<ISixFormSixFormSubmitPayload>>;
-  /**
-   * Emitted when the control's value changes.
-   */
-  'six-form-change': EventEmitter<CustomEvent<ISixFormSixFormChangePayload>>;
-  /**
-   * Emitted when the forms values are reset.
-   */
-  'six-form-reset': EventEmitter<CustomEvent<ISixFormEmptyPayload>>;
-}
-
-
-@ProxyCmp({
   inputs: ['disabled', 'helpText', 'label', 'required', 'size']
 })
 @Component({
@@ -755,15 +711,15 @@ export declare interface SixIconButton extends Components.SixIconButton {}
 
 
 @ProxyCmp({
-  inputs: ['autocapitalize', 'autocomplete', 'autocorrect', 'autofocus', 'clearable', 'disabled', 'errorOnBlur', 'errorText', 'helpText', 'inputmode', 'invalid', 'label', 'line', 'max', 'maxlength', 'min', 'minlength', 'name', 'pattern', 'pill', 'placeholder', 'readonly', 'required', 'size', 'spellcheck', 'step', 'togglePassword', 'type', 'value'],
-  methods: ['setFocus', 'removeFocus', 'select', 'setSelectionRange', 'setRangeText', 'reportValidity', 'checkValidity', 'setCustomValidity', 'getValidity', 'isValid', 'getValidationMessage', 'reset']
+  inputs: ['autocapitalize', 'autocomplete', 'autocorrect', 'autofocus', 'clearable', 'disabled', 'errorText', 'helpText', 'inputmode', 'invalid', 'label', 'line', 'max', 'maxlength', 'min', 'minlength', 'name', 'pattern', 'pill', 'placeholder', 'readonly', 'required', 'size', 'spellcheck', 'step', 'togglePassword', 'type', 'value'],
+  methods: ['setFocus', 'removeFocus', 'select', 'setSelectionRange', 'setRangeText']
 })
 @Component({
   selector: 'six-input',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['autocapitalize', 'autocomplete', 'autocorrect', 'autofocus', 'clearable', 'disabled', 'errorOnBlur', 'errorText', 'helpText', 'inputmode', 'invalid', 'label', 'line', 'max', 'maxlength', 'min', 'minlength', 'name', 'pattern', 'pill', 'placeholder', 'readonly', 'required', 'size', 'spellcheck', 'step', 'togglePassword', 'type', 'value'],
+  inputs: ['autocapitalize', 'autocomplete', 'autocorrect', 'autofocus', 'clearable', 'disabled', 'errorText', 'helpText', 'inputmode', 'invalid', 'label', 'line', 'max', 'maxlength', 'min', 'minlength', 'name', 'pattern', 'pill', 'placeholder', 'readonly', 'required', 'size', 'spellcheck', 'step', 'togglePassword', 'type', 'value'],
 })
 export class SixInput {
   protected el: HTMLElement;
@@ -1073,7 +1029,7 @@ export declare interface SixProgressRing extends Components.SixProgressRing {}
 
 @ProxyCmp({
   inputs: ['checked', 'disabled', 'invalid', 'name', 'value'],
-  methods: ['setFocus', 'removeFocus', 'reportValidity', 'checkValidity', 'setCustomValidity', 'reset']
+  methods: ['setFocus', 'removeFocus', 'reset']
 })
 @Component({
   selector: 'six-radio',
@@ -1111,15 +1067,15 @@ export declare interface SixRadio extends Components.SixRadio {
 
 
 @ProxyCmp({
-  inputs: ['disabled', 'errorOnBlur', 'errorText', 'helpText', 'invalid', 'label', 'max', 'min', 'name', 'required', 'step', 'tooltip', 'tooltipFormatter', 'value'],
-  methods: ['setFocus', 'removeFocus', 'setCustomValidity', 'reset']
+  inputs: ['disabled', 'errorText', 'helpText', 'invalid', 'label', 'max', 'min', 'name', 'required', 'step', 'tooltip', 'tooltipFormatter', 'value'],
+  methods: ['setFocus', 'removeFocus']
 })
 @Component({
   selector: 'six-range',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['disabled', 'errorOnBlur', 'errorText', 'helpText', 'invalid', 'label', 'max', 'min', 'name', 'required', 'step', 'tooltip', 'tooltipFormatter', 'value'],
+  inputs: ['disabled', 'errorText', 'helpText', 'invalid', 'label', 'max', 'min', 'name', 'required', 'step', 'tooltip', 'tooltipFormatter', 'value'],
 })
 export class SixRange {
   protected el: HTMLElement;
@@ -1210,15 +1166,15 @@ export declare interface SixSearchField extends Components.SixSearchField {
 
 
 @ProxyCmp({
-  inputs: ['asyncFilter', 'autocomplete', 'clearable', 'defaultValue', 'disabled', 'errorOnBlur', 'errorText', 'filter', 'filterDebounce', 'filterPlaceholder', 'helpText', 'hoist', 'inputDebounce', 'invalid', 'label', 'line', 'maxTagsVisible', 'multiple', 'name', 'options', 'pill', 'placeholder', 'required', 'size', 'value', 'virtualScroll'],
-  methods: ['reportValidity', 'checkValidity', 'setCustomValidity', 'reset']
+  inputs: ['asyncFilter', 'autocomplete', 'clearable', 'disabled', 'errorText', 'filter', 'filterDebounce', 'filterPlaceholder', 'helpText', 'hoist', 'inputDebounce', 'invalid', 'label', 'line', 'maxTagsVisible', 'multiple', 'name', 'options', 'pill', 'placeholder', 'required', 'size', 'value', 'virtualScroll'],
+  methods: ['setFocus']
 })
 @Component({
   selector: 'six-select',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['asyncFilter', 'autocomplete', 'clearable', 'defaultValue', 'disabled', 'errorOnBlur', 'errorText', 'filter', 'filterDebounce', 'filterPlaceholder', 'helpText', 'hoist', 'inputDebounce', 'invalid', 'label', 'line', 'maxTagsVisible', 'multiple', 'name', 'options', 'pill', 'placeholder', 'required', 'size', 'value', 'virtualScroll'],
+  inputs: ['asyncFilter', 'autocomplete', 'clearable', 'disabled', 'errorText', 'filter', 'filterDebounce', 'filterPlaceholder', 'helpText', 'hoist', 'inputDebounce', 'invalid', 'label', 'line', 'maxTagsVisible', 'multiple', 'name', 'options', 'pill', 'placeholder', 'required', 'size', 'value', 'virtualScroll'],
 })
 export class SixSelect {
   protected el: HTMLElement;
@@ -1386,15 +1342,15 @@ export declare interface SixStageIndicator extends Components.SixStageIndicator 
 
 
 @ProxyCmp({
-  inputs: ['checked', 'disabled', 'invalid', 'name', 'required', 'value'],
-  methods: ['setFocus', 'removeFocus', 'reportValidity', 'checkValidity', 'setCustomValidity', 'reset']
+  inputs: ['checked', 'disabled', 'errorText', 'invalid', 'label', 'name', 'required', 'value'],
+  methods: ['setFocus', 'removeFocus']
 })
 @Component({
   selector: 'six-switch',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['checked', 'disabled', 'invalid', 'name', 'required', 'value'],
+  inputs: ['checked', 'disabled', 'errorText', 'invalid', 'label', 'name', 'required', 'value'],
 })
 export class SixSwitch {
   protected el: HTMLElement;
@@ -1544,15 +1500,15 @@ export declare interface SixTag extends Components.SixTag {
 
 
 @ProxyCmp({
-  inputs: ['autocapitalize', 'autocomplete', 'autocorrect', 'autofocus', 'disabled', 'errorOnBlur', 'errorText', 'helpText', 'inputmode', 'invalid', 'label', 'maxlength', 'minlength', 'name', 'placeholder', 'readonly', 'required', 'resize', 'rows', 'size', 'spellcheck', 'value'],
-  methods: ['setFocus', 'removeFocus', 'select', 'setSelectionRange', 'setRangeText', 'reportValidity', 'checkValidity', 'setCustomValidity', 'reset']
+  inputs: ['autocapitalize', 'autocomplete', 'autocorrect', 'autofocus', 'disabled', 'errorText', 'helpText', 'inputmode', 'invalid', 'label', 'maxlength', 'minlength', 'name', 'placeholder', 'readonly', 'required', 'resize', 'rows', 'size', 'spellcheck', 'value'],
+  methods: ['setFocus', 'removeFocus', 'select', 'setSelectionRange', 'setRangeText']
 })
 @Component({
   selector: 'six-textarea',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['autocapitalize', 'autocomplete', 'autocorrect', 'autofocus', 'disabled', 'errorOnBlur', 'errorText', 'helpText', 'inputmode', 'invalid', 'label', 'maxlength', 'minlength', 'name', 'placeholder', 'readonly', 'required', 'resize', 'rows', 'size', 'spellcheck', 'value'],
+  inputs: ['autocapitalize', 'autocomplete', 'autocorrect', 'autofocus', 'disabled', 'errorText', 'helpText', 'inputmode', 'invalid', 'label', 'maxlength', 'minlength', 'name', 'placeholder', 'readonly', 'required', 'resize', 'rows', 'size', 'spellcheck', 'value'],
 })
 export class SixTextarea {
   protected el: HTMLElement;
@@ -1622,15 +1578,15 @@ export declare interface SixTile extends Components.SixTile {
 
 
 @ProxyCmp({
-  inputs: ['clearable', 'debounce', 'defaultTime', 'disabled', 'errorOnBlur', 'errorText', 'format', 'hoist', 'iconPosition', 'inline', 'interval', 'label', 'name', 'open', 'placeholder', 'placement', 'readonly', 'required', 'separator', 'size', 'timeout', 'value'],
-  methods: ['reportValidity', 'checkValidity', 'setCustomValidity', 'reset']
+  inputs: ['clearable', 'debounce', 'defaultTime', 'disabled', 'errorText', 'format', 'hoist', 'iconPosition', 'inline', 'interval', 'invalid', 'label', 'name', 'open', 'placeholder', 'placement', 'readonly', 'required', 'separator', 'size', 'timeout', 'value'],
+  methods: ['setFocus']
 })
 @Component({
   selector: 'six-timepicker',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['clearable', 'debounce', 'defaultTime', 'disabled', 'errorOnBlur', 'errorText', 'format', 'hoist', 'iconPosition', 'inline', 'interval', 'label', 'name', 'open', 'placeholder', 'placement', 'readonly', 'required', 'separator', 'size', 'timeout', 'value'],
+  inputs: ['clearable', 'debounce', 'defaultTime', 'disabled', 'errorText', 'format', 'hoist', 'iconPosition', 'inline', 'interval', 'invalid', 'label', 'name', 'open', 'placeholder', 'placement', 'readonly', 'required', 'separator', 'size', 'timeout', 'value'],
 })
 export class SixTimepicker {
   protected el: HTMLElement;

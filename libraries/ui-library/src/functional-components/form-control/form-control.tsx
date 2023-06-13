@@ -28,11 +28,8 @@ export interface FormControlProps {
   /** The error text id, used to map the input to the help text */
   errorTextId?: string;
 
-  /** The error text (if the error-text slot isn't used) */
+  /** The error text */
   errorText?: string;
-
-  /** Whether a error text slot has been provided. */
-  hasErrorTextSlot?: boolean;
 
   /** Set to true to disable the input. */
   disabled?: boolean;
@@ -50,8 +47,6 @@ export interface FormControlProps {
 const FormControl = (props: FormControlProps, children: VNode[]) => {
   const hasLabel = props.label != null && props.label.trim() !== '' ? true : props.hasLabelSlot ?? false;
   const hasHelpText = props.helpText != null && props.helpText.trim() !== '' ? true : props.hasHelpTextSlot ?? false;
-  /** ErrorTextAttribute has precedence if non-empty value is provided or if slot is not set */
-  const useErrorTextAttribute = (props.errorText && props.errorText !== '') || !props.hasErrorTextSlot;
 
   return (
     <div
@@ -90,7 +85,7 @@ const FormControl = (props: FormControlProps, children: VNode[]) => {
         class="form-control__error-text"
         aria-hidden={props.displayError ? 'false' : 'true'}
       >
-        {useErrorTextAttribute ? props.errorText : <slot name="error-text" />}
+        {props.errorText}
       </div>
 
       <div

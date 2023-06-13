@@ -1,59 +1,7 @@
 import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
 import { reactOutputTarget } from '@stencil/react-output-target';
-import { ComponentModelConfig, vueOutputTarget } from '@stencil/vue-output-target';
 import { angularOutputTarget } from '@stencil/angular-output-target';
-
-/**
- * Vue Component Models
- */
-const vueComponentModels: ComponentModelConfig[] = [
-  {
-    elements: ['six-checkbox'],
-    event: 'six-checkbox-change',
-    targetAttr: 'checked',
-  },
-  {
-    elements: ['six-datepicker'],
-    event: 'six-datepicker-select',
-    targetAttr: 'value',
-  },
-  {
-    elements: ['six-input'],
-    event: 'six-input-change',
-    targetAttr: 'value',
-  },
-  {
-    elements: ['six-radio'],
-    event: 'six-radio-change',
-    targetAttr: 'value',
-  },
-  {
-    elements: ['six-range'],
-    event: 'six-range-change',
-    targetAttr: 'value',
-  },
-  {
-    elements: ['six-search-field'],
-    event: 'six-search-field-change',
-    targetAttr: 'value',
-  },
-  {
-    elements: ['six-select'],
-    event: 'six-select-change',
-    targetAttr: 'value',
-  },
-  {
-    elements: ['six-switch'],
-    event: 'six-switch-change',
-    targetAttr: 'checked',
-  },
-  {
-    elements: ['six-textarea'],
-    event: 'six-textarea-change',
-    targetAttr: 'value',
-  },
-];
 
 export const config: Config = {
   namespace: 'ui-library',
@@ -67,12 +15,6 @@ export const config: Config = {
     reactOutputTarget({
       componentCorePackage: '@six-group/ui-library',
       proxiesFile: '../ui-library-react/src/components.ts',
-      includeDefineCustomElements: true,
-    }),
-    vueOutputTarget({
-      componentCorePackage: '@six-group/ui-library',
-      proxiesFile: '../ui-library-vue/src/components.ts',
-      componentModels: vueComponentModels,
       includeDefineCustomElements: true,
     }),
     angularOutputTarget({
