@@ -13,12 +13,12 @@ import {
   now,
   PointerDate,
   rangeAround,
+  removeTime,
   seconds,
   toDate,
   year,
 } from '../../utils/date-util';
 import { EventListeners } from '../../utils/event-listeners';
-import { isNil } from '../../utils/type-check';
 import { debounce, debounceEvent, DEFAULT_DEBOUNCE_FAST } from '../../utils/execution-control';
 import { hasSlot } from '../../utils/slot';
 import { EmptyPayload } from '../../utils/types';
@@ -140,8 +140,8 @@ export class SixDatepicker {
   /** Datepicker size. */
   @Prop() size: 'small' | 'medium' | 'large' = 'medium';
 
-  /** Set to true to make the input a required field. */
-  @Prop({ reflect: true }) required = false;
+  /** Set to true to show an asterisk beneath the label. */
+  @Prop() required = false;
 
   /**
    * The date to defines where the datepicker popup starts. The prop accepts ISO 8601 date strings (YYYY-MM-DD).
@@ -157,6 +157,15 @@ export class SixDatepicker {
    * The value of the form field, which accepts a date object.
    */
   @Prop({ mutable: true }) value?: Date;
+
+  /** The label text. */
+  @Prop() label = '';
+
+  /** The error message shown, if `invalid` is set to true.  */
+  @Prop() errorText = '';
+
+  /** If this property is set to true and an error message is provided by `errorText`, the error message is displayed.  */
+  @Prop({ reflect: true }) invalid = false;
 
   /** The dropdown will close when the user interacts outside of this element (e.g. clicking). */
   @Prop() containingElement?: HTMLElement;
@@ -180,15 +189,6 @@ export class SixDatepicker {
    */
   @Prop() debounce = DEFAULT_DEBOUNCE_FAST;
 
-  /** Set to display the error text on blur and not when typing */
-  @Prop() errorOnBlur = false;
-
-  /** The input's error text. Alternatively, you can use the error-text slot. */
-  @Prop() errorText = '';
-
-  /** The input's label. Alternatively, you can use the label slot. */
-  @Prop() label = '';
-
   /** The input's name attribute. */
   @Prop({ reflect: true }) name = '';
 
@@ -209,6 +209,13 @@ export class SixDatepicker {
     this.sixSelect = debounceEvent(this.sixSelect, this.debounce);
   }
 
+  @Watch('invalid')
+  protected invalidChanged(invalid: boolean) {
+    if (this.inputElement) {
+      this.inputElement.invalid = invalid;
+    }
+  }
+
   /**
    * Update the native input element when the value changes
    */
@@ -218,7 +225,6 @@ export class SixDatepicker {
       console.warn('invalid date value: ', this.value);
       this.value = undefined;
     }
-
     this.selectedDate = this.value;
     this.updatePointerDates();
     this.sixSelect.emit(this.value);
@@ -252,8 +258,6 @@ export class SixDatepicker {
     this.moveOpenHoistedPopup();
   }
 
-  private defaultValue?: Date;
-
   private moveOpenHoistedPopup() {
     movePopup(this.hoist, this.open, this.popup, this.inputElement, this.wrapper, MIN_POPUP_HEIGHT);
   }
@@ -267,32 +271,10 @@ export class SixDatepicker {
     return getFirstDayOfTheWeek(date);
   }
 
-  /** Checks for validity and shows the browser's validation message if the control is invalid. */
+  /** Sets focus on the datepickers input. */
   @Method()
-  async reportValidity() {
-    return this.inputElement?.reportValidity();
-  }
-
-  /** Checks for validity. */
-  @Method()
-  async checkValidity() {
-    return this.inputElement?.checkValidity();
-  }
-
-  /** Sets a custom validation message. If `message` is not empty, the field will be considered invalid. */
-  @Method()
-  async setCustomValidity(message: string) {
-    await this.inputElement?.setCustomValidity(message);
-  }
-
-  /** Resets the formcontrol */
-  @Method()
-  async reset() {
-    this.value = this.defaultValue;
-    if (this.inputElement != null) {
-      this.inputElement.value = formatDate(this.defaultValue, this.dateFormat);
-      await this.inputElement.reset();
-    }
+  async setFocus(options?: FocusOptions) {
+    this.inputElement?.setFocus(options);
   }
 
   get calendarGrid() {
@@ -467,16 +449,14 @@ export class SixDatepicker {
     if (this.selectedDate !== undefined && this.selectedDate !== null) {
       return this.selectedDate;
     }
-    if (isNil(this.defaultDate)) {
-      return now();
-    } else if (this.defaultDate != null) {
+    if (this.defaultDate == null) {
+      return this.type === 'date' ? removeTime(now()) : now();
+    } else {
       return toDate(this.defaultDate, this.dateFormat);
     }
-    return undefined;
   }
 
   private updateValue(newDate?: Date) {
-    this.displayCustomMessage(true);
     this.updateIfChanged(newDate);
   }
 
@@ -484,7 +464,6 @@ export class SixDatepicker {
     if (this.value?.getTime() === newDate?.getTime()) {
       return;
     }
-
     this.value = newDate;
   }
 
@@ -563,20 +542,8 @@ export class SixDatepicker {
       return;
     }
 
-    if (this.min && this.min.getTime() > inputValueDate.getTime()) {
-      return;
-    }
-
-    if (this.max && this.max.getTime() < inputValueDate.getTime()) {
-      return;
-    }
-
     this.updateIfChanged(inputValueDate);
-
     const datesOnly = inputValue.replace(/[^\d]/g, '');
-
-    let isDateValid = inputValue !== '';
-
     if (datesOnly.length >= 6) {
       const date = toDate(inputValue, this.dateFormat);
       const dateAsString = formatDate(date, this.dateFormat);
@@ -584,10 +551,8 @@ export class SixDatepicker {
         this.selectedDate = toDate(dateAsString, this.dateFormat);
         this.updatePointerDates();
         this.updateValue(this.selectedDate);
-        isDateValid = true;
       }
     }
-    this.displayCustomMessage(isDateValid);
   };
 
   private handleOnBlur = (event: Event) => {
@@ -610,7 +575,6 @@ export class SixDatepicker {
   };
 
   componentWillLoad() {
-    this.defaultValue = this.value;
     this.selectedDate = this.value;
     this.updatePointerDates();
     this.updateValue(this.value);
@@ -770,19 +734,12 @@ export class SixDatepicker {
           label={this.label}
           required={this.required}
           error-text={this.errorText}
-          error-on-blur={this.errorOnBlur}
           onClick={() => this.openCalendar()}
           size={this.size}
           class={{ 'input--empty': this.value == null }}
         >
           {this.renderCustomIcon()}
           {this.renderClearable()}
-
-          {hasSlot(this.host, 'error-text') ? (
-            <span slot="error-text">
-              <slot name="error-text" />
-            </span>
-          ) : null}
           {hasSlot(this.host, 'label') ? (
             <span slot="label">
               <slot name="label" />
@@ -835,20 +792,13 @@ export class SixDatepicker {
     adjustPopupForSmallScreens(this.popup);
   }
 
-  disconnectedCallback() {
-    this.eventListeners.removeAll();
+  connectedCallback() {
+    this.eventListeners.forward('six-datepicker-select', 'change', this.host);
+    this.eventListeners.forward('six-datepicker-blur', 'blur', this.host);
   }
 
-  private displayCustomMessage(valid: boolean) {
-    if (this.inputElement == null) {
-      return;
-    }
-    if (valid) {
-      void this.setCustomValidity('');
-    } else {
-      const message = this.errorText != null ? this.errorText : 'Invalid date format';
-      void this.setCustomValidity(message);
-    }
+  disconnectedCallback() {
+    this.eventListeners.removeAll();
   }
 
   private static getCurrentDateAsPointer(): PointerDate {

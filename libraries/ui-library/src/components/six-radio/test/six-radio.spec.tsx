@@ -8,7 +8,7 @@ describe('six-radio', () => {
       html: `<six-radio></six-radio>`,
     });
     expect(page.root).toEqualHtml(`
-      <six-radio>
+      <six-radio value="on">
         <mock:shadow-root>
           <label class="radio" htmlfor="radio-1" part="base">
             <span class="radio__control" part="control">
@@ -38,7 +38,7 @@ describe('six-radio', () => {
       html: `<six-radio checked></six-radio>`,
     });
     expect(page.root).toEqualHtml(`
-      <six-radio checked="">
+      <six-radio checked="" value="on">
         <mock:shadow-root>
           <label class="radio radio--checked" htmlfor="radio-2" part="base">
             <span class="radio__control" part="control">

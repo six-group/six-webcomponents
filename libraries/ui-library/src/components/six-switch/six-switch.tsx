@@ -1,5 +1,7 @@
-import { Component, Event, EventEmitter, h, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Method, Prop, State, Watch } from '@stencil/core';
 import { EmptyPayload } from '../../utils/types';
+import { EventListeners } from '../../utils/event-listeners';
+import FormControl from '../../functional-components/form-control/form-control';
 
 let id = 0;
 
@@ -25,7 +27,12 @@ let id = 0;
 export class SixSwitch {
   private switchId = `switch-${++id}`;
   private labelId = `switch-label-${id}`;
+  private errorTextId = `input-error-text-${id}`;
+
   private inputElement?: HTMLInputElement;
+  private eventListeners = new EventListeners();
+
+  @Element() host!: HTMLSixSwitchElement;
 
   @State() hasFocus = false;
 
@@ -38,14 +45,20 @@ export class SixSwitch {
   /** Set to true to disable the switch. */
   @Prop() disabled = false;
 
-  /** Set to true to make the switch a required field. */
+  /** Set to true to show an asterisk beneath the label. */
   @Prop() required = false;
 
   /** Set to true to draw the switch in a checked state. */
   @Prop({ mutable: true, reflect: true }) checked = false;
 
-  /** This will be true when the control is in an invalid state. Validity is determined by the `required` prop. */
-  @Prop({ mutable: true, reflect: true }) invalid = false;
+  /** The label text. */
+  @Prop() label = '';
+
+  /** The error message shown, if `invalid` is set to true.  */
+  @Prop() errorText = '';
+
+  /** If this property is set to true and an error message is provided by `errorText`, the error message is displayed.  */
+  @Prop({ reflect: true }) invalid = false;
 
   @Watch('checked')
   handleCheckedChange() {
@@ -65,11 +78,14 @@ export class SixSwitch {
   /** Emitted when the control gains focus. */
   @Event({ eventName: 'six-switch-focus' }) sixFocus!: EventEmitter<EmptyPayload>;
 
-  /** default value the switch will be reverted to when reset is executed */
-  private defaultValue = '';
+  connectedCallback() {
+    this.eventListeners.forward('six-switch-change', 'change', this.host);
+    this.eventListeners.forward('six-switch-blur', 'blur', this.host);
+    this.eventListeners.forward('six-switch-focus', 'focus', this.host);
+  }
 
-  componentWillLoad() {
-    this.defaultValue = this.value;
+  disconnectedCallback() {
+    this.eventListeners.removeAll();
   }
 
   /** Sets focus on the switch. */
@@ -82,35 +98,6 @@ export class SixSwitch {
   @Method()
   async removeFocus() {
     this.inputElement?.blur();
-  }
-
-  /** Checks for validity and shows the browser's validation message if the control is invalid. */
-  @Method()
-  async reportValidity() {
-    return this.inputElement?.reportValidity();
-  }
-
-  /** Checks for validity. */
-  @Method()
-  async checkValidity() {
-    return this.inputElement?.validity.valid;
-  }
-
-  /** Sets a custom validation message. If `message` is not empty, the field will be considered invalid. */
-  @Method()
-  async setCustomValidity(message: string) {
-    if (this.inputElement != null) {
-      this.inputElement.setCustomValidity(message);
-      this.invalid = !this.inputElement.checkValidity();
-    }
-  }
-
-  /** Resets the formcontrol */
-  @Method()
-  async reset() {
-    this.value = this.defaultValue;
-    this.inputElement?.setCustomValidity('');
-    this.invalid = false;
   }
 
   private handleClick = () => {
@@ -149,43 +136,56 @@ export class SixSwitch {
 
   render() {
     return (
-      <label
-        part="base"
-        htmlFor={this.switchId}
-        class={{
-          switch: true,
-          'switch--checked': this.checked,
-          'switch--disabled': this.disabled,
-          'switch--focused': this.hasFocus,
-        }}
-        onMouseDown={this.handleMouseDown}
+      <FormControl
+        inputId={this.switchId}
+        label={this.label}
+        labelId={this.labelId}
+        hasLabelSlot={false}
+        errorTextId={this.errorTextId}
+        errorText={this.errorText}
+        size="medium"
+        disabled={this.disabled}
+        required={this.required}
+        displayError={this.invalid}
       >
-        <span part="control" class="switch__control">
-          <span part="thumb" class="switch__thumb" />
+        <label
+          part="base"
+          htmlFor={this.switchId}
+          class={{
+            switch: true,
+            'switch--checked': this.checked,
+            'switch--disabled': this.disabled,
+            'switch--focused': this.hasFocus,
+          }}
+          onMouseDown={this.handleMouseDown}
+        >
+          <span part="control" class="switch__control">
+            <span part="thumb" class="switch__thumb" />
 
-          <input
-            ref={(el) => (this.inputElement = el)}
-            id={this.switchId}
-            type="checkbox"
-            name={this.name}
-            value={this.value}
-            checked={this.checked}
-            disabled={this.disabled}
-            required={this.required}
-            role="switch"
-            aria-checked={this.checked ? 'true' : 'false'}
-            aria-labelledby={this.labelId}
-            onClick={this.handleClick}
-            onBlur={this.handleBlur}
-            onFocus={this.handleFocus}
-            onKeyDown={this.handleKeyDown}
-          />
-        </span>
+            <input
+              ref={(el) => (this.inputElement = el)}
+              id={this.switchId}
+              type="checkbox"
+              name={this.name}
+              value={this.value}
+              checked={this.checked}
+              disabled={this.disabled}
+              required={this.required}
+              role="switch"
+              aria-checked={this.checked ? 'true' : 'false'}
+              aria-labelledby={this.labelId}
+              onClick={this.handleClick}
+              onBlur={this.handleBlur}
+              onFocus={this.handleFocus}
+              onKeyDown={this.handleKeyDown}
+            />
+          </span>
 
-        <span part="label" id={this.labelId} class="switch__label">
-          <slot />
-        </span>
-      </label>
+          <span part="label" id={this.labelId} class="switch__label">
+            <slot />
+          </span>
+        </label>
+      </FormControl>
     );
   }
 }

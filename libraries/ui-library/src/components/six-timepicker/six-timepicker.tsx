@@ -114,22 +114,22 @@ export class SixTimepicker {
   /** Timepicker size. */
   @Prop() size: 'small' | 'medium' | 'large' = 'medium';
 
-  /** Set to true to make the input a required field. */
-  @Prop({ reflect: true }) required = false;
+  /** Set to true to show an asterisk beneath the label. */
+  @Prop() required = false;
 
   /**
    * The placeholder defines what text to be shown on the input element
    */
   @Prop() placeholder?: string;
 
-  /** Set to display the error text on blur and not when typing */
-  @Prop() errorOnBlur = false;
-
   /** The input's error text. Alternatively, you can use the error-text slot. */
   @Prop() errorText = '';
 
   /** The input's label. Alternatively, you can use the label slot. */
   @Prop() label = '';
+
+  /** If this property is set to true and an error message is provided by `errorText`, the error message is displayed.  */
+  @Prop({ reflect: true }) invalid = false;
 
   /** The input's name attribute. */
   @Prop({ reflect: true }) name = '';
@@ -208,32 +208,17 @@ export class SixTimepicker {
     this.updateValue();
   }
 
-  /** Checks for validity and shows the browser's validation message if the control is invalid. */
-  @Method()
-  async reportValidity() {
-    return this.inputElement?.reportValidity();
-  }
-
-  /** Checks for validity. */
-  @Method()
-  async checkValidity() {
-    return this.inputElement?.checkValidity();
-  }
-
-  /** Sets a custom validation message. If `message` is not empty, the field will be considered invalid. */
-  @Method()
-  async setCustomValidity(message: string) {
-    await this.inputElement?.setCustomValidity(message);
-  }
-
-  /** Resets the formcontrol */
-  @Method()
-  async reset() {
-    this.popupValue = this.defaultValue;
-    if (this.inputElement != null) {
-      this.inputElement.value = createTimeString(this.popupValue, this.format);
-      await this.inputElement.reset();
+  @Watch('invalid')
+  protected invalidChanged(invalid: boolean) {
+    if (this.inputElement) {
+      this.inputElement.invalid = invalid;
     }
+  }
+
+  /** Sets focus on the datepickers input. */
+  @Method()
+  async setFocus(options?: FocusOptions) {
+    this.inputElement?.setFocus(options);
   }
 
   /*
@@ -242,11 +227,12 @@ export class SixTimepicker {
    */
   @State() private popupValue: Time = {};
 
-  private defaultValue: Time = {};
+  connectedCallback() {
+    this.eventListeners.forward('six-timepicker-change', 'change', this.host);
+  }
 
   componentWillLoad() {
     this.updateValue();
-    this.defaultValue = this.popupValue;
 
     if (this.inline) {
       this.open = true;
@@ -277,6 +263,7 @@ export class SixTimepicker {
 
         // emit empty event if time string is invalid
         if (!isValidTimeString(inputElement.value, this.format)) {
+          this.value = inputElement.value;
           this.sixChange.emit({
             value: {},
             valueAsString: '',
@@ -574,7 +561,6 @@ export class SixTimepicker {
           label={this.label}
           required={this.required}
           error-text={this.errorText}
-          error-on-blur={this.errorOnBlur}
           class={{
             'input--empty': this.value === '',
             'input--hide': this.inline,
@@ -582,11 +568,6 @@ export class SixTimepicker {
         >
           {this.renderCustomIcon()}
           {this.renderClearable()}
-          {hasSlot(this.host, 'error-text') ? (
-            <span slot="error-text">
-              <slot name="error-text" />
-            </span>
-          ) : null}
           {hasSlot(this.host, 'label') ? (
             <span slot="label">
               <slot name="label" />

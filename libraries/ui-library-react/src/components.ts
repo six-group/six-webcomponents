@@ -25,7 +25,6 @@ export const SixFileList = /*@__PURE__*/createReactComponent<JSX.SixFileList, HT
 export const SixFileListItem = /*@__PURE__*/createReactComponent<JSX.SixFileListItem, HTMLSixFileListItemElement>('six-file-list-item');
 export const SixFileUpload = /*@__PURE__*/createReactComponent<JSX.SixFileUpload, HTMLSixFileUploadElement>('six-file-upload');
 export const SixFooter = /*@__PURE__*/createReactComponent<JSX.SixFooter, HTMLSixFooterElement>('six-footer');
-export const SixForm = /*@__PURE__*/createReactComponent<JSX.SixForm, HTMLSixFormElement>('six-form');
 export const SixGroupLabel = /*@__PURE__*/createReactComponent<JSX.SixGroupLabel, HTMLSixGroupLabelElement>('six-group-label');
 export const SixHeader = /*@__PURE__*/createReactComponent<JSX.SixHeader, HTMLSixHeaderElement>('six-header');
 export const SixIcon = /*@__PURE__*/createReactComponent<JSX.SixIcon, HTMLSixIconElement>('six-icon');

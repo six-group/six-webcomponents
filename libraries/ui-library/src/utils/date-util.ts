@@ -119,6 +119,8 @@ export const i18nDate = {
  */
 export const now = () => new Date();
 
+export const removeTime = (date: Date) => new Date(date.getFullYear(), date.getMonth(), date.getDate());
+
 export const pad = (value: number) => String(value).padStart(2, '0');
 
 /**

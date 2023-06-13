@@ -7,22 +7,21 @@
 
 ## Properties
 
-| Property           | Attribute       | Description                                                                                                                                                  | Type                          | Default                               |
-| ------------------ | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------- | ------------------------------------- |
-| `disabled`         | `disabled`      | Set to true to disable the input.                                                                                                                            | `boolean`                     | `false`                               |
-| `errorOnBlur`      | `error-on-blur` | Set to display the error text on blur and not when typing                                                                                                    | `boolean`                     | `false`                               |
-| `errorText`        | `error-text`    | The input's error text. Alternatively, you can use the error-text slot.                                                                                      | `string`                      | `''`                                  |
-| `helpText`         | `help-text`     | The range's help text. Alternatively, you can use the help-text slot.                                                                                        | `string`                      | `''`                                  |
-| `invalid`          | `invalid`       | This will be true when the control is in an invalid state. Validity in range inputs is determined by the message provided by the `setCustomValidity` method. | `boolean`                     | `false`                               |
-| `label`            | `label`         | The range's label. Alternatively, you can use the label slot.                                                                                                | `string`                      | `''`                                  |
-| `max`              | `max`           | The input's max attribute.                                                                                                                                   | `number`                      | `100`                                 |
-| `min`              | `min`           | The input's min attribute.                                                                                                                                   | `number`                      | `0`                                   |
-| `name`             | `name`          | The input's name attribute.                                                                                                                                  | `string`                      | `''`                                  |
-| `required`         | `required`      | Set to true to make the input a required field.                                                                                                              | `boolean`                     | `false`                               |
-| `step`             | `step`          | The input's step attribute.                                                                                                                                  | `number`                      | `1`                                   |
-| `tooltip`          | `tooltip`       | The preferred placedment of the tooltip.                                                                                                                     | `"bottom" \| "none" \| "top"` | `'top'`                               |
-| `tooltipFormatter` | --              | A function used to format the tooltip's value.                                                                                                               | `(value: number) => string`   | `(value: number) => value.toString()` |
-| `value`            | `value`         | The input's value attribute.                                                                                                                                 | `number`                      | `0`                                   |
+| Property           | Attribute    | Description                                                                                                      | Type                          | Default                               |
+| ------------------ | ------------ | ---------------------------------------------------------------------------------------------------------------- | ----------------------------- | ------------------------------------- |
+| `disabled`         | `disabled`   | Set to true to disable the input.                                                                                | `boolean`                     | `false`                               |
+| `errorText`        | `error-text` | The error message shown, if `invalid` is set to true.                                                            | `string`                      | `''`                                  |
+| `helpText`         | `help-text`  | The range's help text. Alternatively, you can use the help-text slot.                                            | `string`                      | `''`                                  |
+| `invalid`          | `invalid`    | If this property is set to true and an error message is provided by `errorText`, the error message is displayed. | `boolean`                     | `false`                               |
+| `label`            | `label`      | The label text.                                                                                                  | `string`                      | `''`                                  |
+| `max`              | `max`        | The input's max attribute.                                                                                       | `number`                      | `100`                                 |
+| `min`              | `min`        | The input's min attribute.                                                                                       | `number`                      | `0`                                   |
+| `name`             | `name`       | The input's name attribute.                                                                                      | `string`                      | `''`                                  |
+| `required`         | `required`   | Set to true to show an asterisk beneath the label.                                                               | `boolean`                     | `false`                               |
+| `step`             | `step`       | The input's step attribute.                                                                                      | `number`                      | `1`                                   |
+| `tooltip`          | `tooltip`    | The preferred placedment of the tooltip.                                                                         | `"bottom" \| "none" \| "top"` | `'top'`                               |
+| `tooltipFormatter` | --           | A function used to format the tooltip's value.                                                                   | `(value: number) => string`   | `(value: number) => value.toString()` |
+| `value`            | `value`      | The input's value attribute.                                                                                     | `number`                      | `0`                                   |
 
 
 ## Events
@@ -39,26 +38,6 @@
 ### `removeFocus() => Promise<void>`
 
 Removes focus from the input.
-
-#### Returns
-
-Type: `Promise<void>`
-
-
-
-### `reset() => Promise<void>`
-
-Resets the formcontrol
-
-#### Returns
-
-Type: `Promise<void>`
-
-
-
-### `setCustomValidity(message: string) => Promise<void>`
-
-Sets a custom validation message. If `message` is not empty, the field will be considered invalid.
 
 #### Returns
 

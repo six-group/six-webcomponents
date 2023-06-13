@@ -1,6 +1,5 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { SixSidebar, SixSidebarItemGroup } from '@six-group/ui-library-react/dist/components';
 
 interface ActiveLinkProps {
   to: string;
@@ -10,7 +9,7 @@ interface ActiveLinkProps {
 
 const ActiveLink = ({ to, icon, name }: ActiveLinkProps) => (
   <NavLink to={to} style={{ textDecoration: 'none' }}>
-    {({ isActive }) => <SixSidebarItemGroup icon={icon} name={name} open={isActive} />}
+    {({ isActive }) => <six-sidebar-item-group icon={icon} name={name} open={isActive} />}
   </NavLink>
 );
 
@@ -20,10 +19,10 @@ interface LeftSidebarProps {
 
 const LeftSidebar = ({ visible }: LeftSidebarProps) => {
   return (
-    <SixSidebar slot="left-sidebar" position="left" open={visible}>
+    <six-sidebar slot="left-sidebar" position="left" open={visible}>
       <ActiveLink to="/" icon="home" name="Home" />
       <ActiveLink to="/users" icon="supervisor_account" name="Users" />
-    </SixSidebar>
+    </six-sidebar>
   );
 };
 

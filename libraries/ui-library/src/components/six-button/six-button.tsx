@@ -1,6 +1,7 @@
-import { Component, Element, h, Method, Prop, State, Event, EventEmitter } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Method, Prop, State } from '@stencil/core';
 import { hasSlot } from '../../utils/slot';
 import { EmptyPayload } from '../../utils/types';
+import { submitForm } from '../../utils/form';
 
 /**
  * @since 1.0
@@ -119,6 +120,12 @@ export class SixButton {
     if (this.disabled || this.loading) {
       event.preventDefault();
       event.stopPropagation();
+      return;
+    }
+
+    if (this.submit) {
+      event.preventDefault();
+      submitForm(this.host);
     }
   };
 

@@ -33,8 +33,6 @@ export class SixTextarea {
   private helpTextId = `textarea-help-text-${id}`;
   private errorTextId = `input-error-text-${id}`;
   private nativeTextarea?: HTMLTextAreaElement;
-  private customErrorText = '';
-  private customValidation = false;
   private eventListeners = new EventListeners();
   private resizeObserver?: ResizeObserver;
 
@@ -42,7 +40,6 @@ export class SixTextarea {
 
   @State() hasFocus = false;
   @State() hasHelpTextSlot = false;
-  @State() hasErrorTextSlot = false;
   @State() hasLabelSlot = false;
 
   /** The textarea's size. */
@@ -54,14 +51,8 @@ export class SixTextarea {
   /** The textarea's value attribute. */
   @Prop({ mutable: true, reflect: true }) value = '';
 
-  /** The textarea's label. Alternatively, you can use the label slot. */
-  @Prop() label = '';
-
   /** The textarea's help text. Alternatively, you can use the help-text slot. */
   @Prop() helpText = '';
-
-  /** The textarea's error text. Alternatively, you can use the error-text slot. */
-  @Prop() errorText = '';
 
   /** The textarea's placeholder text. */
   @Prop() placeholder?: string;
@@ -84,14 +75,17 @@ export class SixTextarea {
   /** The maximum length of input that will be considered valid. */
   @Prop({ reflect: true }) maxlength?: number;
 
-  /** The textarea's required attribute. */
-  @Prop({ reflect: true }) required = false;
+  /** Set to true to show an asterisk beneath the label. */
+  @Prop() required = false;
 
-  /**
-   * This will be true when the control is in an invalid state. Validity is determined by props such as `required`,
-   * `minlength`, and `maxlength` using the browser's constraint validation API.
-   */
-  @Prop({ mutable: true, reflect: true }) invalid = false;
+  /** The label text. */
+  @Prop() label = '';
+
+  /** The error message shown, if `invalid` is set to true.  */
+  @Prop() errorText = '';
+
+  /** If this property is set to true and an error message is provided by `errorText`, the error message is displayed.  */
+  @Prop({ reflect: true }) invalid = false;
 
   /** The textarea's autocaptialize attribute. */
   @Prop() autocapitalize = 'off';
@@ -110,9 +104,6 @@ export class SixTextarea {
 
   /** The textarea's inputmode attribute. */
   @Prop() inputmode?: 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
-
-  /** Set to display the error text on blur and not when typing */
-  @Prop() errorOnBlur = false;
 
   /** Emitted when the control's value changes. Access the new value via event.target.value. */
   @Event({ eventName: 'six-textarea-change' }) sixChange!: EventEmitter<EmptyPayload>;
@@ -147,19 +138,18 @@ export class SixTextarea {
       if (this.nativeTextarea.value !== this.value) {
         this.nativeTextarea.value = this.value;
       }
-      this.invalid = !this.nativeTextarea.checkValidity();
     }
   }
 
-  /** default value the textarea will be reverted to when reset is executed */
-  private defaultValue = '';
-
   connectedCallback() {
     this.host.shadowRoot?.addEventListener('slotchange', this.handleSlotChange);
+    this.eventListeners.forward('six-textarea-input', 'input', this.host);
+    this.eventListeners.forward('six-textarea-change', 'change', this.host);
+    this.eventListeners.forward('six-textarea-focus', 'focus', this.host);
+    this.eventListeners.forward('six-textarea-blur', 'blur', this.host);
   }
 
   componentWillLoad() {
-    this.defaultValue = this.value || '';
     this.handleSlotChange();
   }
 
@@ -171,13 +161,6 @@ export class SixTextarea {
     this.setTextareaHeight(nativeTextarea);
     this.resizeObserver = new ResizeObserver(() => this.setTextareaHeight(nativeTextarea));
     this.resizeObserver.observe(nativeTextarea);
-    this.eventListeners.add(nativeTextarea, 'invalid', (event) => {
-      this.invalid = true;
-      if (this.customValidation || (!this.hasErrorTextSlot && this.errorText === '' && this.customErrorText === '')) {
-        this.customErrorText = nativeTextarea.validationMessage;
-      }
-      event.preventDefault();
-    });
   }
 
   disconnectedCallback() {
@@ -236,42 +219,6 @@ export class SixTextarea {
     }
   }
 
-  /** Checks for validity and shows the browser's validation message if the control is invalid. */
-  @Method()
-  async reportValidity() {
-    return this.nativeTextarea?.reportValidity();
-  }
-
-  /** Checks for validity. */
-  @Method()
-  async checkValidity() {
-    if (this.nativeTextarea == null) {
-      return true;
-    }
-    return this.nativeTextarea.validity.valid;
-  }
-
-  /** Sets a custom validation message. If `message` is not empty, the field will be considered invalid. */
-  @Method()
-  async setCustomValidity(message: string) {
-    this.customErrorText = '';
-    this.customValidation = message !== '';
-    if (this.nativeTextarea != null) {
-      this.nativeTextarea.setCustomValidity(message);
-      this.invalid = !this.nativeTextarea.checkValidity();
-    }
-  }
-
-  /** Resets the formcontrol */
-  @Method()
-  async reset() {
-    this.value = this.defaultValue;
-    this.customErrorText = '';
-    this.customValidation = false;
-    this.nativeTextarea?.setCustomValidity('');
-    this.invalid = false;
-  }
-
   private handleChange = () => {
     if (this.nativeTextarea != null) {
       this.value = this.nativeTextarea.value;
@@ -300,7 +247,6 @@ export class SixTextarea {
   private handleSlotChange = () => {
     this.hasLabelSlot = hasSlot(this.host, 'label');
     this.hasHelpTextSlot = hasSlot(this.host, 'help-text');
-    this.hasErrorTextSlot = hasSlot(this.host, 'error-text');
   };
 
   private setTextareaHeight(nativeTextarea: HTMLTextAreaElement) {
@@ -311,10 +257,6 @@ export class SixTextarea {
     } else {
       nativeTextarea.style.height = '';
     }
-  }
-
-  private displayError() {
-    return this.invalid && (!this.errorOnBlur || !this.hasFocus);
   }
 
   private getValue(): string {
@@ -332,12 +274,11 @@ export class SixTextarea {
         helpText={this.helpText}
         hasHelpTextSlot={this.hasHelpTextSlot}
         errorTextId={this.errorTextId}
-        errorText={this.customErrorText != null ? this.customErrorText : this.errorText}
-        hasErrorTextSlot={this.hasErrorTextSlot}
+        errorText={this.errorText}
         size={this.size}
         disabled={this.disabled}
         required={this.required}
-        displayError={this.displayError()}
+        displayError={this.invalid}
       >
         <div
           part="base"

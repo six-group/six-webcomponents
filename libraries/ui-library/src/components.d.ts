@@ -12,7 +12,6 @@ import { SixMenuItemData } from "./components/six-menu/six-menu";
 import { SixDropdownAsyncFilterPayload, SixDropdownAutoFilterPayload, SixDropdownScrollPayload } from "./components/six-dropdown/six-dropdown";
 import { SixFileListDownloadPayload, SixFileListRemovePayload } from "./components/six-file-list-item/six-file-list-item";
 import { SixFileUploadFailurePayload, SixFileUploadSuccessPayload } from "./components/six-file-upload/six-file-upload";
-import { SixFormChangePayload, SixFormSubmitPayload } from "./components/six-form/six-form";
 import { SixHeaderAppSwitcherSelectPayload, SixHeaderProfileSelectPayload, SixHeaderSearchFieldToggle } from "./components/six-header/six-header";
 import { ItemPickerPaddingDirection, ItemPickerType } from "./components/six-item-picker/types";
 import { SixItemPickerChangePayload } from "./components/six-item-picker/six-item-picker";
@@ -33,7 +32,6 @@ export { SixMenuItemData } from "./components/six-menu/six-menu";
 export { SixDropdownAsyncFilterPayload, SixDropdownAutoFilterPayload, SixDropdownScrollPayload } from "./components/six-dropdown/six-dropdown";
 export { SixFileListDownloadPayload, SixFileListRemovePayload } from "./components/six-file-list-item/six-file-list-item";
 export { SixFileUploadFailurePayload, SixFileUploadSuccessPayload } from "./components/six-file-upload/six-file-upload";
-export { SixFormChangePayload, SixFormSubmitPayload } from "./components/six-form/six-form";
 export { SixHeaderAppSwitcherSelectPayload, SixHeaderProfileSelectPayload, SixHeaderSearchFieldToggle } from "./components/six-header/six-header";
 export { ItemPickerPaddingDirection, ItemPickerType } from "./components/six-item-picker/types";
 export { SixItemPickerChangePayload } from "./components/six-item-picker/six-item-picker";
@@ -215,10 +213,6 @@ export namespace Components {
      */
     interface SixCheckbox {
         /**
-          * Checks for validity.
-         */
-        "checkValidity": () => Promise<boolean>;
-        /**
           * Set to true to draw the checkbox in a checked state.
          */
         "checked": boolean;
@@ -227,11 +221,7 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * Set to display the error text on blur and not when typing
-         */
-        "errorOnBlur": boolean;
-        /**
-          * The checkbox's error text. Alternatively, you can use the error-text slot.
+          * The error message shown, if `invalid` is set to true.
          */
         "errorText": string;
         /**
@@ -239,11 +229,11 @@ export namespace Components {
          */
         "indeterminate": boolean;
         /**
-          * This will be true when the control is in an invalid state. Validity is determined by the `required` prop.
+          * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
          */
         "invalid": boolean;
         /**
-          * The checkbox label. Alternatively, you can use the label slot.
+          * The label text.
          */
         "label": string;
         /**
@@ -255,21 +245,13 @@ export namespace Components {
          */
         "removeFocus": () => Promise<void>;
         /**
-          * Checks for validity and shows the browser's validation message if the control is invalid.
-         */
-        "reportValidity": () => Promise<boolean | undefined>;
-        /**
-          * Set to true to make the checkbox a required field.
+          * Set to true to show an asterisk beneath the label.
          */
         "required": boolean;
         /**
           * Resets the formcontrol
          */
         "reset": () => Promise<void>;
-        /**
-          * Sets a custom validation message. If `message` is not empty, the field will be considered invalid.
-         */
-        "setCustomValidity": (message: string) => Promise<void>;
         /**
           * Sets focus on the checkbox.
          */
@@ -288,10 +270,6 @@ export namespace Components {
           * Callback to determine which date in the datepicker should be selectable. the callback function will get a datestring as an argument, e.g. '2021-07-04'  Usage e.g.: const datepicker = document.getElementById('allowed-date-picker'); datepicker.allowedDates = datestring => parseInt(datestring.split('-')[2], 10) % 2 === 0;
          */
         "allowedDates": (date: Date) => boolean;
-        /**
-          * Checks for validity.
-         */
-        "checkValidity": () => Promise<boolean | undefined>;
         /**
           * Set to true to add a clear button when the input is populated.
          */
@@ -321,11 +299,7 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * Set to display the error text on blur and not when typing
-         */
-        "errorOnBlur": boolean;
-        /**
-          * The input's error text. Alternatively, you can use the error-text slot.
+          * The error message shown, if `invalid` is set to true.
          */
         "errorText": string;
         /**
@@ -341,7 +315,11 @@ export namespace Components {
          */
         "inline": boolean;
         /**
-          * The input's label. Alternatively, you can use the label slot.
+          * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
+         */
+        "invalid": boolean;
+        /**
+          * The label text.
          */
         "label": string;
         /**
@@ -377,25 +355,17 @@ export namespace Components {
          */
         "readonly": boolean;
         /**
-          * Checks for validity and shows the browser's validation message if the control is invalid.
-         */
-        "reportValidity": () => Promise<boolean | undefined>;
-        /**
-          * Set to true to make the input a required field.
+          * Set to true to show an asterisk beneath the label.
          */
         "required": boolean;
-        /**
-          * Resets the formcontrol
-         */
-        "reset": () => Promise<void>;
         /**
           * Selects an option
          */
         "select": (datestring?: string) => Promise<void>;
         /**
-          * Sets a custom validation message. If `message` is not empty, the field will be considered invalid.
+          * Sets focus on the datepickers input.
          */
-        "setCustomValidity": (message: string) => Promise<void>;
+        "setFocus": (options?: FocusOptions) => Promise<void>;
         /**
           * Datepicker size.
          */
@@ -710,37 +680,6 @@ export namespace Components {
     interface SixFooter {
     }
     /**
-     * @since 1.0
-     * @status stable
-     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
-     */
-    interface SixForm {
-        /**
-          * Checks for validity.
-         */
-        "checkValidity": () => Promise<boolean>;
-        /**
-          * Gets all form control elements (native and custom).
-         */
-        "getFormControls": () => Promise<HTMLFormElement[]>;
-        /**
-          * Serializes all form controls elements and returns a `FormData` object.
-         */
-        "getFormData": () => Promise<FormData>;
-        /**
-          * Prevent the form from validating inputs before submitting.
-         */
-        "novalidate": boolean;
-        /**
-          * Resets the form and resets the value of all descendants
-         */
-        "reset": () => Promise<void>;
-        /**
-          * Submits the form. If all controls are valid, the `six-form-submit` event will be emitted and the promise will resolve with `true`. If any form control is invalid, the promise will resolve with `false` and no event will be emitted.
-         */
-        "submit": () => Promise<boolean>;
-    }
-    /**
      * @since 1.1
      * @status stable
      */
@@ -758,7 +697,7 @@ export namespace Components {
          */
         "label": string;
         /**
-          * The label's required attribute.
+          * Set to true to show an asterisk beneath the label.
          */
         "required": boolean;
         /**
@@ -867,10 +806,6 @@ export namespace Components {
          */
         "autofocus": boolean;
         /**
-          * Checks for validity.
-         */
-        "checkValidity": () => Promise<boolean>;
-        /**
           * Set to true to add a clear button when the input is populated.
          */
         "clearable": boolean;
@@ -879,21 +814,9 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * Set to display the error text on blur and not when typing
-         */
-        "errorOnBlur": boolean;
-        /**
-          * The input's error text. Alternatively, you can use the error-text slot.
+          * The error message shown, if `invalid` is set to true.
          */
         "errorText": string;
-        /**
-          * Returns the native input's validationMessage
-         */
-        "getValidationMessage": () => Promise<string>;
-        /**
-          * Returns the native input's validity
-         */
-        "getValidity": () => Promise<ValidityState | undefined>;
         /**
           * The input's help text. Alternatively, you can use the help-text slot.
          */
@@ -903,15 +826,11 @@ export namespace Components {
          */
         "inputmode"?: 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
         /**
-          * This will be true when the control is in an invalid state. Validity is determined by props such as `type`, `required`, `minlength`, `maxlength`, and `pattern` using the browser's constraint validation API.
+          * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
          */
         "invalid": boolean;
         /**
-          * Returns the native input's validity
-         */
-        "isValid": () => Promise<boolean>;
-        /**
-          * The input's label. Alternatively, you can use the label slot.
+          * The label text.
          */
         "label": string;
         /**
@@ -959,25 +878,13 @@ export namespace Components {
          */
         "removeFocus": () => Promise<void>;
         /**
-          * Checks for validity and shows the browser's validation message if the control is invalid.
-         */
-        "reportValidity": () => Promise<boolean | undefined>;
-        /**
-          * Set to true to make the input a required field.
+          * Set to true to show an asterisk beneath the label.
          */
         "required": boolean;
-        /**
-          * Resets the formcontrol
-         */
-        "reset": () => Promise<void>;
         /**
           * Selects all the text in the input.
          */
         "select": () => Promise<void | undefined>;
-        /**
-          * Sets a custom validation message. If `message` is not empty, the field will be considered invalid.
-         */
-        "setCustomValidity": (message: string) => Promise<void>;
         /**
           * Sets focus on the input.
          */
@@ -1238,10 +1145,6 @@ export namespace Components {
      */
     interface SixRadio {
         /**
-          * Checks for validity.
-         */
-        "checkValidity": () => Promise<boolean>;
-        /**
           * Set to true to draw the radio in a checked state.
          */
         "checked": boolean;
@@ -1250,7 +1153,7 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * This will be true when the control is in an invalid state. Validity in range inputs is determined by the message provided by the `setCustomValidity` method.
+          * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
          */
         "invalid": boolean;
         /**
@@ -1262,17 +1165,9 @@ export namespace Components {
          */
         "removeFocus": () => Promise<void>;
         /**
-          * Checks for validity and shows the browser's validation message if the control is invalid.
-         */
-        "reportValidity": () => Promise<boolean | undefined>;
-        /**
           * Resets the formcontrol
          */
         "reset": () => Promise<void>;
-        /**
-          * Sets a custom validation message. If `message` is not empty, the field will be considered invalid.
-         */
-        "setCustomValidity": (message: string) => Promise<void>;
         /**
           * Sets focus on the radio.
          */
@@ -1293,11 +1188,7 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * Set to display the error text on blur and not when typing
-         */
-        "errorOnBlur": boolean;
-        /**
-          * The input's error text. Alternatively, you can use the error-text slot.
+          * The error message shown, if `invalid` is set to true.
          */
         "errorText": string;
         /**
@@ -1305,11 +1196,11 @@ export namespace Components {
          */
         "helpText": string;
         /**
-          * This will be true when the control is in an invalid state. Validity in range inputs is determined by the message provided by the `setCustomValidity` method.
+          * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
          */
         "invalid": boolean;
         /**
-          * The range's label. Alternatively, you can use the label slot.
+          * The label text.
          */
         "label": string;
         /**
@@ -1329,17 +1220,9 @@ export namespace Components {
          */
         "removeFocus": () => Promise<void>;
         /**
-          * Set to true to make the input a required field.
+          * Set to true to show an asterisk beneath the label.
          */
         "required": boolean;
-        /**
-          * Resets the formcontrol
-         */
-        "reset": () => Promise<void>;
-        /**
-          * Sets a custom validation message. If `message` is not empty, the field will be considered invalid.
-         */
-        "setCustomValidity": (message: string) => Promise<void>;
         /**
           * Sets focus on the input.
          */
@@ -1424,27 +1307,15 @@ export namespace Components {
          */
         "autocomplete": boolean;
         /**
-          * Checks for validity.
-         */
-        "checkValidity": () => Promise<boolean | undefined>;
-        /**
           * Set to true to add a clear button when the select is populated.
          */
         "clearable": boolean;
-        /**
-          * The default value the select will be reverted to when reset is executed
-         */
-        "defaultValue": string | string[];
         /**
           * Set to true to disable the select control.
          */
         "disabled": boolean;
         /**
-          * Set to display the error text on blur and not when typing
-         */
-        "errorOnBlur": boolean;
-        /**
-          * The select's error text. Alternatively, you can use the error-text slot.
+          * The error message shown, if `invalid` is set to true.
          */
         "errorText": string;
         /**
@@ -1472,11 +1343,11 @@ export namespace Components {
          */
         "inputDebounce": number;
         /**
-          * This will be true when the control is in an invalid state. Validity is determined by the `required` prop.
+          * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
          */
         "invalid": boolean;
         /**
-          * The select's label. Alternatively, you can use the label slot.
+          * The label text.
          */
         "label": string;
         /**
@@ -1508,21 +1379,13 @@ export namespace Components {
          */
         "placeholder": string;
         /**
-          * Checks for validity and shows the browser's validation message if the control is invalid.
-         */
-        "reportValidity": () => Promise<boolean | undefined>;
-        /**
-          * The select's required attribute.
+          * Set to true to show an asterisk beneath the label.
          */
         "required": boolean;
         /**
-          * Resets the formcontrol
+          * Sets focus on the select.
          */
-        "reset": () => Promise<void>;
-        /**
-          * Sets a custom validation message. If `message` is not empty, the field will be considered invalid.
-         */
-        "setCustomValidity": (message: string) => Promise<void>;
+        "setFocus": (options?: FocusOptions) => Promise<void>;
         /**
           * The select's size.
          */
@@ -1646,10 +1509,6 @@ export namespace Components {
      */
     interface SixSwitch {
         /**
-          * Checks for validity.
-         */
-        "checkValidity": () => Promise<boolean | undefined>;
-        /**
           * Set to true to draw the switch in a checked state.
          */
         "checked": boolean;
@@ -1658,9 +1517,17 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * This will be true when the control is in an invalid state. Validity is determined by the `required` prop.
+          * The error message shown, if `invalid` is set to true.
+         */
+        "errorText": string;
+        /**
+          * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
          */
         "invalid": boolean;
+        /**
+          * The label text.
+         */
+        "label": string;
         /**
           * The switch's name attribute.
          */
@@ -1670,21 +1537,9 @@ export namespace Components {
          */
         "removeFocus": () => Promise<void>;
         /**
-          * Checks for validity and shows the browser's validation message if the control is invalid.
-         */
-        "reportValidity": () => Promise<boolean | undefined>;
-        /**
-          * Set to true to make the switch a required field.
+          * Set to true to show an asterisk beneath the label.
          */
         "required": boolean;
-        /**
-          * Resets the formcontrol
-         */
-        "reset": () => Promise<void>;
-        /**
-          * Sets a custom validation message. If `message` is not empty, the field will be considered invalid.
-         */
-        "setCustomValidity": (message: string) => Promise<void>;
         /**
           * Sets focus on the switch.
          */
@@ -1805,19 +1660,11 @@ export namespace Components {
          */
         "autofocus": boolean;
         /**
-          * Checks for validity.
-         */
-        "checkValidity": () => Promise<boolean>;
-        /**
           * Set to true to disable the textarea.
          */
         "disabled": boolean;
         /**
-          * Set to display the error text on blur and not when typing
-         */
-        "errorOnBlur": boolean;
-        /**
-          * The textarea's error text. Alternatively, you can use the error-text slot.
+          * The error message shown, if `invalid` is set to true.
          */
         "errorText": string;
         /**
@@ -1829,11 +1676,11 @@ export namespace Components {
          */
         "inputmode"?: 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
         /**
-          * This will be true when the control is in an invalid state. Validity is determined by props such as `required`, `minlength`, and `maxlength` using the browser's constraint validation API.
+          * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
          */
         "invalid": boolean;
         /**
-          * The textarea's label. Alternatively, you can use the label slot.
+          * The label text.
          */
         "label": string;
         /**
@@ -1861,17 +1708,9 @@ export namespace Components {
          */
         "removeFocus": () => Promise<void>;
         /**
-          * Checks for validity and shows the browser's validation message if the control is invalid.
-         */
-        "reportValidity": () => Promise<boolean | undefined>;
-        /**
-          * The textarea's required attribute.
+          * Set to true to show an asterisk beneath the label.
          */
         "required": boolean;
-        /**
-          * Resets the formcontrol
-         */
-        "reset": () => Promise<void>;
         /**
           * Controls how the textarea can be resized.
          */
@@ -1884,10 +1723,6 @@ export namespace Components {
           * Selects all the text in the input.
          */
         "select": () => Promise<void | undefined>;
-        /**
-          * Sets a custom validation message. If `message` is not empty, the field will be considered invalid.
-         */
-        "setCustomValidity": (message: string) => Promise<void>;
         /**
           * Sets focus on the textarea.
          */
@@ -1961,10 +1796,6 @@ export namespace Components {
      */
     interface SixTimepicker {
         /**
-          * Checks for validity.
-         */
-        "checkValidity": () => Promise<boolean | undefined>;
-        /**
           * Set to true to add a clear button when the input is populated.
          */
         "clearable": boolean;
@@ -1980,10 +1811,6 @@ export namespace Components {
           * If `true` the component is disabled.
          */
         "disabled": boolean;
-        /**
-          * Set to display the error text on blur and not when typing
-         */
-        "errorOnBlur": boolean;
         /**
           * The input's error text. Alternatively, you can use the error-text slot.
          */
@@ -2009,6 +1836,10 @@ export namespace Components {
          */
         "interval": number;
         /**
+          * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
+         */
+        "invalid": boolean;
+        /**
           * The input's label. Alternatively, you can use the label slot.
          */
         "label": string;
@@ -2033,25 +1864,17 @@ export namespace Components {
          */
         "readonly": boolean;
         /**
-          * Checks for validity and shows the browser's validation message if the control is invalid.
-         */
-        "reportValidity": () => Promise<boolean | undefined>;
-        /**
-          * Set to true to make the input a required field.
+          * Set to true to show an asterisk beneath the label.
          */
         "required": boolean;
-        /**
-          * Resets the formcontrol
-         */
-        "reset": () => Promise<void>;
         /**
           * Define the separator to be shown between the time unit pickers. Please be aware that this property will modify the displayed separator only. The separator for a timestring is always expected to be a colon (eg. '13:52:20')
          */
         "separator": string;
         /**
-          * Sets a custom validation message. If `message` is not empty, the field will be considered invalid.
+          * Sets focus on the datepickers input.
          */
-        "setCustomValidity": (message: string) => Promise<void>;
+        "setFocus": (options?: FocusOptions) => Promise<void>;
         /**
           * Timepicker size.
          */
@@ -2159,10 +1982,6 @@ export interface SixFileListItemCustomEvent<T> extends CustomEvent<T> {
 export interface SixFileUploadCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLSixFileUploadElement;
-}
-export interface SixFormCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLSixFormElement;
 }
 export interface SixHeaderCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -2411,17 +2230,6 @@ declare global {
     var HTMLSixFooterElement: {
         prototype: HTMLSixFooterElement;
         new (): HTMLSixFooterElement;
-    };
-    /**
-     * @since 1.0
-     * @status stable
-     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
-     */
-    interface HTMLSixFormElement extends Components.SixForm, HTMLStencilElement {
-    }
-    var HTMLSixFormElement: {
-        prototype: HTMLSixFormElement;
-        new (): HTMLSixFormElement;
     };
     /**
      * @since 1.1
@@ -2802,7 +2610,6 @@ declare global {
         "six-file-list-item": HTMLSixFileListItemElement;
         "six-file-upload": HTMLSixFileUploadElement;
         "six-footer": HTMLSixFooterElement;
-        "six-form": HTMLSixFormElement;
         "six-group-label": HTMLSixGroupLabelElement;
         "six-header": HTMLSixHeaderElement;
         "six-icon": HTMLSixIconElement;
@@ -3020,11 +2827,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Set to display the error text on blur and not when typing
-         */
-        "errorOnBlur"?: boolean;
-        /**
-          * The checkbox's error text. Alternatively, you can use the error-text slot.
+          * The error message shown, if `invalid` is set to true.
          */
         "errorText"?: string;
         /**
@@ -3032,11 +2835,11 @@ declare namespace LocalJSX {
          */
         "indeterminate"?: boolean;
         /**
-          * This will be true when the control is in an invalid state. Validity is determined by the `required` prop.
+          * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
          */
         "invalid"?: boolean;
         /**
-          * The checkbox label. Alternatively, you can use the label slot.
+          * The label text.
          */
         "label"?: string;
         /**
@@ -3056,7 +2859,7 @@ declare namespace LocalJSX {
          */
         "onSix-checkbox-focus"?: (event: SixCheckboxCustomEvent<EmptyPayload>) => void;
         /**
-          * Set to true to make the checkbox a required field.
+          * Set to true to show an asterisk beneath the label.
          */
         "required"?: boolean;
         /**
@@ -3102,11 +2905,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Set to display the error text on blur and not when typing
-         */
-        "errorOnBlur"?: boolean;
-        /**
-          * The input's error text. Alternatively, you can use the error-text slot.
+          * The error message shown, if `invalid` is set to true.
          */
         "errorText"?: string;
         /**
@@ -3122,7 +2921,11 @@ declare namespace LocalJSX {
          */
         "inline"?: boolean;
         /**
-          * The input's label. Alternatively, you can use the label slot.
+          * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
+         */
+        "invalid"?: boolean;
+        /**
+          * The label text.
          */
         "label"?: string;
         /**
@@ -3170,7 +2973,7 @@ declare namespace LocalJSX {
          */
         "readonly"?: boolean;
         /**
-          * Set to true to make the input a required field.
+          * Set to true to show an asterisk beneath the label.
          */
         "required"?: boolean;
         /**
@@ -3559,29 +3362,6 @@ declare namespace LocalJSX {
     interface SixFooter {
     }
     /**
-     * @since 1.0
-     * @status stable
-     * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
-     */
-    interface SixForm {
-        /**
-          * Prevent the form from validating inputs before submitting.
-         */
-        "novalidate"?: boolean;
-        /**
-          * Emitted when the control's value changes.
-         */
-        "onSix-form-change"?: (event: SixFormCustomEvent<SixFormChangePayload>) => void;
-        /**
-          * Emitted when the forms values are reset.
-         */
-        "onSix-form-reset"?: (event: SixFormCustomEvent<EmptyPayload>) => void;
-        /**
-          * Emitted when the form is submitted. This event will not be emitted if any form control inside of it is in an invalid state, unless the form has the `novalidate` attribute. Note that there is never a need to prevent this event, since it doen't send a GET or POST request like native forms. To "prevent" submission, use a conditional around the XHR request you use to submit the form's data with.
-         */
-        "onSix-form-submit"?: (event: SixFormCustomEvent<SixFormSubmitPayload>) => void;
-    }
-    /**
      * @since 1.1
      * @status stable
      */
@@ -3599,7 +3379,7 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
-          * The label's required attribute.
+          * Set to true to show an asterisk beneath the label.
          */
         "required"?: boolean;
         /**
@@ -3732,11 +3512,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Set to display the error text on blur and not when typing
-         */
-        "errorOnBlur"?: boolean;
-        /**
-          * The input's error text. Alternatively, you can use the error-text slot.
+          * The error message shown, if `invalid` is set to true.
          */
         "errorText"?: string;
         /**
@@ -3748,11 +3524,11 @@ declare namespace LocalJSX {
          */
         "inputmode"?: 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
         /**
-          * This will be true when the control is in an invalid state. Validity is determined by props such as `type`, `required`, `minlength`, `maxlength`, and `pattern` using the browser's constraint validation API.
+          * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
          */
         "invalid"?: boolean;
         /**
-          * The input's label. Alternatively, you can use the label slot.
+          * The label text.
          */
         "label"?: string;
         /**
@@ -3816,7 +3592,7 @@ declare namespace LocalJSX {
          */
         "readonly"?: boolean;
         /**
-          * Set to true to make the input a required field.
+          * Set to true to show an asterisk beneath the label.
          */
         "required"?: boolean;
         /**
@@ -4075,7 +3851,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * This will be true when the control is in an invalid state. Validity in range inputs is determined by the message provided by the `setCustomValidity` method.
+          * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
          */
         "invalid"?: boolean;
         /**
@@ -4110,11 +3886,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Set to display the error text on blur and not when typing
-         */
-        "errorOnBlur"?: boolean;
-        /**
-          * The input's error text. Alternatively, you can use the error-text slot.
+          * The error message shown, if `invalid` is set to true.
          */
         "errorText"?: string;
         /**
@@ -4122,11 +3894,11 @@ declare namespace LocalJSX {
          */
         "helpText"?: string;
         /**
-          * This will be true when the control is in an invalid state. Validity in range inputs is determined by the message provided by the `setCustomValidity` method.
+          * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
          */
         "invalid"?: boolean;
         /**
-          * The range's label. Alternatively, you can use the label slot.
+          * The label text.
          */
         "label"?: string;
         /**
@@ -4154,7 +3926,7 @@ declare namespace LocalJSX {
          */
         "onSix-range-focus"?: (event: SixRangeCustomEvent<EmptyPayload>) => void;
         /**
-          * Set to true to make the input a required field.
+          * Set to true to show an asterisk beneath the label.
          */
         "required"?: boolean;
         /**
@@ -4249,19 +4021,11 @@ declare namespace LocalJSX {
          */
         "clearable"?: boolean;
         /**
-          * The default value the select will be reverted to when reset is executed
-         */
-        "defaultValue"?: string | string[];
-        /**
           * Set to true to disable the select control.
          */
         "disabled"?: boolean;
         /**
-          * Set to display the error text on blur and not when typing
-         */
-        "errorOnBlur"?: boolean;
-        /**
-          * The select's error text. Alternatively, you can use the error-text slot.
+          * The error message shown, if `invalid` is set to true.
          */
         "errorText"?: string;
         /**
@@ -4289,11 +4053,11 @@ declare namespace LocalJSX {
          */
         "inputDebounce"?: number;
         /**
-          * This will be true when the control is in an invalid state. Validity is determined by the `required` prop.
+          * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
          */
         "invalid"?: boolean;
         /**
-          * The select's label. Alternatively, you can use the label slot.
+          * The label text.
          */
         "label"?: string;
         /**
@@ -4337,7 +4101,7 @@ declare namespace LocalJSX {
          */
         "placeholder"?: string;
         /**
-          * The select's required attribute.
+          * Set to true to show an asterisk beneath the label.
          */
         "required"?: boolean;
         /**
@@ -4471,9 +4235,17 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * This will be true when the control is in an invalid state. Validity is determined by the `required` prop.
+          * The error message shown, if `invalid` is set to true.
+         */
+        "errorText"?: string;
+        /**
+          * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
          */
         "invalid"?: boolean;
+        /**
+          * The label text.
+         */
+        "label"?: string;
         /**
           * The switch's name attribute.
          */
@@ -4491,7 +4263,7 @@ declare namespace LocalJSX {
          */
         "onSix-switch-focus"?: (event: SixSwitchCustomEvent<EmptyPayload>) => void;
         /**
-          * Set to true to make the switch a required field.
+          * Set to true to show an asterisk beneath the label.
          */
         "required"?: boolean;
         /**
@@ -4618,11 +4390,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Set to display the error text on blur and not when typing
-         */
-        "errorOnBlur"?: boolean;
-        /**
-          * The textarea's error text. Alternatively, you can use the error-text slot.
+          * The error message shown, if `invalid` is set to true.
          */
         "errorText"?: string;
         /**
@@ -4634,11 +4402,11 @@ declare namespace LocalJSX {
          */
         "inputmode"?: 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
         /**
-          * This will be true when the control is in an invalid state. Validity is determined by props such as `required`, `minlength`, and `maxlength` using the browser's constraint validation API.
+          * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
          */
         "invalid"?: boolean;
         /**
-          * The textarea's label. Alternatively, you can use the label slot.
+          * The label text.
          */
         "label"?: string;
         /**
@@ -4678,7 +4446,7 @@ declare namespace LocalJSX {
          */
         "readonly"?: boolean;
         /**
-          * The textarea's required attribute.
+          * Set to true to show an asterisk beneath the label.
          */
         "required"?: boolean;
         /**
@@ -4766,10 +4534,6 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Set to display the error text on blur and not when typing
-         */
-        "errorOnBlur"?: boolean;
-        /**
           * The input's error text. Alternatively, you can use the error-text slot.
          */
         "errorText"?: string;
@@ -4793,6 +4557,10 @@ declare namespace LocalJSX {
           * Set the amount of time, in milliseconds, to wait between switching to next timeunit (e.g. next hour) when mouse button is held pressed.
          */
         "interval"?: number;
+        /**
+          * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
+         */
+        "invalid"?: boolean;
         /**
           * The input's label. Alternatively, you can use the label slot.
          */
@@ -4830,7 +4598,7 @@ declare namespace LocalJSX {
          */
         "readonly"?: boolean;
         /**
-          * Set to true to make the input a required field.
+          * Set to true to show an asterisk beneath the label.
          */
         "required"?: boolean;
         /**
@@ -4930,7 +4698,6 @@ declare namespace LocalJSX {
         "six-file-list-item": SixFileListItem;
         "six-file-upload": SixFileUpload;
         "six-footer": SixFooter;
-        "six-form": SixForm;
         "six-group-label": SixGroupLabel;
         "six-header": SixHeader;
         "six-icon": SixIcon;
@@ -5058,12 +4825,6 @@ declare module "@stencil/core" {
              * @status stable
              */
             "six-footer": LocalJSX.SixFooter & JSXBase.HTMLAttributes<HTMLSixFooterElement>;
-            /**
-             * @since 1.0
-             * @status stable
-             * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
-             */
-            "six-form": LocalJSX.SixForm & JSXBase.HTMLAttributes<HTMLSixFormElement>;
             /**
              * @since 1.1
              * @status stable

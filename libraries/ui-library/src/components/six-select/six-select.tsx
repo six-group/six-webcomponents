@@ -52,15 +52,12 @@ export class SixSelect {
   private menu?: HTMLSixMenuElement;
   private resizeObserver?: ResizeObserver;
   private touched = false;
-  private customErrorText = '';
-  private customValidation = false;
   private eventListeners = new EventListeners();
 
   @Element() host!: HTMLSixSelectElement;
 
   @State() hasFocus = false;
   @State() hasHelpTextSlot = false;
-  @State() hasErrorTextSlot = false;
   @State() hasLabelSlot = false;
   @State() isOpen = false;
   @State() displayLabel = '';
@@ -105,29 +102,26 @@ export class SixSelect {
   /** Set to true to draw a pill-style select with rounded edges. */
   @Prop() pill = false;
 
-  /** The select's label. Alternatively, you can use the label slot. */
-  @Prop() label = '';
-
   /** The select's help text. Alternatively, you can use the help-text slot. */
   @Prop() helpText = '';
 
-  /** The select's error text. Alternatively, you can use the error-text slot. */
-  @Prop() errorText = '';
-
-  /** The select's required attribute. */
+  /** Set to true to show an asterisk beneath the label. */
   @Prop() required = false;
 
   /** Set to true to add a clear button when the select is populated. */
   @Prop() clearable = false;
 
-  /** This will be true when the control is in an invalid state. Validity is determined by the `required` prop. */
-  @Prop({ mutable: true }) invalid = false;
+  /** The label text. */
+  @Prop() label = '';
+
+  /** The error message shown, if `invalid` is set to true.  */
+  @Prop() errorText = '';
+
+  /** If this property is set to true and an error message is provided by `errorText`, the error message is displayed.  */
+  @Prop({ reflect: true }) invalid = false;
 
   /** Set to render as line */
   @Prop() line = false;
-
-  /** Set to display the error text on blur and not when typing */
-  @Prop() errorOnBlur = false;
 
   /** Set to true to allow filtering for entries in the dropdown */
   @Prop() filter = false;
@@ -154,9 +148,6 @@ export class SixSelect {
    *  are actually rendered in the DOM. If you use virtual scrolling pass the elements via prop instead of via slot. */
   @Prop() virtualScroll = false;
 
-  /** The default value the select will be reverted to when reset is executed */
-  @Prop() defaultValue: string | string[] = this.multiple ? [] : '';
-
   @Watch('disabled')
   handleDisabledChange() {
     if (this.disabled && this.isOpen) {
@@ -180,7 +171,7 @@ export class SixSelect {
   }
 
   @Watch('value')
-  handleValueChange() {
+  async handleValueChange() {
     if (this.multiple && !Array.isArray(this.value)) {
       this.value = [];
     }
@@ -189,7 +180,7 @@ export class SixSelect {
       this.value = '';
     }
 
-    this.syncItemsFromValue();
+    await this.syncItemsFromValue();
     if (this.input) {
       this.sixChange.emit({ value: this.value, isSelected: true });
     }
@@ -209,6 +200,9 @@ export class SixSelect {
       console.error('Options must be defined when using virtual scrolling');
     }
     this.host.shadowRoot?.addEventListener('slotchange', this.handleSlotChange);
+    this.eventListeners.forward('six-select-change', 'change', this.host);
+    this.eventListeners.forward('six-select-blur', 'blur', this.host);
+    this.eventListeners.forward('six-select-focus', 'focus', this.host);
   }
 
   componentWillLoad() {
@@ -225,13 +219,6 @@ export class SixSelect {
 
     // We need to do an initial sync after the component has rendered, so this will suppress the re-render warning
     requestAnimationFrame(() => this.syncItemsFromValue());
-
-    this.eventListeners.add(this.input, 'invalid', async (event) => {
-      if (this.customValidation || (!this.hasErrorTextSlot && this.errorText == null && this.customErrorText == null)) {
-        this.customErrorText = await input.getValidationMessage();
-      }
-      event.preventDefault();
-    });
 
     this.eventListeners.add(
       input,
@@ -252,39 +239,11 @@ export class SixSelect {
     this.eventListeners.removeAll();
   }
 
-  /** Checks for validity and shows the browser's validation message if the control is invalid. */
+  /** Sets focus on the select. */
   @Method()
-  async reportValidity() {
-    return this.input?.reportValidity();
-  }
-
-  /** Checks for validity. */
-  @Method()
-  async checkValidity() {
-    return this.input?.isValid();
-  }
-
-  /** Sets a custom validation message. If `message` is not empty, the field will be considered invalid. */
-  @Method()
-  async setCustomValidity(message: string) {
-    if (this.input == null) return;
-
-    this.customErrorText = '';
-    this.customValidation = message !== '';
-    await this.input.setCustomValidity(message);
-    this.invalid = !(await this.input.checkValidity());
-  }
-
-  /** Resets the formcontrol */
-  @Method()
-  async reset() {
-    if (this.input == null) return;
-
-    this.value = this.defaultValue;
-    this.customErrorText = '';
-    this.customValidation = false;
-    await this.input.setCustomValidity('');
-    this.invalid = false;
+  async setFocus(options?: FocusOptions) {
+    this.hasFocus = true;
+    this.box?.focus(options);
   }
 
   private getItemLabel(item: HTMLSixMenuItemElement): string {
@@ -325,17 +284,13 @@ export class SixSelect {
     this.sixFocus.emit();
   };
 
-  private handleInvalid = () => {
-    this.invalid = true;
-  };
-
   private handleClearClick = (event: MouseEvent) => {
     event.stopPropagation();
     this.clearValues();
   };
 
   private clearValues() {
-    this.value = this.defaultValue ?? (this.multiple ? [] : '');
+    this.value = this.multiple ? [] : '';
     this.syncItemsFromValue();
   }
 
@@ -450,7 +405,6 @@ export class SixSelect {
 
   private handleSlotChange = () => {
     this.hasHelpTextSlot = hasSlot(this.host, 'help-text');
-    this.hasErrorTextSlot = hasSlot(this.host, 'error-text');
     this.hasLabelSlot = hasSlot(this.host, 'label');
     this.syncItemsFromValue();
   };
@@ -534,7 +488,6 @@ export class SixSelect {
     }
     if (this.touched && this.input != null) {
       this.input.value = Array.isArray(this.value) ? this.value.join(',') : this.value;
-      this.invalid = !(await this.input.checkValidity());
     }
   }
 
@@ -563,10 +516,6 @@ export class SixSelect {
       : '';
   }
 
-  private displayError() {
-    return this.invalid && (!this.errorOnBlur || (!this.hasFocus && !this.isOpen));
-  }
-
   render() {
     const hasSelection = this.hasSelection();
 
@@ -580,13 +529,12 @@ export class SixSelect {
         helpText={this.helpText}
         hasHelpTextSlot={this.hasHelpTextSlot}
         errorTextId={this.errorTextId}
-        errorText={this.customErrorText != null && this.customErrorText !== '' ? this.customErrorText : this.errorText}
-        hasErrorTextSlot={this.hasErrorTextSlot}
+        errorText={this.errorText}
         size={this.size}
         onLabelClick={this.handleLabelClick}
         disabled={this.disabled}
         required={this.required}
-        displayError={this.displayError()}
+        displayError={this.invalid}
       >
         <six-dropdown
           part="base"
@@ -677,7 +625,6 @@ export class SixSelect {
               }}
               aria-hidden="true"
               required={this.required}
-              onInvalid={this.handleInvalid}
               onFocus={this.handleFocus}
               clearable={this.clearable}
               placeholder={this.placeholder}

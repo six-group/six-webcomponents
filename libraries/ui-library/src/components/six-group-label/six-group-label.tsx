@@ -44,8 +44,8 @@ export class SixGroupLabel {
   /** Set to true to disable the label. */
   @Prop({ reflect: true }) disabled = false;
 
-  /** The label's required attribute. */
-  @Prop({ reflect: true }) required = false;
+  /** Set to true to show an asterisk beneath the label. */
+  @Prop() required = false;
 
   @Watch('helpText')
   @Watch('label')

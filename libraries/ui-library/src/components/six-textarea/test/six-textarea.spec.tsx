@@ -25,7 +25,6 @@ describe('six-textarea', () => {
     const element = page.root.shadowRoot?.querySelector('textarea');
     if (element != null) {
       textarea = element;
-      textarea.checkValidity = jest.fn();
       return;
     }
     fail('textarea not found');

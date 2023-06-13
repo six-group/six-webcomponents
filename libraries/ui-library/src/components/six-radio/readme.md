@@ -7,13 +7,13 @@
 
 ## Properties
 
-| Property   | Attribute  | Description                                                                                                                                                  | Type      | Default |
-| ---------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------- | ------- |
-| `checked`  | `checked`  | Set to true to draw the radio in a checked state.                                                                                                            | `boolean` | `false` |
-| `disabled` | `disabled` | Set to true to disable the radio.                                                                                                                            | `boolean` | `false` |
-| `invalid`  | `invalid`  | This will be true when the control is in an invalid state. Validity in range inputs is determined by the message provided by the `setCustomValidity` method. | `boolean` | `false` |
-| `name`     | `name`     | The radio's name attribute.                                                                                                                                  | `string`  | `''`    |
-| `value`    | `value`    | The radio's value attribute.                                                                                                                                 | `string`  | `'on'`  |
+| Property   | Attribute  | Description                                                                                                      | Type      | Default |
+| ---------- | ---------- | ---------------------------------------------------------------------------------------------------------------- | --------- | ------- |
+| `checked`  | `checked`  | Set to true to draw the radio in a checked state.                                                                | `boolean` | `false` |
+| `disabled` | `disabled` | Set to true to disable the radio.                                                                                | `boolean` | `false` |
+| `invalid`  | `invalid`  | If this property is set to true and an error message is provided by `errorText`, the error message is displayed. | `boolean` | `false` |
+| `name`     | `name`     | The radio's name attribute.                                                                                      | `string`  | `''`    |
+| `value`    | `value`    | The radio's value attribute.                                                                                     | `string`  | `'on'`  |
 
 
 ## Events
@@ -27,16 +27,6 @@
 
 ## Methods
 
-### `checkValidity() => Promise<boolean>`
-
-Checks for validity.
-
-#### Returns
-
-Type: `Promise<boolean>`
-
-
-
 ### `removeFocus() => Promise<void>`
 
 Removes focus from the radio.
@@ -47,29 +37,9 @@ Type: `Promise<void>`
 
 
 
-### `reportValidity() => Promise<boolean | undefined>`
-
-Checks for validity and shows the browser's validation message if the control is invalid.
-
-#### Returns
-
-Type: `Promise<boolean | undefined>`
-
-
-
 ### `reset() => Promise<void>`
 
 Resets the formcontrol
-
-#### Returns
-
-Type: `Promise<void>`
-
-
-
-### `setCustomValidity(message: string) => Promise<void>`
-
-Sets a custom validation message. If `message` is not empty, the field will be considered invalid.
 
 #### Returns
 

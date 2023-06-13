@@ -21,10 +21,7 @@
     "useDefineForClassFields": false,
     "lib": ["ES2022", "dom"],
     "paths": {
-      "@six-group/ui-library-angular": ["../../libraries/ui-library-angular/dist/ui-library-angular"],
-      "rxjs": ["node_modules/rxjs"],
-      "rxjs/*": ["node_modules/rxjs/*"],
-      "~/*": ["src/*"]
+      "@six-group/ui-library-angular": ["../../libraries/ui-library-angular/dist/ui-library-angular"]
     }
   },
   "angularCompilerOptions": {

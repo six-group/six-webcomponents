@@ -1,16 +1,20 @@
-<six-dialog #dialog>
-  <pre></pre>
-  <six-button slot="footer" type="primary" (click)="coreFacade.closeDialog()">Close</six-button>
-</six-dialog>
-<six-root (six-root-collapsed)="onSixRootCollapsed($event)">
-  <app-header slot="header" (toggleLeftSidebar)="coreFacade.toggleLeftSidebar()"></app-header>
-  <app-left-sidebar slot="left-sidebar" [open]="coreFacade.leftSidebarOpen$ | async"></app-left-sidebar>
-  <app-right-sidebar
-    slot="right-sidebar"
-    [open]="coreFacade.rightSidebarOpen$ | async"
-    [tasks]="coreFacade.tasks$ | async"
-  ></app-right-sidebar>
+<six-root [padded]="false" *ngIf="tasks$ | async as tasks">
+  <app-header
+    [open]="leftSidebarOpen"
+    [taskCount]="tasks.length"
+    slot="header"
+    (rightSidebarToggled)="rightSidebarOpen = !rightSidebarOpen"
+    (leftSidebarToggled)="leftSidebarOpen = !leftSidebarOpen"
+    (itemClicked)="showEvent($event)"
+  ></app-header>
+  <app-left-sidebar slot="left-sidebar" [open]="leftSidebarOpen"></app-left-sidebar>
+  <app-right-sidebar slot="right-sidebar" [open]="rightSidebarOpen" [tasks]="tasks"></app-right-sidebar>
   <section slot="main">
     <router-outlet></router-outlet>
   </section>
 </six-root>
+
+<six-dialog #dialog [label]="dialogContent.label">
+  <pre class="event">{{ dialogContent.text | json }}</pre>
+  <six-button slot="footer" type="primary" (click)="closeDialog()">Close</six-button>
+</six-dialog>

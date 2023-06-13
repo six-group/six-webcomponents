@@ -1,5 +1,4 @@
 import React, { Suspense, useState } from 'react';
-import { SixRoot, SixSpinner } from '@six-group/ui-library-react/dist/components';
 // styles
 import './App.css';
 // components
@@ -14,6 +13,9 @@ import { useModalState } from '../hooks/use-modal-state';
 import { Route, Routes } from 'react-router-dom';
 // modules
 const Users = React.lazy(() => import('./Users'));
+import { defineCustomElements } from '@six-group/ui-library/loader';
+
+defineCustomElements().catch(console.error);
 
 const App = () => {
   const leftSidebar = useModalState(true);
@@ -27,12 +29,12 @@ const App = () => {
   };
 
   return (
-    <SixRoot onSix-root-collapsed={handleCollapsed}>
+    <six-root onSix-root-collapsed={handleCollapsed}>
       <Header toggleMenu={leftSidebar.toggle} toggleSearch={setSearch} toggleNotifications={rightSidebar.toggle} />
       <LeftSidebar visible={leftSidebar.isOpen} />
       <RightSidebar visible={rightSidebar.isOpen} />
       <section slot="main">
-        <Suspense fallback={<SixSpinner />}>
+        <Suspense fallback={<six-spinner />}>
           <Routes>
             <Route
               path="/"
@@ -42,7 +44,7 @@ const App = () => {
           </Routes>
         </Suspense>
       </section>
-    </SixRoot>
+    </six-root>
   );
 };
 

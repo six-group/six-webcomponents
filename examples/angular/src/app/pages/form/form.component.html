@@ -1,0 +1,64 @@
+<h2>Form Example</h2>
+
+<form sixFormUtil [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <six-layout-grid style="row-gap: 18px" columns="3">
+    <six-input label="First Name" type="text" formControlName="firstName" required></six-input>
+    <six-input label="Last Name" type="text" formControlName="lastName"></six-input>
+    <six-input label="Age" type="number" formControlName="age"></six-input>
+    <six-input label="Email" type="email" formControlName="email" required></six-input>
+    <six-input label="Username" formControlName="username" required></six-input>
+    <six-input label="IBAN" formControlName="iban" required></six-input>
+
+    <six-select label="Status" clearable formControlName="status">
+      <six-menu-item value="enabled">Enabled</six-menu-item>
+      <six-menu-item value="disabled">Disabled</six-menu-item>
+      <six-menu-item value="temporary">Temporary</six-menu-item>
+    </six-select>
+
+    <six-group-label label="Employment">
+      <six-switch formControlName="internal">Internal</six-switch>
+    </six-group-label>
+
+    <six-select label="interests" multiple clearable required formControlName="interests">
+      <six-menu-item value="sport">Sport</six-menu-item>
+      <six-menu-item value="music">Music</six-menu-item>
+      <six-menu-item value="movies">Movies</six-menu-item>
+    </six-select>
+
+    <six-datepicker
+      [min]="minDate"
+      label="Future Date"
+      formControlName="futureDate"
+      required
+      errorText="Datum muss in der Zukunft liegen."
+    ></six-datepicker>
+    <six-datepicker [max]="maxDate" label="Past Date" formControlName="pastDate" required></six-datepicker>
+
+    <six-timepicker label="Start time" formControlName="startTime" required></six-timepicker>
+
+    <six-group-label label="User Group">
+      <six-layout-grid columns="1">
+        <six-radio value="user" formControlName="userGroup">User</six-radio>
+        <six-radio value="developer" formControlName="userGroup">Developer</six-radio>
+        <six-radio value="admin" formControlName="userGroup">Administrator</six-radio>
+      </six-layout-grid>
+    </six-group-label>
+    <six-range label="Height" min="0" max="100" step="1" formControlName="height"></six-range>
+    <six-textarea label="Description" formControlName="description"></six-textarea>
+    <br />
+    <six-checkbox formControlName="acceptsTerms">Accept to Terms and Condition</six-checkbox>
+
+    <br />
+    <br />
+  </six-layout-grid>
+  <div style="display: flex; gap: 10px">
+    <six-button submit>Submit</six-button>
+    <six-button type="secondary" (click)="fillIn()">Fill</six-button>
+    <six-button reset type="secondary" (click)="resetForm()">Reset</six-button>
+  </div>
+</form>
+
+<hr />
+
+<p>Form Status: {{ userForm.status }}</p>
+<pre>{{ formDebug$ | async | json }}</pre>

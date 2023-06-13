@@ -12,7 +12,7 @@
 | `disabled` | `disabled`  | Set to true to disable the label.                                             | `boolean`                        | `false`    |
 | `helpText` | `help-text` | The wrapper label's help text. Alternatively, you can use the help-text slot. | `string`                         | `''`       |
 | `label`    | `label`     | The wrapper label's label. Alternatively, you can use the label slot.         | `string`                         | `''`       |
-| `required` | `required`  | The label's required attribute.                                               | `boolean`                        | `false`    |
+| `required` | `required`  | Set to true to show an asterisk beneath the label.                            | `boolean`                        | `false`    |
 | `size`     | `size`      | The label's size.                                                             | `"large" \| "medium" \| "small"` | `'medium'` |
 
 

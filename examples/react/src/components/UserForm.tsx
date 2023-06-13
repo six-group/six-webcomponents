@@ -1,18 +1,12 @@
-import React, { useState, Fragment, useRef } from 'react';
-import {
-  SixInput,
-  SixForm,
-  SixButton,
-  SixSelect,
-  SixMenuItem,
-  SixCheckbox,
-  SixRadio,
-} from '@six-group/ui-library-react/dist/components';
+import React, { Fragment, useMemo } from 'react';
+import { useForm } from 'react-hook-form';
 // feature
-import { getControlValue } from '../utils/forms';
+import '../types/six-components';
 import { User } from '../types/user';
-import { equal } from '../utils/equal';
+import { deepEquals } from '../utils/deep-equals';
 import './UserForm.css';
+import { Debug } from './Debug';
+import { Form } from './Form';
 
 interface UserFormProps {
   user: User;
@@ -33,11 +27,13 @@ namespace AdditionalProperties {
     password: 'Password',
     passwordConfirmation: 'Confirm password',
     radio: 'radio',
-    important: 'checkbox',
+    important: 'VIP',
   };
 }
 
 type FormState = User & AdditionalProperties;
+
+const FormNames = { ...User.columns, ...AdditionalProperties.columns };
 
 const getInitialState = (user: User): FormState => {
   return Object.assign(
@@ -53,77 +49,41 @@ const getInitialState = (user: User): FormState => {
 };
 
 const UserForm = ({ user, updateUser }: UserFormProps) => {
-  const formRef = useRef<HTMLSixFormElement>(null);
+  const defaultValues = useMemo(() => getInitialState(user), [user]);
+  const { control, watch } = useForm({ defaultValues });
 
-  const [form, setForm] = useState<FormState>(getInitialState(user));
-
-  const handleChange =
-    (key: keyof FormState) =>
-    ({ target }: CustomEvent) => {
-      setForm({ ...form, [key]: getControlValue(target) });
-    };
-
-  const handleUpdate = async () => {
-    if (await formRef.current?.submit()) {
-      updateUser(form);
-    }
-  };
-
-  const isChecked = (name: keyof FormState) => (value: unknown) => form[name] === value;
-  const isRadio = isChecked('radio');
+  const value = watch();
+  const handleUpdate = () => updateUser(value);
 
   return (
     <Fragment>
-      <SixForm ref={formRef}>
-        <SixInput label={User.columns.name} value={form.name} required onSix-input-input={handleChange('name')} />
-        <SixInput
-          label={User.columns.email}
-          type="email"
-          value={form.email}
-          required
-          onSix-input-input={handleChange('email')}
-        />
-        <SixInput label={User.columns.username} value={form.username} onSix-input-input={handleChange('username')} />
-        <SixSelect
-          label={AdditionalProperties.columns.role}
-          value={form.role}
-          onSix-select-change={handleChange('role')}
-        >
-          <SixMenuItem value="admin">Administrator</SixMenuItem>
-          <SixMenuItem value="user">User</SixMenuItem>
-          <SixMenuItem>Not defined</SixMenuItem>
-        </SixSelect>
-        <SixCheckbox onSix-checkbox-change={handleChange('important')}>Important</SixCheckbox>
-        <SixInput
-          label={AdditionalProperties.columns.password}
-          type="password"
-          required
-          onSix-input-input={handleChange('password')}
-        />
-        <SixInput
-          label={AdditionalProperties.columns.passwordConfirmation}
-          type="password"
-          required
-          onSix-input-input={handleChange('passwordConfirmation')}
-        />
+      <h3>Form</h3>
+      <Form control={control} names={FormNames}>
+        <six-input required type="text" name="name" />
+        <six-input required type="email" name="email" />
+        <six-input name="username" />
+        <six-select name="role">
+          <six-menu-item value="admin">Administrator</six-menu-item>
+          <six-menu-item value="user">User</six-menu-item>
+          <six-menu-item>Not defined</six-menu-item>
+        </six-select>
+        <six-checkbox name="important">Important</six-checkbox>
+        <six-input required type="password" name="password" />
+        <six-input required type="password" name="passwordConfirmation" />
         {['1', '2', '3'].map((value) => {
           return (
-            <SixRadio
-              key={value}
-              name="radio"
-              value={value}
-              checked={isRadio(value)}
-              onSix-radio-change={handleChange('radio')}
-            >
+            <six-radio name="radio" key={value} value={value}>
               {'Option ' + value}
-            </SixRadio>
+            </six-radio>
           );
         })}
-      </SixForm>
+      </Form>
+      <br />
+      <Debug value={value} />
       <footer slot="footer">
-        <SixButton disabled={equal(getInitialState(user), form)} onClick={handleUpdate}>
+        <six-button disabled={deepEquals(defaultValues, value)} onClick={handleUpdate}>
           Update
-        </SixButton>
+        </six-button>
       </footer>
     </Fragment>
   );
