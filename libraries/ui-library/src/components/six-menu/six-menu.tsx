@@ -125,6 +125,8 @@ export class SixMenu {
   @Method()
   async typeToSelect(key: string) {
     clearTimeout(this.typeToSelectTimeout);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     this.typeToSelectTimeout = setTimeout(() => (this.typeToSelectString = ''), 750);
     this.typeToSelectString += key.toLowerCase();
     const items = this.getItems();

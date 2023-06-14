@@ -20,6 +20,8 @@ export const debounce = <T>(callback: (x: T) => void, timeout = DEFAULT_DEBOUNCE
   let timer: number;
   return (args: T) => {
     clearTimeout(timer);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     timer = setTimeout(() => callback(args), timeout);
   };
 };
