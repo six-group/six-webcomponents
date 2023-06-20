@@ -7,20 +7,20 @@
 
 ## Properties
 
-| Property      | Attribute      | Description                                                                                                                        | Type      | Default     |
-| ------------- | -------------- | ---------------------------------------------------------------------------------------------------------------------------------- | --------- | ----------- |
-| `icon`        | `icon`         | Icon of the group                                                                                                                  | `string`  | `''`        |
-| `name`        | `name`         | Title of item group                                                                                                                | `string`  | `''`        |
-| `open`        | `open`         |                                                                                                                                    | `boolean` | `false`     |
-| `summaryIcon` | `summary-icon` | Custom summary icon name.                                                                                                          | `string`  | `undefined` |
-| `value`       | `value`        | A unique value to store in the sidebar item of the group label. This can be used as a way to identify sidebar items when selected. | `string`  | `''`        |
+| Property      | Attribute      | Description                                                                                                                        | Type                  | Default     |
+| ------------- | -------------- | ---------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ----------- |
+| `icon`        | `icon`         | Icon of the group                                                                                                                  | `string`              | `''`        |
+| `name`        | `name`         | Title of item group                                                                                                                | `string`              | `''`        |
+| `open`        | `open`         | Indicates whether the sidebar is shown                                                                                             | `boolean`             | `false`     |
+| `summaryIcon` | `summary-icon` | Custom summary icon name.                                                                                                          | `string \| undefined` | `undefined` |
+| `value`       | `value`        | A unique value to store in the sidebar item of the group label. This can be used as a way to identify sidebar items when selected. | `string`              | `''`        |
 
 
 ## Slots
 
-| Slot | Description                                       |
-| ---- | ------------------------------------------------- |
-|      | Used to define the nested side bar [group] items. |
+| Slot | Description                                      |
+| ---- | ------------------------------------------------ |
+|      | Used to define the nested sidebar [group] items. |
 
 
 ## Dependencies

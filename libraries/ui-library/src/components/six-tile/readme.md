@@ -13,7 +13,7 @@
 | `disableTooltip` | `disable-tooltip` | Enables tile tooltip for tiles               | `boolean`                        | `true`      |
 | `disabled`       | `disabled`        | Set to true to disable the tile.             | `boolean`                        | `false`     |
 | `elevated`       | `elevated`        | Flag, whether the tile should cast a shadow. | `boolean`                        | `false`     |
-| `iconName`       | `icon-name`       | The icon's name.                             | `any`                            | `undefined` |
+| `iconName`       | `icon-name`       | The icon's name.                             | `string \| undefined`            | `undefined` |
 | `label`          | `label`           | The tile's label.                            | `string`                         | `''`        |
 | `size`           | `size`            | The tile's size.                             | `"large" \| "medium" \| "small"` | `'medium'`  |
 

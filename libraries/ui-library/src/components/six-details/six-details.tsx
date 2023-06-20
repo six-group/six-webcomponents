@@ -26,24 +26,24 @@ let id = 0;
   shadow: true,
 })
 export class SixDetails {
-  @Element() readonly host: HTMLSixDetailsElement;
+  @Element() readonly host!: HTMLSixDetailsElement;
 
   @State() animateSummaryIcon = true;
 
-  body: HTMLElement;
-  componentId = `details-${++id}`;
-  details: HTMLElement;
-  header: HTMLElement;
-  isVisible = false;
+  private body?: HTMLElement;
+  private details?: HTMLElement;
+  private header?: HTMLElement;
+  private componentId = `details-${++id}`;
+  private isVisible = false;
 
-  /** Indicates whether or not the details is open. You can use this in lieu of the show/hide methods. */
+  /** Indicates whether the details is open. You can use this in lieu of the show/hide methods. */
   @Prop({ mutable: true, reflect: true }) open = false;
 
   /** The summary to show in the details header. If you need to display HTML, use the `summary` slot instead. */
   @Prop() summary = '';
 
   /** The summary icon to show in the details header. If you need to display HTML, use the `summary-icon` slot instead. */
-  @Prop() summaryIcon: string;
+  @Prop() summaryIcon?: string;
 
   /** The icon's size. */
   @Prop({ reflect: true }) summaryIconSize:
@@ -65,36 +65,32 @@ export class SixDetails {
   /** Set to true when you want details without content to be selectable. This is important if you e.g. have a toggled sidebar where some menus have no children  */
   @Prop() selectableEmpty = false;
 
-  @Prop() readonly hasContent: boolean = true;
+  /** Set to false when you want to hide the summary icon and disable the open/close mechanism. Usually not needed, but used internally by 'six-sidebar-item-group' */
+  @Prop() hasContent = true;
 
   @Watch('open')
   handleOpenChange() {
-    if (this.body) {
+    if (this.body != null) {
       this.open ? this.show() : this.hide();
     }
   }
 
   /** Emitted when the details opens. Calling `event.preventDefault()` will prevent it from being opened. */
-  @Event({ eventName: 'six-details-show' }) sixShow: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-details-show' }) sixShow!: EventEmitter<EmptyPayload>;
 
   /** Emitted after the details opens and all transitions are complete. */
-  @Event({ eventName: 'six-details-after-show' }) sixAfterShow: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-details-after-show' }) sixAfterShow!: EventEmitter<EmptyPayload>;
 
   /** Emitted when the details closes. Calling `event.preventDefault()` will prevent it from being closed. */
-  @Event({ eventName: 'six-details-hide' }) sixHide: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-details-hide' }) sixHide!: EventEmitter<EmptyPayload>;
 
   /** Emitted after the details closes and all transitions are complete. */
-  @Event({ eventName: 'six-details-after-hide' }) sixAfterHide: EventEmitter<EmptyPayload>;
-
-  connectedCallback() {
-    this.handleBodyTransitionEnd = this.handleBodyTransitionEnd.bind(this);
-    this.handleSummaryClick = this.handleSummaryClick.bind(this);
-    this.handleSummaryKeyDown = this.handleSummaryKeyDown.bind(this);
-  }
+  @Event({ eventName: 'six-details-after-hide' }) sixAfterHide!: EventEmitter<EmptyPayload>;
 
   componentDidLoad() {
-    focusVisible.observe(this.details);
+    if (this.details == null || this.body == null) return;
 
+    focusVisible.observe(this.details);
     this.body.hidden = !this.open;
 
     // Show on init if open
@@ -104,16 +100,16 @@ export class SixDetails {
   }
 
   disconnectedCallback() {
-    focusVisible.unobserve(this.details);
+    if (this.details != null) {
+      focusVisible.unobserve(this.details);
+    }
   }
 
   /** Shows the detail body */
   @Method()
   async show() {
     // Prevent subsequent calls to the method, whether manually or triggered by the `open` watcher
-    if (this.isVisible) {
-      return;
-    }
+    if (this.isVisible || this.body == null) return;
 
     const sixShow = this.sixShow.emit();
     if (sixShow.defaultPrevented) {
@@ -125,14 +121,13 @@ export class SixDetails {
 
     if (this.body.scrollHeight === 0) {
       // When the scroll height can't be measured, use auto. This prevents a borked open state when the details is open
-      // intiially, but not immediately visible (i.e. in a tab panel).
+      // initially, but not immediately visible (i.e. in a tab panel).
       this.body.style.height = 'auto';
       this.body.style.overflow = 'visible';
     } else {
       this.body.style.height = `${this.body.scrollHeight}px`;
       this.body.style.overflow = 'hidden';
     }
-
     this.isVisible = true;
     this.open = true;
   }
@@ -141,9 +136,8 @@ export class SixDetails {
   @Method()
   async hide() {
     // Prevent subsequent calls to the method, whether manually or triggered by the `open` watcher
-    if (!this.isVisible) {
-      return;
-    }
+    if (!this.isVisible || this.body == null) return;
+    const body = this.body;
 
     const sixHide = this.sixHide.emit();
     if (sixHide.defaultPrevented) {
@@ -152,20 +146,21 @@ export class SixDetails {
     }
 
     // We can't transition out of `height: auto`, so let's set it to the current height first
-    this.body.style.height = `${this.body.scrollHeight}px`;
-    this.body.style.overflow = 'hidden';
+    body.style.height = `${body.scrollHeight}px`;
+    body.style.overflow = 'hidden';
 
     requestAnimationFrame(() => {
       // tslint:disable-next-line: no-unused-expression
-      this.body.clientWidth; // force a reflow
-      this.body.style.height = '0';
+      body.clientWidth; // force a reflow
+      body.style.height = '0';
     });
 
     this.isVisible = false;
     this.open = false;
   }
 
-  handleBodyTransitionEnd(event: TransitionEvent) {
+  private handleBodyTransitionEnd = (event: TransitionEvent) => {
+    if (this.body == null) return;
     const target = event.target as HTMLElement;
 
     // Ensure we only emit one event when the target element is no longer visible
@@ -175,16 +170,16 @@ export class SixDetails {
       this.open ? this.sixAfterShow.emit() : this.sixAfterHide.emit();
       this.body.hidden = !this.open;
     }
-  }
+  };
 
-  handleSummaryClick() {
+  private handleSummaryClick = () => {
     if (!this.disabled && (this.hasContent || this.selectableEmpty)) {
       this.open ? this.hide() : this.show();
-      this.header.focus();
+      this.header?.focus();
     }
-  }
+  };
 
-  handleSummaryKeyDown(event: KeyboardEvent) {
+  private handleSummaryKeyDown = (event: KeyboardEvent) => {
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
       this.open ? this.hide() : this.show();
@@ -199,7 +194,7 @@ export class SixDetails {
       event.preventDefault();
       this.show();
     }
-  }
+  };
 
   render() {
     const summaryIcon = this.hasContent && (this.summaryIcon || 'expand_more');

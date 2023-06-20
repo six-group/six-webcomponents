@@ -26,9 +26,9 @@ export interface SixFileUploadFailurePayload {
   shadow: false,
 })
 export class SixFileUpload {
-  @Element() readonly host: HTMLSixFileUploadElement;
+  @Element() readonly host!: HTMLSixFileUploadElement;
 
-  fileInput: HTMLInputElement;
+  private fileInput?: HTMLInputElement;
 
   @State() isOver = false;
 
@@ -36,27 +36,25 @@ export class SixFileUpload {
   @Prop() readonly compact: boolean = false;
 
   /** Label of the drop area. */
-  @Prop() readonly label: string;
+  @Prop() readonly label?: string;
 
   /** Set when button is disabled. */
-  @Prop() readonly disabled: boolean = false;
+  @Prop() readonly disabled = false;
 
   /** Accepted MIME-Types. */
-  @Prop() readonly accept: string;
+  @Prop() readonly accept?: string;
 
   /** More than one file allowed. */
-  @Prop() readonly multiple: boolean;
+  @Prop() readonly multiple = false;
 
   /** Allowed max file size in bytes. */
-  @Prop() readonly maxFileSize: number | undefined = undefined;
+  @Prop() readonly maxFileSize?: number;
 
   /** Triggers when a file is added. */
-  @Event({ eventName: 'six-file-upload-success' })
-  readonly fileUploadSuccessEvent: EventEmitter<SixFileUploadSuccessPayload>;
+  @Event({ eventName: 'six-file-upload-success' }) success!: EventEmitter<SixFileUploadSuccessPayload>;
 
   /** Triggers when an uploaded file doesn't match MIME type or max file size. */
-  @Event({ eventName: 'six-file-upload-failure' })
-  readonly fileUploadFailureEvent: EventEmitter<SixFileUploadFailurePayload>;
+  @Event({ eventName: 'six-file-upload-failure' }) failure!: EventEmitter<SixFileUploadFailurePayload>;
 
   @Listen('dragenter', { capture: false })
   dragenterHandler() {
@@ -83,46 +81,44 @@ export class SixFileUpload {
   dropHandler({ dataTransfer }: DragEvent) {
     if (!this.disabled) {
       this.isOver = false;
-      if (dataTransfer) {
+      if (dataTransfer != null) {
         this.handleFiles(dataTransfer.files);
       }
     }
   }
 
-  handleFiles = (files: FileList) => {
-    if (this.disabled) {
-      return;
-    }
-
-    if (files.length === 0) {
+  private handleFiles = (files: FileList) => {
+    if (this.disabled || files.length === 0) {
       return;
     }
 
     if (!this.multiple && files.length > 1) {
-      return this.fileUploadFailureEvent.emit({ reason: 'Only one file is allowed.' });
+      return this.failure.emit({ reason: 'Only one file is allowed.' });
     }
 
     for (const file of files) {
-      if (!file) {
+      if (file == null) {
         return;
       }
 
-      const acceptedTypesList = this.accept && this.accept.replace(/\s/g, '').split(',');
-
-      if (this.accept && acceptedTypesList.indexOf(file.type) === -1) {
-        const reason = files.length > 1 ? 'One or more files have invalid MIME type.' : 'File has invalid MIME type.';
-        return this.fileUploadFailureEvent.emit({ reason });
+      let acceptedTypesList: string[] = [];
+      if (this.accept != null) {
+        acceptedTypesList = this.accept.replace(/\s/g, '').split(',');
       }
 
-      if (this.maxFileSize && file.size > this.maxFileSize) {
+      if (acceptedTypesList.length > 0 && acceptedTypesList.indexOf(file.type) === -1) {
+        const reason = files.length > 1 ? 'One or more files have invalid MIME type.' : 'File has invalid MIME type.';
+        return this.failure.emit({ reason });
+      }
+
+      if (this.maxFileSize != null && file.size > this.maxFileSize) {
         const reason = files.length > 1 ? 'One or more files are too big' : 'File is too big.';
-        return this.fileUploadFailureEvent.emit({ reason });
+        return this.failure.emit({ reason });
       }
     }
 
-    const objectToEmit: SixFileUploadSuccessPayload = this.multiple ? { files } : { file: files.item(0) };
-
-    this.fileUploadSuccessEvent.emit(objectToEmit);
+    const eventPayload: SixFileUploadSuccessPayload = this.multiple ? { files } : { file: files[0] };
+    this.success.emit(eventPayload);
   };
 
   componentDidLoad() {
@@ -139,13 +135,13 @@ export class SixFileUpload {
     });
   }
 
-  preventDefaults(e: Event) {
+  private preventDefaults(e: Event) {
     e.preventDefault();
     e.stopPropagation();
   }
 
-  onChange = () => {
-    if (this.fileInput?.files) {
+  private onChange = () => {
+    if (this.fileInput?.files != null) {
       const files = this.fileInput.files;
       this.handleFiles(files);
       this.fileInput.value = '';
@@ -154,7 +150,7 @@ export class SixFileUpload {
 
   private renderLabel() {
     return (
-      this.label ||
+      this.label ??
       (this.compact ? (
         'Upload'
       ) : (

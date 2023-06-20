@@ -9,37 +9,37 @@ Inputs collect data from the user.
 
 ## Properties
 
-| Property         | Attribute         | Description                                                                                                                                                                                                   | Type                                                                                  | Default     |
-| ---------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ----------- |
-| `autocapitalize` | `autocapitalize`  | The input's autocaptialize attribute.                                                                                                                                                                         | `string`                                                                              | `'off'`     |
-| `autocomplete`   | `autocomplete`    | The input's autocomplete attribute.                                                                                                                                                                           | `string`                                                                              | `'off'`     |
-| `autocorrect`    | `autocorrect`     | The input's autocorrect attribute.                                                                                                                                                                            | `"off" \| "on"`                                                                       | `'off'`     |
-| `autofocus`      | `autofocus`       | The input's autofocus attribute.                                                                                                                                                                              | `boolean`                                                                             | `false`     |
-| `clearable`      | `clearable`       | Set to true to add a clear button when the input is populated.                                                                                                                                                | `boolean`                                                                             | `false`     |
-| `disabled`       | `disabled`        | Set to true to disable the input.                                                                                                                                                                             | `boolean`                                                                             | `false`     |
-| `errorOnBlur`    | `error-on-blur`   | Set to display the error text on blur and not when typing                                                                                                                                                     | `boolean`                                                                             | `false`     |
-| `errorText`      | `error-text`      | The input's error text. Alternatively, you can use the error-text slot.                                                                                                                                       | `string`                                                                              | `''`        |
-| `helpText`       | `help-text`       | The input's help text. Alternatively, you can use the help-text slot.                                                                                                                                         | `string`                                                                              | `''`        |
-| `inputmode`      | `inputmode`       | The input's inputmode attribute.                                                                                                                                                                              | `"decimal" \| "email" \| "none" \| "numeric" \| "search" \| "tel" \| "text" \| "url"` | `undefined` |
-| `invalid`        | `invalid`         | This will be true when the control is in an invalid state. Validity is determined by props such as `type`, `required`, `minlength`, `maxlength`, and `pattern` using the browser's constraint validation API. | `boolean`                                                                             | `false`     |
-| `label`          | `label`           | The input's label. Alternatively, you can use the label slot.                                                                                                                                                 | `string`                                                                              | `''`        |
-| `line`           | `line`            | Set to render as line                                                                                                                                                                                         | `boolean`                                                                             | `false`     |
-| `max`            | `max`             | The input's maximum value.                                                                                                                                                                                    | `number`                                                                              | `undefined` |
-| `maxlength`      | `maxlength`       | The maximum length of input that will be considered valid.                                                                                                                                                    | `number`                                                                              | `undefined` |
-| `min`            | `min`             | The input's minimum value.                                                                                                                                                                                    | `number`                                                                              | `undefined` |
-| `minlength`      | `minlength`       | The minimum length of input that will be considered valid.                                                                                                                                                    | `number`                                                                              | `undefined` |
-| `name`           | `name`            | The input's name attribute.                                                                                                                                                                                   | `string`                                                                              | `''`        |
-| `pattern`        | `pattern`         | A pattern to validate input against.                                                                                                                                                                          | `string`                                                                              | `undefined` |
-| `pill`           | `pill`            | Set to true to draw a pill-style input with rounded edges.                                                                                                                                                    | `boolean`                                                                             | `false`     |
-| `placeholder`    | `placeholder`     | The input's placeholder text.                                                                                                                                                                                 | `string`                                                                              | `undefined` |
-| `readonly`       | `readonly`        | Set to true to make the input readonly.                                                                                                                                                                       | `boolean`                                                                             | `false`     |
-| `required`       | `required`        | Set to true to make the input a required field.                                                                                                                                                               | `boolean`                                                                             | `false`     |
-| `size`           | `size`            | The input's size.                                                                                                                                                                                             | `"large" \| "medium" \| "small"`                                                      | `'medium'`  |
-| `spellcheck`     | `spellcheck`      | Enables spell checking on the input.                                                                                                                                                                          | `boolean`                                                                             | `false`     |
-| `step`           | `step`            | The input's step attribute.                                                                                                                                                                                   | `number`                                                                              | `undefined` |
-| `togglePassword` | `toggle-password` | Set to true to add a password toggle button for password inputs.                                                                                                                                              | `boolean`                                                                             | `false`     |
-| `type`           | `type`            | The input's type.                                                                                                                                                                                             | `"email" \| "number" \| "password" \| "search" \| "tel" \| "text" \| "url"`           | `'text'`    |
-| `value`          | `value`           | The input's value attribute.                                                                                                                                                                                  | `string`                                                                              | `''`        |
+| Property         | Attribute         | Description                                                                                                                                                                                                   | Type                                                                                               | Default     |
+| ---------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | ----------- |
+| `autocapitalize` | `autocapitalize`  | The input's autocaptialize attribute.                                                                                                                                                                         | `string`                                                                                           | `'off'`     |
+| `autocomplete`   | `autocomplete`    | The input's autocomplete attribute.                                                                                                                                                                           | `string`                                                                                           | `'off'`     |
+| `autocorrect`    | `autocorrect`     | The input's autocorrect attribute.                                                                                                                                                                            | `"off" \| "on"`                                                                                    | `'off'`     |
+| `autofocus`      | `autofocus`       | The input's autofocus attribute.                                                                                                                                                                              | `boolean`                                                                                          | `false`     |
+| `clearable`      | `clearable`       | Set to true to add a clear button when the input is populated.                                                                                                                                                | `boolean`                                                                                          | `false`     |
+| `disabled`       | `disabled`        | Set to true to disable the input.                                                                                                                                                                             | `boolean`                                                                                          | `false`     |
+| `errorOnBlur`    | `error-on-blur`   | Set to display the error text on blur and not when typing                                                                                                                                                     | `boolean`                                                                                          | `false`     |
+| `errorText`      | `error-text`      | The input's error text. Alternatively, you can use the error-text slot.                                                                                                                                       | `string`                                                                                           | `''`        |
+| `helpText`       | `help-text`       | The input's help text. Alternatively, you can use the help-text slot.                                                                                                                                         | `string`                                                                                           | `''`        |
+| `inputmode`      | `inputmode`       | The input's inputmode attribute.                                                                                                                                                                              | `"decimal" \| "email" \| "none" \| "numeric" \| "search" \| "tel" \| "text" \| "url" \| undefined` | `undefined` |
+| `invalid`        | `invalid`         | This will be true when the control is in an invalid state. Validity is determined by props such as `type`, `required`, `minlength`, `maxlength`, and `pattern` using the browser's constraint validation API. | `boolean`                                                                                          | `false`     |
+| `label`          | `label`           | The input's label. Alternatively, you can use the label slot.                                                                                                                                                 | `string`                                                                                           | `''`        |
+| `line`           | `line`            | Set to render as line                                                                                                                                                                                         | `boolean`                                                                                          | `false`     |
+| `max`            | `max`             | The input's maximum value.                                                                                                                                                                                    | `number \| undefined`                                                                              | `undefined` |
+| `maxlength`      | `maxlength`       | The maximum length of input that will be considered valid.                                                                                                                                                    | `number \| undefined`                                                                              | `undefined` |
+| `min`            | `min`             | The input's minimum value.                                                                                                                                                                                    | `number \| undefined`                                                                              | `undefined` |
+| `minlength`      | `minlength`       | The minimum length of input that will be considered valid.                                                                                                                                                    | `number \| undefined`                                                                              | `undefined` |
+| `name`           | `name`            | The input's name attribute.                                                                                                                                                                                   | `string`                                                                                           | `''`        |
+| `pattern`        | `pattern`         | A pattern to validate input against.                                                                                                                                                                          | `string \| undefined`                                                                              | `undefined` |
+| `pill`           | `pill`            | Set to true to draw a pill-style input with rounded edges.                                                                                                                                                    | `boolean`                                                                                          | `false`     |
+| `placeholder`    | `placeholder`     | The input's placeholder text.                                                                                                                                                                                 | `string \| undefined`                                                                              | `undefined` |
+| `readonly`       | `readonly`        | Set to true to make the input readonly.                                                                                                                                                                       | `boolean`                                                                                          | `false`     |
+| `required`       | `required`        | Set to true to make the input a required field.                                                                                                                                                               | `boolean`                                                                                          | `false`     |
+| `size`           | `size`            | The input's size.                                                                                                                                                                                             | `"large" \| "medium" \| "small"`                                                                   | `'medium'`  |
+| `spellcheck`     | `spellcheck`      | Enables spell checking on the input.                                                                                                                                                                          | `boolean`                                                                                          | `false`     |
+| `step`           | `step`            | The input's step attribute.                                                                                                                                                                                   | `number \| undefined`                                                                              | `undefined` |
+| `togglePassword` | `toggle-password` | Set to true to add a password toggle button for password inputs.                                                                                                                                              | `boolean`                                                                                          | `false`     |
+| `type`           | `type`            | The input's type.                                                                                                                                                                                             | `"email" \| "number" \| "password" \| "search" \| "tel" \| "text" \| "url"`                        | `'text'`    |
+| `value`          | `value`           | The input's value attribute.                                                                                                                                                                                  | `string`                                                                                           | `''`        |
 
 
 ## Events
@@ -81,7 +81,7 @@ Returns the native input's validity
 
 #### Returns
 
-Type: `Promise<ValidityState>`
+Type: `Promise<ValidityState | undefined>`
 
 
 
@@ -105,13 +105,13 @@ Type: `Promise<void>`
 
 
 
-### `reportValidity() => Promise<boolean>`
+### `reportValidity() => Promise<boolean | undefined>`
 
 Checks for validity and shows the browser's validation message if the control is invalid.
 
 #### Returns
 
-Type: `Promise<boolean>`
+Type: `Promise<boolean | undefined>`
 
 
 
@@ -125,13 +125,13 @@ Type: `Promise<void>`
 
 
 
-### `select() => Promise<void>`
+### `select() => Promise<void | undefined>`
 
 Selects all the text in the input.
 
 #### Returns
 
-Type: `Promise<void>`
+Type: `Promise<void | undefined>`
 
 
 
@@ -165,13 +165,13 @@ Type: `Promise<void>`
 
 
 
-### `setSelectionRange(selectionStart: number, selectionEnd: number, selectionDirection?: 'forward' | 'backward' | 'none') => Promise<void>`
+### `setSelectionRange(selectionStart: number, selectionEnd: number, selectionDirection?: 'forward' | 'backward' | 'none') => Promise<void | undefined>`
 
 Sets the start and end positions of the text selection (0-based).
 
 #### Returns
 
-Type: `Promise<void>`
+Type: `Promise<void | undefined>`
 
 
 

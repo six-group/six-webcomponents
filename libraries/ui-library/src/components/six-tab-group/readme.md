@@ -44,14 +44,14 @@ Type: `Promise<void>`
 
 ## Shadow Parts
 
-| Part                     | Description                                                                                 |
-| ------------------------ | ------------------------------------------------------------------------------------------- |
-| `"active-tab-indicator"` | An element that displays the currently selected tab. This is a child of the tabs container. |
-| `"base"`                 | The component's base wrapper.                                                               |
-| `"body"`                 | The tab group body where tab panels are slotted in.                                         |
-| `"nav"`                  | The tab group navigation container.                                                         |
-| `"scroll-button"`        | The previous and next scroll buttons that appear when tabs are scrollable.                  |
-| `"tabs"`                 | The container that wraps the slotted tabs.                                                  |
+| Part                     | Description                                                                                  |
+| ------------------------ | -------------------------------------------------------------------------------------------- |
+| `"active-tab-indicator"` | An element that displays the currently selected tab. This is a child of the tab's container. |
+| `"base"`                 | The component's base wrapper.                                                                |
+| `"body"`                 | The tab group body where tab panels are slotted in.                                          |
+| `"nav"`                  | The tab group navigation container.                                                          |
+| `"scroll-button"`        | The previous and next scroll buttons that appear when tabs are scrollable.                   |
+| `"tabs"`                 | The container that wraps the slotted tabs.                                                   |
 
 
 ## CSS Custom Properties

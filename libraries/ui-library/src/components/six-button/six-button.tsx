@@ -25,9 +25,9 @@ import { EmptyPayload } from '../../utils/types';
   shadow: true,
 })
 export class SixButton {
-  button: HTMLButtonElement;
+  private nativeButton?: HTMLButtonElement | HTMLAnchorElement;
 
-  @Element() host: HTMLSixButtonElement;
+  @Element() host!: HTMLSixButtonElement;
 
   @State() hasFocus = false;
   @State() hasLabel = false;
@@ -63,32 +63,25 @@ export class SixButton {
   @Prop({ reflect: true }) reset = false;
 
   /** An optional name for the button. Ignored when `href` is set. */
-  @Prop() name: string;
+  @Prop() name = '';
 
   /** An optional value for the button. Ignored when `href` is set. */
-  @Prop() value: string;
+  @Prop() value = '';
 
   /** When set, the underlying button will be rendered as an `<a>` with this `href` instead of a `<button>`. */
-  @Prop() href: string;
+  @Prop() href?: string;
 
   /** Tells the browser where to open the link. Only used when `href` is set. */
-  @Prop() target: '_blank' | '_parent' | '_self' | '_top';
+  @Prop() target?: '_blank' | '_parent' | '_self' | '_top';
 
   /** Tells the browser to download the linked file as this filename. Only used when `href` is set. */
-  @Prop() download: string;
+  @Prop() download?: string;
 
   /** Emitted when the button loses focus. */
-  @Event({ eventName: 'six-button-blur' }) sixBlur: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-button-blur' }) sixBlur!: EventEmitter<EmptyPayload>;
 
   /** Emitted when the button gains focus. */
-  @Event({ eventName: 'six-button-focus' }) sixFocus: EventEmitter<EmptyPayload>;
-
-  connectedCallback() {
-    this.handleBlur = this.handleBlur.bind(this);
-    this.handleFocus = this.handleFocus.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-    this.handleSlotChange = this.handleSlotChange.bind(this);
-  }
+  @Event({ eventName: 'six-button-focus' }) sixFocus!: EventEmitter<EmptyPayload>;
 
   componentWillLoad() {
     this.handleSlotChange();
@@ -97,47 +90,47 @@ export class SixButton {
   /** Sets focus on the button. */
   @Method()
   async setFocus(options?: FocusOptions) {
-    this.button.focus(options);
+    this.nativeButton?.focus(options);
   }
 
   /** Removes focus from the button. */
   @Method()
   async removeFocus() {
-    this.button.blur();
+    this.nativeButton?.blur();
   }
 
-  handleSlotChange() {
+  private handleSlotChange = () => {
     this.hasLabel = hasSlot(this.host);
     this.hasPrefix = hasSlot(this.host, 'prefix');
     this.hasSuffix = hasSlot(this.host, 'suffix');
-  }
+  };
 
-  handleBlur() {
+  private handleBlur = () => {
     this.hasFocus = false;
     this.sixBlur.emit();
-  }
+  };
 
-  handleFocus() {
+  private handleFocus = () => {
     this.hasFocus = true;
     this.sixFocus.emit();
-  }
+  };
 
-  handleClick(event: MouseEvent) {
+  private handleClick = (event: MouseEvent) => {
     if (this.disabled || this.loading) {
       event.preventDefault();
       event.stopPropagation();
     }
-  }
+  };
 
   render() {
-    const isLink = !!this.href;
+    const isLink = this.href != null;
     const isButton = !isLink;
     const Button = isLink ? 'a' : 'button';
 
     return (
       <div onClick={this.handleClick} class={{ 'button-wrapper--disabled': this.disabled }}>
         <Button
-          ref={(el) => (this.button = el)}
+          ref={(el) => (this.nativeButton = el)}
           part="base"
           class={{
             button: true,
@@ -167,14 +160,14 @@ export class SixButton {
             'button--has-prefix': this.hasPrefix,
             'button--has-suffix': this.hasSuffix,
           }}
-          disabled={isButton ? this.disabled : null}
-          type={isButton ? (this.submit ? 'submit' : this.reset ? 'reset' : 'button') : null}
-          name={isButton ? this.name : null}
-          value={isButton ? this.value : null}
-          href={isLink && this.href}
-          target={isLink && this.target ? this.target : null}
-          download={isLink && this.download ? this.download : null}
-          rel={isLink && this.target ? 'noreferrer noopener' : null}
+          disabled={isButton ? this.disabled : undefined}
+          type={isButton ? (this.submit ? 'submit' : this.reset ? 'reset' : 'button') : undefined}
+          name={isButton ? this.name : undefined}
+          value={isButton ? this.value : undefined}
+          href={isLink ? this.href : undefined}
+          target={isLink && this.target != null ? this.target : undefined}
+          download={isLink && this.download != null ? this.download : undefined}
+          rel={isLink && this.target != null ? 'noreferrer noopener' : undefined}
           onBlur={this.handleBlur}
           onFocus={this.handleFocus}
           onClick={this.handleClick}

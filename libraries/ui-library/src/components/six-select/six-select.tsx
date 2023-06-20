@@ -5,7 +5,7 @@ import { EmptyPayload } from '../../utils/types';
 import { EventListeners } from '../../utils/event-listeners';
 import { debounce, DEFAULT_DEBOUNCE_FAST } from '../../utils/execution-control';
 import { SixMenuItemData } from '../six-menu/six-menu';
-import { getValue, isValidValue, isValueEmpty, valueEquals } from './util';
+import { isValueEmpty } from './util';
 
 export interface SixSelectChangePayload {
   value: string | string[];
@@ -42,19 +42,18 @@ let id = 0;
   shadow: true,
 })
 export class SixSelect {
+  private box?: HTMLElement;
+  private dropdown?: HTMLSixDropdownElement;
+  private input?: HTMLSixInputElement;
   private inputId = `select-${++id}`;
   private labelId = `select-label-${id}`;
   private helpTextId = `select-help-text-${id}`;
   private errorTextId = `select-error-text-${id}`;
+  private menu?: HTMLSixMenuElement;
+  private resizeObserver?: ResizeObserver;
   private touched = false;
   private customErrorText = '';
   private customValidation = false;
-  private box?: HTMLElement;
-  private dropdown?: HTMLSixDropdownElement;
-  private inputElement?: HTMLSixInputElement;
-  private menu?: HTMLSixMenuElement;
-  private resizeObserver?: ResizeObserver;
-
   private eventListeners = new EventListeners();
 
   @Element() host!: HTMLSixSelectElement;
@@ -65,7 +64,7 @@ export class SixSelect {
   @State() hasLabelSlot = false;
   @State() isOpen = false;
   @State() displayLabel = '';
-  @State() displayTags: HTMLSixSelectElement[] = [];
+  @State() displayTags: HTMLSixTagElement[] = [];
 
   /** Set to true to enable multiselect. */
   @Prop() multiple = false;
@@ -156,12 +155,12 @@ export class SixSelect {
   @Prop() virtualScroll = false;
 
   /** The default value the select will be reverted to when reset is executed */
-  @Prop() defaultValue: string | string[] | undefined;
+  @Prop() defaultValue: string | string[] = this.multiple ? [] : '';
 
   @Watch('disabled')
   handleDisabledChange() {
-    if (this.disabled && this.isOpen && this.dropdown != null) {
-      this.dropdown.hide();
+    if (this.disabled && this.isOpen) {
+      this.dropdown?.hide();
     }
   }
 
@@ -174,110 +173,25 @@ export class SixSelect {
 
   @Watch('multiple')
   handleMultipleChange() {
-    this.update();
+    // Cast to array | string based on `this.multiple`
+    const value = this.getValueAsArray();
+    this.value = this.multiple ? value : value[0] || '';
+    this.syncItemsFromValue();
   }
 
   @Watch('value')
-  handleValueChange(newValue: unknown, oldValue: unknown) {
-    let items = this.options ?? this.getItems();
-
-    // normalize invalid values. This will re-trigger this watch handler
-    if (!isValidValue(newValue, this.multiple, items)) {
-      this.value = getValue(newValue, this.multiple, items);
-      return;
+  handleValueChange() {
+    if (this.multiple && !Array.isArray(this.value)) {
+      this.value = [];
     }
 
-    // avoid re-triggering if old and new values are equal. Needed because
-    // watch does a shallow comparison only.
-    if (valueEquals(getValue(oldValue, this.multiple, items), getValue(newValue, this.multiple, items))) {
-      return;
+    if (!this.multiple && typeof this.value !== 'string') {
+      this.value = '';
     }
 
-    this.update();
-    this.sixChange.emit({ value: this.value, isSelected: true });
-  }
-
-  private update() {
-    const items = this.getItems();
-    this.value = getValue(this.value, this.multiple, this.options ?? items);
-
-    if (!Array.isArray(this.value)) {
-      // Sync checked states
-      items.forEach((item) => (item.checked = false));
-      const item = items.find((item) => this.value.includes(item.value));
-      if (item != null) {
-        item.checked = true;
-      }
-
-      // Sync input element content
-      this.displayLabel = this.extractLabelForSelectedItem([this.value], items);
-      this.displayTags = [];
-      const hasSelection = !isValueEmpty(this.value);
-      if (hasSelection) {
-        this.touched = true;
-      }
-      if (this.inputElement && this.touched) {
-        if (!this.autocomplete) {
-          this.inputElement.value = hasSelection ? this.displayLabel : '';
-        } else if (hasSelection) {
-          this.inputElement.value = this.value;
-        }
-        this.inputElement.checkValidity().then((valid) => (this.invalid = !valid));
-      }
-    } else {
-      // Sync checked states
-      items.forEach((item) => (item.checked = this.value.includes(item.value)));
-
-      // Sync display label
-      const checkedItems: HTMLSixMenuItemElement[] = [];
-      this.value.forEach((val) => items.map((item) => (item.value === val ? checkedItems.push(item) : null)));
-
-      this.displayTags = checkedItems.map((item) => {
-        return (
-          <six-tag
-            exportparts="base:tag"
-            type="primary"
-            size={this.size}
-            pill={this.pill}
-            clearable
-            onClick={this.handleTagInteraction}
-            onKeyDown={this.handleTagInteraction}
-            onSix-tag-clear={(event) => {
-              event.stopPropagation();
-              if (!this.disabled) {
-                this.toggleItem(item);
-              }
-            }}
-          >
-            {this.getItemLabel(item)}
-          </six-tag>
-        );
-      });
-
-      if (this.maxTagsVisible > 0 && this.displayTags.length > this.maxTagsVisible) {
-        const total = this.displayTags.length;
-        this.displayLabel = '';
-        this.displayTags = this.displayTags.slice(0, this.maxTagsVisible);
-        this.displayTags.push(
-          <six-tag exportparts="base:tag" type="info" size={this.size}>
-            +{total - this.maxTagsVisible}
-          </six-tag>
-        );
-      }
-
-      // Sync input element content
-      const hasSelection = !isValueEmpty(this.value);
-      if (hasSelection) {
-        this.touched = true;
-      }
-      if (this.inputElement && this.touched) {
-        if (!this.autocomplete) {
-          this.inputElement.value = hasSelection ? this.displayLabel : '';
-        } else if (hasSelection) {
-          this.inputElement.value = this.value.join(',');
-        }
-        this.inputElement.checkValidity().then((valid) => (this.invalid = !valid));
-      }
+    this.syncItemsFromValue();
+    if (this.input) {
+      this.sixChange.emit({ value: this.value, isSelected: true });
     }
   }
 
@@ -299,31 +213,38 @@ export class SixSelect {
 
   componentWillLoad() {
     this.handleSlotChange();
+    if (this.multiple && this.value != null) {
+      this.value = this.getValueAsArray();
+    }
   }
 
   componentDidLoad() {
-    const inputElement = this.inputElement;
-    if (inputElement == null) {
-      return;
-    }
+    if (this.input == null) return;
+    const input = this.input;
     this.resizeObserver = new ResizeObserver(() => this.resizeMenu());
-    this.eventListeners.add(inputElement, 'invalid', async (event) => {
-      if (this.customValidation || (!this.hasErrorTextSlot && this.errorText === '' && this.customErrorText === '')) {
-        this.customErrorText = await inputElement.getValidationMessage();
+
+    // We need to do an initial sync after the component has rendered, so this will suppress the re-render warning
+    requestAnimationFrame(() => this.syncItemsFromValue());
+
+    this.eventListeners.add(this.input, 'invalid', async (event) => {
+      if (this.customValidation || (!this.hasErrorTextSlot && this.errorText == null && this.customErrorText == null)) {
+        this.customErrorText = await input.getValidationMessage();
       }
       event.preventDefault();
     });
 
     this.eventListeners.add(
-      inputElement,
+      input,
       'six-input-input',
-      debounce((event: Event) => {
-        const enteredValue = inputElement.value;
+      debounce((event) => {
+        const enteredValue = input.value;
         this.clearValues();
         this.sixChange.emit({ value: enteredValue, isSelected: false });
         event.stopPropagation();
       }, this.inputDebounce)
     );
+
+    input.value = this.hasSelection() ? this.displayLabel : '';
   }
 
   disconnectedCallback() {
@@ -334,33 +255,35 @@ export class SixSelect {
   /** Checks for validity and shows the browser's validation message if the control is invalid. */
   @Method()
   async reportValidity() {
-    return this.inputElement?.reportValidity();
+    return this.input?.reportValidity();
   }
 
   /** Checks for validity. */
   @Method()
   async checkValidity() {
-    return this.inputElement?.isValid();
+    return this.input?.isValid();
   }
 
   /** Sets a custom validation message. If `message` is not empty, the field will be considered invalid. */
   @Method()
   async setCustomValidity(message: string) {
+    if (this.input == null) return;
+
     this.customErrorText = '';
     this.customValidation = message !== '';
-    if (this.inputElement != null) {
-      await this.inputElement.setCustomValidity(message);
-      this.invalid = !(await this.inputElement.checkValidity());
-    }
+    await this.input.setCustomValidity(message);
+    this.invalid = !(await this.input.checkValidity());
   }
 
   /** Resets the formcontrol */
   @Method()
   async reset() {
-    this.clearValues();
+    if (this.input == null) return;
+
+    this.value = this.defaultValue;
     this.customErrorText = '';
     this.customValidation = false;
-    await this.inputElement?.setCustomValidity('');
+    await this.input.setCustomValidity('');
     this.invalid = false;
   }
 
@@ -386,6 +309,12 @@ export class SixSelect {
     return this.getItems().length > 0;
   }
 
+  private getValueAsArray() {
+    const values = Array.isArray(this.value) ? this.value : [this.value];
+    // enforce that the values are converted to 'string' before the value is compared
+    return values.map(String);
+  }
+
   private handleBlur = () => {
     this.hasFocus = false;
     this.sixBlur.emit();
@@ -407,7 +336,7 @@ export class SixSelect {
 
   private clearValues() {
     this.value = this.defaultValue ?? (this.multiple ? [] : '');
-    this.update();
+    this.syncItemsFromValue();
   }
 
   private handleSelectAll = (event: KeyboardEvent) => {
@@ -431,7 +360,7 @@ export class SixSelect {
     }
   };
 
-  private handleKeyDown = async (event: KeyboardEvent) => {
+  private handleKeyDown = (event: KeyboardEvent) => {
     const target = event.target as HTMLElement;
 
     const items = this.getItems();
@@ -445,8 +374,8 @@ export class SixSelect {
 
     // Tabbing out of the control closes it
     if (event.key === 'Tab') {
-      if (this.isOpen && this.dropdown != null) {
-        await this.dropdown.hide();
+      if (this.isOpen) {
+        this.dropdown?.hide();
       }
       return;
     }
@@ -456,29 +385,51 @@ export class SixSelect {
       event.preventDefault();
 
       // Show the menu if it's not already open
-      if (!this.isOpen && this.dropdown != null) {
-        await this.dropdown.show();
+      if (!this.isOpen) {
+        this.dropdown?.show();
       }
 
       // Focus on a menu item
       if (event.key === 'ArrowDown' && firstItem) {
         firstItem.setFocus();
-      } else if (event.key === 'ArrowUp' && lastItem) {
+        return;
+      }
+
+      if (event.key === 'ArrowUp' && lastItem) {
         lastItem.setFocus();
+        return;
       }
     }
 
     // All other keys open the menu and initiate type to select
-    if (!this.isOpen && this.dropdown != null) {
+    if (!this.isOpen) {
       event.stopPropagation();
       event.preventDefault();
-      await this.dropdown.show();
-      await this.menu?.typeToSelect(event.key);
+      this.dropdown?.show();
+      this.menu?.typeToSelect(event.key);
     }
   };
 
   private handleLabelClick = () => {
     this.box?.focus();
+  };
+
+  private handleMenuSelect = (event: CustomEvent) => {
+    const item = event.detail.item;
+
+    const getValue = () => {
+      if (this.multiple) {
+        return this.value.includes(item.value)
+          ? (this.value as []).filter((v) => v !== item.value)
+          : [...this.value, item.value];
+      } else {
+        return item.value;
+      }
+    };
+
+    this.value = getValue();
+
+    this.syncItemsFromValue();
   };
 
   private handleMenuShow = (event: CustomEvent) => {
@@ -501,7 +452,7 @@ export class SixSelect {
     this.hasHelpTextSlot = hasSlot(this.host, 'help-text');
     this.hasErrorTextSlot = hasSlot(this.host, 'error-text');
     this.hasLabelSlot = hasSlot(this.host, 'label');
-    this.update();
+    this.syncItemsFromValue();
   };
 
   private handleTagInteraction = (event: KeyboardEvent | MouseEvent) => {
@@ -519,14 +470,71 @@ export class SixSelect {
     }
   };
 
-  private async resizeMenu() {
-    if (this.menu == null || this.box == null) {
-      return;
-    }
+  private resizeMenu() {
+    if (this.menu == null || this.box == null) return;
     this.menu.style.minWidth = `${this.box.clientWidth}px`;
 
     if (this.dropdown) {
-      await this.dropdown.reposition();
+      this.dropdown.reposition();
+    }
+  }
+
+  private async syncItemsFromValue() {
+    const items = this.getItems();
+    const value = this.getValueAsArray();
+
+    // Sync checked states
+    items.forEach((item) => (item.checked = value.includes(item.value)));
+
+    // Sync display label
+    if (this.multiple) {
+      const checkedItems: HTMLSixMenuItemElement[] = [];
+      value.forEach((val) => items.map((item) => (item.value === val ? checkedItems.push(item) : null)));
+
+      this.displayTags = checkedItems.map((item) => {
+        return (
+          <six-tag
+            exportparts="base:tag"
+            type="primary"
+            size={this.size}
+            pill={this.pill}
+            clearable
+            onClick={this.handleTagInteraction}
+            onKeyDown={this.handleTagInteraction}
+            onSix-tag-clear={(event) => {
+              event.stopPropagation();
+              if (!this.disabled) {
+                item.checked = false;
+                this.syncValueFromItems();
+              }
+            }}
+          >
+            {this.getItemLabel(item)}
+          </six-tag>
+        );
+      });
+
+      if (this.maxTagsVisible > 0 && this.displayTags.length > this.maxTagsVisible) {
+        const total = this.displayTags.length;
+        this.displayLabel = '';
+        this.displayTags = this.displayTags.slice(0, this.maxTagsVisible);
+        this.displayTags.push(
+          <six-tag exportparts="base:tag" type="info" size={this.size}>
+            +{total - this.maxTagsVisible}
+          </six-tag>
+        );
+      }
+    } else {
+      this.displayLabel = this.extractLabelForSelectedItem(value, items);
+      this.displayTags = [];
+    }
+
+    if (!isValueEmpty(this.value)) {
+      this.touched = true;
+    }
+    if (this.touched && this.input != null) {
+      this.input.value = Array.isArray(this.value) ? this.value.join(',') : this.value;
+      this.invalid = !(await this.input.checkValidity());
     }
   }
 
@@ -544,22 +552,15 @@ export class SixSelect {
     return checkedItem ? this.getItemLabel(checkedItem) : '';
   }
 
-  private toggleItem(item: HTMLSixMenuItemElement) {
-    const value = getValue(this.value, this.multiple, this.options ?? this.getItems());
-    if (Array.isArray(value)) {
-      const itemFound = value.find((v) => v === item.value);
-      if (itemFound == null) {
-        this.value = [...this.value, item.value];
-      } else {
-        this.value = value.filter((v) => v !== item.value);
-      }
-    } else {
-      if (item.value === value) {
-        this.value = '';
-      } else {
-        this.value = item.value;
-      }
-    }
+  private syncValueFromItems() {
+    const items = this.getItems();
+    const checkedItems = items.filter((item) => item.checked);
+    const checkedValues = checkedItems.map((item) => item.value);
+    this.value = this.multiple
+      ? this.getValueAsArray().filter((val) => checkedValues.includes(val))
+      : checkedValues.length > 0
+      ? checkedValues[0]
+      : '';
   }
 
   private displayError() {
@@ -567,7 +568,7 @@ export class SixSelect {
   }
 
   render() {
-    const hasSelection = !isValueEmpty(this.value);
+    const hasSelection = this.hasSelection();
 
     return (
       <FormControl
@@ -579,7 +580,7 @@ export class SixSelect {
         helpText={this.helpText}
         hasHelpTextSlot={this.hasHelpTextSlot}
         errorTextId={this.errorTextId}
-        errorText={this.customErrorText != null ? this.customErrorText : this.errorText}
+        errorText={this.customErrorText != null && this.customErrorText !== '' ? this.customErrorText : this.errorText}
         hasErrorTextSlot={this.hasErrorTextSlot}
         size={this.size}
         onLabelClick={this.handleLabelClick}
@@ -638,7 +639,7 @@ export class SixSelect {
             onKeyDown={this.handleKeyDown}
           >
             <span class="select__label">
-              {this.displayTags.length ? (
+              {this.displayTags.length > 0 ? (
                 <span part="tags" class="select__tags">
                   {this.displayTags}
                 </span>
@@ -669,7 +670,7 @@ export class SixSelect {
               of a select because, otherwise, iOS will show a list of options during validation.
             */}
             <six-input
-              ref={(el) => (this.inputElement = el)}
+              ref={(el) => (this.input = el)}
               class={{
                 select__input: true,
                 'select__hidden-select': !this.autocomplete,
@@ -695,7 +696,7 @@ export class SixSelect {
               'select__menu--filtered': this.filter || this.asyncFilter,
               'select__menu--hidden': !this.hasMenuItems(),
             }}
-            onSix-menu-item-selected={(event) => this.toggleItem(event.detail.item)}
+            onSix-menu-item-selected={this.handleMenuSelect}
             items={this.options}
             virtualScroll={this.virtualScroll}
             remove-box-shadow
@@ -705,5 +706,9 @@ export class SixSelect {
         </six-dropdown>
       </FormControl>
     );
+  }
+
+  private hasSelection() {
+    return this.multiple ? this.value.length > 0 : this.value !== '';
   }
 }

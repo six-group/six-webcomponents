@@ -5,6 +5,12 @@
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/libraries/ui-library-angular-foobar/dist" />
       <excludeFolder url="file://$MODULE_DIR$/libraries/ui-library-angular-foobar/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/libraries/ui-library-angular/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/libraries/ui-library-angular/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/libraries/ui-library/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/examples/angular/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/examples/react/build" />
+      <excludeFolder url="file://$MODULE_DIR$/libraries/ui-library/www/build" />
       <excludeFolder url="file://$MODULE_DIR$/examples/react/build" />
       <excludeFolder url="file://$MODULE_DIR$/libraries/ui-library/dist" />
       <excludeFolder url="file://$MODULE_DIR$/libraries/ui-library/www" />

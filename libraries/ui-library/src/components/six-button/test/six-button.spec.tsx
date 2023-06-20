@@ -20,8 +20,10 @@ describe('six-button', () => {
         html: `<six-button></six-button>`,
         supportsShadowDom: true,
       })) as TypedSpecPage<SixButton>;
-
-      button = page.root.shadowRoot.querySelector('[data-testid="button"]');
+      const queryResult = page.root?.shadowRoot?.querySelector('[data-testid="button"]');
+      if (queryResult != null) {
+        button = queryResult as HTMLButtonElement;
+      }
     });
 
     it('renders', async () => {
@@ -29,7 +31,7 @@ describe('six-button', () => {
       <six-button size="medium" type="primary">
         <mock:shadow-root>
          <div>
-          <button class="button button--primary button--medium" part="base" type="button" data-testid="button">
+          <button class="button button--primary button--medium" part="base" type="button" data-testid="button" value="">
             <span part="prefix" class="button__prefix">
               <slot name="prefix"></slot>
             </span>
@@ -49,7 +51,7 @@ describe('six-button', () => {
     describe('custom events', () => {
       it(`should propagate custom 'six-button-blur' event`, async () => {
         const spy = jest.fn();
-        page.root.addEventListener('six-button-blur', spy);
+        page.root?.addEventListener('six-button-blur', spy);
         await page.waitForChanges();
 
         // when
@@ -62,7 +64,7 @@ describe('six-button', () => {
 
       it(`should propagate custom 'six-button-focus' event`, async () => {
         const spy = jest.fn();
-        page.root.addEventListener('six-button-focus', spy);
+        page.root?.addEventListener('six-button-focus', spy);
         await page.waitForChanges();
 
         // when

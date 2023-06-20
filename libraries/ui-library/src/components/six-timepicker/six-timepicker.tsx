@@ -1,33 +1,26 @@
 import { Component, Element, Event, EventEmitter, h, Listen, Method, Prop, State, Watch } from '@stencil/core';
 import { ItemPickerType } from '../six-item-picker/types';
-import { SixTimeFormat } from './six-time-format';
-import { SixTime, SixTimePropertyName, TIME_FORMAT_CHAR } from './six-timepicker.types';
 import {
   createTimeString,
   getCurrentTime,
   isValidTimeString,
   parseTimeString,
-  TIME_FORMAT_SEPARATOR,
+  Time,
+  TimeFormat,
+  TimeProperties,
 } from '../../utils/time.util';
 import { debounce, DEFAULT_DEBOUNCE_FAST, DEFAULT_DEBOUNCE_INSANELY_FAST } from '../../utils/execution-control';
 import { SixItemPickerChangePayload } from '../six-item-picker/six-item-picker';
 import { EventListeners } from '../../utils/event-listeners';
 import { hasSlot } from '../../utils/slot';
 import { EmptyPayload } from '../../utils/types';
-import { isNil } from '../../utils/type-check';
+import { adjustPopupForHoisting, movePopup } from '../../utils/popup';
 
-interface SixTimepickerBasePayload {
-  value: SixTime;
+export interface SixTimepickerChange {
+  value?: Time;
   valueAsString: string;
-}
-
-export interface SixTimepickerChange extends SixTimepickerBasePayload {
   changedProperty?: string;
 }
-
-export interface SixTimepickerInput extends SixTimepickerBasePayload {}
-
-export interface SixTimepickerBlur extends SixTimepickerBasePayload {}
 
 interface SixTimeUnitPickerParams {
   min?: number;
@@ -36,11 +29,9 @@ interface SixTimeUnitPickerParams {
   type?: ItemPickerType;
   class?: string;
   paddingLength?: number;
-  propertyName: string;
+  propertyName: TimeProperties;
 }
 
-const TAG = `[SIX-TIMEPICKER]`;
-const DEBOUNCE_TIMEPICKER_LISTENER = 'debounced-timepicker';
 const MIN_POPUP_HEIGHT = 145;
 
 /**
@@ -58,15 +49,11 @@ const MIN_POPUP_HEIGHT = 145;
   shadow: true,
 })
 export class SixTimepicker {
-  private readonly eventListeners = new EventListeners();
-
-  private popup: HTMLElement;
-
-  private wrapper: HTMLElement;
-
-  private inputElement: HTMLSixInputElement;
-
-  @Element() host: HTMLSixTimepickerElement;
+  private eventListeners = new EventListeners();
+  private popup?: HTMLElement;
+  private wrapper?: HTMLElement;
+  private inputElement?: HTMLSixInputElement;
+  @Element() host!: HTMLSixTimepickerElement;
 
   /**
    * Define the time format. Valid formats are:
@@ -89,24 +76,24 @@ export class SixTimepicker {
    * Please notice that when using the 12-hour-clock (hh)
    * you always need a period indicator (aa). So the time can be parsed as either am or pm
    * */
-  @Prop() format: SixTimeFormat = SixTimeFormat.HHmmss;
+  @Prop() format: TimeFormat = 'HH:mm:ss';
 
   /**
    * Define the separator to be shown between the time unit pickers.
    * Please be aware that this property will modify the displayed separator only.
    * The separator for a timestring is always expected to be a colon (eg. '13:52:20')
    * */
-  @Prop() separator = TIME_FORMAT_SEPARATOR;
+  @Prop() separator = ':';
 
   /**
    * The value of the timepicker provided as a string. The string mast match the provided format (or default format)
    */
-  @Prop({ mutable: true }) value?: string | null;
+  @Prop({ mutable: true }) value = '';
 
-  /** Indicates whether or not the timepicker dropdown is open on startup. You can use this in lieu of the show/hide methods. */
+  /** Indicates whether the timepicker dropdown is open on startup. You can use this in lieu of the show/hide methods. */
   @Prop({ mutable: true, reflect: true }) open = false;
 
-  /** Indicates whether or not the timepicker should be shown as an inline (always open) component */
+  /** Indicates whether the timepicker should be shown as an inline (always open) component */
   @Prop({ reflect: true }) inline = false;
 
   /**
@@ -122,18 +109,18 @@ export class SixTimepicker {
   /**
    * The enforced placement of the dropdown panel.
    */
-  @Prop() placement: 'top' | 'bottom';
+  @Prop() placement?: 'top' | 'bottom';
 
   /** Timepicker size. */
   @Prop() size: 'small' | 'medium' | 'large' = 'medium';
 
   /** Set to true to make the input a required field. */
-  @Prop({ reflect: true }) required: boolean;
+  @Prop({ reflect: true }) required = false;
 
   /**
    * The placeholder defines what text to be shown on the input element
    */
-  @Prop() placeholder?: string | null;
+  @Prop() placeholder?: string;
 
   /** Set to display the error text on blur and not when typing */
   @Prop() errorOnBlur = false;
@@ -172,7 +159,7 @@ export class SixTimepicker {
   /**
    * The defaultTime defines the default setting for the timepicker when you open the popup. Default time must match the provided format.
    */
-  @Prop() defaultTime?: string | null;
+  @Prop() defaultTime?: string;
 
   /**
    * Set the amount of time, in milliseconds, to wait to trigger the `six-timepicker-change-debounced` event.
@@ -185,18 +172,17 @@ export class SixTimepicker {
   /**
    * Emitted when the timepicker's value changes
    */
-  @Event({ eventName: 'six-timepicker-change' }) sixChange: EventEmitter<SixTimepickerChange>;
+  @Event({ eventName: 'six-timepicker-change' }) sixChange!: EventEmitter<SixTimepickerChange>;
 
   /**
    * Emitted when the timepicker's value changes, but debounced
    */
-  @Event({ eventName: 'six-timepicker-change-debounced' })
-  sixChangeDebounced: EventEmitter<SixTimepickerChange>;
+  @Event({ eventName: 'six-timepicker-change-debounced' }) sixChangeDebounced!: EventEmitter<SixTimepickerChange>;
 
   /**
    * Emitted when the clear button is activated.
    */
-  @Event({ eventName: 'six-timepicker-clear' }) sixClear: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-timepicker-clear' }) sixClear!: EventEmitter<EmptyPayload>;
 
   @State() isPopupContentUp = false;
 
@@ -214,69 +200,53 @@ export class SixTimepicker {
     this.moveOpenHoistedPopup();
   }
 
-  @Watch('debounce')
-  protected debounceChanged() {
-    this.eventListeners.removeByIdentifier(DEBOUNCE_TIMEPICKER_LISTENER);
-    this.eventListeners.add(
-      this.host,
-      'six-timepicker-change',
-      debounce(this.handleSixTimepickerChangeDebounced, this.debounce),
-      DEBOUNCE_TIMEPICKER_LISTENER
-    );
-  }
-
   /**
    * Update the native input element when the value changes
    */
   @Watch('value')
-  protected valueChanged(newValue: string) {
-    if (this.value !== newValue) {
-      this.value = newValue;
-    }
-    this.setupInternalTime();
-    this.sixChange.emit({
-      value: this.internalValue,
-      valueAsString: createTimeString(this.internalValue, this.format),
-    });
+  protected valueChanged() {
+    this.updateValue();
   }
 
   /** Checks for validity and shows the browser's validation message if the control is invalid. */
   @Method()
   async reportValidity() {
-    return this.inputElement.reportValidity();
+    return this.inputElement?.reportValidity();
   }
 
   /** Checks for validity. */
   @Method()
   async checkValidity() {
-    return this.inputElement.checkValidity();
+    return this.inputElement?.checkValidity();
   }
 
   /** Sets a custom validation message. If `message` is not empty, the field will be considered invalid. */
   @Method()
   async setCustomValidity(message: string) {
-    await this.inputElement.setCustomValidity(message);
+    await this.inputElement?.setCustomValidity(message);
   }
 
   /** Resets the formcontrol */
   @Method()
   async reset() {
-    this.internalValue = this.defaultValue;
-    this.inputElement.value = createTimeString(this.internalValue, this.format);
-    await this.inputElement.reset();
+    this.popupValue = this.defaultValue;
+    if (this.inputElement != null) {
+      this.inputElement.value = createTimeString(this.popupValue, this.format);
+      await this.inputElement.reset();
+    }
   }
 
   /*
    * Internally the six-timepicker uses a standardized representation of time, so we don't have a mess,
    * when switching between formats
    */
-  @State()
-  private internalValue: SixTime;
+  @State() private popupValue: Time = {};
 
-  private defaultValue: SixTime = null;
+  private defaultValue: Time = {};
 
   componentWillLoad() {
-    this.setupInternalTime();
+    this.updateValue();
+    this.defaultValue = this.popupValue;
 
     if (this.inline) {
       this.open = true;
@@ -288,40 +258,78 @@ export class SixTimepicker {
   }
 
   componentDidLoad() {
+    if (this.inputElement == null) return;
+    const inputElement = this.inputElement;
+
+    // emit debounced change event
     this.eventListeners.add(
       this.host,
       'six-timepicker-change',
-      debounce(this.handleSixTimepickerChangeDebounced, this.debounce),
-      DEBOUNCE_TIMEPICKER_LISTENER
+      debounce((event: Event) => this.sixChangeDebounced.emit((event as CustomEvent).detail), this.debounce)
     );
-    this.eventListeners.add(this.inputElement, 'six-input-input', debounce(this.handleInputChange, this.debounce));
+
+    // update value and popup value based on input-element value
+    this.eventListeners.add(
+      inputElement,
+      'six-input-input',
+      debounce((event: Event) => {
+        event.stopPropagation();
+
+        // emit empty event if time string is invalid
+        if (!isValidTimeString(inputElement.value, this.format)) {
+          this.sixChange.emit({
+            value: {},
+            valueAsString: '',
+          });
+          return;
+        }
+
+        // update value and popup value, and emit the new value
+        this.value = inputElement.value;
+        this.popupValue = parseTimeString(inputElement.value, this.format);
+        this.sixChange.emit({
+          value: this.popupValue,
+          valueAsString: createTimeString(this.popupValue, this.format),
+        });
+      }, this.debounce)
+    );
+  }
+
+  componentDidRender() {
+    adjustPopupForHoisting(
+      this.hoist,
+      this.popup,
+      this.inputElement,
+      this.wrapper,
+      MIN_POPUP_HEIGHT,
+      (isUp) => (this.isDropDownContentUp = isUp)
+    );
   }
 
   disconnectedCallback() {
     this.eventListeners.removeAll();
   }
 
-  private handleInputChange = (event: Event) => {
-    event.stopPropagation();
-    const inputValue = this.inputElement.value;
-
-    if (!isValidTimeString(inputValue, this.format)) {
-      this.sixChange.emit({
-        value: {},
-        valueAsString: '',
-      });
-      return;
+  private updateValue() {
+    // normalize value
+    if (typeof this.value !== 'string' || !isValidTimeString(this.value, this.format)) {
+      this.value = '';
     }
 
-    this.internalValue = parseTimeString(inputValue, this.format);
-    this.sixChange.emit({
-      value: this.internalValue,
-      valueAsString: createTimeString(this.internalValue, this.format),
-    });
-  };
+    // update popup value
+    if (this.value === '') {
+      if (this.defaultTime == null) {
+        this.popupValue = getCurrentTime(this.is24HourClock());
+      } else {
+        this.popupValue = parseTimeString(this.defaultTime, this.format);
+      }
+    } else {
+      this.popupValue = parseTimeString(this.value, this.format);
+    }
+  }
 
   private calcIsPopupContentUp() {
-    if (!this.inputElement || !this.wrapper) {
+    if (this.inputElement == null || this.wrapper == null) {
       return;
     }
 
@@ -333,52 +341,33 @@ export class SixTimepicker {
     this.isPopupContentUp = moreSpaceInTop && window.innerHeight < inputBoundingRect.bottom + minPopupHeight;
   }
 
-  /*
-   * The position of the hoisted timepicker needs to be correctly calculated since the position changes to fixed.
-   * Thus if the user scrolls or adjusts the screen size we need to recalculate the timepicker position.
-   */
   private moveOpenHoistedPopup() {
-    if (!this.hoist || !this.open) {
+    movePopup(this.hoist, this.open, this.popup, this.inputElement, this.wrapper, MIN_POPUP_HEIGHT);
+  }
+
+  private handlePickerChange = (event: CustomEvent<SixItemPickerChangePayload>, property: TimeProperties) => {
+    // stop propagation, since the timepicker should not expose the events of the underlying item-picker
+    event.stopPropagation();
+    if (this.popupValue == null) {
       return;
     }
 
-    const popupBoundingClientRect = this.popup.getBoundingClientRect();
-    const popupHeight = popupBoundingClientRect.height;
-    const inputBoundingClientRect = this.inputElement.getBoundingClientRect();
-    const inputTop = inputBoundingClientRect.top;
-    const inputHeight = inputBoundingClientRect.height;
-
-    this.calcIsPopupContentUp();
-
-    if (this.isPopupContentUp) {
-      this.popup.style.top = `${inputTop - popupHeight}px`;
-    } else {
-      this.popup.style.top = `${inputTop + inputHeight}px`;
-    }
-  }
-
-  private handleSixTimepickerChangeDebounced = ({ detail }) => {
-    this.sixChangeDebounced.emit(detail);
-  };
-
-  private handleChange = (event: CustomEvent<SixItemPickerChangePayload>, property: string) => {
-    // stop propagation, since the timepicker should not expose the events of the underlying item-picker
-    event.stopPropagation();
-
     // update the internal state
-    this.internalValue[property] = event.detail;
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    this.popupValue[property] = event.detail;
 
-    const timeString = createTimeString(this.internalValue, this.format);
-
-    // fire timepicker's own event
-    this.sixChange.emit({
-      changedProperty: property,
-      value: this.internalValue,
-      valueAsString: timeString,
-    });
+    const timeString = createTimeString(this.popupValue, this.format);
 
     // update the input value
     this.value = timeString;
+
+    // emit change event
+    this.sixChange.emit({
+      changedProperty: property,
+      value: this.popupValue,
+      valueAsString: timeString,
+    });
   };
 
   private getSixTimeUnitPicker(params: SixTimeUnitPickerParams) {
@@ -390,88 +379,69 @@ export class SixTimepicker {
         padded
         min={params.min}
         max={params.max}
-        value={this.internalValue[params.propertyName]}
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        value={this.popupValue[params.propertyName]}
         items={params.items}
         type={params.type || ItemPickerType.NUMBER}
         padding-length={params.paddingLength}
-        onSix-item-picker-change={(event) => this.handleChange(event, params.propertyName)}
+        onSix-item-picker-change={(event) => this.handlePickerChange(event, params.propertyName)}
       ></six-item-picker>
     );
-  }
-
-  private setupInternalTime() {
-    if (this.is12HourClock() && !this.format.includes(TIME_FORMAT_CHAR.PERIOD)) {
-      console.error(
-        `${TAG} You provided a 12-hour-clock format but are missing the period (am or pm) in the time-format-string!`
-      );
-    }
-
-    if (this.value === null || this.value === undefined) {
-      this.internalValue = isNil(this.defaultTime)
-        ? getCurrentTime(this.is24HourClock())
-        : parseTimeString(this.defaultTime, this.format);
-    } else {
-      this.internalValue = parseTimeString(this.value, this.format);
-    }
-
-    this.defaultValue = this.internalValue;
   }
 
   private getHour24Picker() {
     if (!this.is24HourClock()) {
       return;
     }
-
-    return this.getSixTimeUnitPicker({ min: 0, max: 23, propertyName: SixTimePropertyName.HOURS });
+    return this.getSixTimeUnitPicker({ min: 0, max: 23, propertyName: 'hours' });
   }
 
   private is24HourClock() {
-    return this.format.includes(TIME_FORMAT_CHAR.HOUR_24);
+    return this.format.includes('HH');
   }
 
   private getHour12Picker() {
     if (!this.is12HourClock()) {
       return;
     }
-
-    return this.getSixTimeUnitPicker({ min: 0, max: 11, propertyName: SixTimePropertyName.HOURS });
+    return this.getSixTimeUnitPicker({ min: 0, max: 11, propertyName: 'hours' });
   }
 
   private is12HourClock() {
-    return this.format.includes(TIME_FORMAT_CHAR.HOUR_12);
+    return this.format.includes('hh');
   }
 
   private getAmPmPicker() {
     if (!this.is12HourClock()) {
       return;
     }
-
     const items = ['AM', 'PM'];
     return this.getSixTimeUnitPicker({
       items,
       type: ItemPickerType.CUSTOM,
-      propertyName: SixTimePropertyName.PERIOD,
+      propertyName: 'period',
     });
   }
 
   private getMinutePicker() {
-    if (!this.format.includes(TIME_FORMAT_CHAR.MINUTE)) {
+    if (!this.format.includes('mm')) {
       return;
     }
 
-    return this.getSixTimeUnitPicker({ min: 0, max: 59, propertyName: SixTimePropertyName.MINUTES });
+    return this.getSixTimeUnitPicker({ min: 0, max: 59, propertyName: 'minutes' });
   }
 
   private getSecondsPicker() {
-    if (!this.format.includes(TIME_FORMAT_CHAR.SECOND)) {
+    if (!this.format.includes('ss')) {
       return;
     }
 
-    return this.getSixTimeUnitPicker({ min: 0, max: 59, propertyName: SixTimePropertyName.SECONDS });
+    return this.getSixTimeUnitPicker({ min: 0, max: 59, propertyName: 'seconds' });
   }
 
   private getMillisecondsPicker() {
-    if (!this.format.includes(TIME_FORMAT_CHAR.MILLISECOND)) {
+    if (!this.format.includes('ms')) {
       return;
     }
 
@@ -480,7 +450,7 @@ export class SixTimepicker {
       max: 999,
       class: 'timepicker__item--wide',
       paddingLength: 3,
-      propertyName: SixTimePropertyName.MILLISECONDS,
+      propertyName: 'milliseconds',
     });
   }
 
@@ -528,8 +498,8 @@ export class SixTimepicker {
     this.eventListeners.remove(document, 'mousedown', this.handleDocumentMouseDown);
   }
 
-  private handleDocumentMouseDown = (event: MouseEvent) => {
-    // Close when clicking outside of the containing element
+  private handleDocumentMouseDown = (event: Event) => {
+    // Close when clicking outside the containing element
     const path = event.composedPath() as EventTarget[];
     if (!path.includes(this.host)) {
       this.closePopup();
@@ -539,8 +509,12 @@ export class SixTimepicker {
 
   private handleClearClick = (event: MouseEvent) => {
     event.stopPropagation();
-    this.value = undefined;
+    this.value = '';
     this.sixClear.emit();
+    this.sixChange.emit({
+      value: {},
+      valueAsString: '',
+    });
   };
 
   private renderClearable() {
@@ -584,59 +558,7 @@ export class SixTimepicker {
     );
   }
 
-  private calcIsDropDownContentUp() {
-    if (!this.inputElement || !this.wrapper) {
-      return;
-    }
-
-    const inputBoundingRect = this.inputElement.getBoundingClientRect();
-    const wrapperBoundingRect = this.wrapper.getBoundingClientRect();
-    const minPopupHeight = Math.max(wrapperBoundingRect.height, MIN_POPUP_HEIGHT);
-
-    const moreSpaceInTop = inputBoundingRect.y > window.innerHeight / 2;
-    this.isDropDownContentUp = moreSpaceInTop && window.innerHeight < inputBoundingRect.bottom + minPopupHeight;
-  }
-
-  /*
-   * If the popup is hoisted we popup is hoisted its position will change to fix to not be clipped of by a containing container.
-   * To render the popup correctly we render it normally, and then assign this screenposition to the fixed popup
-   */
-  private adjustPopupForHoisting() {
-    if (!this.hoist) {
-      return;
-    }
-
-    // execute after dropdown has been rendered to make sure the popup reference is correctly set
-    setTimeout(() => {
-      if (!this.popup) {
-        return;
-      }
-
-      // take a snapshot of normally rendered popup
-      const popupBoundingClientRect = this.popup.getBoundingClientRect();
-
-      // apply screen position to fixed popup
-      this.popup.style.position = 'fixed';
-      ['top', 'left', 'width', 'height'].forEach((property) => {
-        this.popup.style[property] = `${popupBoundingClientRect[property]}px`;
-      });
-
-      const inputBoundingClientRect = this.inputElement.getBoundingClientRect();
-      const inputTop = inputBoundingClientRect.top;
-      const popupTop = popupBoundingClientRect.top;
-
-      this.calcIsDropDownContentUp();
-      // check screen position to check whether the popup should be moved above or below the trigger element
-      if (this.isDropDownContentUp && inputTop < popupTop) {
-        //  move popup above input field if timepicker is at bottom of screen
-        this.popup.style.top = `${popupTop - popupBoundingClientRect.height - inputBoundingClientRect.height}px`;
-      }
-    }, 0);
-  }
-
   render() {
-    this.adjustPopupForHoisting();
-
     return (
       <div part="container" ref={(el) => (this.wrapper = el)} class="timepicker__container">
         <six-input
@@ -654,7 +576,7 @@ export class SixTimepicker {
           error-text={this.errorText}
           error-on-blur={this.errorOnBlur}
           class={{
-            'input--empty': !this.value,
+            'input--empty': this.value === '',
             'input--hide': this.inline,
           }}
         >
@@ -677,7 +599,7 @@ export class SixTimepicker {
             part="popup"
             class={{
               timepicker__popup: true,
-              'timepicker__popup--is-up': this.placement ? this.placement === 'top' : this.isPopupContentUp,
+              'timepicker__popup--is-up': this.placement == null ? this.placement === 'top' : this.isPopupContentUp,
               'timepicker__popup--is-inline': this.inline,
             }}
           >

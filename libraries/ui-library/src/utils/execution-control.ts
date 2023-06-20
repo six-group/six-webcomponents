@@ -1,9 +1,7 @@
 import { EventEmitter } from '@stencil/core';
 
 export const DEFAULT_DEBOUNCE_INSANELY_FAST = 35;
-export const DEFAULT_DEBOUNCE_VERY_FAST = 100;
 export const DEFAULT_DEBOUNCE_FAST = 300;
-export const DEFAULT_DEBOUNCE_SLOW = 600;
 
 /**
  * Debounce function to implement a timeframe to wait for no new changes before executing a callback
@@ -18,11 +16,13 @@ export const DEFAULT_DEBOUNCE_SLOW = 600;
  * @param callback
  * @param timeout
  */
-export const debounce = (callback: Function, timeout = DEFAULT_DEBOUNCE_FAST) => {
-  let timer: NodeJS.Timeout;
-  return <T>(...args: T[]) => {
+export const debounce = <T>(callback: (x: T) => void, timeout = DEFAULT_DEBOUNCE_FAST) => {
+  let timer: number;
+  return (args: T) => {
     clearTimeout(timer);
-    timer = setTimeout(() => callback.apply(this, args), timeout);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    timer = setTimeout(() => callback(args), timeout);
   };
 };
 
@@ -33,8 +33,9 @@ export const debounce = (callback: Function, timeout = DEFAULT_DEBOUNCE_FAST) =>
  * @param timeout
  */
 export const debounceEvent = (event: EventEmitter, timeout: number): EventEmitter => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const original = (event as any)._original || event;
-  const emit = debounce(original.emit.bind(original), timeout) as (any) => CustomEvent;
+  const emit = debounce(original.emit.bind(original), timeout) as (_: unknown) => CustomEvent;
   return {
     _original: event,
     emit: emit,

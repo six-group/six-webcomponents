@@ -2,66 +2,30 @@ import { Component, Element, Event, EventEmitter, h, Prop, State, Watch } from '
 import { ItemPickerPaddingDirection, ItemPickerType } from './types';
 import { debounce, DEFAULT_DEBOUNCE_FAST, DEFAULT_DEBOUNCE_INSANELY_FAST } from '../../utils/execution-control';
 import { EventListeners } from '../../utils/event-listeners';
-
-type StringItemIndex = { [key: string]: number };
+import { TimePeriod } from '../../utils/time.util';
 
 interface Alphabet {
   alphabet: string[];
-  letterIndexes: StringItemIndex;
+  letterIndexes: Record<string, number>;
 }
 
-const A_CHARCODE = 65;
-const NUMBER_OF_LETTERS = 26;
+const uppercaseLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+const upperAndLowercaseLetters = [...uppercaseLetters].flatMap((c) => [c, c.toLowerCase()]);
+const ALPHABET: Alphabet = {
+  alphabet: upperAndLowercaseLetters,
+  letterIndexes: Object.fromEntries(upperAndLowercaseLetters.map((c, i) => [c, i])),
+};
+const CAPITAL_ALPHABET: Alphabet = {
+  alphabet: [...uppercaseLetters].flatMap((c) => [c]),
+  letterIndexes: Object.fromEntries([...uppercaseLetters].map((c, i) => [c, i])),
+};
+const LOWERCASE_ALPHABET: Alphabet = {
+  alphabet: [...uppercaseLetters.toLowerCase()].flatMap((c) => [c]),
+  letterIndexes: Object.fromEntries([...uppercaseLetters.toLowerCase()].map((c, i) => [c, i])),
+};
 
-const CAPITAL_ALPHABET: Alphabet = (() => {
-  const alphabetCodes = Array.from(Array(NUMBER_OF_LETTERS)).map((_, i) => i + A_CHARCODE);
-  const letterIndexes = {};
-  const alphabet = alphabetCodes.map((charCode, index) => {
-    const character = String.fromCharCode(charCode);
-    letterIndexes[character] = index;
-    return character;
-  });
-  return { alphabet, letterIndexes };
-})();
-
-const LOWERCASE_ALPHABET: Alphabet = (() => {
-  const alphabet = [];
-  const letterIndexes = {};
-
-  for (let i = 0; i < CAPITAL_ALPHABET.alphabet.length; i++) {
-    const lowercaseCharacter = CAPITAL_ALPHABET.alphabet[i].toLowerCase();
-    letterIndexes[lowercaseCharacter] = alphabet.length;
-    alphabet.push(lowercaseCharacter);
-  }
-
-  return { alphabet, letterIndexes };
-})();
-
-const ALPHABET: Alphabet = (() => {
-  const alphabet = [];
-  const letterIndexes = {};
-
-  for (let i = 0; i < CAPITAL_ALPHABET.alphabet.length; i++) {
-    const capitalCharacter = CAPITAL_ALPHABET.alphabet[i];
-    letterIndexes[capitalCharacter] = alphabet.length;
-    alphabet.push(capitalCharacter);
-
-    const lowerCharacter = LOWERCASE_ALPHABET.alphabet[i];
-    letterIndexes[lowerCharacter] = alphabet.length;
-    alphabet.push(lowerCharacter);
-  }
-
-  return { alphabet, letterIndexes };
-})();
-
-const createItemIndexes = (arr: string[]): StringItemIndex => {
-  const itemIndexes = {};
-
-  for (let i = 0; i < arr?.length; i++) {
-    itemIndexes[arr[i]] = i;
-  }
-
-  return itemIndexes;
+const createItemIndexes = (arr: string[]): Record<string, number> => {
+  return Object.fromEntries([...arr].map((c, i) => [c, i]));
 };
 
 const TAG = `[SIX-ITEM-PICKER]`;
@@ -69,7 +33,7 @@ const TAG = `[SIX-ITEM-PICKER]`;
 const subtract = (a: number, b: number) => a - b;
 const add = (a: number, b: number) => a + b;
 
-export type SixItemPickerChangePayload = number | string;
+export type SixItemPickerChangePayload = number | string | boolean | TimePeriod;
 
 const DEBOUNCE_ITEM_PICKER_LISTENER = 'debounced-item-picker';
 
@@ -90,7 +54,7 @@ const DEBOUNCE_ITEM_PICKER_LISTENER = 'debounced-item-picker';
 export class SixItemPicker {
   private readonly eventListeners = new EventListeners();
 
-  @Element() host: HTMLSixItemPickerElement;
+  @Element() host!: HTMLSixItemPickerElement;
 
   /** The item picker's value attribute. */
   @Prop({ mutable: true, reflect: true }) value: number | string = '';
@@ -99,19 +63,19 @@ export class SixItemPicker {
   @Prop() type: ItemPickerType = ItemPickerType.NUMBER;
 
   /** The minimum value allowed to pick. */
-  @Prop({ reflect: true, mutable: true }) min: number | string;
+  @Prop({ reflect: true, mutable: true }) min?: number | string;
 
   /** The maximum value allowed to pick. */
-  @Prop({ reflect: true, mutable: true }) max: number | string;
+  @Prop({ reflect: true, mutable: true }) max?: number | string;
 
   /** Define whether the picker should to a roundtrip i.e. start at max when reaching min and vice versa. */
   @Prop({ reflect: true }) roundtrip = true;
 
   /** Defines how many steps should be taken when navigating */
-  @Prop({ reflect: true }) step: number = 1;
+  @Prop({ reflect: true }) step = 1;
 
   /** Defines a custom list of items you can iterate through */
-  @Prop() items: string[];
+  @Prop() items?: string[];
 
   /** Defines whether the items should be padded */
   @Prop() padded = false;
@@ -122,7 +86,7 @@ export class SixItemPicker {
   /** Defines the character used for padding */
   @Prop() paddingChar = '0';
 
-  /** Defines whether the padding should be before or after the value. You can either use 'before' or 'after'. By default
+  /** Defines whether the padding should be before or after the value. You can either use 'before' or 'after'. By default,
    * before is selected */
   @Prop() paddingDirection: ItemPickerPaddingDirection = ItemPickerPaddingDirection.BEFORE;
 
@@ -139,13 +103,13 @@ export class SixItemPicker {
   /**
    * Emitted when the item picker's value changes
    */
-  @Event({ eventName: 'six-item-picker-change' }) sixChange: EventEmitter<SixItemPickerChangePayload>;
+  @Event({ eventName: 'six-item-picker-change' }) sixChange!: EventEmitter<SixItemPickerChangePayload>;
 
   /**
    * Emitted when the item picker's value changes, but debounced
    */
   @Event({ eventName: 'six-item-picker-change-debounced' })
-  sixChangeDebounced: EventEmitter<SixItemPickerChangePayload>;
+  sixChangeDebounced!: EventEmitter<SixItemPickerChangePayload>;
 
   /**
    * Set the amount of time, in milliseconds, to wait to trigger the `six-item-picker-change-debounced` event.
@@ -179,14 +143,14 @@ export class SixItemPicker {
   }
 
   @State() _items: string[] = [];
-  @State() _itemIndexes: StringItemIndex;
+  @State() _itemIndexes: Record<string, number> = {};
 
   // used for fast increasing when keeping the mouse button held down
-  _timeoutNext: ReturnType<typeof setTimeout>;
-  _intervalNext: ReturnType<typeof setInterval>;
+  private _timeoutNext!: ReturnType<typeof setTimeout>;
+  private _intervalNext!: ReturnType<typeof setInterval>;
 
-  _timeoutPrev: ReturnType<typeof setTimeout>;
-  _intervalPrev: ReturnType<typeof setInterval>;
+  private _timeoutPrev!: ReturnType<typeof setTimeout>;
+  private _intervalPrev!: ReturnType<typeof setInterval>;
 
   componentWillLoad() {
     this.setup();
@@ -205,7 +169,7 @@ export class SixItemPicker {
     this.eventListeners.removeAll();
   }
 
-  handleSixItemPickerChangeDebounced = () => {
+  private handleSixItemPickerChangeDebounced = () => {
     this.sixChangeDebounced.emit(this.value);
   };
 
@@ -226,13 +190,7 @@ export class SixItemPicker {
   }
 
   private setUpStringItems() {
-    this._items = this.getItems();
-
-    if (!this._items) {
-      console.warn(`${TAG}: abort setup because no items were found.`);
-      return;
-    }
-
+    this._items = this.getStringItems();
     this._itemIndexes = this.getItemIndexes();
     const itemsMissValue = this._items.find((i) => String(i) === String(this.value)) === undefined;
     if (itemsMissValue) {
@@ -263,25 +221,40 @@ export class SixItemPicker {
     return this._items[this._items.length - 1];
   }
 
-  private getItems() {
-    return {
-      [ItemPickerType.LETTER]: ALPHABET.alphabet,
-      [ItemPickerType.CAPITAL_LETTER]: CAPITAL_ALPHABET.alphabet,
-      [ItemPickerType.LOWER_LETTER]: LOWERCASE_ALPHABET.alphabet,
-      [ItemPickerType.CUSTOM]: this.items,
-    }[this.type];
+  private getStringItems(): string[] {
+    switch (this.type) {
+      case ItemPickerType.NUMBER:
+        console.warn(`${TAG}: unexpected type ${this.type}`);
+        return [];
+      case ItemPickerType.LETTER:
+        return ALPHABET.alphabet;
+      case ItemPickerType.CAPITAL_LETTER:
+        return CAPITAL_ALPHABET.alphabet;
+      case ItemPickerType.LOWER_LETTER:
+        return LOWERCASE_ALPHABET.alphabet;
+      case ItemPickerType.CUSTOM:
+        if (this.items == null || this.items.length === 0) {
+          console.warn(`${TAG}: no items defined for type ${this.type}`);
+          return [];
+        }
+        return this.items;
+    }
   }
 
-  private getItemIndexes() {
-    if (this.type === ItemPickerType.CUSTOM) {
-      return createItemIndexes(this.items);
+  private getItemIndexes(): Record<string, number> {
+    switch (this.type) {
+      case ItemPickerType.NUMBER:
+        console.warn(`${TAG}: unexpected type ${this.type}`);
+        return {};
+      case ItemPickerType.LETTER:
+        return ALPHABET.letterIndexes;
+      case ItemPickerType.CAPITAL_LETTER:
+        return CAPITAL_ALPHABET.letterIndexes;
+      case ItemPickerType.LOWER_LETTER:
+        return LOWERCASE_ALPHABET.letterIndexes;
+      case ItemPickerType.CUSTOM:
+        return createItemIndexes(this._items);
     }
-
-    return {
-      [ItemPickerType.LETTER]: ALPHABET.letterIndexes,
-      [ItemPickerType.CAPITAL_LETTER]: CAPITAL_ALPHABET.letterIndexes,
-      [ItemPickerType.LOWER_LETTER]: LOWERCASE_ALPHABET.letterIndexes,
-    }[this.type];
   }
 
   private previousItem() {
@@ -304,15 +277,15 @@ export class SixItemPicker {
   }
 
   private previousStringItem() {
-    const value = this.value as string;
-    const minLetter = this.min as string;
+    const value = String(this.value);
+    const minLetter = String(this.min);
 
     this.changeValue({
       isNextItemAllowed: () =>
         minLetter === undefined || this.getStringItemIndex(value) > this.getStringItemIndex(minLetter),
       getNextItem: () => this.getNextItemByOperation(subtract),
-      getRoundtripItem: () => this.max,
-      isRoundtripPossible: () => this.max === undefined && this.roundtrip,
+      getRoundtripItem: () => String(this.max),
+      isRoundtripPossible: () => this.max == null && this.roundtrip,
     });
   }
 
@@ -340,20 +313,20 @@ export class SixItemPicker {
   }
 
   private nextStringItem() {
-    const value = this.value as string;
-    const maxLetter = this.max as string;
+    const value = String(this.value);
+    const maxLetter = String(this.max);
 
     this.changeValue({
       isNextItemAllowed: () =>
         maxLetter === undefined || this.getStringItemIndex(value) < this.getStringItemIndex(maxLetter),
       getNextItem: () => this.getNextItemByOperation(add),
-      getRoundtripItem: () => this.min,
+      getRoundtripItem: () => String(this.min),
       isRoundtripPossible: () => this.min === undefined && this.roundtrip,
     });
   }
 
   private getNextItemByOperation(operation: (a: number, b: number) => number) {
-    const value = this.value as string;
+    const value = String(this.value);
     const nextIndexCandidate = operation(this.getStringItemIndex(value), this.step);
     const numberOfItems = this._items.length;
     const nextIndex = ((nextIndexCandidate % numberOfItems) + numberOfItems) % numberOfItems;
@@ -361,7 +334,7 @@ export class SixItemPicker {
   }
 
   private changeValue(params: {
-    getNextItem: () => any;
+    getNextItem: () => number | string;
     isNextItemAllowed: () => boolean;
     getRoundtripItem: () => number | string;
     isRoundtripPossible: () => boolean;
@@ -393,7 +366,7 @@ export class SixItemPicker {
   }
 
   private isInvalidNumber() {
-    return this.value === '' || !!isNaN(this.value as number);
+    return this.value === '' || isNaN(this.value as number);
   }
 
   private isNextDisabled() {
@@ -404,10 +377,6 @@ export class SixItemPicker {
     if (this.isNumber()) {
       return this.isNextNumberDisabled();
     } else {
-      if (!this._itemIndexes) {
-        return true;
-      }
-
       return this._itemIndexes[String(this.value)] + this.step > this._itemIndexes[String(this.max)];
     }
   }
@@ -424,10 +393,6 @@ export class SixItemPicker {
     if (this.isNumber()) {
       return this.isPreviousNumberDisabled();
     } else {
-      if (!this._itemIndexes) {
-        return true;
-      }
-
       return this._itemIndexes[String(this.value)] - this.step < this._itemIndexes[String(this.min)];
     }
   }

@@ -1,4 +1,4 @@
-import { Component, Element, Host, h, Prop } from '@stencil/core';
+import { Component, Element, h, Host, Prop } from '@stencil/core';
 
 /**
  * @since 1.01
@@ -17,7 +17,7 @@ import { Component, Element, Host, h, Prop } from '@stencil/core';
   shadow: true,
 })
 export class SixMainContainer {
-  @Element() host: HTMLSixMainContainerElement;
+  @Element() host!: HTMLSixMainContainerElement;
 
   /** Set to false to remove top and bottom padding.  */
   @Prop() padded = true;

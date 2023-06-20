@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property  | Attribute | Description                    | Type  | Default     |
-| --------- | --------- | ------------------------------ | ----- | ----------- |
-| `columns` | `columns` | Set the number of grid columns | `any` | `undefined` |
+| Property  | Attribute | Description                    | Type                  | Default     |
+| --------- | --------- | ------------------------------ | --------------------- | ----------- |
+| `columns` | `columns` | Set the number of grid columns | `number \| undefined` | `undefined` |
 
 
 ## Slots

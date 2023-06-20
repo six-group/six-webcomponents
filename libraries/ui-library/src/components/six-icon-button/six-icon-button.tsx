@@ -16,10 +16,10 @@ import { focusVisible } from '../../utils/focus-visible';
   shadow: true,
 })
 export class SixIconButton {
-  button: HTMLButtonElement;
+  private button?: HTMLButtonElement;
 
   /** The name of the icon to draw. */
-  @Prop({ reflect: true }) name: string;
+  @Prop({ reflect: true }) name?: string;
 
   /** The icon's size. */
   @Prop({ reflect: true }) size: 'xSmall' | 'small' | 'medium' | 'large' | 'xLarge' | 'xxLarge' | 'xxxLarge' = 'medium';
@@ -28,22 +28,22 @@ export class SixIconButton {
    * A description that gets read by screen readers and other assistive devices. For optimal accessibility, you should
    * always include a label that describes what the icon button does.
    */
-  @Prop({ reflect: true }) label: string;
+  @Prop({ reflect: true }) label?: string;
 
   /** Set to true to disable the button. */
   @Prop({ reflect: true }) disabled = false;
 
   /** HTML symbol code or entity. */
-  @Prop({ reflect: true }) html: string;
+  @Prop({ reflect: true }) html?: string;
 
   componentDidLoad() {
-    if (this.button) {
+    if (this.button != null) {
       focusVisible.observe(this.button);
     }
   }
 
   disconnectedCallback() {
-    if (this.button) {
+    if (this.button != null) {
       focusVisible.unobserve(this.button);
     }
   }
@@ -74,7 +74,7 @@ export class SixIconButton {
     );
   }
 
-  private handleClickEvent = (event) => {
+  private handleClickEvent = (event: Event) => {
     if (this.disabled) {
       event.preventDefault();
       event.stopPropagation();

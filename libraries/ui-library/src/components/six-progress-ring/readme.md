@@ -7,11 +7,11 @@
 
 ## Properties
 
-| Property      | Attribute      | Description                                      | Type     | Default     |
-| ------------- | -------------- | ------------------------------------------------ | -------- | ----------- |
-| `percentage`  | `percentage`   | The current progress percentage, 0 - 100.        | `number` | `undefined` |
-| `size`        | `size`         | The size of the progress ring in pixels.         | `number` | `128`       |
-| `strokeWidth` | `stroke-width` | The stroke width of the progress ring in pixels. | `number` | `4`         |
+| Property      | Attribute      | Description                                      | Type     | Default |
+| ------------- | -------------- | ------------------------------------------------ | -------- | ------- |
+| `percentage`  | `percentage`   | The current progress percentage, 0 - 100.        | `number` | `0`     |
+| `size`        | `size`         | The size of the progress ring in pixels.         | `number` | `128`   |
+| `strokeWidth` | `stroke-width` | The stroke width of the progress ring in pixels. | `number` | `4`     |
 
 
 ## Slots

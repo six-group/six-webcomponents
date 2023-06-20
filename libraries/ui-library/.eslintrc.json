@@ -5,5 +5,9 @@
   "extends": ["plugin:@stencil-community/recommended", "plugin:@typescript-eslint/recommended", "prettier"],
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint", "prettier"],
-  "root": true
+  "root": true,
+  "rules": {
+    "react/jsx-no-bind": "off",
+    "@stencil-community/decorators-style": "off"
+  }
 }

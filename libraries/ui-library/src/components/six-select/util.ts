@@ -56,6 +56,6 @@ function getSelectedValuesFromString(value: unknown, menuItems: MenuItem[]): str
   return menuItems.filter((menuItem) => value === menuItem.value).map((menuItem) => menuItem.value);
 }
 
-function getSelectedMenuItem(value: unknown, menuItems: MenuItem[]): MenuItem {
+function getSelectedMenuItem(value: unknown, menuItems: MenuItem[]): MenuItem | undefined {
   return menuItems.find((item) => value === item.value);
 }

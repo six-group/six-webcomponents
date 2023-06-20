@@ -24,10 +24,9 @@ const toastStack = Object.assign(document.createElement('div'), { className: 'si
   shadow: true,
 })
 export class SixAlert {
-  alert: HTMLElement;
-  autoHideTimeout: any;
+  private autoHideTimeout?: number;
 
-  @Element() host: HTMLSixAlertElement;
+  @Element() host!: HTMLSixAlertElement;
 
   @State() isVisible = false;
 
@@ -57,22 +56,16 @@ export class SixAlert {
   }
 
   /** Emitted when the alert opens. Calling `event.preventDefault()` will prevent it from being opened. */
-  @Event({ eventName: 'six-alert-show' }) sixShow: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-alert-show' }) sixShow!: EventEmitter<EmptyPayload>;
 
   /** Emitted after the alert opens and all transitions are complete. */
-  @Event({ eventName: 'six-alert-after-show' }) sixAfterShow: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-alert-after-show' }) sixAfterShow!: EventEmitter<EmptyPayload>;
 
   /** Emitted when the alert closes. Calling `event.preventDefault()` will prevent it from being closed. */
-  @Event({ eventName: 'six-alert-hide' }) sixHide: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-alert-hide' }) sixHide!: EventEmitter<EmptyPayload>;
 
   /** Emitted after the alert closes and all transitions are complete. */
-  @Event({ eventName: 'six-alert-after-hide' }) sixAfterHide: EventEmitter<EmptyPayload>;
-
-  connectedCallback() {
-    this.handleCloseClick = this.handleCloseClick.bind(this);
-    this.handleMouseMove = this.handleMouseMove.bind(this);
-    this.handleTransitionEnd = this.handleTransitionEnd.bind(this);
-  }
+  @Event({ eventName: 'six-alert-after-hide' }) sixAfterHide!: EventEmitter<EmptyPayload>;
 
   componentWillLoad() {
     // Show on init if open
@@ -99,7 +92,7 @@ export class SixAlert {
     this.open = true;
 
     if (this.duration < Infinity) {
-      this.autoHideTimeout = setTimeout(() => this.hide(), this.duration);
+      this.autoHideTimeout = window.setTimeout(() => this.hide(), this.duration);
     }
   }
 
@@ -153,15 +146,15 @@ export class SixAlert {
     });
   }
 
-  handleCloseClick() {
+  private handleCloseClick = () => {
     this.hide();
-  }
+  };
 
-  handleMouseMove() {
+  private handleMouseMove = () => {
     this.restartAutoHide();
-  }
+  };
 
-  handleTransitionEnd(event: TransitionEvent) {
+  private handleTransitionEnd = (event: TransitionEvent) => {
     const target = event.target as HTMLElement;
 
     // Ensure we only emit one event when the target element is no longer visible
@@ -169,19 +162,18 @@ export class SixAlert {
       this.isVisible = this.open;
       this.open ? this.sixAfterShow.emit() : this.sixAfterHide.emit();
     }
-  }
+  };
 
-  restartAutoHide() {
+  private restartAutoHide() {
     clearTimeout(this.autoHideTimeout);
     if (this.open && this.duration < Infinity) {
-      this.autoHideTimeout = setTimeout(() => this.hide(), this.duration);
+      this.autoHideTimeout = window.setTimeout(() => this.hide(), this.duration);
     }
   }
 
   render() {
     return (
       <div
-        ref={(el) => (this.alert = el)}
         part="base"
         class={{
           alert: true,

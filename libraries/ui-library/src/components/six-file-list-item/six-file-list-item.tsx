@@ -31,7 +31,7 @@ export class SixFileListItem {
   @Prop({ reflect: true }) date = '';
 
   /** The file size. This number will be divided by 1024 to show the filesize in KB */
-  @Prop({ reflect: true }) size: number;
+  @Prop({ reflect: true }) size?: number;
 
   /** Set to true if you don't want to allow to download this file */
   @Prop({ reflect: true }) nodownload = false;
@@ -40,12 +40,12 @@ export class SixFileListItem {
   @Prop({ reflect: true }) nodelete = false;
 
   /** Triggered on file download. */
-  @Event({ eventName: 'six-file-list-item-download' }) downloadEvent: EventEmitter<SixFileListDownloadPayload>;
+  @Event({ eventName: 'six-file-list-item-download' }) downloadEvent!: EventEmitter<SixFileListDownloadPayload>;
 
   /** Triggered on file remove. */
-  @Event({ eventName: 'six-file-list-item-remove' }) removeEvent: EventEmitter<SixFileListRemovePayload>;
+  @Event({ eventName: 'six-file-list-item-remove' }) removeEvent!: EventEmitter<SixFileListRemovePayload>;
 
-  downloadFile = () => {
+  private downloadFile = () => {
     if (this.nodownload) {
       return;
     }
@@ -53,7 +53,7 @@ export class SixFileListItem {
     this.downloadEvent.emit({ fileId: this.identifier, name: this.name });
   };
 
-  removeFile = () => {
+  private removeFile = () => {
     if (this.nodelete) {
       return;
     }
@@ -74,7 +74,7 @@ export class SixFileListItem {
           {this.name}
         </span>
         <span class="six-files-list-item__date">{this.date}</span>
-        {this.size !== undefined && <span class="six-files-list-item__size">{Math.round(this.size / 1024)} KB</span>}
+        {this.size != null && <span class="six-files-list-item__size">{Math.round(this.size / 1024)} KB</span>}
         <six-icon
           class={{
             'six-files-list-item__icon': true,

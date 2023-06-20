@@ -1,5 +1,4 @@
 import { Component, Element, Event, EventEmitter, h, Method, Prop, State, Watch } from '@stencil/core';
-import { scrollIntoView } from '../../utils/scroll';
 import { getNearestTabbableElement } from '../../utils/tabbable';
 import Popover from '../../utils/popover';
 import { EventListeners } from '../../utils/event-listeners';
@@ -52,26 +51,25 @@ let id = 0;
   shadow: true,
 })
 export class SixDropdown {
-  accessibleTrigger: HTMLElement;
-  componentId = `dropdown-${++id}`;
-  isVisible = false;
-  panel: HTMLElement;
-  positioner: HTMLElement;
-  popover: Popover;
-  trigger: HTMLElement;
-  hasBeenInitialized = false;
+  private componentId = `dropdown-${++id}`;
+  private isVisible = false;
+  private panel?: HTMLElement;
+  private positioner?: HTMLElement;
+  private popover?: Popover;
+  private trigger?: HTMLElement;
+  private hasBeenInitialized = false;
 
   // the input element shown in the dropdown when filter is set to true
-  filterInputElement: HTMLSixInputElement;
+  private filterInputElement?: HTMLSixInputElement;
 
-  @Element() host: HTMLSixDropdownElement;
+  @Element() host!: HTMLSixDropdownElement;
 
-  /** Indicates whether or not the dropdown is open. You can use this in lieu of the show/hide methods. */
+  /** Indicates whether the dropdown is open. You can use this in lieu of the show/hide methods. */
   @Prop({ mutable: true, reflect: true }) open = false;
 
   /**
    * The preferred placement of the dropdown panel. Note that the actual placement may vary as needed to keep the panel
-   * inside of the viewport.
+   * inside the viewport.
    */
   @Prop() placement:
     | 'top'
@@ -103,7 +101,7 @@ export class SixDropdown {
   @Prop() hoist = false;
 
   /** The dropdown will close when the user interacts outside of this element (e.g. clicking). */
-  @Prop() containingElement: HTMLElement;
+  @Prop() containingElement?: HTMLElement;
 
   /**
    * Set to true to allow auto filtering for entries in the dropdown.
@@ -137,7 +135,7 @@ export class SixDropdown {
   @Prop() disableHideOnEnterAndSpace = false;
 
   /** Set the options to be shown in the dropdown (alternative to setting the elements via html)*/
-  @Prop() options: SixMenuItemData[] | null = null;
+  @Prop() options: SixMenuItemData[] = [];
 
   /** Defines whether the menu list will be rendered virtually i.e. only the elements actually shown (and a couple around)
    *  are actually rendered in the DOM. If you use virtual scrolling pass the elements via prop instead of via slot. */
@@ -148,32 +146,30 @@ export class SixDropdown {
   }
 
   /** Emitted when the dropdown opens. Calling `event.preventDefault()` will prevent it from being opened. */
-  @Event({ eventName: 'six-dropdown-show' }) sixShow: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-dropdown-show' }) sixShow!: EventEmitter<EmptyPayload>;
 
   /** Emitted after the dropdown opens and all transitions are complete. */
-  @Event({ eventName: 'six-dropdown-after-show' }) sixAfterShow: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-dropdown-after-show' }) sixAfterShow!: EventEmitter<EmptyPayload>;
 
   /** Emitted when the dropdown closes. Calling `event.preventDefault()` will prevent it from being closed. */
-  @Event({ eventName: 'six-dropdown-hide' }) sixHide: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-dropdown-hide' }) sixHide!: EventEmitter<EmptyPayload>;
 
   /** Emitted after the dropdown closes and all transitions are complete. */
-  @Event({ eventName: 'six-dropdown-after-hide' }) sixAfterHide: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-dropdown-after-hide' }) sixAfterHide!: EventEmitter<EmptyPayload>;
 
   /** Emitted when the auto filter is triggered */
-  @Event({ eventName: 'six-dropdown-auto-filter-fired' })
-  sixAutoFilterFired: EventEmitter<SixDropdownAutoFilterPayload>;
+  @Event({ eventName: 'six-dropdown-auto-filter-fired' }) sixAutoFilter!: EventEmitter<SixDropdownAutoFilterPayload>;
 
   /** Emitted when the async filter is triggered */
-  @Event({ eventName: 'six-async-filter-fired' }) sixAsyncFilterFired: EventEmitter<SixDropdownAsyncFilterPayload>;
+  @Event({ eventName: 'six-async-filter-fired' }) sixAsyncFilterFired!: EventEmitter<SixDropdownAsyncFilterPayload>;
 
   /** Emitted when the user scrolls inside dropdown panel.*/
-  @Event({ eventName: 'six-dropdown-scroll' }) sixScroll: EventEmitter<SixDropdownScrollPayload>;
+  @Event({ eventName: 'six-dropdown-scroll' }) sixScroll!: EventEmitter<SixDropdownScrollPayload>;
 
-  readonly eventListeners = new EventListeners();
+  private eventListeners = new EventListeners();
 
   // internal representation of options, so we don't have to make options mutable
-  @State()
-  _options: SixMenuItemData[] = null;
+  @State() filteredOptions: SixMenuItemData[] = [];
 
   @Watch('open')
   handleOpenChange() {
@@ -186,6 +182,8 @@ export class SixDropdown {
   @Watch('placement')
   @Watch('skidding')
   handlePopoverOptionsChange() {
+    if (this.popover == null) return;
+
     this.popover.setOptions({
       strategy: this.hoist ? 'fixed' : 'absolute',
       placement: this.placement,
@@ -196,7 +194,9 @@ export class SixDropdown {
 
   @Watch('options')
   handleOptionsChange() {
-    this._options = [...this.options];
+    if (Array.isArray(this.options)) {
+      this.filteredOptions = [...this.options];
+    }
   }
 
   connectedCallback() {
@@ -204,21 +204,11 @@ export class SixDropdown {
       console.error('Options must be defined when using virtual scrolling');
     }
 
-    if (this.options !== null) {
-      this._options = [...this.options];
+    if (Array.isArray(this.options)) {
+      this.filteredOptions = [...this.options];
     }
 
-    this.handleDocumentKeyDown = this.handleDocumentKeyDown.bind(this);
-    this.handleDocumentMouseDown = this.handleDocumentMouseDown.bind(this);
-    this.handleMenuItemActivate = this.handleMenuItemActivate.bind(this);
-    this.handlePanelSelect = this.handlePanelSelect.bind(this);
-    this.handleTriggerClick = this.handleTriggerClick.bind(this);
-    this.handleTriggerKeyDown = this.handleTriggerKeyDown.bind(this);
-    this.handleTriggerKeyUp = this.handleTriggerKeyUp.bind(this);
-    this.handleTriggerSlotChange = this.handleTriggerSlotChange.bind(this);
-    this.handleDropdownScroll = this.handleDropdownScroll.bind(this);
-
-    if (this.hasBeenInitialized && !this.popover) {
+    if (this.hasBeenInitialized && this.popover == null) {
       // there was a weird bug when using six-dropdown inside an ag-grid filter. When closing the ag-grid filter
       // disconnectedCallback() is executed. However, since componentDidLoad() will not be rerendered the popover had
       // no longer a connected transitionEnd callback to the dropdown. To fix this, we have this sanity check here,
@@ -239,17 +229,18 @@ export class SixDropdown {
     if (this.filter) {
       this.setupFiltering(this.handleFilterInputChange);
     } else if (this.asyncFilter) {
-      this.setupFiltering(() => this.sixAsyncFilterFired.emit({ filterValue: this.filterInputElement.value }));
+      this.setupFiltering(() => this.sixAsyncFilterFired.emit({ filterValue: this.filterInputElement?.value ?? '' }));
     }
   }
 
   private initializePopover() {
+    if (this.trigger == null || this.positioner == null) return;
     const onAfterHide = () => {
-      if (this.filter) {
+      if (this.filter && this.filterInputElement != null) {
         this.filterInputElement.value = '';
 
-        if (this._options !== null) {
-          this._options = [...this.options];
+        if (this.filteredOptions.length > 0) {
+          this.filteredOptions = [...this.options];
         } else {
           const menuItems = this.getMenuItems();
           menuItems.forEach((item) => (item.style.display = 'unset'));
@@ -262,14 +253,14 @@ export class SixDropdown {
     const onAfterShow = async () => {
       if (this.hasFilterEnabled && this.autofocusFilter) {
         // if dropdown filter is enabled we should autofocus the search field
-        await this.filterInputElement.setFocus();
+        await this.filterInputElement?.setFocus();
       }
 
       this.sixAfterShow.emit();
     };
 
     const onTransitionEnd = () => {
-      if (!this.open) {
+      if (!this.open && this.panel != null) {
         this.panel.scrollTop = 0;
       }
     };
@@ -287,13 +278,16 @@ export class SixDropdown {
   }
 
   private setupFiltering(callback: () => void) {
-    this.eventListeners.add(this.filterInputElement, 'six-input-input', debounce(callback, this.filterDebounce));
+    if (this.filterInputElement != null) {
+      this.eventListeners.add(this.filterInputElement, 'six-input-input', debounce(callback, this.filterDebounce));
+    }
   }
 
-  getMenuItems = (): HTMLSixMenuItemElement[] => {
-    if (this._options !== null) {
-      return this._options.map((option) => <six-menu-item value={option.value}>{option.label}</six-menu-item>);
+  private getMenuItems = (): HTMLSixMenuItemElement[] => {
+    if (this.filteredOptions.length > 0) {
+      return this.filteredOptions.map((option) => <six-menu-item value={option.value}>{option.label}</six-menu-item>);
     }
+    if (this.panel == null) return [];
 
     const [panel] = getSlotChildren<HTMLSixMenuElement>(this.panel);
 
@@ -301,25 +295,27 @@ export class SixDropdown {
     return getSlotChildren(panel) || Array.from(panel.querySelectorAll('six-menu-item'));
   };
 
-  handleFilterInputChange = () => {
+  private handleFilterInputChange = () => {
+    if (this.filterInputElement == null) return;
+
     const lowerCaseFilterTerm = this.filterInputElement.value?.toLowerCase()?.trim() || '';
 
-    if (this._options) {
+    if (this.filteredOptions.length > 0) {
       this.handleFilteringForAttributeItems(lowerCaseFilterTerm);
     } else {
       this.handleFilteringForSlotItems(lowerCaseFilterTerm);
     }
 
-    this.sixAutoFilterFired.emit({ filterValue: lowerCaseFilterTerm });
+    this.sixAutoFilter.emit({ filterValue: lowerCaseFilterTerm });
   };
 
   private handleFilteringForAttributeItems(lowerCaseFilterTerm: string) {
-    if (lowerCaseFilterTerm === '') {
-      this._options = [...this.options];
+    if (lowerCaseFilterTerm === '' && Array.isArray(this.options)) {
+      this.filteredOptions = [...this.options];
       return;
     }
 
-    this._options = this.options.filter(
+    this.filteredOptions = this.options.filter(
       (option) =>
         (option.label && String(option.label)?.toLowerCase()?.includes(lowerCaseFilterTerm)) ||
         (option.value && String(option.value)?.toLowerCase()?.includes(lowerCaseFilterTerm))
@@ -342,15 +338,15 @@ export class SixDropdown {
     this.eventListeners.removeAll();
 
     void this.hide();
-    this.popover.destroy();
-    this.popover = null;
+    this.popover?.destroy();
+    this.popover = undefined;
   }
 
   /** Shows the dropdown panel */
   @Method()
   async show() {
     // Prevent subsequent calls to the method, whether manually or triggered by the `open` watcher
-    if (this.isVisible) {
+    if (this.isVisible || this.popover == null || this.panel == null) {
       return;
     }
 
@@ -373,7 +369,7 @@ export class SixDropdown {
   @Method()
   async hide() {
     // Prevent subsequent calls to the method, whether manually or triggered by the `open` watcher
-    if (!this.isVisible) {
+    if (!this.isVisible || this.panel == null || this.popover == null) {
       return;
     }
 
@@ -392,9 +388,10 @@ export class SixDropdown {
     this.popover.hide();
   }
 
-  focusOnTrigger() {
+  private focusOnTrigger() {
+    if (this.trigger == null) return;
     const [trigger] = getSlotChildren<HTMLSixButtonElement>(this.trigger);
-    if (trigger) {
+    if (trigger != null) {
       if (typeof trigger.setFocus === 'function') {
         trigger.setFocus();
       } else if (typeof trigger.focus === 'function') {
@@ -403,9 +400,9 @@ export class SixDropdown {
     }
   }
 
-  getMenu() {
-    const [menu] = getSlotChildren<HTMLSixMenuElement>(this.panel).filter(isSixMenu);
-    return menu;
+  private getMenu(): HTMLSixMenuElement | undefined {
+    if (this.panel == null) return;
+    return getSlotChildren<HTMLSixMenuElement>(this.panel).filter(isSixMenu).at(0);
   }
 
   /**
@@ -414,47 +411,48 @@ export class SixDropdown {
    */
   @Method()
   async reposition() {
-    if (!this.open) {
+    if (!this.open || this.popover == null) {
       return;
     }
     this.popover.reposition();
   }
 
-  handleDocumentKeyDown(event: KeyboardEvent) {
+  private handleDocumentKeyDown = (event: Event) => {
+    const keyboardEvent = event as KeyboardEvent;
     // Close when escape is pressed
-    if (event.key === 'Escape') {
+    if (keyboardEvent.key === 'Escape') {
       void this.hide();
       this.focusOnTrigger();
       return;
     }
 
-    if (this.filterInputElement === this.host.shadowRoot.activeElement) {
-      if (event.key === 'ArrowDown') {
+    if (this.filterInputElement === this.host.shadowRoot?.activeElement) {
+      if (keyboardEvent.key === 'ArrowDown') {
         const item = this.getMenuItems().find((item) => item.style.display !== 'none');
-        if (item) {
+        if (item != null) {
           item.setFocus();
         }
       }
     }
 
     // Handle tabbing
-    if (event.key === 'Tab') {
+    if (keyboardEvent.key === 'Tab') {
       // Tabbing within an open menu should close the dropdown and refocus the trigger
-      if (this.open && isSixMenuItem(document.activeElement)) {
-        event.preventDefault();
+      if (this.open && document.activeElement != null && isSixMenuItem(document.activeElement)) {
+        keyboardEvent.preventDefault();
         void this.hide();
         this.focusOnTrigger();
         return;
       }
 
-      // Tabbing outside of the containing element closes the panel
+      // Tabbing outside the containing element closes the panel
       //
       // If the dropdown is used within a shadow DOM, we need to obtain the activeElement within that shadowRoot,
       // otherwise `document.activeElement` will only return the name of the parent shadow DOM element.
       setTimeout(() => {
         const activeElement =
           this.container.getRootNode() instanceof ShadowRoot
-            ? document.activeElement.shadowRoot?.activeElement
+            ? document.activeElement?.shadowRoot?.activeElement
             : document.activeElement;
 
         if (activeElement?.closest(this.container.tagName.toLowerCase()) !== this.container) {
@@ -463,23 +461,18 @@ export class SixDropdown {
         }
       });
     }
-  }
+  };
 
-  handleDocumentMouseDown(event: MouseEvent) {
-    // Close when clicking outside of the containing element
+  private handleDocumentMouseDown = (event: Event) => {
+    // Close when clicking outside the containing element
     const path = event.composedPath() as EventTarget[];
     if (!path.includes(this.container)) {
       void this.hide();
       return;
     }
-  }
+  };
 
-  handleMenuItemActivate(event: CustomEvent) {
-    const item = event.target as HTMLSixMenuItemElement;
-    scrollIntoView(item, this.panel);
-  }
-
-  handlePanelSelect(event: CustomEvent) {
+  private handlePanelSelect = (event: Event) => {
     const target = event.target as HTMLElement;
 
     // Hide the dropdown when a menu item is selected
@@ -487,18 +480,13 @@ export class SixDropdown {
       void this.hide();
       this.focusOnTrigger();
     }
-  }
+  };
 
-  handleTriggerClick() {
+  private handleTriggerClick = () => {
     this.open ? this.hide() : this.show();
-  }
+  };
 
-  handleTriggerKeyDown(event: KeyboardEvent) {
-    const menu = this.getMenu();
-    const menuItems = menu ? [...menu.querySelectorAll('six-menu-item')] : null;
-    const firstMenuItem = menuItems[0];
-    const lastMenuItem = menuItems[menuItems.length - 1];
-
+  private handleTriggerKeyDown = (event: KeyboardEvent) => {
     // Close when escape or tab is pressed
     if (event.key === 'Escape') {
       this.focusOnTrigger();
@@ -514,6 +502,8 @@ export class SixDropdown {
       return;
     }
 
+    const menu = this.getMenu();
+
     // When up/down is pressed, we make the assumption that the user is familiar with the menu and plans to make a
     // selection. Rather than toggle the panel, we focus on the menu (if one exists) and activate the first item for
     // faster navigation.
@@ -525,13 +515,20 @@ export class SixDropdown {
         void this.show();
       }
 
+      if (menu == null) {
+        return;
+      }
+      const menuItems = [...menu.querySelectorAll('six-menu-item')];
+      const firstMenuItem = menuItems.at(0);
+      const lastMenuItem = menuItems.at(menuItems.length - 1);
+
       // Focus on a menu item
-      if (event.key === 'ArrowDown' && firstMenuItem) {
+      if (event.key === 'ArrowDown' && firstMenuItem != null) {
         firstMenuItem.setFocus();
         return;
       }
 
-      if (event.key === 'ArrowUp' && lastMenuItem) {
+      if (event.key === 'ArrowUp' && lastMenuItem != null) {
         lastMenuItem.setFocus();
         return;
       }
@@ -539,31 +536,33 @@ export class SixDropdown {
 
     // Other keys bring focus to the menu and initiate type-to-select behavior
     const ignoredKeys = ['Tab', 'Shift', 'Meta', 'Ctrl', 'Alt'];
-    if (this.open && menu && !ignoredKeys.includes(event.key)) {
+    if (this.open && menu != null && !ignoredKeys.includes(event.key)) {
       void menu.typeToSelect(event.key);
       return;
     }
-  }
+  };
 
-  handleTriggerKeyUp(event: KeyboardEvent) {
+  private handleTriggerKeyUp = (event: KeyboardEvent) => {
     // Prevent space from triggering a click event in Firefox
     if (event.key === ' ') {
       event.preventDefault();
     }
-  }
+  };
 
-  handleTriggerSlotChange() {
+  private handleTriggerSlotChange = () => {
     this.updateAccessibleTrigger();
-  }
+  };
 
-  handleDropdownScroll() {
+  private handleDropdownScroll = () => {
+    if (this.panel == null) return;
+
     this.sixScroll.emit({
       scrollHeight: this.panel.scrollHeight,
       scrollTop: this.panel.scrollTop,
       scrollbarHeight: this.panel.offsetHeight * (this.panel.offsetHeight / this.panel.scrollHeight),
       scrollRatio: this.panel.scrollTop / (this.panel.scrollHeight - this.panel.clientHeight),
     });
-  }
+  };
 
   //
   // Slotted triggers can be arbitrary content, but we need to link them to the dropdown panel with `aria-haspopup` and
@@ -575,10 +574,11 @@ export class SixDropdown {
   //
   // To determine this, we assume the first tabbable element in the trigger slot is the "accessible trigger."
   //
-  updateAccessibleTrigger() {
-    const [accessibleTrigger] = getSlotChildren(this.trigger).map(getNearestTabbableElement);
+  private updateAccessibleTrigger() {
+    if (this.trigger == null) return;
 
-    if (accessibleTrigger) {
+    const accessibleTrigger = getSlotChildren(this.trigger).map(getNearestTabbableElement).at(0);
+    if (accessibleTrigger != null) {
       accessibleTrigger.setAttribute('aria-haspopup', 'true');
       accessibleTrigger.setAttribute('aria-expanded', this.open ? 'true' : 'false');
     }
@@ -634,8 +634,8 @@ export class SixDropdown {
             onScroll={this.handleDropdownScroll}
           >
             <slot />
-            {this._options && (
-              <six-menu part="menu" items={this._options} virtualScroll={this.virtualScroll}></six-menu>
+            {this.filteredOptions.length > 0 && (
+              <six-menu part="menu" items={this.filteredOptions} virtualScroll={this.virtualScroll}></six-menu>
             )}
           </div>
         </div>

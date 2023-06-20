@@ -7,13 +7,13 @@
 
 ## Properties
 
-| Property   | Attribute   | Description                                                                   | Type                             | Default     |
-| ---------- | ----------- | ----------------------------------------------------------------------------- | -------------------------------- | ----------- |
-| `disabled` | `disabled`  | Set to true to disable the label.                                             | `boolean`                        | `false`     |
-| `helpText` | `help-text` | The wrapper label's help text. Alternatively, you can use the help-text slot. | `string`                         | `''`        |
-| `label`    | `label`     | The wrapper label's label. Alternatively, you can use the label slot.         | `string`                         | `''`        |
-| `required` | `required`  | The label's required attribute.                                               | `boolean`                        | `undefined` |
-| `size`     | `size`      | The label's size.                                                             | `"large" \| "medium" \| "small"` | `'medium'`  |
+| Property   | Attribute   | Description                                                                   | Type                             | Default    |
+| ---------- | ----------- | ----------------------------------------------------------------------------- | -------------------------------- | ---------- |
+| `disabled` | `disabled`  | Set to true to disable the label.                                             | `boolean`                        | `false`    |
+| `helpText` | `help-text` | The wrapper label's help text. Alternatively, you can use the help-text slot. | `string`                         | `''`       |
+| `label`    | `label`     | The wrapper label's label. Alternatively, you can use the label slot.         | `string`                         | `''`       |
+| `required` | `required`  | The label's required attribute.                                               | `boolean`                        | `false`    |
+| `size`     | `size`      | The label's size.                                                             | `"large" \| "medium" \| "small"` | `'medium'` |
 
 
 ## Slots

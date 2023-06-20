@@ -78,6 +78,8 @@ describe('six-dropdown', () => {
     });
 
     // when
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     page.root.options = Array.from(Array(3).keys()).map((idx) => ({
       label: `label ${idx}`,
       value: `value ${idx}`,

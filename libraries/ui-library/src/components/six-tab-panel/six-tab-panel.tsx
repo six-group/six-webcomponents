@@ -1,4 +1,4 @@
-import { Component, Element, Host, Prop, h } from '@stencil/core';
+import { Component, Element, h, Host, Prop } from '@stencil/core';
 
 let id = 0;
 
@@ -19,9 +19,9 @@ let id = 0;
   shadow: true,
 })
 export class SixTabPanel {
-  componentId = `tab-panel-${++id}`;
+  private componentId = `tab-panel-${++id}`;
 
-  @Element() host: HTMLSixTabPanelElement;
+  @Element() host!: HTMLSixTabPanelElement;
 
   /** The tab panel's name. */
   @Prop() name = '';
@@ -31,7 +31,7 @@ export class SixTabPanel {
 
   render() {
     return (
-      // If the user didn't provide an ID, we'll set one so we can link tabs and tab panels with aria labels
+      // If the user didn't provide an ID, we'll set one, so we can link tabs and tab panels with aria labels
       <Host id={this.host.id || this.componentId} style={{ display: this.active ? 'block' : 'none' }}>
         <div
           part="base"

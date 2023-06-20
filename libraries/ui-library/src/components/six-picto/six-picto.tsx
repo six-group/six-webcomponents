@@ -1,4 +1,4 @@
-import { Component, Host, h, Element, Prop } from '@stencil/core';
+import { Component, Element, h, Host, Prop } from '@stencil/core';
 
 /**
  * @since 1.1
@@ -13,7 +13,7 @@ import { Component, Host, h, Element, Prop } from '@stencil/core';
   shadow: true,
 })
 export class SixPicto {
-  @Element() host: HTMLSixPictoElement;
+  @Element() host!: HTMLSixPictoElement;
 
   /**
    * Defines the size of the icon.
@@ -24,7 +24,13 @@ export class SixPicto {
     const iconName = this.host.innerHTML?.trim();
     return (
       <Host>
-        <div part="icon" class={{ [`is-size-${this.size}`]: !!this.size, [`${iconName}`]: true }} />
+        <div
+          part="icon"
+          class={{
+            [`is-size-${this.size}`]: typeof this.size != null || this.size.trim() !== '',
+            [`${iconName}`]: true,
+          }}
+        />
       </Host>
     );
   }

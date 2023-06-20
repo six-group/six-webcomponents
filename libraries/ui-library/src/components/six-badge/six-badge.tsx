@@ -17,8 +17,6 @@ import { Component, Prop, h } from '@stencil/core';
   shadow: true,
 })
 export class SixBadge {
-  badge: HTMLElement;
-
   /** The badge's type. */
   @Prop() type: 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'info' | 'action' = 'primary';
 
@@ -31,7 +29,6 @@ export class SixBadge {
   render() {
     return (
       <span
-        ref={(el) => (this.badge = el)}
         part="base"
         class={{
           badge: true,

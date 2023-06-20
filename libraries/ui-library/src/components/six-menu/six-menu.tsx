@@ -20,13 +20,11 @@ const isFocusedMenuItem = (menuItem: HTMLSixMenuItemElement) =>
 const isSIXMenuItemElement = (el?: Element): el is HTMLSixMenuItemElement =>
   el?.tagName.toLowerCase() === 'six-menu-item';
 
-const mapToMenuItem = ({ value, label }) => <six-menu-item value={value}>{label}</six-menu-item>;
+const mapToMenuItem = ({ value, label }: SixMenuItemData) => <six-menu-item value={value}>{label}</six-menu-item>;
 
 const DEFAULT_NUMBER_OF_ITEMS_SHOWN_FOR_VIRTUAL_SCROLLING = 5;
 
 const DEFAULT_SIX_MENU_ITEM_HEIGHT = 64;
-
-const ITEMS_SHOWN_NOT_SET = undefined;
 
 /**
  * @since 1.0
@@ -46,50 +44,50 @@ const ITEMS_SHOWN_NOT_SET = undefined;
 export class SixMenu {
   private readonly eventListeners = new EventListeners();
 
-  menu: HTMLElement;
-  menuWrapper: HTMLElement;
-  typeToSelectString = '';
-  typeToSelectTimeout: NodeJS.Timeout;
+  private menu?: HTMLElement;
+  private menuWrapper?: HTMLElement;
+  private typeToSelectString = '';
+  private typeToSelectTimeout?: number;
 
-  @Element() host: HTMLSixMenuElement;
+  @Element() host!: HTMLSixMenuElement;
 
   /** Emitted when a menu item is selected. */
-  @Event({ eventName: 'six-menu-item-selected' }) sixMenuItemSelected: EventEmitter<SixMenuItemSelectedPayload>;
+  @Event({ eventName: 'six-menu-item-selected' }) sixMenuItemSelected!: EventEmitter<SixMenuItemSelectedPayload>;
 
   /** Set to true to remove the box-shadow */
-  @Prop() removeBoxShadow: boolean = false;
+  @Prop() removeBoxShadow = false;
 
   /** Set the options to be shown in the dropdown */
   @Prop() items: SixMenuItemData[] | null = null;
 
-  /** Defines how many items should be shown. If the number of items is larger than this properties a scrollbar will be shown */
-  @Prop() itemsShown?: number = ITEMS_SHOWN_NOT_SET;
+  /** Defines how many items should be shown. If the number of items is larger than this property a scrollbar will be shown */
+  @Prop() itemsShown?: number;
 
   /** Defines whether the menu list will be rendered virtually i.e. only the elements actually shown (and a couple around)
    *  are actually rendered in the DOM. If you use virtual scrolling pass the elements via prop instead of via slot. */
-  @Prop() virtualScroll: boolean = false;
+  @Prop() virtualScroll = false;
 
   /**
    * Used for virtual scrolling
    * Define how many items should be rendered in the DOM when using virtual scrolling
    */
-  @Prop() itemSize: number = 10;
+  @Prop() itemSize = 10;
 
   /**
    * Used for virtual scrolling
    * Define the debounce for listening on scrolling changes in milliseconds.
    * The lower the number the more sensitive the component reacts to scrolling changes.
    */
-  @Prop() scrollingDebounce: number = 15;
+  @Prop() scrollingDebounce = 15;
 
   /**
    * Used to calculate which items should be rendered in the DOM
    */
   @State()
-  private scrollingIndex: number = 0;
+  private scrollingIndex = 0;
 
   // set a default item height, this variable will be updated with the real value after the first render.
-  // However, it's necessary to have a default value because we can only fetch the proper hight after the first render
+  // However, it's necessary to have a default value because we can only fetch the proper height after the first render
   @State()
   sixMenuItemHeight = DEFAULT_SIX_MENU_ITEM_HEIGHT;
 
@@ -105,6 +103,7 @@ export class SixMenu {
   }
 
   private handleScrolling = () => {
+    if (this.menuWrapper == null) return;
     // for performance improvements we only update the DOM if the scrollRatio change "enough"
     this.scrollingIndex = Math.floor(this.menuWrapper.scrollTop / this.sixMenuItemHeight);
   };
@@ -126,6 +125,8 @@ export class SixMenu {
   @Method()
   async typeToSelect(key: string) {
     clearTimeout(this.typeToSelectTimeout);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     this.typeToSelectTimeout = setTimeout(() => (this.typeToSelectString = ''), 750);
     this.typeToSelectString += key.toLowerCase();
     const items = this.getItems();
@@ -139,69 +140,67 @@ export class SixMenu {
     }
   }
 
-  private getItemsShown() {
-    const defaultItemsShown = this.virtualScroll
-      ? DEFAULT_NUMBER_OF_ITEMS_SHOWN_FOR_VIRTUAL_SCROLLING
-      : ITEMS_SHOWN_NOT_SET;
-
+  private getItemsShown(): number {
+    const defaultItemsShown = this.virtualScroll ? DEFAULT_NUMBER_OF_ITEMS_SHOWN_FOR_VIRTUAL_SCROLLING : 0;
     return this.itemsShown ?? defaultItemsShown;
   }
 
   private setupForVirtualScrollingAfterRendering() {
-    if (!this.virtualScroll) {
-      return;
-    }
+    if (!this.virtualScroll || this.menuWrapper == null) return;
 
     this.eventListeners.add(this.menuWrapper, 'scroll', debounce(this.handleScrolling, this.scrollingDebounce));
 
     // set menu height to proper height once the item is rendered.
     const menuItemHeight = this.menu?.querySelector('six-menu-item')?.clientHeight;
-    if (menuItemHeight && menuItemHeight > 0) {
+    if (menuItemHeight != null && menuItemHeight > 0) {
       this.sixMenuItemHeight = menuItemHeight;
     }
   }
 
-  getItems() {
-    if (this.items !== null && this.items !== undefined) {
+  private getItems(): HTMLSixMenuItemElement[] {
+    if (this.menu == null) return [];
+
+    if (this.items != null) {
       return this.items.map(mapToMenuItem);
     }
 
     const slot = this.menu.querySelector('slot');
-    return [...slot.assignedElements({ flatten: true })].filter((el) => isSIXMenuItemElement(el) && !el.disabled);
+    if (slot == null) return [];
+    return [...slot.assignedElements({ flatten: true })].filter(
+      (el): el is HTMLSixMenuItemElement => isSIXMenuItemElement(el) && !el.disabled
+    );
   }
 
   private getActiveItemIndex() {
     const items = this.getItems();
     const selectedItem = this.getActiveItem();
-    const itemIndex = items.indexOf(selectedItem);
-
-    if (itemIndex > -1) {
-      return itemIndex;
+    if (selectedItem != null) {
+      const itemIndex = items.indexOf(selectedItem);
+      if (itemIndex > -1) {
+        return itemIndex;
+      }
     }
-
     const sixMenuItems = this.extractItemsFromDOM();
     return sixMenuItems.findIndex(isFocusedMenuItem);
   }
 
-  getActiveItem() {
+  private getActiveItem(): HTMLSixMenuItemElement | undefined {
     const activeElement = this.getItems().find((i) => i === document.activeElement);
-
-    if (activeElement) {
+    if (activeElement != null) {
       return activeElement;
     }
-
     return this.extractItemsFromDOM()?.find(isFocusedMenuItem);
   }
 
   private extractItemsFromDOM() {
-    return Array.from(this.host?.shadowRoot?.querySelectorAll('six-menu-item'));
+    return Array.from(this.host.shadowRoot?.querySelectorAll('six-menu-item') ?? []);
   }
 
-  setActiveItem(item: HTMLSixMenuItemElement) {
-    item.setFocus();
+  private setActiveItem(item: HTMLSixMenuItemElement) {
+    item?.setFocus();
   }
 
-  handleClick(event: MouseEvent) {
+  private handleClick(event: MouseEvent) {
     const target = event.target as HTMLElement;
     const clickedItem = target.closest('six-menu-item');
     if (clickedItem && !clickedItem.disabled) {
@@ -209,13 +208,13 @@ export class SixMenu {
     }
   }
 
-  handleKeyDown(event: KeyboardEvent) {
+  private handleKeyDown(event: KeyboardEvent) {
     // Make a selection when pressing enter
     if (event.key === 'Enter') {
       const activeItem = this.getActiveItem();
       event.preventDefault();
 
-      if (activeItem) {
+      if (activeItem != null) {
         this.sixMenuItemSelected.emit({ name: activeItem.value, item: activeItem });
       }
     }
@@ -231,7 +230,7 @@ export class SixMenu {
 
       let indexOfActiveItem = this.getActiveItemIndex();
 
-      if (items.length) {
+      if (items.length > 0) {
         event.preventDefault();
 
         if (event.key === 'ArrowDown') {
@@ -258,12 +257,10 @@ export class SixMenu {
 
   private getMenuWrapperStyle() {
     const styles: Partial<StyleDeclaration> = {};
-
     if (this.getItemsShown() > 0) {
       // calculate the proper height to show the correct number of items
-      styles.height = `${this.getItemsShown() * this.sixMenuItemHeight}px`;
+      styles.height = `${(this.getItemsShown() ?? 0) * this.sixMenuItemHeight}px`;
     }
-
     return {
       ...styles,
     };

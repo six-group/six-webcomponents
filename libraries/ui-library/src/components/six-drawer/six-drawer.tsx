@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Method, Prop, State, Watch, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Method, Prop, State, Watch } from '@stencil/core';
 import { lockBodyScrolling, unlockBodyScrolling } from '../../utils/scroll';
 import { hasSlot } from '../../utils/slot';
 import { isPreventScrollSupported } from '../../utils/support';
@@ -34,19 +34,19 @@ let id = 0;
   shadow: true,
 })
 export class SixDrawer {
-  componentId = `drawer-${++id}`;
-  drawer: HTMLElement;
-  modal: Modal;
-  panel: HTMLElement;
-  willShow = false;
-  willHide = false;
+  private componentId = `drawer-${++id}`;
+  private drawer?: HTMLElement;
+  private modal?: Modal;
+  private panel?: HTMLElement;
+  private willShow = false;
+  private willHide = false;
 
-  @Element() host: HTMLSixDrawerElement;
+  @Element() host!: HTMLSixDrawerElement;
 
   @State() hasFooter = false;
   @State() isVisible = false;
 
-  /** Indicates whether or not the drawer is open. You can use this in lieu of the show/hide methods. */
+  /** Indicates whether the drawer is open. You can use this in lieu of the show/hide methods. */
   @Prop({ mutable: true, reflect: true }) open = false;
 
   /**
@@ -76,35 +76,29 @@ export class SixDrawer {
   }
 
   /** Emitted when the drawer opens. Calling `event.preventDefault()` will prevent it from being opened. */
-  @Event({ eventName: 'six-drawer-show' }) sixShow: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-drawer-show' }) sixShow!: EventEmitter<EmptyPayload>;
 
   /** Emitted after the drawer opens and all transitions are complete. */
-  @Event({ eventName: 'six-drawer-after-show' }) sixAfterShow: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-drawer-after-show' }) sixAfterShow!: EventEmitter<EmptyPayload>;
 
   /** Emitted when the drawer closes. Calling `event.preventDefault()` will prevent it from being closed. */
-  @Event({ eventName: 'six-drawer-hide' }) sixHide: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-drawer-hide' }) sixHide!: EventEmitter<EmptyPayload>;
 
   /** Emitted after the drawer closes and all transitions are complete. */
-  @Event({ eventName: 'six-drawer-after-hide' }) sixAfterHide: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-drawer-after-hide' }) sixAfterHide!: EventEmitter<EmptyPayload>;
 
   /**
    * Emitted when the drawer opens and the panel gains focus. Calling `event.preventDefault()` will prevent focus and
    * allow you to set it on a different element in the drawer, such as an input or button.
    */
-  @Event({ eventName: 'six-drawer-initial-focus' }) sixInitialFocus: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-drawer-initial-focus' }) sixInitialFocus!: EventEmitter<EmptyPayload>;
 
   /** Emitted when the overlay is clicked. Calling `event.preventDefault()` will prevent the drawer from closing. */
-  @Event({ eventName: 'six-drawer-overlay-dismiss' }) sixOverlayDismiss: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-drawer-overlay-dismiss' }) sixOverlayDismiss!: EventEmitter<EmptyPayload>;
 
   connectedCallback() {
-    this.handleCloseClick = this.handleCloseClick.bind(this);
-    this.handleTransitionEnd = this.handleTransitionEnd.bind(this);
-    this.handleKeyDown = this.handleKeyDown.bind(this);
-    this.handleOverlayClick = this.handleOverlayClick.bind(this);
-    this.handleSlotChange = this.handleSlotChange.bind(this);
-
     this.modal = new Modal(this.host, {
-      onFocusOut: () => (this.contained ? null : this.panel.focus()),
+      onFocusOut: () => (this.contained ? null : this.panel?.focus()),
     });
   }
 
@@ -127,9 +121,10 @@ export class SixDrawer {
   /** Shows the drawer */
   @Method()
   async show() {
-    if (this.willShow) {
+    if (this.willShow || this.modal == null || this.panel == null || this.drawer == null) {
       return;
     }
+    const panel = this.panel;
 
     const sixShow = this.sixShow.emit();
     if (sixShow.defaultPrevented) {
@@ -153,7 +148,7 @@ export class SixDrawer {
         requestAnimationFrame(() => {
           const sixInitialFocus = this.sixInitialFocus.emit();
           if (!sixInitialFocus.defaultPrevented) {
-            this.panel.focus({ preventScroll: true });
+            panel.focus({ preventScroll: true });
           }
         });
       } else {
@@ -169,7 +164,7 @@ export class SixDrawer {
           () => {
             const sixInitialFocus = this.sixInitialFocus.emit();
             if (!sixInitialFocus.defaultPrevented) {
-              this.panel.focus();
+              panel.focus();
             }
           },
           { once: true }
@@ -181,7 +176,7 @@ export class SixDrawer {
   /** Hides the drawer */
   @Method()
   async hide() {
-    if (this.willHide) {
+    if (this.willHide || this.modal == null) {
       return;
     }
 
@@ -198,36 +193,36 @@ export class SixDrawer {
     unlockBodyScrolling(this.host);
   }
 
-  handleCloseClick() {
+  private handleCloseClick = () => {
     this.hide();
-  }
+  };
 
-  handleKeyDown(event: KeyboardEvent) {
+  private handleKeyDown = (event: KeyboardEvent) => {
     if (event.key === 'Escape') {
       this.hide();
     }
-  }
+  };
 
-  handleOverlayClick() {
+  private handleOverlayClick = () => {
     const sixOverlayDismiss = this.sixOverlayDismiss.emit();
 
     if (!sixOverlayDismiss.defaultPrevented) {
       this.hide();
     }
-  }
+  };
 
-  handleSlotChange() {
+  private handleSlotChange = () => {
     this.hasFooter = hasSlot(this.host, 'footer');
-  }
+  };
 
-  handleTransitionEnd(event: TransitionEvent) {
+  private handleTransitionEnd = (event: TransitionEvent) => {
     const target = event.target as HTMLElement;
 
     // Ensure we only emit one event when the target element is no longer visible
     if (event.propertyName === 'transform' && target.classList.contains('drawer__panel')) {
       this.resetTransitionVariables();
     }
-  }
+  };
 
   private resetTransitionVariables() {
     this.isVisible = this.open;

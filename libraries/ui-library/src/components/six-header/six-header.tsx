@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import { EventListeners } from '../../utils/event-listeners';
-import { getAvailableSlots } from '../../utils/slot';
+import { getSlot, hasSlot } from '../../utils/slot';
 import { EmptyPayload } from '../../utils/types';
 
 export interface SixHeaderAppSwitcherSelectPayload {
@@ -22,7 +22,6 @@ export interface SixHeaderSearchFieldToggle {
 enum Section {
   None,
   Search,
-  Notifications,
   AppSwitcher,
   Profile,
 }
@@ -34,8 +33,6 @@ enum Slot {
   Profile = 'profile-menu',
   Logo = 'logo',
 }
-
-const getSlots = getAvailableSlots(Slot);
 
 /**
  * @since 1.0
@@ -90,112 +87,130 @@ export class SixHeader {
   }
 
   /** Emitted when the name of the selected app is clicked. */
-  @Event({ eventName: 'six-header-app-name-clicked' })
-  sixAppNameClicked: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-header-app-name-clicked' }) sixAppNameClicked!: EventEmitter<EmptyPayload>;
 
   /** Emitted when a menu item is in the app switcher menu is selected. */
   @Event({ eventName: 'six-header-app-switcher-select' })
-  sixAppSwitcherSelect: EventEmitter<SixHeaderAppSwitcherSelectPayload>;
+  sixAppSwitcherSelect!: EventEmitter<SixHeaderAppSwitcherSelectPayload>;
 
   /** Emitted when a menu item is in the profile menu is selected. */
-  @Event({ eventName: 'six-header-profile-select' })
-  sixProfileSelect: EventEmitter<SixHeaderProfileSelectPayload>;
+  @Event({ eventName: 'six-header-profile-select' }) sixProfileSelect!: EventEmitter<SixHeaderProfileSelectPayload>;
 
   /** Emitted when the hamburger menu is clicked. */
-  @Event({ eventName: 'six-header-hamburger-menu-clicked' })
-  sixHamburgerClick: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-header-hamburger-menu-clicked' }) sixHamburgerClick!: EventEmitter<EmptyPayload>;
 
   /** Emitted when the header logo is clicked. */
-  @Event({ eventName: 'six-header-logo-clicked' })
-  sixLogoClick: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-header-logo-clicked' }) sixLogoClick!: EventEmitter<EmptyPayload>;
 
   /** Emitted when search field is toggled. */
   @Event({ eventName: 'six-header-search-field-toggle' })
-  sixSearchFieldToggle: EventEmitter<SixHeaderSearchFieldToggle>;
+  sixSearchFieldToggle!: EventEmitter<SixHeaderSearchFieldToggle>;
 
-  @Element() host: HTMLSixHeaderElement;
+  @Element() host!: HTMLSixHeaderElement;
 
-  readonly eventListeners = new EventListeners();
+  private eventListeners = new EventListeners();
 
-  slots: { readonly [K: string]: boolean };
+  private slots?: Record<Slot, boolean>;
 
-  @State() selectedApp: string;
-  @State() selectedSection: Section;
+  @State() selectedApp?: string;
+  @State() selectedSection?: Section;
 
-  has = (slot: Slot) => this.slots[slot];
-
-  selected = (value: Section) => value === this.selectedSection;
-
-  select = (value: Section) => () => {
-    this.selectedSection = value;
-  };
-
-  toggleSearch = (value: Section) => () => {
-    if (value === Section.Search) {
-      const visible = this.selectedSection !== value;
-      if (visible) {
-        this.host.querySelector(`[slot="${Slot.Search}"]`).shadowRoot.querySelector('six-input')?.setFocus();
-      }
-      this.sixSearchFieldToggle.emit({ visible });
+  private hasSlot(slot: Slot): boolean {
+    if (this.slots == null) {
+      return false;
     }
-    this.selectedSection = this.selectedSection === value ? Section.None : value;
-  };
+    return this.slots[slot];
+  }
 
-  setupMenu = (el: HTMLSixIconButtonElement) => {
+  private isSectionSelected(value: Section) {
+    return value === this.selectedSection;
+  }
+
+  private selectSection(section: Section) {
+    return () => (this.selectedSection = section);
+  }
+
+  private toggleSearch() {
+    const visible = this.selectedSection !== Section.Search;
+    this.selectedSection = this.selectedSection === Section.Search ? Section.None : Section.Search;
+    this.sixSearchFieldToggle.emit({ visible });
+    if (this.selectedSection === Section.Search) {
+      // setFocus deferred due to https://github.com/ionic-team/stencil/issues/3772
+      setTimeout(async () => {
+        const slot = getSlot(this.host, Slot.Search);
+        slot?.shadowRoot?.querySelector('six-input')?.setFocus();
+      }, 50);
+    }
+  }
+
+  private setupMenu = (el?: HTMLSixIconButtonElement) => {
+    if (el == null) return;
+
     this.eventListeners.add(el, 'click', () => this.sixHamburgerClick.emit());
   };
 
-  setupLogo = (el: HTMLSixIconButtonElement) => {
-    if (!this.clickableLogo) {
-      return;
-    }
+  private setupLogo = (el?: HTMLElement) => {
+    if (!this.clickableLogo || el == null) return;
 
     this.eventListeners.add(el, 'click', () => this.sixLogoClick.emit());
   };
 
-  setupProfile = (el: HTMLSixDropdownElement) => {
-    this.eventListeners.add(el, 'six-dropdown-show', this.select(Section.Profile));
-    this.eventListeners.add(el, 'six-dropdown-hide', this.select(Section.None));
-    this.eventListeners.add(el, 'six-menu-item-selected', (event: CustomEvent) => {
-      const { name, item } = event.detail;
+  private setupProfile = (el?: HTMLSixDropdownElement) => {
+    if (el == null) return;
+
+    this.eventListeners.add(el, 'six-dropdown-show', this.selectSection(Section.Profile));
+    this.eventListeners.add(el, 'six-dropdown-hide', this.selectSection(Section.None));
+    this.eventListeners.add(el, 'six-menu-item-selected', (event: Event) => {
+      const { name, item } = (event as CustomEvent).detail;
       this.sixProfileSelect.emit({ selectedLabel: item.innerText, name, item });
     });
   };
 
-  setupAppSwitcher = (el: HTMLSixDropdownElement) => {
-    this.eventListeners.add(el, 'six-dropdown-show', this.select(Section.AppSwitcher));
-    this.eventListeners.add(el, 'six-dropdown-hide', this.select(Section.None));
-    this.eventListeners.add(el, 'six-menu-item-selected', (event: CustomEvent) => {
-      const { name, item } = event.detail;
+  private setupAppSwitcher = (el?: HTMLSixDropdownElement) => {
+    if (el == null) return;
+
+    this.eventListeners.add(el, 'six-dropdown-show', this.selectSection(Section.AppSwitcher));
+    this.eventListeners.add(el, 'six-dropdown-hide', this.selectSection(Section.None));
+    this.eventListeners.add(el, 'six-menu-item-selected', (event: Event) => {
+      const { name, item } = (event as CustomEvent).detail;
       this.selectedApp = item.innerText;
       this.sixAppSwitcherSelect.emit({ selectedLabel: item.innerText, name, item });
     });
   };
 
-  appNameClicked = () => this.sixAppNameClicked.emit();
+  private appNameClicked = () => this.sixAppNameClicked.emit();
 
-  computeSearchOpenState = () => {
+  private computeSearchOpenState = () => {
     this.selectedSection = this.openSearch ? Section.Search : Section.None;
   };
 
   componentWillLoad() {
-    this.slots = getSlots(this.host);
+    this.slots = {
+      [Slot.Search]: hasSlot(this.host, Slot.Search),
+      [Slot.Notifications]: hasSlot(this.host, Slot.Notifications),
+      [Slot.AppSwitcher]: hasSlot(this.host, Slot.AppSwitcher),
+      [Slot.Profile]: hasSlot(this.host, Slot.Profile),
+      [Slot.Logo]: hasSlot(this.host, Slot.Logo),
+    };
 
-    if (this.has(Slot.AppSwitcher)) {
+    if (this.hasSlot(Slot.AppSwitcher)) {
       this.selectedApp = this.getSelectedApp();
     }
 
-    if (this.has(Slot.Search)) {
+    if (this.hasSlot(Slot.Search)) {
       this.computeSearchOpenState();
     }
   }
 
-  private getSelectedApp() {
+  private getSelectedApp(): string | undefined {
     // there are more concise ways to select the first checked menu item, but this is one that works for jest
-    const element = this.host.querySelector(`[slot="${Slot.AppSwitcher}"]`);
+    const element = getSlot(this.host, Slot.AppSwitcher);
+    if (element == null) {
+      return undefined;
+    }
     const items = Array.from(element.querySelectorAll('six-menu-item'));
     const firstCheckedMenuItem = items.find((item: HTMLElement) => item.hasAttribute('checked'));
-    return firstCheckedMenuItem?.textContent;
+    return firstCheckedMenuItem?.textContent ?? undefined;
   }
 
   disconnectedCallback() {
@@ -203,28 +218,28 @@ export class SixHeader {
   }
 
   render() {
-    const search = this.has(Slot.Search) && (
+    const search = this.hasSlot(Slot.Search) && (
       <section
         class={{
           'six-header__search': true,
-          'six-header__search--open': this.selected(Section.Search),
+          'six-header__search--open': this.isSectionSelected(Section.Search),
         }}
       >
-        <six-icon-button name="search" onClick={this.toggleSearch(Section.Search)} data-testid="search-trigger" />
+        <six-icon-button name="search" onClick={() => this.toggleSearch()} data-testid="search-trigger" />
       </section>
     );
 
-    const notifications = this.has(Slot.Notifications) && (
+    const notifications = this.hasSlot(Slot.Notifications) && (
       <section class="six-header__notification">
         <slot name={Slot.Notifications} />
       </section>
     );
 
-    const appSwitcher = this.has(Slot.AppSwitcher) && (
+    const appSwitcher = this.hasSlot(Slot.AppSwitcher) && (
       <section
         class={{
           'six-header__app-switcher': true,
-          'six-header__app-switcher--open': this.selected(Section.AppSwitcher),
+          'six-header__app-switcher--open': this.isSectionSelected(Section.AppSwitcher),
         }}
       >
         <a onClick={this.appNameClicked} class="six-header__selected-app">
@@ -237,11 +252,11 @@ export class SixHeader {
       </section>
     );
 
-    const profile = this.has(Slot.Profile) && (
+    const profile = this.hasSlot(Slot.Profile) && (
       <section
         class={{
           'six-header__profile': true,
-          'six-header__profile--open': this.selected(Section.Profile),
+          'six-header__profile--open': this.isSectionSelected(Section.Profile),
         }}
       >
         <six-dropdown distance={17} skidding={20} placement="bottom-end" ref={this.setupProfile}>
@@ -251,7 +266,7 @@ export class SixHeader {
       </section>
     );
 
-    const logo = this.has(Slot.Logo) ? (
+    const logo = this.hasSlot(Slot.Logo) ? (
       <section>
         <slot name="logo" />
       </section>
@@ -301,7 +316,7 @@ export class SixHeader {
         <div
           class={{
             'six-header__search-field': true,
-            'six-header__search-field--visible': this.selected(Section.Search),
+            'six-header__search-field--visible': this.isSectionSelected(Section.Search),
             'six-header__search-field--shift-content': this.shiftContent,
           }}
         >

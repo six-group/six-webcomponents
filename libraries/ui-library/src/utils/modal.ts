@@ -1,12 +1,12 @@
 interface ModalOptions {
-  onFocusOut?: (event: Event) => any;
+  onFocusOut?: (event: Event) => void;
 }
 
 let activeModals: HTMLElement[] = [];
 
 export default class Modal {
   element: HTMLElement;
-  options: ModalOptions;
+  options?: ModalOptions;
 
   constructor(element: HTMLElement, options?: ModalOptions) {
     this.element = element;
@@ -34,8 +34,8 @@ export default class Modal {
     const tagName = this.element.tagName.toLowerCase();
 
     // If focus is lost while the modal is active, run the onFocusOut callback
-    if (this.isActive() && target.closest(tagName) !== this.element && typeof this.options.onFocusOut === 'function') {
-      this.options.onFocusOut(event);
+    if (this.isActive() && target.closest(tagName) !== this.element && typeof this.options?.onFocusOut === 'function') {
+      this.options?.onFocusOut(event);
     }
   }
 }

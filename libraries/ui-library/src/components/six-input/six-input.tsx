@@ -386,7 +386,7 @@ export class SixInput {
         helpText={this.helpText}
         hasHelpTextSlot={this.hasHelpTextSlot}
         errorTextId={this.errorTextId}
-        errorText={this.customErrorText != null ? this.customErrorText : this.errorText}
+        errorText={this.customErrorText !== '' ? this.customErrorText : this.errorText}
         hasErrorTextSlot={this.hasErrorTextSlot}
         size={this.size}
         disabled={this.disabled}

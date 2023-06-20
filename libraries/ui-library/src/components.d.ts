@@ -24,7 +24,7 @@ import { SixSearchFieldChangePayload } from "./components/six-search-field/six-s
 import { SixSelectChangePayload } from "./components/six-select/six-select";
 import { StageType as StageType1 } from "./components/six-stage-indicator/six-stage-indicator";
 import { SixTabHidePayload, SixTabShowPayload } from "./components/six-tab-group/six-tab-group";
-import { SixTimeFormat } from "./components/six-timepicker/six-time-format";
+import { TimeFormat } from "./utils/time.util";
 import { SixTimepickerChange } from "./components/six-timepicker/six-timepicker";
 export { EmptyPayload } from "./utils/types";
 export { SixDateFormats } from "./components/six-datepicker/six-date-formats";
@@ -45,7 +45,7 @@ export { SixSearchFieldChangePayload } from "./components/six-search-field/six-s
 export { SixSelectChangePayload } from "./components/six-select/six-select";
 export { StageType as StageType1 } from "./components/six-stage-indicator/six-stage-indicator";
 export { SixTabHidePayload, SixTabShowPayload } from "./components/six-tab-group/six-tab-group";
-export { SixTimeFormat } from "./components/six-timepicker/six-time-format";
+export { TimeFormat } from "./utils/time.util";
 export { SixTimepickerChange } from "./components/six-timepicker/six-timepicker";
 export namespace Components {
     interface SetAttributes {
@@ -152,11 +152,11 @@ export namespace Components {
         /**
           * Tells the browser to download the linked file as this filename. Only used when `href` is set.
          */
-        "download": string;
+        "download"?: string;
         /**
           * When set, the underlying button will be rendered as an `<a>` with this `href` instead of a `<button>`.
          */
-        "href": string;
+        "href"?: string;
         /**
           * Set to true to draw the button in a loading state.
          */
@@ -192,7 +192,7 @@ export namespace Components {
         /**
           * Tells the browser where to open the link. Only used when `href` is set.
          */
-        "target": '_blank' | '_parent' | '_self' | '_top';
+        "target"?: '_blank' | '_parent' | '_self' | '_top';
         /**
           * The button's type.
          */
@@ -257,7 +257,7 @@ export namespace Components {
         /**
           * Checks for validity and shows the browser's validation message if the control is invalid.
          */
-        "reportValidity": () => Promise<boolean>;
+        "reportValidity": () => Promise<boolean | undefined>;
         /**
           * Set to true to make the checkbox a required field.
          */
@@ -291,7 +291,7 @@ export namespace Components {
         /**
           * Checks for validity.
          */
-        "checkValidity": () => Promise<boolean>;
+        "checkValidity": () => Promise<boolean | undefined>;
         /**
           * Set to true to add a clear button when the input is populated.
          */
@@ -303,7 +303,7 @@ export namespace Components {
         /**
           * The dropdown will close when the user interacts outside of this element (e.g. clicking).
          */
-        "containingElement": HTMLElement;
+        "containingElement"?: HTMLElement;
         /**
           * Define the dateFormat. Valid formats are: 'dd.mm.yyyy' 'yyyy-mm-dd' 'dd-mm-yyyy' 'dd/mm/yyyy' 'yyyy/mm/dd' 'dd.mm.yy' 'yy-mm-dd' 'dd-mm-yy' 'dd/mm/yy' 'yy/mm/dd'
          */
@@ -315,7 +315,7 @@ export namespace Components {
         /**
           * The date to defines where the datepicker popup starts. The prop accepts ISO 8601 date strings (YYYY-MM-DD).
          */
-        "defaultDate"?: string | null;
+        "defaultDate"?: string;
         /**
           * If `true` the component is disabled.
          */
@@ -351,11 +351,11 @@ export namespace Components {
         /**
           * The maximum datetime allowed. Value must be a date object
          */
-        "max"?: Date | null;
+        "max"?: Date;
         /**
           * The minimum datetime allowed. Value must be a date object
          */
-        "min"?: Date | null;
+        "min"?: Date;
         /**
           * The input's name attribute.
          */
@@ -367,11 +367,11 @@ export namespace Components {
         /**
           * The placeholder defines what text to be shown on the input element
          */
-        "placeholder"?: string | null;
+        "placeholder"?: string;
         /**
           * The enforced placement of the dropdown panel.
          */
-        "placement": 'top' | 'bottom';
+        "placement"?: 'top' | 'bottom';
         /**
           * If `true` the user can only select a date via the component in the popup, but not directly edit the input field.
          */
@@ -379,7 +379,7 @@ export namespace Components {
         /**
           * Checks for validity and shows the browser's validation message if the control is invalid.
          */
-        "reportValidity": () => Promise<boolean>;
+        "reportValidity": () => Promise<boolean | undefined>;
         /**
           * Set to true to make the input a required field.
          */
@@ -391,7 +391,7 @@ export namespace Components {
         /**
           * Selects an option
          */
-        "select": (datestring: string) => Promise<void>;
+        "select": (datestring?: string) => Promise<void>;
         /**
           * Sets a custom validation message. If `message` is not empty, the field will be considered invalid.
          */
@@ -407,7 +407,7 @@ export namespace Components {
         /**
           * The value of the form field, which accepts a date object.
          */
-        "value"?: Date | null;
+        "value"?: Date;
     }
     /**
      * @since 1.0
@@ -419,6 +419,9 @@ export namespace Components {
           * Set to true to prevent the user from toggling the details.
          */
         "disabled": boolean;
+        /**
+          * Set to false when you want to hide the summary icon and disable the open/close mechanism. Usually not needed, but used internally by 'six-sidebar-item-group'
+         */
         "hasContent": boolean;
         /**
           * Hides the detail body
@@ -429,7 +432,7 @@ export namespace Components {
          */
         "inline": boolean;
         /**
-          * Indicates whether or not the details is open. You can use this in lieu of the show/hide methods.
+          * Indicates whether the details is open. You can use this in lieu of the show/hide methods.
          */
         "open": boolean;
         /**
@@ -447,7 +450,7 @@ export namespace Components {
         /**
           * The summary icon to show in the details header. If you need to display HTML, use the `summary-icon` slot instead.
          */
-        "summaryIcon": string;
+        "summaryIcon"?: string;
         /**
           * The icon's size.
          */
@@ -479,7 +482,7 @@ export namespace Components {
          */
         "noHeader": boolean;
         /**
-          * Indicates whether or not the dialog is open. You can use this in lieu of the show/hide methods.
+          * Indicates whether the dialog is open. You can use this in lieu of the show/hide methods.
          */
         "open": boolean;
         /**
@@ -510,7 +513,7 @@ export namespace Components {
          */
         "noHeader": boolean;
         /**
-          * Indicates whether or not the drawer is open. You can use this in lieu of the show/hide methods.
+          * Indicates whether the drawer is open. You can use this in lieu of the show/hide methods.
          */
         "open": boolean;
         /**
@@ -543,7 +546,7 @@ export namespace Components {
         /**
           * The dropdown will close when the user interacts outside of this element (e.g. clicking).
          */
-        "containingElement": HTMLElement;
+        "containingElement"?: HTMLElement;
         /**
           * The panel can be opend/closed by pressing the spacebar or the enter key. In some cases you might want to avoid this
          */
@@ -573,15 +576,15 @@ export namespace Components {
          */
         "hoist": boolean;
         /**
-          * Indicates whether or not the dropdown is open. You can use this in lieu of the show/hide methods.
+          * Indicates whether the dropdown is open. You can use this in lieu of the show/hide methods.
          */
         "open": boolean;
         /**
           * Set the options to be shown in the dropdown (alternative to setting the elements via html)
          */
-        "options": SixMenuItemData[] | null;
+        "options": SixMenuItemData[];
         /**
-          * The preferred placement of the dropdown panel. Note that the actual placement may vary as needed to keep the panel inside of the viewport.
+          * The preferred placement of the dropdown panel. Note that the actual placement may vary as needed to keep the panel inside the viewport.
          */
         "placement": | 'top'
     | 'top-start'
@@ -628,7 +631,7 @@ export namespace Components {
         /**
           * Defines error Code and thus displays the proper error page.
          */
-        "errorCode": number;
+        "errorCode"?: 404 | 403 | 500;
         /**
           * Defines language and thus displays the proper error page in the selected language.
          */
@@ -668,7 +671,7 @@ export namespace Components {
         /**
           * The file size. This number will be divided by 1024 to show the filesize in KB
          */
-        "size": number;
+        "size"?: number;
     }
     /**
      * @since 2.0.0
@@ -678,7 +681,7 @@ export namespace Components {
         /**
           * Accepted MIME-Types.
          */
-        "accept": string;
+        "accept"?: string;
         /**
           * Set to true if file control should be small.
          */
@@ -686,19 +689,19 @@ export namespace Components {
         /**
           * Set when button is disabled.
          */
-        "disabled": boolean;
+        "disabled": false;
         /**
           * Label of the drop area.
          */
-        "label": string;
+        "label"?: string;
         /**
           * Allowed max file size in bytes.
          */
-        "maxFileSize": number | undefined;
+        "maxFileSize"?: number;
         /**
           * More than one file allowed.
          */
-        "multiple": boolean;
+        "multiple": false;
     }
     /**
      * @since 1.0
@@ -827,15 +830,15 @@ export namespace Components {
         /**
           * HTML symbol code or entity.
          */
-        "html": string;
+        "html"?: string;
         /**
           * A description that gets read by screen readers and other assistive devices. For optimal accessibility, you should always include a label that describes what the icon button does.
          */
-        "label": string;
+        "label"?: string;
         /**
           * The name of the icon to draw.
          */
-        "name": string;
+        "name"?: string;
         /**
           * The icon's size.
          */
@@ -958,7 +961,7 @@ export namespace Components {
         /**
           * Checks for validity and shows the browser's validation message if the control is invalid.
          */
-        "reportValidity": () => Promise<boolean>;
+        "reportValidity": () => Promise<boolean | undefined>;
         /**
           * Set to true to make the input a required field.
          */
@@ -970,7 +973,7 @@ export namespace Components {
         /**
           * Selects all the text in the input.
          */
-        "select": () => Promise<void>;
+        "select": () => Promise<void | undefined>;
         /**
           * Sets a custom validation message. If `message` is not empty, the field will be considered invalid.
          */
@@ -986,7 +989,7 @@ export namespace Components {
         /**
           * Sets the start and end positions of the text selection (0-based).
          */
-        "setSelectionRange": (selectionStart: number, selectionEnd: number, selectionDirection?: 'forward' | 'backward' | 'none') => Promise<void>;
+        "setSelectionRange": (selectionStart: number, selectionEnd: number, selectionDirection?: 'forward' | 'backward' | 'none') => Promise<void | undefined>;
         /**
           * The input's size.
          */
@@ -1028,15 +1031,15 @@ export namespace Components {
         /**
           * Defines a custom list of items you can iterate through
          */
-        "items": string[];
+        "items"?: string[];
         /**
           * The maximum value allowed to pick.
          */
-        "max": number | string;
+        "max"?: number | string;
         /**
           * The minimum value allowed to pick.
          */
-        "min": number | string;
+        "min"?: number | string;
         /**
           * Defines whether the items should be padded
          */
@@ -1046,7 +1049,7 @@ export namespace Components {
          */
         "paddingChar": string;
         /**
-          * Defines whether the padding should be before or after the value. You can either use 'before' or 'after'. By default before is selected
+          * Defines whether the padding should be before or after the value. You can either use 'before' or 'after'. By default, before is selected
          */
         "paddingDirection": ItemPickerPaddingDirection;
         /**
@@ -1092,7 +1095,7 @@ export namespace Components {
         /**
           * Set the number of grid columns
          */
-        "columns": any;
+        "columns"?: number;
     }
     /**
      * @since 1.01
@@ -1119,7 +1122,7 @@ export namespace Components {
          */
         "items": SixMenuItemData1[] | null;
         /**
-          * Defines how many items should be shown. If the number of items is larger than this properties a scrollbar will be shown
+          * Defines how many items should be shown. If the number of items is larger than this property a scrollbar will be shown
          */
         "itemsShown"?: number;
         /**
@@ -1261,7 +1264,7 @@ export namespace Components {
         /**
           * Checks for validity and shows the browser's validation message if the control is invalid.
          */
-        "reportValidity": () => Promise<boolean>;
+        "reportValidity": () => Promise<boolean | undefined>;
         /**
           * Resets the formcontrol
          */
@@ -1400,7 +1403,7 @@ export namespace Components {
         /**
           * The input's placeholder text.
          */
-        "placeholder": string;
+        "placeholder"?: string;
         /**
           * The input's value attribute.
          */
@@ -1423,7 +1426,7 @@ export namespace Components {
         /**
           * Checks for validity.
          */
-        "checkValidity": () => Promise<boolean>;
+        "checkValidity": () => Promise<boolean | undefined>;
         /**
           * Set to true to add a clear button when the select is populated.
          */
@@ -1431,7 +1434,7 @@ export namespace Components {
         /**
           * The default value the select will be reverted to when reset is executed
          */
-        "defaultValue": string | string[] | undefined;
+        "defaultValue": string | string[];
         /**
           * Set to true to disable the select control.
          */
@@ -1507,7 +1510,7 @@ export namespace Components {
         /**
           * Checks for validity and shows the browser's validation message if the control is invalid.
          */
-        "reportValidity": () => Promise<boolean>;
+        "reportValidity": () => Promise<boolean | undefined>;
         /**
           * The select's required attribute.
          */
@@ -1543,7 +1546,7 @@ export namespace Components {
          */
         "hide": () => Promise<void>;
         /**
-          * Indicates whether or not the sidebar is open. You can use this in lieu of the show/hide methods.
+          * Indicates whether the sidebar is open. You can use this in lieu of the show/hide methods.
          */
         "open": boolean;
         /**
@@ -1606,11 +1609,14 @@ export namespace Components {
           * Title of item group
          */
         "name": string;
+        /**
+          * Indicates whether the sidebar is shown
+         */
         "open": boolean;
         /**
           * Custom summary icon name.
          */
-        "summaryIcon": string;
+        "summaryIcon"?: string;
         /**
           * A unique value to store in the sidebar item of the group label. This can be used as a way to identify sidebar items when selected.
          */
@@ -1642,7 +1648,7 @@ export namespace Components {
         /**
           * Checks for validity.
          */
-        "checkValidity": () => Promise<boolean>;
+        "checkValidity": () => Promise<boolean | undefined>;
         /**
           * Set to true to draw the switch in a checked state.
          */
@@ -1666,7 +1672,7 @@ export namespace Components {
         /**
           * Checks for validity and shows the browser's validation message if the control is invalid.
          */
-        "reportValidity": () => Promise<boolean>;
+        "reportValidity": () => Promise<boolean | undefined>;
         /**
           * Set to true to make the switch a required field.
          */
@@ -1857,7 +1863,7 @@ export namespace Components {
         /**
           * Checks for validity and shows the browser's validation message if the control is invalid.
          */
-        "reportValidity": () => Promise<boolean>;
+        "reportValidity": () => Promise<boolean | undefined>;
         /**
           * The textarea's required attribute.
          */
@@ -1877,7 +1883,7 @@ export namespace Components {
         /**
           * Selects all the text in the input.
          */
-        "select": () => Promise<void>;
+        "select": () => Promise<void | undefined>;
         /**
           * Sets a custom validation message. If `message` is not empty, the field will be considered invalid.
          */
@@ -1893,7 +1899,7 @@ export namespace Components {
         /**
           * Sets the start and end positions of the text selection (0-based).
          */
-        "setSelectionRange": (selectionStart: number, selectionEnd: number, selectionDirection?: 'forward' | 'backward' | 'none') => Promise<void>;
+        "setSelectionRange": (selectionStart: number, selectionEnd: number, selectionDirection?: 'forward' | 'backward' | 'none') => Promise<void | undefined>;
         /**
           * The textarea's size.
          */
@@ -1935,7 +1941,7 @@ export namespace Components {
         /**
           * The icon's name.
          */
-        "iconName": any;
+        "iconName"?: string;
         /**
           * The tile's label.
          */
@@ -1957,7 +1963,7 @@ export namespace Components {
         /**
           * Checks for validity.
          */
-        "checkValidity": () => Promise<boolean>;
+        "checkValidity": () => Promise<boolean | undefined>;
         /**
           * Set to true to add a clear button when the input is populated.
          */
@@ -1969,7 +1975,7 @@ export namespace Components {
         /**
           * The defaultTime defines the default setting for the timepicker when you open the popup. Default time must match the provided format.
          */
-        "defaultTime"?: string | null;
+        "defaultTime"?: string;
         /**
           * If `true` the component is disabled.
          */
@@ -1985,7 +1991,7 @@ export namespace Components {
         /**
           * Define the time format. Valid formats are:  HH:mm:ss hh:mm:ss:aa HH:mm:ss:ms hh:mm:ss:ms:aa HH:mm hh:mm:aa HH hh:aa mm ss ms  where HH is the 24 hour format and hh is the 12 hour format  Please notice that when using the 12-hour-clock (hh) you always need a period indicator (aa). So the time can be parsed as either am or pm
          */
-        "format": SixTimeFormat;
+        "format": TimeFormat;
         /**
           * Enable this option to prevent the panel from being clipped when the component is placed inside a container with `overflow: auto|scroll`.
          */
@@ -1995,7 +2001,7 @@ export namespace Components {
          */
         "iconPosition": 'left' | 'right';
         /**
-          * Indicates whether or not the timepicker should be shown as an inline (always open) component
+          * Indicates whether the timepicker should be shown as an inline (always open) component
          */
         "inline": boolean;
         /**
@@ -2011,17 +2017,17 @@ export namespace Components {
          */
         "name": string;
         /**
-          * Indicates whether or not the timepicker dropdown is open on startup. You can use this in lieu of the show/hide methods.
+          * Indicates whether the timepicker dropdown is open on startup. You can use this in lieu of the show/hide methods.
          */
         "open": boolean;
         /**
           * The placeholder defines what text to be shown on the input element
          */
-        "placeholder"?: string | null;
+        "placeholder"?: string;
         /**
           * The enforced placement of the dropdown panel.
          */
-        "placement": 'top' | 'bottom';
+        "placement"?: 'top' | 'bottom';
         /**
           * If `true` the user can only select a time via the timepicker but not directly edit the input field.
          */
@@ -2029,7 +2035,7 @@ export namespace Components {
         /**
           * Checks for validity and shows the browser's validation message if the control is invalid.
          */
-        "reportValidity": () => Promise<boolean>;
+        "reportValidity": () => Promise<boolean | undefined>;
         /**
           * Set to true to make the input a required field.
          */
@@ -2057,7 +2063,7 @@ export namespace Components {
         /**
           * The value of the timepicker provided as a string. The string mast match the provided format (or default format)
          */
-        "value"?: string | null;
+        "value": string;
     }
     /**
      * @since 1.0
@@ -2070,7 +2076,7 @@ export namespace Components {
          */
         "content": string;
         /**
-          * Set to true to disable the tooltip so it won't show when triggered.
+          * Set to true to disable the tooltip, so it won't show when triggered.
          */
         "disabled": boolean;
         /**
@@ -2082,11 +2088,11 @@ export namespace Components {
          */
         "hide": () => Promise<void>;
         /**
-          * Indicates whether or not the tooltip is open. You can use this in lieu of the show/hide methods.
+          * Indicates whether the tooltip is open. You can use this in lieu of the show/hide methods.
          */
         "open": boolean;
         /**
-          * The preferred placement of the tooltip. Note that the actual placement may vary as needed to keep the tooltip inside of the viewport.
+          * The preferred placement of the tooltip. Note that the actual placement may vary as needed to keep the tooltip inside the viewport.
          */
         "placement": | 'top'
     | 'top-start'
@@ -3090,7 +3096,7 @@ declare namespace LocalJSX {
         /**
           * The date to defines where the datepicker popup starts. The prop accepts ISO 8601 date strings (YYYY-MM-DD).
          */
-        "defaultDate"?: string | null;
+        "defaultDate"?: string;
         /**
           * If `true` the component is disabled.
          */
@@ -3126,11 +3132,11 @@ declare namespace LocalJSX {
         /**
           * The maximum datetime allowed. Value must be a date object
          */
-        "max"?: Date | null;
+        "max"?: Date;
         /**
           * The minimum datetime allowed. Value must be a date object
          */
-        "min"?: Date | null;
+        "min"?: Date;
         /**
           * The input's name attribute.
          */
@@ -3154,7 +3160,7 @@ declare namespace LocalJSX {
         /**
           * The placeholder defines what text to be shown on the input element
          */
-        "placeholder"?: string | null;
+        "placeholder"?: string;
         /**
           * The enforced placement of the dropdown panel.
          */
@@ -3178,7 +3184,7 @@ declare namespace LocalJSX {
         /**
           * The value of the form field, which accepts a date object.
          */
-        "value"?: Date | null;
+        "value"?: Date;
     }
     /**
      * @since 1.0
@@ -3190,6 +3196,9 @@ declare namespace LocalJSX {
           * Set to true to prevent the user from toggling the details.
          */
         "disabled"?: boolean;
+        /**
+          * Set to false when you want to hide the summary icon and disable the open/close mechanism. Usually not needed, but used internally by 'six-sidebar-item-group'
+         */
         "hasContent"?: boolean;
         /**
           * Set to true when you want to use six-details inline e.g. in a sidebar
@@ -3212,7 +3221,7 @@ declare namespace LocalJSX {
          */
         "onSix-details-show"?: (event: SixDetailsCustomEvent<EmptyPayload>) => void;
         /**
-          * Indicates whether or not the details is open. You can use this in lieu of the show/hide methods.
+          * Indicates whether the details is open. You can use this in lieu of the show/hide methods.
          */
         "open"?: boolean;
         /**
@@ -3278,7 +3287,7 @@ declare namespace LocalJSX {
          */
         "onSix-dialog-show"?: (event: SixDialogCustomEvent<EmptyPayload>) => void;
         /**
-          * Indicates whether or not the dialog is open. You can use this in lieu of the show/hide methods.
+          * Indicates whether the dialog is open. You can use this in lieu of the show/hide methods.
          */
         "open"?: boolean;
     }
@@ -3325,7 +3334,7 @@ declare namespace LocalJSX {
          */
         "onSix-drawer-show"?: (event: SixDrawerCustomEvent<EmptyPayload>) => void;
         /**
-          * Indicates whether or not the drawer is open. You can use this in lieu of the show/hide methods.
+          * Indicates whether the drawer is open. You can use this in lieu of the show/hide methods.
          */
         "open"?: boolean;
         /**
@@ -3408,15 +3417,15 @@ declare namespace LocalJSX {
          */
         "onSix-dropdown-show"?: (event: SixDropdownCustomEvent<EmptyPayload>) => void;
         /**
-          * Indicates whether or not the dropdown is open. You can use this in lieu of the show/hide methods.
+          * Indicates whether the dropdown is open. You can use this in lieu of the show/hide methods.
          */
         "open"?: boolean;
         /**
           * Set the options to be shown in the dropdown (alternative to setting the elements via html)
          */
-        "options"?: SixMenuItemData[] | null;
+        "options"?: SixMenuItemData[];
         /**
-          * The preferred placement of the dropdown panel. Note that the actual placement may vary as needed to keep the panel inside of the viewport.
+          * The preferred placement of the dropdown panel. Note that the actual placement may vary as needed to keep the panel inside the viewport.
          */
         "placement"?: | 'top'
     | 'top-start'
@@ -3455,7 +3464,7 @@ declare namespace LocalJSX {
         /**
           * Defines error Code and thus displays the proper error page.
          */
-        "errorCode"?: number;
+        "errorCode"?: 404 | 403 | 500;
         /**
           * Defines language and thus displays the proper error page in the selected language.
          */
@@ -3521,7 +3530,7 @@ declare namespace LocalJSX {
         /**
           * Set when button is disabled.
          */
-        "disabled"?: boolean;
+        "disabled"?: false;
         /**
           * Label of the drop area.
          */
@@ -3529,11 +3538,11 @@ declare namespace LocalJSX {
         /**
           * Allowed max file size in bytes.
          */
-        "maxFileSize"?: number | undefined;
+        "maxFileSize"?: number;
         /**
           * More than one file allowed.
          */
-        "multiple"?: boolean;
+        "multiple"?: false;
         /**
           * Triggers when an uploaded file doesn't match MIME type or max file size.
          */
@@ -3877,7 +3886,7 @@ declare namespace LocalJSX {
          */
         "paddingChar"?: string;
         /**
-          * Defines whether the padding should be before or after the value. You can either use 'before' or 'after'. By default before is selected
+          * Defines whether the padding should be before or after the value. You can either use 'before' or 'after'. By default, before is selected
          */
         "paddingDirection"?: ItemPickerPaddingDirection;
         /**
@@ -3927,7 +3936,7 @@ declare namespace LocalJSX {
         /**
           * Set the number of grid columns
          */
-        "columns"?: any;
+        "columns"?: number;
     }
     /**
      * @since 1.01
@@ -3954,7 +3963,7 @@ declare namespace LocalJSX {
          */
         "items"?: SixMenuItemData1[] | null;
         /**
-          * Defines how many items should be shown. If the number of items is larger than this properties a scrollbar will be shown
+          * Defines how many items should be shown. If the number of items is larger than this property a scrollbar will be shown
          */
         "itemsShown"?: number;
         /**
@@ -4242,7 +4251,7 @@ declare namespace LocalJSX {
         /**
           * The default value the select will be reverted to when reset is executed
          */
-        "defaultValue"?: string | string[] | undefined;
+        "defaultValue"?: string | string[];
         /**
           * Set to true to disable the select control.
          */
@@ -4370,7 +4379,7 @@ declare namespace LocalJSX {
          */
         "onSix-sidebar-show"?: (event: SixSidebarCustomEvent<EmptyPayload>) => void;
         /**
-          * Indicates whether or not the sidebar is open. You can use this in lieu of the show/hide methods.
+          * Indicates whether the sidebar is open. You can use this in lieu of the show/hide methods.
          */
         "open"?: boolean;
         /**
@@ -4417,6 +4426,9 @@ declare namespace LocalJSX {
           * Title of item group
          */
         "name"?: string;
+        /**
+          * Indicates whether the sidebar is shown
+         */
         "open"?: boolean;
         /**
           * Custom summary icon name.
@@ -4714,7 +4726,7 @@ declare namespace LocalJSX {
         /**
           * The icon's name.
          */
-        "iconName"?: any;
+        "iconName"?: string;
         /**
           * The tile's label.
          */
@@ -4748,7 +4760,7 @@ declare namespace LocalJSX {
         /**
           * The defaultTime defines the default setting for the timepicker when you open the popup. Default time must match the provided format.
          */
-        "defaultTime"?: string | null;
+        "defaultTime"?: string;
         /**
           * If `true` the component is disabled.
          */
@@ -4764,7 +4776,7 @@ declare namespace LocalJSX {
         /**
           * Define the time format. Valid formats are:  HH:mm:ss hh:mm:ss:aa HH:mm:ss:ms hh:mm:ss:ms:aa HH:mm hh:mm:aa HH hh:aa mm ss ms  where HH is the 24 hour format and hh is the 12 hour format  Please notice that when using the 12-hour-clock (hh) you always need a period indicator (aa). So the time can be parsed as either am or pm
          */
-        "format"?: SixTimeFormat;
+        "format"?: TimeFormat;
         /**
           * Enable this option to prevent the panel from being clipped when the component is placed inside a container with `overflow: auto|scroll`.
          */
@@ -4774,7 +4786,7 @@ declare namespace LocalJSX {
          */
         "iconPosition"?: 'left' | 'right';
         /**
-          * Indicates whether or not the timepicker should be shown as an inline (always open) component
+          * Indicates whether the timepicker should be shown as an inline (always open) component
          */
         "inline"?: boolean;
         /**
@@ -4802,13 +4814,13 @@ declare namespace LocalJSX {
          */
         "onSix-timepicker-clear"?: (event: SixTimepickerCustomEvent<EmptyPayload>) => void;
         /**
-          * Indicates whether or not the timepicker dropdown is open on startup. You can use this in lieu of the show/hide methods.
+          * Indicates whether the timepicker dropdown is open on startup. You can use this in lieu of the show/hide methods.
          */
         "open"?: boolean;
         /**
           * The placeholder defines what text to be shown on the input element
          */
-        "placeholder"?: string | null;
+        "placeholder"?: string;
         /**
           * The enforced placement of the dropdown panel.
          */
@@ -4836,7 +4848,7 @@ declare namespace LocalJSX {
         /**
           * The value of the timepicker provided as a string. The string mast match the provided format (or default format)
          */
-        "value"?: string | null;
+        "value"?: string;
     }
     /**
      * @since 1.0
@@ -4849,7 +4861,7 @@ declare namespace LocalJSX {
          */
         "content"?: string;
         /**
-          * Set to true to disable the tooltip so it won't show when triggered.
+          * Set to true to disable the tooltip, so it won't show when triggered.
          */
         "disabled"?: boolean;
         /**
@@ -4873,11 +4885,11 @@ declare namespace LocalJSX {
          */
         "onSix-tooltip-show"?: (event: SixTooltipCustomEvent<EmptyPayload>) => void;
         /**
-          * Indicates whether or not the tooltip is open. You can use this in lieu of the show/hide methods.
+          * Indicates whether the tooltip is open. You can use this in lieu of the show/hide methods.
          */
         "open"?: boolean;
         /**
-          * The preferred placement of the tooltip. Note that the actual placement may vary as needed to keep the tooltip inside of the viewport.
+          * The preferred placement of the tooltip. Note that the actual placement may vary as needed to keep the tooltip inside the viewport.
          */
         "placement"?: | 'top'
     | 'top-start'

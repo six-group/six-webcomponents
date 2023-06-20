@@ -5,11 +5,6 @@ interface EventListener {
   identifier?: string | null;
 }
 
-const equals =
-  <A extends Object>(a: A) =>
-  <B extends Object>(b: B) =>
-    Object.keys(a).every((key) => a[key] === b[key]);
-
 export class EventListeners {
   eventListeners: EventListener[] = [];
 
@@ -17,7 +12,7 @@ export class EventListeners {
     el: T,
     name: string,
     listener: EventListenerOrEventListenerObject,
-    identifier = null
+    identifier: string | null | undefined = null
   ) => {
     this.eventListeners.push({ el, name, listener, identifier });
     el.addEventListener(name, listener);
@@ -28,22 +23,22 @@ export class EventListeners {
     name: string,
     listener: EventListenerOrEventListenerObject
   ) => {
-    const sameItem = equals({ el, name, listener });
-    this.eventListeners = this.getFilteredEventListeners(sameItem);
+    this.eventListeners = this.getFilteredEventListeners(
+      (eventListener: EventListener) =>
+        eventListener.listener == listener && eventListener.el === el && eventListener.name === name
+    );
   };
 
   removeByIdentifier = (identifier: string) => {
-    const sameItem = (el) => el.identifier === identifier;
+    const sameItem = (el: EventListener) => el.identifier === identifier;
     const foundListener = this.eventListeners.find(sameItem) !== undefined;
-
     if (!foundListener) {
       return;
     }
-
     this.eventListeners = this.getFilteredEventListeners(sameItem);
   };
 
-  private getFilteredEventListeners(sameItem: (el) => boolean) {
+  private getFilteredEventListeners(sameItem: (el: EventListener) => boolean) {
     return this.eventListeners.filter((item) => {
       if (sameItem(item)) {
         item.el.removeEventListener(item.name, item.listener);
@@ -55,9 +50,11 @@ export class EventListeners {
   }
 
   removeAll = () => {
-    while (this.eventListeners.length) {
-      const { el, name, listener } = this.eventListeners.pop();
-      el.removeEventListener(name, listener);
+    while (this.eventListeners.length > 0) {
+      const eventListener: EventListener | undefined = this.eventListeners.pop();
+      if (eventListener != null) {
+        eventListener.el.removeEventListener(eventListener.name, eventListener.listener);
+      }
     }
   };
 }

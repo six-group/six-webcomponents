@@ -1,20 +1,27 @@
 import { h } from '@stencil/core';
+import { DateLocale } from '../../../utils/date-util';
+import { CalendarCell } from '../six-datepicker';
 
-export const DaySelection = ({ locale, calendarGrid, onClickDateCell }) => {
+interface DaySelectionParams {
+  locale: DateLocale;
+  calendarGrid: CalendarCell[][];
+  onClickDateCell: (cell: CalendarCell) => void;
+}
+export const DaySelection = (daySelectionParams: DaySelectionParams) => {
   return (
     <table class="datepicker-table" part="day-selection">
       <thead part="weekday-header">
-        {locale.weekdaysMin.map((weekday) => (
+        {daySelectionParams.locale.weekdaysMin.map((weekday) => (
           <th class="datepicker__cell">{weekday}</th>
         ))}
       </thead>
       <tbody>
-        {calendarGrid.map((row) => (
+        {daySelectionParams.calendarGrid.map((row) => (
           <tr class="datepicker-table__row">
             {row.map((cell) => (
               <td
                 data-date={cell.dateString}
-                onClick={() => onClickDateCell(cell)}
+                onClick={() => daySelectionParams.onClickDateCell(cell)}
                 class={{
                   'datepicker-table__cell': true,
                   'datepicker-table__cell--is-today': cell.isToday,

@@ -1,7 +1,11 @@
-import { isDate, isNil, isNumber, isString } from './type-check';
+/* eslint-disable */
+// @ts-nocheck
+
+import { isDate, isNil, isString } from './type-check';
 import { SixDateFormats } from '../components/six-datepicker/six-date-formats';
 import { CalendarCell } from '../components/six-datepicker/six-datepicker';
 
+export type DateLocale = typeof i18nDate.en;
 export const i18nDate = {
   en: {
     months: [
@@ -120,20 +124,8 @@ export const pad = (value: number) => String(value).padStart(2, '0');
 /**
  * Returns `true` if the given date is valid
  */
-export const isValidDate = (value: any): boolean => {
-  if (isNil(value)) {
-    return false;
-  }
-
-  if (isNumber(value)) {
-    return false;
-  }
-
-  if (isDate(value)) {
-    return !isNaN(value.getTime());
-  }
-
-  return new Date(value).toString() !== 'Invalid Date';
+export const isValidDate = (value: unknown): boolean => {
+  return value instanceof Date && !isNaN(value.getTime()) && new Date(value).toString() !== 'Invalid Date';
 };
 
 /**
@@ -221,17 +213,19 @@ export const getFirstDayOfTheWeek = (date: Date) => {
 /**
  * Returns `true` when the year of the dates are the same
  */
-export const isSameYear = (a: Date, b: Date) => a?.getFullYear() === b?.getFullYear();
+export const isSameYear = (a: Date | undefined, b: Date | undefined) => a?.getFullYear() === b?.getFullYear();
 
 /**
  * Returns `true` when the month of the dates are the same
  */
-export const isSameMonth = (a: Date, b: Date) => isSameYear(a, b) && a?.getMonth() === b?.getMonth();
+export const isSameMonth = (a: Date | undefined, b: Date | undefined) =>
+  isSameYear(a, b) && a?.getMonth() === b?.getMonth();
 
 /**
  * Returns `true` when the day of the dates are the same
  */
-export const isSameDay = (a: Date, b: Date) => isSameMonth(a, b) && a?.getDate() === b?.getDate();
+export const isSameDay = (a: Date | undefined, b: Date | undefined) =>
+  isSameMonth(a, b) && a?.getDate() === b?.getDate();
 
 /**
  * Returns `true` when the week of the dates are the same
@@ -278,7 +272,7 @@ export const newDateString = (yearOrDate: Date | number, month?: number, day?: n
 /**
  * Returns `true` if the given datestring is valid
  */
-export const isValidDateString = (datestring: string, format: string) => {
+export const isValidDateString = (datestring: string | undefined, format: string) => {
   if (!isString(datestring) || !isString(format)) {
     return false;
   }
@@ -399,8 +393,8 @@ const formatNumber = (value, len) => {
   return num;
 };
 
-export const formatDate = (date: Date, format: string) => {
-  if (!date) {
+export const formatDate = (date: Date | undefined | null, format: string): string => {
+  if (date == null) {
     return '';
   }
 
@@ -705,7 +699,7 @@ const getFullInputArray = (input: Array<number | undefined>, backupDate = new Da
   return result;
 };
 
-const createDate = (year: number, month: number, day: number, hour: number, minute: number, second: number) => {
+const createDate = (year: number, month: number, day: number, hour: number, minute: number, second: number): Date => {
   if (!(year < 100 && year >= 0)) {
     return new Date(year, month, day, hour, minute, second);
   }
@@ -760,30 +754,25 @@ const getCleanDateString = (dirtyDateString: string, format: string) => {
     .join(separator);
 };
 
-const getDateParts = (dirtyDateString: string, format: string) => {
+const getDateParts: (dirtyDateString: string, format: string) => Partial<ParseFlagMark> = (
+  dirtyDateString: string,
+  format: string
+) => {
   const dateString = getCleanDateString(dirtyDateString, format);
 
   return makeParser(dateString, format);
 };
 
-export const toDate = (dirtyDateString: string, format: string) => {
+export const toDate = (dirtyDateString: string | undefined, format: string): Date | undefined => {
   try {
     const { backupDate = new Date() } = {};
     const { year, month, day, hour, minute, second, date } = getDateParts(dirtyDateString, format);
-
-    if (date) {
+    if (date != null) {
       return date;
     }
-
     const inputArray = [year, month, day, hour, minute, second];
-
-    let parsedDate: Date;
-
     const result = getFullInputArray(inputArray, backupDate);
-
-    parsedDate = createDate(...result);
-
-    return parsedDate;
+    return createDate(...result);
   } catch (e) {
     return new Date(NaN);
   }
@@ -800,16 +789,18 @@ export interface PointerDate {
 
 export interface CalendarGridArgs {
   firstDateOfBox: Date;
-  minDate: Date;
+  minDate?: Date;
+  maxDate?: Date;
   dateFormat: SixDateFormats;
   pointerDate: { month: number; year: number; day: number };
   allowedDates: (date: Date) => boolean;
-  maxDate: Date;
   locale: 'en' | 'de' | 'fr' | 'it';
-  selectedDate: Date;
+  selectedDate?: Date;
 }
 
-export const createCalendarGrid = (calendarGridArguments: CalendarGridArgs) => {
+export const createCalendarGrid: (calendarGridArguments: CalendarGridArgs) => CalendarCell[][] = (
+  calendarGridArguments: CalendarGridArgs
+) => {
   const { firstDateOfBox, allowedDates, dateFormat, selectedDate, minDate, maxDate, pointerDate } =
     calendarGridArguments;
 
@@ -841,3 +832,21 @@ export const createCalendarGrid = (calendarGridArguments: CalendarGridArgs) => {
   } while (isSameMonth(new Date(pointerDate.year, pointerDate.month, pointerDate.day), dayDatePointer));
   return calendar;
 };
+
+/**
+ * Returns a range of numbers around the given number grouped into buckets of 5.
+ * @param number the given number around which you want to get the other numbers
+ * @param range range of numbers to include in the result
+ */
+export function rangeAround(number: number, range: number): number[][] {
+  const itemsPerGroup = 5;
+  return [...Array(range).keys()]
+    .map((n) => n + number - Math.floor(range / 2))
+    .reduce((curr, item, index) => {
+      if (index % itemsPerGroup === 0) {
+        curr.push([]);
+      }
+      curr[curr.length - 1].push(item);
+      return curr;
+    }, [] as number[][]);
+}
