@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class ValidationMessagesService {
-  public getErrorMessage(language: Language, error: ValidationError) {
+  public getErrorMessage(language: Language, error: ValidationError): string | undefined {
     return getErrorMessage(language, error);
   }
 }
