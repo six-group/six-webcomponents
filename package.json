@@ -18,7 +18,6 @@
   "workspaces": [
     "libraries/ui-library",
     "libraries/ui-library-react",
-    "libraries/ui-library-vue",
     "libraries/ui-library-angular",
     "examples/angular",
     "examples/react",
