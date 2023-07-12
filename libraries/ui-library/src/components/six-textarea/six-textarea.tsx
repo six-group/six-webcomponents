@@ -34,7 +34,7 @@ export class SixTextarea {
   private errorTextId = `input-error-text-${id}`;
   private nativeTextarea?: HTMLTextAreaElement;
   private eventListeners = new EventListeners();
-  private resizeObserver?: ResizeObserver;
+  private resizeObserver = new ResizeObserver(() => this.setTextareaHeight());
 
   @Element() host!: HTMLSixTextareaElement;
 
@@ -126,9 +126,7 @@ export class SixTextarea {
 
   @Watch('rows')
   handleRowsChange() {
-    if (this.nativeTextarea != null) {
-      this.setTextareaHeight(this.nativeTextarea);
-    }
+    this.setTextareaHeight();
   }
 
   @Watch('value')
@@ -154,18 +152,15 @@ export class SixTextarea {
   }
 
   componentDidLoad() {
-    const nativeTextarea = this.nativeTextarea;
-    if (nativeTextarea == null) {
-      return;
+    this.setTextareaHeight();
+    if (this.nativeTextarea != null) {
+      this.resizeObserver.observe(this.nativeTextarea);
     }
-    this.setTextareaHeight(nativeTextarea);
-    this.resizeObserver = new ResizeObserver(() => this.setTextareaHeight(nativeTextarea));
-    this.resizeObserver.observe(nativeTextarea);
   }
 
   disconnectedCallback() {
     if (this.nativeTextarea != null) {
-      this.resizeObserver?.unobserve(this.nativeTextarea);
+      this.resizeObserver.unobserve(this.nativeTextarea);
     }
     this.host.shadowRoot?.removeEventListener('slotchange', this.handleSlotChange);
     this.eventListeners.removeAll();
@@ -207,13 +202,12 @@ export class SixTextarea {
     end: number,
     selectMode: 'select' | 'start' | 'end' | 'preserve' = 'preserve'
   ) {
-    if (this.nativeTextarea == null) {
-      return;
-    }
+    if (this.nativeTextarea == null) return;
+
     this.nativeTextarea.setRangeText(replacement, start, end, selectMode);
     if (this.getValue() !== this.nativeTextarea.value) {
       this.value = this.nativeTextarea.value;
-      this.setTextareaHeight(this.nativeTextarea);
+      this.setTextareaHeight();
       this.sixChange.emit();
       this.sixInput.emit();
     }
@@ -229,7 +223,7 @@ export class SixTextarea {
   private handleInput = () => {
     if (this.nativeTextarea != null) {
       this.value = this.nativeTextarea.value;
-      this.setTextareaHeight(this.nativeTextarea);
+      this.setTextareaHeight();
       this.sixInput.emit();
     }
   };
@@ -249,13 +243,14 @@ export class SixTextarea {
     this.hasHelpTextSlot = hasSlot(this.host, 'help-text');
   };
 
-  private setTextareaHeight(nativeTextarea: HTMLTextAreaElement) {
+  private setTextareaHeight() {
+    if (this.nativeTextarea == null) return;
+
     if (this.resize === 'auto') {
-      nativeTextarea.style.height = 'auto';
-      const height = nativeTextarea.scrollHeight + 1;
-      nativeTextarea.style.height = height + 'px';
+      this.nativeTextarea.style.height = 'auto';
+      this.nativeTextarea.style.height = this.nativeTextarea.scrollHeight + 'px';
     } else {
-      nativeTextarea.style.height = '';
+      (this.nativeTextarea.style.height as string | undefined) = undefined;
     }
   }
 
