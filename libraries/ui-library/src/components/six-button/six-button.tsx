@@ -135,7 +135,7 @@ export class SixButton {
     const Button = isLink ? 'a' : 'button';
 
     return (
-      <div onClick={this.handleClick} class={{ 'button-wrapper--disabled': this.disabled }}>
+      <div class={{ 'button-wrapper--disabled': this.disabled }}>
         <Button
           ref={(el) => (this.nativeButton = el)}
           part="base"
