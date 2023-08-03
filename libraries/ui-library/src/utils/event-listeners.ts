@@ -1,5 +1,5 @@
 interface EventListener {
-  el: DocumentAndElementEventHandlers;
+  el: GlobalEventHandlers;
   name: string;
   listener: EventListenerOrEventListenerObject;
   identifier?: string | null;
@@ -13,7 +13,7 @@ const equals =
 export class EventListeners {
   eventListeners: EventListener[] = [];
 
-  add = <T extends DocumentAndElementEventHandlers>(
+  add = <T extends GlobalEventHandlers>(
     el: T,
     name: string,
     listener: EventListenerOrEventListenerObject,
@@ -23,11 +23,7 @@ export class EventListeners {
     el.addEventListener(name, listener);
   };
 
-  remove = <T extends DocumentAndElementEventHandlers>(
-    el: T,
-    name: string,
-    listener: EventListenerOrEventListenerObject
-  ) => {
+  remove = <T extends GlobalEventHandlers>(el: T, name: string, listener: EventListenerOrEventListenerObject) => {
     const sameItem = equals({ el, name, listener });
     this.eventListeners = this.getFilteredEventListeners(sameItem);
   };
