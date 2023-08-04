@@ -249,10 +249,6 @@ export namespace Components {
          */
         "required": boolean;
         /**
-          * Resets the formcontrol
-         */
-        "reset": () => Promise<void>;
-        /**
           * Sets focus on the checkbox.
          */
         "setFocus": (options?: FocusOptions) => Promise<void>;
@@ -1164,10 +1160,6 @@ export namespace Components {
           * Removes focus from the radio.
          */
         "removeFocus": () => Promise<void>;
-        /**
-          * Resets the formcontrol
-         */
-        "reset": () => Promise<void>;
         /**
           * Sets focus on the radio.
          */

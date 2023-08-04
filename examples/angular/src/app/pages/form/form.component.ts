@@ -49,7 +49,7 @@ export class FormComponent implements OnInit {
   }
 
   fillIn() {
-    this.userForm.reset({
+    this.userForm.setValue({
       firstName: 'SIX',
       lastName: 'Components',
       username: 'six-components',

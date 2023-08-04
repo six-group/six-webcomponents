@@ -37,16 +37,6 @@ Type: `Promise<void>`
 
 
 
-### `reset() => Promise<void>`
-
-Resets the formcontrol
-
-#### Returns
-
-Type: `Promise<void>`
-
-
-
 ### `setFocus(options?: FocusOptions) => Promise<void>`
 
 Sets focus on the radio.
