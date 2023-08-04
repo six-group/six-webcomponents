@@ -66,7 +66,6 @@ export class SixSwitch {
       this.inputElement.checked = this.checked;
       this.checked = this.inputElement.checked;
     }
-    this.sixChange.emit(this.checked);
   }
 
   /** Emitted when the control loses focus. */
@@ -103,6 +102,7 @@ export class SixSwitch {
   private handleClick = () => {
     if (this.inputElement != null) {
       this.checked = this.inputElement.checked;
+      this.sixChange.emit(this.checked);
     }
   };
 
@@ -120,11 +120,13 @@ export class SixSwitch {
     if (event.key === 'ArrowLeft') {
       event.preventDefault();
       this.checked = false;
+      this.sixChange.emit(this.checked);
     }
 
     if (event.key === 'ArrowRight') {
       event.preventDefault();
       this.checked = true;
+      this.sixChange.emit(this.checked);
     }
   };
 

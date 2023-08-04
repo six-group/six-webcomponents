@@ -181,9 +181,6 @@ export class SixSelect {
     }
 
     await this.syncItemsFromValue();
-    if (this.input) {
-      this.sixChange.emit({ value: this.value, isSelected: true });
-    }
   }
 
   /** Emitted when the control's value changes. */
@@ -287,6 +284,7 @@ export class SixSelect {
   private handleClearClick = (event: MouseEvent) => {
     event.stopPropagation();
     this.clearValues();
+    this.sixChange.emit({ value: this.value, isSelected: true });
   };
 
   private clearValues() {
@@ -312,6 +310,7 @@ export class SixSelect {
         .forEach((option) => (option.checked = hasDeselectedOptions));
       const checkedItems = nonFilteredItems.filter((option) => option.checked).map((option) => option.value);
       this.value = hasDeselectedOptions ? checkedItems : [];
+      this.sixChange.emit({ value: this.value, isSelected: true });
     }
   };
 
@@ -385,6 +384,7 @@ export class SixSelect {
     this.value = getValue();
 
     this.syncItemsFromValue();
+    this.sixChange.emit({ value: this.value, isSelected: true });
   };
 
   private handleMenuShow = (event: CustomEvent) => {
@@ -421,6 +421,7 @@ export class SixSelect {
 
     if (clearButton) {
       event.stopPropagation();
+      this.sixChange.emit({ value: this.value, isSelected: true });
     }
   };
 

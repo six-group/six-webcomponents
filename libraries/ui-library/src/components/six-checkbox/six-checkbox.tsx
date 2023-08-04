@@ -85,13 +85,11 @@ export class SixCheckbox {
   @Watch('checked')
   @Watch('indeterminate')
   handleCheckedChange() {
-    if (this.nativeInput == null) {
-      return;
-    }
+    if (this.nativeInput == null) return;
+
     this.nativeInput.checked = this.checked;
     this.checked = this.nativeInput.checked;
     this.nativeInput.indeterminate = this.indeterminate;
-    this.sixChange.emit();
   }
 
   @Watch('errorText')
@@ -99,9 +97,6 @@ export class SixCheckbox {
   handleLabelChange() {
     this.handleSlotChange();
   }
-
-  /** default state whether the radio button should be checked or not when resetting */
-  private defaultState = false;
 
   connectedCallback() {
     this.host.shadowRoot?.addEventListener('slotchange', this.handleSlotChange);
@@ -116,7 +111,6 @@ export class SixCheckbox {
   }
 
   componentWillLoad() {
-    this.defaultState = this.checked;
     this.handleSlotChange();
   }
 
@@ -141,16 +135,11 @@ export class SixCheckbox {
     this.nativeInput?.blur();
   }
 
-  /** Resets the formcontrol */
-  @Method()
-  async reset() {
-    this.checked = this.defaultState;
-  }
-
   private handleChange = () => {
     if (this.nativeInput != null) {
       this.checked = this.nativeInput.checked;
       this.indeterminate = false;
+      this.sixChange.emit();
     }
   };
 

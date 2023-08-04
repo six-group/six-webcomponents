@@ -224,10 +224,10 @@ export class SixDatepicker {
     if (this.value != null && !isValidDate(this.value)) {
       console.warn('invalid date value: ', this.value);
       this.value = undefined;
+      this.sixSelect.emit(this.value);
     }
     this.selectedDate = this.value;
     this.updatePointerDates();
-    this.sixSelect.emit(this.value);
   }
 
   /**
@@ -465,6 +465,7 @@ export class SixDatepicker {
       return;
     }
     this.value = newDate;
+    this.sixSelect.emit(this.value);
   }
 
   /**
@@ -559,6 +560,7 @@ export class SixDatepicker {
     // clear the value if the user deleted the date
     if (this.inputElement?.value === '' && isValidDate(this.value)) {
       this.value = undefined;
+      this.sixSelect.emit(this.value);
     }
 
     event.stopPropagation();
