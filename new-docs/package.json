@@ -1,0 +1,23 @@
+{
+  "name": "vitepress-docs",
+  "version": "1.0.0",
+  "description": "Six Webcomponents documentation",
+  "type": "module",
+  "scripts": {
+    "docs:dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "docs:preview": "vitepress preview",
+    "clean": "rimraf src/.vitepress/dist src/.vitepress/lib src/components/* src/.vitepress/components/* src/.vitepress/public/components/assets src/.vitepress/public/components/*.js src/CHANGELOG.md"
+  },
+  "author": "Colin Schwarz",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^8.45.0",
+    "fs-extra": "^11.1.1",
+    "node-html-parser": "^6.1.5",
+    "rimraf": "^5.0.1",
+    "simple-node-logger": "^21.8.12",
+    "turndown": "^7.1.2",
+    "vitepress": "^1.0.0-beta.5"
+  }
+}
