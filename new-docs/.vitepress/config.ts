@@ -31,11 +31,11 @@ export default defineConfig({
         text: 'Guide',
         items: [
           { text: 'Info', link: '/guide/readme' },
+          { text: 'Upgrade to v4', link: '/guide/upgrade-v4' },
           { text: 'Design', link: '/guide/design' },
           { text: 'Architecture', link: '/guide/architecture' },
           { text: 'Angular', link: '/guide/angular' },
           { text: 'React', link: '/guide/react' },
-          { text: 'Vue', link: '/guide/vue' },
           { text: 'About us', link: '/guide/about-us' },
         ],
       },

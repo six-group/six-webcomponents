@@ -15,11 +15,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Angular example page showcasing all form elements
 - GitHub workflow for publishing insider release upon each merge to the main branch
 - GitHub CI workflow for pull requests
-- Standard events for form components (`change`, `input`, `blur`) in addition to existing custom events (`six-input-change`, ...)
+- Standard events for form components (`change`, `input`, `blur`) in addition to existing custom
+  events (`six-input-change`, ...)
 
 ### Changed
 
-- Validate and transform the value property for form components to a dedicated type (e.g. `string` for text input)
+- Validate and transform the value property for form components to a dedicated type (e.g. `string`
+  for text input)
 - Upgrade dependencies: stencil 4.0
 - Replace lerna and nx with [npm workspaces](https://docs.npmjs.com/cli/using-npm/workspaces)
 - Enforce strict type checking by enabling the strict flag for TypeScript
@@ -32,23 +34,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Removed
 
-- Support for integrated [client side form validation](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation)
+- Support for integrated
+  [client side form validation](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation)
 - Support for [Vue](https://vuejs.org/)
 - six-form component
 - six-table component
 - Puppeteer end-to-end tests
-- Error slot for form elements
 
 ## 3.\*-beta - 2023-03-01
 
 ### Deprecated
 
-- six-table, six-table-cell, six-table-header, six-table-header-cell, six-table-row: six-table will be removed with the next major release. We recommend to use fate table instead.
+- six-table, six-table-cell, six-table-header, six-table-header-cell, six-table-row: six-table will
+  be removed with the next major release. We recommend to use fate table instead.
 
 ### Added
 
 - six-language-switcher: Added new component to switch language
-- six-checkbox: Add six-label to six-checkbox as param or slot (\*breaking change: Due to naming conflict six-checkbox::part(label) got renamed to six-checkbox::part(text))
+- six-checkbox: Add six-label to six-checkbox as param or slot (\*breaking change: Due to naming
+  conflict six-checkbox::part(label) got renamed to six-checkbox::part(text))
 - six-table: Extend table functionality
 - six-table: Drag column to reorder
 - six-table: Customized list of displayed columns
@@ -80,9 +84,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Fixed
 
 - six-input: Corrected layout issues for six-input and six-select in firefox
-- six-select: removed reportDuplicateItemValues which lead to very bad performance when dealing with many options. Having no duplicate options should be the responsibility of the user anyway...
-- multiple components: fixed problem where error was thrown when destructuring listener which did not yet exist
-- six-select: fixed problem where preselecting a value for six-select automatically turned it into a defaultValue
+- six-select: removed reportDuplicateItemValues which lead to very bad performance when dealing with
+  many options. Having no duplicate options should be the responsibility of the user anyway...
+- multiple components: fixed problem where error was thrown when destructuring listener which did
+  not yet exist
+- six-select: fixed problem where preselecting a value for six-select automatically turned it into a
+  defaultValue
 - six-datepicker: fixed problem where datepicker popup was cut-off on small screens
 
 ## 2.0.0 - 2022-06-02
