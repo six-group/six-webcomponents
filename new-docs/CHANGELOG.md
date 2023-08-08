@@ -1,12 +1,52 @@
 # Changelog
 
-## [3.\*-beta](https://github.com/six-group/six-webcomponents)
+All notable changes to this project will be documented in this file.
 
-**Deprecated:**
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
+
+## Unreleased
+
+### Added
+
+- Npm package for [Angular](https://www.npmjs.com/package/@six-group/ui-library-angular)
+- Wrapper components for Angular
+- Error handling for Angular forms
+- Standard error messages in english, german, french and italian
+- Angular example page showcasing all form elements
+- GitHub workflow for publishing insider release upon each merge to the main branch
+- GitHub CI workflow for pull requests
+- Standard events for form components (`change`, `input`, `blur`) in addition to existing custom events (`six-input-change`, ...)
+
+### Changed
+
+- Validate and transform the value property for form components to a dedicated type (e.g. `string` for text input)
+- Upgrade dependencies: stencil 4.0
+- Replace lerna and nx with [npm workspaces](https://docs.npmjs.com/cli/using-npm/workspaces)
+- Enforce strict type checking by enabling the strict flag for TypeScript
+- Rewrite Angular example
+
+### Fixed
+
+- Improve prettier config
+- Adjusted event emission to respond solely to user actions
+
+### Removed
+
+- Support for integrated [client side form validation](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation)
+- Support for [Vue](https://vuejs.org/)
+- six-form component
+- six-table component
+- Puppeteer end-to-end tests
+- Error slot for form elements
+
+## 3.\*-beta - 2023-03-01
+
+### Deprecated
 
 - six-table, six-table-cell, six-table-header, six-table-header-cell, six-table-row: six-table will be removed with the next major release. We recommend to use fate table instead.
 
-- **Implemented New Features and Enhancements:**
+### Added
+
 - six-language-switcher: Added new component to switch language
 - six-checkbox: Add six-label to six-checkbox as param or slot (\*breaking change: Due to naming conflict six-checkbox::part(label) got renamed to six-checkbox::part(text))
 - six-table: Extend table functionality
@@ -17,15 +57,16 @@
 - six-icon: Upgraded to material-icons@1.12.0; providing much more icons
 - six-picto: Enhanced set of available pictos
 
-- **Fixed bugs:**
+### Fixed
+
 - six-select: Fix select all for six-select
 - six-datepicker: Fixed problem where min/max was not working properly when only use one of those
 - six-tooltip: adjusted colors according to designers
 - six-checkbox: firing sixChange event after the change and not before the change
 
-## [2.1.0 (/browse?at=refs%2Ftags%2F2.1.0)
+## 2.1.0 - 2022-08-09
 
-**Implemented New Features and Enhancements:**
+### Added
 
 - six-datepicker: Extend the datepicker with a timepicker
 - six-select: Multiselection Dropdown - support Ctrl-A
@@ -36,7 +77,7 @@
 - six-menu: now allow to define the number of menu items shown (scrollable menu)
 - six-menu: now supports virtual scrolling
 
-**Fixed bugs:**
+### Fixed
 
 - six-input: Corrected layout issues for six-input and six-select in firefox
 - six-select: removed reportDuplicateItemValues which lead to very bad performance when dealing with many options. Having no duplicate options should be the responsibility of the user anyway...
@@ -44,9 +85,9 @@
 - six-select: fixed problem where preselecting a value for six-select automatically turned it into a defaultValue
 - six-datepicker: fixed problem where datepicker popup was cut-off on small screens
 
-## [2.0.0 (/browse?at=refs%2Ftags%2F2.0.0)
+## 2.0.0 - 2022-06-02
 
-**Implemented New Features and Enhancements:**
+### Added
 
 - file-upload: added components for uploading file and showing the uploaded files
 - six-datepicker: now expose styles, added slot for icon position and custom icon option
@@ -72,7 +113,7 @@
 - six-root: allow to remove padding of content section
 - six-table: custom cell renderer
 
-**Fixed bugs:**
+### Fixed
 
 - six-tile: fixed bug where tile would throw an error onHover
 - six-tooltip: fixed bug where six-tooltip would throw an error when it was disabled
@@ -108,9 +149,9 @@
 - six-root: only add margin (to guarantee border styling is shown) when sidebar is open
 - six-root: show border styling for sidebar
 
-## [1.0.0 (/browse?at=refs%2Ftags%2F1.0.0)
+## 1.0.0 - 2021-09-23
 
-**Implemented New Features and Enhancements:**
+### Added
 
 - six-dropdown: added infinite scrolling
 - six-tile: allow to pass icon and label via slot
@@ -149,7 +190,7 @@
 - Angular Demo App: added example for error message attribute
 - automatically publish on version increase
 
-**Fixed bugs:**
+### Fixed
 
 - six-select: bugfix multi-selection for non string based values
 - six-button: fixed styling for focused link button
