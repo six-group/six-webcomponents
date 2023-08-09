@@ -7,7 +7,10 @@
     "vitepress": "^1.0.0-rc.4"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docs:dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "docs:preview": "vitepress preview"
   },
   "author": "",
   "license": "ISC"
