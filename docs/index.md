@@ -3,9 +3,9 @@
 layout: home
 
 hero:
-  name: "SIX Web Components"
-  text: "Component Library following the SIX Style Guide"
-  tagline: My great project tagline
+  name: 'SIX Web Components'
+  text: 'Documentation'
+  tagline: Web Component Library in the SIX style guide
   actions:
     - theme: brand
       text: Markdown Examples
@@ -21,5 +21,6 @@ features:
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
   - title: Feature C
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
----
 
+footer: Copyright © 2021-present SIX-Group
+---
