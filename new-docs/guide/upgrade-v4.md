@@ -25,7 +25,10 @@ Steps to use the new Angular library:
 2. Remove `defineCustomElement()` in your `main.ts` file
 3. Add `@six-group/ui-library-angular` to your `package.json` dependencies.
 4. Add `UiLibraryAngularModule.forRoot()` to the module imports.
-5. If applicable, eliminate any custom
+5. Replace the stylesheet import with
+   `@import "@six-group/ui-library/dist/ui-library/ui-library.css"`
+6. Remove any `"assets"` option that copies assets from the ui-library in `angular.json`
+7. If applicable, eliminate any custom
    [control value accessors](https://angular.io/api/forms/ControlValueAccessor). Angular value
    accessors are now shipped with the library.
 
