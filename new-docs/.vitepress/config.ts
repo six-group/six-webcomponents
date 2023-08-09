@@ -30,7 +30,7 @@ export default defineConfig({
       {
         text: 'Guide',
         items: [
-          { text: 'Info', link: '/guide/readme' },
+          { text: 'Introduction', link: '/guide/readme' },
           { text: 'Upgrade to v4', link: '/guide/upgrade-v4' },
           { text: 'Design', link: '/guide/design' },
           { text: 'Architecture', link: '/guide/architecture' },

@@ -6,6 +6,7 @@
   "license": "Apache-2.0",
   "scripts": {
     "build": "npm run clean && npm run compile",
+    "watch": "tsc -w -p .",
     "clean": "rimraf dist",
     "compile": "npm run tsc",
     "tsc": "tsc -p .",
