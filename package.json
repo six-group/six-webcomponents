@@ -21,7 +21,8 @@
     "libraries/ui-library-angular",
     "examples/angular",
     "examples/react",
-    "examples/js"
+    "examples/js",
+    "docs"
   ],
   "devDependencies": {
     "prettier": "^2.8.8"
