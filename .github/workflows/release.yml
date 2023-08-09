@@ -1,0 +1,72 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'The version to release. Format vx.x.x(-[rc|beta].x)'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  publish-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          registry-url: 'https://registry.npmjs.org'
+          cache: 'npm'
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - run: npm ci
+
+      - name: 'Set version in package.json files to ${{ inputs.version }}'
+        run: |
+          npm version ${{ inputs.version }} --force --no-git-tag-version
+          npm version ${{ inputs.version }} -w libraries/ --force --no-git-tag-version
+
+      - name: 'Commit changes to release branch'
+        run: |
+          git config user.name "GitHub action"
+          git config user.email "<>"
+          git checkout -b feature/${{ inputs.version }}
+          git add libraries/ui-library/package*.json libraries/ui-library-react/package*.json libraries/ui-library-angular/package*.json
+          git commit -m "${{ inputs.version }}"
+          git push origin feature/${{ inputs.version }}
+
+      - name: 'Build project with new version'
+        run: npm run build
+
+      - name: 'Publish to NPM'
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+        run: |
+          npm publish --dry-run --access=public libraries/ui-library/
+          npm publish --dry-run --access=public libraries/ui-library-react/
+          npm publish --dry-run --access=public libraries/ui-library-angular/dist/ui-library-angular/
+
+      - name: 'Create tag'
+        run: |
+          git tag ${{ inputs.version }}
+          git push origin ${{ inputs.version }}
+
+      - name: 'Create Pull Request'
+        uses: peter-evans/create-pull-request@v5
+        with:
+          branch: feature/${{ inputs.version }}
+          delete-branch: true
+          title: 'Merge release ${{ inputs.version }}'
+
+      - name: 'Create GitHub release'
+        uses: actions/create-release@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ inputs.version }}
+          release_name: '${{ inputs.version }}'
+          body: '${{ inputs.version }}'
