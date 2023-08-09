@@ -382,7 +382,7 @@ export class SixItemPicker {
   }
 
   private isNextNumberDisabled() {
-    return Number(this.value) + this.step > (this.max ?? Infinity);
+    return Number(this.value) + this.step > Number(this.max ?? Infinity);
   }
 
   private isPrevDisabled() {
@@ -398,7 +398,7 @@ export class SixItemPicker {
   }
 
   private isPreviousNumberDisabled() {
-    return Number(this.value) - this.step < (this.min ?? -Infinity);
+    return Number(this.value) - this.step < Number(this.min ?? -Infinity);
   }
 
   private onMouseDownNext() {
