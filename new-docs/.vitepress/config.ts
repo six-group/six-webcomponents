@@ -16,7 +16,7 @@ export default defineConfig({
         activeMatch: '/guide/',
       },
       { text: 'Examples', link: '/markdown-examples' },
-      /*      {
+      /*{
         text: 'Components',
         link: '/components/' + require('../components/component.tags.json')[0],
       },*/
