@@ -2,6 +2,7 @@
 
 :host {
   display: inline-block;
+  overflow: hidden;
 }
 
 .tag {
@@ -13,6 +14,11 @@
   white-space: nowrap;
   user-select: none;
   cursor: default;
+}
+
+.tag__content {
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .tag__clear::part(base) {
