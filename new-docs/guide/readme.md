@@ -40,7 +40,7 @@ npm install
 npm start
 ```
 
-The last command will open a browser window at http://localhost:3333/ providing a preview of all
+The last command will open a browser window at http://localhost:3333/ with a preview of all
 components.
 
 ### Preview Angular Demo
