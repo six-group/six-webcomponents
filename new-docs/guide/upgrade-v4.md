@@ -22,27 +22,27 @@ example, that showcases the usage of all available form elements.
 Steps to use the new Angular library:
 
 1. Remove `CUSTOM_ELEMENTS_SCHEMA` from your Angular modules.
-2. Remove `defineCustomElement()` from your `main.ts` file
-3. If applicable, eliminate any custom
+2. Remove `defineCustomElement()` in your `main.ts` file
+3. Add `@six-group/ui-library-angular` to your `package.json` dependencies.
+4. Add `UiLibraryAngularModule.forRoot()` to the module imports.
+5. If applicable, eliminate any custom
    [control value accessors](https://angular.io/api/forms/ControlValueAccessor). Angular value
    accessors are now shipped with the library.
-4. Add `@six-group/ui-library-angular` to your `package.json` dependencies.
-5. Add `UiLibraryAngularModule.forRoot()` to the module imports.
 
 For detailed guidance on setting up Angular, refer to the [Angular guide](angular.md).
 
 ## Client Side Validation Support Removal
 
-In Version 3, an attempt was made to replicate the
-[client side form validation](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation)
-seen in native form elements. However, this endeavor was marked by considerable complexity and
-numerous bugs. Consequently, we have chosen to entirely eliminate this feature, driven by the aim
-for form validation to be delegated to the framework employing our components. To understand how
-this process works, for example in Angular, explore the provided Angular example.
+In Version 3, an attempt was made to incorporate support for native
+[client side form validation](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation).
+As a result, we have made the decision to completely remove this feature. This choice is rooted in
+our goal for form validation to be handled by the framework utilizing our components, which is the
+approach adopted by the majority of projects. To comprehend how this process operates, consider, for
+instance, the provided Angular example.
 
 In detail, the following changes were made:
 
-- Removed the `six-form` component. Simply replace it with the standard html `form` element.
+- Removed the `six-form` component.
 - Removed the following method form all form components:
   - `reset()`
   - `reportValidity()`
@@ -54,7 +54,14 @@ In detail, the following changes were made:
 - Removed the following properties in all form components:
   - `errorOnBlur`
 
-The form components TBC
+The `six-form` component can be easily substituted with a native form element. However, since the
+validation logic is no longer managed, it must now be carried out manually or with the assistance of
+a form library.
+
+Form elements still maintain the capability to display error messages. To display an error message
+you need to set the `error-text` and `invalid` property. In Angular both properties are set
+automatically if you use angular forms and its validators, displaying the error message at the right
+time.
 
 ## Vue Support Removal
 
