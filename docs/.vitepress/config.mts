@@ -9,7 +9,7 @@ export default defineConfig({
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Examples', link: '/markdown-examples' },
-      { text: 'Components', link: '/component' }
+      { text: 'Components', link: '/components/six-button' }
     ],
 
     sidebar: [
@@ -25,5 +25,13 @@ export default defineConfig({
     socialLinks: [
       { icon: 'github', link: 'https://github.com/six-group/six-webcomponents' }
     ]
-  }
+  },
+
+  vue: {
+    template: {
+      compilerOptions: {
+        isCustomElement: (tag) => tag.startsWith('six-')
+      }
+    }
+  },
 })
