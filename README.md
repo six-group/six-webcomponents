@@ -23,50 +23,24 @@ Thank you to all the people who already contributed to the Six-Webcomponents!
 
 <a href="https://github.com/six-group/six-webcomponents/graphs/contributors"><img src="https://contrib.rocks/image?repo=six-group/six-webcomponents" /></a>
 
-## Build
-
-Run in root directory:
-
-```bash
-npm install
-npm run build
-```
-
-## API Documentation
-
-Start documentation server (first build the lib):
-
-```bash
-cd docs
-npm install
-npm start
-```
-
-or everything combined:
-
-```bash
-npm i && npm run build && cd docs && npm i && npm start
-```
-
 ## Examples
 
-There are example apps for Angular, React, Vue and pure JavaScript. You can find them at `packages/demo-app-*`.
+There are example apps for Angular and React. You can find them in the `examples` directory.
 
 ## Structure
 
-| Module                       | Description                                                          |
-| ---------------------------- | -------------------------------------------------------------------- |
-| `libraries/ui-library`       | Core UI component library build with Stencil                         |
-| `libraries/ui-library-react` | React component module based on the the core library                 |
-| `libraries/ui-library-vue`   | Vue component module based on the the core library                   |
-| `examples/demo-app-angular`  | Angular demo app showing some components and features of ui-library  |
-| `examples/demo-app-react`    | React demo app showing some components and features of ui-library    |
-| `examples/demo-app-vue`      | Vue.js demo app showing some components and features of ui-library   |
-| `examples/demo-app-js`       | Plain JS demo app showing some components and features of ui-library |
-| `docs`                       | API documentation built with VuePress                                |
+| Module                         | Description                                                          |
+| ------------------------------ | -------------------------------------------------------------------- |
+| `libraries/ui-library`         | Core UI component library build with Stencil                         |
+| `libraries/ui-library-angular` | Angular wrappers and utilities                                       |
+| `libraries/ui-library-react`   | React wrappers                                                       |
+| `examples/angular`             | Angular demo app showing some components and features of ui-library  |
+| `examples/react`               | React demo app showing some components and features of ui-library    |
+| `examples/js`                  | Plain JS demo app showing some components and features of ui-library |
+| `docs`                         | API documentation built with VitePress                               |
 
 ## Credits
 
-Credit where credit is due. The SIX webcomponents started as clone of the shoelace project and were inspired by the baloise
+Credit where credit is due. The SIX webcomponents started as clone of the [shoelace project](https://shoelace.style/) and were inspired by the baloise
 design-system. Some parts of six-datepicker were copied from the bal-datepicker.
 The third party licenses are listed [here](packages/ui-library/third-party-licenses).

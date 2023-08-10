@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - GitHub CI workflow for pull requests
 - Standard events for form components (`change`, `input`, `blur`) in addition to existing custom
   events (`six-input-change`, ...)
+- Enable form submission by pressing the 'Enter' key within the six-input field
 
 ### Changed
 
