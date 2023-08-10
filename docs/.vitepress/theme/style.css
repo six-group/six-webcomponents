@@ -1,3 +1,5 @@
+@import '@six-group/ui-library/dist/ui-library/ui-library.css';
+
 /**
  * Customize default theme styling by overriding CSS variables:
  * https://github.com/vuejs/vitepress/blob/main/src/client/theme-default/styles/vars.css
