@@ -199,18 +199,18 @@ Alternatively, you can listen for the `click` event on individual menu items. No
   <six-dropdown>
     <six-button slot="trigger" caret>Edit</six-button>
     <six-menu>
-      <six-menu-item value="cut">Cut</six-menu-item>
-      <six-menu-item value="copy">Copy</six-menu-item>
-      <six-menu-item value="paste">Paste</six-menu-item>
+      <six-menu-item id="cut" value="cut">Cut</six-menu-item>
+      <six-menu-item id="copy" value="copy">Copy</six-menu-item>
+      <six-menu-item id="paste" value="paste">Paste</six-menu-item>
     </six-menu>
   </six-dropdown>
 </div>
 
 <script type="module">
   const container1 = document.querySelector('.dropdown-selection-alt');
-  const cut = container1.querySelector('six-menu-item[value="cut"]');
-  const copy = container1.querySelector('six-menu-item[value="copy"]');
-  const paste = container1.querySelector('six-menu-item[value="paste"]');
+  const cut = container1.querySelector('#cut');
+  const copy = container1.querySelector('#copy');
+  const paste = container1.querySelector('#paste');
 
   cut.addEventListener('click', () => console.log('cut'));
   copy.addEventListener('click', () => console.log('copy'));
