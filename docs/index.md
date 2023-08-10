@@ -4,23 +4,23 @@ layout: home
 
 hero:
   name: 'SIX Web Components'
-  text: 'Documentation'
-  tagline: Web Component Library in the SIX style guide
+  text: 'Accelerate the Creation of SIX Apps'
+  tagline: 'Ready to use Components in alignment with the SIX Corporate Styleguide'
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
+      text: Getting Started
+      link: /guide/readme
     - theme: alt
-      text: API Examples
+      text: Angular Example
       link: /api-examples
-
+    - theme: alt
+      text: React Example
+      link: /api-examples
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-
-footer: Copyright © 2021-present SIX-Group
+  - title: Agnostic
+    details: Our Library works with many popular frameworks like Angular, React and Vue right out of the box. Checkout the demo apps below!
+  - title: Fast Runtime
+    details: Web Components offered a solution by pushing more work to the browser for better performance.
+  - title: In-House Open Source
+    details: All developers within the SIX Group are welcome to contribute code and use our library in their projects.
 ---

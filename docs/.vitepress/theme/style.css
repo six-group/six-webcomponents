@@ -1,4 +1,4 @@
-@import '@six-group/ui-library/dist/ui-library/ui-library.css';
+@import "@six-group/ui-library/dist/ui-library/ui-library.css";
 
 /**
  * Customize default theme styling by overriding CSS variables:
@@ -17,6 +17,7 @@
   --vp-c-brand-dark: #d13617;
   --vp-c-brand-darker: #bd3115;
   --vp-c-brand-dimm: rgba(100, 108, 255, 0.08);
+  --vp-nav-logo-height: 14px;
 }
 
 /**

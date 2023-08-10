@@ -6,9 +6,9 @@ import { defineCustomElements } from '@six-group/ui-library/loader';
 
 // @ts-ignore
 const modules = import.meta.globEager('../../examples/**/*.vue');
-const components = [];
+const exampleComponents = [];
 for (const path in modules) {
-  components.push(modules[path].default);
+  exampleComponents.push(modules[path].default);
 }
 export default {
   extends: Theme,
@@ -20,7 +20,9 @@ export default {
   enhanceApp({ app, router, siteData }) {
     // define ui six library components
     defineCustomElements();
-    components.forEach((component) => {
+
+    // globally register vue example components
+    exampleComponents.forEach((component) => {
       app.component(component.name, component);
     });
   },
