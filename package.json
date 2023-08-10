@@ -2,6 +2,13 @@
   "name": "@six-group/workspace",
   "version": "4.0.0-beta.3",
   "scripts": {
+    "start": "npm run start -w libraries/ui-library",
+    "watch": "npm run watch -w libraries/ui-library",
+    "watch:angular": "npm run watch -w libraries/ui-library-angular",
+    "watch:react": "npm run watch -w libraries/ui-library-react",
+    "start:doc": "npm run start -w docs",
+    "build:doc": "npm run build -w docs",
+    "preview:doc": "npm run preview -w docs",
     "build": "npm run build --workspaces",
     "build:lib": "npm run build -w libraries",
     "lint:lib": "npm run lint -w libraries --if-present",

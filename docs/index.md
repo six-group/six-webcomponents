@@ -3,9 +3,9 @@
 layout: home
 
 hero:
-  name: 'SIX Web Components'
-  text: 'Accelerate the Creation of SIX Apps'
-  tagline: 'Ready to use Components in alignment with the SIX Corporate Styleguide'
+  name: "SIX Web Components"
+  text: "Accelerate the Creation of SIX Apps"
+  tagline: "Ready to use Components in alignment with the SIX Corporate Styleguide"
   actions:
     - theme: brand
       text: Getting Started
@@ -18,9 +18,14 @@ hero:
       link: /api-examples
 features:
   - title: Agnostic
-    details: Our Library works with many popular frameworks like Angular, React and Vue right out of the box. Checkout the demo apps below!
+    details:
+      Our Library works with many popular frameworks like Angular, React and Vue right out of the
+      box. Checkout the demo apps below!
   - title: Fast Runtime
-    details: Web Components offered a solution by pushing more work to the browser for better performance.
+    details:
+      Web Components offered a solution by pushing more work to the browser for better performance.
   - title: In-House Open Source
-    details: All developers within the SIX Group are welcome to contribute code and use our library in their projects.
+    details:
+      All developers within the SIX Group are welcome to contribute code and use our library in
+      their projects.
 ---

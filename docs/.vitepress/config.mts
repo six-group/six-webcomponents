@@ -7,13 +7,15 @@ const componentNavItems = components.map((component) => {
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  ignoreDeadLinks: true,
+  appearance: false,
   head: [["link", { rel: "icon", href: "/favicon.ico" }]],
   title: "Web Components",
   description: "Component Library following the SIX Style Guide",
 
   // https://vitepress.dev/reference/default-theme-config
   themeConfig: {
-    logo: "/images/six-logo.svg",
+    logo: "/six-logo.svg",
     nav: [
       {
         text: "Guide",
