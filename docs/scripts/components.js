@@ -2,6 +2,7 @@ const path = require('path');
 const { readFile, writeFile, readJson, writeJson } = require('fs-extra');
 const { parse, NodeType } = require('node-html-parser');
 const TurndownService = require('turndown');
+const { mkdirSync } = require('fs');
 
 const NEWLINE = '\n';
 const LIB_PATH = path.join(__dirname, '../../libraries/ui-library');
@@ -20,8 +21,19 @@ function extractDemoScript(node) {
   return '';
 }
 
+function extractDemoStyle(node) {
+  const styleNodes = node.querySelectorAll('style');
+  let styles = '';
+  styleNodes.forEach((s) => {
+    s.parentNode.removeChild(s);
+    styles += s.innerHTML;
+  });
+  return styles;
+}
+
 async function writeDemoComponent(tag, node) {
   const script = extractDemoScript(node);
+  const style = extractDemoStyle(node);
   const html = node.innerHTML;
   const componentContent = [
     '<template>',
@@ -29,6 +41,9 @@ async function writeDemoComponent(tag, node) {
     html,
     '</div>',
     '</template>',
+    '<style>',
+    style,
+    '</style>',
     '<script>',
     'export default {',
     `  name: '${tag}',`,
@@ -36,7 +51,9 @@ async function writeDemoComponent(tag, node) {
     '}',
     '</script>',
   ].join(NEWLINE);
-  await writeFile(path.join(__dirname, `../.vitepress/generated/${tag}.vue`), componentContent);
+
+  mkdirSync(path.join(__dirname, `../examples`), { recursive: true });
+  await writeFile(path.join(__dirname, `../examples/${tag}.vue`), componentContent);
 }
 
 async function processNode(node, component) {
@@ -79,6 +96,7 @@ async function getComponents() {
 
 async function writeSidebar(components) {
   const tags = components.map((c) => c.tag);
+  mkdirSync(path.join(__dirname, `../components`), { recursive: true });
   const filePath = path.join(__dirname, '../components/component.tags.json');
   writeJson(filePath, tags);
 }
@@ -94,8 +112,8 @@ async function transformToMarkdown(component) {
 }
 
 async function writeMarkdown(component) {
-  const filePath = path.join(__dirname, `../components/${component.tag}.md`);
-  await writeFile(filePath, component.md);
+  mkdirSync(path.join(__dirname, `../components`), { recursive: true });
+  await writeFile(path.join(__dirname, `../components/${component.tag}.md`), component.md);
 }
 
 // MAIN

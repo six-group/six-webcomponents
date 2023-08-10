@@ -4,6 +4,12 @@ import Theme from 'vitepress/theme';
 import './style.css';
 import { defineCustomElements } from '@six-group/ui-library/loader';
 
+// @ts-ignore
+const modules = import.meta.globEager('../../examples/**/*.vue');
+const components = [];
+for (const path in modules) {
+  components.push(modules[path].default);
+}
 export default {
   extends: Theme,
   Layout: () => {
@@ -14,5 +20,8 @@ export default {
   enhanceApp({ app, router, siteData }) {
     // define ui six library components
     defineCustomElements();
+    components.forEach((component) => {
+      app.component(component.name, component);
+    });
   },
 };
