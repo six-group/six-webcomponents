@@ -15,6 +15,7 @@
   },
   "scripts": {
     "start": "vitepress dev",
+    "prebuild": "node scripts/components.js",
     "build": "vitepress build",
     "preview": "vitepress preview"
   },
