@@ -6,6 +6,7 @@
     "@six-group/ui-library": "*"
   },
   "devDependencies": {
+    "cpy-cli": "^5.0.0",
     "node-html-parser": "^6.1.5",
     "rimraf": "^5.0.1",
     "turndown": "^7.1.2",
@@ -14,9 +15,11 @@
   },
   "scripts": {
     "start": "vitepress dev",
-    "prebuild": "rimraf examples components .vitepress/dist && node scripts/components.js",
-    "build": "vitepress build",
-    "preview": "vitepress preview"
+    "build": "npm run clean && npm run generate-doc && vitepress build && npm run copy-angular-demo",
+    "preview": "vitepress preview",
+    "clean": "rimraf examples components .vitepress/dist",
+    "copy-angular-demo": "cpy '../examples/angular/dist/demo-app-angular/**/*' ./.vitepress/dist/demo/angular/",
+    "generate-doc": "node scripts/components.js"
   },
   "license": "Apache-2.0"
 }
