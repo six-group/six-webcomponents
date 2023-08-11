@@ -1,24 +1,22 @@
 {
   "name": "docs",
   "version": "4.0.0-beta.0",
-  "description": "",
   "main": "index.js",
   "dependencies": {
     "@six-group/ui-library": "*"
   },
   "devDependencies": {
-    "fs-extra": "^11.1.1",
     "node-html-parser": "^6.1.5",
+    "rimraf": "^5.0.1",
     "turndown": "^7.1.2",
     "vitepress": "^1.0.0-rc.4",
     "vue": "^3.3.4"
   },
   "scripts": {
     "start": "vitepress dev",
-    "prebuild": "node scripts/components.js",
+    "prebuild": "rimraf examples components .vitepress/dist && node scripts/components.js",
     "build": "vitepress build",
     "preview": "vitepress preview"
   },
-  "author": "",
-  "license": "ISC"
+  "license": "Apache-2.0"
 }
