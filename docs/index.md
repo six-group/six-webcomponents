@@ -3,9 +3,9 @@
 layout: home
 
 hero:
-  name: "SIX Web Components"
-  text: "Accelerate the Creation of SIX Apps"
-  tagline: "Ready to use Components in alignment with the SIX Corporate Styleguide"
+  name: 'SIX Web Components'
+  text: 'Accelerate the Creation of SIX Apps'
+  tagline: 'Ready to use Components in alignment with the SIX Corporate Styleguide'
   actions:
     - theme: brand
       text: Getting Started

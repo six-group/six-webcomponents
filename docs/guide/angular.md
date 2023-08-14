@@ -26,7 +26,7 @@
 4. Import the SIX styles to your global `styles.scss` file (usually located at `src/styles.scss`):
 
    ```scss
-   @import "@six-group/ui-library/dist/ui-library/ui-library.css";
+   @import '@six-group/ui-library/dist/ui-library/ui-library.css';
    ```
 
 ## Using the Components

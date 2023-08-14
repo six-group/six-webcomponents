@@ -7,7 +7,7 @@ simple build-time tool. At the end everything will be compiled in a clean web co
 framework specific code - just pure JS and CSS. Additionally, there are so called _output-targets_
 which allow a very comfortable integration into all major frameworks.
 
-![Stenciljs Architecture](/images/stenciljs_architecture.svg "Stenciljs Architecture")"
+![Stenciljs Architecture](/images/stenciljs_architecture.svg 'Stenciljs Architecture')"
 
 Stencil takes features such as
 

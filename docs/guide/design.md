@@ -4,7 +4,7 @@ Our Web Components library is based largely on the principles of
 [atomic design](https://atomicdesign.bradfrost.com/chapter-2/). The key idea of this methodology is
 that small, independent - atomic - parts, can be combined into larger molecular structures.
 
-![Atomic Design](/images/atomic_design.svg "Atomic Design")
+![Atomic Design](/images/atomic_design.svg 'Atomic Design')
 
 1. Atoms include basic HTML elements like [icons](/components/six-icon.html),
    [inputs](/components/six-input.html), [buttons](/components/six-button.html),...
