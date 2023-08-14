@@ -12,6 +12,7 @@ export default defineConfig({
   head: [['link', { rel: 'icon', href: '/favicon.ico' }]],
   title: 'Web Components',
   description: 'Component Library following the SIX Style Guide',
+  base: '/six-webcomponents/v4/',
 
   // https://vitepress.dev/reference/default-theme-config
   themeConfig: {
