@@ -1,7 +1,7 @@
 ## Installation
 
 ```bash
-npm install @six-group/ui-library-react
+npm install @six-group/ui-library
 ```
 
 ## Documentation
