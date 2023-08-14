@@ -1,6 +1,9 @@
 name: Publish Documentation to GitHub Pages
 
 on:
+  push:
+    branches:
+      - feature/vitepress
   pull_request:
     branches:
       - feature/vitepress
