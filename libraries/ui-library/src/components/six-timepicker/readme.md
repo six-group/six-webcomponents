@@ -85,6 +85,7 @@ graph TD;
   six-timepicker --> six-input
   six-item-picker --> six-icon
   six-input --> six-icon
+  six-input --> six-error
   six-datepicker --> six-timepicker
   style six-timepicker fill:#f9f,stroke:#333,stroke-width:4px
 ```

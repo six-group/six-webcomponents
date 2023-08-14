@@ -43,6 +43,7 @@ graph TD;
   six-search-field --> six-input
   six-search-field --> six-icon
   six-input --> six-icon
+  six-input --> six-error
   style six-search-field fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

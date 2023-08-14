@@ -35,6 +35,19 @@
 | `"label"`        | The label of wrapped component.                                 |
 
 
+## Dependencies
+
+### Depends on
+
+- [six-error](../six-error)
+
+### Graph
+```mermaid
+graph TD;
+  six-group-label --> six-error
+  style six-group-label fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 Copyright © 2021-present SIX-Group

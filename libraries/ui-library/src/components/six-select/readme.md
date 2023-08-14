@@ -93,6 +93,7 @@ Type: `Promise<void>`
 - [six-icon](../six-icon)
 - [six-input](../six-input)
 - [six-menu](../six-menu)
+- [six-error](../six-error)
 
 ### Graph
 ```mermaid
@@ -104,6 +105,7 @@ graph TD;
   six-select --> six-icon
   six-select --> six-input
   six-select --> six-menu
+  six-select --> six-error
   six-menu-item --> six-icon
   six-tag --> six-icon-button
   six-icon-button --> six-icon
@@ -111,6 +113,7 @@ graph TD;
   six-dropdown --> six-input
   six-dropdown --> six-menu
   six-input --> six-icon
+  six-input --> six-error
   six-menu --> six-menu-item
   style six-select fill:#f9f,stroke:#333,stroke-width:4px
 ```

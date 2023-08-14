@@ -63,12 +63,12 @@ export class ValueAccessor implements ControlValueAccessor, AfterViewInit, OnDes
       const control = this.ngControl?.control;
 
       const invalid = !control.valid && control.dirty && control.touched;
-      let errorText;
+      let errorTexts;
       if (invalid) {
-        errorText = this.initialErrorText || this.getErrorText(control);
+        errorTexts = this.initialErrorText || this.getErrorTexts(control);
       }
       element.invalid = invalid;
-      element.errorText = errorText ?? '';
+      element.errorText = errorTexts ?? '';
     });
   }
 
@@ -117,22 +117,24 @@ export class ValueAccessor implements ControlValueAccessor, AfterViewInit, OnDes
     }
   }
 
-  getErrorText(control: AbstractControl): string {
+  getErrorTexts(control: AbstractControl): string[] {
     if (control.errors == null) {
       console.warn('no errors for invalid control', control);
-      return '';
+      return [];
     }
 
-    const firstError = Object.entries(control.errors).at(0);
-    if (firstError == null) {
+    const errorList = Object.entries(control.errors);
+    if (errorList.length <= 0) {
       console.warn('no errors for invalid control', control);
-      return '';
+      return [];
     }
 
-    const [key, value] = firstError;
-    return (
-      this.validationMessagesService.getErrorMessage(getLanguage(), { key: key, ...value } as ValidationError) ?? key
-    );
+    return errorList.map((error) => {
+      const [key, value] = error;
+      return (
+        this.validationMessagesService.getErrorMessage(getLanguage(), { key: key, ...value } as ValidationError) ?? key
+      );
+    });
   }
 }
 

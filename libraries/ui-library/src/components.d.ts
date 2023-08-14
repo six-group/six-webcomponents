@@ -585,6 +585,12 @@ export namespace Components {
          */
         "virtualScroll": boolean;
     }
+    /**
+     * @since 4.0
+     * @status beta
+     */
+    interface SixError {
+    }
     interface SixErrorPage {
         /**
           * Defines a custom description.
@@ -816,7 +822,11 @@ export namespace Components {
         /**
           * The error message shown, if `invalid` is set to true.
          */
-        "errorText": string;
+        "errorText": string | string[];
+        /**
+          * The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1
+         */
+        "errorTextCount"?: number;
         /**
           * The input's help text. Alternatively, you can use the help-text slot.
          */
@@ -2185,6 +2195,16 @@ declare global {
         prototype: HTMLSixDropdownElement;
         new (): HTMLSixDropdownElement;
     };
+    /**
+     * @since 4.0
+     * @status beta
+     */
+    interface HTMLSixErrorElement extends Components.SixError, HTMLStencilElement {
+    }
+    var HTMLSixErrorElement: {
+        prototype: HTMLSixErrorElement;
+        new (): HTMLSixErrorElement;
+    };
     interface HTMLSixErrorPageElement extends Components.SixErrorPage, HTMLStencilElement {
     }
     var HTMLSixErrorPageElement: {
@@ -2605,6 +2625,7 @@ declare global {
         "six-dialog": HTMLSixDialogElement;
         "six-drawer": HTMLSixDrawerElement;
         "six-dropdown": HTMLSixDropdownElement;
+        "six-error": HTMLSixErrorElement;
         "six-error-page": HTMLSixErrorPageElement;
         "six-file-list": HTMLSixFileListElement;
         "six-file-list-item": HTMLSixFileListItemElement;
@@ -3251,6 +3272,12 @@ declare namespace LocalJSX {
          */
         "virtualScroll"?: boolean;
     }
+    /**
+     * @since 4.0
+     * @status beta
+     */
+    interface SixError {
+    }
     interface SixErrorPage {
         /**
           * Defines a custom description.
@@ -3514,7 +3541,11 @@ declare namespace LocalJSX {
         /**
           * The error message shown, if `invalid` is set to true.
          */
-        "errorText"?: string;
+        "errorText"?: string | string[];
+        /**
+          * The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1
+         */
+        "errorTextCount"?: number;
         /**
           * The input's help text. Alternatively, you can use the help-text slot.
          */
@@ -4693,6 +4724,7 @@ declare namespace LocalJSX {
         "six-dialog": SixDialog;
         "six-drawer": SixDrawer;
         "six-dropdown": SixDropdown;
+        "six-error": SixError;
         "six-error-page": SixErrorPage;
         "six-file-list": SixFileList;
         "six-file-list-item": SixFileListItem;
@@ -4804,6 +4836,11 @@ declare module "@stencil/core" {
              * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
              */
             "six-dropdown": LocalJSX.SixDropdown & JSXBase.HTMLAttributes<HTMLSixDropdownElement>;
+            /**
+             * @since 4.0
+             * @status beta
+             */
+            "six-error": LocalJSX.SixError & JSXBase.HTMLAttributes<HTMLSixErrorElement>;
             "six-error-page": LocalJSX.SixErrorPage & JSXBase.HTMLAttributes<HTMLSixErrorPageElement>;
             /**
              * @since 2.0.0

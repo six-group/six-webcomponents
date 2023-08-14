@@ -77,6 +77,19 @@ Type: `Promise<void>`
 | `--width`      | The width of the switch.  |
 
 
+## Dependencies
+
+### Depends on
+
+- [six-error](../six-error)
+
+### Graph
+```mermaid
+graph TD;
+  six-switch --> six-error
+  style six-switch fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 Copyright © 2021-present SIX-Group

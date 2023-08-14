@@ -26,9 +26,10 @@ let id = 0;
  * @slot show-password-icon - An icon to use in lieu of the default show password icon.
  * @slot hide-password-icon - An icon to use in lieu of the default hide password icon.
  * @slot help-text - Help text that describes how to use the input. Alternatively, you can use the help-text prop.
+ * @slot error-text - Error text that is shown when the status is set to invalid. Alternatively, you can use the error-text prop.
  *
  * @part base - The component's base wrapper.
- * @part form-control - The form control that wraps the label, input, and help-text.
+ * @part form-control - The form control that wraps the label, input, error-text and help-text.
  * @part label - The input label.
  * @part input - The input control.
  * @part prefix - The input prefix container.
@@ -36,6 +37,7 @@ let id = 0;
  * @part password-toggle-button - The password toggle button.
  * @part suffix - The input suffix container.
  * @part help-text - The input help text.
+ * @part error-text - The input error text.
  */
 
 @Component({
@@ -56,6 +58,7 @@ export class SixInput {
   @State() hasFocus = false;
   @State() hasHelpTextSlot = false;
   @State() hasLabelSlot = false;
+  @State() hasErrorSlot = false;
   @State() isPasswordVisible = false;
 
   /** The input's type. */
@@ -125,7 +128,10 @@ export class SixInput {
   @Prop() label = '';
 
   /** The error message shown, if `invalid` is set to true.  */
-  @Prop() errorText = '';
+  @Prop() errorText: string | string[] = '';
+
+  /** The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1 */
+  @Prop() errorTextCount?: number;
 
   /** If this property is set to true and an error message is provided by `errorText`, the error message is displayed.  */
   @Prop({ reflect: true }) invalid = false;
@@ -291,6 +297,7 @@ export class SixInput {
   private handleSlotChange = () => {
     this.hasHelpTextSlot = hasSlot(this.host, 'help-text');
     this.hasLabelSlot = hasSlot(this.host, 'label');
+    this.hasErrorSlot = hasSlot(this.host, 'error-text');
   };
 
   private getValue(): string {
@@ -309,6 +316,8 @@ export class SixInput {
         hasHelpTextSlot={this.hasHelpTextSlot}
         errorTextId={this.errorTextId}
         errorText={this.errorText}
+        errorTextCount={this.errorTextCount}
+        hasErrorTextSlot={this.hasErrorSlot}
         size={this.size}
         disabled={this.disabled}
         required={this.required}

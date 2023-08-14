@@ -115,6 +115,19 @@ Type: `Promise<void | undefined>`
 | `"textarea"`     | The textarea control.                                           |
 
 
+## Dependencies
+
+### Depends on
+
+- [six-error](../six-error)
+
+### Graph
+```mermaid
+graph TD;
+  six-textarea --> six-error
+  style six-textarea fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 Copyright © 2021-present SIX-Group

@@ -101,6 +101,7 @@ graph TD;
   six-datepicker --> six-input
   six-datepicker --> six-timepicker
   six-input --> six-icon
+  six-input --> six-error
   six-timepicker --> six-item-picker
   six-timepicker --> six-icon
   six-timepicker --> six-input
