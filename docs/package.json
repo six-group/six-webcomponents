@@ -15,11 +15,13 @@
   },
   "scripts": {
     "start": "vitepress dev",
-    "build": "npm run clean && npm run generate-doc && vitepress build && npm run copy-angular-demo",
+    "build": "run-s clean generate:components build:doc copy:angular copy:react",
     "preview": "vitepress preview",
-    "clean": "rimraf examples components .vitepress/dist",
-    "copy-angular-demo": "cpy '../examples/angular/dist/demo-app-angular/**/*' ./.vitepress/dist/demo/angular/",
-    "generate-doc": "node scripts/components.js"
+    "build:doc": "vitepress build",
+    "copy:angular": "cpy '../examples/angular/dist/demo-app-angular/**/*' ./.vitepress/dist/demo/angular/",
+    "copy:react": "cpy '../examples/react/build/**/*' ./.vitepress/dist/demo/react/",
+    "generate:components": "node scripts/components.js",
+    "clean": "rimraf examples components .vitepress/dist"
   },
   "license": "Apache-2.0"
 }

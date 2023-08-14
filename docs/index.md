@@ -12,10 +12,10 @@ hero:
       link: /guide/readme
     - theme: alt
       text: Angular Example
-      link: /api-examples
+      link: /demo/angular/index.html
     - theme: alt
       text: React Example
-      link: /api-examples
+      link: /demo/react/index.html
 features:
   - title: Agnostic
     details:
