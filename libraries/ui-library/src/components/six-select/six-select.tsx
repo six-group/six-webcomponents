@@ -266,7 +266,7 @@ export class SixSelect {
   }
 
   private getValueAsArray() {
-    const values = Array.isArray(this.value) ? this.value : [this.value];
+    const values = Array.isArray(this.value) ? this.value : this.value === '' ? [] : [this.value];
     // enforce that the values are converted to 'string' before the value is compared
     return values.map(String);
   }
@@ -587,7 +587,7 @@ export class SixSelect {
             onFocus={this.handleFocus}
             onKeyDown={this.handleKeyDown}
           >
-            <span class="select__label">
+            <span class={{ select__label: true, 'select__label--single': !this.displayTags.length }}>
               {this.displayTags.length > 0 ? (
                 <span part="tags" class="select__tags">
                   {this.displayTags}

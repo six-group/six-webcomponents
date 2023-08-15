@@ -24,7 +24,6 @@
   background-color: var(--six-input-background-color);
   border: solid var(--six-border-width) var(--six-input-border-color);
   vertical-align: middle;
-  overflow: hidden;
   transition: var(--six-transition-fast) color, var(--six-transition-fast) border, var(--six-transition-fast) box-shadow;
   cursor: pointer;
 
@@ -102,6 +101,10 @@
   @include hide-scrollbar;
   overflow-x: auto;
   overflow-y: hidden;
+  text-overflow: ellipsis;
+}
+
+.select__label--single {
   white-space: nowrap;
 }
 
@@ -133,7 +136,7 @@
 
 // Tags
 .select__tags {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   flex-wrap: wrap;
   justify-content: left;
@@ -186,9 +189,6 @@
 
     six-tag {
       padding-top: 2px;
-    }
-
-    six-tag:not(:last-of-type) {
       margin-right: var(--six-spacing-xx-small);
     }
   }
@@ -227,9 +227,6 @@
 
     six-tag {
       padding-top: 3px;
-    }
-
-    six-tag:not(:last-of-type) {
       margin-right: var(--six-spacing-xx-small);
     }
   }
@@ -268,9 +265,6 @@
 
     six-tag {
       padding-top: 4px;
-    }
-
-    six-tag:not(:last-of-type) {
       margin-right: var(--six-spacing-xx-small);
     }
   }
