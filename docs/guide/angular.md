@@ -1,5 +1,14 @@
 # Angular
 
+We provide a
+[dedicated npm package for Angular](https://www.npmjs.com/package/@six-group/ui-library-angular),
+designed to simplify the utilization of our web components. Check out the instructions in this guide
+to learn how to use it.
+
+For additional assistance with the implementation, you can also examine the
+[Angular demo](https://six-group.github.io/six-webcomponents/v4/demo/angular) and its
+[accompanying code](https://github.com/six-group/six-webcomponents/tree/main/examples/angular).
+
 ## Setup
 
 1. Install the web components and the angular library:
@@ -33,8 +42,8 @@
 
 The components can be utilized just like any other Angular component. However, there's one caveat:
 while you'll receive code completion for attributes/properties of the component, code completion for
-events provided by the components is currently unavailable. Please check the component documentation
-(TODO) for available events.
+events provided by the components is currently unavailable. Please check the
+[components documentation](../components/six-alert.md) for available events.
 
 ## Forms
 
@@ -48,8 +57,9 @@ For instance, it avoids displaying the message if the form is pristine, even if 
 invalid.
 
 To select the correct translation, your application should ensure the `lang` attribute of the `html`
-element is set. Supported languages are `en`, `de`, `it` and `fr`. Refer to the Angular example code
-(TBD) for an concrete implementation of this, when switching the language.
+element is set. Supported languages are `en`, `de`, `it` and `fr`. Refer to the
+[Angular example](https://github.com/six-group/six-webcomponents/tree/main/examples/angular) for a
+concrete implementation of this, when switching the language.
 
 ### Form Util
 

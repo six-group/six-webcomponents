@@ -35,11 +35,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Removed
 
-- Support for integrated
+- **Breaking:** Support for integrated
   [client side form validation](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation)
-- Support for [Vue](https://vuejs.org/)
-- six-form component
-- six-table component
+- **Breaking:** Support for [Vue](https://vuejs.org/)
+- **Breaking:** six-form component
+- **Breaking:** six-table component
 - Puppeteer end-to-end tests
 
 ## 3.\*-beta - 2023-03-01
@@ -52,8 +52,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Added
 
 - six-language-switcher: Added new component to switch language
-- six-checkbox: Add six-label to six-checkbox as param or slot (\*breaking change: Due to naming
-  conflict six-checkbox::part(label) got renamed to six-checkbox::part(text))
+- six-checkbox: Add six-label to six-checkbox as param or slot (**breaking:** Due to naming conflict
+  six-checkbox::part(label) got renamed to six-checkbox::part(text))
 - six-table: Extend table functionality
 - six-table: Drag column to reorder
 - six-table: Customized list of displayed columns
@@ -129,8 +129,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - six-form: removed support for native html tags
 - six-tile: added event handlers for slots of six-tile
 - angular custom directive: bugfix handling of date fields
-- six-input: change behaviour when six-input-change is fired (\*breaking change)
-- six-textarea: change behaviour when six-textarea-change is fired (\*breaking change)
+- **Breaking:** six-input: change behaviour when six-input-change is fired
+- **Breaking:** six-textarea: change behaviour when six-textarea-change is fired
 - six-datepicker: fixed problem where one could not delete date
 - six-datepicker: fixed problem where datepicker was not able to handle invalid value input
 - six-select: change event is fired during initialization of component

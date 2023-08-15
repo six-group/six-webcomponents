@@ -2,7 +2,14 @@ import { defineConfig } from 'vitepress';
 import { components } from '../components/component.tags.mjs';
 
 const componentNavItems = components.map((component) => {
-  return { text: component, link: `/components/${component}` };
+  return {
+    text: component
+      .replace('six-', '')
+      .split('-')
+      .map((c) => c[0].toUpperCase() + c.slice(1))
+      .join(' '), //.replace('six-', '').replace('-', ' '),
+    link: `/components/${component}`,
+  };
 });
 
 // https://vitepress.dev/reference/site-config
