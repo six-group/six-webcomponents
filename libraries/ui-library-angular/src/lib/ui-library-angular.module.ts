@@ -5,7 +5,7 @@ import { TextValueAccessor } from './control-value-accessors/text-value-accessor
 import { NumericValueAccessor } from './control-value-accessors/numeric-value-accessor';
 import { RadioValueAccessor } from './control-value-accessors/radio-value-accessor';
 import { DatepickerValueAccessor } from './control-value-accessors/datepicker-value-accessor';
-import { SixFormUtilDirective } from './util/six-form-util.directive';
+import { SixFormDirective, SixFormUtilDirective } from './form/six-form.directive';
 import {
   AllowedDatesValidator,
   MaxDateValidator,
@@ -44,6 +44,7 @@ import { ValidationMessagesService } from './services/validation-messages.servic
     AllowedDatesValidator,
 
     // form helpers
+    SixFormDirective,
     SixFormUtilDirective,
   ],
   imports: [],
@@ -70,6 +71,7 @@ import { ValidationMessagesService } from './services/validation-messages.servic
     AllowedDatesValidator,
 
     // form helpers
+    SixFormDirective,
     SixFormUtilDirective,
   ],
 })
