@@ -18,8 +18,6 @@ basic input field
 
 
 
-warning Please refer to the section on [form control validation](six-form.html#form-control-validation) to learn how to do client-side validation
-
 ## Placeholders
 
 Use the `placeholder` attribute to add a placeholder.

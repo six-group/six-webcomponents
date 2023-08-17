@@ -9,7 +9,7 @@ that small, independent - atomic - parts, can be combined into larger molecular 
 1. Atoms include basic HTML elements like [icons](/components/six-icon.html),
    [inputs](/components/six-input.html), [buttons](/components/six-button.html),...
 2. Molecules are simple groups of UI elements functioning together as a unit. Label, input and
-   button can join together to create a [search form](/components/six-form.html) molecule.
+   button can join together to create a search form molecule.
 3. Organisms are complex UI components composed of groups of molecules and/or atoms and/or other
    organisms. Example: [header](/components/six-header.html)
 

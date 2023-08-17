@@ -3,7 +3,7 @@
 
 ### SIX Pictograms
 
-In general you should use [six-icons](TODO) in your application. However in certain domain specific cases you might need a more specific icon. In such a case you might find the icon you are looking for in the custom generated SIX pictograms.
+In general you should use [six-icons](./six-icon.html) in your application. However in certain domain specific cases you might need a more specific icon. In such a case you might find the icon you are looking for in the custom generated SIX pictograms.
 
 <docs-demo-six-picto-188></docs-demo-six-picto-188>
 

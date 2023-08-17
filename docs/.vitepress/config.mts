@@ -14,7 +14,7 @@ const componentNavItems = components.map((component) => {
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  ignoreDeadLinks: true,
+  ignoreDeadLinks: [/^https?:\/\/localhost/, './../wrappers/set-attributes'],
   appearance: false,
   head: [['link', { rel: 'icon', href: '/favicon.ico' }]],
   title: 'Web Components',

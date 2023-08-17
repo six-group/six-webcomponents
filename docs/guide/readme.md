@@ -14,6 +14,13 @@ browsers. The project fully supports [TypeScript](https://www.typescriptlang.org
 npm install @six-group/ui-library
 ```
 
+::: info
+
+f you want to try the latest version of the software, you can install the insider releases by
+specifying the _insider_ tag. For instance `npm install @six-group/ui-library@insider`
+
+:::
+
 For detailed instructions tailored to specific frameworks, consult the respective guides:
 
 - [Angular](angular.md)

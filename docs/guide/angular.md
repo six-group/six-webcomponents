@@ -56,12 +56,14 @@ Hence, the SIX Library takes on the responsibility of displaying error messages,
 For instance, it avoids displaying the message if the form is pristine, even if a field is marked as
 invalid.
 
-To select the correct translation, your application should ensure the `lang` attribute of the `html`
-element is set. Supported languages are `en`, `de`, `it` and `fr`. Refer to the
-[Angular example](https://github.com/six-group/six-webcomponents/tree/main/examples/angular) for a
-concrete implementation of this, when switching the language.
+### Error Message Translations
 
-### Form Util
+To select the correct translation, your need to set the `lang` attribute on the `html` element.
+Supported languages are `en`, `de`, `it` and `fr`. Refer to the
+[Angular example](https://github.com/six-group/six-webcomponents/tree/main/examples/angular) for a
+concrete implementation.
+
+### Form Directive
 
 From a
 [usability standpoint](https://www.bennadel.com/blog/4419-the-user-experience-ux-of-disabled-form-buttons.htm),
@@ -69,31 +71,20 @@ we consider that users should always be allowed to submit a form, even if it con
 The library comes with an additional utility to aid in the process of displaying errors after the
 user clicked on the submit button.
 
-The `FormUtilDirective` provides a way to set all fields as dirty and touched, and focusing on the
+The `SixFormDirective` provides a way to set all fields as dirty and touched, and focusing on the
 first field that contains an error.
 
-To use it, simply add the `sixFormUtil` directive to a form like this:
+To use it, simply add the `sixForm` directive and replace `ngSubmit` with `sixSubmit`:
 
 ```html
-<form sixFormUtil [formGroup]="form" (ngSubmit)="onSubmit()">
+<form sixForm (sixSubmit)="onSubmit() [formGroup]="form">
+  <!-- replace (ngSubmit) with (sixSubmit) -->
   <six-input>...</six-input>
   <six-button [submit]="true">Sunit</six-button>
 </form>
 ```
 
-Afterwards, you can access the directive using `ViewChild` in your TypeScript file and call
-`focusInvalidField()` to display all current errors if applicable:
-
-```ts
-class MyForm {
-  @ViewChild(SixFormUtilDirective) sixFormUtil!: SixFormUtilDirective;
-  // ...
-  submit() {
-    if (!this.form.valid) {
-      this.sixFormUtil.focusInvalidField();
-    } else {
-      // submit the form
-    }
-  }
-}
-```
+Consult the
+[Angular example](https://github.com/six-group/six-webcomponents/tree/main/examples/angular) and the
+[source code documentation](https://github.com/six-group/six-webcomponents/blob/main/libraries/ui-library-angular/src/lib/form/six-form.directive.ts)
+of the `SixFormDirective` and for a more flexible alternative, the `SixFormUtilDirective`.
