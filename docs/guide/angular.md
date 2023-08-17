@@ -60,8 +60,8 @@ invalid.
 
 To select the correct translation, your need to set the `lang` attribute on the `html` element.
 Supported languages are `en`, `de`, `it` and `fr`. Refer to the
-[Angular example](https://github.com/six-group/six-webcomponents/tree/main/examples/angular) for a
-concrete implementation.
+[Angular example](https://github.com/six-group/six-webcomponents/blob/main/examples/angular/src/app/components/header/header.component.ts#L27)
+for a concrete implementation.
 
 ### Form Directive
 
@@ -77,8 +77,8 @@ first field that contains an error.
 To use it, simply add the `sixForm` directive and replace `ngSubmit` with `sixSubmit`:
 
 ```html
-<form sixForm (sixSubmit)="onSubmit() [formGroup]="form">
-  <!-- replace (ngSubmit) with (sixSubmit) -->
+<!-- add sixForm and replace (ngSubmit) with (sixSubmit) -->
+<form sixForm (sixSubmit)="onSubmit()" [formGroup]="form">
   <six-input>...</six-input>
   <six-button [submit]="true">Sunit</six-button>
 </form>
