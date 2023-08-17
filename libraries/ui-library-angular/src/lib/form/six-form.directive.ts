@@ -72,7 +72,7 @@ export class SixFormDirective {
 export class SixFormUtilDirective {
   constructor(private elementRef: ElementRef<HTMLElement>, private formGroupDirective: FormGroupDirective) {}
 
-  /**
+  /** markAllControlsAsDirty(Object.values(formGroup.controls));
    * Marks all form controls as touched and dirty, and focuses the first
    * invalid form element.
    */
@@ -83,7 +83,7 @@ export class SixFormUtilDirective {
 
 function focusInvalidField(formGroupDirective: FormGroupDirective, formElement: ElementRef<HTMLElement>) {
   formGroupDirective.form.markAllAsTouched();
-  markAllAsDirty(formGroupDirective.form);
+  markAllAsDirty([formGroupDirective.form]);
 
   const invalidElement = getInvalidElement(formElement.nativeElement);
   if ('setFocus' in invalidElement && typeof invalidElement?.setFocus === 'function') {
@@ -102,17 +102,16 @@ function getInvalidElement(parent: Element): Element {
   return getInvalidElement(invalidElement);
 }
 
-function markAllAsDirty(formGroup: FormGroup) {
-  function markAllControlsAsDirty(controls: AbstractControl[]): void {
-    controls.forEach((control) => {
-      if (control instanceof FormControl) {
-        control.markAsDirty();
-      } else if (control instanceof FormGroup) {
-        markAllControlsAsDirty(Object.values(control.controls));
-      } else if (control instanceof FormArray) {
-        markAllControlsAsDirty(control.controls);
-      }
-    });
-  }
-  markAllControlsAsDirty(Object.values(formGroup.controls));
+function markAllAsDirty(controls: AbstractControl[]): void {
+  controls.forEach((control) => {
+    if (control instanceof FormControl) {
+      control.markAsDirty({ onlySelf: true });
+    } else if (control instanceof FormGroup) {
+      control.markAsDirty({ onlySelf: true });
+      markAllAsDirty(Object.values(control.controls));
+    } else if (control instanceof FormArray) {
+      control.markAsDirty({ onlySelf: true });
+      markAllAsDirty(control.controls);
+    }
+  });
 }
