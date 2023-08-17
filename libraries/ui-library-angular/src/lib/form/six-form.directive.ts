@@ -1,4 +1,4 @@
-import { Directive, ElementRef, EventEmitter, HostListener, Injector, Output } from '@angular/core';
+import { Directive, ElementRef, EventEmitter, HostListener, Output } from '@angular/core';
 import { AbstractControl, FormArray, FormControl, FormGroup, FormGroupDirective } from '@angular/forms';
 
 /**
@@ -31,15 +31,14 @@ export class SixFormDirective {
 
   @HostListener('ngSubmit', ['$event'])
   onNgSubmit(event: SubmitEvent): void {
-    const formGroupDirective = this.injector.get(FormGroupDirective);
-    if (formGroupDirective.invalid) {
-      focusInvalidField(formGroupDirective, this.elementRef);
+    if (this.formGroupDirective.invalid) {
+      focusInvalidField(this.formGroupDirective, this.elementRef);
     } else {
       this.sixSubmit.emit(event);
     }
   }
 
-  constructor(private elementRef: ElementRef<HTMLElement>, private injector: Injector) {}
+  constructor(private elementRef: ElementRef<HTMLElement>, private formGroupDirective: FormGroupDirective) {}
 }
 
 /**
@@ -71,35 +70,43 @@ export class SixFormDirective {
   selector: '[sixFormUtil]',
 })
 export class SixFormUtilDirective {
-  constructor(private elementRef: ElementRef<HTMLElement>, private injector: Injector) {}
+  constructor(private elementRef: ElementRef<HTMLElement>, private formGroupDirective: FormGroupDirective) {}
 
   /**
    * Marks all form controls as touched and dirty, and focuses the first
    * invalid form element.
    */
   public focusInvalidField() {
-    focusInvalidField(this.injector.get(FormGroupDirective), this.elementRef);
+    focusInvalidField(this.formGroupDirective, this.elementRef);
   }
 }
 
 function focusInvalidField(formGroupDirective: FormGroupDirective, formElement: ElementRef<HTMLElement>) {
-  if (formGroupDirective) {
-    formGroupDirective.form.markAllAsTouched();
-    markAllAsDirty(formGroupDirective.form);
-    const invalidField: any = formElement.nativeElement.querySelector('.ng-invalid');
-    if (typeof invalidField?.setFocus === 'function') {
-      invalidField.setFocus();
-    } else if (typeof invalidField?.focus === 'function') {
-      invalidField?.focus();
-    }
+  formGroupDirective.form.markAllAsTouched();
+  markAllAsDirty(formGroupDirective.form);
+
+  const invalidElement = getInvalidElement(formElement.nativeElement);
+  if ('setFocus' in invalidElement && typeof invalidElement?.setFocus === 'function') {
+    invalidElement.setFocus();
   }
+  if ('focus' in invalidElement && typeof invalidElement?.focus === 'function') {
+    invalidElement.focus();
+  }
+}
+
+function getInvalidElement(parent: Element): Element {
+  const invalidElement = parent.querySelector('.ng-invalid');
+  if (invalidElement == null) {
+    return parent;
+  }
+  return getInvalidElement(invalidElement);
 }
 
 function markAllAsDirty(formGroup: FormGroup) {
   function markAllControlsAsDirty(controls: AbstractControl[]): void {
     controls.forEach((control) => {
       if (control instanceof FormControl) {
-        control.markAsDirty({ onlySelf: true });
+        control.markAsDirty();
       } else if (control instanceof FormGroup) {
         markAllControlsAsDirty(Object.values(control.controls));
       } else if (control instanceof FormArray) {
