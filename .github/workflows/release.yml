@@ -59,6 +59,7 @@ jobs:
         uses: peter-evans/create-pull-request@v5
         with:
           branch: feature/${{ inputs.version }}
+          base: main
           delete-branch: true
           title: 'Merge release ${{ inputs.version }}'
 
