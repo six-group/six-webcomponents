@@ -12,8 +12,6 @@ Ranges allow the user to select a single value within a given range using a slid
 ```
 
 
-This component doesn't work with standard forms. Use [six-form](six-form.html) instead.
-
 ## Examples
 
 ### Disabled

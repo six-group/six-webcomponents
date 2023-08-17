@@ -40,10 +40,6 @@ Selects allow you to choose one or more items from a dropdown menu, usually you 
 ```
 
 
-This component doesn't work with standard forms. Use [six-form](six-form.html) instead.
-
-Please refer to the section on [form control validation](six-form.html#form-control-validation) to learn how to do client-side validation.
-
 ## Examples
 
 ### Placeholders

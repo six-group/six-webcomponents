@@ -16,8 +16,6 @@ basic input field
 
 
 
-warning This component doesn't work with standard forms. Use [six-form](six-form.html) instead.
-
 
 
 warning Please refer to the section on [form control validation](six-form.html#form-control-validation) to learn how to do client-side validation

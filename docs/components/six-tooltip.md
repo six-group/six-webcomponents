@@ -7,7 +7,7 @@ A tooltip's target is its `first child element` , so you should only wrap one el
 
 Tooltips use `display: contents` so they won't interfere with how elements are positioned in a flex or grid layout.
 
-<docs-demo-six-tooltip-318></docs-demo-six-tooltip-318>
+<docs-demo-six-tooltip-317></docs-demo-six-tooltip-317>
 
 ```html
 <six-tooltip content="This is a tooltip">
@@ -20,7 +20,7 @@ Tooltips use `display: contents` so they won't interfere with how elements are p
 
 Use the `placement` attribute to set the preferred placement of the tooltip.
 
-<docs-demo-six-tooltip-319></docs-demo-six-tooltip-319>
+<docs-demo-six-tooltip-318></docs-demo-six-tooltip-318>
 
 ```html
 <div class="tooltip-placement-example">
@@ -117,7 +117,7 @@ Use the `placement` attribute to set the preferred placement of the tooltip.
 
 Set the `trigger` attribute to \`click\` to toggle the tooltip on click instead of hover.
 
-<docs-demo-six-tooltip-320></docs-demo-six-tooltip-320>
+<docs-demo-six-tooltip-319></docs-demo-six-tooltip-319>
 
 ```html
 <six-tooltip content="Click again to dismiss" trigger="click">
@@ -130,7 +130,7 @@ Set the `trigger` attribute to \`click\` to toggle the tooltip on click instead 
 
 Tooltips can be controller programmatically by setting the `trigger` attribute to \`manual\`. Use the `open` prop to control when the tooltip is shown.
 
-<docs-demo-six-tooltip-321></docs-demo-six-tooltip-321>
+<docs-demo-six-tooltip-320></docs-demo-six-tooltip-320>
 
 ```html
 <six-button style="margin-right: 4rem">Toggle Manually</six-button>
@@ -152,7 +152,7 @@ Tooltips can be controller programmatically by setting the `trigger` attribute t
 
 You can control the size of tooltip arrows by overriding the `--sl-tooltip-arrow-size` design token.
 
-<docs-demo-six-tooltip-322></docs-demo-six-tooltip-322>
+<docs-demo-six-tooltip-321></docs-demo-six-tooltip-321>
 
 ```html
 <div style="--six-tooltip-arrow-size: 0">
@@ -171,7 +171,7 @@ You can control the size of tooltip arrows by overriding the `--sl-tooltip-arrow
 
 Use the `content` slot to create tooltips with HTML content.
 
-<docs-demo-six-tooltip-323></docs-demo-six-tooltip-323>
+<docs-demo-six-tooltip-322></docs-demo-six-tooltip-322>
 
 ```html
 <six-tooltip>
@@ -185,7 +185,7 @@ Use the `content` slot to create tooltips with HTML content.
 
 To disable showing the tooltip simply add the `disabled` attribute
 
-<docs-demo-six-tooltip-324></docs-demo-six-tooltip-324>
+<docs-demo-six-tooltip-323></docs-demo-six-tooltip-323>
 
 ```html
 <six-tooltip id="six-tooltip-disabled-example" content="This is a tooltip" disabled>

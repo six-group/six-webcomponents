@@ -498,41 +498,11 @@ If you keep the navigation button pressed, there will be a lot of change events 
 ```
 
 
-## Validation
-
-Of course you can also use the timepicker in a form.
-
-<docs-demo-six-timepicker-316></docs-demo-six-timepicker-316>
-
-```html
-<six-form class="input-validation-required">
-  <six-timepicker             name="arrivalTime"
-    error-text="Time of Arrival is missing or invalid"
-    label="Time of Arrival"
-    required
-  ></six-timepicker>
-  <br><br>
-  <six-button type="primary" submit>Submit</six-button>
-  <six-button type="primary" reset>Reset</six-button>
-</six-form>
-
-<script type="module">
-  const formRequired = document.querySelector('.input-validation-required');
-  formRequired.addEventListener('six-form-submit', () => alert('All fields are valid!'));
-</script>
-<style>
-  six-timepicker {
-    max-width: 15rem;
-  }
-</style>
-```
-
-
 ### Open State
 
 If you wish you can have the timepicker open on startup. It will close as usual (clicking outside etc.)
 
-<docs-demo-six-timepicker-317></docs-demo-six-timepicker-317>
+<docs-demo-six-timepicker-316></docs-demo-six-timepicker-316>
 
 ```html
 <six-timepicker open="true" placement="bottom"></six-timepicker>

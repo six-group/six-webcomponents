@@ -24,6 +24,9 @@ export default defineConfig({
   // https://vitepress.dev/reference/default-theme-config
   themeConfig: {
     logo: '/six-logo.svg',
+    search: {
+      provider: 'local',
+    },
     nav: [
       {
         text: 'Guide',

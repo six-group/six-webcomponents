@@ -1,15 +1,10 @@
 <template>
 <div class="demo my-app">
 
-        <div style="--six-tooltip-arrow-size: 0">
-          <six-tooltip content="This is a tooltip">
-            <six-button>Above</six-button>
-          </six-tooltip>
-
-          <six-tooltip content="This is a tooltip" placement="bottom">
-            <six-button>Below</six-button>
-          </six-tooltip>
-        </div>
+        <six-tooltip>
+          <div slot="content">I'm not <strong>just</strong> a tooltip,<br>I'm a <em>tooltip</em> with HTML!</div>
+          <six-button>Hover me</six-button>
+        </six-tooltip>
       
 </div>
 </template>
