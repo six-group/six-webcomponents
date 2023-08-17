@@ -18,6 +18,8 @@
   --vp-c-brand-darker: #bd3115;
   --vp-c-brand-dimm: rgba(100, 108, 255, 0.08);
   --vp-nav-logo-height: 14px;
+  --vp-local-search-highlight-bg: none;
+  --vp-local-search-highlight-text: var(--vp-c-brand-dark);
 }
 
 /**

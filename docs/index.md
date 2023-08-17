@@ -12,19 +12,20 @@ hero:
       link: /guide/readme
     - theme: alt
       text: Angular Example
-      link: https://six-group.github.io/six-webcomponents/v4/demo/angular
+      link: https://six-group.github.io/six-webcomponents/demo/angular
     - theme: alt
       text: React Example
-      link: https://six-group.github.io/six-webcomponents/v4/demo/react
+      link: https://six-group.github.io/six-webcomponents/demo/react
 features:
   - title: Agnostic
     details:
-      Our Library works with many popular frameworks like Angular, React and Vue right out of the
-      box. Checkout the demo apps below!
+      Our Library has first class support for Angular and React right out of the box. Checkout the
+      example apps above!
   - title: Fast Runtime
     details:
       Web Components offered a solution by pushing more work to the browser for better performance.
   - title: In-House Open Source
+    link: /guide/readme#contribute
     details:
       All developers within the SIX Group are welcome to contribute code and use our library in
       their projects.

@@ -2,7 +2,7 @@
   "name": "@six-group/ui-library-react-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "/six-webcomponents/v4/demo/react/",
+  "homepage": "/six-webcomponents/demo/react/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

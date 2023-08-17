@@ -1,7 +1,6 @@
 # React
 
-Find the deployed React Demo App
-[here](https://six-group.github.io/six-webcomponents/v4/demo/react).
+Find the deployed React Demo App [here](https://six-group.github.io/six-webcomponents/demo/react).
 
 React uses a thin wrapper around web components that provides correct typings for the properties,
 methods and events.

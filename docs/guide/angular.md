@@ -6,7 +6,7 @@ designed to simplify the utilization of our web components. Check out the instru
 to learn how to use it.
 
 For additional assistance with the implementation, you can also examine the
-[Angular demo](https://six-group.github.io/six-webcomponents/v4/demo/angular) and its
+[Angular demo](https://six-group.github.io/six-webcomponents/demo/angular) and its
 [accompanying code](https://github.com/six-group/six-webcomponents/tree/main/examples/angular).
 
 ## Setup
