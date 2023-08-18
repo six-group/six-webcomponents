@@ -1,11 +1,7 @@
 <template>
 <div class="demo my-app">
 
-        <six-input placeholder="Small" size="small" pill></six-input>
-        <br>
-        <six-input placeholder="Medium" size="medium" pill></six-input>
-        <br>
-        <six-input placeholder="Large" size="large" pill></six-input>
+        <six-input type="number" placeholder="Decimal Numbers..." pattern="[0-9]+([\.,][0-9]+)?" step="0.1"></six-input>
       
 </div>
 </template>

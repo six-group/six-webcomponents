@@ -5,7 +5,7 @@
 
 Spinners are used to show the progress of an indeterminate operation.
 
-<docs-demo-six-spinner-254></docs-demo-six-spinner-254>
+<docs-demo-six-spinner-256></docs-demo-six-spinner-256>
 
 ```html
 <six-spinner></six-spinner>
@@ -18,7 +18,7 @@ Spinners are used to show the progress of an indeterminate operation.
 
 Spinners are sized relative to the current font size. To change their size, set the `font-size` property on the spinner itself or on a parent element as shown below.
 
-<docs-demo-six-spinner-255></docs-demo-six-spinner-255>
+<docs-demo-six-spinner-257></docs-demo-six-spinner-257>
 
 ```html
 <six-spinner></six-spinner>
@@ -31,7 +31,7 @@ Spinners are sized relative to the current font size. To change their size, set 
 
 The width of the spinner can be changed by setting the `--stroke-width` custom property.
 
-<docs-demo-six-spinner-256></docs-demo-six-spinner-256>
+<docs-demo-six-spinner-258></docs-demo-six-spinner-258>
 
 ```html
 <six-spinner style="font-size: 2rem; --stroke-width: 6px"></six-spinner>
@@ -42,7 +42,7 @@ The width of the spinner can be changed by setting the `--stroke-width` custom p
 
 The spinner's colors can be changed by setting the `--indicator-color` and `--track-color` custom properties.
 
-<docs-demo-six-spinner-257></docs-demo-six-spinner-257>
+<docs-demo-six-spinner-259></docs-demo-six-spinner-259>
 
 ```html
 <six-spinner style="font-size: 2rem; --indicator-color: green"></six-spinner>
@@ -53,7 +53,7 @@ The spinner's colors can be changed by setting the `--indicator-color` and `--tr
 
 Spinner can be configured as animated SIX logo.
 
-<docs-demo-six-spinner-258></docs-demo-six-spinner-258>
+<docs-demo-six-spinner-260></docs-demo-six-spinner-260>
 
 ```html
 <six-spinner six="true"></six-spinner>

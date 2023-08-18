@@ -5,7 +5,7 @@
 
 Progress bars are used to show the status of an ongoing operation.
 
-<docs-demo-six-progress-bar-200></docs-demo-six-progress-bar-200>
+<docs-demo-six-progress-bar-202></docs-demo-six-progress-bar-202>
 
 ```html
 <six-progress-bar percentage="50"></six-progress-bar>
@@ -18,7 +18,7 @@ Progress bars are used to show the status of an ongoing operation.
 
 Use the `--height` custom property to set the progress bar's height.
 
-<docs-demo-six-progress-bar-201></docs-demo-six-progress-bar-201>
+<docs-demo-six-progress-bar-203></docs-demo-six-progress-bar-203>
 
 ```html
 <six-progress-bar percentage="50" style="--height: 6px"></six-progress-bar>
@@ -29,7 +29,7 @@ Use the `--height` custom property to set the progress bar's height.
 
 Use the default slot to show a label.
 
-<docs-demo-six-progress-bar-202></docs-demo-six-progress-bar-202>
+<docs-demo-six-progress-bar-204></docs-demo-six-progress-bar-204>
 
 ```html
 <six-progress-bar percentage="50" class="progress-bar-labels">50%</six-progress-bar>
@@ -63,7 +63,7 @@ Use the default slot to show a label.
 
 The `indeterminate` attribute can be used to inform the user that the operation is pending, but its status cannot currently be determined. In this state, `percentage` is ignored and the label, if present, will not be shown.
 
-<docs-demo-six-progress-bar-203></docs-demo-six-progress-bar-203>
+<docs-demo-six-progress-bar-205></docs-demo-six-progress-bar-205>
 
 ```html
 <six-progress-bar indeterminate></six-progress-bar>

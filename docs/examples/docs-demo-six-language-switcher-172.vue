@@ -1,7 +1,10 @@
 <template>
 <div class="demo my-app">
 
-        <six-language-switcher id="async-six-lang-switcher"></six-language-switcher>
+        <six-language-switcher id="custom-language-set"></six-language-switcher>
+        <div style="margin-top: 1rem">
+          <span style="font-weight: bold">selected language: </span><span id="selected-language">nothing selected</span>
+        </div>
         
       
 </div>
@@ -13,8 +16,14 @@
 export default {
   name: 'docs-demo-six-language-switcher-172',
   mounted() { 
-          const langSwitcher = document.getElementById('async-six-lang-switcher');
-          setTimeout(() => (langSwitcher.languages = ['FR', 'IT', 'DE']), 250);
+          const languageSwitcher = document.getElementById('custom-language-set');
+          const selectedLanguage = document.getElementById('selected-language');
+          languageSwitcher.languages = ['FR', 'IT', 'DE'];
+
+          languageSwitcher.addEventListener('six-language-switcher-change', (event) => {
+            const { detail } = event;
+            selectedLanguage.innerText = detail;
+          });
          }
 }
 </script>

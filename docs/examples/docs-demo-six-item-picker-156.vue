@@ -1,17 +1,11 @@
 <template>
 <div class="demo my-app">
 
-        <div>Step Size 2:</div>
         <div style="display: flex">
-          <six-item-picker step="2"></six-item-picker>
-          <six-item-picker step="2" type="letter"></six-item-picker>
-        </div>
-
-        <div>Step Size 7:</div>
-
-        <div style="display: flex">
-          <six-item-picker step="7"></six-item-picker>
-          <six-item-picker step="7" type="letter"></six-item-picker>
+          <six-item-picker value="12" min="0" max="13"></six-item-picker>
+          <six-item-picker value="12" min="-5" max="0"></six-item-picker>
+          <six-item-picker value="12" min="10" max="13"></six-item-picker>
+          <six-item-picker type="letter" value="k" min="i" max="m"></six-item-picker>
         </div>
       
 </div>

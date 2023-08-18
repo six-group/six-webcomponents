@@ -1,8 +1,11 @@
 <template>
 <div class="demo my-app">
 
-        <six-input label="What is your name?"></six-input>
-        <six-input           ><div slot="label">What is <span style="color: red">your</span> name?</div></six-input>
+        <six-input placeholder="Small" size="small"></six-input>
+        <br>
+        <six-input placeholder="Medium" size="medium"></six-input>
+        <br>
+        <six-input placeholder="Large" size="large"></six-input>
       
 </div>
 </template>

@@ -1,7 +1,9 @@
 <template>
 <div class="demo my-app">
 
-        <six-select id="autocomplete-example" autocomplete clearable></six-select>
+        <six-select id="async-select" async-filter filter-placeholder="Search">
+          <six-menu-item id="async-menu-item" value="search_list_prompt">Use search to show entries</six-menu-item>
+        </six-select>
         
       
 </div>
@@ -13,37 +15,35 @@
 export default {
   name: 'docs-demo-six-select-243',
   mounted() { 
-          (() => {
-            const clearAllChildren = (node) => {
-              let child = node.lastElementChild;
-              while (child) {
-                node.removeChild(child);
-                child = node.lastElementChild;
-              }
-            };
+          const asyncSelect = document.querySelector('#async-select');
+          const asyncMenu = document.querySelector('#async-menu-item').parentElement;
 
-            const createMenuItem = (value, label) => {
-              const menuItem = document.createElement('six-menu-item');
-              menuItem.innerText = label;
-              menuItem.setAttribute('value', value);
-              return menuItem;
-            };
+          for (let i = 0; i < 500; i++) {
+            const child = document.createElement('six-menu-item');
+            child.innerText = `Value ${i}`;
+            child.value = `value-${i}`;
+            asyncMenu.appendChild(child);
+          }
 
-            const select = document.getElementById('autocomplete-example');
+          const removeAllChildNodes = (parent) => {
+            while (parent.firstChild) {
+              parent.removeChild(parent.firstChild);
+            }
+          };
 
-            select.addEventListener('six-select-change', (event) => {
-              if (event.detail.isSelected) {
-                // don't fetch new values on selection
-                return;
-              }
-              clearAllChildren(select);
+          asyncSelect.addEventListener('six-async-filter-fired', ($event) => {
+            const filterValue = $event.detail.filterValue;
 
-              const enteredText = event.detail.value || 'All Values';
-              new Array(5).fill('').forEach((item, idx) => {
-                select.append(createMenuItem(`option ${enteredText} ${idx}`, `Option ${enteredText} ${idx}`));
-              });
-            });
-          })();
+            removeAllChildNodes(asyncMenu);
+
+            const numberOfHits = Math.floor(Math.random() * 25) + 3;
+            for (let i = 0; i < numberOfHits; i++) {
+              const child = document.createElement('six-menu-item');
+              child.innerText = `Value ${filterValue} ${i}`;
+              child.value = `value-${filterValue}-${i}`;
+              asyncMenu.appendChild(child);
+            }
+          });
          }
 }
 </script>

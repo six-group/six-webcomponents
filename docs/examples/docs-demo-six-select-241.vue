@@ -1,9 +1,52 @@
 <template>
 <div class="demo my-app">
 
-        <six-select id="async-select" async-filter filter-placeholder="Search">
-          <six-menu-item id="async-menu-item" value="search_list_prompt">Use search to show entries</six-menu-item>
-        </six-select>
+        <six-button id="hoistingDrawerBtn">Open Drawer</six-button>
+        <six-drawer id="hoistingDrawer" label="Drawer" class="drawer-overview">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          <six-button slot="footer">Close</six-button>
+          <div class="demo" style="width: 300px">
+            <six-tooltip content="something">
+              <div>some tooltip</div>
+            </six-tooltip>
+            <div style="overflow: hidden; border: solid 1px grey; padding: 0.5em; display: flex">
+              <six-select placeholder="No Hoisting" style="width: 10em">
+                <six-tooltip content="something">
+                  <six-menu-item value="option-1">Novice</six-menu-item>
+                </six-tooltip>
+                <six-menu-item value="option-2">Intermediate</six-menu-item>
+                <six-menu-item value="option-3">Advanced</six-menu-item>
+              </six-select>
+
+              <six-select placeholder="Hoisting" hoist style="width: 10em">
+                <six-menu-item value="option-1">Novice</six-menu-item>
+                <six-menu-item value="option-2">Intermediate</six-menu-item>
+                <six-menu-item value="option-3">Advanced</six-menu-item>
+              </six-select>
+            </div>
+
+            <div style="overflow: hidden; border: solid 1px grey; padding: 0.5em; display: flex">
+              <six-dropdown>
+                <six-button slot="trigger" caret>No Hoist</six-button>
+                <six-menu>
+                  <six-menu-item>Item 1</six-menu-item>
+                  <six-menu-item>Item 2</six-menu-item>
+                  <six-menu-item>Item 3</six-menu-item>
+                </six-menu>
+              </six-dropdown>
+
+              <six-dropdown hoist>
+                <six-button slot="trigger" caret>Hoist</six-button>
+                <six-menu>
+                  <six-menu-item>Item 1</six-menu-item>
+                  <six-menu-item>Item 2</six-menu-item>
+                  <six-menu-item>Item 3</six-menu-item>
+                </six-menu>
+              </six-dropdown>
+            </div>
+          </div>
+        </six-drawer>
+
         
       
 </div>
@@ -15,35 +58,9 @@
 export default {
   name: 'docs-demo-six-select-241',
   mounted() { 
-          const asyncSelect = document.querySelector('#async-select');
-          const asyncMenu = document.querySelector('#async-menu-item').parentElement;
-
-          for (let i = 0; i < 500; i++) {
-            const child = document.createElement('six-menu-item');
-            child.innerText = `Value ${i}`;
-            child.value = `value-${i}`;
-            asyncMenu.appendChild(child);
-          }
-
-          const removeAllChildNodes = (parent) => {
-            while (parent.firstChild) {
-              parent.removeChild(parent.firstChild);
-            }
-          };
-
-          asyncSelect.addEventListener('six-async-filter-fired', ($event) => {
-            const filterValue = $event.detail.filterValue;
-
-            removeAllChildNodes(asyncMenu);
-
-            const numberOfHits = Math.floor(Math.random() * 25) + 3;
-            for (let i = 0; i < numberOfHits; i++) {
-              const child = document.createElement('six-menu-item');
-              child.innerText = `Value ${filterValue} ${i}`;
-              child.value = `value-${filterValue}-${i}`;
-              asyncMenu.appendChild(child);
-            }
-          });
+          const sixDrawerBtn = document.querySelector('#hoistingDrawerBtn');
+          const sixDrawer = document.querySelector('#hoistingDrawer');
+          sixDrawerBtn.addEventListener('click', () => (sixDrawer.open = true));
          }
 }
 </script>

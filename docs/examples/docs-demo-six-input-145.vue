@@ -1,7 +1,7 @@
 <template>
 <div class="demo my-app">
 
-        <six-input line></six-input>
+        <six-input type="number" placeholder="Integers..."></six-input>
       
 </div>
 </template>

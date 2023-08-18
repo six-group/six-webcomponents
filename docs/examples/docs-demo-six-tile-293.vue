@@ -1,7 +1,7 @@
 <template>
 <div class="demo my-app">
 
-        <six-tile label="Medium" icon-name="home" disabled="true"></six-tile>
+        <six-tile label="Medium" icon-name="home" closeable="false"></six-tile>
       
 </div>
 </template>

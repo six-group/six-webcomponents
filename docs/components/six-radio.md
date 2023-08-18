@@ -3,7 +3,7 @@
 
 Radios allow the user to select one option from a group of many.
 
-<docs-demo-six-radio-209></docs-demo-six-radio-209>
+<docs-demo-six-radio-211></docs-demo-six-radio-211>
 
 ```html
 <six-radio>Radio</six-radio>
@@ -16,7 +16,7 @@ Radios allow the user to select one option from a group of many.
 
 Use the `checked` attribute to activate the radio.
 
-<docs-demo-six-radio-210></docs-demo-six-radio-210>
+<docs-demo-six-radio-212></docs-demo-six-radio-212>
 
 ```html
 <six-radio checked>Checked</six-radio>
@@ -27,7 +27,7 @@ Use the `checked` attribute to activate the radio.
 
 Use the `disabled` attribute to disable the radio.
 
-<docs-demo-six-radio-211></docs-demo-six-radio-211>
+<docs-demo-six-radio-213></docs-demo-six-radio-213>
 
 ```html
 <six-radio checked disabled>Disabled</six-radio>
@@ -39,7 +39,7 @@ Use the `disabled` attribute to disable the radio.
 
 Radios are grouped based on their `name` attribute and scoped to the nearest form.
 
-<docs-demo-six-radio-212></docs-demo-six-radio-212>
+<docs-demo-six-radio-214></docs-demo-six-radio-214>
 
 ```html
 <six-radio name="option" checked>Option 1</six-radio><br>

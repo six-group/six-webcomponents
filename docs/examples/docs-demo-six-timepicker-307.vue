@@ -1,9 +1,11 @@
 <template>
 <div class="demo my-app">
 
-        <six-timepicker placement="bottom"></six-timepicker>
+        <six-timepicker size="small" clearable></six-timepicker>
         <br>
-        <six-timepicker placement="top"></six-timepicker>
+        <six-timepicker size="medium" clearable></six-timepicker>
+        <br>
+        <six-timepicker size="large" clearable></six-timepicker>
         
       
 </div>

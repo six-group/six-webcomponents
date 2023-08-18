@@ -1,7 +1,11 @@
 <template>
 <div class="demo my-app">
 
-        <six-input type="number" placeholder="Decimal Numbers..." pattern="[0-9]+([\.,][0-9]+)?" step="0.1"></six-input>
+        <six-input type="password" placeholder="Password Toggle" size="small" toggle-password></six-input>
+        <br>
+        <six-input type="password" placeholder="Password Toggle" size="medium" toggle-password></six-input>
+        <br>
+        <six-input type="password" placeholder="Password Toggle" size="large" toggle-password></six-input>
       
 </div>
 </template>

@@ -1,10 +1,17 @@
 <template>
 <div class="demo my-app">
 
-        <div style="overflow: hidden; border: solid 1px grey; padding: 0.5em; display: flex">
-          <six-timepicker placement="bottom" placeholder="no hoisting"></six-timepicker>
-          <six-timepicker hoist placement="bottom" placeholder="with hoisting"></six-timepicker>
-        </div>
+        <six-timepicker icon-position="right"></six-timepicker>
+        <br>
+        <six-timepicker icon-position="right" clearable></six-timepicker>
+        <br>
+        <six-timepicker icon-position="right" custom-icon clearable>
+          <img             style="height: 24px"
+            slot="custom-icon"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Sketch_Logo.svg/1133px-Sketch_Logo.svg.png"
+            alt="customicon"
+          >
+        </six-timepicker>
         
       
 </div>

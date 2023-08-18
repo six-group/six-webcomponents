@@ -1,8 +1,8 @@
 <template>
 <div class="demo my-app">
 
-        <six-tooltip content="Click again to dismiss" trigger="click">
-          <six-button>Click to Toggle</six-button>
+        <six-tooltip content="This is a tooltip">
+          <six-button>Hover Me</six-button>
         </six-tooltip>
       
 </div>

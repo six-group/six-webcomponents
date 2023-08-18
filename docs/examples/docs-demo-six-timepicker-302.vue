@@ -1,7 +1,11 @@
 <template>
 <div class="demo my-app">
 
-        <six-timepicker readonly></six-timepicker>
+        <six-timepicker></six-timepicker>
+        <br>
+        <six-timepicker timeout="500" interval="150"></six-timepicker>
+        <br>
+        <six-timepicker timeout="0" interval="1"></six-timepicker>
         
       
 </div>

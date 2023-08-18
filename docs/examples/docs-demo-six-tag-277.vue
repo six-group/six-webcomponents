@@ -1,9 +1,12 @@
 <template>
 <div class="demo my-app">
 
-        <six-tag size="small" pill>Small</six-tag>
-        <six-tag size="medium" pill>Medium</six-tag>
-        <six-tag size="large" pill>Large</six-tag>
+        <six-tag type="primary">Primary</six-tag>
+        <six-tag type="info">Info</six-tag>
+        <six-tag type="success">Success</six-tag>
+        <six-tag type="warning">Warning</six-tag>
+        <six-tag type="danger">Danger</six-tag>
+        <six-tag type="action">Action</six-tag>
       
 </div>
 </template>

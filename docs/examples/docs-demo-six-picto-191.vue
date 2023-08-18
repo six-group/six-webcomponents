@@ -1,14 +1,12 @@
 <template>
 <div class="demo my-app">
 
-        <six-picto size="small">search</six-picto>
-        <six-picto size="small">copy</six-picto>
-        <six-picto size="small">movie-camera</six-picto>
-        <six-picto size="small">home</six-picto>
-        <six-picto size="small">info</six-picto>
-        <six-picto size="small">lock</six-picto>
-        <six-picto size="small">find-in-page</six-picto>
-        <six-picto size="small">sentiment-dissatisfied</six-picto>
+        <six-picto>clientesyusuarios</six-picto>
+        <six-picto>configuracion-de-servicio</six-picto>
+        <six-picto>gestion-de-fallidos</six-picto>
+        <six-picto>gestion-de-instrucciones</six-picto>
+        <six-picto>gestion-de-pago</six-picto>
+        <six-picto>reporting</six-picto>
       
 </div>
 </template>

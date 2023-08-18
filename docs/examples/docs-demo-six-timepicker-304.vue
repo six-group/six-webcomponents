@@ -1,7 +1,7 @@
 <template>
 <div class="demo my-app">
 
-        <six-timepicker clearable></six-timepicker>
+        <six-timepicker readonly></six-timepicker>
         
       
 </div>

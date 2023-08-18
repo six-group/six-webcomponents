@@ -7,7 +7,7 @@ Inputs collect data from the user.
 
 basic input field
 
-<docs-demo-six-input-139></docs-demo-six-input-139>
+<docs-demo-six-input-141></docs-demo-six-input-141>
 
 ```html
 <six-input></six-input>
@@ -22,7 +22,7 @@ basic input field
 
 Use the `placeholder` attribute to add a placeholder.
 
-<docs-demo-six-input-140></docs-demo-six-input-140>
+<docs-demo-six-input-142></docs-demo-six-input-142>
 
 ```html
 <six-input placeholder="Type something"></six-input>
@@ -33,7 +33,7 @@ Use the `placeholder` attribute to add a placeholder.
 
 Add the `clearable` prop to add a clear button when the input has content.
 
-<docs-demo-six-input-141></docs-demo-six-input-141>
+<docs-demo-six-input-143></docs-demo-six-input-143>
 
 ```html
 <six-input placeholder="Clearable" size="small" clearable></six-input>
@@ -48,7 +48,7 @@ Add the `clearable` prop to add a clear button when the input has content.
 
 Add the `toggle-password` prop to add a toggle button that will show the password when activated.
 
-<docs-demo-six-input-142></docs-demo-six-input-142>
+<docs-demo-six-input-144></docs-demo-six-input-144>
 
 ```html
 <six-input type="password" placeholder="Password Toggle" size="small" toggle-password></six-input>
@@ -63,7 +63,7 @@ Add the `toggle-password` prop to add a toggle button that will show the passwor
 
 By default when using type number it allows you to only use integers
 
-<docs-demo-six-input-143></docs-demo-six-input-143>
+<docs-demo-six-input-145></docs-demo-six-input-145>
 
 ```html
 <six-input type="number" placeholder="Integers..."></six-input>
@@ -72,7 +72,7 @@ By default when using type number it allows you to only use integers
 
 However, you might want to be able to use decimal numbers, in this case simply define a `pattern` and a `step`:
 
-<docs-demo-six-input-144></docs-demo-six-input-144>
+<docs-demo-six-input-146></docs-demo-six-input-146>
 
 ```html
 <six-input type="number" placeholder="Decimal Numbers..." pattern="[0-9]+([\.,][0-9]+)?" step="0.1"></six-input>
@@ -83,7 +83,7 @@ However, you might want to be able to use decimal numbers, in this case simply d
 
 Use the `line` prop to render inputs line style.
 
-<docs-demo-six-input-145></docs-demo-six-input-145>
+<docs-demo-six-input-147></docs-demo-six-input-147>
 
 ```html
 <six-input line></six-input>
@@ -94,7 +94,7 @@ Use the `line` prop to render inputs line style.
 
 Use the `pill` prop to give inputs rounded edges.
 
-<docs-demo-six-input-146></docs-demo-six-input-146>
+<docs-demo-six-input-148></docs-demo-six-input-148>
 
 ```html
 <six-input placeholder="Small" size="small" pill></six-input>
@@ -109,7 +109,7 @@ Use the `pill` prop to give inputs rounded edges.
 
 Use the `disabled` attribute to disable an input.
 
-<docs-demo-six-input-147></docs-demo-six-input-147>
+<docs-demo-six-input-149></docs-demo-six-input-149>
 
 ```html
 <six-input placeholder="Write here your first name" size="small" label="Name" help-text="Help text" disabled>
@@ -127,7 +127,7 @@ Use the `disabled` attribute to disable an input.
 
 Use the `size` attribute to change an input's size.
 
-<docs-demo-six-input-148></docs-demo-six-input-148>
+<docs-demo-six-input-150></docs-demo-six-input-150>
 
 ```html
 <six-input placeholder="Small" size="small"></six-input>
@@ -142,7 +142,7 @@ Use the `size` attribute to change an input's size.
 
 Use the `prefix` and `suffix` slots to add icons.
 
-<docs-demo-six-input-149></docs-demo-six-input-149>
+<docs-demo-six-input-151></docs-demo-six-input-151>
 
 ```html
 <six-input placeholder="Small" size="small">
@@ -166,7 +166,7 @@ Use the `prefix` and `suffix` slots to add icons.
 
 Use the `label` attribute to give the input an accessible label. For labels that contain HTML, use the `label` slot instead.
 
-<docs-demo-six-input-150></docs-demo-six-input-150>
+<docs-demo-six-input-152></docs-demo-six-input-152>
 
 ```html
 <six-input label="What is your name?"></six-input>
@@ -178,7 +178,7 @@ Use the `label` attribute to give the input an accessible label. For labels that
 
 Add descriptive help text to an input with the `help-text` attribute. For help texts that contain HTML, use the `help-text` slot instead.
 
-<docs-demo-six-input-151></docs-demo-six-input-151>
+<docs-demo-six-input-153></docs-demo-six-input-153>
 
 ```html
 <six-input label="Name" help-text="Help text"> </six-input>
@@ -201,7 +201,7 @@ This means input, change and blur should be fired the same as when using native 
 
 You can play with the following native and six-input elements to see that the event firing is the same
 
-<docs-demo-six-input-152></docs-demo-six-input-152>
+<docs-demo-six-input-154></docs-demo-six-input-154>
 
 ```html
 <div style="font-size: 1rem; font-weight: bold; padding-bottom: 1rem">Native Input Element</div>

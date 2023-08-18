@@ -3,7 +3,7 @@
 
 By default a 12 column grid is provided for the component's content.
 
-<docs-demo-six-layout-grid-174></docs-demo-six-layout-grid-174>
+<docs-demo-six-layout-grid-176></docs-demo-six-layout-grid-176>
 
 ```html
 <six-layout-grid>
@@ -22,7 +22,7 @@ By default a 12 column grid is provided for the component's content.
 
 Set the `columns` attribute to provide a grid with a custom number of columns.
 
-<docs-demo-six-layout-grid-175></docs-demo-six-layout-grid-175>
+<docs-demo-six-layout-grid-177></docs-demo-six-layout-grid-177>
 
 ```html
 <six-layout-grid columns="6">
@@ -37,7 +37,7 @@ Set the `columns` attribute to provide a grid with a custom number of columns.
 
 The following styles are used to better visualize the example.
 
-<docs-demo-six-layout-grid-176></docs-demo-six-layout-grid-176>
+<docs-demo-six-layout-grid-178></docs-demo-six-layout-grid-178>
 
 ```html
 <style>

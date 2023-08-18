@@ -31,27 +31,29 @@ You can choose different executions of the material icons. By default try sticki
 
 #### Outlined icons
 
-pie\_chart
+<docs-demo-six-icon-124></docs-demo-six-icon-124>
 
-settings
+```html
+<six-icon class="margin-right">pie_chart</six-icon>
+<six-icon class="margin-right">settings</six-icon>
+<six-icon class="margin-right">sick</six-icon>
+<six-icon class="margin-right">fort</six-icon>
+<six-icon class="margin-right">castle</six-icon>
+```
 
-sick
-
-fort
-
-castle
 
 #### Filled icons
 
-pie\_chart
+<docs-demo-six-icon-125></docs-demo-six-icon-125>
 
-settings
+```html
+<six-icon class="margin-right" filled>pie_chart</six-icon>
+<six-icon class="margin-right" filled>settings</six-icon>
+<six-icon class="margin-right" filled>sick</six-icon>
+<six-icon class="margin-right" filled>fort</six-icon>
+<six-icon class="margin-right" filled>castle</six-icon>
+```
 
-sick
-
-fort
-
-castle
 
 ### Sizing
 
@@ -59,7 +61,7 @@ The icons are available in different sizes. Default size is medium (24px).
 
 #### Extra-small Icons
 
-<docs-demo-six-icon-124></docs-demo-six-icon-124>
+<docs-demo-six-icon-126></docs-demo-six-icon-126>
 
 ```html
 <six-icon class="margin-right" size="xSmall">search</six-icon>
@@ -72,7 +74,7 @@ The icons are available in different sizes. Default size is medium (24px).
 
 #### Small Icons
 
-<docs-demo-six-icon-125></docs-demo-six-icon-125>
+<docs-demo-six-icon-127></docs-demo-six-icon-127>
 
 ```html
 <six-icon class="margin-right" size="small">search</six-icon>
@@ -85,7 +87,7 @@ The icons are available in different sizes. Default size is medium (24px).
 
 #### Medium Icons (Default Size)
 
-<docs-demo-six-icon-126></docs-demo-six-icon-126>
+<docs-demo-six-icon-128></docs-demo-six-icon-128>
 
 ```html
 <six-icon class="margin-right" size="medium">search</six-icon>
@@ -98,7 +100,7 @@ The icons are available in different sizes. Default size is medium (24px).
 
 #### Large Icons
 
-<docs-demo-six-icon-127></docs-demo-six-icon-127>
+<docs-demo-six-icon-129></docs-demo-six-icon-129>
 
 ```html
 <six-icon class="margin-right" size="large">search</six-icon>
@@ -111,7 +113,7 @@ The icons are available in different sizes. Default size is medium (24px).
 
 #### Extra-large Icons
 
-<docs-demo-six-icon-128></docs-demo-six-icon-128>
+<docs-demo-six-icon-130></docs-demo-six-icon-130>
 
 ```html
 <six-icon class="margin-right" size="xLarge">search</six-icon>
@@ -124,7 +126,7 @@ The icons are available in different sizes. Default size is medium (24px).
 
 #### 2Extra-large Icons
 
-<docs-demo-six-icon-129></docs-demo-six-icon-129>
+<docs-demo-six-icon-131></docs-demo-six-icon-131>
 
 ```html
 <six-icon class="margin-right" size="xxLarge">search</six-icon>
@@ -137,7 +139,7 @@ The icons are available in different sizes. Default size is medium (24px).
 
 #### 3Extra-large Icons
 
-<docs-demo-six-icon-130></docs-demo-six-icon-130>
+<docs-demo-six-icon-132></docs-demo-six-icon-132>
 
 ```html
 <six-icon class="margin-right" size="xxxLarge">search</six-icon>
@@ -150,7 +152,7 @@ The icons are available in different sizes. Default size is medium (24px).
 
 #### Icons inherit font-size of surrounding tag
 
-<docs-demo-six-icon-131></docs-demo-six-icon-131>
+<docs-demo-six-icon-133></docs-demo-six-icon-133>
 
 ```html
 <div style="font-size: 1rem; display: inline-block">
@@ -167,7 +169,7 @@ The icons are available in different sizes. Default size is medium (24px).
 
 Enter an icon label and press enter to display an icon:
 
-<docs-demo-six-icon-132></docs-demo-six-icon-132>
+<docs-demo-six-icon-134></docs-demo-six-icon-134>
 
 ```html
 <div style="border: solid 1px #f6f6f6">

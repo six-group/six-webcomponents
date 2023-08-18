@@ -5,7 +5,7 @@
 
 Tags are used as labels to organize things or to indicate a selection.
 
-<docs-demo-six-tag-275></docs-demo-six-tag-275>
+<docs-demo-six-tag-277></docs-demo-six-tag-277>
 
 ```html
 <six-tag type="primary">Primary</six-tag>
@@ -23,7 +23,7 @@ Tags are used as labels to organize things or to indicate a selection.
 
 Use the `size` prop to change a tab's size.
 
-<docs-demo-six-tag-276></docs-demo-six-tag-276>
+<docs-demo-six-tag-278></docs-demo-six-tag-278>
 
 ```html
 <six-tag size="small">Small</six-tag>
@@ -36,7 +36,7 @@ Use the `size` prop to change a tab's size.
 
 Use the `pill` to give tabs rounded edges.
 
-<docs-demo-six-tag-277></docs-demo-six-tag-277>
+<docs-demo-six-tag-279></docs-demo-six-tag-279>
 
 ```html
 <six-tag size="small" pill>Small</six-tag>
@@ -49,7 +49,7 @@ Use the `pill` to give tabs rounded edges.
 
 Use the `clearable` attribute to add a clear button to the tag.
 
-<docs-demo-six-tag-278></docs-demo-six-tag-278>
+<docs-demo-six-tag-280></docs-demo-six-tag-280>
 
 ```html
 <div class="tags-clearable">

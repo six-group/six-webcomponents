@@ -1,7 +1,9 @@
 <template>
 <div class="demo my-app">
 
-        <six-spinner style="font-size: 2rem; --indicator-color: green"></six-spinner>
+        <six-spinner></six-spinner>
+        <six-spinner style="font-size: 2rem"></six-spinner>
+        <six-spinner style="font-size: 3rem"></six-spinner>
       
 </div>
 </template>

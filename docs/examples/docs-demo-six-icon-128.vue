@@ -1,11 +1,11 @@
 <template>
 <div class="demo my-app">
 
-        <six-icon class="margin-right" size="xLarge">search</six-icon>
-        <six-icon class="margin-right" size="xLarge">done</six-icon>
-        <six-icon class="margin-right" size="xLarge">settings</six-icon>
-        <six-icon class="margin-right" size="xLarge">home</six-icon>
-        <six-icon class="margin-right" size="xLarge">info</six-icon>
+        <six-icon class="margin-right" size="medium">search</six-icon>
+        <six-icon class="margin-right" size="medium">done</six-icon>
+        <six-icon class="margin-right" size="medium">settings</six-icon>
+        <six-icon class="margin-right" size="medium">home</six-icon>
+        <six-icon class="margin-right" size="medium">info</six-icon>
       
 </div>
 </template>

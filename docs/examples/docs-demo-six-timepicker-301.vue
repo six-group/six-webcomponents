@@ -1,7 +1,7 @@
 <template>
 <div class="demo my-app">
 
-        <six-timepicker placeholder="HH:mm:ss"></six-timepicker>
+        <six-timepicker separator="-"></six-timepicker>
         
       
 </div>

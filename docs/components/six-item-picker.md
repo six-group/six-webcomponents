@@ -7,7 +7,7 @@ The `six-item-picker` can be used to select an item from a given set. The set ca
 
 To faster switch items you can keep the mouse button pressed
 
-<docs-demo-six-item-picker-153></docs-demo-six-item-picker-153>
+<docs-demo-six-item-picker-155></docs-demo-six-item-picker-155>
 
 ```html
 <six-item-picker id="itemPicker"></six-item-picker>
@@ -35,7 +35,7 @@ For roundtrip to work you need to define a minimum and a maximum
 
 ### Roundtrip enabled:
 
-<docs-demo-six-item-picker-154></docs-demo-six-item-picker-154>
+<docs-demo-six-item-picker-156></docs-demo-six-item-picker-156>
 
 ```html
 <div style="display: flex">
@@ -49,7 +49,7 @@ For roundtrip to work you need to define a minimum and a maximum
 
 ### Roundtrip disabled:
 
-<docs-demo-six-item-picker-155></docs-demo-six-item-picker-155>
+<docs-demo-six-item-picker-157></docs-demo-six-item-picker-157>
 
 ```html
 <div style="display: flex">
@@ -69,7 +69,7 @@ There might be some circumstances where you want a different step size than 1.
 
 E.g. if you only want to show odd or even numbers:
 
-<docs-demo-six-item-picker-156></docs-demo-six-item-picker-156>
+<docs-demo-six-item-picker-158></docs-demo-six-item-picker-158>
 
 ```html
 <div>Step Size 2:</div>
@@ -89,7 +89,7 @@ E.g. if you only want to show odd or even numbers:
 
 The step size as well as the min/max value will be considered when deciding whether the navigation should be disabled:
 
-<docs-demo-six-item-picker-157></docs-demo-six-item-picker-157>
+<docs-demo-six-item-picker-159></docs-demo-six-item-picker-159>
 
 ```html
 <div style="display: flex">
@@ -101,7 +101,7 @@ The step size as well as the min/max value will be considered when deciding whet
 
 If you want to have more complex than a constant step size e.g. if you want to only allow fibonacci numbers, then use a custom set instead:
 
-<docs-demo-six-item-picker-158></docs-demo-six-item-picker-158>
+<docs-demo-six-item-picker-160></docs-demo-six-item-picker-160>
 
 ```html
 <six-item-picker type="custom" id="fibonacci-picker" value="3" min="2"></six-item-picker>
@@ -128,7 +128,7 @@ By default `six-item-picker` has type `number`, however you can also define othe
 
 Type "number" is set by default. If you don't set a value it will take the default value zero:
 
-<docs-demo-six-item-picker-159></docs-demo-six-item-picker-159>
+<docs-demo-six-item-picker-161></docs-demo-six-item-picker-161>
 
 ```html
 <div style="display: flex">
@@ -143,7 +143,7 @@ Type "number" is set by default. If you don't set a value it will take the defau
 
 ### Type "letter"
 
-<docs-demo-six-item-picker-160></docs-demo-six-item-picker-160>
+<docs-demo-six-item-picker-162></docs-demo-six-item-picker-162>
 
 ```html
 <div style="display: flex">
@@ -157,7 +157,7 @@ Type "number" is set by default. If you don't set a value it will take the defau
 
 ### Type "capital-letter"
 
-<docs-demo-six-item-picker-161></docs-demo-six-item-picker-161>
+<docs-demo-six-item-picker-163></docs-demo-six-item-picker-163>
 
 ```html
 <div style="display: flex">
@@ -171,7 +171,7 @@ Type "number" is set by default. If you don't set a value it will take the defau
 
 ### Type "lower-letter"
 
-<docs-demo-six-item-picker-162></docs-demo-six-item-picker-162>
+<docs-demo-six-item-picker-164></docs-demo-six-item-picker-164>
 
 ```html
 <div style="display: flex">
@@ -187,7 +187,7 @@ Type "number" is set by default. If you don't set a value it will take the defau
 
 You can also define a custom set
 
-<docs-demo-six-item-picker-163></docs-demo-six-item-picker-163>
+<docs-demo-six-item-picker-165></docs-demo-six-item-picker-165>
 
 ```html
 <six-item-picker type="custom" id="custom-item-picker"></six-item-picker>
@@ -205,7 +205,7 @@ You can also define a custom set
 
 Of course the properties of `six-item-picker` could also be asynchroniously changed.
 
-<docs-demo-six-item-picker-164></docs-demo-six-item-picker-164>
+<docs-demo-six-item-picker-166></docs-demo-six-item-picker-166>
 
 ```html
 <div style="display: flex">
@@ -248,7 +248,7 @@ If you keep a navigation button pressed, the items will switch faster. By defaul
 
 Feel free to adjust these numbers to your need:
 
-<docs-demo-six-item-picker-165></docs-demo-six-item-picker-165>
+<docs-demo-six-item-picker-167></docs-demo-six-item-picker-167>
 
 ```html
 <div style="display: flex">
@@ -263,7 +263,7 @@ Feel free to adjust these numbers to your need:
 
 If you keep the navigation button pressed, there will be a lot of change events fired. If you don't want to listen to all of these events but want to "wait" until the user landed on their desired item, then use `six-item-picker-change-debounced` instead.
 
-<docs-demo-six-item-picker-166></docs-demo-six-item-picker-166>
+<docs-demo-six-item-picker-168></docs-demo-six-item-picker-168>
 
 ```html
 <six-item-picker id="it-pick-debounced"></six-item-picker>
@@ -289,7 +289,7 @@ If you keep the navigation button pressed, there will be a lot of change events 
 By default the timeout and the debounce have the same value. This means if the user keeps the button pressed the debounced change event will trigger twice:  
 Once for when the timeout is triggered and once for when the user releases the button. If you want to make sure that in such a scenario you get only one event, make sure that debounce > timeout
 
-<docs-demo-six-item-picker-167></docs-demo-six-item-picker-167>
+<docs-demo-six-item-picker-169></docs-demo-six-item-picker-169>
 
 ```html
 <six-item-picker id="picked-debounced-2" debounce="500"></six-item-picker>
@@ -318,7 +318,7 @@ You can have your items padded if you like to by using the `padded` attribute.
 If you enable padding, then by default it will pad it at the start with zeros so that the length is always at least two.  
 However you can configure the padding according to your wishes by using `padding-length`, `padding-char`, `padding-direction`
 
-<docs-demo-six-item-picker-168></docs-demo-six-item-picker-168>
+<docs-demo-six-item-picker-170></docs-demo-six-item-picker-170>
 
 ```html
 <div style="display: flex">

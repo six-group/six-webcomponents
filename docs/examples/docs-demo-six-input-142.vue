@@ -1,11 +1,7 @@
 <template>
 <div class="demo my-app">
 
-        <six-input type="password" placeholder="Password Toggle" size="small" toggle-password></six-input>
-        <br>
-        <six-input type="password" placeholder="Password Toggle" size="medium" toggle-password></six-input>
-        <br>
-        <six-input type="password" placeholder="Password Toggle" size="large" toggle-password></six-input>
+        <six-input placeholder="Type something"></six-input>
       
 </div>
 </template>

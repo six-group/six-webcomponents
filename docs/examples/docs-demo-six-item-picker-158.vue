@@ -1,8 +1,18 @@
 <template>
 <div class="demo my-app">
 
-        <six-item-picker type="custom" id="fibonacci-picker" value="3" min="2"></six-item-picker>
-        
+        <div>Step Size 2:</div>
+        <div style="display: flex">
+          <six-item-picker step="2"></six-item-picker>
+          <six-item-picker step="2" type="letter"></six-item-picker>
+        </div>
+
+        <div>Step Size 7:</div>
+
+        <div style="display: flex">
+          <six-item-picker step="7"></six-item-picker>
+          <six-item-picker step="7" type="letter"></six-item-picker>
+        </div>
       
 </div>
 </template>
@@ -12,17 +22,6 @@
 <script>
 export default {
   name: 'docs-demo-six-item-picker-158',
-  mounted() { 
-          const fibonacciNumbers = Array.from(new Array(30).keys());
-          fibonacciNumbers.forEach((c, i, arr) => {
-            if (i < 2) {
-              return c;
-            }
-            arr[i] = arr[i - 2] + arr[i - 1];
-          });
-
-          const fiboPicker = document.getElementById('fibonacci-picker');
-          fiboPicker.items = fibonacciNumbers;
-         }
+  mounted() {  }
 }
 </script>

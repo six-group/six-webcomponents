@@ -1,7 +1,7 @@
 <template>
 <div class="demo my-app">
 
-        <six-progress-bar indeterminate></six-progress-bar>
+        <six-progress-bar percentage="50" style="--height: 6px"></six-progress-bar>
       
 </div>
 </template>

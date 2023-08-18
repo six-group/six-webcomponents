@@ -1,9 +1,11 @@
 <template>
 <div class="demo my-app">
 
-        <six-tooltip content="Settings">
-          <six-icon-button name="settings" label="Settings" onClick="alert('clicked')"></six-icon-button>
-        </six-tooltip>
+        <six-icon-button name="edit" label="Edit" size="xSmall"></six-icon-button>
+        <six-icon-button name="edit" label="Edit" size="small"></six-icon-button>
+        <six-icon-button name="edit" label="Edit" size="medium"></six-icon-button>
+        <six-icon-button name="edit" label="Edit" size="large"></six-icon-button>
+        <six-icon-button name="edit" label="Edit" size="xLarge"></six-icon-button>
       
 </div>
 </template>

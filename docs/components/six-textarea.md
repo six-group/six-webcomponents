@@ -5,7 +5,7 @@
 
 Textareas collect data from the user and allow multiple lines of text.
 
-<docs-demo-six-textarea-279></docs-demo-six-textarea-279>
+<docs-demo-six-textarea-281></docs-demo-six-textarea-281>
 
 ```html
 <six-textarea></six-textarea>
@@ -18,7 +18,7 @@ Textareas collect data from the user and allow multiple lines of text.
 
 Use the `rows` attribute to change the number of text rows that get shown.
 
-<docs-demo-six-textarea-280></docs-demo-six-textarea-280>
+<docs-demo-six-textarea-282></docs-demo-six-textarea-282>
 
 ```html
 <six-textarea rows="2"></six-textarea>
@@ -29,7 +29,7 @@ Use the `rows` attribute to change the number of text rows that get shown.
 
 Use the `placeholder` attribute to add a placeholder.
 
-<docs-demo-six-textarea-281></docs-demo-six-textarea-281>
+<docs-demo-six-textarea-283></docs-demo-six-textarea-283>
 
 ```html
 <six-textarea placeholder="Type something"></six-textarea>
@@ -40,7 +40,7 @@ Use the `placeholder` attribute to add a placeholder.
 
 Use the `disabled` prop to disable an input.
 
-<docs-demo-six-textarea-282></docs-demo-six-textarea-282>
+<docs-demo-six-textarea-284></docs-demo-six-textarea-284>
 
 ```html
 <six-textarea placeholder="Textarea" disabled></six-textarea>
@@ -51,7 +51,7 @@ Use the `disabled` prop to disable an input.
 
 Use the `size` attribute to change a textarea's size.
 
-<docs-demo-six-textarea-283></docs-demo-six-textarea-283>
+<docs-demo-six-textarea-285></docs-demo-six-textarea-285>
 
 ```html
 <six-textarea placeholder="Small" size="small"></six-textarea>
@@ -66,7 +66,7 @@ Use the `size` attribute to change a textarea's size.
 
 Use the `label` attribute to give the textarea an accessible label. For labels that contain HTML, use the label `slot` instead.
 
-<docs-demo-six-textarea-284></docs-demo-six-textarea-284>
+<docs-demo-six-textarea-286></docs-demo-six-textarea-286>
 
 ```html
 <six-textarea label="Comments"></six-textarea>
@@ -77,7 +77,7 @@ Use the `label` attribute to give the textarea an accessible label. For labels t
 
 Add descriptive help text to a select with the `help-text` attribute. For help texts that contain HTML, use the help-text slot instead.
 
-<docs-demo-six-textarea-285></docs-demo-six-textarea-285>
+<docs-demo-six-textarea-287></docs-demo-six-textarea-287>
 
 ```html
 <six-textarea label="Feedback" help-text="Please tell us what you think."> </six-textarea>
@@ -88,7 +88,7 @@ Add descriptive help text to a select with the `help-text` attribute. For help t
 
 By default, textareas can be resized vertically by the user. To prevent resizing, set the `resize` attribute to `none`.
 
-<docs-demo-six-textarea-286></docs-demo-six-textarea-286>
+<docs-demo-six-textarea-288></docs-demo-six-textarea-288>
 
 ```html
 <six-textarea resize="none"></six-textarea>
@@ -99,7 +99,7 @@ By default, textareas can be resized vertically by the user. To prevent resizing
 
 Textareas will automatically resize to expand to fit their content when `resize` is set to `auto`.
 
-<docs-demo-six-textarea-287></docs-demo-six-textarea-287>
+<docs-demo-six-textarea-289></docs-demo-six-textarea-289>
 
 ```html
 <six-textarea resize="auto"></six-textarea>
@@ -122,7 +122,7 @@ This means input, change and blur should be fired the same as when using native 
 
 You can play with the following native and six-input elements to see that the event firing is the same
 
-<docs-demo-six-textarea-288></docs-demo-six-textarea-288>
+<docs-demo-six-textarea-290></docs-demo-six-textarea-290>
 
 ```html
 <div style="font-size: 1rem; font-weight: bold; padding-bottom: 1rem">Native Input Element</div>

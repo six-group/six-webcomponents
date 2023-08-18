@@ -1,7 +1,7 @@
 <template>
 <div class="demo my-app">
 
-        <six-progress-ring percentage="50" stroke-width="10"></six-progress-ring>
+        <six-progress-ring percentage="50"></six-progress-ring>
       
 </div>
 </template>

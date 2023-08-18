@@ -7,7 +7,7 @@ Menus provide a list of options for the user to choose from.
 
 Use [menu items](six-menu-item.html), [menu dividers](six-menu-divider), and [menu labels](six-menu-label.html) to compose a menu.
 
-<docs-demo-six-menu-180></docs-demo-six-menu-180>
+<docs-demo-six-menu-182></docs-demo-six-menu-182>
 
 ```html
 <six-menu style="max-width: 200px">
@@ -34,7 +34,7 @@ There might be certain scenarios like e.g. when using the six-menu within a rest
 
 Compare the following examples by scrolling to the right.
 
-<docs-demo-six-menu-181></docs-demo-six-menu-181>
+<docs-demo-six-menu-183></docs-demo-six-menu-183>
 
 ```html
 <div style="max-width: 10rem; margin-bottom: 2.5rem">
@@ -60,7 +60,7 @@ Compare the following examples by scrolling to the right.
 
 If you don't want to create a `six-menu-item` but simply want to pass an array with all options, you can do so via the `items` attribute.
 
-<docs-demo-six-menu-182></docs-demo-six-menu-182>
+<docs-demo-six-menu-184></docs-demo-six-menu-184>
 
 ```html
 <six-menu id="six-menu-dynamic-options"> </six-menu>
@@ -78,7 +78,7 @@ If you don't want to create a `six-menu-item` but simply want to pass an array w
 
 There might be scenarios where you want to define the number of items shown.
 
-<docs-demo-six-menu-183></docs-demo-six-menu-183>
+<docs-demo-six-menu-185></docs-demo-six-menu-185>
 
 ```html
 <six-menu id="six-menu-scrollable" items-shown="2"> </six-menu>
@@ -98,7 +98,7 @@ If you have a lot of items in the menu (40'000 in the following example), render
 
 By default virtual scrolling will show 5 items, however you can adjust the number of items shown with `items-shown`
 
-<docs-demo-six-menu-184></docs-demo-six-menu-184>
+<docs-demo-six-menu-186></docs-demo-six-menu-186>
 
 ```html
 <six-menu id="six-menu-virtualscroll" virtual-scroll> </six-menu>

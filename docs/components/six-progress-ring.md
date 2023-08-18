@@ -5,7 +5,7 @@
 
 Progress rings are used to show the progress of a determinate operation in a circular fashion.
 
-<docs-demo-six-progress-ring-204></docs-demo-six-progress-ring-204>
+<docs-demo-six-progress-ring-206></docs-demo-six-progress-ring-206>
 
 ```html
 <six-progress-ring percentage="50"></six-progress-ring>
@@ -18,7 +18,7 @@ Progress rings are used to show the progress of a determinate operation in a cir
 
 Use the `--size` attribute to set the diameter of the progress ring.
 
-<docs-demo-six-progress-ring-205></docs-demo-six-progress-ring-205>
+<docs-demo-six-progress-ring-207></docs-demo-six-progress-ring-207>
 
 ```html
 <six-progress-ring percentage="50" size="200"></six-progress-ring>
@@ -29,7 +29,7 @@ Use the `--size` attribute to set the diameter of the progress ring.
 
 Use the `stroke-width` attribute to set the width of the progress ring's indicator.
 
-<docs-demo-six-progress-ring-206></docs-demo-six-progress-ring-206>
+<docs-demo-six-progress-ring-208></docs-demo-six-progress-ring-208>
 
 ```html
 <six-progress-ring percentage="50" stroke-width="10"></six-progress-ring>
@@ -40,7 +40,7 @@ Use the `stroke-width` attribute to set the width of the progress ring's indicat
 
 To change the color, use the `--track-color` and `--indicator-color` custom properties.
 
-<docs-demo-six-progress-ring-207></docs-demo-six-progress-ring-207>
+<docs-demo-six-progress-ring-209></docs-demo-six-progress-ring-209>
 
 ```html
 <six-progress-ring percentage="50" style="--track-color: tomato; --indicator-color: green"></six-progress-ring>
@@ -51,7 +51,7 @@ To change the color, use the `--track-color` and `--indicator-color` custom prop
 
 Use the default slot to show a label.
 
-<docs-demo-six-progress-ring-208></docs-demo-six-progress-ring-208>
+<docs-demo-six-progress-ring-210></docs-demo-six-progress-ring-210>
 
 ```html
 <six-progress-ring percentage="50" size="200" class="progress-ring-labels" style="margin-bottom: 0.5rem"

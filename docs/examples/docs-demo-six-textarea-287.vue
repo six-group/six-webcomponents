@@ -1,7 +1,7 @@
 <template>
 <div class="demo my-app">
 
-        <six-textarea resize="auto"></six-textarea>
+        <six-textarea label="Feedback" help-text="Please tell us what you think."> </six-textarea>
       
 </div>
 </template>

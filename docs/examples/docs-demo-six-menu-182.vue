@@ -1,7 +1,15 @@
 <template>
 <div class="demo my-app">
 
-        <six-menu id="six-menu-dynamic-options"> </six-menu>
+        <six-menu style="max-width: 200px">
+          <six-menu-item value="undo">Undo</six-menu-item>
+          <six-menu-item value="redo">Redo</six-menu-item>
+          <six-menu-divider></six-menu-divider>
+          <six-menu-item value="cut">Cut</six-menu-item>
+          <six-menu-item value="copy">Copy</six-menu-item>
+          <six-menu-item value="paste">Paste</six-menu-item>
+          <six-menu-item value="delete">Delete</six-menu-item>
+        </six-menu>
         
       
 </div>
@@ -13,11 +21,10 @@
 export default {
   name: 'docs-demo-six-menu-182',
   mounted() { 
-          const sixMenuDynamicOptions = document.getElementById('six-menu-dynamic-options');
-          sixMenuDynamicOptions.items = Array.from(Array(10).keys()).map((idx) => ({
-            label: `label ${idx}`,
-            value: `value ${idx}`,
-          }));
+          let menuElement = document.querySelector('six-menu');
+          menuElement.addEventListener('six-menu-item-selected', (event) => {
+            alert(event.detail.name);
+          });
          }
 }
 </script>

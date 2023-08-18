@@ -1,14 +1,9 @@
 <template>
 <div class="demo my-app">
 
-        <div style="display: flex">
-          <six-item-picker value="12" min="10" max="13" roundtrip="false"></six-item-picker>
-          <six-item-picker value="12" min="10" roundtrip="false"></six-item-picker>
-          <six-item-picker value="12" max="13" roundtrip="false"></six-item-picker>
-          <six-item-picker type="letter" value="k" min="i" max="m" roundtrip="false"></six-item-picker>
-        </div>
-
-        <div style="display: flex"></div>
+        <six-item-picker id="itemPicker"></six-item-picker>
+        <div>Selected item: <span id="selectedItem"></span></div>
+        
       
 </div>
 </template>
@@ -18,6 +13,13 @@
 <script>
 export default {
   name: 'docs-demo-six-item-picker-155',
-  mounted() {  }
+  mounted() { 
+          const itemPicker = document.getElementById('itemPicker');
+          const selectedItem = document.getElementById('selectedItem');
+
+          itemPicker.addEventListener('six-item-picker-change', (event) => {
+            selectedItem.innerText = event.detail;
+          });
+         }
 }
 </script>

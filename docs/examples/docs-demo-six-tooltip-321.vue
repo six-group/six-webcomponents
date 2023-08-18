@@ -1,15 +1,9 @@
 <template>
 <div class="demo my-app">
 
-        <div style="--six-tooltip-arrow-size: 0">
-          <six-tooltip content="This is a tooltip">
-            <six-button>Above</six-button>
-          </six-tooltip>
-
-          <six-tooltip content="This is a tooltip" placement="bottom">
-            <six-button>Below</six-button>
-          </six-tooltip>
-        </div>
+        <six-tooltip content="Click again to dismiss" trigger="click">
+          <six-button>Click to Toggle</six-button>
+        </six-tooltip>
       
 </div>
 </template>

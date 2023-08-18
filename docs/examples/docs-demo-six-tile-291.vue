@@ -1,7 +1,8 @@
 <template>
 <div class="demo my-app">
 
-        <six-tile label="Medium" icon-name="home" closeable="false"></six-tile>
+        <six-tile id="tileFancy" label="Fancy Tile" icon-name="favorite"></six-tile>
+        
       
 </div>
 </template>
@@ -11,6 +12,9 @@
 <script>
 export default {
   name: 'docs-demo-six-tile-291',
-  mounted() {  }
+  mounted() { 
+          const tile = document.querySelector('#tileFancy');
+          tile.addEventListener('six-tile-selected', () => alert('hello fancy tile!'));
+         }
 }
 </script>

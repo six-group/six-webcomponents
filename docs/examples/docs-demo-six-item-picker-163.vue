@@ -1,8 +1,12 @@
 <template>
 <div class="demo my-app">
 
-        <six-item-picker type="custom" id="custom-item-picker"></six-item-picker>
-        
+        <div style="display: flex">
+          <six-item-picker type="capital-letter"></six-item-picker>
+          <six-item-picker type="capital-letter" value="B" step="5"></six-item-picker>
+          <six-item-picker type="capital-letter" roundtrip="false"></six-item-picker>
+          <six-item-picker type="capital-letter" roundtrip="false" min="C" max="K" value="D"></six-item-picker>
+        </div>
       
 </div>
 </template>
@@ -12,12 +16,6 @@
 <script>
 export default {
   name: 'docs-demo-six-item-picker-163',
-  mounted() { 
-          const itemPicker = document.getElementById('custom-item-picker');
-          // create an array of emojis
-          itemPicker.items = Array.from(new Array(50).keys()).map((i) =>
-            String.fromCodePoint(`0x1f6${String(i).padStart(2, '0')}`)
-          );
-         }
+  mounted() {  }
 }
 </script>

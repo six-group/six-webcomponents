@@ -1,14 +1,14 @@
 <template>
 <div class="demo my-app">
 
-        <six-picto size="xLarge">search</six-picto>
-        <six-picto size="xLarge">copy</six-picto>
-        <six-picto size="xLarge">movie-camera</six-picto>
-        <six-picto size="xLarge">home</six-picto>
-        <six-picto size="xLarge">info</six-picto>
-        <six-picto size="xLarge">lock</six-picto>
-        <six-picto size="xLarge">find-in-page</six-picto>
-        <six-picto size="xLarge">sentiment-dissatisfied</six-picto>
+        <six-picto size="medium">search</six-picto>
+        <six-picto size="medium">copy</six-picto>
+        <six-picto size="medium">movie-camera</six-picto>
+        <six-picto size="medium">home</six-picto>
+        <six-picto size="medium">info</six-picto>
+        <six-picto size="medium">lock</six-picto>
+        <six-picto size="medium">find-in-page</six-picto>
+        <six-picto size="medium">sentiment-dissatisfied</six-picto>
       
 </div>
 </template>

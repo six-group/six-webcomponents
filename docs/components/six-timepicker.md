@@ -7,7 +7,7 @@ The `six-timepicker` can be used to select the time.
 
 By default the time will be displayed as `HH:mm:ss` and you can either directly modify the time in the input field, or via the picker component in the popup
 
-<docs-demo-six-timepicker-296></docs-demo-six-timepicker-296>
+<docs-demo-six-timepicker-298></docs-demo-six-timepicker-298>
 
 ```html
 <six-timepicker></six-timepicker>
@@ -23,7 +23,7 @@ By default the time will be displayed as `HH:mm:ss` and you can either directly 
 
 You can choose one of the valid formats to define what options should be displayed (default is `HH:mm:ss`):
 
-<docs-demo-six-timepicker-297></docs-demo-six-timepicker-297>
+<docs-demo-six-timepicker-299></docs-demo-six-timepicker-299>
 
 ```html
 <div class="format-example">
@@ -61,7 +61,7 @@ You can choose one of the valid formats to define what options should be display
 
 If you don't set a custom value the default value for the `timepicker` will be the current time.
 
-<docs-demo-six-timepicker-298></docs-demo-six-timepicker-298>
+<docs-demo-six-timepicker-300></docs-demo-six-timepicker-300>
 
 ```html
 <div style="display: flex; flex-wrap: wrap">
@@ -141,7 +141,7 @@ You can define a different separator by adding the `separator` attribute
 
 However, please note that the time string you provide must always have a colon (":") and cannot have a different separator
 
-<docs-demo-six-timepicker-299></docs-demo-six-timepicker-299>
+<docs-demo-six-timepicker-301></docs-demo-six-timepicker-301>
 
 ```html
 <six-timepicker separator="-"></six-timepicker>
@@ -159,7 +159,7 @@ If you keep a navigation button pressed, the items will switch faster. By defaul
 
 Feel free to adjust these numbers to your need:
 
-<docs-demo-six-timepicker-300></docs-demo-six-timepicker-300>
+<docs-demo-six-timepicker-302></docs-demo-six-timepicker-302>
 
 ```html
 <six-timepicker></six-timepicker>
@@ -179,7 +179,7 @@ Feel free to adjust these numbers to your need:
 
 You can define the timepickers placeholder via `placeholder`
 
-<docs-demo-six-timepicker-301></docs-demo-six-timepicker-301>
+<docs-demo-six-timepicker-303></docs-demo-six-timepicker-303>
 
 ```html
 <six-timepicker placeholder="HH:mm:ss"></six-timepicker>
@@ -195,7 +195,7 @@ You can define the timepickers placeholder via `placeholder`
 
 If you want to force the user to use the popup instead of manually enter a time, you can simply add the `readonly` property
 
-<docs-demo-six-timepicker-302></docs-demo-six-timepicker-302>
+<docs-demo-six-timepicker-304></docs-demo-six-timepicker-304>
 
 ```html
 <six-timepicker readonly></six-timepicker>
@@ -211,7 +211,7 @@ If you want to force the user to use the popup instead of manually enter a time,
 
 To disable the timepicker i.e. nothing will happen when clicking the input field, simply add the `disabled` property
 
-<docs-demo-six-timepicker-303></docs-demo-six-timepicker-303>
+<docs-demo-six-timepicker-305></docs-demo-six-timepicker-305>
 
 ```html
 <six-timepicker disabled></six-timepicker>
@@ -227,7 +227,7 @@ To disable the timepicker i.e. nothing will happen when clicking the input field
 
 Add the `clearable` property to add a clear button when the input has content.
 
-<docs-demo-six-timepicker-304></docs-demo-six-timepicker-304>
+<docs-demo-six-timepicker-306></docs-demo-six-timepicker-306>
 
 ```html
 <six-timepicker clearable></six-timepicker>
@@ -243,7 +243,7 @@ Add the `clearable` property to add a clear button when the input has content.
 
 Use the `size` attribute to change the timepicker size.
 
-<docs-demo-six-timepicker-305></docs-demo-six-timepicker-305>
+<docs-demo-six-timepicker-307></docs-demo-six-timepicker-307>
 
 ```html
 <six-timepicker size="small" clearable></six-timepicker>
@@ -263,7 +263,7 @@ Use the `size` attribute to change the timepicker size.
 
 If you wish you can have the timepicker as an inline component i.e. the popup will always be open
 
-<docs-demo-six-timepicker-306></docs-demo-six-timepicker-306>
+<docs-demo-six-timepicker-308></docs-demo-six-timepicker-308>
 
 ```html
 <six-timepicker inline="true"></six-timepicker>
@@ -281,7 +281,7 @@ By default the timepicker will render either below or above the input field depe
 
 If you want to enforce a certain placement you can use the `placement` attribute
 
-<docs-demo-six-timepicker-307></docs-demo-six-timepicker-307>
+<docs-demo-six-timepicker-309></docs-demo-six-timepicker-309>
 
 ```html
 <six-timepicker placement="bottom"></six-timepicker>
@@ -299,7 +299,7 @@ If you want to enforce a certain placement you can use the `placement` attribute
 
 Could be adjusted providing `icon-position` property.
 
-<docs-demo-six-timepicker-308></docs-demo-six-timepicker-308>
+<docs-demo-six-timepicker-310></docs-demo-six-timepicker-310>
 
 ```html
 <six-timepicker icon-position="right"></six-timepicker>
@@ -325,7 +325,7 @@ Could be adjusted providing `icon-position` property.
 
 The slot `custom-icon` is used to provide a custom timepicker icon.
 
-<docs-demo-six-timepicker-309></docs-demo-six-timepicker-309>
+<docs-demo-six-timepicker-311></docs-demo-six-timepicker-311>
 
 ```html
 <six-timepicker custom-icon>
@@ -347,7 +347,7 @@ The slot `custom-icon` is used to provide a custom timepicker icon.
 
 Dropdown panels will be clipped if they're inside a container that has overflow: auto|hidden. The hoist attribute forces the panel to use a fixed positioning strategy, allowing it to break out of the container. In this case, the panel will be positioned relative to its containing block, which is usually the viewport unless an ancestor uses a transform, perspective, or filter.
 
-<docs-demo-six-timepicker-310></docs-demo-six-timepicker-310>
+<docs-demo-six-timepicker-312></docs-demo-six-timepicker-312>
 
 ```html
 <div style="overflow: hidden; border: solid 1px grey; padding: 0.5em; display: flex">
@@ -366,7 +366,7 @@ Dropdown panels will be clipped if they're inside a container that has overflow:
 
 You can define a custom default time which will be shown on first appearance of the popup
 
-<docs-demo-six-timepicker-311></docs-demo-six-timepicker-311>
+<docs-demo-six-timepicker-313></docs-demo-six-timepicker-313>
 
 ```html
 <six-timepicker default-time="23:00:00"></six-timepicker>
@@ -382,7 +382,7 @@ You can define a custom default time which will be shown on first appearance of 
 
 The timepicker value can be changed dynamically by setting the `value` attribute.
 
-<docs-demo-six-timepicker-312></docs-demo-six-timepicker-312>
+<docs-demo-six-timepicker-314></docs-demo-six-timepicker-314>
 
 ```html
 <six-timepicker id="dynamic-timepicker"></six-timepicker>
@@ -425,7 +425,7 @@ You can listen to the timepicker change event. The event will give you the `chan
 
 Additionally you get the current value of the timepicker (not only the changed property), from where you can also read the updated property e.g. `value.hours`. And you can get the whole time as a string e.g. `15:37:25:692`
 
-<docs-demo-six-timepicker-313></docs-demo-six-timepicker-313>
+<docs-demo-six-timepicker-315></docs-demo-six-timepicker-315>
 
 ```html
 <div style="display: flex">
@@ -450,7 +450,7 @@ Additionally you get the current value of the timepicker (not only the changed p
 
 In the following you also find an event example for the 12-hour-clock:
 
-<docs-demo-six-timepicker-314></docs-demo-six-timepicker-314>
+<docs-demo-six-timepicker-316></docs-demo-six-timepicker-316>
 
 ```html
 <div style="display: flex">
@@ -475,7 +475,7 @@ In the following you also find an event example for the 12-hour-clock:
 
 If you keep the navigation button pressed, there will be a lot of change events fired. If you don't want to listen to all of these events but want to "wait" until the user landed on their desired time, then use `six-timepicker-change-debounced` instead.
 
-<docs-demo-six-timepicker-315></docs-demo-six-timepicker-315>
+<docs-demo-six-timepicker-317></docs-demo-six-timepicker-317>
 
 ```html
 <div style="display: flex">
@@ -502,7 +502,7 @@ If you keep the navigation button pressed, there will be a lot of change events 
 
 If you wish you can have the timepicker open on startup. It will close as usual (clicking outside etc.)
 
-<docs-demo-six-timepicker-316></docs-demo-six-timepicker-316>
+<docs-demo-six-timepicker-318></docs-demo-six-timepicker-318>
 
 ```html
 <six-timepicker open="true" placement="bottom"></six-timepicker>

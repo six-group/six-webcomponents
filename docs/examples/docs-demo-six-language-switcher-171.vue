@@ -1,7 +1,7 @@
 <template>
 <div class="demo my-app">
 
-        <six-language-switcher selected="DE"></six-language-switcher>
+        <six-language-switcher></six-language-switcher>
       
 </div>
 </template>

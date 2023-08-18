@@ -5,7 +5,7 @@
 
 Menu labels are used to describe a group of menu items.
 
-<docs-demo-six-menu-label-187></docs-demo-six-menu-label-187>
+<docs-demo-six-menu-label-189></docs-demo-six-menu-label-189>
 
 ```html
 <six-menu           style="

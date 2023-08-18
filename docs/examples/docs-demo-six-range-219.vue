@@ -1,7 +1,9 @@
 <template>
 <div class="demo my-app">
 
-        <six-range label="Volume" help-text="Controls the volume of the current song." min="0" max="100"></six-range>
+        <six-range min="0" max="100" step="1" class="range-with-custom-formatter"></six-range>
+
+        
       
 </div>
 </template>
@@ -11,6 +13,9 @@
 <script>
 export default {
   name: 'docs-demo-six-range-219',
-  mounted() {  }
+  mounted() { 
+          const range = document.querySelector('.range-with-custom-formatter');
+          range.tooltipFormatter = (value) => `Total - ${value}%`;
+         }
 }
 </script>

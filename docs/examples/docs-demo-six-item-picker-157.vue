@@ -2,9 +2,13 @@
 <div class="demo my-app">
 
         <div style="display: flex">
-          <six-item-picker step="7" value="7" min="1" roundtrip="false"></six-item-picker>
-          <six-item-picker step="3" type="letter" value="B" roundtrip="false"></six-item-picker>
+          <six-item-picker value="12" min="10" max="13" roundtrip="false"></six-item-picker>
+          <six-item-picker value="12" min="10" roundtrip="false"></six-item-picker>
+          <six-item-picker value="12" max="13" roundtrip="false"></six-item-picker>
+          <six-item-picker type="letter" value="k" min="i" max="m" roundtrip="false"></six-item-picker>
         </div>
+
+        <div style="display: flex"></div>
       
 </div>
 </template>

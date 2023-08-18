@@ -1,10 +1,13 @@
 <template>
 <div class="demo my-app">
 
-        <six-tooltip>
-          <div slot="content">I'm not <strong>just</strong> a tooltip,<br>I'm a <em>tooltip</em> with HTML!</div>
-          <six-button>Hover me</six-button>
+        <six-button style="margin-right: 4rem">Toggle Manually</six-button>
+
+        <six-tooltip content="This is an avatar" trigger="manual" class="manual-tooltip">
+          <six-avatar></six-avatar>
         </six-tooltip>
+
+        
       
 </div>
 </template>
@@ -14,6 +17,11 @@
 <script>
 export default {
   name: 'docs-demo-six-tooltip-322',
-  mounted() {  }
+  mounted() { 
+          let tooltip = document.querySelector('.manual-tooltip');
+          let toggle = tooltip.previousElementSibling;
+
+          toggle.addEventListener('click', () => (tooltip.open = !tooltip.open));
+         }
 }
 </script>

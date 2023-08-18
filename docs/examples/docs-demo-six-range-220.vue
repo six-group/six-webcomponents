@@ -1,16 +1,7 @@
 <template>
 <div class="demo my-app">
 
-        <six-range           min="0"
-          max="100"
-          step="1"
-          style="
-            --thumb-size: 20px;
-            --track-height: 6px;
-            --track-color: var(--six-color-danger-800);
-            --thumb-color: var(--six-color-danger-800);
-          "
-        ></six-range>
+        <six-range label="Volume" min="0" max="100"></six-range>
       
 </div>
 </template>

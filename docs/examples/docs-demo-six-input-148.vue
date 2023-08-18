@@ -1,11 +1,11 @@
 <template>
 <div class="demo my-app">
 
-        <six-input placeholder="Small" size="small"></six-input>
+        <six-input placeholder="Small" size="small" pill></six-input>
         <br>
-        <six-input placeholder="Medium" size="medium"></six-input>
+        <six-input placeholder="Medium" size="medium" pill></six-input>
         <br>
-        <six-input placeholder="Large" size="large"></six-input>
+        <six-input placeholder="Large" size="large" pill></six-input>
       
 </div>
 </template>

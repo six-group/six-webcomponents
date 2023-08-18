@@ -1,7 +1,7 @@
 <template>
 <div class="demo my-app">
 
-        <six-switch style="--width: 80px; --height: 32px; --thumb-size: 26px"></six-switch>
+        <six-switch checked>Checked</six-switch>
       
 </div>
 </template>

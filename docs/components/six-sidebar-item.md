@@ -3,7 +3,7 @@
 
 ## six sidebar item
 
-<docs-demo-six-sidebar-item-250></docs-demo-six-sidebar-item-250>
+<docs-demo-six-sidebar-item-252></docs-demo-six-sidebar-item-252>
 
 ```html
 <div style="width: 10em" id="six-sidebar-items-group">

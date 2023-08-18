@@ -1,76 +1,50 @@
 <template>
 <div class="demo my-app">
 
-        <div id="sidebar-programmatic-buttonbar" style="margin-bottom: 1em">
-          <div style="margin-bottom: 1em">
-            <six-button>Select A by index</six-button>
-            <six-button>Select B by index</six-button>
-            <six-button>Select C by index</six-button>
-          </div>
-          <div>
-            <six-button>Select A by value</six-button>
-            <six-button>Select B by value</six-button>
-            <six-button>Select C by value</six-button>
-          </div>
-        </div>
-
-        <six-sidebar id="sidebar-programmatic-example" position="left" width="20rem" toggled open style="height: 12em">
-          <six-sidebar-item-group icon="description" name="Section A" value="sectionA">
-            <six-sidebar-item value="data" disabled="true">Aa</six-sidebar-item>
-            <six-sidebar-item value="history">Ab</six-sidebar-item>
-            <six-sidebar-item-group icon="settings" name="Ad">
-              <six-sidebar-item value="data" selected>Ada</six-sidebar-item>
-              <six-sidebar-item value="history">Adb</six-sidebar-item>
-            </six-sidebar-item-group>
-            <six-sidebar-item-group icon="settings" name="Ae"></six-sidebar-item-group>
-          </six-sidebar-item-group>
-          <six-sidebar-item-group icon="description" name="Section filler"></six-sidebar-item-group>
-          <six-sidebar-item-group icon="description" name="Section filler"></six-sidebar-item-group>
-          <six-sidebar-item-group icon="description" name="Section filler"></six-sidebar-item-group>
-          <six-sidebar-item-group icon="description" name="Section filler"></six-sidebar-item-group>
-          <six-sidebar-item-group icon="description" name="Section filler"></six-sidebar-item-group>
-          <six-sidebar-item-group icon="description" name="Section filler"></six-sidebar-item-group>
-          <six-sidebar-item-group icon="description" name="Section filler"></six-sidebar-item-group>
-          <six-sidebar-item-group icon="description" name="Section filler"></six-sidebar-item-group>
-          <six-sidebar-item-group icon="description" name="Section filler"></six-sidebar-item-group>
-          <six-sidebar-item-group icon="description" name="Section filler"></six-sidebar-item-group>
-          <six-sidebar-item-group icon="description" name="Section filler"></six-sidebar-item-group>
-          <six-sidebar-item-group icon="description" name="Section filler"></six-sidebar-item-group>
-          <six-sidebar-item-group icon="description" name="Section filler"></six-sidebar-item-group>
-          <six-sidebar-item-group icon="description" name="Section filler"></six-sidebar-item-group>
-          <six-sidebar-item-group icon="description" name="Section filler"></six-sidebar-item-group>
-          <six-sidebar-item-group icon="description" name="Section filler"></six-sidebar-item-group>
-          <six-sidebar-item-group icon="description" name="Section filler"></six-sidebar-item-group>
-          <six-sidebar-item-group icon="description" name="Section filler"></six-sidebar-item-group>
-          <six-sidebar-item-group icon="description" name="Section B" value="sectionB">
-            <six-sidebar-item value="data" disabled="true">Ba</six-sidebar-item>
-            <six-sidebar-item value="history">Bb</six-sidebar-item>
-            <six-sidebar-item-group icon="settings" name="Bc">
-              <six-sidebar-item value="data" selected>Bca</six-sidebar-item>
-              <six-sidebar-item value="history">Bcb</six-sidebar-item>
+        <six-sidebar position="left" width="20rem" open>
+          <six-sidebar-item-group icon="description" name="Upload" value="upload">
+            <six-sidebar-item value="data" disabled="true">Data</six-sidebar-item>
+            <six-sidebar-item value="history">History</six-sidebar-item>
+            <six-sidebar-item-group icon="settings" name="Settings">
+              <six-sidebar-item value="data" selected>Data</six-sidebar-item>
+              <six-sidebar-item value="history">History</six-sidebar-item>
             </six-sidebar-item-group>
           </six-sidebar-item-group>
-          <six-sidebar-item-group icon="description" name="Section filler"></six-sidebar-item-group>
-          <six-sidebar-item-group icon="description" name="Section filler"></six-sidebar-item-group>
-          <six-sidebar-item-group icon="description" name="Section filler"></six-sidebar-item-group>
-          <six-sidebar-item-group icon="description" name="Section filler"></six-sidebar-item-group>
-          <six-sidebar-item-group icon="description" name="Section filler"></six-sidebar-item-group>
-          <six-sidebar-item-group icon="description" name="Section filler"></six-sidebar-item-group>
-          <six-sidebar-item-group icon="description" name="Section filler"></six-sidebar-item-group>
-          <six-sidebar-item-group icon="description" name="Section filler"></six-sidebar-item-group>
-          <six-sidebar-item-group icon="description" name="Section filler"></six-sidebar-item-group>
-          <six-sidebar-item-group icon="description" name="Section filler"></six-sidebar-item-group>
-          <six-sidebar-item-group icon="description" name="Section filler"></six-sidebar-item-group>
-          <six-sidebar-item-group icon="description" name="Section filler"></six-sidebar-item-group>
-          <six-sidebar-item-group icon="description" name="Section filler"></six-sidebar-item-group>
-          <six-sidebar-item-group icon="description" name="Section filler"></six-sidebar-item-group>
-          <six-sidebar-item-group icon="description" name="Section filler"></six-sidebar-item-group>
-          <six-sidebar-item-group icon="description" name="Section filler"></six-sidebar-item-group>
-          <six-sidebar-item-group icon="description" name="Section filler"></six-sidebar-item-group>
-          <six-sidebar-item-group icon="description" name="Section filler"></six-sidebar-item-group>
-          <six-sidebar-item-group icon="settings" name="Section C"
-            ><b slot="summary-icon">99%</b></six-sidebar-item-group>
+          <six-sidebar-item-group             icon="task"
+            name="Tasks with very long title which wraps multiple lines but should still have the correct layout"
+            value="tasks"
+            summary-icon="settings"
+          >
+            <six-sidebar-item value="open">Open</six-sidebar-item>
+            <six-sidebar-item value="closed">Closed</six-sidebar-item>
+          </six-sidebar-item-group>
+          <six-sidebar-item-group icon="ac_unit" name="3. Ownership Information and Management Structure">
+            <b slot="summary-icon">99%</b>
+            <six-sidebar-item value="controlling">
+              3.1 Details of controlling person(s) - individual(s)
+            </six-sidebar-item>
+            <six-sidebar-item value="provision"
+              >3.2 Please provide the names of the institutions Board of directors (all members)
+            </six-sidebar-item>
+            <six-sidebar-item value="managmeent">
+              3.3 Please provide the names of the institutions Management Board (all members)
+            </six-sidebar-item>
+            <six-sidebar-item-group name="3.4 Settings">
+              <six-sidebar-item value="long1" selected>
+                3.4.1 This is also a very long string to check how it's displayed
+              </six-sidebar-item>
+              <six-sidebar-item value="long2" selected>
+                3.4.2 This is also a very long string to check how it's displayed
+              </six-sidebar-item>
+            </six-sidebar-item-group>
+          </six-sidebar-item-group>
+          <six-sidebar-item-group icon="settings" name="Reclaims"></six-sidebar-item-group>
         </six-sidebar>
+
+        <six-dialog label="Dialog" class="dialog-overview">
+          <pre></pre>
+          <six-button slot="footer" type="primary">Close</six-button>
+        </six-dialog>
 
         
       
@@ -83,34 +57,38 @@
 export default {
   name: 'docs-demo-six-sidebar-249',
   mounted() { 
-          const sidebar = document.getElementById('sidebar-programmatic-example');
-          const [buttonAIdx, buttonBIdx, buttonCIdx, buttonAVal, buttonBVal, buttonCVal] = document
-            .getElementById('sidebar-programmatic-buttonbar')
-            .querySelectorAll('six-button');
+          const getElements = (e) =>
+            Object.entries(e).reduce(
+              (e, [r, t]) => ({
+                ...e,
+                [r]: Array.isArray(t)
+                  ? t.flatMap((s) => Array.from(document.querySelectorAll(s)))
+                  : document.querySelector(t),
+              }),
+              {}
+            );
 
-          buttonAIdx.onclick = () => {
-            sidebar.selectItemByIndex(0);
+          const Select = getElements({
+            sidebar: 'six-sidebar',
+            items: ['six-sidebar-item'],
+            dialog: 'six-dialog',
+            details: 'six-dialog pre',
+            close: 'six-button[slot="footer"]',
+          });
+
+          const log = (el) => () => {
+            Select.dialog.label = 'Click';
+            Select.details.innerHTML = el.innerHTML;
+            Select.dialog.show();
           };
 
-          buttonBIdx.onclick = () => {
-            sidebar.selectItemByIndex(19);
-          };
+          Select.items.forEach((item) => {
+            item.addEventListener('click', log(item));
+          });
 
-          buttonCIdx.onclick = () => {
-            sidebar.selectItemByIndex(38);
-          };
-
-          buttonAVal.onclick = () => {
-            sidebar.selectItemByName('Section A');
-          };
-
-          buttonBVal.onclick = () => {
-            sidebar.selectItemByName('Section B');
-          };
-
-          buttonCVal.onclick = () => {
-            sidebar.selectItemByName('Section C');
-          };
+          Select.close.addEventListener('click', () => {
+            Select.dialog.hide();
+          });
          }
 }
 </script>

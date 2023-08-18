@@ -1,7 +1,11 @@
 <template>
 <div class="demo my-app">
 
-        <six-input type="number" placeholder="Integers..."></six-input>
+        <six-input placeholder="Clearable" size="small" clearable></six-input>
+        <br>
+        <six-input placeholder="Clearable" size="medium" clearable></six-input>
+        <br>
+        <six-input placeholder="Clearable" size="large" clearable></six-input>
       
 </div>
 </template>

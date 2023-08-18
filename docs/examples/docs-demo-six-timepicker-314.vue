@@ -1,9 +1,14 @@
 <template>
 <div class="demo my-app">
 
-        <div style="display: flex">
-          <six-timepicker id="timepicker-event-example-12h" format="hh:mm:ss:ms:aa"></six-timepicker>
-          <pre style="margin-left: 1.5rem">Fired Event: <span id="event-example-selected-time-12h"></span></pre>
+        <six-timepicker id="dynamic-timepicker"></six-timepicker>
+        <div style="margin-top: 1rem">
+          <span style="font-weight: bold">Selected: </span><span id="dynamic-timepicker-selected">No Time selected yet!</span>
+        </div>
+        <div style="margin-top: 1rem">
+          <six-button id="dynamic-timepicker-btn1">20:13:22</six-button>
+          <six-button id="dynamic-timepicker-btn2">13:33:59</six-button>
+          <six-button id="dynamic-timepicker-btn3">02:30:00</six-button>
         </div>
         
         
@@ -21,11 +26,20 @@
 export default {
   name: 'docs-demo-six-timepicker-314',
   mounted() { 
-          const timepicker = document.getElementById('timepicker-event-example-12h');
-          const selectedTime = document.getElementById('event-example-selected-time-12h');
+          const timepicker = document.getElementById('dynamic-timepicker');
+          const selectedTime = document.getElementById('dynamic-timepicker-selected');
+
+          const btn1 = document.getElementById('dynamic-timepicker-btn1');
+          btn1.addEventListener('click', () => (timepicker.value = '20:13:22'));
+
+          const btn2 = document.getElementById('dynamic-timepicker-btn2');
+          btn2.addEventListener('click', () => (timepicker.value = '13:33:59'));
+
+          const btn3 = document.getElementById('dynamic-timepicker-btn3');
+          btn3.addEventListener('click', () => (timepicker.value = '02:30:00'));
 
           timepicker.addEventListener('six-timepicker-change', ({ detail }) => {
-            selectedTime.innerHTML = JSON.stringify(detail, null, 4);
+            selectedTime.innerHTML = `${detail.valueAsString}`;
           });
          }
 }

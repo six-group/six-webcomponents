@@ -1,8 +1,7 @@
 <template>
 <div class="demo my-app">
 
-        <six-radio checked disabled>Disabled</six-radio>
-        <six-radio disabled>Disabled</six-radio>
+        <six-radio>Radio</six-radio>
       
 </div>
 </template>

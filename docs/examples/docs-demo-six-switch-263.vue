@@ -1,8 +1,7 @@
 <template>
 <div class="demo my-app">
 
-        <six-switch checked disabled>Disabled</six-switch>
-        <six-switch disabled>Disabled</six-switch>
+        <six-switch>Switch</six-switch>
       
 </div>
 </template>

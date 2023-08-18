@@ -1,7 +1,7 @@
 <template>
 <div class="demo my-app">
 
-        <six-menu id="six-menu-virtualscroll" virtual-scroll> </six-menu>
+        <six-menu id="six-menu-dynamic-options"> </six-menu>
         
       
 </div>
@@ -13,8 +13,8 @@
 export default {
   name: 'docs-demo-six-menu-184',
   mounted() { 
-          const sixMenuDynamicOptions = document.getElementById('six-menu-virtualscroll');
-          sixMenuDynamicOptions.items = Array.from(Array(40000).keys()).map((idx) => ({
+          const sixMenuDynamicOptions = document.getElementById('six-menu-dynamic-options');
+          sixMenuDynamicOptions.items = Array.from(Array(10).keys()).map((idx) => ({
             label: `label ${idx}`,
             value: `value ${idx}`,
           }));

@@ -1,7 +1,7 @@
 <template>
 <div class="demo my-app">
 
-        <six-range min="0" max="100" step="1" tooltip="bottom"></six-range>
+        <six-range min="0" max="100" step="1"></six-range>
       
 </div>
 </template>

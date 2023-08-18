@@ -1,21 +1,17 @@
 <template>
 <div class="demo my-app">
 
-        <div class="selecting-example">
-          <six-select placeholder="">
-            <six-menu-item value="option-1">Option 1</six-menu-item>
-            <six-menu-item value="option-2">Option 2</six-menu-item>
-            <six-menu-item value="option-3">Option 3</six-menu-item>
-          </six-select>
-
-          <br>
-
-          <six-button data-option="option-1">Set 1</six-button>
-          <six-button data-option="option-2">Set 2</six-button>
-          <six-button data-option="option-3">Set 3</six-button>
-        </div>
-
-        
+        <six-select placeholder="Select one">
+          <six-menu-label>Group 1</six-menu-label>
+          <six-menu-item value="option-1">Option 1</six-menu-item>
+          <six-menu-item value="option-2">Option 2</six-menu-item>
+          <six-menu-item value="option-3">Option 3</six-menu-item>
+          <six-menu-divider></six-menu-divider>
+          <six-menu-label>Group 2</six-menu-label>
+          <six-menu-item value="option-4">Option 4</six-menu-item>
+          <six-menu-item value="option-5">Option 5</six-menu-item>
+          <six-menu-item value="option-6">Option 6</six-menu-item>
+        </six-select>
       
 </div>
 </template>
@@ -25,17 +21,6 @@
 <script>
 export default {
   name: 'docs-demo-six-select-235',
-  mounted() { 
-          (() => {
-            const container = document.querySelector('.selecting-example');
-            const select = container.querySelector('six-select');
-
-            [...container.querySelectorAll('six-button')].map((button) => {
-              button.addEventListener('click', () => {
-                select.value = button.dataset.option;
-              });
-            });
-          })();
-         }
+  mounted() {  }
 }
 </script>

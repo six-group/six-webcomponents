@@ -5,7 +5,7 @@
 
 Menu dividers are used to visually group menu items.
 
-<docs-demo-six-menu-divider-185></docs-demo-six-menu-divider-185>
+<docs-demo-six-menu-divider-187></docs-demo-six-menu-divider-187>
 
 ```html
 <six-menu           style="

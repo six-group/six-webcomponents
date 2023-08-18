@@ -1,7 +1,7 @@
 <template>
 <div class="demo my-app">
 
-        <six-textarea label="Comments"></six-textarea>
+        <six-textarea placeholder="Textarea" disabled></six-textarea>
       
 </div>
 </template>

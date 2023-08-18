@@ -13,7 +13,7 @@ You can remove the content padding by adding `padded="false"` to `six-root`.
 
 You can provide a stage indicator by adding `stage="DEV"` to `six-root` as well as provide version information by adding `version="DEV-1.1.2"`to `six-root`. Providing nothing or `PROD` will disable stage indication
 
-<docs-demo-six-root-221></docs-demo-six-root-221>
+<docs-demo-six-root-223></docs-demo-six-root-223>
 
 ```html
 <div class="six-root-wrapper">

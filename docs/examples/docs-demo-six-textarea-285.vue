@@ -1,7 +1,11 @@
 <template>
 <div class="demo my-app">
 
-        <six-textarea label="Feedback" help-text="Please tell us what you think."> </six-textarea>
+        <six-textarea placeholder="Small" size="small"></six-textarea>
+        <br>
+        <six-textarea placeholder="Medium" size="medium"></six-textarea>
+        <br>
+        <six-textarea placeholder="Large" size="large"></six-textarea>
       
 </div>
 </template>

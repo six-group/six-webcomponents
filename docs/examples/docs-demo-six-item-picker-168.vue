@@ -1,19 +1,10 @@
 <template>
 <div class="demo my-app">
 
-        <div style="display: flex">
-          <six-item-picker padded></six-item-picker>
-          <six-item-picker padded padding-length="3"></six-item-picker>
-          <six-item-picker padded padding-char="_"></six-item-picker>
-          <six-item-picker padded padding-char="_" padding-direction="after"></six-item-picker>
-          <div style="width: 2rem"></div>
-          <six-item-picker             type="letter"
-            padded
-            padding-length="6"
-            padding-char="_form"
-            padding-direction="after"
-          ></six-item-picker>
-        </div>
+        <six-item-picker id="it-pick-debounced"></six-item-picker>
+        <div>Picked Item: <span id="picked-item">0</span></div>
+        <div>Picked Item Debounced: <span id="picked-item-debounced">0</span></div>
+        
       
 </div>
 </template>
@@ -23,6 +14,19 @@
 <script>
 export default {
   name: 'docs-demo-six-item-picker-168',
-  mounted() {  }
+  mounted() { 
+          const pickedItem = document.getElementById('picked-item');
+          const pickedItemDebounced = document.getElementById('picked-item-debounced');
+          const itemPicker = document.getElementById('it-pick-debounced');
+
+          itemPicker.addEventListener('six-item-picker-change', (event) => {
+            pickedItem.innerText = event.detail;
+          });
+
+          itemPicker.addEventListener('six-item-picker-change-debounced', (event) => {
+            console.log(`[ six-item-picker-change-debounced ]`, { event });
+            pickedItemDebounced.innerText = event.detail;
+          });
+         }
 }
 </script>

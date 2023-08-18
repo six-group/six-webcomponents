@@ -5,7 +5,7 @@
 
 In general you should use [six-icons](./six-icon.html) in your application. However in certain domain specific cases you might need a more specific icon. In such a case you might find the icon you are looking for in the custom generated SIX pictograms.
 
-<docs-demo-six-picto-188></docs-demo-six-picto-188>
+<docs-demo-six-picto-190></docs-demo-six-picto-190>
 
 ```html
 <six-picto>copy</six-picto>
@@ -17,7 +17,7 @@ In general you should use [six-icons](./six-icon.html) in your application. Howe
 
 This collection not only includes pictos from SIX but also from BME.
 
-<docs-demo-six-picto-189></docs-demo-six-picto-189>
+<docs-demo-six-picto-191></docs-demo-six-picto-191>
 
 ```html
 <six-picto>clientesyusuarios</six-picto>
@@ -35,7 +35,7 @@ The icons are available in different sizes. Default size is medium (24px).
 
 #### Extra-small Icons
 
-<docs-demo-six-picto-190></docs-demo-six-picto-190>
+<docs-demo-six-picto-192></docs-demo-six-picto-192>
 
 ```html
 <six-picto size="xSmall">search</six-picto>
@@ -51,7 +51,7 @@ The icons are available in different sizes. Default size is medium (24px).
 
 #### Small Icons
 
-<docs-demo-six-picto-191></docs-demo-six-picto-191>
+<docs-demo-six-picto-193></docs-demo-six-picto-193>
 
 ```html
 <six-picto size="small">search</six-picto>
@@ -67,7 +67,7 @@ The icons are available in different sizes. Default size is medium (24px).
 
 #### Medium Icons (Default Size)
 
-<docs-demo-six-picto-192></docs-demo-six-picto-192>
+<docs-demo-six-picto-194></docs-demo-six-picto-194>
 
 ```html
 <six-picto size="medium">search</six-picto>
@@ -83,7 +83,7 @@ The icons are available in different sizes. Default size is medium (24px).
 
 #### Large Icons
 
-<docs-demo-six-picto-193></docs-demo-six-picto-193>
+<docs-demo-six-picto-195></docs-demo-six-picto-195>
 
 ```html
 <six-picto size="large">search</six-picto>
@@ -99,7 +99,7 @@ The icons are available in different sizes. Default size is medium (24px).
 
 #### Extra-large Icons
 
-<docs-demo-six-picto-194></docs-demo-six-picto-194>
+<docs-demo-six-picto-196></docs-demo-six-picto-196>
 
 ```html
 <six-picto size="xLarge">search</six-picto>
@@ -115,7 +115,7 @@ The icons are available in different sizes. Default size is medium (24px).
 
 #### 2Extra-large Icons
 
-<docs-demo-six-picto-195></docs-demo-six-picto-195>
+<docs-demo-six-picto-197></docs-demo-six-picto-197>
 
 ```html
 <six-picto size="xxLarge">search</six-picto>
@@ -131,7 +131,7 @@ The icons are available in different sizes. Default size is medium (24px).
 
 #### 3Extra-large Icons
 
-<docs-demo-six-picto-196></docs-demo-six-picto-196>
+<docs-demo-six-picto-198></docs-demo-six-picto-198>
 
 ```html
 <six-picto size="xxxLarge">search</six-picto>
@@ -147,7 +147,7 @@ The icons are available in different sizes. Default size is medium (24px).
 
 #### Ultra-large Icons
 
-<docs-demo-six-picto-197></docs-demo-six-picto-197>
+<docs-demo-six-picto-199></docs-demo-six-picto-199>
 
 ```html
 <six-picto size="4xl">search</six-picto>
@@ -165,7 +165,7 @@ The icons are available in different sizes. Default size is medium (24px).
 
 If you want to change the color of the pictogram you can do so simply by overwriting the styles:
 
-<docs-demo-six-picto-198></docs-demo-six-picto-198>
+<docs-demo-six-picto-200></docs-demo-six-picto-200>
 
 ```html
 <style>
@@ -187,7 +187,7 @@ If you want to change the color of the pictogram you can do so simply by overwri
 
 Enter an icon label and press enter to display an icon:
 
-<docs-demo-six-picto-199></docs-demo-six-picto-199>
+<docs-demo-six-picto-201></docs-demo-six-picto-201>
 
 ```html
 <div style="border: solid 1px #f6f6f6">

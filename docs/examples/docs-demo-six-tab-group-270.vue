@@ -1,7 +1,7 @@
 <template>
 <div class="demo my-app">
 
-        <six-tab-group placement="right">
+        <six-tab-group placement="bottom">
           <six-tab slot="nav" panel="general">General</six-tab>
           <six-tab slot="nav" panel="custom">Custom</six-tab>
           <six-tab slot="nav" panel="advanced">Advanced</six-tab>

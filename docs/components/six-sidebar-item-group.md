@@ -3,7 +3,7 @@
 
 ## six sidebar group
 
-<docs-demo-six-sidebar-item-group-251></docs-demo-six-sidebar-item-group-251>
+<docs-demo-six-sidebar-item-group-253></docs-demo-six-sidebar-item-group-253>
 
 ```html
 <six-sidebar-item-group icon="description" name="Upload" value="upload">
@@ -27,7 +27,7 @@
 
 Use `summary-icon` property to set custom summary icon name.
 
-<docs-demo-six-sidebar-item-group-252></docs-demo-six-sidebar-item-group-252>
+<docs-demo-six-sidebar-item-group-254></docs-demo-six-sidebar-item-group-254>
 
 ```html
 <six-sidebar-item-group icon="description" name="Upload" value="upload" summary-icon="settings">
@@ -49,7 +49,7 @@ Use `summary-icon` property to set custom summary icon name.
 
 Use `summary-icon` property to set custom summary icon name.
 
-<docs-demo-six-sidebar-item-group-253></docs-demo-six-sidebar-item-group-253>
+<docs-demo-six-sidebar-item-group-255></docs-demo-six-sidebar-item-group-255>
 
 ```html
 <six-sidebar-item-group icon="description" name="Upload" value="upload">

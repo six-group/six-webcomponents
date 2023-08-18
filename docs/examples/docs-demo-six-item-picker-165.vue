@@ -1,11 +1,8 @@
 <template>
 <div class="demo my-app">
 
-        <div style="display: flex">
-          <six-item-picker></six-item-picker>
-          <six-item-picker timeout="500" interval="150"></six-item-picker>
-          <six-item-picker timeout="0" interval="1"></six-item-picker>
-        </div>
+        <six-item-picker type="custom" id="custom-item-picker"></six-item-picker>
+        
       
 </div>
 </template>
@@ -15,6 +12,12 @@
 <script>
 export default {
   name: 'docs-demo-six-item-picker-165',
-  mounted() {  }
+  mounted() { 
+          const itemPicker = document.getElementById('custom-item-picker');
+          // create an array of emojis
+          itemPicker.items = Array.from(new Array(50).keys()).map((i) =>
+            String.fromCodePoint(`0x1f6${String(i).padStart(2, '0')}`)
+          );
+         }
 }
 </script>
