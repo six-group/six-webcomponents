@@ -8,20 +8,20 @@ SIX UI Library supports all available material design icons. You can search for 
 <docs-demo-six-icon-123></docs-demo-six-icon-123>
 
 ```html
-<six-icon class="margin-right">face</six-icon>
-<six-icon class="margin-right">favorite</six-icon>
-<six-icon class="margin-right">backup</six-icon>
-<six-icon class="margin-right">delete</six-icon>
-<six-icon class="margin-right">language</six-icon>
-<six-icon class="margin-right">work</six-icon>
-<six-icon class="margin-right">smartphone</six-icon>
-<six-icon class="margin-right">camera</six-icon>
-<six-icon class="margin-right">local_bar</six-icon>
-<six-icon class="margin-right">local_hotel</six-icon>
-<six-icon class="margin-right">local_phone</six-icon>
-<six-icon class="margin-right">person</six-icon>
-<six-icon class="margin-right">check_box</six-icon>
-<six-icon class="margin-right">train</six-icon>
+<six-icon style="margin-right: 1em">face</six-icon>
+<six-icon style="margin-right: 1em">favorite</six-icon>
+<six-icon style="margin-right: 1em">backup</six-icon>
+<six-icon style="margin-right: 1em">delete</six-icon>
+<six-icon style="margin-right: 1em">language</six-icon>
+<six-icon style="margin-right: 1em">work</six-icon>
+<six-icon style="margin-right: 1em">smartphone</six-icon>
+<six-icon style="margin-right: 1em">camera</six-icon>
+<six-icon style="margin-right: 1em">local_bar</six-icon>
+<six-icon style="margin-right: 1em">local_hotel</six-icon>
+<six-icon style="margin-right: 1em">local_phone</six-icon>
+<six-icon style="margin-right: 1em">person</six-icon>
+<six-icon style="margin-right: 1em">check_box</six-icon>
+<six-icon style="margin-right: 1em">train</six-icon>
 ```
 
 
@@ -34,11 +34,11 @@ You can choose different executions of the material icons. By default try sticki
 <docs-demo-six-icon-124></docs-demo-six-icon-124>
 
 ```html
-<six-icon class="margin-right">pie_chart</six-icon>
-<six-icon class="margin-right">settings</six-icon>
-<six-icon class="margin-right">sick</six-icon>
-<six-icon class="margin-right">fort</six-icon>
-<six-icon class="margin-right">castle</six-icon>
+<six-icon style="margin-right: 1em">pie_chart</six-icon>
+<six-icon style="margin-right: 1em">settings</six-icon>
+<six-icon style="margin-right: 1em">sick</six-icon>
+<six-icon style="margin-right: 1em">fort</six-icon>
+<six-icon style="margin-right: 1em">castle</six-icon>
 ```
 
 
@@ -47,11 +47,11 @@ You can choose different executions of the material icons. By default try sticki
 <docs-demo-six-icon-125></docs-demo-six-icon-125>
 
 ```html
-<six-icon class="margin-right" filled>pie_chart</six-icon>
-<six-icon class="margin-right" filled>settings</six-icon>
-<six-icon class="margin-right" filled>sick</six-icon>
-<six-icon class="margin-right" filled>fort</six-icon>
-<six-icon class="margin-right" filled>castle</six-icon>
+<six-icon style="margin-right: 1em" filled>pie_chart</six-icon>
+<six-icon style="margin-right: 1em" filled>settings</six-icon>
+<six-icon style="margin-right: 1em" filled>sick</six-icon>
+<six-icon style="margin-right: 1em" filled>fort</six-icon>
+<six-icon style="margin-right: 1em" filled>castle</six-icon>
 ```
 
 
@@ -64,11 +64,11 @@ The icons are available in different sizes. Default size is medium (24px).
 <docs-demo-six-icon-126></docs-demo-six-icon-126>
 
 ```html
-<six-icon class="margin-right" size="xSmall">search</six-icon>
-<six-icon class="margin-right" size="xSmall">done</six-icon>
-<six-icon class="margin-right" size="xSmall">settings</six-icon>
-<six-icon class="margin-right" size="xSmall">home</six-icon>
-<six-icon class="margin-right" size="xSmall">info</six-icon>
+<six-icon style="margin-right: 1em" size="xSmall">search</six-icon>
+<six-icon style="margin-right: 1em" size="xSmall">done</six-icon>
+<six-icon style="margin-right: 1em" size="xSmall">settings</six-icon>
+<six-icon style="margin-right: 1em" size="xSmall">home</six-icon>
+<six-icon style="margin-right: 1em" size="xSmall">info</six-icon>
 ```
 
 
@@ -77,11 +77,11 @@ The icons are available in different sizes. Default size is medium (24px).
 <docs-demo-six-icon-127></docs-demo-six-icon-127>
 
 ```html
-<six-icon class="margin-right" size="small">search</six-icon>
-<six-icon class="margin-right" size="small">done</six-icon>
-<six-icon class="margin-right" size="small">settings</six-icon>
-<six-icon class="margin-right" size="small">home</six-icon>
-<six-icon class="margin-right" size="small">info</six-icon>
+<six-icon style="margin-right: 1em" size="small">search</six-icon>
+<six-icon style="margin-right: 1em" size="small">done</six-icon>
+<six-icon style="margin-right: 1em" size="small">settings</six-icon>
+<six-icon style="margin-right: 1em" size="small">home</six-icon>
+<six-icon style="margin-right: 1em" size="small">info</six-icon>
 ```
 
 
@@ -90,11 +90,11 @@ The icons are available in different sizes. Default size is medium (24px).
 <docs-demo-six-icon-128></docs-demo-six-icon-128>
 
 ```html
-<six-icon class="margin-right" size="medium">search</six-icon>
-<six-icon class="margin-right" size="medium">done</six-icon>
-<six-icon class="margin-right" size="medium">settings</six-icon>
-<six-icon class="margin-right" size="medium">home</six-icon>
-<six-icon class="margin-right" size="medium">info</six-icon>
+<six-icon style="margin-right: 1em" size="medium">search</six-icon>
+<six-icon style="margin-right: 1em" size="medium">done</six-icon>
+<six-icon style="margin-right: 1em" size="medium">settings</six-icon>
+<six-icon style="margin-right: 1em" size="medium">home</six-icon>
+<six-icon style="margin-right: 1em" size="medium">info</six-icon>
 ```
 
 
@@ -103,11 +103,11 @@ The icons are available in different sizes. Default size is medium (24px).
 <docs-demo-six-icon-129></docs-demo-six-icon-129>
 
 ```html
-<six-icon class="margin-right" size="large">search</six-icon>
-<six-icon class="margin-right" size="large">done</six-icon>
-<six-icon class="margin-right" size="large">settings</six-icon>
-<six-icon class="margin-right" size="large">home</six-icon>
-<six-icon class="margin-right" size="large">info</six-icon>
+<six-icon style="margin-right: 1em" size="large">search</six-icon>
+<six-icon style="margin-right: 1em" size="large">done</six-icon>
+<six-icon style="margin-right: 1em" size="large">settings</six-icon>
+<six-icon style="margin-right: 1em" size="large">home</six-icon>
+<six-icon style="margin-right: 1em" size="large">info</six-icon>
 ```
 
 
@@ -116,37 +116,43 @@ The icons are available in different sizes. Default size is medium (24px).
 <docs-demo-six-icon-130></docs-demo-six-icon-130>
 
 ```html
-<six-icon class="margin-right" size="xLarge">search</six-icon>
-<six-icon class="margin-right" size="xLarge">done</six-icon>
-<six-icon class="margin-right" size="xLarge">settings</six-icon>
-<six-icon class="margin-right" size="xLarge">home</six-icon>
-<six-icon class="margin-right" size="xLarge">info</six-icon>
+<div style="display: flex; align-items: center; min-height: 3rem">
+  <six-icon style="margin-right: 1em" size="xLarge">search</six-icon>
+  <six-icon style="margin-right: 1em" size="xLarge">done</six-icon>
+  <six-icon style="margin-right: 1em" size="xLarge">settings</six-icon>
+  <six-icon style="margin-right: 1em" size="xLarge">home</six-icon>
+  <six-icon style="margin-right: 1em" size="xLarge">info</six-icon>
+</div>
 ```
 
 
-#### 2Extra-large Icons
+#### Twice-Extra-large Icons
 
 <docs-demo-six-icon-131></docs-demo-six-icon-131>
 
 ```html
-<six-icon class="margin-right" size="xxLarge">search</six-icon>
-<six-icon class="margin-right" size="xxLarge">done</six-icon>
-<six-icon class="margin-right" size="xxLarge">settings</six-icon>
-<six-icon class="margin-right" size="xxLarge">home</six-icon>
-<six-icon class="margin-right" size="xxLarge">info</six-icon>
+<div style="display: flex; align-items: center; min-height: 4rem">
+  <six-icon style="margin-right: 1em" size="xxLarge">search</six-icon>
+  <six-icon style="margin-right: 1em" size="xxLarge">done</six-icon>
+  <six-icon style="margin-right: 1em" size="xxLarge">settings</six-icon>
+  <six-icon style="margin-right: 1em" size="xxLarge">home</six-icon>
+  <six-icon style="margin-right: 1em" size="xxLarge">info</six-icon>
+</div>
 ```
 
 
-#### 3Extra-large Icons
+#### Thrice-Extra-large Icons
 
 <docs-demo-six-icon-132></docs-demo-six-icon-132>
 
 ```html
-<six-icon class="margin-right" size="xxxLarge">search</six-icon>
-<six-icon class="margin-right" size="xxxLarge">done</six-icon>
-<six-icon class="margin-right" size="xxxLarge">settings</six-icon>
-<six-icon class="margin-right" size="xxxLarge">home</six-icon>
-<six-icon class="margin-right" size="xxxLarge">info</six-icon>
+<div style="display: flex; align-items: center; min-height: 5rem">
+  <six-icon style="margin-right: 1em" size="xxxLarge">search</six-icon>
+  <six-icon style="margin-right: 1em" size="xxxLarge">done</six-icon>
+  <six-icon style="margin-right: 1em" size="xxxLarge">settings</six-icon>
+  <six-icon style="margin-right: 1em" size="xxxLarge">home</six-icon>
+  <six-icon style="margin-right: 1em" size="xxxLarge">info</six-icon>
+</div>
 ```
 
 
@@ -155,14 +161,16 @@ The icons are available in different sizes. Default size is medium (24px).
 <docs-demo-six-icon-133></docs-demo-six-icon-133>
 
 ```html
-<div style="font-size: 1rem; display: inline-block">
-  <six-icon class="margin-right" size="inherit">search</six-icon>
-</div>
-<div style="font-size: 2rem; display: inline-block">
-  <six-icon class="margin-right" size="inherit">search</six-icon>
-</div>
-<div style="font-size: 3rem; display: inline-block">
-  <six-icon class="margin-right" size="inherit">search</six-icon>
+<div style="display: flex; align-items: center; min-height: 3rem">
+  <div style="font-size: 1rem; display: inline-block">
+    <six-icon style="margin-right: 1em" size="inherit">search</six-icon>
+  </div>
+  <div style="font-size: 2rem; display: inline-block">
+    <six-icon style="margin-right: 1em" size="inherit">search</six-icon>
+  </div>
+  <div style="font-size: 3rem; display: inline-block">
+    <six-icon style="margin-right: 1em" size="inherit">search</six-icon>
+  </div>
 </div>
 ```
 

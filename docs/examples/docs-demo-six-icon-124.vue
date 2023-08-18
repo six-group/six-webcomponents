@@ -1,11 +1,11 @@
 <template>
 <div class="demo my-app">
 
-        <six-icon class="margin-right">pie_chart</six-icon>
-        <six-icon class="margin-right">settings</six-icon>
-        <six-icon class="margin-right">sick</six-icon>
-        <six-icon class="margin-right">fort</six-icon>
-        <six-icon class="margin-right">castle</six-icon>
+        <six-icon style="margin-right: 1em">pie_chart</six-icon>
+        <six-icon style="margin-right: 1em">settings</six-icon>
+        <six-icon style="margin-right: 1em">sick</six-icon>
+        <six-icon style="margin-right: 1em">fort</six-icon>
+        <six-icon style="margin-right: 1em">castle</six-icon>
       
 </div>
 </template>
