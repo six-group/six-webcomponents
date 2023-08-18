@@ -1,0 +1,27 @@
+{
+  "name": "docs",
+  "version": "4.0.0-beta.0",
+  "main": "index.js",
+  "dependencies": {
+    "@six-group/ui-library": "*"
+  },
+  "devDependencies": {
+    "cpy-cli": "^5.0.0",
+    "node-html-parser": "^6.1.5",
+    "rimraf": "^5.0.1",
+    "turndown": "^7.1.2",
+    "vitepress": "^1.0.0-rc.4",
+    "vue": "^3.3.4"
+  },
+  "scripts": {
+    "start": "vitepress dev",
+    "build": "run-s clean generate:components build:doc copy:angular copy:react",
+    "preview": "vitepress preview",
+    "build:doc": "vitepress build",
+    "copy:angular": "cpy '../examples/angular/dist/demo-app-angular/**/*' ./.vitepress/dist/demo/angular/",
+    "copy:react": "cpy '../examples/react/build/**/*' ./.vitepress/dist/demo/react/",
+    "generate:components": "node scripts/components.js",
+    "clean": "rimraf examples components .vitepress/dist"
+  },
+  "license": "Apache-2.0"
+}

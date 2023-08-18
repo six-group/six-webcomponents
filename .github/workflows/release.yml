@@ -65,3 +65,9 @@ jobs:
           tag_name: ${{ inputs.version }}
           release_name: '${{ inputs.version }}'
           body: '${{ inputs.version }}'
+
+      - name: 'Deploy Documentation'
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: docs/.vitepress/dist
+          target-folder: docs

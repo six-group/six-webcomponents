@@ -472,34 +472,6 @@
         </style>
       </section>
 
-      <h2>Validation</h2>
-
-      <p>Of course you can also use the timepicker in a form.</p>
-
-      <section class="demo" style="width: 500px">
-        <six-form class="input-validation-required">
-          <six-timepicker
-            name="arrivalTime"
-            error-text="Time of Arrival is missing or invalid"
-            label="Time of Arrival"
-            required
-          ></six-timepicker>
-          <br /><br />
-          <six-button type="primary" submit>Submit</six-button>
-          <six-button type="primary" reset>Reset</six-button>
-        </six-form>
-
-        <script type="module">
-          const formRequired = document.querySelector('.input-validation-required');
-          formRequired.addEventListener('six-form-submit', () => alert('All fields are valid!'));
-        </script>
-        <style>
-          six-timepicker {
-            max-width: 15rem;
-          }
-        </style>
-      </section>
-
       <h3>Open State</h3>
       <p>If you wish you can have the timepicker open on startup. It will close as usual (clicking outside etc.)</p>
       <section class="demo">
