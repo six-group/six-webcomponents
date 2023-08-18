@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[138],{490:function(i,e,t){"use strict";t.r(e);var s={name:"docs-demo-six-file-list-item-99",mounted(){}},n=t(10),l=Object(n.a)(s,(function(){var i=this._self._c;return i("div",{staticClass:"demo my-app"},[i("six-file-list-item",{attrs:{identifier:"id1",name:"file_1.pdf"}})],1)}),[],!1,null,null,null);e.default=l.exports}}]);

@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[45],{398:function(a,n,s){"use strict";s.r(n);var t={name:"docs-demo-six-avatar-7",mounted(){}},e=s(10),o=Object(e.a)(t,(function(){var a=this._self._c;return a("div",{staticClass:"demo my-app"},[a("six-avatar")],1)}),[],!1,null,null,null);n.default=o.exports}}]);

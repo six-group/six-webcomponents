@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[218],{571:function(s,t,i){"use strict";i.r(t);var o={name:"docs-demo-six-picto-184",mounted(){}},n=i(10),c=Object(n.a)(o,(function(){var s=this._self._c;return s("div",{staticClass:"demo my-app"},[s("six-picto",[this._v("copy")]),this._v(" "),s("six-picto",[this._v("home")])],1)}),[],!1,null,null,null);t.default=c.exports}}]);

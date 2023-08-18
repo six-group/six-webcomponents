@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[69],{421:function(e,c,s){"use strict";s.r(c);var t={name:"docs-demo-six-checkbox-34",mounted(){}},n=s(10),o=Object(n.a)(t,(function(){var e=this._self._c;return e("div",{staticClass:"demo my-app"},[e("six-checkbox",{attrs:{checked:""}},[this._v("Checked")])],1)}),[],!1,null,null,null);c.default=o.exports}}]);

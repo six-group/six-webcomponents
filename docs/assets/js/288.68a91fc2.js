@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[288],{641:function(n,s,e){"use strict";e.r(s);var t={name:"docs-demo-six-spinner-254",mounted(){}},i=e(10),a=Object(i.a)(t,(function(){var n=this._self._c;return n("div",{staticClass:"demo my-app"},[n("six-spinner",{attrs:{six:"true"}})],1)}),[],!1,null,null,null);s.default=a.exports}}]);

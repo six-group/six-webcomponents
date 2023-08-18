@@ -1,2 +1,0 @@
-*,:after,:before{box-sizing:border-box}#root{height:100vh}[slot=main]{padding:1rem}.dashboard{text-align:center}.dashboard h1{display:block;font-size:2em;-webkit-margin-before:.67em;margin-block-start:.67em;-webkit-margin-after:.67em;margin-block-end:.67em;-webkit-margin-start:0;margin-inline-start:0;-webkit-margin-end:0;margin-inline-end:0;font-weight:700}.dashboard__actions,.dashboard__actions six-button{margin:1rem}six-badge:not([type=danger])::part(base){background:none}
-/*# sourceMappingURL=main.dc199642.chunk.css.map */
