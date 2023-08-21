@@ -22,7 +22,7 @@ describe('six-select', () => {
               <div class="form-control__input">
                 <six-dropdown class="select select--empty select--medium select--placeholder-visible" closeonselect="" filterdebounce="300" part="base">
                   <div aria-describedby="select-help-text-1" aria-expanded="false" aria-haspopup="true" aria-labelledby="select-label-1" class="select__box" id="select-1" role="combobox" slot="trigger" tabindex="0">
-                    <span class="select__label"></span>
+                    <span class="select__label select__label--single"></span>
                     <span class="select__icon" part="icon">
                       <six-icon size="medium">expand_more</six-icon>
                     </span>
@@ -67,7 +67,7 @@ describe('six-select', () => {
               <div class="form-control__input">
                 <six-dropdown class="select select--empty select--medium select--placeholder-visible" closeonselect="" disablehideonenterandspace="" filterdebounce="300" part="base">
                   <div aria-describedby="select-help-text-2" aria-expanded="false" aria-haspopup="true" aria-labelledby="select-label-2" class="select__box select__box--autocomplete" id="select-2" role="combobox" slot="trigger" tabindex="0">
-                    <span class="select__label"></span>
+                    <span class="select__label select__label--single"></span>
                     <six-input aria-hidden="true" class="select__input" placeholder="" size="medium" tabindex="-1"></six-input>
                   </div>
                   <six-menu class="select__menu select__menu--hidden" part="menu" remove-box-shadow>

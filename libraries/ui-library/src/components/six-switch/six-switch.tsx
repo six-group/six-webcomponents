@@ -2,6 +2,7 @@ import { Component, Element, Event, EventEmitter, h, Method, Prop, State, Watch 
 import { EmptyPayload } from '../../utils/types';
 import { EventListeners } from '../../utils/event-listeners';
 import FormControl from '../../functional-components/form-control/form-control';
+import { hasSlot } from '../../utils/slot';
 
 let id = 0;
 
@@ -12,6 +13,7 @@ let id = 0;
  * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
  *
  * @slot - The switch's label.
+ * @slot error-text - Error text that is shown for validation errors. Alternatively, you can use the error-text prop.
  *
  * @part base - The component's base wrapper.
  * @part control - The switch control.
@@ -35,6 +37,7 @@ export class SixSwitch {
   @Element() host!: HTMLSixSwitchElement;
 
   @State() hasFocus = false;
+  @State() hasErrorTextSlot = false;
 
   /** The switch's name attribute. */
   @Prop() name = '';
@@ -55,10 +58,17 @@ export class SixSwitch {
   @Prop() label = '';
 
   /** The error message shown, if `invalid` is set to true.  */
-  @Prop() errorText = '';
+  @Prop() errorText: string | string[] = '';
+
+  /** The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1 */
+  @Prop() errorTextCount?: number;
 
   /** If this property is set to true and an error message is provided by `errorText`, the error message is displayed.  */
   @Prop({ reflect: true }) invalid = false;
+
+  componentWillLoad() {
+    this.handleSlotChange();
+  }
 
   @Watch('checked')
   handleCheckedChange() {
@@ -66,7 +76,6 @@ export class SixSwitch {
       this.inputElement.checked = this.checked;
       this.checked = this.inputElement.checked;
     }
-    this.sixChange.emit(this.checked);
   }
 
   /** Emitted when the control loses focus. */
@@ -79,14 +88,26 @@ export class SixSwitch {
   @Event({ eventName: 'six-switch-focus' }) sixFocus!: EventEmitter<EmptyPayload>;
 
   connectedCallback() {
+    this.host.shadowRoot?.addEventListener('slotchange', this.handleSlotChange);
     this.eventListeners.forward('six-switch-change', 'change', this.host);
     this.eventListeners.forward('six-switch-blur', 'blur', this.host);
     this.eventListeners.forward('six-switch-focus', 'focus', this.host);
   }
 
   disconnectedCallback() {
+    this.host.shadowRoot?.removeEventListener('slotchange', this.handleSlotChange);
     this.eventListeners.removeAll();
   }
+
+  @Watch('errorText')
+  @Watch('label')
+  handleLabelChange() {
+    this.handleSlotChange();
+  }
+
+  private handleSlotChange = () => {
+    this.hasErrorTextSlot = hasSlot(this.host, 'error-text');
+  };
 
   /** Sets focus on the switch. */
   @Method()
@@ -103,6 +124,7 @@ export class SixSwitch {
   private handleClick = () => {
     if (this.inputElement != null) {
       this.checked = this.inputElement.checked;
+      this.sixChange.emit(this.checked);
     }
   };
 
@@ -120,11 +142,13 @@ export class SixSwitch {
     if (event.key === 'ArrowLeft') {
       event.preventDefault();
       this.checked = false;
+      this.sixChange.emit(this.checked);
     }
 
     if (event.key === 'ArrowRight') {
       event.preventDefault();
       this.checked = true;
+      this.sixChange.emit(this.checked);
     }
   };
 
@@ -143,6 +167,8 @@ export class SixSwitch {
         hasLabelSlot={false}
         errorTextId={this.errorTextId}
         errorText={this.errorText}
+        errorTextCount={this.errorTextCount}
+        hasErrorTextSlot={this.hasErrorTextSlot}
         size="medium"
         disabled={this.disabled}
         required={this.required}

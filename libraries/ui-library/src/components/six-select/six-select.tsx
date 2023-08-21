@@ -59,6 +59,7 @@ export class SixSelect {
   @State() hasFocus = false;
   @State() hasHelpTextSlot = false;
   @State() hasLabelSlot = false;
+  @State() hasErrorTextSlot = false;
   @State() isOpen = false;
   @State() displayLabel = '';
   @State() displayTags: HTMLSixTagElement[] = [];
@@ -115,7 +116,10 @@ export class SixSelect {
   @Prop() label = '';
 
   /** The error message shown, if `invalid` is set to true.  */
-  @Prop() errorText = '';
+  @Prop() errorText: string | string[] = '';
+
+  /** The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1 */
+  @Prop() errorTextCount?: number;
 
   /** If this property is set to true and an error message is provided by `errorText`, the error message is displayed.  */
   @Prop({ reflect: true }) invalid = false;
@@ -181,9 +185,6 @@ export class SixSelect {
     }
 
     await this.syncItemsFromValue();
-    if (this.input) {
-      this.sixChange.emit({ value: this.value, isSelected: true });
-    }
   }
 
   /** Emitted when the control's value changes. */
@@ -269,7 +270,7 @@ export class SixSelect {
   }
 
   private getValueAsArray() {
-    const values = Array.isArray(this.value) ? this.value : [this.value];
+    const values = Array.isArray(this.value) ? this.value : this.value === '' ? [] : [this.value];
     // enforce that the values are converted to 'string' before the value is compared
     return values.map(String);
   }
@@ -287,6 +288,7 @@ export class SixSelect {
   private handleClearClick = (event: MouseEvent) => {
     event.stopPropagation();
     this.clearValues();
+    this.sixChange.emit({ value: this.value, isSelected: true });
   };
 
   private clearValues() {
@@ -312,6 +314,7 @@ export class SixSelect {
         .forEach((option) => (option.checked = hasDeselectedOptions));
       const checkedItems = nonFilteredItems.filter((option) => option.checked).map((option) => option.value);
       this.value = hasDeselectedOptions ? checkedItems : [];
+      this.sixChange.emit({ value: this.value, isSelected: true });
     }
   };
 
@@ -385,6 +388,7 @@ export class SixSelect {
     this.value = getValue();
 
     this.syncItemsFromValue();
+    this.sixChange.emit({ value: this.value, isSelected: true });
   };
 
   private handleMenuShow = (event: CustomEvent) => {
@@ -406,6 +410,7 @@ export class SixSelect {
   private handleSlotChange = () => {
     this.hasHelpTextSlot = hasSlot(this.host, 'help-text');
     this.hasLabelSlot = hasSlot(this.host, 'label');
+    this.hasErrorTextSlot = hasSlot(this.host, 'error-text');
     this.syncItemsFromValue();
   };
 
@@ -421,6 +426,7 @@ export class SixSelect {
 
     if (clearButton) {
       event.stopPropagation();
+      this.sixChange.emit({ value: this.value, isSelected: true });
     }
   };
 
@@ -530,6 +536,8 @@ export class SixSelect {
         hasHelpTextSlot={this.hasHelpTextSlot}
         errorTextId={this.errorTextId}
         errorText={this.errorText}
+        errorTextCount={this.errorTextCount}
+        hasErrorTextSlot={this.hasErrorTextSlot}
         size={this.size}
         onLabelClick={this.handleLabelClick}
         disabled={this.disabled}
@@ -586,7 +594,7 @@ export class SixSelect {
             onFocus={this.handleFocus}
             onKeyDown={this.handleKeyDown}
           >
-            <span class="select__label">
+            <span class={{ select__label: true, 'select__label--single': !this.displayTags.length }}>
               {this.displayTags.length > 0 ? (
                 <span part="tags" class="select__tags">
                   {this.displayTags}

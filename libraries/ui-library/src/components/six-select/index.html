@@ -29,7 +29,7 @@
         </six-select>
       </section>
       <p></p>
-      <section class="demo">
+      <section>
         <div style="width: 100px"></div>
         <div style="width: 100px">
           <six-select>
@@ -43,15 +43,6 @@
           </six-select>
         </div>
       </section>
-
-      <p class="warn">
-        This component doesn't work with standard forms. Use <a href="six-form.html">six-form</a> instead.
-      </p>
-
-      <p class="warn">
-        Please refer to the section on <a href="six-form.html#form-control-validation">form control validation</a> to
-        learn how to do client-side validation.
-      </p>
 
       <h2>Examples</h2>
 
@@ -273,7 +264,7 @@
 
       <p>There was a bug where hoisting inside drawers caused a problem</p>
 
-      <section class="demo">
+      <section>
         <six-button id="hoistingDrawerBtn">Open Drawer</six-button>
         <six-drawer id="hoistingDrawer" label="Drawer" class="drawer-overview">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -484,7 +475,7 @@
         can do so via the <code>options</code> attribute.
       </p>
 
-      <section class="demo">
+      <section>
         <six-select id="six-select-dynamic-options"></six-select>
         <script type="module">
           const sixSelectDynamicOptions = document.getElementById('six-select-dynamic-options');
@@ -502,7 +493,7 @@
         some performance issues. To avoid such issues use <code>virtual-scroll</code>
       </p>
 
-      <section class="demo">
+      <section>
         <six-select id="six-select-virtual-scroll" virtual-scroll></six-select>
         <script type="module">
           const sixSelectDynamicOptions = document.getElementById('six-select-virtual-scroll');
@@ -554,6 +545,56 @@
             );
           });
         </script>
+      </section>
+
+      <h2>Error Text</h2>
+
+      <p>Add a descriptive error message using either the <code>error-text</code> prop, or the equally named slot.</p>
+
+      <six-alert type="warning" open>
+        <six-icon slot="icon">warning</six-icon>
+        There are two caveats when using the <code>error-text</code> prop/slot:
+        <ol>
+          <li>
+            Remember to set the <code>invalid</code> prop as well! If you only provide some content to the
+            <code>error-text</code> prop/slot, it won't be shown unless the <code>invalid</code> prop is set to true
+          </li>
+          <li>
+            When using the prop, and you need to show more than one message, remember to also set the
+            <code>error-text-count</code> prop to a value that is the same or bigger than the length of the list of
+            messages you are using. Otherwise only one message will be shown at a time
+          </li>
+        </ol>
+      </six-alert>
+
+      <p>The <code>error-text</code> prop accepts either a simple string message, or a list of messages.</p>
+
+      <section class="demo">
+        <six-select label="Simple string message" error-text="This is a simple string message" invalid> </six-select>
+      </section>
+
+      <section class="demo">
+        <six-select id="multiple-error-text" label="List of string message" invalid></six-select>
+        <script type="module">
+          const sixSelect = document.getElementById('multiple-error-text');
+          sixSelect.errorText = ['Message 1', 'Message 2'];
+          sixSelect.errorTextCount = 3;
+        </script>
+      </section>
+
+      <p>
+        When using the <code>error-text</code> slot, it is recommended to use the <code>six-error</code> component to
+        wrap the error message(s). This will provide the correct styling out of the box
+      </p>
+      <section class="demo">
+        <six-select invalid>
+          <div slot="error-text">
+            <six-error
+              >An error message
+              <a href="https://github.com/six-group/six-webcomponents" target="_blank">with a link</a></six-error
+            >
+          </div>
+        </six-select>
       </section>
     </div>
   </body>

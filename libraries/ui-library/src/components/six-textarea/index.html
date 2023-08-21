@@ -17,15 +17,6 @@
         <six-textarea></six-textarea>
       </section>
 
-      <p class="warn">
-        This component doesn't work with standard forms. Use <a href="six-form.html">six-form</a> instead.
-      </p>
-
-      <p class="warn">
-        Please refer to the section on <a href="six-form.html#form-control-validation">form control validation</a> to
-        learn how to do client-side validation.
-      </p>
-
       <h2>Examples</h2>
 
       <h3>Rows</h3>
@@ -116,7 +107,7 @@
 
       <p>You can play with the following native and six-input elements to see that the event firing is the same</p>
 
-      <section class="demo">
+      <section>
         <div style="font-size: 1rem; font-weight: bold; padding-bottom: 1rem">Native Input Element</div>
         <textarea type="text" id="native-textarea" name="type"></textarea>
         <div style="padding-bottom: 0.5rem">
@@ -167,6 +158,57 @@
             nativeTextarea.value = someString;
           });
         </script>
+      </section>
+
+      <h2>Error Text</h2>
+
+      <p>Add a descriptive error message using either the <code>error-text</code> prop, or the equally named slot.</p>
+
+      <six-alert type="warning" open>
+        <six-icon slot="icon">warning</six-icon>
+        There are two caveats when using the <code>error-text</code> prop/slot:
+        <ol>
+          <li>
+            Remember to set the <code>invalid</code> prop as well! If you only provide some content to the
+            <code>error-text</code> prop/slot, it won't be shown unless the <code>invalid</code> prop is set to true
+          </li>
+          <li>
+            When using the prop, and you need to show more than one message, remember to also set the
+            <code>error-text-count</code> prop to a value that is the same or bigger than the length of the list of
+            messages you are using. Otherwise only one message will be shown at a time
+          </li>
+        </ol>
+      </six-alert>
+
+      <p>The <code>error-text</code> prop accepts either a simple string message, or a list of messages.</p>
+
+      <section class="demo">
+        <six-textarea label="Simple string message" error-text="This is a simple string message" invalid>
+        </six-textarea>
+      </section>
+
+      <section class="demo">
+        <six-textarea id="multiple-error-text" label="List of string message" invalid></six-textarea>
+        <script type="module">
+          const sixTextarea = document.getElementById('multiple-error-text');
+          sixTextarea.errorText = ['Message 1', 'Message 2'];
+          sixTextarea.errorTextCount = 3;
+        </script>
+      </section>
+
+      <p>
+        When using the <code>error-text</code> slot, it is recommended to use the <code>six-error</code> component to
+        wrap the error message(s). This will provide the correct styling out of the box
+      </p>
+      <section class="demo">
+        <six-textarea invalid>
+          <div slot="error-text">
+            <six-error
+              >An error message
+              <a href="https://github.com/six-group/six-webcomponents" target="_blank">with a link</a></six-error
+            >
+          </div>
+        </six-textarea>
       </section>
     </div>
   </body>

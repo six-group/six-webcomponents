@@ -14,7 +14,7 @@
 
       <p>Simple tile implementation.</p>
 
-      <section class="demo">
+      <section>
         <six-tile id="tileFancy" label="Fancy Tile" icon-name="favorite"></six-tile>
         <script type="module">
           const tile = document.querySelector('#tileFancy');
@@ -44,19 +44,19 @@
 
       <h3>Closeable</h3>
       <p>Use the <code>closeable</code> attribute to avoid that the tile is closable.</p>
-      <section class="demo">
+      <section>
         <six-tile label="Medium" icon-name="home" closeable="false"></six-tile>
       </section>
 
       <h3>Elevated</h3>
       <p>Use the <code>elevated</code> attribute to let the tile cast a shadow.</p>
-      <section class="demo">
+      <section>
         <six-tile label="Medium" icon-name="home" elevated="true"></six-tile>
       </section>
 
       <h3>Disabled</h3>
       <p>Use the <code>disabled</code> attribute to avoid that the tile is clicked.</p>
-      <section class="demo">
+      <section>
         <six-tile label="Medium" icon-name="home" disabled="true"></six-tile>
       </section>
 
@@ -65,7 +65,7 @@
         In some cases you might need to have more control over how the icon or label is displayed. In these scenarios
         use the slot over the props.
       </p>
-      <section class="demo">
+      <section>
         <six-tile id="tileWithLabelSlot" icon-name="home">
           <div slot="label" style="text-align: center; min-height: 4em">
             <div>some very long label</div>
@@ -73,11 +73,6 @@
             <div>multiple lines</div>
           </div>
         </six-tile>
-        <script type="module">
-          const tile = document.querySelector('#tileWithLabelSlot');
-          tile.addEventListener('six-tile-selected', () => alert('hello custom label tile!'));
-        </script>
-
         <six-tile id="tileWithIconSlot" sixTileSelected="alert('clicked')">
           <six-icon slot="icon" size="xxLarge" style="color: red">delete</six-icon>
           <div slot="label" style="text-align: center; min-height: 4em; align-items: center; display: flex">
@@ -85,8 +80,11 @@
           </div>
         </six-tile>
         <script type="module">
-          const tile = document.querySelector('#tileWithIconSlot');
-          tile.addEventListener('six-tile-selected', () => alert('hello custom icon tile!'));
+          const tile1 = document.querySelector('#tileWithIconSlot');
+          tile1.addEventListener('six-tile-selected', () => alert('hello custom icon tile!'));
+
+          const tile2 = document.querySelector('#tileWithLabelSlot');
+          tile2.addEventListener('six-tile-selected', () => alert('hello custom label tile!'));
         </script>
       </section>
 
@@ -94,7 +92,7 @@
 
       <p>If you wish to show a tooltip on hover, simply add the attribute <code>disable-tooltip="false"</code></p>
 
-      <section class="demo">
+      <section>
         <six-tile label="Fancy Tile" icon-name="favorite" disable-tooltip="false"></six-tile>
       </section>
     </div>

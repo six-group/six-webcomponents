@@ -1,17 +1,20 @@
 # React
 
-Find the deployed React Demo App [here](TODO).
+Find the deployed React Demo App [here](https://six-group.github.io/six-webcomponents/demo/react).
 
-React uses a thin wrapper around web components that provides correct typings for the properties, methods and events.
+React uses a thin wrapper around web components that provides correct typings for the properties,
+methods and events.
 
 ## Installing Web Components
 
 Before installing web components make sure your `npm` is set up.
 
-Install web components `@six-group/ui-library` and web components wrapper library for React `@six-group/ui-library-react`.
+Install web components `@six-group/ui-library` and web components wrapper library for React
+`@six-group/ui-library-react`.
 
 ```bash
-npm install @six-group/ui-library@0.0.1 @six-group/ui-library-react@0.0.1
+npm install @six-group/ui-library
+npm install @six-group/ui-library-react
 ```
 
 ## Assets and files
@@ -60,13 +63,13 @@ Update `package.json` scripts to handle the custom config.
 
 Include web components styles in the `index.tsx`
 
-```javascript
+```ts
 import React from 'react';
 
 // styles
 import '@six-group/ui-library/dist/ui-library/ui-library.css';
 
-...
+// ...
 ```
 
 Update `index.css` to handle overflow if needed.
@@ -80,7 +83,7 @@ body {
 
 Basic setup `App.tsx`
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import './App.css';
 // root

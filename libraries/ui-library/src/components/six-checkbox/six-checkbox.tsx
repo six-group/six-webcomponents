@@ -39,6 +39,7 @@ export class SixCheckbox {
 
   @State() hasFocus = false;
   @State() hasLabelSlot = false;
+  @State() hasErrorSlot = false;
 
   /** The checkbox's name attribute. */
   @Prop() name = '';
@@ -62,7 +63,10 @@ export class SixCheckbox {
   @Prop() label = '';
 
   /** The error message shown, if `invalid` is set to true.  */
-  @Prop() errorText = '';
+  @Prop() errorText: string | string[] = '';
+
+  /** The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1 */
+  @Prop() errorTextCount?: number;
 
   /** If this property is set to true and an error message is provided by `errorText`, the error message is displayed.  */
   @Prop({ reflect: true }) invalid = false;
@@ -85,13 +89,11 @@ export class SixCheckbox {
   @Watch('checked')
   @Watch('indeterminate')
   handleCheckedChange() {
-    if (this.nativeInput == null) {
-      return;
-    }
+    if (this.nativeInput == null) return;
+
     this.nativeInput.checked = this.checked;
     this.checked = this.nativeInput.checked;
     this.nativeInput.indeterminate = this.indeterminate;
-    this.sixChange.emit();
   }
 
   @Watch('errorText')
@@ -99,9 +101,6 @@ export class SixCheckbox {
   handleLabelChange() {
     this.handleSlotChange();
   }
-
-  /** default state whether the radio button should be checked or not when resetting */
-  private defaultState = false;
 
   connectedCallback() {
     this.host.shadowRoot?.addEventListener('slotchange', this.handleSlotChange);
@@ -116,7 +115,6 @@ export class SixCheckbox {
   }
 
   componentWillLoad() {
-    this.defaultState = this.checked;
     this.handleSlotChange();
   }
 
@@ -141,16 +139,11 @@ export class SixCheckbox {
     this.nativeInput?.blur();
   }
 
-  /** Resets the formcontrol */
-  @Method()
-  async reset() {
-    this.checked = this.defaultState;
-  }
-
   private handleChange = () => {
     if (this.nativeInput != null) {
       this.checked = this.nativeInput.checked;
       this.indeterminate = false;
+      this.sixChange.emit();
     }
   };
 
@@ -172,6 +165,7 @@ export class SixCheckbox {
 
   private handleSlotChange() {
     this.hasLabelSlot = hasSlot(this.host, 'label');
+    this.hasErrorSlot = hasSlot(this.host, 'error-text');
   }
 
   render() {
@@ -182,7 +176,9 @@ export class SixCheckbox {
         labelId={this.labelId}
         hasLabelSlot={this.hasLabelSlot}
         errorTextId={this.errorTextId}
+        hasErrorTextSlot={this.hasErrorSlot}
         errorText={this.errorText}
+        errorTextCount={this.errorTextCount}
         size="medium"
         disabled={this.disabled}
         required={this.required}

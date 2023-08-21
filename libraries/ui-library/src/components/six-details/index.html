@@ -11,7 +11,7 @@
   <body>
     <div class="container">
       <p>Details show a brief summary and expand to show additional content.</p>
-      <section class="demo">
+      <section>
         <six-details summary="Toggle Me">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
           magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -23,7 +23,7 @@
 
       <h3>Custom summary icon</h3>
       <p>Use <code>summary-icon</code> slot to provide custom summary icon content.</p>
-      <section class="demo">
+      <section>
         <six-details summary="Toggle Me">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
           magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -33,7 +33,7 @@
       </section>
 
       <p>Use <code>summary-icon</code> property to set the desired summary icon.</p>
-      <section class="demo">
+      <section>
         <six-details summary="Toggle Me" summary-icon="settings">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
           magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -45,7 +45,7 @@
         Use <code>summary-icon-size</code> slot to customize the icon size. With "inherit" the icon size depends on the
         font-size.
       </p>
-      <section class="demo">
+      <section>
         <div class="details-icon-size-example-1">
           <six-details summary="Toggle Me" summary-icon-size="inherit">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
@@ -61,7 +61,7 @@
         </style>
       </section>
       <p></p>
-      <section class="demo">
+      <section>
         <div class="details-icon-size-example-2">
           <six-details summary="Toggle Me" summary-icon-size="inherit">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
@@ -79,7 +79,7 @@
 
       <h3>Disabled</h3>
       <p>Use the <code>disable</code> attribute to prevent the details from expanding.</p>
-      <section class="demo">
+      <section>
         <six-details summary="Disabled" disabled>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
           magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -92,7 +92,7 @@
         Details are designed to function independently, but you can simulate a group or "accordion" where only one is
         shown at a time by listening for the <code>six-show</code> event.
       </p>
-      <section class="demo">
+      <section>
         <div class="details-group-example">
           <six-details summary="First" open>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
@@ -136,7 +136,7 @@
         one of the buttons.
       </p>
 
-      <section class="demo">
+      <section>
         <div
           id="buttonbar-programmatic-example"
           style="
@@ -204,7 +204,7 @@
         You can disable the open/close mechanism and hide the summary icon by setting <code>has-items</code> to
         <code>false</code>. Usually not needed, but used internally by <code>six-sidebar-item-group</code>.
       </p>
-      <section class="demo">
+      <section>
         <six-details has-content="false" summary="Toggle Me">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
           magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
