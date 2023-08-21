@@ -90,6 +90,19 @@ function transformToMarkdown(component) {
   const root = parse(component.html);
   const container = root.querySelector('.container');
   let index = 0;
+  if (container == null) {
+    console.error(
+      `Error while processing component located @ '${component.filePath}'
+    
+Matching index.html has no root element with class 'container'. Possible causes:
+ - Missing main 'div' tag with class 'container'
+ - Multiple tags with 'container' class
+ - Malformed html in 'index.html'
+          
+Please check the associated html file and try again`
+    );
+    process.exit(1);
+  }
   const vueExamples = container.childNodes.map((node) => {
     switch (node.rawTagName) {
       case 'section': {
