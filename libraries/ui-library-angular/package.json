@@ -1,7 +1,6 @@
 {
   "name": "@six-group/ui-library-angular",
-  "version": "4.0.0",
-  "description": "Angular wrapper components for @six-group/ui-library",
+  "version": "4.0.0-beta.1",
   "private": false,
   "scripts": {
     "ng": "ng",

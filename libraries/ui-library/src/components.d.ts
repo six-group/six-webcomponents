@@ -223,11 +223,7 @@ export namespace Components {
         /**
           * The error message shown, if `invalid` is set to true.
          */
-        "errorText": string | string[];
-        /**
-          * The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1
-         */
-        "errorTextCount"?: number;
+        "errorText": string;
         /**
           * Set to true to draw the checkbox in an indeterminate state.
          */
@@ -252,6 +248,10 @@ export namespace Components {
           * Set to true to show an asterisk beneath the label.
          */
         "required": boolean;
+        /**
+          * Resets the formcontrol
+         */
+        "reset": () => Promise<void>;
         /**
           * Sets focus on the checkbox.
          */
@@ -301,11 +301,7 @@ export namespace Components {
         /**
           * The error message shown, if `invalid` is set to true.
          */
-        "errorText": string | string[];
-        /**
-          * The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1
-         */
-        "errorTextCount"?: number;
+        "errorText": string;
         /**
           * Enable this option to prevent the panel from being clipped when the component is placed inside a container with `overflow: auto|scroll`.
          */
@@ -1179,6 +1175,10 @@ export namespace Components {
          */
         "removeFocus": () => Promise<void>;
         /**
+          * Resets the formcontrol
+         */
+        "reset": () => Promise<void>;
+        /**
           * Sets focus on the radio.
          */
         "setFocus": (options?: FocusOptions) => Promise<void>;
@@ -1200,11 +1200,7 @@ export namespace Components {
         /**
           * The error message shown, if `invalid` is set to true.
          */
-        "errorText": string | string[];
-        /**
-          * The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1
-         */
-        "errorTextCount"?: number;
+        "errorText": string;
         /**
           * The range's help text. Alternatively, you can use the help-text slot.
          */
@@ -1331,11 +1327,7 @@ export namespace Components {
         /**
           * The error message shown, if `invalid` is set to true.
          */
-        "errorText": string | string[];
-        /**
-          * The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1
-         */
-        "errorTextCount"?: number;
+        "errorText": string;
         /**
           * Set to true to allow filtering for entries in the dropdown
          */
@@ -1537,11 +1529,7 @@ export namespace Components {
         /**
           * The error message shown, if `invalid` is set to true.
          */
-        "errorText": string | string[];
-        /**
-          * The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1
-         */
-        "errorTextCount"?: number;
+        "errorText": string;
         /**
           * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
          */
@@ -1688,11 +1676,7 @@ export namespace Components {
         /**
           * The error message shown, if `invalid` is set to true.
          */
-        "errorText": string | string[];
-        /**
-          * The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1
-         */
-        "errorTextCount"?: number;
+        "errorText": string;
         /**
           * The textarea's help text. Alternatively, you can use the help-text slot.
          */
@@ -1840,11 +1824,7 @@ export namespace Components {
         /**
           * The input's error text. Alternatively, you can use the error-text slot.
          */
-        "errorText": string | string[];
-        /**
-          * The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1
-         */
-        "errorTextCount"?: number;
+        "errorText": string;
         /**
           * Define the time format. Valid formats are:  HH:mm:ss hh:mm:ss:aa HH:mm:ss:ms hh:mm:ss:ms:aa HH:mm hh:mm:aa HH hh:aa mm ss ms  where HH is the 24 hour format and hh is the 12 hour format  Please notice that when using the 12-hour-clock (hh) you always need a period indicator (aa). So the time can be parsed as either am or pm
          */
@@ -2870,11 +2850,7 @@ declare namespace LocalJSX {
         /**
           * The error message shown, if `invalid` is set to true.
          */
-        "errorText"?: string | string[];
-        /**
-          * The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1
-         */
-        "errorTextCount"?: number;
+        "errorText"?: string;
         /**
           * Set to true to draw the checkbox in an indeterminate state.
          */
@@ -2952,11 +2928,7 @@ declare namespace LocalJSX {
         /**
           * The error message shown, if `invalid` is set to true.
          */
-        "errorText"?: string | string[];
-        /**
-          * The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1
-         */
-        "errorTextCount"?: number;
+        "errorText"?: string;
         /**
           * Enable this option to prevent the panel from being clipped when the component is placed inside a container with `overflow: auto|scroll`.
          */
@@ -3947,11 +3919,7 @@ declare namespace LocalJSX {
         /**
           * The error message shown, if `invalid` is set to true.
          */
-        "errorText"?: string | string[];
-        /**
-          * The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1
-         */
-        "errorTextCount"?: number;
+        "errorText"?: string;
         /**
           * The range's help text. Alternatively, you can use the help-text slot.
          */
@@ -4090,11 +4058,7 @@ declare namespace LocalJSX {
         /**
           * The error message shown, if `invalid` is set to true.
          */
-        "errorText"?: string | string[];
-        /**
-          * The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1
-         */
-        "errorTextCount"?: number;
+        "errorText"?: string;
         /**
           * Set to true to allow filtering for entries in the dropdown
          */
@@ -4304,11 +4268,7 @@ declare namespace LocalJSX {
         /**
           * The error message shown, if `invalid` is set to true.
          */
-        "errorText"?: string | string[];
-        /**
-          * The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1
-         */
-        "errorTextCount"?: number;
+        "errorText"?: string;
         /**
           * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
          */
@@ -4463,11 +4423,7 @@ declare namespace LocalJSX {
         /**
           * The error message shown, if `invalid` is set to true.
          */
-        "errorText"?: string | string[];
-        /**
-          * The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1
-         */
-        "errorTextCount"?: number;
+        "errorText"?: string;
         /**
           * The textarea's help text. Alternatively, you can use the help-text slot.
          */
@@ -4611,11 +4567,7 @@ declare namespace LocalJSX {
         /**
           * The input's error text. Alternatively, you can use the error-text slot.
          */
-        "errorText"?: string | string[];
-        /**
-          * The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1
-         */
-        "errorTextCount"?: number;
+        "errorText"?: string;
         /**
           * Define the time format. Valid formats are:  HH:mm:ss hh:mm:ss:aa HH:mm:ss:ms hh:mm:ss:ms:aa HH:mm hh:mm:aa HH hh:aa mm ss ms  where HH is the 24 hour format and hh is the 12 hour format  Please notice that when using the 12-hour-clock (hh) you always need a period indicator (aa). So the time can be parsed as either am or pm
          */

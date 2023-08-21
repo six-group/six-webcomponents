@@ -18,8 +18,15 @@
         <a href="six-menu-label.html">menu labels</a> to compose a menu.
       </p>
 
-      <section>
+      <section class="demo">
         <six-menu style="max-width: 200px">
+          <script type="module">
+            let menuElement = document.querySelector('six-menu');
+            menuElement.addEventListener('six-menu-item-selected', (event) => {
+              alert(event.detail.name);
+            });
+          </script>
+
           <six-menu-item value="undo">Undo</six-menu-item>
           <six-menu-item value="redo">Redo</six-menu-item>
           <six-menu-divider></six-menu-divider>
@@ -28,12 +35,6 @@
           <six-menu-item value="paste">Paste</six-menu-item>
           <six-menu-item value="delete">Delete</six-menu-item>
         </six-menu>
-        <script type="module">
-          let menuElement = document.querySelector('six-menu');
-          menuElement.addEventListener('six-menu-item-selected', (event) => {
-            alert(event.detail.name);
-          });
-        </script>
       </section>
 
       <h3>Remove Box Shadow</h3>
@@ -47,7 +48,7 @@
 
       <p>Compare the following examples by scrolling to the right.</p>
 
-      <section>
+      <section class="demo">
         <div style="max-width: 10rem; margin-bottom: 2.5rem">
           <div style="font-weight: bold">With box-shadow (showing ugly artefact)</div>
           <div style="overflow: auto">
@@ -73,7 +74,7 @@
         can do so via the <code>items</code> attribute.
       </p>
 
-      <section>
+      <section class="demo">
         <six-menu id="six-menu-dynamic-options"> </six-menu>
         <script type="module">
           const sixMenuDynamicOptions = document.getElementById('six-menu-dynamic-options');
@@ -88,7 +89,7 @@
 
       <p>There might be scenarios where you want to define the number of items shown.</p>
 
-      <section>
+      <section class="demo">
         <six-menu id="six-menu-scrollable" items-shown="2"> </six-menu>
         <script type="module">
           const sixMenuDynamicOptions = document.getElementById('six-menu-scrollable');
@@ -111,7 +112,7 @@
         <code>items-shown</code>
       </p>
 
-      <section>
+      <section class="demo">
         <six-menu id="six-menu-virtualscroll" virtual-scroll> </six-menu>
         <script type="module">
           const sixMenuDynamicOptions = document.getElementById('six-menu-virtualscroll');

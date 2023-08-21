@@ -15,7 +15,7 @@ import { Route, Routes } from 'react-router-dom';
 const Users = React.lazy(() => import('./Users'));
 import { defineCustomElements } from '@six-group/ui-library/loader';
 
-defineCustomElements();
+defineCustomElements().catch(console.error);
 
 const App = () => {
   const leftSidebar = useModalState(true);

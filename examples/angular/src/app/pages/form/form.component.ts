@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
-import { SixUiLibraryValidators } from '@six-group/ui-library-angular';
+import { SixFormUtilDirective, SixUiLibraryValidators } from '@six-group/ui-library-angular';
 
 type UserGroup = 'admin' | 'developer' | 'user';
 type Status = 'enabled' | 'disabled' | 'temporary';
@@ -13,7 +13,8 @@ type Interest = 'sport' | 'music' | 'movies';
   styleUrls: ['./form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormComponent {
+export class FormComponent implements OnInit {
+  @ViewChild(SixFormUtilDirective) sixFormUtil!: SixFormUtilDirective;
   minDate = addDays(removeTime(new Date()), 1);
   maxDate = addDays(removeTime(new Date()), -1);
 
@@ -48,7 +49,7 @@ export class FormComponent {
   }
 
   fillIn() {
-    this.userForm.setValue({
+    this.userForm.reset({
       firstName: 'SIX',
       lastName: 'Components',
       username: 'six-components',
@@ -68,11 +69,15 @@ export class FormComponent {
     });
   }
 
-  onSubmit(event: SubmitEvent) {
-    console.log('form submitted', event);
+  onSubmit() {
+    if (!this.userForm.valid) {
+      this.sixFormUtil.focusInvalidField();
+    }
     console.log('valid:', this.userForm.valid);
     console.log('form data:', this.userForm.value);
   }
+
+  ngOnInit(): void {}
 }
 
 function getFormDebug(form: FormGroup) {

@@ -24,7 +24,7 @@ export * from './lib/control-value-accessors/range-value-accessor';
 export * from './lib/validators/six-ui-library-validators';
 
 // from helpers
-export * from './lib/form/six-form.directive';
+export * from './lib/util/six-form-util.directive';
 
 // services
 export * from './lib/services/validation-messages.service';

@@ -40,7 +40,6 @@ export class SixRange {
 
   @State() hasFocus = false;
   @State() hasHelpTextSlot = false;
-  @State() hasErrorTextSlot = false;
   @State() hasLabelSlot = false;
   @State() hasTooltip = false;
 
@@ -63,10 +62,7 @@ export class SixRange {
   @Prop() label = '';
 
   /** The error message shown, if `invalid` is set to true.  */
-  @Prop() errorText: string | string[] = '';
-
-  /** The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1 */
-  @Prop() errorTextCount?: number;
+  @Prop() errorText = '';
 
   /** If this property is set to true and an error message is provided by `errorText`, the error message is displayed.  */
   @Prop({ reflect: true }) invalid = false;
@@ -174,7 +170,6 @@ export class SixRange {
   private handleSlotChange = () => {
     this.hasHelpTextSlot = hasSlot(this.host, 'help-text');
     this.hasLabelSlot = hasSlot(this.host, 'label');
-    this.hasErrorTextSlot = hasSlot(this.host, 'error-text');
   };
 
   private handleTouchStart = () => {
@@ -260,8 +255,6 @@ export class SixRange {
         size="medium"
         errorTextId={this.errorTextId}
         errorText={this.errorText}
-        hasErrorTextSlot={this.hasErrorTextSlot}
-        errorTextCount={this.errorTextCount}
         disabled={this.disabled}
         required={this.required}
         displayError={this.invalid}

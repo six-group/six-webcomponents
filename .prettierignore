@@ -10,7 +10,3 @@ libraries/ui-library/loader
 libraries/ui-library/docs
 .angular
 stencil-generated
-docs/examples
-docs/components
-docs/.vitepress/cache
-docs/.vitepress/dist

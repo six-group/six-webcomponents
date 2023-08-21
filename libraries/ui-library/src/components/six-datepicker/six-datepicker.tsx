@@ -62,7 +62,6 @@ enum SelectionMode {
  * @status stable
  *
  * @slot - Used to define a footer for the date picker.
- * @slot error-text - Error text that is shown for validation errors. Alternatively, you can use the error-text prop.
  */
 @Component({
   tag: 'six-datepicker',
@@ -163,10 +162,7 @@ export class SixDatepicker {
   @Prop() label = '';
 
   /** The error message shown, if `invalid` is set to true.  */
-  @Prop() errorText: string | string[] = '';
-
-  /** The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1 */
-  @Prop() errorTextCount?: number;
+  @Prop() errorText = '';
 
   /** If this property is set to true and an error message is provided by `errorText`, the error message is displayed.  */
   @Prop({ reflect: true }) invalid = false;
@@ -228,10 +224,10 @@ export class SixDatepicker {
     if (this.value != null && !isValidDate(this.value)) {
       console.warn('invalid date value: ', this.value);
       this.value = undefined;
-      this.sixSelect.emit(this.value);
     }
     this.selectedDate = this.value;
     this.updatePointerDates();
+    this.sixSelect.emit(this.value);
   }
 
   /**
@@ -469,7 +465,6 @@ export class SixDatepicker {
       return;
     }
     this.value = newDate;
-    this.sixSelect.emit(this.value);
   }
 
   /**
@@ -564,7 +559,6 @@ export class SixDatepicker {
     // clear the value if the user deleted the date
     if (this.inputElement?.value === '' && isValidDate(this.value)) {
       this.value = undefined;
-      this.sixSelect.emit(this.value);
     }
 
     event.stopPropagation();
@@ -740,8 +734,6 @@ export class SixDatepicker {
           label={this.label}
           required={this.required}
           error-text={this.errorText}
-          error-text-count={this.errorTextCount}
-          invalid={this.invalid}
           onClick={() => this.openCalendar()}
           size={this.size}
           class={{ 'input--empty': this.value == null }}
@@ -751,11 +743,6 @@ export class SixDatepicker {
           {hasSlot(this.host, 'label') ? (
             <span slot="label">
               <slot name="label" />
-            </span>
-          ) : null}
-          {hasSlot(this.host, 'error-text') ? (
-            <span slot="error-text">
-              <slot name="error-text"></slot>
             </span>
           ) : null}
         </six-input>

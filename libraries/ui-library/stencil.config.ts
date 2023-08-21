@@ -11,10 +11,6 @@ export const config: Config = {
       injectGlobalPaths: ['src/global/animation.scss'],
     }),
   ],
-  extras: {
-    // fixes VitePress doc build
-    enableImportInjection: true,
-  },
   outputTargets: [
     reactOutputTarget({
       componentCorePackage: '@six-group/ui-library',

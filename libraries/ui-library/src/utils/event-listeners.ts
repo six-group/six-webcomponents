@@ -1,5 +1,5 @@
 interface EventListener {
-  el: GlobalEventHandlers;
+  el: DocumentAndElementEventHandlers;
   name: string;
   listener: EventListenerOrEventListenerObject;
   identifier?: string | null;
@@ -8,7 +8,7 @@ interface EventListener {
 export class EventListeners {
   eventListeners: EventListener[] = [];
 
-  add = <T extends GlobalEventHandlers>(
+  add = <T extends DocumentAndElementEventHandlers>(
     el: T,
     name: string,
     listener: EventListenerOrEventListenerObject,
@@ -18,7 +18,11 @@ export class EventListeners {
     el.addEventListener(name, listener);
   };
 
-  remove = <T extends GlobalEventHandlers>(el: T, name: string, listener: EventListenerOrEventListenerObject) => {
+  remove = <T extends DocumentAndElementEventHandlers>(
+    el: T,
+    name: string,
+    listener: EventListenerOrEventListenerObject
+  ) => {
     this.eventListeners = this.getFilteredEventListeners(
       (eventListener: EventListener) =>
         eventListener.listener == listener && eventListener.el === el && eventListener.name === name

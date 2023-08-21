@@ -10,7 +10,7 @@
   </head>
   <body>
     <div class="container">
-      <h1>Simple Time Picker</h1>
+      <h1>SIX Time Picker</h1>
 
       <p>The <code>six-timepicker</code> can be used to select the time.</p>
 
@@ -19,7 +19,7 @@
         the input field, or via the picker component in the popup
       </p>
 
-      <section>
+      <section class="demo">
         <six-timepicker></six-timepicker>
         <style>
           six-timepicker {
@@ -35,7 +35,7 @@
         <code>HH:mm:ss</code>):
       </p>
 
-      <section>
+      <section class="demo">
         <div class="format-example">
           <six-timepicker format="HH:mm:ss" placeholder="HH:mm:ss"></six-timepicker>
           <six-timepicker format="hh:mm:ss:aa" placeholder="hh:mm:ss:aa"></six-timepicker>
@@ -70,7 +70,7 @@
 
       <p>If you don't set a custom value the default value for the <code>timepicker</code> will be the current time.</p>
 
-      <section>
+      <section class="demo">
         <div style="display: flex; flex-wrap: wrap">
           <six-card class="time-format-item">
             <div>HH:mm:ss</div>
@@ -150,7 +150,7 @@
         separator
       </p>
 
-      <section>
+      <section class="demo">
         <six-timepicker separator="-"></six-timepicker>
         <style>
           six-timepicker {
@@ -169,7 +169,7 @@
 
       <p>Feel free to adjust these numbers to your need:</p>
 
-      <section>
+      <section class="demo">
         <six-timepicker></six-timepicker>
         <br />
         <six-timepicker timeout="500" interval="150"></six-timepicker>
@@ -184,7 +184,7 @@
 
       <h2>Placeholder</h2>
       <p>You can define the timepickers placeholder via <code>placeholder</code></p>
-      <section>
+      <section class="demo">
         <six-timepicker placeholder="HH:mm:ss"></six-timepicker>
         <style>
           six-timepicker {
@@ -198,7 +198,7 @@
         If you want to force the user to use the popup instead of manually enter a time, you can simply add the
         <code>readonly</code> property
       </p>
-      <section>
+      <section class="demo">
         <six-timepicker readonly></six-timepicker>
         <style>
           six-timepicker {
@@ -212,7 +212,7 @@
         To disable the timepicker i.e. nothing will happen when clicking the input field, simply add the
         <code>disabled</code> property
       </p>
-      <section>
+      <section class="demo">
         <six-timepicker disabled></six-timepicker>
         <style>
           six-timepicker {
@@ -224,7 +224,7 @@
       <h3>Clearable</h3>
       <p>Add the <code>clearable</code> property to add a clear button when the input has content.</p>
 
-      <section>
+      <section class="demo">
         <six-timepicker clearable></six-timepicker>
         <style>
           six-timepicker {
@@ -235,7 +235,7 @@
 
       <h2>Sizes</h2>
       <p>Use the <code>size</code> attribute to change the timepicker size.</p>
-      <section>
+      <section class="demo">
         <six-timepicker size="small" clearable></six-timepicker>
         <br />
         <six-timepicker size="medium" clearable></six-timepicker>
@@ -250,7 +250,7 @@
 
       <h2>Inline State</h2>
       <p>If you wish you can have the timepicker as an inline component i.e. the popup will always be open</p>
-      <section>
+      <section class="demo">
         <six-timepicker inline="true"></six-timepicker>
         <style>
           six-timepicker {
@@ -267,7 +267,7 @@
 
       <p>If you want to enforce a certain placement you can use the <code>placement</code> attribute</p>
 
-      <section>
+      <section class="demo">
         <six-timepicker placement="bottom"></six-timepicker>
         <br />
         <six-timepicker placement="top"></six-timepicker>
@@ -281,7 +281,7 @@
       <h2>Icon position</h2>
       <p>Could be adjusted providing <code>icon-position</code> property.</p>
 
-      <section>
+      <section class="demo">
         <six-timepicker icon-position="right"></six-timepicker>
         <br />
         <six-timepicker icon-position="right" clearable></six-timepicker>
@@ -304,7 +304,7 @@
       <h2>Custom icon</h2>
       <p>The slot <code>custom-icon</code> is used to provide a custom timepicker icon.</p>
 
-      <section>
+      <section class="demo">
         <six-timepicker custom-icon>
           <img
             style="height: 24px"
@@ -327,7 +327,7 @@
         this case, the panel will be positioned relative to its containing block, which is usually the viewport unless
         an ancestor uses a transform, perspective, or filter.
       </p>
-      <section>
+      <section class="demo">
         <div style="overflow: hidden; border: solid 1px grey; padding: 0.5em; display: flex">
           <six-timepicker placement="bottom" placeholder="no hoisting"></six-timepicker>
           <six-timepicker hoist placement="bottom" placeholder="with hoisting"></six-timepicker>
@@ -343,7 +343,7 @@
 
       <p>You can define a custom default time which will be shown on first appearance of the popup</p>
 
-      <section>
+      <section class="demo">
         <six-timepicker default-time="23:00:00"></six-timepicker>
         <style>
           six-timepicker {
@@ -356,7 +356,7 @@
 
       <p>The timepicker value can be changed dynamically by setting the <code>value</code> attribute.</p>
 
-      <section>
+      <section class="demo">
         <six-timepicker id="dynamic-timepicker"></six-timepicker>
         <div style="margin-top: 1rem">
           <span style="font-weight: bold">Selected: </span
@@ -403,7 +403,7 @@
         <code>15:37:25:692</code>
       </p>
 
-      <section>
+      <section class="demo">
         <div style="display: flex">
           <six-timepicker id="timepicker-event-example" format="HH:mm:ss:ms"></six-timepicker>
           <pre style="margin-left: 1.5rem">Fired Event: <span id="event-change-example-selected-time"></span></pre>
@@ -425,7 +425,7 @@
 
       <p>In the following you also find an event example for the 12-hour-clock:</p>
 
-      <section>
+      <section class="demo">
         <div style="display: flex">
           <six-timepicker id="timepicker-event-example-12h" format="hh:mm:ss:ms:aa"></six-timepicker>
           <pre style="margin-left: 1.5rem">Fired Event: <span id="event-example-selected-time-12h"></span></pre>
@@ -452,7 +452,7 @@
         instead.
       </p>
 
-      <section>
+      <section class="demo">
         <div style="display: flex">
           <six-timepicker id="timepicker-event-debounced-example" format="HH:mm:ss:ms"></six-timepicker>
           <pre style="margin-left: 1.5rem">Fired Event: <span id="event-debounced-example-selected-time"></span></pre>
@@ -472,10 +472,27 @@
         </style>
       </section>
 
-      <h3>Open State</h3>
-      <p>If you wish you can have the timepicker open on startup. It will close as usual (clicking outside etc.)</p>
-      <section>
-        <six-timepicker open="true" placement="bottom"></six-timepicker>
+      <h2>Validation</h2>
+
+      <p>Of course you can also use the timepicker in a form.</p>
+
+      <section class="demo" style="width: 500px">
+        <six-form class="input-validation-required">
+          <six-timepicker
+            name="arrivalTime"
+            error-text="Time of Arrival is missing or invalid"
+            label="Time of Arrival"
+            required
+          ></six-timepicker>
+          <br /><br />
+          <six-button type="primary" submit>Submit</six-button>
+          <six-button type="primary" reset>Reset</six-button>
+        </six-form>
+
+        <script type="module">
+          const formRequired = document.querySelector('.input-validation-required');
+          formRequired.addEventListener('six-form-submit', () => alert('All fields are valid!'));
+        </script>
         <style>
           six-timepicker {
             max-width: 15rem;
@@ -483,55 +500,15 @@
         </style>
       </section>
 
-      <h2>Error Text</h2>
-
-      <p>Add a descriptive error message using either the <code>error-text</code> prop, or the equally named slot.</p>
-
-      <six-alert type="warning" open>
-        <six-icon slot="icon">warning</six-icon>
-        There are two caveats when using the <code>error-text</code> prop/slot:
-        <ol>
-          <li>
-            Remember to set the <code>invalid</code> prop as well! If you only provide some content to the
-            <code>error-text</code> prop/slot, it won't be shown unless the <code>invalid</code> prop is set to true
-          </li>
-          <li>
-            When using the prop, and you need to show more than one message, remember to also set the
-            <code>error-text-count</code> prop to a value that is the same or bigger than the length of the list of
-            messages you are using. Otherwise only one message will be shown at a time
-          </li>
-        </ol>
-      </six-alert>
-
-      <p>The <code>error-text</code> prop accepts either a simple string message, or a list of messages.</p>
-
+      <h3>Open State</h3>
+      <p>If you wish you can have the timepicker open on startup. It will close as usual (clicking outside etc.)</p>
       <section class="demo">
-        <six-timepicker label="Simple string message" error-text="This is a simple string message" invalid>
-        </six-timepicker>
-      </section>
-
-      <section class="demo">
-        <six-timepicker id="multiple-error-text" label="List of string message" invalid></six-timepicker>
-        <script type="module">
-          const sixTimepicker = document.getElementById('multiple-error-text');
-          sixTimepicker.errorText = ['Message 1', 'Message 2'];
-          sixTimepicker.errorTextCount = 3;
-        </script>
-      </section>
-
-      <p>
-        When using the <code>error-text</code> slot, it is recommended to use the <code>six-error</code> component to
-        wrap the error message(s). This will provide the correct styling out of the box
-      </p>
-      <section class="demo">
-        <six-timepicker invalid>
-          <div slot="error-text">
-            <six-error
-              >An error message
-              <a href="https://github.com/six-group/six-webcomponents" target="_blank">with a link</a></six-error
-            >
-          </div>
-        </six-timepicker>
+        <six-timepicker open="true" placement="bottom"></six-timepicker>
+        <style>
+          six-timepicker {
+            max-width: 15rem;
+          }
+        </style>
       </section>
     </div>
   </body>

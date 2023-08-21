@@ -14,13 +14,27 @@
 
       <p>basic input field</p>
 
-      <section>
+      <section class="demo">
         <six-input></six-input>
       </section>
 
       <div style="margin-bottom: 1em"></div>
 
+      <six-alert type="warning" open>
+        <six-icon slot="icon">warning</six-icon>
+        This component doesn't work with standard forms. Use
+        <a href="six-form.html">six-form</a>
+        instead.
+      </six-alert>
+
       <div style="margin-bottom: 1em"></div>
+
+      <six-alert type="info" open>
+        <six-icon slot="icon">warning</six-icon>
+        Please refer to the section on
+        <a href="six-form.html#form-control-validation">form control validation</a>
+        to learn how to do client-side validation
+      </six-alert>
 
       <h2>Placeholders</h2>
 
@@ -30,7 +44,7 @@
         attribute to add a placeholder.
       </p>
 
-      <section>
+      <section class="demo">
         <six-input placeholder="Type something"></six-input>
       </section>
 
@@ -42,7 +56,7 @@
         prop to add a clear button when the input has content.
       </p>
 
-      <section>
+      <section class="demo">
         <six-input placeholder="Clearable" size="small" clearable></six-input>
         <br />
         <six-input placeholder="Clearable" size="medium" clearable></six-input>
@@ -58,7 +72,7 @@
         prop to add a toggle button that will show the password when activated.
       </p>
 
-      <section>
+      <section class="demo">
         <six-input type="password" placeholder="Password Toggle" size="small" toggle-password></six-input>
         <br />
         <six-input type="password" placeholder="Password Toggle" size="medium" toggle-password></six-input>
@@ -70,7 +84,7 @@
 
       <p>By default when using type number it allows you to only use integers</p>
 
-      <section>
+      <section class="demo">
         <six-input type="number" placeholder="Integers..."></six-input>
       </section>
 
@@ -79,7 +93,7 @@
         a <code>step</code>:
       </p>
 
-      <section>
+      <section class="demo">
         <six-input type="number" placeholder="Decimal Numbers..." pattern="[0-9]+([\.,][0-9]+)?" step="0.1"></six-input>
       </section>
 
@@ -91,7 +105,7 @@
         prop to render inputs line style.
       </p>
 
-      <section>
+      <section class="demo">
         <six-input line></six-input>
       </section>
 
@@ -103,7 +117,7 @@
         prop to give inputs rounded edges.
       </p>
 
-      <section>
+      <section class="demo">
         <six-input placeholder="Small" size="small" pill></six-input>
         <br />
         <six-input placeholder="Medium" size="medium" pill></six-input>
@@ -119,7 +133,7 @@
         attribute to disable an input.
       </p>
 
-      <section>
+      <section class="demo">
         <six-input placeholder="Write here your first name" size="small" label="Name" help-text="Help text" disabled>
         </six-input>
         <br />
@@ -138,7 +152,7 @@
         attribute to change an input's size.
       </p>
 
-      <section>
+      <section class="demo">
         <six-input placeholder="Small" size="small"></six-input>
         <br />
         <six-input placeholder="Medium" size="medium"></six-input>
@@ -156,7 +170,7 @@
         slots to add icons.
       </p>
 
-      <section>
+      <section class="demo">
         <six-input placeholder="Small" size="small">
           <six-icon slot="prefix" size="xSmall">local_offer</six-icon>
           <six-icon slot="suffix" size="xSmall">settings</six-icon>
@@ -183,7 +197,7 @@
         slot instead.
       </p>
 
-      <section>
+      <section class="demo">
         <six-input label="What is your name?"></six-input>
         <six-input
           ><div slot="label">What is <span style="color: red">your</span> name?</div></six-input
@@ -200,7 +214,7 @@
         slot instead.
       </p>
 
-      <section>
+      <section class="demo">
         <six-input label="Name" help-text="Help text"> </six-input>
       </section>
 
@@ -281,7 +295,7 @@
 
       <p>You can play with the following native and six-input elements to see that the event firing is the same</p>
 
-      <section>
+      <section class="demo">
         <div style="font-size: 1rem; font-weight: bold; padding-bottom: 1rem">Native Input Element</div>
         <input type="text" id="native-input" name="type" />
         <div style="padding-bottom: 0.5rem">

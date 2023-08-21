@@ -51,10 +51,11 @@ export class SixRadio {
   @Watch('checked')
   handleCheckedChange() {
     if (this.checked) {
-      this.getSiblingRadios().forEach((radio) => (radio.checked = false));
+      this.getSiblingRadios().map((radio) => (radio.checked = false));
     }
     if (this.nativeInput != null) {
       this.nativeInput.checked = this.checked;
+      this.sixChange.emit();
     }
   }
 
@@ -74,10 +75,17 @@ export class SixRadio {
   /** Emitted when the control gains focus. */
   @Event({ eventName: 'six-radio-focus' }) sixFocus!: EventEmitter<EmptyPayload>;
 
+  /** default state whether the radio button should be checked or not when resetting */
+  private defaultState = false;
+
   connectedCallback() {
     this.eventListeners.forward('six-radio-change', 'change', this.host);
     this.eventListeners.forward('six-radio-blur', 'blur', this.host);
     this.eventListeners.forward('six-radio-focus', 'focus', this.host);
+  }
+
+  componentWillLoad() {
+    this.defaultState = this.checked;
   }
 
   disconnectedCallback() {
@@ -96,8 +104,14 @@ export class SixRadio {
     this.nativeInput?.blur();
   }
 
+  /** Resets the formcontrol */
+  @Method()
+  async reset() {
+    this.checked = this.defaultState;
+  }
+
   private getAllRadios() {
-    const form = this.host.closest('form') || document.body;
+    const form = this.host.closest('six-form, form') || document.body;
 
     if (this.name === '') return [];
 
@@ -113,7 +127,6 @@ export class SixRadio {
   private handleClick = () => {
     if (this.nativeInput != null) {
       this.checked = this.nativeInput.checked;
-      this.sixChange.emit();
     }
   };
 
@@ -127,19 +140,19 @@ export class SixRadio {
     this.sixFocus.emit();
   };
 
-  private handleKeyDown = (keyboardEvent: KeyboardEvent) => {
-    if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(keyboardEvent.key)) {
+  private handleKeyDown = (event: KeyboardEvent) => {
+    if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(event.key)) {
       const radios = this.getAllRadios().filter((radio) => !radio.disabled);
-      const incr = ['ArrowUp', 'ArrowLeft'].includes(keyboardEvent.key) ? -1 : 1;
+      const incr = ['ArrowUp', 'ArrowLeft'].includes(event.key) ? -1 : 1;
       let index = radios.indexOf(this.host) + incr;
       if (index < 0) index = radios.length - 1;
       if (index > radios.length - 1) index = 0;
 
-      this.getAllRadios().forEach((radio) => (radio.checked = false));
+      this.getAllRadios().map((radio) => (radio.checked = false));
       radios[index].setFocus();
       radios[index].checked = true;
-      radios[index].dispatchEvent(new CustomEvent('six-radio-change', { bubbles: true, cancelable: true }));
-      keyboardEvent.preventDefault();
+
+      event.preventDefault();
     }
   };
 

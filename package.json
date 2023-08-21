@@ -1,19 +1,11 @@
 {
   "name": "@six-group/workspace",
-  "version": "4.0.0",
+  "version": "4.0.0-beta.0",
   "scripts": {
-    "start": "npm run start -w libraries/ui-library",
-    "watch": "npm run watch -w libraries/ui-library",
-    "watch:angular": "npm run watch -w libraries/ui-library-angular",
-    "watch:react": "npm run watch -w libraries/ui-library-react",
-    "start:doc": "npm run start -w docs",
-    "build:doc": "npm run build -w docs",
-    "preview:doc": "npm run preview -w docs",
     "build": "npm run build --workspaces",
     "build:lib": "npm run build -w libraries",
     "lint:lib": "npm run lint -w libraries --if-present",
     "test:unit": "npm run test -w libraries/ui-library",
-    "start:docs": "npm run start -w docs",
     "demo:react": "npm start -w examples/react",
     "demo:angular": "npm start -w examples/angular",
     "clean": "npm run clean --workspaces",
@@ -29,11 +21,9 @@
     "libraries/ui-library-angular",
     "examples/angular",
     "examples/react",
-    "examples/js",
-    "docs"
+    "examples/js"
   ],
   "devDependencies": {
-    "npm-run-all": "^4.1.5",
     "prettier": "^2.8.8"
   },
   "license": "Apache-2.0"

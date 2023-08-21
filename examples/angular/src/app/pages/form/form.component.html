@@ -1,6 +1,6 @@
 <h2>Form Example</h2>
 
-<form [formGroup]="userForm" sixForm (sixSubmit)="onSubmit($event)">
+<form sixFormUtil [formGroup]="userForm" (ngSubmit)="onSubmit()">
   <six-layout-grid style="row-gap: 18px" columns="3">
     <six-input label="First Name" type="text" formControlName="firstName" required></six-input>
     <six-input label="Last Name" type="text" formControlName="lastName"></six-input>

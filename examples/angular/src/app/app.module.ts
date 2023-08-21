@@ -25,7 +25,7 @@ import { FormComponent } from './pages/form/form.component';
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot(routes, { useHash: true }),
+    RouterModule.forRoot(routes),
     FormsModule,
     ReactiveFormsModule,
     UiLibraryAngularModule.forRoot(CustomValidationMessagesService),

@@ -38,8 +38,6 @@ const MIN_POPUP_HEIGHT = 145;
  * @since 2.0.0
  * @status experimental
  *
- * @slot error-text - Error text that is shown for validation errors. Alternatively, you can use the error-text prop.
- *
  * @part input - The input field
  * @part container - The container of whole component
  * @part popup - The popup of the timepicker component
@@ -55,7 +53,6 @@ export class SixTimepicker {
   private popup?: HTMLElement;
   private wrapper?: HTMLElement;
   private inputElement?: HTMLSixInputElement;
-
   @Element() host!: HTMLSixTimepickerElement;
 
   /**
@@ -126,10 +123,7 @@ export class SixTimepicker {
   @Prop() placeholder?: string;
 
   /** The input's error text. Alternatively, you can use the error-text slot. */
-  @Prop() errorText: string | string[] = '';
-
-  /** The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1 */
-  @Prop() errorTextCount?: number;
+  @Prop() errorText = '';
 
   /** The input's label. Alternatively, you can use the label slot. */
   @Prop() label = '';
@@ -302,6 +296,7 @@ export class SixTimepicker {
   disconnectedCallback() {
     this.eventListeners.removeAll();
   }
+
   private updateValue() {
     // normalize value
     if (typeof this.value !== 'string' || !isValidTimeString(this.value, this.format)) {
@@ -561,13 +556,11 @@ export class SixTimepicker {
           placeholder={this.placeholder}
           readonly={this.readonly}
           disabled={this.disabled}
-          errorTextCount={this.errorTextCount}
-          errorText={this.errorText}
-          invalid={this.invalid}
           size={this.size}
           name={this.name}
           label={this.label}
           required={this.required}
+          error-text={this.errorText}
           class={{
             'input--empty': this.value === '',
             'input--hide': this.inline,
@@ -578,11 +571,6 @@ export class SixTimepicker {
           {hasSlot(this.host, 'label') ? (
             <span slot="label">
               <slot name="label" />
-            </span>
-          ) : null}
-          {hasSlot(this.host, 'error-text') ? (
-            <span slot="error-text">
-              <slot name="error-text" />
             </span>
           ) : null}
         </six-input>

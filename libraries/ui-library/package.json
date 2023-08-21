@@ -1,7 +1,7 @@
 {
   "name": "@six-group/ui-library",
-  "version": "4.0.0",
-  "description": "Web components in alignment with the SIX corporate styleguide",
+  "version": "4.0.0-beta.1",
+  "description": "Stencil Component Library following the SIX style guide",
   "license": "Apache-2.0",
   "main": "dist/index.cjs.js",
   "module": "./dist/index.js",
@@ -35,17 +35,17 @@
     "codeclean": "npm run lint:fix && npm run prettier:fix"
   },
   "dependencies": {
-    "@stencil/core": "^4.0.3",
+    "@stencil/core": "3.2.1",
     "@types/resize-observer-browser": "^0.1.5"
   },
   "devDependencies": {
     "@fontsource/noto-sans": "^4.5.1",
     "@popperjs/core": "^2.5.3",
     "@stencil-community/eslint-plugin": "^0.5.0",
-    "@stencil/angular-output-target": "^0.7.1",
-    "@stencil/react-output-target": "^0.5.3",
-    "@stencil/sass": "^3.0.5",
-    "@stencil/vue-output-target": "^0.8.6",
+    "@stencil/angular-output-target": "^0.6.0",
+    "@stencil/react-output-target": "^0.5.0",
+    "@stencil/sass": "^3.0.1",
+    "@stencil/vue-output-target": "^0.8.2",
     "@types/jest": "27.0.3",
     "@typescript-eslint/eslint-plugin": "^5.59.7",
     "@typescript-eslint/parser": "^5.59.6",

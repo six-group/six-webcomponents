@@ -23,7 +23,7 @@
         so they won't interfere with how elements are positioned in a flex or grid layout.
       </p>
 
-      <section>
+      <section class="demo">
         <six-tooltip content="This is a tooltip">
           <six-button>Hover Me</six-button>
         </six-tooltip>
@@ -37,7 +37,7 @@
         attribute to set the preferred placement of the tooltip.
       </p>
 
-      <section>
+      <section class="demo">
         <div class="tooltip-placement-example">
           <div class="tooltip-placement-example-row">
             <six-tooltip content="top-start" placement="top-start">
@@ -135,7 +135,7 @@
         attribute to `click` to toggle the tooltip on click instead of hover.
       </p>
 
-      <section>
+      <section class="demo">
         <six-tooltip content="Click again to dismiss" trigger="click">
           <six-button>Click to Toggle</six-button>
         </six-tooltip>
@@ -148,8 +148,8 @@
         <code>open</code> prop to control when the tooltip is shown.
       </p>
 
-      <section>
-        <six-button style="margin-right: 5rem">Toggle Manually</six-button>
+      <section class="demo">
+        <six-button style="margin-right: 4rem">Toggle Manually</six-button>
 
         <six-tooltip content="This is an avatar" trigger="manual" class="manual-tooltip">
           <six-avatar></six-avatar>
@@ -169,7 +169,7 @@
         You can control the size of tooltip arrows by overriding the <code>--sl-tooltip-arrow-size</code> design token.
       </p>
 
-      <section>
+      <section class="demo">
         <div style="--six-tooltip-arrow-size: 0">
           <six-tooltip content="This is a tooltip">
             <six-button>Above</six-button>
@@ -185,7 +185,7 @@
 
       <p>Use the <code>content</code> slot to create tooltips with HTML content.</p>
 
-      <section>
+      <section class="demo">
         <six-tooltip>
           <div slot="content">I'm not <strong>just</strong> a tooltip,<br />I'm a <em>tooltip</em> with HTML!</div>
           <six-button>Hover me</six-button>
@@ -196,7 +196,7 @@
 
       <p>To disable showing the tooltip simply add the <code>disabled</code> attribute</p>
 
-      <section>
+      <section class="demo">
         <six-tooltip id="six-tooltip-disabled-example" content="This is a tooltip" disabled>
           <six-button>Hover Me</six-button>
         </six-tooltip>

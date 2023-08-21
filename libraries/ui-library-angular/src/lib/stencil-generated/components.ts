@@ -174,7 +174,7 @@ export declare interface SixCard extends Components.SixCard {}
 
 @ProxyCmp({
   inputs: ['checked', 'disabled', 'errorText', 'indeterminate', 'invalid', 'label', 'name', 'required', 'value'],
-  methods: ['setFocus', 'removeFocus']
+  methods: ['setFocus', 'removeFocus', 'reset']
 })
 @Component({
   selector: 'six-checkbox',
@@ -1050,7 +1050,7 @@ export declare interface SixProgressRing extends Components.SixProgressRing {}
 
 @ProxyCmp({
   inputs: ['checked', 'disabled', 'invalid', 'name', 'value'],
-  methods: ['setFocus', 'removeFocus']
+  methods: ['setFocus', 'removeFocus', 'reset']
 })
 @Component({
   selector: 'six-radio',

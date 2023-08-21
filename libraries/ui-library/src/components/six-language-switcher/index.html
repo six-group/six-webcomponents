@@ -10,9 +10,10 @@
   </head>
   <body>
     <div class="container">
+      <h1>SIX Language Switcher</h1>
       <p>The <code>six-language-switcher</code> can switch between languages.</p>
       <p>The selected language is covered in colour.</p>
-      <section>
+      <section class="demo">
         <six-language-switcher></six-language-switcher>
       </section>
 
@@ -21,7 +22,7 @@
         You can define the languages you want to be able to choose from, by passing your language array via
         <code>languages</code>
       </p>
-      <section>
+      <section class="demo">
         <six-language-switcher id="custom-language-set"></six-language-switcher>
         <div style="margin-top: 1rem">
           <span style="font-weight: bold">selected language: </span><span id="selected-language">nothing selected</span>
@@ -42,7 +43,7 @@
 
       <p>By using the attribute <code>selected</code> you can define which language should be selected</p>
 
-      <section>
+      <section class="demo">
         <six-language-switcher selected="DE"></six-language-switcher>
       </section>
 
@@ -58,7 +59,7 @@
         later stage.
       </p>
 
-      <section>
+      <section class="demo">
         <six-language-switcher id="async-six-lang-switcher"></six-language-switcher>
         <script type="module">
           const langSwitcher = document.getElementById('async-six-lang-switcher');
@@ -68,7 +69,7 @@
 
       <h2>Custom Output</h2>
 
-      <section>
+      <section class="demo">
         <six-language-switcher id="custom-output"></six-language-switcher>
         <div style="margin-top: 1rem">
           <span style="font-weight: bold">selected language: </span

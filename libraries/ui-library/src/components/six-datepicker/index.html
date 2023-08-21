@@ -11,7 +11,7 @@
   <body>
     <div class="container">
       <p>Datepickers allow the user to manually enter a date or open a popup calendar to select a date.</p>
-      <section>
+      <section class="demo">
         <six-datepicker></six-datepicker>
       </section>
 
@@ -23,7 +23,7 @@
         by listening to the <code>six-datepicker-select</code> event on the datepicker The selected date will be shown
         below the datepicker.
       </p>
-      <section>
+      <section class="demo">
         <six-datepicker id="read-select-date-picker"></six-datepicker>
         <div id="read-select-date-label">No Date selected yet!</div>
 
@@ -47,7 +47,7 @@
         If you need to select a time as well, just set the <code>type</code> and <code>date-format</code> and the
         datepicker will include a timepicker too.
       </p>
-      <section>
+      <section class="demo">
         <six-datepicker
           date-format="dd.mm.yyyy hh:MM:ss"
           type="date-time"
@@ -71,7 +71,7 @@
       </section>
 
       <h3>Disabled State</h3>
-      <section>
+      <section class="demo">
         <six-datepicker disabled></six-datepicker>
         <style>
           six-datepicker {
@@ -82,7 +82,7 @@
 
       <h3>Inline State</h3>
       <p>If you wish you can have the datepicker as an inline component i.e. the popup will always be open</p>
-      <section>
+      <section class="demo">
         <six-datepicker inline="true"></six-datepicker>
         <style>
           six-datepicker {
@@ -96,7 +96,7 @@
         If you want to force the user to use the popup instead of manually enter a date, you can simply add the
         <code>readonly</code> property
       </p>
-      <section>
+      <section class="demo">
         <six-datepicker readonly></six-datepicker>
         <style>
           six-datepicker {
@@ -110,7 +110,7 @@
         By default the datepicker will render either below or above the input field depending on the available space.
       </p>
       <p>If you want to enforce a certain placement you can use the <code>placement</code> attribute</p>
-      <section>
+      <section class="demo">
         <six-datepicker placement="bottom"></six-datepicker>
         <style>
           six-datepicker {
@@ -121,7 +121,7 @@
 
       <h3>Placeholder</h3>
       <p>You can define the datepickers placeholder via <code>placeholder</code></p>
-      <section>
+      <section class="demo">
         <six-datepicker placeholder="DD.MM.YYYY"></six-datepicker>
         <style>
           six-datepicker {
@@ -132,7 +132,7 @@
 
       <h3>Locale</h3>
       <p>You can change the language in which the datepicker is shown by using the <code>locale</code> attribute</p>
-      <section>
+      <section class="demo">
         <six-datepicker locale="fr"></six-datepicker>
         <style>
           six-datepicker {
@@ -143,7 +143,7 @@
 
       <h3>Footer</h3>
       <p>You can add content to the footer by simply using the datepicker's slot</p>
-      <section>
+      <section class="demo">
         <six-datepicker>
           <p style="text-align: center">Choose your birthdate!</p>
         </six-datepicker>
@@ -192,7 +192,7 @@
       <h3>Date Format</h3>
 
       <p>The SIX datepicker supports the following different formats:</p>
-      <section>
+      <section class="demo">
         <div id="datepicker-formats-container" style="display: flex; flex-wrap: wrap">
           <six-datepicker placeholder="dd.mm.yyyy" date-format="dd.mm.yyyy"></six-datepicker>
           <six-datepicker placeholder="yyyy-mm-dd" date-format="yyyy-mm-dd"></six-datepicker>
@@ -235,7 +235,7 @@
 
       <p>You can set the min and max dates. Please be aware that only date objects are accepted and n:</p>
 
-      <section>
+      <section class="demo">
         <div class="min-max-demo">
           <six-datepicker id="min-max-date-picker"></six-datepicker>
           <six-datepicker id="only-min-date-picker"></six-datepicker>
@@ -244,7 +244,6 @@
 
         <div style="margin-top: 1rem">
           <span style="font-weight: bold">Selected: </span><span id="min-max-date-selected">No Date selected yet!</span>
-          <style>
           six-datepicker { max-width: 25rem; }
         </div>
 
@@ -289,7 +288,7 @@
         callback function
       </p>
 
-      <section>
+      <section class="demo">
         <six-datepicker id="allowed-date-picker"></six-datepicker>
 
         <script type="module">
@@ -307,7 +306,7 @@
 
       <p>You can define a custom default date which will be shown on first appearance of the popup</p>
 
-      <section>
+      <section class="demo">
         <six-datepicker default-date="2021-02-20" date-format="yyyy-mm-dd"></six-datepicker>
         <style>
           six-datepicker {
@@ -319,7 +318,7 @@
       <h3>Clearable</h3>
       <p>Add the <code>clearable</code> property to add a clear button when the input has content.</p>
 
-      <section>
+      <section class="demo">
         <six-datepicker clearable></six-datepicker>
         <style>
           six-datepicker {
@@ -331,7 +330,7 @@
       <h3>Icon position</h3>
       <p>Could be adjusted providing <code>icon-position</code> property.</p>
 
-      <section>
+      <section class="demo">
         <six-datepicker icon-position="right"></six-datepicker>
         <br />
         <six-datepicker icon-position="right" clearable></six-datepicker>
@@ -354,7 +353,7 @@
       <h3>Custom icon</h3>
       <p>The slot <code>custom-icon</code> is used to provide a custom datepicker icon.</p>
 
-      <section>
+      <section class="demo">
         <six-datepicker custom-icon>
           <img
             style="height: 24px"
@@ -392,7 +391,7 @@
         this case, the panel will be positioned relative to its containing block, which is usually the viewport unless
         an ancestor uses a transform, perspective, or filter.
       </p>
-      <section>
+      <section class="demo">
         <div style="overflow: hidden; border: solid 1px grey; padding: 0.5em; display: flex">
           <six-datepicker placement="bottom" placeholder="no hoisting"></six-datepicker>
           <six-datepicker hoist placement="bottom" placeholder="with hoisting"></six-datepicker>
@@ -409,7 +408,7 @@
 
       <p>The datepicker value can be changed dynamically by setting the <code>value</code> attribute.</p>
 
-      <section>
+      <section class="demo">
         <six-datepicker id="dynamic-datepicker"></six-datepicker>
         <div style="margin-top: 1rem">
           <span style="font-weight: bold">Selected: </span
@@ -447,7 +446,7 @@
 
       <h3>Open State</h3>
       <p>If you wish you can have the datepicker open on startup. It will close as usual (clicking outside etc.)</p>
-      <section>
+      <section class="demo">
         <six-datepicker open="true" placement="bottom"></six-datepicker>
         <style>
           six-datepicker {
@@ -458,7 +457,7 @@
 
       <h2>Datepicker in a Modal</h2>
 
-      <section>
+      <section class="demo">
         <six-button id="modal-ex-dt">Toggle Modal</six-button>
 
         <div id="dt-modal" class="dt-modal">
@@ -502,57 +501,6 @@
             max-width: unset;
           }
         </style>
-      </section>
-
-      <h2>Error Text</h2>
-
-      <p>Add a descriptive error message using either the <code>error-text</code> prop, or the equally named slot.</p>
-
-      <six-alert type="warning" open>
-        <six-icon slot="icon">warning</six-icon>
-        There are two caveats when using the <code>error-text</code> prop/slot:
-        <ol>
-          <li>
-            Remember to set the <code>invalid</code> prop as well! If you only provide some content to the
-            <code>error-text</code> prop/slot, it won't be shown unless the <code>invalid</code> prop is set to true
-          </li>
-          <li>
-            When using the prop, and you need to show more than one message, remember to also set the
-            <code>error-text-count</code> prop to a value that is the same or bigger than the length of the list of
-            messages you are using. Otherwise only one message will be shown at a time
-          </li>
-        </ol>
-      </six-alert>
-
-      <p>The <code>error-text</code> prop accepts either a simple string message, or a list of messages.</p>
-
-      <section class="demo">
-        <six-datepicker label="Simple string message" error-text="This is a simple string message" invalid>
-        </six-datepicker>
-      </section>
-
-      <section class="demo">
-        <six-datepicker id="multiple-error-text" label="List of string message" invalid></six-datepicker>
-        <script type="module">
-          const sixDatePicker = document.getElementById('multiple-error-text');
-          sixDatePicker.errorText = ['Message 1', 'Message 2'];
-          sixDatePicker.errorTextCount = 3;
-        </script>
-      </section>
-
-      <p>
-        When using the <code>error-text</code> slot, it is recommended to use the <code>six-error</code> component to
-        wrap the error message(s). This will provide the correct styling out of the box
-      </p>
-      <section class="demo">
-        <six-datepicker invalid>
-          <div slot="error-text">
-            <six-error
-              >An error message
-              <a href="https://github.com/six-group/six-webcomponents" target="_blank">with a link</a></six-error
-            >
-          </div>
-        </six-datepicker>
       </section>
     </div>
   </body>
