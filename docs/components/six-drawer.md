@@ -1,4 +1,4 @@
-# six-drawer
+# Drawer
 
 Drawers slide in from a container to expose additional options and information. Drawers are used when the user
 has to do a context switch and do an intermediary task (Drawers are full height or width and will overlay the rest of the application).
@@ -9,7 +9,7 @@ For a passive side container use six-sidebar instead (could be always open).
 
 
 
-<docs-demo-six-drawer-75></docs-demo-six-drawer-75>
+<docs-demo-six-drawer-0></docs-demo-six-drawer-0>
 
 ```html
 <six-drawer label="Drawer" class="drawer-overview">
@@ -36,7 +36,7 @@ For a passive side container use six-sidebar instead (could be always open).
 
 To make the drawer slide in from the left, set the `placement` attribute to `left`.
 
-<docs-demo-six-drawer-76></docs-demo-six-drawer-76>
+<docs-demo-six-drawer-1></docs-demo-six-drawer-1>
 
 ```html
 <six-drawer label="Drawer" placement="left" class="drawer-placement-left">
@@ -63,7 +63,7 @@ To make the drawer slide in from the left, set the `placement` attribute to `lef
 
 To make the drawer slide in from the top, set the `placement` attribute to `top` .
 
-<docs-demo-six-drawer-77></docs-demo-six-drawer-77>
+<docs-demo-six-drawer-2></docs-demo-six-drawer-2>
 
 ```html
 <six-drawer label="Drawer" placement="top" class="drawer-placement-top">
@@ -90,7 +90,7 @@ To make the drawer slide in from the top, set the `placement` attribute to `top`
 
 To make the drawer slide in from the bottom, set the `placement` attribute to `bottom` .
 
-<docs-demo-six-drawer-78></docs-demo-six-drawer-78>
+<docs-demo-six-drawer-3></docs-demo-six-drawer-3>
 
 ```html
 <six-drawer label="Drawer" placement="bottom" class="drawer-placement-bottom">
@@ -117,7 +117,7 @@ To make the drawer slide in from the bottom, set the `placement` attribute to `b
 
 By default, the drawer slides out of its [containing block](https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block#Identifying_the_containing_block), which is usually the viewport. To make the drawer slide out of its parent element, add the `contained` prop and `position: relative` to the parent.
 
-<docs-demo-six-drawer-79></docs-demo-six-drawer-79>
+<docs-demo-six-drawer-4></docs-demo-six-drawer-4>
 
 ```html
 <div           style="
@@ -156,7 +156,7 @@ By default, the drawer slides out of its [containing block](https://developer.mo
 
 Use the `--size` custom property to set the drawer's size. This will be applied to the drawer's width or height depending on its `placement`
 
-<docs-demo-six-drawer-80></docs-demo-six-drawer-80>
+<docs-demo-six-drawer-5></docs-demo-six-drawer-5>
 
 ```html
 <six-drawer label="Drawer" class="drawer-custom-size" style="--size: 50vw">
@@ -183,7 +183,7 @@ Use the `--size` custom property to set the drawer's size. This will be applied 
 
 By design, a drawer's height will never exceed 100% of its container. As such, drawers will not scroll with the page to ensure the header and footer are always accessible to the user.
 
-<docs-demo-six-drawer-81></docs-demo-six-drawer-81>
+<docs-demo-six-drawer-6></docs-demo-six-drawer-6>
 
 ```html
 <six-drawer label="Drawer" class="drawer-scrolling">
@@ -212,7 +212,7 @@ By design, a drawer's height will never exceed 100% of its container. As such, d
 
 By default, drawers are closed when the user clicks or taps on the overlay. To prevent this behavior, cancel the `six-overlay-dismiss` event.
 
-<docs-demo-six-drawer-82></docs-demo-six-drawer-82>
+<docs-demo-six-drawer-7></docs-demo-six-drawer-7>
 
 ```html
 <six-drawer label="Drawer" class="drawer-no-overlay-dismiss">
@@ -241,7 +241,7 @@ By default, drawers are closed when the user clicks or taps on the overlay. To p
 
 By default, the drawer's panel will gain focus when opened. To set focus on a different element, listen for the `six-initial-focus` event.
 
-<docs-demo-six-drawer-83></docs-demo-six-drawer-83>
+<docs-demo-six-drawer-8></docs-demo-six-drawer-8>
 
 ```html
 <six-drawer label="Drawer" class="drawer-focus">

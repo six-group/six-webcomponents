@@ -1,4 +1,4 @@
-# six-header
+# Header
 
 
 ## Header Features
@@ -13,7 +13,7 @@ SIX header provides multiple events that can be listened from the outside. Selec
 
 To listen to the selected app-switcher element simply register a listener on `six-header-app-switcher-select`. You can also listen on the `six-header-app-name-clicked` event to detect a click on the currently selected application's name.
 
-<docs-demo-six-header-119></docs-demo-six-header-119>
+<docs-demo-six-header-0></docs-demo-six-header-0>
 
 ```html
 <six-root>
@@ -171,7 +171,7 @@ To listen to the selected app-switcher element simply register a listener on `si
 
 In case you don't want the Six Logo, you have the functionality to replace the Logo with `slot="logo"`.
 
-<docs-demo-six-header-120></docs-demo-six-header-120>
+<docs-demo-six-header-1></docs-demo-six-header-1>
 
 ```html
 <six-root>
@@ -189,7 +189,7 @@ In case you don't want the Six Logo, you have the functionality to replace the L
 
 You can enforce the search bar to be open or closed by setting the `open-search` property
 
-<docs-demo-six-header-121></docs-demo-six-header-121>
+<docs-demo-six-header-2></docs-demo-six-header-2>
 
 ```html
 <six-button id="search-toggle-attribute-btn">Toggle Search via Attribute</six-button>
@@ -226,7 +226,7 @@ You can enforce the search bar to be open or closed by setting the `open-search`
 
 In case you want to e.g. navigate to the dashboard when the header logo is clicked simply listen to the `six-header-logo-clicked` event and set the `clickable-logo` attribute
 
-<docs-demo-six-header-122></docs-demo-six-header-122>
+<docs-demo-six-header-3></docs-demo-six-header-3>
 
 ```html
 <six-root>

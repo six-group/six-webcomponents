@@ -1,0 +1,16 @@
+<template>
+<div>
+
+        <six-spinner six="true"></six-spinner>
+      
+</div>
+</template>
+<style>
+
+</style>
+<script>
+export default {
+  name: 'docs-demo-six-spinner-4',
+  mounted() {  }
+}
+</script>

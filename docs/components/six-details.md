@@ -1,9 +1,9 @@
-# six-details
+# Details
 
 
 Details show a brief summary and expand to show additional content.
 
-<docs-demo-six-details-61></docs-demo-six-details-61>
+<docs-demo-six-details-0></docs-demo-six-details-0>
 
 ```html
 <six-details summary="Toggle Me">
@@ -20,7 +20,7 @@ Details show a brief summary and expand to show additional content.
 
 Use `summary-icon` slot to provide custom summary icon content.
 
-<docs-demo-six-details-62></docs-demo-six-details-62>
+<docs-demo-six-details-1></docs-demo-six-details-1>
 
 ```html
 <six-details summary="Toggle Me">
@@ -34,7 +34,7 @@ Use `summary-icon` slot to provide custom summary icon content.
 
 Use `summary-icon` property to set the desired summary icon.
 
-<docs-demo-six-details-63></docs-demo-six-details-63>
+<docs-demo-six-details-2></docs-demo-six-details-2>
 
 ```html
 <six-details summary="Toggle Me" summary-icon="settings">
@@ -47,7 +47,7 @@ Use `summary-icon` property to set the desired summary icon.
 
 Use `summary-icon-size` slot to customize the icon size. With "inherit" the icon size depends on the font-size.
 
-<docs-demo-six-details-64></docs-demo-six-details-64>
+<docs-demo-six-details-3></docs-demo-six-details-3>
 
 ```html
 <div class="details-icon-size-example-1">
@@ -68,7 +68,7 @@ Use `summary-icon-size` slot to customize the icon size. With "inherit" the icon
 
 
 
-<docs-demo-six-details-65></docs-demo-six-details-65>
+<docs-demo-six-details-4></docs-demo-six-details-4>
 
 ```html
 <div class="details-icon-size-example-2">
@@ -91,7 +91,7 @@ Use `summary-icon-size` slot to customize the icon size. With "inherit" the icon
 
 Use the `disable` attribute to prevent the details from expanding.
 
-<docs-demo-six-details-66></docs-demo-six-details-66>
+<docs-demo-six-details-5></docs-demo-six-details-5>
 
 ```html
 <six-details summary="Disabled" disabled>
@@ -106,7 +106,7 @@ Use the `disable` attribute to prevent the details from expanding.
 
 Details are designed to function independently, but you can simulate a group or "accordion" where only one is shown at a time by listening for the `six-show` event.
 
-<docs-demo-six-details-67></docs-demo-six-details-67>
+<docs-demo-six-details-6></docs-demo-six-details-6>
 
 ```html
 <div class="details-group-example">
@@ -150,7 +150,7 @@ Details are designed to function independently, but you can simulate a group or 
 
 You can easily control a six-detail by simply setting the corresponding open attribute. Try it by clicking on one of the buttons.
 
-<docs-demo-six-details-68></docs-demo-six-details-68>
+<docs-demo-six-details-7></docs-demo-six-details-7>
 
 ```html
 <div           id="buttonbar-programmatic-example"
@@ -218,7 +218,7 @@ You can easily control a six-detail by simply setting the corresponding open att
 
 You can disable the open/close mechanism and hide the summary icon by setting `has-items` to `false`. Usually not needed, but used internally by `six-sidebar-item-group`.
 
-<docs-demo-six-details-69></docs-demo-six-details-69>
+<docs-demo-six-details-8></docs-demo-six-details-8>
 
 ```html
 <six-details has-content="false" summary="Toggle Me">

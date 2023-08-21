@@ -1,9 +1,9 @@
-# six-switch
+# Switch
 
 
 Switches allow the user to toggle an option on or off.
 
-<docs-demo-six-switch-261></docs-demo-six-switch-261>
+<docs-demo-six-switch-0></docs-demo-six-switch-0>
 
 ```html
 <six-switch>Switch</six-switch>
@@ -16,7 +16,7 @@ Switches allow the user to toggle an option on or off.
 
 Use the `checked` attribute to activate the switch.
 
-<docs-demo-six-switch-262></docs-demo-six-switch-262>
+<docs-demo-six-switch-1></docs-demo-six-switch-1>
 
 ```html
 <six-switch checked>Checked</six-switch>
@@ -27,7 +27,7 @@ Use the `checked` attribute to activate the switch.
 
 Use the `disabled` attribute to disable the switch.
 
-<docs-demo-six-switch-263></docs-demo-six-switch-263>
+<docs-demo-six-switch-2></docs-demo-six-switch-2>
 
 ```html
 <six-switch checked disabled>Disabled</six-switch>
@@ -39,7 +39,7 @@ Use the `disabled` attribute to disable the switch.
 
 Use the available custom properties to make the switch a different size.
 
-<docs-demo-six-switch-264></docs-demo-six-switch-264>
+<docs-demo-six-switch-3></docs-demo-six-switch-3>
 
 ```html
 <six-switch style="--width: 80px; --height: 32px; --thumb-size: 26px"></six-switch>

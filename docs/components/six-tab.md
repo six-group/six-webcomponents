@@ -1,10 +1,10 @@
-# six-tab
+# Tab
 
 
 Tabs are used inside tab groups to represent tab panels.  
 Additional demonstrations can be found in the [tab group examples](six-tab-group.html).
 
-<docs-demo-six-tab-265></docs-demo-six-tab-265>
+<docs-demo-six-tab-0></docs-demo-six-tab-0>
 
 ```html
 <six-tab>Tab</six-tab>

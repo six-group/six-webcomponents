@@ -1,11 +1,9 @@
-# six-button
-
-
 # Button
+
 
 Buttons represent actions that are available to the user.
 
-<docs-demo-six-button-19></docs-demo-six-button-19>
+<docs-demo-six-button-0></docs-demo-six-button-0>
 
 ```html
 <six-button>Button</six-button>
@@ -18,7 +16,7 @@ Buttons represent actions that are available to the user.
 
 Use the `type` attribute to set the button's type.
 
-<docs-demo-six-button-20></docs-demo-six-button-20>
+<docs-demo-six-button-1></docs-demo-six-button-1>
 
 ```html
 <six-button>Primary</six-button>
@@ -33,7 +31,7 @@ Use the `type` attribute to set the button's type.
 
 Notice on different background colors that the Link button has no background
 
-<docs-demo-six-button-21></docs-demo-six-button-21>
+<docs-demo-six-button-2></docs-demo-six-button-2>
 
 ```html
 <div style="padding: 1em; background-color: #f6f6f6">
@@ -61,7 +59,7 @@ Notice on different background colors that the Link button has no background
 
 Use the `size` prop to change a button's size.
 
-<docs-demo-six-button-22></docs-demo-six-button-22>
+<docs-demo-six-button-3></docs-demo-six-button-3>
 
 ```html
 <six-button size="small">Small</six-button>
@@ -74,7 +72,7 @@ Use the `size` prop to change a button's size.
 
 Use the `pill` prop to give buttons rounded edges.
 
-<docs-demo-six-button-23></docs-demo-six-button-23>
+<docs-demo-six-button-4></docs-demo-six-button-4>
 
 ```html
 <six-button size="small" pill>Small</six-button>
@@ -87,7 +85,7 @@ Use the `pill` prop to give buttons rounded edges.
 
 Use the `circle` prop to create circular icon buttons.
 
-<docs-demo-six-button-24></docs-demo-six-button-24>
+<docs-demo-six-button-5></docs-demo-six-button-5>
 
 ```html
 <six-button size="small" circle>
@@ -115,7 +113,7 @@ Use the `circle` prop to create circular icon buttons.
 
 Use the `link` type to create text buttons that share the same size as regular buttons but don't have backgrounds or borders.
 
-<docs-demo-six-button-25></docs-demo-six-button-25>
+<docs-demo-six-button-6></docs-demo-six-button-6>
 
 ```html
 <six-button type="link" size="small">Small</six-button>
@@ -128,7 +126,7 @@ Use the `link` type to create text buttons that share the same size as regular b
 
 It's often helpful to have a button that works like a link. This is possible by setting the `href` attribute, which will make the component render an `<a>` under the hood. This gives you all the default link behavior the browser provides (e.g. CMD/CTRL/SHIFT + CLICK) and exposes the `target` and `download` attributes.
 
-<docs-demo-six-button-26></docs-demo-six-button-26>
+<docs-demo-six-button-7></docs-demo-six-button-7>
 
 ```html
 <six-button href="https://www.six-group.com/">Link</six-button>
@@ -144,7 +142,7 @@ When a `target` is set, the link will receive `rel="noreferrer noopener"` [for s
 
 As expected, buttons can be given a custom width by setting its `width`. This is useful for making buttons span the full width of their container on smaller screens.
 
-<docs-demo-six-button-27></docs-demo-six-button-27>
+<docs-demo-six-button-8></docs-demo-six-button-8>
 
 ```html
 <six-button type="secondary" size="small" style="width: 100%; margin-bottom: 1rem">Small</six-button>
@@ -157,7 +155,7 @@ As expected, buttons can be given a custom width by setting its `width`. This is
 
 Use the `prefix` and `suffix` slots to add icons.
 
-<docs-demo-six-button-28></docs-demo-six-button-28>
+<docs-demo-six-button-9></docs-demo-six-button-9>
 
 ```html
 <six-button size="small">
@@ -219,7 +217,7 @@ Use the `prefix` and `suffix` slots to add icons.
 
 Use the `caret` prop to add a dropdown indicator when a button will trigger a dropdown, menu, or popover.
 
-<docs-demo-six-button-29></docs-demo-six-button-29>
+<docs-demo-six-button-10></docs-demo-six-button-10>
 
 ```html
 <six-button size="small" caret>Small</six-button>
@@ -232,7 +230,7 @@ Use the `caret` prop to add a dropdown indicator when a button will trigger a dr
 
 Use the `loading` prop to make a button busy. The width will remain the same as before, preventing adjacent elements from moving around. Clicks will be suppressed until the loading state is removed.
 
-<docs-demo-six-button-30></docs-demo-six-button-30>
+<docs-demo-six-button-11></docs-demo-six-button-11>
 
 ```html
 <six-button type="secondary" loading>Secondary</six-button>
@@ -244,7 +242,7 @@ Use the `loading` prop to make a button busy. The width will remain the same as 
 
 Use the `disabled` prop to disable a button. Clicks will be suppressed until the disabled state is removed.
 
-<docs-demo-six-button-31></docs-demo-six-button-31>
+<docs-demo-six-button-12></docs-demo-six-button-12>
 
 ```html
 <six-tooltip content="My Toolip">

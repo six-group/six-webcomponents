@@ -1,11 +1,9 @@
-# six-avatar
-
-
 # Avatar
+
 
 Avatars are used to represent a person or object.
 
-<docs-demo-six-avatar-7></docs-demo-six-avatar-7>
+<docs-demo-six-avatar-0></docs-demo-six-avatar-0>
 
 ```html
 <six-avatar></six-avatar>
@@ -18,7 +16,7 @@ Avatars are used to represent a person or object.
 
 To use an image for the avatar, set the `image` and `alt` attributes. This will take priority and be shown over initials and icons.
 
-<docs-demo-six-avatar-8></docs-demo-six-avatar-8>
+<docs-demo-six-avatar-1></docs-demo-six-avatar-1>
 
 ```html
 <six-avatar           image="https://images.unsplash.com/photo-1529778873920-4da4926a72c2?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80"
@@ -31,7 +29,7 @@ To use an image for the avatar, set the `image` and `alt` attributes. This will 
 
 When you don't have an image to use, you can set the `initials` attribute to show something more personalized than an icon.
 
-<docs-demo-six-avatar-9></docs-demo-six-avatar-9>
+<docs-demo-six-avatar-2></docs-demo-six-avatar-2>
 
 ```html
 <six-avatar initials="SL"></six-avatar>
@@ -42,7 +40,7 @@ When you don't have an image to use, you can set the `initials` attribute to sho
 
 When no image or initials are set, an icon will be shown. The default avatar shows a generic "user" icon, but you can customize this with the `icon` slot.
 
-<docs-demo-six-avatar-10></docs-demo-six-avatar-10>
+<docs-demo-six-avatar-3></docs-demo-six-avatar-3>
 
 ```html
 <six-avatar>
@@ -63,7 +61,7 @@ When no image or initials are set, an icon will be shown. The default avatar sho
 
 Avatars can be shaped using the `shape` attribute.
 
-<docs-demo-six-avatar-11></docs-demo-six-avatar-11>
+<docs-demo-six-avatar-4></docs-demo-six-avatar-4>
 
 ```html
 <six-avatar shape="square"></six-avatar>
@@ -78,7 +76,7 @@ Avatars can be shaped using the `shape` attribute.
 
 You can group avatars with a few lines of CSS.
 
-<docs-demo-six-avatar-12></docs-demo-six-avatar-12>
+<docs-demo-six-avatar-5></docs-demo-six-avatar-5>
 
 ```html
 <div class="avatar-group">

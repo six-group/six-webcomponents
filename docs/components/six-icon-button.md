@@ -1,9 +1,9 @@
-# six-icon-button
+# Icon Button
 
 Icons buttons are simple, icon-only buttons that can be used for actions and in toolbars.
 
 
-<docs-demo-six-icon-button-133></docs-demo-six-icon-button-133>
+<docs-demo-six-icon-button-0></docs-demo-six-icon-button-0>
 
 ```html
 <six-icon-button name="settings" label="Settings"></six-icon-button>
@@ -16,7 +16,7 @@ Icons buttons are simple, icon-only buttons that can be used for actions and in 
 
 Icon buttons inherit their parent element's `font-size`.
 
-<docs-demo-six-icon-button-134></docs-demo-six-icon-button-134>
+<docs-demo-six-icon-button-1></docs-demo-six-icon-button-1>
 
 ```html
 <six-icon-button name="edit" label="Edit" size="xSmall"></six-icon-button>
@@ -31,7 +31,7 @@ Icon buttons inherit their parent element's `font-size`.
 
 Icon buttons are designed to have a uniform appearance, so their color is not inherited. However, you can still customize them by styling the `base` part.
 
-<docs-demo-six-icon-button-135></docs-demo-six-icon-button-135>
+<docs-demo-six-icon-button-2></docs-demo-six-icon-button-2>
 
 ```html
 <div class="icon-button-color">
@@ -61,7 +61,7 @@ Icon buttons are designed to have a uniform appearance, so their color is not in
 
 Wrap a tooltip around an icon button to provide contextual information to the user.
 
-<docs-demo-six-icon-button-136></docs-demo-six-icon-button-136>
+<docs-demo-six-icon-button-3></docs-demo-six-icon-button-3>
 
 ```html
 <six-tooltip content="Settings">
@@ -72,7 +72,7 @@ Wrap a tooltip around an icon button to provide contextual information to the us
 
 ## Disabled
 
-<docs-demo-six-icon-button-137></docs-demo-six-icon-button-137>
+<docs-demo-six-icon-button-4></docs-demo-six-icon-button-4>
 
 ```html
 <six-tooltip content="Settings">
@@ -85,7 +85,7 @@ Wrap a tooltip around an icon button to provide contextual information to the us
 
 Often icon buttons are combined with badges to signal new entries. For this simply add a `six-badge` to the slot
 
-<docs-demo-six-icon-button-138></docs-demo-six-icon-button-138>
+<docs-demo-six-icon-button-5></docs-demo-six-icon-button-5>
 
 ```html
 <div>

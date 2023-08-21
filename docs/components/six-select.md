@@ -1,11 +1,11 @@
-# six-select
+# Select
 
 
 ## Select
 
 Selects allow you to choose one or more items from a dropdown menu, usually you wrap this component with a html form. If you're looking for a dropdown menu to trigger actions, you should try [six-dropdown](six-dropdown.html).
 
-<docs-demo-six-select-223></docs-demo-six-select-223>
+<docs-demo-six-select-0></docs-demo-six-select-0>
 
 ```html
 <six-select>
@@ -22,7 +22,7 @@ Selects allow you to choose one or more items from a dropdown menu, usually you 
 
 
 
-<docs-demo-six-select-224></docs-demo-six-select-224>
+<docs-demo-six-select-1></docs-demo-six-select-1>
 
 ```html
 <div style="width: 100px"></div>
@@ -46,7 +46,7 @@ Selects allow you to choose one or more items from a dropdown menu, usually you 
 
 Use the `placeholder` attribute to add a placeholder.
 
-<docs-demo-six-select-225></docs-demo-six-select-225>
+<docs-demo-six-select-2></docs-demo-six-select-2>
 
 ```html
 <six-select placeholder="Select one">
@@ -61,7 +61,7 @@ Use the `placeholder` attribute to add a placeholder.
 
 Use the `clearable` attribute to make the control clearable.
 
-<docs-demo-six-select-226></docs-demo-six-select-226>
+<docs-demo-six-select-3></docs-demo-six-select-3>
 
 ```html
 <six-select placeholder="Clearable" clearable>
@@ -76,7 +76,7 @@ Use the `clearable` attribute to make the control clearable.
 
 Use the `value` attribute to preselect a default value
 
-<docs-demo-six-select-227></docs-demo-six-select-227>
+<docs-demo-six-select-4></docs-demo-six-select-4>
 
 ```html
 <six-select value="option-2" clearable>
@@ -91,7 +91,7 @@ Use the `value` attribute to preselect a default value
 
 If you want the select to be reset to a default value use the attribute `default-value`
 
-<docs-demo-six-select-228></docs-demo-six-select-228>
+<docs-demo-six-select-5></docs-demo-six-select-5>
 
 ```html
 <six-select value="option-2" default-value="option-3" clearable>
@@ -106,7 +106,7 @@ If you want the select to be reset to a default value use the attribute `default
 
 Use the `pill` prop to give selects rounded edges.
 
-<docs-demo-six-select-229></docs-demo-six-select-229>
+<docs-demo-six-select-6></docs-demo-six-select-6>
 
 ```html
 <six-select pill>
@@ -121,7 +121,7 @@ Use the `pill` prop to give selects rounded edges.
 
 Use the `line` prop to give show selection in line style.
 
-<docs-demo-six-select-230></docs-demo-six-select-230>
+<docs-demo-six-select-7></docs-demo-six-select-7>
 
 ```html
 <six-select line>
@@ -136,7 +136,7 @@ Use the `line` prop to give show selection in line style.
 
 Use the `disabled` prop to disable a select.
 
-<docs-demo-six-select-231></docs-demo-six-select-231>
+<docs-demo-six-select-8></docs-demo-six-select-8>
 
 ```html
 <six-select placeholder="Disabled" disabled>
@@ -151,7 +151,7 @@ Use the `disabled` prop to disable a select.
 
 To allow multiple options to be selected, use the `multiple` attribute. It's a good practice to use clearable when this option is enabled. When using this option, value will be an array instead of a string.
 
-<docs-demo-six-select-232></docs-demo-six-select-232>
+<docs-demo-six-select-9></docs-demo-six-select-9>
 
 ```html
 <six-select placeholder="Select a few" multiple clearable>
@@ -170,7 +170,7 @@ To allow multiple options to be selected, use the `multiple` attribute. It's a g
 
 Options can be grouped visually using menu labels and menu dividers.
 
-<docs-demo-six-select-233></docs-demo-six-select-233>
+<docs-demo-six-select-10></docs-demo-six-select-10>
 
 ```html
 <six-select placeholder="Select one">
@@ -191,7 +191,7 @@ Options can be grouped visually using menu labels and menu dividers.
 
 Use the `size` attribute to change a select's size.
 
-<docs-demo-six-select-234></docs-demo-six-select-234>
+<docs-demo-six-select-11></docs-demo-six-select-11>
 
 ```html
 <six-select placeholder="Small" size="small" multiple>
@@ -222,7 +222,7 @@ Use the `size` attribute to change a select's size.
 
 The `value` prop is bound to the current selection. As the selection changes, so will the value. To programmatically manage the selection, update the value property.
 
-<docs-demo-six-select-235></docs-demo-six-select-235>
+<docs-demo-six-select-12></docs-demo-six-select-12>
 
 ```html
 <div class="selecting-example">
@@ -258,7 +258,7 @@ The `value` prop is bound to the current selection. As the selection changes, so
 
 Use the `label` attribute to give the select an accessible label. For labels that contain HTML, use the `label` slot instead.
 
-<docs-demo-six-select-236></docs-demo-six-select-236>
+<docs-demo-six-select-13></docs-demo-six-select-13>
 
 ```html
 <six-select label="Select one">
@@ -273,7 +273,7 @@ Use the `label` attribute to give the select an accessible label. For labels tha
 
 Add descriptive help text to a select with the `help-text` attribute. For help texts that contain HTML, use the help-text slot instead.
 
-<docs-demo-six-select-237></docs-demo-six-select-237>
+<docs-demo-six-select-14></docs-demo-six-select-14>
 
 ```html
 <six-select label="Experience" help-text="Please tell us your skill level.">
@@ -288,7 +288,7 @@ Add descriptive help text to a select with the `help-text` attribute. For help t
 
 Dropdown panels will be clipped if they're inside a container that has overflow: auto|hidden. The hoist attribute forces the panel to use a fixed positioning strategy, allowing it to break out of the container. In this case, the panel will be positioned relative to its containing block, which is usually the viewport unless an ancestor uses a transform, perspective, or filter.
 
-<docs-demo-six-select-238></docs-demo-six-select-238>
+<docs-demo-six-select-15></docs-demo-six-select-15>
 
 ```html
 <div style="overflow: hidden; border: solid 1px grey; padding: 0.5em; display: flex">
@@ -311,7 +311,7 @@ Dropdown panels will be clipped if they're inside a container that has overflow:
 
 There was a bug where hoisting inside drawers caused a problem
 
-<docs-demo-six-select-239></docs-demo-six-select-239>
+<docs-demo-six-select-16></docs-demo-six-select-16>
 
 ```html
 <six-button id="hoistingDrawerBtn">Open Drawer</six-button>
@@ -374,7 +374,7 @@ You can filter the items shown by simply adding `filter="true"` to six-select
 
 You can also pass a custom placeholder with `filter-placeholder` to be shown in the filter input field (will be 'Filter...' by default)
 
-<docs-demo-six-select-240></docs-demo-six-select-240>
+<docs-demo-six-select-17></docs-demo-six-select-17>
 
 ```html
 <six-select label="Experience" filter multiple clearable>
@@ -400,7 +400,7 @@ In such a scenario simply add the `async-filter` attribute to your dropdown comp
 
 If you want to change the default debounce timeout use e.g. `filter-debounce="500"`
 
-<docs-demo-six-select-241></docs-demo-six-select-241>
+<docs-demo-six-select-18></docs-demo-six-select-18>
 
 ```html
 <six-select id="async-select" async-filter filter-placeholder="Search">
@@ -444,7 +444,7 @@ If you want to change the default debounce timeout use e.g. `filter-debounce="50
 
 If you have huge amounts of data you want to present in the dropdown you can't render all at once or it will crash your browser. For these usescases listen to the scroll event to decide which data to present.
 
-<docs-demo-six-select-242></docs-demo-six-select-242>
+<docs-demo-six-select-19></docs-demo-six-select-19>
 
 ```html
 <six-select id="infinite-scoll-dropdown">
@@ -490,7 +490,7 @@ Autocomplete does currently not support multiselect!
 
 You can adjust the debounce timeout via the `input-debounce` attribute
 
-<docs-demo-six-select-243></docs-demo-six-select-243>
+<docs-demo-six-select-20></docs-demo-six-select-20>
 
 ```html
 <six-select id="autocomplete-example" autocomplete clearable></six-select>
@@ -534,7 +534,7 @@ You can adjust the debounce timeout via the `input-debounce` attribute
 
 If you don't want to create a `six-menu-item` but simply want to pass an array with all options, you can do so via the `options` attribute.
 
-<docs-demo-six-select-244></docs-demo-six-select-244>
+<docs-demo-six-select-21></docs-demo-six-select-21>
 
 ```html
 <six-select id="six-select-dynamic-options"></six-select>
@@ -552,7 +552,7 @@ If you don't want to create a `six-menu-item` but simply want to pass an array w
 
 If you have a lot of items in the menu (100'000 in the following example), rendering all of them might lead to some performance issues. To avoid such issues use `virtual-scroll`
 
-<docs-demo-six-select-245></docs-demo-six-select-245>
+<docs-demo-six-select-22></docs-demo-six-select-22>
 
 ```html
 <six-select id="six-select-virtual-scroll" virtual-scroll></six-select>
@@ -570,7 +570,7 @@ If you have a lot of items in the menu (100'000 in the following example), rende
 
 In the following example you see the combination of `autocomplete` with `virtual-scroll`. The list contains 10'000 entries. Enter a number in the input field and you can virtually scroll through all elements which contain this number.
 
-<docs-demo-six-select-246></docs-demo-six-select-246>
+<docs-demo-six-select-23></docs-demo-six-select-23>
 
 ```html
 <six-select id="virtual-autocomplete-example" autocomplete clearable virtual-scroll></six-select>

@@ -1,9 +1,9 @@
-# six-sidebar-item
+# Sidebar Item
 
 
 ## six sidebar item
 
-<docs-demo-six-sidebar-item-250></docs-demo-six-sidebar-item-250>
+<docs-demo-six-sidebar-item-0></docs-demo-six-sidebar-item-0>
 
 ```html
 <div style="width: 10em" id="six-sidebar-items-group">

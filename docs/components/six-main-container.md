@@ -1,9 +1,9 @@
-# six-main-container
+# Main Container
 
 
 The SIX main container can be used to get consistent, dynamic, horizontal margins for the content of the main area in [six-root](six-root.html).
 
-<docs-demo-six-main-container-177></docs-demo-six-main-container-177>
+<docs-demo-six-main-container-0></docs-demo-six-main-container-0>
 
 ```html
 <six-main-container class="show-margin">
@@ -14,7 +14,7 @@ The SIX main container can be used to get consistent, dynamic, horizontal margin
 
 Set the `padded="false"` attribute to remove the top and bottom padding.
 
-<docs-demo-six-main-container-178></docs-demo-six-main-container-178>
+<docs-demo-six-main-container-1></docs-demo-six-main-container-1>
 
 ```html
 <six-main-container padded="false">
@@ -25,7 +25,7 @@ Set the `padded="false"` attribute to remove the top and bottom padding.
 
 The following styles are used to better visualize the example.
 
-<docs-demo-six-main-container-179></docs-demo-six-main-container-179>
+<docs-demo-six-main-container-2></docs-demo-six-main-container-2>
 
 ```html
 <style>

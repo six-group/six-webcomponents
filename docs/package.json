@@ -20,7 +20,7 @@
     "build:doc": "vitepress build",
     "copy:angular": "cpy '../examples/angular/dist/demo-app-angular/**/*' ./.vitepress/dist/demo/angular/",
     "copy:react": "cpy '../examples/react/build/**/*' ./.vitepress/dist/demo/react/",
-    "generate:components": "node scripts/components.js",
+    "generate:components": "node scripts/components.mjs",
     "clean": "rimraf examples components .vitepress/dist"
   },
   "license": "Apache-2.0"

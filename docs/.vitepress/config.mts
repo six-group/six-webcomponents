@@ -7,7 +7,7 @@ const componentNavItems = components.map((component) => {
       .replace('six-', '')
       .split('-')
       .map((c) => c[0].toUpperCase() + c.slice(1))
-      .join(' '), //.replace('six-', '').replace('-', ' '),
+      .join(' '),
     link: `/components/${component}`,
   };
 });

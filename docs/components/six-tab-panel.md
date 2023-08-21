@@ -1,10 +1,10 @@
-# six-tab-panel
+# Tab Panel
 
 
 Tab panels are used inside tab groups to display content.  
 Additional demonstrations can be found in the [tab group examples](six-tab-group.html).
 
-<docs-demo-six-tab-panel-274></docs-demo-six-tab-panel-274>
+<docs-demo-six-tab-panel-0></docs-demo-six-tab-panel-0>
 
 ```html
 <six-tab-group>

@@ -1,13 +1,9 @@
-# six-card
+# Card
 
 Simple card implementation.
 
 
-## Card
-
-Simple card implementation.
-
-<docs-demo-six-card-32></docs-demo-six-card-32>
+<docs-demo-six-card-0></docs-demo-six-card-0>
 
 ```html
 <six-card>

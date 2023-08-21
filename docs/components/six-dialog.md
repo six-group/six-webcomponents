@@ -1,9 +1,9 @@
-# six-dialog
+# Dialog
 
 
 Dialogs, sometimes called "modals", appear above the page and require the user's immediate attention.
 
-<docs-demo-six-dialog-70></docs-demo-six-dialog-70>
+<docs-demo-six-dialog-0></docs-demo-six-dialog-0>
 
 ```html
 <six-dialog label="Dialog" class="dialog-overview">
@@ -36,7 +36,7 @@ Dialogs, sometimes called "modals", appear above the page and require the user's
 
 Use the `--width` custom property to set the dialog's width.
 
-<docs-demo-six-dialog-71></docs-demo-six-dialog-71>
+<docs-demo-six-dialog-1></docs-demo-six-dialog-1>
 
 ```html
 <six-dialog label="Dialog" class="dialog-width" style="--width: 50vw">
@@ -61,7 +61,7 @@ Use the `--width` custom property to set the dialog's width.
 
 By design, a dialog's height will never exceed that of the viewport. As such, dialogs will not scroll with the page ensuring the header and footer are always accessible to the user.
 
-<docs-demo-six-dialog-72></docs-demo-six-dialog-72>
+<docs-demo-six-dialog-2></docs-demo-six-dialog-2>
 
 ```html
 <six-dialog label="Dialog" class="dialog-scrolling">
@@ -88,7 +88,7 @@ By design, a dialog's height will never exceed that of the viewport. As such, di
 
 By default, dialogs are closed when the user clicks or taps on the overlay. To prevent this behavior, cancel the `six-overlay-dismiss` event.
 
-<docs-demo-six-dialog-73></docs-demo-six-dialog-73>
+<docs-demo-six-dialog-3></docs-demo-six-dialog-3>
 
 ```html
 <six-dialog label="Dialog" class="dialog-no-overlay-dismiss">
@@ -115,7 +115,7 @@ By default, dialogs are closed when the user clicks or taps on the overlay. To p
 
 By default, the dialog's panel will gain focus when opened. To set focus on a different element, listen for the `six-initial-focus` event.
 
-<docs-demo-six-dialog-74></docs-demo-six-dialog-74>
+<docs-demo-six-dialog-4></docs-demo-six-dialog-4>
 
 ```html
 <six-dialog label="Dialog" class="dialog-focus">

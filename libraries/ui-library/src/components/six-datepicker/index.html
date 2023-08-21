@@ -11,7 +11,7 @@
   <body>
     <div class="container">
       <p>Datepickers allow the user to manually enter a date or open a popup calendar to select a date.</p>
-      <section class="demo">
+      <section>
         <six-datepicker></six-datepicker>
       </section>
 
@@ -23,7 +23,7 @@
         by listening to the <code>six-datepicker-select</code> event on the datepicker The selected date will be shown
         below the datepicker.
       </p>
-      <section class="demo">
+      <section>
         <six-datepicker id="read-select-date-picker"></six-datepicker>
         <div id="read-select-date-label">No Date selected yet!</div>
 
@@ -47,7 +47,7 @@
         If you need to select a time as well, just set the <code>type</code> and <code>date-format</code> and the
         datepicker will include a timepicker too.
       </p>
-      <section class="demo">
+      <section>
         <six-datepicker
           date-format="dd.mm.yyyy hh:MM:ss"
           type="date-time"
@@ -71,7 +71,7 @@
       </section>
 
       <h3>Disabled State</h3>
-      <section class="demo">
+      <section>
         <six-datepicker disabled></six-datepicker>
         <style>
           six-datepicker {
@@ -82,7 +82,7 @@
 
       <h3>Inline State</h3>
       <p>If you wish you can have the datepicker as an inline component i.e. the popup will always be open</p>
-      <section class="demo">
+      <section>
         <six-datepicker inline="true"></six-datepicker>
         <style>
           six-datepicker {
@@ -96,7 +96,7 @@
         If you want to force the user to use the popup instead of manually enter a date, you can simply add the
         <code>readonly</code> property
       </p>
-      <section class="demo">
+      <section>
         <six-datepicker readonly></six-datepicker>
         <style>
           six-datepicker {
@@ -110,7 +110,7 @@
         By default the datepicker will render either below or above the input field depending on the available space.
       </p>
       <p>If you want to enforce a certain placement you can use the <code>placement</code> attribute</p>
-      <section class="demo">
+      <section>
         <six-datepicker placement="bottom"></six-datepicker>
         <style>
           six-datepicker {
@@ -121,7 +121,7 @@
 
       <h3>Placeholder</h3>
       <p>You can define the datepickers placeholder via <code>placeholder</code></p>
-      <section class="demo">
+      <section>
         <six-datepicker placeholder="DD.MM.YYYY"></six-datepicker>
         <style>
           six-datepicker {
@@ -132,7 +132,7 @@
 
       <h3>Locale</h3>
       <p>You can change the language in which the datepicker is shown by using the <code>locale</code> attribute</p>
-      <section class="demo">
+      <section>
         <six-datepicker locale="fr"></six-datepicker>
         <style>
           six-datepicker {
@@ -143,7 +143,7 @@
 
       <h3>Footer</h3>
       <p>You can add content to the footer by simply using the datepicker's slot</p>
-      <section class="demo">
+      <section>
         <six-datepicker>
           <p style="text-align: center">Choose your birthdate!</p>
         </six-datepicker>
@@ -192,7 +192,7 @@
       <h3>Date Format</h3>
 
       <p>The SIX datepicker supports the following different formats:</p>
-      <section class="demo">
+      <section>
         <div id="datepicker-formats-container" style="display: flex; flex-wrap: wrap">
           <six-datepicker placeholder="dd.mm.yyyy" date-format="dd.mm.yyyy"></six-datepicker>
           <six-datepicker placeholder="yyyy-mm-dd" date-format="yyyy-mm-dd"></six-datepicker>
@@ -235,7 +235,7 @@
 
       <p>You can set the min and max dates. Please be aware that only date objects are accepted and n:</p>
 
-      <section class="demo">
+      <section>
         <div class="min-max-demo">
           <six-datepicker id="min-max-date-picker"></six-datepicker>
           <six-datepicker id="only-min-date-picker"></six-datepicker>
@@ -288,7 +288,7 @@
         callback function
       </p>
 
-      <section class="demo">
+      <section>
         <six-datepicker id="allowed-date-picker"></six-datepicker>
 
         <script type="module">
@@ -306,7 +306,7 @@
 
       <p>You can define a custom default date which will be shown on first appearance of the popup</p>
 
-      <section class="demo">
+      <section>
         <six-datepicker default-date="2021-02-20" date-format="yyyy-mm-dd"></six-datepicker>
         <style>
           six-datepicker {
@@ -318,7 +318,7 @@
       <h3>Clearable</h3>
       <p>Add the <code>clearable</code> property to add a clear button when the input has content.</p>
 
-      <section class="demo">
+      <section>
         <six-datepicker clearable></six-datepicker>
         <style>
           six-datepicker {
@@ -330,7 +330,7 @@
       <h3>Icon position</h3>
       <p>Could be adjusted providing <code>icon-position</code> property.</p>
 
-      <section class="demo">
+      <section>
         <six-datepicker icon-position="right"></six-datepicker>
         <br />
         <six-datepicker icon-position="right" clearable></six-datepicker>
@@ -353,7 +353,7 @@
       <h3>Custom icon</h3>
       <p>The slot <code>custom-icon</code> is used to provide a custom datepicker icon.</p>
 
-      <section class="demo">
+      <section>
         <six-datepicker custom-icon>
           <img
             style="height: 24px"
@@ -391,7 +391,7 @@
         this case, the panel will be positioned relative to its containing block, which is usually the viewport unless
         an ancestor uses a transform, perspective, or filter.
       </p>
-      <section class="demo">
+      <section>
         <div style="overflow: hidden; border: solid 1px grey; padding: 0.5em; display: flex">
           <six-datepicker placement="bottom" placeholder="no hoisting"></six-datepicker>
           <six-datepicker hoist placement="bottom" placeholder="with hoisting"></six-datepicker>
@@ -408,7 +408,7 @@
 
       <p>The datepicker value can be changed dynamically by setting the <code>value</code> attribute.</p>
 
-      <section class="demo">
+      <section>
         <six-datepicker id="dynamic-datepicker"></six-datepicker>
         <div style="margin-top: 1rem">
           <span style="font-weight: bold">Selected: </span
@@ -446,7 +446,7 @@
 
       <h3>Open State</h3>
       <p>If you wish you can have the datepicker open on startup. It will close as usual (clicking outside etc.)</p>
-      <section class="demo">
+      <section>
         <six-datepicker open="true" placement="bottom"></six-datepicker>
         <style>
           six-datepicker {
@@ -457,7 +457,7 @@
 
       <h2>Datepicker in a Modal</h2>
 
-      <section class="demo">
+      <section>
         <six-button id="modal-ex-dt">Toggle Modal</six-button>
 
         <div id="dt-modal" class="dt-modal">

@@ -1,9 +1,9 @@
-# six-stage-indicator
+# Stage Indicator
 
 
 Stage Indicators allow user to know which stage he is currently on
 
-<docs-demo-six-stage-indicator-259></docs-demo-six-stage-indicator-259>
+<docs-demo-six-stage-indicator-0></docs-demo-six-stage-indicator-0>
 
 ```html
 <six-stage-indicator stage="DEV"> DEV-webcomponents-123.3.2 </six-stage-indicator>
@@ -16,7 +16,7 @@ Stage Indicators allow user to know which stage he is currently on
 
 Use the `stage` attribute to display a certain stage
 
-<docs-demo-six-stage-indicator-260></docs-demo-six-stage-indicator-260>
+<docs-demo-six-stage-indicator-1></docs-demo-six-stage-indicator-1>
 
 ```html
 <six-stage-indicator stage="DEV"> DEV-webcomponents-123.3.2 </six-stage-indicator>
