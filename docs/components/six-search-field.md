@@ -1,11 +1,9 @@
-# six-search-field
+# Search Field
 
-
-# Basic Search Field
 
 Showing a basic search field returning results on pressing on a default debounce
 
-<docs-demo-six-search-field-222></docs-demo-six-search-field-222>
+<docs-demo-six-search-field-0></docs-demo-six-search-field-0>
 
 ```html
 <six-search-field placeholder="Search" id="basic-search-field">

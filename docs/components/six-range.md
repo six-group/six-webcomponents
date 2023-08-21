@@ -1,11 +1,11 @@
-# six-range
+# Range
 
 
 ## Range
 
 Ranges allow the user to select a single value within a given range using a slider.
 
-<docs-demo-six-range-213></docs-demo-six-range-213>
+<docs-demo-six-range-0></docs-demo-six-range-0>
 
 ```html
 <six-range min="0" max="100" step="1"></six-range>
@@ -18,7 +18,7 @@ Ranges allow the user to select a single value within a given range using a slid
 
 Use the `disabled` prop to disable a slider.
 
-<docs-demo-six-range-214></docs-demo-six-range-214>
+<docs-demo-six-range-1></docs-demo-six-range-1>
 
 ```html
 <six-range min="0" max="100" step="1" disabled></six-range>
@@ -29,7 +29,7 @@ Use the `disabled` prop to disable a slider.
 
 By default, the tooltip is shown on top. Set `tooltip` to `bottom` to show it below the slider.
 
-<docs-demo-six-range-215></docs-demo-six-range-215>
+<docs-demo-six-range-2></docs-demo-six-range-2>
 
 ```html
 <six-range min="0" max="100" step="1" tooltip="bottom"></six-range>
@@ -40,7 +40,7 @@ By default, the tooltip is shown on top. Set `tooltip` to `bottom` to show it be
 
 To disable the tooltip, set `tooltip` to `none`.
 
-<docs-demo-six-range-216></docs-demo-six-range-216>
+<docs-demo-six-range-3></docs-demo-six-range-3>
 
 ```html
 <six-range min="0" max="100" step="1" tooltip="none"></six-range>
@@ -51,7 +51,7 @@ To disable the tooltip, set `tooltip` to `none`.
 
 You can change the tooltip's content by setting the `tooltipFormatter` prop to a function that accepts the range's value as an argument.
 
-<docs-demo-six-range-217></docs-demo-six-range-217>
+<docs-demo-six-range-4></docs-demo-six-range-4>
 
 ```html
 <six-range min="0" max="100" step="1" class="range-with-custom-formatter"></six-range>
@@ -67,7 +67,7 @@ You can change the tooltip's content by setting the `tooltipFormatter` prop to a
 
 Use the `label` attribute to give the range an accessible label. For labels that contain HTML, use the label `slot` instead.
 
-<docs-demo-six-range-218></docs-demo-six-range-218>
+<docs-demo-six-range-5></docs-demo-six-range-5>
 
 ```html
 <six-range label="Volume" min="0" max="100"></six-range>
@@ -78,7 +78,7 @@ Use the `label` attribute to give the range an accessible label. For labels that
 
 Add descriptive help text to a range with the `help-text` attribute. For help texts that contain HTML, use the `help-text` slot instead.
 
-<docs-demo-six-range-219></docs-demo-six-range-219>
+<docs-demo-six-range-6></docs-demo-six-range-6>
 
 ```html
 <six-range label="Volume" help-text="Controls the volume of the current song." min="0" max="100"></six-range>
@@ -89,7 +89,7 @@ Add descriptive help text to a range with the `help-text` attribute. For help te
 
 Add styling attributes e.g. `--track-height, --track-color, --thumb-size, --thumb-color` attribute to customize the appearance of the range.
 
-<docs-demo-six-range-220></docs-demo-six-range-220>
+<docs-demo-six-range-7></docs-demo-six-range-7>
 
 ```html
 <six-range           min="0"

@@ -1,7 +1,5 @@
-# six-error-pages
+# Error Pages
 
-
-# six-error-page
 
 The `six-error-page` can be used to show the different errors.
 
@@ -13,7 +11,7 @@ Set attribute `error-code` to show proper error page.
 
 ## Forbidden Access
 
-<docs-demo-six-error-page-99></docs-demo-six-error-page-99>
+<docs-demo-six-error-page-0></docs-demo-six-error-page-0>
 
 ```html
 <six-error-page error-code="403" language="en"></six-error-page>
@@ -23,7 +21,7 @@ Set attribute `error-code` to show proper error page.
 
 ## Not Found
 
-<docs-demo-six-error-page-100></docs-demo-six-error-page-100>
+<docs-demo-six-error-page-1></docs-demo-six-error-page-1>
 
 ```html
 <six-error-page error-code="404" language="en"></six-error-page>
@@ -33,7 +31,7 @@ Set attribute `error-code` to show proper error page.
 
 ## Internal Server Error
 
-<docs-demo-six-error-page-101></docs-demo-six-error-page-101>
+<docs-demo-six-error-page-2></docs-demo-six-error-page-2>
 
 ```html
 <six-error-page error-code="500" language="en"></six-error-page>
@@ -43,7 +41,7 @@ Set attribute `error-code` to show proper error page.
 
 ### Custom Error Message
 
-<docs-demo-six-error-page-102></docs-demo-six-error-page-102>
+<docs-demo-six-error-page-3></docs-demo-six-error-page-3>
 
 ```html
 <six-error-page custom-title="my title" id="custom-error-message" custom-icon="home"></six-error-page>

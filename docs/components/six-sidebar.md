@@ -1,4 +1,4 @@
-# six-sidebar
+# Sidebar
 
 Sidebars are used in combination with the <a href="six-root.html">six-root</a> layout. They are used for static menus on the left or right
 of the main content.
@@ -9,7 +9,7 @@ If you want the user to execute an intermediary task and force a context-switch 
 
 six-sidebar allows to add a static sidebar to the left or right of the `six-root` holygrail layout
 
-<docs-demo-six-sidebar-247></docs-demo-six-sidebar-247>
+<docs-demo-six-sidebar-0></docs-demo-six-sidebar-0>
 
 ```html
 <six-sidebar position="left" width="20rem" open>
@@ -98,7 +98,7 @@ six-sidebar allows to add a static sidebar to the left or right of the `six-root
 
 By default you can open multiple menus. However there might be usecases when you want to allow only one menu item to be open at the same time. For this simply set the `toggled` attribute to the sidebar. If you now open a menu item all siblings of this menu item will be closed.
 
-<docs-demo-six-sidebar-248></docs-demo-six-sidebar-248>
+<docs-demo-six-sidebar-1></docs-demo-six-sidebar-1>
 
 ```html
 <six-sidebar position="left" width="20rem" toggled open>
@@ -156,7 +156,7 @@ You can programmatically control the sidebar with two available methods: `select
 
 The following has many filler section elements to clearly show that the selected item will also be scrolled into view
 
-<docs-demo-six-sidebar-249></docs-demo-six-sidebar-249>
+<docs-demo-six-sidebar-2></docs-demo-six-sidebar-2>
 
 ```html
 <div id="sidebar-programmatic-buttonbar" style="margin-bottom: 1em">

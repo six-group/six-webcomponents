@@ -1,7 +1,5 @@
-# six-file-list-item
+# File List Item
 
-
-## File List Item
 
 A `six-file-list-item` can be used within a `six-file-list` and in compination with `six-file-upload`
 
@@ -9,7 +7,7 @@ A `six-file-list-item` can be used within a `six-file-list` and in compination w
 
 Use the `identifier` attribute to set an id (will be returned when trying to download or delete a file) and the `name` attribute to set the name (will be shown in the UI)
 
-<docs-demo-six-file-list-item-104></docs-demo-six-file-list-item-104>
+<docs-demo-six-file-list-item-0></docs-demo-six-file-list-item-0>
 
 ```html
 <six-file-list-item identifier="id1" name="file_1.pdf"></six-file-list-item>
@@ -20,7 +18,7 @@ Use the `identifier` attribute to set an id (will be returned when trying to dow
 
 You can use `date` attribute to show when the file has been uploaded
 
-<docs-demo-six-file-list-item-105></docs-demo-six-file-list-item-105>
+<docs-demo-six-file-list-item-1></docs-demo-six-file-list-item-1>
 
 ```html
 <six-file-list-item identifier="id_2" name="file_2.pdf" date="23.09.2021, 09:12"></six-file-list-item>
@@ -31,7 +29,7 @@ You can use `date` attribute to show when the file has been uploaded
 
 You can show the file size in KB. Use the `size` attribute. The number you provide will be divided by 1024 and rounded
 
-<docs-demo-six-file-list-item-106></docs-demo-six-file-list-item-106>
+<docs-demo-six-file-list-item-2></docs-demo-six-file-list-item-2>
 
 ```html
 <six-file-list-item           identifier="id_3"
@@ -46,7 +44,7 @@ You can show the file size in KB. Use the `size` attribute. The number you provi
 
 If you don't want the file to be downloadable simply set the `nodownload` attribute
 
-<docs-demo-six-file-list-item-107></docs-demo-six-file-list-item-107>
+<docs-demo-six-file-list-item-3></docs-demo-six-file-list-item-3>
 
 ```html
 <six-file-list-item           identifier="id_4"
@@ -62,7 +60,7 @@ If you don't want the file to be downloadable simply set the `nodownload` attrib
 
 If you don't want the file to be deletable, simply set the `nodelete` attribute
 
-<docs-demo-six-file-list-item-108></docs-demo-six-file-list-item-108>
+<docs-demo-six-file-list-item-4></docs-demo-six-file-list-item-4>
 
 ```html
 <six-file-list-item           identifier="id_5"

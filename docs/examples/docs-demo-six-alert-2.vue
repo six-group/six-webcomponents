@@ -1,5 +1,5 @@
 <template>
-<div class="demo my-app">
+<div>
 
         <six-alert type="primary" open closable class="alert-closable">
           <six-icon slot="icon">info</six-icon>

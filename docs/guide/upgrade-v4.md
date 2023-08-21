@@ -36,12 +36,10 @@ For detailed guidance on setting up Angular, refer to the [Angular guide](angula
 
 ## Client Side Validation Support Removal
 
-In Version 3, an attempt was made to incorporate support for native
-[client side form validation](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation).
-As a result, we have made the decision to completely remove this feature. This choice is rooted in
-our goal for form validation to be handled by the framework utilizing our components, which is the
-approach adopted by the majority of projects. To comprehend how this process operates, consider, for
-instance, the provided Angular example.
+Supporting client-side form validation for web components can be quite challenging and prone to
+errors. Furthermore, it's worth noting that StencilJS currently
+[lacks support](https://github.com/ionic-team/stencil/issues/2284) for form-associated components.
+Consequently, we've opted to entirely eliminate this functionality.
 
 In detail, the following changes were made:
 
@@ -57,14 +55,15 @@ In detail, the following changes were made:
 - Removed the following properties in all form components:
   - `errorOnBlur`
 
-The `six-form` component can be easily substituted with a native form element. However, since the
+The `six-form` component can be substituted with a native `<form>` element. However, since the
 validation logic is no longer managed, it must now be carried out manually or with the assistance of
 a form library.
 
 Form elements still maintain the capability to display error messages. To display an error message
-you need to set the `error-text` and `invalid` property. In Angular both properties are set
-automatically if you use angular forms and its validators, displaying the error message at the right
-time.
+you need to set the `error-text` and `invalid` property. Note that those properties are set
+automatically if you use the
+[dedicated npm package for Angular](https://www.npmjs.com/package/@six-group/ui-library-angular) in
+combination with [Angular forms](https://angular.io/guide/forms-overview).
 
 ## Vue Support Removal
 

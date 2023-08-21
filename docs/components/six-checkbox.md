@@ -1,9 +1,9 @@
-# six-checkbox
+# Checkbox
 
 
 Checkboxes allow the user to toggle an option on or off.
 
-<docs-demo-six-checkbox-33></docs-demo-six-checkbox-33>
+<docs-demo-six-checkbox-0></docs-demo-six-checkbox-0>
 
 ```html
 <six-checkbox>Checkbox</six-checkbox>
@@ -16,7 +16,7 @@ Checkboxes allow the user to toggle an option on or off.
 
 Use the `checked` attribute to activate the checkbox.
 
-<docs-demo-six-checkbox-34></docs-demo-six-checkbox-34>
+<docs-demo-six-checkbox-1></docs-demo-six-checkbox-1>
 
 ```html
 <six-checkbox checked>Checked</six-checkbox>
@@ -27,7 +27,7 @@ Use the `checked` attribute to activate the checkbox.
 
 Use the `indeterminate` attribute to make the checkbox indeterminate.
 
-<docs-demo-six-checkbox-35></docs-demo-six-checkbox-35>
+<docs-demo-six-checkbox-2></docs-demo-six-checkbox-2>
 
 ```html
 <six-checkbox indeterminate>Indeterminate</six-checkbox>
@@ -38,7 +38,7 @@ Use the `indeterminate` attribute to make the checkbox indeterminate.
 
 Use the `disabled` attribute to disable the checkbox.
 
-<docs-demo-six-checkbox-36></docs-demo-six-checkbox-36>
+<docs-demo-six-checkbox-3></docs-demo-six-checkbox-3>
 
 ```html
 <six-checkbox checked disabled>Disabled</six-checkbox>
@@ -51,7 +51,7 @@ Use the `disabled` attribute to disable the checkbox.
 
 Use the `label` attribute to give the checkbox an accessible label. For labels that contain HTML, use the `label`slot instead.
 
-<docs-demo-six-checkbox-37></docs-demo-six-checkbox-37>
+<docs-demo-six-checkbox-4></docs-demo-six-checkbox-4>
 
 ```html
 <six-checkbox label="Terms and conditions">I totally agree</six-checkbox>

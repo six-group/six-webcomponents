@@ -1,13 +1,11 @@
-# six-language-switcher
+# Language Switcher
 
-
-# SIX Language Switcher
 
 The `six-language-switcher` can switch between languages.
 
 The selected language is covered in colour.
 
-<docs-demo-six-language-switcher-169></docs-demo-six-language-switcher-169>
+<docs-demo-six-language-switcher-0></docs-demo-six-language-switcher-0>
 
 ```html
 <six-language-switcher></six-language-switcher>
@@ -18,7 +16,7 @@ The selected language is covered in colour.
 
 You can define the languages you want to be able to choose from, by passing your language array via `languages`
 
-<docs-demo-six-language-switcher-170></docs-demo-six-language-switcher-170>
+<docs-demo-six-language-switcher-1></docs-demo-six-language-switcher-1>
 
 ```html
 <six-language-switcher id="custom-language-set"></six-language-switcher>
@@ -42,7 +40,7 @@ You can define the languages you want to be able to choose from, by passing your
 
 By using the attribute `selected` you can define which language should be selected
 
-<docs-demo-six-language-switcher-171></docs-demo-six-language-switcher-171>
+<docs-demo-six-language-switcher-2></docs-demo-six-language-switcher-2>
 
 ```html
 <six-language-switcher selected="DE"></six-language-switcher>
@@ -55,7 +53,7 @@ In cases where you fetch the languages array e.g. from a backend, there might be
 
 However, as you can see in this example, the `six-language-switcher` supports setting languages at a later stage.
 
-<docs-demo-six-language-switcher-172></docs-demo-six-language-switcher-172>
+<docs-demo-six-language-switcher-3></docs-demo-six-language-switcher-3>
 
 ```html
 <six-language-switcher id="async-six-lang-switcher"></six-language-switcher>
@@ -68,7 +66,7 @@ However, as you can see in this example, the `six-language-switcher` supports se
 
 ## Custom Output
 
-<docs-demo-six-language-switcher-173></docs-demo-six-language-switcher-173>
+<docs-demo-six-language-switcher-4></docs-demo-six-language-switcher-4>
 
 ```html
 <six-language-switcher id="custom-output"></six-language-switcher>

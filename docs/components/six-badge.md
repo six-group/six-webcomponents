@@ -1,11 +1,9 @@
-# six-badge
-
-
 # Badge
+
 
 Badges are used to draw attention and display statuses or counts.
 
-<docs-demo-six-badge-13></docs-demo-six-badge-13>
+<docs-demo-six-badge-0></docs-demo-six-badge-0>
 
 ```html
 <six-badge>Badge</six-badge>
@@ -18,7 +16,7 @@ Badges are used to draw attention and display statuses or counts.
 
 Set the `type` attribute to change the badge's type.
 
-<docs-demo-six-badge-14></docs-demo-six-badge-14>
+<docs-demo-six-badge-1></docs-demo-six-badge-1>
 
 ```html
 <six-badge>Badge</six-badge>
@@ -29,7 +27,7 @@ Set the `type` attribute to change the badge's type.
 
 Use the `pill` attribute to give badges rounded edges.
 
-<docs-demo-six-badge-15></docs-demo-six-badge-15>
+<docs-demo-six-badge-2></docs-demo-six-badge-2>
 
 ```html
 <six-badge type="primary" pill>Primary</six-badge>
@@ -45,7 +43,7 @@ Use the `pill` attribute to give badges rounded edges.
 
 Use the `pulse` attribute to draw attention to the badge with a subtle animation.
 
-<docs-demo-six-badge-16></docs-demo-six-badge-16>
+<docs-demo-six-badge-3></docs-demo-six-badge-3>
 
 ```html
 <div class="badge-pulse">
@@ -69,7 +67,7 @@ Use the `pulse` attribute to draw attention to the badge with a subtle animation
 
 One of the most common use cases for badges is attaching them to buttons. To make this easier, badges will be automatically positioned at the top-right when they're a child of a button.
 
-<docs-demo-six-badge-17></docs-demo-six-badge-17>
+<docs-demo-six-badge-4></docs-demo-six-badge-4>
 
 ```html
 <six-button>
@@ -93,7 +91,7 @@ One of the most common use cases for badges is attaching them to buttons. To mak
 
 When including badges in menu items, use the `suffix` slot to make sure they're aligned correctly.
 
-<docs-demo-six-badge-18></docs-demo-six-badge-18>
+<docs-demo-six-badge-5></docs-demo-six-badge-5>
 
 ```html
 <six-menu           style="

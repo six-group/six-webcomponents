@@ -24,7 +24,7 @@
         can trigger. If you're looking for a component to provide some options inside a form, you should have a look at
         <a href="six-select.html">six-select</a>.
       </p>
-      <section class="demo">
+      <section>
         <six-dropdown>
           <six-avatar
             image="https://images.unsplash.com/photo-1559715541-5daf8a0296d0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1792&q=80"
@@ -54,7 +54,7 @@
 
       <h3>Text Only Button</h3>
       <p>Of course the trigger button can be just a link button as well</p>
-      <section class="demo">
+      <section>
         <six-dropdown placement="top-start">
           <six-button type="link" caret slot="trigger">Edit</six-button>
           <six-menu>
@@ -73,7 +73,7 @@
         The preferred placement of the dropdown can be set with the <code>placement</code> attribute. Note that the
         actual position may vary to ensure the panel remains in the viewport.
       </p>
-      <section class="demo">
+      <section>
         <six-dropdown placement="top-start">
           <six-button slot="trigger" caret>Edit</six-button>
           <six-menu>
@@ -92,7 +92,7 @@
         The distance from the panel to the trigger can be customized using the <code>distance</code> attribute. This
         value is specified in pixels.
       </p>
-      <section class="demo">
+      <section>
         <six-dropdown distance="30">
           <six-button slot="trigger" caret>Edit</six-button>
           <six-menu>
@@ -111,7 +111,7 @@
         The offset of the panel along the trigger can be customized using the <code>skidding</code> attribute. This
         value is specified in pixels.
       </p>
-      <section class="demo">
+      <section>
         <six-dropdown skidding="30">
           <six-button slot="trigger" caret>Edit</six-button>
           <six-menu>
@@ -132,7 +132,7 @@
         the container. In this case, the panel will be positioned relative to its containing block, which is usually the
         viewport unless an ancestor uses a <code>transform</code>, <code>perspective</code>, or <code>filter</code>.
       </p>
-      <section class="demo">
+      <section>
         <div class="dropdown-hoist">
           <six-dropdown>
             <six-button slot="trigger" caret>No Hoist</six-button>
@@ -168,7 +168,7 @@
         <code>six-select</code> event to determine which menu item was selected. The menu item element will be exposed
         in <code>event.detail.item</code>. You can set <code>value</code> props to make it easier to identify commands.
       </p>
-      <section class="demo">
+      <section>
         <div class="dropdown-selection">
           <six-dropdown>
             <six-button slot="trigger" caret>Edit</six-button>
@@ -196,7 +196,7 @@
         approach, disabled menu items will still emit a <code>click</code> event.
       </p>
 
-      <section class="demo">
+      <section>
         <div class="dropdown-selection-alt">
           <six-dropdown>
             <six-button slot="trigger" caret>Edit</six-button>
@@ -222,7 +222,7 @@
 
       <h3>Using an avatar as a trigger</h3>
       <p>You can use any arbitrary content as trigger element, however it needs to be tabbable (tabIndex > -1)</p>
-      <section class="demo">
+      <section>
         <div class="dropdown-selection">
           <six-dropdown>
             <six-avatar
@@ -245,7 +245,7 @@
         field (will be 'Filter...' by default)
       </p>
       <p>If you want to change the default debounce timeout use e.g. <code>filter-debounce="500"</code></p>
-      <section class="demo">
+      <section>
         <six-dropdown filter filter-placeholder="Search">
           <six-button slot="trigger" caret>Dropdown</six-button>
           <six-menu>
@@ -270,7 +270,7 @@
       </p>
       <p>In such a scenario simply add the <code>async-filter</code> attribute to your dropdown component</p>
       <p>If you want to change the default debounce timeout use e.g. <code>filter-debounce="500"</code></p>
-      <section class="demo">
+      <section>
         <six-dropdown id="async-dropdown" async-filter filter-placeholder="Search">
           <six-button slot="trigger" caret>Dropdown</six-button>
           <six-menu id="async-menu">
@@ -317,7 +317,7 @@
         crash your browser. For these usescases listen to the scroll event to decide which data to present
       </p>
 
-      <section class="demo">
+      <section>
         <six-dropdown id="infinite-scoll-dropdown">
           <six-button slot="trigger" caret>Dropdown</six-button>
           <six-menu id="infinite-scroll-menu"> </six-menu>
@@ -360,7 +360,7 @@
         can do so via the <code>options</code> attribute.
       </p>
 
-      <section class="demo">
+      <section>
         <six-dropdown id="six-dropdown-dynamic-options">
           <six-button slot="trigger" caret>Dropdown</six-button>
         </six-dropdown>
@@ -380,7 +380,7 @@
         some performance issues. To avoid such issues use <code>virtual-scroll</code>
       </p>
 
-      <section class="demo">
+      <section>
         <six-dropdown id="six-dropdown-virtual-scrolling" virtual-scroll>
           <six-button slot="trigger" caret>Dropdown</six-button>
         </six-dropdown>
@@ -402,7 +402,7 @@
 
       <p>To make your virtually scrolled list filterable simply add the <code>filter</code> attribute</p>
 
-      <section class="demo">
+      <section>
         <six-dropdown id="six-dropdown-virtual-scrolling-filtered" virtual-scroll filter>
           <six-button slot="trigger" caret>Dropdown</six-button>
         </six-dropdown>

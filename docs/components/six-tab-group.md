@@ -1,11 +1,11 @@
-# six-tab-group
+# Tab Group
 
 
 ### Tab groups organize content into a container that shows one section at a time.
 
 Tab groups make use of tabs and tab panels. Each tab must be slotted into the `nav` slot and its panel must refer to a tab `panel` of the same name.
 
-<docs-demo-six-tab-group-266></docs-demo-six-tab-group-266>
+<docs-demo-six-tab-group-0></docs-demo-six-tab-group-0>
 
 ```html
 <six-tab-group>
@@ -29,7 +29,7 @@ Tab groups make use of tabs and tab panels. Each tab must be slotted into the `n
 
 If the background color of your panels is white, you maybe want a thin line between the tabs and panels. For this, just set a border on the shadow part `tabs`.
 
-<docs-demo-six-tab-group-267></docs-demo-six-tab-group-267>
+<docs-demo-six-tab-group-1></docs-demo-six-tab-group-1>
 
 ```html
 <six-tab-group class="tab-group-with-line">
@@ -56,7 +56,7 @@ If the background color of your panels is white, you maybe want a thin line betw
 
 Tabs can be shown on the bottom by setting `placement` to `bottom`.
 
-<docs-demo-six-tab-group-268></docs-demo-six-tab-group-268>
+<docs-demo-six-tab-group-2></docs-demo-six-tab-group-2>
 
 ```html
 <six-tab-group placement="bottom">
@@ -77,7 +77,7 @@ Tabs can be shown on the bottom by setting `placement` to `bottom`.
 
 Tabs can be shown on the left by setting `placement` to `left`.
 
-<docs-demo-six-tab-group-269></docs-demo-six-tab-group-269>
+<docs-demo-six-tab-group-3></docs-demo-six-tab-group-3>
 
 ```html
 <six-tab-group placement="left">
@@ -98,7 +98,7 @@ Tabs can be shown on the left by setting `placement` to `left`.
 
 Tabs can be shown on the right by setting `placement` to `right`.
 
-<docs-demo-six-tab-group-270></docs-demo-six-tab-group-270>
+<docs-demo-six-tab-group-4></docs-demo-six-tab-group-4>
 
 ```html
 <six-tab-group placement="right">
@@ -119,7 +119,7 @@ Tabs can be shown on the right by setting `placement` to `right`.
 
 Add the `closable` prop to a tab to show a close button. This example shows how you can dynamically remove tabs from the DOM when the close button is activated.
 
-<docs-demo-six-tab-group-271></docs-demo-six-tab-group-271>
+<docs-demo-six-tab-group-5></docs-demo-six-tab-group-5>
 
 ```html
 <six-tab-group class="tabs-closable">
@@ -158,7 +158,7 @@ Add the `closable` prop to a tab to show a close button. This example shows how 
 
 When there are more tabs than horizontal space allows, the nav will be scrollable..
 
-<docs-demo-six-tab-group-272></docs-demo-six-tab-group-272>
+<docs-demo-six-tab-group-6></docs-demo-six-tab-group-6>
 
 ```html
 <six-tab-group>
@@ -211,7 +211,7 @@ When there are more tabs than horizontal space allows, the nav will be scrollabl
 
 When focused, keyboard users can press "Left" or "Right" to select the desired tab. By default, the corresponding tab panel will be shown immediately (automatic activation). You can change this behavior by setting `activation="manual"` which will require the user to press "Space" or "Enter" before showing the tab panel (manual activation).
 
-<docs-demo-six-tab-group-273></docs-demo-six-tab-group-273>
+<docs-demo-six-tab-group-7></docs-demo-six-tab-group-7>
 
 ```html
 <six-tab-group activation="manual">

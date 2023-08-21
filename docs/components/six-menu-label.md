@@ -1,11 +1,11 @@
-# six-menu-label
+# Menu Label
 
 
 ## Menu Label
 
 Menu labels are used to describe a group of menu items.
 
-<docs-demo-six-menu-label-187></docs-demo-six-menu-label-187>
+<docs-demo-six-menu-label-0></docs-demo-six-menu-label-0>
 
 ```html
 <six-menu           style="

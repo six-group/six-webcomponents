@@ -1,11 +1,9 @@
-# six-file-list
+# File List
 
-
-## File List
 
 `six-file-list` is a simple container to show to hold the different items
 
-<docs-demo-six-file-list-103></docs-demo-six-file-list-103>
+<docs-demo-six-file-list-0></docs-demo-six-file-list-0>
 
 ```html
 <six-file-list>

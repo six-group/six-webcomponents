@@ -1,5 +1,5 @@
 <template>
-<div class="demo my-app">
+<div>
 
         <div class="alert-toast">
           <six-button id="primary-button" type="primary">Primary</six-button>

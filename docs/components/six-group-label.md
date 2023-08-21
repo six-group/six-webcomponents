@@ -1,11 +1,11 @@
-# six-group-label
+# Group Label
 
 
 ## Label
 
 Labels can be used to create a common label for several subcomponents. Please be aware: If only one subcomponent is used, the subcomponent's own label should be used!
 
-<docs-demo-six-group-label-115></docs-demo-six-group-label-115>
+<docs-demo-six-group-label-0></docs-demo-six-group-label-0>
 
 ```html
 <six-group-label label="Common label">
@@ -23,7 +23,7 @@ Labels can be used to create a common label for several subcomponents. Please be
 
 Use the `disabled` prop to show a disabled label.
 
-<docs-demo-six-group-label-116></docs-demo-six-group-label-116>
+<docs-demo-six-group-label-1></docs-demo-six-group-label-1>
 
 ```html
 <six-group-label label="Common label" disabled>
@@ -39,7 +39,7 @@ Use the `disabled` prop to show a disabled label.
 
 Use the `size` attribute to change the label's size.
 
-<docs-demo-six-group-label-117></docs-demo-six-group-label-117>
+<docs-demo-six-group-label-2></docs-demo-six-group-label-2>
 
 ```html
 <six-group-label label="Common label" size="small">
@@ -69,7 +69,7 @@ Use the `size` attribute to change the label's size.
 
 Add descriptive help text to a select with the `help-text` attribute. For help texts that contain HTML, use the help-text slot instead.
 
-<docs-demo-six-group-label-118></docs-demo-six-group-label-118>
+<docs-demo-six-group-label-3></docs-demo-six-group-label-3>
 
 ```html
 <six-group-label label="Common label" help-text="Please tell us what you think.">

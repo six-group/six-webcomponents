@@ -1,27 +1,29 @@
-# six-icon
+# Icon
 
 
 ## Icons
 
 SIX UI Library supports all available material design icons. You can search for icons [here](https://fonts.google.com/icons?selected=Material+Icons).
 
-<docs-demo-six-icon-123></docs-demo-six-icon-123>
+<docs-demo-six-icon-0></docs-demo-six-icon-0>
 
 ```html
-<six-icon class="margin-right">face</six-icon>
-<six-icon class="margin-right">favorite</six-icon>
-<six-icon class="margin-right">backup</six-icon>
-<six-icon class="margin-right">delete</six-icon>
-<six-icon class="margin-right">language</six-icon>
-<six-icon class="margin-right">work</six-icon>
-<six-icon class="margin-right">smartphone</six-icon>
-<six-icon class="margin-right">camera</six-icon>
-<six-icon class="margin-right">local_bar</six-icon>
-<six-icon class="margin-right">local_hotel</six-icon>
-<six-icon class="margin-right">local_phone</six-icon>
-<six-icon class="margin-right">person</six-icon>
-<six-icon class="margin-right">check_box</six-icon>
-<six-icon class="margin-right">train</six-icon>
+<div style="display: flex; gap: 1em; min-height: 5rem; align-items: center">
+  <six-icon>face</six-icon>
+  <six-icon>favorite</six-icon>
+  <six-icon>backup</six-icon>
+  <six-icon>delete</six-icon>
+  <six-icon>language</six-icon>
+  <six-icon>work</six-icon>
+  <six-icon>smartphone</six-icon>
+  <six-icon>camera</six-icon>
+  <six-icon>local_bar</six-icon>
+  <six-icon>local_hotel</six-icon>
+  <six-icon>local_phone</six-icon>
+  <six-icon>person</six-icon>
+  <six-icon>check_box</six-icon>
+  <six-icon>train</six-icon>
+</div>
 ```
 
 
@@ -31,27 +33,33 @@ You can choose different executions of the material icons. By default try sticki
 
 #### Outlined icons
 
-pie\_chart
+<docs-demo-six-icon-1></docs-demo-six-icon-1>
 
-settings
+```html
+<div style="display: flex; gap: 1em; min-height: 5rem; align-items: center">
+  <six-icon>pie_chart</six-icon>
+  <six-icon>settings</six-icon>
+  <six-icon>sick</six-icon>
+  <six-icon>fort</six-icon>
+  <six-icon>castle</six-icon>
+</div>
+```
 
-sick
-
-fort
-
-castle
 
 #### Filled icons
 
-pie\_chart
+<docs-demo-six-icon-2></docs-demo-six-icon-2>
 
-settings
+```html
+<div style="display: flex; gap: 1em; min-height: 5rem; align-items: center">
+  <six-icon filled>pie_chart</six-icon>
+  <six-icon filled>settings</six-icon>
+  <six-icon filled>sick</six-icon>
+  <six-icon filled>fort</six-icon>
+  <six-icon filled>castle</six-icon>
+</div>
+```
 
-sick
-
-fort
-
-castle
 
 ### Sizing
 
@@ -59,115 +67,131 @@ The icons are available in different sizes. Default size is medium (24px).
 
 #### Extra-small Icons
 
-<docs-demo-six-icon-124></docs-demo-six-icon-124>
+<docs-demo-six-icon-3></docs-demo-six-icon-3>
 
 ```html
-<six-icon class="margin-right" size="xSmall">search</six-icon>
-<six-icon class="margin-right" size="xSmall">done</six-icon>
-<six-icon class="margin-right" size="xSmall">settings</six-icon>
-<six-icon class="margin-right" size="xSmall">home</six-icon>
-<six-icon class="margin-right" size="xSmall">info</six-icon>
+<div style="display: flex; gap: 1em; min-height: 5rem; align-items: center">
+  <six-icon size="xSmall">search</six-icon>
+  <six-icon size="xSmall">done</six-icon>
+  <six-icon size="xSmall">settings</six-icon>
+  <six-icon size="xSmall">home</six-icon>
+  <six-icon size="xSmall">info</six-icon>
+</div>
 ```
 
 
 #### Small Icons
 
-<docs-demo-six-icon-125></docs-demo-six-icon-125>
+<docs-demo-six-icon-4></docs-demo-six-icon-4>
 
 ```html
-<six-icon class="margin-right" size="small">search</six-icon>
-<six-icon class="margin-right" size="small">done</six-icon>
-<six-icon class="margin-right" size="small">settings</six-icon>
-<six-icon class="margin-right" size="small">home</six-icon>
-<six-icon class="margin-right" size="small">info</six-icon>
+<div style="display: flex; gap: 1em; min-height: 5rem; align-items: center">
+  <six-icon size="small">search</six-icon>
+  <six-icon size="small">done</six-icon>
+  <six-icon size="small">settings</six-icon>
+  <six-icon size="small">home</six-icon>
+  <six-icon size="small">info</six-icon>
+</div>
 ```
 
 
 #### Medium Icons (Default Size)
 
-<docs-demo-six-icon-126></docs-demo-six-icon-126>
+<docs-demo-six-icon-5></docs-demo-six-icon-5>
 
 ```html
-<six-icon class="margin-right" size="medium">search</six-icon>
-<six-icon class="margin-right" size="medium">done</six-icon>
-<six-icon class="margin-right" size="medium">settings</six-icon>
-<six-icon class="margin-right" size="medium">home</six-icon>
-<six-icon class="margin-right" size="medium">info</six-icon>
+<div style="display: flex; gap: 1em; min-height: 5rem; align-items: center">
+  <six-icon size="medium">search</six-icon>
+  <six-icon size="medium">done</six-icon>
+  <six-icon size="medium">settings</six-icon>
+  <six-icon size="medium">home</six-icon>
+  <six-icon size="medium">info</six-icon>
+</div>
 ```
 
 
 #### Large Icons
 
-<docs-demo-six-icon-127></docs-demo-six-icon-127>
+<docs-demo-six-icon-6></docs-demo-six-icon-6>
 
 ```html
-<six-icon class="margin-right" size="large">search</six-icon>
-<six-icon class="margin-right" size="large">done</six-icon>
-<six-icon class="margin-right" size="large">settings</six-icon>
-<six-icon class="margin-right" size="large">home</six-icon>
-<six-icon class="margin-right" size="large">info</six-icon>
+<div style="display: flex; gap: 1em; min-height: 5rem; align-items: center">
+  <six-icon size="large">search</six-icon>
+  <six-icon size="large">done</six-icon>
+  <six-icon size="large">settings</six-icon>
+  <six-icon size="large">home</six-icon>
+  <six-icon size="large">info</six-icon>
+</div>
 ```
 
 
 #### Extra-large Icons
 
-<docs-demo-six-icon-128></docs-demo-six-icon-128>
+<docs-demo-six-icon-7></docs-demo-six-icon-7>
 
 ```html
-<six-icon class="margin-right" size="xLarge">search</six-icon>
-<six-icon class="margin-right" size="xLarge">done</six-icon>
-<six-icon class="margin-right" size="xLarge">settings</six-icon>
-<six-icon class="margin-right" size="xLarge">home</six-icon>
-<six-icon class="margin-right" size="xLarge">info</six-icon>
+<div style="display: flex; gap: 1em; min-height: 5rem; align-items: center">
+  <six-icon size="xLarge">search</six-icon>
+  <six-icon size="xLarge">done</six-icon>
+  <six-icon size="xLarge">settings</six-icon>
+  <six-icon size="xLarge">home</six-icon>
+  <six-icon size="xLarge">info</six-icon>
+</div>
 ```
 
 
 #### 2Extra-large Icons
 
-<docs-demo-six-icon-129></docs-demo-six-icon-129>
+<docs-demo-six-icon-8></docs-demo-six-icon-8>
 
 ```html
-<six-icon class="margin-right" size="xxLarge">search</six-icon>
-<six-icon class="margin-right" size="xxLarge">done</six-icon>
-<six-icon class="margin-right" size="xxLarge">settings</six-icon>
-<six-icon class="margin-right" size="xxLarge">home</six-icon>
-<six-icon class="margin-right" size="xxLarge">info</six-icon>
+<div style="display: flex; gap: 1em; min-height: 5rem; align-items: center">
+  <six-icon size="xxLarge">search</six-icon>
+  <six-icon size="xxLarge">done</six-icon>
+  <six-icon size="xxLarge">settings</six-icon>
+  <six-icon size="xxLarge">home</six-icon>
+  <six-icon size="xxLarge">info</six-icon>
+</div>
 ```
 
 
 #### 3Extra-large Icons
 
-<docs-demo-six-icon-130></docs-demo-six-icon-130>
+<docs-demo-six-icon-9></docs-demo-six-icon-9>
 
 ```html
-<six-icon class="margin-right" size="xxxLarge">search</six-icon>
-<six-icon class="margin-right" size="xxxLarge">done</six-icon>
-<six-icon class="margin-right" size="xxxLarge">settings</six-icon>
-<six-icon class="margin-right" size="xxxLarge">home</six-icon>
-<six-icon class="margin-right" size="xxxLarge">info</six-icon>
+<div style="display: flex; gap: 1em; min-height: 6rem; align-items: center">
+  <six-icon size="xxxLarge">search</six-icon>
+  <six-icon size="xxxLarge">done</six-icon>
+  <six-icon size="xxxLarge">settings</six-icon>
+  <six-icon size="xxxLarge">home</six-icon>
+  <six-icon size="xxxLarge">info</six-icon>
+</div>
 ```
 
 
 #### Icons inherit font-size of surrounding tag
 
-<docs-demo-six-icon-131></docs-demo-six-icon-131>
+<docs-demo-six-icon-10></docs-demo-six-icon-10>
 
 ```html
-<div style="font-size: 1rem; display: inline-block">
-  <six-icon class="margin-right" size="inherit">search</six-icon>
-</div>
-<div style="font-size: 2rem; display: inline-block">
-  <six-icon class="margin-right" size="inherit">search</six-icon>
-</div>
-<div style="font-size: 3rem; display: inline-block">
-  <six-icon class="margin-right" size="inherit">search</six-icon>
+<div style="display: flex; gap: 1em; min-height: 5rem; align-items: center">
+  <span style="font-size: 1rem">
+    <six-icon size="inherit">search</six-icon>
+  </span>
+  <span style="font-size: 2rem">
+    <six-icon size="inherit">search</six-icon>
+  </span>
+  <span style="font-size: 3rem">
+    <six-icon size="inherit">search</six-icon>
+  </span>
 </div>
 ```
 
 
 Enter an icon label and press enter to display an icon:
 
-<docs-demo-six-icon-132></docs-demo-six-icon-132>
+<docs-demo-six-icon-11></docs-demo-six-icon-11>
 
 ```html
 <div style="border: solid 1px #f6f6f6">

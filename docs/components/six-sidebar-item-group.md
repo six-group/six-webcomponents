@@ -1,25 +1,27 @@
-# six-sidebar-item-group
+# Sidebar Item Group
 
 
 ## six sidebar group
 
-<docs-demo-six-sidebar-item-group-251></docs-demo-six-sidebar-item-group-251>
+<docs-demo-six-sidebar-item-group-0></docs-demo-six-sidebar-item-group-0>
 
 ```html
-<six-sidebar-item-group icon="description" name="Upload" value="upload">
-  <six-sidebar-item value="data">Data</six-sidebar-item>
-  <six-sidebar-item value="history">History</six-sidebar-item>
-  <six-sidebar-item-group icon="settings" name="Settings">
+<div style="max-width: 20rem; padding: 1rem">
+  <six-sidebar-item-group icon="description" name="Upload" value="upload">
     <six-sidebar-item value="data">Data</six-sidebar-item>
     <six-sidebar-item value="history">History</six-sidebar-item>
+    <six-sidebar-item-group icon="settings" name="Settings">
+      <six-sidebar-item value="data">Data</six-sidebar-item>
+      <six-sidebar-item value="history">History</six-sidebar-item>
+    </six-sidebar-item-group>
   </six-sidebar-item-group>
-</six-sidebar-item-group>
-<six-sidebar-item-group icon="task" name="Tasks" value="tasks">
-  <six-sidebar-item value="open">Open</six-sidebar-item>
-  <six-sidebar-item value="closed">Closed</six-sidebar-item>
-</six-sidebar-item-group>
-<six-sidebar-item-group icon="ac_unit" name="Transactions" value="transactions"></six-sidebar-item-group>
-<six-sidebar-item-group name="Reclaims" value="reclaims"></six-sidebar-item-group>
+  <six-sidebar-item-group icon="task" name="Tasks" value="tasks">
+    <six-sidebar-item value="open">Open</six-sidebar-item>
+    <six-sidebar-item value="closed">Closed</six-sidebar-item>
+  </six-sidebar-item-group>
+  <six-sidebar-item-group icon="ac_unit" name="Transactions" value="transactions"></six-sidebar-item-group>
+  <six-sidebar-item-group name="Reclaims" value="reclaims"></six-sidebar-item-group>
+</div>
 ```
 
 
@@ -27,48 +29,52 @@
 
 Use `summary-icon` property to set custom summary icon name.
 
-<docs-demo-six-sidebar-item-group-252></docs-demo-six-sidebar-item-group-252>
+<docs-demo-six-sidebar-item-group-1></docs-demo-six-sidebar-item-group-1>
 
 ```html
-<six-sidebar-item-group icon="description" name="Upload" value="upload" summary-icon="settings">
-  <six-sidebar-item value="data">Data</six-sidebar-item>
-  <six-sidebar-item value="history">History</six-sidebar-item>
-  <six-sidebar-item-group icon="settings" name="Settings">
+<div style="max-width: 20rem; padding: 1rem">
+  <six-sidebar-item-group icon="description" name="Upload" value="upload" summary-icon="settings">
     <six-sidebar-item value="data">Data</six-sidebar-item>
     <six-sidebar-item value="history">History</six-sidebar-item>
+    <six-sidebar-item-group icon="settings" name="Settings">
+      <six-sidebar-item value="data">Data</six-sidebar-item>
+      <six-sidebar-item value="history">History</six-sidebar-item>
+    </six-sidebar-item-group>
   </six-sidebar-item-group>
-</six-sidebar-item-group>
-<six-sidebar-item-group icon="task" name="Tasks" value="tasks">
-  <six-sidebar-item value="open">Open</six-sidebar-item>
-  <six-sidebar-item value="closed">Closed</six-sidebar-item>
-</six-sidebar-item-group>
-<six-sidebar-item-group icon="ac_unit" name="Transactions" value="transactions"></six-sidebar-item-group>
-<six-sidebar-item-group name="Reclaims" value="reclaims" summary-icon="settings"></six-sidebar-item-group>
+  <six-sidebar-item-group icon="task" name="Tasks" value="tasks">
+    <six-sidebar-item value="open">Open</six-sidebar-item>
+    <six-sidebar-item value="closed">Closed</six-sidebar-item>
+  </six-sidebar-item-group>
+  <six-sidebar-item-group icon="ac_unit" name="Transactions" value="transactions"></six-sidebar-item-group>
+  <six-sidebar-item-group name="Reclaims" value="reclaims" summary-icon="settings"></six-sidebar-item-group>
+</div>
 ```
 
 
 Use `summary-icon` property to set custom summary icon name.
 
-<docs-demo-six-sidebar-item-group-253></docs-demo-six-sidebar-item-group-253>
+<docs-demo-six-sidebar-item-group-2></docs-demo-six-sidebar-item-group-2>
 
 ```html
-<six-sidebar-item-group icon="description" name="Upload" value="upload">
-  <b slot="summary-icon">99%</b>
-  <six-sidebar-item value="data">Data</six-sidebar-item>
-  <six-sidebar-item value="history">History</six-sidebar-item>
-  <six-sidebar-item-group icon="settings" name="Settings">
+<div style="max-width: 20rem; padding: 1rem">
+  <six-sidebar-item-group icon="description" name="Upload" value="upload">
+    <b slot="summary-icon">99%</b>
     <six-sidebar-item value="data">Data</six-sidebar-item>
     <six-sidebar-item value="history">History</six-sidebar-item>
+    <six-sidebar-item-group icon="settings" name="Settings">
+      <six-sidebar-item value="data">Data</six-sidebar-item>
+      <six-sidebar-item value="history">History</six-sidebar-item>
+    </six-sidebar-item-group>
   </six-sidebar-item-group>
-</six-sidebar-item-group>
-<six-sidebar-item-group icon="task" name="Tasks" value="tasks">
-  <six-sidebar-item value="open">Open</six-sidebar-item>
-  <six-sidebar-item value="closed">Closed</six-sidebar-item>
-</six-sidebar-item-group>
-<six-sidebar-item-group icon="ac_unit" name="Transactions" value="transactions"></six-sidebar-item-group>
-<six-sidebar-item-group name="Reclaims" value="reclaims">
-  <b slot="summary-icon">99%</b>
-</six-sidebar-item-group>
+  <six-sidebar-item-group icon="task" name="Tasks" value="tasks">
+    <six-sidebar-item value="open">Open</six-sidebar-item>
+    <six-sidebar-item value="closed">Closed</six-sidebar-item>
+  </six-sidebar-item-group>
+  <six-sidebar-item-group icon="ac_unit" name="Transactions" value="transactions"></six-sidebar-item-group>
+  <six-sidebar-item-group name="Reclaims" value="reclaims">
+    <b slot="summary-icon">99%</b>
+  </six-sidebar-item-group>
+</div>
 ```
 
 

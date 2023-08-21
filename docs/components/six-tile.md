@@ -1,11 +1,11 @@
-# six-tile
+# Tile
 
 
 ## Tile
 
 Simple tile implementation.
 
-<docs-demo-six-tile-289></docs-demo-six-tile-289>
+<docs-demo-six-tile-0></docs-demo-six-tile-0>
 
 ```html
 <six-tile id="tileFancy" label="Fancy Tile" icon-name="favorite"></six-tile>
@@ -22,7 +22,7 @@ Simple tile implementation.
 
 Use the `size` attribute to change the size of the tile.
 
-<docs-demo-six-tile-290></docs-demo-six-tile-290>
+<docs-demo-six-tile-1></docs-demo-six-tile-1>
 
 ```html
 <six-tile label="Small" icon-name="home" size="small"></six-tile>
@@ -35,7 +35,7 @@ Use the `size` attribute to change the size of the tile.
 
 Use the `closeable` attribute to avoid that the tile is closable.
 
-<docs-demo-six-tile-291></docs-demo-six-tile-291>
+<docs-demo-six-tile-2></docs-demo-six-tile-2>
 
 ```html
 <six-tile label="Medium" icon-name="home" closeable="false"></six-tile>
@@ -46,7 +46,7 @@ Use the `closeable` attribute to avoid that the tile is closable.
 
 Use the `elevated` attribute to let the tile cast a shadow.
 
-<docs-demo-six-tile-292></docs-demo-six-tile-292>
+<docs-demo-six-tile-3></docs-demo-six-tile-3>
 
 ```html
 <six-tile label="Medium" icon-name="home" elevated="true"></six-tile>
@@ -57,7 +57,7 @@ Use the `elevated` attribute to let the tile cast a shadow.
 
 Use the `disabled` attribute to avoid that the tile is clicked.
 
-<docs-demo-six-tile-293></docs-demo-six-tile-293>
+<docs-demo-six-tile-4></docs-demo-six-tile-4>
 
 ```html
 <six-tile label="Medium" icon-name="home" disabled="true"></six-tile>
@@ -68,7 +68,7 @@ Use the `disabled` attribute to avoid that the tile is clicked.
 
 In some cases you might need to have more control over how the icon or label is displayed. In these scenarios use the slot over the props.
 
-<docs-demo-six-tile-294></docs-demo-six-tile-294>
+<docs-demo-six-tile-5></docs-demo-six-tile-5>
 
 ```html
 <six-tile id="tileWithLabelSlot" icon-name="home">
@@ -98,7 +98,7 @@ In some cases you might need to have more control over how the icon or label is 
 
 If you wish to show a tooltip on hover, simply add the attribute `disable-tooltip="false"`
 
-<docs-demo-six-tile-295></docs-demo-six-tile-295>
+<docs-demo-six-tile-6></docs-demo-six-tile-6>
 
 ```html
 <six-tile label="Fancy Tile" icon-name="favorite" disable-tooltip="false"></six-tile>

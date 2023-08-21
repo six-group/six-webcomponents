@@ -1,9 +1,9 @@
-# six-file-upload
+# File Upload
 
 
-## File Upload
+## Simple File Upload
 
-<docs-demo-six-file-upload-109></docs-demo-six-file-upload-109>
+<docs-demo-six-file-upload-0></docs-demo-six-file-upload-0>
 
 ```html
 <six-file-upload id="six-file-upload-success-id"></six-file-upload>
@@ -46,7 +46,7 @@
 
 You can upload multiple files via the `multiple` attribute.
 
-<docs-demo-six-file-upload-110></docs-demo-six-file-upload-110>
+<docs-demo-six-file-upload-1></docs-demo-six-file-upload-1>
 
 ```html
 <six-file-upload id="six-file-upload-success-id-2" multiple></six-file-upload>
@@ -91,7 +91,7 @@ You can upload multiple files via the `multiple` attribute.
 
 You can define a custom label via the `label` attribute
 
-<docs-demo-six-file-upload-111></docs-demo-six-file-upload-111>
+<docs-demo-six-file-upload-2></docs-demo-six-file-upload-2>
 
 ```html
 <six-file-upload label="some custom label"></six-file-upload>
@@ -100,7 +100,7 @@ You can define a custom label via the `label` attribute
 
 ### Disabled File Upload
 
-<docs-demo-six-file-upload-112></docs-demo-six-file-upload-112>
+<docs-demo-six-file-upload-3></docs-demo-six-file-upload-3>
 
 ```html
 <six-file-upload disabled></six-file-upload>
@@ -109,7 +109,7 @@ You can define a custom label via the `label` attribute
 
 ### Compact File Upload
 
-<docs-demo-six-file-upload-113></docs-demo-six-file-upload-113>
+<docs-demo-six-file-upload-4></docs-demo-six-file-upload-4>
 
 ```html
 <six-file-upload compact></six-file-upload>

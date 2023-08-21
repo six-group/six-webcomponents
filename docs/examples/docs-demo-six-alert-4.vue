@@ -1,5 +1,5 @@
 <template>
-<div class="demo my-app">
+<div>
 
         <div class="alert-duration">
           <six-button type="primary">Show Alert</six-button>

@@ -1,11 +1,11 @@
-# six-menu-item
+# Menu Item
 
 
 ## Menu Item
 
 Menu items provide options for the user to pick from in a menu.
 
-<docs-demo-six-menu-item-186></docs-demo-six-menu-item-186>
+<docs-demo-six-menu-item-0></docs-demo-six-menu-item-0>
 
 ```html
 <six-menu           style="

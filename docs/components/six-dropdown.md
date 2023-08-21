@@ -1,4 +1,4 @@
-# six-dropdown
+# Dropdown
 
 
 ## Dropdown
@@ -9,7 +9,7 @@ Dropdowns consist of a trigger and a panel. By default, activating the trigger w
 
 Dropdowns are designed to work well with [menus](six-menu.html) to provide a list of actions the user can trigger. If you're looking for a component to provide some options inside a form, you should have a look at [six-select](six-select.html).
 
-<docs-demo-six-dropdown-84></docs-demo-six-dropdown-84>
+<docs-demo-six-dropdown-0></docs-demo-six-dropdown-0>
 
 ```html
 <six-dropdown>
@@ -43,7 +43,7 @@ Dropdowns are designed to work well with [menus](six-menu.html) to provide a lis
 
 Of course the trigger button can be just a link button as well
 
-<docs-demo-six-dropdown-85></docs-demo-six-dropdown-85>
+<docs-demo-six-dropdown-1></docs-demo-six-dropdown-1>
 
 ```html
 <six-dropdown placement="top-start">
@@ -64,7 +64,7 @@ Of course the trigger button can be just a link button as well
 
 The preferred placement of the dropdown can be set with the `placement` attribute. Note that the actual position may vary to ensure the panel remains in the viewport.
 
-<docs-demo-six-dropdown-86></docs-demo-six-dropdown-86>
+<docs-demo-six-dropdown-2></docs-demo-six-dropdown-2>
 
 ```html
 <six-dropdown placement="top-start">
@@ -85,7 +85,7 @@ The preferred placement of the dropdown can be set with the `placement` attribut
 
 The distance from the panel to the trigger can be customized using the `distance` attribute. This value is specified in pixels.
 
-<docs-demo-six-dropdown-87></docs-demo-six-dropdown-87>
+<docs-demo-six-dropdown-3></docs-demo-six-dropdown-3>
 
 ```html
 <six-dropdown distance="30">
@@ -106,7 +106,7 @@ The distance from the panel to the trigger can be customized using the `distance
 
 The offset of the panel along the trigger can be customized using the `skidding` attribute. This value is specified in pixels.
 
-<docs-demo-six-dropdown-88></docs-demo-six-dropdown-88>
+<docs-demo-six-dropdown-4></docs-demo-six-dropdown-4>
 
 ```html
 <six-dropdown skidding="30">
@@ -127,7 +127,7 @@ The offset of the panel along the trigger can be customized using the `skidding`
 
 Dropdown panels will be clipped if they're inside a container that has `overflow: auto|hidden`. The `hoist` attribute forces the panel to use a fixed positioning strategy, allowing it to break out of the container. In this case, the panel will be positioned relative to its containing block, which is usually the viewport unless an ancestor uses a `transform`, `perspective`, or `filter`.
 
-<docs-demo-six-dropdown-89></docs-demo-six-dropdown-89>
+<docs-demo-six-dropdown-5></docs-demo-six-dropdown-5>
 
 ```html
 <div class="dropdown-hoist">
@@ -164,7 +164,7 @@ Dropdown panels will be clipped if they're inside a container that has `overflow
 
 When dropdowns are used with [menus](six-menu.html), you can listen for the `six-select` event to determine which menu item was selected. The menu item element will be exposed in `event.detail.item`. You can set `value` props to make it easier to identify commands.
 
-<docs-demo-six-dropdown-90></docs-demo-six-dropdown-90>
+<docs-demo-six-dropdown-6></docs-demo-six-dropdown-6>
 
 ```html
 <div class="dropdown-selection">
@@ -192,7 +192,7 @@ When dropdowns are used with [menus](six-menu.html), you can listen for the `six
 
 Alternatively, you can listen for the `click` event on individual menu items. Note that, using this approach, disabled menu items will still emit a `click` event.
 
-<docs-demo-six-dropdown-91></docs-demo-six-dropdown-91>
+<docs-demo-six-dropdown-7></docs-demo-six-dropdown-7>
 
 ```html
 <div class="dropdown-selection-alt">
@@ -223,7 +223,7 @@ Alternatively, you can listen for the `click` event on individual menu items. No
 
 You can use any arbitrary content as trigger element, however it needs to be tabbable (tabIndex > -1)
 
-<docs-demo-six-dropdown-92></docs-demo-six-dropdown-92>
+<docs-demo-six-dropdown-8></docs-demo-six-dropdown-8>
 
 ```html
 <div class="dropdown-selection">
@@ -249,7 +249,7 @@ You can also pass a custom placeholder with `filter-placeholder` to be shown in 
 
 If you want to change the default debounce timeout use e.g. `filter-debounce="500"`
 
-<docs-demo-six-dropdown-93></docs-demo-six-dropdown-93>
+<docs-demo-six-dropdown-9></docs-demo-six-dropdown-9>
 
 ```html
 <six-dropdown filter filter-placeholder="Search">
@@ -278,7 +278,7 @@ In such a scenario simply add the `async-filter` attribute to your dropdown comp
 
 If you want to change the default debounce timeout use e.g. `filter-debounce="500"`
 
-<docs-demo-six-dropdown-94></docs-demo-six-dropdown-94>
+<docs-demo-six-dropdown-10></docs-demo-six-dropdown-10>
 
 ```html
 <six-dropdown id="async-dropdown" async-filter filter-placeholder="Search">
@@ -325,7 +325,7 @@ If you want to change the default debounce timeout use e.g. `filter-debounce="50
 
 If you have huge amounts of data you want to present in the dropdown you can't render all at once or it will crash your browser. For these usescases listen to the scroll event to decide which data to present
 
-<docs-demo-six-dropdown-95></docs-demo-six-dropdown-95>
+<docs-demo-six-dropdown-11></docs-demo-six-dropdown-11>
 
 ```html
 <six-dropdown id="infinite-scoll-dropdown">
@@ -368,7 +368,7 @@ If you have huge amounts of data you want to present in the dropdown you can't r
 
 If you don't want to create a `six-menu-item` but simply want to pass an array with all options, you can do so via the `options` attribute.
 
-<docs-demo-six-dropdown-96></docs-demo-six-dropdown-96>
+<docs-demo-six-dropdown-12></docs-demo-six-dropdown-12>
 
 ```html
 <six-dropdown id="six-dropdown-dynamic-options">
@@ -388,7 +388,7 @@ If you don't want to create a `six-menu-item` but simply want to pass an array w
 
 If you have a lot of items in the menu (40'000 in the following example), rendering all of them might lead to some performance issues. To avoid such issues use `virtual-scroll`
 
-<docs-demo-six-dropdown-97></docs-demo-six-dropdown-97>
+<docs-demo-six-dropdown-13></docs-demo-six-dropdown-13>
 
 ```html
 <six-dropdown id="six-dropdown-virtual-scrolling" virtual-scroll>
@@ -413,7 +413,7 @@ If you have a lot of items in the menu (40'000 in the following example), render
 
 To make your virtually scrolled list filterable simply add the `filter` attribute
 
-<docs-demo-six-dropdown-98></docs-demo-six-dropdown-98>
+<docs-demo-six-dropdown-14></docs-demo-six-dropdown-14>
 
 ```html
 <six-dropdown id="six-dropdown-virtual-scrolling-filtered" virtual-scroll filter>

@@ -1,5 +1,5 @@
 <template>
-<div class="demo my-app">
+<div>
 
         <six-alert type="primary" open> Nothing fancy here, just a simple alert. </six-alert>
       
