@@ -32,7 +32,8 @@
   border-radius: var(--six-border-radius-medium);
   box-shadow: var(--six-elevation-2dp);
   opacity: 0;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   overscroll-behavior: none;
   pointer-events: none;
   transform: scale(0.9);
