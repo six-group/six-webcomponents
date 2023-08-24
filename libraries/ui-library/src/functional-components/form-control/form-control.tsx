@@ -25,11 +25,17 @@ export interface FormControlProps {
   /** Whether a help text slot has been provided. */
   hasHelpTextSlot?: boolean;
 
+  /** Whether an error text slot has been provided. */
+  hasErrorTextSlot?: boolean;
+
   /** The error text id, used to map the input to the help text */
   errorTextId?: string;
 
-  /** The error text */
-  errorText?: string;
+  /** The error text (if the error-text slot isn't used) */
+  errorText?: string | string[];
+
+  /** The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1 */
+  errorTextCount?: number;
 
   /** Set to true to disable the input. */
   disabled?: boolean;
@@ -45,8 +51,13 @@ export interface FormControlProps {
 }
 
 const FormControl = (props: FormControlProps, children: VNode[]) => {
+  const errorMessages = (Array.isArray(props.errorText) ? props.errorText : [props.errorText]).filter(
+    (text) => text != null && text.trim() !== ''
+  );
+
   const hasLabel = props.label != null && props.label.trim() !== '' ? true : props.hasLabelSlot ?? false;
   const hasHelpText = props.helpText != null && props.helpText.trim() !== '' ? true : props.hasHelpTextSlot ?? false;
+  const hasErrorText = (errorMessages.length > 0 || (props.hasErrorTextSlot ?? false)) && (props.displayError ?? false);
 
   return (
     <div
@@ -58,7 +69,7 @@ const FormControl = (props: FormControlProps, children: VNode[]) => {
         'form-control--large': props.size === 'large',
         'form-control--has-label': hasLabel,
         'form-control--has-help-text': hasHelpText,
-        'form-control--has-error-text': props.displayError ?? false,
+        'form-control--has-error-text': hasErrorText,
         'form-control--disabled': props.disabled ?? false,
         'form-control--invalid': (props.displayError ?? false) && !props.disabled,
       }}
@@ -83,9 +94,13 @@ const FormControl = (props: FormControlProps, children: VNode[]) => {
         part="error-text"
         id={props.errorTextId}
         class="form-control__error-text"
-        aria-hidden={props.displayError ? 'false' : 'true'}
+        aria-hidden={hasErrorText ? 'false' : 'true'}
       >
-        {props.errorText}
+        <slot name="error-text">
+          {errorMessages.slice(0, props.errorTextCount ?? 1).map((text) => (
+            <six-error>{text}</six-error>
+          ))}
+        </slot>
       </div>
 
       <div

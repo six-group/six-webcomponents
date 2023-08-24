@@ -43,7 +43,9 @@ describe('six-textarea', () => {
              <div class="textarea textarea--empty textarea--medium textarea--resize-vertical" part="base"><textarea aria-labelledby="textarea-label-1" autocapitalize="off" autocorrect="off" class="textarea__control" id="textarea-1" part="textarea" rows="4" value=""></textarea>
              </div>
            </div>
-           <div aria-hidden="true" class="form-control__error-text" id="input-error-text-1" part="error-text"></div>
+           <div aria-hidden="true" class="form-control__error-text" id="input-error-text-1" part="error-text">
+            <slot name="error-text"></slot>
+           </div>
            <div aria-hidden="true" class="form-control__help-text" id="textarea-help-text-1" part="help-text">
              <slot name="help-text"></slot>
            </div>

@@ -20,6 +20,7 @@ export const SixDetails = /*@__PURE__*/createReactComponent<JSX.SixDetails, HTML
 export const SixDialog = /*@__PURE__*/createReactComponent<JSX.SixDialog, HTMLSixDialogElement>('six-dialog');
 export const SixDrawer = /*@__PURE__*/createReactComponent<JSX.SixDrawer, HTMLSixDrawerElement>('six-drawer');
 export const SixDropdown = /*@__PURE__*/createReactComponent<JSX.SixDropdown, HTMLSixDropdownElement>('six-dropdown');
+export const SixError = /*@__PURE__*/createReactComponent<JSX.SixError, HTMLSixErrorElement>('six-error');
 export const SixErrorPage = /*@__PURE__*/createReactComponent<JSX.SixErrorPage, HTMLSixErrorPageElement>('six-error-page');
 export const SixFileList = /*@__PURE__*/createReactComponent<JSX.SixFileList, HTMLSixFileListElement>('six-file-list');
 export const SixFileListItem = /*@__PURE__*/createReactComponent<JSX.SixFileListItem, HTMLSixFileListItemElement>('six-file-list-item');

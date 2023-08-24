@@ -39,6 +39,7 @@ export class SixCheckbox {
 
   @State() hasFocus = false;
   @State() hasLabelSlot = false;
+  @State() hasErrorSlot = false;
 
   /** The checkbox's name attribute. */
   @Prop() name = '';
@@ -62,7 +63,10 @@ export class SixCheckbox {
   @Prop() label = '';
 
   /** The error message shown, if `invalid` is set to true.  */
-  @Prop() errorText = '';
+  @Prop() errorText: string | string[] = '';
+
+  /** The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1 */
+  @Prop() errorTextCount?: number;
 
   /** If this property is set to true and an error message is provided by `errorText`, the error message is displayed.  */
   @Prop({ reflect: true }) invalid = false;
@@ -161,6 +165,7 @@ export class SixCheckbox {
 
   private handleSlotChange() {
     this.hasLabelSlot = hasSlot(this.host, 'label');
+    this.hasErrorSlot = hasSlot(this.host, 'error-text');
   }
 
   render() {
@@ -171,7 +176,9 @@ export class SixCheckbox {
         labelId={this.labelId}
         hasLabelSlot={this.hasLabelSlot}
         errorTextId={this.errorTextId}
+        hasErrorTextSlot={this.hasErrorSlot}
         errorText={this.errorText}
+        errorTextCount={this.errorTextCount}
         size="medium"
         disabled={this.disabled}
         required={this.required}

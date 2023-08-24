@@ -24,7 +24,9 @@ describe('six-checkbox', () => {
                  </span>
                </label>
              </div>
-             <div aria-hidden="true" class="form-control__error-text" id="input-error-text-1" part="error-text"></div>
+             <div aria-hidden="true" class="form-control__error-text" id="input-error-text-1" part="error-text">
+              <slot name="error-text"></slot>
+             </div>
              <div aria-hidden="true" class="form-control__help-text" part="help-text">
                <slot name="help-text"></slot>
              </div>
@@ -68,7 +70,9 @@ describe('six-checkbox', () => {
                 </span>
               </label>
             </div>
-            <div aria-hidden="true" class="form-control__error-text" id="input-error-text-2" part="error-text"></div>
+            <div aria-hidden="true" class="form-control__error-text" id="input-error-text-2" part="error-text">
+              <slot name="error-text"></slot>
+            </div>
             <div aria-hidden="true" class="form-control__help-text" part="help-text">
                 <slot name="help-text"></slot>
             </div>

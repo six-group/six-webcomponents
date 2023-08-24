@@ -204,9 +204,62 @@
         <six-input label="Name" help-text="Help text"> </six-input>
       </section>
 
-      <h2>Events Discalimer</h2>
+      <h2>Error Text</h2>
 
-      <p>The events of our webcommponents should follow native web elements as much as possible.</p>
+      <p>
+        Add a descriptive error message to an input using either the <code>error-text</code> prop, or the equally named
+        slot.
+      </p>
+
+      <six-alert type="warning" open>
+        <six-icon slot="icon">warning</six-icon>
+        There are two caveats when using the <code>error-text</code> prop/slot:
+        <ol>
+          <li>
+            Remember to set the <code>invalid</code> prop as well! If you only provide some content to the
+            <code>error-text</code> prop/slot, it won't be shown unless the <code>invalid</code> prop is set to true
+          </li>
+          <li>
+            When using the prop, and you need to show more than one message, remember to also set the
+            <code>error-text-count</code> prop to a value that is the same or bigger than the length of the list of
+            messages you are using. Otherwise only one message will be shown at a time
+          </li>
+        </ol>
+      </six-alert>
+
+      <p>The <code>error-text</code> prop accepts either a simple string message, or a list of messages.</p>
+
+      <section class="demo">
+        <six-input label="Simple string message" error-text="This is a simple string message" invalid> </six-input>
+      </section>
+
+      <section class="demo">
+        <six-input id="multiple-error-text" label="List of string message" invalid></six-input>
+        <script type="module">
+          const sixInput = document.getElementById('multiple-error-text');
+          sixInput.errorText = ['Message 1', 'Message 2'];
+          sixInput.errorTextCount = 3;
+        </script>
+      </section>
+
+      <p>
+        When using the <code>error-text</code> slot, it is recommended to use the <code>six-error</code> component to
+        wrap the error message(s). This will provide the correct styling out of the box
+      </p>
+      <section class="demo">
+        <six-input invalid>
+          <div slot="error-text">
+            <six-error
+              >An error message
+              <a href="https://github.com/six-group/six-webcomponents" target="_blank">with a link</a></six-error
+            >
+          </div>
+        </six-input>
+      </section>
+
+      <h2>Events Disclaimer</h2>
+
+      <p>The events of our webcomponents should follow native web elements as much as possible.</p>
 
       <p>
         This means input, change and blur should be fired the same as when using native elements: Input is fired on

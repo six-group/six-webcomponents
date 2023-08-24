@@ -105,27 +105,72 @@ Add styling attributes e.g. `--track-height, --track-color, --thumb-size, --thum
 ```
 
 
+## Error Text
+
+Add a descriptive error message using either the `error-text` prop, or the equally named slot.
+
+warning There are two caveats when using the `error-text` prop/slot:
+
+1.  Remember to set the `invalid` prop as well! If you only provide some content to the `error-text` prop/slot, it won't be shown unless the `invalid` prop is set to true
+2.  When using the prop, and you need to show more than one message, remember to also set the `error-text-count` prop to a value that is the same or bigger than the length of the list of messages you are using. Otherwise only one message will be shown at a time
+
+The `error-text` prop accepts either a simple string message, or a list of messages.
+
+<docs-demo-six-range-8></docs-demo-six-range-8>
+
+```html
+<six-range label="Simple string message" error-text="This is a simple string message" invalid> </six-range>
+```
+
+
+<docs-demo-six-range-9></docs-demo-six-range-9>
+
+```html
+<six-range id="multiple-error-text" label="List of string message" invalid></six-range>
+<script type="module">
+  const sixRange = document.getElementById('multiple-error-text');
+  sixRange.errorText = ['Message 1', 'Message 2'];
+  sixRange.errorTextCount = 3;
+</script>
+```
+
+
+When using the `error-text` slot, it is recommended to use the `six-error` component to wrap the error message(s). This will provide the correct styling out of the box
+
+<docs-demo-six-range-10></docs-demo-six-range-10>
+
+```html
+<six-range invalid>
+  <div slot="error-text">
+    <six-error               >An error message
+      <a href="https://github.com/six-group/six-webcomponents" target="_blank">with a link</a></six-error>
+  </div>
+</six-range>
+```
+
+
 
 <!-- Auto Generated Below -->
 
 
 ## Properties
 
-| Property           | Attribute    | Description                                                                                                      | Type                          | Default                               |
-| ------------------ | ------------ | ---------------------------------------------------------------------------------------------------------------- | ----------------------------- | ------------------------------------- |
-| `disabled`         | `disabled`   | Set to true to disable the input.                                                                                | `boolean`                     | `false`                               |
-| `errorText`        | `error-text` | The error message shown, if `invalid` is set to true.                                                            | `string`                      | `''`                                  |
-| `helpText`         | `help-text`  | The range's help text. Alternatively, you can use the help-text slot.                                            | `string`                      | `''`                                  |
-| `invalid`          | `invalid`    | If this property is set to true and an error message is provided by `errorText`, the error message is displayed. | `boolean`                     | `false`                               |
-| `label`            | `label`      | The label text.                                                                                                  | `string`                      | `''`                                  |
-| `max`              | `max`        | The input's max attribute.                                                                                       | `number`                      | `100`                                 |
-| `min`              | `min`        | The input's min attribute.                                                                                       | `number`                      | `0`                                   |
-| `name`             | `name`       | The input's name attribute.                                                                                      | `string`                      | `''`                                  |
-| `required`         | `required`   | Set to true to show an asterisk beneath the label.                                                               | `boolean`                     | `false`                               |
-| `step`             | `step`       | The input's step attribute.                                                                                      | `number`                      | `1`                                   |
-| `tooltip`          | `tooltip`    | The preferred placedment of the tooltip.                                                                         | `"bottom" \| "none" \| "top"` | `'top'`                               |
-| `tooltipFormatter` | --           | A function used to format the tooltip's value.                                                                   | `(value: number) => string`   | `(value: number) => value.toString()` |
-| `value`            | `value`      | The input's value attribute.                                                                                     | `number`                      | `0`                                   |
+| Property           | Attribute          | Description                                                                                                      | Type                          | Default                               |
+| ------------------ | ------------------ | ---------------------------------------------------------------------------------------------------------------- | ----------------------------- | ------------------------------------- |
+| `disabled`         | `disabled`         | Set to true to disable the input.                                                                                | `boolean`                     | `false`                               |
+| `errorText`        | `error-text`       | The error message shown, if `invalid` is set to true.                                                            | `string \| string[]`          | `''`                                  |
+| `errorTextCount`   | `error-text-count` | The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1                         | `number \| undefined`         | `undefined`                           |
+| `helpText`         | `help-text`        | The range's help text. Alternatively, you can use the help-text slot.                                            | `string`                      | `''`                                  |
+| `invalid`          | `invalid`          | If this property is set to true and an error message is provided by `errorText`, the error message is displayed. | `boolean`                     | `false`                               |
+| `label`            | `label`            | The label text.                                                                                                  | `string`                      | `''`                                  |
+| `max`              | `max`              | The input's max attribute.                                                                                       | `number`                      | `100`                                 |
+| `min`              | `min`              | The input's min attribute.                                                                                       | `number`                      | `0`                                   |
+| `name`             | `name`             | The input's name attribute.                                                                                      | `string`                      | `''`                                  |
+| `required`         | `required`         | Set to true to show an asterisk beneath the label.                                                               | `boolean`                     | `false`                               |
+| `step`             | `step`             | The input's step attribute.                                                                                      | `number`                      | `1`                                   |
+| `tooltip`          | `tooltip`          | The preferred placedment of the tooltip.                                                                         | `"bottom" \| "none" \| "top"` | `'top'`                               |
+| `tooltipFormatter` | --                 | A function used to format the tooltip's value.                                                                   | `(value: number) => string`   | `(value: number) => value.toString()` |
+| `value`            | `value`            | The input's value attribute.                                                                                     | `number`                      | `0`                                   |
 
 
 ## Events
@@ -177,6 +222,19 @@ Type: `Promise<void>`
 | `"input"`   | The native range input.       |
 | `"tooltip"` | The range tooltip.            |
 
+
+## Dependencies
+
+### Depends on
+
+- [six-error](six-error.html)
+
+### Graph
+```mermaid
+graph TD;
+  six-range --> six-error
+  style six-range fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 

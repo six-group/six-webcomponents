@@ -608,6 +608,50 @@ In the following example you see the combination of `autocomplete` with `virtual
 ```
 
 
+## Error Text
+
+Add a descriptive error message using either the `error-text` prop, or the equally named slot.
+
+warning There are two caveats when using the `error-text` prop/slot:
+
+1.  Remember to set the `invalid` prop as well! If you only provide some content to the `error-text` prop/slot, it won't be shown unless the `invalid` prop is set to true
+2.  When using the prop, and you need to show more than one message, remember to also set the `error-text-count` prop to a value that is the same or bigger than the length of the list of messages you are using. Otherwise only one message will be shown at a time
+
+The `error-text` prop accepts either a simple string message, or a list of messages.
+
+<docs-demo-six-select-24></docs-demo-six-select-24>
+
+```html
+<six-select label="Simple string message" error-text="This is a simple string message" invalid> </six-select>
+```
+
+
+<docs-demo-six-select-25></docs-demo-six-select-25>
+
+```html
+<six-select id="multiple-error-text" label="List of string message" invalid></six-select>
+<script type="module">
+  const sixSelect = document.getElementById('multiple-error-text');
+  sixSelect.errorText = ['Message 1', 'Message 2'];
+  sixSelect.errorTextCount = 3;
+</script>
+```
+
+
+When using the `error-text` slot, it is recommended to use the `six-error` component to wrap the error message(s). This will provide the correct styling out of the box
+
+<docs-demo-six-select-26></docs-demo-six-select-26>
+
+```html
+<six-select invalid>
+  <div slot="error-text">
+    <six-error               >An error message
+      <a href="https://github.com/six-group/six-webcomponents" target="_blank">with a link</a></six-error>
+  </div>
+</six-select>
+```
+
+
 
 <!-- Auto Generated Below -->
 
@@ -620,7 +664,8 @@ In the following example you see the combination of `autocomplete` with `virtual
 | `autocomplete`      | `autocomplete`       | Set to true to turn the six-select into an autocomplete.                                                                                                                                                                                                              | `boolean`                        | `false`                 |
 | `clearable`         | `clearable`          | Set to true to add a clear button when the select is populated.                                                                                                                                                                                                       | `boolean`                        | `false`                 |
 | `disabled`          | `disabled`           | Set to true to disable the select control.                                                                                                                                                                                                                            | `boolean`                        | `false`                 |
-| `errorText`         | `error-text`         | The error message shown, if `invalid` is set to true.                                                                                                                                                                                                                 | `string`                         | `''`                    |
+| `errorText`         | `error-text`         | The error message shown, if `invalid` is set to true.                                                                                                                                                                                                                 | `string \| string[]`             | `''`                    |
+| `errorTextCount`    | `error-text-count`   | The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1                                                                                                                                                                              | `number \| undefined`            | `undefined`             |
 | `filter`            | `filter`             | Set to true to allow filtering for entries in the dropdown                                                                                                                                                                                                            | `boolean`                        | `false`                 |
 | `filterDebounce`    | `filter-debounce`    | The debounce for the filter callbacks.                                                                                                                                                                                                                                | `number`                         | `DEFAULT_DEBOUNCE_FAST` |
 | `filterPlaceholder` | `filter-placeholder` | The filter's placeholder text.                                                                                                                                                                                                                                        | `string \| undefined`            | `undefined`             |
@@ -700,6 +745,7 @@ Type: `Promise<void>`
 - [six-icon](six-icon.html)
 - [six-input](six-input.html)
 - [six-menu](six-menu.html)
+- [six-error](six-error.html)
 
 ### Graph
 ```mermaid
@@ -711,6 +757,7 @@ graph TD;
   six-select --> six-icon
   six-select --> six-input
   six-select --> six-menu
+  six-select --> six-error
   six-menu-item --> six-icon
   six-tag --> six-icon-button
   six-icon-button --> six-icon
@@ -718,6 +765,7 @@ graph TD;
   six-dropdown --> six-input
   six-dropdown --> six-menu
   six-input --> six-icon
+  six-input --> six-error
   six-menu --> six-menu-item
   style six-select fill:#f9f,stroke:#333,stroke-width:4px
 ```

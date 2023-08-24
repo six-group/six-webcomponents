@@ -41,6 +41,7 @@ export class SixTextarea {
   @State() hasFocus = false;
   @State() hasHelpTextSlot = false;
   @State() hasLabelSlot = false;
+  @State() hasErrorTextSlot = false;
 
   /** The textarea's size. */
   @Prop({ reflect: true }) size: 'small' | 'medium' | 'large' = 'medium';
@@ -82,7 +83,10 @@ export class SixTextarea {
   @Prop() label = '';
 
   /** The error message shown, if `invalid` is set to true.  */
-  @Prop() errorText = '';
+  @Prop() errorText: string | string[] = '';
+
+  /** The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1 */
+  @Prop() errorTextCount?: number;
 
   /** If this property is set to true and an error message is provided by `errorText`, the error message is displayed.  */
   @Prop({ reflect: true }) invalid = false;
@@ -241,6 +245,7 @@ export class SixTextarea {
   private handleSlotChange = () => {
     this.hasLabelSlot = hasSlot(this.host, 'label');
     this.hasHelpTextSlot = hasSlot(this.host, 'help-text');
+    this.hasErrorTextSlot = hasSlot(this.host, 'error-text');
   };
 
   private setTextareaHeight() {
@@ -270,6 +275,8 @@ export class SixTextarea {
         hasHelpTextSlot={this.hasHelpTextSlot}
         errorTextId={this.errorTextId}
         errorText={this.errorText}
+        errorTextCount={this.errorTextCount}
+        hasErrorTextSlot={this.hasErrorTextSlot}
         size={this.size}
         disabled={this.disabled}
         required={this.required}

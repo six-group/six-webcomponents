@@ -9,7 +9,7 @@
 
         <div style="margin-top: 1rem">
           <span style="font-weight: bold">Selected: </span><span id="min-max-date-selected">No Date selected yet!</span>
-          six-datepicker { max-width: 25rem; }
+          
         </div>
 
         
@@ -20,6 +20,10 @@
 </template>
 <style>
 
+            six-datepicker {
+              max-width: 25rem;
+            }
+          
           .min-max-demo {
             display: flex;
             flex-wrap: wrap;

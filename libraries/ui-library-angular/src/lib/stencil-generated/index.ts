@@ -14,6 +14,7 @@ export const DIRECTIVES = [
   d.SixDialog,
   d.SixDrawer,
   d.SixDropdown,
+  d.SixError,
   d.SixErrorPage,
   d.SixFileList,
   d.SixFileListItem,

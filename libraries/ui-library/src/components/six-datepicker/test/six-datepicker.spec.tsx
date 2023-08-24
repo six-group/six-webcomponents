@@ -11,7 +11,7 @@ describe('six-datepicker', () => {
       <six-datepicker>
         <mock:shadow-root>
         <div class="datepicker__container">
-          <six-input class="input--empty" error-text="" label="" part="base" size="medium" value="">
+          <six-input class="input--empty" errortext="" label="" part="base" size="medium" value="">
             <span class="prefix" part="icon" slot="prefix">
               <six-icon size="medium">
                 today
