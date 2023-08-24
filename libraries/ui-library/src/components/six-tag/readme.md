@@ -46,11 +46,13 @@
 
 ### Depends on
 
+- [six-tooltip](../six-tooltip)
 - [six-icon-button](../six-icon-button)
 
 ### Graph
 ```mermaid
 graph TD;
+  six-tag --> six-tooltip
   six-tag --> six-icon-button
   six-icon-button --> six-icon
   six-select --> six-tag

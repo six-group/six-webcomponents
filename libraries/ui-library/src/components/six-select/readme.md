@@ -108,6 +108,7 @@ graph TD;
   six-select --> six-menu
   six-select --> six-error
   six-menu-item --> six-icon
+  six-tag --> six-tooltip
   six-tag --> six-icon-button
   six-icon-button --> six-icon
   six-dropdown --> six-menu-item

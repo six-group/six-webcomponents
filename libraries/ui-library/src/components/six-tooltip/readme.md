@@ -85,11 +85,13 @@ Type: `Promise<void>`
 
 ### Used by
 
+ - [six-tag](../six-tag)
  - [six-tile](../six-tile)
 
 ### Graph
 ```mermaid
 graph TD;
+  six-tag --> six-tooltip
   six-tile --> six-tooltip
   style six-tooltip fill:#f9f,stroke:#333,stroke-width:4px
 ```

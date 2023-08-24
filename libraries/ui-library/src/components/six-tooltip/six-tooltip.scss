@@ -22,7 +22,7 @@
 }
 
 .tooltip-positioner {
-  position: absolute;
+  position: fixed;
   z-index: var(--six-z-index-tooltip);
   pointer-events: none;
 }
