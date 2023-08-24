@@ -64,23 +64,69 @@ Use the `label` attribute to give the checkbox an accessible label. For labels t
 ```
 
 
+## Error Text
+
+Add a descriptive error message using either the `error-text` prop, or the equally named slot.
+
+warning There are two caveats when using the `error-text` prop/slot:
+
+1.  Remember to set the `invalid` prop as well! If you only provide some content to the `error-text` prop/slot, it won't be shown unless the `invalid` prop is set to true
+2.  When using the prop, and you need to show more than one message, remember to also set the `error-text-count` prop to a value that is the same or bigger than the length of the list of messages you are using. Otherwise only one message will be shown at a time
+
+The `error-text` prop accepts either a simple string message, or a list of messages.
+
+<docs-demo-six-checkbox-5></docs-demo-six-checkbox-5>
+
+```html
+<six-checkbox label="Simple string message" error-text="This is a simple string message" invalid>
+</six-checkbox>
+```
+
+
+<docs-demo-six-checkbox-6></docs-demo-six-checkbox-6>
+
+```html
+<six-checkbox id="multiple-error-text" label="List of string message" invalid></six-checkbox>
+<script type="module">
+  const sixCheckbox = document.getElementById('multiple-error-text');
+  sixCheckbox.errorText = ['Message 1', 'Message 2'];
+  sixCheckbox.errorTextCount = 3;
+</script>
+```
+
+
+When using the `error-text` slot, it is recommended to use the `six-error` component to wrap the error message(s). This will provide the correct styling out of the box
+
+<docs-demo-six-checkbox-7></docs-demo-six-checkbox-7>
+
+```html
+<six-checkbox invalid>
+  <div slot="error-text">
+    <six-error               >An error message
+      <a href="https://github.com/six-group/six-webcomponents" target="_blank">with a link</a></six-error>
+  </div>
+</six-checkbox>
+```
+
+
 
 <!-- Auto Generated Below -->
 
 
 ## Properties
 
-| Property        | Attribute       | Description                                                                                                                                                                                                                                                  | Type      | Default |
-| --------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------- | ------- |
-| `checked`       | `checked`       | Set to true to draw the checkbox in a checked state.                                                                                                                                                                                                         | `boolean` | `false` |
-| `disabled`      | `disabled`      | Set to true to disable the checkbox.                                                                                                                                                                                                                         | `boolean` | `false` |
-| `errorText`     | `error-text`    | The error message shown, if `invalid` is set to true.                                                                                                                                                                                                        | `string`  | `''`    |
-| `indeterminate` | `indeterminate` | Set to true to draw the checkbox in an indeterminate state.                                                                                                                                                                                                  | `boolean` | `false` |
-| `invalid`       | `invalid`       | If this property is set to true and an error message is provided by `errorText`, the error message is displayed.                                                                                                                                             | `boolean` | `false` |
-| `label`         | `label`         | The label text.                                                                                                                                                                                                                                              | `string`  | `''`    |
-| `name`          | `name`          | The checkbox's name attribute.                                                                                                                                                                                                                               | `string`  | `''`    |
-| `required`      | `required`      | Set to true to show an asterisk beneath the label.                                                                                                                                                                                                           | `boolean` | `false` |
-| `value`         | `value`         | The value of the checkbox does not mean if it's checked or not, use the `checked` property for that.  The value of a checkbox is analogous to the value of an `<input type="checkbox">`, it's only used when the checkbox participates in a native `<form>`. | `string`  | `'on'`  |
+| Property         | Attribute          | Description                                                                                                                                                                                                                                                  | Type                  | Default     |
+| ---------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------- | ----------- |
+| `checked`        | `checked`          | Set to true to draw the checkbox in a checked state.                                                                                                                                                                                                         | `boolean`             | `false`     |
+| `disabled`       | `disabled`         | Set to true to disable the checkbox.                                                                                                                                                                                                                         | `boolean`             | `false`     |
+| `errorText`      | `error-text`       | The error message shown, if `invalid` is set to true.                                                                                                                                                                                                        | `string \| string[]`  | `''`        |
+| `errorTextCount` | `error-text-count` | The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1                                                                                                                                                                     | `number \| undefined` | `undefined` |
+| `indeterminate`  | `indeterminate`    | Set to true to draw the checkbox in an indeterminate state.                                                                                                                                                                                                  | `boolean`             | `false`     |
+| `invalid`        | `invalid`          | If this property is set to true and an error message is provided by `errorText`, the error message is displayed.                                                                                                                                             | `boolean`             | `false`     |
+| `label`          | `label`            | The label text.                                                                                                                                                                                                                                              | `string`              | `''`        |
+| `name`           | `name`             | The checkbox's name attribute.                                                                                                                                                                                                                               | `string`              | `''`        |
+| `required`       | `required`         | Set to true to show an asterisk beneath the label.                                                                                                                                                                                                           | `boolean`             | `false`     |
+| `value`          | `value`            | The value of the checkbox does not mean if it's checked or not, use the `checked` property for that.  The value of a checkbox is analogous to the value of an `<input type="checkbox">`, it's only used when the checkbox participates in a native `<form>`. | `string`              | `'on'`      |
 
 
 ## Events
@@ -133,6 +179,19 @@ Type: `Promise<void>`
 | `"indeterminate-icon"` | The container that wraps the indeterminate icon. |
 | `"text"`               | The checkbox text rendered to the right.         |
 
+
+## Dependencies
+
+### Depends on
+
+- [six-error](six-error.html)
+
+### Graph
+```mermaid
+graph TD;
+  six-checkbox --> six-error
+  style six-checkbox fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 

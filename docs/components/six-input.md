@@ -185,9 +185,53 @@ Add descriptive help text to an input with the `help-text` attribute. For help t
 ```
 
 
-## Events Discalimer
+## Error Text
 
-The events of our webcommponents should follow native web elements as much as possible.
+Add a descriptive error message to an input using either the `error-text` prop, or the equally named slot.
+
+warning There are two caveats when using the `error-text` prop/slot:
+
+1.  Remember to set the `invalid` prop as well! If you only provide some content to the `error-text` prop/slot, it won't be shown unless the `invalid` prop is set to true
+2.  When using the prop, and you need to show more than one message, remember to also set the `error-text-count` prop to a value that is the same or bigger than the length of the list of messages you are using. Otherwise only one message will be shown at a time
+
+The `error-text` prop accepts either a simple string message, or a list of messages.
+
+<docs-demo-six-input-13></docs-demo-six-input-13>
+
+```html
+<six-input label="Simple string message" error-text="This is a simple string message" invalid> </six-input>
+```
+
+
+<docs-demo-six-input-14></docs-demo-six-input-14>
+
+```html
+<six-input id="multiple-error-text" label="List of string message" invalid></six-input>
+<script type="module">
+  const sixInput = document.getElementById('multiple-error-text');
+  sixInput.errorText = ['Message 1', 'Message 2'];
+  sixInput.errorTextCount = 3;
+</script>
+```
+
+
+When using the `error-text` slot, it is recommended to use the `six-error` component to wrap the error message(s). This will provide the correct styling out of the box
+
+<docs-demo-six-input-15></docs-demo-six-input-15>
+
+```html
+<six-input invalid>
+  <div slot="error-text">
+    <six-error               >An error message
+      <a href="https://github.com/six-group/six-webcomponents" target="_blank">with a link</a></six-error>
+  </div>
+</six-input>
+```
+
+
+## Events Disclaimer
+
+The events of our webcomponents should follow native web elements as much as possible.
 
 This means input, change and blur should be fired the same as when using native elements: Input is fired on input, and change and blur are fired when leaving the input
 
@@ -201,7 +245,7 @@ This means input, change and blur should be fired the same as when using native 
 
 You can play with the following native and six-input elements to see that the event firing is the same
 
-<docs-demo-six-input-13></docs-demo-six-input-13>
+<docs-demo-six-input-16></docs-demo-six-input-16>
 
 ```html
 <div style="font-size: 1rem; font-weight: bold; padding-bottom: 1rem">Native Input Element</div>
@@ -259,36 +303,37 @@ You can play with the following native and six-input elements to see that the ev
 
 ## Properties
 
-| Property         | Attribute         | Description                                                                                                      | Type                                                                                               | Default     |
-| ---------------- | ----------------- | ---------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | ----------- |
-| `autocapitalize` | `autocapitalize`  | The input's autocaptialize attribute.                                                                            | `string`                                                                                           | `'off'`     |
-| `autocomplete`   | `autocomplete`    | The input's autocomplete attribute.                                                                              | `string`                                                                                           | `'off'`     |
-| `autocorrect`    | `autocorrect`     | The input's autocorrect attribute.                                                                               | `"off" \| "on"`                                                                                    | `'off'`     |
-| `autofocus`      | `autofocus`       | The input's autofocus attribute.                                                                                 | `boolean`                                                                                          | `false`     |
-| `clearable`      | `clearable`       | Set to true to add a clear button when the input is populated.                                                   | `boolean`                                                                                          | `false`     |
-| `disabled`       | `disabled`        | Set to true to disable the input.                                                                                | `boolean`                                                                                          | `false`     |
-| `errorText`      | `error-text`      | The error message shown, if `invalid` is set to true.                                                            | `string`                                                                                           | `''`        |
-| `helpText`       | `help-text`       | The input's help text. Alternatively, you can use the help-text slot.                                            | `string`                                                                                           | `''`        |
-| `inputmode`      | `inputmode`       | The input's inputmode attribute.                                                                                 | `"decimal" \| "email" \| "none" \| "numeric" \| "search" \| "tel" \| "text" \| "url" \| undefined` | `undefined` |
-| `invalid`        | `invalid`         | If this property is set to true and an error message is provided by `errorText`, the error message is displayed. | `boolean`                                                                                          | `false`     |
-| `label`          | `label`           | The label text.                                                                                                  | `string`                                                                                           | `''`        |
-| `line`           | `line`            | Set to render as line                                                                                            | `boolean`                                                                                          | `false`     |
-| `max`            | `max`             | The input's maximum value.                                                                                       | `number \| undefined`                                                                              | `undefined` |
-| `maxlength`      | `maxlength`       | The maximum length of input that will be considered valid.                                                       | `number \| undefined`                                                                              | `undefined` |
-| `min`            | `min`             | The input's minimum value.                                                                                       | `number \| undefined`                                                                              | `undefined` |
-| `minlength`      | `minlength`       | The minimum length of input that will be considered valid.                                                       | `number \| undefined`                                                                              | `undefined` |
-| `name`           | `name`            | The input's name attribute.                                                                                      | `string`                                                                                           | `''`        |
-| `pattern`        | `pattern`         | A pattern to validate input against.                                                                             | `string \| undefined`                                                                              | `undefined` |
-| `pill`           | `pill`            | Set to true to draw a pill-style input with rounded edges.                                                       | `boolean`                                                                                          | `false`     |
-| `placeholder`    | `placeholder`     | The input's placeholder text.                                                                                    | `string \| undefined`                                                                              | `undefined` |
-| `readonly`       | `readonly`        | Set to true to make the input readonly.                                                                          | `boolean`                                                                                          | `false`     |
-| `required`       | `required`        | Set to true to show an asterisk beneath the label.                                                               | `boolean`                                                                                          | `false`     |
-| `size`           | `size`            | The input's size.                                                                                                | `"large" \| "medium" \| "small"`                                                                   | `'medium'`  |
-| `spellcheck`     | `spellcheck`      | Enables spell checking on the input.                                                                             | `boolean`                                                                                          | `false`     |
-| `step`           | `step`            | The input's step attribute.                                                                                      | `number \| undefined`                                                                              | `undefined` |
-| `togglePassword` | `toggle-password` | Set to true to add a password toggle button for password inputs.                                                 | `boolean`                                                                                          | `false`     |
-| `type`           | `type`            | The input's type.                                                                                                | `"email" \| "number" \| "password" \| "search" \| "tel" \| "text" \| "url"`                        | `'text'`    |
-| `value`          | `value`           | The input's value attribute.                                                                                     | `string`                                                                                           | `''`        |
+| Property         | Attribute          | Description                                                                                                      | Type                                                                                               | Default     |
+| ---------------- | ------------------ | ---------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | ----------- |
+| `autocapitalize` | `autocapitalize`   | The input's autocaptialize attribute.                                                                            | `string`                                                                                           | `'off'`     |
+| `autocomplete`   | `autocomplete`     | The input's autocomplete attribute.                                                                              | `string`                                                                                           | `'off'`     |
+| `autocorrect`    | `autocorrect`      | The input's autocorrect attribute.                                                                               | `"off" \| "on"`                                                                                    | `'off'`     |
+| `autofocus`      | `autofocus`        | The input's autofocus attribute.                                                                                 | `boolean`                                                                                          | `false`     |
+| `clearable`      | `clearable`        | Set to true to add a clear button when the input is populated.                                                   | `boolean`                                                                                          | `false`     |
+| `disabled`       | `disabled`         | Set to true to disable the input.                                                                                | `boolean`                                                                                          | `false`     |
+| `errorText`      | `error-text`       | The error message shown, if `invalid` is set to true.                                                            | `string \| string[]`                                                                               | `''`        |
+| `errorTextCount` | `error-text-count` | The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1                         | `number \| undefined`                                                                              | `undefined` |
+| `helpText`       | `help-text`        | The input's help text. Alternatively, you can use the help-text slot.                                            | `string`                                                                                           | `''`        |
+| `inputmode`      | `inputmode`        | The input's inputmode attribute.                                                                                 | `"decimal" \| "email" \| "none" \| "numeric" \| "search" \| "tel" \| "text" \| "url" \| undefined` | `undefined` |
+| `invalid`        | `invalid`          | If this property is set to true and an error message is provided by `errorText`, the error message is displayed. | `boolean`                                                                                          | `false`     |
+| `label`          | `label`            | The label text.                                                                                                  | `string`                                                                                           | `''`        |
+| `line`           | `line`             | Set to render as line                                                                                            | `boolean`                                                                                          | `false`     |
+| `max`            | `max`              | The input's maximum value.                                                                                       | `number \| undefined`                                                                              | `undefined` |
+| `maxlength`      | `maxlength`        | The maximum length of input that will be considered valid.                                                       | `number \| undefined`                                                                              | `undefined` |
+| `min`            | `min`              | The input's minimum value.                                                                                       | `number \| undefined`                                                                              | `undefined` |
+| `minlength`      | `minlength`        | The minimum length of input that will be considered valid.                                                       | `number \| undefined`                                                                              | `undefined` |
+| `name`           | `name`             | The input's name attribute.                                                                                      | `string`                                                                                           | `''`        |
+| `pattern`        | `pattern`          | A pattern to validate input against.                                                                             | `string \| undefined`                                                                              | `undefined` |
+| `pill`           | `pill`             | Set to true to draw a pill-style input with rounded edges.                                                       | `boolean`                                                                                          | `false`     |
+| `placeholder`    | `placeholder`      | The input's placeholder text.                                                                                    | `string \| undefined`                                                                              | `undefined` |
+| `readonly`       | `readonly`         | Set to true to make the input readonly.                                                                          | `boolean`                                                                                          | `false`     |
+| `required`       | `required`         | Set to true to show an asterisk beneath the label.                                                               | `boolean`                                                                                          | `false`     |
+| `size`           | `size`             | The input's size.                                                                                                | `"large" \| "medium" \| "small"`                                                                   | `'medium'`  |
+| `spellcheck`     | `spellcheck`       | Enables spell checking on the input.                                                                             | `boolean`                                                                                          | `false`     |
+| `step`           | `step`             | The input's step attribute.                                                                                      | `number \| undefined`                                                                              | `undefined` |
+| `togglePassword` | `toggle-password`  | Set to true to add a password toggle button for password inputs.                                                 | `boolean`                                                                                          | `false`     |
+| `type`           | `type`             | The input's type.                                                                                                | `"email" \| "number" \| "password" \| "search" \| "tel" \| "text" \| "url"`                        | `'text'`    |
+| `value`          | `value`            | The input's value attribute.                                                                                     | `string`                                                                                           | `''`        |
 
 
 ## Events
@@ -357,30 +402,32 @@ Type: `Promise<void | undefined>`
 
 ## Slots
 
-| Slot                   | Description                                                                                   |
-| ---------------------- | --------------------------------------------------------------------------------------------- |
-| `"clear-icon"`         | An icon to use in lieu of the default clear icon.                                             |
-| `"help-text"`          | Help text that describes how to use the input. Alternatively, you can use the help-text prop. |
-| `"hide-password-icon"` | An icon to use in lieu of the default hide password icon.                                     |
-| `"label"`              | The input's label. Alternatively, you can use the label prop.                                 |
-| `"prefix"`             | Used to prepend an icon or similar element to the input.                                      |
-| `"show-password-icon"` | An icon to use in lieu of the default show password icon.                                     |
-| `"suffix"`             | Used to append an icon or similar element to the input.                                       |
+| Slot                   | Description                                                                                                 |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `"clear-icon"`         | An icon to use in lieu of the default clear icon.                                                           |
+| `"error-text"`         | Error text that is shown when the status is set to invalid. Alternatively, you can use the error-text prop. |
+| `"help-text"`          | Help text that describes how to use the input. Alternatively, you can use the help-text prop.               |
+| `"hide-password-icon"` | An icon to use in lieu of the default hide password icon.                                                   |
+| `"label"`              | The input's label. Alternatively, you can use the label prop.                                               |
+| `"prefix"`             | Used to prepend an icon or similar element to the input.                                                    |
+| `"show-password-icon"` | An icon to use in lieu of the default show password icon.                                                   |
+| `"suffix"`             | Used to append an icon or similar element to the input.                                                     |
 
 
 ## Shadow Parts
 
-| Part                       | Description                                                  |
-| -------------------------- | ------------------------------------------------------------ |
-| `"base"`                   | The component's base wrapper.                                |
-| `"clear-button"`           | The clear button.                                            |
-| `"form-control"`           | The form control that wraps the label, input, and help-text. |
-| `"help-text"`              | The input help text.                                         |
-| `"input"`                  | The input control.                                           |
-| `"label"`                  | The input label.                                             |
-| `"password-toggle-button"` | The password toggle button.                                  |
-| `"prefix"`                 | The input prefix container.                                  |
-| `"suffix"`                 | The input suffix container.                                  |
+| Part                       | Description                                                             |
+| -------------------------- | ----------------------------------------------------------------------- |
+| `"base"`                   | The component's base wrapper.                                           |
+| `"clear-button"`           | The clear button.                                                       |
+| `"error-text"`             | The input error text.                                                   |
+| `"form-control"`           | The form control that wraps the label, input, error-text and help-text. |
+| `"help-text"`              | The input help text.                                                    |
+| `"input"`                  | The input control.                                                      |
+| `"label"`                  | The input label.                                                        |
+| `"password-toggle-button"` | The password toggle button.                                             |
+| `"prefix"`                 | The input prefix container.                                             |
+| `"suffix"`                 | The input suffix container.                                             |
 
 
 ## Dependencies
@@ -396,11 +443,13 @@ Type: `Promise<void | undefined>`
 ### Depends on
 
 - [six-icon](six-icon.html)
+- [six-error](six-error.html)
 
 ### Graph
 ```mermaid
 graph TD;
   six-input --> six-icon
+  six-input --> six-error
   six-datepicker --> six-input
   six-dropdown --> six-input
   six-search-field --> six-input

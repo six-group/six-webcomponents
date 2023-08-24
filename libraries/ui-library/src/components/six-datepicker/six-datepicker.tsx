@@ -62,6 +62,7 @@ enum SelectionMode {
  * @status stable
  *
  * @slot - Used to define a footer for the date picker.
+ * @slot error-text - Error text that is shown for validation errors. Alternatively, you can use the error-text prop.
  */
 @Component({
   tag: 'six-datepicker',
@@ -162,7 +163,10 @@ export class SixDatepicker {
   @Prop() label = '';
 
   /** The error message shown, if `invalid` is set to true.  */
-  @Prop() errorText = '';
+  @Prop() errorText: string | string[] = '';
+
+  /** The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1 */
+  @Prop() errorTextCount?: number;
 
   /** If this property is set to true and an error message is provided by `errorText`, the error message is displayed.  */
   @Prop({ reflect: true }) invalid = false;
@@ -207,13 +211,6 @@ export class SixDatepicker {
   @Watch('debounce')
   protected debounceChanged() {
     this.sixSelect = debounceEvent(this.sixSelect, this.debounce);
-  }
-
-  @Watch('invalid')
-  protected invalidChanged(invalid: boolean) {
-    if (this.inputElement) {
-      this.inputElement.invalid = invalid;
-    }
   }
 
   /**
@@ -735,7 +732,9 @@ export class SixDatepicker {
           name={this.name}
           label={this.label}
           required={this.required}
-          error-text={this.errorText}
+          errorText={this.errorText}
+          errorTextCount={this.errorTextCount}
+          invalid={this.invalid}
           onClick={() => this.openCalendar()}
           size={this.size}
           class={{ 'input--empty': this.value == null }}
@@ -745,6 +744,11 @@ export class SixDatepicker {
           {hasSlot(this.host, 'label') ? (
             <span slot="label">
               <slot name="label" />
+            </span>
+          ) : null}
+          {hasSlot(this.host, 'error-text') ? (
+            <span slot="error-text">
+              <slot name="error-text"></slot>
             </span>
           ) : null}
         </six-input>

@@ -177,35 +177,81 @@ You can play with the following native and six-input elements to see that the ev
 ```
 
 
+## Error Text
+
+Add a descriptive error message using either the `error-text` prop, or the equally named slot.
+
+warning There are two caveats when using the `error-text` prop/slot:
+
+1.  Remember to set the `invalid` prop as well! If you only provide some content to the `error-text` prop/slot, it won't be shown unless the `invalid` prop is set to true
+2.  When using the prop, and you need to show more than one message, remember to also set the `error-text-count` prop to a value that is the same or bigger than the length of the list of messages you are using. Otherwise only one message will be shown at a time
+
+The `error-text` prop accepts either a simple string message, or a list of messages.
+
+<docs-demo-six-textarea-10></docs-demo-six-textarea-10>
+
+```html
+<six-textarea label="Simple string message" error-text="This is a simple string message" invalid>
+</six-textarea>
+```
+
+
+<docs-demo-six-textarea-11></docs-demo-six-textarea-11>
+
+```html
+<six-textarea id="multiple-error-text" label="List of string message" invalid></six-textarea>
+<script type="module">
+  const sixTextarea = document.getElementById('multiple-error-text');
+  sixTextarea.errorText = ['Message 1', 'Message 2'];
+  sixTextarea.errorTextCount = 3;
+</script>
+```
+
+
+When using the `error-text` slot, it is recommended to use the `six-error` component to wrap the error message(s). This will provide the correct styling out of the box
+
+<docs-demo-six-textarea-12></docs-demo-six-textarea-12>
+
+```html
+<six-textarea invalid>
+  <div slot="error-text">
+    <six-error               >An error message
+      <a href="https://github.com/six-group/six-webcomponents" target="_blank">with a link</a></six-error>
+  </div>
+</six-textarea>
+```
+
+
 
 <!-- Auto Generated Below -->
 
 
 ## Properties
 
-| Property         | Attribute        | Description                                                                                                      | Type                                                                                               | Default      |
-| ---------------- | ---------------- | ---------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | ------------ |
-| `autocapitalize` | `autocapitalize` | The textarea's autocaptialize attribute.                                                                         | `string`                                                                                           | `'off'`      |
-| `autocomplete`   | `autocomplete`   | The textarea's autocomplete attribute.                                                                           | `string`                                                                                           | `'off'`      |
-| `autocorrect`    | `autocorrect`    | The textarea's autocorrect attribute.                                                                            | `"off" \| "on"`                                                                                    | `'off'`      |
-| `autofocus`      | `autofocus`      | The textarea's autofocus attribute.                                                                              | `boolean`                                                                                          | `false`      |
-| `disabled`       | `disabled`       | Set to true to disable the textarea.                                                                             | `boolean`                                                                                          | `false`      |
-| `errorText`      | `error-text`     | The error message shown, if `invalid` is set to true.                                                            | `string`                                                                                           | `''`         |
-| `helpText`       | `help-text`      | The textarea's help text. Alternatively, you can use the help-text slot.                                         | `string`                                                                                           | `''`         |
-| `inputmode`      | `inputmode`      | The textarea's inputmode attribute.                                                                              | `"decimal" \| "email" \| "none" \| "numeric" \| "search" \| "tel" \| "text" \| "url" \| undefined` | `undefined`  |
-| `invalid`        | `invalid`        | If this property is set to true and an error message is provided by `errorText`, the error message is displayed. | `boolean`                                                                                          | `false`      |
-| `label`          | `label`          | The label text.                                                                                                  | `string`                                                                                           | `''`         |
-| `maxlength`      | `maxlength`      | The maximum length of input that will be considered valid.                                                       | `number \| undefined`                                                                              | `undefined`  |
-| `minlength`      | `minlength`      | The minimum length of input that will be considered valid.                                                       | `number \| undefined`                                                                              | `undefined`  |
-| `name`           | `name`           | The textarea's name attribute.                                                                                   | `string`                                                                                           | `''`         |
-| `placeholder`    | `placeholder`    | The textarea's placeholder text.                                                                                 | `string \| undefined`                                                                              | `undefined`  |
-| `readonly`       | `readonly`       | Set to true for a readonly textarea.                                                                             | `boolean`                                                                                          | `false`      |
-| `required`       | `required`       | Set to true to show an asterisk beneath the label.                                                               | `boolean`                                                                                          | `false`      |
-| `resize`         | `resize`         | Controls how the textarea can be resized.                                                                        | `"auto" \| "none" \| "vertical"`                                                                   | `'vertical'` |
-| `rows`           | `rows`           | The number of rows to display by default.                                                                        | `number`                                                                                           | `4`          |
-| `size`           | `size`           | The textarea's size.                                                                                             | `"large" \| "medium" \| "small"`                                                                   | `'medium'`   |
-| `spellcheck`     | `spellcheck`     | The textarea's spellcheck attribute.                                                                             | `boolean`                                                                                          | `false`      |
-| `value`          | `value`          | The textarea's value attribute.                                                                                  | `string`                                                                                           | `''`         |
+| Property         | Attribute          | Description                                                                                                      | Type                                                                                               | Default      |
+| ---------------- | ------------------ | ---------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | ------------ |
+| `autocapitalize` | `autocapitalize`   | The textarea's autocaptialize attribute.                                                                         | `string`                                                                                           | `'off'`      |
+| `autocomplete`   | `autocomplete`     | The textarea's autocomplete attribute.                                                                           | `string`                                                                                           | `'off'`      |
+| `autocorrect`    | `autocorrect`      | The textarea's autocorrect attribute.                                                                            | `"off" \| "on"`                                                                                    | `'off'`      |
+| `autofocus`      | `autofocus`        | The textarea's autofocus attribute.                                                                              | `boolean`                                                                                          | `false`      |
+| `disabled`       | `disabled`         | Set to true to disable the textarea.                                                                             | `boolean`                                                                                          | `false`      |
+| `errorText`      | `error-text`       | The error message shown, if `invalid` is set to true.                                                            | `string \| string[]`                                                                               | `''`         |
+| `errorTextCount` | `error-text-count` | The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1                         | `number \| undefined`                                                                              | `undefined`  |
+| `helpText`       | `help-text`        | The textarea's help text. Alternatively, you can use the help-text slot.                                         | `string`                                                                                           | `''`         |
+| `inputmode`      | `inputmode`        | The textarea's inputmode attribute.                                                                              | `"decimal" \| "email" \| "none" \| "numeric" \| "search" \| "tel" \| "text" \| "url" \| undefined` | `undefined`  |
+| `invalid`        | `invalid`          | If this property is set to true and an error message is provided by `errorText`, the error message is displayed. | `boolean`                                                                                          | `false`      |
+| `label`          | `label`            | The label text.                                                                                                  | `string`                                                                                           | `''`         |
+| `maxlength`      | `maxlength`        | The maximum length of input that will be considered valid.                                                       | `number \| undefined`                                                                              | `undefined`  |
+| `minlength`      | `minlength`        | The minimum length of input that will be considered valid.                                                       | `number \| undefined`                                                                              | `undefined`  |
+| `name`           | `name`             | The textarea's name attribute.                                                                                   | `string`                                                                                           | `''`         |
+| `placeholder`    | `placeholder`      | The textarea's placeholder text.                                                                                 | `string \| undefined`                                                                              | `undefined`  |
+| `readonly`       | `readonly`         | Set to true for a readonly textarea.                                                                             | `boolean`                                                                                          | `false`      |
+| `required`       | `required`         | Set to true to show an asterisk beneath the label.                                                               | `boolean`                                                                                          | `false`      |
+| `resize`         | `resize`           | Controls how the textarea can be resized.                                                                        | `"auto" \| "none" \| "vertical"`                                                                   | `'vertical'` |
+| `rows`           | `rows`             | The number of rows to display by default.                                                                        | `number`                                                                                           | `4`          |
+| `size`           | `size`             | The textarea's size.                                                                                             | `"large" \| "medium" \| "small"`                                                                   | `'medium'`   |
+| `spellcheck`     | `spellcheck`       | The textarea's spellcheck attribute.                                                                             | `boolean`                                                                                          | `false`      |
+| `value`          | `value`            | The textarea's value attribute.                                                                                  | `string`                                                                                           | `''`         |
 
 
 ## Events
@@ -290,6 +336,19 @@ Type: `Promise<void | undefined>`
 | `"label"`        | The textarea label.                                             |
 | `"textarea"`     | The textarea control.                                           |
 
+
+## Dependencies
+
+### Depends on
+
+- [six-error](six-error.html)
+
+### Graph
+```mermaid
+graph TD;
+  six-textarea --> six-error
+  style six-textarea fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 

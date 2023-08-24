@@ -27,7 +27,9 @@ describe('six-group-label', () => {
            <div class="form-control__input">
              <slot></slot>
            </div>
-           <div aria-hidden="true" class="form-control__error-text" part="error-text"></div>
+           <div aria-hidden="true" class="form-control__error-text" part="error-text">
+             <slot name="error-text"></slot>
+           </div>
            <div aria-hidden="true" class="form-control__help-text" id="label-help-text-1" part="help-text">
              <slot name="help-text"></slot>
            </div>

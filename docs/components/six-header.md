@@ -322,6 +322,7 @@ graph TD;
   six-dropdown --> six-menu
   six-menu-item --> six-icon
   six-input --> six-icon
+  six-input --> six-error
   six-menu --> six-menu-item
   style six-header fill:#f9f,stroke:#333,stroke-width:4px
 ```

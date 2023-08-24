@@ -25,7 +25,9 @@ describe('six-input', () => {
                   </span>
                 </div>
               </div>
-              <div aria-hidden="true" class="form-control__error-text" id="input-error-text-1" part="error-text"></div>
+              <div aria-hidden="true" class="form-control__error-text" id="input-error-text-1" part="error-text">
+                <slot name="error-text"></slot>
+              </div>
               <div aria-hidden="true" class="form-control__help-text" id="input-help-text-1" part="help-text">
                 <slot name="help-text"></slot>
               </div>

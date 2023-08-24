@@ -21,7 +21,7 @@ export class FormComponent {
     firstName: ['', [Validators.required, Validators.minLength(2)]],
     lastName: [''],
     email: ['', Validators.email],
-    username: ['', [Validators.required, usernameValidator]],
+    username: ['', [Validators.required, usernameValidator, Validators.minLength(3)]],
     iban: ['', Validators.pattern(/[A-Z]{2}\d{2}[A-Z ]+/)],
     age: [null as number | null, Validators.min(18)],
     userGroup: ['user' as UserGroup | null, Validators.required],
