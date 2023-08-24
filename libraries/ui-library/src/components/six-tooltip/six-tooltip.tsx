@@ -91,7 +91,7 @@ export class SixTooltip {
   componentDidLoad() {
     if (this.tooltipPositioner == null) return;
     this.target = this.getTarget();
-    this.popover = new Popover(this.target, this.tooltipPositioner);
+    this.popover = new Popover(this.target, this.tooltipPositioner, { strategy: 'fixed' });
     this.syncOptions();
 
     this.host.addEventListener('blur', this.handleBlur, true);

@@ -1,5 +1,7 @@
 import { Component, Event, EventEmitter, h, Prop } from '@stencil/core';
 import { EmptyPayload } from '../../utils/types';
+import { getTextContent } from '../../utils/slot';
+import { debounce } from '../../utils/execution-control';
 
 /**
  * @since 1.0
@@ -35,6 +37,34 @@ export class SixTag {
   /** Emitted when the clear button is activated. */
   @Event({ eventName: 'six-tag-clear' }) sixClear!: EventEmitter<EmptyPayload>;
 
+  private contentSlotElement: HTMLSlotElement | undefined;
+  private tooltipElement: HTMLSixTooltipElement | undefined;
+  private contentElement: HTMLElement | undefined;
+  private resizeObserver = new ResizeObserver(debounce(() => this.updateTooltip()));
+
+  connectedCallback() {
+    if (this.contentElement != null) {
+      this.resizeObserver.observe(this.contentElement);
+    }
+  }
+
+  componentDidLoad() {
+    if (this.contentElement != null) {
+      this.resizeObserver.observe(this.contentElement);
+    }
+  }
+
+  disconnectedCallback() {
+    this.resizeObserver.disconnect();
+  }
+
+  private updateTooltip = () => {
+    if (this.tooltipElement != null && this.contentSlotElement != null && this.contentElement != null) {
+      this.tooltipElement.content = getTextContent(this.contentSlotElement);
+      this.tooltipElement.disabled = !(this.contentElement.offsetWidth < this.contentElement.scrollWidth);
+    }
+  };
+
   private handleClearClick = () => {
     this.sixClear.emit();
   };
@@ -65,9 +95,11 @@ export class SixTag {
           'tag--clear': this.clearable,
         }}
       >
-        <span part="content" class="tag__content">
-          <slot />
-        </span>
+        <six-tooltip ref={(el) => (this.tooltipElement = el)}>
+          <span ref={(el) => (this.contentElement = el)} part="content" class="tag__content">
+            <slot ref={(el) => (this.contentSlotElement = el as HTMLSlotElement)} />
+          </span>
+        </six-tooltip>
 
         {this.clearable && (
           <six-icon-button

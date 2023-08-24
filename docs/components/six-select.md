@@ -161,7 +161,7 @@ To allow multiple options to be selected, use the `multiple` attribute. It's a g
   <six-menu-divider></six-menu-divider>
   <six-menu-item value="option-4">Option 4</six-menu-item>
   <six-menu-item value="option-5">Option 5</six-menu-item>
-  <six-menu-item value="option-6">Option 6</six-menu-item>
+  <six-menu-item value="option-6">Option 6 (with tooltip due to long text)</six-menu-item>
 </six-select>
 ```
 
@@ -759,6 +759,7 @@ graph TD;
   six-select --> six-menu
   six-select --> six-error
   six-menu-item --> six-icon
+  six-tag --> six-tooltip
   six-tag --> six-icon-button
   six-icon-button --> six-icon
   six-dropdown --> six-menu-item

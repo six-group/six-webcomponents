@@ -76,6 +76,17 @@ Use the `clearable` attribute to add a clear button to the tag.
 ```
 
 
+### Tooltip
+
+A tooltip with the full text is shown if the content doesn't fit inside the tag.
+
+<docs-demo-six-tag-4></docs-demo-six-tag-4>
+
+```html
+<six-tag style="width: 100px">Tag with a long text</six-tag>
+```
+
+
 
 <!-- Auto Generated Below -->
 
@@ -121,11 +132,13 @@ Use the `clearable` attribute to add a clear button to the tag.
 
 ### Depends on
 
+- [six-tooltip](six-tooltip.html)
 - [six-icon-button](six-icon-button.html)
 
 ### Graph
 ```mermaid
 graph TD;
+  six-tag --> six-tooltip
   six-tag --> six-icon-button
   six-icon-button --> six-icon
   six-select --> six-tag
