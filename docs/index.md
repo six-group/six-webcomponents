@@ -24,9 +24,7 @@ features:
   - title: Fast Runtime
     details:
       Web Components offered a solution by pushing more work to the browser for better performance.
-  - title: In-House Open Source
+  - title: Open Source
     link: /guide/readme#contribute
-    details:
-      All developers within the SIX Group are welcome to contribute code and use our library in
-      their projects.
+    details: All developers are welcome to contribute code and use our library in their projects.
 ---

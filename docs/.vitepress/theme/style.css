@@ -37,3 +37,8 @@
   --vp-button-brand-active-text: var(--vp-c-white);
   --vp-button-brand-active-bg: var(--vp-button-brand-bg);
 }
+
+/* overwrite rounded design to follow six design */
+* {
+  border-radius: 0 !important;
+}
