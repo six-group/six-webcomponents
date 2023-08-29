@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/six-webcomponents/demo/react/static/css/main.e1e1a5b9.css",
-    "main.js": "/six-webcomponents/demo/react/static/js/main.c58cb36a.js",
+    "main.js": "/six-webcomponents/demo/react/static/js/main.6afdc48c.js",
     "static/css/5657.cb1894b9.chunk.css": "/six-webcomponents/demo/react/static/css/5657.cb1894b9.chunk.css",
     "static/js/5657.0afa5ff3.chunk.js": "/six-webcomponents/demo/react/static/js/5657.0afa5ff3.chunk.js",
     "static/js/8992.9652fa85.chunk.js": "/six-webcomponents/demo/react/static/js/8992.9652fa85.chunk.js",
@@ -45,11 +45,11 @@
     "static/js/4886.1ef938f0.chunk.js": "/six-webcomponents/demo/react/static/js/4886.1ef938f0.chunk.js",
     "static/js/875.78c48880.chunk.js": "/six-webcomponents/demo/react/static/js/875.78c48880.chunk.js",
     "static/js/5526.02fef563.chunk.js": "/six-webcomponents/demo/react/static/js/5526.02fef563.chunk.js",
-    "static/js/4025.68eec3fb.chunk.js": "/six-webcomponents/demo/react/static/js/4025.68eec3fb.chunk.js",
+    "static/js/4025.6980f3c5.chunk.js": "/six-webcomponents/demo/react/static/js/4025.6980f3c5.chunk.js",
     "static/js/6929.23420482.chunk.js": "/six-webcomponents/demo/react/static/js/6929.23420482.chunk.js",
-    "static/js/1834.dba85d27.chunk.js": "/six-webcomponents/demo/react/static/js/1834.dba85d27.chunk.js",
     "static/js/1154.006ea580.chunk.js": "/six-webcomponents/demo/react/static/js/1154.006ea580.chunk.js",
     "static/js/9681.d6bfd420.chunk.js": "/six-webcomponents/demo/react/static/js/9681.d6bfd420.chunk.js",
+    "static/js/1834.7beac019.chunk.js": "/six-webcomponents/demo/react/static/js/1834.7beac019.chunk.js",
     "static/js/6666.16b21d4a.chunk.js": "/six-webcomponents/demo/react/static/js/6666.16b21d4a.chunk.js",
     "static/js/1044.9f035bd4.chunk.js": "/six-webcomponents/demo/react/static/js/1044.9f035bd4.chunk.js",
     "static/js/3908.f884c45f.chunk.js": "/six-webcomponents/demo/react/static/js/3908.f884c45f.chunk.js",
@@ -88,7 +88,7 @@
     "static/media/noto-sans-latin-700-normal.woff2": "/six-webcomponents/demo/react/static/media/noto-sans-latin-700-normal.ed37599f330779774b3c.woff2",
     "index.html": "/six-webcomponents/demo/react/index.html",
     "main.e1e1a5b9.css.map": "/six-webcomponents/demo/react/static/css/main.e1e1a5b9.css.map",
-    "main.c58cb36a.js.map": "/six-webcomponents/demo/react/static/js/main.c58cb36a.js.map",
+    "main.6afdc48c.js.map": "/six-webcomponents/demo/react/static/js/main.6afdc48c.js.map",
     "5657.cb1894b9.chunk.css.map": "/six-webcomponents/demo/react/static/css/5657.cb1894b9.chunk.css.map",
     "5657.0afa5ff3.chunk.js.map": "/six-webcomponents/demo/react/static/js/5657.0afa5ff3.chunk.js.map",
     "8992.9652fa85.chunk.js.map": "/six-webcomponents/demo/react/static/js/8992.9652fa85.chunk.js.map",
@@ -132,11 +132,11 @@
     "4886.1ef938f0.chunk.js.map": "/six-webcomponents/demo/react/static/js/4886.1ef938f0.chunk.js.map",
     "875.78c48880.chunk.js.map": "/six-webcomponents/demo/react/static/js/875.78c48880.chunk.js.map",
     "5526.02fef563.chunk.js.map": "/six-webcomponents/demo/react/static/js/5526.02fef563.chunk.js.map",
-    "4025.68eec3fb.chunk.js.map": "/six-webcomponents/demo/react/static/js/4025.68eec3fb.chunk.js.map",
+    "4025.6980f3c5.chunk.js.map": "/six-webcomponents/demo/react/static/js/4025.6980f3c5.chunk.js.map",
     "6929.23420482.chunk.js.map": "/six-webcomponents/demo/react/static/js/6929.23420482.chunk.js.map",
-    "1834.dba85d27.chunk.js.map": "/six-webcomponents/demo/react/static/js/1834.dba85d27.chunk.js.map",
     "1154.006ea580.chunk.js.map": "/six-webcomponents/demo/react/static/js/1154.006ea580.chunk.js.map",
     "9681.d6bfd420.chunk.js.map": "/six-webcomponents/demo/react/static/js/9681.d6bfd420.chunk.js.map",
+    "1834.7beac019.chunk.js.map": "/six-webcomponents/demo/react/static/js/1834.7beac019.chunk.js.map",
     "6666.16b21d4a.chunk.js.map": "/six-webcomponents/demo/react/static/js/6666.16b21d4a.chunk.js.map",
     "1044.9f035bd4.chunk.js.map": "/six-webcomponents/demo/react/static/js/1044.9f035bd4.chunk.js.map",
     "3908.f884c45f.chunk.js.map": "/six-webcomponents/demo/react/static/js/3908.f884c45f.chunk.js.map",
@@ -148,6 +148,6 @@
   },
   "entrypoints": [
     "static/css/main.e1e1a5b9.css",
-    "static/js/main.c58cb36a.js"
+    "static/js/main.6afdc48c.js"
   ]
 }
