@@ -14,11 +14,18 @@ Tab groups make use of tabs and tab panels. Each tab must be slotted into the `n
   <six-tab slot="nav" panel="advanced">Advanced</six-tab>
   <six-tab slot="nav" panel="disabled" disabled>Disabled</six-tab>
 
-  <six-tab-panel style="background-color: #f1f1f1" name="general">This is the general tab panel.</six-tab-panel>
-  <six-tab-panel style="background-color: #f1f1f1" name="custom">This is the custom tab panel.</six-tab-panel>
-  <six-tab-panel style="background-color: #f1f1f1" name="advanced"
-    >This is the advanced tab panel.</six-tab-panel>
-  <six-tab-panel style="background-color: #f1f1f1" name="disabled">This is a disabled tab panel.</six-tab-panel>
+  <six-tab-panel style="background-color: var(--six-color-web-rock-100)" name="general">
+    This is the general tab panel.
+  </six-tab-panel>
+  <six-tab-panel style="background-color: var(--six-color-web-rock-100)" name="custom">
+    This is the custom tab panel.
+  </six-tab-panel>
+  <six-tab-panel style="background-color: var(--six-color-web-rock-100)" name="advanced">
+    This is the advanced tab panel.
+  </six-tab-panel>
+  <six-tab-panel style="background-color: var(--six-color-web-rock-100)" name="disabled">
+    This is a disabled tab panel.
+  </six-tab-panel>
 </six-tab-group>
 ```
 
@@ -46,7 +53,7 @@ If the background color of your panels is white, you maybe want a thin line betw
 
 <style>
   .tab-group-with-line::part(tabs) {
-    border-bottom: solid 2px #f1f1f1;
+    border-bottom: solid 2px var(--six-color-web-rock-100);
   }
 </style>
 ```
@@ -65,10 +72,18 @@ Tabs can be shown on the bottom by setting `placement` to `bottom`.
   <six-tab slot="nav" panel="advanced">Advanced</six-tab>
   <six-tab slot="nav" panel="disabled" disabled>Disabled</six-tab>
 
-  <six-tab-panel name="general">This is the general tab panel.</six-tab-panel>
-  <six-tab-panel name="custom">This is the custom tab panel.</six-tab-panel>
-  <six-tab-panel name="advanced">This is the advanced tab panel.</six-tab-panel>
-  <six-tab-panel name="disabled">This is a disabled tab panel.</six-tab-panel>
+  <six-tab-panel style="background-color: var(--six-color-web-rock-100)" name="general">
+    This is the general tab panel.
+  </six-tab-panel>
+  <six-tab-panel style="background-color: var(--six-color-web-rock-100)" name="custom">
+    This is the custom tab panel.
+  </six-tab-panel>
+  <six-tab-panel style="background-color: var(--six-color-web-rock-100)" name="advanced">
+    This is the advanced tab panel.
+  </six-tab-panel>
+  <six-tab-panel style="background-color: var(--six-color-web-rock-100)" name="disabled">
+    This is a disabled tab panel.
+  </six-tab-panel>
 </six-tab-group>
 ```
 
@@ -86,10 +101,10 @@ Tabs can be shown on the left by setting `placement` to `left`.
   <six-tab slot="nav" panel="advanced">Advanced</six-tab>
   <six-tab slot="nav" panel="disabled" disabled>Disabled</six-tab>
 
-  <six-tab-panel name="general">This is the general tab panel.</six-tab-panel>
-  <six-tab-panel name="custom">This is the custom tab panel.</six-tab-panel>
-  <six-tab-panel name="advanced">This is the advanced tab panel.</six-tab-panel>
-  <six-tab-panel name="disabled">This is a disabled tab panel.</six-tab-panel>
+  <six-tab-panel name="general"> This is the general tab panel. </six-tab-panel>
+  <six-tab-panel name="custom"> This is the custom tab panel. </six-tab-panel>
+  <six-tab-panel name="advanced"> This is the advanced tab panel. </six-tab-panel>
+  <six-tab-panel name="disabled"> This is a disabled tab panel. </six-tab-panel>
 </six-tab-group>
 ```
 
@@ -107,10 +122,18 @@ Tabs can be shown on the right by setting `placement` to `right`.
   <six-tab slot="nav" panel="advanced">Advanced</six-tab>
   <six-tab slot="nav" panel="disabled" disabled>Disabled</six-tab>
 
-  <six-tab-panel name="general">This is the general tab panel.</six-tab-panel>
-  <six-tab-panel name="custom">This is the custom tab panel.</six-tab-panel>
-  <six-tab-panel name="advanced">This is the advanced tab panel.</six-tab-panel>
-  <six-tab-panel name="disabled">This is a disabled tab panel.</six-tab-panel>
+  <six-tab-panel style="background-color: var(--six-color-web-rock-100)" name="general">
+    This is the general tab panel.
+  </six-tab-panel>
+  <six-tab-panel style="background-color: var(--six-color-web-rock-100)" name="custom">
+    This is the custom tab panel.
+  </six-tab-panel>
+  <six-tab-panel style="background-color: var(--six-color-web-rock-100)" name="advanced">
+    This is the advanced tab panel.
+  </six-tab-panel>
+  <six-tab-panel style="background-color: var(--six-color-web-rock-100)" name="disabled">
+    This is a disabled tab panel.
+  </six-tab-panel>
 </six-tab-group>
 ```
 
@@ -207,27 +230,6 @@ When there are more tabs than horizontal space allows, the nav will be scrollabl
 ```
 
 
-### Manual Activation
-
-When focused, keyboard users can press "Left" or "Right" to select the desired tab. By default, the corresponding tab panel will be shown immediately (automatic activation). You can change this behavior by setting `activation="manual"` which will require the user to press "Space" or "Enter" before showing the tab panel (manual activation).
-
-<docs-demo-six-tab-group-7></docs-demo-six-tab-group-7>
-
-```html
-<six-tab-group activation="manual">
-  <six-tab slot="nav" panel="general">General</six-tab>
-  <six-tab slot="nav" panel="custom">Custom</six-tab>
-  <six-tab slot="nav" panel="advanced">Advanced</six-tab>
-  <six-tab slot="nav" panel="disabled" disabled>Disabled</six-tab>
-
-  <six-tab-panel name="general">This is the general tab panel.</six-tab-panel>
-  <six-tab-panel name="custom">This is the custom tab panel.</six-tab-panel>
-  <six-tab-panel name="advanced">This is the advanced tab panel.</six-tab-panel>
-  <six-tab-panel name="disabled">This is a disabled tab panel.</six-tab-panel>
-</six-tab-group>
-```
-
-
 
 <!-- Auto Generated Below -->
 
@@ -279,13 +281,6 @@ Type: `Promise<void>`
 | `"nav"`                  | The tab group navigation container.                                                          |
 | `"scroll-button"`        | The previous and next scroll buttons that appear when tabs are scrollable.                   |
 | `"tabs"`                 | The container that wraps the slotted tabs.                                                   |
-
-
-## CSS Custom Properties
-
-| Name                  | Description                                  |
-| --------------------- | -------------------------------------------- |
-| `--tabs-border-color` | The color of the border that separates tabs. |
 
 
 ## Dependencies

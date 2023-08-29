@@ -1,7 +1,7 @@
 @import 'src/global/component';
 
 :host {
-  display: inline-block;
+  display: flex;
 }
 
 .tab {
@@ -10,20 +10,20 @@
   font-family: var(--six-font-family);
   font-size: var(--six-font-size-small);
   font-weight: var(--six-font-weight-semibold);
-  border-radius: 4px;
   color: var(--six-tab-color);
   padding: var(--six-spacing-medium) var(--six-spacing-large);
   white-space: nowrap;
   user-select: none;
   cursor: pointer;
-  transition: var(--six-transition-fast) box-shadow, var(--six-transition-fast) color;
+  width: 100%;
 
   &:focus {
     outline: none;
   }
 
-  &:focus:not(.tab--disabled) {
-    color: var(--six-tab-color-active);
+  &:focus-visible {
+    outline: var(--six-focus-ring);
+    outline-offset: calc(-1 * var(--six-focus-ring-width) - var(--six-focus-ring-offset));
   }
 
   &.tab--active:not(.tab--disabled) {
@@ -52,4 +52,58 @@
   &::part(base) {
     padding: var(--six-spacing-xxx-small);
   }
+}
+
+// TAB INDICATOR
+.tab__indicator {
+  position: absolute;
+  &.tab__indicator--active {
+    background-color: var(--six-tab-border-color-active);
+  }
+}
+
+// TOP
+.tab--top {
+  margin-bottom: var(--six-spacing-xxx-small);
+}
+
+.tab__indicator--top {
+  width: 100%;
+  bottom: 0;
+  height: var(--six-tab-border-width);
+}
+
+// BOTTOM
+.tab--bottom {
+  margin-top: var(--six-spacing-xxx-small);
+}
+
+.tab__indicator--bottom {
+  width: 100%;
+  top: 0;
+  height: var(--six-tab-border-width);
+}
+
+// LEFT
+.tab--left {
+  margin-right: var(--six-spacing-xxx-small);
+}
+
+.tab__indicator--left {
+  height: 100%;
+  right: 0;
+  top: 0;
+  width: var(--six-tab-border-width);
+}
+
+// RIGHT
+.tab--right {
+  margin-left: var(--six-spacing-xxx-small);
+}
+
+.tab__indicator--right {
+  height: 100%;
+  left: 0;
+  top: 0;
+  width: var(--six-tab-border-width);
 }

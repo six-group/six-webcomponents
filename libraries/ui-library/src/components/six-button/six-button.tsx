@@ -168,6 +168,7 @@ export class SixButton {
             'button--has-suffix': this.hasSuffix,
           }}
           disabled={isButton ? this.disabled : undefined}
+          tabindex={this.disabled ? '-1' : undefined}
           type={isButton ? (this.submit ? 'submit' : this.reset ? 'reset' : 'button') : undefined}
           name={isButton ? this.name : undefined}
           value={isButton ? this.value : undefined}

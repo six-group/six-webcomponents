@@ -1,11 +1,7 @@
 @import 'src/global/component';
 @import 'src/global/mixins/hide-scrollbar';
 
-/**
- * @prop --tabs-border-color: The color of the border that separates tabs.
- */
 :host {
-  --tabs-border-color: var(--six-tab-border-color);
   display: block;
 }
 
@@ -17,16 +13,6 @@
   .tab-group__tabs {
     display: flex;
     position: relative;
-  }
-
-  .tab-group__active-tab-indicator {
-    position: absolute;
-    transition: var(--six-transition-fast) transform ease, var(--six-transition-fast) width ease;
-  }
-
-  // Remove the focus ring when the user isn't interacting with a keyboard
-  &:not(.focus-visible) ::slotted(six-tab) {
-    --focus-ring: none;
   }
 }
 
@@ -53,10 +39,7 @@
   right: 0;
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Top
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+// TOP
 .tab-group--top {
   flex-direction: column;
 
@@ -74,12 +57,6 @@
     flex: 1 1 auto;
     position: relative;
     flex-direction: row;
-    border-bottom: solid var(--six-tab-border-width) var(--tabs-border-color);
-  }
-
-  .tab-group__active-tab-indicator {
-    bottom: -2px;
-    border-bottom: solid var(--six-tab-border-width-active) var(--six-tab-border-color-active);
   }
 
   .tab-group__body {
@@ -87,10 +64,7 @@
   }
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Bottom
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 .tab-group--bottom {
   flex-direction: column;
 
@@ -108,12 +82,6 @@
     flex: 1 1 auto;
     position: relative;
     flex-direction: row;
-    border-top: solid var(--six-tab-border-width) var(--tabs-border-color);
-  }
-
-  .tab-group__active-tab-indicator {
-    top: calc(-1 * 2px);
-    border-top: solid var(--six-tab-border-width-active) var(--six-tab-border-color-active);
   }
 
   .tab-group__body {
@@ -121,9 +89,7 @@
   }
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Left
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 .tab-group--left {
   flex-direction: row;
@@ -135,12 +101,6 @@
   .tab-group__tabs {
     flex: 0 0 auto;
     flex-direction: column;
-    border-right: solid var(--six-tab-border-width) var(--tabs-border-color);
-  }
-
-  .tab-group__active-tab-indicator {
-    right: calc(-1 * 2px);
-    border-right: solid var(--six-tab-border-width-active) var(--six-tab-border-color-active);
   }
 
   .tab-group__body {
@@ -149,10 +109,7 @@
   }
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Right
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 .tab-group--right {
   flex-direction: row;
 
@@ -163,12 +120,6 @@
   .tab-group__tabs {
     flex: 0 0 auto;
     flex-direction: column;
-    border-left: solid var(--six-tab-border-width) var(--tabs-border-color);
-  }
-
-  .tab-group__active-tab-indicator {
-    left: calc(-1 * 2px);
-    border-left: solid var(--six-tab-border-width-active) var(--six-tab-border-color-active);
   }
 
   .tab-group__body {
