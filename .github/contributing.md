@@ -65,13 +65,21 @@ A high level overview of tools used:
 
 ## Project Structure
 
-This repository employs a [monorepo](https://en.wikipedia.org/wiki/Monorepo) setup which hosts a number of associated packages under the `packages` directory:
+This repository employs a [monorepo](https://en.wikipedia.org/wiki/Monorepo) setup which hosts a number of associated packages under the `libraries` directory:
 
 - `ui-library`: <tbd>
 
 - `ui-library-react`: <tbd>
 
 - `ui-library-vue`: <tbd>
+
+and some demo applications in the `examples` directory:
+
+- `angular`: <tbd>
+
+- `js`: <tbd>
+
+- `react`: <tbd>
 
 ## Contributing Tests
 

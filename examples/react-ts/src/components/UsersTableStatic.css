@@ -1,0 +1,21 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+td,
+th {
+  font-size: var(--six-font-size-small);
+  padding: var(--six-spacing-small) var(--six-spacing-x-small);
+  color: var(--six-color-web-rock-900);
+}
+
+th {
+  text-align: left;
+}
+
+td {
+  cursor: pointer;
+  border-top: 1px solid var(--six-color-web-rock-400);
+  overflow: hidden;
+}
