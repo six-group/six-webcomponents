@@ -5,7 +5,7 @@ be used for other projects (simply override the css variables).
 
 Please find the deployed documentation listing all components [here](https://six-group.github.io/six-webcomponents/).
 
-Please find the changelog for the webcomponents [here](packages/ui-library/CHANGELOG.md).
+Please find the changelog for the webcomponents [here](docs/changelog.md).
 
 ## Links
 
