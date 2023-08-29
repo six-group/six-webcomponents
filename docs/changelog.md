@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## 4.0.1 - 2023-08-29
+
+### Added
+
+- Show tooltip if text is truncated multiselect choices
+
+### Changed
+
+- Align sidebar menu items with expand/collapse header icon
+- Clip horizontal scrollbar of dropdown
+- Allow multiple errorTexts for form controls
+
 ## 4.0.0 - 2023-08-18
 
 ### Added
