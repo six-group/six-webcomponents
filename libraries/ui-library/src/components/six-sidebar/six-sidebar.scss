@@ -15,7 +15,6 @@
 
     &.sidebar--open {
       box-shadow: var(--six-elevation-1dp);
-      padding: 0 var(--six-spacing-small);
     }
 
     &:not(.sidebar--visible) {
