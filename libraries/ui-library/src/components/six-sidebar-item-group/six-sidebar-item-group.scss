@@ -4,6 +4,10 @@
   display: block;
 }
 
+.six-sidebar-item-group {
+  --horizontal-padding: var(--six-spacing-x-large);
+}
+
 .six-sidebar-item-group--childless::part(content) {
   padding: 0 !important;
 }

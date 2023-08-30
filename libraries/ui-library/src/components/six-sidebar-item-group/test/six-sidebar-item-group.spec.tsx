@@ -11,7 +11,7 @@ describe('six-sidebar-item-group', () => {
     expect(page.root).toEqualHtml(`
       <six-sidebar-item-group value="">
         <mock:shadow-root>
-          <six-details class="six-sidebar-item-group--childless" inline="">
+          <six-details class="six-sidebar-item-group six-sidebar-item-group--childless" inline="">
             <div slot="summary">
               <div class="six-sidebar-details__header"></div>
             </div>
@@ -34,7 +34,7 @@ describe('six-sidebar-item-group', () => {
     expect(page.root).toEqualHtml(`
       <six-sidebar-item-group value="">
         <mock:shadow-root>
-          <six-details class="six-sidebar-item-group--childless" inline="">
+          <six-details class="six-sidebar-item-group six-sidebar-item-group--childless" inline="">
             <div slot="summary">
               <div class="six-sidebar-details__header"></div>
             </div>

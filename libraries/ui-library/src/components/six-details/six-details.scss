@@ -5,12 +5,14 @@
  * @prop --hide-timing-function: The timing function (easing) to use for the hide transition.
  * @prop --show-duration: The length of the show transition.
  * @prop --show-timing-function: The timing function (easing) to use for the show transition.
+ * @prop --horizontal-padding: The horizontal padding
  */
 :host {
   --hide-duration: var(--six-transition-medium);
   --hide-timing-function: ease;
   --show-duration: var(--six-transition-medium);
   --show-timing-function: ease;
+  --horizontal-padding: var(--six-spacing-medium);
 
   font-family: var(--six-font-family);
   display: block;
@@ -62,7 +64,7 @@
   display: flex;
   align-items: center;
   border-radius: inherit;
-  padding: var(--six-spacing-medium);
+  padding: var(--six-spacing-medium) var(--horizontal-padding);
   user-select: none;
   cursor: pointer;
 

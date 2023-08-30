@@ -77,6 +77,7 @@ Type: `Promise<void>`
 | ------------------------ | ------------------------------------------------------------ |
 | `--hide-duration`        | The length of the hide transition.                           |
 | `--hide-timing-function` | The timing function (easing) to use for the hide transition. |
+| `--horizontal-padding`   | The horizontal padding                                       |
 | `--show-duration`        | The length of the show transition.                           |
 | `--show-timing-function` | The timing function (easing) to use for the show transition. |
 

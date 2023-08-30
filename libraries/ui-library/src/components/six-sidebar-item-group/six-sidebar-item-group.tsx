@@ -77,6 +77,7 @@ export class SixSidebarItemGroup {
     return (
       <six-details
         class={{
+          'six-sidebar-item-group': true,
           'six-sidebar-item-group--childless': !this.hasItems,
           'six-sidebar-item-group--subgroup': this.isSubgroup(),
         }}
