@@ -109,7 +109,7 @@ export class SixTextarea {
   /** The textarea's inputmode attribute. */
   @Prop() inputmode?: 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
 
-  /** The textarea's inputmode attribute. */
+  /** The textarea's textStyle attribute. */
   @Prop() textStyle?: 'plain' | 'code';
 
   /** Emitted when the control's value changes. Access the new value via event.target.value. */

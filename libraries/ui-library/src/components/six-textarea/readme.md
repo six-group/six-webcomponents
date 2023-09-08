@@ -31,6 +31,7 @@
 | `size`           | `size`             | The textarea's size.                                                                                             | `"large" \| "medium" \| "small"`                                                                   | `'medium'`   |
 | `spellcheck`     | `spellcheck`       | The textarea's spellcheck attribute.                                                                             | `boolean`                                                                                          | `false`      |
 | `value`          | `value`            | The textarea's value attribute.                                                                                  | `string`                                                                                           | `''`         |
+| `textMode`       | `textMode`         | The textarea's textMode attribute.                                                                               | `"plain" \| "code" \| undefined` | `undefined`  |
 
 
 ## Events
