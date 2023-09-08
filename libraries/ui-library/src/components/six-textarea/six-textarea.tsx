@@ -307,7 +307,7 @@ export class SixTextarea {
             'textarea--resize-auto': this.resize === 'auto',
 
             // Style
-            'textarea--style-code': this.textStyle === 'code'
+            'textarea--style-code': this.textStyle === 'code',
           }}
         >
           <textarea
