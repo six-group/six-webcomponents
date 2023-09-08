@@ -109,6 +109,9 @@ export class SixTextarea {
   /** The textarea's inputmode attribute. */
   @Prop() inputmode?: 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
 
+  /** The textarea's inputmode attribute. */
+  @Prop() textStyle?: 'plain' | 'code';
+
   /** Emitted when the control's value changes. Access the new value via event.target.value. */
   @Event({ eventName: 'six-textarea-change' }) sixChange!: EventEmitter<EmptyPayload>;
 
@@ -302,6 +305,9 @@ export class SixTextarea {
             'textarea--resize-none': this.resize === 'none',
             'textarea--resize-vertical': this.resize === 'vertical',
             'textarea--resize-auto': this.resize === 'auto',
+
+            // Style
+            'textarea--style-code': this.textStyle === 'code'
           }}
         >
           <textarea
