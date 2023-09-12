@@ -1,7 +1,6 @@
 import { Component, Element, Event, EventEmitter, h, Method, Prop, State, Watch } from '@stencil/core';
-import { getOffset } from '../../utils/offset';
 import { scrollIntoView } from '../../utils/scroll';
-import { focusVisible } from '../../utils/focus-visible';
+import { flipAnimate } from '../../utils/animation';
 
 export interface SixTabShowPayload {
   name: string;
@@ -34,7 +33,6 @@ export interface SixTabHidePayload {
 })
 export class SixTabGroup {
   private activeTab?: HTMLSixTabElement;
-  private activeTabIndicator?: HTMLElement;
   private body?: HTMLElement;
   private mutationObserver?: MutationObserver;
   private nav?: HTMLElement;
@@ -51,11 +49,6 @@ export class SixTabGroup {
 
   /** Disables the scroll arrows that appear when tabs overflow. */
   @Prop() noScrollControls = false;
-
-  @Watch('placement')
-  handlePlacementChange() {
-    this.syncActiveTabIndicator();
-  }
 
   @Watch('noScrollControls')
   handleNoScrollControlsChange() {
@@ -80,9 +73,6 @@ export class SixTabGroup {
       }
     });
     observer.observe(this.host);
-
-    focusVisible.observe(this.tabGroup);
-
     this.resizeObserver = new ResizeObserver(() => this.updateScrollControls());
     this.resizeObserver.observe(this.nav);
     requestAnimationFrame(() => this.updateScrollControls());
@@ -104,9 +94,7 @@ export class SixTabGroup {
     if (this.mutationObserver == null || this.tabGroup == null || this.nav == null || this.resizeObserver == null) {
       return;
     }
-
     this.mutationObserver.disconnect();
-    focusVisible.unobserve(this.tabGroup);
     this.resizeObserver.unobserve(this.nav);
   }
 
@@ -171,14 +159,6 @@ export class SixTabGroup {
       return false;
     }
 
-    // Activate a tab
-    if (['Enter', ' '].includes(event.key)) {
-      if (tab != null) {
-        this.setActiveTab(tab);
-        event.preventDefault();
-      }
-    }
-
     // Move focus left or right
     if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End'].includes(event.key)) {
       const activeEl = document.activeElement as HTMLSixTabElement;
@@ -198,6 +178,7 @@ export class SixTabGroup {
         }
 
         tabs[index].setFocus({ preventScroll: true });
+        this.setActiveTab(tabs[index]);
 
         if (['top', 'bottom'].includes(this.placement)) {
           scrollIntoView(tabs[index], this.nav, 'horizontal');
@@ -237,14 +218,20 @@ export class SixTabGroup {
   private setActiveTab(tab: HTMLSixTabElement, emitEvents = true) {
     if (this.nav == null) return;
 
-    if (tab != null && tab !== this.activeTab && !tab.disabled) {
+    const newIndicator = tab?.shadowRoot?.querySelector('.tab__indicator');
+    const oldIndicator = this.getActiveTab()?.shadowRoot?.querySelector('.tab__indicator');
+
+    if (oldIndicator != null && newIndicator != null) {
+      flipAnimate(newIndicator, oldIndicator);
+    }
+
+    if (tab !== this.activeTab && !tab.disabled) {
       const previousTab = this.activeTab;
       this.activeTab = tab;
 
       // Sync tabs and panels
       this.getAllTabs().map((el) => (el.active = el === this.activeTab));
       this.getAllPanels().map((el) => (el.active = el.name === this.activeTab?.panel));
-      this.syncActiveTabIndicator();
 
       if (['top', 'bottom'].includes(this.placement)) {
         scrollIntoView(this.activeTab, this.nav, 'horizontal');
@@ -274,41 +261,6 @@ export class SixTabGroup {
       }
     });
   }
-
-  private syncActiveTabIndicator = () => {
-    if (this.activeTabIndicator == null || this.nav == null) return;
-
-    const tab = this.getActiveTab();
-
-    if (tab != null) {
-      this.activeTabIndicator.style.display = 'block';
-    } else {
-      this.activeTabIndicator.style.display = 'none';
-      return;
-    }
-
-    const width = tab.clientWidth;
-    const height = tab.clientHeight;
-    const offset = getOffset(tab, this.nav);
-    const offsetTop = offset.top + this.nav.scrollTop;
-    const offsetLeft = offset.left + this.nav.scrollLeft;
-
-    switch (this.placement) {
-      case 'top':
-      case 'bottom':
-        this.activeTabIndicator.style.width = `${width}px`;
-        this.activeTabIndicator.style.height = '';
-        this.activeTabIndicator.style.transform = `translateX(${offsetLeft}px)`;
-        break;
-
-      case 'left':
-      case 'right':
-        this.activeTabIndicator.style.width = '';
-        this.activeTabIndicator.style.height = `${height}px`;
-        this.activeTabIndicator.style.transform = `translateY(${offsetTop}px)`;
-        break;
-    }
-  };
 
   render() {
     return (
@@ -340,12 +292,7 @@ export class SixTabGroup {
           )}
           <div ref={(el) => (this.nav = el)} key="nav" part="nav" class="tab-group__nav">
             <div ref={(el) => (this.tabs = el)} part="tabs" class="tab-group__tabs" role="tablist">
-              <div
-                ref={(el) => (this.activeTabIndicator = el)}
-                part="active-tab-indicator"
-                class="tab-group__active-tab-indicator"
-              />
-              <slot name="nav" onSlotchange={this.syncActiveTabIndicator} />
+              <slot name="nav" />
             </div>
           </div>
           {this.hasScrollControls && (
@@ -359,7 +306,7 @@ export class SixTabGroup {
         </div>
 
         <div ref={(el) => (this.body = el)} part="body" class="tab-group__body">
-          <slot onSlotchange={this.syncActiveTabIndicator} />
+          <slot />
         </div>
       </div>
     );

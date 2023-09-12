@@ -62,14 +62,22 @@ export class SixTab {
   }
 
   render() {
+    const tabGroup: HTMLSixTabGroupElement | null = this.host.closest('six-tab-group');
+    const placement = tabGroup?.placement ?? 'top';
     return (
-      // If the user didn't provide an ID, we'll set one so we can link tabs and tab panels with aria labels
+      // If the user didn't provide an ID, we'll set one, so we can link tabs and tab panels with aria labels
       <Host id={this.host.id || this.componentId}>
         <div
           part="base"
           ref={(el) => (this.tab = el)}
           class={{
             tab: true,
+
+            // Placements
+            'tab--top': placement === 'top',
+            'tab--bottom': placement === 'bottom',
+            'tab--left': placement === 'left',
+            'tab--right': placement === 'right',
 
             // States
             'tab--active': this.active,
@@ -94,6 +102,18 @@ export class SixTab {
             />
           )}
         </div>
+        <div
+          class={{
+            tab__indicator: true,
+            'tab__indicator--active': this.active,
+
+            // Placements
+            'tab__indicator--top': placement === 'top',
+            'tab__indicator--bottom': placement === 'bottom',
+            'tab__indicator--left': placement === 'left',
+            'tab__indicator--right': placement === 'right',
+          }}
+        ></div>
       </Host>
     );
   }

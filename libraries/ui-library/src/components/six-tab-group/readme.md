@@ -54,13 +54,6 @@ Type: `Promise<void>`
 | `"tabs"`                 | The container that wraps the slotted tabs.                                                   |
 
 
-## CSS Custom Properties
-
-| Name                  | Description                                  |
-| --------------------- | -------------------------------------------- |
-| `--tabs-border-color` | The color of the border that separates tabs. |
-
-
 ## Dependencies
 
 ### Depends on

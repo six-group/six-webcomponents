@@ -20,7 +20,7 @@
 <style>
 
           .tab-group-with-line::part(tabs) {
-            border-bottom: solid 2px #f1f1f1;
+            border-bottom: solid 2px var(--six-color-web-rock-100);
           }
         
 </style>
