@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## 4.0.2 - 2023-09-13
+
+### Fixed
+
+- Fix keyboard navigation for tab-group using left/right arrows
+- Ensure tab indicator resizes correctly when tab-group text is updated
+- Introduce focus ring for buttons and tab groups for better focus indication
+- Fix horizontal gap in six-sidebar-item-group
+
 ## 4.0.1 - 2023-08-29
 
 ### Added
