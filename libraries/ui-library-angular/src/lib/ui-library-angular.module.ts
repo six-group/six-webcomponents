@@ -84,11 +84,9 @@ export class UiLibraryAngularModule {
       providers: [
         {
           provide: APP_INITIALIZER,
-          useFactory: () => {
-            return defineCustomElements();
-          },
+          useFactory: () => async () => defineCustomElements(),
+          multi: true,
         },
-
         { provide: ValidationMessagesService, useClass: customValidationMessagesService ?? ValidationMessagesService },
       ],
     };
