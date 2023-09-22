@@ -1,12 +1,8 @@
 <template>
 <div>
 
-        <six-textarea invalid>
-          <div slot="error-text">
-            <six-error               >An error message
-              <a href="https://github.com/six-group/six-webcomponents" target="_blank">with a link</a></six-error>
-          </div>
-        </six-textarea>
+        <six-textarea id="multiple-error-text" label="List of string message" invalid></six-textarea>
+        
       
 </div>
 </template>
@@ -16,6 +12,10 @@
 <script>
 export default {
   name: 'docs-demo-six-textarea-12',
-  mounted() {  }
+  mounted() { 
+          const sixTextarea = document.getElementById('multiple-error-text');
+          sixTextarea.errorText = ['Message 1', 'Message 2'];
+          sixTextarea.errorTextCount = 3;
+         }
 }
 </script>

@@ -1770,6 +1770,10 @@ export namespace Components {
          */
         "spellcheck": boolean;
         /**
+          * The textarea's textStyle attribute.
+         */
+        "textStyle"?: 'plain' | 'code';
+        /**
           * The textarea's value attribute.
          */
         "value": string;
@@ -4540,6 +4544,10 @@ declare namespace LocalJSX {
           * The textarea's spellcheck attribute.
          */
         "spellcheck"?: boolean;
+        /**
+          * The textarea's textStyle attribute.
+         */
+        "textStyle"?: 'plain' | 'code';
         /**
           * The textarea's value attribute.
          */

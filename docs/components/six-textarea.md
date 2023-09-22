@@ -106,6 +106,17 @@ Textareas will automatically resize to expand to fit their content when `resize`
 ```
 
 
+### Text Style
+
+Textareas will show the text with monospace font if `textStyle` is set to `code`.
+
+<docs-demo-six-textarea-9></docs-demo-six-textarea-9>
+
+```html
+<six-textarea textStyle="code"></six-textarea>
+```
+
+
 ## Events Discalimer
 
 The events of our webcommponents should follow native web elements as much as possible.
@@ -122,7 +133,7 @@ This means input, change and blur should be fired the same as when using native 
 
 You can play with the following native and six-input elements to see that the event firing is the same
 
-<docs-demo-six-textarea-9></docs-demo-six-textarea-9>
+<docs-demo-six-textarea-10></docs-demo-six-textarea-10>
 
 ```html
 <div style="font-size: 1rem; font-weight: bold; padding-bottom: 1rem">Native Input Element</div>
@@ -188,7 +199,7 @@ warning There are two caveats when using the `error-text` prop/slot:
 
 The `error-text` prop accepts either a simple string message, or a list of messages.
 
-<docs-demo-six-textarea-10></docs-demo-six-textarea-10>
+<docs-demo-six-textarea-11></docs-demo-six-textarea-11>
 
 ```html
 <six-textarea label="Simple string message" error-text="This is a simple string message" invalid>
@@ -196,7 +207,7 @@ The `error-text` prop accepts either a simple string message, or a list of messa
 ```
 
 
-<docs-demo-six-textarea-11></docs-demo-six-textarea-11>
+<docs-demo-six-textarea-12></docs-demo-six-textarea-12>
 
 ```html
 <six-textarea id="multiple-error-text" label="List of string message" invalid></six-textarea>
@@ -210,7 +221,7 @@ The `error-text` prop accepts either a simple string message, or a list of messa
 
 When using the `error-text` slot, it is recommended to use the `six-error` component to wrap the error message(s). This will provide the correct styling out of the box
 
-<docs-demo-six-textarea-12></docs-demo-six-textarea-12>
+<docs-demo-six-textarea-13></docs-demo-six-textarea-13>
 
 ```html
 <six-textarea invalid>
@@ -251,6 +262,7 @@ When using the `error-text` slot, it is recommended to use the `six-error` compo
 | `rows`           | `rows`             | The number of rows to display by default.                                                                        | `number`                                                                                           | `4`          |
 | `size`           | `size`             | The textarea's size.                                                                                             | `"large" \| "medium" \| "small"`                                                                   | `'medium'`   |
 | `spellcheck`     | `spellcheck`       | The textarea's spellcheck attribute.                                                                             | `boolean`                                                                                          | `false`      |
+| `textStyle`      | `text-style`       | The textarea's textStyle attribute.                                                                              | `"code" \| "plain" \| undefined`                                                                   | `undefined`  |
 | `value`          | `value`            | The textarea's value attribute.                                                                                  | `string`                                                                                           | `''`         |
 
 

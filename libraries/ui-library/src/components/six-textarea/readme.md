@@ -30,8 +30,8 @@
 | `rows`           | `rows`             | The number of rows to display by default.                                                                        | `number`                                                                                           | `4`          |
 | `size`           | `size`             | The textarea's size.                                                                                             | `"large" \| "medium" \| "small"`                                                                   | `'medium'`   |
 | `spellcheck`     | `spellcheck`       | The textarea's spellcheck attribute.                                                                             | `boolean`                                                                                          | `false`      |
+| `textStyle`      | `text-style`       | The textarea's textStyle attribute.                                                                              | `"code" \| "plain" \| undefined`                                                                   | `undefined`  |
 | `value`          | `value`            | The textarea's value attribute.                                                                                  | `string`                                                                                           | `''`         |
-| `textMode`       | `textMode`         | The textarea's textMode attribute.                                                                               | `"plain" \| "code" \| undefined` | `undefined`  |
 
 
 ## Events

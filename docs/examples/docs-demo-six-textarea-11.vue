@@ -1,8 +1,8 @@
 <template>
 <div>
 
-        <six-textarea id="multiple-error-text" label="List of string message" invalid></six-textarea>
-        
+        <six-textarea label="Simple string message" error-text="This is a simple string message" invalid>
+        </six-textarea>
       
 </div>
 </template>
@@ -12,10 +12,6 @@
 <script>
 export default {
   name: 'docs-demo-six-textarea-11',
-  mounted() { 
-          const sixTextarea = document.getElementById('multiple-error-text');
-          sixTextarea.errorText = ['Message 1', 'Message 2'];
-          sixTextarea.errorTextCount = 3;
-         }
+  mounted() {  }
 }
 </script>

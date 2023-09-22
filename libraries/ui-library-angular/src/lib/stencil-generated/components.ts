@@ -1521,7 +1521,7 @@ export declare interface SixTag extends Components.SixTag {
 
 
 @ProxyCmp({
-  inputs: ['autocapitalize', 'autocomplete', 'autocorrect', 'autofocus', 'disabled', 'errorText', 'errorTextCount', 'helpText', 'inputmode', 'invalid', 'label', 'maxlength', 'minlength', 'name', 'placeholder', 'readonly', 'required', 'resize', 'rows', 'size', 'spellcheck', 'value'],
+  inputs: ['autocapitalize', 'autocomplete', 'autocorrect', 'autofocus', 'disabled', 'errorText', 'errorTextCount', 'helpText', 'inputmode', 'invalid', 'label', 'maxlength', 'minlength', 'name', 'placeholder', 'readonly', 'required', 'resize', 'rows', 'size', 'spellcheck', 'textStyle', 'value'],
   methods: ['setFocus', 'removeFocus', 'select', 'setSelectionRange', 'setRangeText']
 })
 @Component({
@@ -1529,7 +1529,7 @@ export declare interface SixTag extends Components.SixTag {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['autocapitalize', 'autocomplete', 'autocorrect', 'autofocus', 'disabled', 'errorText', 'errorTextCount', 'helpText', 'inputmode', 'invalid', 'label', 'maxlength', 'minlength', 'name', 'placeholder', 'readonly', 'required', 'resize', 'rows', 'size', 'spellcheck', 'value'],
+  inputs: ['autocapitalize', 'autocomplete', 'autocorrect', 'autofocus', 'disabled', 'errorText', 'errorTextCount', 'helpText', 'inputmode', 'invalid', 'label', 'maxlength', 'minlength', 'name', 'placeholder', 'readonly', 'required', 'resize', 'rows', 'size', 'spellcheck', 'textStyle', 'value'],
 })
 export class SixTextarea {
   protected el: HTMLElement;
