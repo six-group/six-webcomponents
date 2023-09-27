@@ -3,7 +3,7 @@
   "version": "4.0.2",
   "scripts": {
     "start": "npm run start -w libraries/ui-library",
-    "watch": "npm run watch -w libraries/ui-library",
+    "watch:lib": "npm run watch -w libraries/ui-library",
     "watch:angular": "npm run watch -w libraries/ui-library-angular",
     "watch:react": "npm run watch -w libraries/ui-library-react",
     "start:doc": "npm run start -w docs",

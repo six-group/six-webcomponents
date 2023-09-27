@@ -1,9 +1,9 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="[demo] angular" type="js.build_tools.npm">
+  <configuration default="false" name="build:lib" type="js.build_tools.npm">
     <package-json value="$PROJECT_DIR$/package.json" />
     <command value="run" />
     <scripts>
-      <script value="demo:angular" />
+      <script value="build:lib" />
     </scripts>
     <node-interpreter value="project" />
     <envs />
