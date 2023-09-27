@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/six-webcomponents/demo/react/static/css/main.d047ef60.css",
-    "main.js": "/six-webcomponents/demo/react/static/js/main.7bdeba85.js",
+    "main.js": "/six-webcomponents/demo/react/static/js/main.712346c3.js",
     "static/css/5657.cb1894b9.chunk.css": "/six-webcomponents/demo/react/static/css/5657.cb1894b9.chunk.css",
     "static/js/5657.0afa5ff3.chunk.js": "/six-webcomponents/demo/react/static/js/5657.0afa5ff3.chunk.js",
     "static/js/8992.9652fa85.chunk.js": "/six-webcomponents/demo/react/static/js/8992.9652fa85.chunk.js",
     "static/js/1668.49aa6771.chunk.js": "/six-webcomponents/demo/react/static/js/1668.49aa6771.chunk.js",
     "static/js/1526.23c6afc4.chunk.js": "/six-webcomponents/demo/react/static/js/1526.23c6afc4.chunk.js",
-    "static/js/8686.f185f69f.chunk.js": "/six-webcomponents/demo/react/static/js/8686.f185f69f.chunk.js",
+    "static/js/8686.4f81a437.chunk.js": "/six-webcomponents/demo/react/static/js/8686.4f81a437.chunk.js",
     "static/js/4254.c861c994.chunk.js": "/six-webcomponents/demo/react/static/js/4254.c861c994.chunk.js",
     "static/js/8476.cd32cae8.chunk.js": "/six-webcomponents/demo/react/static/js/8476.cd32cae8.chunk.js",
     "static/js/8788.27cad582.chunk.js": "/six-webcomponents/demo/react/static/js/8788.27cad582.chunk.js",
@@ -88,13 +88,13 @@
     "static/media/noto-sans-latin-700-normal.woff2": "/six-webcomponents/demo/react/static/media/noto-sans-latin-700-normal.ed37599f330779774b3c.woff2",
     "index.html": "/six-webcomponents/demo/react/index.html",
     "main.d047ef60.css.map": "/six-webcomponents/demo/react/static/css/main.d047ef60.css.map",
-    "main.7bdeba85.js.map": "/six-webcomponents/demo/react/static/js/main.7bdeba85.js.map",
+    "main.712346c3.js.map": "/six-webcomponents/demo/react/static/js/main.712346c3.js.map",
     "5657.cb1894b9.chunk.css.map": "/six-webcomponents/demo/react/static/css/5657.cb1894b9.chunk.css.map",
     "5657.0afa5ff3.chunk.js.map": "/six-webcomponents/demo/react/static/js/5657.0afa5ff3.chunk.js.map",
     "8992.9652fa85.chunk.js.map": "/six-webcomponents/demo/react/static/js/8992.9652fa85.chunk.js.map",
     "1668.49aa6771.chunk.js.map": "/six-webcomponents/demo/react/static/js/1668.49aa6771.chunk.js.map",
     "1526.23c6afc4.chunk.js.map": "/six-webcomponents/demo/react/static/js/1526.23c6afc4.chunk.js.map",
-    "8686.f185f69f.chunk.js.map": "/six-webcomponents/demo/react/static/js/8686.f185f69f.chunk.js.map",
+    "8686.4f81a437.chunk.js.map": "/six-webcomponents/demo/react/static/js/8686.4f81a437.chunk.js.map",
     "4254.c861c994.chunk.js.map": "/six-webcomponents/demo/react/static/js/4254.c861c994.chunk.js.map",
     "8476.cd32cae8.chunk.js.map": "/six-webcomponents/demo/react/static/js/8476.cd32cae8.chunk.js.map",
     "8788.27cad582.chunk.js.map": "/six-webcomponents/demo/react/static/js/8788.27cad582.chunk.js.map",
@@ -148,6 +148,6 @@
   },
   "entrypoints": [
     "static/css/main.d047ef60.css",
-    "static/js/main.7bdeba85.js"
+    "static/js/main.712346c3.js"
   ]
 }
