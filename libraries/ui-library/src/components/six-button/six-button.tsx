@@ -135,7 +135,7 @@ export class SixButton {
     const Button = isLink ? 'a' : 'button';
 
     return (
-      <div class={{ 'button-wrapper--disabled': this.disabled }}>
+      <div onClick={this.handleClick} class={{ 'button-wrapper--disabled': this.disabled }}>
         <Button
           ref={(el) => (this.nativeButton = el)}
           part="base"
@@ -178,7 +178,6 @@ export class SixButton {
           rel={isLink && this.target != null ? 'noreferrer noopener' : undefined}
           onBlur={this.handleBlur}
           onFocus={this.handleFocus}
-          onClick={this.handleClick}
           data-testid="button"
         >
           <span part="prefix" class="button__prefix">
