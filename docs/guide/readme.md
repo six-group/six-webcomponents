@@ -56,7 +56,7 @@ Run the following in the root of the cloned git repository:
 
 ```bash
 npm install
-npm run watch
+npm run watch:lib
 npm run watch:angular
 # wait a moment util the above are ready, then:
 npm run demo:angular
@@ -71,7 +71,7 @@ Run the following in the root of the cloned git repository:
 
 ```bash
 npm install
-npm run watch
+npm run watch:lib
 npm run watch:react
 # wait a moment util the above are ready, then:
 npm run demo:react
