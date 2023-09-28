@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## 4.0.3 - 2023-09-28
+
+### Changed
+
+- Allow multiple providers in Angular
+
+### Fixed
+
+- Prevent click events for disabled buttons
+
 ## 4.0.2 - 2023-09-13
 
 ### Fixed
@@ -17,7 +27,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
-- Show tooltip if text is truncated multiselect choices
+- Show tooltip if text is truncated in multiselect choices
 
 ### Changed
 
