@@ -19,14 +19,16 @@
           .dt-modal {
             display: none;
             flex-wrap: wrap;
-            width: 50vw;
-            height: 100vh;
+            width: 25vw;
+            height: 25vh;
+            margin-top: 25vh;
             background: white;
             position: fixed;
-            z-index: 1;
+            z-index: 999;
             left: 25vw;
             top: 0;
-            border: solid 1px lightgray;
+            border: solid 2px lightgray;
+            box-shadow: 0 4px 16px #00000038;
           }
 
           .dt-modal six-datepicker {
