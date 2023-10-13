@@ -16,7 +16,7 @@ const componentNavItems = components.map((component) => {
 export default defineConfig({
   ignoreDeadLinks: [/^https?:\/\/localhost/, './../wrappers/set-attributes'],
   appearance: false,
-  head: [['link', { rel: 'icon', href: '/favicon.ico' }]],
+  head: [['link', { rel: 'icon', href: 'favicon.ico' }]],
   title: 'Web Components',
   description: 'Component Library following the SIX Style Guide',
   base: '/six-webcomponents/',
