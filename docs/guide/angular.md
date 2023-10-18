@@ -80,7 +80,7 @@ To use it, simply add the `sixForm` directive and replace `ngSubmit` with `sixSu
 <!-- add sixForm and replace (ngSubmit) with (sixSubmit) -->
 <form sixForm (sixSubmit)="onSubmit()" [formGroup]="form">
   <six-input>...</six-input>
-  <six-button [submit]="true">Sunit</six-button>
+  <six-button [submit]="true">Submit</six-button>
 </form>
 ```
 
