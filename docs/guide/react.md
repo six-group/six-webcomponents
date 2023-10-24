@@ -1,4 +1,4 @@
-# React
+# React (outdated) - new guide in the works
 
 Find the deployed React Demo App [here](https://six-group.github.io/six-webcomponents/demo/react).
 

@@ -35,7 +35,6 @@ There are example apps for Angular and React. You can find them in the `examples
 | `libraries/ui-library-angular` | Angular wrappers and utilities                                       |
 | `libraries/ui-library-react`   | React wrappers                                                       |
 | `examples/angular`             | Angular demo app showing some components and features of ui-library  |
-| `examples/react`               | React demo app showing some components and features of ui-library    |
 | `examples/js`                  | Plain JS demo app showing some components and features of ui-library |
 | `docs`                         | API documentation built with VitePress                               |
 

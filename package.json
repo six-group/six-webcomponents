@@ -16,7 +16,6 @@
     "lint:lib": "npm run lint -w libraries --if-present",
     "test:unit": "npm run test -w libraries/ui-library",
     "start:docs": "npm run start -w docs",
-    "demo:react": "npm start -w examples/react",
     "demo:angular": "npm start -w examples/angular",
     "clean": "npm run clean --workspaces",
     "clean:locks": "find . -name 'package-lock.json' -type f -prune -exec rm '{}' +",
@@ -30,7 +29,6 @@
     "libraries/ui-library-react",
     "libraries/ui-library-angular",
     "examples/angular",
-    "examples/react",
     "examples/js",
     "docs"
   ],
