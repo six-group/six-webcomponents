@@ -18,7 +18,7 @@ export const config: Config = {
   outputTargets: [
     reactOutputTarget({
       componentCorePackage: '@six-group/ui-library',
-      proxiesFile: '../ui-library-react/src/components.ts',
+      proxiesFile: '../ui-library-react/src/lib/components/stencil-generated/index.ts',
       includeDefineCustomElements: true,
     }),
     angularOutputTarget({

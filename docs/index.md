@@ -13,9 +13,6 @@ hero:
     - theme: alt
       text: Angular Example
       link: https://six-group.github.io/six-webcomponents/demo/angular
-    - theme: alt
-      text: React Example
-      link: https://six-group.github.io/six-webcomponents/demo/react
 features:
   - title: Agnostic
     details:

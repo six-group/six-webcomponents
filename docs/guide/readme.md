@@ -64,18 +64,3 @@ npm run demo:angular
 
 The demo app at http://localhost:4200 automatically update whenever changes are made to the
 ui-library, the Angular library, or the demo code.
-
-### Preview React Demo
-
-Run the following in the root of the cloned git repository:
-
-```bash
-npm install
-npm run watch:lib
-npm run watch:react
-# wait a moment util the above are ready, then:
-npm run demo:react
-```
-
-The demo app at http://localhost:3000 automatically update whenever changes are made to the
-ui-library, the React library, or the demo code.
