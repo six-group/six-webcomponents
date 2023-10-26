@@ -23,5 +23,8 @@
     "ng-packagr": "~15",
     "typescript": "~4.9.4"
   },
-  "sideEffects": false
+  "sideEffects": false,
+  "engines": {
+    "node": ">=16.0.0"
+  }
 }
