@@ -24,7 +24,8 @@
 
   .form-control__label__required::after {
     color: var(--six-color-danger-800);
-    content: '*';
+    content: ' *';
+    font-size: 110%;
   }
 
   &.form-control--small .form-control__label {
