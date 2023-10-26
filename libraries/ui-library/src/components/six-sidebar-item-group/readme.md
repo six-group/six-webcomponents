@@ -9,6 +9,7 @@
 
 | Property      | Attribute      | Description                                                                                                                        | Type                  | Default     |
 | ------------- | -------------- | ---------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ----------- |
+| `href`        | `href`         | Provide if the item should be rendered as anchor tag. Note, that the href is added automatically when using routerLink in Angular. | `string \| undefined` | `undefined` |
 | `icon`        | `icon`         | Icon of the group                                                                                                                  | `string`              | `''`        |
 | `name`        | `name`         | Title of item group                                                                                                                | `string`              | `''`        |
 | `open`        | `open`         | Indicates whether the sidebar is shown                                                                                             | `boolean`             | `false`     |

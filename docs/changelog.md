@@ -10,6 +10,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - Update drawer icon
 - Removed React demo application, a new demo will be introduced
+- Added SIX Indigo color
+- Fixed styling of asterisk for mandatory fields
+- Added href property for six-sidebar-item and six-sidebar-item-group (incl. integration for
+  angular)
 
 ### Fixed
 

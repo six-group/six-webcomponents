@@ -11,6 +11,7 @@
   "peerDependencies": {
     "@angular/common": ">=14.0.0",
     "@angular/core": ">=14.0.0",
+    "@angular/router": ">=14.0.0",
     "@six-group/ui-library": "*"
   },
   "dependencies": {
