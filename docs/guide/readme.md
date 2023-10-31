@@ -16,7 +16,7 @@ npm install @six-group/ui-library
 
 ::: info
 
-f you want to try the latest version of the software, you can install the insider releases by
+If you want to try the latest version of the software, you can install the insider releases by
 specifying the _insider_ tag. For instance `npm install @six-group/ui-library@insider`
 
 :::
