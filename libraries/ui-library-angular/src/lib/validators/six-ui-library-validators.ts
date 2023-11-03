@@ -33,9 +33,13 @@ export class SixUiLibraryValidators {
   providers: [{ provide: NG_VALIDATORS, useExisting: MinDateValidator, multi: true }],
 })
 export class MinDateValidator implements Validator {
-  @Input() mindate!: Date;
+  @Input() min?: Date | null;
+
   validate(control: AbstractControl): { [key: string]: any } | null {
-    return SixUiLibraryValidators.minDate(this.mindate);
+    if (this.min != null) {
+      return SixUiLibraryValidators.minDate(this.min)(control);
+    }
+    return null;
   }
 }
 
@@ -44,9 +48,13 @@ export class MinDateValidator implements Validator {
   providers: [{ provide: NG_VALIDATORS, useExisting: MaxDateValidator, multi: true }],
 })
 export class MaxDateValidator implements Validator {
-  @Input() maxdate!: Date;
+  @Input() max?: Date | null;
+
   validate(control: AbstractControl): { [key: string]: any } | null {
-    return SixUiLibraryValidators.maxDate(this.maxdate);
+    if (this.max != null) {
+      return SixUiLibraryValidators.maxDate(this.max)(control);
+    }
+    return null;
   }
 }
 

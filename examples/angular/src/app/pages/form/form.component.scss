@@ -1,4 +1,21 @@
+six-layout-grid {
+  row-gap: var(--six-spacing-x-small);
+}
+
 h2 {
   margin-top: 0;
   margin-bottom: var(--six-spacing-x-large);
+}
+
+form {
+  max-width: 300px;
+}
+
+.age {
+  max-width: 100px;
+}
+
+six-datepicker,
+six-timepicker {
+  max-width: 200px;
 }

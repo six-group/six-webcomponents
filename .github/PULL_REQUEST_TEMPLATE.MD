@@ -39,6 +39,7 @@ https://github.com/six-group/six-webcomponents/blob/dev/.github/CONTRIBUTING.md#
 - [ ] I have updated the documentation accordingly.
 - [ ] All tests are passing
 - [ ] New/updated tests are included
+- [ ] I have updated the "upcoming" section inside _docs/changelog.md_ explaining the changes I contributed
 
 If adding a **new feature**, the PR's description includes:
 

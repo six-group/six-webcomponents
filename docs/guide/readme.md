@@ -57,8 +57,11 @@ Run the following in the root of the cloned git repository:
 ```bash
 npm install
 npm run watch:lib
+# wait until the build finished
+# [35:11.5]  build finished, watching for changes... in 17.39 s
 npm run watch:angular
-# wait a moment util the above are ready, then:
+# wait until compilation is complete
+# Compilation complete. Watching for file changes...
 npm run demo:angular
 ```
 

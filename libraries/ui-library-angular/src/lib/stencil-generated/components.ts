@@ -1275,14 +1275,14 @@ allow you to set it on a different element in the sidebar, such as an input or b
 
 
 @ProxyCmp({
-  inputs: ['disabled', 'selected', 'value']
+  inputs: ['disabled', 'href', 'selected', 'value']
 })
 @Component({
   selector: 'six-sidebar-item',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['disabled', 'selected', 'value'],
+  inputs: ['disabled', 'href', 'selected', 'value'],
 })
 export class SixSidebarItem {
   protected el: HTMLElement;
@@ -1297,14 +1297,14 @@ export declare interface SixSidebarItem extends Components.SixSidebarItem {}
 
 
 @ProxyCmp({
-  inputs: ['icon', 'name', 'open', 'summaryIcon', 'value']
+  inputs: ['href', 'icon', 'name', 'open', 'summaryIcon', 'value']
 })
 @Component({
   selector: 'six-sidebar-item-group',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['icon', 'name', 'open', 'summaryIcon', 'value'],
+  inputs: ['href', 'icon', 'name', 'open', 'summaryIcon', 'value'],
 })
 export class SixSidebarItemGroup {
   protected el: HTMLElement;

@@ -1,10 +1,10 @@
 <h2>Form Example</h2>
 
 <form [formGroup]="userForm" sixForm (sixSubmit)="onSubmit($event)">
-  <six-layout-grid style="row-gap: 18px" columns="3">
+  <six-layout-grid columns="1">
     <six-input label="First Name" type="text" formControlName="firstName" required></six-input>
     <six-input label="Last Name" type="text" formControlName="lastName"></six-input>
-    <six-input label="Age" type="number" formControlName="age"></six-input>
+    <six-input class="age" label="Age" type="number" formControlName="age"></six-input>
     <six-input label="Email" type="email" formControlName="email" required></six-input>
     <six-input label="Username" formControlName="username" required errorTextCount="2"></six-input>
     <six-input label="IBAN" formControlName="iban" required></six-input>
@@ -25,14 +25,22 @@
       <six-menu-item value="movies">Movies</six-menu-item>
     </six-select>
 
+    <six-group-label>
+      <six-switch formControlName="allowWeekends">Allow Weekends</six-switch>
+    </six-group-label>
+
+    <six-group-label>
+      <six-switch formControlName="futureDatesOnly">Future Dates Only</six-switch>
+    </six-group-label>
+
     <six-datepicker
       [min]="minDate"
-      label="Future Date"
-      formControlName="futureDate"
+      [max]="maxDate"
+      [allowedDates]="dateFilter"
+      label="Date"
+      formControlName="date"
       required
-      errorText="Datum muss in der Zukunft liegen."
     ></six-datepicker>
-    <six-datepicker [max]="maxDate" label="Past Date" formControlName="pastDate" required></six-datepicker>
 
     <six-timepicker label="Start time" formControlName="startTime" required></six-timepicker>
 

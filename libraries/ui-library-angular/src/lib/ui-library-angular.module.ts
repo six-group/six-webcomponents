@@ -19,6 +19,7 @@ import { RangeValueAccessor } from './control-value-accessors/range-value-access
 import { SwitchValueAccessor } from './control-value-accessors/switch-value-accessor';
 import { TimepickerValueAccessor } from './control-value-accessors/timepicker-value-accessor';
 import { ValidationMessagesService } from './services/validation-messages.service';
+import { SixRouterLinkDirective } from './link/six-router-link.directive';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,9 @@ import { ValidationMessagesService } from './services/validation-messages.servic
     // form helpers
     SixFormDirective,
     SixFormUtilDirective,
+
+    // router link directive
+    SixRouterLinkDirective,
   ],
   imports: [],
   exports: [
@@ -73,6 +77,9 @@ import { ValidationMessagesService } from './services/validation-messages.servic
     // form helpers
     SixFormDirective,
     SixFormUtilDirective,
+
+    // router link directive
+    SixRouterLinkDirective,
   ],
 })
 export class UiLibraryAngularModule {

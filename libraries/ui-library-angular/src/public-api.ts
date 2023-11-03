@@ -26,5 +26,8 @@ export * from './lib/validators/six-ui-library-validators';
 // from helpers
 export * from './lib/form/six-form.directive';
 
+// link helpers
+export * from './lib/link/six-router-link.directive';
+
 // services
 export * from './lib/services/validation-messages.service';

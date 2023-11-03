@@ -1469,6 +1469,10 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * Provide if the item should be rendered as anchor tag. Note, that the href is added automatically when using routerLink in Angular.
+         */
+        "href": string | undefined;
+        /**
           * Set to true to draw the item in a selected state.
          */
         "selected": boolean;
@@ -1482,6 +1486,10 @@ export namespace Components {
      * @status stable
      */
     interface SixSidebarItemGroup {
+        /**
+          * Provide if the item should be rendered as anchor tag. Note, that the href is added automatically when using routerLink in Angular.
+         */
+        "href": string | undefined;
         /**
           * Icon of the group
          */
@@ -2096,12 +2104,26 @@ declare global {
         prototype: HTMLSetAttributesElement;
         new (): HTMLSetAttributesElement;
     };
+    interface HTMLSixAlertElementEventMap {
+        "six-alert-show": EmptyPayload;
+        "six-alert-after-show": EmptyPayload;
+        "six-alert-hide": EmptyPayload;
+        "six-alert-after-hide": EmptyPayload;
+    }
     /**
      * @since 1.0
      * @status stable
      * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
      */
     interface HTMLSixAlertElement extends Components.SixAlert, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSixAlertElementEventMap>(type: K, listener: (this: HTMLSixAlertElement, ev: SixAlertCustomEvent<HTMLSixAlertElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSixAlertElementEventMap>(type: K, listener: (this: HTMLSixAlertElement, ev: SixAlertCustomEvent<HTMLSixAlertElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLSixAlertElement: {
         prototype: HTMLSixAlertElement;
@@ -2129,12 +2151,24 @@ declare global {
         prototype: HTMLSixBadgeElement;
         new (): HTMLSixBadgeElement;
     };
+    interface HTMLSixButtonElementEventMap {
+        "six-button-blur": EmptyPayload;
+        "six-button-focus": EmptyPayload;
+    }
     /**
      * @since 1.0
      * @status stable
      * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
      */
     interface HTMLSixButtonElement extends Components.SixButton, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSixButtonElementEventMap>(type: K, listener: (this: HTMLSixButtonElement, ev: SixButtonCustomEvent<HTMLSixButtonElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSixButtonElementEventMap>(type: K, listener: (this: HTMLSixButtonElement, ev: SixButtonCustomEvent<HTMLSixButtonElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLSixButtonElement: {
         prototype: HTMLSixButtonElement;
@@ -2150,66 +2184,155 @@ declare global {
         prototype: HTMLSixCardElement;
         new (): HTMLSixCardElement;
     };
+    interface HTMLSixCheckboxElementEventMap {
+        "six-checkbox-blur": EmptyPayload;
+        "six-checkbox-change": EmptyPayload;
+        "six-checkbox-focus": EmptyPayload;
+    }
     /**
      * @since 1.0
      * @status stable
      * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
      */
     interface HTMLSixCheckboxElement extends Components.SixCheckbox, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSixCheckboxElementEventMap>(type: K, listener: (this: HTMLSixCheckboxElement, ev: SixCheckboxCustomEvent<HTMLSixCheckboxElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSixCheckboxElementEventMap>(type: K, listener: (this: HTMLSixCheckboxElement, ev: SixCheckboxCustomEvent<HTMLSixCheckboxElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLSixCheckboxElement: {
         prototype: HTMLSixCheckboxElement;
         new (): HTMLSixCheckboxElement;
     };
+    interface HTMLSixDatepickerElementEventMap {
+        "six-datepicker-select": SixDatepickerSelectPayload;
+        "six-datepicker-clear": EmptyPayload;
+        "six-datepicker-blur": SixDatepickerSelectPayload;
+    }
     /**
      * @since 1.0
      * @status stable
      */
     interface HTMLSixDatepickerElement extends Components.SixDatepicker, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSixDatepickerElementEventMap>(type: K, listener: (this: HTMLSixDatepickerElement, ev: SixDatepickerCustomEvent<HTMLSixDatepickerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSixDatepickerElementEventMap>(type: K, listener: (this: HTMLSixDatepickerElement, ev: SixDatepickerCustomEvent<HTMLSixDatepickerElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLSixDatepickerElement: {
         prototype: HTMLSixDatepickerElement;
         new (): HTMLSixDatepickerElement;
     };
+    interface HTMLSixDetailsElementEventMap {
+        "six-details-show": EmptyPayload;
+        "six-details-after-show": EmptyPayload;
+        "six-details-hide": EmptyPayload;
+        "six-details-after-hide": EmptyPayload;
+    }
     /**
      * @since 1.0
      * @status stable
      * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
      */
     interface HTMLSixDetailsElement extends Components.SixDetails, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSixDetailsElementEventMap>(type: K, listener: (this: HTMLSixDetailsElement, ev: SixDetailsCustomEvent<HTMLSixDetailsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSixDetailsElementEventMap>(type: K, listener: (this: HTMLSixDetailsElement, ev: SixDetailsCustomEvent<HTMLSixDetailsElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLSixDetailsElement: {
         prototype: HTMLSixDetailsElement;
         new (): HTMLSixDetailsElement;
     };
+    interface HTMLSixDialogElementEventMap {
+        "six-dialog-show": EmptyPayload;
+        "six-dialog-after-show": EmptyPayload;
+        "six-dialog-hide": EmptyPayload;
+        "six-dialog-after-hide": EmptyPayload;
+        "six-dialog-initial-focus": EmptyPayload;
+        "six-dialog-overlay-dismiss": EmptyPayload;
+    }
     /**
      * @since 1.0
      * @status stable
      * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
      */
     interface HTMLSixDialogElement extends Components.SixDialog, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSixDialogElementEventMap>(type: K, listener: (this: HTMLSixDialogElement, ev: SixDialogCustomEvent<HTMLSixDialogElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSixDialogElementEventMap>(type: K, listener: (this: HTMLSixDialogElement, ev: SixDialogCustomEvent<HTMLSixDialogElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLSixDialogElement: {
         prototype: HTMLSixDialogElement;
         new (): HTMLSixDialogElement;
     };
+    interface HTMLSixDrawerElementEventMap {
+        "six-drawer-show": EmptyPayload;
+        "six-drawer-after-show": EmptyPayload;
+        "six-drawer-hide": EmptyPayload;
+        "six-drawer-after-hide": EmptyPayload;
+        "six-drawer-initial-focus": EmptyPayload;
+        "six-drawer-overlay-dismiss": EmptyPayload;
+    }
     /**
      * @since 1.0
      * @status stable
      * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
      */
     interface HTMLSixDrawerElement extends Components.SixDrawer, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSixDrawerElementEventMap>(type: K, listener: (this: HTMLSixDrawerElement, ev: SixDrawerCustomEvent<HTMLSixDrawerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSixDrawerElementEventMap>(type: K, listener: (this: HTMLSixDrawerElement, ev: SixDrawerCustomEvent<HTMLSixDrawerElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLSixDrawerElement: {
         prototype: HTMLSixDrawerElement;
         new (): HTMLSixDrawerElement;
     };
+    interface HTMLSixDropdownElementEventMap {
+        "six-dropdown-show": EmptyPayload;
+        "six-dropdown-after-show": EmptyPayload;
+        "six-dropdown-hide": EmptyPayload;
+        "six-dropdown-after-hide": EmptyPayload;
+        "six-dropdown-auto-filter-fired": SixDropdownAutoFilterPayload;
+        "six-async-filter-fired": SixDropdownAsyncFilterPayload;
+        "six-dropdown-scroll": SixDropdownScrollPayload;
+    }
     /**
      * @since 1.0
      * @status stable
      * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
      */
     interface HTMLSixDropdownElement extends Components.SixDropdown, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSixDropdownElementEventMap>(type: K, listener: (this: HTMLSixDropdownElement, ev: SixDropdownCustomEvent<HTMLSixDropdownElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSixDropdownElementEventMap>(type: K, listener: (this: HTMLSixDropdownElement, ev: SixDropdownCustomEvent<HTMLSixDropdownElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLSixDropdownElement: {
         prototype: HTMLSixDropdownElement;
@@ -2241,21 +2364,45 @@ declare global {
         prototype: HTMLSixFileListElement;
         new (): HTMLSixFileListElement;
     };
+    interface HTMLSixFileListItemElementEventMap {
+        "six-file-list-item-download": SixFileListDownloadPayload;
+        "six-file-list-item-remove": SixFileListRemovePayload;
+    }
     /**
      * @since 2.0.0
      * @status experimental
      */
     interface HTMLSixFileListItemElement extends Components.SixFileListItem, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSixFileListItemElementEventMap>(type: K, listener: (this: HTMLSixFileListItemElement, ev: SixFileListItemCustomEvent<HTMLSixFileListItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSixFileListItemElementEventMap>(type: K, listener: (this: HTMLSixFileListItemElement, ev: SixFileListItemCustomEvent<HTMLSixFileListItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLSixFileListItemElement: {
         prototype: HTMLSixFileListItemElement;
         new (): HTMLSixFileListItemElement;
     };
+    interface HTMLSixFileUploadElementEventMap {
+        "six-file-upload-success": SixFileUploadSuccessPayload;
+        "six-file-upload-failure": SixFileUploadFailurePayload;
+    }
     /**
      * @since 2.0.0
      * @status experimental
      */
     interface HTMLSixFileUploadElement extends Components.SixFileUpload, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSixFileUploadElementEventMap>(type: K, listener: (this: HTMLSixFileUploadElement, ev: SixFileUploadCustomEvent<HTMLSixFileUploadElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSixFileUploadElementEventMap>(type: K, listener: (this: HTMLSixFileUploadElement, ev: SixFileUploadCustomEvent<HTMLSixFileUploadElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLSixFileUploadElement: {
         prototype: HTMLSixFileUploadElement;
@@ -2281,11 +2428,27 @@ declare global {
         prototype: HTMLSixGroupLabelElement;
         new (): HTMLSixGroupLabelElement;
     };
+    interface HTMLSixHeaderElementEventMap {
+        "six-header-app-name-clicked": EmptyPayload;
+        "six-header-app-switcher-select": SixHeaderAppSwitcherSelectPayload;
+        "six-header-profile-select": SixHeaderProfileSelectPayload;
+        "six-header-hamburger-menu-clicked": EmptyPayload;
+        "six-header-logo-clicked": EmptyPayload;
+        "six-header-search-field-toggle": SixHeaderSearchFieldToggle;
+    }
     /**
      * @since 1.0
      * @status stable
      */
     interface HTMLSixHeaderElement extends Components.SixHeader, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSixHeaderElementEventMap>(type: K, listener: (this: HTMLSixHeaderElement, ev: SixHeaderCustomEvent<HTMLSixHeaderElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSixHeaderElementEventMap>(type: K, listener: (this: HTMLSixHeaderElement, ev: SixHeaderCustomEvent<HTMLSixHeaderElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLSixHeaderElement: {
         prototype: HTMLSixHeaderElement;
@@ -2312,28 +2475,66 @@ declare global {
         prototype: HTMLSixIconButtonElement;
         new (): HTMLSixIconButtonElement;
     };
+    interface HTMLSixInputElementEventMap {
+        "six-input-change": EmptyPayload;
+        "six-input-clear": EmptyPayload;
+        "six-input-input": EmptyPayload;
+        "six-input-focus": EmptyPayload;
+        "six-input-blur": EmptyPayload;
+    }
     /**
      * @since 1.0
      * @status stable
      * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
      */
     interface HTMLSixInputElement extends Components.SixInput, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSixInputElementEventMap>(type: K, listener: (this: HTMLSixInputElement, ev: SixInputCustomEvent<HTMLSixInputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSixInputElementEventMap>(type: K, listener: (this: HTMLSixInputElement, ev: SixInputCustomEvent<HTMLSixInputElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLSixInputElement: {
         prototype: HTMLSixInputElement;
         new (): HTMLSixInputElement;
     };
+    interface HTMLSixItemPickerElementEventMap {
+        "six-item-picker-change": SixItemPickerChangePayload;
+        "six-item-picker-change-debounced": SixItemPickerChangePayload;
+    }
     /**
      * @since 2.0.0
      * @status experimental
      */
     interface HTMLSixItemPickerElement extends Components.SixItemPicker, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSixItemPickerElementEventMap>(type: K, listener: (this: HTMLSixItemPickerElement, ev: SixItemPickerCustomEvent<HTMLSixItemPickerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSixItemPickerElementEventMap>(type: K, listener: (this: HTMLSixItemPickerElement, ev: SixItemPickerCustomEvent<HTMLSixItemPickerElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLSixItemPickerElement: {
         prototype: HTMLSixItemPickerElement;
         new (): HTMLSixItemPickerElement;
     };
+    interface HTMLSixLanguageSwitcherElementEventMap {
+        "six-language-switcher-change": SixLanguageSwitcherChangePayload;
+    }
     interface HTMLSixLanguageSwitcherElement extends Components.SixLanguageSwitcher, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSixLanguageSwitcherElementEventMap>(type: K, listener: (this: HTMLSixLanguageSwitcherElement, ev: SixLanguageSwitcherCustomEvent<HTMLSixLanguageSwitcherElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSixLanguageSwitcherElementEventMap>(type: K, listener: (this: HTMLSixLanguageSwitcherElement, ev: SixLanguageSwitcherCustomEvent<HTMLSixLanguageSwitcherElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLSixLanguageSwitcherElement: {
         prototype: HTMLSixLanguageSwitcherElement;
@@ -2359,12 +2560,23 @@ declare global {
         prototype: HTMLSixMainContainerElement;
         new (): HTMLSixMainContainerElement;
     };
+    interface HTMLSixMenuElementEventMap {
+        "six-menu-item-selected": SixMenuItemSelectedPayload;
+    }
     /**
      * @since 1.0
      * @status stable
      * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
      */
     interface HTMLSixMenuElement extends Components.SixMenu, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSixMenuElementEventMap>(type: K, listener: (this: HTMLSixMenuElement, ev: SixMenuCustomEvent<HTMLSixMenuElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSixMenuElementEventMap>(type: K, listener: (this: HTMLSixMenuElement, ev: SixMenuCustomEvent<HTMLSixMenuElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLSixMenuElement: {
         prototype: HTMLSixMenuElement;
@@ -2435,64 +2647,140 @@ declare global {
         prototype: HTMLSixProgressRingElement;
         new (): HTMLSixProgressRingElement;
     };
+    interface HTMLSixRadioElementEventMap {
+        "six-radio-blur": EmptyPayload;
+        "six-radio-change": EmptyPayload;
+        "six-radio-focus": EmptyPayload;
+    }
     /**
      * @since 1.0
      * @status stable
      * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
      */
     interface HTMLSixRadioElement extends Components.SixRadio, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSixRadioElementEventMap>(type: K, listener: (this: HTMLSixRadioElement, ev: SixRadioCustomEvent<HTMLSixRadioElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSixRadioElementEventMap>(type: K, listener: (this: HTMLSixRadioElement, ev: SixRadioCustomEvent<HTMLSixRadioElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLSixRadioElement: {
         prototype: HTMLSixRadioElement;
         new (): HTMLSixRadioElement;
     };
+    interface HTMLSixRangeElementEventMap {
+        "six-range-change": EmptyPayload;
+        "six-range-blur": EmptyPayload;
+        "six-range-focus": EmptyPayload;
+    }
     /**
      * @since 1.0
      * @status stable
      * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
      */
     interface HTMLSixRangeElement extends Components.SixRange, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSixRangeElementEventMap>(type: K, listener: (this: HTMLSixRangeElement, ev: SixRangeCustomEvent<HTMLSixRangeElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSixRangeElementEventMap>(type: K, listener: (this: HTMLSixRangeElement, ev: SixRangeCustomEvent<HTMLSixRangeElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLSixRangeElement: {
         prototype: HTMLSixRangeElement;
         new (): HTMLSixRangeElement;
     };
+    interface HTMLSixRootElementEventMap {
+        "six-root-collapsed": SixRootCollapsedPayload;
+    }
     /**
      * @since 1.0
      * @status stable
      */
     interface HTMLSixRootElement extends Components.SixRoot, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSixRootElementEventMap>(type: K, listener: (this: HTMLSixRootElement, ev: SixRootCustomEvent<HTMLSixRootElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSixRootElementEventMap>(type: K, listener: (this: HTMLSixRootElement, ev: SixRootCustomEvent<HTMLSixRootElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLSixRootElement: {
         prototype: HTMLSixRootElement;
         new (): HTMLSixRootElement;
     };
+    interface HTMLSixSearchFieldElementEventMap {
+        "six-search-field-change": SixSearchFieldChangePayload;
+    }
     /**
      * @since 1.0
      * @status stable
      */
     interface HTMLSixSearchFieldElement extends Components.SixSearchField, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSixSearchFieldElementEventMap>(type: K, listener: (this: HTMLSixSearchFieldElement, ev: SixSearchFieldCustomEvent<HTMLSixSearchFieldElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSixSearchFieldElementEventMap>(type: K, listener: (this: HTMLSixSearchFieldElement, ev: SixSearchFieldCustomEvent<HTMLSixSearchFieldElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLSixSearchFieldElement: {
         prototype: HTMLSixSearchFieldElement;
         new (): HTMLSixSearchFieldElement;
     };
+    interface HTMLSixSelectElementEventMap {
+        "six-select-change": SixSelectChangePayload;
+        "six-select-focus": EmptyPayload;
+        "six-select-blur": EmptyPayload;
+    }
     /**
      * @since 1.0
      * @status stable
      * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
      */
     interface HTMLSixSelectElement extends Components.SixSelect, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSixSelectElementEventMap>(type: K, listener: (this: HTMLSixSelectElement, ev: SixSelectCustomEvent<HTMLSixSelectElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSixSelectElementEventMap>(type: K, listener: (this: HTMLSixSelectElement, ev: SixSelectCustomEvent<HTMLSixSelectElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLSixSelectElement: {
         prototype: HTMLSixSelectElement;
         new (): HTMLSixSelectElement;
     };
+    interface HTMLSixSidebarElementEventMap {
+        "six-sidebar-show": EmptyPayload;
+        "six-sidebar-after-show": EmptyPayload;
+        "six-sidebar-hide": EmptyPayload;
+        "six-sidebar-after-hide": EmptyPayload;
+        "six-sidebar-initial-focus": EmptyPayload;
+    }
     /**
      * @since 1.0
      * @status stable
      */
     interface HTMLSixSidebarElement extends Components.SixSidebar, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSixSidebarElementEventMap>(type: K, listener: (this: HTMLSixSidebarElement, ev: SixSidebarCustomEvent<HTMLSixSidebarElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSixSidebarElementEventMap>(type: K, listener: (this: HTMLSixSidebarElement, ev: SixSidebarCustomEvent<HTMLSixSidebarElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLSixSidebarElement: {
         prototype: HTMLSixSidebarElement;
@@ -2535,34 +2823,70 @@ declare global {
         prototype: HTMLSixStageIndicatorElement;
         new (): HTMLSixStageIndicatorElement;
     };
+    interface HTMLSixSwitchElementEventMap {
+        "six-switch-blur": boolean;
+        "six-switch-change": boolean;
+        "six-switch-focus": EmptyPayload;
+    }
     /**
      * @since 1.0
      * @status stable
      * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
      */
     interface HTMLSixSwitchElement extends Components.SixSwitch, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSixSwitchElementEventMap>(type: K, listener: (this: HTMLSixSwitchElement, ev: SixSwitchCustomEvent<HTMLSixSwitchElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSixSwitchElementEventMap>(type: K, listener: (this: HTMLSixSwitchElement, ev: SixSwitchCustomEvent<HTMLSixSwitchElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLSixSwitchElement: {
         prototype: HTMLSixSwitchElement;
         new (): HTMLSixSwitchElement;
     };
+    interface HTMLSixTabElementEventMap {
+        "six-tab-close": EmptyPayload;
+    }
     /**
      * @since 1.0
      * @status stable
      * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
      */
     interface HTMLSixTabElement extends Components.SixTab, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSixTabElementEventMap>(type: K, listener: (this: HTMLSixTabElement, ev: SixTabCustomEvent<HTMLSixTabElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSixTabElementEventMap>(type: K, listener: (this: HTMLSixTabElement, ev: SixTabCustomEvent<HTMLSixTabElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLSixTabElement: {
         prototype: HTMLSixTabElement;
         new (): HTMLSixTabElement;
     };
+    interface HTMLSixTabGroupElementEventMap {
+        "six-tab-show": SixTabShowPayload;
+        "six-tab-hide": SixTabHidePayload;
+    }
     /**
      * @since 1.0
      * @status stable
      * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
      */
     interface HTMLSixTabGroupElement extends Components.SixTabGroup, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSixTabGroupElementEventMap>(type: K, listener: (this: HTMLSixTabGroupElement, ev: SixTabGroupCustomEvent<HTMLSixTabGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSixTabGroupElementEventMap>(type: K, listener: (this: HTMLSixTabGroupElement, ev: SixTabGroupCustomEvent<HTMLSixTabGroupElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLSixTabGroupElement: {
         prototype: HTMLSixTabGroupElement;
@@ -2579,54 +2903,118 @@ declare global {
         prototype: HTMLSixTabPanelElement;
         new (): HTMLSixTabPanelElement;
     };
+    interface HTMLSixTagElementEventMap {
+        "six-tag-clear": EmptyPayload;
+    }
     /**
      * @since 1.0
      * @status stable
      * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
      */
     interface HTMLSixTagElement extends Components.SixTag, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSixTagElementEventMap>(type: K, listener: (this: HTMLSixTagElement, ev: SixTagCustomEvent<HTMLSixTagElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSixTagElementEventMap>(type: K, listener: (this: HTMLSixTagElement, ev: SixTagCustomEvent<HTMLSixTagElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLSixTagElement: {
         prototype: HTMLSixTagElement;
         new (): HTMLSixTagElement;
     };
+    interface HTMLSixTextareaElementEventMap {
+        "six-textarea-change": EmptyPayload;
+        "six-textarea-input": EmptyPayload;
+        "six-textarea-focus": EmptyPayload;
+        "six-textarea-blur": EmptyPayload;
+    }
     /**
      * @since 1.0
      * @status stable
      * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
      */
     interface HTMLSixTextareaElement extends Components.SixTextarea, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSixTextareaElementEventMap>(type: K, listener: (this: HTMLSixTextareaElement, ev: SixTextareaCustomEvent<HTMLSixTextareaElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSixTextareaElementEventMap>(type: K, listener: (this: HTMLSixTextareaElement, ev: SixTextareaCustomEvent<HTMLSixTextareaElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLSixTextareaElement: {
         prototype: HTMLSixTextareaElement;
         new (): HTMLSixTextareaElement;
     };
+    interface HTMLSixTileElementEventMap {
+        "six-tile-closed": EmptyPayload;
+        "six-tile-selected": EmptyPayload;
+    }
     /**
      * @since 1.0
      * @status stable
      */
     interface HTMLSixTileElement extends Components.SixTile, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSixTileElementEventMap>(type: K, listener: (this: HTMLSixTileElement, ev: SixTileCustomEvent<HTMLSixTileElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSixTileElementEventMap>(type: K, listener: (this: HTMLSixTileElement, ev: SixTileCustomEvent<HTMLSixTileElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLSixTileElement: {
         prototype: HTMLSixTileElement;
         new (): HTMLSixTileElement;
     };
+    interface HTMLSixTimepickerElementEventMap {
+        "six-timepicker-change": SixTimepickerChange;
+        "six-timepicker-change-debounced": SixTimepickerChange;
+        "six-timepicker-clear": EmptyPayload;
+    }
     /**
      * @since 2.0.0
      * @status experimental
      */
     interface HTMLSixTimepickerElement extends Components.SixTimepicker, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSixTimepickerElementEventMap>(type: K, listener: (this: HTMLSixTimepickerElement, ev: SixTimepickerCustomEvent<HTMLSixTimepickerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSixTimepickerElementEventMap>(type: K, listener: (this: HTMLSixTimepickerElement, ev: SixTimepickerCustomEvent<HTMLSixTimepickerElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLSixTimepickerElement: {
         prototype: HTMLSixTimepickerElement;
         new (): HTMLSixTimepickerElement;
     };
+    interface HTMLSixTooltipElementEventMap {
+        "six-tooltip-show": EmptyPayload;
+        "six-tooltip-after-show": EmptyPayload;
+        "six-tooltip-hide": EmptyPayload;
+        "six-tooltip-after-hide": EmptyPayload;
+    }
     /**
      * @since 1.0
      * @status stable
      * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
      */
     interface HTMLSixTooltipElement extends Components.SixTooltip, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSixTooltipElementEventMap>(type: K, listener: (this: HTMLSixTooltipElement, ev: SixTooltipCustomEvent<HTMLSixTooltipElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSixTooltipElementEventMap>(type: K, listener: (this: HTMLSixTooltipElement, ev: SixTooltipCustomEvent<HTMLSixTooltipElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLSixTooltipElement: {
         prototype: HTMLSixTooltipElement;
@@ -4236,6 +4624,10 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * Provide if the item should be rendered as anchor tag. Note, that the href is added automatically when using routerLink in Angular.
+         */
+        "href"?: string | undefined;
+        /**
           * Set to true to draw the item in a selected state.
          */
         "selected"?: boolean;
@@ -4249,6 +4641,10 @@ declare namespace LocalJSX {
      * @status stable
      */
     interface SixSidebarItemGroup {
+        /**
+          * Provide if the item should be rendered as anchor tag. Note, that the href is added automatically when using routerLink in Angular.
+         */
+        "href"?: string | undefined;
         /**
           * Icon of the group
          */

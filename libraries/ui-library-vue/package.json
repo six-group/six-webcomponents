@@ -1,0 +1,26 @@
+{
+  "name": "@six-group/ui-library-vue",
+  "version": "4.0.4",
+  "description": "Vue wrapper components for @six-group/ui-library",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "build": "npm run tsc",
+    "tsc": "tsc -p . --outDir ./dist"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "@six-group/ui-library": "*"
+  },
+  "private": false,
+  "sideEffects": false,
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
