@@ -275,7 +275,7 @@ export class SixDrawer {
               <six-icon-button
                 exportparts="base:close-button"
                 class="drawer__close"
-                name="x"
+                name="close"
                 onClick={this.handleCloseClick}
               />
             </header>
