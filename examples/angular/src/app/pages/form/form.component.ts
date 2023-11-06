@@ -1,11 +1,19 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
 import { SixUiLibraryValidators } from '@six-group/ui-library-angular';
 
 type UserGroup = 'admin' | 'developer' | 'user';
 type Status = 'enabled' | 'disabled' | 'temporary';
 type Interest = 'sport' | 'music' | 'movies';
+
+const weekendDateFilter = (d: Date | null) => {
+  const day = (d || new Date()).getDay();
+  // Prevent Saturday and Sunday from being selected.
+  return day !== 0 && day !== 6;
+};
+
+const allowAllDateFilter = () => true;
 
 @Component({
   selector: 'app-form',
@@ -13,9 +21,8 @@ type Interest = 'sport' | 'music' | 'movies';
   styleUrls: ['./form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormComponent {
-  minDate = addDays(removeTime(new Date()), 1);
-  maxDate = addDays(removeTime(new Date()), -1);
+export class FormComponent implements OnDestroy {
+  private subscriptions?: Subscription;
 
   userForm = this.fb.group({
     firstName: ['', [Validators.required, Validators.minLength(2)]],
@@ -27,20 +34,55 @@ export class FormComponent {
     userGroup: ['user' as UserGroup | null, Validators.required],
     status: ['enabled' as Status | null, Validators.required],
     internal: [false, Validators.requiredTrue],
+    allowWeekends: [false],
+    futureDatesOnly: [false],
+    date: [null as Date | null, [Validators.required]],
+    startTime: ['', [Validators.required]],
     interests: [[] as Interest[], Validators.required],
     height: [0, Validators.min(10)],
     description: ['', [Validators.required, Validators.minLength(20)]],
     acceptsTerms: [false, Validators.requiredTrue],
-    futureDate: [null as Date | null, [Validators.required, SixUiLibraryValidators.minDate(this.minDate)]],
-    pastDate: [null as Date | null, [Validators.required, SixUiLibraryValidators.maxDate(this.maxDate)]],
-    startTime: ['', [Validators.required]],
   });
 
+  minDate: Date | null = addDays(removeTime(new Date()), 1);
+  maxDate: Date | null = addDays(removeTime(new Date()), 40);
+  dateFilter = (d: Date | null): boolean => {
+    const day = (d || new Date()).getDay();
+    // Prevent Saturday and Sunday from being selected.
+    return day !== 0 && day !== 6;
+  };
+
   formDebug$: BehaviorSubject<{ controls: Record<string, any>; form: Record<string, any> }>;
+
   constructor(private fb: FormBuilder) {
     this.formDebug$ = new BehaviorSubject(getFormDebug(this.userForm));
     this.userForm.valueChanges.subscribe(() => this.formDebug$.next(getFormDebug(this.userForm)));
     this.userForm.statusChanges.subscribe(() => this.formDebug$.next(getFormDebug(this.userForm)));
+    this.subscriptions = this.userForm.controls.futureDatesOnly.valueChanges.subscribe((futureDatesOnly) => {
+      if (futureDatesOnly) {
+        this.minDate = addDays(removeTime(new Date()), 1);
+        this.userForm.controls.date.setValidators([Validators.required, SixUiLibraryValidators.minDate(this.minDate)]);
+      } else {
+        this.minDate = null;
+        this.userForm.controls.date.setValidators([Validators.required]);
+      }
+      this.userForm.controls.date.updateValueAndValidity();
+    });
+
+    this.subscriptions.add(
+      this.userForm.controls.allowWeekends.valueChanges.subscribe((allowWeekends) => {
+        this.dateFilter = allowWeekends ? allowAllDateFilter : weekendDateFilter;
+        this.userForm.controls.date.setValidators([
+          Validators.required,
+          SixUiLibraryValidators.allowedDates(this.dateFilter),
+        ]);
+        this.userForm.controls.date.updateValueAndValidity();
+      })
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscriptions?.unsubscribe();
   }
 
   resetForm() {
@@ -58,12 +100,13 @@ export class FormComponent {
       userGroup: 'user',
       status: 'enabled',
       internal: true,
+      allowWeekends: true,
+      futureDatesOnly: true,
       interests: ['music'],
       height: 10,
       description: 'A description about the user',
       acceptsTerms: true,
-      futureDate: addDays(new Date(), 1),
-      pastDate: addDays(new Date(), -11),
+      date: addDays(new Date(), 1),
       startTime: '09:15:00',
     });
   }
