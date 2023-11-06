@@ -4,6 +4,25 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## Upcoming
+
+### Changed
+
+- Update drawer icon
+- Removed React demo application, a new demo will be introduced
+
+### Fixed
+
+- Typos in documentation
+- Display of favicon in documentation
+- Not working Datepicker modal demo
+
+### Misc
+
+- Introduced information about minimal compatible node version
+- Upgrade Stencil and corresponding output target to latest minor and bugfix release versions
+- Upgrade TypeScript to ~5.2.x to match version used in Stencil 4.6.0
+
 ## 4.0.3 - 2023-09-28
 
 ### Changed
