@@ -2,7 +2,6 @@
   text-align: center;
 }
 
-a {
-  color: var(--six-color-action-500);
-  text-decoration: none;
+six-button::part(label) {
+  padding-left: 0;
 }

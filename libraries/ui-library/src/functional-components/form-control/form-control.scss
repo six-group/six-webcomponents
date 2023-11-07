@@ -25,6 +25,9 @@
   .form-control__label__required::after {
     color: var(--six-color-danger-800);
     content: '*';
+    transform: scale(1.1);
+    margin-left: var(--six-spacing-xxx-small);
+    position: absolute;
   }
 
   &.form-control--small .form-control__label {

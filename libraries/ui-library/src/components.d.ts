@@ -1469,6 +1469,10 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * Provide if the item should be rendered as anchor tag. Note, that the href is added automatically when using routerLink in Angular.
+         */
+        "href": string | undefined;
+        /**
           * Set to true to draw the item in a selected state.
          */
         "selected": boolean;
@@ -1482,6 +1486,10 @@ export namespace Components {
      * @status stable
      */
     interface SixSidebarItemGroup {
+        /**
+          * Provide if the item should be rendered as anchor tag. Note, that the href is added automatically when using routerLink in Angular.
+         */
+        "href": string | undefined;
         /**
           * Icon of the group
          */
@@ -4616,6 +4624,10 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * Provide if the item should be rendered as anchor tag. Note, that the href is added automatically when using routerLink in Angular.
+         */
+        "href"?: string | undefined;
+        /**
           * Set to true to draw the item in a selected state.
          */
         "selected"?: boolean;
@@ -4629,6 +4641,10 @@ declare namespace LocalJSX {
      * @status stable
      */
     interface SixSidebarItemGroup {
+        /**
+          * Provide if the item should be rendered as anchor tag. Note, that the href is added automatically when using routerLink in Angular.
+         */
+        "href"?: string | undefined;
         /**
           * Icon of the group
          */

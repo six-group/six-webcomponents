@@ -2,11 +2,16 @@
   display: block;
 }
 
+a {
+  text-decoration: none;
+  display: block;
+}
+
 .sidebar-item {
+  padding: 8px 8px 16px 16px;
   font-size: 0.9rem;
   color: var(--six-sidebar-color);
   cursor: pointer;
-  padding: 8px 8px 16px 16px;
   font-family: var(--six-font-family);
 
   &:hover:not(.sidebar-item--disabled) {

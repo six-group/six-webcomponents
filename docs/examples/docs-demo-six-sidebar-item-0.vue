@@ -6,6 +6,7 @@
           <six-sidebar-item value="history">History</six-sidebar-item>
           <six-sidebar-item value="transactions">Transactions</six-sidebar-item>
           <six-sidebar-item value="upload">Upload</six-sidebar-item>
+          <six-sidebar-item value="link" href="http://www.google.ch">Link</six-sidebar-item>
         </div>
       
 </div>

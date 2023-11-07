@@ -35,6 +35,12 @@ export class SixSidebarItemGroup {
 
   @State() summaryIconHasContent = false;
 
+  /**
+   * Provide if the item should be rendered as anchor tag.
+   * Note, that the href is added automatically when using routerLink in Angular.
+   */
+  @Prop({ reflect: true }) href: string | undefined;
+
   connectedCallback() {
     this.handleSlotChange = this.handleSlotChange.bind(this);
   }
@@ -49,6 +55,10 @@ export class SixSidebarItemGroup {
 
   private isSubgroup() {
     return this.host.parentElement?.closest('six-sidebar-item-group') != null;
+  }
+
+  private renderAsHref(): boolean {
+    return this.href != null && !this.hasItems;
   }
 
   private provideSlot = (name: string) => {
@@ -74,7 +84,7 @@ export class SixSidebarItemGroup {
   };
 
   render() {
-    return (
+    const element = (
       <six-details
         class={{
           'six-sidebar-item-group': true,
@@ -96,5 +106,15 @@ export class SixSidebarItemGroup {
         <slot />
       </six-details>
     );
+
+    if (this.renderAsHref()) {
+      return (
+        <a class="six-sidebar-details__link" href={this.href}>
+          {element}
+        </a>
+      );
+    } else {
+      return element;
+    }
   }
 }
