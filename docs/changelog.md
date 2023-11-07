@@ -6,26 +6,32 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## Upcoming
 
+### Added
+
+- `href` property to `six-sidebar-item` and `six-sidebar-item-group`
+- Support for Angular's `routerLink` directive in `six-button`, `six-sidebar-item` and
+  `six-sidebar-item-group`
+- Indigo color option
+- Information regarding the minimal compatible Node.js version
+
+### Removed
+
+- The React demo application. A new demo will be introduced in an upcoming release
+
 ### Changed
 
-- Update drawer icon
-- Removed React demo application, a new demo will be introduced
-- Added SIX Indigo color
-- Fixed styling of asterisk for mandatory fields
-- Added href property for six-sidebar-item and six-sidebar-item-group (incl. integration for
-  angular)
+- Increased the spacing between the label and the asterisk in mandatory fields
+- Upgraded Stencil and the corresponding output target to the latest minor and bugfix release
+  versions
+- Upgraded TypeScript to ~5.2.x to match the version used in Stencil 4.6.0
 
 ### Fixed
 
-- Typos in documentation
-- Display of favicon in documentation
-- Not working Datepicker modal demo
-
-### Misc
-
-- Introduced information about minimal compatible node version
-- Upgrade Stencil and corresponding output target to latest minor and bugfix release versions
-- Upgrade TypeScript to ~5.2.x to match version used in Stencil 4.6.0
+- The favicon for the documentation website
+- Typos in the documentation
+- The datepicker modal demo
+- The icon for the close action in `six-drawer`
+- Angular validators for `six-datepicker`
 
 ## 4.0.3 - 2023-09-28
 
