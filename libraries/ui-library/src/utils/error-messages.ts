@@ -1,4 +1,5 @@
-export type Language = 'de' | 'fr' | 'it' | 'en';
+export const languages = ['de', 'fr', 'it', 'en', 'es'] as const;
+export type Language = (typeof languages)[number];
 
 const dateFormat = new Intl.DateTimeFormat('de-CH');
 
@@ -103,5 +104,19 @@ const translation: Record<Language, Record<string, string>> = {
     mindate: 'Si prega di inserire una data il {mindate} o successiva.',
     maxdate: 'Si prega di inserire una data il {maxdate} o precedente.',
     invaliddate: 'Inserisci una data valida.',
+  },
+
+  es: {
+    required: 'Por favor, rellene este campo.',
+    minlength: 'Por favor, introduzca al menos {requiredLength} caracteres.',
+    maxlength: 'Por favor, introduzca no más de {requiredLength} caracteres.',
+    pattern: 'Por favor, introduzca un valor que coincida con el patrón: {pattern}.',
+    email: 'Por favor, introduzca una dirección de correo electrónico válida.',
+    min: 'Por favor, introduzca un valor mayor o igual a {min}.',
+    max: 'Por favor, introduzca un valor menor o igual a {max}.',
+    requiredtrue: 'Por favor, marque este campo.',
+    mindate: 'Por favor, introduzca una fecha igual o posterior a {mindate}.',
+    maxdate: 'Por favor, introduzca una fecha igual o anterior a {maxdate}.',
+    invaliddate: 'Por favor, introduzca una fecha válida.',
   },
 };
