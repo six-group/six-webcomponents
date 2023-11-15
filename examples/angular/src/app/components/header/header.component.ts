@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewEncapsulation } from '@angular/core';
-import { Language, SixMenuItemSelectedPayload } from '@six-group/ui-library';
+import { Language, languages, SixMenuItemSelectedPayload } from '@six-group/ui-library';
 
 @Component({
   selector: 'app-header',
@@ -16,7 +16,7 @@ export class HeaderComponent {
   @Output() itemClicked = new EventEmitter<CustomEvent<SixMenuItemSelectedPayload>>();
 
   language: Language;
-  languages: Language[] = ['de', 'it', 'fr', 'en'];
+  languages: Language[] = [...languages];
 
   constructor() {
     let lang = localStorage.getItem('six-lang') as Language;

@@ -1,7 +1,7 @@
 import { AfterViewInit, Directive, ElementRef, HostListener, inject, Injector, OnDestroy } from '@angular/core';
 import { AbstractControl, ControlValueAccessor, NgControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { Language, ValidationError } from '@six-group/ui-library';
+import { Language, languages, ValidationError } from '@six-group/ui-library';
 import { ValidationMessagesService } from '../services/validation-messages.service';
 
 @Directive()
@@ -139,7 +139,6 @@ export class ValueAccessor implements ControlValueAccessor, AfterViewInit, OnDes
 }
 
 function getLanguage(): Language {
-  const languages: Language[] = ['de', 'fr', 'it', 'en'];
   const documentLang = document.documentElement.lang as Language;
   if (languages.includes(documentLang)) {
     return documentLang;

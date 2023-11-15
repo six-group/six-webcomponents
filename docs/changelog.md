@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   `six-sidebar-item-group`
 - Indigo color option
 - Information regarding the minimal compatible Node.js version
+- Error messages in Spanish
 
 ### Removed
 
