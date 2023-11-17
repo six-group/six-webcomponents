@@ -11,6 +11,11 @@ export enum SixDateFormats {
   DDMMYY_SLASH = 'dd/mm/yy',
   YYMMDD_SLASH = 'yy/mm/dd',
 
+  DDMMYYY_DOT_TIME_MINUTES = 'dd.mm.yyyy hh:MM',
+  YYYYMMDD_DASH_TIME_MINUTES = 'yyyy-mm-dd hh:MM',
+  DDMMYYYY_DASH_TIME_MINUTES = 'dd-mm-yyyy hh:MM',
+  DDMMYYYY_SLASH_TIME_MINUTES = 'dd/mm/yyyy hh:MM',
+  YYYYMMDD_SLASH_TIME_MINUTES = 'yyyy/mm/dd hh:MM',
   DDMMYYY_DOT_TIME = 'dd.mm.yyyy hh:MM:ss',
   YYYYMMDD_DASH_TIME = 'yyyy-mm-dd hh:MM:ss',
   DDMMYYYY_DASH_TIME = 'dd-mm-yyyy hh:MM:ss',
