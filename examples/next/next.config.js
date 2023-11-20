@@ -1,4 +1,8 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+  transpilePackages: ['@six-group/ui-library-react', '@six-group/ui-library'],
+  reactStrictMode: true,
+  swcMinify: true,
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
