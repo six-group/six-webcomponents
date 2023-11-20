@@ -30,6 +30,7 @@
     "libraries/ui-library-angular",
     "examples/angular",
     "examples/js",
+    "examples/next",
     "docs"
   ],
   "devDependencies": {
