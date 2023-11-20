@@ -1,0 +1,11 @@
+.users-header .users-header__title {
+  font-weight: bold;
+  font-size: larger;
+  position: relative;
+  top: -0.6rem;
+  margin-left: 0.6rem;
+}
+
+.users-header six-button {
+  margin-right: 1rem;
+}
