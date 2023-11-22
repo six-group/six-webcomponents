@@ -17,7 +17,7 @@ describe('six-drawer', () => {
                 <span class="drawer__title" id="drawer-1-title" part="title">
                   <slot name="label"></slot>
                 </span>
-                <six-icon-button class="x" exportparts="base:close-button" name="x"></six-icon-button>
+                <six-icon-button class="drawer__close" exportparts="base:close-button" name="x"></six-icon-button>
               </header>
               <div class="drawer__body" part="body">
                 <slot></slot>
