@@ -33,6 +33,7 @@ jobs:
         run: |
           npm publish --tag=insider --access=public libraries/ui-library/
           npm publish --tag=insider --access=public libraries/ui-library-react/
+          npm publish --tag=insider --access=public libraries/ui-library-vue/
           npm publish --tag=insider --access=public libraries/ui-library-angular/dist/ui-library-angular/
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
