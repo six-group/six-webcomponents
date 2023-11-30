@@ -14,6 +14,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - Angular example upgraded to Angular 16
 
+### Fixed
+
+- Router causes page reload
+
 ## 4.0.4 - 2023-11-15
 
 ### Added
