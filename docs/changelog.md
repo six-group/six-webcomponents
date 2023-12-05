@@ -12,7 +12,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
-- Angular example upgraded to Angular 16
+- **Breaking:**: Upgraded to Angular 16. Projects need to update to Angular 16 or newer.
 
 ### Fixed
 
