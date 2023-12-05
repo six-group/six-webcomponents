@@ -9,10 +9,10 @@
     "watch": "ng build --watch --configuration development"
   },
   "peerDependencies": {
-    "@angular/common": ">=14.0.0",
-    "@angular/core": ">=14.0.0",
-    "@angular/router": ">=14.0.0",
-    "@angular/forms": ">=14.0.0",
+    "@angular/common": ">=16.0.0",
+    "@angular/core": ">=16.0.0",
+    "@angular/router": ">=16.0.0",
+    "@angular/forms": ">=16.0.0",
     "@six-group/ui-library": "*"
   },
   "dependencies": {
