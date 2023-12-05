@@ -1,0 +1,1 @@
+import{r as t,h as s}from"../app.9243dafc.js";import"./framework.7a2bf33b.js";import"./theme.e9db9b9f.js";const e=".six-files-list__container{padding:1rem}.six-files-list__container :last-child{padding-bottom:0}",l=class{constructor(i){t(this,i)}render(){return s("div",{class:"six-files-list__container"},s("slot",null))}};l.style=e;export{l as six_file_list};
