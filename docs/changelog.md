@@ -15,6 +15,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - Angular example upgraded to Angular 16
 
+- **Breaking:**: Upgraded to Angular 16. Projects need to update to Angular 16 or newer.
+
+### Fixed
+
+- Router causes page reload
+
 ## 4.0.4 - 2023-11-15
 
 ### Added
