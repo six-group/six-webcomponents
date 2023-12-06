@@ -359,6 +359,8 @@ export class SixItemPicker {
     console.warn(
       `${TAG} Roundtrip is not allowed, but was still triggered, please report this issue to the developer of six-item-picker`
     );
+
+    this.sixChange.emit(this.value);
   }
 
   private isNumber() {
