@@ -11,11 +11,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Experimental support for Vue
 - Updated the `six-item-picker` component to include tabindex attributes for better accessibility.
 
-  - Modified the `tabindex` attribute in the root element of the `six-item-picker` component for
-    improved keyboard navigation.
-
-  - Adjusted the tabindex attribute for the up and down buttons in the `six-item-picker` component
-    to enhance accessibility.
 
 ### Changed
 
