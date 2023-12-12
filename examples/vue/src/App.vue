@@ -12,24 +12,17 @@ import {
   SixSidebar,
   SixSidebarItemGroup,
 } from '@six-group/ui-library-vue';
-</script>
+import { ref } from 'vue';
 
-<script lang="ts">
-export default {
-  data() {
-    return {
-      leftSidebarOpen: true,
-    };
-  },
-};
+const leftSidebarOpen = ref(true);
 </script>
 
 <template>
   <six-root>
     <six-header
-      v-bind:openHamburgerMenu.prop="leftSidebarOpen"
-      @six-header-hamburger-menu-clicked="leftSidebarOpen = !leftSidebarOpen"
       slot="header"
+      :open-hamburger-menu="leftSidebarOpen"
+      @six-header-hamburger-menu-clicked="leftSidebarOpen = !leftSidebarOpen"
     >
       <six-search-field slot="search-field" :debounce="600"></six-search-field>
       <six-icon-button slot="notifications" name="notifications_none">
@@ -40,7 +33,7 @@ export default {
       </div>
       <six-menu slot="app-switcher-menu">
         <six-menu-item>App1</six-menu-item>
-        <six-menu-item>App2</six-menu-item>
+        <six-menu-item :checked="true">App2</six-menu-item>
         <six-menu-item>App3</six-menu-item>
         <six-menu-item>App4</six-menu-item>
       </six-menu>
@@ -55,8 +48,19 @@ export default {
     </six-header>
     <six-sidebar slot="left-sidebar" position="left" :open="leftSidebarOpen">
       <!-- TODO: Add router-link attribute as done in ionic: https://ionicframework.com/docs/vue/navigation -->
-      <six-sidebar-item-group @click="$router.push('/')" name="Home" icon="home"></six-sidebar-item-group>
-      <six-sidebar-item-group @click="$router.push('/form')" name="Form" icon="assignment"> </six-sidebar-item-group>
+      <six-sidebar-item-group
+        @click="$router.push('/')"
+        :open="$router.currentRoute.value.name === 'home'"
+        name="Home"
+        icon="home"
+      ></six-sidebar-item-group>
+      <six-sidebar-item-group
+        @click="$router.push('/form')"
+        :open="$router.currentRoute.value.name === 'form'"
+        name="Form"
+        icon="assignment"
+      >
+      </six-sidebar-item-group>
     </six-sidebar>
     <div slot="main">
       <RouterView />
@@ -65,6 +69,10 @@ export default {
 </template>
 
 <style scoped>
+six-root {
+  height: 100vh;
+}
+
 [slot='right-sidebar'] six-sidebar {
   background: var(--six-color-web-rock-600);
 }
@@ -72,15 +80,5 @@ export default {
 [slot='main'] {
   padding-left: var(--six-spacing-xxx-large);
   padding-right: var(--six-spacing-xxx-large);
-  padding-top: var(--six-spacing-xx-large);
-}
-
-six-root {
-  height: 100vh;
-}
-
-pre {
-  background-color: var(--six-color-web-rock-100);
-  padding: var(--six-spacing-medium);
 }
 </style>
