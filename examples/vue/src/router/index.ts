@@ -3,6 +3,7 @@ import DetailsView from '@/views/DetailsView.vue';
 import DialogView from '@/views/DialogView.vue';
 import FormView from '@/views/FormView.vue';
 import HomeView from '@/views/HomeView.vue';
+import TabGroupView from '@/views/TabGroupView.vue';
 import { createRouter, createWebHistory } from 'vue-router';
 
 const router = createRouter({
@@ -32,6 +33,11 @@ const router = createRouter({
       path: '/details',
       name: 'details',
       component: DetailsView,
+    },
+    {
+      path: '/tab-group',
+      name: 'tab-group',
+      component: TabGroupView,
     },
   ],
 });

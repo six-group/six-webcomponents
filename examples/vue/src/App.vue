@@ -114,6 +114,13 @@ function showActiveAppInHeader(app: App) {
         icon="unfold_more"
       >
       </six-sidebar-item-group>
+      <six-sidebar-item-group
+        @click="$router.push('/tab-group')"
+        :open="$router.currentRoute.value.name === 'tab-group'"
+        name="Tab Group"
+        icon="tab"
+      >
+      </six-sidebar-item-group>
     </six-sidebar>
     <div slot="main">
       <RouterView />
