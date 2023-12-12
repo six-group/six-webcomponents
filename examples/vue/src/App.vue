@@ -100,6 +100,13 @@ function showActiveAppInHeader(app: App) {
         icon="notifications_active"
       >
       </six-sidebar-item-group>
+      <six-sidebar-item-group
+        @click="$router.push('/dialog')"
+        :open="$router.currentRoute.value.name === 'dialog'"
+        name="Dialog"
+        icon="web_asset"
+      >
+      </six-sidebar-item-group>
     </six-sidebar>
     <div slot="main">
       <RouterView />

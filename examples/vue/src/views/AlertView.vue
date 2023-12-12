@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SixButton, SixAlert, SixInput } from '@six-group/ui-library-vue';
 import type { Components } from '@six-group/ui-library';
+import { SixAlert, SixButton, SixInput } from '@six-group/ui-library-vue';
 import { ref } from 'vue';
 
 const primary = ref<Components.SixAlert>();
@@ -21,9 +21,9 @@ function escapeHtml(html: string) {
 
 function notify(message: string, type = 'primary', icon = 'info', duration = 3000) {
   const alert = Object.assign(document.createElement('six-alert'), {
-    type: type,
+    type,
     closable: true,
-    duration: duration,
+    duration,
     innerHTML: `
             <six-icon slot="icon">${icon}</six-icon>
             ${escapeHtml(message)}`,

@@ -1,4 +1,5 @@
 import AlertView from '@/views/AlertView.vue';
+import DialogView from '@/views/DialogView.vue';
 import FormView from '@/views/FormView.vue';
 import HomeView from '@/views/HomeView.vue';
 import { createRouter, createWebHistory } from 'vue-router';
@@ -20,6 +21,11 @@ const router = createRouter({
       path: '/alert',
       name: 'alert',
       component: AlertView,
+    },
+    {
+      path: '/dialog',
+      name: 'dialog',
+      component: DialogView,
     },
   ],
 });
