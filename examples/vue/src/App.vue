@@ -92,6 +92,12 @@ function showActiveAppInHeader(app: App) {
         :open="$router.currentRoute.value.name === 'form'"
         name="Form"
         icon="assignment"
+      ></six-sidebar-item-group>
+      <six-sidebar-item-group
+        @click="$router.push('/alert')"
+        :open="$router.currentRoute.value.name === 'alert'"
+        name="Alert"
+        icon="notifications_active"
       >
       </six-sidebar-item-group>
     </six-sidebar>
