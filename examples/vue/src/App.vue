@@ -107,6 +107,13 @@ function showActiveAppInHeader(app: App) {
         icon="web_asset"
       >
       </six-sidebar-item-group>
+      <six-sidebar-item-group
+        @click="$router.push('/details')"
+        :open="$router.currentRoute.value.name === 'details'"
+        name="Details"
+        icon="unfold_more"
+      >
+      </six-sidebar-item-group>
     </six-sidebar>
     <div slot="main">
       <RouterView />

@@ -1,4 +1,5 @@
 import AlertView from '@/views/AlertView.vue';
+import DetailsView from '@/views/DetailsView.vue';
 import DialogView from '@/views/DialogView.vue';
 import FormView from '@/views/FormView.vue';
 import HomeView from '@/views/HomeView.vue';
@@ -26,6 +27,11 @@ const router = createRouter({
       path: '/dialog',
       name: 'dialog',
       component: DialogView,
+    },
+    {
+      path: '/details',
+      name: 'details',
+      component: DetailsView,
     },
   ],
 });
