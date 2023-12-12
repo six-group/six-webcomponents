@@ -6,6 +6,7 @@ import router from './router';
 import '@six-group/ui-library/dist/ui-library/ui-library.css';
 import './main.css';
 
-const app = createApp(App).use(ComponentLibrary).use(router);
-
+const app = createApp(App);
+app.use(ComponentLibrary);
+app.use(router);
 app.mount('#app');
