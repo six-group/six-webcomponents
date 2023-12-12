@@ -2,12 +2,15 @@
 import {
   SixButton,
   SixCheckbox,
+  SixDatepicker,
   SixInput,
   SixLayoutGrid,
+  SixMenuItem,
+  SixRadio,
   SixRange,
+  SixSelect,
   SixSwitch,
   SixTextarea,
-  SixRadio,
 } from '@six-group/ui-library-vue';
 import { ref } from 'vue';
 
@@ -18,6 +21,9 @@ const switchValue = ref(true);
 const rangeValue = ref(0);
 const radioValues = ref(['Option 1', 'Option 2', 'Option 3', 'Option 4']);
 const radioValue = ref<string | undefined>('Option 3');
+const selectValues = ref(['Option 1', 'Option 2', 'Option 3', 'Option 4']);
+const selectValue = ref<string | undefined>('Option 2');
+const datepickerValue = ref<Date>(new Date());
 
 const invalid = ref(false);
 const disabled = ref(false);
@@ -57,10 +63,9 @@ const disabled = ref(false);
     ></six-range>
     <pre>Value: {{ rangeValue }}</pre>
 
-    <!-- TODO: Add support for v-model on six-switch -->
     <six-switch
       :checked="switchValue"
-      @six-switch-change="switchValue = $event.target.checked"
+      @change="switchValue = $event.target.checked"
       label="Switch"
       :disabled="disabled"
       :invalid="invalid"
@@ -68,10 +73,10 @@ const disabled = ref(false);
     ></six-switch>
     <pre>Value: {{ switchValue }}</pre>
 
-    <!-- TODO: Add support for  v-model on six-checkbox -->
+    <!-- TODO: Add support for v-model on six-checkbox -->
     <six-checkbox
       :checked="checkboxValue"
-      @six-checkbox-change="checkboxValue = $event.target.checked"
+      @change="checkboxValue = $event.target.checked"
       label="Checkbox"
       :disabled="disabled"
       :invalid="invalid"
@@ -86,11 +91,35 @@ const disabled = ref(false);
       :key="value"
       :value="value"
       :checked="value === radioValue"
-      @six-radio-change="radioValue = $event.target.value"
+      @change="radioValue = $event.target.value"
       :disabled="disabled"
       >{{ value }}</six-radio
     >
     <pre>Value: {{ radioValue }}</pre>
+
+    <!-- TODO: Add support for v-model on six-select -->
+    <six-select
+      label="Select"
+      placeholder="Select one"
+      :value="selectValue"
+      :disabled="disabled"
+      @change="selectValue = $event.target.value"
+      :invalid="invalid"
+      error-text="Select Error"
+    >
+      <six-menu-item v-for="value of selectValues" :key="value" :value="value">{{ value }}</six-menu-item>
+    </six-select>
+    <pre>Value: {{ selectValue }}</pre>
+
+    <!-- TODO: Add support for v-model on six-datepicker -->
+    <six-datepicker
+      :value="datepickerValue"
+      @change="datepickerValue = $event.target.value"
+      :disabled="disabled"
+      :invalid="invalid"
+      error-text="Datepicker Error"
+    ></six-datepicker>
+    <pre>Value: {{ datepickerValue }}</pre>
 
     <div class="buttons">
       <six-button @click="invalid = !invalid">{{ invalid ? 'Hide Errors' : 'Show Errors' }}</six-button>
