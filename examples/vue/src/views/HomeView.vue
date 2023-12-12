@@ -9,7 +9,8 @@
     </p>
   </div>
 </template>
-<style>
+
+<style scoped>
 .home {
   text-align: center;
 }
