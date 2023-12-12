@@ -16,7 +16,14 @@ function toggle(index: number) {
   <h2>Details</h2>
 
   <section>
-    <six-details :open="isOpen" summary="Toggle Me" summary-icon="settings" :disabled="isDisabled">
+    <six-details
+      :open="isOpen"
+      summary="Toggle Me"
+      summary-icon="settings"
+      :disabled="isDisabled"
+      @six-details-hide="isOpen = false"
+      @six-details-show="isOpen = true"
+    >
       Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
       dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
       kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
