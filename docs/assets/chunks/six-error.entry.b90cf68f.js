@@ -1,0 +1,1 @@
+import{r as s,h as r}from"../app.6f3e227e.js";import"./framework.7a2bf33b.js";import"./theme.f418e9fd.js";const t=".six-error-container{text-align:left;color:var(--six-color-danger-800);width:100%}",e=class{constructor(o){s(this,o)}render(){return r("div",{class:"six-error-container"},r("slot",null))}};e.style=t;export{e as six_error};
