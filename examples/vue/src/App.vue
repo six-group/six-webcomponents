@@ -27,6 +27,7 @@ const apps = ref<App[]>([
 const activeApp = ref('App 2');
 
 // TODO: This workaround to correctly show "App 2" as the active app in the header should not be needed.
+// See: https://github.com/six-group/six-webcomponents/issues/153
 onMounted(() => setTimeout(() => showActiveAppInHeader(apps.value[1]), 100));
 
 function updateAvailableApps() {
@@ -37,6 +38,7 @@ function updateAvailableApps() {
   activeApp.value = 'App 6';
 
   // TODO: This workaround to update the active app in the header should not be needed.
+  // See: https://github.com/six-group/six-webcomponents/issues/153
   showActiveAppInHeader(apps.value[1]);
 }
 
