@@ -21,6 +21,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Fixed
 
 - Router causes page reload
+- Show the correct active app in six-header
 
 ## 4.0.4 - 2023-11-15
 
