@@ -3,11 +3,11 @@ import { SixHeader } from '../six-header';
 
 describe('six-header', () => {
   beforeEach(() => {
-    const mutationObserverMock = jest.fn(function MutationObserver(this: MutationObserver) {
+    const mutationObserverMock = jest.fn(function MutationObserver(this: MutationObserver): MutationObserver {
       this.observe = jest.fn();
       this.disconnect = jest.fn();
+      return this;
     });
-    // @ts-ignore
     global.MutationObserver = mutationObserverMock;
   });
 
