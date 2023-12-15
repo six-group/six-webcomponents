@@ -2,6 +2,15 @@ import { newSpecPage } from '@stencil/core/testing';
 import { SixHeader } from '../six-header';
 
 describe('six-header', () => {
+  beforeEach(() => {
+    const mutationObserverMock = jest.fn(function MutationObserver(this: MutationObserver) {
+      this.observe = jest.fn();
+      this.disconnect = jest.fn();
+    });
+    // @ts-ignore
+    global.MutationObserver = mutationObserverMock;
+  });
+
   it('renders', async () => {
     const page = await newSpecPage({
       components: [SixHeader],
@@ -81,8 +90,8 @@ describe('six-header', () => {
     // given
     const html = `<six-header>
                     <six-menu slot="app-switcher-menu">
-                      <six-menu-item checked="checked">Custody</six-menu-item>
-                      <six-menu-item>Swiss Interbank Clearing</six-menu-item>
+                      <six-menu-item checked="false">Custody</six-menu-item>
+                      <six-menu-item checked="true">Swiss Interbank Clearing</six-menu-item>
                     </six-menu>
                   </six-header>`;
 
@@ -118,7 +127,7 @@ describe('six-header', () => {
               <slot></slot>
             </section>
             <section class="six-header__app-switcher">
-                <a class="six-header__selected-app">Custody</a>
+                <a class="six-header__selected-app">Swiss Interbank Clearing</a>
                 <six-dropdown distance="13" placement="bottom-end" skidding="20">
                   <six-icon-button name="apps" slot="trigger"></six-icon-button>
                   <slot name="app-switcher-menu"></slot>
@@ -130,8 +139,8 @@ describe('six-header', () => {
           </div>
         </mock:shadow-root>
         <six-menu slot="app-switcher-menu">
-            <six-menu-item checked="checked">Custody</six-menu-item>
-            <six-menu-item>Swiss Interbank Clearing</six-menu-item>
+            <six-menu-item checked="false">Custody</six-menu-item>
+            <six-menu-item checked="true">Swiss Interbank Clearing</six-menu-item>
         </six-menu>
       </six-header>
     `);
