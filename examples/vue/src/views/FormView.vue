@@ -64,8 +64,7 @@ const disabled = ref(false);
     <pre>Value: {{ rangeValue }}</pre>
 
     <six-switch
-      :checked="switchValue"
-      @change="switchValue = $event.target.checked"
+      v-model="switchValue"
       label="Switch"
       :disabled="disabled"
       :invalid="invalid"
@@ -73,10 +72,8 @@ const disabled = ref(false);
     ></six-switch>
     <pre>Value: {{ switchValue }}</pre>
 
-    <!-- TODO: Add support for v-model on six-checkbox -->
     <six-checkbox
-      :checked="checkboxValue"
-      @change="checkboxValue = $event.target.checked"
+      v-model="checkboxValue"
       label="Checkbox"
       :disabled="disabled"
       :invalid="invalid"
@@ -84,7 +81,6 @@ const disabled = ref(false);
     ></six-checkbox>
     <pre>Value: {{ checkboxValue }}</pre>
 
-    <!-- TODO: Add support for v-model on six-radio -->
     <six-radio
       name="option"
       v-for="value of radioValues"
@@ -97,13 +93,11 @@ const disabled = ref(false);
     >
     <pre>Value: {{ radioValue }}</pre>
 
-    <!-- TODO: Add support for v-model on six-select -->
     <six-select
+      v-model="selectValue"
       label="Select"
       placeholder="Select one"
-      :value="selectValue"
       :disabled="disabled"
-      @change="selectValue = $event.target.value"
       :invalid="invalid"
       error-text="Select Error"
     >
@@ -111,10 +105,8 @@ const disabled = ref(false);
     </six-select>
     <pre>Value: {{ selectValue }}</pre>
 
-    <!-- TODO: Add support for v-model on six-datepicker -->
     <six-datepicker
-      :value="datepickerValue"
-      @change="datepickerValue = $event.target.value"
+      v-model="datepickerValue"
       :disabled="disabled"
       :invalid="invalid"
       error-text="Datepicker Error"

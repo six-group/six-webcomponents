@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import type { Components } from '@six-group/ui-library';
-import { SixAlert, SixButton, SixInput } from '@six-group/ui-library-vue';
+import { SixAlert, SixButton, SixInput, SixIcon } from '@six-group/ui-library-vue';
 import { ref } from 'vue';
 
-const primary = ref<Components.SixAlert>();
-const success = ref<Components.SixAlert>();
-const info = ref<Components.SixAlert>();
+const primary = ref<{ $el: Components.SixAlert }>();
+const success = ref<{ $el: Components.SixAlert }>();
+const info = ref<{ $el: Components.SixAlert }>();
 
 const toastMessage = ref('Your Message');
 
@@ -40,9 +40,9 @@ function notify(message: string, type = 'primary', icon = 'info', duration = 300
   <h3>Toast Notifications</h3>
   <section>
     <div class="buttons">
-      <six-button type="primary" @click="primary?.toast()">Primary</six-button>
-      <six-button type="success" @click="success?.toast()">Success</six-button>
-      <six-button type="secondary" @click="info?.toast()">Info</six-button>
+      <six-button type="primary" @click="primary?.$el.toast()">Primary</six-button>
+      <six-button type="success" @click="success?.$el.toast()">Success</six-button>
+      <six-button type="secondary" @click="info?.$el.toast()">Info</six-button>
     </div>
 
     <six-alert type="primary" :duration="3000" closable ref="primary">

@@ -4,7 +4,6 @@ import { ref } from 'vue';
 
 const isOpen = ref(false);
 const isDisabled = ref(false);
-
 const openIndex = ref(2);
 
 function toggle(index: number) {
@@ -32,7 +31,7 @@ function toggle(index: number) {
       sanctus est Lorem ipsum dolor sit amet.
     </six-details>
     <six-button @click="isOpen = !isOpen">{{ isOpen ? 'Close' : 'Open' }}</six-button>
-    <six-checkbox :checked="isDisabled" @change="isDisabled = $event.target.checked" label="Disabled"></six-checkbox>
+    <six-checkbox v-model="isDisabled" label="Disabled"></six-checkbox>
   </section>
 
   <h3>Grouped</h3>

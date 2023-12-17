@@ -1,56 +1,28 @@
 <script setup lang="ts">
-import { RouterView } from 'vue-router';
 import {
-  SixHeader,
-  SixSearchField,
-  SixRoot,
-  SixIconButton,
+  SixAvatar,
   SixBadge,
+  SixHeader,
+  SixIconButton,
   SixMenu,
   SixMenuItem,
-  SixAvatar,
+  SixRoot,
+  SixSearchField,
   SixSidebar,
   SixSidebarItemGroup,
 } from '@six-group/ui-library-vue';
-import { onMounted, ref } from 'vue';
+import { ref } from 'vue';
+import { RouterView } from 'vue-router';
 
 const leftSidebarOpen = ref(true);
 
-type App = { name: string; url: string };
-const apps = ref<App[]>([
+const apps = ref([
   { name: 'App 1', url: '/app-1' },
   { name: 'App 2', url: '/app-2' },
   { name: 'App 3', url: '/app-3' },
   { name: 'App 4', url: '/app-4' },
 ]);
-
 const activeApp = ref('App 2');
-
-// TODO: This workaround to correctly show "App 2" as the active app in the header should not be needed.
-// See: https://github.com/six-group/six-webcomponents/issues/153
-onMounted(() => setTimeout(() => showActiveAppInHeader(apps.value[1]), 100));
-
-function updateAvailableApps() {
-  apps.value = [
-    { name: 'App 5', url: '/app-5' },
-    { name: 'App 6', url: '/app-6' },
-  ];
-  activeApp.value = 'App 6';
-
-  // TODO: This workaround to update the active app in the header should not be needed.
-  // See: https://github.com/six-group/six-webcomponents/issues/153
-  showActiveAppInHeader(apps.value[1]);
-}
-
-const appSwitcher = ref<HTMLElement>();
-function showActiveAppInHeader(app: App) {
-  const event = new CustomEvent('six-menu-item-selected', {
-    detail: { item: { innerText: app.name }, name: app.name },
-    bubbles: true,
-    cancelable: true,
-  });
-  appSwitcher.value?.dispatchEvent(event);
-}
 </script>
 
 <template>
@@ -66,13 +38,12 @@ function showActiveAppInHeader(app: App) {
         <six-badge type="danger" pill>10</six-badge>
       </six-icon-button>
       <six-menu slot="app-switcher-menu" ref="appSwitcher">
-        <!-- TODO: Clicking on the app name should also open the app switcher -->
+        <!-- TODO: Should a click on the app name also open the menu? -->
         <six-menu-item v-for="app of apps" :checked="activeApp === app.name" :value="app.name" :key="app.url">{{
           app.name
         }}</six-menu-item>
       </six-menu>
       <six-menu slot="profile-menu">
-        <six-menu-item value="update-apps" @click="updateAvailableApps()">Update available apps</six-menu-item>
         <six-menu-item value="change-password">Change password</six-menu-item>
         <six-menu-item value="logout">Logout</six-menu-item>
       </six-menu>
@@ -82,42 +53,41 @@ function showActiveAppInHeader(app: App) {
       ></six-avatar>
     </six-header>
     <six-sidebar slot="left-sidebar" position="left" :open="leftSidebarOpen">
-      <!-- TODO: Add router-link attribute as done in ionic: https://ionicframework.com/docs/vue/navigation -->
       <six-sidebar-item-group
-        @click="$router.push('/')"
+        router-link="/"
         :open="$router.currentRoute.value.name === 'home'"
         name="Home"
         icon="home"
       ></six-sidebar-item-group>
       <six-sidebar-item-group
-        @click="$router.push('/form')"
+        router-link="/form"
         :open="$router.currentRoute.value.name === 'form'"
         name="Form"
         icon="assignment"
       ></six-sidebar-item-group>
       <six-sidebar-item-group
-        @click="$router.push('/alert')"
+        router-link="/alert"
         :open="$router.currentRoute.value.name === 'alert'"
         name="Alert"
         icon="notifications_active"
       >
       </six-sidebar-item-group>
       <six-sidebar-item-group
-        @click="$router.push('/dialog')"
+        router-link="/dialog"
         :open="$router.currentRoute.value.name === 'dialog'"
         name="Dialog"
         icon="web_asset"
       >
       </six-sidebar-item-group>
       <six-sidebar-item-group
-        @click="$router.push('/details')"
+        router-link="/details"
         :open="$router.currentRoute.value.name === 'details'"
         name="Details"
         icon="unfold_more"
       >
       </six-sidebar-item-group>
       <six-sidebar-item-group
-        @click="$router.push('/tab-group')"
+        router-link="/tab-group"
         :open="$router.currentRoute.value.name === 'tab-group'"
         name="Tab Group"
         icon="tab"
@@ -125,7 +95,7 @@ function showActiveAppInHeader(app: App) {
       </six-sidebar-item-group>
     </six-sidebar>
     <div slot="main">
-      <RouterView />
+      <router-view></router-view>
     </div>
   </six-root>
 </template>

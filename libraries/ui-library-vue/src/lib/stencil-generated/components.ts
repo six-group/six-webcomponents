@@ -63,7 +63,7 @@ export const SixButton = /*@__PURE__*/ defineContainer<JSX.SixButton>('six-butto
 export const SixCard = /*@__PURE__*/ defineContainer<JSX.SixCard>('six-card', undefined);
 
 
-export const SixCheckbox = /*@__PURE__*/ defineContainer<JSX.SixCheckbox>('six-checkbox', undefined, [
+export const SixCheckbox = /*@__PURE__*/ defineContainer<JSX.SixCheckbox, JSX.SixCheckbox["checked"]>('six-checkbox', undefined, [
   'name',
   'value',
   'disabled',
@@ -77,10 +77,11 @@ export const SixCheckbox = /*@__PURE__*/ defineContainer<JSX.SixCheckbox>('six-c
   'six-checkbox-blur',
   'six-checkbox-change',
   'six-checkbox-focus'
-]);
+],
+'checked', 'change');
 
 
-export const SixDatepicker = /*@__PURE__*/ defineContainer<JSX.SixDatepicker>('six-datepicker', undefined, [
+export const SixDatepicker = /*@__PURE__*/ defineContainer<JSX.SixDatepicker, JSX.SixDatepicker["value"]>('six-datepicker', undefined, [
   'type',
   'locale',
   'open',
@@ -111,7 +112,8 @@ export const SixDatepicker = /*@__PURE__*/ defineContainer<JSX.SixDatepicker>('s
   'six-datepicker-select',
   'six-datepicker-clear',
   'six-datepicker-blur'
-]);
+],
+'value', 'change');
 
 
 export const SixDetails = /*@__PURE__*/ defineContainer<JSX.SixDetails>('six-details', undefined, [
@@ -264,7 +266,7 @@ export const SixIconButton = /*@__PURE__*/ defineContainer<JSX.SixIconButton>('s
 ]);
 
 
-export const SixInput = /*@__PURE__*/ defineContainer<JSX.SixInput>('six-input', undefined, [
+export const SixInput = /*@__PURE__*/ defineContainer<JSX.SixInput, JSX.SixInput["value"]>('six-input', undefined, [
   'type',
   'size',
   'name',
@@ -299,7 +301,8 @@ export const SixInput = /*@__PURE__*/ defineContainer<JSX.SixInput>('six-input',
   'six-input-input',
   'six-input-focus',
   'six-input-blur'
-]);
+],
+'value', 'input');
 
 
 export const SixItemPicker = /*@__PURE__*/ defineContainer<JSX.SixItemPicker>('six-item-picker', undefined, [
@@ -393,7 +396,7 @@ export const SixRadio = /*@__PURE__*/ defineContainer<JSX.SixRadio>('six-radio',
 ]);
 
 
-export const SixRange = /*@__PURE__*/ defineContainer<JSX.SixRange>('six-range', undefined, [
+export const SixRange = /*@__PURE__*/ defineContainer<JSX.SixRange, JSX.SixRange["value"]>('six-range', undefined, [
   'name',
   'value',
   'required',
@@ -411,7 +414,8 @@ export const SixRange = /*@__PURE__*/ defineContainer<JSX.SixRange>('six-range',
   'six-range-change',
   'six-range-blur',
   'six-range-focus'
-]);
+],
+'value', 'input');
 
 
 export const SixRoot = /*@__PURE__*/ defineContainer<JSX.SixRoot>('six-root', undefined, [
@@ -433,7 +437,7 @@ export const SixSearchField = /*@__PURE__*/ defineContainer<JSX.SixSearchField>(
 ]);
 
 
-export const SixSelect = /*@__PURE__*/ defineContainer<JSX.SixSelect>('six-select', undefined, [
+export const SixSelect = /*@__PURE__*/ defineContainer<JSX.SixSelect, JSX.SixSelect["value"]>('six-select', undefined, [
   'multiple',
   'maxTagsVisible',
   'disabled',
@@ -462,7 +466,8 @@ export const SixSelect = /*@__PURE__*/ defineContainer<JSX.SixSelect>('six-selec
   'six-select-change',
   'six-select-focus',
   'six-select-blur'
-]);
+],
+'value', 'change');
 
 
 export const SixSidebar = /*@__PURE__*/ defineContainer<JSX.SixSidebar>('six-sidebar', undefined, [
@@ -506,7 +511,7 @@ export const SixStageIndicator = /*@__PURE__*/ defineContainer<JSX.SixStageIndic
 ]);
 
 
-export const SixSwitch = /*@__PURE__*/ defineContainer<JSX.SixSwitch>('six-switch', undefined, [
+export const SixSwitch = /*@__PURE__*/ defineContainer<JSX.SixSwitch, JSX.SixSwitch["checked"]>('six-switch', undefined, [
   'name',
   'value',
   'disabled',
@@ -519,7 +524,8 @@ export const SixSwitch = /*@__PURE__*/ defineContainer<JSX.SixSwitch>('six-switc
   'six-switch-blur',
   'six-switch-change',
   'six-switch-focus'
-]);
+],
+'checked', 'change');
 
 
 export const SixTab = /*@__PURE__*/ defineContainer<JSX.SixTab>('six-tab', undefined, [
@@ -554,7 +560,7 @@ export const SixTag = /*@__PURE__*/ defineContainer<JSX.SixTag>('six-tag', undef
 ]);
 
 
-export const SixTextarea = /*@__PURE__*/ defineContainer<JSX.SixTextarea>('six-textarea', undefined, [
+export const SixTextarea = /*@__PURE__*/ defineContainer<JSX.SixTextarea, JSX.SixTextarea["value"]>('six-textarea', undefined, [
   'size',
   'name',
   'value',
@@ -581,7 +587,8 @@ export const SixTextarea = /*@__PURE__*/ defineContainer<JSX.SixTextarea>('six-t
   'six-textarea-input',
   'six-textarea-focus',
   'six-textarea-blur'
-]);
+],
+'value', 'input');
 
 
 export const SixTile = /*@__PURE__*/ defineContainer<JSX.SixTile>('six-tile', undefined, [
