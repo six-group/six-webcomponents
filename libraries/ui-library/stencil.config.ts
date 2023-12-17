@@ -29,7 +29,7 @@ export const config: Config = {
     }),
     vueOutputTarget({
       componentCorePackage: '@six-group/ui-library',
-      proxiesFile: '../ui-library-vue/src/lib/stencil-generated/components.ts', // pointing to custom proxies file
+      proxiesFile: '../ui-library-vue/src/lib/stencil-generated/components.ts',
       componentModels: [
         {
           elements: ['six-checkbox', 'six-switch'],
