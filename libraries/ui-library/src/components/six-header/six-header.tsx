@@ -204,7 +204,7 @@ export class SixHeader {
     }
   }
 
-  componentDidLoad() {
+  connectedCallback() {
     const appSwitcherSlot = getSlot(this.host, Slot.AppSwitcher);
     if (appSwitcherSlot) {
       this.mutationObserver = new MutationObserver((mutations) => {
