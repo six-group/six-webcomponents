@@ -1,13 +1,64 @@
 # Tables
 
 Since the SIX Web Components Library supports basic components only, we do not provide any table
-implementation. If your application depends on tables, you should consider using a 3rd party table
-implementation like [AG Grid](https://www.ag-grid.com/).
+implementation. If your application depends on tables, you have the following options:
 
-To fit the SIX style and make the tables look more like a SIX Web Component we suggest you to
-overwrite one of AG Grid's standard themes. As an example apply the
+- For simple just use plain HTML tables and apply our [CSS style](#plain-html).
+- For complex tasks you should consider using a 3rd party table implementation like
+  [AG Grid](https://www.ag-grid.com/). Have a look at our [CSS style](#ag-grid) for styling.
+- Maybe there is a reusable SIX internal table component made by another team. Just ask on the
+  official MS Teams chanel.
+
+### Plain HTML
+
+```scss
+table.sic-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--six-font-size-small);
+
+  thead {
+    border-bottom: 2px solid var(--six-color-web-rock-700);
+  }
+
+  th {
+    color: var(--six-color-web-rock-900);
+    padding: var(--six-spacing-medium) var(--six-spacing-medium) var(--six-spacing-x-small);
+    text-align: left;
+  }
+
+  td {
+    padding: var(--six-spacing-medium);
+    border-top: 1px solid var(--six-color-web-rock-400);
+  }
+
+  td.padding-0 {
+    padding: 0;
+  }
+
+  .total {
+    border-top: 2px solid var(--six-color-web-rock-700);
+    font-weight: var(--six-font-weight-bold);
+    color: var(--six-color-web-rock-800);
+  }
+
+  .align-right {
+    text-align: right;
+  }
+
+  .content-width {
+    width: 1%;
+    white-space: nowrap;
+  }
+}
+```
+
+### AG Grid
+
+Overwriting AG Grid its standard theme allows you to present the table according to the SIX
+corporate styleguide. As an example apply the
 [ag-theme-alpine](https://www.ag-grid.com/javascript-data-grid/themes/) theme and put those SCSS
-definition to your global style sheet file:
+definitions to your global style sheet file:
 
 ```scss
 @import '@ag-grid-community/styles';
