@@ -13,6 +13,7 @@
 | `openHamburgerMenu` | `open-hamburger-menu` | Set the hamburger menu icon to open or closed state                       | `boolean` | `false` |
 | `openSearch`        | `open-search`         | Set the header search to be in an open or closed state                    | `boolean` | `false` |
 | `shiftContent`      | `shift-content`       | Indicates if content should be shifted down when search field is visible. | `boolean` | `false` |
+| `showHamburgerMenu` | `show-hamburger-menu` | Set whether the hamburger menu should be visible or not                   | `boolean` | `true`  |
 
 
 ## Events

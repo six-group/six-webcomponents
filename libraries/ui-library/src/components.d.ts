@@ -744,6 +744,10 @@ export namespace Components {
           * Indicates if content should be shifted down when search field is visible.
          */
         "shiftContent": boolean;
+        /**
+          * Set whether the hamburger menu should be visible or not
+         */
+        "showHamburgerMenu": boolean;
     }
     /**
      * @since 1.0
@@ -3875,6 +3879,10 @@ declare namespace LocalJSX {
           * Indicates if content should be shifted down when search field is visible.
          */
         "shiftContent"?: boolean;
+        /**
+          * Set whether the hamburger menu should be visible or not
+         */
+        "showHamburgerMenu"?: boolean;
     }
     /**
      * @since 1.0
