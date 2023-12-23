@@ -1,3 +1,4 @@
+// eslint-disable-next-line @stencil-community/ban-exported-const-enums
 export enum SixDateFormats {
   DDMMYYY_DOT = 'dd.mm.yyyy',
   YYYYMMDD_DASH = 'yyyy-mm-dd',

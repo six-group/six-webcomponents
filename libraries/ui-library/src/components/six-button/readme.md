@@ -49,6 +49,12 @@ Type: `Promise<void>`
 
 Sets focus on the button.
 
+#### Parameters
+
+| Name      | Type                        | Description |
+| --------- | --------------------------- | ----------- |
+| `options` | `FocusOptions \| undefined` |             |
+
 #### Returns
 
 Type: `Promise<void>`
@@ -78,6 +84,10 @@ Type: `Promise<void>`
 
 ## Dependencies
 
+### Used by
+
+ - [six-select](../six-select)
+
 ### Depends on
 
 - [six-spinner](../six-spinner)
@@ -86,6 +96,7 @@ Type: `Promise<void>`
 ```mermaid
 graph TD;
   six-button --> six-spinner
+  six-select --> six-button
   style six-button fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

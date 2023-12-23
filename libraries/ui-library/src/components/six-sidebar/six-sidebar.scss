@@ -14,7 +14,7 @@
     overflow: auto;
 
     &.sidebar--open {
-      box-shadow: var(--six-elevation-1dp);
+      border-right: 1px solid var(--six-color-web-rock-300);
     }
 
     &:not(.sidebar--visible) {

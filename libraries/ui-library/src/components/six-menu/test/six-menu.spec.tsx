@@ -26,13 +26,13 @@ describe('six-menu', () => {
       html: `<six-menu remove-box-shadow></six-menu>`,
     });
     expect(page.root).toEqualHtml(`
-      <six-menu remove-box-shadow>
+      <six-menu remove-box-shadow="">
         <mock:shadow-root>
-        <div class="menu menu--noshadow" part="wrapper">
-          <div part="base" role="menu" tabindex="0">
-            <slot></slot>
+          <div class=".no-shadow menu" part="wrapper">
+            <div part="base" role="menu" tabindex="0">
+              <slot></slot>
+            </div>
           </div>
-        </div>
         </mock:shadow-root>
       </six-menu>
     `);
@@ -46,7 +46,7 @@ describe('six-menu', () => {
     expect(page.root).toEqualHtml(`
       <six-menu virtual-scroll="">
         <mock:shadow-root>
-          <div class="menu menu__wrapper--scrollable" part="wrapper" style="height: 320px;">
+          <div class="menu" part="wrapper" style="height: 320px;">
             <div part="base" role="menu" tabindex="0" style="transform: translateY(0px);">
               <slot></slot>
             </div>

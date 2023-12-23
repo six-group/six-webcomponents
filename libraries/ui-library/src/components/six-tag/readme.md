@@ -40,10 +40,6 @@
 
 ## Dependencies
 
-### Used by
-
- - [six-select](../six-select)
-
 ### Depends on
 
 - [six-tooltip](../six-tooltip)
@@ -55,7 +51,6 @@ graph TD;
   six-tag --> six-tooltip
   six-tag --> six-icon-button
   six-icon-button --> six-icon
-  six-select --> six-tag
   style six-tag fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

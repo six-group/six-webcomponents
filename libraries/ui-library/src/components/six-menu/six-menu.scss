@@ -5,21 +5,17 @@
 }
 
 .menu {
-  padding: 0 0;
+  padding: var(--six-spacing-xx-small) 0;
   border: none;
-  box-shadow: var(--six-elevation-2dp);
+  box-shadow: var(--six-shadow-small);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
 
-  &:focus {
-    outline: none;
-  }
+.menu:focus {
+  outline: none;
+}
 
-  &--noshadow {
-    box-shadow: none;
-  }
-
-  &__wrapper {
-    &--scrollable {
-      overflow-y: auto;
-    }
-  }
+.no-shadow {
+  box-shadow: none;
 }

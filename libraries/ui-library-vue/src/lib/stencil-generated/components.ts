@@ -176,6 +176,7 @@ export const SixDropdown = /*@__PURE__*/ defineContainer<JSX.SixDropdown>('six-d
   'disableHideOnEnterAndSpace',
   'options',
   'virtualScroll',
+  'matchTriggerWidth',
   'six-dropdown-show',
   'six-dropdown-after-show',
   'six-dropdown-hide',
@@ -283,6 +284,7 @@ export const SixInput = /*@__PURE__*/ defineContainer<JSX.SixInput, JSX.SixInput
   'max',
   'step',
   'pattern',
+  'dropdownSearch',
   'required',
   'autocapitalize',
   'autocorrect',
@@ -350,6 +352,7 @@ export const SixMenu = /*@__PURE__*/ defineContainer<JSX.SixMenu>('six-menu', un
   'virtualScroll',
   'itemSize',
   'scrollingDebounce',
+  'disableKeyboardHandling',
   'six-menu-item-selected'
 ]);
 
@@ -358,6 +361,7 @@ export const SixMenuDivider = /*@__PURE__*/ defineContainer<JSX.SixMenuDivider>(
 
 
 export const SixMenuItem = /*@__PURE__*/ defineContainer<JSX.SixMenuItem>('six-menu-item', undefined, [
+  'checkType',
   'checked',
   'value',
   'disabled'
@@ -440,6 +444,8 @@ export const SixSearchField = /*@__PURE__*/ defineContainer<JSX.SixSearchField>(
 
 export const SixSelect = /*@__PURE__*/ defineContainer<JSX.SixSelect, JSX.SixSelect["value"]>('six-select', undefined, [
   'multiple',
+  'selectAllButton',
+  'selectAllText',
   'maxTagsVisible',
   'disabled',
   'name',

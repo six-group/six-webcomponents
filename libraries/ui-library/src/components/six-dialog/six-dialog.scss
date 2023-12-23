@@ -36,7 +36,7 @@
   max-height: calc(100% - var(--six-spacing-xx-large));
   background-color: var(--six-panel-background-color);
   border-radius: var(--six-border-radius-medium);
-  box-shadow: var(--six-shadow-x-large);
+  box-shadow: var(--six-shadow-large);
   opacity: 0;
   transform: scale(0.8);
   transition: var(--six-transition-medium) opacity, var(--six-transition-medium) transform;

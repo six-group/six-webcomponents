@@ -1,7 +1,7 @@
 <template>
 <div>
 
-        <six-select id="six-select-dynamic-options"></six-select>
+        <six-select id="six-select-virtual-scroll" virtual-scroll></six-select>
         
       
 </div>
@@ -13,8 +13,8 @@
 export default {
   name: 'docs-demo-six-select-21',
   mounted() { 
-          const sixSelectDynamicOptions = document.getElementById('six-select-dynamic-options');
-          sixSelectDynamicOptions.options = Array.from(Array(100).keys()).map((idx) => ({
+          const sixSelectDynamicOptions = document.getElementById('six-select-virtual-scroll');
+          sixSelectDynamicOptions.options = Array.from(Array(100000).keys()).map((idx) => ({
             label: `label ${idx}`,
             value: `value ${idx}`,
           }));

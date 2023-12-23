@@ -20,7 +20,11 @@ const isFocusedMenuItem = (menuItem: HTMLSixMenuItemElement) =>
 const isSIXMenuItemElement = (el?: Element): el is HTMLSixMenuItemElement =>
   el?.tagName.toLowerCase() === 'six-menu-item';
 
-const mapToMenuItem = ({ value, label }: SixMenuItemData) => <six-menu-item value={value}>{label}</six-menu-item>;
+const mapToMenuItem = ({ value, label }: SixMenuItemData) => (
+  <six-menu-item key={value} value={value}>
+    {label}
+  </six-menu-item>
+);
 
 const DEFAULT_NUMBER_OF_ITEMS_SHOWN_FOR_VIRTUAL_SCROLLING = 5;
 
@@ -79,6 +83,11 @@ export class SixMenu {
    * The lower the number the more sensitive the component reacts to scrolling changes.
    */
   @Prop() scrollingDebounce = 15;
+
+  /**
+   * Internal: Disables handling of key presses.
+   */
+  @Prop() disableKeyboardHandling = false;
 
   /**
    * Used to calculate which items should be rendered in the DOM
@@ -209,6 +218,10 @@ export class SixMenu {
   }
 
   private handleKeyDown(event: KeyboardEvent) {
+    if (this.disableKeyboardHandling) {
+      return;
+    }
+
     // Make a selection when pressing enter
     if (event.key === 'Enter') {
       const activeItem = this.getActiveItem();
@@ -302,7 +315,11 @@ export class SixMenu {
 
     return this.items
       .slice(this.scrollingIndex, Math.min(this.items.length, this.itemSize + this.scrollingIndex))
-      .map(mapToMenuItem);
+      .map(({ value, label }: SixMenuItemData) => (
+        <six-menu-item checkType="check" key={value} value={value}>
+          {label}
+        </six-menu-item>
+      ));
   }
 
   render() {
@@ -313,8 +330,7 @@ export class SixMenu {
         part="wrapper"
         class={{
           menu: true,
-          'menu--noshadow': this.removeBoxShadow,
-          'menu__wrapper--scrollable': this.getItemsShown() > 0,
+          '.no-shadow': this.removeBoxShadow,
         }}
       >
         <div

@@ -1,7 +1,7 @@
 import { AfterViewInit, Directive, ElementRef, HostListener, inject, Injector, OnDestroy } from '@angular/core';
 import { AbstractControl, ControlValueAccessor, NgControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { Language, languages, ValidationError } from '@six-group/ui-library';
+import { getLanguage, ValidationError } from '@six-group/ui-library';
 import { ValidationMessagesService } from '../services/validation-messages.service';
 
 @Directive()
@@ -136,14 +136,6 @@ export class ValueAccessor implements ControlValueAccessor, AfterViewInit, OnDes
       );
     });
   }
-}
-
-function getLanguage(): Language {
-  const documentLang = document.documentElement.lang as Language;
-  if (languages.includes(documentLang)) {
-    return documentLang;
-  }
-  return 'de';
 }
 
 declare const __zone_symbol__requestAnimationFrame: any;

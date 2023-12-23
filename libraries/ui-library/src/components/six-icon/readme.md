@@ -27,6 +27,7 @@
  - [six-avatar](../six-avatar)
  - [six-datepicker](../six-datepicker)
  - [six-details](../six-details)
+ - [six-dropdown](../six-dropdown)
  - [six-file-list-item](../six-file-list-item)
  - [six-file-upload](../six-file-upload)
  - [six-icon-button](../six-icon-button)
@@ -46,6 +47,7 @@ graph TD;
   six-avatar --> six-icon
   six-datepicker --> six-icon
   six-details --> six-icon
+  six-dropdown --> six-icon
   six-file-list-item --> six-icon
   six-file-upload --> six-icon
   six-icon-button --> six-icon

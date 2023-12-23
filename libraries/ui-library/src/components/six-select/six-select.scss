@@ -3,10 +3,7 @@
 @import 'src/global/mixins/hidden';
 @import 'src/global/mixins/hide-scrollbar';
 
-:host {
-  display: block;
-}
-
+:host,
 .select {
   display: block;
 }
@@ -75,7 +72,6 @@
     }
   }
 
-  .select__tags,
   .select__clear {
     pointer-events: none;
   }
@@ -91,21 +87,25 @@
   }
 }
 
-.select__label {
-  flex-shrink: 1;
-  flex-grow: 1;
+.display__values {
+  display: flex;
+  flex: 1 1 auto;
   align-items: center;
   user-select: none;
-  width: 0; /* needed for firefox because due to "white-space: nowrap" the default is set to max-content */
-
+  overflow: hidden;
   @include hide-scrollbar;
-  overflow-x: auto;
-  overflow-y: hidden;
+}
+
+.display__values-values {
+  flex: 0 1 auto;
+  white-space: nowrap;
+  overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.select__label--single {
-  white-space: nowrap;
+.display__values-and-counter {
+  display: flex;
+  overflow: hidden;
 }
 
 .select__clear {
@@ -126,21 +126,12 @@
 }
 
 // Placeholder
-.select--placeholder-visible .select__label {
+.placeholder {
   color: var(--six-input-placeholder-color);
 }
 
-.select--disabled.select--placeholder-visible .select__label {
+.select--disabled .placeholder {
   color: var(--six-input-placeholder-color-disabled);
-}
-
-// Tags
-.select__tags {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  justify-content: left;
-  margin-left: var(--six-spacing-xx-small);
 }
 
 // Hidden input (for form control validation to show)
@@ -172,8 +163,8 @@
     }
   }
 
-  .select__label {
-    margin: 0 var(--six-input-spacing-small);
+  .display__values {
+    margin: 0 0 0 var(--six-input-spacing-small);
   }
 
   .select__clear {
@@ -182,19 +173,6 @@
 
   .select__icon {
     margin-right: var(--six-spacing-x-small);
-  }
-
-  .select__tags {
-    padding-bottom: 2px;
-
-    six-tag {
-      padding-top: 2px;
-      margin-right: var(--six-spacing-xx-small);
-    }
-  }
-
-  &.select--has-tags .select__label {
-    margin-left: 0;
   }
 }
 
@@ -210,8 +188,8 @@
     }
   }
 
-  .select__label {
-    margin: 0 var(--six-input-spacing-medium);
+  .display__values {
+    margin: 0 0 0 var(--six-input-spacing-medium);
   }
 
   .select__clear {
@@ -220,19 +198,6 @@
 
   .select__icon {
     margin-right: var(--six-spacing-x-small);
-  }
-
-  .select__tags {
-    padding-bottom: 3px;
-
-    six-tag {
-      padding-top: 3px;
-      margin-right: var(--six-spacing-xx-small);
-    }
-  }
-
-  &.select--has-tags .select__label {
-    margin-left: 0;
   }
 }
 
@@ -248,8 +213,8 @@
     }
   }
 
-  .select__label {
-    margin: 0 var(--six-input-spacing-large);
+  .display__values {
+    margin: 0 0 0 var(--six-input-spacing-large);
   }
 
   .select__clear {
@@ -258,19 +223,6 @@
 
   .select__icon {
     margin-right: var(--six-spacing-x-small);
-  }
-
-  .select__tags {
-    padding-bottom: 4px;
-
-    six-tag {
-      padding-top: 4px;
-      margin-right: var(--six-spacing-xx-small);
-    }
-  }
-
-  &.select--has-tags .select__label {
-    margin-left: 0;
   }
 }
 
@@ -297,14 +249,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 .select {
   &__menu {
-    max-width: 50vw;
-    width: fit-content;
-
-    &--filtered {
-      // fixes problem where when filter is enabled the popup has the width of the input field but the menu has the width
-      // of the trigger element and we thus get weird UI glitches when trigger is narrower than filter input field
-      width: 100% !important;
-    }
+    width: 100%;
 
     &--hidden {
       // hide the menu panel if there are no menu items
@@ -317,4 +262,33 @@
 six-icon-button::part(base) {
   padding-top: 0;
   padding-bottom: 0;
+}
+
+.selection-container--border {
+  border-bottom: solid var(--six-border-width) var(--six-menu-divider-color);
+  padding-top: var(--six-spacing-xx-small);
+  padding-bottom: var(--six-spacing-xx-small);
+}
+
+.display-value--hidden {
+  display: none;
+}
+
+.overflow-count {
+  color: var(--six-color-web-rock-600);
+  padding-left: var(--six-spacing-x-small);
+}
+
+.overflow-count-hidden {
+  display: none;
+}
+
+.separator--hidden {
+  display: none;
+}
+
+.select-all {
+  border-top: 1px solid var(--six-color-web-rock-300);
+  display: flex;
+  justify-content: end;
 }

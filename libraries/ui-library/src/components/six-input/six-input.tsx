@@ -106,6 +106,11 @@ export class SixInput {
   /** A pattern to validate input against. */
   @Prop({ reflect: true }) pattern?: string;
 
+  /**
+   * Internal: Styles the input for the dropdown filter search.
+   */
+  @Prop() dropdownSearch = false;
+
   /** Set to true to show an asterisk beneath the label. */
   @Prop() required = false;
 
@@ -337,6 +342,7 @@ export class SixInput {
             'input--line': this.line,
             'input--pill': this.pill,
             'input--disabled': this.disabled,
+            'input--dropdown-search': this.dropdownSearch,
             'input--focused': this.hasFocus,
             'input--empty': this.getValue().length === 0,
             'input--invalid': this.invalid,

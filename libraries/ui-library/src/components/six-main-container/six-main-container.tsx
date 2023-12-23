@@ -20,6 +20,7 @@ export class SixMainContainer {
   @Element() host!: HTMLSixMainContainerElement;
 
   /** Set to false to remove top and bottom padding.  */
+  // eslint-disable-next-line @stencil-community/ban-default-true
   @Prop() padded = true;
 
   render() {

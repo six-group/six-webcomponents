@@ -18,7 +18,6 @@ Menu items provide options for the user to pick from in a menu.
   <six-menu-item>Option 2</six-menu-item>
   <six-menu-item>Option 3</six-menu-item>
   <six-menu-divider></six-menu-divider>
-  <six-menu-item checked>Checked</six-menu-item>
   <six-menu-item disabled>Disabled</six-menu-item>
   <six-menu-divider></six-menu-divider>
   <six-menu-item>
@@ -39,11 +38,12 @@ Menu items provide options for the user to pick from in a menu.
 
 ## Properties
 
-| Property   | Attribute  | Description                                                                                               | Type      | Default |
-| ---------- | ---------- | --------------------------------------------------------------------------------------------------------- | --------- | ------- |
-| `checked`  | `checked`  | Set to true to draw the item in a checked state.                                                          | `boolean` | `false` |
-| `disabled` | `disabled` | Set to true to draw the menu item in a disabled state.                                                    | `boolean` | `false` |
-| `value`    | `value`    | A unique value to store in the menu item. This can be used as a way to identify menu items when selected. | `string`  | `''`    |
+| Property    | Attribute    | Description                                                                                                               | Type                    | Default   |
+| ----------- | ------------ | ------------------------------------------------------------------------------------------------------------------------- | ----------------------- | --------- |
+| `checkType` | `check-type` | Defines if the checked state is displayed as a checkbox or a check-icon                                                   | `"check" \| "checkbox"` | `'check'` |
+| `checked`   | `checked`    | Internal: Draws the item in a checked state. CheckType needs to be set to 'checkbox' or 'check' to show the checked state | `boolean`               | `false`   |
+| `disabled`  | `disabled`   | Set to true to draw the menu item in a disabled state.                                                                    | `boolean`               | `false`   |
+| `value`     | `value`      | A unique value to store in the menu item. This can be used as a way to identify menu items when selected.                 | `string`                | `''`      |
 
 
 ## Methods
@@ -71,6 +71,12 @@ Type: `Promise<void>`
 ### `setFocus(options?: FocusOptions) => Promise<void>`
 
 Sets focus on the button.
+
+#### Parameters
+
+| Name      | Type                        | Description |
+| --------- | --------------------------- | ----------- |
+| `options` | `FocusOptions \| undefined` |             |
 
 #### Returns
 
@@ -109,12 +115,15 @@ Type: `Promise<void>`
 
 ### Depends on
 
+- [six-checkbox](six-checkbox.html)
 - [six-icon](six-icon.html)
 
 ### Graph
 ```mermaid
 graph TD;
+  six-menu-item --> six-checkbox
   six-menu-item --> six-icon
+  six-checkbox --> six-error
   six-dropdown --> six-menu-item
   six-menu --> six-menu-item
   six-select --> six-menu-item

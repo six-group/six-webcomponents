@@ -126,10 +126,6 @@ A tooltip with the full text is shown if the content doesn't fit inside the tag.
 
 ## Dependencies
 
-### Used by
-
- - [six-select](six-select.html)
-
 ### Depends on
 
 - [six-tooltip](six-tooltip.html)
@@ -141,7 +137,6 @@ graph TD;
   six-tag --> six-tooltip
   six-tag --> six-icon-button
   six-icon-button --> six-icon
-  six-select --> six-tag
   style six-tag fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
