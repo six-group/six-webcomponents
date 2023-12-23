@@ -1,12 +1,8 @@
 <template>
 <div>
 
-        <six-input invalid>
-          <div slot="error-text">
-            <six-error               >An error message
-              <a href="https://github.com/six-group/six-webcomponents" target="_blank">with a link</a></six-error>
-          </div>
-        </six-input>
+        <six-input id="multiple-error-text" label="List of string message" invalid></six-input>
+        
       
 </div>
 </template>
@@ -16,6 +12,10 @@
 <script>
 export default {
   name: 'docs-demo-six-input-15',
-  mounted() {  }
+  mounted() { 
+          const sixInput = document.getElementById('multiple-error-text');
+          sixInput.errorText = ['Message 1', 'Message 2'];
+          sixInput.errorTextCount = 3;
+         }
 }
 </script>

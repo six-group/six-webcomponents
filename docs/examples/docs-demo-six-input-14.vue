@@ -1,8 +1,7 @@
 <template>
 <div>
 
-        <six-input id="multiple-error-text" label="List of string message" invalid></six-input>
-        
+        <six-input label="Simple string message" error-text="This is a simple string message" invalid> </six-input>
       
 </div>
 </template>
@@ -12,10 +11,6 @@
 <script>
 export default {
   name: 'docs-demo-six-input-14',
-  mounted() { 
-          const sixInput = document.getElementById('multiple-error-text');
-          sixInput.errorText = ['Message 1', 'Message 2'];
-          sixInput.errorTextCount = 3;
-         }
+  mounted() {  }
 }
 </script>

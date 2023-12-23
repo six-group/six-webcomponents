@@ -550,6 +550,10 @@ export namespace Components {
          */
         "hoist": boolean;
         /**
+          * Determines if the dropdown panel's width should match the width of the trigger element.  If set to `true`, the panel will resize its width to align with the trigger's width. If `false` or omitted, the panel will maintain its default width.
+         */
+        "matchTriggerWidth": boolean;
+        /**
           * Indicates whether the dropdown is open. You can use this in lieu of the show/hide methods.
          */
         "open": boolean;
@@ -574,6 +578,7 @@ export namespace Components {
     | 'left-end';
         /**
           * Instructs the dropdown menu to reposition. Useful when the position or size of the trigger changes when the menu is activated.
+          * @deprecated : use the property `matchTriggerWidth` instead.
          */
         "reposition": () => Promise<void>;
         /**
@@ -828,6 +833,10 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * Internal: Styles the input for the dropdown filter search.
+         */
+        "dropdownSearch": boolean;
+        /**
           * The error message shown, if `invalid` is set to true.
          */
         "errorText": string | string[];
@@ -1039,6 +1048,10 @@ export namespace Components {
      */
     interface SixMenu {
         /**
+          * Internal: Disables handling of key presses.
+         */
+        "disableKeyboardHandling": boolean;
+        /**
           * Used for virtual scrolling Define how many items should be rendered in the DOM when using virtual scrolling
          */
         "itemSize": number;
@@ -1081,7 +1094,11 @@ export namespace Components {
      */
     interface SixMenuItem {
         /**
-          * Set to true to draw the item in a checked state.
+          * Defines if the checked state is displayed as a checkbox or a check-icon
+         */
+        "checkType": 'checkbox' | 'check';
+        /**
+          * Internal: Draws the item in a checked state. CheckType needs to be set to 'checkbox' or 'check' to show the checked state
          */
         "checked": boolean;
         /**
@@ -1347,7 +1364,7 @@ export namespace Components {
         /**
           * The debounce for the filter callbacks.
          */
-        "filterDebounce": number;
+        "filterDebounce"?: number;
         /**
           * The filter's placeholder text.
          */
@@ -1378,6 +1395,7 @@ export namespace Components {
         "line": boolean;
         /**
           * The maximum number of tags to show when `multiple` is true. After the maximum, "+n" will be shown to indicate the number of additional items that are selected. Set to -1 to remove the limit.
+          * @deprecated : This property is ignored. The component now displays as many items as possible and computes the "+n" dynamically.
          */
         "maxTagsVisible": number;
         /**
@@ -1404,6 +1422,14 @@ export namespace Components {
           * Set to true to show an asterisk beneath the label.
          */
         "required": boolean;
+        /**
+          * Enables the select all button.
+         */
+        "selectAllButton": boolean;
+        /**
+          * Custom text for the "select all" button. Defaults to "Select all" and equivalents in supported languages.
+         */
+        "selectAllText"?: string;
         /**
           * Sets focus on the select.
          */
@@ -3633,6 +3659,10 @@ declare namespace LocalJSX {
          */
         "hoist"?: boolean;
         /**
+          * Determines if the dropdown panel's width should match the width of the trigger element.  If set to `true`, the panel will resize its width to align with the trigger's width. If `false` or omitted, the panel will maintain its default width.
+         */
+        "matchTriggerWidth"?: boolean;
+        /**
           * Emitted when the async filter is triggered
          */
         "onSix-async-filter-fired"?: (event: SixDropdownCustomEvent<SixDropdownAsyncFilterPayload>) => void;
@@ -3963,6 +3993,10 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * Internal: Styles the input for the dropdown filter search.
+         */
+        "dropdownSearch"?: boolean;
+        /**
           * The error message shown, if `invalid` is set to true.
          */
         "errorText"?: string | string[];
@@ -4186,6 +4220,10 @@ declare namespace LocalJSX {
      */
     interface SixMenu {
         /**
+          * Internal: Disables handling of key presses.
+         */
+        "disableKeyboardHandling"?: boolean;
+        /**
           * Used for virtual scrolling Define how many items should be rendered in the DOM when using virtual scrolling
          */
         "itemSize"?: number;
@@ -4228,7 +4266,11 @@ declare namespace LocalJSX {
      */
     interface SixMenuItem {
         /**
-          * Set to true to draw the item in a checked state.
+          * Defines if the checked state is displayed as a checkbox or a check-icon
+         */
+        "checkType"?: 'checkbox' | 'check';
+        /**
+          * Internal: Draws the item in a checked state. CheckType needs to be set to 'checkbox' or 'check' to show the checked state
          */
         "checked"?: boolean;
         /**
@@ -4529,6 +4571,7 @@ declare namespace LocalJSX {
         "line"?: boolean;
         /**
           * The maximum number of tags to show when `multiple` is true. After the maximum, "+n" will be shown to indicate the number of additional items that are selected. Set to -1 to remove the limit.
+          * @deprecated : This property is ignored. The component now displays as many items as possible and computes the "+n" dynamically.
          */
         "maxTagsVisible"?: number;
         /**
@@ -4567,6 +4610,14 @@ declare namespace LocalJSX {
           * Set to true to show an asterisk beneath the label.
          */
         "required"?: boolean;
+        /**
+          * Enables the select all button.
+         */
+        "selectAllButton"?: boolean;
+        /**
+          * Custom text for the "select all" button. Defaults to "Select all" and equivalents in supported languages.
+         */
+        "selectAllText"?: string;
         /**
           * The select's size.
          */

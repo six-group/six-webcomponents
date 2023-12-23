@@ -118,14 +118,15 @@ By default virtual scrolling will show 5 items, however you can adjust the numbe
 
 ## Properties
 
-| Property            | Attribute            | Description                                                                                                                                                                                                                         | Type                        | Default     |
-| ------------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- | ----------- |
-| `itemSize`          | `item-size`          | Used for virtual scrolling Define how many items should be rendered in the DOM when using virtual scrolling                                                                                                                         | `number`                    | `10`        |
-| `items`             | --                   | Set the options to be shown in the dropdown                                                                                                                                                                                         | `SixMenuItemData[] \| null` | `null`      |
-| `itemsShown`        | `items-shown`        | Defines how many items should be shown. If the number of items is larger than this property a scrollbar will be shown                                                                                                               | `number \| undefined`       | `undefined` |
-| `removeBoxShadow`   | `remove-box-shadow`  | Set to true to remove the box-shadow                                                                                                                                                                                                | `boolean`                   | `false`     |
-| `scrollingDebounce` | `scrolling-debounce` | Used for virtual scrolling Define the debounce for listening on scrolling changes in milliseconds. The lower the number the more sensitive the component reacts to scrolling changes.                                               | `number`                    | `15`        |
-| `virtualScroll`     | `virtual-scroll`     | Defines whether the menu list will be rendered virtually i.e. only the elements actually shown (and a couple around) are actually rendered in the DOM. If you use virtual scrolling pass the elements via prop instead of via slot. | `boolean`                   | `false`     |
+| Property                  | Attribute                   | Description                                                                                                                                                                                                                         | Type                        | Default     |
+| ------------------------- | --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- | ----------- |
+| `disableKeyboardHandling` | `disable-keyboard-handling` | Internal: Disables handling of key presses.                                                                                                                                                                                         | `boolean`                   | `false`     |
+| `itemSize`                | `item-size`                 | Used for virtual scrolling Define how many items should be rendered in the DOM when using virtual scrolling                                                                                                                         | `number`                    | `10`        |
+| `items`                   | --                          | Set the options to be shown in the dropdown                                                                                                                                                                                         | `SixMenuItemData[] \| null` | `null`      |
+| `itemsShown`              | `items-shown`               | Defines how many items should be shown. If the number of items is larger than this property a scrollbar will be shown                                                                                                               | `number \| undefined`       | `undefined` |
+| `removeBoxShadow`         | `remove-box-shadow`         | Set to true to remove the box-shadow                                                                                                                                                                                                | `boolean`                   | `false`     |
+| `scrollingDebounce`       | `scrolling-debounce`        | Used for virtual scrolling Define the debounce for listening on scrolling changes in milliseconds. The lower the number the more sensitive the component reacts to scrolling changes.                                               | `number`                    | `15`        |
+| `virtualScroll`           | `virtual-scroll`            | Defines whether the menu list will be rendered virtually i.e. only the elements actually shown (and a couple around) are actually rendered in the DOM. If you use virtual scrolling pass the elements via prop instead of via slot. | `boolean`                   | `false`     |
 
 
 ## Events
@@ -143,6 +144,12 @@ Initiates type-to-select logic, which automatically selects an option based on w
 The key passed will be appended to the internal query and the selection will be updated. After a brief period, the
 internal query is cleared automatically. This method is intended to be used with the keydown event. Useful for
 enabling type-to-select when the menu doesn't have focus.
+
+#### Parameters
+
+| Name  | Type     | Description |
+| ----- | -------- | ----------- |
+| `key` | `string` |             |
 
 #### Returns
 
@@ -181,7 +188,9 @@ Type: `Promise<void>`
 ```mermaid
 graph TD;
   six-menu --> six-menu-item
+  six-menu-item --> six-checkbox
   six-menu-item --> six-icon
+  six-checkbox --> six-error
   six-dropdown --> six-menu
   six-select --> six-menu
   style six-menu fill:#f9f,stroke:#333,stroke-width:4px

@@ -53,6 +53,12 @@
 
 Selects an option
 
+#### Parameters
+
+| Name         | Type                  | Description |
+| ------------ | --------------------- | ----------- |
+| `datestring` | `string \| undefined` |             |
+
 #### Returns
 
 Type: `Promise<void>`
@@ -62,6 +68,12 @@ Type: `Promise<void>`
 ### `setFocus(options?: FocusOptions) => Promise<void>`
 
 Sets focus on the datepickers input.
+
+#### Parameters
+
+| Name      | Type                        | Description |
+| --------- | --------------------------- | ----------- |
+| `options` | `FocusOptions \| undefined` |             |
 
 #### Returns
 

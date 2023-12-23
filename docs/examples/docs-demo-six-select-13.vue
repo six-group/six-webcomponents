@@ -1,10 +1,10 @@
 <template>
 <div>
 
-        <six-select label="Select one">
-          <six-menu-item value="option-1">Option 1</six-menu-item>
-          <six-menu-item value="option-2">Option 2</six-menu-item>
-          <six-menu-item value="option-3">Option 3</six-menu-item>
+        <six-select label="Experience" help-text="Please tell us your skill level.">
+          <six-menu-item value="option-1">Novice</six-menu-item>
+          <six-menu-item value="option-2">Intermediate</six-menu-item>
+          <six-menu-item value="option-3">Advanced</six-menu-item>
         </six-select>
       
 </div>

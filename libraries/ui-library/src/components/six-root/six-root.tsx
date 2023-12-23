@@ -28,6 +28,7 @@ export class SixRoot {
   @Prop() breakpoint = 1024;
 
   /** Defines whether the content section should be padded */
+  // eslint-disable-next-line @stencil-community/ban-default-true
   @Prop() padded = true;
 
   /** Defines the stage of the application*/

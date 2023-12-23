@@ -69,6 +69,7 @@ export class SixItemPicker {
   @Prop({ reflect: true, mutable: true }) max?: number | string;
 
   /** Define whether the picker should to a roundtrip i.e. start at max when reaching min and vice versa. */
+  // eslint-disable-next-line @stencil-community/ban-default-true
   @Prop({ reflect: true }) roundtrip = true;
 
   /** Defines how many steps should be taken when navigating */

@@ -1,8 +1,8 @@
 <template>
 <div>
 
-        <six-select id="async-select" async-filter filter-placeholder="Search">
-          <six-menu-item id="async-menu-item" value="search_list_prompt">Use search to show entries</six-menu-item>
+        <six-select id="infinite-scoll-dropdown">
+          <six-menu-item id="infinite-scroll-menu" value="search_list_prompt">Value 0</six-menu-item>
         </six-select>
         
       
@@ -15,33 +15,31 @@
 export default {
   name: 'docs-demo-six-select-18',
   mounted() { 
-          const asyncSelect = document.querySelector('#async-select');
-          const asyncMenu = document.querySelector('#async-menu-item').parentElement;
+          const asyncSelect = document.querySelector('#infinite-scoll-dropdown');
+          const asyncMenu = document.querySelector('#infinite-scroll-menu').parentElement;
 
-          for (let i = 0; i < 500; i++) {
+          let id = 1;
+
+          for (let i = 0; i < 20; i++) {
             const child = document.createElement('six-menu-item');
-            child.innerText = `Value ${i}`;
-            child.value = `value-${i}`;
+            child.innerText = `Value ${id}`;
+            child.value = `value-${id}`;
             asyncMenu.appendChild(child);
+            id++;
           }
 
-          const removeAllChildNodes = (parent) => {
-            while (parent.firstChild) {
-              parent.removeChild(parent.firstChild);
-            }
-          };
+          asyncSelect.addEventListener('six-dropdown-scroll', ($event) => {
+            const { scrollRatio } = $event.detail;
 
-          asyncSelect.addEventListener('six-async-filter-fired', ($event) => {
-            const filterValue = $event.detail.filterValue;
-
-            removeAllChildNodes(asyncMenu);
-
-            const numberOfHits = Math.floor(Math.random() * 25) + 3;
-            for (let i = 0; i < numberOfHits; i++) {
-              const child = document.createElement('six-menu-item');
-              child.innerText = `Value ${filterValue} ${i}`;
-              child.value = `value-${filterValue}-${i}`;
-              asyncMenu.appendChild(child);
+            // add new elements once we reach almost bottom
+            if (scrollRatio > 0.8) {
+              for (let i = 0; i < 20; i++) {
+                const child = document.createElement('six-menu-item');
+                child.innerText = `Value ${id}`;
+                child.value = `value-${id}`;
+                asyncMenu.appendChild(child);
+                id++;
+              }
             }
           });
          }

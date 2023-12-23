@@ -1,8 +1,20 @@
 <template>
 <div>
 
-        <six-input label="What is your name?"></six-input>
-        <six-input           ><div slot="label">What is <span style="color: red">your</span> name?</div></six-input>
+        <six-input placeholder="Small" size="small">
+          <six-icon slot="prefix" size="xSmall">local_offer</six-icon>
+          <six-icon slot="suffix" size="xSmall">settings</six-icon>
+        </six-input>
+        <br>
+        <six-input placeholder="Medium" size="medium">
+          <six-icon slot="prefix" size="small">local_offer</six-icon>
+          <six-icon slot="suffix" size="small">settings</six-icon>
+        </six-input>
+        <br>
+        <six-input placeholder="Large" size="large">
+          <six-icon slot="prefix" size="medium">local_offer</six-icon>
+          <six-icon slot="suffix" size="medium">settings</six-icon>
+        </six-input>
       
 </div>
 </template>

@@ -1,7 +1,7 @@
 <template>
 <div>
 
-        <six-input placeholder="Type something"></six-input>
+        <six-input dropdown-search></six-input>
       
 </div>
 </template>

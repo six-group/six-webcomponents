@@ -256,6 +256,12 @@ When there are more tabs than horizontal space allows, the nav will be scrollabl
 
 Shows the specified tab panel.
 
+#### Parameters
+
+| Name    | Type     | Description |
+| ------- | -------- | ----------- |
+| `panel` | `string` |             |
+
 #### Returns
 
 Type: `Promise<void>`

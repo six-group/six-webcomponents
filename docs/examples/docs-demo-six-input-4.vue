@@ -1,7 +1,11 @@
 <template>
 <div>
 
-        <six-input type="number" placeholder="Integers..."></six-input>
+        <six-input type="password" placeholder="Password Toggle" size="small" toggle-password></six-input>
+        <br>
+        <six-input type="password" placeholder="Password Toggle" size="medium" toggle-password></six-input>
+        <br>
+        <six-input type="password" placeholder="Password Toggle" size="large" toggle-password></six-input>
       
 </div>
 </template>

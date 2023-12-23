@@ -13,15 +13,34 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Added `hide-hamburger-menu` option to `six-header` to allow hiding the hamburger menu.
 - Added focus-visible to `six-checkbox` component for better accessibility.
 - Added part to svg, so users are able to resize the six logo spinner
+- Added `matchTriggerWidth` property to `six-dropdown`.
 
 ### Changed
 
+- **Breaking**: Merged box-shadow CSS variables `--six-elevation-` into `--six-shadow-` and reduced
+  variants to small, medium, and large.
+- **Breaking**: The `tag` part is no longer supported in `six-select`.
+- **Breaking**: Upgraded to Angular 16. Projects must update to Angular 16 or newer.
+
+- Improved `six-select` functionality and appearance:
+
+  - Display checked items as checkboxes in multiselect mode.
+  - Group selected options on top in multiselect mode.
+  - Added a button to select/deselect all items.
+  - Hide expand button when clear button is visible.
+  - Display multiple options as comma-separated values and prevent wrapping.
+  - Match dropdown width with trigger width.
+  - Decreased vertical whitespace between menu items.
+  - Set debounce time for non-async filter to 0.
+  - Enhanced visual styling of dropdown and its filter.
+  - Set focus on the filter element immediately.
+  - Keep focus on the filter element upon mouse leave.
+
 - Angular example upgraded to Angular 16
-- **Breaking**: Upgraded to Angular 16. Projects need to update to Angular 16 or newer.
 
 ### Fixed
 
-- Router causes page reload
+- Angular router causes page reload
 - Show the correct active app in six-header
 - Icon names are not selectable anymore
 - Slot of six-icon was not centered

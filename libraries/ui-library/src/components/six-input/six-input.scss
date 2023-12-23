@@ -35,6 +35,18 @@
     }
   }
 
+  &:hover.input--dropdown-search {
+    border-color: transparent;
+  }
+
+  &--dropdown-search {
+    border-color: transparent;
+  }
+
+  &--dropdown-search.input--focused {
+    border-color: var(--six-input-border-color);
+  }
+
   &.input--focused:not(.input--disabled) {
     background-color: var(--six-input-background-color-focus);
 
