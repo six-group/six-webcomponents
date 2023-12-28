@@ -15,10 +15,11 @@
   },
   "scripts": {
     "start": "vitepress dev",
-    "build": "run-s clean generate:components build:doc copy:angular",
+    "build": "run-s clean generate:components build:doc copy:angular copy:vue",
     "preview": "vitepress preview",
     "build:doc": "vitepress build",
     "copy:angular": "cpy '../examples/angular/dist/demo-app-angular/**/*' ./.vitepress/dist/demo/angular/",
+    "copy:vue": "cpy '../examples/vue/dist/**/*' ./.vitepress/dist/demo/vue/",
     "generate:components": "node scripts/components.mjs",
     "clean": "rimraf examples components .vitepress/dist"
   },
