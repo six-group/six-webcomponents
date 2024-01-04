@@ -21,7 +21,7 @@ export class SixSpinner {
     return (
       <span class="six-spinner" aria-busy="true" aria-live="polite">
         <div class="six-spinner__container">
-          <svg viewBox="0 0 40 40">
+          <svg viewBox="0 0 40 40" part="svg">
             <path
               fill="none"
               stroke="#de3919"

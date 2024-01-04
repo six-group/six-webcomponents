@@ -17,6 +17,7 @@
 | Part     | Description                   |
 | -------- | ----------------------------- |
 | `"base"` | The component's base wrapper. |
+| `"svg"`  |                               |
 
 
 ## CSS Custom Properties

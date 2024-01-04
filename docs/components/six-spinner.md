@@ -19,9 +19,35 @@ Spinners are sized relative to the current font size. To change their size, set 
 <docs-demo-six-spinner-1></docs-demo-six-spinner-1>
 
 ```html
-<six-spinner></six-spinner>
-<six-spinner style="font-size: 2rem"></six-spinner>
-<six-spinner style="font-size: 5rem"></six-spinner>
+<style>
+  .spinner-demo {
+    margin-bottom: 2.5rem;
+  }
+
+  six-spinner#medium::part(svg) {
+    margin-left: 0.5rem;
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+
+  six-spinner#large::part(svg) {
+    margin-left: 2.5rem;
+    width: 5rem;
+    height: 5rem;
+  }
+</style>
+
+<div class="spinner-demo">
+  <six-spinner></six-spinner>
+  <six-spinner style="font-size: 2rem"></six-spinner>
+  <six-spinner style="font-size: 5rem"></six-spinner>
+</div>
+
+<div class="spinner-demo">
+  <six-spinner six="true"></six-spinner>
+  <six-spinner id="medium" six="true"></six-spinner>
+  <six-spinner id="large" six="true"></six-spinner>
+</div>
 ```
 
 
@@ -74,6 +100,7 @@ Spinner can be configured as animated SIX logo.
 | Part     | Description                   |
 | -------- | ----------------------------- |
 | `"base"` | The component's base wrapper. |
+| `"svg"`  |                               |
 
 
 ## CSS Custom Properties
