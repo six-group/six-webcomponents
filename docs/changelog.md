@@ -10,13 +10,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - Experimental support for Vue
 - Updated the `six-item-picker` component to include tabindex attributes for better accessibility.
-- Added focus-visible to 'six-checkbox' component for better accessibility.
+- Added focus-visible to `six-checkbox` component for better accessibility.
 
 ### Changed
 
 - Angular example upgraded to Angular 16
-
-- **Breaking:**: Upgraded to Angular 16. Projects need to update to Angular 16 or newer.
+- **Breaking**: Upgraded to Angular 16. Projects need to update to Angular 16 or newer.
 
 ### Fixed
 
