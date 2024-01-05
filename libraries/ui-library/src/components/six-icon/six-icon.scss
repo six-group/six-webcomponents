@@ -4,6 +4,10 @@
   display: inline;
 }
 
+slot {
+  display: flex;
+}
+
 .material-icons {
   vertical-align: middle;
   font-weight: normal;
