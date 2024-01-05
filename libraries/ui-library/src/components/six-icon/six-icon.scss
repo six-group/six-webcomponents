@@ -4,6 +4,11 @@
   display: inline;
 }
 
+slot {
+  display: flex;
+  justify-content: center;
+}
+
 .material-icons {
   vertical-align: middle;
   font-weight: normal;
