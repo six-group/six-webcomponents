@@ -24,6 +24,9 @@
 
   /* Support for IE. */
   font-feature-settings: 'liga';
+
+  /* Icon name should not be selectable. */
+  user-select: none;
 }
 
 .material-icons-filled {
