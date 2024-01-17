@@ -100,7 +100,7 @@ Spinner can be configured as animated SIX logo.
 | Part     | Description                   |
 | -------- | ----------------------------- |
 | `"base"` | The component's base wrapper. |
-| `"svg"`  |                               |
+| `"svg"`  | The spinner icon              |
 
 
 ## CSS Custom Properties
