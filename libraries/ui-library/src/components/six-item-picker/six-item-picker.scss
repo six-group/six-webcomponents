@@ -4,6 +4,11 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+
+    &:focus-visible {
+      outline: var(--six-focus-ring);
+      outline-offset: 0;
+    }
   }
 
   &__content {
@@ -44,6 +49,11 @@
       &:active {
         color: var(--six-color-web-rock-300);
       }
+    }
+
+    &:focus-visible {
+      outline: var(--six-focus-ring);
+      outline-offset: 0;
     }
   }
 }

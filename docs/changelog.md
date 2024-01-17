@@ -8,15 +8,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
-- "newly added"
-
-### Removed
-
-- "removed"
+- Experimental support for Vue
+- Updated the `six-item-picker` component to include tabindex attributes for better accessibility.
+- Added focus-visible to `six-checkbox` component for better accessibility.
+- Added part to svg, so users are able to resize the six logo spinner
 
 ### Changed
 
-- "changed"
+- Angular example upgraded to Angular 16
+- **Breaking**: Upgraded to Angular 16. Projects need to update to Angular 16 or newer.
+
+### Fixed
+
+- Router causes page reload
+- Show the correct active app in six-header
+- Icon names are not selectable anymore
+- Slot of six-icon was not centered
 
 ## 4.0.4 - 2023-11-15
 

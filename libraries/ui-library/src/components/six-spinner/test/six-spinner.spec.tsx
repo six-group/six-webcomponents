@@ -26,7 +26,7 @@ describe('six-spinner', () => {
         <mock:shadow-root>
           <span aria-busy="true" aria-live="polite" class="six-spinner">
             <div class="six-spinner__container">
-              <svg viewBox="0 0 40 40">
+              <svg part="svg" viewBox="0 0 40 40">
                 <path d="M 35 5 V 35 H 5 T 5 5 H 35 V 35 H 5 V 5 H 35 V 35 H -34 V 30 H 7 A 9 8 0 0 0 14 27 L 27 14 A 8 6 0 0 1 33 12 H 42" fill="none" stroke="#de3919" stroke-linecap="round" stroke-width="5"></path>
               </svg>
             </div>

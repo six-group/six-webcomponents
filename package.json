@@ -28,7 +28,9 @@
     "libraries/ui-library",
     "libraries/ui-library-react",
     "libraries/ui-library-angular",
+    "libraries/ui-library-vue",
     "examples/angular",
+    "examples/vue",
     "examples/js",
     "docs"
   ],
