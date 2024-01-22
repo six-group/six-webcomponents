@@ -16,7 +16,8 @@ For more detailed usage examples, check the
    npm install @six-group/ui-library-vue
    ```
 
-2. Add the `UiLibraryVue` plugin to your Vue application and import the styles:
+2. In your main.ts file, add the `UiLibraryVue` plugin to your Vue application and import the
+   styles:
 
    ```ts
    import { createApp } from 'vue';
