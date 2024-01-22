@@ -127,9 +127,11 @@ describe('six-header', () => {
               <slot></slot>
             </section>
             <section class="six-header__app-switcher">
-                <a class="six-header__selected-app">Swiss Interbank Clearing</a>
                 <six-dropdown distance="13" placement="bottom-end" skidding="20">
-                  <six-icon-button name="apps" slot="trigger"></six-icon-button>
+                  <div class="six-header__app-switcher-dropdown" slot="trigger">
+                    <a class="six-header__selected-app">Swiss Interbank Clearing</a>
+                    <six-icon-button name="apps"></six-icon-button>
+                  </div>
                   <slot name="app-switcher-menu"></slot>
                </six-dropdown>
            </section>
