@@ -115,6 +115,8 @@ export class SixHeader {
 
   private slots?: Record<Slot, boolean>;
 
+  private mutationObserver?: MutationObserver;
+
   @State() selectedApp?: string;
   @State() selectedSection?: Section;
 
@@ -197,7 +199,7 @@ export class SixHeader {
     };
 
     if (this.hasSlot(Slot.AppSwitcher)) {
-      this.selectedApp = this.getSelectedApp();
+      this.updateSelectedApp();
     }
 
     if (this.hasSlot(Slot.Search)) {
@@ -205,19 +207,34 @@ export class SixHeader {
     }
   }
 
-  private getSelectedApp(): string | undefined {
+  connectedCallback() {
+    const appSwitcherSlot = getSlot(this.host, Slot.AppSwitcher);
+    if (appSwitcherSlot) {
+      this.mutationObserver = new MutationObserver((mutations) => {
+        if (mutations.some((mutation) => mutation.type === 'childList' || mutation.type === 'attributes')) {
+          this.updateSelectedApp();
+        }
+      });
+      this.mutationObserver.observe(appSwitcherSlot, { attributes: true, childList: true, subtree: true });
+    }
+  }
+
+  private updateSelectedApp() {
     // there are more concise ways to select the first checked menu item, but this is one that works for jest
     const element = getSlot(this.host, Slot.AppSwitcher);
     if (element == null) {
       return undefined;
     }
     const items = Array.from(element.querySelectorAll('six-menu-item'));
-    const firstCheckedMenuItem = items.find((item: HTMLElement) => item.hasAttribute('checked'));
-    return firstCheckedMenuItem?.textContent ?? undefined;
+    const firstCheckedMenuItem = items.find(
+      (item) => item.hasAttribute('checked') && item.getAttribute('checked') !== 'false'
+    );
+    this.selectedApp = firstCheckedMenuItem?.textContent ?? undefined;
   }
 
   disconnectedCallback() {
     this.eventListeners.removeAll();
+    this.mutationObserver?.disconnect();
   }
 
   render() {

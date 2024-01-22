@@ -7,6 +7,7 @@ import { Component, h, Prop } from '@stencil/core';
  * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
  *
  * @part base - The component's base wrapper.
+ * @part svg - The spinner icon
  */
 @Component({
   tag: 'six-spinner',
@@ -21,7 +22,7 @@ export class SixSpinner {
     return (
       <span class="six-spinner" aria-busy="true" aria-live="polite">
         <div class="six-spinner__container">
-          <svg viewBox="0 0 40 40">
+          <svg viewBox="0 0 40 40" part="svg">
             <path
               fill="none"
               stroke="#de3919"
