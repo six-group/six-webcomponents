@@ -57,7 +57,7 @@ export class SixHeader {
   @Prop() shiftContent = false;
 
   /** Set whether the hamburger menu should be visible or not */
-  @Prop() showHamburgerMenu = true;
+  @Prop() hideHamburgerMenu = false;
 
   /** Set the hamburger menu icon to open or closed state */
   @Prop() openHamburgerMenu = false;
@@ -221,7 +221,7 @@ export class SixHeader {
   }
 
   render() {
-    const hamburgerMenu = this.showHamburgerMenu && (
+    const hamburgerMenu = !this.hideHamburgerMenu && (
       <section class="six-header__menu">
         <six-icon-button name={this.openHamburgerMenu ? 'menu_open' : 'menu'} ref={this.setupMenu} />
       </section>

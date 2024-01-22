@@ -239,7 +239,7 @@ export const SixGroupLabel = /*@__PURE__*/ defineContainer<JSX.SixGroupLabel>('s
 
 export const SixHeader = /*@__PURE__*/ defineContainer<JSX.SixHeader>('six-header', undefined, [
   'shiftContent',
-  'showHamburgerMenu',
+  'hideHamburgerMenu',
   'openHamburgerMenu',
   'openSearch',
   'clickableLogo',

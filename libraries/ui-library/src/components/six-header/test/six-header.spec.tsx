@@ -140,11 +140,11 @@ describe('six-header', () => {
   it('renders without hamburger menu', async () => {
     const page = await newSpecPage({
       components: [SixHeader],
-      html: `<six-header show-hamburger-menu="false"></six-header>`,
+      html: `<six-header hide-hamburger-menu="true"></six-header>`,
     });
 
     expect(page.root).toEqualHtml(`
-      <six-header show-hamburger-menu="false">
+      <six-header hide-hamburger-menu="true">
         <mock:shadow-root>
           <header class="six-header">
             <section class="six-header__logo">

@@ -729,6 +729,10 @@ export namespace Components {
          */
         "getIsSearchOpen": () => Promise<boolean>;
         /**
+          * Set whether the hamburger menu should be visible or not
+         */
+        "hideHamburgerMenu": boolean;
+        /**
           * Set the hamburger menu icon to open or closed state
          */
         "openHamburgerMenu": boolean;
@@ -744,10 +748,6 @@ export namespace Components {
           * Indicates if content should be shifted down when search field is visible.
          */
         "shiftContent": boolean;
-        /**
-          * Set whether the hamburger menu should be visible or not
-         */
-        "showHamburgerMenu": boolean;
     }
     /**
      * @since 1.0
@@ -3844,6 +3844,10 @@ declare namespace LocalJSX {
          */
         "clickableLogo"?: boolean;
         /**
+          * Set whether the hamburger menu should be visible or not
+         */
+        "hideHamburgerMenu"?: boolean;
+        /**
           * Emitted when the name of the selected app is clicked.
          */
         "onSix-header-app-name-clicked"?: (event: SixHeaderCustomEvent<EmptyPayload>) => void;
@@ -3879,10 +3883,6 @@ declare namespace LocalJSX {
           * Indicates if content should be shifted down when search field is visible.
          */
         "shiftContent"?: boolean;
-        /**
-          * Set whether the hamburger menu should be visible or not
-         */
-        "showHamburgerMenu"?: boolean;
     }
     /**
      * @since 1.0
