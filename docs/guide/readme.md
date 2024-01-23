@@ -25,6 +25,7 @@ For detailed instructions tailored to specific frameworks, consult the respectiv
 
 - [Angular](angular.md)
 - [React](react.md)
+- [Vue](vue.md)
 
 ## Contribute
 

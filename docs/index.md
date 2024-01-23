@@ -13,11 +13,14 @@ hero:
     - theme: alt
       text: Angular Example
       link: https://six-group.github.io/six-webcomponents/demo/angular
+    - theme: alt
+      text: Vue Example
+      link: https://six-group.github.io/six-webcomponents/demo/vue
 features:
   - title: Agnostic
     details:
-      Our Library has first class support for Angular and React right out of the box. Checkout the
-      example apps above!
+      Our Library has first class support for Angular, React and Vue right out of the box. Checkout
+      the example apps above!
   - title: Fast Runtime
     details:
       Web Components offered a solution by pushing more work to the browser for better performance.
