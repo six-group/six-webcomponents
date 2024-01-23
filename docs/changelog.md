@@ -26,6 +26,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Icon names are not selectable anymore
 - Slot of six-icon was not centered
 - Fixed problem where datepicker height is not adjusted when using hoist property
+- Clicking on the active app in six-header toggles the app switcher
 
 ## 4.0.4 - 2023-11-15
 

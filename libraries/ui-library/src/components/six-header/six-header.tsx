@@ -268,11 +268,13 @@ export class SixHeader {
           'six-header__app-switcher--open': this.isSectionSelected(Section.AppSwitcher),
         }}
       >
-        <a onClick={this.appNameClicked} class="six-header__selected-app">
-          {this.selectedApp}
-        </a>
         <six-dropdown distance={13} skidding={20} placement="bottom-end" ref={this.setupAppSwitcher}>
-          <six-icon-button name="apps" slot="trigger" />
+          <div slot="trigger" class="six-header__app-switcher-dropdown">
+            <a onClick={this.appNameClicked} class="six-header__selected-app">
+              {this.selectedApp}
+            </a>
+            <six-icon-button name="apps" />
+          </div>
           <slot name={Slot.AppSwitcher} />
         </six-dropdown>
       </section>

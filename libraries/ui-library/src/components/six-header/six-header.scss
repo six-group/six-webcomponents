@@ -56,6 +56,11 @@ $border-height: 0.25rem;
     }
   }
 
+  &__app-switcher-dropdown {
+    display: flex;
+    align-items: center;
+  }
+
   &__selected-app {
     cursor: pointer;
     font-size: 0.9rem;
