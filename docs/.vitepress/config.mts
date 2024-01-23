@@ -47,6 +47,7 @@ export default defineConfig({
             { text: 'Architecture', link: '/guide/architecture' },
             { text: 'Angular', link: '/guide/angular' },
             { text: 'React', link: '/guide/react' },
+            { text: 'Vue', link: '/guide/vue' },
             { text: 'Tables', link: '/guide/tables' },
           ],
         },
