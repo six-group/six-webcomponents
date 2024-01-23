@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - Experimental support for Vue
 - Updated the `six-item-picker` component to include tabindex attributes for better accessibility.
+- Added `hide-hamburger-menu` option to `six-header` to allow hiding the hamburger menu.
 - Added focus-visible to `six-checkbox` component for better accessibility.
 - Added part to svg, so users are able to resize the six logo spinner
 

@@ -729,6 +729,10 @@ export namespace Components {
          */
         "getIsSearchOpen": () => Promise<boolean>;
         /**
+          * Set whether the hamburger menu should be visible or not
+         */
+        "hideHamburgerMenu": boolean;
+        /**
           * Set the hamburger menu icon to open or closed state
          */
         "openHamburgerMenu": boolean;
@@ -3839,6 +3843,10 @@ declare namespace LocalJSX {
           * Set whether the logo should be clickable
          */
         "clickableLogo"?: boolean;
+        /**
+          * Set whether the hamburger menu should be visible or not
+         */
+        "hideHamburgerMenu"?: boolean;
         /**
           * Emitted when the name of the selected app is clicked.
          */

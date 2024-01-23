@@ -56,6 +56,9 @@ export class SixHeader {
   /** Indicates if content should be shifted down when search field is visible. */
   @Prop() shiftContent = false;
 
+  /** Set whether the hamburger menu should be visible or not */
+  @Prop() hideHamburgerMenu = false;
+
   /** Set the hamburger menu icon to open or closed state */
   @Prop() openHamburgerMenu = false;
 
@@ -235,6 +238,12 @@ export class SixHeader {
   }
 
   render() {
+    const hamburgerMenu = !this.hideHamburgerMenu && (
+      <section class="six-header__menu">
+        <six-icon-button name={this.openHamburgerMenu ? 'menu_open' : 'menu'} ref={this.setupMenu} />
+      </section>
+    );
+
     const search = this.hasSlot(Slot.Search) && (
       <section
         class={{
@@ -309,9 +318,7 @@ export class SixHeader {
     return (
       <Host>
         <header class="six-header">
-          <section class="six-header__menu">
-            <six-icon-button name={this.openHamburgerMenu ? 'menu_open' : 'menu'} ref={this.setupMenu} />
-          </section>
+          {hamburgerMenu}
 
           {logo}
 
