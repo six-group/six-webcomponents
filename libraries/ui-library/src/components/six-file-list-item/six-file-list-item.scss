@@ -1,5 +1,7 @@
 .six-files-list-item {
   padding-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
 
   &__name {
     color: var(--six-color-action-600);
@@ -28,7 +30,6 @@
   &__icon {
     padding-left: 0.5rem;
     display: inline-block;
-    transform: translateY(-1px);
     cursor: pointer;
     color: var(--six-color-web-rock-600);
 
