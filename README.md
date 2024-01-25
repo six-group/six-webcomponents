@@ -25,18 +25,20 @@ Thank you to all the people who already contributed to the Six-Webcomponents!
 
 ## Examples
 
-There are example apps for Angular and React. You can find them in the `examples` directory.
+There are example apps for Angular, Plain Javascript and Vue. You can find them in the `examples` directory.
 
 ## Structure
 
-| Module                         | Description                                                          |
-| ------------------------------ | -------------------------------------------------------------------- |
-| `libraries/ui-library`         | Core UI component library build with Stencil                         |
-| `libraries/ui-library-angular` | Angular wrappers and utilities                                       |
-| `libraries/ui-library-react`   | React wrappers                                                       |
-| `examples/angular`             | Angular demo app showing some components and features of ui-library  |
-| `examples/js`                  | Plain JS demo app showing some components and features of ui-library |
-| `docs`                         | API documentation built with VitePress                               |
+| Module                         | Description                                                              |
+| ------------------------------ | ------------------------------------------------------------------------ |
+| `libraries/ui-library`         | Core UI component library build with Stencil                             |
+| `libraries/ui-library-angular` | Angular wrappers and utilities                                           |
+| `libraries/ui-library-react`   | React wrappers                                                           |
+| `libraries/ui-library-vue`     | Vue wrappers                                                             |
+| `examples/angular`             | Angular demo app showing some components and features of the ui-library  |
+| `examples/js`                  | Plain JS demo app showing some components and features the of ui-library |
+| `examples/vue`                 | Vue demo app showing some components and features of the ui-library      |
+| `docs`                         | API documentation built with VitePress                                   |
 
 ## Credits
 
