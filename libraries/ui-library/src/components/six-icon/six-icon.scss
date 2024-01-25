@@ -1,12 +1,8 @@
 @import 'src/global/component';
 
 :host {
-  display: inline;
-}
-
-slot {
-  display: flex;
-  justify-content: center;
+  display: inline-flex;
+  vertical-align: middle;
 }
 
 .material-icons {
