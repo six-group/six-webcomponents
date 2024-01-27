@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Added focus-visible to `six-checkbox` component for better accessibility.
 - Added part to svg, so users are able to resize the six logo spinner
 - Added `matchTriggerWidth` property to `six-dropdown`.
+- Utility to display toast alerts in Angular and Vue.
 
 ### Changed
 
@@ -46,6 +47,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Slot of six-icon was not centered
 - Fixed problem where datepicker height is not adjusted when using hoist property
 - Clicking on the active app in six-header toggles the app switcher
+- Box Shadow for toast alerts
 
 ## 4.0.4 - 2023-11-15
 

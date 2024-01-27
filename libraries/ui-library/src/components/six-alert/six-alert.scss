@@ -35,6 +35,10 @@
   }
 }
 
+.alert--shadow {
+  box-shadow: var(--six-shadow-medium);
+}
+
 .alert--open {
   opacity: 1;
   transform: none;

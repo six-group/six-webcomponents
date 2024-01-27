@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { Components } from '@six-group/ui-library';
-import { SixAlert, SixButton, SixInput, SixIcon } from '@six-group/ui-library-vue';
+import { showAlert } from '@six-group/ui-library';
+import { SixAlert, SixButton, SixIcon, SixInput } from '@six-group/ui-library-vue';
 import { ref } from 'vue';
 
 const primary = ref<{ $el: Components.SixAlert }>();
@@ -10,27 +11,7 @@ const info = ref<{ $el: Components.SixAlert }>();
 const toastMessage = ref('Your Message');
 
 function showToast() {
-  notify(toastMessage.value);
-}
-
-function escapeHtml(html: string) {
-  const div = document.createElement('div');
-  div.textContent = html;
-  return div.innerHTML;
-}
-
-function notify(message: string, type = 'primary', icon = 'info', duration = 3000) {
-  const alert = Object.assign(document.createElement('six-alert'), {
-    type,
-    closable: true,
-    duration,
-    innerHTML: `
-            <six-icon slot="icon">${icon}</six-icon>
-            ${escapeHtml(message)}`,
-  });
-
-  document.body.append(alert);
-  return alert.toast();
+  showAlert(toastMessage.value);
 }
 </script>
 
