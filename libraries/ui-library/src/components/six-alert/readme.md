@@ -49,11 +49,17 @@ Type: `Promise<void>`
 
 
 
-### `toast() => Promise<void>`
+### `toast(adjustPosition?: boolean) => Promise<void>`
 
 Displays the alert as a toast notification. This will move the alert out of its position in the DOM and, when
 dismissed, it will be removed from the DOM completely. By storing a reference to the alert, you can reuse it by
 calling this method again. The returned promise will resolve after the alert is hidden.
+
+#### Parameters
+
+| Name             | Type      | Description                                                                                                                                           |
+| ---------------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `adjustPosition` | `boolean` | If true, the top and right position of the toast stack is shifted according to the six-root header's height and the presence of a vertical scrollbar. |
 
 #### Returns
 
