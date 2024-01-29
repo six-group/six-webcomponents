@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { FormComponent } from './pages/form/form.component';
 import { HomeComponent } from './pages/home/home.component';
+import { AlertComponent } from './pages/alert/alert.component';
 
 export const routes: Routes = [
   {
@@ -15,5 +16,9 @@ export const routes: Routes = [
   {
     path: 'form',
     component: FormComponent,
+  },
+  {
+    path: 'alert',
+    component: AlertComponent,
   },
 ];

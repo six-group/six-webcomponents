@@ -1,5 +1,6 @@
-import { Component, Element, Event, EventEmitter, Method, Prop, State, Watch, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Method, Prop, State, Watch } from '@stencil/core';
 import { EmptyPayload } from '../../utils/types';
+import { getSlot } from '../../utils/slot';
 
 const toastStack = Object.assign(document.createElement('div'), { className: 'six-toast-stack' });
 
@@ -37,7 +38,7 @@ export class SixAlert {
   @Prop({ reflect: true }) closable = false;
 
   /** The type of alert. */
-  @Prop({ reflect: true }) type: 'primary' | 'success' | 'info' | 'warning' | 'danger' = 'primary';
+  @Prop({ reflect: true }) type: AlertType = 'primary';
 
   /**
    * The length of time, in milliseconds, the alert will show before closing itself. If the user interacts with the
@@ -119,15 +120,34 @@ export class SixAlert {
    * Displays the alert as a toast notification. This will move the alert out of its position in the DOM and, when
    * dismissed, it will be removed from the DOM completely. By storing a reference to the alert, you can reuse it by
    * calling this method again. The returned promise will resolve after the alert is hidden.
+   * @param adjustPosition  If true, the top and right position of the toast stack is shifted according to the
+   *                        six-root header's height and the presence of a vertical scrollbar.
    */
   @Method()
-  async toast() {
+  async toast(adjustPosition = true) {
     return new Promise<void>((resolve) => {
       if (!toastStack.parentElement) {
         document.body.append(toastStack);
       }
-
       toastStack.append(this.host);
+
+      if (adjustPosition) {
+        const sixRoot = document.querySelector('six-root');
+        const headerSlot = getSlot(sixRoot, 'header');
+        const mainSlot = sixRoot?.shadowRoot?.querySelector('host main');
+        if (mainSlot != null && mainSlot instanceof HTMLElement) {
+          const scrollbarWidth = mainSlot.offsetWidth - mainSlot.clientWidth;
+          toastStack.style.right = `${scrollbarWidth}px`;
+        }
+        if (headerSlot != null) {
+          const rect = headerSlot?.getBoundingClientRect();
+          toastStack.style.top = `${rect.top + rect.height}px`;
+        }
+      } else {
+        toastStack.style.top = '0';
+        toastStack.style.right = '0';
+      }
+
       requestAnimationFrame(() => this.show());
 
       this.host.addEventListener(
@@ -172,6 +192,8 @@ export class SixAlert {
   }
 
   render() {
+    const asToast = this.host.closest('.six-toast-stack') != null;
+
     return (
       <div
         part="base"
@@ -185,6 +207,7 @@ export class SixAlert {
           'alert--info': this.type === 'info',
           'alert--warning': this.type === 'warning',
           'alert--danger': this.type === 'danger',
+          'alert--shadow': asToast,
         }}
         role="alert"
         aria-live="assertive"
@@ -214,3 +237,5 @@ export class SixAlert {
     );
   }
 }
+
+export type AlertType = 'primary' | 'success' | 'info' | 'warning' | 'danger';

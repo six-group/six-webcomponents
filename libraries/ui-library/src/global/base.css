@@ -196,3 +196,18 @@ body > div.container {
 .six-scroll-lock {
   overflow: hidden !important;
 }
+
+.six-toast-stack {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: var(--six-z-index-toast);
+  display: flex;
+  flex-direction: column;
+  gap: var(--six-spacing-small);
+  margin-top: var(--six-spacing-medium);
+  margin-right: var(--six-spacing-medium);
+  width: 32rem;
+  max-width: 100%;
+  max-height: 100%;
+}

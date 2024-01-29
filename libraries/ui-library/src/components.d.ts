@@ -5,6 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { AlertType } from "./components/six-alert/six-alert";
 import { EmptyPayload } from "./utils/types";
 import { SixDateFormats } from "./components/six-datepicker/six-date-formats";
 import { SixDatepickerSelectPayload } from "./components/six-datepicker/six-datepicker";
@@ -25,6 +26,7 @@ import { StageType as StageType1 } from "./components/six-stage-indicator/six-st
 import { SixTabHidePayload, SixTabShowPayload } from "./components/six-tab-group/six-tab-group";
 import { TimeFormat } from "./utils/time.util";
 import { SixTimepickerChange } from "./components/six-timepicker/six-timepicker";
+export { AlertType } from "./components/six-alert/six-alert";
 export { EmptyPayload } from "./utils/types";
 export { SixDateFormats } from "./components/six-datepicker/six-date-formats";
 export { SixDatepickerSelectPayload } from "./components/six-datepicker/six-datepicker";
@@ -80,12 +82,13 @@ export namespace Components {
         "show": () => Promise<void>;
         /**
           * Displays the alert as a toast notification. This will move the alert out of its position in the DOM and, when dismissed, it will be removed from the DOM completely. By storing a reference to the alert, you can reuse it by calling this method again. The returned promise will resolve after the alert is hidden.
+          * @param adjustPosition If true, the top and right position of the toast stack is shifted according to the six-root header's height and the presence of a vertical scrollbar.
          */
-        "toast": () => Promise<void>;
+        "toast": (adjustPosition?: boolean) => Promise<void>;
         /**
           * The type of alert.
          */
-        "type": 'primary' | 'success' | 'info' | 'warning' | 'danger';
+        "type": AlertType;
     }
     /**
      * @since 1.0
@@ -3150,7 +3153,7 @@ declare namespace LocalJSX {
         /**
           * The type of alert.
          */
-        "type"?: 'primary' | 'success' | 'info' | 'warning' | 'danger';
+        "type"?: AlertType;
     }
     /**
      * @since 1.0
