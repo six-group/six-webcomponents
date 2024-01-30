@@ -22,6 +22,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   variants to small, medium, and large.
 - **Breaking**: The `tag` part is no longer supported in `six-select`.
 - **Breaking**: Upgraded to Angular 16. Projects must update to Angular 16 or newer.
+- **Breaking**: The `six-root` no longer automatically toggles the open state of the sidebar based
+  on the view port width.
 
 - Improved `six-select` functionality and appearance:
 
