@@ -8,28 +8,6 @@ import { Components } from '@six-group/ui-library';
 
 
 @ProxyCmp({
-  inputs: ['value']
-})
-@Component({
-  selector: 'set-attributes',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['value'],
-})
-export class SetAttributes {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-  }
-}
-
-
-export declare interface SetAttributes extends Components.SetAttributes {}
-
-
-@ProxyCmp({
   inputs: ['closable', 'duration', 'open', 'type'],
   methods: ['show', 'hide', 'toast']
 })
@@ -1127,33 +1105,25 @@ export declare interface SixRange extends Components.SixRange {
 
 
 @ProxyCmp({
-  inputs: ['breakpoint', 'padded', 'stage', 'version']
+  inputs: ['padded', 'stage', 'version']
 })
 @Component({
   selector: 'six-root',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['breakpoint', 'padded', 'stage', 'version'],
+  inputs: ['padded', 'stage', 'version'],
 })
 export class SixRoot {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['six-root-collapsed']);
   }
 }
 
 
-import type { SixRootCollapsedPayload as ISixRootSixRootCollapsedPayload } from '@six-group/ui-library';
-
-export declare interface SixRoot extends Components.SixRoot {
-  /**
-   * Emitted when display size is updated.
-   */
-  'six-root-collapsed': EventEmitter<CustomEvent<ISixRootSixRootCollapsedPayload>>;
-}
+export declare interface SixRoot extends Components.SixRoot {}
 
 
 @ProxyCmp({

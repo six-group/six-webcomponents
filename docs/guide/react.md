@@ -92,8 +92,6 @@ import { SixRoot } from '@six-group/ui-library-react/dist';
 import { SixHeader, SixMenu, SixMenuItem, SixAvatar } from '@six-group/ui-library-react/dist';
 // sidebar
 import { SixSidebar, SixSidebarItemGroup } from '@six-group/ui-library-react/dist';
-// types
-import { SixRootCollapsedEvent } from '@six-group/ui-library/dist/types/components/six-root/six-root';
 
 const Header = () => {
   return (
@@ -112,14 +110,8 @@ const Header = () => {
 const App = () => {
   const [sidebarVisible, setSidebarVisible] = useState(true);
 
-  const handleCollapsed = ({ detail }: CustomEvent<SixRootCollapsedEvent>) => {
-    if (detail.collapsed === sidebarVisible) {
-      setSidebarVisible(!detail.collapsed);
-    }
-  };
-
   return (
-    <SixRoot onSix-root-collapsed={handleCollapsed}>
+    <SixRoot>
       <Header />
       <SixSidebar slot="left-sidebar" position="left" open={sidebarVisible}>
         <SixSidebarItemGroup icon="home" name="Home" />

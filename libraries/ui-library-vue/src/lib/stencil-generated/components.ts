@@ -8,11 +8,6 @@ import type { JSX } from '@six-group/ui-library';
 
 
 
-export const SetAttributes = /*@__PURE__*/ defineContainer<JSX.SetAttributes>('set-attributes', undefined, [
-  'value'
-]);
-
-
 export const SixAlert = /*@__PURE__*/ defineContainer<JSX.SixAlert>('six-alert', undefined, [
   'open',
   'closable',
@@ -424,11 +419,9 @@ export const SixRange = /*@__PURE__*/ defineContainer<JSX.SixRange, JSX.SixRange
 
 
 export const SixRoot = /*@__PURE__*/ defineContainer<JSX.SixRoot>('six-root', undefined, [
-  'breakpoint',
   'padded',
   'stage',
-  'version',
-  'six-root-collapsed'
+  'version'
 ]);
 
 

@@ -19,7 +19,6 @@ import { SixItemPickerChangePayload } from "./components/six-item-picker/six-ite
 import { SixLanguageSwitcherChangePayload, SixLanguageSwitcherInput } from "./components/six-language-switcher/six-language-switcher";
 import { SixMenuItemData as SixMenuItemData1, SixMenuItemSelectedPayload } from "./components/six-menu/six-menu";
 import { StageType } from "./components/six-stage-indicator/six-stage-indicator";
-import { SixRootCollapsedPayload } from "./components/six-root/six-root";
 import { SixSearchFieldChangePayload } from "./components/six-search-field/six-search-field";
 import { SixSelectChangePayload } from "./components/six-select/six-select";
 import { StageType as StageType1 } from "./components/six-stage-indicator/six-stage-indicator";
@@ -40,7 +39,6 @@ export { SixItemPickerChangePayload } from "./components/six-item-picker/six-ite
 export { SixLanguageSwitcherChangePayload, SixLanguageSwitcherInput } from "./components/six-language-switcher/six-language-switcher";
 export { SixMenuItemData as SixMenuItemData1, SixMenuItemSelectedPayload } from "./components/six-menu/six-menu";
 export { StageType } from "./components/six-stage-indicator/six-stage-indicator";
-export { SixRootCollapsedPayload } from "./components/six-root/six-root";
 export { SixSearchFieldChangePayload } from "./components/six-search-field/six-search-field";
 export { SixSelectChangePayload } from "./components/six-select/six-select";
 export { StageType as StageType1 } from "./components/six-stage-indicator/six-stage-indicator";
@@ -48,12 +46,6 @@ export { SixTabHidePayload, SixTabShowPayload } from "./components/six-tab-group
 export { TimeFormat } from "./utils/time.util";
 export { SixTimepickerChange } from "./components/six-timepicker/six-timepicker";
 export namespace Components {
-    interface SetAttributes {
-        /**
-          * Attributes map
-         */
-        "value": {};
-    }
     /**
      * @since 1.0
      * @status stable
@@ -1288,10 +1280,6 @@ export namespace Components {
      */
     interface SixRoot {
         /**
-          * Breakpoint for smaller screens when the right sidebar is collapsed by default.
-         */
-        "breakpoint": number;
-        /**
           * Defines whether the content section should be padded
          */
         "padded": boolean;
@@ -2082,10 +2070,6 @@ export interface SixRangeCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLSixRangeElement;
 }
-export interface SixRootCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLSixRootElement;
-}
 export interface SixSearchFieldCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLSixSearchFieldElement;
@@ -2131,12 +2115,6 @@ export interface SixTooltipCustomEvent<T> extends CustomEvent<T> {
     target: HTMLSixTooltipElement;
 }
 declare global {
-    interface HTMLSetAttributesElement extends Components.SetAttributes, HTMLStencilElement {
-    }
-    var HTMLSetAttributesElement: {
-        prototype: HTMLSetAttributesElement;
-        new (): HTMLSetAttributesElement;
-    };
     interface HTMLSixAlertElementEventMap {
         "six-alert-show": EmptyPayload;
         "six-alert-after-show": EmptyPayload;
@@ -2728,22 +2706,11 @@ declare global {
         prototype: HTMLSixRangeElement;
         new (): HTMLSixRangeElement;
     };
-    interface HTMLSixRootElementEventMap {
-        "six-root-collapsed": SixRootCollapsedPayload;
-    }
     /**
      * @since 1.0
      * @status stable
      */
     interface HTMLSixRootElement extends Components.SixRoot, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLSixRootElementEventMap>(type: K, listener: (this: HTMLSixRootElement, ev: SixRootCustomEvent<HTMLSixRootElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLSixRootElementEventMap>(type: K, listener: (this: HTMLSixRootElement, ev: SixRootCustomEvent<HTMLSixRootElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLSixRootElement: {
         prototype: HTMLSixRootElement;
@@ -3054,7 +3021,6 @@ declare global {
         new (): HTMLSixTooltipElement;
     };
     interface HTMLElementTagNameMap {
-        "set-attributes": HTMLSetAttributesElement;
         "six-alert": HTMLSixAlertElement;
         "six-avatar": HTMLSixAvatarElement;
         "six-badge": HTMLSixBadgeElement;
@@ -3110,12 +3076,6 @@ declare global {
     }
 }
 declare namespace LocalJSX {
-    interface SetAttributes {
-        /**
-          * Attributes map
-         */
-        "value"?: {};
-    }
     /**
      * @since 1.0
      * @status stable
@@ -4456,14 +4416,6 @@ declare namespace LocalJSX {
      */
     interface SixRoot {
         /**
-          * Breakpoint for smaller screens when the right sidebar is collapsed by default.
-         */
-        "breakpoint"?: number;
-        /**
-          * Emitted when display size is updated.
-         */
-        "onSix-root-collapsed"?: (event: SixRootCustomEvent<SixRootCollapsedPayload>) => void;
-        /**
           * Defines whether the content section should be padded
          */
         "padded"?: boolean;
@@ -5218,7 +5170,6 @@ declare namespace LocalJSX {
         "trigger"?: string;
     }
     interface IntrinsicElements {
-        "set-attributes": SetAttributes;
         "six-alert": SixAlert;
         "six-avatar": SixAvatar;
         "six-badge": SixBadge;
@@ -5277,7 +5228,6 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "set-attributes": LocalJSX.SetAttributes & JSXBase.HTMLAttributes<HTMLSetAttributesElement>;
             /**
              * @since 1.0
              * @status stable

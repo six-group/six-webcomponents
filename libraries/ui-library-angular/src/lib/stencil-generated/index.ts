@@ -2,7 +2,6 @@
 import * as d from './components';
 
 export const DIRECTIVES = [
-  d.SetAttributes,
   d.SixAlert,
   d.SixAvatar,
   d.SixBadge,

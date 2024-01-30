@@ -1,12 +1,6 @@
 import { newSpecPage } from '@stencil/core/testing';
 import { SixRoot } from '../six-root';
 
-global.ResizeObserver = jest.fn().mockImplementation(() => ({
-  observe: jest.fn(),
-  unobserve: jest.fn(),
-  disconnect: jest.fn(),
-}));
-
 describe('six-root', () => {
   it('renders', async () => {
     const page = await newSpecPage({
@@ -22,9 +16,7 @@ describe('six-root', () => {
               <slot name="header"></slot>
             </header>
             <nav class="six-root__left-sidebar" part="left-sidebar">
-              <set-attributes>
                 <slot name="left-sidebar"></slot>
-              </set-attributes>
             </nav>
             <main part="main">
               <div class="six-root__container six-root__container--padded" part="container">
