@@ -40,9 +40,6 @@ run({
       rightSidebar.toggleAttribute('open');
     });
   },
-  root: ({ root }) => {
-    root.addEventListener('six-root-collapsed', () => {});
-  },
 });
 
 const load = (url) => {

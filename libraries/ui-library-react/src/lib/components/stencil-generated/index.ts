@@ -8,7 +8,6 @@ import type { JSX } from '@six-group/ui-library';
 import { defineCustomElements } from '@six-group/ui-library/loader';
 
 defineCustomElements();
-export const SetAttributes = /*@__PURE__*/createReactComponent<JSX.SetAttributes, HTMLSetAttributesElement>('set-attributes');
 export const SixAlert = /*@__PURE__*/createReactComponent<JSX.SixAlert, HTMLSixAlertElement>('six-alert');
 export const SixAvatar = /*@__PURE__*/createReactComponent<JSX.SixAvatar, HTMLSixAvatarElement>('six-avatar');
 export const SixBadge = /*@__PURE__*/createReactComponent<JSX.SixBadge, HTMLSixBadgeElement>('six-badge');
