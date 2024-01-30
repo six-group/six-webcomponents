@@ -40,6 +40,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   - Keep focus on the filter element upon mouse leave.
 
 - Angular example upgraded to Angular 16
+- `six-alert` when used as a toast in combination with a duration does now stay open indefinitely
+  when hovered.
 
 ### Fixed
 
