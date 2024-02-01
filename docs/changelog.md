@@ -18,6 +18,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   newly languages are separated via pipe
 - Removed Safari hack for preventScroll in `six-dialog` and `six-drawer` because a fix was
   introduced
+- Upgraded Stencil to 4.12.0
+- Upgraded Jest to 29.7.0
 
 ### Fixed
 
