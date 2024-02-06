@@ -347,8 +347,15 @@ export class SixDropdown {
       | HTMLSixMenuElement
       | undefined;
     const selectionContainerItems = selectionContainer?.querySelectorAll('six-menu-item') || [];
-    const sixMenuItems = (sixMenuElement?.querySelector('slot')?.assignedElements().filter(isSixMenuItem) ||
-      []) as HTMLSixMenuItemElement[];
+    let sixMenuItems: HTMLSixMenuItemElement[] =
+      sixMenuElement
+        ?.querySelector('slot')
+        ?.assignedElements()
+        .filter((el): el is HTMLSixMenuItemElement => isSixMenuItem(el)) || [];
+
+    if (sixMenuItems.length === 0) {
+      sixMenuItems = Array.from(sixMenuElement?.shadowRoot?.querySelectorAll('six-menu-item') || []);
+    }
 
     if (selectionContainerItems.length > 0 || sixMenuItems.length > 0) {
       return { sixMenuItems, selectionContainerItems: [...selectionContainerItems] };
