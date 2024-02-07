@@ -62,7 +62,7 @@ export class ValueAccessor implements ControlValueAccessor, AfterViewInit, OnDes
       const element = this.el.nativeElement as HTMLSixInputElement;
       const control = this.ngControl?.control;
 
-      const invalid = !control.valid && control.dirty && control.touched;
+      const invalid = control.status === 'INVALID' && control.dirty && control.touched;
       let errorTexts;
       if (invalid) {
         errorTexts = this.initialErrorText || this.getErrorTexts(control);
