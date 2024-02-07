@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - Experimental support for Vue
 - Updated the `six-item-picker` component to include tabindex attributes for better accessibility.
+- Updated the `six-language-switcher` component to include tabindex attributes for better accessibility.
 
 ### Changed
 
