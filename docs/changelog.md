@@ -51,6 +51,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Clicking on the active app in six-header toggles the app switcher
 - Fixed six-details to not change text color on hover
 - Box Shadow for toast alerts
+- Disabling a SIX web components input element in an Angular form correctly hides any error messages
+  on the input
 
 ## 4.0.4 - 2023-11-15
 
