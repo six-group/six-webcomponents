@@ -15,6 +15,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Added part to svg, so users are able to resize the six logo spinner
 - Added `matchTriggerWidth` property to `six-dropdown`.
 - Utility to display toast alerts in Angular and Vue.
+- Added spanish locale and translations for `six-datepicker` literals.
 
 ### Changed
 
