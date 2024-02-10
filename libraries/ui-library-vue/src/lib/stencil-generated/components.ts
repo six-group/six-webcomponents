@@ -648,3 +648,21 @@ export const SixTooltip = /*@__PURE__*/ defineContainer<JSX.SixTooltip>('six-too
   'six-tooltip-after-hide'
 ]);
 
+
+export const SixTree = /*@__PURE__*/ defineContainer<JSX.SixTree>('six-tree', undefined, [
+  'selection',
+  'six-selection-change'
+]);
+
+
+export const SixTreeItem = /*@__PURE__*/ defineContainer<JSX.SixTreeItem>('six-tree-item', undefined, [
+  'expanded',
+  'selected',
+  'disabled',
+  'isLeaf',
+  'six-expand',
+  'six-after-expand',
+  'six-collapse',
+  'six-after-collapse'
+]);
+

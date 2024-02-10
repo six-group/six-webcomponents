@@ -40,6 +40,7 @@
  - [six-stage-indicator](../six-stage-indicator)
  - [six-tile](../six-tile)
  - [six-timepicker](../six-timepicker)
+ - [six-tree-item](../six-tree-item)
 
 ### Graph
 ```mermaid
@@ -60,6 +61,7 @@ graph TD;
   six-stage-indicator --> six-icon
   six-tile --> six-icon
   six-timepicker --> six-icon
+  six-tree-item --> six-icon
   style six-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -60,3 +60,5 @@ export const SixTextarea = /*@__PURE__*/createReactComponent<JSX.SixTextarea, HT
 export const SixTile = /*@__PURE__*/createReactComponent<JSX.SixTile, HTMLSixTileElement>('six-tile');
 export const SixTimepicker = /*@__PURE__*/createReactComponent<JSX.SixTimepicker, HTMLSixTimepickerElement>('six-timepicker');
 export const SixTooltip = /*@__PURE__*/createReactComponent<JSX.SixTooltip, HTMLSixTooltipElement>('six-tooltip');
+export const SixTree = /*@__PURE__*/createReactComponent<JSX.SixTree, HTMLSixTreeElement>('six-tree');
+export const SixTreeItem = /*@__PURE__*/createReactComponent<JSX.SixTreeItem, HTMLSixTreeItemElement>('six-tree-item');

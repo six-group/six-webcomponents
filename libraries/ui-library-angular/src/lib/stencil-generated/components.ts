@@ -1651,3 +1651,61 @@ export declare interface SixTooltip extends Components.SixTooltip {
 }
 
 
+@ProxyCmp({
+  inputs: ['selection']
+})
+@Component({
+  selector: 'six-tree',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['selection'],
+})
+export class SixTree {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['six-selection-change']);
+  }
+}
+
+
+export declare interface SixTree extends Components.SixTree {
+
+  'six-selection-change': EventEmitter<CustomEvent<any>>;
+}
+
+
+@ProxyCmp({
+  inputs: ['disabled', 'expanded', 'isLeaf', 'selected']
+})
+@Component({
+  selector: 'six-tree-item',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['disabled', 'expanded', 'isLeaf', 'selected'],
+})
+export class SixTreeItem {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['six-expand', 'six-after-expand', 'six-collapse', 'six-after-collapse']);
+  }
+}
+
+
+export declare interface SixTreeItem extends Components.SixTreeItem {
+
+  'six-expand': EventEmitter<CustomEvent<any>>;
+
+  'six-after-expand': EventEmitter<CustomEvent<any>>;
+
+  'six-collapse': EventEmitter<CustomEvent<any>>;
+
+  'six-after-collapse': EventEmitter<CustomEvent<any>>;
+}
+
+

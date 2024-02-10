@@ -286,6 +286,7 @@ Enter an icon label and press enter to display an icon:
  - [six-stage-indicator](six-stage-indicator.html)
  - [six-tile](six-tile.html)
  - [six-timepicker](six-timepicker.html)
+ - [six-tree-item](six-tree-item.html)
 
 ### Graph
 ```mermaid
@@ -306,6 +307,7 @@ graph TD;
   six-stage-indicator --> six-icon
   six-tile --> six-icon
   six-timepicker --> six-icon
+  six-tree-item --> six-icon
   style six-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

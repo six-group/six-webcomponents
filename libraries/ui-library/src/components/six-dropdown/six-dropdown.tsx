@@ -465,9 +465,7 @@ export class SixDropdown {
   }
 
   private getMenu(): HTMLSixMenuElement | undefined {
-    return this.panelSlot?.assignedElements({ flatten: true }).filter(isSixMenu).at(0) as
-      | HTMLSixMenuElement
-      | undefined;
+    return this.panelSlot?.assignedElements({ flatten: true })?.filter(isSixMenu)?.at(0);
   }
 
   /**
@@ -637,7 +635,7 @@ export class SixDropdown {
   // that gets slotted in) so screen readers will understand them. The accessible trigger could be the slotted element,
   // a child of the slotted element, or an element in the slotted element's shadow root.
   //
-  // For example, the accessible trigger of an <sl-button> is a <button> located inside its shadow root.
+  // For example, the accessible trigger of an <six-button> is a <button> located inside its shadow root.
   //
   // To determine this, we assume the first tabbable element in the trigger slot is the "accessible trigger."
   //
@@ -730,8 +728,8 @@ export class SixDropdown {
   }
 }
 
-function isSixMenu(el?: Element): boolean {
-  return el?.tagName.toLowerCase() === 'six-menu';
+function isSixMenu(el: Element): el is HTMLSixMenuElement {
+  return el.tagName.toLowerCase() === 'six-menu';
 }
 function isSixMenuItem(el?: Element): boolean {
   return el?.tagName.toLowerCase() === 'six-menu-item';

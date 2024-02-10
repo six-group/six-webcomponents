@@ -53,5 +53,7 @@ export const DIRECTIVES = [
   d.SixTextarea,
   d.SixTile,
   d.SixTimepicker,
-  d.SixTooltip
+  d.SixTooltip,
+  d.SixTree,
+  d.SixTreeItem
 ];

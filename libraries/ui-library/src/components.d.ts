@@ -2001,6 +2001,80 @@ export namespace Components {
          */
         "trigger": string;
     }
+    /**
+     * @summary Trees allow you to display a hierarchical list of selectable [tree items](/components/tree-item). Items with children can be expanded and collapsed as desired by the user.
+     * @documentation https://shoelace.style/components/tree
+     * @status stable
+     * @since 2.0
+     * Forked from https://github.com/shoelace-style/shoelace version v2.13.1.
+     * @event {{ selection: HTMLSixTreeItemElement[] }} six-selection-change - Emitted when a tree item is selected or deselected.
+     * @csspart base - The component's base wrapper.
+     * @cssproperty [--indent-size=var(--six-spacing-medium)] - The size of the indentation for nested items.
+     * @cssproperty [--indent-guide-color=var(--six-color-web-rock-300)] - The color of the indentation line.
+     * @cssproperty [--indent-guide-offset=0] - The amount of vertical spacing to leave between the top and bottom of the
+     * indentation line's starting position.
+     * @cssproperty [--indent-guide-style=solid] - The style of the indentation line, e.g. solid, dotted, dashed.
+     * @cssproperty [--indent-guide-width=0] - The width of the indentation line.
+     */
+    interface SixTree {
+        /**
+          * The selection behavior of the tree. Single selection allows only one node to be selected at a time. Multiple displays checkboxes and allows more than one node to be selected. Leaf allows only leaf nodes to be selected.
+         */
+        "selection": 'single' | 'leaf';
+    }
+    /**
+     * @summary A tree item serves as a hierarchical node that lives inside a [tree](/components/tree).
+     * @documentation https://shoelace.style/components/tree-item
+     * @status stable
+     * @since 2.0
+     * @dependency six-checkbox
+     * @dependency six-icon
+     * @dependency six-spinner
+     * @event six-expand - Emitted when the tree item expands.
+     * @event six-after-expand - Emitted after the tree item expands and all animations are complete.
+     * @event six-collapse - Emitted when the tree item collapses.
+     * @event six-after-collapse - Emitted after the tree item collapses and all animations are complete.
+     * @event six-lazy-change - Emitted when the tree item's lazy state changes.
+     * @event six-lazy-load - Emitted when a lazy item is selected. Use this event to asynchronously load data and append
+     * items to the tree before expanding. After appending new items, remove the `lazy` attribute to remove the loading
+     * state and update the tree.
+     * @csspart base - The component's base wrapper.
+     * @csspart item - The tree item's container. This element wraps everything except slotted tree item children.
+     * @csspart item--disabled - Applied when the tree item is disabled.
+     * @csspart item--expanded - Applied when the tree item is expanded.
+     * @csspart item--indeterminate - Applied when the selection is indeterminate.
+     * @csspart item--selected - Applied when the tree item is selected.
+     * @csspart indentation - The tree item's indentation container.
+     * @csspart expand-button - The container that wraps the tree item's expand button and spinner.
+     * @csspart label - The tree item's label.
+     * @csspart children - The container that wraps the tree item's nested children.
+     * @csspart checkbox - The checkbox that shows when using multiselect.
+     * @csspart checkbox__base - The checkbox's exported `base` part.
+     * @csspart checkbox__control - The checkbox's exported `control` part.
+     * @csspart checkbox__control--checked - The checkbox's exported `control--checked` part.
+     * @csspart checkbox__control--indeterminate - The checkbox's exported `control--indeterminate` part.
+     * @csspart checkbox__checked-icon - The checkbox's exported `checked-icon` part.
+     * @csspart checkbox__indeterminate-icon - The checkbox's exported `indeterminate-icon` part.
+     * @csspart checkbox__label - The checkbox's exported `label` part.
+     */
+    interface SixTreeItem {
+        /**
+          * Disables the tree item.
+         */
+        "disabled": boolean;
+        /**
+          * Expands the tree item.
+         */
+        "expanded": boolean;
+        /**
+          * internal
+         */
+        "isLeaf": boolean;
+        /**
+          * Draws the tree item in a selected state.
+         */
+        "selected": boolean;
+    }
 }
 export interface SixAlertCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -2113,6 +2187,14 @@ export interface SixTimepickerCustomEvent<T> extends CustomEvent<T> {
 export interface SixTooltipCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLSixTooltipElement;
+}
+export interface SixTreeCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSixTreeElement;
+}
+export interface SixTreeItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSixTreeItemElement;
 }
 declare global {
     interface HTMLSixAlertElementEventMap {
@@ -3020,6 +3102,93 @@ declare global {
         prototype: HTMLSixTooltipElement;
         new (): HTMLSixTooltipElement;
     };
+    interface HTMLSixTreeElementEventMap {
+        "six-selection-change": any;
+    }
+    /**
+     * @summary Trees allow you to display a hierarchical list of selectable [tree items](/components/tree-item). Items with children can be expanded and collapsed as desired by the user.
+     * @documentation https://shoelace.style/components/tree
+     * @status stable
+     * @since 2.0
+     * Forked from https://github.com/shoelace-style/shoelace version v2.13.1.
+     * @event {{ selection: HTMLSixTreeItemElement[] }} six-selection-change - Emitted when a tree item is selected or deselected.
+     * @csspart base - The component's base wrapper.
+     * @cssproperty [--indent-size=var(--six-spacing-medium)] - The size of the indentation for nested items.
+     * @cssproperty [--indent-guide-color=var(--six-color-web-rock-300)] - The color of the indentation line.
+     * @cssproperty [--indent-guide-offset=0] - The amount of vertical spacing to leave between the top and bottom of the
+     * indentation line's starting position.
+     * @cssproperty [--indent-guide-style=solid] - The style of the indentation line, e.g. solid, dotted, dashed.
+     * @cssproperty [--indent-guide-width=0] - The width of the indentation line.
+     */
+    interface HTMLSixTreeElement extends Components.SixTree, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSixTreeElementEventMap>(type: K, listener: (this: HTMLSixTreeElement, ev: SixTreeCustomEvent<HTMLSixTreeElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSixTreeElementEventMap>(type: K, listener: (this: HTMLSixTreeElement, ev: SixTreeCustomEvent<HTMLSixTreeElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLSixTreeElement: {
+        prototype: HTMLSixTreeElement;
+        new (): HTMLSixTreeElement;
+    };
+    interface HTMLSixTreeItemElementEventMap {
+        "six-expand": any;
+        "six-after-expand": any;
+        "six-collapse": any;
+        "six-after-collapse": any;
+    }
+    /**
+     * @summary A tree item serves as a hierarchical node that lives inside a [tree](/components/tree).
+     * @documentation https://shoelace.style/components/tree-item
+     * @status stable
+     * @since 2.0
+     * @dependency six-checkbox
+     * @dependency six-icon
+     * @dependency six-spinner
+     * @event six-expand - Emitted when the tree item expands.
+     * @event six-after-expand - Emitted after the tree item expands and all animations are complete.
+     * @event six-collapse - Emitted when the tree item collapses.
+     * @event six-after-collapse - Emitted after the tree item collapses and all animations are complete.
+     * @event six-lazy-change - Emitted when the tree item's lazy state changes.
+     * @event six-lazy-load - Emitted when a lazy item is selected. Use this event to asynchronously load data and append
+     * items to the tree before expanding. After appending new items, remove the `lazy` attribute to remove the loading
+     * state and update the tree.
+     * @csspart base - The component's base wrapper.
+     * @csspart item - The tree item's container. This element wraps everything except slotted tree item children.
+     * @csspart item--disabled - Applied when the tree item is disabled.
+     * @csspart item--expanded - Applied when the tree item is expanded.
+     * @csspart item--indeterminate - Applied when the selection is indeterminate.
+     * @csspart item--selected - Applied when the tree item is selected.
+     * @csspart indentation - The tree item's indentation container.
+     * @csspart expand-button - The container that wraps the tree item's expand button and spinner.
+     * @csspart label - The tree item's label.
+     * @csspart children - The container that wraps the tree item's nested children.
+     * @csspart checkbox - The checkbox that shows when using multiselect.
+     * @csspart checkbox__base - The checkbox's exported `base` part.
+     * @csspart checkbox__control - The checkbox's exported `control` part.
+     * @csspart checkbox__control--checked - The checkbox's exported `control--checked` part.
+     * @csspart checkbox__control--indeterminate - The checkbox's exported `control--indeterminate` part.
+     * @csspart checkbox__checked-icon - The checkbox's exported `checked-icon` part.
+     * @csspart checkbox__indeterminate-icon - The checkbox's exported `indeterminate-icon` part.
+     * @csspart checkbox__label - The checkbox's exported `label` part.
+     */
+    interface HTMLSixTreeItemElement extends Components.SixTreeItem, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSixTreeItemElementEventMap>(type: K, listener: (this: HTMLSixTreeItemElement, ev: SixTreeItemCustomEvent<HTMLSixTreeItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSixTreeItemElementEventMap>(type: K, listener: (this: HTMLSixTreeItemElement, ev: SixTreeItemCustomEvent<HTMLSixTreeItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLSixTreeItemElement: {
+        prototype: HTMLSixTreeItemElement;
+        new (): HTMLSixTreeItemElement;
+    };
     interface HTMLElementTagNameMap {
         "six-alert": HTMLSixAlertElement;
         "six-avatar": HTMLSixAvatarElement;
@@ -3073,6 +3242,8 @@ declare global {
         "six-tile": HTMLSixTileElement;
         "six-timepicker": HTMLSixTimepickerElement;
         "six-tooltip": HTMLSixTooltipElement;
+        "six-tree": HTMLSixTreeElement;
+        "six-tree-item": HTMLSixTreeItemElement;
     }
 }
 declare namespace LocalJSX {
@@ -5169,6 +5340,85 @@ declare namespace LocalJSX {
          */
         "trigger"?: string;
     }
+    /**
+     * @summary Trees allow you to display a hierarchical list of selectable [tree items](/components/tree-item). Items with children can be expanded and collapsed as desired by the user.
+     * @documentation https://shoelace.style/components/tree
+     * @status stable
+     * @since 2.0
+     * Forked from https://github.com/shoelace-style/shoelace version v2.13.1.
+     * @event {{ selection: HTMLSixTreeItemElement[] }} six-selection-change - Emitted when a tree item is selected or deselected.
+     * @csspart base - The component's base wrapper.
+     * @cssproperty [--indent-size=var(--six-spacing-medium)] - The size of the indentation for nested items.
+     * @cssproperty [--indent-guide-color=var(--six-color-web-rock-300)] - The color of the indentation line.
+     * @cssproperty [--indent-guide-offset=0] - The amount of vertical spacing to leave between the top and bottom of the
+     * indentation line's starting position.
+     * @cssproperty [--indent-guide-style=solid] - The style of the indentation line, e.g. solid, dotted, dashed.
+     * @cssproperty [--indent-guide-width=0] - The width of the indentation line.
+     */
+    interface SixTree {
+        "onSix-selection-change"?: (event: SixTreeCustomEvent<any>) => void;
+        /**
+          * The selection behavior of the tree. Single selection allows only one node to be selected at a time. Multiple displays checkboxes and allows more than one node to be selected. Leaf allows only leaf nodes to be selected.
+         */
+        "selection"?: 'single' | 'leaf';
+    }
+    /**
+     * @summary A tree item serves as a hierarchical node that lives inside a [tree](/components/tree).
+     * @documentation https://shoelace.style/components/tree-item
+     * @status stable
+     * @since 2.0
+     * @dependency six-checkbox
+     * @dependency six-icon
+     * @dependency six-spinner
+     * @event six-expand - Emitted when the tree item expands.
+     * @event six-after-expand - Emitted after the tree item expands and all animations are complete.
+     * @event six-collapse - Emitted when the tree item collapses.
+     * @event six-after-collapse - Emitted after the tree item collapses and all animations are complete.
+     * @event six-lazy-change - Emitted when the tree item's lazy state changes.
+     * @event six-lazy-load - Emitted when a lazy item is selected. Use this event to asynchronously load data and append
+     * items to the tree before expanding. After appending new items, remove the `lazy` attribute to remove the loading
+     * state and update the tree.
+     * @csspart base - The component's base wrapper.
+     * @csspart item - The tree item's container. This element wraps everything except slotted tree item children.
+     * @csspart item--disabled - Applied when the tree item is disabled.
+     * @csspart item--expanded - Applied when the tree item is expanded.
+     * @csspart item--indeterminate - Applied when the selection is indeterminate.
+     * @csspart item--selected - Applied when the tree item is selected.
+     * @csspart indentation - The tree item's indentation container.
+     * @csspart expand-button - The container that wraps the tree item's expand button and spinner.
+     * @csspart label - The tree item's label.
+     * @csspart children - The container that wraps the tree item's nested children.
+     * @csspart checkbox - The checkbox that shows when using multiselect.
+     * @csspart checkbox__base - The checkbox's exported `base` part.
+     * @csspart checkbox__control - The checkbox's exported `control` part.
+     * @csspart checkbox__control--checked - The checkbox's exported `control--checked` part.
+     * @csspart checkbox__control--indeterminate - The checkbox's exported `control--indeterminate` part.
+     * @csspart checkbox__checked-icon - The checkbox's exported `checked-icon` part.
+     * @csspart checkbox__indeterminate-icon - The checkbox's exported `indeterminate-icon` part.
+     * @csspart checkbox__label - The checkbox's exported `label` part.
+     */
+    interface SixTreeItem {
+        /**
+          * Disables the tree item.
+         */
+        "disabled"?: boolean;
+        /**
+          * Expands the tree item.
+         */
+        "expanded"?: boolean;
+        /**
+          * internal
+         */
+        "isLeaf"?: boolean;
+        "onSix-after-collapse"?: (event: SixTreeItemCustomEvent<any>) => void;
+        "onSix-after-expand"?: (event: SixTreeItemCustomEvent<any>) => void;
+        "onSix-collapse"?: (event: SixTreeItemCustomEvent<any>) => void;
+        "onSix-expand"?: (event: SixTreeItemCustomEvent<any>) => void;
+        /**
+          * Draws the tree item in a selected state.
+         */
+        "selected"?: boolean;
+    }
     interface IntrinsicElements {
         "six-alert": SixAlert;
         "six-avatar": SixAvatar;
@@ -5222,6 +5472,8 @@ declare namespace LocalJSX {
         "six-tile": SixTile;
         "six-timepicker": SixTimepicker;
         "six-tooltip": SixTooltip;
+        "six-tree": SixTree;
+        "six-tree-item": SixTreeItem;
     }
 }
 export { LocalJSX as JSX };
@@ -5504,6 +5756,58 @@ declare module "@stencil/core" {
              * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
              */
             "six-tooltip": LocalJSX.SixTooltip & JSXBase.HTMLAttributes<HTMLSixTooltipElement>;
+            /**
+             * @summary Trees allow you to display a hierarchical list of selectable [tree items](/components/tree-item). Items with children can be expanded and collapsed as desired by the user.
+             * @documentation https://shoelace.style/components/tree
+             * @status stable
+             * @since 2.0
+             * Forked from https://github.com/shoelace-style/shoelace version v2.13.1.
+             * @event {{ selection: HTMLSixTreeItemElement[] }} six-selection-change - Emitted when a tree item is selected or deselected.
+             * @csspart base - The component's base wrapper.
+             * @cssproperty [--indent-size=var(--six-spacing-medium)] - The size of the indentation for nested items.
+             * @cssproperty [--indent-guide-color=var(--six-color-web-rock-300)] - The color of the indentation line.
+             * @cssproperty [--indent-guide-offset=0] - The amount of vertical spacing to leave between the top and bottom of the
+             * indentation line's starting position.
+             * @cssproperty [--indent-guide-style=solid] - The style of the indentation line, e.g. solid, dotted, dashed.
+             * @cssproperty [--indent-guide-width=0] - The width of the indentation line.
+             */
+            "six-tree": LocalJSX.SixTree & JSXBase.HTMLAttributes<HTMLSixTreeElement>;
+            /**
+             * @summary A tree item serves as a hierarchical node that lives inside a [tree](/components/tree).
+             * @documentation https://shoelace.style/components/tree-item
+             * @status stable
+             * @since 2.0
+             * @dependency six-checkbox
+             * @dependency six-icon
+             * @dependency six-spinner
+             * @event six-expand - Emitted when the tree item expands.
+             * @event six-after-expand - Emitted after the tree item expands and all animations are complete.
+             * @event six-collapse - Emitted when the tree item collapses.
+             * @event six-after-collapse - Emitted after the tree item collapses and all animations are complete.
+             * @event six-lazy-change - Emitted when the tree item's lazy state changes.
+             * @event six-lazy-load - Emitted when a lazy item is selected. Use this event to asynchronously load data and append
+             * items to the tree before expanding. After appending new items, remove the `lazy` attribute to remove the loading
+             * state and update the tree.
+             * @csspart base - The component's base wrapper.
+             * @csspart item - The tree item's container. This element wraps everything except slotted tree item children.
+             * @csspart item--disabled - Applied when the tree item is disabled.
+             * @csspart item--expanded - Applied when the tree item is expanded.
+             * @csspart item--indeterminate - Applied when the selection is indeterminate.
+             * @csspart item--selected - Applied when the tree item is selected.
+             * @csspart indentation - The tree item's indentation container.
+             * @csspart expand-button - The container that wraps the tree item's expand button and spinner.
+             * @csspart label - The tree item's label.
+             * @csspart children - The container that wraps the tree item's nested children.
+             * @csspart checkbox - The checkbox that shows when using multiselect.
+             * @csspart checkbox__base - The checkbox's exported `base` part.
+             * @csspart checkbox__control - The checkbox's exported `control` part.
+             * @csspart checkbox__control--checked - The checkbox's exported `control--checked` part.
+             * @csspart checkbox__control--indeterminate - The checkbox's exported `control--indeterminate` part.
+             * @csspart checkbox__checked-icon - The checkbox's exported `checked-icon` part.
+             * @csspart checkbox__indeterminate-icon - The checkbox's exported `indeterminate-icon` part.
+             * @csspart checkbox__label - The checkbox's exported `label` part.
+             */
+            "six-tree-item": LocalJSX.SixTreeItem & JSXBase.HTMLAttributes<HTMLSixTreeItemElement>;
         }
     }
 }

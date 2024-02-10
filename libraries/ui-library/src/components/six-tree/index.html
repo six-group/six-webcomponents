@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <script type="module" src="/build/ui-library.esm.js"></script>
+    <script nomodule src="/build/ui-library.js"></script>
+    <link rel="stylesheet" href="/build/ui-library.css" />
+    <title>six-tree</title>
+  </head>
+  <body>
+    <div class="container">
+      <section>
+        <h2>Simple</h2>
+        <six-tree>
+          <six-tree-item>
+            Item 1
+            <six-tree-item>Item A</six-tree-item>
+            <six-tree-item>Item B</six-tree-item>
+            <six-tree-item>Item C</six-tree-item>
+          </six-tree-item>
+          <six-tree-item>Item 2</six-tree-item>
+          <six-tree-item>Item 3</six-tree-item>
+        </six-tree>
+      </section>
+
+      <section>
+        <h2>With lines</h2>
+        <six-tree class="tree-with-lines">
+          <six-tree-item expanded>
+            Deciduous
+            <six-tree-item>Birch</six-tree-item>
+            <six-tree-item expanded>
+              Maple
+              <six-tree-item>Field maple</six-tree-item>
+              <six-tree-item>Red maple</six-tree-item>
+              <six-tree-item>Sugar maple</six-tree-item>
+            </six-tree-item>
+            <six-tree-item>Oak</six-tree-item>
+          </six-tree-item>
+
+          <six-tree-item>
+            Coniferous
+            <six-tree-item>Cedar</six-tree-item>
+            <six-tree-item>Pine</six-tree-item>
+            <six-tree-item>Spruce</six-tree-item>
+          </six-tree-item>
+
+          <six-tree-item>
+            Non-trees
+            <six-tree-item>Bamboo</six-tree-item>
+            <six-tree-item>Cactus</six-tree-item>
+            <six-tree-item>Fern</six-tree-item>
+          </six-tree-item>
+        </six-tree>
+
+        <style>
+          .tree-with-lines {
+            --indent-guide-width: 1px;
+          }
+        </style>
+      </section>
+    </div>
+  </body>
+</html>
