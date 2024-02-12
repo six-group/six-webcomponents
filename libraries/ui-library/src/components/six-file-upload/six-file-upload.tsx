@@ -1,5 +1,4 @@
 import { Component, Element, Event, EventEmitter, h, Listen, Prop, State } from '@stencil/core';
-
 interface ISingleFile {
   file: File;
 }
@@ -50,6 +49,9 @@ export class SixFileUpload {
   /** Allowed max file size in bytes. */
   @Prop() readonly maxFileSize?: number;
 
+  /** Set to true to draw the control in a loading state. */
+  @Prop({ reflect: true }) uploading = false;
+
   /** Triggers when a file is added. */
   @Event({ eventName: 'six-file-upload-success' }) success!: EventEmitter<SixFileUploadSuccessPayload>;
 
@@ -88,7 +90,7 @@ export class SixFileUpload {
   }
 
   private handleFiles = (files: FileList) => {
-    if (this.disabled || files.length === 0) {
+    if (this.disabled || files.length === 0 || this.uploading) {
       return;
     }
 
@@ -168,16 +170,17 @@ export class SixFileUpload {
       <div
         class={{
           'six-file-upload': true,
-          'six-file-upload--disabled': this.disabled,
+          'six-file-upload--disabled': this.disabled || this.uploading,
         }}
       >
         <Container
+          disabled={this.disabled || this.uploading}
           class={{
             'six-file-upload__container--compact': this.compact,
             'six-file-upload__container--full': !this.compact,
           }}
         >
-          {this.compact && (
+          {this.compact && !this.uploading && (
             <span slot="prefix">
               <six-icon class="six-file-upload__label-icon">arrow_circle_up</six-icon>
             </span>
@@ -189,17 +192,25 @@ export class SixFileUpload {
               'six-file-upload__drop-zone--compact': this.compact,
             }}
           >
-            <span>{this.renderLabel()}</span>
-            <input
-              class="six-file-upload__input"
-              type="file"
-              name="resume"
-              disabled={this.disabled}
-              accept={this.accept}
-              multiple={this.multiple}
-              onChange={this.onChange}
-              ref={(el) => (this.fileInput = el)}
-            />
+            {this.uploading ? (
+              <span>
+                <six-spinner /> Uploading...
+              </span>
+            ) : (
+              <div>
+                <span>{this.renderLabel()}</span>
+                <input
+                  class="six-file-upload__input"
+                  type="file"
+                  name="resume"
+                  disabled={this.disabled}
+                  accept={this.accept}
+                  multiple={this.multiple}
+                  onChange={this.onChange}
+                  ref={(el) => (this.fileInput = el)}
+                />
+              </div>
+            )}
           </div>
         </Container>
       </div>

@@ -7,14 +7,15 @@
 
 ## Properties
 
-| Property      | Attribute       | Description                                  | Type                  | Default     |
-| ------------- | --------------- | -------------------------------------------- | --------------------- | ----------- |
-| `accept`      | `accept`        | Accepted MIME-Types.                         | `string \| undefined` | `undefined` |
-| `compact`     | `compact`       | Set to true if file control should be small. | `boolean`             | `false`     |
-| `disabled`    | `disabled`      | Set when button is disabled.                 | `boolean`             | `false`     |
-| `label`       | `label`         | Label of the drop area.                      | `string \| undefined` | `undefined` |
-| `maxFileSize` | `max-file-size` | Allowed max file size in bytes.              | `number \| undefined` | `undefined` |
-| `multiple`    | `multiple`      | More than one file allowed.                  | `boolean`             | `false`     |
+| Property      | Attribute       | Description                                         | Type                  | Default     |
+| ------------- | --------------- | --------------------------------------------------- | --------------------- | ----------- |
+| `accept`      | `accept`        | Accepted MIME-Types.                                | `string \| undefined` | `undefined` |
+| `compact`     | `compact`       | Set to true if file control should be small.        | `boolean`             | `false`     |
+| `disabled`    | `disabled`      | Set when button is disabled.                        | `boolean`             | `false`     |
+| `label`       | `label`         | Label of the drop area.                             | `string \| undefined` | `undefined` |
+| `maxFileSize` | `max-file-size` | Allowed max file size in bytes.                     | `number \| undefined` | `undefined` |
+| `multiple`    | `multiple`      | More than one file allowed.                         | `boolean`             | `false`     |
+| `uploading`   | `uploading`     | Set to true to draw the control in a loading state. | `boolean`             | `false`     |
 
 
 ## Events
@@ -30,11 +31,13 @@
 ### Depends on
 
 - [six-icon](../six-icon)
+- [six-spinner](../six-spinner)
 
 ### Graph
 ```mermaid
 graph TD;
   six-file-upload --> six-icon
+  six-file-upload --> six-spinner
   style six-file-upload fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
