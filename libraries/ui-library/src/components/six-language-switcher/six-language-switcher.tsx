@@ -79,7 +79,6 @@ export class SixLanguageSwitcher {
           return (
             <div
               onClick={this.handleLanguageSwitching(language, typeof lang === 'string' ? lang : lang.value)}
-              tabindex="0"
               onKeyDown={(e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
                   this.handleLanguageSwitching(language, typeof lang === 'string' ? lang : lang.value)();
@@ -88,6 +87,7 @@ export class SixLanguageSwitcher {
             >
               <span
                 part="label"
+                tabindex="0"
                 class={{
                   'language-switcher__label': true,
                   'language-switcher__label--selected': this.selected === language,
