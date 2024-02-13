@@ -193,7 +193,7 @@ export class SixFileUpload {
             }}
           >
             {this.uploading ? (
-              <span>
+              <span class="six-file-upload__drop-zone__spinner-container">
                 <six-spinner /> Uploading...
               </span>
             ) : (

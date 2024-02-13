@@ -157,7 +157,7 @@ describe('six-file-upload', () => {
           <div class="six-file-upload six-file-upload--disabled">
             <six-card class="six-file-upload__container--full" disabled="">
               <div class="six-file-upload__drop-zone">
-                <span>
+                <span class="six-file-upload__drop-zone__spinner-container">
                   <six-spinner></six-spinner>
                   Uploading...
                 </span>
