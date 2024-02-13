@@ -54,6 +54,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - six-select filter not working when items passed via options property
 - Disabling a SIX web components input element in an Angular form correctly hides any error messages
   on the input
+- six-dialog not respecting initial open state
 
 ## 4.0.4 - 2023-11-15
 
