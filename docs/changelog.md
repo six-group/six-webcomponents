@@ -12,6 +12,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Fixed
 
+## 4.1.1 - 2024-02-14 ♥
+
+### Fixed
+
+- GitHub workflow for Vue
+
 ## 4.1.0 - 2024-02-14 ♥
 
 ### Added
