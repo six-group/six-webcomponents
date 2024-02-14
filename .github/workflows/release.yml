@@ -45,6 +45,7 @@ jobs:
         run: |
           npm publish --tag=latest --access=public libraries/ui-library/
           npm publish --tag=latest --access=public libraries/ui-library-react/
+          npm publish --tag=latest --access=public libraries/ui-library-vue/
           npm publish --tag=latest --access=public libraries/ui-library-angular/dist/ui-library-angular/
 
       - name: 'Create tag'
