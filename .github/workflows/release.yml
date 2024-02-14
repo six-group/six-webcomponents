@@ -32,7 +32,7 @@ jobs:
           git config user.name "GitHub action"
           git config user.email "<>"
           git checkout -b feature/${{ inputs.version }}
-          git add package*.json libraries/ui-library/package*.json libraries/ui-library-react/package*.json libraries/ui-library-angular/package*.json
+          git add package*.json libraries/ui-library/package*.json libraries/ui-library-react/package*.json libraries/ui-library-vue/package*.json libraries/ui-library-angular/package*.json
           git commit -m "${{ inputs.version }}"
           git push origin feature/${{ inputs.version }}
 
