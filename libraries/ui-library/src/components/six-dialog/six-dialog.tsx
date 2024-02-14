@@ -96,7 +96,9 @@ export class SixDialog {
 
   componentWillLoad() {
     this.handleSlotChange();
+  }
 
+  componentDidLoad() {
     // Show on init if open
     if (this.open) {
       this.show();
