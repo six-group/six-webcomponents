@@ -522,7 +522,7 @@ If you don't want to create a `six-menu-item` but simply want to pass an array w
 <docs-demo-six-select-20></docs-demo-six-select-20>
 
 ```html
-<six-select id="six-select-dynamic-options"></six-select>
+<six-select filter multiple id="six-select-dynamic-options"></six-select>
 <script type="module">
   const sixSelectDynamicOptions = document.getElementById('six-select-dynamic-options');
   sixSelectDynamicOptions.options = Array.from(Array(100).keys()).map((idx) => ({

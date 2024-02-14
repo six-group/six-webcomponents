@@ -375,7 +375,7 @@ If you don't want to create a `six-menu-item` but simply want to pass an array w
 <docs-demo-six-dropdown-12></docs-demo-six-dropdown-12>
 
 ```html
-<six-dropdown id="six-dropdown-dynamic-options">
+<six-dropdown filter id="six-dropdown-dynamic-options">
   <six-button slot="trigger" caret>Dropdown</six-button>
 </six-dropdown>
 <script type="module">

@@ -41,8 +41,9 @@ export class SixAlert {
   @Prop({ reflect: true }) type: AlertType = 'primary';
 
   /**
-   * The length of time, in milliseconds, the alert will show before closing itself. If the user interacts with the
-   * alert before it closes (e.g. moves the mouse over it), the timer will restart.
+   * The length of time, in milliseconds, the alert will show before closing itself.
+   * If the user hovers over the toast alert, the timer will pause.
+   * On leaving the element with the mouse, the timer resets.
    */
   @Prop() duration = Infinity;
 
@@ -166,12 +167,31 @@ export class SixAlert {
     });
   }
 
+  private pauseAutoHide() {
+    clearTimeout(this.autoHideTimeout);
+  }
+
+  private resetAutoHide() {
+    if (this.open && this.duration < Infinity) {
+      this.autoHideTimeout = window.setTimeout(() => this.hide(), this.duration);
+    }
+  }
+
+  private restartAutoHide() {
+    this.pauseAutoHide();
+    this.resetAutoHide();
+  }
+
   private handleCloseClick = () => {
     this.hide();
   };
 
-  private handleMouseMove = () => {
-    this.restartAutoHide();
+  private handleMouseEnter = () => {
+    this.pauseAutoHide();
+  };
+
+  private handleMouseLeave = () => {
+    this.resetAutoHide();
   };
 
   private handleTransitionEnd = (event: TransitionEvent) => {
@@ -183,13 +203,6 @@ export class SixAlert {
       this.open ? this.sixAfterShow.emit() : this.sixAfterHide.emit();
     }
   };
-
-  private restartAutoHide() {
-    clearTimeout(this.autoHideTimeout);
-    if (this.open && this.duration < Infinity) {
-      this.autoHideTimeout = window.setTimeout(() => this.hide(), this.duration);
-    }
-  }
 
   render() {
     const asToast = this.host.closest('.six-toast-stack') != null;
@@ -213,8 +226,9 @@ export class SixAlert {
         aria-live="assertive"
         aria-atomic="true"
         aria-hidden={this.open ? 'false' : 'true'}
-        onMouseMove={this.handleMouseMove}
         onTransitionEnd={this.handleTransitionEnd}
+        onMouseEnter={this.handleMouseEnter}
+        onMouseLeave={this.handleMouseLeave}
       >
         <span part="icon" class="alert__icon">
           <slot name="icon" />

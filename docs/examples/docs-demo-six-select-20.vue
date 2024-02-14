@@ -1,7 +1,7 @@
 <template>
 <div>
 
-        <six-select id="six-select-dynamic-options"></six-select>
+        <six-select filter multiple id="six-select-dynamic-options"></six-select>
         
       
 </div>

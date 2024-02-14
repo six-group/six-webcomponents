@@ -90,7 +90,7 @@ export class SixDatepicker {
   /**
    * The language used to render the weekdays and months.
    */
-  @Prop() locale: 'en' | 'de' | 'fr' | 'it' = 'en';
+  @Prop() locale: 'en' | 'de' | 'fr' | 'it' | 'es' = 'en';
 
   /** Indicates whether or not the calendar dropdown is open on startup. You can use this in lieu of the show/hide methods. */
   @Prop({ mutable: true, reflect: true }) open = false;

@@ -1,6 +1,6 @@
 {
   "name": "@six-group/ui-library-vue",
-  "version": "4.0.4",
+  "version": "4.1.0",
   "description": "Vue wrapper components for @six-group/ui-library",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
