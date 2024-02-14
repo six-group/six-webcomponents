@@ -107,6 +107,31 @@ export const i18nDate = {
     weekdaysShort: ['lun', 'mar', 'mer', 'gio', 'ven', 'sab', 'dom'],
     weekdaysMin: ['lu', 'ma', 'me', 'gi', 've', 'sa', 'do'],
   },
+  es: {
+    months: [
+      'enero',
+      'febrero',
+      'marzo',
+      'abril',
+      'mayo',
+      'junio',
+      'julio',
+      'agosto',
+      'septiembre',
+      'octubre',
+      'noviembre',
+      'diciembre',
+    ],
+    monthsShort: ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'],
+    monthsShortGrouped: [
+      ['ene', 'feb', 'mar', 'abr'],
+      ['may', 'jun', 'jul', 'ago'],
+      ['sep', 'oct', 'nov', 'dic'],
+    ],
+    weekdays: ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domingo'],
+    weekdaysShort: ['lun', 'mar', 'mié', 'jue', 'vie', 'sáb', 'dom'],
+    weekdaysMin: ['lu', 'ma', 'mi', 'ju', 'vi', 'sa', 'do'],
+  },
 };
 
 /**
@@ -796,7 +821,7 @@ export interface CalendarGridArgs {
   dateFormat: SixDateFormats;
   pointerDate: { month: number; year: number; day: number };
   allowedDates: (date: Date) => boolean;
-  locale: 'en' | 'de' | 'fr' | 'it';
+  locale: 'en' | 'de' | 'fr' | 'it' | 'es';
   selectedDate?: Date;
 }
 

@@ -324,7 +324,7 @@ export namespace Components {
         /**
           * The language used to render the weekdays and months.
          */
-        "locale": 'en' | 'de' | 'fr' | 'it';
+        "locale": 'en' | 'de' | 'fr' | 'it' | 'es';
         /**
           * The maximum datetime allowed. Value must be a date object
          */
@@ -3361,7 +3361,7 @@ declare namespace LocalJSX {
         /**
           * The language used to render the weekdays and months.
          */
-        "locale"?: 'en' | 'de' | 'fr' | 'it';
+        "locale"?: 'en' | 'de' | 'fr' | 'it' | 'es';
         /**
           * The maximum datetime allowed. Value must be a date object
          */
