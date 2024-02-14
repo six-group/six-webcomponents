@@ -8,6 +8,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+### Changed
+
+### Fixed
+
+## 4.1.0 - 2024-02-14 ♥
+
+### Added
+
 - Support for Vue
 - Updated the `six-item-picker` component to include tabindex attributes for better accessibility.
 - Added `hide-hamburger-menu` option to `six-header` to allow hiding the hamburger menu.
