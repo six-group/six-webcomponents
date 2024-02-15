@@ -12,6 +12,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Fixed
 
+- `six-select` not rendering when multiple is enabled and value is set to [null]
+
 ## 4.1.2 - 2024-02-14 ♥
 
 ### Fixed

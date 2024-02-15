@@ -743,7 +743,7 @@ export class SixSelect {
   }
 
   private hasSelection() {
-    return this.multiple ? this.value.length > 0 : this.value !== '';
+    return this.multiple ? this.value?.length > 0 : this.value !== '';
   }
 
   private hasDeselectedOptions() {
