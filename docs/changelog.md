@@ -7,6 +7,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## Upcoming
 
 ### Added
+- Added `uploading` property to `six-file-upload`.
+
+### Changed
+
+### Fixed
+
+## 4.1.2 - 2024-02-14 ♥
+
+### Fixed
+
+- GitHub workflow for Vue
+
+## 4.1.1 - 2024-02-14 ♥
+
+### Fixed
+
+- GitHub workflow for Vue
+
+## 4.1.0 - 2024-02-14 ♥
+
+### Added
 
 - Support for Vue
 - Updated the `six-item-picker` component to include tabindex attributes for better accessibility.
@@ -15,7 +36,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Added part to svg, so users are able to resize the six logo spinner
 - Added `matchTriggerWidth` property to `six-dropdown`.
 - Utility to display toast alerts in Angular and Vue.
-- Added `uploading`property to `six-file-upload`.
+- Added spanish locale and translations for `six-datepicker` literals.
 
 ### Changed
 
@@ -41,6 +62,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   - Keep focus on the filter element upon mouse leave.
 
 - Angular example upgraded to Angular 16
+- `six-alert` when used as a toast in combination with a duration does now stay open indefinitely
+  when hovered.
 
 ### Fixed
 
@@ -52,6 +75,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Clicking on the active app in six-header toggles the app switcher
 - Fixed six-details to not change text color on hover
 - Box Shadow for toast alerts
+- six-select filter not working when items passed via options property
+- Disabling a SIX web components input element in an Angular form correctly hides any error messages
+  on the input
+- six-dialog not respecting initial open state
 
 ## 4.0.4 - 2023-11-15
 

@@ -57,7 +57,7 @@ export namespace Components {
          */
         "closable": boolean;
         /**
-          * The length of time, in milliseconds, the alert will show before closing itself. If the user interacts with the alert before it closes (e.g. moves the mouse over it), the timer will restart.
+          * The length of time, in milliseconds, the alert will show before closing itself. If the user hovers over the toast alert, the timer will pause. On leaving the element with the mouse, the timer resets.
          */
         "duration": number;
         /**
@@ -324,7 +324,7 @@ export namespace Components {
         /**
           * The language used to render the weekdays and months.
          */
-        "locale": 'en' | 'de' | 'fr' | 'it';
+        "locale": 'en' | 'de' | 'fr' | 'it' | 'es';
         /**
           * The maximum datetime allowed. Value must be a date object
          */
@@ -3091,7 +3091,7 @@ declare namespace LocalJSX {
          */
         "closable"?: boolean;
         /**
-          * The length of time, in milliseconds, the alert will show before closing itself. If the user interacts with the alert before it closes (e.g. moves the mouse over it), the timer will restart.
+          * The length of time, in milliseconds, the alert will show before closing itself. If the user hovers over the toast alert, the timer will pause. On leaving the element with the mouse, the timer resets.
          */
         "duration"?: number;
         /**
@@ -3365,7 +3365,7 @@ declare namespace LocalJSX {
         /**
           * The language used to render the weekdays and months.
          */
-        "locale"?: 'en' | 'de' | 'fr' | 'it';
+        "locale"?: 'en' | 'de' | 'fr' | 'it' | 'es';
         /**
           * The maximum datetime allowed. Value must be a date object
          */

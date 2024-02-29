@@ -9,12 +9,12 @@ Alerts are used to display important messages either inline or as toast notifica
 
 ## Properties
 
-| Property   | Attribute  | Description                                                                                                                                                                                   | Type                                                        | Default     |
-| ---------- | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | ----------- |
-| `closable` | `closable` | Set to true to make the alert closable.                                                                                                                                                       | `boolean`                                                   | `false`     |
-| `duration` | `duration` | The length of time, in milliseconds, the alert will show before closing itself. If the user interacts with the alert before it closes (e.g. moves the mouse over it), the timer will restart. | `number`                                                    | `Infinity`  |
-| `open`     | `open`     | Indicates whether or not the alert is open. You can use this in lieu of the show/hide methods.                                                                                                | `boolean`                                                   | `false`     |
-| `type`     | `type`     | The type of alert.                                                                                                                                                                            | `"danger" \| "info" \| "primary" \| "success" \| "warning"` | `'primary'` |
+| Property   | Attribute  | Description                                                                                                                                                                                             | Type                                                        | Default     |
+| ---------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | ----------- |
+| `closable` | `closable` | Set to true to make the alert closable.                                                                                                                                                                 | `boolean`                                                   | `false`     |
+| `duration` | `duration` | The length of time, in milliseconds, the alert will show before closing itself. If the user hovers over the toast alert, the timer will pause. On leaving the element with the mouse, the timer resets. | `number`                                                    | `Infinity`  |
+| `open`     | `open`     | Indicates whether or not the alert is open. You can use this in lieu of the show/hide methods.                                                                                                          | `boolean`                                                   | `false`     |
+| `type`     | `type`     | The type of alert.                                                                                                                                                                                      | `"danger" \| "info" \| "primary" \| "success" \| "warning"` | `'primary'` |
 
 
 ## Events
