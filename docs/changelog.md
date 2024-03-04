@@ -12,6 +12,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - The `six-tab-group` left/right scroll controls are visible only if there is more content to be
   scrolled to.
+- Removed Safari hack for preventScroll in `six-dialog` and `six-drawer` because a fix was introduced
 
 ### Fixed
 
