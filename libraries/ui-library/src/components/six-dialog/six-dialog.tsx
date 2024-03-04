@@ -128,12 +128,12 @@ export class SixDialog {
     lockBodyScrolling(this.host);
 
     if (this.open) {
-        requestAnimationFrame(() => {
-          const sixInitialFocus = this.sixInitialFocus.emit();
-          if (!sixInitialFocus.defaultPrevented) {
-            panel.focus({ preventScroll: true });
-          }
-        });
+      requestAnimationFrame(() => {
+        const sixInitialFocus = this.sixInitialFocus.emit();
+        if (!sixInitialFocus.defaultPrevented) {
+          panel.focus({ preventScroll: true });
+        }
+      });
     }
   }
 

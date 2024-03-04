@@ -141,13 +141,13 @@ export class SixDrawer {
     }
 
     if (this.open) {
-        // Wait for the next frame before setting initial focus so the dialog is technically visible
-        requestAnimationFrame(() => {
-          const sixInitialFocus = this.sixInitialFocus.emit();
-          if (!sixInitialFocus.defaultPrevented) {
-            panel.focus({ preventScroll: true });
-          }
-        });
+      // Wait for the next frame before setting initial focus so the dialog is technically visible
+      requestAnimationFrame(() => {
+        const sixInitialFocus = this.sixInitialFocus.emit();
+        if (!sixInitialFocus.defaultPrevented) {
+          panel.focus({ preventScroll: true });
+        }
+      });
     }
   }
 
