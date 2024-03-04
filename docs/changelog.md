@@ -10,6 +10,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
+- The `six-tab-group` left/right scroll controls are visible only if there is more content to be
+  scrolled to.
+
 ### Fixed
 
 ## 4.1.2 - 2024-02-14 ♥
