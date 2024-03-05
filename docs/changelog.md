@@ -12,6 +12,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - The `six-tab-group` left/right scroll controls are visible only if there is more content to be
   scrolled to.
+- The `language-switcher` has now a neutral hover and selected color to serve both SIX and BME
 
 ### Fixed
 
