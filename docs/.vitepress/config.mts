@@ -49,6 +49,7 @@ export default defineConfig({
             { text: 'React', link: '/guide/react' },
             { text: 'Vue', link: '/guide/vue' },
             { text: 'Tables', link: '/guide/tables' },
+            { text: 'Colors', link: '/guide/colors' },
           ],
         },
       ],
