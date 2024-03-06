@@ -14,6 +14,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Fixed
 
+- six-file-upload does not look good when compact and disabled
+
 ## 4.1.2 - 2024-02-14 ♥
 
 ### Fixed
