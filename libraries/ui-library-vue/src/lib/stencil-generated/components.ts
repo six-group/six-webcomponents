@@ -216,6 +216,7 @@ export const SixFileUpload = /*@__PURE__*/ defineContainer<JSX.SixFileUpload>('s
   'accept',
   'multiple',
   'maxFileSize',
+  'uploading',
   'six-file-upload-success',
   'six-file-upload-failure'
 ]);

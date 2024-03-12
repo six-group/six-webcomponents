@@ -117,11 +117,13 @@ Spinner can be configured as animated SIX logo.
 ### Used by
 
  - [six-button](six-button.html)
+ - [six-file-upload](six-file-upload.html)
 
 ### Graph
 ```mermaid
 graph TD;
   six-button --> six-spinner
+  six-file-upload --> six-spinner
   style six-spinner fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

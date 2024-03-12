@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- Added `uploading` property to `six-file-upload`.
 - Extend documentation on styling topics regarding tables, colors and the usage of TailwindCSS
 
 ### Changed
@@ -23,6 +24,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Fixed
 
+- six-file-upload does not look good when compact and disabled
 - label of `six-range` being misaligned
 
 ## 4.1.2 - 2024-02-14 ♥

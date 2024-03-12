@@ -40,6 +40,15 @@ $margin: 1rem;
     width: 100%;
     transition: background-color $transition;
 
+    &__spinner-container {
+      display: flex;
+      align-items: center;
+
+      six-spinner {
+        margin-right: var(--six-spacing-x-small);
+      }
+    }
+
     &--compact {
       padding: 0;
     }
@@ -59,6 +68,7 @@ $margin: 1rem;
 
   &--disabled &__drop-zone {
     background-color: $disabled-color;
+    cursor: not-allowed;
   }
 
   &:not(.six-file-upload--disabled) &__drop-zone:hover,

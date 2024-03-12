@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import type { SixFileUploadSuccessPayload } from '@six-group/ui-library';
 import {
   SixButton,
   SixCheckbox,
   SixDatepicker,
+  SixFileUpload,
   SixInput,
   SixLayoutGrid,
   SixMenuItem,
@@ -11,6 +13,7 @@ import {
   SixSelect,
   SixSwitch,
   SixTextarea,
+  SixGroupLabel,
 } from '@six-group/ui-library-vue';
 import { ref } from 'vue';
 
@@ -24,9 +27,22 @@ const radioValue = ref<string | undefined>('Option 3');
 const selectValues = ref(['Option 1', 'Option 2', 'Option 3', 'Option 4']);
 const selectValue = ref<string | undefined>('Option 2');
 const datepickerValue = ref<Date>(new Date());
+const file = ref('');
+const uploading = ref(false);
 
 const invalid = ref(false);
 const disabled = ref(false);
+
+const onFileSelected = async (event: CustomEvent<SixFileUploadSuccessPayload>) => {
+  const selectedfile = (event.detail as { file: File }).file;
+  file.value = selectedfile.name;
+  uploading.value = true;
+  // simulate the uploading operation
+  setTimeout(() => {
+    file.value = '';
+    uploading.value = false;
+  }, 3000);
+};
 </script>
 
 <template>
@@ -99,6 +115,7 @@ const disabled = ref(false);
       placeholder="Select one"
       :disabled="disabled"
       :invalid="invalid"
+      :filter="true"
       error-text="Select Error"
     >
       <six-menu-item v-for="value of selectValues" :key="value" :value="value">{{ value }}</six-menu-item>
@@ -112,6 +129,11 @@ const disabled = ref(false);
       error-text="Datepicker Error"
     ></six-datepicker>
     <pre>Value: {{ datepickerValue }}</pre>
+
+    <six-group-label label="File Upload">
+      <six-file-upload :uploading="uploading" @six-file-upload-success="onFileSelected"></six-file-upload>
+      <pre>Selected file: {{ file }}</pre>
+    </six-group-label>
 
     <div class="buttons">
       <six-button @click="invalid = !invalid">{{ invalid ? 'Hide Errors' : 'Show Errors' }}</six-button>
