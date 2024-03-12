@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- Extend documentation on styling topics regarding tables, colors and the usage of TailwindCSS
+
 ### Changed
 
 - The `six-tab-group` left/right scroll controls are visible only if there is more content to be
