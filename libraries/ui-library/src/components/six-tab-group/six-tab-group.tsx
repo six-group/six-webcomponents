@@ -42,7 +42,8 @@ export class SixTabGroup {
 
   @Element() host!: HTMLSixTabGroupElement;
 
-  @State() hasScrollControls = false;
+  @State() hasLeftControl = false;
+  @State() hasRightControl = false;
 
   /** The placement of the tabs. */
   @Prop() placement: 'top' | 'bottom' | 'left' | 'right' = 'top';
@@ -76,6 +77,15 @@ export class SixTabGroup {
     this.resizeObserver = new ResizeObserver(() => this.updateScrollControls());
     this.resizeObserver.observe(this.nav);
     requestAnimationFrame(() => this.updateScrollControls());
+
+    this.nav.addEventListener('scroll', () => {
+      if (this.nav == null) {
+        return;
+      }
+      this.hasRightControl = this.calculateRightControlVisibility();
+
+      this.hasLeftControl = this.calculateLeftControlVisibility();
+    });
 
     // Update aria labels if the DOM changes
     this.mutationObserver = new MutationObserver((mutations) => {
@@ -207,12 +217,30 @@ export class SixTabGroup {
     });
   };
 
+  private calculateRightControlVisibility() {
+    if (this.nav == null) {
+      return false;
+    }
+    return Math.abs(this.nav?.scrollLeft) + this.nav?.clientWidth < this.nav?.scrollWidth - 1;
+  }
+
+  private calculateLeftControlVisibility() {
+    if (this.nav == null) {
+      return false;
+    }
+    return Math.abs(this.nav?.scrollLeft) > 0;
+  }
+
   private updateScrollControls() {
     if (this.nav == null) return;
 
-    this.hasScrollControls = this.noScrollControls
+    this.hasRightControl = this.noScrollControls
       ? false
-      : ['top', 'bottom'].includes(this.placement) && this.nav.scrollWidth > this.nav.clientWidth;
+      : ['top', 'bottom'].includes(this.placement) && this.calculateRightControlVisibility();
+
+    this.hasLeftControl = this.noScrollControls
+      ? false
+      : ['top', 'bottom'].includes(this.placement) && this.calculateLeftControlVisibility();
   }
 
   private setActiveTab(tab: HTMLSixTabElement, emitEvents = true) {
@@ -276,13 +304,13 @@ export class SixTabGroup {
           'tab-group--left': this.placement === 'left',
           'tab-group--right': this.placement === 'right',
 
-          'tab-group--has-scroll-controls': this.hasScrollControls,
+          'tab-group--has-scroll-controls': this.hasRightControl || this.hasLeftControl,
         }}
         onClick={this.handleClick}
         onKeyDown={this.handleKeyDown}
       >
         <div class="tab-group__nav-container">
-          {this.hasScrollControls && (
+          {this.hasLeftControl && (
             <six-icon-button
               class="tab-group__scroll-button tab-group__scroll-button--left"
               exportparts="base:scroll-button"
@@ -295,7 +323,7 @@ export class SixTabGroup {
               <slot name="nav" />
             </div>
           </div>
-          {this.hasScrollControls && (
+          {this.hasRightControl && (
             <six-icon-button
               class="tab-group__scroll-button tab-group__scroll-button--right"
               exportparts="base:scroll-button"

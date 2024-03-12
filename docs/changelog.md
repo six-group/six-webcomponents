@@ -12,9 +12,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
+- The `six-tab-group` left/right scroll controls are visible only if there is more content to be
+  scrolled to.
+- The `language-switcher` has newly a neutral hover and selected color to serve both SIX and BME,
+  newly languages are separated via pipe
+- Removed Safari hack for preventScroll in `six-dialog` and `six-drawer` because a fix was
+  introduced
+
 ### Fixed
 
 - six-file-upload does not look good when compact and disabled
+- label of `six-range` being misaligned
 
 ## 4.1.2 - 2024-02-14 ♥
 
