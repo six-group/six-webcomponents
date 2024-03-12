@@ -38,5 +38,3 @@ colors directly you can do so by using the following listed css variables for th
 | `--six-color-action-light-to-be-defined`                 | <span style="font-size:80px;color:#a8d0f5">&#9679;</span>                | `#a8d0f5` |
 | `--six-color-inactive`                                   | <span style="font-size:80px;color:#c3c3c3">&#9679;</span>                | `#c3c3c3` |
 | `--six-focus-ring-color` based on `six-color-action-600` | <span style="font-size:80px;color:#1f87e5">&#9679;</span>                | `#1f87e5` |
-
-teasdasfdasdf
