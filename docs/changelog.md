@@ -14,6 +14,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   scrolled to.
 - The `language-switcher` has newly a neutral hover and selected color to serve both SIX and BME,
   newly languages are separated via pipe
+- Removed Safari hack for preventScroll in `six-dialog` and `six-drawer` because a fix was
+  introduced
 
 ### Fixed
 
