@@ -10,8 +10,8 @@
     "node-html-parser": "^6.1.5",
     "rimraf": "^5.0.1",
     "turndown": "^7.1.2",
-    "vitepress": "^1.0.0-rc.25",
-    "vue": "^3.3.4"
+    "vitepress": "^1.0.0",
+    "vue": "^3.4.21"
   },
   "scripts": {
     "start": "vitepress dev",
