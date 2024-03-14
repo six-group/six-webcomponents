@@ -1,6 +1,6 @@
 {
   "name": "@six-group/ui-library",
-  "version": "4.1.2",
+  "version": "4.2.0",
   "description": "Web components in alignment with the SIX corporate styleguide",
   "license": "Apache-2.0",
   "main": "dist/index.cjs.js",
