@@ -26,6 +26,6 @@
   },
   "sideEffects": false,
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=16.20.2"
   }
 }
