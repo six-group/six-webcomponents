@@ -38,6 +38,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - `six-button` : simplify use of prefix and suffix icons
 - `six-sidebar-item-group`: fixed spacing for subitems
 - Vue `v-model` issue through an update of the underlying library
+- `six-tab` animation smoothing when using left / right layout
 
 ### Removed
 
