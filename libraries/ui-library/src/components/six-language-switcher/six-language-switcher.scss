@@ -14,6 +14,10 @@
       color: var(--six-color-red);
     }
 
+    &:focus {
+      outline-color: var(--six-focus-ring-color);
+    }
+
     &--selected {
       color: var(--six-color-red);
     }
