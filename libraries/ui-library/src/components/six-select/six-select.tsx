@@ -217,6 +217,7 @@ export class SixSelect {
   }
 
   componentWillLoad() {
+    this.handleValueChange();
     this.handleSlotChange();
     if (this.multiple && this.value != null) {
       this.value = this.getValueAsArray();
