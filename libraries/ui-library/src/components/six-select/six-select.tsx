@@ -217,6 +217,7 @@ export class SixSelect {
   }
 
   componentWillLoad() {
+    this.handleValueChange();
     this.handleSlotChange();
     if (this.multiple && this.value != null) {
       this.value = this.getValueAsArray();
@@ -743,7 +744,7 @@ export class SixSelect {
   }
 
   private hasSelection() {
-    return this.multiple ? this.value?.length > 0 : this.value !== '';
+    return this.multiple ? this.value.length > 0 : this.value !== '';
   }
 
   private hasDeselectedOptions() {
