@@ -534,14 +534,14 @@ export declare interface SixFileListItem extends Components.SixFileListItem {
 
 
 @ProxyCmp({
-  inputs: ['accept', 'compact', 'disabled', 'label', 'maxFileSize', 'multiple']
+  inputs: ['accept', 'compact', 'disabled', 'label', 'maxFileSize', 'multiple', 'uploading']
 })
 @Component({
   selector: 'six-file-upload',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['accept', 'compact', 'disabled', 'label', 'maxFileSize', 'multiple'],
+  inputs: ['accept', 'compact', 'disabled', 'label', 'maxFileSize', 'multiple', 'uploading'],
 })
 export class SixFileUpload {
   protected el: HTMLElement;

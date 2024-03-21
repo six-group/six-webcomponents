@@ -1,6 +1,6 @@
 {
   "name": "@six-group/ui-library",
-  "version": "4.1.2",
+  "version": "4.2.1",
   "description": "Web components in alignment with the SIX corporate styleguide",
   "license": "Apache-2.0",
   "main": "dist/index.cjs.js",
@@ -35,7 +35,7 @@
     "codeclean": "npm run lint:fix && npm run prettier:fix"
   },
   "dependencies": {
-    "@stencil/core": "^4.6.0",
+    "@stencil/core": "^4.12.6",
     "@types/resize-observer-browser": "^0.1.5"
   },
   "devDependencies": {
@@ -46,11 +46,11 @@
     "@stencil/react-output-target": "^0.5.3",
     "@stencil/sass": "^3.0.7",
     "@stencil/vue-output-target": "^0.8.7",
-    "@types/jest": "27.0.3",
+    "@types/jest": "^29.5.11",
     "@typescript-eslint/eslint-plugin": "^6.15.0",
     "@typescript-eslint/parser": "^6.15.0",
-    "jest": "27.4.5",
-    "jest-cli": "27.4.5",
+    "jest": "^29.7.0",
+    "jest-cli": "^29.7.0",
     "material-icons": "^1.13.12",
     "replace-in-file": "^6.3.5",
     "rimraf": "^3.0.2"

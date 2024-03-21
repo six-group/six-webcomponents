@@ -89,7 +89,7 @@ export class SixLanguageSwitcher {
               </span>
               {index < this.languages.length - 1 && (
                 <span part="separator" class="language-switcher__separator">
-                  /
+                  |
                 </span>
               )}
             </div>

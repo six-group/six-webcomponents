@@ -11,11 +11,12 @@
     cursor: pointer;
 
     &:hover {
-      color: var(--six-color-red);
+      color: var(--six-color-web-rock-600);
     }
 
     &--selected {
-      color: var(--six-color-red);
+      color: var(--six-color-black);
+      text-decoration: underline;
     }
   }
 }

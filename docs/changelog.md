@@ -14,6 +14,35 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - `six-select` not rendering when multiple is enabled and value is set to [null]
 
+## 4.2.1 - 2024-03-14
+
+### Fixed
+
+- bumped Stencil version to latest fix release to avoid issues with custom-elements hydration
+
+## 4.2.0 - 2024-03-14
+
+### Added
+
+- Added `uploading` property to `six-file-upload`.
+- Extend documentation on styling topics regarding tables, colors and the usage of TailwindCSS
+
+### Changed
+
+- The `six-tab-group` left/right scroll controls are visible only if there is more content to be
+  scrolled to.
+- The `language-switcher` has newly a neutral hover and selected color to serve both SIX and BME,
+  newly languages are separated via pipe
+- Removed Safari hack for preventScroll in `six-dialog` and `six-drawer` because a fix was
+  introduced
+- Upgraded Stencil to 4.12.0
+- Upgraded Jest to 29.7.0
+
+### Fixed
+
+- six-file-upload does not look good when compact and disabled
+- label of `six-range` being misaligned
+
 ## 4.1.2 - 2024-02-14 ♥
 
 ### Fixed

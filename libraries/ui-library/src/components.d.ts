@@ -682,6 +682,10 @@ export namespace Components {
           * More than one file allowed.
          */
         "multiple": false;
+        /**
+          * Set to true to draw the control in a loading state.
+         */
+        "uploading": boolean;
     }
     /**
      * @since 1.0
@@ -3794,6 +3798,10 @@ declare namespace LocalJSX {
           * Triggers when a file is added.
          */
         "onSix-file-upload-success"?: (event: SixFileUploadCustomEvent<SixFileUploadSuccessPayload>) => void;
+        /**
+          * Set to true to draw the control in a loading state.
+         */
+        "uploading"?: boolean;
     }
     /**
      * @since 1.0
