@@ -14,7 +14,7 @@
       color: var(--six-color-red);
     }
 
-    :focus-visible {
+    &:focus-visible {
       outline: var(--six-focus-ring);
       outline-offset: var(--six-focus-ring-offset);
     }
