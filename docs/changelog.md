@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## Upcoming
+
+### Added
+
+### Changed
+
+### Fixed
+
+- Fixed `six-checkbox` checkbox-input being distorted with multiline content/text
+
 ## 4.2.1 - 2024-03-14
 
 ### Fixed
