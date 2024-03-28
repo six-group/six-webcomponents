@@ -1,7 +1,7 @@
 <template>
 <div>
 
-        <six-input type="number" placeholder="Decimal Numbers..." pattern="[0-9]+([\.,][0-9]+)?" step="0.1"></six-input>
+        <six-input type="number" placeholder="Integers..."></six-input>
       
 </div>
 </template>

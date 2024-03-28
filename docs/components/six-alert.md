@@ -136,7 +136,7 @@ Set the `duration` prop to automatically hide an alert after a period of time. T
 
 ## Toast Notifications
 
-To display an alert as a toast notification, or "toast", create the alert and call its \`toast()\` method. T his will move the alert out of its position in the DOM and into the toast stack where it will be shown. Once dismissed, it will be removed from the DOM completely. To reuse a toast, store a reference to it and call `toast()` again later on.
+To display an alert as a toast notification, or "toast", create the alert and call its \`toast()\` method. This will move the alert out of its position in the DOM and into the toast stack where it will be shown. Once dismissed, it will be removed from the DOM completely. To reuse a toast, store a reference to it and call `toast()` again later on.
 
 You should always use the `closable` prop so users can dismiss the notification. It's also common to set a reasonable `duration` when the notification doesn't require acknowledgement.
 
@@ -202,9 +202,16 @@ You should always use the `closable` prop so users can dismiss the notification.
 ```
 
 
+## Angular and Vue Utilities
+
+The wrapper libraries for Angular and Vue offer a simpler way to create toast alerts:
+
+*   **Angular**: Inject the \`alertService\` and utilize the \`showAlert\` method `this.alertService.showAlert('The Alert Message');`
+*   **Vue**: Use `showAlert` by importing it from `'@six-group/ui-library'` and then invoke it `showAlert('The Alert Message');`
+
 ## Creating Toasts Imperatively
 
-For convenience, you can create a utility that emits toast notifications with a function call rather than composing them in your HTML. To do this, generate the alert with JavaScript, append it to the body, and call the `toast()` method as shown in the example below.
+You can also create your own utility that emits toast notifications with a function call rather than composing them in your HTML. To do this, generate the alert with JavaScript, append it to the body, and call the `toast()` method as shown in the example below.
 
 <docs-demo-six-alert-6></docs-demo-six-alert-6>
 
@@ -248,24 +255,6 @@ For convenience, you can create a utility that emits toast notifications with a 
     });
   })();
 </script>
-
-<style>
-  .six-toast-stack {
-    position: fixed;
-    top: 0;
-    right: 0;
-    z-index: var(--six-z-index-toast);
-    width: 28rem;
-    max-width: 100%;
-    max-height: 100%;
-    overflow: auto;
-  }
-
-  six-alert {
-    box-shadow: var(--six-shadow-large);
-    margin: var(--six-spacing-medium);
-  }
-</style>
 ```
 
 
@@ -283,12 +272,12 @@ By design, it is not possible to show toasts in more than one stack simultaneous
 
 ## Properties
 
-| Property   | Attribute  | Description                                                                                                                                                                                   | Type                                                        | Default     |
-| ---------- | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | ----------- |
-| `closable` | `closable` | Set to true to make the alert closable.                                                                                                                                                       | `boolean`                                                   | `false`     |
-| `duration` | `duration` | The length of time, in milliseconds, the alert will show before closing itself. If the user interacts with the alert before it closes (e.g. moves the mouse over it), the timer will restart. | `number`                                                    | `Infinity`  |
-| `open`     | `open`     | Indicates whether or not the alert is open. You can use this in lieu of the show/hide methods.                                                                                                | `boolean`                                                   | `false`     |
-| `type`     | `type`     | The type of alert.                                                                                                                                                                            | `"danger" \| "info" \| "primary" \| "success" \| "warning"` | `'primary'` |
+| Property   | Attribute  | Description                                                                                                                                                                                             | Type                                                        | Default     |
+| ---------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | ----------- |
+| `closable` | `closable` | Set to true to make the alert closable.                                                                                                                                                                 | `boolean`                                                   | `false`     |
+| `duration` | `duration` | The length of time, in milliseconds, the alert will show before closing itself. If the user hovers over the toast alert, the timer will pause. On leaving the element with the mouse, the timer resets. | `number`                                                    | `Infinity`  |
+| `open`     | `open`     | Indicates whether or not the alert is open. You can use this in lieu of the show/hide methods.                                                                                                          | `boolean`                                                   | `false`     |
+| `type`     | `type`     | The type of alert.                                                                                                                                                                                      | `"danger" \| "info" \| "primary" \| "success" \| "warning"` | `'primary'` |
 
 
 ## Events
@@ -323,11 +312,17 @@ Type: `Promise<void>`
 
 
 
-### `toast() => Promise<void>`
+### `toast(adjustPosition?: boolean) => Promise<void>`
 
 Displays the alert as a toast notification. This will move the alert out of its position in the DOM and, when
 dismissed, it will be removed from the DOM completely. By storing a reference to the alert, you can reuse it by
 calling this method again. The returned promise will resolve after the alert is hidden.
+
+#### Parameters
+
+| Name             | Type      | Description                                                                                                                                           |
+| ---------------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `adjustPosition` | `boolean` | If true, the top and right position of the toast stack is shifted according to the six-root header's height and the presence of a vertical scrollbar. |
 
 #### Returns
 

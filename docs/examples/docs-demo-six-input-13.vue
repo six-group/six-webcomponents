@@ -1,7 +1,7 @@
 <template>
 <div>
 
-        <six-input label="Simple string message" error-text="This is a simple string message" invalid> </six-input>
+        <six-input label="Name" help-text="Help text"> </six-input>
       
 </div>
 </template>

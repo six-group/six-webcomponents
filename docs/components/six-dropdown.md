@@ -281,7 +281,7 @@ If you want to change the default debounce timeout use e.g. `filter-debounce="50
 <docs-demo-six-dropdown-10></docs-demo-six-dropdown-10>
 
 ```html
-<six-dropdown id="async-dropdown" async-filter filter-placeholder="Search">
+<six-dropdown id="async-dropdown" async-filter filter-placeholder="Enter a number">
   <six-button slot="trigger" caret>Dropdown</six-button>
   <six-menu id="async-menu">
     <six-menu-item value="search_list_prompt">Use search to show entries</six-menu-item>
@@ -306,15 +306,19 @@ If you want to change the default debounce timeout use e.g. `filter-debounce="50
 
   asyncDropdown.addEventListener('six-async-filter-fired', ($event) => {
     const filterValue = $event.detail.filterValue;
-
     removeAllChildNodes(asyncMenu);
-
-    const numberOfHits = Math.floor(Math.random() * 25) + 3;
-    for (let i = 0; i < numberOfHits; i++) {
+    for (let i = 0; i < 500; i++) {
       const child = document.createElement('six-menu-item');
-      child.innerText = `Value ${filterValue} ${i}`;
-      child.value = `value-${filterValue}-${i}`;
-      asyncMenu.appendChild(child);
+      child.innerText = `Value ${i}`;
+      child.value = `value-${i}`;
+      if (
+        filterValue.includes(`${i}`) ||
+        filterValue.toLocaleLowerCase().includes(`value`) ||
+        filterValue.toLocaleLowerCase().includes(`value ${i}`) ||
+        filterValue === ''
+      ) {
+        asyncMenu.appendChild(child);
+      }
     }
   });
 </script>
@@ -371,7 +375,7 @@ If you don't want to create a `six-menu-item` but simply want to pass an array w
 <docs-demo-six-dropdown-12></docs-demo-six-dropdown-12>
 
 ```html
-<six-dropdown id="six-dropdown-dynamic-options">
+<six-dropdown filter id="six-dropdown-dynamic-options">
   <six-button slot="trigger" caret>Dropdown</six-button>
 </six-dropdown>
 <script type="module">
@@ -444,23 +448,24 @@ To make your virtually scrolled list filterable simply add the `filter` attribut
 
 ## Properties
 
-| Property                     | Attribute                         | Description                                                                                                                                                                                                                                                           | Type                                                                                                                                                                 | Default                 |
-| ---------------------------- | --------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- |
-| `asyncFilter`                | `async-filter`                    | Set to true to allow async filtering. When you enter something in the search field the component will only emit an event but not filter any elements itself. You can then simply listen to the 'six-async-filter-fired' event to manage the shown menu-items yourself | `boolean`                                                                                                                                                            | `false`                 |
-| `autofocusFilter`            | `autofocus-filter`                | By default the search field will be focused when opening a dropdown with filtering enabled.                                                                                                                                                                           | `boolean`                                                                                                                                                            | `true`                  |
-| `closeOnSelect`              | `close-on-select`                 | Determines whether the dropdown should hide when a menu item is selected.                                                                                                                                                                                             | `boolean`                                                                                                                                                            | `true`                  |
-| `containingElement`          | --                                | The dropdown will close when the user interacts outside of this element (e.g. clicking).                                                                                                                                                                              | `HTMLElement \| undefined`                                                                                                                                           | `undefined`             |
-| `disableHideOnEnterAndSpace` | `disable-hide-on-enter-and-space` | The panel can be opend/closed by pressing the spacebar or the enter key. In some cases you might want to avoid this                                                                                                                                                   | `boolean`                                                                                                                                                            | `false`                 |
-| `distance`                   | `distance`                        | The distance in pixels from which to offset the panel away from its trigger.                                                                                                                                                                                          | `number`                                                                                                                                                             | `0`                     |
-| `filter`                     | `filter`                          | Set to true to allow auto filtering for entries in the dropdown. With this flag the dropdown will automatically filter itsel. If you need to coordinate the shown elements yourself, e.g. because you need to call an endpoint use asyncFilter instead                | `boolean`                                                                                                                                                            | `false`                 |
-| `filterDebounce`             | `filter-debounce`                 | The debounce for the filter callbacks.                                                                                                                                                                                                                                | `number`                                                                                                                                                             | `DEFAULT_DEBOUNCE_FAST` |
-| `filterPlaceholder`          | `filter-placeholder`              | The filter's placeholder text.                                                                                                                                                                                                                                        | `string`                                                                                                                                                             | `'Filter...'`           |
-| `hoist`                      | `hoist`                           | Enable this option to prevent the panel from being clipped when the component is placed inside a container with `overflow: auto\|scroll`.                                                                                                                             | `boolean`                                                                                                                                                            | `false`                 |
-| `open`                       | `open`                            | Indicates whether the dropdown is open. You can use this in lieu of the show/hide methods.                                                                                                                                                                            | `boolean`                                                                                                                                                            | `false`                 |
-| `options`                    | --                                | Set the options to be shown in the dropdown (alternative to setting the elements via html)                                                                                                                                                                            | `SixMenuItemData[]`                                                                                                                                                  | `[]`                    |
-| `placement`                  | `placement`                       | The preferred placement of the dropdown panel. Note that the actual placement may vary as needed to keep the panel inside the viewport.                                                                                                                               | `"bottom" \| "bottom-end" \| "bottom-start" \| "left" \| "left-end" \| "left-start" \| "right" \| "right-end" \| "right-start" \| "top" \| "top-end" \| "top-start"` | `'bottom-start'`        |
-| `skidding`                   | `skidding`                        | The distance in pixels from which to offset the panel along its trigger.                                                                                                                                                                                              | `number`                                                                                                                                                             | `0`                     |
-| `virtualScroll`              | `virtual-scroll`                  | Defines whether the menu list will be rendered virtually i.e. only the elements actually shown (and a couple around) are actually rendered in the DOM. If you use virtual scrolling pass the elements via prop instead of via slot.                                   | `boolean`                                                                                                                                                            | `false`                 |
+| Property                     | Attribute                         | Description                                                                                                                                                                                                                                                           | Type                                                                                                                                                                 | Default          |
+| ---------------------------- | --------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
+| `asyncFilter`                | `async-filter`                    | Set to true to allow async filtering. When you enter something in the search field the component will only emit an event but not filter any elements itself. You can then simply listen to the 'six-async-filter-fired' event to manage the shown menu-items yourself | `boolean`                                                                                                                                                            | `false`          |
+| `autofocusFilter`            | `autofocus-filter`                | By default the search field will be focused when opening a dropdown with filtering enabled.                                                                                                                                                                           | `boolean`                                                                                                                                                            | `true`           |
+| `closeOnSelect`              | `close-on-select`                 | Determines whether the dropdown should hide when a menu item is selected.                                                                                                                                                                                             | `boolean`                                                                                                                                                            | `true`           |
+| `containingElement`          | --                                | The dropdown will close when the user interacts outside of this element (e.g. clicking).                                                                                                                                                                              | `HTMLElement \| undefined`                                                                                                                                           | `undefined`      |
+| `disableHideOnEnterAndSpace` | `disable-hide-on-enter-and-space` | The panel can be opend/closed by pressing the spacebar or the enter key. In some cases you might want to avoid this                                                                                                                                                   | `boolean`                                                                                                                                                            | `false`          |
+| `distance`                   | `distance`                        | The distance in pixels from which to offset the panel away from its trigger.                                                                                                                                                                                          | `number`                                                                                                                                                             | `4`              |
+| `filter`                     | `filter`                          | Set to true to allow auto filtering for entries in the dropdown. With this flag the dropdown will automatically filter itsel. If you need to coordinate the shown elements yourself, e.g. because you need to call an endpoint use asyncFilter instead                | `boolean`                                                                                                                                                            | `false`          |
+| `filterDebounce`             | `filter-debounce`                 | The debounce for the filter callbacks.                                                                                                                                                                                                                                | `number`                                                                                                                                                             | `0`              |
+| `filterPlaceholder`          | `filter-placeholder`              | The filter's placeholder text.                                                                                                                                                                                                                                        | `string`                                                                                                                                                             | `'Filter...'`    |
+| `hoist`                      | `hoist`                           | Enable this option to prevent the panel from being clipped when the component is placed inside a container with `overflow: auto\|scroll`.                                                                                                                             | `boolean`                                                                                                                                                            | `false`          |
+| `matchTriggerWidth`          | `match-trigger-width`             | Determines if the dropdown panel's width should match the width of the trigger element.  If set to `true`, the panel will resize its width to align with the trigger's width. If `false` or omitted, the panel will maintain its default width.                       | `boolean`                                                                                                                                                            | `false`          |
+| `open`                       | `open`                            | Indicates whether the dropdown is open. You can use this in lieu of the show/hide methods.                                                                                                                                                                            | `boolean`                                                                                                                                                            | `false`          |
+| `options`                    | --                                | Set the options to be shown in the dropdown (alternative to setting the elements via html)                                                                                                                                                                            | `SixMenuItemData[]`                                                                                                                                                  | `[]`             |
+| `placement`                  | `placement`                       | The preferred placement of the dropdown panel. Note that the actual placement may vary as needed to keep the panel inside the viewport.                                                                                                                               | `"bottom" \| "bottom-end" \| "bottom-start" \| "left" \| "left-end" \| "left-start" \| "right" \| "right-end" \| "right-start" \| "top" \| "top-end" \| "top-start"` | `'bottom-start'` |
+| `skidding`                   | `skidding`                        | The distance in pixels from which to offset the panel along its trigger.                                                                                                                                                                                              | `number`                                                                                                                                                             | `0`              |
+| `virtualScroll`              | `virtual-scroll`                  | Defines whether the menu list will be rendered virtually i.e. only the elements actually shown (and a couple around) are actually rendered in the DOM. If you use virtual scrolling pass the elements via prop instead of via slot.                                   | `boolean`                                                                                                                                                            | `false`          |
 
 
 ## Events
@@ -490,7 +495,7 @@ Type: `Promise<void>`
 
 ### `reposition() => Promise<void>`
 
-Instructs the dropdown menu to reposition. Useful when the position or size of the trigger changes when the menu
+<span style="color:red">**[DEPRECATED]**</span> : use the property `matchTriggerWidth` instead.<br/><br/>Instructs the dropdown menu to reposition. Useful when the position or size of the trigger changes when the menu
 is activated.
 
 #### Returns
@@ -512,10 +517,11 @@ Type: `Promise<void>`
 
 ## Slots
 
-| Slot        | Description                                               |
-| ----------- | --------------------------------------------------------- |
-|             | The dropdown's content.                                   |
-| `"trigger"` | The dropdown's trigger, usually a `<six-button>` element. |
+| Slot                | Description                                               |
+| ------------------- | --------------------------------------------------------- |
+|                     | The dropdown's content.                                   |
+| `"dropdown-footer"` | The dropdown's footer area.                               |
+| `"trigger"`         | The dropdown's trigger, usually a `<six-button>` element. |
 
 
 ## Shadow Parts
@@ -539,6 +545,7 @@ Type: `Promise<void>`
 
 - [six-menu-item](six-menu-item.html)
 - [six-input](six-input.html)
+- [six-icon](six-icon.html)
 - [six-menu](six-menu.html)
 
 ### Graph
@@ -546,8 +553,11 @@ Type: `Promise<void>`
 graph TD;
   six-dropdown --> six-menu-item
   six-dropdown --> six-input
+  six-dropdown --> six-icon
   six-dropdown --> six-menu
+  six-menu-item --> six-checkbox
   six-menu-item --> six-icon
+  six-checkbox --> six-error
   six-input --> six-icon
   six-input --> six-error
   six-menu --> six-menu-item

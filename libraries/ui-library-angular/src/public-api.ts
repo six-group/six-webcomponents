@@ -31,3 +31,4 @@ export * from './lib/link/six-router-link.directive';
 
 // services
 export * from './lib/services/validation-messages.service';
+export * from './lib/services/alert.service';

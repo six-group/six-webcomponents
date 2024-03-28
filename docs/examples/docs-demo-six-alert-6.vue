@@ -6,29 +6,11 @@
         </div>
 
         
-
-        
       
 </div>
 </template>
 <style>
 
-          .six-toast-stack {
-            position: fixed;
-            top: 0;
-            right: 0;
-            z-index: var(--six-z-index-toast);
-            width: 28rem;
-            max-width: 100%;
-            max-height: 100%;
-            overflow: auto;
-          }
-
-          six-alert {
-            box-shadow: var(--six-shadow-large);
-            margin: var(--six-spacing-medium);
-          }
-        
 </style>
 <script>
 export default {

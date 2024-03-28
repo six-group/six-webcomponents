@@ -11,7 +11,7 @@
     cursor: pointer;
 
     &:hover {
-      color: var(--six-color-red);
+      color: var(--six-color-web-rock-600);
     }
 
     &:focus-visible {
@@ -20,7 +20,8 @@
     }
 
     &--selected {
-      color: var(--six-color-red);
+      color: var(--six-color-black);
+      text-decoration: underline;
     }
   }
 }

@@ -46,6 +46,12 @@ Type: `Promise<void>`
 
 Allows to select a menu item programmatically by index
 
+#### Parameters
+
+| Name    | Type     | Description |
+| ------- | -------- | ----------- |
+| `index` | `number` |             |
+
 #### Returns
 
 Type: `Promise<void>`
@@ -55,6 +61,12 @@ Type: `Promise<void>`
 ### `selectItemByName(value: string) => Promise<void>`
 
 Allows to select a menu item programmatically by name
+
+#### Parameters
+
+| Name    | Type     | Description |
+| ------- | -------- | ----------- |
+| `value` | `string` |             |
 
 #### Returns
 

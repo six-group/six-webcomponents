@@ -52,6 +52,14 @@ export function getErrorMessage(language: Language, error: ValidationError): str
   }
 }
 
+export function getLanguage(): Language {
+  const documentLang = document.documentElement.lang as Language;
+  if (languages.includes(documentLang)) {
+    return documentLang;
+  }
+  return 'de';
+}
+
 const translation: Record<Language, Record<string, string>> = {
   en: {
     required: 'Please fill out this field.',

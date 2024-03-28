@@ -2,8 +2,7 @@
 
 :host {
   display: inline-block;
-  box-shadow: var(--six-elevation-8dp);
-  border-radius: 0;
-  padding: 1rem;
-  margin-bottom: 0.6rem;
+  box-shadow: var(--six-shadow-medium);
+  border: 1px solid var(--six-color-web-rock-100);
+  padding: var(--six-spacing-medium);
 }

@@ -1,7 +1,7 @@
 <template>
 <div>
 
-        <six-dropdown id="six-dropdown-dynamic-options">
+        <six-dropdown filter id="six-dropdown-dynamic-options">
           <six-button slot="trigger" caret>Dropdown</six-button>
         </six-dropdown>
         

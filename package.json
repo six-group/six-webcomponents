@@ -1,6 +1,6 @@
 {
   "name": "@six-group/workspace",
-  "version": "4.0.4",
+  "version": "4.2.1",
   "scripts": {
     "start": "npm run start -w libraries/ui-library",
     "watch:lib": "npm run watch -w libraries/ui-library",
@@ -17,6 +17,7 @@
     "test:unit": "npm run test -w libraries/ui-library",
     "start:docs": "npm run start -w docs",
     "demo:angular": "npm start -w examples/angular",
+    "demo:vue": "npm run dev -w examples/vue",
     "clean": "npm run clean --workspaces",
     "clean:locks": "find . -name 'package-lock.json' -type f -prune -exec rm '{}' +",
     "clean:modules": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +",

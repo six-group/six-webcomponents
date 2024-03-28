@@ -16,13 +16,22 @@ basic input field
 
 
 
+<docs-demo-six-input-1></docs-demo-six-input-1>
+
+```html
+<six-input dropdown-search></six-input>
+```
+
+
+
+
 
 
 ## Placeholders
 
 Use the `placeholder` attribute to add a placeholder.
 
-<docs-demo-six-input-1></docs-demo-six-input-1>
+<docs-demo-six-input-2></docs-demo-six-input-2>
 
 ```html
 <six-input placeholder="Type something"></six-input>
@@ -33,7 +42,7 @@ Use the `placeholder` attribute to add a placeholder.
 
 Add the `clearable` prop to add a clear button when the input has content.
 
-<docs-demo-six-input-2></docs-demo-six-input-2>
+<docs-demo-six-input-3></docs-demo-six-input-3>
 
 ```html
 <six-input placeholder="Clearable" size="small" clearable></six-input>
@@ -48,7 +57,7 @@ Add the `clearable` prop to add a clear button when the input has content.
 
 Add the `toggle-password` prop to add a toggle button that will show the password when activated.
 
-<docs-demo-six-input-3></docs-demo-six-input-3>
+<docs-demo-six-input-4></docs-demo-six-input-4>
 
 ```html
 <six-input type="password" placeholder="Password Toggle" size="small" toggle-password></six-input>
@@ -63,7 +72,7 @@ Add the `toggle-password` prop to add a toggle button that will show the passwor
 
 By default when using type number it allows you to only use integers
 
-<docs-demo-six-input-4></docs-demo-six-input-4>
+<docs-demo-six-input-5></docs-demo-six-input-5>
 
 ```html
 <six-input type="number" placeholder="Integers..."></six-input>
@@ -72,7 +81,7 @@ By default when using type number it allows you to only use integers
 
 However, you might want to be able to use decimal numbers, in this case simply define a `pattern` and a `step`:
 
-<docs-demo-six-input-5></docs-demo-six-input-5>
+<docs-demo-six-input-6></docs-demo-six-input-6>
 
 ```html
 <six-input type="number" placeholder="Decimal Numbers..." pattern="[0-9]+([\.,][0-9]+)?" step="0.1"></six-input>
@@ -83,7 +92,7 @@ However, you might want to be able to use decimal numbers, in this case simply d
 
 Use the `line` prop to render inputs line style.
 
-<docs-demo-six-input-6></docs-demo-six-input-6>
+<docs-demo-six-input-7></docs-demo-six-input-7>
 
 ```html
 <six-input line></six-input>
@@ -94,7 +103,7 @@ Use the `line` prop to render inputs line style.
 
 Use the `pill` prop to give inputs rounded edges.
 
-<docs-demo-six-input-7></docs-demo-six-input-7>
+<docs-demo-six-input-8></docs-demo-six-input-8>
 
 ```html
 <six-input placeholder="Small" size="small" pill></six-input>
@@ -109,7 +118,7 @@ Use the `pill` prop to give inputs rounded edges.
 
 Use the `disabled` attribute to disable an input.
 
-<docs-demo-six-input-8></docs-demo-six-input-8>
+<docs-demo-six-input-9></docs-demo-six-input-9>
 
 ```html
 <six-input placeholder="Write here your first name" size="small" label="Name" help-text="Help text" disabled>
@@ -127,7 +136,7 @@ Use the `disabled` attribute to disable an input.
 
 Use the `size` attribute to change an input's size.
 
-<docs-demo-six-input-9></docs-demo-six-input-9>
+<docs-demo-six-input-10></docs-demo-six-input-10>
 
 ```html
 <six-input placeholder="Small" size="small"></six-input>
@@ -142,7 +151,7 @@ Use the `size` attribute to change an input's size.
 
 Use the `prefix` and `suffix` slots to add icons.
 
-<docs-demo-six-input-10></docs-demo-six-input-10>
+<docs-demo-six-input-11></docs-demo-six-input-11>
 
 ```html
 <six-input placeholder="Small" size="small">
@@ -166,7 +175,7 @@ Use the `prefix` and `suffix` slots to add icons.
 
 Use the `label` attribute to give the input an accessible label. For labels that contain HTML, use the `label` slot instead.
 
-<docs-demo-six-input-11></docs-demo-six-input-11>
+<docs-demo-six-input-12></docs-demo-six-input-12>
 
 ```html
 <six-input label="What is your name?"></six-input>
@@ -178,7 +187,7 @@ Use the `label` attribute to give the input an accessible label. For labels that
 
 Add descriptive help text to an input with the `help-text` attribute. For help texts that contain HTML, use the `help-text` slot instead.
 
-<docs-demo-six-input-12></docs-demo-six-input-12>
+<docs-demo-six-input-13></docs-demo-six-input-13>
 
 ```html
 <six-input label="Name" help-text="Help text"> </six-input>
@@ -196,14 +205,14 @@ warning There are two caveats when using the `error-text` prop/slot:
 
 The `error-text` prop accepts either a simple string message, or a list of messages.
 
-<docs-demo-six-input-13></docs-demo-six-input-13>
+<docs-demo-six-input-14></docs-demo-six-input-14>
 
 ```html
 <six-input label="Simple string message" error-text="This is a simple string message" invalid> </six-input>
 ```
 
 
-<docs-demo-six-input-14></docs-demo-six-input-14>
+<docs-demo-six-input-15></docs-demo-six-input-15>
 
 ```html
 <six-input id="multiple-error-text" label="List of string message" invalid></six-input>
@@ -217,7 +226,7 @@ The `error-text` prop accepts either a simple string message, or a list of messa
 
 When using the `error-text` slot, it is recommended to use the `six-error` component to wrap the error message(s). This will provide the correct styling out of the box
 
-<docs-demo-six-input-15></docs-demo-six-input-15>
+<docs-demo-six-input-16></docs-demo-six-input-16>
 
 ```html
 <six-input invalid>
@@ -245,7 +254,7 @@ This means input, change and blur should be fired the same as when using native 
 
 You can play with the following native and six-input elements to see that the event firing is the same
 
-<docs-demo-six-input-16></docs-demo-six-input-16>
+<docs-demo-six-input-17></docs-demo-six-input-17>
 
 ```html
 <div style="font-size: 1rem; font-weight: bold; padding-bottom: 1rem">Native Input Element</div>
@@ -311,6 +320,7 @@ You can play with the following native and six-input elements to see that the ev
 | `autofocus`      | `autofocus`        | The input's autofocus attribute.                                                                                 | `boolean`                                                                                          | `false`     |
 | `clearable`      | `clearable`        | Set to true to add a clear button when the input is populated.                                                   | `boolean`                                                                                          | `false`     |
 | `disabled`       | `disabled`         | Set to true to disable the input.                                                                                | `boolean`                                                                                          | `false`     |
+| `dropdownSearch` | `dropdown-search`  | Internal: Styles the input for the dropdown filter search.                                                       | `boolean`                                                                                          | `false`     |
 | `errorText`      | `error-text`       | The error message shown, if `invalid` is set to true.                                                            | `string \| string[]`                                                                               | `''`        |
 | `errorTextCount` | `error-text-count` | The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1                         | `number \| undefined`                                                                              | `undefined` |
 | `helpText`       | `help-text`        | The input's help text. Alternatively, you can use the help-text slot.                                            | `string`                                                                                           | `''`        |
@@ -373,6 +383,12 @@ Type: `Promise<void | undefined>`
 
 Sets focus on the input.
 
+#### Parameters
+
+| Name      | Type                        | Description |
+| --------- | --------------------------- | ----------- |
+| `options` | `FocusOptions \| undefined` |             |
+
 #### Returns
 
 Type: `Promise<void>`
@@ -383,6 +399,15 @@ Type: `Promise<void>`
 
 Replaces a range of text with a new string.
 
+#### Parameters
+
+| Name          | Type                                         | Description |
+| ------------- | -------------------------------------------- | ----------- |
+| `replacement` | `string`                                     |             |
+| `start`       | `number`                                     |             |
+| `end`         | `number`                                     |             |
+| `selectMode`  | `"select" \| "start" \| "end" \| "preserve"` |             |
+
 #### Returns
 
 Type: `Promise<void>`
@@ -392,6 +417,14 @@ Type: `Promise<void>`
 ### `setSelectionRange(selectionStart: number, selectionEnd: number, selectionDirection?: 'forward' | 'backward' | 'none') => Promise<void | undefined>`
 
 Sets the start and end positions of the text selection (0-based).
+
+#### Parameters
+
+| Name                 | Type                                | Description |
+| -------------------- | ----------------------------------- | ----------- |
+| `selectionStart`     | `number`                            |             |
+| `selectionEnd`       | `number`                            |             |
+| `selectionDirection` | `"none" \| "forward" \| "backward"` |             |
 
 #### Returns
 

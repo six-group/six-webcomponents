@@ -6,5 +6,6 @@
 
 .menu-divider {
   border-top: solid var(--six-border-width) var(--six-menu-divider-color);
-  margin: 0;
+  margin-top: var(--six-spacing-xx-small);
+  margin-bottom: var(--six-spacing-xx-small);
 }

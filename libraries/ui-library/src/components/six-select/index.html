@@ -22,26 +22,13 @@
           <six-menu-item value="option-1">Option 1</six-menu-item>
           <six-menu-item value="option-2">Option 2</six-menu-item>
           <six-menu-item value="option-3">Option 3</six-menu-item>
-          <six-menu-divider></six-menu-divider>
           <six-menu-item value="option-4">Option 4</six-menu-item>
           <six-menu-item value="option-5">Option 5</six-menu-item>
           <six-menu-item value="option-6">Option 6</six-menu-item>
+          <six-menu-item value="option-7">Option 7</six-menu-item>
+          <six-menu-item value="option-8">Option 8</six-menu-item>
+          <six-menu-item value="option-9">Option 9</six-menu-item>
         </six-select>
-      </section>
-      <p></p>
-      <section>
-        <div style="width: 100px"></div>
-        <div style="width: 100px">
-          <six-select>
-            <six-menu-item value="option-1">Larger Option 1</six-menu-item>
-            <six-menu-item value="option-2">Larger Option 2</six-menu-item>
-            <six-menu-item value="option-3">Larger Option 3</six-menu-item>
-            <six-menu-divider></six-menu-divider>
-            <six-menu-item value="option-4">Larger Option 4</six-menu-item>
-            <six-menu-item value="option-5">Larger Option 5</six-menu-item>
-            <six-menu-item value="option-6">Larger Option 6</six-menu-item>
-          </six-select>
-        </div>
       </section>
 
       <h2>Examples</h2>
@@ -124,11 +111,10 @@
         clearable when this option is enabled. When using this option, value will be an array instead of a string.
       </p>
       <section class="demo" style="width: 300px">
-        <six-select placeholder="Select a few" multiple clearable>
+        <six-select filter placeholder="Select a few" multiple clearable>
           <six-menu-item value="option-1">Option 1</six-menu-item>
           <six-menu-item value="option-2">Option 2</six-menu-item>
           <six-menu-item value="option-3">Option 3</six-menu-item>
-          <six-menu-divider></six-menu-divider>
           <six-menu-item value="option-4">Option 4</six-menu-item>
           <six-menu-item value="option-5">Option 5</six-menu-item>
           <six-menu-item value="option-6">Option 6 (with tooltip due to long text)</six-menu-item>
@@ -325,7 +311,7 @@
         field (will be 'Filter...' by default)
       </p>
       <section class="demo" style="width: 300px">
-        <six-select label="Experience" filter multiple clearable>
+        <six-select label="Experience" filter multiple select-all-button clearable>
           <six-menu-item value="AUSTRALIA">Australia</six-menu-item>
           <six-menu-item value="BRAZIL">Brazil</six-menu-item>
           <six-menu-item value="CHINA">China</six-menu-item>
@@ -347,7 +333,7 @@
       <p>In such a scenario simply add the <code>async-filter</code> attribute to your dropdown component</p>
       <p>If you want to change the default debounce timeout use e.g. <code>filter-debounce="500"</code></p>
       <section class="demo" style="width: 300px">
-        <six-select id="async-select" async-filter filter-placeholder="Search">
+        <six-select id="async-select" async-filter filter-placeholder="Enter a number">
           <six-menu-item id="async-menu-item" value="search_list_prompt">Use search to show entries</six-menu-item>
         </six-select>
         <script type="module">
@@ -369,15 +355,19 @@
 
           asyncSelect.addEventListener('six-async-filter-fired', ($event) => {
             const filterValue = $event.detail.filterValue;
-
             removeAllChildNodes(asyncMenu);
-
-            const numberOfHits = Math.floor(Math.random() * 25) + 3;
-            for (let i = 0; i < numberOfHits; i++) {
+            for (let i = 0; i < 500; i++) {
               const child = document.createElement('six-menu-item');
-              child.innerText = `Value ${filterValue} ${i}`;
-              child.value = `value-${filterValue}-${i}`;
-              asyncMenu.appendChild(child);
+              child.innerText = `Value ${i}`;
+              child.value = `value-${i}`;
+              if (
+                filterValue.includes(`${i}`) ||
+                filterValue.toLocaleLowerCase().includes(`value`) ||
+                filterValue.toLocaleLowerCase().includes(`value ${i}`) ||
+                filterValue === ''
+              ) {
+                asyncMenu.appendChild(child);
+              }
             }
           });
         </script>
@@ -476,7 +466,7 @@
       </p>
 
       <section>
-        <six-select id="six-select-dynamic-options"></six-select>
+        <six-select filter multiple id="six-select-dynamic-options"></six-select>
         <script type="module">
           const sixSelectDynamicOptions = document.getElementById('six-select-dynamic-options');
           sixSelectDynamicOptions.options = Array.from(Array(100).keys()).map((idx) => ({

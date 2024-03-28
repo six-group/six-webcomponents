@@ -17,6 +17,7 @@ Inputs collect data from the user.
 | `autofocus`      | `autofocus`        | The input's autofocus attribute.                                                                                 | `boolean`                                                                                          | `false`     |
 | `clearable`      | `clearable`        | Set to true to add a clear button when the input is populated.                                                   | `boolean`                                                                                          | `false`     |
 | `disabled`       | `disabled`         | Set to true to disable the input.                                                                                | `boolean`                                                                                          | `false`     |
+| `dropdownSearch` | `dropdown-search`  | Internal: Styles the input for the dropdown filter search.                                                       | `boolean`                                                                                          | `false`     |
 | `errorText`      | `error-text`       | The error message shown, if `invalid` is set to true.                                                            | `string \| string[]`                                                                               | `''`        |
 | `errorTextCount` | `error-text-count` | The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1                         | `number \| undefined`                                                                              | `undefined` |
 | `helpText`       | `help-text`        | The input's help text. Alternatively, you can use the help-text slot.                                            | `string`                                                                                           | `''`        |
@@ -79,6 +80,12 @@ Type: `Promise<void | undefined>`
 
 Sets focus on the input.
 
+#### Parameters
+
+| Name      | Type                        | Description |
+| --------- | --------------------------- | ----------- |
+| `options` | `FocusOptions \| undefined` |             |
+
 #### Returns
 
 Type: `Promise<void>`
@@ -89,6 +96,15 @@ Type: `Promise<void>`
 
 Replaces a range of text with a new string.
 
+#### Parameters
+
+| Name          | Type                                         | Description |
+| ------------- | -------------------------------------------- | ----------- |
+| `replacement` | `string`                                     |             |
+| `start`       | `number`                                     |             |
+| `end`         | `number`                                     |             |
+| `selectMode`  | `"select" \| "start" \| "end" \| "preserve"` |             |
+
 #### Returns
 
 Type: `Promise<void>`
@@ -98,6 +114,14 @@ Type: `Promise<void>`
 ### `setSelectionRange(selectionStart: number, selectionEnd: number, selectionDirection?: 'forward' | 'backward' | 'none') => Promise<void | undefined>`
 
 Sets the start and end positions of the text selection (0-based).
+
+#### Parameters
+
+| Name                 | Type                                | Description |
+| -------------------- | ----------------------------------- | ----------- |
+| `selectionStart`     | `number`                            |             |
+| `selectionEnd`       | `number`                            |             |
+| `selectionDirection` | `"none" \| "forward" \| "backward"` |             |
 
 #### Returns
 

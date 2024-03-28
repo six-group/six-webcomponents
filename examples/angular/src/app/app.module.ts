@@ -12,6 +12,8 @@ import { RightSidebarComponent } from './components/right-sidebar/right-sidebar.
 import { LeftSidebarComponent } from './components/left-sidebar/left-sidebar.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FormComponent } from './pages/form/form.component';
+import { AlertComponent } from './pages/alert/alert.component';
+import { DialogComponent } from './pages/dialog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { FormComponent } from './pages/form/form.component';
     HeaderComponent,
     LeftSidebarComponent,
     FormComponent,
+    AlertComponent,
+    DialogComponent,
   ],
   imports: [
     BrowserModule,

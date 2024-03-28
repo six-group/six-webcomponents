@@ -5,6 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { AlertType } from "./components/six-alert/six-alert";
 import { EmptyPayload } from "./utils/types";
 import { SixDateFormats } from "./components/six-datepicker/six-date-formats";
 import { SixDatepickerSelectPayload } from "./components/six-datepicker/six-datepicker";
@@ -18,13 +19,13 @@ import { SixItemPickerChangePayload } from "./components/six-item-picker/six-ite
 import { SixLanguageSwitcherChangePayload, SixLanguageSwitcherInput } from "./components/six-language-switcher/six-language-switcher";
 import { SixMenuItemData as SixMenuItemData1, SixMenuItemSelectedPayload } from "./components/six-menu/six-menu";
 import { StageType } from "./components/six-stage-indicator/six-stage-indicator";
-import { SixRootCollapsedPayload } from "./components/six-root/six-root";
 import { SixSearchFieldChangePayload } from "./components/six-search-field/six-search-field";
 import { SixSelectChangePayload } from "./components/six-select/six-select";
 import { StageType as StageType1 } from "./components/six-stage-indicator/six-stage-indicator";
 import { SixTabHidePayload, SixTabShowPayload } from "./components/six-tab-group/six-tab-group";
 import { TimeFormat } from "./utils/time.util";
 import { SixTimepickerChange } from "./components/six-timepicker/six-timepicker";
+export { AlertType } from "./components/six-alert/six-alert";
 export { EmptyPayload } from "./utils/types";
 export { SixDateFormats } from "./components/six-datepicker/six-date-formats";
 export { SixDatepickerSelectPayload } from "./components/six-datepicker/six-datepicker";
@@ -38,7 +39,6 @@ export { SixItemPickerChangePayload } from "./components/six-item-picker/six-ite
 export { SixLanguageSwitcherChangePayload, SixLanguageSwitcherInput } from "./components/six-language-switcher/six-language-switcher";
 export { SixMenuItemData as SixMenuItemData1, SixMenuItemSelectedPayload } from "./components/six-menu/six-menu";
 export { StageType } from "./components/six-stage-indicator/six-stage-indicator";
-export { SixRootCollapsedPayload } from "./components/six-root/six-root";
 export { SixSearchFieldChangePayload } from "./components/six-search-field/six-search-field";
 export { SixSelectChangePayload } from "./components/six-select/six-select";
 export { StageType as StageType1 } from "./components/six-stage-indicator/six-stage-indicator";
@@ -46,12 +46,6 @@ export { SixTabHidePayload, SixTabShowPayload } from "./components/six-tab-group
 export { TimeFormat } from "./utils/time.util";
 export { SixTimepickerChange } from "./components/six-timepicker/six-timepicker";
 export namespace Components {
-    interface SetAttributes {
-        /**
-          * Attributes map
-         */
-        "value": {};
-    }
     /**
      * @since 1.0
      * @status stable
@@ -63,7 +57,7 @@ export namespace Components {
          */
         "closable": boolean;
         /**
-          * The length of time, in milliseconds, the alert will show before closing itself. If the user interacts with the alert before it closes (e.g. moves the mouse over it), the timer will restart.
+          * The length of time, in milliseconds, the alert will show before closing itself. If the user hovers over the toast alert, the timer will pause. On leaving the element with the mouse, the timer resets.
          */
         "duration": number;
         /**
@@ -80,12 +74,13 @@ export namespace Components {
         "show": () => Promise<void>;
         /**
           * Displays the alert as a toast notification. This will move the alert out of its position in the DOM and, when dismissed, it will be removed from the DOM completely. By storing a reference to the alert, you can reuse it by calling this method again. The returned promise will resolve after the alert is hidden.
+          * @param adjustPosition If true, the top and right position of the toast stack is shifted according to the six-root header's height and the presence of a vertical scrollbar.
          */
-        "toast": () => Promise<void>;
+        "toast": (adjustPosition?: boolean) => Promise<void>;
         /**
           * The type of alert.
          */
-        "type": 'primary' | 'success' | 'info' | 'warning' | 'danger';
+        "type": AlertType;
     }
     /**
      * @since 1.0
@@ -329,7 +324,7 @@ export namespace Components {
         /**
           * The language used to render the weekdays and months.
          */
-        "locale": 'en' | 'de' | 'fr' | 'it';
+        "locale": 'en' | 'de' | 'fr' | 'it' | 'es';
         /**
           * The maximum datetime allowed. Value must be a date object
          */
@@ -550,6 +545,10 @@ export namespace Components {
          */
         "hoist": boolean;
         /**
+          * Determines if the dropdown panel's width should match the width of the trigger element.  If set to `true`, the panel will resize its width to align with the trigger's width. If `false` or omitted, the panel will maintain its default width.
+         */
+        "matchTriggerWidth": boolean;
+        /**
           * Indicates whether the dropdown is open. You can use this in lieu of the show/hide methods.
          */
         "open": boolean;
@@ -574,6 +573,7 @@ export namespace Components {
     | 'left-end';
         /**
           * Instructs the dropdown menu to reposition. Useful when the position or size of the trigger changes when the menu is activated.
+          * @deprecated : use the property `matchTriggerWidth` instead.
          */
         "reposition": () => Promise<void>;
         /**
@@ -682,6 +682,10 @@ export namespace Components {
           * More than one file allowed.
          */
         "multiple": false;
+        /**
+          * Set to true to draw the control in a loading state.
+         */
+        "uploading": boolean;
     }
     /**
      * @since 1.0
@@ -728,6 +732,10 @@ export namespace Components {
           * Get open state for search
          */
         "getIsSearchOpen": () => Promise<boolean>;
+        /**
+          * Set whether the hamburger menu should be visible or not
+         */
+        "hideHamburgerMenu": boolean;
         /**
           * Set the hamburger menu icon to open or closed state
          */
@@ -823,6 +831,10 @@ export namespace Components {
           * Set to true to disable the input.
          */
         "disabled": boolean;
+        /**
+          * Internal: Styles the input for the dropdown filter search.
+         */
+        "dropdownSearch": boolean;
         /**
           * The error message shown, if `invalid` is set to true.
          */
@@ -1035,6 +1047,10 @@ export namespace Components {
      */
     interface SixMenu {
         /**
+          * Internal: Disables handling of key presses.
+         */
+        "disableKeyboardHandling": boolean;
+        /**
           * Used for virtual scrolling Define how many items should be rendered in the DOM when using virtual scrolling
          */
         "itemSize": number;
@@ -1077,7 +1093,11 @@ export namespace Components {
      */
     interface SixMenuItem {
         /**
-          * Set to true to draw the item in a checked state.
+          * Defines if the checked state is displayed as a checkbox or a check-icon
+         */
+        "checkType": 'checkbox' | 'check';
+        /**
+          * Internal: Draws the item in a checked state. CheckType needs to be set to 'checkbox' or 'check' to show the checked state
          */
         "checked": boolean;
         /**
@@ -1264,10 +1284,6 @@ export namespace Components {
      */
     interface SixRoot {
         /**
-          * Breakpoint for smaller screens when the right sidebar is collapsed by default.
-         */
-        "breakpoint": number;
-        /**
           * Defines whether the content section should be padded
          */
         "padded": boolean;
@@ -1343,7 +1359,7 @@ export namespace Components {
         /**
           * The debounce for the filter callbacks.
          */
-        "filterDebounce": number;
+        "filterDebounce"?: number;
         /**
           * The filter's placeholder text.
          */
@@ -1374,6 +1390,7 @@ export namespace Components {
         "line": boolean;
         /**
           * The maximum number of tags to show when `multiple` is true. After the maximum, "+n" will be shown to indicate the number of additional items that are selected. Set to -1 to remove the limit.
+          * @deprecated : This property is ignored. The component now displays as many items as possible and computes the "+n" dynamically.
          */
         "maxTagsVisible": number;
         /**
@@ -1400,6 +1417,14 @@ export namespace Components {
           * Set to true to show an asterisk beneath the label.
          */
         "required": boolean;
+        /**
+          * Enables the select all button.
+         */
+        "selectAllButton": boolean;
+        /**
+          * Custom text for the "select all" button. Defaults to "Select all" and equivalents in supported languages.
+         */
+        "selectAllText"?: string;
         /**
           * Sets focus on the select.
          */
@@ -2049,10 +2074,6 @@ export interface SixRangeCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLSixRangeElement;
 }
-export interface SixRootCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLSixRootElement;
-}
 export interface SixSearchFieldCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLSixSearchFieldElement;
@@ -2098,12 +2119,6 @@ export interface SixTooltipCustomEvent<T> extends CustomEvent<T> {
     target: HTMLSixTooltipElement;
 }
 declare global {
-    interface HTMLSetAttributesElement extends Components.SetAttributes, HTMLStencilElement {
-    }
-    var HTMLSetAttributesElement: {
-        prototype: HTMLSetAttributesElement;
-        new (): HTMLSetAttributesElement;
-    };
     interface HTMLSixAlertElementEventMap {
         "six-alert-show": EmptyPayload;
         "six-alert-after-show": EmptyPayload;
@@ -2695,22 +2710,11 @@ declare global {
         prototype: HTMLSixRangeElement;
         new (): HTMLSixRangeElement;
     };
-    interface HTMLSixRootElementEventMap {
-        "six-root-collapsed": SixRootCollapsedPayload;
-    }
     /**
      * @since 1.0
      * @status stable
      */
     interface HTMLSixRootElement extends Components.SixRoot, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLSixRootElementEventMap>(type: K, listener: (this: HTMLSixRootElement, ev: SixRootCustomEvent<HTMLSixRootElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLSixRootElementEventMap>(type: K, listener: (this: HTMLSixRootElement, ev: SixRootCustomEvent<HTMLSixRootElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLSixRootElement: {
         prototype: HTMLSixRootElement;
@@ -3021,7 +3025,6 @@ declare global {
         new (): HTMLSixTooltipElement;
     };
     interface HTMLElementTagNameMap {
-        "set-attributes": HTMLSetAttributesElement;
         "six-alert": HTMLSixAlertElement;
         "six-avatar": HTMLSixAvatarElement;
         "six-badge": HTMLSixBadgeElement;
@@ -3077,12 +3080,6 @@ declare global {
     }
 }
 declare namespace LocalJSX {
-    interface SetAttributes {
-        /**
-          * Attributes map
-         */
-        "value"?: {};
-    }
     /**
      * @since 1.0
      * @status stable
@@ -3094,7 +3091,7 @@ declare namespace LocalJSX {
          */
         "closable"?: boolean;
         /**
-          * The length of time, in milliseconds, the alert will show before closing itself. If the user interacts with the alert before it closes (e.g. moves the mouse over it), the timer will restart.
+          * The length of time, in milliseconds, the alert will show before closing itself. If the user hovers over the toast alert, the timer will pause. On leaving the element with the mouse, the timer resets.
          */
         "duration"?: number;
         /**
@@ -3120,7 +3117,7 @@ declare namespace LocalJSX {
         /**
           * The type of alert.
          */
-        "type"?: 'primary' | 'success' | 'info' | 'warning' | 'danger';
+        "type"?: AlertType;
     }
     /**
      * @since 1.0
@@ -3368,7 +3365,7 @@ declare namespace LocalJSX {
         /**
           * The language used to render the weekdays and months.
          */
-        "locale"?: 'en' | 'de' | 'fr' | 'it';
+        "locale"?: 'en' | 'de' | 'fr' | 'it' | 'es';
         /**
           * The maximum datetime allowed. Value must be a date object
          */
@@ -3629,6 +3626,10 @@ declare namespace LocalJSX {
          */
         "hoist"?: boolean;
         /**
+          * Determines if the dropdown panel's width should match the width of the trigger element.  If set to `true`, the panel will resize its width to align with the trigger's width. If `false` or omitted, the panel will maintain its default width.
+         */
+        "matchTriggerWidth"?: boolean;
+        /**
           * Emitted when the async filter is triggered
          */
         "onSix-async-filter-fired"?: (event: SixDropdownCustomEvent<SixDropdownAsyncFilterPayload>) => void;
@@ -3797,6 +3798,10 @@ declare namespace LocalJSX {
           * Triggers when a file is added.
          */
         "onSix-file-upload-success"?: (event: SixFileUploadCustomEvent<SixFileUploadSuccessPayload>) => void;
+        /**
+          * Set to true to draw the control in a loading state.
+         */
+        "uploading"?: boolean;
     }
     /**
      * @since 1.0
@@ -3839,6 +3844,10 @@ declare namespace LocalJSX {
           * Set whether the logo should be clickable
          */
         "clickableLogo"?: boolean;
+        /**
+          * Set whether the hamburger menu should be visible or not
+         */
+        "hideHamburgerMenu"?: boolean;
         /**
           * Emitted when the name of the selected app is clicked.
          */
@@ -3954,6 +3963,10 @@ declare namespace LocalJSX {
           * Set to true to disable the input.
          */
         "disabled"?: boolean;
+        /**
+          * Internal: Styles the input for the dropdown filter search.
+         */
+        "dropdownSearch"?: boolean;
         /**
           * The error message shown, if `invalid` is set to true.
          */
@@ -4178,6 +4191,10 @@ declare namespace LocalJSX {
      */
     interface SixMenu {
         /**
+          * Internal: Disables handling of key presses.
+         */
+        "disableKeyboardHandling"?: boolean;
+        /**
           * Used for virtual scrolling Define how many items should be rendered in the DOM when using virtual scrolling
          */
         "itemSize"?: number;
@@ -4220,7 +4237,11 @@ declare namespace LocalJSX {
      */
     interface SixMenuItem {
         /**
-          * Set to true to draw the item in a checked state.
+          * Defines if the checked state is displayed as a checkbox or a check-icon
+         */
+        "checkType"?: 'checkbox' | 'check';
+        /**
+          * Internal: Draws the item in a checked state. CheckType needs to be set to 'checkbox' or 'check' to show the checked state
          */
         "checked"?: boolean;
         /**
@@ -4403,14 +4424,6 @@ declare namespace LocalJSX {
      */
     interface SixRoot {
         /**
-          * Breakpoint for smaller screens when the right sidebar is collapsed by default.
-         */
-        "breakpoint"?: number;
-        /**
-          * Emitted when display size is updated.
-         */
-        "onSix-root-collapsed"?: (event: SixRootCustomEvent<SixRootCollapsedPayload>) => void;
-        /**
           * Defines whether the content section should be padded
          */
         "padded"?: boolean;
@@ -4521,6 +4534,7 @@ declare namespace LocalJSX {
         "line"?: boolean;
         /**
           * The maximum number of tags to show when `multiple` is true. After the maximum, "+n" will be shown to indicate the number of additional items that are selected. Set to -1 to remove the limit.
+          * @deprecated : This property is ignored. The component now displays as many items as possible and computes the "+n" dynamically.
          */
         "maxTagsVisible"?: number;
         /**
@@ -4559,6 +4573,14 @@ declare namespace LocalJSX {
           * Set to true to show an asterisk beneath the label.
          */
         "required"?: boolean;
+        /**
+          * Enables the select all button.
+         */
+        "selectAllButton"?: boolean;
+        /**
+          * Custom text for the "select all" button. Defaults to "Select all" and equivalents in supported languages.
+         */
+        "selectAllText"?: string;
         /**
           * The select's size.
          */
@@ -5156,7 +5178,6 @@ declare namespace LocalJSX {
         "trigger"?: string;
     }
     interface IntrinsicElements {
-        "set-attributes": SetAttributes;
         "six-alert": SixAlert;
         "six-avatar": SixAvatar;
         "six-badge": SixBadge;
@@ -5215,7 +5236,6 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "set-attributes": LocalJSX.SetAttributes & JSXBase.HTMLAttributes<HTMLSetAttributesElement>;
             /**
              * @since 1.0
              * @status stable

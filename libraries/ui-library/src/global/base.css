@@ -14,12 +14,6 @@ body > div.container {
   --six-border-radius-x-large: 1rem;
   --six-border-radius-circle: 50%;
   --six-border-radius-pill: 9999px;
-  --six-shadow-x-small: 0 1px 0 #00000029;
-  --six-shadow-small: 0 6px 12px 0px #00000029;
-  --six-shadow-medium: 0 12px 24px 0 #00000029;
-  --six-shadow-large: 0 2px 8px #0d131e1a;
-  --six-shadow-x-large: 0 4px 16px #0d131e1a;
-  --six-shadow-x-large-top: 0 -4px 16px #0d131e1a;
   --six-spacing-xxx-small: 0.125rem;
   --six-spacing-xx-small: 0.25rem;
   --six-spacing-x-small: 0.5rem;
@@ -70,25 +64,10 @@ body > div.container {
   --six-z-index-tooltip: 900;
   --six-z-index-dialog: 1000;
 
-  --six-elevation-1dp: 0 2px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 2px 0 rgba(0, 0, 0, 0.12);
-  --six-elevation-2dp: 0 2px 3px 0 rgba(0, 0, 0, 0.2), 0 3px 1px -2px rgba(0, 0, 0, 0.14),
-    0 2px 2px 0 rgba(0, 0, 0, 0.12);
-  --six-elevation-3dp: 0 1px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 4px 0 rgba(0, 0, 0, 0.14),
-    0 3px 3px -2px rgba(0, 0, 0, 0.12);
-  --six-elevation-4dp: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14),
-    0 1px 10px -2px rgba(0, 0, 0, 0.12);
-  --six-elevation-6dp: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.14),
-    0 1px 18px -2px rgba(0, 0, 0, 0.12);
-  --six-elevation-8dp: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14),
-    0 3px 14px 2px rgba(0, 0, 0, 0.12);
-  --six-elevation-9dp: 0 5px 6px -3px rgba(0, 0, 0, 0.2), 0 9px 12px 1px rgba(0, 0, 0, 0.14),
-    0 3px 16px 2px rgba(0, 0, 0, 0.12);
-  --six-elevation-12dp: 0 7px 8px -4px rgba(0, 0, 0, 0.2), 0 12px 17px 2px rgba(0, 0, 0, 0.14),
-    0 5px 22px 4px rgba(0, 0, 0, 0.12);
-  --six-elevation-16dp: 0 8px 10px -5px rgba(0, 0, 0, 0.2), 0 16px 24px 2px rgba(0, 0, 0, 0.14),
-    0 6px 30px 5px rgba(0, 0, 0, 0.12);
-  --six-elevation-24dp: 0 11px 15px -7px rgba(0, 0, 0, 0.2), 0 24px 38px 3px rgba(0, 0, 0, 0.14),
-    0 9px 46px 8px rgba(0, 0, 0, 0.12);
+  --six-shadow-small: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --six-shadow-medium: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --six-shadow-medium-top: 0 -10px 15px -3px rgb(0 0 0 / 0.1), 0 -4px 6px -4px rgb(0 0 0 / 0.1);
+  --six-shadow-large: 0 25px 50px -12px rgb(0 0 0 / 0.25);
 
   --six-height-small: 1.875rem;
   --six-height-medium: 2.5rem;
@@ -177,7 +156,7 @@ body > div.container {
   --six-selection-control-color-disabled: var(--six-color-web-rock-400);
   --six-selection-control-toggle-size: 1rem;
 
-  --six-details-color: var(--six-color-web-rock-600);
+  --six-details-color: var(--six-color-web-rock-900);
 
   --six-drawer-color: var(--six-color-web-rock-900);
   --six-drawer-background-color: var(--six-color-clay-50);
@@ -216,4 +195,19 @@ body > div.container {
 
 .six-scroll-lock {
   overflow: hidden !important;
+}
+
+.six-toast-stack {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: var(--six-z-index-toast);
+  display: flex;
+  flex-direction: column;
+  gap: var(--six-spacing-small);
+  margin-top: var(--six-spacing-medium);
+  margin-right: var(--six-spacing-medium);
+  width: 32rem;
+  max-width: 100%;
+  max-height: 100%;
 }

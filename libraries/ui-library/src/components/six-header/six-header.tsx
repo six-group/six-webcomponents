@@ -56,6 +56,9 @@ export class SixHeader {
   /** Indicates if content should be shifted down when search field is visible. */
   @Prop() shiftContent = false;
 
+  /** Set whether the hamburger menu should be visible or not */
+  @Prop() hideHamburgerMenu = false;
+
   /** Set the hamburger menu icon to open or closed state */
   @Prop() openHamburgerMenu = false;
 
@@ -111,6 +114,8 @@ export class SixHeader {
   private eventListeners = new EventListeners();
 
   private slots?: Record<Slot, boolean>;
+
+  private mutationObserver?: MutationObserver;
 
   @State() selectedApp?: string;
   @State() selectedSection?: Section;
@@ -194,7 +199,7 @@ export class SixHeader {
     };
 
     if (this.hasSlot(Slot.AppSwitcher)) {
-      this.selectedApp = this.getSelectedApp();
+      this.updateSelectedApp();
     }
 
     if (this.hasSlot(Slot.Search)) {
@@ -202,22 +207,43 @@ export class SixHeader {
     }
   }
 
-  private getSelectedApp(): string | undefined {
+  connectedCallback() {
+    const appSwitcherSlot = getSlot(this.host, Slot.AppSwitcher);
+    if (appSwitcherSlot) {
+      this.mutationObserver = new MutationObserver((mutations) => {
+        if (mutations.some((mutation) => mutation.type === 'childList' || mutation.type === 'attributes')) {
+          this.updateSelectedApp();
+        }
+      });
+      this.mutationObserver.observe(appSwitcherSlot, { attributes: true, childList: true, subtree: true });
+    }
+  }
+
+  private updateSelectedApp() {
     // there are more concise ways to select the first checked menu item, but this is one that works for jest
     const element = getSlot(this.host, Slot.AppSwitcher);
     if (element == null) {
       return undefined;
     }
     const items = Array.from(element.querySelectorAll('six-menu-item'));
-    const firstCheckedMenuItem = items.find((item: HTMLElement) => item.hasAttribute('checked'));
-    return firstCheckedMenuItem?.textContent ?? undefined;
+    const firstCheckedMenuItem = items.find(
+      (item) => item.hasAttribute('checked') && item.getAttribute('checked') !== 'false'
+    );
+    this.selectedApp = firstCheckedMenuItem?.textContent ?? undefined;
   }
 
   disconnectedCallback() {
     this.eventListeners.removeAll();
+    this.mutationObserver?.disconnect();
   }
 
   render() {
+    const hamburgerMenu = !this.hideHamburgerMenu && (
+      <section class="six-header__menu">
+        <six-icon-button name={this.openHamburgerMenu ? 'menu_open' : 'menu'} ref={this.setupMenu} />
+      </section>
+    );
+
     const search = this.hasSlot(Slot.Search) && (
       <section
         class={{
@@ -242,11 +268,13 @@ export class SixHeader {
           'six-header__app-switcher--open': this.isSectionSelected(Section.AppSwitcher),
         }}
       >
-        <a onClick={this.appNameClicked} class="six-header__selected-app">
-          {this.selectedApp}
-        </a>
         <six-dropdown distance={13} skidding={20} placement="bottom-end" ref={this.setupAppSwitcher}>
-          <six-icon-button name="apps" slot="trigger" />
+          <div slot="trigger" class="six-header__app-switcher-dropdown">
+            <a onClick={this.appNameClicked} class="six-header__selected-app">
+              {this.selectedApp}
+            </a>
+            <six-icon-button name="apps" />
+          </div>
           <slot name={Slot.AppSwitcher} />
         </six-dropdown>
       </section>
@@ -292,9 +320,7 @@ export class SixHeader {
     return (
       <Host>
         <header class="six-header">
-          <section class="six-header__menu">
-            <six-icon-button name={this.openHamburgerMenu ? 'menu_open' : 'menu'} ref={this.setupMenu} />
-          </section>
+          {hamburgerMenu}
 
           {logo}
 

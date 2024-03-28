@@ -8,20 +8,110 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
-- Experimental support for Vue
-- Updated the `six-item-picker` component to include tabindex attributes for better accessibility.
-- Updated the `six-language-switcher` component to include tabindex attributes for better
-  accessibility.
-
 ### Changed
-
-- Angular example upgraded to Angular 16
-
-- **Breaking:**: Upgraded to Angular 16. Projects need to update to Angular 16 or newer.
 
 ### Fixed
 
-- Router causes page reload
+- Fixed `six-checkbox` checkbox-input being distorted with multiline content/text
+- Fixed `six-sidebar-item-group` to wrap the sidebar text if it gets too long
+- Updated the `six-language-switcher` component to include tabindex attributes for better
+  accessibility.
+
+## 4.2.1 - 2024-03-14
+
+### Fixed
+
+- bumped Stencil version to latest fix release to avoid issues with custom-elements hydration
+
+## 4.2.0 - 2024-03-14
+
+### Added
+
+- Added `uploading` property to `six-file-upload`.
+- Extend documentation on styling topics regarding tables, colors and the usage of TailwindCSS
+
+### Changed
+
+- The `six-tab-group` left/right scroll controls are visible only if there is more content to be
+  scrolled to.
+- The `language-switcher` has newly a neutral hover and selected color to serve both SIX and BME,
+  newly languages are separated via pipe
+- Removed Safari hack for preventScroll in `six-dialog` and `six-drawer` because a fix was
+  introduced
+- Upgraded Stencil to 4.12.0
+- Upgraded Jest to 29.7.0
+
+### Fixed
+
+- six-file-upload does not look good when compact and disabled
+- label of `six-range` being misaligned
+
+## 4.1.2 - 2024-02-14 ♥
+
+### Fixed
+
+- GitHub workflow for Vue
+
+## 4.1.1 - 2024-02-14 ♥
+
+### Fixed
+
+- GitHub workflow for Vue
+
+## 4.1.0 - 2024-02-14 ♥
+
+### Added
+
+- Support for Vue
+- Updated the `six-item-picker` component to include tabindex attributes for better accessibility.
+- Added `hide-hamburger-menu` option to `six-header` to allow hiding the hamburger menu.
+- Added focus-visible to `six-checkbox` component for better accessibility.
+- Added part to svg, so users are able to resize the six logo spinner
+- Added `matchTriggerWidth` property to `six-dropdown`.
+- Utility to display toast alerts in Angular and Vue.
+- Added spanish locale and translations for `six-datepicker` literals.
+
+### Changed
+
+- **Breaking**: Merged box-shadow CSS variables `--six-elevation-` into `--six-shadow-` and reduced
+  variants to small, medium, and large.
+- **Breaking**: The `tag` part is no longer supported in `six-select`.
+- **Breaking**: Upgraded to Angular 16. Projects must update to Angular 16 or newer.
+- **Breaking**: The `six-root` no longer automatically toggles the open state of the sidebar based
+  on the view port width.
+
+- Improved `six-select` functionality and appearance:
+
+  - Display checked items as checkboxes in multiselect mode.
+  - Group selected options on top in multiselect mode.
+  - Added a button to select/deselect all items.
+  - Hide expand button when clear button is visible.
+  - Display multiple options as comma-separated values and prevent wrapping.
+  - Match dropdown width with trigger width.
+  - Decreased vertical whitespace between menu items.
+  - Set debounce time for non-async filter to 0.
+  - Enhanced visual styling of dropdown and its filter.
+  - Set focus on the filter element immediately.
+  - Keep focus on the filter element upon mouse leave.
+
+- Angular example upgraded to Angular 16
+- `six-alert` when used as a toast in combination with a duration does now stay open indefinitely
+  when hovered.
+
+### Fixed
+
+- Angular router causes page reload
+- Show the correct active app in six-header
+- Icon names are not selectable anymore
+- Slot of six-icon was not centered
+- Fixed problem where datepicker height is not adjusted when using hoist property
+- Clicking on the active app in six-header toggles the app switcher
+- Fixed six-details to not change text color on hover
+- Box Shadow for toast alerts
+- six-select filter not working when items passed via options property
+- Disabling a SIX web components input element in an Angular form correctly hides any error messages
+  on the input
+- six-dialog not respecting initial open state
 
 ## 4.0.4 - 2023-11-15
 

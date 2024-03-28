@@ -11,7 +11,6 @@
           <six-menu-item>Option 2</six-menu-item>
           <six-menu-item>Option 3</six-menu-item>
           <six-menu-divider></six-menu-divider>
-          <six-menu-item checked>Checked</six-menu-item>
           <six-menu-item disabled>Disabled</six-menu-item>
           <six-menu-divider></six-menu-divider>
           <six-menu-item>

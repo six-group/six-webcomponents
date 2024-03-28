@@ -1,11 +1,8 @@
 import { Component, Element, Event, EventEmitter, h, Method, Prop, State, Watch } from '@stencil/core';
 import { lockBodyScrolling, unlockBodyScrolling } from '../../utils/scroll';
 import { hasSlot } from '../../utils/slot';
-import { isPreventScrollSupported } from '../../utils/support';
 import Modal from '../../utils/modal';
 import { EmptyPayload } from '../../utils/types';
-
-const hasPreventScroll = isPreventScrollSupported();
 
 let id = 0;
 
@@ -96,7 +93,9 @@ export class SixDialog {
 
   componentWillLoad() {
     this.handleSlotChange();
+  }
 
+  componentDidLoad() {
     // Show on init if open
     if (this.open) {
       this.show();
@@ -129,33 +128,12 @@ export class SixDialog {
     lockBodyScrolling(this.host);
 
     if (this.open) {
-      if (hasPreventScroll) {
-        // Wait for the next frame before setting initial focus so the dialog is technically visible
-        requestAnimationFrame(() => {
-          const sixInitialFocus = this.sixInitialFocus.emit();
-          if (!sixInitialFocus.defaultPrevented) {
-            panel.focus({ preventScroll: true });
-          }
-        });
-      } else {
-        // Once Safari supports { preventScroll: true } we can remove this nasty little hack, but until then we need to
-        // wait for the transition to complete before setting focus, otherwise the panel may render in a buggy way its
-        // out of view initially.
-        //
-        // Fiddle: https://jsfiddle.net/g6buoafq/1/
-        // Safari: https://bugs.webkit.org/show_bug.cgi?id=178583
-        //
-        this.dialog.addEventListener(
-          'transitionend',
-          () => {
-            const sixInitialFocus = this.sixInitialFocus.emit();
-            if (!sixInitialFocus.defaultPrevented) {
-              panel.focus();
-            }
-          },
-          { once: true }
-        );
-      }
+      requestAnimationFrame(() => {
+        const sixInitialFocus = this.sixInitialFocus.emit();
+        if (!sixInitialFocus.defaultPrevented) {
+          panel.focus({ preventScroll: true });
+        }
+      });
     }
   }
 

@@ -89,7 +89,7 @@ export function setPopupAsFixPosition(popup: HTMLElement): DOMRect {
   popup.style.top = popupDimensions['top'] + 'px';
   popup.style.left = popupDimensions['left'] + 'px';
   popup.style.width = popupDimensions['width'] + 'px';
-  popup.style.height = popupDimensions['height'] + 'px';
+  popup.style.minHeight = 'fit-content';
   return popupDimensions;
 }
 

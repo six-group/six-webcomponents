@@ -132,6 +132,17 @@ export class SixRange {
     this.eventListeners.removeAll();
   }
 
+  componentDidUpdate() {
+    const { min, max } = this.getMinMax();
+    this.syncTooltip(min, max, this.value);
+  }
+
+  private getMinMax() {
+    const min = Number(this.min) ?? 0;
+    const max = Number(this.max) ?? 0;
+    return { min, max };
+  }
+
   /** Sets focus on the input. */
   @Method()
   async setFocus(options?: FocusOptions) {

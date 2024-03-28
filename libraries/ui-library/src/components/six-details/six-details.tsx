@@ -66,6 +66,7 @@ export class SixDetails {
   @Prop() selectableEmpty = false;
 
   /** Set to false when you want to hide the summary icon and disable the open/close mechanism. Usually not needed, but used internally by 'six-sidebar-item-group' */
+  // eslint-disable-next-line @stencil-community/ban-default-true
   @Prop() hasContent = true;
 
   @Watch('open')

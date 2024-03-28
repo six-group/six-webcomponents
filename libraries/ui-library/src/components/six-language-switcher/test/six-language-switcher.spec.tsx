@@ -23,7 +23,7 @@ describe('SIX Language Switcher', () => {
               EN
             </span>
             <span class="language-switcher__separator" part="separator">
-              /
+              |
             </span>
           </div>
           <div tabindex="0">
@@ -31,7 +31,7 @@ describe('SIX Language Switcher', () => {
               DE
             </span>
             <span class="language-switcher__separator" part="separator">
-              /
+              |
             </span>
           </div>
           <div tabindex="0">
@@ -70,7 +70,7 @@ describe('SIX Language Switcher', () => {
               IT
             </span>
             <span class="language-switcher__separator" part="separator">
-              /
+              |
             </span>
           </div>
           <div tabindex="0">
@@ -78,7 +78,7 @@ describe('SIX Language Switcher', () => {
               AR
             </span>
             <span class="language-switcher__separator" part="separator">
-              /
+              |
             </span>
           </div>
           <div tabindex="0">
@@ -113,7 +113,7 @@ describe('SIX Language Switcher', () => {
               EN
             </span>
             <span class="language-switcher__separator" part="separator">
-              /
+              |
             </span>
           </div>
           <div tabindex="0">
@@ -121,7 +121,7 @@ describe('SIX Language Switcher', () => {
               DE
             </span>
             <span class="language-switcher__separator" part="separator">
-              /
+              |
             </span>
           </div>
           <div tabindex="0">
@@ -160,7 +160,7 @@ describe('SIX Language Switcher', () => {
               EN
             </span>
             <span class="language-switcher__separator" part="separator">
-              /
+              |
             </span>
           </div>
           <div tabindex="0">
@@ -168,7 +168,7 @@ describe('SIX Language Switcher', () => {
               DE
             </span>
             <span class="language-switcher__separator" part="separator">
-              /
+              |
             </span>
           </div>
           <div tabindex="0">

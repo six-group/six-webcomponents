@@ -290,6 +290,12 @@ Type: `Promise<void | undefined>`
 
 Sets focus on the textarea.
 
+#### Parameters
+
+| Name      | Type                        | Description |
+| --------- | --------------------------- | ----------- |
+| `options` | `FocusOptions \| undefined` |             |
+
 #### Returns
 
 Type: `Promise<void>`
@@ -300,6 +306,15 @@ Type: `Promise<void>`
 
 Replaces a range of text with a new string.
 
+#### Parameters
+
+| Name          | Type                                         | Description |
+| ------------- | -------------------------------------------- | ----------- |
+| `replacement` | `string`                                     |             |
+| `start`       | `number`                                     |             |
+| `end`         | `number`                                     |             |
+| `selectMode`  | `"select" \| "start" \| "end" \| "preserve"` |             |
+
 #### Returns
 
 Type: `Promise<void>`
@@ -309,6 +324,14 @@ Type: `Promise<void>`
 ### `setSelectionRange(selectionStart: number, selectionEnd: number, selectionDirection?: 'forward' | 'backward' | 'none') => Promise<void | undefined>`
 
 Sets the start and end positions of the text selection (0-based).
+
+#### Parameters
+
+| Name                 | Type                                | Description |
+| -------------------- | ----------------------------------- | ----------- |
+| `selectionStart`     | `number`                            |             |
+| `selectionEnd`       | `number`                            |             |
+| `selectionDirection` | `"none" \| "forward" \| "backward"` |             |
 
 #### Returns
 

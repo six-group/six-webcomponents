@@ -16,12 +16,20 @@
   cursor: pointer;
 }
 
+.checkbox--focused {
+  .checkbox__control {
+    outline: var(--six-focus-ring);
+    outline-offset: 0;
+  }
+}
+
 .checkbox__control {
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: var(--six-selection-control-toggle-size);
+  min-width: var(--six-selection-control-toggle-size);
   height: var(--six-selection-control-toggle-size);
   border: solid var(--six-border-width) var(--six-input-border-color);
   border-radius: 0;
@@ -36,6 +44,7 @@
     padding: 0;
     margin: 0;
     pointer-events: none;
+    min-width: var(--six-selection-control-toggle-size);
   }
 
   .checkbox__icon {

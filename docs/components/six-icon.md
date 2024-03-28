@@ -273,6 +273,7 @@ Enter an icon label and press enter to display an icon:
  - [six-avatar](six-avatar.html)
  - [six-datepicker](six-datepicker.html)
  - [six-details](six-details.html)
+ - [six-dropdown](six-dropdown.html)
  - [six-file-list-item](six-file-list-item.html)
  - [six-file-upload](six-file-upload.html)
  - [six-icon-button](six-icon-button.html)
@@ -292,6 +293,7 @@ graph TD;
   six-avatar --> six-icon
   six-datepicker --> six-icon
   six-details --> six-icon
+  six-dropdown --> six-icon
   six-file-list-item --> six-icon
   six-file-upload --> six-icon
   six-icon-button --> six-icon

@@ -8,28 +8,6 @@ import { Components } from '@six-group/ui-library';
 
 
 @ProxyCmp({
-  inputs: ['value']
-})
-@Component({
-  selector: 'set-attributes',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['value'],
-})
-export class SetAttributes {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-  }
-}
-
-
-export declare interface SetAttributes extends Components.SetAttributes {}
-
-
-@ProxyCmp({
   inputs: ['closable', 'duration', 'open', 'type'],
   methods: ['show', 'hide', 'toast']
 })
@@ -399,7 +377,7 @@ allow you to set it on a different element in the drawer, such as an input or bu
 
 
 @ProxyCmp({
-  inputs: ['asyncFilter', 'autofocusFilter', 'closeOnSelect', 'containingElement', 'disableHideOnEnterAndSpace', 'distance', 'filter', 'filterDebounce', 'filterPlaceholder', 'hoist', 'open', 'options', 'placement', 'skidding', 'virtualScroll'],
+  inputs: ['asyncFilter', 'autofocusFilter', 'closeOnSelect', 'containingElement', 'disableHideOnEnterAndSpace', 'distance', 'filter', 'filterDebounce', 'filterPlaceholder', 'hoist', 'matchTriggerWidth', 'open', 'options', 'placement', 'skidding', 'virtualScroll'],
   methods: ['show', 'hide', 'reposition']
 })
 @Component({
@@ -407,7 +385,7 @@ allow you to set it on a different element in the drawer, such as an input or bu
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['asyncFilter', 'autofocusFilter', 'closeOnSelect', 'containingElement', 'disableHideOnEnterAndSpace', 'distance', 'filter', 'filterDebounce', 'filterPlaceholder', 'hoist', 'open', 'options', 'placement', 'skidding', 'virtualScroll'],
+  inputs: ['asyncFilter', 'autofocusFilter', 'closeOnSelect', 'containingElement', 'disableHideOnEnterAndSpace', 'distance', 'filter', 'filterDebounce', 'filterPlaceholder', 'hoist', 'matchTriggerWidth', 'open', 'options', 'placement', 'skidding', 'virtualScroll'],
 })
 export class SixDropdown {
   protected el: HTMLElement;
@@ -556,14 +534,14 @@ export declare interface SixFileListItem extends Components.SixFileListItem {
 
 
 @ProxyCmp({
-  inputs: ['accept', 'compact', 'disabled', 'label', 'maxFileSize', 'multiple']
+  inputs: ['accept', 'compact', 'disabled', 'label', 'maxFileSize', 'multiple', 'uploading']
 })
 @Component({
   selector: 'six-file-upload',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['accept', 'compact', 'disabled', 'label', 'maxFileSize', 'multiple'],
+  inputs: ['accept', 'compact', 'disabled', 'label', 'maxFileSize', 'multiple', 'uploading'],
 })
 export class SixFileUpload {
   protected el: HTMLElement;
@@ -634,7 +612,7 @@ export declare interface SixGroupLabel extends Components.SixGroupLabel {}
 
 
 @ProxyCmp({
-  inputs: ['clickableLogo', 'openHamburgerMenu', 'openSearch', 'shiftContent'],
+  inputs: ['clickableLogo', 'hideHamburgerMenu', 'openHamburgerMenu', 'openSearch', 'shiftContent'],
   methods: ['setSearchOpenState', 'getIsSearchOpen']
 })
 @Component({
@@ -642,7 +620,7 @@ export declare interface SixGroupLabel extends Components.SixGroupLabel {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['clickableLogo', 'openHamburgerMenu', 'openSearch', 'shiftContent'],
+  inputs: ['clickableLogo', 'hideHamburgerMenu', 'openHamburgerMenu', 'openSearch', 'shiftContent'],
 })
 export class SixHeader {
   protected el: HTMLElement;
@@ -732,7 +710,7 @@ export declare interface SixIconButton extends Components.SixIconButton {}
 
 
 @ProxyCmp({
-  inputs: ['autocapitalize', 'autocomplete', 'autocorrect', 'autofocus', 'clearable', 'disabled', 'errorText', 'errorTextCount', 'helpText', 'inputmode', 'invalid', 'label', 'line', 'max', 'maxlength', 'min', 'minlength', 'name', 'pattern', 'pill', 'placeholder', 'readonly', 'required', 'size', 'spellcheck', 'step', 'togglePassword', 'type', 'value'],
+  inputs: ['autocapitalize', 'autocomplete', 'autocorrect', 'autofocus', 'clearable', 'disabled', 'dropdownSearch', 'errorText', 'errorTextCount', 'helpText', 'inputmode', 'invalid', 'label', 'line', 'max', 'maxlength', 'min', 'minlength', 'name', 'pattern', 'pill', 'placeholder', 'readonly', 'required', 'size', 'spellcheck', 'step', 'togglePassword', 'type', 'value'],
   methods: ['setFocus', 'removeFocus', 'select', 'setSelectionRange', 'setRangeText']
 })
 @Component({
@@ -740,7 +718,7 @@ export declare interface SixIconButton extends Components.SixIconButton {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['autocapitalize', 'autocomplete', 'autocorrect', 'autofocus', 'clearable', 'disabled', 'errorText', 'errorTextCount', 'helpText', 'inputmode', 'invalid', 'label', 'line', 'max', 'maxlength', 'min', 'minlength', 'name', 'pattern', 'pill', 'placeholder', 'readonly', 'required', 'size', 'spellcheck', 'step', 'togglePassword', 'type', 'value'],
+  inputs: ['autocapitalize', 'autocomplete', 'autocorrect', 'autofocus', 'clearable', 'disabled', 'dropdownSearch', 'errorText', 'errorTextCount', 'helpText', 'inputmode', 'invalid', 'label', 'line', 'max', 'maxlength', 'min', 'minlength', 'name', 'pattern', 'pill', 'placeholder', 'readonly', 'required', 'size', 'spellcheck', 'step', 'togglePassword', 'type', 'value'],
 })
 export class SixInput {
   protected el: HTMLElement;
@@ -887,7 +865,7 @@ export declare interface SixMainContainer extends Components.SixMainContainer {}
 
 
 @ProxyCmp({
-  inputs: ['itemSize', 'items', 'itemsShown', 'removeBoxShadow', 'scrollingDebounce', 'virtualScroll'],
+  inputs: ['disableKeyboardHandling', 'itemSize', 'items', 'itemsShown', 'removeBoxShadow', 'scrollingDebounce', 'virtualScroll'],
   methods: ['typeToSelect']
 })
 @Component({
@@ -895,7 +873,7 @@ export declare interface SixMainContainer extends Components.SixMainContainer {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['itemSize', 'items', 'itemsShown', 'removeBoxShadow', 'scrollingDebounce', 'virtualScroll'],
+  inputs: ['disableKeyboardHandling', 'itemSize', 'items', 'itemsShown', 'removeBoxShadow', 'scrollingDebounce', 'virtualScroll'],
 })
 export class SixMenu {
   protected el: HTMLElement;
@@ -939,7 +917,7 @@ export declare interface SixMenuDivider extends Components.SixMenuDivider {}
 
 
 @ProxyCmp({
-  inputs: ['checked', 'disabled', 'value'],
+  inputs: ['checkType', 'checked', 'disabled', 'value'],
   methods: ['setFocus', 'removeFocus', 'getTextLabel']
 })
 @Component({
@@ -947,7 +925,7 @@ export declare interface SixMenuDivider extends Components.SixMenuDivider {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['checked', 'disabled', 'value'],
+  inputs: ['checkType', 'checked', 'disabled', 'value'],
 })
 export class SixMenuItem {
   protected el: HTMLElement;
@@ -1127,33 +1105,25 @@ export declare interface SixRange extends Components.SixRange {
 
 
 @ProxyCmp({
-  inputs: ['breakpoint', 'padded', 'stage', 'version']
+  inputs: ['padded', 'stage', 'version']
 })
 @Component({
   selector: 'six-root',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['breakpoint', 'padded', 'stage', 'version'],
+  inputs: ['padded', 'stage', 'version'],
 })
 export class SixRoot {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['six-root-collapsed']);
   }
 }
 
 
-import type { SixRootCollapsedPayload as ISixRootSixRootCollapsedPayload } from '@six-group/ui-library';
-
-export declare interface SixRoot extends Components.SixRoot {
-  /**
-   * Emitted when display size is updated.
-   */
-  'six-root-collapsed': EventEmitter<CustomEvent<ISixRootSixRootCollapsedPayload>>;
-}
+export declare interface SixRoot extends Components.SixRoot {}
 
 
 @ProxyCmp({
@@ -1187,7 +1157,7 @@ export declare interface SixSearchField extends Components.SixSearchField {
 
 
 @ProxyCmp({
-  inputs: ['asyncFilter', 'autocomplete', 'clearable', 'disabled', 'errorText', 'errorTextCount', 'filter', 'filterDebounce', 'filterPlaceholder', 'helpText', 'hoist', 'inputDebounce', 'invalid', 'label', 'line', 'maxTagsVisible', 'multiple', 'name', 'options', 'pill', 'placeholder', 'required', 'size', 'value', 'virtualScroll'],
+  inputs: ['asyncFilter', 'autocomplete', 'clearable', 'disabled', 'errorText', 'errorTextCount', 'filter', 'filterDebounce', 'filterPlaceholder', 'helpText', 'hoist', 'inputDebounce', 'invalid', 'label', 'line', 'maxTagsVisible', 'multiple', 'name', 'options', 'pill', 'placeholder', 'required', 'selectAllButton', 'selectAllText', 'size', 'value', 'virtualScroll'],
   methods: ['setFocus']
 })
 @Component({
@@ -1195,7 +1165,7 @@ export declare interface SixSearchField extends Components.SixSearchField {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['asyncFilter', 'autocomplete', 'clearable', 'disabled', 'errorText', 'errorTextCount', 'filter', 'filterDebounce', 'filterPlaceholder', 'helpText', 'hoist', 'inputDebounce', 'invalid', 'label', 'line', 'maxTagsVisible', 'multiple', 'name', 'options', 'pill', 'placeholder', 'required', 'size', 'value', 'virtualScroll'],
+  inputs: ['asyncFilter', 'autocomplete', 'clearable', 'disabled', 'errorText', 'errorTextCount', 'filter', 'filterDebounce', 'filterPlaceholder', 'helpText', 'hoist', 'inputDebounce', 'invalid', 'label', 'line', 'maxTagsVisible', 'multiple', 'name', 'options', 'pill', 'placeholder', 'required', 'selectAllButton', 'selectAllText', 'size', 'value', 'virtualScroll'],
 })
 export class SixSelect {
   protected el: HTMLElement;

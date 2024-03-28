@@ -1,11 +1,7 @@
 <template>
 <div>
 
-        <six-input placeholder="Clearable" size="small" clearable></six-input>
-        <br>
-        <six-input placeholder="Clearable" size="medium" clearable></six-input>
-        <br>
-        <six-input placeholder="Clearable" size="large" clearable></six-input>
+        <six-input placeholder="Type something"></six-input>
       
 </div>
 </template>

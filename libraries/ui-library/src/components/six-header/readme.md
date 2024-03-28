@@ -10,6 +10,7 @@
 | Property            | Attribute             | Description                                                               | Type      | Default |
 | ------------------- | --------------------- | ------------------------------------------------------------------------- | --------- | ------- |
 | `clickableLogo`     | `clickable-logo`      | Set whether the logo should be clickable                                  | `boolean` | `false` |
+| `hideHamburgerMenu` | `hide-hamburger-menu` | Set whether the hamburger menu should be visible or not                   | `boolean` | `false` |
 | `openHamburgerMenu` | `open-hamburger-menu` | Set the hamburger menu icon to open or closed state                       | `boolean` | `false` |
 | `openSearch`        | `open-search`         | Set the header search to be in an open or closed state                    | `boolean` | `false` |
 | `shiftContent`      | `shift-content`       | Indicates if content should be shifted down when search field is visible. | `boolean` | `false` |
@@ -42,6 +43,12 @@ Type: `Promise<boolean>`
 ### `setSearchOpenState(openState: boolean) => Promise<void>`
 
 Sets open state for search
+
+#### Parameters
+
+| Name        | Type      | Description |
+| ----------- | --------- | ----------- |
+| `openState` | `boolean` |             |
 
 #### Returns
 
@@ -77,8 +84,11 @@ graph TD;
   six-icon-button --> six-icon
   six-dropdown --> six-menu-item
   six-dropdown --> six-input
+  six-dropdown --> six-icon
   six-dropdown --> six-menu
+  six-menu-item --> six-checkbox
   six-menu-item --> six-icon
+  six-checkbox --> six-error
   six-input --> six-icon
   six-input --> six-error
   six-menu --> six-menu-item

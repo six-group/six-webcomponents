@@ -1,11 +1,7 @@
 <template>
 <div>
 
-        <six-input placeholder="Small" size="small" pill></six-input>
-        <br>
-        <six-input placeholder="Medium" size="medium" pill></six-input>
-        <br>
-        <six-input placeholder="Large" size="large" pill></six-input>
+        <six-input line></six-input>
       
 </div>
 </template>

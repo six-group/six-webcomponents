@@ -22,12 +22,14 @@ export class SixTile {
   @Prop() iconName?: string;
 
   /** Flag, whether the tile is closeable. */
+  // eslint-disable-next-line @stencil-community/ban-default-true
   @Prop() closeable = true;
 
   /** Flag, whether the tile should cast a shadow. */
   @Prop() elevated = false;
 
   /** Enables tile tooltip for tiles */
+  // eslint-disable-next-line @stencil-community/ban-default-true
   @Prop() disableTooltip = true;
 
   /** Set to true to disable the tile. */

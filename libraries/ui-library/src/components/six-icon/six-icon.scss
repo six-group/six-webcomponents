@@ -1,7 +1,8 @@
 @import 'src/global/component';
 
 :host {
-  display: inline;
+  display: inline-flex;
+  vertical-align: middle;
 }
 
 .material-icons {
@@ -24,6 +25,9 @@
 
   /* Support for IE. */
   font-feature-settings: 'liga';
+
+  /* Icon name should not be selectable. */
+  user-select: none;
 }
 
 .material-icons-filled {

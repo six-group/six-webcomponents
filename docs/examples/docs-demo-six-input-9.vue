@@ -1,11 +1,14 @@
 <template>
 <div>
 
-        <six-input placeholder="Small" size="small"></six-input>
+        <six-input placeholder="Write here your first name" size="small" label="Name" help-text="Help text" disabled>
+        </six-input>
         <br>
-        <six-input placeholder="Medium" size="medium"></six-input>
+        <six-input placeholder="Write here your first name" size="medium" label="Name" help-text="Help text" disabled>
+        </six-input>
         <br>
-        <six-input placeholder="Large" size="large"></six-input>
+        <six-input placeholder="Write here your first name" size="large" label="Name" help-text="Help text" disabled>
+        </six-input>
       
 </div>
 </template>

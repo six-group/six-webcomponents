@@ -17,6 +17,7 @@
 | Part     | Description                   |
 | -------- | ----------------------------- |
 | `"base"` | The component's base wrapper. |
+| `"svg"`  | The spinner icon              |
 
 
 ## CSS Custom Properties
@@ -33,11 +34,13 @@
 ### Used by
 
  - [six-button](../six-button)
+ - [six-file-upload](../six-file-upload)
 
 ### Graph
 ```mermaid
 graph TD;
   six-button --> six-spinner
+  six-file-upload --> six-spinner
   style six-spinner fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

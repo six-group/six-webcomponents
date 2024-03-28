@@ -1,9 +1,5 @@
-import { Component, Element, Event, EventEmitter, h, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Prop } from '@stencil/core';
 import { StageType } from '../six-stage-indicator/six-stage-indicator';
-
-export interface SixRootCollapsedPayload {
-  collapsed: boolean;
-}
 
 /**
  * @since 1.0
@@ -24,10 +20,8 @@ export interface SixRootCollapsedPayload {
 export class SixRoot {
   @Element() host!: HTMLSixRootElement;
 
-  /** Breakpoint for smaller screens when the right sidebar is collapsed by default. */
-  @Prop() breakpoint = 1024;
-
   /** Defines whether the content section should be padded */
+  // eslint-disable-next-line @stencil-community/ban-default-true
   @Prop() padded = true;
 
   /** Defines the stage of the application*/
@@ -35,29 +29,6 @@ export class SixRoot {
 
   /** Defines the version of the application*/
   @Prop() version = '';
-
-  /** Emitted when display size is updated. */
-  @Event({ eventName: 'six-root-collapsed' }) collapsedEvent!: EventEmitter<SixRootCollapsedPayload>;
-
-  @State() collapse = false;
-
-  private resizeObserver = new ResizeObserver(([host]) => {
-    const { width } = host.contentRect;
-    this.collapse = width < this.breakpoint;
-  });
-
-  @Watch('collapse')
-  handleCollapsed(collapsed: boolean) {
-    this.collapsedEvent.emit({ collapsed });
-  }
-
-  componentWillLoad() {
-    this.resizeObserver.observe(this.host);
-  }
-
-  disconnectedCallback() {
-    this.resizeObserver.disconnect();
-  }
 
   render() {
     return (
@@ -67,9 +38,7 @@ export class SixRoot {
           <slot name="header" />
         </header>
         <nav class="six-root__left-sidebar" part="left-sidebar">
-          <set-attributes value={{ open: !this.collapse }}>
-            <slot name="left-sidebar" />
-          </set-attributes>
+          <slot name="left-sidebar" />
         </nav>
         <main part="main">
           <div class={{ 'six-root__container': true, 'six-root__container--padded': this.padded }} part="container">

@@ -22,7 +22,7 @@ $border-height: 0.25rem;
   background-color: var(--six-header-background-color);
   align-items: center;
   flex-wrap: wrap;
-  box-shadow: var(--six-shadow-x-large);
+  box-shadow: var(--six-shadow-medium);
   border-bottom: var(--six-header-border-with) solid var(--six-header-border-color);
 
   &__logo {
@@ -54,6 +54,11 @@ $border-height: 0.25rem;
     &--open {
       border-bottom: solid $border-height var(--six-header-border-color-open);
     }
+  }
+
+  &__app-switcher-dropdown {
+    display: flex;
+    align-items: center;
   }
 
   &__selected-app {

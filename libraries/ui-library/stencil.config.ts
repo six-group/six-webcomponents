@@ -30,6 +30,23 @@ export const config: Config = {
     vueOutputTarget({
       componentCorePackage: '@six-group/ui-library',
       proxiesFile: '../ui-library-vue/src/lib/stencil-generated/components.ts',
+      componentModels: [
+        {
+          elements: ['six-checkbox', 'six-switch'],
+          event: 'change',
+          targetAttr: 'checked',
+        },
+        {
+          elements: ['six-input', 'six-textarea', 'six-range'],
+          event: 'input',
+          targetAttr: 'value',
+        },
+        {
+          elements: ['six-select', 'six-datepicker'],
+          event: 'change',
+          targetAttr: 'value',
+        },
+      ],
     }),
     {
       type: 'dist',

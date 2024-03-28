@@ -49,6 +49,12 @@
 
 Sets focus on the datepickers input.
 
+#### Parameters
+
+| Name      | Type                        | Description |
+| --------- | --------------------------- | ----------- |
+| `options` | `FocusOptions \| undefined` |             |
+
 #### Returns
 
 Type: `Promise<void>`

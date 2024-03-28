@@ -1,4 +1,4 @@
-import { Component, h, Method, Prop, State } from '@stencil/core';
+import { Component, Element, h, Method, Prop, State } from '@stencil/core';
 import { getTextContent } from '../../utils/slot';
 
 /**
@@ -27,9 +27,17 @@ export class SixMenuItem {
   private menuItem?: HTMLElement;
   private defaultSlot?: HTMLSlotElement;
 
+  @Element() host!: HTMLSixMenuItemElement;
+
   @State() hasFocus = false;
 
-  /** Set to true to draw the item in a checked state. */
+  @State() active = false;
+
+  /** Defines if the checked state is displayed as a checkbox or a check-icon */
+  @Prop() checkType: 'checkbox' | 'check' = 'check';
+
+  /** Internal: Draws the item in a checked state. CheckType needs to be set to 'checkbox' or 'check' to show the
+   * checked state */
   @Prop({ reflect: true }) checked = false;
 
   /** A unique value to store in the menu item. This can be used as a way to identify menu items when selected. */
@@ -43,6 +51,7 @@ export class SixMenuItem {
     this.handleFocus = this.handleFocus.bind(this);
     this.handleMouseEnter = this.handleMouseEnter.bind(this);
     this.handleMouseLeave = this.handleMouseLeave.bind(this);
+    this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
   }
 
   /** Sets focus on the button. */
@@ -72,12 +81,17 @@ export class SixMenuItem {
   }
 
   private handleMouseEnter() {
-    return this.setFocus();
+    this.active = true;
   }
 
   private handleMouseLeave() {
-    return this.removeFocus();
+    this.active = false;
+    this.hasFocus = false;
   }
+
+  private handleCheckboxChange = () => {
+    this.host.dispatchEvent(new Event('click', { bubbles: true, cancelable: true }));
+  };
 
   render() {
     return (
@@ -89,6 +103,7 @@ export class SixMenuItem {
           'menu-item--checked': this.checked,
           'menu-item--disabled': this.disabled,
           'menu-item--focused': this.hasFocus,
+          'menu-item--active': this.active,
         }}
         role="menuitem"
         aria-disabled={this.disabled ? 'true' : 'false'}
@@ -99,6 +114,16 @@ export class SixMenuItem {
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
       >
+        {this.checkType === 'checkbox' && (
+          <span class="menu-item__checkbox">
+            <six-checkbox
+              onSix-checkbox-change={this.handleCheckboxChange}
+              disabled={this.disabled}
+              checked={this.checked}
+            ></six-checkbox>
+          </span>
+        )}
+
         <span part="prefix" class="menu-item__prefix">
           <slot name="prefix" />
         </span>
@@ -111,11 +136,13 @@ export class SixMenuItem {
           <slot name="suffix" />
         </span>
 
-        <span part="checked-icon" class="menu-item__check">
-          <six-icon size="small" aria-hidden="true">
-            check
-          </six-icon>
-        </span>
+        {this.checkType === 'check' && (
+          <span part="checked-icon" class="menu-item__check">
+            <six-icon size="small" aria-hidden="true">
+              check
+            </six-icon>
+          </span>
+        )}
       </div>
     );
   }
