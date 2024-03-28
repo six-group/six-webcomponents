@@ -77,9 +77,17 @@ export class SixLanguageSwitcher {
         {this.languages.map((lang, index) => {
           const language = typeof lang === 'string' ? lang : lang.key;
           return (
-            <div onClick={this.handleLanguageSwitching(language, typeof lang === 'string' ? lang : lang.value)}>
+            <div
+              onClick={this.handleLanguageSwitching(language, typeof lang === 'string' ? lang : lang.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  this.handleLanguageSwitching(language, typeof lang === 'string' ? lang : lang.value)();
+                }
+              }}
+            >
               <span
                 part="label"
+                tabindex="0"
                 class={{
                   'language-switcher__label': true,
                   'language-switcher__label--selected': this.selected === language,
@@ -87,6 +95,7 @@ export class SixLanguageSwitcher {
               >
                 {language}
               </span>
+
               {index < this.languages.length - 1 && (
                 <span part="separator" class="language-switcher__separator">
                   |
