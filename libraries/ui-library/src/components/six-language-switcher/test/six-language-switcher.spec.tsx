@@ -18,24 +18,24 @@ describe('SIX Language Switcher', () => {
     <six-language-switcher selected="EN">
       <mock:shadow-root>
         <div class="language-switcher__container" part="container">
-          <div tabindex="0">
-            <span class="language-switcher__label language-switcher__label--selected" part="label">
+          <div>
+            <span class="language-switcher__label language-switcher__label--selected" part="label" tabindex="0">
               EN
             </span>
             <span class="language-switcher__separator" part="separator">
               |
             </span>
           </div>
-          <div tabindex="0">
-            <span class="language-switcher__label" part="label">
+          <div>
+            <span class="language-switcher__label" part="label" tabindex="0">
               DE
             </span>
             <span class="language-switcher__separator" part="separator">
               |
             </span>
           </div>
-          <div tabindex="0">
-            <span class="language-switcher__label" part="label">
+          <div>
+            <span class="language-switcher__label" part="label" tabindex="0">
               ES
             </span>
           </div>
@@ -65,24 +65,24 @@ describe('SIX Language Switcher', () => {
     <six-language-switcher selected="IT">
       <mock:shadow-root>
         <div class="language-switcher__container" part="container">
-          <div tabindex="0">
-            <span class="language-switcher__label language-switcher__label--selected" part="label">
+          <div>
+            <span class="language-switcher__label language-switcher__label--selected" part="label" tabindex="0">
               IT
             </span>
             <span class="language-switcher__separator" part="separator">
               |
             </span>
           </div>
-          <div tabindex="0">
-            <span class="language-switcher__label" part="label">
+          <div>
+            <span class="language-switcher__label" part="label" tabindex="0">
               AR
             </span>
             <span class="language-switcher__separator" part="separator">
               |
             </span>
           </div>
-          <div tabindex="0">
-            <span class="language-switcher__label" part="label">
+          <div>
+            <span class="language-switcher__label" part="label" tabindex="0">
               BG
             </span>
           </div>
@@ -108,24 +108,24 @@ describe('SIX Language Switcher', () => {
     <six-language-switcher selected="DE">
       <mock:shadow-root>
         <div class="language-switcher__container" part="container">
-          <div tabindex="0">
-            <span class="language-switcher__label" part="label">
+          <div>
+            <span class="language-switcher__label" part="label" tabindex="0">
               EN
             </span>
             <span class="language-switcher__separator" part="separator">
               |
             </span>
           </div>
-          <div tabindex="0">
-            <span class="language-switcher__label language-switcher__label--selected" part="label">
+          <div>
+            <span class="language-switcher__label language-switcher__label--selected" part="label" tabindex="0">
               DE
             </span>
             <span class="language-switcher__separator" part="separator">
               |
             </span>
           </div>
-          <div tabindex="0">
-            <span class="language-switcher__label" part="label">
+          <div>
+            <span class="language-switcher__label" part="label" tabindex="0">
               ES
             </span>
           </div>
@@ -155,24 +155,24 @@ describe('SIX Language Switcher', () => {
     <six-language-switcher selected="DE">
       <mock:shadow-root>
         <div class="language-switcher__container" part="container">
-          <div tabindex="0">
-            <span class="language-switcher__label" part="label">
+          <div>
+            <span class="language-switcher__label" part="label" tabindex="0">
               EN
             </span>
             <span class="language-switcher__separator" part="separator">
               |
             </span>
           </div>
-          <div tabindex="0">
-            <span class="language-switcher__label language-switcher__label--selected" part="label">
+          <div>
+            <span class="language-switcher__label language-switcher__label--selected" part="label" tabindex="0">
               DE
             </span>
             <span class="language-switcher__separator" part="separator">
               |
             </span>
           </div>
-          <div tabindex="0">
-            <span class="language-switcher__label" part="label">
+          <div>
+            <span class="language-switcher__label" part="label" tabindex="0">
               ES
             </span>
           </div>
