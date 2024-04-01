@@ -1,7 +1,11 @@
 # Releasing a new version
 
-Releasing a new version is performed by the Core Team, and upon discussion with other team members.
-The following document outlines the process that is used to perform such an action.
+Releasing a new version of the SIX Web Components is a task performed by members of the Core Team,
+and upon discussion with other team members. The following document outlines the different steps
+required.
+
+It is recommended that you read through this document in its entirety before you start with the
+process!
 
 ## Preparation
 
@@ -12,9 +16,6 @@ Before you start with the release, there are a few steps that need to be underta
 Before you start, you need to make sure that all PRs that need to go in this release are merged!
 Check the list of open PRs [here](https://github.com/six-group/six-webcomponents/pulls), and chase
 down the authors if needed.
-
-Once all PRs have been correctly merged, check the release notes for the upcoming release. Check
-that there are no formatting issues and that all changes listed are in fact merged.
 
 ### Test changes locally
 
@@ -59,8 +60,10 @@ is:
 feature/prepare-4-2-3-release
 ```
 
-Edit the [`changelog.md`](../changelog.md) file and create an entry with the changes. The title
-should follow the format
+You now need to check that the [`changelog.md`](../changelog.md) file is correctly formatted and
+that all changes listed are in fact merged.
+
+Edit the `changelog.md` and create an entry with the changes. The title should follow the format
 
 ```
 ## VERSION_NUMBER - YYYY-MM-dd
@@ -74,7 +77,7 @@ So, for the above example, and assuming the date is January 10th, 2024:
 
 Also, do not forget to add a blank `Upcoming` section for future changes.
 
-Push, and open a PR with the following title/description:
+Push, and open a PR to merge with `main` with the following title/description:
 
 - Title: `docs: Update changelog for VERSION_NUMBER release`
 - Description:
@@ -116,11 +119,8 @@ At the same time, a new branch will be created with the corresponding PR. Go ahe
 
 On the Teams Announcements channel, post a message with the following content:
 
-```
-Release VERSION_NUMBER
-
-New Release VERSION_NUMBER. Details can be found in the CHANGELOG
-```
+- Title: `Release VERSION_NUMBER`
+- Body: `New Release VERSION_NUMBER. Details can be found in the CHANGELOG`
 
 Be sure to substitute the `VERSION_NUMBER` with your version, and the `CHANGELOG` with a link to
 your release on the [changelog](https://six-group.github.io/six-webcomponents/changelog.html) page
