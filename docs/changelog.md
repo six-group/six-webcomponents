@@ -19,6 +19,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Fixed
 
+- `six-datepicker` can have an invalid value after blur
 - `six-error` examples not showing in the docs
 - Fire blur event when leaving multiselect component
 - Apply the debounce property from the date-picker to the time-picker
