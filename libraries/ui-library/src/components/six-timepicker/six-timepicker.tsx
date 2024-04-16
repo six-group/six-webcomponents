@@ -110,6 +110,11 @@ export class SixTimepicker {
   @Prop() disabled = false;
 
   /**
+   * If `true`, no sizing attributes are applied.
+   */
+  @Prop() disableSizing = false;
+
+  /**
    * The enforced placement of the dropdown panel.
    */
   @Prop() placement?: 'top' | 'bottom';
@@ -585,6 +590,7 @@ export class SixTimepicker {
             part="popup"
             class={{
               timepicker__popup: true,
+              timepicker__popup__sizing: !this.disableSizing,
               'timepicker__popup--is-up': this.placement == null ? this.placement === 'top' : this.isPopupContentUp,
               'timepicker__popup--is-inline': this.inline,
             }}
