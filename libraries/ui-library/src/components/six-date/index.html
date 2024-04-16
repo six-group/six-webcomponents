@@ -12,7 +12,7 @@
     <div class="container">
       <p>Datepickers allow the user to manually enter a date or open a popup calendar to select a date.</p>
       <section>
-        <six-datepicker></six-datepicker>
+        <six-date></six-date>
       </section>
 
       <h2>Examples</h2>
@@ -24,7 +24,7 @@
         below the datepicker.
       </p>
       <section>
-        <six-datepicker id="read-select-date-picker"></six-datepicker>
+        <six-date id="read-select-date-picker"></six-date>
         <div id="read-select-date-label">No Date selected yet!</div>
 
         <script type="module">
@@ -48,11 +48,7 @@
         datepicker will include a timepicker too.
       </p>
       <section>
-        <six-datepicker
-          date-format="dd.mm.yyyy hh:MM:ss"
-          type="date-time"
-          id="read-select-datetime-picker"
-        ></six-datepicker>
+        <six-date date-format="dd.mm.yyyy hh:MM:ss" type="date-time" id="read-select-datetime-picker"></six-date>
         <div id="read-select-datetime-label">No Date selected yet!</div>
 
         <script type="module">
@@ -72,7 +68,7 @@
 
       <h3>Disabled State</h3>
       <section>
-        <six-datepicker disabled></six-datepicker>
+        <six-date disabled></six-date>
         <style>
           six-datepicker {
             max-width: 25rem;
@@ -83,7 +79,7 @@
       <h3>Inline State</h3>
       <p>If you wish you can have the datepicker as an inline component i.e. the popup will always be open</p>
       <section>
-        <six-datepicker inline="true"></six-datepicker>
+        <six-date inline="true"></six-date>
         <style>
           six-datepicker {
             max-width: 25rem;
@@ -97,7 +93,7 @@
         <code>readonly</code> property
       </p>
       <section>
-        <six-datepicker readonly></six-datepicker>
+        <six-date readonly></six-date>
         <style>
           six-datepicker {
             max-width: 25rem;
@@ -111,7 +107,7 @@
       </p>
       <p>If you want to enforce a certain placement you can use the <code>placement</code> attribute</p>
       <section>
-        <six-datepicker placement="bottom"></six-datepicker>
+        <six-date placement="bottom"></six-date>
         <style>
           six-datepicker {
             max-width: 25rem;
@@ -122,7 +118,7 @@
       <h3>Placeholder</h3>
       <p>You can define the datepickers placeholder via <code>placeholder</code></p>
       <section>
-        <six-datepicker placeholder="DD.MM.YYYY"></six-datepicker>
+        <six-date placeholder="DD.MM.YYYY"></six-date>
         <style>
           six-datepicker {
             max-width: 25rem;
@@ -133,7 +129,7 @@
       <h3>Locale</h3>
       <p>You can change the language in which the datepicker is shown by using the <code>locale</code> attribute</p>
       <section>
-        <six-datepicker locale="fr"></six-datepicker>
+        <six-date locale="fr"></six-date>
         <style>
           six-datepicker {
             max-width: 25rem;
@@ -144,9 +140,9 @@
       <h3>Footer</h3>
       <p>You can add content to the footer by simply using the datepicker's slot</p>
       <section>
-        <six-datepicker>
+        <six-date>
           <p style="text-align: center">Choose your birthdate!</p>
-        </six-datepicker>
+        </six-date>
         <style>
           six-datepicker {
             max-width: 25rem;
@@ -157,7 +153,7 @@
       <p>Of course you can also enhance the datepicker footer with special functions</p>
 
       <section>
-        <six-datepicker id="datepicker-adv-footer">
+        <six-date id="datepicker-adv-footer">
           <div
             style="
               display: flex;
@@ -169,7 +165,7 @@
             <six-button id="datepicker-adv-footer-btn1">Today</six-button>
             <six-button id="datepicker-adv-footer-btn2">Clear</six-button>
           </div>
-        </six-datepicker>
+        </six-date>
         <script type="module">
           const datepicker = document.getElementById('datepicker-adv-footer');
           datepicker.addEventListener('six-datepicker-select', (event) => {
@@ -194,16 +190,16 @@
       <p>The SIX datepicker supports the following different formats:</p>
       <section>
         <div id="datepicker-formats-container" style="display: flex; flex-wrap: wrap">
-          <six-datepicker placeholder="dd.mm.yyyy" date-format="dd.mm.yyyy"></six-datepicker>
-          <six-datepicker placeholder="yyyy-mm-dd" date-format="yyyy-mm-dd"></six-datepicker>
-          <six-datepicker placeholder="dd-mm-yyyy" date-format="dd-mm-yyyy"></six-datepicker>
-          <six-datepicker placeholder="dd/mm/yyyy" date-format="dd/mm/yyyy"></six-datepicker>
-          <six-datepicker placeholder="yyyy/mm/dd" date-format="yyyy/mm/dd"></six-datepicker>
-          <six-datepicker placeholder="dd.mm.yy" date-format="dd.mm.yy"></six-datepicker>
-          <six-datepicker placeholder="yy-mm-dd" date-format="yy-mm-dd"></six-datepicker>
-          <six-datepicker placeholder="dd-mm-yy" date-format="dd-mm-yy"></six-datepicker>
-          <six-datepicker placeholder="dd/mm/yy" date-format="dd/mm/yy"></six-datepicker>
-          <six-datepicker placeholder="yy/mm/dd" date-format="yy/mm/dd"></six-datepicker>
+          <six-date placeholder="dd.mm.yyyy" date-format="dd.mm.yyyy"></six-date>
+          <six-date placeholder="yyyy-mm-dd" date-format="yyyy-mm-dd"></six-date>
+          <six-date placeholder="dd-mm-yyyy" date-format="dd-mm-yyyy"></six-date>
+          <six-date placeholder="dd/mm/yyyy" date-format="dd/mm/yyyy"></six-date>
+          <six-date placeholder="yyyy/mm/dd" date-format="yyyy/mm/dd"></six-date>
+          <six-date placeholder="dd.mm.yy" date-format="dd.mm.yy"></six-date>
+          <six-date placeholder="yy-mm-dd" date-format="yy-mm-dd"></six-date>
+          <six-date placeholder="dd-mm-yy" date-format="dd-mm-yy"></six-date>
+          <six-date placeholder="dd/mm/yy" date-format="dd/mm/yy"></six-date>
+          <six-date placeholder="yy/mm/dd" date-format="yy/mm/dd"></six-date>
         </div>
 
         <six-button id="datepicker-formats-btn">Apply dates</six-button>
@@ -237,9 +233,9 @@
 
       <section>
         <div class="min-max-demo">
-          <six-datepicker id="min-max-date-picker"></six-datepicker>
-          <six-datepicker id="only-min-date-picker"></six-datepicker>
-          <six-datepicker id="only-max-date-picker"></six-datepicker>
+          <six-date id="min-max-date-picker"></six-date>
+          <six-date id="only-min-date-picker"></six-date>
+          <six-date id="only-max-date-picker"></six-date>
         </div>
 
         <div style="margin-top: 1rem">
@@ -293,7 +289,7 @@
       </p>
 
       <section>
-        <six-datepicker id="allowed-date-picker"></six-datepicker>
+        <six-date id="allowed-date-picker"></six-date>
 
         <script type="module">
           const datepicker = document.getElementById('allowed-date-picker');
@@ -311,7 +307,7 @@
       <p>You can define a custom default date which will be shown on first appearance of the popup</p>
 
       <section>
-        <six-datepicker default-date="2021-02-20" date-format="yyyy-mm-dd"></six-datepicker>
+        <six-date default-date="2021-02-20" date-format="yyyy-mm-dd"></six-date>
         <style>
           six-datepicker {
             max-width: 25rem;
@@ -323,7 +319,7 @@
       <p>Add the <code>clearable</code> property to add a clear button when the input has content.</p>
 
       <section>
-        <six-datepicker clearable></six-datepicker>
+        <six-date clearable></six-date>
         <style>
           six-datepicker {
             max-width: 25rem;
@@ -335,18 +331,18 @@
       <p>Could be adjusted providing <code>icon-position</code> property.</p>
 
       <section>
-        <six-datepicker icon-position="right"></six-datepicker>
+        <six-date icon-position="right"></six-date>
         <br />
-        <six-datepicker icon-position="right" clearable></six-datepicker>
+        <six-date icon-position="right" clearable></six-date>
         <br />
-        <six-datepicker icon-position="right" custom-icon clearable>
+        <six-date icon-position="right" custom-icon clearable>
           <img
             style="height: 24px"
             slot="custom-icon"
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Sketch_Logo.svg/1133px-Sketch_Logo.svg.png"
             alt="customicon"
           />
-        </six-datepicker>
+        </six-date>
         <style>
           six-datepicker {
             max-width: 25rem;
@@ -358,14 +354,14 @@
       <p>The slot <code>custom-icon</code> is used to provide a custom datepicker icon.</p>
 
       <section>
-        <six-datepicker custom-icon>
+        <six-date custom-icon>
           <img
             style="height: 24px"
             slot="custom-icon"
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Sketch_Logo.svg/1133px-Sketch_Logo.svg.png"
             alt="customicon"
           />
-        </six-datepicker>
+        </six-date>
         <style>
           six-datepicker {
             max-width: 25rem;
@@ -376,11 +372,11 @@
       <h3>Sizes</h3>
       <p>Use the <code>size</code> attribute to change a datepicker size.</p>
       <section class="demo" style="width: 300px">
-        <six-datepicker size="small" clearable></six-datepicker>
+        <six-date size="small" clearable></six-date>
         <br />
-        <six-datepicker size="medium" clearable></six-datepicker>
+        <six-date size="medium" clearable></six-date>
         <br />
-        <six-datepicker size="large" clearable></six-datepicker>
+        <six-date size="large" clearable></six-date>
         <style>
           six-datepicker {
             max-width: 25rem;
@@ -397,8 +393,8 @@
       </p>
       <section>
         <div style="overflow: hidden; border: solid 1px grey; padding: 0.5em; display: flex">
-          <six-datepicker placement="bottom" placeholder="no hoisting"></six-datepicker>
-          <six-datepicker hoist placement="bottom" placeholder="with hoisting"></six-datepicker>
+          <six-date placement="bottom" placeholder="no hoisting"></six-date>
+          <six-date hoist placement="bottom" placeholder="with hoisting"></six-date>
         </div>
         <style>
           six-datepicker {
@@ -413,7 +409,7 @@
       <p>The datepicker value can be changed dynamically by setting the <code>value</code> attribute.</p>
 
       <section>
-        <six-datepicker id="dynamic-datepicker"></six-datepicker>
+        <six-date id="dynamic-datepicker"></six-date>
         <div style="margin-top: 1rem">
           <span style="font-weight: bold">Selected: </span
           ><span id="dynamic-datepicker-selected">No Date selected yet!</span>
@@ -451,7 +447,7 @@
       <h3>Open State</h3>
       <p>If you wish you can have the datepicker open on startup. It will close as usual (clicking outside etc.)</p>
       <section>
-        <six-datepicker open="true" placement="bottom"></six-datepicker>
+        <six-date open="true" placement="bottom"></six-date>
         <style>
           six-datepicker {
             max-width: 25rem;
@@ -465,8 +461,8 @@
         <six-button id="modal-ex-dt">Toggle Modal</six-button>
 
         <div id="dt-modal" class="dt-modal">
-          <six-datepicker placement="top"></six-datepicker>
-          <six-datepicker placement="bottom"></six-datepicker>
+          <six-date placement="top"></six-date>
+          <six-date placement="bottom"></six-date>
         </div>
 
         <script>
@@ -532,12 +528,11 @@
       <p>The <code>error-text</code> prop accepts either a simple string message, or a list of messages.</p>
 
       <section class="demo">
-        <six-datepicker label="Simple string message" error-text="This is a simple string message" invalid>
-        </six-datepicker>
+        <six-date label="Simple string message" error-text="This is a simple string message" invalid> </six-date>
       </section>
 
       <section class="demo">
-        <six-datepicker id="multiple-error-text" label="List of string message" invalid></six-datepicker>
+        <six-date id="multiple-error-text" label="List of string message" invalid></six-date>
         <script type="module">
           const sixDatePicker = document.getElementById('multiple-error-text');
           sixDatePicker.errorText = ['Message 1', 'Message 2'];
@@ -550,14 +545,14 @@
         wrap the error message(s). This will provide the correct styling out of the box
       </p>
       <section class="demo">
-        <six-datepicker invalid>
+        <six-date invalid>
           <div slot="error-text">
             <six-error
               >An error message
               <a href="https://github.com/six-group/six-webcomponents" target="_blank">with a link</a></six-error
             >
           </div>
-        </six-datepicker>
+        </six-date>
       </section>
     </div>
   </body>
