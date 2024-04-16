@@ -2,8 +2,8 @@
 // @ts-nocheck
 
 import { isDate, isNil, isString } from './type-check';
-import { SixDateFormats } from '../components/six-datepicker/six-date-formats';
-import { CalendarCell } from '../components/six-datepicker/six-datepicker';
+import { SixDateFormats } from '../components/six-date/six-date-formats';
+import { CalendarCell } from '../components/six-date/six-date';
 
 export type DateLocale = typeof i18nDate.en;
 export const i18nDate = {

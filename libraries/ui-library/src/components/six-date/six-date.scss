@@ -1,0 +1,173 @@
+@import 'src/global/component';
+
+:host {
+  display: block;
+  font-family: var(--six-font-family);
+}
+
+.datepicker {
+  &__container {
+    position: relative;
+
+    six-dropdown {
+      ::part(panel) {
+        .dropdown__panel__scroll {
+          max-height: none;
+        }
+      }
+    }
+  }
+
+  &__panel {
+    //opacity: 1;
+    //pointer-events: none;
+    //transform: scale(0.9);
+    //transition: var(--six-transition-fast) opacity, var(--six-transition-fast) transform;
+    //background-color: white;
+    min-width: 400px;
+    height: fit-content;
+    //padding: 0.5em 0.5em 1.5em;
+    //box-shadow: 0 2px 4px -1px rgb(0 0 0 / 20%), 0 4px 5px 0 rgb(0 0 0 / 14%), 0 1px 10px 0 rgb(0 0 0 / 12%);
+  }
+}
+
+.datepicker-header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--six-color-web-rock-400);
+  padding: 0.5em;
+  margin-bottom: 1em;
+
+  & svg {
+    fill: var(--six-color-web-rock-900);
+    stroke: none;
+  }
+
+  &__btn {
+    cursor: pointer;
+    width: 2.5em;
+    height: 2.5em;
+    display: flex;
+    vertical-align: middle;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background-color: var(--six-color-web-rock-100);
+      border-radius: 100%;
+    }
+  }
+
+  &__label {
+    display: flex;
+
+    & > div {
+      cursor: pointer;
+      padding: 0.5em;
+      display: flex;
+      vertical-align: middle;
+      align-items: center;
+      justify-content: center;
+
+      &:hover {
+        background-color: var(--six-color-web-rock-100);
+      }
+    }
+  }
+}
+
+.datepicker-table {
+  width: 100%;
+
+  &__cell {
+    text-align: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    cursor: pointer;
+
+    &:hover:not(&--is-selected) {
+      background-color: var(--six-color-web-rock-100);
+    }
+
+    &--is-today {
+      border: 1px solid var(--six-color-web-rock-400);
+    }
+
+    &--is-selected {
+      background-color: var(--six-color-red);
+      color: var(--six-color-white);
+    }
+
+    &--is-disabled {
+      background-color: var(--six-color-web-rock-200);
+      cursor: initial;
+
+      &:hover {
+        background-color: var(--six-color-web-rock-200);
+      }
+    }
+
+    &--is-outdated {
+      color: var(--six-color-web-rock-400);
+    }
+  }
+}
+
+// Clearable
+.datepicker-clear {
+  display: inline-flex;
+  align-items: center;
+  font-size: inherit;
+  color: var(--six-input-icon-color);
+  border: none;
+  background: none;
+  padding: 0;
+  transition: var(--six-transition-fast) color;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--six-input-icon-color-hover);
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &--right {
+    right: 0;
+    position: absolute;
+  }
+
+  &--left {
+    right: 35px;
+    position: absolute;
+  }
+}
+
+.input--empty .datepicker-clear {
+  visibility: hidden;
+}
+
+// Icon position
+.prefix {
+  cursor: pointer;
+
+  &--right {
+    right: 0;
+    display: inline-flex;
+    position: absolute;
+    font-size: inherit;
+    color: var(--six-input-icon-color);
+    border: none;
+    background: none;
+    margin-right: var(--six-input-spacing-medium);
+    transition: var(--six-transition-fast) color;
+  }
+}
+
+// time-picker
+six-timepicker::part(dropdown) {
+  border: none;
+  padding: 0.5em 0.5em 0;
+  min-height: 0;
+}

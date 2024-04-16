@@ -48,7 +48,7 @@ describe('six-timepicker', () => {
           </six-icon>
         </span>
       </six-input>
-      <div class="timepicker__popup" part="popup">
+      <div class="timepicker__popup timepicker__popup__sizing" part="popup">
         <six-item-picker interval="35" max="23" min="0" padded="" timeout="300" type="number" value="20"></six-item-picker>
         <div class="timepicker__separator">
           <span>
@@ -91,7 +91,7 @@ describe('six-timepicker', () => {
               </six-icon>
             </span>
           </six-input>
-          <div class="timepicker__popup" part="popup">
+          <div class="timepicker__popup timepicker__popup__sizing" part="popup">
             <six-item-picker interval="35" max="23" min="0" padded="" timeout="300" type="number" value="13"></six-item-picker>
             <div class="timepicker__separator">
               <span>
@@ -134,7 +134,7 @@ describe('six-timepicker', () => {
             </six-icon>
           </span>
         </six-input>
-        <div class="timepicker__popup timepicker__popup--is-inline" part="popup">
+        <div class="timepicker__popup timepicker__popup__sizing timepicker__popup--is-inline" part="popup">
           <six-item-picker interval="35" max="23" min="0" padded="" timeout="300" type="number" value="13"></six-item-picker>
           <div class="timepicker__separator">
             <span>
@@ -177,7 +177,7 @@ describe('six-timepicker', () => {
             </six-icon>
           </span>
         </six-input>
-        <div class="timepicker__popup" part="popup">
+        <div class="timepicker__popup timepicker__popup__sizing" part="popup">
           <six-item-picker interval="35" max="23" min="0" padded="" timeout="300" type="number" value="13"></six-item-picker>
           <div class="timepicker__separator">
             <span>
@@ -220,7 +220,7 @@ describe('six-timepicker', () => {
               </six-icon>
             </span>
           </six-input>
-          <div class="timepicker__popup" part="popup">
+          <div class="timepicker__popup timepicker__popup__sizing" part="popup">
             <six-item-picker interval="35" max="23" min="0" padded="" timeout="300" type="number" value="11"></six-item-picker>
             <div class="timepicker__separator">
               <span>
@@ -263,7 +263,7 @@ describe('six-timepicker', () => {
           </six-icon>
         </span>
       </six-input>
-      <div class="timepicker__popup" part="popup">
+      <div class="timepicker__popup timepicker__popup__sizing" part="popup">
         <six-item-picker interval="35" max="11" min="0" padded="" timeout="300" type="number" value="3"></six-item-picker>
         <div class="timepicker__separator">
           <span>
@@ -307,7 +307,7 @@ describe('six-timepicker', () => {
           </six-icon>
         </span>
       </six-input>
-      <div class="timepicker__popup" part="popup">
+      <div class="timepicker__popup timepicker__popup__sizing" part="popup">
         <six-item-picker interval="150" max="23" min="0" padded="" timeout="500" type="number" value="13"></six-item-picker>
         <div class="timepicker__separator">
           <span>
@@ -513,7 +513,7 @@ describe('six-timepicker', () => {
           </six-icon>
         </button>
       </six-input>
-      <div class="timepicker__popup" part="popup">
+      <div class="timepicker__popup timepicker__popup__sizing" part="popup">
         <six-item-picker interval="35" max="23" min="0" padded="" timeout="300" type="number" value="13"></six-item-picker>
         <div class="timepicker__separator">
           <span>
