@@ -7,8 +7,10 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AlertType } from "./components/six-alert/six-alert";
 import { EmptyPayload } from "./utils/types";
-import { SixDateFormats } from "./components/six-datepicker/six-date-formats";
-import { SixDatepickerSelectPayload } from "./components/six-datepicker/six-datepicker";
+import { SixDateFormats } from "./components/six-date/six-date-formats";
+import { SixDatepickerSelectPayload } from "./components/six-date/six-date";
+import { SixDateFormats as SixDateFormats1 } from "./components/six-datepicker/six-date-formats";
+import { SixDatepickerSelectPayload as SixDatepickerSelectPayload1 } from "./components/six-datepicker/six-datepicker";
 import { SixMenuItemData } from "./components/six-menu/six-menu";
 import { SixDropdownAsyncFilterPayload, SixDropdownAutoFilterPayload, SixDropdownScrollPayload } from "./components/six-dropdown/six-dropdown";
 import { SixFileListDownloadPayload, SixFileListRemovePayload } from "./components/six-file-list-item/six-file-list-item";
@@ -27,8 +29,10 @@ import { TimeFormat } from "./utils/time.util";
 import { SixTimepickerChange } from "./components/six-timepicker/six-timepicker";
 export { AlertType } from "./components/six-alert/six-alert";
 export { EmptyPayload } from "./utils/types";
-export { SixDateFormats } from "./components/six-datepicker/six-date-formats";
-export { SixDatepickerSelectPayload } from "./components/six-datepicker/six-datepicker";
+export { SixDateFormats } from "./components/six-date/six-date-formats";
+export { SixDatepickerSelectPayload } from "./components/six-date/six-date";
+export { SixDateFormats as SixDateFormats1 } from "./components/six-datepicker/six-date-formats";
+export { SixDatepickerSelectPayload as SixDatepickerSelectPayload1 } from "./components/six-datepicker/six-datepicker";
 export { SixMenuItemData } from "./components/six-menu/six-menu";
 export { SixDropdownAsyncFilterPayload, SixDropdownAutoFilterPayload, SixDropdownScrollPayload } from "./components/six-dropdown/six-dropdown";
 export { SixFileListDownloadPayload, SixFileListRemovePayload } from "./components/six-file-list-item/six-file-list-item";
@@ -257,6 +261,128 @@ export namespace Components {
         "value": string;
     }
     /**
+     * @since 1.0 TODO: replace with correct version
+     * @status stable
+     */
+    interface SixDate {
+        /**
+          * Callback to determine which date in the datepicker should be selectable. the callback function will get a datestring as an argument, e.g. '2021-07-04'  Usage e.g.: const datepicker = document.getElementById('allowed-date-picker'); datepicker.allowedDates = datestring => parseInt(datestring.split('-')[2], 10) % 2 === 0;
+         */
+        "allowedDates": (date: Date) => boolean;
+        /**
+          * Set to true to add a clear button when the input is populated.
+         */
+        "clearable": boolean;
+        /**
+          * Closes the datepicker dropdown after selection
+         */
+        "closeOnSelect": boolean;
+        /**
+          * The dropdown will close when the user interacts outside of this element (e.g. clicking).
+         */
+        "containingElement"?: HTMLElement;
+        /**
+          * Define the dateFormat. Valid formats are: 'dd.mm.yyyy' 'yyyy-mm-dd' 'dd-mm-yyyy' 'dd/mm/yyyy' 'yyyy/mm/dd' 'dd.mm.yy' 'yy-mm-dd' 'dd-mm-yy' 'dd/mm/yy' 'yy/mm/dd'
+         */
+        "dateFormat": SixDateFormats;
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `dateChange` event after each keystroke.
+         */
+        "debounce": number;
+        /**
+          * The date to defines where the datepicker popup starts. The prop accepts ISO 8601 date strings (YYYY-MM-DD).
+         */
+        "defaultDate"?: string;
+        /**
+          * If `true` the component is disabled.
+         */
+        "disabled": boolean;
+        /**
+          * The error message shown, if `invalid` is set to true.
+         */
+        "errorText": string | string[];
+        /**
+          * The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1
+         */
+        "errorTextCount"?: number;
+        /**
+          * Enable this option to prevent the panel from being clipped when the component is placed inside a container with `overflow: auto|scroll`.
+         */
+        "hoist": boolean;
+        /**
+          * Set the position of the icon
+         */
+        "iconPosition": 'left' | 'right';
+        /**
+          * Indicates whether or not the calendar should be shown as an inline (always open) component
+         */
+        "inline": boolean;
+        /**
+          * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
+         */
+        "invalid": boolean;
+        /**
+          * The label text.
+         */
+        "label": string;
+        /**
+          * The language used to render the weekdays and months.
+         */
+        "locale": 'en' | 'de' | 'fr' | 'it' | 'es';
+        /**
+          * The maximum datetime allowed. Value must be a date object
+         */
+        "max"?: Date;
+        /**
+          * The minimum datetime allowed. Value must be a date object
+         */
+        "min"?: Date;
+        /**
+          * The input's name attribute.
+         */
+        "name": string;
+        /**
+          * Indicates whether or not the calendar dropdown is open on startup. You can use this in lieu of the show/hide methods.
+         */
+        "open": boolean;
+        /**
+          * The placeholder defines what text to be shown on the input element
+         */
+        "placeholder"?: string;
+        /**
+          * The enforced placement of the dropdown panel.
+         */
+        "placement"?: 'top' | 'bottom';
+        /**
+          * If `true` the user can only select a date via the component in the popup, but not directly edit the input field.
+         */
+        "readonly": boolean;
+        /**
+          * Set to true to show an asterisk beneath the label.
+         */
+        "required": boolean;
+        /**
+          * Selects an option
+         */
+        "select": (datestring?: string) => Promise<void>;
+        /**
+          * Sets focus on the datepickers input.
+         */
+        "setFocus": (options?: FocusOptions) => Promise<void>;
+        /**
+          * Datepicker size.
+         */
+        "size": 'small' | 'medium' | 'large';
+        /**
+          * Set the type.
+         */
+        "type": 'date' | 'date-time';
+        /**
+          * The value of the form field, which accepts a date object.
+         */
+        "value"?: Date;
+    }
+    /**
      * @since 1.0
      * @status stable
      */
@@ -280,7 +406,7 @@ export namespace Components {
         /**
           * Define the dateFormat. Valid formats are: 'dd.mm.yyyy' 'yyyy-mm-dd' 'dd-mm-yyyy' 'dd/mm/yyyy' 'yyyy/mm/dd' 'dd.mm.yy' 'yy-mm-dd' 'dd-mm-yy' 'dd/mm/yy' 'yy/mm/dd'
          */
-        "dateFormat": SixDateFormats;
+        "dateFormat": SixDateFormats1;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `dateChange` event after each keystroke.
          */
@@ -2018,6 +2144,10 @@ export interface SixCheckboxCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLSixCheckboxElement;
 }
+export interface SixDateCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSixDateElement;
+}
 export interface SixDatepickerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLSixDatepickerElement;
@@ -2223,10 +2353,33 @@ declare global {
         prototype: HTMLSixCheckboxElement;
         new (): HTMLSixCheckboxElement;
     };
-    interface HTMLSixDatepickerElementEventMap {
+    interface HTMLSixDateElementEventMap {
         "six-datepicker-select": SixDatepickerSelectPayload;
         "six-datepicker-clear": EmptyPayload;
         "six-datepicker-blur": SixDatepickerSelectPayload;
+    }
+    /**
+     * @since 1.0 TODO: replace with correct version
+     * @status stable
+     */
+    interface HTMLSixDateElement extends Components.SixDate, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSixDateElementEventMap>(type: K, listener: (this: HTMLSixDateElement, ev: SixDateCustomEvent<HTMLSixDateElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSixDateElementEventMap>(type: K, listener: (this: HTMLSixDateElement, ev: SixDateCustomEvent<HTMLSixDateElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLSixDateElement: {
+        prototype: HTMLSixDateElement;
+        new (): HTMLSixDateElement;
+    };
+    interface HTMLSixDatepickerElementEventMap {
+        "six-datepicker-select": SixDatepickerSelectPayload1;
+        "six-datepicker-clear": EmptyPayload;
+        "six-datepicker-blur": SixDatepickerSelectPayload1;
     }
     /**
      * @since 1.0
@@ -3031,6 +3184,7 @@ declare global {
         "six-button": HTMLSixButtonElement;
         "six-card": HTMLSixCardElement;
         "six-checkbox": HTMLSixCheckboxElement;
+        "six-date": HTMLSixDateElement;
         "six-datepicker": HTMLSixDatepickerElement;
         "six-details": HTMLSixDetailsElement;
         "six-dialog": HTMLSixDialogElement;
@@ -3298,10 +3452,10 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     /**
-     * @since 1.0
+     * @since 1.0 TODO: replace with correct version
      * @status stable
      */
-    interface SixDatepicker {
+    interface SixDate {
         /**
           * Callback to determine which date in the datepicker should be selectable. the callback function will get a datestring as an argument, e.g. '2021-07-04'  Usage e.g.: const datepicker = document.getElementById('allowed-date-picker'); datepicker.allowedDates = datestring => parseInt(datestring.split('-')[2], 10) % 2 === 0;
          */
@@ -3381,7 +3535,133 @@ declare namespace LocalJSX {
         /**
           * Emitted when a option got selected.
          */
-        "onSix-datepicker-blur"?: (event: SixDatepickerCustomEvent<SixDatepickerSelectPayload>) => void;
+        "onSix-datepicker-blur"?: (event: SixDateCustomEvent<SixDatepickerSelectPayload>) => void;
+        /**
+          * Emitted when the clear button is activated.
+         */
+        "onSix-datepicker-clear"?: (event: SixDateCustomEvent<EmptyPayload>) => void;
+        /**
+          * Emitted when a option got selected.
+         */
+        "onSix-datepicker-select"?: (event: SixDateCustomEvent<SixDatepickerSelectPayload>) => void;
+        /**
+          * Indicates whether or not the calendar dropdown is open on startup. You can use this in lieu of the show/hide methods.
+         */
+        "open"?: boolean;
+        /**
+          * The placeholder defines what text to be shown on the input element
+         */
+        "placeholder"?: string;
+        /**
+          * The enforced placement of the dropdown panel.
+         */
+        "placement"?: 'top' | 'bottom';
+        /**
+          * If `true` the user can only select a date via the component in the popup, but not directly edit the input field.
+         */
+        "readonly"?: boolean;
+        /**
+          * Set to true to show an asterisk beneath the label.
+         */
+        "required"?: boolean;
+        /**
+          * Datepicker size.
+         */
+        "size"?: 'small' | 'medium' | 'large';
+        /**
+          * Set the type.
+         */
+        "type"?: 'date' | 'date-time';
+        /**
+          * The value of the form field, which accepts a date object.
+         */
+        "value"?: Date;
+    }
+    /**
+     * @since 1.0
+     * @status stable
+     */
+    interface SixDatepicker {
+        /**
+          * Callback to determine which date in the datepicker should be selectable. the callback function will get a datestring as an argument, e.g. '2021-07-04'  Usage e.g.: const datepicker = document.getElementById('allowed-date-picker'); datepicker.allowedDates = datestring => parseInt(datestring.split('-')[2], 10) % 2 === 0;
+         */
+        "allowedDates"?: (date: Date) => boolean;
+        /**
+          * Set to true to add a clear button when the input is populated.
+         */
+        "clearable"?: boolean;
+        /**
+          * Closes the datepicker dropdown after selection
+         */
+        "closeOnSelect"?: boolean;
+        /**
+          * The dropdown will close when the user interacts outside of this element (e.g. clicking).
+         */
+        "containingElement"?: HTMLElement;
+        /**
+          * Define the dateFormat. Valid formats are: 'dd.mm.yyyy' 'yyyy-mm-dd' 'dd-mm-yyyy' 'dd/mm/yyyy' 'yyyy/mm/dd' 'dd.mm.yy' 'yy-mm-dd' 'dd-mm-yy' 'dd/mm/yy' 'yy/mm/dd'
+         */
+        "dateFormat"?: SixDateFormats1;
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `dateChange` event after each keystroke.
+         */
+        "debounce"?: number;
+        /**
+          * The date to defines where the datepicker popup starts. The prop accepts ISO 8601 date strings (YYYY-MM-DD).
+         */
+        "defaultDate"?: string;
+        /**
+          * If `true` the component is disabled.
+         */
+        "disabled"?: boolean;
+        /**
+          * The error message shown, if `invalid` is set to true.
+         */
+        "errorText"?: string | string[];
+        /**
+          * The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1
+         */
+        "errorTextCount"?: number;
+        /**
+          * Enable this option to prevent the panel from being clipped when the component is placed inside a container with `overflow: auto|scroll`.
+         */
+        "hoist"?: boolean;
+        /**
+          * Set the position of the icon
+         */
+        "iconPosition"?: 'left' | 'right';
+        /**
+          * Indicates whether or not the calendar should be shown as an inline (always open) component
+         */
+        "inline"?: boolean;
+        /**
+          * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
+         */
+        "invalid"?: boolean;
+        /**
+          * The label text.
+         */
+        "label"?: string;
+        /**
+          * The language used to render the weekdays and months.
+         */
+        "locale"?: 'en' | 'de' | 'fr' | 'it' | 'es';
+        /**
+          * The maximum datetime allowed. Value must be a date object
+         */
+        "max"?: Date;
+        /**
+          * The minimum datetime allowed. Value must be a date object
+         */
+        "min"?: Date;
+        /**
+          * The input's name attribute.
+         */
+        "name"?: string;
+        /**
+          * Emitted when a option got selected.
+         */
+        "onSix-datepicker-blur"?: (event: SixDatepickerCustomEvent<SixDatepickerSelectPayload1>) => void;
         /**
           * Emitted when the clear button is activated.
          */
@@ -3389,7 +3669,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a option got selected.
          */
-        "onSix-datepicker-select"?: (event: SixDatepickerCustomEvent<SixDatepickerSelectPayload>) => void;
+        "onSix-datepicker-select"?: (event: SixDatepickerCustomEvent<SixDatepickerSelectPayload1>) => void;
         /**
           * Indicates whether or not the calendar dropdown is open on startup. You can use this in lieu of the show/hide methods.
          */
@@ -5184,6 +5464,7 @@ declare namespace LocalJSX {
         "six-button": SixButton;
         "six-card": SixCard;
         "six-checkbox": SixCheckbox;
+        "six-date": SixDate;
         "six-datepicker": SixDatepicker;
         "six-details": SixDetails;
         "six-dialog": SixDialog;
@@ -5271,6 +5552,11 @@ declare module "@stencil/core" {
              * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
              */
             "six-checkbox": LocalJSX.SixCheckbox & JSXBase.HTMLAttributes<HTMLSixCheckboxElement>;
+            /**
+             * @since 1.0 TODO: replace with correct version
+             * @status stable
+             */
+            "six-date": LocalJSX.SixDate & JSXBase.HTMLAttributes<HTMLSixDateElement>;
             /**
              * @since 1.0
              * @status stable
