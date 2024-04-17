@@ -28,6 +28,7 @@ import { DaySelection } from './components/day-selection';
 import { YearSelection } from './components/year-selection';
 import { SixTimepickerChange } from '../six-timepicker/six-timepicker';
 import Popover from '../../utils/popover';
+import { calcIsDropDownContentUp } from '../../utils/popover-util';
 
 const NUMBER_OF_YEARS_SHOWN = 25;
 
@@ -226,7 +227,6 @@ export class SixDate {
 
   @Watch('open')
   protected openChanges() {
-    console.log('open changes to ' + this.open);
     if (!this.popover) return;
     if (this.open) {
       this.popover.show();
@@ -265,8 +265,11 @@ export class SixDate {
 
   private moveOpenHoistedPopup() {
     this.popover?.reposition();
-    // TODO
-    // movePopup(this.hoist, this.open, this.popup, this.inputElement, this.wrapper, MIN_POPUP_HEIGHT);
+    this.popover?.setOptions({
+      placement: calcIsDropDownContentUp(this.inputElement!, this.wrapper!, MIN_POPUP_HEIGHT)
+        ? 'top-start'
+        : 'bottom-start',
+    });
   }
 
   get container() {
@@ -821,15 +824,10 @@ export class SixDate {
   }
 
   private adjustPopupPosition() {
+    this.popover?.setOptions({
+      strategy: this.hoist ? 'fixed' : 'absolute',
+    });
     // TODO
-    // adjustPopupForHoisting(
-    //   this.hoist,
-    //   this.popup,
-    //   this.inputElement,
-    //   this.wrapper,
-    //   MIN_POPUP_HEIGHT,
-    //   (isUp) => (this.isDropDownContentUp = isUp)
-    // );
     // adjustPopupForSmallScreens(this.popup);
   }
 
