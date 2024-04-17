@@ -266,9 +266,7 @@ export class SixDate {
   private moveOpenHoistedPopup() {
     this.popover?.reposition();
     this.popover?.setOptions({
-      placement: calcIsDropDownContentUp(this.inputElement!, this.wrapper!, MIN_POPUP_HEIGHT)
-        ? 'top-start'
-        : 'bottom-start',
+      placement: this.isDropDownContentUp ? 'top-start' : 'bottom-start',
     });
   }
 
@@ -304,8 +302,15 @@ export class SixDate {
     if (this.inputElement == null || this.wrapper == null) {
       return;
     }
-    // TODO
-    //this.isDropDownContentUp = calcIsDropDownContentUp(this.inputElement, this.wrapper, MIN_POPUP_HEIGHT);
+
+    // TODO: check if this is needed (it gets the input without label and help-text
+    if (this.inputElement.shadowRoot?.children[1]) {
+      this.isDropDownContentUp = calcIsDropDownContentUp(
+        this.inputElement!.shadowRoot!.children[1]!.children[1] as HTMLElement,
+        this.wrapper,
+        MIN_POPUP_HEIGHT
+      );
+    }
   }
 
   private getMonthStringForIndex(index: number) {
@@ -602,9 +607,14 @@ export class SixDate {
   }
 
   componentDidLoad() {
-    this.popover = new Popover(this.host, this.positioner!, {
-      transitionElement: this.panel,
-    });
+    this.popover = new Popover(
+      // TODO: check if this is correct like that (it gets the input without label and help-text
+      this.inputElement!.shadowRoot!.children[1]!.children[1]! as HTMLElement,
+      this.positioner!,
+      {
+        transitionElement: this.panel,
+      }
+    );
 
     if (this.inputElement != null) {
       this.eventListeners.add(this.inputElement, 'six-input-input', debounce(this.handleInputChange, this.debounce));

@@ -23,13 +23,6 @@
       pointer-events: all;
     }
 
-    &--is-up {
-      bottom: 100%;
-      // fix problem where you would need to jump around with the cursor when switching months and
-      // its a dropup since not all months have the same height
-      min-height: 382px;
-    }
-
     &--is-inline {
       position: initial;
       box-shadow: none;
