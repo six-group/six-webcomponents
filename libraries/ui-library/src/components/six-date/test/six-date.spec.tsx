@@ -5,12 +5,12 @@ describe('six-datepicker', () => {
   it('renders', async () => {
     const page = await newSpecPage({
       components: [SixDate],
-      html: `<six-datepicker></six-datepicker>`,
+      html: `<six-date></six-date>`,
     });
     expect(page.root).toEqualHtml(`
-      <six-datepicker>
+      <six-date>
         <mock:shadow-root>
-        <div class="datepicker__container">
+        <div class="date__container">
           <six-input class="input--empty" errortext="" label="" part="base" size="medium" value="">
             <span class="prefix" part="icon" slot="prefix">
               <six-icon size="medium">
@@ -20,7 +20,7 @@ describe('six-datepicker', () => {
           </six-input>
           </div>
         </mock:shadow-root>
-      </six-datepicker>
+      </six-date>
     `);
   });
 });

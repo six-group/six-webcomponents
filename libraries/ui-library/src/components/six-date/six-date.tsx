@@ -33,7 +33,7 @@ const NUMBER_OF_YEARS_SHOWN = 25;
 
 const MIN_POPUP_HEIGHT = 400;
 
-export type SixDatepickerSelectPayload = Date | undefined | null;
+export type SixDateSelectPayload = Date | undefined | null;
 
 export interface CalendarCell {
   date: Date;
@@ -67,7 +67,8 @@ enum SelectionMode {
 export class SixDate {
   private eventListeners = new EventListeners();
   private inputElement?: HTMLSixInputElement;
-  private popup?: HTMLElement;
+  private positioner?: HTMLElement;
+  private panel?: HTMLElement;
   private wrapper?: HTMLElement;
   private selectedDate?: Date;
   private popover?: Popover;
@@ -81,7 +82,7 @@ export class SixDate {
   /**
    * Set the type.
    */
-  @Prop() type: 'date' | 'date-time' = 'date';
+  @Prop() type: 'date' | 'time' | 'date-time' = 'date';
 
   /**
    * The language used to render the weekdays and months.
@@ -223,20 +224,31 @@ export class SixDate {
     this.updatePointerDates();
   }
 
+  @Watch('open')
+  protected openChanges() {
+    console.log('open changes to ' + this.open);
+    if (!this.popover) return;
+    if (this.open) {
+      this.popover.show();
+    } else {
+      this.popover.hide();
+    }
+  }
+
   /**
    * Emitted when a option got selected.
    */
-  @Event({ eventName: 'six-datepicker-select' }) sixSelect!: EventEmitter<SixDatepickerSelectPayload>;
+  @Event({ eventName: 'six-date-select' }) sixSelect!: EventEmitter<SixDateSelectPayload>;
 
   /**
    * Emitted when the clear button is activated.
    */
-  @Event({ eventName: 'six-datepicker-clear' }) sixClear!: EventEmitter<EmptyPayload>;
+  @Event({ eventName: 'six-date-clear' }) sixClear!: EventEmitter<EmptyPayload>;
 
   /**
    * Emitted when a option got selected.
    */
-  @Event({ eventName: 'six-datepicker-blur' }) sixBlur!: EventEmitter<SixDatepickerSelectPayload>;
+  @Event({ eventName: 'six-date-blur' }) sixBlur!: EventEmitter<SixDateSelectPayload>;
 
   @Listen('resize', { target: 'window' })
   async resizeHandler() {
@@ -576,7 +588,6 @@ export class SixDate {
     this.selectedDate = this.value;
     this.updatePointerDates();
     this.updateValue(this.value);
-    this.popover = new Popover(this.host, this.popup!, {});
 
     if (this.inline) {
       this.open = true;
@@ -588,6 +599,10 @@ export class SixDate {
   }
 
   componentDidLoad() {
+    this.popover = new Popover(this.host, this.positioner!, {
+      transitionElement: this.panel,
+    });
+
     if (this.inputElement != null) {
       this.eventListeners.add(this.inputElement, 'six-input-input', debounce(this.handleInputChange, this.debounce));
       this.eventListeners.add(this.inputElement, 'six-input-blur', this.handleOnBlur);
@@ -596,6 +611,24 @@ export class SixDate {
 
   componentDidRender() {
     this.adjustPopupPosition();
+  }
+
+  private renderElements() {
+    const isDate = this.type == 'date' || this.type == 'date-time';
+    const isTime = this.type == 'time' || this.type == 'date-time';
+
+    const elements = [];
+
+    if (isDate) {
+      elements.push(this.renderHeader());
+      elements.push(this.renderBody());
+    }
+
+    if (isTime) {
+      elements.push(this.renderTimepicker());
+    }
+
+    return elements;
   }
 
   private renderHeader() {
@@ -676,6 +709,18 @@ export class SixDate {
     }
   }
 
+  renderTimepicker() {
+    return (
+      <six-timepicker
+        inline={true}
+        onSix-timepicker-change-debounced={(event) => this.onTimepickerChange(event)}
+        value={
+          this.selectedDate?.getHours() + ':' + this.selectedDate?.getMinutes() + ':' + this.selectedDate?.getSeconds()
+        }
+      ></six-timepicker>
+    );
+  }
+
   private renderCustomIcon() {
     const icon = hasSlot(this.host, 'custom-icon') ? (
       <slot name="custom-icon"></slot>
@@ -752,36 +797,25 @@ export class SixDate {
             </span>
           ) : null}
         </six-input>
-        {this.open && (
-          <div
-            part="popup"
-            ref={(el) => (this.popup = el)}
-            class={{
-              datepicker__popup: true,
-              'datepicker__popup--is-up': this.placement != null ? this.placement === 'top' : this.isDropDownContentUp,
-              'datepicker__popup--is-inline': this.inline,
-            }}
-          >
-            {this.renderHeader()}
-            {this.renderBody()}
-            {this.type === 'date-time' && (
-              <six-timepicker
-                inline={true}
-                onSix-timepicker-change-debounced={(event) => this.onTimepickerChange(event)}
-                value={
-                  this.selectedDate?.getHours() +
-                  ':' +
-                  this.selectedDate?.getMinutes() +
-                  ':' +
-                  this.selectedDate?.getSeconds()
-                }
-              ></six-timepicker>
-            )}
-            <div class="datepicker__footer">
-              <slot />
-            </div>
+        {/*{this.open && (*/}
+        <div
+          part="popup"
+          ref={(el) => (this.positioner = el)}
+          class={{
+            datepicker__positioner: true,
+            'datepicker__positioner--is-up':
+              this.placement != null ? this.placement === 'top' : this.isDropDownContentUp,
+            'datepicker__positioner--is-inline': this.inline,
+          }}
+        >
+          <div class="datepicker__panel" ref={(el) => (this.panel = el)}>
+            {this.renderElements()}
           </div>
-        )}
+          <div class="datepicker__footer">
+            <slot />
+          </div>
+        </div>
+        {/*)}*/}
       </div>
     );
   }
@@ -800,8 +834,8 @@ export class SixDate {
   }
 
   connectedCallback() {
-    this.eventListeners.forward('six-datepicker-select', 'change', this.host);
-    this.eventListeners.forward('six-datepicker-blur', 'blur', this.host);
+    this.eventListeners.forward('six-date-select', 'change', this.host);
+    this.eventListeners.forward('six-date-blur', 'blur', this.host);
   }
 
   disconnectedCallback() {

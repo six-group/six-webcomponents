@@ -8,9 +8,9 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AlertType } from "./components/six-alert/six-alert";
 import { EmptyPayload } from "./utils/types";
 import { SixDateFormats } from "./components/six-date/six-date-formats";
-import { SixDatepickerSelectPayload } from "./components/six-date/six-date";
+import { SixDateSelectPayload } from "./components/six-date/six-date";
 import { SixDateFormats as SixDateFormats1 } from "./components/six-datepicker/six-date-formats";
-import { SixDatepickerSelectPayload as SixDatepickerSelectPayload1 } from "./components/six-datepicker/six-datepicker";
+import { SixDatepickerSelectPayload } from "./components/six-datepicker/six-datepicker";
 import { SixMenuItemData } from "./components/six-menu/six-menu";
 import { SixDropdownAsyncFilterPayload, SixDropdownAutoFilterPayload, SixDropdownScrollPayload } from "./components/six-dropdown/six-dropdown";
 import { SixFileListDownloadPayload, SixFileListRemovePayload } from "./components/six-file-list-item/six-file-list-item";
@@ -30,9 +30,9 @@ import { SixTimepickerChange } from "./components/six-timepicker/six-timepicker"
 export { AlertType } from "./components/six-alert/six-alert";
 export { EmptyPayload } from "./utils/types";
 export { SixDateFormats } from "./components/six-date/six-date-formats";
-export { SixDatepickerSelectPayload } from "./components/six-date/six-date";
+export { SixDateSelectPayload } from "./components/six-date/six-date";
 export { SixDateFormats as SixDateFormats1 } from "./components/six-datepicker/six-date-formats";
-export { SixDatepickerSelectPayload as SixDatepickerSelectPayload1 } from "./components/six-datepicker/six-datepicker";
+export { SixDatepickerSelectPayload } from "./components/six-datepicker/six-datepicker";
 export { SixMenuItemData } from "./components/six-menu/six-menu";
 export { SixDropdownAsyncFilterPayload, SixDropdownAutoFilterPayload, SixDropdownScrollPayload } from "./components/six-dropdown/six-dropdown";
 export { SixFileListDownloadPayload, SixFileListRemovePayload } from "./components/six-file-list-item/six-file-list-item";
@@ -376,7 +376,7 @@ export namespace Components {
         /**
           * Set the type.
          */
-        "type": 'date' | 'date-time';
+        "type": 'date' | 'time' | 'date-time';
         /**
           * The value of the form field, which accepts a date object.
          */
@@ -2354,9 +2354,9 @@ declare global {
         new (): HTMLSixCheckboxElement;
     };
     interface HTMLSixDateElementEventMap {
-        "six-datepicker-select": SixDatepickerSelectPayload;
-        "six-datepicker-clear": EmptyPayload;
-        "six-datepicker-blur": SixDatepickerSelectPayload;
+        "six-date-select": SixDateSelectPayload;
+        "six-date-clear": EmptyPayload;
+        "six-date-blur": SixDateSelectPayload;
     }
     /**
      * @since 1.0 TODO: replace with correct version
@@ -2377,9 +2377,9 @@ declare global {
         new (): HTMLSixDateElement;
     };
     interface HTMLSixDatepickerElementEventMap {
-        "six-datepicker-select": SixDatepickerSelectPayload1;
+        "six-datepicker-select": SixDatepickerSelectPayload;
         "six-datepicker-clear": EmptyPayload;
-        "six-datepicker-blur": SixDatepickerSelectPayload1;
+        "six-datepicker-blur": SixDatepickerSelectPayload;
     }
     /**
      * @since 1.0
@@ -3535,15 +3535,15 @@ declare namespace LocalJSX {
         /**
           * Emitted when a option got selected.
          */
-        "onSix-datepicker-blur"?: (event: SixDateCustomEvent<SixDatepickerSelectPayload>) => void;
+        "onSix-date-blur"?: (event: SixDateCustomEvent<SixDateSelectPayload>) => void;
         /**
           * Emitted when the clear button is activated.
          */
-        "onSix-datepicker-clear"?: (event: SixDateCustomEvent<EmptyPayload>) => void;
+        "onSix-date-clear"?: (event: SixDateCustomEvent<EmptyPayload>) => void;
         /**
           * Emitted when a option got selected.
          */
-        "onSix-datepicker-select"?: (event: SixDateCustomEvent<SixDatepickerSelectPayload>) => void;
+        "onSix-date-select"?: (event: SixDateCustomEvent<SixDateSelectPayload>) => void;
         /**
           * Indicates whether or not the calendar dropdown is open on startup. You can use this in lieu of the show/hide methods.
          */
@@ -3571,7 +3571,7 @@ declare namespace LocalJSX {
         /**
           * Set the type.
          */
-        "type"?: 'date' | 'date-time';
+        "type"?: 'date' | 'time' | 'date-time';
         /**
           * The value of the form field, which accepts a date object.
          */
@@ -3661,7 +3661,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a option got selected.
          */
-        "onSix-datepicker-blur"?: (event: SixDatepickerCustomEvent<SixDatepickerSelectPayload1>) => void;
+        "onSix-datepicker-blur"?: (event: SixDatepickerCustomEvent<SixDatepickerSelectPayload>) => void;
         /**
           * Emitted when the clear button is activated.
          */
@@ -3669,7 +3669,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a option got selected.
          */
-        "onSix-datepicker-select"?: (event: SixDatepickerCustomEvent<SixDatepickerSelectPayload1>) => void;
+        "onSix-datepicker-select"?: (event: SixDatepickerCustomEvent<SixDatepickerSelectPayload>) => void;
         /**
           * Indicates whether or not the calendar dropdown is open on startup. You can use this in lieu of the show/hide methods.
          */

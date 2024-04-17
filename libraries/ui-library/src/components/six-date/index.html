@@ -13,6 +13,7 @@
       <p>Datepickers allow the user to manually enter a date or open a popup calendar to select a date.</p>
       <section>
         <six-date></six-date>
+        <six-date type="time"></six-date>
       </section>
 
       <h2>Examples</h2>
@@ -20,8 +21,8 @@
       <h3>Reading selected date</h3>
       <p>
         Either manually enter a date in the input field or select a date from the popup. You can read the selected date
-        by listening to the <code>six-datepicker-select</code> event on the datepicker The selected date will be shown
-        below the datepicker.
+        by listening to the <code>six-date-select</code> event on the datepicker The selected date will be shown below
+        the datepicker.
       </p>
       <section>
         <six-date id="read-select-date-picker"></six-date>
@@ -31,12 +32,12 @@
           const datepicker = document.getElementById('read-select-date-picker');
           const selectedDate = document.getElementById('read-select-date-label');
 
-          datepicker.addEventListener('six-datepicker-select', (event) => {
+          datepicker.addEventListener('six-date-select', (event) => {
             selectedDate.innerHTML = `selected: ${event.detail.toLocaleDateString()}`;
           });
         </script>
         <style>
-          six-datepicker {
+          six-date {
             max-width: 25rem;
           }
         </style>
@@ -55,12 +56,12 @@
           const datepicker = document.getElementById('read-select-datetime-picker');
           const selectedDate = document.getElementById('read-select-datetime-label');
 
-          datepicker.addEventListener('six-datepicker-select', (event) => {
+          datepicker.addEventListener('six-date-select', (event) => {
             selectedDate.innerHTML = `selected: ${event.detail.toLocaleString()}`;
           });
         </script>
         <style>
-          six-datepicker {
+          six-date {
             max-width: 25rem;
           }
         </style>
@@ -70,7 +71,7 @@
       <section>
         <six-date disabled></six-date>
         <style>
-          six-datepicker {
+          six-date {
             max-width: 25rem;
           }
         </style>
@@ -81,7 +82,7 @@
       <section>
         <six-date inline="true"></six-date>
         <style>
-          six-datepicker {
+          six-date {
             max-width: 25rem;
           }
         </style>
@@ -95,7 +96,7 @@
       <section>
         <six-date readonly></six-date>
         <style>
-          six-datepicker {
+          six-date {
             max-width: 25rem;
           }
         </style>
@@ -109,7 +110,7 @@
       <section>
         <six-date placement="bottom"></six-date>
         <style>
-          six-datepicker {
+          six-date {
             max-width: 25rem;
           }
         </style>
@@ -120,7 +121,7 @@
       <section>
         <six-date placeholder="DD.MM.YYYY"></six-date>
         <style>
-          six-datepicker {
+          six-date {
             max-width: 25rem;
           }
         </style>
@@ -131,7 +132,7 @@
       <section>
         <six-date locale="fr"></six-date>
         <style>
-          six-datepicker {
+          six-date {
             max-width: 25rem;
           }
         </style>
@@ -144,7 +145,7 @@
           <p style="text-align: center">Choose your birthdate!</p>
         </six-date>
         <style>
-          six-datepicker {
+          six-date {
             max-width: 25rem;
           }
         </style>
@@ -168,8 +169,8 @@
         </six-date>
         <script type="module">
           const datepicker = document.getElementById('datepicker-adv-footer');
-          datepicker.addEventListener('six-datepicker-select', (event) => {
-            console.log(`[ six-datepicker-select ]`, { date: event.detail });
+          datepicker.addEventListener('six-date-select', (event) => {
+            console.log(`[ six-date-select ]`, { date: event.detail });
           });
 
           const btn1 = document.getElementById('datepicker-adv-footer-btn1');
@@ -179,7 +180,7 @@
           btn2.addEventListener('click', () => (datepicker.value = null));
         </script>
         <style>
-          six-datepicker {
+          six-date {
             max-width: 25rem;
           }
         </style>
@@ -206,7 +207,7 @@
 
         <script type="module">
           const datepickerContainer = document.getElementById('datepicker-formats-container');
-          const datepickers = datepickerContainer.querySelectorAll('six-datepicker');
+          const datepickers = datepickerContainer.querySelectorAll('six-date');
           datepickers.forEach((dtpicker) => {
             dtpicker.style.marginBottom = '1rem';
             dtpicker.style.marginRight = '1rem';
@@ -220,7 +221,7 @@
           });
         </script>
         <style>
-          #datepicker-formats-container six-datepicker {
+          #datepicker-formats-container six-date {
             max-width: 25rem;
             min-width: 10rem;
           }
@@ -241,7 +242,7 @@
         <div style="margin-top: 1rem">
           <span style="font-weight: bold">Selected: </span><span id="min-max-date-selected">No Date selected yet!</span>
           <style>
-            six-datepicker {
+            six-date {
               max-width: 25rem;
             }
           </style>
@@ -253,7 +254,7 @@
             flex-wrap: wrap;
           }
 
-          .min-max-demo six-datepicker {
+          .min-max-demo six-date {
             min-width: 15rem;
             margin-right: 1rem;
             margin-bottom: 1rem;
@@ -275,7 +276,7 @@
           minDatepicker.min = getDateFromNow(-3);
           maxDatepicker.max = getDateFromNow(2);
 
-          minMaxDatepicker.addEventListener('six-datepicker-select', (event) => {
+          minMaxDatepicker.addEventListener('six-date-select', (event) => {
             selectedDate.innerHTML = `${event.detail.toLocaleDateString()}`;
           });
         </script>
@@ -296,7 +297,7 @@
           datepicker.allowedDates = (date) => date.getDate() % 2 === 0;
         </script>
         <style>
-          six-datepicker {
+          six-date {
             max-width: 25rem;
           }
         </style>
@@ -309,7 +310,7 @@
       <section>
         <six-date default-date="2021-02-20" date-format="yyyy-mm-dd"></six-date>
         <style>
-          six-datepicker {
+          six-date {
             max-width: 25rem;
           }
         </style>
@@ -321,7 +322,7 @@
       <section>
         <six-date clearable></six-date>
         <style>
-          six-datepicker {
+          six-date {
             max-width: 25rem;
           }
         </style>
@@ -344,7 +345,7 @@
           />
         </six-date>
         <style>
-          six-datepicker {
+          six-date {
             max-width: 25rem;
           }
         </style>
@@ -363,7 +364,7 @@
           />
         </six-date>
         <style>
-          six-datepicker {
+          six-date {
             max-width: 25rem;
           }
         </style>
@@ -378,7 +379,7 @@
         <br />
         <six-date size="large" clearable></six-date>
         <style>
-          six-datepicker {
+          six-date {
             max-width: 25rem;
           }
         </style>
@@ -397,7 +398,7 @@
           <six-date hoist placement="bottom" placeholder="with hoisting"></six-date>
         </div>
         <style>
-          six-datepicker {
+          six-date {
             max-width: 25rem;
             min-width: 10rem;
           }
@@ -432,13 +433,13 @@
           const btn3 = document.getElementById('dynamic-datepicker-btn3');
           btn3.addEventListener('click', () => (datepicker.value = new Date('1420-12-31')));
 
-          datepicker.addEventListener('six-datepicker-select', (event) => {
-            console.log(`[ six-datepicker-select ]`, { date: event.detail });
+          datepicker.addEventListener('six-date-select', (event) => {
+            console.log(`[ six-date-select ]`, { date: event.detail });
             selectedDate.innerHTML = `${event.detail.toLocaleDateString()}`;
           });
         </script>
         <style>
-          six-datepicker {
+          six-date {
             max-width: 25rem;
           }
         </style>
@@ -449,7 +450,7 @@
       <section>
         <six-date open="true" placement="bottom"></six-date>
         <style>
-          six-datepicker {
+          six-date {
             max-width: 25rem;
           }
         </style>
@@ -497,7 +498,7 @@
             box-shadow: 0 4px 16px #00000038;
           }
 
-          .dt-modal six-datepicker {
+          .dt-modal six-date {
             width: 100%;
             height: calc(100vh - 2.5rem);
             max-width: unset;
