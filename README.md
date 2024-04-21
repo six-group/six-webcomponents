@@ -45,3 +45,4 @@ There are example apps for Angular, Plain Javascript and Vue. You can find them 
 Credit where credit is due. The SIX webcomponents started as clone of the [shoelace project](https://shoelace.style/) and were inspired by the baloise
 design-system. Some parts of six-datepicker were copied from the bal-datepicker.
 The third party licenses are listed [here](libraries/ui-library/third-party-licenses).
+ 
