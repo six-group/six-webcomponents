@@ -50,6 +50,10 @@ export function convertToValidValue(value: unknown, multiple: boolean): string |
   }
 }
 
+export function convertToValidArrayValue(value: unknown): string[] {
+  return convertToValidValue(value, true) as string[];
+}
+
 export function valueEquals(a: string | string[], b: string | string[]): boolean {
   if (Array.isArray(a) && Array.isArray(b)) {
     return a.length === b.length && a.every((element, index) => element === b[index]);

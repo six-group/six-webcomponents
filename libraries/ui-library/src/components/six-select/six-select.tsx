@@ -6,7 +6,7 @@ import { EventListeners } from '../../utils/event-listeners';
 import { debounce, DEFAULT_DEBOUNCE_FAST } from '../../utils/execution-control';
 import { SixMenuItemData } from '../six-menu/six-menu';
 import { getLanguage } from '../../utils/error-messages';
-import { convertToValidValue } from './util';
+import { convertToValidArrayValue, convertToValidValue } from './util';
 
 export interface SixSelectChangePayload {
   value: string | string[];
@@ -210,9 +210,8 @@ export class SixSelect {
   }
 
   componentWillLoad() {
-    this.handleValueChange();
-    this.handleSlotChange();
     this.value = convertToValidValue(this.value, this.multiple);
+    this.handleSlotChange();
   }
 
   componentDidLoad() {
@@ -415,13 +414,13 @@ export class SixSelect {
     }
     this.activeItemIndex = -1;
 
-    // reset display style of main items
-    const mainItems = this.getItems();
-    mainItems.forEach((item) => (item.style.display = 'unset'));
-
-    // show selected menu items in the selection container and hide them in the main container
-    const checkedItems = getCheckedItems(Array.isArray(this.value) ? this.value : [this.value], mainItems);
     if (!this.virtualScroll && this.multiple) {
+      // reset display style of main items
+      const mainItems = this.getItems();
+      mainItems.forEach((item) => (item.style.display = 'unset'));
+
+      // show selected menu items in the selection container and hide them in the main container
+      const checkedItems = getCheckedItems(convertToValidArrayValue(this.value), mainItems);
       checkedItems.forEach((i) => (i.style.display = 'none'));
       this.selectionContainerItems = checkedItems.map((item) => {
         return (
@@ -479,7 +478,7 @@ export class SixSelect {
       item.checked = value.includes(item.value);
     });
 
-    const checkedItems = getCheckedItems(Array.isArray(this.value) ? this.value : [this.value], mainItems);
+    const checkedItems = getCheckedItems(convertToValidArrayValue(this.value), mainItems);
     this.displayedValues = checkedItems.map((i) => this.getItemLabel(i));
 
     if (this.autocomplete && this.autocompleteInput != null) {
