@@ -19,6 +19,7 @@ export interface SixFileUploadFailurePayload {
  * @since 2.0.0
  * @status experimental
  *
+ * @slot error-text - Error text that is shown when the status is set to invalid. Alternatively, you can use the error-text prop.
  */
 @Component({
   tag: 'six-file-upload',

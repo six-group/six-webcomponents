@@ -28,6 +28,13 @@
 | `six-file-upload-success` | Triggers when a file is added.                                           | `CustomEvent<IMultipleFiles \| ISingleFile>` |
 
 
+## Slots
+
+| Slot           | Description                                                                                                 |
+| -------------- | ----------------------------------------------------------------------------------------------------------- |
+| `"error-text"` | Error text that is shown when the status is set to invalid. Alternatively, you can use the error-text prop. |
+
+
 ## Dependencies
 
 ### Depends on
