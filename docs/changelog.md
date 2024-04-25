@@ -10,6 +10,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
+- Upgrade project to internally build with Node18
+
 ### Fixed
 
 ## 4.2.2 - 2024-03-28
