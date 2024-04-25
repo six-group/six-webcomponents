@@ -23,7 +23,7 @@ To avoid issues once the process has been started, it is good practice to test t
 
 1. Checkout `main`
 2. Navigate to the root of the project
-3. Run `npm ci`. This will ensure that the required packages are correctly installed
+3. Run `npm i`. This will ensure that the required packages are correctly installed
 4. Run `npm run build`. This step will build all the different subprojects and make sure there are
    no errors.
 
