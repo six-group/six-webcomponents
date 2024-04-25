@@ -1,4 +1,6 @@
 import { Component, Element, Event, EventEmitter, h, Listen, Prop, State } from '@stencil/core';
+import { hasSlot } from '../../utils/slot';
+
 interface ISingleFile {
   file: File;
 }
@@ -52,6 +54,12 @@ export class SixFileUpload {
   /** Set to true to draw the control in a loading state. */
   @Prop({ reflect: true }) uploading = false;
 
+  /** The error message shown, if `invalid` is set to true.  */
+  @Prop() errorText: string | string[] = '';
+
+  /** If this property is set to true and an error message is provided by `errorText`, the error message is displayed.  */
+  @Prop({ reflect: true }) invalid = false;
+
   /** Triggers when a file is added. */
   @Event({ eventName: 'six-file-upload-success' }) success!: EventEmitter<SixFileUploadSuccessPayload>;
 
@@ -88,6 +96,8 @@ export class SixFileUpload {
       }
     }
   }
+
+  private hasError = this.errorText || hasSlot(this.host, 'eror-text');
 
   private handleFiles = (files: FileList) => {
     if (this.disabled || files.length === 0 || this.uploading) {
@@ -167,52 +177,66 @@ export class SixFileUpload {
     const Container = this.compact ? 'six-button' : 'six-card';
 
     return (
-      <div
-        class={{
-          'six-file-upload': true,
-          'six-file-upload--disabled': this.disabled || this.uploading,
-        }}
-      >
-        <Container
-          disabled={this.disabled || this.uploading}
+      <div>
+        <div
           class={{
-            'six-file-upload__container--compact': this.compact,
-            'six-file-upload__container--full': !this.compact,
+            'six-file-upload': true,
+            'six-file-upload--disabled': this.disabled || this.uploading,
           }}
         >
-          {this.compact && !this.uploading && (
-            <span slot="prefix">
-              <six-icon class="six-file-upload__label-icon">arrow_circle_up</six-icon>
-            </span>
-          )}
-          <div
+          <Container
+            disabled={this.disabled || this.uploading}
+            aria-invalid={this.invalid ? 'true' : 'false'}
             class={{
-              'six-file-upload__drop-zone': true,
-              'six-file-upload__drop-zone--hover': this.isOver,
-              'six-file-upload__drop-zone--compact': this.compact,
+              'six-file-upload__container--compact': this.compact,
+              'six-file-upload__container--full': !this.compact,
             }}
           >
-            {this.uploading ? (
-              <span class="six-file-upload__drop-zone__spinner-container">
-                <six-spinner /> Uploading...
+            {this.compact && !this.uploading && (
+              <span slot="prefix">
+                <six-icon class="six-file-upload__label-icon">arrow_circle_up</six-icon>
               </span>
-            ) : (
-              <div>
-                <span>{this.renderLabel()}</span>
-                <input
-                  class="six-file-upload__input"
-                  type="file"
-                  name="resume"
-                  disabled={this.disabled}
-                  accept={this.accept}
-                  multiple={this.multiple}
-                  onChange={this.onChange}
-                  ref={(el) => (this.fileInput = el)}
-                />
-              </div>
             )}
-          </div>
-        </Container>
+            <div
+              class={{
+                'six-file-upload__drop-zone': true,
+                'six-file-upload__drop-zone--hover': this.isOver,
+                'six-file-upload__drop-zone--compact': this.compact,
+              }}
+            >
+              {this.uploading ? (
+                <span class="six-file-upload__drop-zone__spinner-container">
+                  <six-spinner /> Uploading...
+                </span>
+              ) : (
+                <div>
+                  <span>{this.renderLabel()}</span>
+                  <input
+                    class="six-file-upload__input"
+                    type="file"
+                    name="resume"
+                    disabled={this.disabled}
+                    accept={this.accept}
+                    multiple={this.multiple}
+                    onChange={this.onChange}
+                    ref={(el) => (this.fileInput = el)}
+                  />
+                </div>
+              )}
+            </div>
+          </Container>
+          {this.invalid && this.hasError && (
+            <slot name="error-text">
+              <six-error
+                part="error-text"
+                class="six-file-upload__error-text"
+                aria-hidden={this.invalid ? 'false' : 'true'}
+              >
+                {this.errorText}
+              </six-error>
+            </slot>
+          )}
+        </div>
       </div>
     );
   }

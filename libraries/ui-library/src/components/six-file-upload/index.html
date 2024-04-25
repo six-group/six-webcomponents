@@ -114,6 +114,30 @@
       <section>
         <six-file-upload uploading></six-file-upload>
       </section>
+
+      <h3>Invalid with error text</h3>
+
+      <section>
+        <six-file-upload invalid error-text="File is too large"></six-file-upload>
+      </section>
+
+      <h3>Invalid with error slot</h3>
+
+      <p>
+        When using the <code>error-text</code> slot, it is recommended to use the <code>six-error</code> component to
+        wrap the error message(s). This will provide the correct styling out of the box.
+      </p>
+
+      <section class="demo">
+        <six-file-upload invalid="false">
+          <div slot="error-text">
+            <six-error
+              >An error message
+              <a href="https://github.com/six-group/six-webcomponents" target="_blank">with a link</a></six-error
+            >
+          </div>
+        </six-file-upload>
+      </section>
     </div>
   </body>
 </html>
