@@ -6,6 +6,8 @@ import { SixDateFormats } from '../components/six-datepicker/six-date-formats';
 import { CalendarCell } from '../components/six-datepicker/six-datepicker';
 
 export type DateLocale = typeof i18nDate.en;
+export type DateRange = { from: Date; to: Date };
+
 export const i18nDate = {
   en: {
     months: [
@@ -483,6 +485,10 @@ export const formatDate = (date: Date | undefined | null, format: string): strin
     }
   }
   return output;
+};
+
+export const formatRange = (DateRange: Range, format: String): string => {
+  return `${formatDate(range.from, format)} - ${formatDate(range.to, format)}`;
 };
 
 const daylightSavingAdjust = (date): Date => {

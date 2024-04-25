@@ -70,6 +70,34 @@
         </style>
       </section>
 
+      <h3>Date Range</h3>
+      <p>
+        If you need to select a time range, set the <code>type</code> to <code>date-range</code> and the datepicker will
+        allow selecting a date range.
+      </p>
+      <section>
+        <six-datepicker
+          date-format="dd.mm.yyyy hh:MM:ss"
+          type="date-range"
+          id="read-select-daterange-picker"
+        ></six-datepicker>
+        <div id="read-select-daterange-label">No Date range selected yet!</div>
+
+        <script type="module">
+          const datepicker = document.getElementById('read-select-daterange-picker');
+          const selectedDate = document.getElementById('read-select-daterange-label');
+
+          datepicker.addEventListener('six-datepicker-select', (event) => {
+            selectedDate.innerHTML = `selected: ${event.detail.toLocaleString()}`;
+          });
+        </script>
+        <style>
+          six-datepicker {
+            max-width: 25rem;
+          }
+        </style>
+      </section>
+
       <h3>Disabled State</h3>
       <section>
         <six-datepicker disabled></six-datepicker>

@@ -7,7 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AlertType } from "./components/six-alert/six-alert";
 import { EmptyPayload } from "./utils/types";
-import { SixDatePickerRange, SixDatepickerSelectPayload } from "./components/six-datepicker/six-datepicker";
+import { DateRange, SixDatepickerSelectPayload } from "./components/six-datepicker/six-datepicker";
 import { SixDateFormats } from "./components/six-datepicker/six-date-formats";
 import { SixMenuItemData } from "./components/six-menu/six-menu";
 import { SixDropdownAsyncFilterPayload, SixDropdownAutoFilterPayload, SixDropdownScrollPayload } from "./components/six-dropdown/six-dropdown";
@@ -27,7 +27,7 @@ import { TimeFormat } from "./utils/time.util";
 import { SixTimepickerChange } from "./components/six-timepicker/six-timepicker";
 export { AlertType } from "./components/six-alert/six-alert";
 export { EmptyPayload } from "./utils/types";
-export { SixDatePickerRange, SixDatepickerSelectPayload } from "./components/six-datepicker/six-datepicker";
+export { DateRange as SixDatePickerRange, SixDatepickerSelectPayload } from "./components/six-datepicker/six-datepicker";
 export { SixDateFormats } from "./components/six-datepicker/six-date-formats";
 export { SixMenuItemData } from "./components/six-menu/six-menu";
 export { SixDropdownAsyncFilterPayload, SixDropdownAutoFilterPayload, SixDropdownScrollPayload } from "./components/six-dropdown/six-dropdown";
@@ -350,6 +350,10 @@ export namespace Components {
          */
         "placement"?: 'top' | 'bottom';
         /**
+          * The value of the form field, which accepts a SixDateRange object if 'type' is 'date-range'.
+         */
+        "range"?: DateRange;
+        /**
           * If `true` the user can only select a date via the component in the popup, but not directly edit the input field.
          */
         "readonly": boolean;
@@ -374,9 +378,9 @@ export namespace Components {
          */
         "type": 'date' | 'date-time' | 'date-range';
         /**
-          * The value of the form field, which accepts a date object, or a SixDateRange object if 'type' is 'date-range'.
+          * The value of the form field, which accepts a date object if 'type' is not 'date-range'.
          */
-        "value"?: Date | SixDatePickerRange;
+        "value"?: Date;
     }
     /**
      * @since 1.0
@@ -3403,6 +3407,10 @@ declare namespace LocalJSX {
          */
         "placement"?: 'top' | 'bottom';
         /**
+          * The value of the form field, which accepts a SixDateRange object if 'type' is 'date-range'.
+         */
+        "range"?: DateRange;
+        /**
           * If `true` the user can only select a date via the component in the popup, but not directly edit the input field.
          */
         "readonly"?: boolean;
@@ -3419,9 +3427,9 @@ declare namespace LocalJSX {
          */
         "type"?: 'date' | 'date-time' | 'date-range';
         /**
-          * The value of the form field, which accepts a date object, or a SixDateRange object if 'type' is 'date-range'.
+          * The value of the form field, which accepts a date object if 'type' is not 'date-range'.
          */
-        "value"?: Date | SixDatePickerRange;
+        "value"?: Date;
     }
     /**
      * @since 1.0

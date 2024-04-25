@@ -17,6 +17,7 @@ import {
   seconds,
   toDate,
   year,
+  DateRange
 } from '../../utils/date-util';
 import { EventListeners } from '../../utils/event-listeners';
 import { debounce, debounceEvent, DEFAULT_DEBOUNCE_FAST } from '../../utils/execution-control';
@@ -51,7 +52,7 @@ export interface CalendarCell {
   label: string;
 }
 
-export type SixDatePickerRange = { from: Date; to: Date };
+
 
 enum SelectionMode {
   DAY = 'day',
@@ -157,9 +158,14 @@ export class SixDatepicker {
   @Prop() placeholder?: string;
 
   /**
-   * The value of the form field, which accepts a date object, or a SixDateRange object if 'type' is 'date-range'.
+   * The value of the form field, which accepts a date object if 'type' is not 'date-range'.
    */
-  @Prop({ mutable: true }) value?: Date | SixDatePickerRange;
+  @Prop({ mutable: true }) value?: Date;
+
+  /**
+   * The value of the form field, which accepts a SixDateRange object if 'type' is 'date-range'.
+   */
+  @Prop({ mutable: true }) range?: DateRange;
 
   /** The label text. */
   @Prop() label = '';
@@ -726,7 +732,7 @@ export class SixDatepicker {
       <div ref={(el) => (this.wrapper = el)} class="datepicker__container">
         <six-input
           part="base"
-          value={formatDate(this.value, this.dateFormat)}
+          value={(this.type === 'date-range') ? formatDate(this.value, this.dateFormat)}
           ref={(el) => (this.inputElement = el)}
           placeholder={this.placeholder}
           readonly={this.readonly}
