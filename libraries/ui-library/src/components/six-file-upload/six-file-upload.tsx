@@ -203,63 +203,61 @@ export class SixFileUpload {
     );
 
     return (
-      <div>
-        <div
+      <div
+        class={{
+          'six-file-upload': true,
+          'six-file-upload--disabled': this.disabled || this.uploading,
+        }}
+      >
+        <Container
+          disabled={this.disabled || this.uploading}
+          aria-invalid={this.invalid ? 'true' : 'false'}
           class={{
-            'six-file-upload': true,
-            'six-file-upload--disabled': this.disabled || this.uploading,
+            'six-file-upload__container--compact': this.compact,
+            'six-file-upload__container--full': !this.compact,
           }}
         >
-          <Container
-            disabled={this.disabled || this.uploading}
-            aria-invalid={this.invalid ? 'true' : 'false'}
+          {this.compact && !this.uploading && (
+            <span slot="prefix">
+              <six-icon class="six-file-upload__label-icon">arrow_circle_up</six-icon>
+            </span>
+          )}
+          <div
             class={{
-              'six-file-upload__container--compact': this.compact,
-              'six-file-upload__container--full': !this.compact,
+              'six-file-upload__drop-zone': true,
+              'six-file-upload__drop-zone--hover': this.isOver,
+              'six-file-upload__drop-zone--compact': this.compact,
             }}
           >
-            {this.compact && !this.uploading && (
-              <span slot="prefix">
-                <six-icon class="six-file-upload__label-icon">arrow_circle_up</six-icon>
+            {this.uploading ? (
+              <span class="six-file-upload__drop-zone__spinner-container">
+                <six-spinner /> Uploading...
               </span>
+            ) : (
+              <div>
+                <span>{this.renderLabel()}</span>
+                <input
+                  class="six-file-upload__input"
+                  type="file"
+                  name="resume"
+                  disabled={this.disabled}
+                  accept={this.accept}
+                  multiple={this.multiple}
+                  onChange={this.onChange}
+                  ref={(el) => (this.fileInput = el)}
+                />
+              </div>
             )}
-            <div
-              class={{
-                'six-file-upload__drop-zone': true,
-                'six-file-upload__drop-zone--hover': this.isOver,
-                'six-file-upload__drop-zone--compact': this.compact,
-              }}
-            >
-              {this.uploading ? (
-                <span class="six-file-upload__drop-zone__spinner-container">
-                  <six-spinner /> Uploading...
-                </span>
-              ) : (
-                <div>
-                  <span>{this.renderLabel()}</span>
-                  <input
-                    class="six-file-upload__input"
-                    type="file"
-                    name="resume"
-                    disabled={this.disabled}
-                    accept={this.accept}
-                    multiple={this.multiple}
-                    onChange={this.onChange}
-                    ref={(el) => (this.fileInput = el)}
-                  />
-                </div>
-              )}
-            </div>
-          </Container>
-          <div aria-hidden={this.invalid ? 'false' : 'true'}>
-            <slot name="error-text">
-              {errorMessages.map((text) => (
-                <six-error>
-                  <div class="six-file-upload__error-text">{text}</div>
-                </six-error>
-              ))}
-            </slot>
           </div>
+        </Container>
+        <div aria-hidden={this.invalid ? 'false' : 'true'}>
+          <slot name="error-text">
+            {errorMessages.map((text) => (
+              <six-error>
+                <div class="six-file-upload__error-text">{text}</div>
+              </six-error>
+            ))}
+          </slot>
         </div>
       </div>
     );
