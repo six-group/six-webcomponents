@@ -116,9 +116,22 @@
       </section>
 
       <h3>Invalid with error text</h3>
+      <p>
+        The <code>error-text</code> prop accepts either a simple string message, or a list of messages. If
+        <code>invalid</code>, all of them will be displayed.
+      </p>
 
       <section>
-        <six-file-upload invalid error-text="File is too large"></six-file-upload>
+        <six-file-upload
+          id="invalid-with-errors"
+          invalid
+          error-text="This is a simple string message"
+        ></six-file-upload>
+        <script type="module">
+          const sixInput = document.getElementById('invalid-with-errors');
+          sixInput.errorText = ['File is too large', 'Message 2'];
+          sixInput.errorTextCount = 3;
+        </script>
       </section>
 
       <h3>Invalid with error slot</h3>

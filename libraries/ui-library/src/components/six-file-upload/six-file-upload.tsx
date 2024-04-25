@@ -32,6 +32,7 @@ export class SixFileUpload {
   private fileInput?: HTMLInputElement;
 
   @State() isOver = false;
+  @State() hasError = false;
 
   /** Set to true if file control should be small. */
   @Prop() readonly compact: boolean = false;
@@ -97,7 +98,21 @@ export class SixFileUpload {
     }
   }
 
-  private hasError = this.errorText || hasSlot(this.host, 'eror-text');
+  private handleSlotChange = () => {
+    let validType = false;
+
+    if (
+      this.errorText != null &&
+      ((typeof this.errorText == 'string' && this.errorText.trim().length > 0) ||
+        (typeof this.errorText == 'object' && this.errorText.length > 0))
+    ) {
+      validType = true;
+    }
+
+    this.hasError = validType || hasSlot(this.host, 'error-text');
+    console.log(this.errorText);
+    console.log(this.hasError);
+  };
 
   private handleFiles = (files: FileList) => {
     if (this.disabled || files.length === 0 || this.uploading) {
@@ -133,11 +148,16 @@ export class SixFileUpload {
     this.success.emit(eventPayload);
   };
 
+  componentWillLoad() {
+    this.handleSlotChange();
+  }
+
   componentDidLoad() {
     ['dragenter', 'dragover', 'dragleave', 'drop'].forEach((eventName) => {
       this.host.addEventListener(eventName, this.preventDefaults, false);
       document.body.addEventListener(eventName, this.preventDefaults, false);
     });
+    this.host.shadowRoot?.addEventListener('slotchange', this.handleSlotChange);
   }
 
   disconnectedCallback() {
@@ -145,6 +165,7 @@ export class SixFileUpload {
       this.host.removeEventListener(eventName, this.preventDefaults, false);
       document.body.removeEventListener(eventName, this.preventDefaults, false);
     });
+    this.host.shadowRoot?.removeEventListener('slotchange', this.handleSlotChange);
   }
 
   private preventDefaults(e: Event) {
@@ -175,6 +196,10 @@ export class SixFileUpload {
 
   render() {
     const Container = this.compact ? 'six-button' : 'six-card';
+
+    const errorMessages = (Array.isArray(this.errorText) ? this.errorText : [this.errorText]).filter(
+      (text) => text != null && text.trim() !== ''
+    );
 
     return (
       <div>
@@ -225,17 +250,15 @@ export class SixFileUpload {
               )}
             </div>
           </Container>
-          {this.invalid && this.hasError && (
+          <div aria-hidden={this.invalid ? 'false' : 'true'}>
             <slot name="error-text">
-              <six-error
-                part="error-text"
-                class="six-file-upload__error-text"
-                aria-hidden={this.invalid ? 'false' : 'true'}
-              >
-                {this.errorText}
-              </six-error>
+              {errorMessages.map((text) => (
+                <six-error>
+                  <div class="six-file-upload__error-text">{text}</div>
+                </six-error>
+              ))}
             </slot>
-          )}
+          </div>
         </div>
       </div>
     );
