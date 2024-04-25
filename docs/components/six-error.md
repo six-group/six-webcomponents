@@ -1,6 +1,17 @@
 # Error
 
 
+## Error
+
+Simple error container for forms. Used in the `error-text` slot for multiple input-based components. Its a convenience component which should't be needed outside of the slot usage
+
+<docs-demo-six-error-0></docs-demo-six-error-0>
+
+```html
+<six-error>This is an error</six-error>
+```
+
+
 
 <!-- Auto Generated Below -->
 
