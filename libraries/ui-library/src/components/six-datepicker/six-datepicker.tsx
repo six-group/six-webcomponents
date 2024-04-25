@@ -51,6 +51,8 @@ export interface CalendarCell {
   label: string;
 }
 
+export type SixDatePickerRange = { from: Date; to: Date };
+
 enum SelectionMode {
   DAY = 'day',
   MONTH = 'month',
@@ -85,7 +87,7 @@ export class SixDatepicker {
   /**
    * Set the type.
    */
-  @Prop() type: 'date' | 'date-time' = 'date';
+  @Prop() type: 'date' | 'date-time' | 'date-range' = 'date';
 
   /**
    * The language used to render the weekdays and months.
@@ -155,9 +157,9 @@ export class SixDatepicker {
   @Prop() placeholder?: string;
 
   /**
-   * The value of the form field, which accepts a date object.
+   * The value of the form field, which accepts a date object, or a SixDateRange object if 'type' is 'date-range'.
    */
-  @Prop({ mutable: true }) value?: Date;
+  @Prop({ mutable: true }) value?: Date | SixDatePickerRange;
 
   /** The label text. */
   @Prop() label = '';

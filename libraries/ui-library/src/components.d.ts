@@ -7,8 +7,8 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AlertType } from "./components/six-alert/six-alert";
 import { EmptyPayload } from "./utils/types";
+import { SixDatePickerRange, SixDatepickerSelectPayload } from "./components/six-datepicker/six-datepicker";
 import { SixDateFormats } from "./components/six-datepicker/six-date-formats";
-import { SixDatepickerSelectPayload } from "./components/six-datepicker/six-datepicker";
 import { SixMenuItemData } from "./components/six-menu/six-menu";
 import { SixDropdownAsyncFilterPayload, SixDropdownAutoFilterPayload, SixDropdownScrollPayload } from "./components/six-dropdown/six-dropdown";
 import { SixFileListDownloadPayload, SixFileListRemovePayload } from "./components/six-file-list-item/six-file-list-item";
@@ -27,8 +27,8 @@ import { TimeFormat } from "./utils/time.util";
 import { SixTimepickerChange } from "./components/six-timepicker/six-timepicker";
 export { AlertType } from "./components/six-alert/six-alert";
 export { EmptyPayload } from "./utils/types";
+export { SixDatePickerRange, SixDatepickerSelectPayload } from "./components/six-datepicker/six-datepicker";
 export { SixDateFormats } from "./components/six-datepicker/six-date-formats";
-export { SixDatepickerSelectPayload } from "./components/six-datepicker/six-datepicker";
 export { SixMenuItemData } from "./components/six-menu/six-menu";
 export { SixDropdownAsyncFilterPayload, SixDropdownAutoFilterPayload, SixDropdownScrollPayload } from "./components/six-dropdown/six-dropdown";
 export { SixFileListDownloadPayload, SixFileListRemovePayload } from "./components/six-file-list-item/six-file-list-item";
@@ -372,11 +372,11 @@ export namespace Components {
         /**
           * Set the type.
          */
-        "type": 'date' | 'date-time';
+        "type": 'date' | 'date-time' | 'date-range';
         /**
-          * The value of the form field, which accepts a date object.
+          * The value of the form field, which accepts a date object, or a SixDateRange object if 'type' is 'date-range'.
          */
-        "value"?: Date;
+        "value"?: Date | SixDatePickerRange;
     }
     /**
      * @since 1.0
@@ -3417,11 +3417,11 @@ declare namespace LocalJSX {
         /**
           * Set the type.
          */
-        "type"?: 'date' | 'date-time';
+        "type"?: 'date' | 'date-time' | 'date-range';
         /**
-          * The value of the form field, which accepts a date object.
+          * The value of the form field, which accepts a date object, or a SixDateRange object if 'type' is 'date-range'.
          */
-        "value"?: Date;
+        "value"?: Date | SixDatePickerRange;
     }
     /**
      * @since 1.0
