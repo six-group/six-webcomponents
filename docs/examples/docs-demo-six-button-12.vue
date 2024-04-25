@@ -10,6 +10,7 @@
         <six-button type="warning" disabled>Warning</six-button>
         <six-button type="danger" disabled>Danger</six-button>
         <six-button type="action" disabled>Action</six-button>
+        <six-button type="action-outline" disabled>Action Outline</six-button>
       
 </div>
 </template>

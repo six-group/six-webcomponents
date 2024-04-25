@@ -9,6 +9,7 @@
           <six-button type="warning">Warning</six-button>
           <six-button type="danger">Danger</six-button>
           <six-button type="action">Action</six-button>
+          <six-button type="action-outline">Action Outline</six-button>
         </div>
         <div style="padding: 1em; background-color: #262626">
           <six-button>Primary</six-button>
@@ -18,6 +19,7 @@
           <six-button type="warning">Warning</six-button>
           <six-button type="danger">Danger</six-button>
           <six-button type="action">Action</six-button>
+          <six-button type="action-outline">Action Outline</six-button>
         </div>
       
 </div>
