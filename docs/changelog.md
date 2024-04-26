@@ -6,9 +6,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## Upcoming
 
-- `invalid` and `error-text` properties added to `six-file-upload`
-
 ### Added
+
+- `invalid` and `error-text` properties added to `six-file-upload`
 
 ### Changed
 
