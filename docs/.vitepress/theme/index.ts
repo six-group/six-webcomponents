@@ -5,7 +5,7 @@ import './style.css';
 import { defineCustomElements } from '@six-group/ui-library/loader';
 
 // @ts-ignore
-const modules = import.meta.globEager('../../examples/**/*.vue');
+const modules = import.meta.glob("../../examples/**/*.vue'", { eager: true });
 const exampleComponents = [];
 for (const path in modules) {
   exampleComponents.push(modules[path].default);
