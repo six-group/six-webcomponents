@@ -7,8 +7,9 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AlertType } from "./components/six-alert/six-alert";
 import { EmptyPayload } from "./utils/types";
-import { DateRange, SixDatepickerSelectPayload } from "./components/six-datepicker/six-datepicker";
+import { DateRange } from "./utils/date-util";
 import { SixDateFormats } from "./components/six-datepicker/six-date-formats";
+import { SixDatepickerSelectPayload, SixDatepickerSelectRangePayload } from "./components/six-datepicker/six-datepicker";
 import { SixMenuItemData } from "./components/six-menu/six-menu";
 import { SixDropdownAsyncFilterPayload, SixDropdownAutoFilterPayload, SixDropdownScrollPayload } from "./components/six-dropdown/six-dropdown";
 import { SixFileListDownloadPayload, SixFileListRemovePayload } from "./components/six-file-list-item/six-file-list-item";
@@ -27,8 +28,9 @@ import { TimeFormat } from "./utils/time.util";
 import { SixTimepickerChange } from "./components/six-timepicker/six-timepicker";
 export { AlertType } from "./components/six-alert/six-alert";
 export { EmptyPayload } from "./utils/types";
-export { DateRange as SixDatePickerRange, SixDatepickerSelectPayload } from "./components/six-datepicker/six-datepicker";
+export { DateRange } from "./utils/date-util";
 export { SixDateFormats } from "./components/six-datepicker/six-date-formats";
+export { SixDatepickerSelectPayload, SixDatepickerSelectRangePayload } from "./components/six-datepicker/six-datepicker";
 export { SixMenuItemData } from "./components/six-menu/six-menu";
 export { SixDropdownAsyncFilterPayload, SixDropdownAutoFilterPayload, SixDropdownScrollPayload } from "./components/six-dropdown/six-dropdown";
 export { SixFileListDownloadPayload, SixFileListRemovePayload } from "./components/six-file-list-item/six-file-list-item";
@@ -2229,6 +2231,7 @@ declare global {
     };
     interface HTMLSixDatepickerElementEventMap {
         "six-datepicker-select": SixDatepickerSelectPayload;
+        "six-datepicker-select-range": SixDatepickerSelectRangePayload;
         "six-datepicker-clear": EmptyPayload;
         "six-datepicker-blur": SixDatepickerSelectPayload;
     }
@@ -3394,6 +3397,10 @@ declare namespace LocalJSX {
           * Emitted when a option got selected.
          */
         "onSix-datepicker-select"?: (event: SixDatepickerCustomEvent<SixDatepickerSelectPayload>) => void;
+        /**
+          * Emitted when a range got selected.
+         */
+        "onSix-datepicker-select-range"?: (event: SixDatepickerCustomEvent<SixDatepickerSelectRangePayload>) => void;
         /**
           * Indicates whether or not the calendar dropdown is open on startup. You can use this in lieu of the show/hide methods.
          */

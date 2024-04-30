@@ -1,12 +1,8 @@
 <template>
 <div>
 
-        <six-datepicker invalid>
-          <div slot="error-text">
-            <six-error               >An error message
-              <a href="https://github.com/six-group/six-webcomponents" target="_blank">with a link</a></six-error>
-          </div>
-        </six-datepicker>
+        <six-datepicker id="multiple-error-text" label="List of string message" invalid></six-datepicker>
+        
       
 </div>
 </template>
@@ -16,6 +12,10 @@
 <script>
 export default {
   name: 'docs-demo-six-datepicker-25',
-  mounted() {  }
+  mounted() { 
+          const sixDatePicker = document.getElementById('multiple-error-text');
+          sixDatePicker.errorText = ['Message 1', 'Message 2'];
+          sixDatePicker.errorTextCount = 3;
+         }
 }
 </script>

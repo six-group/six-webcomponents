@@ -1,7 +1,7 @@
 <template>
 <div>
 
-        <six-datepicker placeholder="DD.MM.YYYY"></six-datepicker>
+        <six-datepicker placement="bottom"></six-datepicker>
         
       
 </div>

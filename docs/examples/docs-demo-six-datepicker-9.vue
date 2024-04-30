@@ -1,9 +1,7 @@
 <template>
 <div>
 
-        <six-datepicker>
-          <p style="text-align: center">Choose your birthdate!</p>
-        </six-datepicker>
+        <six-datepicker locale="fr"></six-datepicker>
         
       
 </div>

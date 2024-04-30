@@ -103,6 +103,18 @@
       color: var(--six-color-white);
     }
 
+    &--is-start {
+      background-color: var(--six-color-red);
+      color: var(--six-color-white);
+      border-radius: 0.75rem 0 0 0.75rem;
+    }
+
+    &--is-end {
+      background-color: var(--six-color-red);
+      color: var(--six-color-white);
+      border-radius: 0 0.75rem 0.75rem 0;
+    }
+
     &--is-disabled {
       background-color: var(--six-color-web-rock-200);
       cursor: initial;

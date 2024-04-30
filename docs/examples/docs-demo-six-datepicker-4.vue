@@ -1,7 +1,7 @@
 <template>
 <div>
 
-        <six-datepicker inline="true"></six-datepicker>
+        <six-datepicker disabled></six-datepicker>
         
       
 </div>

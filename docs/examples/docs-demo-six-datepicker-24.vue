@@ -1,8 +1,8 @@
 <template>
 <div>
 
-        <six-datepicker id="multiple-error-text" label="List of string message" invalid></six-datepicker>
-        
+        <six-datepicker label="Simple string message" error-text="This is a simple string message" invalid>
+        </six-datepicker>
       
 </div>
 </template>
@@ -12,10 +12,6 @@
 <script>
 export default {
   name: 'docs-demo-six-datepicker-24',
-  mounted() { 
-          const sixDatePicker = document.getElementById('multiple-error-text');
-          sixDatePicker.errorText = ['Message 1', 'Message 2'];
-          sixDatePicker.errorTextCount = 3;
-         }
+  mounted() {  }
 }
 </script>

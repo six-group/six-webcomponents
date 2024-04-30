@@ -1171,6 +1171,7 @@ describe('createCalendarGrid', () => {
         month: 2,
         day: 31,
       },
+      rangeSelection: false,
     };
 
     // when
@@ -1217,6 +1218,7 @@ describe('createCalendarGrid', () => {
         month: 2,
         day: 1,
       },
+      rangeSelection: false,
     };
 
     // when
@@ -1263,6 +1265,7 @@ describe('createCalendarGrid', () => {
         month: 2,
         day: 31,
       },
+      rangeSelection: false,
     };
 
     // when

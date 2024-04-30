@@ -67,9 +67,38 @@ If you need to select a time as well, just set the `type` and `date-format` and 
 ```
 
 
-### Disabled State
+### Date Range
+
+If you need to select a time range, set the `type` to `date-range` and the datepicker will allow selecting a date range.
 
 <docs-demo-six-datepicker-3></docs-demo-six-datepicker-3>
+
+```html
+<six-datepicker           date-format="dd.mm.yyyy hh:MM:ss"
+  type="date-range"
+  id="read-select-daterange-picker"
+></six-datepicker>
+<div id="read-select-daterange-label">No Date range selected yet!</div>
+
+<script type="module">
+  const datepicker = document.getElementById('read-select-daterange-picker');
+  const selectedDate = document.getElementById('read-select-daterange-label');
+
+  datepicker.addEventListener('six-datepicker-select', (event) => {
+    selectedDate.innerHTML = `selected: ${event.detail.toLocaleString()}`;
+  });
+</script>
+<style>
+  six-datepicker {
+    max-width: 25rem;
+  }
+</style>
+```
+
+
+### Disabled State
+
+<docs-demo-six-datepicker-4></docs-demo-six-datepicker-4>
 
 ```html
 <six-datepicker disabled></six-datepicker>
@@ -85,7 +114,7 @@ If you need to select a time as well, just set the `type` and `date-format` and 
 
 If you wish you can have the datepicker as an inline component i.e. the popup will always be open
 
-<docs-demo-six-datepicker-4></docs-demo-six-datepicker-4>
+<docs-demo-six-datepicker-5></docs-demo-six-datepicker-5>
 
 ```html
 <six-datepicker inline="true"></six-datepicker>
@@ -101,7 +130,7 @@ If you wish you can have the datepicker as an inline component i.e. the popup wi
 
 If you want to force the user to use the popup instead of manually enter a date, you can simply add the `readonly` property
 
-<docs-demo-six-datepicker-5></docs-demo-six-datepicker-5>
+<docs-demo-six-datepicker-6></docs-demo-six-datepicker-6>
 
 ```html
 <six-datepicker readonly></six-datepicker>
@@ -119,7 +148,7 @@ By default the datepicker will render either below or above the input field depe
 
 If you want to enforce a certain placement you can use the `placement` attribute
 
-<docs-demo-six-datepicker-6></docs-demo-six-datepicker-6>
+<docs-demo-six-datepicker-7></docs-demo-six-datepicker-7>
 
 ```html
 <six-datepicker placement="bottom"></six-datepicker>
@@ -135,7 +164,7 @@ If you want to enforce a certain placement you can use the `placement` attribute
 
 You can define the datepickers placeholder via `placeholder`
 
-<docs-demo-six-datepicker-7></docs-demo-six-datepicker-7>
+<docs-demo-six-datepicker-8></docs-demo-six-datepicker-8>
 
 ```html
 <six-datepicker placeholder="DD.MM.YYYY"></six-datepicker>
@@ -151,7 +180,7 @@ You can define the datepickers placeholder via `placeholder`
 
 You can change the language in which the datepicker is shown by using the `locale` attribute
 
-<docs-demo-six-datepicker-8></docs-demo-six-datepicker-8>
+<docs-demo-six-datepicker-9></docs-demo-six-datepicker-9>
 
 ```html
 <six-datepicker locale="fr"></six-datepicker>
@@ -167,7 +196,7 @@ You can change the language in which the datepicker is shown by using the `local
 
 You can add content to the footer by simply using the datepicker's slot
 
-<docs-demo-six-datepicker-9></docs-demo-six-datepicker-9>
+<docs-demo-six-datepicker-10></docs-demo-six-datepicker-10>
 
 ```html
 <six-datepicker>
@@ -183,7 +212,7 @@ You can add content to the footer by simply using the datepicker's slot
 
 Of course you can also enhance the datepicker footer with special functions
 
-<docs-demo-six-datepicker-10></docs-demo-six-datepicker-10>
+<docs-demo-six-datepicker-11></docs-demo-six-datepicker-11>
 
 ```html
 <six-datepicker id="datepicker-adv-footer">
@@ -222,7 +251,7 @@ Of course you can also enhance the datepicker footer with special functions
 
 The SIX datepicker supports the following different formats:
 
-<docs-demo-six-datepicker-11></docs-demo-six-datepicker-11>
+<docs-demo-six-datepicker-12></docs-demo-six-datepicker-12>
 
 ```html
 <div id="datepicker-formats-container" style="display: flex; flex-wrap: wrap">
@@ -268,7 +297,7 @@ The SIX datepicker supports the following different formats:
 
 You can set the min and max dates. Please be aware that only date objects are accepted and n:
 
-<docs-demo-six-datepicker-12></docs-demo-six-datepicker-12>
+<docs-demo-six-datepicker-13></docs-demo-six-datepicker-13>
 
 ```html
 <div class="min-max-demo">
@@ -325,7 +354,7 @@ You can set the min and max dates. Please be aware that only date objects are ac
 
 If the set of allowed dates is more complex than just passing a min and max date you can define a allow dates callback function
 
-<docs-demo-six-datepicker-13></docs-demo-six-datepicker-13>
+<docs-demo-six-datepicker-14></docs-demo-six-datepicker-14>
 
 ```html
 <six-datepicker id="allowed-date-picker"></six-datepicker>
@@ -346,7 +375,7 @@ If the set of allowed dates is more complex than just passing a min and max date
 
 You can define a custom default date which will be shown on first appearance of the popup
 
-<docs-demo-six-datepicker-14></docs-demo-six-datepicker-14>
+<docs-demo-six-datepicker-15></docs-demo-six-datepicker-15>
 
 ```html
 <six-datepicker default-date="2021-02-20" date-format="yyyy-mm-dd"></six-datepicker>
@@ -362,7 +391,7 @@ You can define a custom default date which will be shown on first appearance of 
 
 Add the `clearable` property to add a clear button when the input has content.
 
-<docs-demo-six-datepicker-15></docs-demo-six-datepicker-15>
+<docs-demo-six-datepicker-16></docs-demo-six-datepicker-16>
 
 ```html
 <six-datepicker clearable></six-datepicker>
@@ -378,7 +407,7 @@ Add the `clearable` property to add a clear button when the input has content.
 
 Could be adjusted providing `icon-position` property.
 
-<docs-demo-six-datepicker-16></docs-demo-six-datepicker-16>
+<docs-demo-six-datepicker-17></docs-demo-six-datepicker-17>
 
 ```html
 <six-datepicker icon-position="right"></six-datepicker>
@@ -404,7 +433,7 @@ Could be adjusted providing `icon-position` property.
 
 The slot `custom-icon` is used to provide a custom datepicker icon.
 
-<docs-demo-six-datepicker-17></docs-demo-six-datepicker-17>
+<docs-demo-six-datepicker-18></docs-demo-six-datepicker-18>
 
 ```html
 <six-datepicker custom-icon>
@@ -426,7 +455,7 @@ The slot `custom-icon` is used to provide a custom datepicker icon.
 
 Use the `size` attribute to change a datepicker size.
 
-<docs-demo-six-datepicker-18></docs-demo-six-datepicker-18>
+<docs-demo-six-datepicker-19></docs-demo-six-datepicker-19>
 
 ```html
 <six-datepicker size="small" clearable></six-datepicker>
@@ -446,7 +475,7 @@ Use the `size` attribute to change a datepicker size.
 
 Dropdown panels will be clipped if they're inside a container that has overflow: auto|hidden. The hoist attribute forces the panel to use a fixed positioning strategy, allowing it to break out of the container. In this case, the panel will be positioned relative to its containing block, which is usually the viewport unless an ancestor uses a transform, perspective, or filter.
 
-<docs-demo-six-datepicker-19></docs-demo-six-datepicker-19>
+<docs-demo-six-datepicker-20></docs-demo-six-datepicker-20>
 
 ```html
 <div style="overflow: hidden; border: solid 1px grey; padding: 0.5em; display: flex">
@@ -466,7 +495,7 @@ Dropdown panels will be clipped if they're inside a container that has overflow:
 
 The datepicker value can be changed dynamically by setting the `value` attribute.
 
-<docs-demo-six-datepicker-20></docs-demo-six-datepicker-20>
+<docs-demo-six-datepicker-21></docs-demo-six-datepicker-21>
 
 ```html
 <six-datepicker id="dynamic-datepicker"></six-datepicker>
@@ -508,7 +537,7 @@ The datepicker value can be changed dynamically by setting the `value` attribute
 
 If you wish you can have the datepicker open on startup. It will close as usual (clicking outside etc.)
 
-<docs-demo-six-datepicker-21></docs-demo-six-datepicker-21>
+<docs-demo-six-datepicker-22></docs-demo-six-datepicker-22>
 
 ```html
 <six-datepicker open="true" placement="bottom"></six-datepicker>
@@ -522,7 +551,7 @@ If you wish you can have the datepicker open on startup. It will close as usual 
 
 ## Datepicker in a Modal
 
-<docs-demo-six-datepicker-22></docs-demo-six-datepicker-22>
+<docs-demo-six-datepicker-23></docs-demo-six-datepicker-23>
 
 ```html
 <six-button id="modal-ex-dt">Toggle Modal</six-button>
@@ -584,7 +613,7 @@ warning There are two caveats when using the `error-text` prop/slot:
 
 The `error-text` prop accepts either a simple string message, or a list of messages.
 
-<docs-demo-six-datepicker-23></docs-demo-six-datepicker-23>
+<docs-demo-six-datepicker-24></docs-demo-six-datepicker-24>
 
 ```html
 <six-datepicker label="Simple string message" error-text="This is a simple string message" invalid>
@@ -592,7 +621,7 @@ The `error-text` prop accepts either a simple string message, or a list of messa
 ```
 
 
-<docs-demo-six-datepicker-24></docs-demo-six-datepicker-24>
+<docs-demo-six-datepicker-25></docs-demo-six-datepicker-25>
 
 ```html
 <six-datepicker id="multiple-error-text" label="List of string message" invalid></six-datepicker>
@@ -606,7 +635,7 @@ The `error-text` prop accepts either a simple string message, or a list of messa
 
 When using the `error-text` slot, it is recommended to use the `six-error` component to wrap the error message(s). This will provide the correct styling out of the box
 
-<docs-demo-six-datepicker-25></docs-demo-six-datepicker-25>
+<docs-demo-six-datepicker-26></docs-demo-six-datepicker-26>
 
 ```html
 <six-datepicker invalid>
@@ -615,6 +644,20 @@ When using the `error-text` slot, it is recommended to use the `six-error` compo
       <a href="https://github.com/six-group/six-webcomponents" target="_blank">with a link</a></six-error>
   </div>
 </six-datepicker>
+```
+
+
+### Date Ranges
+
+<docs-demo-six-datepicker-27></docs-demo-six-datepicker-27>
+
+```html
+<six-datepicker id="daterange-picker" type="date-range" range=""> </six-datepicker>
+<script type="module">
+  const sixDatePicker = document.getElementById('daterange-picker');
+  const now = new Date();
+  sixDatePicker.range = { from: now, to: new Date().setDate(5) };
+</script>
 ```
 
 
@@ -648,11 +691,12 @@ When using the `error-text` slot, it is recommended to use the `six-error` compo
 | `open`              | `open`             | Indicates whether or not the calendar dropdown is open on startup. You can use this in lieu of the show/hide methods.                                                                                                                                                                                                            | `boolean`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | `false`                      |
 | `placeholder`       | `placeholder`      | The placeholder defines what text to be shown on the input element                                                                                                                                                                                                                                                               | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | `undefined`                  |
 | `placement`         | `placement`        | The enforced placement of the dropdown panel.                                                                                                                                                                                                                                                                                    | `"bottom" \| "top" \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | `undefined`                  |
+| `range`             | --                 | The value of the form field, which accepts a SixDateRange object if 'type' is 'date-range'.                                                                                                                                                                                                                                      | `undefined \| { from: Date \| null; to: Date \| null; }`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | `undefined`                  |
 | `readonly`          | `readonly`         | If `true` the user can only select a date via the component in the popup, but not directly edit the input field.                                                                                                                                                                                                                 | `boolean`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | `false`                      |
 | `required`          | `required`         | Set to true to show an asterisk beneath the label.                                                                                                                                                                                                                                                                               | `boolean`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | `false`                      |
 | `size`              | `size`             | Datepicker size.                                                                                                                                                                                                                                                                                                                 | `"large" \| "medium" \| "small"`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | `'medium'`                   |
-| `type`              | `type`             | Set the type.                                                                                                                                                                                                                                                                                                                    | `"date" \| "date-time"`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | `'date'`                     |
-| `value`             | --                 | The value of the form field, which accepts a date object.                                                                                                                                                                                                                                                                        | `Date \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | `undefined`                  |
+| `type`              | `type`             | Set the type.                                                                                                                                                                                                                                                                                                                    | `"date" \| "date-range" \| "date-time"`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | `'date'`                     |
+| `value`             | --                 | The value of the form field, which accepts a date object if 'type' is not 'date-range'.                                                                                                                                                                                                                                          | `Date \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | `undefined`                  |
 
 
 ## Events

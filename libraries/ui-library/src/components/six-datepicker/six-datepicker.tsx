@@ -17,7 +17,10 @@ import {
   seconds,
   toDate,
   year,
-  DateRange
+  DateRange,
+  formatRange,
+  rangesEqual,
+  orderRange,
 } from '../../utils/date-util';
 import { EventListeners } from '../../utils/event-listeners';
 import { debounce, debounceEvent, DEFAULT_DEBOUNCE_FAST } from '../../utils/execution-control';
@@ -40,6 +43,7 @@ const NUMBER_OF_YEARS_SHOWN = 25;
 const MIN_POPUP_HEIGHT = 400;
 
 export type SixDatepickerSelectPayload = Date | undefined | null;
+export type SixDatepickerSelectRangePayload = DateRange | undefined | null;
 
 export interface CalendarCell {
   date: Date;
@@ -50,9 +54,9 @@ export interface CalendarCell {
   isSelected: boolean;
   isToday: boolean;
   label: string;
+  isStart: boolean;
+  isEnd: boolean;
 }
-
-
 
 enum SelectionMode {
   DAY = 'day',
@@ -78,6 +82,7 @@ export class SixDatepicker {
   private popup?: HTMLElement;
   private wrapper?: HTMLElement;
   private selectedDate?: Date;
+  private selectedRange: DateRange = { from: null, to: null };
 
   @Element() host!: HTMLSixDatepickerElement;
 
@@ -134,7 +139,7 @@ export class SixDatepicker {
   /**
    * Closes the datepicker dropdown after selection
    */
-  @Prop() closeOnSelect = this.type === 'date';
+  @Prop() closeOnSelect = this.type === 'date' || this.type === 'date-range';
 
   /**
    * The enforced placement of the dropdown panel.
@@ -219,6 +224,7 @@ export class SixDatepicker {
   @Watch('debounce')
   protected debounceChanged() {
     this.sixSelect = debounceEvent(this.sixSelect, this.debounce);
+    this.sixSelectRange = debounceEvent(this.sixSelectRange, this.debounce);
   }
 
   /**
@@ -236,9 +242,29 @@ export class SixDatepicker {
   }
 
   /**
+   * Update the native input element when the value changes
+   */
+  @Watch('range')
+  protected rangeChanged() {
+    if (this.range != null && !isValidDate(this.range.from)) {
+      // TODO improve this test
+      console.warn('invalid range value: ', this.range);
+      this.range = undefined;
+      this.sixSelectRange.emit(this.range);
+    }
+    this.selectedRange = this.range ?? { from: null, to: null };
+    //    this.updatePointerDates();
+  }
+
+  /**
    * Emitted when a option got selected.
    */
   @Event({ eventName: 'six-datepicker-select' }) sixSelect!: EventEmitter<SixDatepickerSelectPayload>;
+
+  /**
+   * Emitted when a range got selected.
+   */
+  @Event({ eventName: 'six-datepicker-select-range' }) sixSelectRange!: EventEmitter<SixDatepickerSelectRangePayload>;
 
   /**
    * Emitted when the clear button is activated.
@@ -289,6 +315,8 @@ export class SixDatepicker {
       dateFormat: this.dateFormat,
       locale: this.locale,
       selectedDate: this.selectedDate,
+      rangeSelection: this.type === 'date-range',
+      selectedRange: this.selectedRange,
       minDate: this.min,
       maxDate: this.max,
       pointerDate: this.pointerDate,
@@ -473,6 +501,16 @@ export class SixDatepicker {
     this.sixSelect.emit(this.value);
   }
 
+  private updateRange(newRange: DateRange) {
+    this.updateRangeIfChanged(newRange);
+  }
+
+  private updateRangeIfChanged(newRange: DateRange) {
+    if (!this.range || !rangesEqual(this.range, newRange)) {
+      this.range = newRange;
+      this.sixSelectRange.emit(this.range);
+    }
+  }
   /**
    * Selects an option
    */
@@ -480,16 +518,29 @@ export class SixDatepicker {
   async select(datestring?: string) {
     if (datestring == null) {
       this.updateValue(undefined);
+    } else if (this.type === 'date-range') {
+      if (this.selectedRange.from === null || this.selectedRange.to !== null) {
+        this.selectedRange = { from: toDate(datestring, this.dateFormat) ?? null, to: null };
+      } else {
+        this.selectedRange = orderRange({
+          from: this.selectedRange.from,
+          to: toDate(datestring, this.dateFormat) ?? null,
+        });
+        if (this.closeOnSelect) {
+          this.closePopup();
+        }
+      }
+      this.updateRange(this.selectedRange);
     } else {
       const newDate = toDate(datestring, this.dateFormat);
       newDate?.setHours(this.pointerDate.hours, this.pointerDate.minutes, this.pointerDate.seconds);
       this.updateValue(newDate);
-    }
 
-    this.updatePointerDates();
+      this.updatePointerDates();
 
-    if (this.closeOnSelect) {
-      this.closePopup();
+      if (this.closeOnSelect) {
+        this.closePopup();
+      }
     }
   }
 
@@ -732,7 +783,11 @@ export class SixDatepicker {
       <div ref={(el) => (this.wrapper = el)} class="datepicker__container">
         <six-input
           part="base"
-          value={(this.type === 'date-range') ? formatDate(this.value, this.dateFormat)}
+          value={
+            this.type === 'date-range'
+              ? formatRange(this.range, this.dateFormat)
+              : formatDate(this.value, this.dateFormat)
+          }
           ref={(el) => (this.inputElement = el)}
           placeholder={this.placeholder}
           readonly={this.readonly}

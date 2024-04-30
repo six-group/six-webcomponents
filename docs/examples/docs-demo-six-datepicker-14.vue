@@ -1,7 +1,9 @@
 <template>
 <div>
 
-        <six-datepicker default-date="2021-02-20" date-format="yyyy-mm-dd"></six-datepicker>
+        <six-datepicker id="allowed-date-picker"></six-datepicker>
+
+        
         
       
 </div>
@@ -16,6 +18,9 @@
 <script>
 export default {
   name: 'docs-demo-six-datepicker-14',
-  mounted() {  }
+  mounted() { 
+          const datepicker = document.getElementById('allowed-date-picker');
+          datepicker.allowedDates = (date) => date.getDate() % 2 === 0;
+         }
 }
 </script>

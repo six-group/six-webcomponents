@@ -93,6 +93,7 @@ export const SixDatepicker = /*@__PURE__*/ defineContainer<JSX.SixDatepicker, JS
   'defaultDate',
   'placeholder',
   'value',
+  'range',
   'label',
   'errorText',
   'errorTextCount',
