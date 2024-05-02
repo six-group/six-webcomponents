@@ -138,29 +138,29 @@ export const i18nDate = {
 };
 
 const rangeRegexp = {
-  'dd.mm.yyyy': /(\d{2}\.\d{2}\.\d{4})[ -]+(\d{2}\.\d{2}\.\d{4})/,
-  'yyyy-mm-dd': /(\d{4}-\d{2}-\d{2})[ -]+(\d{4}-\d{2}-\d{2})/,
-  'dd-mm-yyyy': /(\d{2}-\d{2}-\d{4})[ -]+(\d{2}-\d{2}-\d{4})/,
-  'dd/mm/yyyy': /(\d{2}\/\d{2}\/\d{4})[ -]+(\d{2}\/\d{2}\/\d{4})/,
-  'yyyy/mm/dd': /(\d{4}\/\d{2}\/\d{2})[ -]+(\d{4}\/\d{2}\/\d{2})/,
+  'dd.mm.yyyy': /^(\d{2}\.\d{2}\.\d{4})(?:[ -]+(\d{2}\.\d{2}\.\d{4}))?$/,
+  'yyyy-mm-dd': /^(\d{4}-\d{2}-\d{2})(?:[ -]+(\d{4}-\d{2}-\d{2}))?$/,
+  'dd-mm-yyyy': /^(\d{2}-\d{2}-\d{4})(?:[ -]+(\d{2}-\d{2}-\d{4}))?$/,
+  'dd/mm/yyyy': /^(\d{2}\/\d{2}\/\d{4})(?:[ -]+(\d{2}\/\d{2}\/\d{4}))?$/,
+  'yyyy/mm/dd': /^(\d{4}\/\d{2}\/\d{2})(?:[ -]+(\d{4}\/\d{2}\/\d{2}))?$/,
 
-  'dd.mm.yy': /(\d{2}\.\d{2}\.\d{2})[ -]+(\d{2}\.\d{2}\.\d{2})/,
-  'yy-mm-dd': /(\d{2}-\d{2}-\d{2})[ -]+(\d{2}-\d{2}-\d{2})/,
-  'dd-mm-yy': /(\d{2}-\d{2}-\d{2})[ -]+(\d{2}-\d{2}-\d{2})/,
-  'dd/mm/yy': /(\d{2}\/\d{2}\/\d{2})[ -]+(\d{2}\/\d{2}\/\d{2})/,
-  'yy/mm/dd': /(\d{2}\/\d{2}\/\d{2})[ -]+(\d{2}\/\d{2}\/\d{2})/,
+  'dd.mm.yy': /^(\d{2}\.\d{2}\.\d{2})(?:[ -]+(\d{2}\.\d{2}\.\d{2}))?$/,
+  'yy-mm-dd': /^(\d{2}-\d{2}-\d{2})(?:[ -]+(\d{2}-\d{2}-\d{2}))?$/,
+  'dd-mm-yy': /^(\d{2}-\d{2}-\d{2})(?:[ -]+(\d{2}-\d{2}-\d{2}))?$/,
+  'dd/mm/yy': /^(\d{2}\/\d{2}\/\d{2})(?:[ -]+(\d{2}\/\d{2}\/\d{2}))?$/,
+  'yy/mm/dd': /^(\d{2}\/\d{2}\/\d{2})(?:[ -]+(\d{2}\/\d{2}\/\d{2}))?$/,
 
-  'dd.mm.yyyy hh:MM:ss': /(\d{2}\.\d{2}\.\d{4} \d{2}:\d{2}:\d{2})[ -]+(\d{2}\.\d{2}\.\d{4} \d{2}:\d{2}:\d{2})/,
-  'yyyy-mm-dd hh:MM:ss': /(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})[ -]+(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})/,
-  'dd-mm-yyyy hh:MM:ss': /(\d{2}-\d{2}-\d{4} \d{2}:\d{2}:\d{2})[ -]+(\d{2}-\d{2}-\d{4} \d{2}:\d{2}:\d{2})/,
-  'dd/mm/yyyy hh:MM:ss': /(\d{2}-\d{2}-\d{4} \d{2}:\d{2}:\d{2})[ -]+(\d{2}-\d{2}-\d{4} \d{2}:\d{2}:\d{2})/,
-  'yyyy/mm/dd hh:MM:ss': /(\d{4}\/\d{2}\/\d{2} \d{2}:\d{2}:\d{2})[ -]+(\d{4}\/\d{2}\/\d{2} \d{2}:\d{2}:\d{2})/,
+  'dd.mm.yyyy hh:MM:ss': /^(\d{2}\.\d{2}\.\d{4} \d{2}:\d{2}:\d{2})(?:[ -]+(\d{2}\.\d{2}\.\d{4} \d{2}:\d{2}:\d{2}))?$/,
+  'yyyy-mm-dd hh:MM:ss': /^(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})(?:[ -]+(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}))?$/,
+  'dd-mm-yyyy hh:MM:ss': /^(\d{2}-\d{2}-\d{4} \d{2}:\d{2}:\d{2})(?:[ -]+(\d{2}-\d{2}-\d{4} \d{2}:\d{2}:\d{2}))?$/,
+  'dd/mm/yyyy hh:MM:ss': /^(\d{2}\/\d{2}\/\d{4} \d{2}:\d{2}:\d{2})(?:[ -]+(\d{2}\/\d{2}\/\d{4} \d{2}:\d{2}:\d{2}))?$/,
+  'yyyy/mm/dd hh:MM:ss': /^(\d{4}\/\d{2}\/\d{2} \d{2}:\d{2}:\d{2})(?:[ -]+(\d{4}\/\d{2}\/\d{2} \d{2}:\d{2}:\d{2}))?$/,
 
-  'dd.mm.yy hh:MM:ss': /(\d{2}\.\d{2}\.\d{2} \d{2}:\d{2}:\d{2})[ -]+(\d{2}\.\d{2}\.\d{2} \d{2}:\d{2}:\d{2})/,
-  'yy-mm-dd hh:MM:ss': /(\d{2}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})[ -]+(\d{2}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})/,
-  'dd-mm-yy hh:MM:ss': /(\d{2}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})[ -]+(\d{2}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})/,
-  'dd/mm/yy hh:MM:ss': /(\d{2}\/\d{2}\/\d{2} \d{2}:\d{2}:\d{2})[ -]+(\d{2}\/\d{2}\/\d{2} \d{2}:\d{2}:\d{2})/,
-  'yy/mm/dd hh:MM:ss': /(\d{2}\/\d{2}\/\d{2} \d{2}:\d{2}:\d{2})[ -]+(\d{2}\/\d{2}\/\d{2} \d{2}:\d{2}:\d{2})/,
+  'dd.mm.yy hh:MM:ss': /^(\d{2}\.\d{2}\.\d{2} \d{2}:\d{2}:\d{2})(?:[ -]+(\d{2}\.\d{2}\.\d{2} \d{2}:\d{2}:\d{2}))?$/,
+  'yy-mm-dd hh:MM:ss': /^(\d{2}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})(?:[ -]+(\d{2}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}))?$/,
+  'dd-mm-yy hh:MM:ss': /^(\d{2}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})(?:[ -]+(\d{2}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}))?$/,
+  'dd/mm/yy hh:MM:ss': /^(\d{2}\/\d{2}\/\d{2} \d{2}:\d{2}:\d{2})(?:[ -]+(\d{2}\/\d{2}\/\d{2} \d{2}:\d{2}:\d{2}))?$/,
+  'yy/mm/dd hh:MM:ss': /^^ (\d{2}\/\d{2}\/\d{2} \d{2}:\d{2}:\d{2})(?:[ -]+(\d{2}\/\d{2}\/\d{2} \d{2}:\d{2}:\d{2}))?$/,
 };
 
 /**
@@ -363,7 +363,7 @@ const extractDateStringsFromRangeString = (rangestring: string | undefined, form
   const matches = rangeFormatRegexp.exec(rangestring);
   if (!matches) return false;
 
-  return [matches[1], matches[2]];
+  return matches[2] === undefined ? [matches[1]] : [matches[1], matches[2]];
 };
 
 /** Returns `true` if the given string is a valid range
@@ -373,7 +373,9 @@ export const isValidDateRangeString = (rangestring: string | undefined, format: 
   const extracted = extractDateStringsFromRangeString(rangestring, format);
   if (!extracted) return false;
 
-  return isValidDateString(extracted[0], format) && isValidDateString(extracted[1], format);
+  if (extracted.length > 1) return isValidDateString(extracted[0], format) && isValidDateString(extracted[1], format);
+
+  return isValidDateString(extracted[0], format);
 };
 
 /**
@@ -868,7 +870,7 @@ export const toRange = (dirtyDateString: string | undefined, format: string): Da
   const extracted = extractDateStringsFromRangeString(dirtyDateString, format);
   if (!extracted) return undefined;
 
-  return { from: toDate(extracted[0], format), to: toDate(extracted[1], format) };
+  return { from: toDate(extracted[0], format), to: extracted.length > 1 ? toDate(extracted[1], format) : null };
 };
 
 export interface PointerDate {
