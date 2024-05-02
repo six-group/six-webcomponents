@@ -103,6 +103,10 @@
       color: var(--six-color-white);
     }
 
+    &--is-within-range {
+      background-color: var(--six-color-web-rock-400);
+    }
+
     &--is-start {
       background-color: var(--six-color-red);
       color: var(--six-color-white);

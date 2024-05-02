@@ -31,6 +31,7 @@ export const DaySelection = (daySelectionParams: DaySelectionParams) => {
                   'datepicker-table__cell--is-outdated': cell.isOutdated,
                   'datepicker-table__cell--is-disabled': cell.isDisabled,
                   'datepicker-table__cell--is-selectable': !cell.isDisabled,
+                  'datepicker-table__cell--is-within-range': cell.isWithinRange,
                 }}
               >
                 {cell.label}

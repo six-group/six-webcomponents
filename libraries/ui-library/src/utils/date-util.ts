@@ -2,8 +2,9 @@
 // @ts-nocheck
 
 import { isDate, isNil, isString } from './type-check';
-import { SixDateFormats } from '../components/six-datepicker/six-date-formats';
+import { SixDateFormats, SixDateRangeFormats } from '../components/six-datepicker/six-date-formats';
 import { CalendarCell } from '../components/six-datepicker/six-datepicker';
+import { getExpectedMonthString } from '../components/six-datepicker/test/six-datepicker.test-helpers';
 
 export type DateLocale = typeof i18nDate.en;
 export type DateRange = { from: Date | null; to: Date | null };
@@ -134,6 +135,32 @@ export const i18nDate = {
     weekdaysShort: ['lun', 'mar', 'mié', 'jue', 'vie', 'sáb', 'dom'],
     weekdaysMin: ['lu', 'ma', 'mi', 'ju', 'vi', 'sa', 'do'],
   },
+};
+
+const rangeRegexp = {
+  'dd.mm.yyyy': /(\d{2}\.\d{2}\.\d{4})[ -]+(\d{2}\.\d{2}\.\d{4})/,
+  'yyyy-mm-dd': /(\d{4}-\d{2}-\d{2})[ -]+(\d{4}-\d{2}-\d{2})/,
+  'dd-mm-yyyy': /(\d{2}-\d{2}-\d{4})[ -]+(\d{2}-\d{2}-\d{4})/,
+  'dd/mm/yyyy': /(\d{2}\/\d{2}\/\d{4})[ -]+(\d{2}\/\d{2}\/\d{4})/,
+  'yyyy/mm/dd': /(\d{4}\/\d{2}\/\d{2})[ -]+(\d{4}\/\d{2}\/\d{2})/,
+
+  'dd.mm.yy': /(\d{2}\.\d{2}\.\d{2})[ -]+(\d{2}\.\d{2}\.\d{2})/,
+  'yy-mm-dd': /(\d{2}-\d{2}-\d{2})[ -]+(\d{2}-\d{2}-\d{2})/,
+  'dd-mm-yy': /(\d{2}-\d{2}-\d{2})[ -]+(\d{2}-\d{2}-\d{2})/,
+  'dd/mm/yy': /(\d{2}\/\d{2}\/\d{2})[ -]+(\d{2}\/\d{2}\/\d{2})/,
+  'yy/mm/dd': /(\d{2}\/\d{2}\/\d{2})[ -]+(\d{2}\/\d{2}\/\d{2})/,
+
+  'dd.mm.yyyy hh:MM:ss': /(\d{2}\.\d{2}\.\d{4} \d{2}:\d{2}:\d{2})[ -]+(\d{2}\.\d{2}\.\d{4} \d{2}:\d{2}:\d{2})/,
+  'yyyy-mm-dd hh:MM:ss': /(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})[ -]+(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})/,
+  'dd-mm-yyyy hh:MM:ss': /(\d{2}-\d{2}-\d{4} \d{2}:\d{2}:\d{2})[ -]+(\d{2}-\d{2}-\d{4} \d{2}:\d{2}:\d{2})/,
+  'dd/mm/yyyy hh:MM:ss': /(\d{2}-\d{2}-\d{4} \d{2}:\d{2}:\d{2})[ -]+(\d{2}-\d{2}-\d{4} \d{2}:\d{2}:\d{2})/,
+  'yyyy/mm/dd hh:MM:ss': /(\d{4}\/\d{2}\/\d{2} \d{2}:\d{2}:\d{2})[ -]+(\d{4}\/\d{2}\/\d{2} \d{2}:\d{2}:\d{2})/,
+
+  'dd.mm.yy hh:MM:ss': /(\d{2}\.\d{2}\.\d{2} \d{2}:\d{2}:\d{2})[ -]+(\d{2}\.\d{2}\.\d{2} \d{2}:\d{2}:\d{2})/,
+  'yy-mm-dd hh:MM:ss': /(\d{2}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})[ -]+(\d{2}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})/,
+  'dd-mm-yy hh:MM:ss': /(\d{2}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})[ -]+(\d{2}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})/,
+  'dd/mm/yy hh:MM:ss': /(\d{2}\/\d{2}\/\d{2} \d{2}:\d{2}:\d{2})[ -]+(\d{2}\/\d{2}\/\d{2} \d{2}:\d{2}:\d{2})/,
+  'yy/mm/dd hh:MM:ss': /(\d{2}\/\d{2}\/\d{2} \d{2}:\d{2}:\d{2})[ -]+(\d{2}\/\d{2}\/\d{2} \d{2}:\d{2}:\d{2})/,
 };
 
 /**
@@ -323,6 +350,30 @@ export const isValidDateString = (datestring: string | undefined, format: string
   }
 
   return date.toString() !== 'Invalid Date';
+};
+
+const extractDateStringsFromRangeString = (rangestring: string | undefined, format: string) => {
+  if (!isString(rangestring) || !isString(format)) {
+    return false;
+  }
+
+  const rangeFormatRegexp = rangeRegexp[format];
+  if (!rangeFormatRegexp) return false;
+
+  const matches = rangeFormatRegexp.exec(rangestring);
+  if (!matches) return false;
+
+  return [matches[1], matches[2]];
+};
+
+/** Returns `true` if the given string is a valid range
+ *
+ */
+export const isValidDateRangeString = (rangestring: string | undefined, format: string) => {
+  const extracted = extractDateStringsFromRangeString(rangestring, format);
+  if (!extracted) return false;
+
+  return isValidDateString(extracted[0], format) && isValidDateString(extracted[1], format);
 };
 
 /**
@@ -813,6 +864,13 @@ export const toDate = (dirtyDateString: string | undefined, format: string): Dat
   }
 };
 
+export const toRange = (dirtyDateString: string | undefined, format: string): DateRange | undefined => {
+  const extracted = extractDateStringsFromRangeString(dirtyDateString, format);
+  if (!extracted) return undefined;
+
+  return { from: toDate(extracted[0], format), to: toDate(extracted[1], format) };
+};
+
 export interface PointerDate {
   year: number;
   month: number;
@@ -866,11 +924,10 @@ export const createCalendarGrid: (calendarGridArguments: CalendarGridArgs) => Ca
           dateString: formatDate(dayDatePointer, dateFormat),
           label: day(dayDatePointer).toString(),
           isToday: isSameDay(dayDatePointer, now()),
-          isSelected:
-            (selectedDate && isSameDay(dayDatePointer, selectedDate)) ||
-            (rangeSelection && isInDateRange(dayDatePointer, selectedRange)),
+          isSelected: selectedDate && isSameDay(dayDatePointer, selectedDate),
           isStart: rangeSelection && isSameDay(dayDatePointer, selectedRange.from),
           isEnd: rangeSelection && isSameDay(dayDatePointer, selectedRange.to),
+          isWithinRange: rangeSelection && isInDateRange(dayDatePointer, selectedRange),
           isDisabled: !allowedDates(dayDatePointer) || !isInRange(dayDatePointer, minDate, maxDate),
           isOutdated: pointerDate.month !== dayDatePointer.getMonth() || !isInRange(dayDatePointer, minDate, maxDate),
         },

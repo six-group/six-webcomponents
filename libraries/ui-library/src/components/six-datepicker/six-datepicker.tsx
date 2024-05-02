@@ -21,6 +21,8 @@ import {
   formatRange,
   rangesEqual,
   orderRange,
+  isValidDateRangeString,
+  toRange,
 } from '../../utils/date-util';
 import { EventListeners } from '../../utils/event-listeners';
 import { debounce, debounceEvent, DEFAULT_DEBOUNCE_FAST } from '../../utils/execution-control';
@@ -56,6 +58,7 @@ export interface CalendarCell {
   label: string;
   isStart: boolean;
   isEnd: boolean;
+  isWithinRange: boolean;
 }
 
 enum SelectionMode {
@@ -588,7 +591,12 @@ export class SixDatepicker {
     }
     event.stopPropagation();
 
-    const inputValue = this.inputElement.value;
+    const inputValue = this.inputElement!.value;
+    if (this.type === 'date-range') return this.handleInputRangeChange(inputValue);
+    else return this.handleInputDateChange(inputValue);
+  };
+
+  private handleInputDateChange = (inputValue: string) => {
     if (!isValidDateString(inputValue, this.dateFormat)) {
       return;
     }
@@ -610,6 +618,16 @@ export class SixDatepicker {
         this.updateValue(this.selectedDate);
       }
     }
+  };
+
+  private handleInputRangeChange = (inputValue: string) => {
+    if (!isValidDateRangeString(inputValue, this.dateFormat)) return;
+
+    const inputValueRange = toRange(inputValue, this.dateFormat);
+    if (inputValueRange === undefined) return;
+
+    this.updateRangeIfChanged(orderRange(inputValueRange));
+    // TODO : check datesOnly?
   };
 
   private handleOnBlur = (event: Event) => {
