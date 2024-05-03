@@ -39,6 +39,7 @@ import {
   calcIsDropDownContentUp,
   movePopup,
 } from '../../utils/popup';
+import { Time } from '../../utils/time.util';
 
 const NUMBER_OF_YEARS_SHOWN = 25;
 
@@ -96,7 +97,7 @@ export class SixDatepicker {
   /**
    * Set the type.
    */
-  @Prop() type: 'date' | 'date-time' | 'date-range' = 'date';
+  @Prop() type: 'date' | 'date-time' | 'date-range' | 'date-time-range' = 'date';
 
   /**
    * The language used to render the weekdays and months.
@@ -166,12 +167,12 @@ export class SixDatepicker {
   @Prop() placeholder?: string;
 
   /**
-   * The value of the form field, which accepts a date object if 'type' is not 'date-range'.
+   * The value of the form field, which accepts a date object if 'type' is not 'date-range' and not 'date-time-range'.
    */
   @Prop({ mutable: true }) value?: Date;
 
   /**
-   * The value of the form field, which accepts a SixDateRange object if 'type' is 'date-range'.
+   * The value of the form field, which accepts a SixDateRange object if 'type' is 'date-range' or 'date-time-range'.
    */
   @Prop({ mutable: true }) range?: DateRange;
 
@@ -292,6 +293,9 @@ export class SixDatepicker {
     this.moveOpenHoistedPopup();
   }
 
+  private isRange = this.type === 'date-range' || this.type === 'date-time-range';
+  private showTime = this.type === 'date-time' || this.type === 'date-time-range';
+
   private moveOpenHoistedPopup() {
     movePopup(this.hoist, this.open, this.popup, this.inputElement, this.wrapper, MIN_POPUP_HEIGHT);
   }
@@ -318,7 +322,7 @@ export class SixDatepicker {
       dateFormat: this.dateFormat,
       locale: this.locale,
       selectedDate: this.selectedDate,
-      rangeSelection: this.type === 'date-range',
+      rangeSelection: this.isRange,
       selectedRange: this.selectedRange,
       minDate: this.min,
       maxDate: this.max,
@@ -521,14 +525,16 @@ export class SixDatepicker {
   async select(datestring?: string) {
     if (datestring == null) {
       this.updateValue(undefined);
-    } else if (this.type === 'date-range') {
+    } else if (this.isRange) {
       if (this.selectedRange.from === null || this.selectedRange.to !== null) {
         this.selectedRange = { from: toDate(datestring, this.dateFormat) ?? null, to: null };
+        this.selectedRange.from?.setHours(this.pointerDate.hours, this.pointerDate.minutes, this.pointerDate.seconds);
       } else {
         this.selectedRange = orderRange({
           from: this.selectedRange.from,
           to: toDate(datestring, this.dateFormat) ?? null,
         });
+        this.selectedRange.to?.setHours(this.pointerDate.hours, this.pointerDate.minutes, this.pointerDate.seconds);
         if (this.closeOnSelect) {
           this.closePopup();
         }
@@ -549,13 +555,19 @@ export class SixDatepicker {
 
   private onTimepickerChange = (sixTimepickerChange: CustomEvent<SixTimepickerChange>) => {
     const time = sixTimepickerChange.detail.value;
+    if (this.isRange) return this.onTimeRangeChange(time);
+
+    return this.onTimePickerSingleChange(time);
+  };
+
+  private onTimePickerSingleChange = (time: Time | undefined) => {
     const newDate = new Date();
 
     if (this.selectedDate != null) {
       newDate.setFullYear(this.selectedDate.getFullYear(), this.selectedDate.getMonth(), this.selectedDate.getDate());
     }
 
-    if (time != null) {
+    if (time != undefined) {
       const hours = time.hours;
       const minutes = time.minutes;
       const seconds = time.seconds;
@@ -566,6 +578,43 @@ export class SixDatepicker {
 
     this.updateValue(newDate);
     this.updatePointerDates();
+  };
+
+  private onTimeRangeChange = (time: Time | undefined) => {
+    if (this.selectedRange.from === null) return;
+    let newRange: DateRange = { ...this.selectedRange };
+
+    let hours, minutes, seconds;
+    if (time != undefined) {
+      hours = time.hours;
+      minutes = time.minutes;
+      seconds = time.seconds;
+    }
+
+    if (this.selectedRange.to === null) {
+      const newFrom = new Date();
+      newFrom.setFullYear(
+        this.selectedRange.from.getFullYear(),
+        this.selectedRange.from.getMonth(),
+        this.selectedRange.from.getDate()
+      );
+      if (hours != null) {
+        newFrom.setHours(hours, minutes, seconds);
+      }
+      newRange.from = newFrom;
+    } else {
+      const newTo = new Date();
+      newTo.setFullYear(
+        this.selectedRange.to.getFullYear(),
+        this.selectedRange.to.getMonth(),
+        this.selectedRange.to.getDate()
+      );
+      if (hours != null) {
+        newTo.setHours(hours, minutes, seconds);
+      }
+      newRange.to = newTo;
+    }
+    this.updateRange(newRange);
   };
 
   private onClickDateCell = (cell: CalendarCell) => {
@@ -592,7 +641,7 @@ export class SixDatepicker {
     event.stopPropagation();
 
     const inputValue = this.inputElement!.value;
-    if (this.type === 'date-range') return this.handleInputRangeChange(inputValue);
+    if (this.isRange) return this.handleInputRangeChange(inputValue);
     else return this.handleInputDateChange(inputValue);
   };
 
@@ -794,6 +843,31 @@ export class SixDatepicker {
     );
   }
 
+  private renderTimePicker() {
+    let hours, minutes, seconds;
+    if (this.isRange) {
+      if (this.selectedRange.to === null) {
+        hours = this.selectedRange.from?.getHours();
+        minutes = this.selectedRange.from?.getMinutes();
+        seconds = this.selectedRange.from?.getSeconds();
+      } else {
+        hours = this.selectedRange.to?.getHours();
+        minutes = this.selectedRange.to?.getMinutes();
+        seconds = this.selectedRange.to?.getSeconds();
+      }
+    } else {
+      hours = this.selectedDate?.getHours();
+      minutes = this.selectedDate?.getMinutes();
+      seconds = this.selectedDate?.getSeconds();
+    }
+    return (
+      <six-timepicker
+        inline={true}
+        onSix-timepicker-change-debounced={(event) => this.onTimepickerChange(event)}
+        value={hours + ':' + minutes + ':' + seconds}
+      ></six-timepicker>
+    );
+  }
   render() {
     this.adjustPopupPosition();
 
@@ -801,11 +875,7 @@ export class SixDatepicker {
       <div ref={(el) => (this.wrapper = el)} class="datepicker__container">
         <six-input
           part="base"
-          value={
-            this.type === 'date-range'
-              ? formatRange(this.range, this.dateFormat)
-              : formatDate(this.value, this.dateFormat)
-          }
+          value={this.isRange ? formatRange(this.range, this.dateFormat) : formatDate(this.value, this.dateFormat)}
           ref={(el) => (this.inputElement = el)}
           placeholder={this.placeholder}
           readonly={this.readonly}
@@ -845,19 +915,7 @@ export class SixDatepicker {
           >
             {this.renderHeader()}
             {this.renderBody()}
-            {this.type === 'date-time' && (
-              <six-timepicker
-                inline={true}
-                onSix-timepicker-change-debounced={(event) => this.onTimepickerChange(event)}
-                value={
-                  this.selectedDate?.getHours() +
-                  ':' +
-                  this.selectedDate?.getMinutes() +
-                  ':' +
-                  this.selectedDate?.getSeconds()
-                }
-              ></six-timepicker>
-            )}
+            {this.showTime && this.renderTimePicker()}
             <div class="datepicker__footer">
               <slot />
             </div>

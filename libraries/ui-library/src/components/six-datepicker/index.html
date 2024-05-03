@@ -14,17 +14,25 @@
 
       <h3>Date Picker</h3>
       <section class="demo">
-        <six-datepicker id="daterange-picker" type="date" > </six-datepicker>
+        <six-datepicker id="daterange-picker" type="date-time" > </six-datepicker>
       </section>
       <h3>Date Ranges</h3>
       <section class="demo">
-        <six-datepicker id="daterange-picker" type="date-range" > </six-datepicker>
+        <six-datepicker id="daterange-picker" type="date-range" date-format="dd/mm/yyyy"> </six-datepicker>
         <script type="module">
           const sixDatePicker = document.getElementById('daterange-picker');
-          const now = new Date();
-          sixDatePicker.range = { from: now, to: new Date() };
+          sixDatePicker.range = { from: new Date(), to: new Date() };
           </script>
       </section>
+      <h3>Date Time Ranges</h3>
+      <section class="demo">
+  <six-datepicker id="daterange-picker" type="date-time-range" date-format="dd/mm/yyyy hh:MM:ss"> </six-datepicker>
+        <script type="module">
+          const sixDatePicker = document.getElementById('daterange-picker');
+          sixDatePicker.range = { from: new Date(), to: new Date() };
+          </script>
+      </section>
+
     </div>
   </div>
   </body>

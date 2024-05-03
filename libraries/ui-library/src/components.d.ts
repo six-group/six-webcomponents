@@ -352,7 +352,7 @@ export namespace Components {
          */
         "placement"?: 'top' | 'bottom';
         /**
-          * The value of the form field, which accepts a SixDateRange object if 'type' is 'date-range'.
+          * The value of the form field, which accepts a SixDateRange object if 'type' is 'date-range' or 'date-time-range'.
          */
         "range"?: DateRange;
         /**
@@ -378,9 +378,9 @@ export namespace Components {
         /**
           * Set the type.
          */
-        "type": 'date' | 'date-time' | 'date-range';
+        "type": 'date' | 'date-time' | 'date-range' | 'date-time-range';
         /**
-          * The value of the form field, which accepts a date object if 'type' is not 'date-range'.
+          * The value of the form field, which accepts a date object if 'type' is not 'date-range' and not 'date-time-range'.
          */
         "value"?: Date;
     }
@@ -3414,7 +3414,7 @@ declare namespace LocalJSX {
          */
         "placement"?: 'top' | 'bottom';
         /**
-          * The value of the form field, which accepts a SixDateRange object if 'type' is 'date-range'.
+          * The value of the form field, which accepts a SixDateRange object if 'type' is 'date-range' or 'date-time-range'.
          */
         "range"?: DateRange;
         /**
@@ -3432,9 +3432,9 @@ declare namespace LocalJSX {
         /**
           * Set the type.
          */
-        "type"?: 'date' | 'date-time' | 'date-range';
+        "type"?: 'date' | 'date-time' | 'date-range' | 'date-time-range';
         /**
-          * The value of the form field, which accepts a date object if 'type' is not 'date-range'.
+          * The value of the form field, which accepts a date object if 'type' is not 'date-range' and not 'date-time-range'.
          */
         "value"?: Date;
     }
