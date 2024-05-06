@@ -16,6 +16,7 @@ import {
   isSameMonth,
   isSameWeek,
   isSameYear,
+  isValidDateRangeString,
   isValidDateString,
   month,
   newDateString,
@@ -1477,5 +1478,120 @@ describe('isInDateRange', () => {
     const evenlater = new Date(now.valueOf() + 2000);
     const range = { from: now, to: evenlater };
     expect(isInDateRange(later, range)).toEqual(true);
+  });
+});
+
+describe('isValidDateRangeString', () => {
+  it('manages dd.mm.yyyy dates', () => {
+    expect(isValidDateRangeString('07.05.1966 - 24.06.2022', 'dd.mm.yyyy')).toEqual(true);
+    expect(isValidDateRangeString('07.05.1966 24.06.2022', 'dd.mm.yyyy')).toEqual(true);
+    expect(isValidDateRangeString('07.05.1966g24.06.2022', 'dd.mm.yyyy')).toEqual(false);
+    expect(isValidDateRangeString('07.05.196 24.06.2022', 'dd.mm.yyyy')).toEqual(false);
+  });
+
+  it('manages yyyy-mm-dd dates', () => {
+    expect(isValidDateRangeString('1966-05-21 - 2124-12-23', 'yyyy-mm-dd')).toEqual(true);
+    expect(isValidDateRangeString('1966-05-21      2124-12-23', 'yyyy-mm-dd')).toEqual(true);
+    expect(isValidDateRangeString('1966-05-21=2124-12-23', 'yyyy-mm-dd')).toEqual(false);
+    expect(isValidDateRangeString('1966-05-45 - 2124-12-23', 'yyyy-mm-dd')).toEqual(false);
+  });
+
+  it('manages dd-mm-yyyy dates', () => {
+    expect(isValidDateRangeString('04-11-2012 - 06-12-2012', 'dd-mm-yyyy')).toEqual(true);
+    expect(isValidDateRangeString('04-11-2012------06-12-2012', 'dd-mm-yyyy')).toEqual(true);
+    expect(isValidDateRangeString('04-11-201206-12-2012', 'dd-mm-yyyy')).toEqual(false);
+    expect(isValidDateRangeString('04-11-2012 - 06-12-201', 'dd-mm-yyyy')).toEqual(false);
+  });
+
+  it('manages dd/mm/yyyy dates', () => {
+    expect(isValidDateRangeString('21/01/1989 - 14/12/2000', 'dd/mm/yyyy')).toEqual(true);
+    expect(isValidDateRangeString('21/01/1989 - - - -     14/12/2000', 'dd/mm/yyyy')).toEqual(true);
+    expect(isValidDateRangeString('21/01/1989 % 14/12/2000', 'dd/mm/yyyy')).toEqual(false);
+    expect(isValidDateRangeString('21/31/1989 - 14/12/2000', 'dd/mm/yyyy')).toEqual(false);
+  });
+
+  it('manages yyyy/mm/dd dates', () => {
+    expect(isValidDateRangeString('2012/11/01 - 2021/03/15', 'yyyy/mm/dd')).toEqual(true);
+    expect(isValidDateRangeString('2012/11/01        -------2021/03/15', 'yyyy/mm/dd')).toEqual(true);
+    expect(isValidDateRangeString('2012/11/01kjfhdkj2021/03/15', 'yyyy/mm/dd')).toEqual(false);
+    expect(isValidDateRangeString('^2012/11/01 - 2021/03/15', 'yyyy/mm/dd')).toEqual(false);
+  });
+
+  it('manages dd.mm.yy dates', () => {
+    expect(isValidDateRangeString('14.08.94 - 21.06.15', 'dd.mm.yy')).toEqual(true);
+    expect(isValidDateRangeString('14.08.94-------        21.06.15', 'dd.mm.yy')).toEqual(true);
+    expect(isValidDateRangeString('14.08.94/21.06.15', 'dd.mm.yy')).toEqual(false);
+    expect(isValidDateRangeString('14.08.94 - 21.06.15jsa', 'dd.mm.yy')).toEqual(false);
+  });
+
+  it('manages yy-mm-dd dates', () => {
+    expect(isValidDateRangeString('54-12-04 - 56-02-01', 'yy-mm-dd')).toEqual(true);
+    expect(isValidDateRangeString('54-12-04------56-02-01', 'yy-mm-dd')).toEqual(true);
+    expect(isValidDateRangeString('54-12-56 - 56-02-01', 'yy-mm-dd')).toEqual(false);
+    expect(isValidDateRangeString('54-12-04\\56-02-01', 'yy-mm-dd')).toEqual(false);
+  });
+
+  it('manages dd-mm-yy dates', () => {
+    expect(isValidDateRangeString('24-09-14 - 26-09-14', 'dd-mm-yy')).toEqual(true);
+    expect(isValidDateRangeString('24-09-14 26-09-14', 'dd-mm-yy')).toEqual(true);
+    expect(isValidDateRangeString('24-09-14!!26-09-14', 'dd-mm-yy')).toEqual(false);
+    expect(isValidDateRangeString('24-13-14 - 26-09-14', 'dd-mm-yy')).toEqual(false);
+  });
+
+  it('manages dd/mm/yy dates', () => {
+    expect(isValidDateRangeString('06/10/21 - 15/11/21', 'dd/mm/yy')).toEqual(true);
+    expect(isValidDateRangeString('06/10/21 15/11/21', 'dd/mm/yy')).toEqual(true);
+    expect(isValidDateRangeString('06/10/21 * 15/11/21', 'dd/mm/yy')).toEqual(false);
+    expect(isValidDateRangeString('06/10/21 - 15/21/21', 'dd/mm/yy')).toEqual(false);
+  });
+  it('manages yy/mm/dd dates', () => {
+    expect(isValidDateRangeString('18/03/04 - 24/05/05', 'yy/mm/dd')).toEqual(true);
+    expect(isValidDateRangeString('18/03/04--24/05/05', 'yy/mm/dd')).toEqual(true);
+    expect(isValidDateRangeString('18/14/04 - 24/05/05', 'yy/mm/dd')).toEqual(false);
+    expect(isValidDateRangeString('18/03/04(24/05/05', 'yy/mm/dd')).toEqual(false);
+  });
+
+  it('manages dd.mm.yyyy hh:MM:ss dates', () => {
+    expect(isValidDateRangeString('12.08.1998 14:12:47 - 15.09.1998 09:12:24', 'dd.mm.yyyy hh:MM:ss')).toEqual(true);
+    expect(isValidDateRangeString('12.08.1998 14:12:47 15.09.1998 09:12:24', 'dd.mm.yyyy hh:MM:ss')).toEqual(true);
+    expect(isValidDateRangeString('12.14.1998 23:12:34 - 15.09.1998 09:12:24', 'dd.mm.yyyy hh:MM:ss')).toEqual(false);
+    expect(isValidDateRangeString('12.08.1998 14:12:47_15.09.1998 09:12:24', 'dd.mm.yyyy hh:MM:ss')).toEqual(false);
+  });
+
+  it('manages yyyy-mm-dd hh:MM:ss dates', () => {
+    expect(isValidDateRangeString('1978-04-15 10:00:00 - 1987-06-24 12:00:00', 'yyyy-mm-dd hh:MM:ss')).toEqual(true);
+    expect(isValidDateRangeString('1978-04-15 10:00:00----1987-06-24 12:00:00', 'yyyy-mm-dd hh:MM:ss')).toEqual(true);
+    expect(isValidDateRangeString('1978-04-15 10:00:00/1987-06-24 12:00:00', 'yyyy-mm-dd hh:MM:ss')).toEqual(false);
+    expect(isValidDateRangeString('1978-04-15 10:00:00 - 1987-15-24 12:00:00', 'yyyy-mm-dd hh:MM:ss')).toEqual(false);
+  });
+
+  it('manages dd-mm-yyyy hh:MM:ss dates', () => {
+    expect(isValidDateRangeString('12-12-2012 15:47:52 - 04-01-2013 21:15:18', 'dd-mm-yyyy hh:MM:ss')).toEqual(true);
+    expect(
+      isValidDateRangeString('12-12-2012 15:47:52 - --- --    -- - -  04-01-2013 21:15:18', 'dd-mm-yyyy hh:MM:ss')
+    ).toEqual(true);
+    expect(isValidDateRangeString('12-12-2012 15:47:5204-01-2013 21:15:18', 'dd-mm-yyyy hh:MM:ss')).toEqual(false);
+    expect(isValidDateRangeString('12-12-2012 15:47:5 2 - 04-01-2013 21:15:18', 'dd-mm-yyyy hh:MM:ss')).toEqual(false);
+  });
+
+  it('manages dd.mm.yyyy hh:MM:ss dates', () => {
+    expect(isValidDateRangeString('', '')).toEqual(true);
+    expect(isValidDateRangeString('', '')).toEqual(true);
+    expect(isValidDateRangeString('', '')).toEqual(false);
+    expect(isValidDateRangeString('', '')).toEqual(false);
+  });
+
+  it('manages dd.mm.yyyy hh:MM:ss dates', () => {
+    expect(isValidDateRangeString('', '')).toEqual(true);
+    expect(isValidDateRangeString('', '')).toEqual(true);
+    expect(isValidDateRangeString('', '')).toEqual(false);
+    expect(isValidDateRangeString('', '')).toEqual(false);
+  });
+
+  it('manages dd.mm.yyyy hh:MM:ss dates', () => {
+    expect(isValidDateRangeString('', '')).toEqual(true);
+    expect(isValidDateRangeString('', '')).toEqual(true);
+    expect(isValidDateRangeString('', '')).toEqual(false);
+    expect(isValidDateRangeString('', '')).toEqual(false);
   });
 });
