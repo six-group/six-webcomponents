@@ -106,6 +106,7 @@ export const SixDatepicker = /*@__PURE__*/ defineContainer<JSX.SixDatepicker, JS
   'iconPosition',
   'hoist',
   'six-datepicker-select',
+  'six-datepicker-select-range',
   'six-datepicker-clear',
   'six-datepicker-blur'
 ],

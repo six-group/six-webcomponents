@@ -1,7 +1,7 @@
 <template>
 <div>
 
-        <six-datepicker placement="bottom"></six-datepicker>
+        <six-datepicker readonly></six-datepicker>
         
       
 </div>

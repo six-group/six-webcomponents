@@ -70,21 +70,37 @@
         </style>
       </section>
       <h3>Date Ranges</h3>
+      <p>
+        If you need to select a date range instead of a single date, set the <code>type</code> property to
+        <code>date-range</code>.
+      </p>
+      <p>
+        The <code>date-format</code> property applies to both parts of the range, that can be separated by spaces or
+        dashes.
+      </p>
+      <p>
+        The user can select either the beginning of the range or the end of the range first, the component will re-order
+        them automatically to always show the earliest date first.
+      </p>
       <section class="demo">
-        <six-datepicker id="daterange-picker" type="date-range" date-format="dd/mm/yyyy"> </six-datepicker>
-        <script type="module">
-          const sixDatePicker = document.getElementById('daterange-picker');
-          sixDatePicker.range = { from: new Date(), to: new Date() };
-        </script>
+        <six-datepicker
+          id="daterange-picker"
+          type="date-range"
+          date-format="dd/mm/yyyy"
+          placeholder="dd/mm/yyyy - dd/mm/yyyy"
+        >
+        </six-datepicker>
       </section>
       <h3>Date Time Ranges</h3>
+      <p>
+        If you need to select a date range including times, set the <code>type</code> property to
+        <code>date-time-range</code>
+      </p>
+      .
+      <p>The user will need to set the time for each date (default being now).</p>
       <section class="demo">
         <six-datepicker id="daterange-picker" type="date-time-range" date-format="dd/mm/yyyy hh:MM:ss">
         </six-datepicker>
-        <script type="module">
-          const sixDatePicker = document.getElementById('daterange-picker');
-          sixDatePicker.range = { from: new Date(), to: new Date() };
-        </script>
       </section>
 
       <h3>Disabled State</h3>

@@ -1,7 +1,7 @@
 <template>
 <div>
 
-        <six-datepicker locale="fr"></six-datepicker>
+        <six-datepicker placeholder="DD.MM.YYYY"></six-datepicker>
         
       
 </div>

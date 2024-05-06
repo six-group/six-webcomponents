@@ -8,6 +8,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- `date-range` and `date-time-range` values to `type` property of `six-datepicker` to allow
+  selecting Date and Date-Time ranges respectively.
+
 ### Changed
 
 ### Fixed

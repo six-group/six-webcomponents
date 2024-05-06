@@ -1,34 +1,21 @@
 <template>
 <div>
 
-        <six-datepicker           date-format="dd.mm.yyyy hh:MM:ss"
+        <six-datepicker           id="daterange-picker"
           type="date-range"
-          id="read-select-daterange-picker"
-        ></six-datepicker>
-        <div id="read-select-daterange-label">No Date range selected yet!</div>
-
-        
-        
+          date-format="dd/mm/yyyy"
+          placeholder="dd/mm/yyyy - dd/mm/yyyy"
+        >
+        </six-datepicker>
       
 </div>
 </template>
 <style>
 
-          six-datepicker {
-            max-width: 25rem;
-          }
-        
 </style>
 <script>
 export default {
   name: 'docs-demo-six-datepicker-3',
-  mounted() { 
-          const datepicker = document.getElementById('read-select-daterange-picker');
-          const selectedDate = document.getElementById('read-select-daterange-label');
-
-          datepicker.addEventListener('six-datepicker-select', (event) => {
-            selectedDate.innerHTML = `selected: ${event.detail.toLocaleString()}`;
-          });
-         }
+  mounted() {  }
 }
 </script>

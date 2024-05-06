@@ -1,10 +1,11 @@
 <template>
 <div>
 
-        <div style="overflow: hidden; border: solid 1px grey; padding: 0.5em; display: flex">
-          <six-datepicker placement="bottom" placeholder="no hoisting"></six-datepicker>
-          <six-datepicker hoist placement="bottom" placeholder="with hoisting"></six-datepicker>
-        </div>
+        <six-datepicker size="small" clearable></six-datepicker>
+        <br>
+        <six-datepicker size="medium" clearable></six-datepicker>
+        <br>
+        <six-datepicker size="large" clearable></six-datepicker>
         
       
 </div>
@@ -13,7 +14,6 @@
 
           six-datepicker {
             max-width: 25rem;
-            min-width: 10rem;
           }
         
 </style>

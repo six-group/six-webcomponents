@@ -1,17 +1,13 @@
 <template>
 <div>
 
-        <six-datepicker disabled></six-datepicker>
-        
+        <six-datepicker id="daterange-picker" type="date-time-range" date-format="dd/mm/yyyy hh:MM:ss">
+        </six-datepicker>
       
 </div>
 </template>
 <style>
 
-          six-datepicker {
-            max-width: 25rem;
-          }
-        
 </style>
 <script>
 export default {

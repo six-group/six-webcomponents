@@ -1,7 +1,7 @@
 <template>
 <div>
 
-        <six-datepicker clearable></six-datepicker>
+        <six-datepicker default-date="2021-02-20" date-format="yyyy-mm-dd"></six-datepicker>
         
       
 </div>

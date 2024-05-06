@@ -205,12 +205,13 @@ export class SixDatepicker {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['six-datepicker-select', 'six-datepicker-clear', 'six-datepicker-blur']);
+    proxyOutputs(this, this.el, ['six-datepicker-select', 'six-datepicker-select-range', 'six-datepicker-clear', 'six-datepicker-blur']);
   }
 }
 
 
 import type { SixDatepickerSelectPayload as ISixDatepickerSixDatepickerSelectPayload } from '@six-group/ui-library';
+import type { SixDatepickerSelectRangePayload as ISixDatepickerSixDatepickerSelectRangePayload } from '@six-group/ui-library';
 import type { EmptyPayload as ISixDatepickerEmptyPayload } from '@six-group/ui-library';
 
 export declare interface SixDatepicker extends Components.SixDatepicker {
@@ -218,6 +219,10 @@ export declare interface SixDatepicker extends Components.SixDatepicker {
    * Emitted when a option got selected.
    */
   'six-datepicker-select': EventEmitter<CustomEvent<ISixDatepickerSixDatepickerSelectPayload>>;
+  /**
+   * Emitted when a range got selected.
+   */
+  'six-datepicker-select-range': EventEmitter<CustomEvent<ISixDatepickerSixDatepickerSelectRangePayload>>;
   /**
    * Emitted when the clear button is activated.
    */

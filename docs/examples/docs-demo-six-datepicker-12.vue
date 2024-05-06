@@ -1,21 +1,18 @@
 <template>
 <div>
 
-        <div id="datepicker-formats-container" style="display: flex; flex-wrap: wrap">
-          <six-datepicker placeholder="dd.mm.yyyy" date-format="dd.mm.yyyy"></six-datepicker>
-          <six-datepicker placeholder="yyyy-mm-dd" date-format="yyyy-mm-dd"></six-datepicker>
-          <six-datepicker placeholder="dd-mm-yyyy" date-format="dd-mm-yyyy"></six-datepicker>
-          <six-datepicker placeholder="dd/mm/yyyy" date-format="dd/mm/yyyy"></six-datepicker>
-          <six-datepicker placeholder="yyyy/mm/dd" date-format="yyyy/mm/dd"></six-datepicker>
-          <six-datepicker placeholder="dd.mm.yy" date-format="dd.mm.yy"></six-datepicker>
-          <six-datepicker placeholder="yy-mm-dd" date-format="yy-mm-dd"></six-datepicker>
-          <six-datepicker placeholder="dd-mm-yy" date-format="dd-mm-yy"></six-datepicker>
-          <six-datepicker placeholder="dd/mm/yy" date-format="dd/mm/yy"></six-datepicker>
-          <six-datepicker placeholder="yy/mm/dd" date-format="yy/mm/dd"></six-datepicker>
-        </div>
-
-        <six-button id="datepicker-formats-btn">Apply dates</six-button>
-
+        <six-datepicker id="datepicker-adv-footer">
+          <div             style="
+              display: flex;
+              justify-content: space-between;
+              padding: 1rem 0.5rem 0 0.5rem;
+              border-top: solid 1px #c3c3c3;
+            "
+          >
+            <six-button id="datepicker-adv-footer-btn1">Today</six-button>
+            <six-button id="datepicker-adv-footer-btn2">Clear</six-button>
+          </div>
+        </six-datepicker>
         
         
       
@@ -23,9 +20,8 @@
 </template>
 <style>
 
-          #datepicker-formats-container six-datepicker {
+          six-datepicker {
             max-width: 25rem;
-            min-width: 10rem;
           }
         
 </style>
@@ -33,19 +29,16 @@
 export default {
   name: 'docs-demo-six-datepicker-12',
   mounted() { 
-          const datepickerContainer = document.getElementById('datepicker-formats-container');
-          const datepickers = datepickerContainer.querySelectorAll('six-datepicker');
-          datepickers.forEach((dtpicker) => {
-            dtpicker.style.marginBottom = '1rem';
-            dtpicker.style.marginRight = '1rem';
+          const datepicker = document.getElementById('datepicker-adv-footer');
+          datepicker.addEventListener('six-datepicker-select', (event) => {
+            console.log(`[ six-datepicker-select ]`, { date: event.detail });
           });
 
-          const btn = document.getElementById('datepicker-formats-btn');
-          btn.addEventListener('click', () => {
-            datepickers.forEach((dtpicker) => {
-              dtpicker.value = new Date();
-            });
-          });
+          const btn1 = document.getElementById('datepicker-adv-footer-btn1');
+          btn1.addEventListener('click', () => (datepicker.value = new Date()));
+
+          const btn2 = document.getElementById('datepicker-adv-footer-btn2');
+          btn2.addEventListener('click', () => (datepicker.value = null));
          }
 }
 </script>

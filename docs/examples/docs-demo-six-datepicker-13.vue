@@ -1,38 +1,31 @@
 <template>
 <div>
 
-        <div class="min-max-demo">
-          <six-datepicker id="min-max-date-picker"></six-datepicker>
-          <six-datepicker id="only-min-date-picker"></six-datepicker>
-          <six-datepicker id="only-max-date-picker"></six-datepicker>
+        <div id="datepicker-formats-container" style="display: flex; flex-wrap: wrap">
+          <six-datepicker placeholder="dd.mm.yyyy" date-format="dd.mm.yyyy"></six-datepicker>
+          <six-datepicker placeholder="yyyy-mm-dd" date-format="yyyy-mm-dd"></six-datepicker>
+          <six-datepicker placeholder="dd-mm-yyyy" date-format="dd-mm-yyyy"></six-datepicker>
+          <six-datepicker placeholder="dd/mm/yyyy" date-format="dd/mm/yyyy"></six-datepicker>
+          <six-datepicker placeholder="yyyy/mm/dd" date-format="yyyy/mm/dd"></six-datepicker>
+          <six-datepicker placeholder="dd.mm.yy" date-format="dd.mm.yy"></six-datepicker>
+          <six-datepicker placeholder="yy-mm-dd" date-format="yy-mm-dd"></six-datepicker>
+          <six-datepicker placeholder="dd-mm-yy" date-format="dd-mm-yy"></six-datepicker>
+          <six-datepicker placeholder="dd/mm/yy" date-format="dd/mm/yy"></six-datepicker>
+          <six-datepicker placeholder="yy/mm/dd" date-format="yy/mm/dd"></six-datepicker>
         </div>
 
-        <div style="margin-top: 1rem">
-          <span style="font-weight: bold">Selected: </span><span id="min-max-date-selected">No Date selected yet!</span>
-          
-        </div>
+        <six-button id="datepicker-formats-btn">Apply dates</six-button>
 
         
-
         
       
 </div>
 </template>
 <style>
 
-            six-datepicker {
-              max-width: 25rem;
-            }
-          
-          .min-max-demo {
-            display: flex;
-            flex-wrap: wrap;
-          }
-
-          .min-max-demo six-datepicker {
-            min-width: 15rem;
-            margin-right: 1rem;
-            margin-bottom: 1rem;
+          #datepicker-formats-container six-datepicker {
+            max-width: 25rem;
+            min-width: 10rem;
           }
         
 </style>
@@ -40,22 +33,18 @@
 export default {
   name: 'docs-demo-six-datepicker-13',
   mounted() { 
-          const minMaxDatepicker = document.getElementById('min-max-date-picker');
-          const minDatepicker = document.getElementById('only-min-date-picker');
-          const maxDatepicker = document.getElementById('only-max-date-picker');
-          const selectedDate = document.getElementById('min-max-date-selected');
+          const datepickerContainer = document.getElementById('datepicker-formats-container');
+          const datepickers = datepickerContainer.querySelectorAll('six-datepicker');
+          datepickers.forEach((dtpicker) => {
+            dtpicker.style.marginBottom = '1rem';
+            dtpicker.style.marginRight = '1rem';
+          });
 
-          const getDateFromNow = (days) => new Date(new Date().setDate(new Date().getDate() + days));
-
-          minMaxDatepicker.value = new Date();
-          minMaxDatepicker.min = getDateFromNow(-3);
-          minMaxDatepicker.max = getDateFromNow(2);
-
-          minDatepicker.min = getDateFromNow(-3);
-          maxDatepicker.max = getDateFromNow(2);
-
-          minMaxDatepicker.addEventListener('six-datepicker-select', (event) => {
-            selectedDate.innerHTML = `${event.detail.toLocaleDateString()}`;
+          const btn = document.getElementById('datepicker-formats-btn');
+          btn.addEventListener('click', () => {
+            datepickers.forEach((dtpicker) => {
+              dtpicker.value = new Date();
+            });
           });
          }
 }

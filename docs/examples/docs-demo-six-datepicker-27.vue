@@ -1,8 +1,12 @@
 <template>
 <div>
 
-        <six-datepicker id="daterange-picker" type="date-range" range=""> </six-datepicker>
-        
+        <six-datepicker invalid>
+          <div slot="error-text">
+            <six-error               >An error message
+              <a href="https://github.com/six-group/six-webcomponents" target="_blank">with a link</a></six-error>
+          </div>
+        </six-datepicker>
       
 </div>
 </template>
@@ -12,10 +16,6 @@
 <script>
 export default {
   name: 'docs-demo-six-datepicker-27',
-  mounted() { 
-          const sixDatePicker = document.getElementById('daterange-picker');
-          const now = new Date();
-          sixDatePicker.range = { from: now, to: new Date().setDate(5) };
-         }
+  mounted() {  }
 }
 </script>
