@@ -981,7 +981,7 @@ export function rangesEqual(range1: DateRange, range2: DateRange): boolean {
   if (range1.to === null && range2.to !== null) return false;
   if (range2.to === null && range1.to !== null) return false;
 
-  return range1.from?.getTime() === range2.from?.getTime && range1.to?.getTime() === range2.to?.getTime();
+  return range1.from?.getTime() === range2.from?.getTime() && range1.to?.getTime() === range2.to?.getTime();
 }
 
 /**

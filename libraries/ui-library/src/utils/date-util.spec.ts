@@ -1,6 +1,7 @@
 import {
   CalendarGridArgs,
   createCalendarGrid,
+  DateRange,
   day,
   decreaseYear,
   formatDate,
@@ -8,6 +9,7 @@ import {
   increaseYear,
   isAfter,
   isBefore,
+  isInDateRange,
   isInRange,
   isoString,
   isSameDay,
@@ -17,9 +19,11 @@ import {
   isValidDateString,
   month,
   newDateString,
+  orderRange,
   pad,
   parseDate,
   rangeAround,
+  rangesEqual,
   toDate,
   year,
 } from './date-util';
@@ -1295,5 +1299,183 @@ describe('createCalendarGrid', () => {
       [false, false, false, false, false, false, false],
       [false, false, false, false, true, true, true],
     ]);
+  });
+});
+
+describe('rangesEqual', () => {
+  it('returns true when both ranges are empty', () => {
+    const range1: DateRange = { from: null, to: null };
+    const range2: DateRange = { from: null, to: null };
+
+    expect(rangesEqual(range1, range2)).toEqual(true);
+  });
+
+  it('returns true when from dates are equal and to are null', () => {
+    const now = new Date();
+    const range1: DateRange = { from: now, to: null };
+    const range2: DateRange = { from: now, to: null };
+
+    expect(rangesEqual(range1, range2)).toEqual(true);
+  });
+
+  it('returns true when to dates are equal and from are null ', () => {
+    const now = new Date();
+    const range1: DateRange = { from: null, to: now };
+    const range2: DateRange = { from: null, to: now };
+
+    expect(rangesEqual(range1, range2)).toEqual(true);
+  });
+
+  it('returns false when from date is null in first range', () => {
+    const now = new Date();
+    const range1: DateRange = { from: null, to: now };
+    const range2: DateRange = { from: now, to: now };
+
+    expect(rangesEqual(range1, range2)).toEqual(false);
+  });
+
+  it('returns false when to date is null in first range', () => {
+    const now = new Date();
+    const range1: DateRange = { from: now, to: null };
+    const range2: DateRange = { from: now, to: now };
+
+    expect(rangesEqual(range1, range2)).toEqual(false);
+  });
+
+  it('returns false when from date is null in second range', () => {
+    const now = new Date();
+    const range1: DateRange = { from: now, to: now };
+    const range2: DateRange = { from: null, to: now };
+
+    expect(rangesEqual(range1, range2)).toEqual(false);
+  });
+
+  it('returns false when to date is null in second range', () => {
+    const now = new Date();
+    const range1: DateRange = { from: now, to: now };
+    const range2: DateRange = { from: now, to: null };
+
+    expect(rangesEqual(range1, range2)).toEqual(false);
+  });
+
+  it('returns false when to dates differ', () => {
+    const now = new Date();
+    const later = new Date(now.valueOf() + 1);
+    const range1: DateRange = { from: now, to: now };
+    const range2: DateRange = { from: now, to: later };
+
+    expect(rangesEqual(range1, range2)).toEqual(false);
+  });
+
+  it('returns false when to dates differ', () => {
+    const now = new Date();
+    const later = new Date(now.valueOf() + 1);
+    const range1: DateRange = { from: now, to: now };
+    const range2: DateRange = { from: later, to: now };
+
+    expect(rangesEqual(range1, range2)).toEqual(false);
+  });
+
+  it('returns false when more dates differ', () => {
+    const now = new Date();
+    const later = new Date(now.valueOf() + 1);
+    const evenlater = new Date(now.valueOf() + 2);
+    const range1: DateRange = { from: now, to: evenlater };
+    const range2: DateRange = { from: later, to: now };
+
+    expect(rangesEqual(range1, range2)).toEqual(false);
+  });
+
+  it('returns false when all dates differ', () => {
+    const now = new Date();
+    const later = new Date(now.valueOf() + 1);
+    const evenlater = new Date(now.valueOf() + 2);
+    const sooner = new Date(now.valueOf() - 2);
+    const range1: DateRange = { from: sooner, to: evenlater };
+    const range2: DateRange = { from: now, to: later };
+
+    expect(rangesEqual(range1, range2)).toEqual(false);
+  });
+});
+
+describe('orderRange', () => {
+  it('does not change anything when from and to are null', () => {
+    const range = { from: null, to: null };
+    expect(orderRange(range)).toEqual(range);
+  });
+
+  it('does not change anything when from is null', () => {
+    const range = { from: null, to: new Date() };
+    expect(orderRange(range)).toEqual(range);
+  });
+
+  it('does not change anything when to is null', () => {
+    const range = { from: new Date(), to: null };
+    expect(orderRange(range)).toEqual(range);
+  });
+
+  it('does not change anything when from and to are equal', () => {
+    const now = new Date();
+    const range = { from: now, to: now };
+    expect(orderRange(range)).toEqual(range);
+  });
+
+  it('does not change anything when to is after from', () => {
+    const now = new Date();
+    const later = new Date(now.valueOf() + 1);
+    const range = { from: now, to: later };
+    expect(orderRange(range)).toEqual(range);
+  });
+
+  it('inverts the dates when from is after to', () => {
+    const now = new Date();
+    const later = new Date(now.valueOf() + 1);
+    const range = { from: later, to: now };
+    const result = orderRange(range);
+    expect(result.from).toEqual(range.to);
+    expect(result.to).toEqual(range.from);
+  });
+});
+
+describe('isInDateRange', () => {
+  it('returns false if from and to are null', () => {
+    const range = { from: null, to: null };
+    expect(isInDateRange(new Date(), range)).toEqual(false);
+  });
+
+  it('returns false if from is null', () => {
+    const now = new Date();
+    const range = { from: null, to: now };
+    expect(isInDateRange(now, range)).toEqual(false);
+  });
+
+  it('returns false if to is null', () => {
+    const now = new Date();
+    const range = { from: now, to: null };
+    expect(isInDateRange(now, range)).toEqual(false);
+  });
+
+  it('returns false if date is after to', () => {
+    const now = new Date();
+    const later = new Date(now.valueOf() + 1000);
+    const evenlater = new Date(now.valueOf() + 2000);
+    const range = { from: now, to: later };
+    expect(isInDateRange(evenlater, range)).toEqual(false);
+  });
+
+  it('returns false if date is before from', () => {
+    const now = new Date();
+    const later = new Date(now.valueOf() + 1000);
+    const sooner = new Date(now.valueOf() - 1000);
+    const range = { from: now, to: later };
+    expect(isInDateRange(sooner, range)).toEqual(false);
+  });
+
+  it('returns true if date is in range', () => {
+    const now = new Date();
+    const later = new Date(now.valueOf() + 1000);
+    const evenlater = new Date(now.valueOf() + 2000);
+    const range = { from: now, to: evenlater };
+    expect(isInDateRange(later, range)).toEqual(true);
   });
 });
