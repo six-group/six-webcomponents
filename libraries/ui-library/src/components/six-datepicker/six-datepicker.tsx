@@ -203,7 +203,7 @@ export class SixDatepicker {
    * 'dd/mm/yy'
    * 'yy/mm/dd'
    * */
-  @Prop() dateFormat: SixDateFormats = SixDateFormats.DDMMYYY_DOT;
+  @Prop() dateFormat: SixDateFormats = SixDateFormats.DDMMYYYY_DOT;
 
   /**
    * Set the amount of time, in milliseconds, to wait to trigger the `dateChange` event after each keystroke.
