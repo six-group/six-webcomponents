@@ -57,8 +57,6 @@ export interface CalendarCell {
   isSelected: boolean;
   isToday: boolean;
   label: string;
-  isStart: boolean;
-  isEnd: boolean;
   isWithinRange: boolean;
 }
 

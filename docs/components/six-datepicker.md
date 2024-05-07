@@ -71,7 +71,7 @@ If you need to select a time as well, just set the `type` and `date-format` and 
 
 If you need to select a date range instead of a single date, set the `type` property to `date-range`.
 
-The `date-format` property applies to both parts of the range.
+The `date-format` property applies to both parts of the range, that can be separated by spaces or dashes.
 
 The user can select either the beginning of the range or the end of the range first, the component will re-order them automatically to always show the earliest date first.
 

@@ -936,9 +936,10 @@ export const createCalendarGrid: (calendarGridArguments: CalendarGridArgs) => Ca
           dateString: formatDate(dayDatePointer, dateFormat),
           label: day(dayDatePointer).toString(),
           isToday: isSameDay(dayDatePointer, now()),
-          isSelected: selectedDate && isSameDay(dayDatePointer, selectedDate),
-          isStart: rangeSelection && isSameDay(dayDatePointer, selectedRange.from),
-          isEnd: rangeSelection && isSameDay(dayDatePointer, selectedRange.to),
+          isSelected:
+            (selectedDate && isSameDay(dayDatePointer, selectedDate)) ||
+            (rangeSelection &&
+              (isSameDay(dayDatePointer, selectedRange.from) || isSameDay(dayDatePointer, selectedRange.to))),
           isWithinRange: rangeSelection && isInDateRange(dayDatePointer, selectedRange),
           isDisabled: !allowedDates(dayDatePointer) || !isInRange(dayDatePointer, minDate, maxDate),
           isOutdated: pointerDate.month !== dayDatePointer.getMonth() || !isInRange(dayDatePointer, minDate, maxDate),

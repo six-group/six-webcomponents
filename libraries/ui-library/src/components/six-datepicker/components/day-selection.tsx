@@ -26,8 +26,6 @@ export const DaySelection = (daySelectionParams: DaySelectionParams) => {
                   'datepicker-table__cell': true,
                   'datepicker-table__cell--is-today': cell.isToday,
                   'datepicker-table__cell--is-selected': cell.isSelected,
-                  'datepicker-table__cell--is-start': cell.isStart,
-                  'datepicker-table__cell--is-end': cell.isEnd,
                   'datepicker-table__cell--is-outdated': cell.isOutdated,
                   'datepicker-table__cell--is-disabled': cell.isDisabled,
                   'datepicker-table__cell--is-selectable': !cell.isDisabled,
