@@ -5,6 +5,7 @@ import {
   day,
   decreaseYear,
   formatDate,
+  formatRange,
   getFirstDayOfTheWeek,
   increaseYear,
   isAfter,
@@ -1574,24 +1575,184 @@ describe('isValidDateRangeString', () => {
     expect(isValidDateRangeString('12-12-2012 15:47:5 2 - 04-01-2013 21:15:18', 'dd-mm-yyyy hh:MM:ss')).toEqual(false);
   });
 
-  it('manages dd.mm.yyyy hh:MM:ss dates', () => {
-    expect(isValidDateRangeString('', '')).toEqual(true);
-    expect(isValidDateRangeString('', '')).toEqual(true);
-    expect(isValidDateRangeString('', '')).toEqual(false);
-    expect(isValidDateRangeString('', '')).toEqual(false);
+  it('manages dd/mm/yyyy hh:MM:ss dates', () => {
+    expect(isValidDateRangeString('02/07/1995 18:40:25 - 04/08/1995 19:00:12', 'dd/mm/yyyy hh:MM:ss')).toEqual(true);
+    expect(isValidDateRangeString('02/07/1995 18:40:25 -- 04/08/1995 19:00:12', 'dd/mm/yyyy hh:MM:ss')).toEqual(true);
+    expect(isValidDateRangeString('02/07/1995 18:40:25 $ 04/08/1995 19:00:12', 'dd/mm/yyyy hh:MM:ss')).toEqual(false);
+    expect(isValidDateRangeString('02/124/1995 18:40:25 - 04/08/1995 19:00:12', 'dd/mm/yyyy hh:MM:ss')).toEqual(false);
   });
 
-  it('manages dd.mm.yyyy hh:MM:ss dates', () => {
-    expect(isValidDateRangeString('', '')).toEqual(true);
-    expect(isValidDateRangeString('', '')).toEqual(true);
-    expect(isValidDateRangeString('', '')).toEqual(false);
-    expect(isValidDateRangeString('', '')).toEqual(false);
+  it('manages yyyy/mm/dd hh:MM:ss dates', () => {
+    expect(isValidDateRangeString('1984/03/04 15:25:30 - 1984/03/07 12:21:15', 'yyyy/mm/dd hh:MM:ss')).toEqual(true);
+    expect(isValidDateRangeString('1984/03/04 15:25:30 1984/03/07 12:21:15', 'yyyy/mm/dd hh:MM:ss')).toEqual(true);
+    expect(isValidDateRangeString('1984/03/04 15:25:30!!!1984/03/07 12:21:15', 'yyyy/mm/dd hh:MM:ss')).toEqual(false);
+    expect(isValidDateRangeString('1984/03/04 15:25:30 - 198g4/03/07 12:21:15', 'yyyy/mm/dd hh:MM:ss')).toEqual(false);
   });
 
-  it('manages dd.mm.yyyy hh:MM:ss dates', () => {
-    expect(isValidDateRangeString('', '')).toEqual(true);
-    expect(isValidDateRangeString('', '')).toEqual(true);
-    expect(isValidDateRangeString('', '')).toEqual(false);
-    expect(isValidDateRangeString('', '')).toEqual(false);
+  it('manages dd.mm.yy hh:MM:ss dates', () => {
+    expect(isValidDateRangeString('24.06.24 15:43:00 - 26.07.24 15:43:00', 'dd.mm.yy hh:MM:ss')).toEqual(true);
+    expect(isValidDateRangeString('24.06.24 15:43:00-26.07.24 15:43:00', 'dd.mm.yy hh:MM:ss')).toEqual(true);
+    expect(isValidDateRangeString('24.06.24 15:43:00@26.07.24 15:43:00', 'dd.mm.yy hh:MM:ss')).toEqual(false);
+    expect(isValidDateRangeString('24.06.24 15:43:00f - 26.07.24 15:43:00', 'dd.mm.yy hh:MM:ss')).toEqual(false);
+  });
+
+  it('manages yy-mm-dd hh:MM:ss dates', () => {
+    expect(isValidDateRangeString('23-12-05 08:24:30 - 24-01-01 09:00:00', 'yy-mm-dd hh:MM:ss')).toEqual(true);
+    expect(isValidDateRangeString('23-12-05 08:24:30 ----- 24-01-01 09:00:00', 'yy-mm-dd hh:MM:ss')).toEqual(true);
+    expect(isValidDateRangeString('23-12-05 08:24:30#24-01-01 09:00:00', 'yy-mm-dd hh:MM:ss')).toEqual(false);
+    expect(isValidDateRangeString('23-12-05 08:24:30 - 244-01-01 09:00:00', 'yy-mm-dd hh:MM:ss')).toEqual(false);
+  });
+
+  it('manages dd-mm-yy hh:MM:ss dates', () => {
+    expect(isValidDateRangeString('26-01-22 10:00:00 - 28-01-22 11:00:00', 'dd-mm-yy hh:MM:ss')).toEqual(true);
+    expect(isValidDateRangeString('26-01-22 10:00:00 28-01-22 11:00:00', 'dd-mm-yy hh:MM:ss')).toEqual(true);
+    expect(isValidDateRangeString('26-01-22 10:00:00 _ 28-01-22 11:00:00', 'dd-mm-yy hh:MM:ss')).toEqual(false);
+    expect(isValidDateRangeString('26-01-22 10:00:0 - 28-01-22 11:00:00', 'dd-mm-yy hh:MM:ss')).toEqual(false);
+  });
+
+  it('manages dd/mm/yy hh:MM:ss dates', () => {
+    expect(isValidDateRangeString('30/07/24 12:00:20 - 31/07/24 13:54:00', 'dd/mm/yy hh:MM:ss')).toEqual(true);
+    expect(isValidDateRangeString('30/07/24 12:00:20        31/07/24 13:54:00', 'dd/mm/yy hh:MM:ss')).toEqual(true);
+    expect(isValidDateRangeString('30/07/24 12:00:20&31/07/24 13:54:00', 'dd/mm/yy hh:MM:ss')).toEqual(false);
+    expect(isValidDateRangeString('30/07/24 12:00:20 - 31/070/24 13:54:00', 'dd/mm/yy hh:MM:ss')).toEqual(false);
+  });
+
+  it('manages yy/mm/dd hh:MM:ss dates', () => {
+    expect(isValidDateRangeString('24/11/05 03:24:00 - 25/11/05 03:24:00', 'yy/mm/dd hh:MM:ss')).toEqual(true);
+    expect(isValidDateRangeString('24/11/05 03:24:00-------25/11/05 03:24:00', 'yy/mm/dd hh:MM:ss')).toEqual(true);
+    expect(isValidDateRangeString('24/11/05 03:24:00*25/11/05 03:24:00', 'yy/mm/dd hh:MM:ss')).toEqual(false);
+    expect(isValidDateRangeString('24/11/05 03:24:00 - 25/11/05 03:240:00', 'yy/mm/dd hh:MM:ss')).toEqual(false);
+  });
+});
+
+describe('formatRange', () => {
+  it('returns empty string on undefined or null range', () => {
+    expect(formatRange(undefined, 'dd-mm-yyyy')).toEqual('');
+    expect(formatRange({ from: null, to: null }, 'dd-mm-yyyy')).toEqual('');
+    expect(formatRange({ from: null, to: new Date() }, 'dd-mm-yyyy')).toEqual('');
+  });
+
+  /**
+   * Note: these test are to be run in the CET timezone (GMT+1)
+   */
+  it('returns properly formatted range with no to date', () => {
+    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: null }, 'dd.mm.yyyy')).toEqual('21.10.1995 - ');
+    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: null }, 'yyyy-mm-dd')).toEqual('1995-10-21 - ');
+    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: null }, 'dd-mm-yyyy')).toEqual('21-10-1995 - ');
+    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: null }, 'dd/mm/yyyy')).toEqual('21/10/1995 - ');
+    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: null }, 'yyyy/mm/dd')).toEqual('1995/10/21 - ');
+    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: null }, 'dd.mm.yy')).toEqual('21.10.95 - ');
+    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: null }, 'yy-mm-dd')).toEqual('95-10-21 - ');
+    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: null }, 'dd-mm-yy')).toEqual('21-10-95 - ');
+    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: null }, 'dd/mm/yy')).toEqual('21/10/95 - ');
+    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: null }, 'yy/mm/dd')).toEqual('95/10/21 - ');
+    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: null }, 'dd.mm.yyyy hh:MM:ss')).toEqual(
+      '21.10.1995 05:24:32 - '
+    );
+    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: null }, 'yyyy-mm-dd hh:MM:ss')).toEqual(
+      '1995-10-21 05:24:32 - '
+    );
+    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: null }, 'dd-mm-yyyy hh:MM:ss')).toEqual(
+      '21-10-1995 05:24:32 - '
+    );
+    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: null }, 'dd/mm/yyyy hh:MM:ss')).toEqual(
+      '21/10/1995 05:24:32 - '
+    );
+    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: null }, 'yyyy/mm/dd hh:MM:ss')).toEqual(
+      '1995/10/21 05:24:32 - '
+    );
+    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: null }, 'dd.mm.yy hh:MM:ss')).toEqual(
+      '21.10.95 05:24:32 - '
+    );
+    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: null }, 'yy-mm-dd hh:MM:ss')).toEqual(
+      '95-10-21 05:24:32 - '
+    );
+    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: null }, 'dd-mm-yy hh:MM:ss')).toEqual(
+      '21-10-95 05:24:32 - '
+    );
+    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: null }, 'dd/mm/yy hh:MM:ss')).toEqual(
+      '21/10/95 05:24:32 - '
+    );
+    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: null }, 'yy/mm/dd hh:MM:ss')).toEqual(
+      '95/10/21 05:24:32 - '
+    );
+  });
+
+  it('returns properly formatted range', () => {
+    expect(
+      formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: new Date('1995-10-22T15:32:17Z') }, 'dd.mm.yyyy')
+    ).toEqual('21.10.1995 - 22.10.1995');
+    expect(
+      formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: new Date('1995-10-22T15:32:17Z') }, 'yyyy-mm-dd')
+    ).toEqual('1995-10-21 - 1995-10-22');
+    expect(
+      formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: new Date('1995-10-22T15:32:17Z') }, 'dd-mm-yyyy')
+    ).toEqual('21-10-1995 - 22-10-1995');
+    expect(
+      formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: new Date('1995-10-22T15:32:17Z') }, 'dd/mm/yyyy')
+    ).toEqual('21/10/1995 - 22/10/1995');
+    expect(
+      formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: new Date('1995-10-22T15:32:17Z') }, 'yyyy/mm/dd')
+    ).toEqual('1995/10/21 - 1995/10/22');
+    expect(
+      formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: new Date('1995-10-22T15:32:17Z') }, 'dd.mm.yy')
+    ).toEqual('21.10.95 - 22.10.95');
+    expect(
+      formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: new Date('1995-10-22T15:32:17Z') }, 'yy-mm-dd')
+    ).toEqual('95-10-21 - 95-10-22');
+    expect(
+      formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: new Date('1995-10-22T15:32:17Z') }, 'dd-mm-yy')
+    ).toEqual('21-10-95 - 22-10-95');
+    expect(
+      formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: new Date('1995-10-22T15:32:17Z') }, 'dd/mm/yy')
+    ).toEqual('21/10/95 - 22/10/95');
+    expect(
+      formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: new Date('1995-10-22T15:32:17Z') }, 'yy/mm/dd')
+    ).toEqual('95/10/21 - 95/10/22');
+    expect(
+      formatRange(
+        { from: new Date('1995-10-21T04:24:32Z'), to: new Date('1995-10-22T15:32:17Z') },
+        'dd.mm.yyyy hh:MM:ss'
+      )
+    ).toEqual('21.10.1995 05:24:32 - 22.10.1995 16:32:17');
+    expect(
+      formatRange(
+        { from: new Date('1995-10-21T04:24:32Z'), to: new Date('1995-10-22T15:32:17Z') },
+        'yyyy-mm-dd hh:MM:ss'
+      )
+    ).toEqual('1995-10-21 05:24:32 - 1995-10-22 16:32:17');
+    expect(
+      formatRange(
+        { from: new Date('1995-10-21T04:24:32Z'), to: new Date('1995-10-22T15:32:17Z') },
+        'dd-mm-yyyy hh:MM:ss'
+      )
+    ).toEqual('21-10-1995 05:24:32 - 22-10-1995 16:32:17');
+    expect(
+      formatRange(
+        { from: new Date('1995-10-21T04:24:32Z'), to: new Date('1995-10-22T15:32:17Z') },
+        'dd/mm/yyyy hh:MM:ss'
+      )
+    ).toEqual('21/10/1995 05:24:32 - 22/10/1995 16:32:17');
+    expect(
+      formatRange(
+        { from: new Date('1995-10-21T04:24:32Z'), to: new Date('1995-10-22T15:32:17Z') },
+        'yyyy/mm/dd hh:MM:ss'
+      )
+    ).toEqual('1995/10/21 05:24:32 - 1995/10/22 16:32:17');
+    expect(
+      formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: new Date('1995-10-22T15:32:17Z') }, 'dd.mm.yy hh:MM:ss')
+    ).toEqual('21.10.95 05:24:32 - 22.10.95 16:32:17');
+    expect(
+      formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: new Date('1995-10-22T15:32:17Z') }, 'yy-mm-dd hh:MM:ss')
+    ).toEqual('95-10-21 05:24:32 - 95-10-22 16:32:17');
+    expect(
+      formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: new Date('1995-10-22T15:32:17Z') }, 'dd-mm-yy hh:MM:ss')
+    ).toEqual('21-10-95 05:24:32 - 22-10-95 16:32:17');
+    expect(
+      formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: new Date('1995-10-22T15:32:17Z') }, 'dd/mm/yy hh:MM:ss')
+    ).toEqual('21/10/95 05:24:32 - 22/10/95 16:32:17');
+    expect(
+      formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: new Date('1995-10-22T15:32:17Z') }, 'yy/mm/dd hh:MM:ss')
+    ).toEqual('95/10/21 05:24:32 - 95/10/22 16:32:17');
   });
 });
