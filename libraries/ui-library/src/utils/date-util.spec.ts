@@ -28,6 +28,7 @@ import {
   rangesEqual,
   toDate,
   year,
+  toRange,
 } from './date-util';
 import { SixDateFormats } from '../components/six-datepicker/six-date-formats';
 import { CalendarCell } from '../components/six-datepicker/six-datepicker';
@@ -1754,5 +1755,29 @@ describe('formatRange', () => {
     expect(
       formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: new Date('1995-10-22T15:32:17Z') }, 'yy/mm/dd hh:MM:ss')
     ).toEqual('95/10/21 05:24:32 - 95/10/22 16:32:17');
+  });
+});
+
+describe('toRange', () => {
+  it('returns undefined on an invalid range string', () => {
+    expect(toRange('12/02/2024f', 'dd/mm/yyyy')).toBeUndefined();
+  });
+
+  it('returns an incomplete range', () => {
+    expect(toRange('12/02/2024', 'dd/mm/yyyy')).toEqual({ from: new Date('2024-02-12T00:00:00'), to: null });
+  });
+
+  it('returns a proper range', () => {
+    expect(toRange('12/02/2024 - 27/03/2025', 'dd/mm/yyyy')).toEqual({
+      from: new Date('2024-02-12T00:00:00'),
+      to: new Date('2025-03-27T00:00:00'),
+    });
+  });
+
+  it('returns a proper time range', () => {
+    expect(toRange('2024/11/24 13:14:29 - 2025/02/30 10:45:00', 'yyyy/mm/dd hh:MM:ss')).toEqual({
+      from: new Date('2024-11-24T13:14:29'),
+      to: new Date('2025-02-30T10:45:00'),
+    });
   });
 });
