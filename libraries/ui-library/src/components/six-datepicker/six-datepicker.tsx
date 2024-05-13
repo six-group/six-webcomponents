@@ -226,7 +226,8 @@ export class SixDatepicker {
   @Prop() hoist = false;
 
   /**
-   * Enable this option to show the list of predifined ranges
+   * Enable this option to show the list of predefined ranges
+   * This property is only applicable when `type` is `date-range`
    */
   @Prop() showPredefinedRanges = false;
 
@@ -707,9 +708,6 @@ export class SixDatepicker {
     const now = new Date();
     const range = orderRange({ start: now, end: addDays(now, predefinedRanges[index]) });
     this.updateRange(range);
-    if (this.inputElement) {
-      this.inputElement.value = i18nDate[this.locale].ranges[index];
-    }
     if (this.closeOnSelect) {
       this.closePopup();
     }
@@ -906,7 +904,11 @@ export class SixDatepicker {
       <div ref={(el) => (this.wrapper = el)} class="datepicker__container">
         <six-input
           part="base"
-          value={this.isRange ? formatRange(this.range, this.dateFormat) : formatDate(this.value, this.dateFormat)}
+          value={
+            this.isRange
+              ? formatRange(this.range, this.dateFormat, this.showPredefinedRanges, this.locale)
+              : formatDate(this.value, this.dateFormat)
+          }
           ref={(el) => (this.inputElement = el)}
           placeholder={this.placeholder}
           readonly={this.readonly}

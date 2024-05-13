@@ -1821,3 +1821,47 @@ describe('addDays', () => {
     expect(addDays(from, -30).toISOString()).toEqual('2024-04-13T12:00:00.000Z');
   });
 });
+
+describe('formatRange with predefined ranges', () => {
+  it('matches last 7 days', () => {
+    const end = new Date();
+    const start = addDays(end, -7);
+    expect(formatRange({ start, end }, 'dd/mm/yyyy', true, 'en')).toEqual('Last 7 days');
+  });
+
+  it('matches last 30 days', () => {
+    const end = new Date();
+    const start = addDays(end, -30);
+    expect(formatRange({ start, end }, 'dd/mm/yyyy', true, 'en')).toEqual('Last 30 days');
+  });
+
+  it('matches last 90 days', () => {
+    const end = new Date();
+    const start = addDays(end, -90);
+    expect(formatRange({ start, end }, 'dd/mm/yyyy', true, 'en')).toEqual('Last 90 days');
+  });
+
+  it('matches next 7 days', () => {
+    const start = new Date();
+    const end = addDays(start, 7);
+    expect(formatRange({ start, end }, 'dd/mm/yyyy', true, 'en')).toEqual('Next 7 days');
+  });
+
+  it('matches next 30 days', () => {
+    const start = new Date();
+    const end = addDays(start, 30);
+    expect(formatRange({ start, end }, 'dd/mm/yyyy', true, 'en')).toEqual('Next 30 days');
+  });
+
+  it('matches next 90 days', () => {
+    const start = new Date();
+    const end = addDays(start, 90);
+    expect(formatRange({ start, end }, 'dd/mm/yyyy', true, 'en')).toEqual('Next 90 days');
+  });
+
+  it('displays a standard range if showPredefinedRanges is false', () => {
+    const start = new Date();
+    const end = addDays(start, 90);
+    expect(formatRange({ start, end }, 'dd/mm/yyyy', false, 'en')).not.toEqual('Next 90 days');
+  });
+});

@@ -585,9 +585,16 @@ export const formatDate = (date: Date | undefined | null, format: string): strin
   return output;
 };
 
-export const formatRange = (range: DateRange | undefined, format: String): string => {
+export const formatRange = (
+  range: DateRange | undefined,
+  format: String,
+  showPredefinedRanges: boolean = false,
+  locale: string = ''
+): string => {
   if (range === undefined || range.start === undefined) return '';
   if (range.end === undefined) return `${formatDate(range.start, format)} - `;
+  if (showPredefinedRanges && matchesPredefinedRange(range)) return formatPredefinedRange(range, locale);
+
   return `${formatDate(range.start, format)} - ${formatDate(range.end, format)}`;
 };
 
@@ -1012,12 +1019,33 @@ export function rangeAround(number: number, range: number): number[][] {
  * @param range2 the second range
  */
 export function rangesEqual(range1: DateRange, range2: DateRange): boolean {
-  if (range1.start === null && range2.start !== null) return false;
-  if (range2.start === null && range1.start !== null) return false;
-  if (range1.end === null && range2.end !== null) return false;
-  if (range2.end === null && range1.end !== null) return false;
+  if (range1.start === undefined && range2.start !== undefined) return false;
+  if (range2.start === undefined && range1.start !== undefined) return false;
+  if (range1.end === undefined && range2.end !== undefined) return false;
+  if (range2.end === undefined && range1.end !== undefined) return false;
 
   return range1.start?.getTime() === range2.start?.getTime() && range1.end?.getTime() === range2.end?.getTime();
+}
+
+/**
+ * Returns true if both ranges are equal, form a date only point of view
+ * @param range1 the first range
+ * @param range2 the second range
+ */
+export function rangesEqualIgnoreTimes(range1: DateRange, range2: DateRange): boolean {
+  if (range1.start === undefined && range2.start !== undefined) return false;
+  if (range2.start === undefined && range1.start !== undefined) return false;
+  if (range1.end === undefined && range2.end !== undefined) return false;
+  if (range2.end === undefined && range1.end !== undefined) return false;
+
+  return (
+    range1.start?.getFullYear() === range2.start?.getFullYear() &&
+    range1.start?.getMonth() === range2.start?.getMonth() &&
+    range1.start?.getDate() === range2.start?.getDate() &&
+    range1.end?.getFullYear() === range2.end?.getFullYear() &&
+    range1.end?.getMonth() === range2.end?.getMonth() &&
+    range1.end?.getDate() === range2.end?.getDate()
+  );
 }
 
 /**
@@ -1053,4 +1081,21 @@ export function isInDateRange(date: Date, range: DateRange): boolean {
 export function addDays(date: Date, amount: number): Date {
   const toadd = amount * 24 * 60 * 60 * 1000;
   return new Date(date.getTime() + toadd);
+}
+
+function matchesPredefinedRange(range: DateRange): boolean {
+  return findMatchingPredefinedRange(range) > -1;
+}
+
+function findMatchingPredefinedRange(range: DateRange): number {
+  const now = new Date();
+  return predefinedRanges.findIndex((r) =>
+    rangesEqualIgnoreTimes(range, orderRange({ start: now, end: addDays(now, r) }))
+  );
+}
+
+function formatPredefinedRange(range: DateRange, locale: string) {
+  const index = findMatchingPredefinedRange(range);
+  if (index === -1) return '';
+  return i18nDate[locale].ranges[index];
 }

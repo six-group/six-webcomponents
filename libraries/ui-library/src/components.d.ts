@@ -372,7 +372,7 @@ export namespace Components {
          */
         "setFocus": (options?: FocusOptions) => Promise<void>;
         /**
-          * Enable this option to show the list of predifined ranges
+          * Enable this option to show the list of predefined ranges This property is only applicable when `type` is `date-range`
          */
         "showPredefinedRanges": boolean;
         /**
@@ -3430,7 +3430,7 @@ declare namespace LocalJSX {
          */
         "required"?: boolean;
         /**
-          * Enable this option to show the list of predifined ranges
+          * Enable this option to show the list of predefined ranges This property is only applicable when `type` is `date-range`
          */
         "showPredefinedRanges"?: boolean;
         /**
