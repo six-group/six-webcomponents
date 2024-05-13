@@ -255,7 +255,7 @@ export class SixDatepicker {
    */
   @Watch('range')
   protected rangeChanged() {
-    if (this.range != null && !isValidDate(this.range.from)) {
+    if (this.range != null && !isValidDate(this.range.start)) {
       // TODO improve this test
       console.warn('invalid range value: ', this.range);
       this.range = undefined;
@@ -531,15 +531,15 @@ export class SixDatepicker {
     if (datestring == null) {
       this.updateValue(undefined);
     } else if (this.isRange) {
-      if (this.selectedRange.from === null || this.selectedRange.to !== null) {
-        this.selectedRange = { from: toDate(datestring, this.dateFormat) };
-        this.selectedRange.from?.setHours(this.pointerDate.hours, this.pointerDate.minutes, this.pointerDate.seconds);
+      if (this.selectedRange.start === null || this.selectedRange.end !== null) {
+        this.selectedRange = { start: toDate(datestring, this.dateFormat) };
+        this.selectedRange.start?.setHours(this.pointerDate.hours, this.pointerDate.minutes, this.pointerDate.seconds);
       } else {
         this.selectedRange = orderRange({
-          from: this.selectedRange.from,
-          to: toDate(datestring, this.dateFormat),
+          start: this.selectedRange.start,
+          end: toDate(datestring, this.dateFormat),
         });
-        this.selectedRange.to?.setHours(this.pointerDate.hours, this.pointerDate.minutes, this.pointerDate.seconds);
+        this.selectedRange.end?.setHours(this.pointerDate.hours, this.pointerDate.minutes, this.pointerDate.seconds);
         if (this.closeOnSelect) {
           this.closePopup();
         }
@@ -586,7 +586,7 @@ export class SixDatepicker {
   };
 
   private onTimeRangeChange = (time: Time | undefined) => {
-    if (this.selectedRange.from === undefined) return;
+    if (this.selectedRange.start === undefined) return;
     const newRange: DateRange = { ...this.selectedRange };
 
     let hours, minutes, seconds;
@@ -596,28 +596,28 @@ export class SixDatepicker {
       seconds = time.seconds;
     }
 
-    if (this.selectedRange.to === undefined) {
+    if (this.selectedRange.end === undefined) {
       const newFrom = new Date();
       newFrom.setFullYear(
-        this.selectedRange.from.getFullYear(),
-        this.selectedRange.from.getMonth(),
-        this.selectedRange.from.getDate()
+        this.selectedRange.start.getFullYear(),
+        this.selectedRange.start.getMonth(),
+        this.selectedRange.start.getDate()
       );
       if (hours != null) {
         newFrom.setHours(hours, minutes, seconds);
       }
-      newRange.from = newFrom;
+      newRange.start = newFrom;
     } else {
       const newTo = new Date();
       newTo.setFullYear(
-        this.selectedRange.to.getFullYear(),
-        this.selectedRange.to.getMonth(),
-        this.selectedRange.to.getDate()
+        this.selectedRange.end.getFullYear(),
+        this.selectedRange.end.getMonth(),
+        this.selectedRange.end.getDate()
       );
       if (hours != null) {
         newTo.setHours(hours, minutes, seconds);
       }
-      newRange.to = newTo;
+      newRange.end = newTo;
     }
     this.updateRange(newRange);
   };
@@ -706,7 +706,7 @@ export class SixDatepicker {
 
   private setPredefinedRange = (index: number) => {
     const now = new Date();
-    const range = orderRange({ from: now, to: addDays(now, predefinedRanges[index]) });
+    const range = orderRange({ start: now, end: addDays(now, predefinedRanges[index]) });
     this.updateRange(range);
   };
 
@@ -857,14 +857,14 @@ export class SixDatepicker {
   private renderTimePicker() {
     let hours, minutes, seconds;
     if (this.isRange) {
-      if (this.selectedRange.to === null) {
-        hours = this.selectedRange.from?.getHours();
-        minutes = this.selectedRange.from?.getMinutes();
-        seconds = this.selectedRange.from?.getSeconds();
+      if (this.selectedRange.end === null) {
+        hours = this.selectedRange.start?.getHours();
+        minutes = this.selectedRange.start?.getMinutes();
+        seconds = this.selectedRange.start?.getSeconds();
       } else {
-        hours = this.selectedRange.to?.getHours();
-        minutes = this.selectedRange.to?.getMinutes();
-        seconds = this.selectedRange.to?.getSeconds();
+        hours = this.selectedRange.end?.getHours();
+        minutes = this.selectedRange.end?.getMinutes();
+        seconds = this.selectedRange.end?.getSeconds();
       }
     } else {
       hours = this.selectedDate?.getHours();

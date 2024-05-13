@@ -7,7 +7,7 @@ import { CalendarCell } from '../components/six-datepicker/six-datepicker';
 import { getExpectedMonthString } from '../components/six-datepicker/test/six-datepicker.test-helpers';
 
 export type DateLocale = typeof i18nDate.en;
-export type DateRange = { from?: Date; to?: Date };
+export type DateRange = { start?: Date; end?: Date };
 
 export const i18nDate = {
   en: {
@@ -586,9 +586,9 @@ export const formatDate = (date: Date | undefined | null, format: string): strin
 };
 
 export const formatRange = (range: DateRange | undefined, format: String): string => {
-  if (range === undefined || range.from === null) return '';
-  if (range.to === null) return `${formatDate(range.from, format)} - `;
-  return `${formatDate(range.from, format)} - ${formatDate(range.to, format)}`;
+  if (range === undefined || range.start === undefined) return '';
+  if (range.end === undefined) return `${formatDate(range.start, format)} - `;
+  return `${formatDate(range.start, format)} - ${formatDate(range.end, format)}`;
 };
 
 const daylightSavingAdjust = (date): Date => {
@@ -915,7 +915,7 @@ export const toRange = (dirtyDateString: string | undefined, format: string): Da
   const extracted = extractDateStringsFromRangeString(dirtyDateString, format);
   if (!extracted) return undefined;
 
-  return { from: toDate(extracted[0], format), to: extracted.length > 1 ? toDate(extracted[1], format) : null };
+  return { start: toDate(extracted[0], format), end: extracted.length > 1 ? toDate(extracted[1], format) : undefined };
 };
 
 export interface PointerDate {
@@ -974,7 +974,7 @@ export const createCalendarGrid: (calendarGridArguments: CalendarGridArgs) => Ca
           isSelected:
             (selectedDate && isSameDay(dayDatePointer, selectedDate)) ||
             (rangeSelection &&
-              (isSameDay(dayDatePointer, selectedRange.from) || isSameDay(dayDatePointer, selectedRange.to))),
+              (isSameDay(dayDatePointer, selectedRange.start) || isSameDay(dayDatePointer, selectedRange.end))),
           isWithinRange: rangeSelection && isInDateRange(dayDatePointer, selectedRange),
           isDisabled: !allowedDates(dayDatePointer) || !isInRange(dayDatePointer, minDate, maxDate),
           isOutdated: pointerDate.month !== dayDatePointer.getMonth() || !isInRange(dayDatePointer, minDate, maxDate),
@@ -1012,12 +1012,12 @@ export function rangeAround(number: number, range: number): number[][] {
  * @param range2 the second range
  */
 export function rangesEqual(range1: DateRange, range2: DateRange): boolean {
-  if (range1.from === null && range2.from !== null) return false;
-  if (range2.from === null && range1.from !== null) return false;
-  if (range1.to === null && range2.to !== null) return false;
-  if (range2.to === null && range1.to !== null) return false;
+  if (range1.start === null && range2.start !== null) return false;
+  if (range2.start === null && range1.start !== null) return false;
+  if (range1.end === null && range2.end !== null) return false;
+  if (range2.end === null && range1.end !== null) return false;
 
-  return range1.from?.getTime() === range2.from?.getTime() && range1.to?.getTime() === range2.to?.getTime();
+  return range1.start?.getTime() === range2.start?.getTime() && range1.end?.getTime() === range2.end?.getTime();
 }
 
 /**
@@ -1028,8 +1028,8 @@ export function rangesEqual(range1: DateRange, range2: DateRange): boolean {
  * @returns the ordered range
  */
 export function orderRange(range: DateRange): DateRange {
-  if (range.from === null || range.to === null) return range;
-  return range.to > range.from ? range : { from: range.to, to: range.from };
+  if (range.start === undefined || range.end === undefined) return range;
+  return range.end > range.start ? range : { start: range.end, end: range.start };
 }
 
 /**
@@ -1040,8 +1040,8 @@ export function orderRange(range: DateRange): DateRange {
  * @returns boolean
  */
 export function isInDateRange(date: Date, range: DateRange): boolean {
-  if (range.to === null || range.from === null) return false;
-  return date >= range.from && date <= range.to;
+  if (range.end === null || range.start === null) return false;
+  return date >= range.start && date <= range.end;
 }
 
 /**
