@@ -262,7 +262,6 @@ export class SixDatepicker {
       this.sixSelectRange.emit(this.range);
     }
     this.selectedRange = this.range ?? {};
-    //    this.updatePointerDates();
   }
 
   /**
@@ -708,6 +707,9 @@ export class SixDatepicker {
     const now = new Date();
     const range = orderRange({ start: now, end: addDays(now, predefinedRanges[index]) });
     this.updateRange(range);
+    if (this.inputElement) {
+      this.inputElement.value = i18nDate[this.locale].ranges[index];
+    }
     if (this.closeOnSelect) {
       this.closePopup();
     }

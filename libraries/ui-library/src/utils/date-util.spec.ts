@@ -1366,7 +1366,7 @@ describe('rangesEqual', () => {
 
   it('returns false when to dates differ', () => {
     const now = new Date();
-    const later = new Date(now.valueOf() + 1);
+    const later = new Date(now.getTime() + 1);
     const range1: DateRange = { start: now, end: now };
     const range2: DateRange = { start: now, end: later };
 
@@ -1375,7 +1375,7 @@ describe('rangesEqual', () => {
 
   it('returns false when to dates differ', () => {
     const now = new Date();
-    const later = new Date(now.valueOf() + 1);
+    const later = new Date(now.getTime() + 1);
     const range1: DateRange = { start: now, end: now };
     const range2: DateRange = { start: later, end: now };
 
@@ -1384,8 +1384,8 @@ describe('rangesEqual', () => {
 
   it('returns false when more dates differ', () => {
     const now = new Date();
-    const later = new Date(now.valueOf() + 1);
-    const evenlater = new Date(now.valueOf() + 2);
+    const later = new Date(now.getTime() + 1);
+    const evenlater = new Date(now.getTime() + 2);
     const range1: DateRange = { start: now, end: evenlater };
     const range2: DateRange = { start: later, end: now };
 
@@ -1394,9 +1394,9 @@ describe('rangesEqual', () => {
 
   it('returns false when all dates differ', () => {
     const now = new Date();
-    const later = new Date(now.valueOf() + 1);
-    const evenlater = new Date(now.valueOf() + 2);
-    const sooner = new Date(now.valueOf() - 2);
+    const later = new Date(now.getTime() + 1);
+    const evenlater = new Date(now.getTime() + 2);
+    const sooner = new Date(now.getTime() - 2);
     const range1: DateRange = { start: sooner, end: evenlater };
     const range2: DateRange = { start: now, end: later };
 
@@ -1428,14 +1428,14 @@ describe('orderRange', () => {
 
   it('does not change anything when to is after from', () => {
     const now = new Date();
-    const later = new Date(now.valueOf() + 1);
+    const later = new Date(now.getTime() + 1);
     const range = { start: now, end: later };
     expect(orderRange(range)).toEqual(range);
   });
 
   it('inverts the dates when from is after to', () => {
     const now = new Date();
-    const later = new Date(now.valueOf() + 1);
+    const later = new Date(now.getTime() + 1);
     const range = { start: later, end: now };
     const result = orderRange(range);
     expect(result.start).toEqual(range.end);
@@ -1463,24 +1463,24 @@ describe('isInDateRange', () => {
 
   it('returns false if date is after to', () => {
     const now = new Date();
-    const later = new Date(now.valueOf() + 1000);
-    const evenlater = new Date(now.valueOf() + 2000);
+    const later = new Date(now.getTime() + 1000);
+    const evenlater = new Date(now.getTime() + 2000);
     const range = { start: now, end: later };
     expect(isInDateRange(evenlater, range)).toEqual(false);
   });
 
   it('returns false if date is before from', () => {
     const now = new Date();
-    const later = new Date(now.valueOf() + 1000);
-    const sooner = new Date(now.valueOf() - 1000);
+    const later = new Date(now.getTime() + 1000);
+    const sooner = new Date(now.getTime() - 1000);
     const range = { start: now, end: later };
     expect(isInDateRange(sooner, range)).toEqual(false);
   });
 
   it('returns true if date is in range', () => {
     const now = new Date();
-    const later = new Date(now.valueOf() + 1000);
-    const evenlater = new Date(now.valueOf() + 2000);
+    const later = new Date(now.getTime() + 1000);
+    const evenlater = new Date(now.getTime() + 2000);
     const range = { start: now, end: evenlater };
     expect(isInDateRange(later, range)).toEqual(true);
   });

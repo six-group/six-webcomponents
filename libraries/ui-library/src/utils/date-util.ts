@@ -1052,5 +1052,5 @@ export function isInDateRange(date: Date, range: DateRange): boolean {
  */
 export function addDays(date: Date, amount: number): Date {
   const toadd = amount * 24 * 60 * 60 * 1000;
-  return new Date(date.valueOf() + toadd);
+  return new Date(date.getTime() + toadd);
 }
