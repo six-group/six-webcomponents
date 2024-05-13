@@ -29,6 +29,7 @@ import {
   toDate,
   year,
   toRange,
+  addDays,
 } from './date-util';
 import { SixDateFormats } from '../components/six-datepicker/six-date-formats';
 import { CalendarCell } from '../components/six-datepicker/six-datepicker';
@@ -1779,5 +1780,27 @@ describe('toRange', () => {
       from: new Date('2024-11-24T13:14:29'),
       to: new Date('2025-02-30T10:45:00'),
     });
+  });
+});
+
+describe('addDays', () => {
+  it('properly adds a positive number of days', () => {
+    const from = new Date('2024-05-13T12:00:00Z');
+    expect(addDays(from, 4).toISOString()).toEqual('2024-05-17T12:00:00.000Z');
+  });
+
+  it('properly adds a positive number of days that rolls up months', () => {
+    const from = new Date('2024-05-13T12:00:00Z');
+    expect(addDays(from, 37).toISOString()).toEqual('2024-06-19T12:00:00.000Z');
+  });
+
+  it('properly adds a negative number of days', () => {
+    const from = new Date('2024-05-13T12:00:00Z');
+    expect(addDays(from, -10).toISOString()).toEqual('2024-05-03T12:00:00.000Z');
+  });
+
+  it('properly adds a negative number of days that rolls up months', () => {
+    const from = new Date('2024-05-13T12:00:00Z');
+    expect(addDays(from, -30).toISOString()).toEqual('2024-04-13T12:00:00.000Z');
   });
 });

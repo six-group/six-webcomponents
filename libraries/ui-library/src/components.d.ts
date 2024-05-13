@@ -372,6 +372,10 @@ export namespace Components {
          */
         "setFocus": (options?: FocusOptions) => Promise<void>;
         /**
+          * Enable this option to show the list of predifined ranges
+         */
+        "showPredefinedRanges": boolean;
+        /**
           * Datepicker size.
          */
         "size": 'small' | 'medium' | 'large';
@@ -3425,6 +3429,10 @@ declare namespace LocalJSX {
           * Set to true to show an asterisk beneath the label.
          */
         "required"?: boolean;
+        /**
+          * Enable this option to show the list of predifined ranges
+         */
+        "showPredefinedRanges"?: boolean;
         /**
           * Datepicker size.
          */

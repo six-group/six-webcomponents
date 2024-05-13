@@ -34,6 +34,7 @@ export const i18nDate = {
     weekdays: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
     weekdaysShort: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
     weekdaysMin: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
+    ranges: ['Last 7 days', 'Last 30 days', 'Last 90 days', 'Next 7 days', 'Next 30 days', 'Next 90 days'],
   },
   de: {
     months: [
@@ -59,6 +60,14 @@ export const i18nDate = {
     weekdays: ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag'],
     weekdaysShort: ['Mo.', 'Di.', 'Mi.', 'Do.', 'Fr.', 'Sa.', 'So.'],
     weekdaysMin: ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'],
+    ranges: [
+      'Letzten 7 Tage',
+      'Letzten 30 Tage',
+      'Letzten 90 Tage',
+      'Nächsten 7 Tage',
+      'Nächsten 30 Tage',
+      'Nächsten 90 Tage',
+    ],
   },
   fr: {
     months: [
@@ -84,6 +93,14 @@ export const i18nDate = {
     weekdays: ['lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi', 'dimanche'],
     weekdaysShort: ['lun.', 'mar.', 'mer.', 'jeu.', 'ven.', 'sam.', 'dim.'],
     weekdaysMin: ['lu', 'ma', 'me', 'je', 've', 'sa', 'di'],
+    ranges: [
+      'Derniers 7 jours',
+      'Derniers 30 jours',
+      'Derniers 90 jours',
+      'Prochains 7 jours',
+      'Prochains 30 jours',
+      'Prochains 90 jours',
+    ],
   },
   it: {
     months: [
@@ -109,6 +126,14 @@ export const i18nDate = {
     weekdays: ['lunedì', 'martedì', 'mercoledì', 'giovedì', 'venerdì', 'sabato', 'domenica'],
     weekdaysShort: ['lun', 'mar', 'mer', 'gio', 'ven', 'sab', 'dom'],
     weekdaysMin: ['lu', 'ma', 'me', 'gi', 've', 'sa', 'do'],
+    ranges: [
+      'Ultimi 7 giorni',
+      'Ultimi 30 giorni',
+      'Ultimi 90 giorni',
+      'Prossimi 7 giorni',
+      'Prossimi 30 giorni',
+      'Prossimi 90 giorni',
+    ],
   },
   es: {
     months: [
@@ -134,8 +159,18 @@ export const i18nDate = {
     weekdays: ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domingo'],
     weekdaysShort: ['lun', 'mar', 'mié', 'jue', 'vie', 'sáb', 'dom'],
     weekdaysMin: ['lu', 'ma', 'mi', 'ju', 'vi', 'sa', 'do'],
+    ranges: [
+      'Últimos 7 días',
+      'Últimos 30 días',
+      'Últimos 90 días',
+      'Próximos 7 días',
+      'Próximos 30 días',
+      'Próximos 90 días',
+    ],
   },
 };
+
+export const predefinedRanges = [-7, -30, -90, 7, 30, 90];
 
 const rangeRegexp = {
   [SixDateFormats.DDMMYYYY_DOT]: /^(\d{2}\.\d{2}\.\d{4})(?:[ -]+(\d{2}\.\d{2}\.\d{4}))?$/,
@@ -1007,4 +1042,15 @@ export function orderRange(range: DateRange): DateRange {
 export function isInDateRange(date: Date, range: DateRange): boolean {
   if (range.to === null || range.from === null) return false;
   return date >= range.from && date <= range.to;
+}
+
+/**
+ * Adds a number (positive or negatives) of days to the provided date
+ * @param date the date to which to add
+ * @param amount the number of days to add
+ * @returns the resulting date
+ */
+export function addDays(date: Date, amount: number): Date {
+  const toadd = amount * 24 * 60 * 60 * 1000;
+  return new Date(date.valueOf() + toadd);
 }

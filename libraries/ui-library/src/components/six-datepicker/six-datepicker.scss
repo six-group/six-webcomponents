@@ -153,6 +153,15 @@
   }
 }
 
+.datepicker-predefined-ranges {
+  &_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top: 1px solid var(--six-color-web-rock-400);
+  }
+}
+
 .input--empty .datepicker-clear {
   visibility: hidden;
 }

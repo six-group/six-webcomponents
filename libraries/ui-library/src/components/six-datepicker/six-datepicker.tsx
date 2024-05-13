@@ -23,6 +23,8 @@ import {
   orderRange,
   isValidDateRangeString,
   toRange,
+  predefinedRanges,
+  addDays,
 } from '../../utils/date-util';
 import { EventListeners } from '../../utils/event-listeners';
 import { debounce, debounceEvent, DEFAULT_DEBOUNCE_FAST } from '../../utils/execution-control';
@@ -33,6 +35,7 @@ import { MonthSelection } from './components/month-selection';
 import { DaySelection } from './components/day-selection';
 import { YearSelection } from './components/year-selection';
 import { SixTimepickerChange } from '../six-timepicker/six-timepicker';
+import { SixButton } from '../six-button/six-button';
 import {
   adjustPopupForHoisting,
   adjustPopupForSmallScreens,
@@ -222,6 +225,11 @@ export class SixDatepicker {
    * `overflow: auto|scroll`.
    */
   @Prop() hoist = false;
+
+  /**
+   * Enable this option to show the list of predifined ranges
+   */
+  @Prop() showPredefinedRanges = false;
 
   @Watch('debounce')
   protected debounceChanged() {
@@ -697,6 +705,12 @@ export class SixDatepicker {
     this.sixBlur.emit(this.value);
   };
 
+  private setPredefinedRange = (index: number) => {
+    const now = new Date();
+    const range = orderRange({ from: now, to: addDays(now, predefinedRanges[index]) });
+    this.updateRange(range);
+  };
+
   componentWillLoad() {
     this.selectedDate = this.value;
     this.updatePointerDates();
@@ -866,6 +880,21 @@ export class SixDatepicker {
       ></six-timepicker>
     );
   }
+
+  private renderPredefinedRanges() {
+    return (
+      <div class="datepicker-predefined-ranges_container">
+        {predefinedRanges.map((_, index) => {
+          return (
+            <six-button type="link" onClick={() => this.setPredefinedRange(index)}>
+              {i18nDate[this.locale].ranges[index]}
+            </six-button>
+          );
+        })}
+      </div>
+    );
+  }
+
   render() {
     this.adjustPopupPosition();
 
@@ -914,6 +943,7 @@ export class SixDatepicker {
             {this.renderHeader()}
             {this.renderBody()}
             {this.showTime && this.renderTimePicker()}
+            {this.showPredefinedRanges && this.renderPredefinedRanges()}
             <div class="datepicker__footer">
               <slot />
             </div>
