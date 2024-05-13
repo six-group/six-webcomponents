@@ -531,7 +531,7 @@ export class SixDatepicker {
     if (datestring == null) {
       this.updateValue(undefined);
     } else if (this.isRange) {
-      if (this.selectedRange.start === null || this.selectedRange.end !== null) {
+      if (this.selectedRange.start === undefined || this.selectedRange.end !== undefined) {
         this.selectedRange = { start: toDate(datestring, this.dateFormat) };
         this.selectedRange.start?.setHours(this.pointerDate.hours, this.pointerDate.minutes, this.pointerDate.seconds);
       } else {
@@ -708,6 +708,9 @@ export class SixDatepicker {
     const now = new Date();
     const range = orderRange({ start: now, end: addDays(now, predefinedRanges[index]) });
     this.updateRange(range);
+    if (this.closeOnSelect) {
+      this.closePopup();
+    }
   };
 
   componentWillLoad() {
