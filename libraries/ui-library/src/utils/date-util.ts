@@ -7,7 +7,7 @@ import { CalendarCell } from '../components/six-datepicker/six-datepicker';
 import { getExpectedMonthString } from '../components/six-datepicker/test/six-datepicker.test-helpers';
 
 export type DateLocale = typeof i18nDate.en;
-export type DateRange = { from: Date | null; to: Date | null };
+export type DateRange = { from?: Date; to?: Date };
 
 export const i18nDate = {
   en: {

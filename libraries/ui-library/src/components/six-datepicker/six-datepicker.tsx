@@ -35,7 +35,6 @@ import { MonthSelection } from './components/month-selection';
 import { DaySelection } from './components/day-selection';
 import { YearSelection } from './components/year-selection';
 import { SixTimepickerChange } from '../six-timepicker/six-timepicker';
-import { SixButton } from '../six-button/six-button';
 import {
   adjustPopupForHoisting,
   adjustPopupForSmallScreens,
@@ -87,7 +86,7 @@ export class SixDatepicker {
   private popup?: HTMLElement;
   private wrapper?: HTMLElement;
   private selectedDate?: Date;
-  private selectedRange: DateRange = { from: null, to: null };
+  private selectedRange: DateRange = {};
 
   @Element() host!: HTMLSixDatepickerElement;
 
@@ -262,7 +261,7 @@ export class SixDatepicker {
       this.range = undefined;
       this.sixSelectRange.emit(this.range);
     }
-    this.selectedRange = this.range ?? { from: null, to: null };
+    this.selectedRange = this.range ?? {};
     //    this.updatePointerDates();
   }
 
@@ -533,12 +532,12 @@ export class SixDatepicker {
       this.updateValue(undefined);
     } else if (this.isRange) {
       if (this.selectedRange.from === null || this.selectedRange.to !== null) {
-        this.selectedRange = { from: toDate(datestring, this.dateFormat) ?? null, to: null };
+        this.selectedRange = { from: toDate(datestring, this.dateFormat) };
         this.selectedRange.from?.setHours(this.pointerDate.hours, this.pointerDate.minutes, this.pointerDate.seconds);
       } else {
         this.selectedRange = orderRange({
           from: this.selectedRange.from,
-          to: toDate(datestring, this.dateFormat) ?? null,
+          to: toDate(datestring, this.dateFormat),
         });
         this.selectedRange.to?.setHours(this.pointerDate.hours, this.pointerDate.minutes, this.pointerDate.seconds);
         if (this.closeOnSelect) {
@@ -587,8 +586,8 @@ export class SixDatepicker {
   };
 
   private onTimeRangeChange = (time: Time | undefined) => {
-    if (this.selectedRange.from === null) return;
-    let newRange: DateRange = { ...this.selectedRange };
+    if (this.selectedRange.from === undefined) return;
+    const newRange: DateRange = { ...this.selectedRange };
 
     let hours, minutes, seconds;
     if (time != undefined) {
@@ -597,7 +596,7 @@ export class SixDatepicker {
       seconds = time.seconds;
     }
 
-    if (this.selectedRange.to === null) {
+    if (this.selectedRange.to === undefined) {
       const newFrom = new Date();
       newFrom.setFullYear(
         this.selectedRange.from.getFullYear(),

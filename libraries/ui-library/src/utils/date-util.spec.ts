@@ -1308,31 +1308,33 @@ describe('createCalendarGrid', () => {
 
 describe('rangesEqual', () => {
   it('returns true when both ranges are empty', () => {
-    const range1: DateRange = { from: null, to: null };
-    const range2: DateRange = { from: null, to: null };
+    const range1: DateRange = {};
+    const range2: DateRange = {};
 
     expect(rangesEqual(range1, range2)).toEqual(true);
   });
 
   it('returns true when from dates are equal and to are null', () => {
     const now = new Date();
-    const range1: DateRange = { from: now, to: null };
-    const range2: DateRange = { from: now, to: null };
+    const nowAgain = new Date(now);
+    const range1: DateRange = { from: now };
+    const range2: DateRange = { from: nowAgain };
 
     expect(rangesEqual(range1, range2)).toEqual(true);
   });
 
   it('returns true when to dates are equal and from are null ', () => {
     const now = new Date();
-    const range1: DateRange = { from: null, to: now };
-    const range2: DateRange = { from: null, to: now };
+    const nowAgain = new Date(now);
+    const range1: DateRange = { to: now };
+    const range2: DateRange = { to: nowAgain };
 
     expect(rangesEqual(range1, range2)).toEqual(true);
   });
 
   it('returns false when from date is null in first range', () => {
     const now = new Date();
-    const range1: DateRange = { from: null, to: now };
+    const range1: DateRange = { to: now };
     const range2: DateRange = { from: now, to: now };
 
     expect(rangesEqual(range1, range2)).toEqual(false);
@@ -1340,7 +1342,7 @@ describe('rangesEqual', () => {
 
   it('returns false when to date is null in first range', () => {
     const now = new Date();
-    const range1: DateRange = { from: now, to: null };
+    const range1: DateRange = { from: now };
     const range2: DateRange = { from: now, to: now };
 
     expect(rangesEqual(range1, range2)).toEqual(false);
@@ -1349,7 +1351,7 @@ describe('rangesEqual', () => {
   it('returns false when from date is null in second range', () => {
     const now = new Date();
     const range1: DateRange = { from: now, to: now };
-    const range2: DateRange = { from: null, to: now };
+    const range2: DateRange = { to: now };
 
     expect(rangesEqual(range1, range2)).toEqual(false);
   });
@@ -1357,7 +1359,7 @@ describe('rangesEqual', () => {
   it('returns false when to date is null in second range', () => {
     const now = new Date();
     const range1: DateRange = { from: now, to: now };
-    const range2: DateRange = { from: now, to: null };
+    const range2: DateRange = { from: now };
 
     expect(rangesEqual(range1, range2)).toEqual(false);
   });
@@ -1404,17 +1406,17 @@ describe('rangesEqual', () => {
 
 describe('orderRange', () => {
   it('does not change anything when from and to are null', () => {
-    const range = { from: null, to: null };
+    const range = {};
     expect(orderRange(range)).toEqual(range);
   });
 
-  it('does not change anything when from is null', () => {
-    const range = { from: null, to: new Date() };
+  it('does not change anything when from is undefined', () => {
+    const range = { to: new Date() };
     expect(orderRange(range)).toEqual(range);
   });
 
-  it('does not change anything when to is null', () => {
-    const range = { from: new Date(), to: null };
+  it('does not change anything when to is undefined', () => {
+    const range = { from: new Date() };
     expect(orderRange(range)).toEqual(range);
   });
 
@@ -1443,19 +1445,19 @@ describe('orderRange', () => {
 
 describe('isInDateRange', () => {
   it('returns false if from and to are null', () => {
-    const range = { from: null, to: null };
+    const range = {};
     expect(isInDateRange(new Date(), range)).toEqual(false);
   });
 
   it('returns false if from is null', () => {
     const now = new Date();
-    const range = { from: null, to: now };
+    const range = { to: now };
     expect(isInDateRange(now, range)).toEqual(false);
   });
 
   it('returns false if to is null', () => {
     const now = new Date();
-    const range = { from: now, to: null };
+    const range = { from: now };
     expect(isInDateRange(now, range)).toEqual(false);
   });
 
@@ -1630,52 +1632,52 @@ describe('isValidDateRangeString', () => {
 describe('formatRange', () => {
   it('returns empty string on undefined or null range', () => {
     expect(formatRange(undefined, 'dd-mm-yyyy')).toEqual('');
-    expect(formatRange({ from: null, to: null }, 'dd-mm-yyyy')).toEqual('');
-    expect(formatRange({ from: null, to: new Date() }, 'dd-mm-yyyy')).toEqual('');
+    expect(formatRange({}, 'dd-mm-yyyy')).toEqual('');
+    expect(formatRange({ to: new Date() }, 'dd-mm-yyyy')).toEqual('');
   });
 
   /**
    * Note: these test are to be run in the CET timezone (GMT+1)
    */
   it('returns properly formatted range with no to date', () => {
-    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: null }, 'dd.mm.yyyy')).toEqual('21.10.1995 - ');
-    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: null }, 'yyyy-mm-dd')).toEqual('1995-10-21 - ');
-    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: null }, 'dd-mm-yyyy')).toEqual('21-10-1995 - ');
-    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: null }, 'dd/mm/yyyy')).toEqual('21/10/1995 - ');
-    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: null }, 'yyyy/mm/dd')).toEqual('1995/10/21 - ');
-    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: null }, 'dd.mm.yy')).toEqual('21.10.95 - ');
-    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: null }, 'yy-mm-dd')).toEqual('95-10-21 - ');
-    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: null }, 'dd-mm-yy')).toEqual('21-10-95 - ');
-    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: null }, 'dd/mm/yy')).toEqual('21/10/95 - ');
-    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: null }, 'yy/mm/dd')).toEqual('95/10/21 - ');
-    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: null }, 'dd.mm.yyyy hh:MM:ss')).toEqual(
+    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z') }, 'dd.mm.yyyy')).toEqual('21.10.1995 - ');
+    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z') }, 'yyyy-mm-dd')).toEqual('1995-10-21 - ');
+    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z') }, 'dd-mm-yyyy')).toEqual('21-10-1995 - ');
+    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z') }, 'dd/mm/yyyy')).toEqual('21/10/1995 - ');
+    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z') }, 'yyyy/mm/dd')).toEqual('1995/10/21 - ');
+    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z') }, 'dd.mm.yy')).toEqual('21.10.95 - ');
+    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z') }, 'yy-mm-dd')).toEqual('95-10-21 - ');
+    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z') }, 'dd-mm-yy')).toEqual('21-10-95 - ');
+    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z') }, 'dd/mm/yy')).toEqual('21/10/95 - ');
+    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z') }, 'yy/mm/dd')).toEqual('95/10/21 - ');
+    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z') }, 'dd.mm.yyyy hh:MM:ss')).toEqual(
       '21.10.1995 05:24:32 - '
     );
-    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: null }, 'yyyy-mm-dd hh:MM:ss')).toEqual(
+    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z') }, 'yyyy-mm-dd hh:MM:ss')).toEqual(
       '1995-10-21 05:24:32 - '
     );
-    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: null }, 'dd-mm-yyyy hh:MM:ss')).toEqual(
+    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z') }, 'dd-mm-yyyy hh:MM:ss')).toEqual(
       '21-10-1995 05:24:32 - '
     );
-    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: null }, 'dd/mm/yyyy hh:MM:ss')).toEqual(
+    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z') }, 'dd/mm/yyyy hh:MM:ss')).toEqual(
       '21/10/1995 05:24:32 - '
     );
-    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: null }, 'yyyy/mm/dd hh:MM:ss')).toEqual(
+    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z') }, 'yyyy/mm/dd hh:MM:ss')).toEqual(
       '1995/10/21 05:24:32 - '
     );
-    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: null }, 'dd.mm.yy hh:MM:ss')).toEqual(
+    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z') }, 'dd.mm.yy hh:MM:ss')).toEqual(
       '21.10.95 05:24:32 - '
     );
-    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: null }, 'yy-mm-dd hh:MM:ss')).toEqual(
+    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z') }, 'yy-mm-dd hh:MM:ss')).toEqual(
       '95-10-21 05:24:32 - '
     );
-    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: null }, 'dd-mm-yy hh:MM:ss')).toEqual(
+    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z') }, 'dd-mm-yy hh:MM:ss')).toEqual(
       '21-10-95 05:24:32 - '
     );
-    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: null }, 'dd/mm/yy hh:MM:ss')).toEqual(
+    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z') }, 'dd/mm/yy hh:MM:ss')).toEqual(
       '21/10/95 05:24:32 - '
     );
-    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z'), to: null }, 'yy/mm/dd hh:MM:ss')).toEqual(
+    expect(formatRange({ from: new Date('1995-10-21T04:24:32Z') }, 'yy/mm/dd hh:MM:ss')).toEqual(
       '95/10/21 05:24:32 - '
     );
   });
@@ -1765,7 +1767,7 @@ describe('toRange', () => {
   });
 
   it('returns an incomplete range', () => {
-    expect(toRange('12/02/2024', 'dd/mm/yyyy')).toEqual({ from: new Date('2024-02-12T00:00:00'), to: null });
+    expect(toRange('12/02/2024', 'dd/mm/yyyy')).toEqual({ from: new Date('2024-02-12T00:00:00') });
   });
 
   it('returns a proper range', () => {
