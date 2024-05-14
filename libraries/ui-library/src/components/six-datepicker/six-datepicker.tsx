@@ -949,7 +949,7 @@ export class SixDatepicker {
             {this.renderHeader()}
             {this.renderBody()}
             {this.showTime && this.renderTimePicker()}
-            {this.showPredefinedRanges && this.renderPredefinedRanges()}
+            {this.type === 'date-range' && this.showPredefinedRanges && this.renderPredefinedRanges()}
             <div class="datepicker__footer">
               <slot />
             </div>
