@@ -860,14 +860,14 @@ export class SixDatepicker {
   private renderTimePicker() {
     let hours, minutes, seconds;
     if (this.isRange) {
-      if (this.selectedRange.end === null) {
-        hours = this.selectedRange.start?.getHours();
-        minutes = this.selectedRange.start?.getMinutes();
-        seconds = this.selectedRange.start?.getSeconds();
+      if (this.selectedRange.end === undefined) {
+        hours = this.selectedRange.start?.getHours() ?? 0;
+        minutes = this.selectedRange.start?.getMinutes() ?? 0;
+        seconds = this.selectedRange.start?.getSeconds() ?? 0;
       } else {
-        hours = this.selectedRange.end?.getHours();
-        minutes = this.selectedRange.end?.getMinutes();
-        seconds = this.selectedRange.end?.getSeconds();
+        hours = this.selectedRange.end?.getHours() ?? 0;
+        minutes = this.selectedRange.end?.getMinutes() ?? 0;
+        seconds = this.selectedRange.end?.getSeconds() ?? 0;
       }
     } else {
       hours = this.selectedDate?.getHours();
