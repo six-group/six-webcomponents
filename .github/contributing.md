@@ -1,6 +1,6 @@
 # SIX Web Components Contributing Guide
 
-Hi! I'm really excited that you are interested in contributing to the SIX Web Components. Before submitting your contribution, please make sure to take a moment and read through the following guidelines:
+Hi! We are really excited that you are interested in contributing to the SIX Web Components. Before submitting your contribution, please make sure to take a moment and read through the following guidelines:
 
 - [Issue Reporting Guidelines](#issue-reporting-guidelines)
 - [Pull Request Guidelines](#pull-request-guidelines)
@@ -51,7 +51,7 @@ Hi! I'm really excited that you are interested in contributing to the SIX Web Co
 
 You will need [Node.js](https://nodejs.org) **version 16+**, and [NPM](https://www.npmjs.com/package/npm) **version 8**.
 
-After cloning the repo, run in root directory:
+After cloning the repository, run in root directory:
 
 ```bash
 $ npm install # install the dependencies of the project
