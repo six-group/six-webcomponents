@@ -18,6 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - `six-error` examples not showing in the docs
 - Fire blur event when leaving multiselect component
+- Apply the debounce property from the date-picker to the time-picker
 
 ## 4.2.2 - 2024-03-28
 
