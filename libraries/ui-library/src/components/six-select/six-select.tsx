@@ -6,7 +6,7 @@ import { EventListeners } from '../../utils/event-listeners';
 import { debounce, DEFAULT_DEBOUNCE_FAST } from '../../utils/execution-control';
 import { SixMenuItemData } from '../six-menu/six-menu';
 import { getLanguage } from '../../utils/error-messages';
-import { convertToValidArrayValue, convertToValidValue } from './util';
+import { convertToValidArrayValue, convertToValidValue, valueEquals } from './util';
 
 export interface SixSelectChangePayload {
   value: string | string[];
@@ -189,7 +189,10 @@ export class SixSelect {
 
   @Watch('value')
   async handleValueChange() {
-    this.value = convertToValidValue(this.value, this.multiple);
+    const newValue = convertToValidValue(this.value, this.multiple);
+    if (!valueEquals(this.value, newValue)) {
+      this.value = newValue;
+    }
     await this.syncItemsFromValue();
   }
 
