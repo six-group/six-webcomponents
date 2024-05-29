@@ -28,6 +28,7 @@ Simple error container for forms. Used in the `error-text` slot for multiple inp
 ### Used by
 
  - [six-checkbox](six-checkbox.html)
+ - [six-file-upload](six-file-upload.html)
  - [six-group-label](six-group-label.html)
  - [six-input](six-input.html)
  - [six-range](six-range.html)
@@ -39,6 +40,7 @@ Simple error container for forms. Used in the `error-text` slot for multiple inp
 ```mermaid
 graph TD;
   six-checkbox --> six-error
+  six-file-upload --> six-error
   six-group-label --> six-error
   six-input --> six-error
   six-range --> six-error

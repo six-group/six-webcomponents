@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- `invalid` and `error-text` properties added to `six-file-upload`
 - `active-tab-indicator` part for the indicator in the six-tab component
 
 ### Changed

@@ -83,4 +83,8 @@ $margin: 1rem;
   &--disabled &__input {
     cursor: not-allowed;
   }
+
+  &__error-text {
+    font-size: var(--six-input-help-text-font-size-medium);
+  }
 }
