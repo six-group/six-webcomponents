@@ -8,6 +8,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- `invalid` and `error-text` properties to `six-file-upload`
+- `active-tab-indicator` part for the indicator in the six-tab component
+
 ### Changed
 
 - Upgrade project to internally build with Node18
@@ -15,8 +18,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Fixed
 
 - `six-select` not rendering when multiple is enabled and value is set to [null]
-- `invalid` and `error-text` properties added to `six-file-upload`
-- `active-tab-indicator` part for the indicator in the six-tab component
 - `six-error` examples not showing in the docs
 - Fire blur event when leaving multiselect component
 - Apply the debounce property from the date-picker to the time-picker
