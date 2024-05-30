@@ -19,7 +19,7 @@ describe('SIX Language Switcher', () => {
       <mock:shadow-root>
         <div class="language-switcher__container" part="container">
           <div>
-            <span class="language-switcher__label language-switcher__label--selected" part="label">
+            <span class="language-switcher__label language-switcher__label--selected" part="label" tabindex="0">
               EN
             </span>
             <span class="language-switcher__separator" part="separator">
@@ -27,7 +27,7 @@ describe('SIX Language Switcher', () => {
             </span>
           </div>
           <div>
-            <span class="language-switcher__label" part="label">
+            <span class="language-switcher__label" part="label" tabindex="0">
               DE
             </span>
             <span class="language-switcher__separator" part="separator">
@@ -35,7 +35,7 @@ describe('SIX Language Switcher', () => {
             </span>
           </div>
           <div>
-            <span class="language-switcher__label" part="label">
+            <span class="language-switcher__label" part="label" tabindex="0">
               ES
             </span>
           </div>
@@ -66,7 +66,7 @@ describe('SIX Language Switcher', () => {
       <mock:shadow-root>
         <div class="language-switcher__container" part="container">
           <div>
-            <span class="language-switcher__label language-switcher__label--selected" part="label">
+            <span class="language-switcher__label language-switcher__label--selected" part="label" tabindex="0">
               IT
             </span>
             <span class="language-switcher__separator" part="separator">
@@ -74,7 +74,7 @@ describe('SIX Language Switcher', () => {
             </span>
           </div>
           <div>
-            <span class="language-switcher__label" part="label">
+            <span class="language-switcher__label" part="label" tabindex="0">
               AR
             </span>
             <span class="language-switcher__separator" part="separator">
@@ -82,7 +82,7 @@ describe('SIX Language Switcher', () => {
             </span>
           </div>
           <div>
-            <span class="language-switcher__label" part="label">
+            <span class="language-switcher__label" part="label" tabindex="0">
               BG
             </span>
           </div>
@@ -109,7 +109,7 @@ describe('SIX Language Switcher', () => {
       <mock:shadow-root>
         <div class="language-switcher__container" part="container">
           <div>
-            <span class="language-switcher__label" part="label">
+            <span class="language-switcher__label" part="label" tabindex="0">
               EN
             </span>
             <span class="language-switcher__separator" part="separator">
@@ -117,7 +117,7 @@ describe('SIX Language Switcher', () => {
             </span>
           </div>
           <div>
-            <span class="language-switcher__label language-switcher__label--selected" part="label">
+            <span class="language-switcher__label language-switcher__label--selected" part="label" tabindex="0">
               DE
             </span>
             <span class="language-switcher__separator" part="separator">
@@ -125,7 +125,7 @@ describe('SIX Language Switcher', () => {
             </span>
           </div>
           <div>
-            <span class="language-switcher__label" part="label">
+            <span class="language-switcher__label" part="label" tabindex="0">
               ES
             </span>
           </div>
@@ -156,7 +156,7 @@ describe('SIX Language Switcher', () => {
       <mock:shadow-root>
         <div class="language-switcher__container" part="container">
           <div>
-            <span class="language-switcher__label" part="label">
+            <span class="language-switcher__label" part="label" tabindex="0">
               EN
             </span>
             <span class="language-switcher__separator" part="separator">
@@ -164,7 +164,7 @@ describe('SIX Language Switcher', () => {
             </span>
           </div>
           <div>
-            <span class="language-switcher__label language-switcher__label--selected" part="label">
+            <span class="language-switcher__label language-switcher__label--selected" part="label" tabindex="0">
               DE
             </span>
             <span class="language-switcher__separator" part="separator">
@@ -172,7 +172,7 @@ describe('SIX Language Switcher', () => {
             </span>
           </div>
           <div>
-            <span class="language-switcher__label" part="label">
+            <span class="language-switcher__label" part="label" tabindex="0">
               ES
             </span>
           </div>

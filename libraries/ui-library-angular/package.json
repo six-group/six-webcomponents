@@ -1,6 +1,6 @@
 {
   "name": "@six-group/ui-library-angular",
-  "version": "4.2.1",
+  "version": "4.2.2",
   "description": "Angular wrapper components for @six-group/ui-library",
   "private": false,
   "scripts": {
@@ -26,6 +26,6 @@
   },
   "sideEffects": false,
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=16"
   }
 }

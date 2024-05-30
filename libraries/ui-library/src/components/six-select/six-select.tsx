@@ -455,6 +455,9 @@ export class SixSelect {
 
   private handleMenuHide = () => {
     this.isOpen = false;
+    if (this.multiple) {
+      this.handleBlur();
+    }
   };
 
   private handleSlotChange = () => {

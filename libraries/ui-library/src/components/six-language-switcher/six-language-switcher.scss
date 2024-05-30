@@ -14,6 +14,11 @@
       color: var(--six-color-web-rock-600);
     }
 
+    &:focus-visible {
+      outline: var(--six-focus-ring);
+      outline-offset: var(--six-focus-ring-offset);
+    }
+
     &--selected {
       color: var(--six-color-black);
       text-decoration: underline;
