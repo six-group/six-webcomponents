@@ -319,7 +319,8 @@ export class SixHeader {
 
     return (
       <Host>
-        <header class="six-header">
+        <header part="header" class="six-header">
+          <slot name="header" />
           {hamburgerMenu}
 
           {logo}
