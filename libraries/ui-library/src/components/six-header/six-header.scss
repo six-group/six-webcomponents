@@ -32,6 +32,17 @@ $border-height: 0.25rem;
     &--clickable {
       cursor: pointer;
     }
+
+    &--six {
+      height: 20px;
+      overflow: visible;
+    }
+
+    &--bme {
+      margin-top: 6px;
+      height: 40px;
+      overflow: visible;
+    }
   }
 
   &__placeholder {

@@ -242,6 +242,7 @@ export const SixHeader = /*@__PURE__*/ defineContainer<JSX.SixHeader>('six-heade
   'openHamburgerMenu',
   'openSearch',
   'clickableLogo',
+  'logo',
   'six-header-app-name-clicked',
   'six-header-app-switcher-select',
   'six-header-profile-select',
