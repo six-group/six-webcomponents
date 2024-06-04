@@ -19,7 +19,7 @@ describe('six-header', () => {
     expect(page.root).toEqualHtml(`
       <six-header>
         <mock:shadow-root>
-          <header class="six-header">
+          <header part="header" class="six-header">
             <section class="six-header__menu">
               <six-icon-button name="menu"></six-icon-button>
             </section>
@@ -63,7 +63,7 @@ describe('six-header', () => {
     expect(page.root).toEqualHtml(`
       <six-header>
         <mock:shadow-root>
-          <header class="six-header">
+          <header part="header" class="six-header">
             <section class="six-header__menu">
               <six-icon-button name="menu"></six-icon-button>
             </section>
@@ -105,7 +105,7 @@ describe('six-header', () => {
     expect(page.root).toEqualHtml(`
       <six-header>
         <mock:shadow-root>
-          <header class="six-header">
+          <header part="header" class="six-header">
             <section class="six-header__menu">
               <six-icon-button name="menu"></six-icon-button>
             </section>
@@ -157,7 +157,7 @@ describe('six-header', () => {
     expect(page.root).toEqualHtml(`
       <six-header hide-hamburger-menu="true">
         <mock:shadow-root>
-          <header class="six-header">
+          <header part="header" class="six-header">
             <section class="six-header__logo">
             <svg height="20" viewBox="0 0 90 26" xmlns="http://www.w3.org/2000/svg">
               <title>
