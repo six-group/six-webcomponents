@@ -612,7 +612,7 @@ export declare interface SixGroupLabel extends Components.SixGroupLabel {}
 
 
 @ProxyCmp({
-  inputs: ['clickableLogo', 'hideHamburgerMenu', 'openHamburgerMenu', 'openSearch', 'shiftContent'],
+  inputs: ['clickableLogo', 'hideHamburgerMenu', 'logo', 'openHamburgerMenu', 'openSearch', 'shiftContent'],
   methods: ['setSearchOpenState', 'getIsSearchOpen']
 })
 @Component({
@@ -620,7 +620,7 @@ export declare interface SixGroupLabel extends Components.SixGroupLabel {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['clickableLogo', 'hideHamburgerMenu', 'openHamburgerMenu', 'openSearch', 'shiftContent'],
+  inputs: ['clickableLogo', 'hideHamburgerMenu', 'logo', 'openHamburgerMenu', 'openSearch', 'shiftContent'],
 })
 export class SixHeader {
   protected el: HTMLElement;

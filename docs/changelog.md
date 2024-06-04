@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Added part to header to allow customization from outside the component.
 - `invalid` and `error-text` properties added to `six-file-upload`
 - `active-tab-indicator` part for the indicator in the six-tab component
+- ability to choose between the six- and the bme-logo in the header with the attribute `logo`.
 
 ### Changed
 

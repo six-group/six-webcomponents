@@ -745,6 +745,10 @@ export namespace Components {
          */
         "hideHamburgerMenu": boolean;
         /**
+          * The displayed logo. Either six or bme. Defaults to six.
+         */
+        "logo": 'six' | 'bme';
+        /**
           * Set the hamburger menu icon to open or closed state
          */
         "openHamburgerMenu": boolean;
@@ -3864,6 +3868,10 @@ declare namespace LocalJSX {
           * Set whether the hamburger menu should be visible or not
          */
         "hideHamburgerMenu"?: boolean;
+        /**
+          * The displayed logo. Either six or bme. Defaults to six.
+         */
+        "logo"?: 'six' | 'bme';
         /**
           * Emitted when the name of the selected app is clicked.
          */
