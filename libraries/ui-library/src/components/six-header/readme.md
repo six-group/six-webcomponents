@@ -69,6 +69,13 @@ Type: `Promise<void>`
 | `"search-field"`      | Used to define the search field component in the header.          |
 
 
+## Shadow Parts
+
+| Part       | Description |
+| ---------- | ----------- |
+| `"header"` |             |
+
+
 ## Dependencies
 
 ### Depends on
