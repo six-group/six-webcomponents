@@ -103,6 +103,7 @@ export class SixTab {
           )}
         </div>
         <div
+          part={this.active ? 'active-tab-indicator' : ''}
           class={{
             tab__indicator: true,
             'tab__indicator--active': this.active,

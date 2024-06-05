@@ -671,6 +671,14 @@ export namespace Components {
          */
         "disabled": false;
         /**
+          * The error message shown, if `invalid` is set to true.
+         */
+        "errorText": string | string[];
+        /**
+          * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
+         */
+        "invalid": boolean;
+        /**
           * Label of the drop area.
          */
         "label"?: string;
@@ -3778,6 +3786,14 @@ declare namespace LocalJSX {
           * Set when button is disabled.
          */
         "disabled"?: false;
+        /**
+          * The error message shown, if `invalid` is set to true.
+         */
+        "errorText"?: string | string[];
+        /**
+          * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
+         */
+        "invalid"?: boolean;
         /**
           * Label of the drop area.
          */

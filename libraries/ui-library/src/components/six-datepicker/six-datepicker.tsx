@@ -766,6 +766,7 @@ export class SixDatepicker {
             {this.renderBody()}
             {this.type === 'date-time' && (
               <six-timepicker
+                debounce={this.debounce}
                 inline={true}
                 onSix-timepicker-change-debounced={(event) => this.onTimepickerChange(event)}
                 value={
