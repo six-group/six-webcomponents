@@ -320,7 +320,6 @@ export class SixHeader {
     return (
       <Host>
         <header part="header" class="six-header">
-          <slot name="header" />
           {hamburgerMenu}
 
           {logo}
