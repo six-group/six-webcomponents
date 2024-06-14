@@ -10,16 +10,14 @@
  * -------------------------------------------------------------------------- */
 
 :root {
-  --vp-c-brand: #de3919;
-  --vp-c-brand-light: #e83c1a;
-  --vp-c-brand-lighter: #f23f1b;
-  --vp-c-brand-lightest: #f7401b;
-  --vp-c-brand-dark: #d13617;
-  --vp-c-brand-darker: #bd3115;
+  --vp-c-brand-1: #de3919;
+  --vp-c-brand-2: #e83c1a;
+  --vp-c-brand-3: #f23f1b;
+  --vp-c-brand-soft: #f7401b;
   --vp-c-brand-dimm: rgba(100, 108, 255, 0.08);
   --vp-nav-logo-height: 14px;
   --vp-local-search-highlight-bg: none;
-  --vp-local-search-highlight-text: var(--vp-c-brand-dark);
+  --vp-code-color: #476582;
 }
 
 /**
@@ -27,13 +25,13 @@
  * -------------------------------------------------------------------------- */
 
 :root {
-  --vp-button-brand-border: var(--vp-c-brand-light);
+  /*  --vp-button-brand-border: var(--vp-c-brand-2);*/
   --vp-button-brand-text: var(--vp-c-white);
-  --vp-button-brand-bg: var(--vp-c-brand);
-  --vp-button-brand-hover-border: var(--vp-c-brand-light);
+  --vp-button-brand-bg: var(--vp-c-brand-1);
+  --vp-button-brand-hover-border: var(--vp-c-brand-2);
   --vp-button-brand-hover-text: var(--vp-c-white);
-  --vp-button-brand-hover-bg: var(--vp-c-brand-light);
-  --vp-button-brand-active-border: var(--vp-c-brand-light);
+  --vp-button-brand-hover-bg: var(--vp-c-brand-2);
+  --vp-button-brand-active-border: var(--vp-c-brand-2);
   --vp-button-brand-active-text: var(--vp-c-white);
   --vp-button-brand-active-bg: var(--vp-button-brand-bg);
 }
