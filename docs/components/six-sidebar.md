@@ -269,12 +269,11 @@ The following has many filler section elements to clearly show that the selected
 
 ## Properties
 
-| Property   | Attribute  | Description                                                                               | Type                | Default   |
-| ---------- | ---------- | ----------------------------------------------------------------------------------------- | ------------------- | --------- |
-| `open`     | `open`     | Indicates whether the sidebar is open. You can use this in lieu of the show/hide methods. | `boolean`           | `false`   |
-| `position` | `position` | Sidebar position                                                                          | `"left" \| "right"` | `'left'`  |
-| `toggled`  | `toggled`  | Define whether sidebar is toggled meaning only one menu can be open at the same time      | `boolean`           | `false`   |
-| `width`    | `width`    | Sidebar width                                                                             | `string`            | `'16rem'` |
+| Property   | Attribute  | Description                                                                               | Type                | Default  |
+| ---------- | ---------- | ----------------------------------------------------------------------------------------- | ------------------- | -------- |
+| `open`     | `open`     | Indicates whether the sidebar is open. You can use this in lieu of the show/hide methods. | `boolean`           | `false`  |
+| `position` | `position` | Sidebar position                                                                          | `"left" \| "right"` | `'left'` |
+| `toggled`  | `toggled`  | Define whether sidebar is toggled meaning only one menu can be open at the same time      | `boolean`           | `false`  |
 
 
 ## Events
@@ -358,6 +357,13 @@ Type: `Promise<void>`
 | Slot | Description                                       |
 | ---- | ------------------------------------------------- |
 |      | Used to define the nested side bar [group] items. |
+
+
+## Shadow Parts
+
+| Part          | Description |
+| ------------- | ----------- |
+| `"container"` |             |
 
 
 ----------------------------------------------
