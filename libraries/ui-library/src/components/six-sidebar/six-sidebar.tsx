@@ -31,9 +31,6 @@ export class SixSidebar {
   /** Indicates whether the sidebar is open. You can use this in lieu of the show/hide methods. */
   @Prop({ mutable: true, reflect: true }) open = false;
 
-  /** Sidebar width */
-  @Prop() width = '16rem';
-
   /** Define whether sidebar is toggled meaning only one menu can be open at the same time*/
   @Prop() toggled = false;
 
@@ -243,16 +240,13 @@ export class SixSidebar {
     return (
       <host class="six-sidebar">
         <div
+          part="container"
           class={{
             sidebar__container: true,
             'sidebar--visible': this.isVisible,
             'sidebar--open': this.open,
             'sidebar--left': this.position === 'left',
             'sidebar--right': this.position === 'right',
-          }}
-          style={{
-            width: this.width,
-            [`margin-${this.position}`]: this.open ? '0' : `calc(1rem - ${this.width})`,
           }}
           ref={(el) => (this.sidebar = el)}
           aria-hidden={this.open ? 'false' : 'true'}

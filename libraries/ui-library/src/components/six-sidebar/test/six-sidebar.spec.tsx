@@ -11,7 +11,7 @@ describe('six-sidebar', () => {
       <six-sidebar>
         <mock:shadow-root>
           <host class="six-sidebar">
-            <div aria-hidden="true" class="sidebar--left sidebar__container" style="width: 16rem; margin-left: calc(1rem - 16rem);">
+            <div aria-hidden="true" class="sidebar--left sidebar__container" part="container">
               <slot></slot>
             </div>
           </host>
