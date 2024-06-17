@@ -474,7 +474,6 @@ export const SixSelect = /*@__PURE__*/ defineContainer<JSX.SixSelect, JSX.SixSel
 export const SixSidebar = /*@__PURE__*/ defineContainer<JSX.SixSidebar>('six-sidebar', undefined, [
   'position',
   'open',
-  'width',
   'toggled',
   'six-sidebar-show',
   'six-sidebar-after-show',
