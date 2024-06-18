@@ -1,4 +1,4 @@
-import { getValue, isValidValue } from '../util';
+import { convertToValidValue, getValue, isValidValue } from '../util';
 
 describe('util', () => {
   describe('getValue(multiple)', () => {
@@ -79,6 +79,29 @@ describe('util', () => {
       [['1', '2'], [{ value: '1' }, { value: '2' }], false],
     ])("value '%s', items: '%s' == '%s'", (value, menuItems, expected) => {
       expect(isValidValue(value, false, menuItems)).toBe(expected);
+    });
+  });
+
+  describe('convertToValidValue(value, multiple)', () => {
+    it.each([
+      [null, true, []],
+      [[null], true, []],
+      [[1, 2], true, []],
+      [[], true, []],
+      [['abcd', 'efgh'], true, ['abcd', 'efgh']],
+      [[{}], true, []],
+      [{}, true, []],
+      ['abc', true, ['abc']],
+      ['', true, []],
+      [undefined, true, []],
+      [1, false, ''],
+      ['', false, ''],
+      [{}, false, ''],
+      ['abc', false, 'abc'],
+      [[], false, ''],
+      [null, false, ''],
+    ])("value '%s', multiple: '%s' === '%s'", (value, multiple, expected) => {
+      expect(convertToValidValue(value, multiple)).toStrictEqual(expected);
     });
   });
 });
