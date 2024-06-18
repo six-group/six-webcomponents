@@ -1,6 +1,6 @@
-# Six Webcomponents Contributing Guide
+# SIX Web Components Contributing Guide
 
-Hi! I'm really excited that you are interested in contributing to the SIX Webcomponents. Before submitting your contribution, please make sure to take a moment and read through the following guidelines:
+Hi! We are really excited that you are interested in contributing to the SIX Web Components. Before submitting your contribution, please make sure to take a moment and read through the following guidelines:
 
 - [Issue Reporting Guidelines](#issue-reporting-guidelines)
 - [Pull Request Guidelines](#pull-request-guidelines)
@@ -33,7 +33,7 @@ Hi! I'm really excited that you are interested in contributing to the SIX Webcom
 
 - Make sure tests pass!
 
-- Commit messages must follow the [commit message convention](./commit-convention.md) so that changelogs can be automatically generated. Commit messages are automatically validated before commit (by invoking [Git Hooks](https://git-scm.com/docs/githooks) via [simple-git-hooks](https://github.com/toplenboren/simple-git-hooks)).
+- Update the "upcoming" section inside _docs/changelog.md_ with the details of your changes. The changelog should follow this convention: [Keepachangelog](https://keepachangelog.com/en/1.1.0/)
 
 - No need to worry about code style as long as you have installed the dev dependencies - modified files are automatically formatted with Prettier on commit (by invoking [Git Hooks](https://git-scm.com/docs/githooks) via [simple-git-hooks](https://github.com/toplenboren/simple-git-hooks)).
 
@@ -51,7 +51,7 @@ Hi! I'm really excited that you are interested in contributing to the SIX Webcom
 
 You will need [Node.js](https://nodejs.org) **version 16+**, and [NPM](https://www.npmjs.com/package/npm) **version 8**.
 
-After cloning the repo, run in root directory::
+After cloning the repository, run in root directory:
 
 ```bash
 $ npm install # install the dependencies of the project
@@ -65,9 +65,11 @@ A high level overview of tools used:
 
 ## Project Structure
 
-This repository employs a [monorepo](https://en.wikipedia.org/wiki/Monorepo) setup which hosts a number of associated packages under the `packages` directory:
+This repository employs a [monorepo](https://en.wikipedia.org/wiki/Monorepo) setup which hosts a number of associated packages under the `libraries` directory:
 
 - `ui-library`: <tbd>
+
+- `ui-library-angular`: <tbd>
 
 - `ui-library-react`: <tbd>
 
@@ -75,10 +77,10 @@ This repository employs a [monorepo](https://en.wikipedia.org/wiki/Monorepo) set
 
 ## Contributing Tests
 
-Unit tests are collocated with the code being tested in each package, inside directories named `__tests__`. Consult the [Jest docs](https://jestjs.io/docs/en/using-matchers) and existing test cases for how to write new test specs. Here are some additional guidelines:
+Unit tests are collocated with the code being tested in each package, inside directories named `test`. Consult the [Jest docs](https://jestjs.io/docs/en/using-matchers) and existing test cases for how to write new test specs.
 
 ## Credits
 
-Thank you to all the people who have already contributed to Six-Webcomponents!
+Thank you to all the people who have already contributed to SIX Web Components!
 
 <a href="https://github.com/six-group/six-webcomponents/graphs/contributors"></a>
