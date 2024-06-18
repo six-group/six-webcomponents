@@ -8,8 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
-- `invalid` and `error-text` properties to `six-file-upload`
+- Added part to header to allow customization from outside the component.
+- `invalid` and `error-text` properties added to `six-file-upload`
 - `active-tab-indicator` part for the indicator in the six-tab component
+- ability to choose between the six- and the bme-logo in the header with the attribute `logo`.
 
 ### Changed
 
@@ -18,6 +20,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Fixed
 
 - `six-select` not rendering when multiple is enabled and value is set to [null]
+- `six-datepicker` can have an invalid value after blur
 - `six-error` examples not showing in the docs
 - Fire blur event when leaving multiselect component
 - Apply the debounce property from the date-picker to the time-picker

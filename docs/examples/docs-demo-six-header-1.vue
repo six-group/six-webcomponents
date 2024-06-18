@@ -2,10 +2,7 @@
 <div>
 
         <six-root>
-          <six-header show-search slot="header" shift-content>
-            
-            <img src="https://www.bolsasymercados.es/images/Base/Logo.svg?v=Six" slot="logo" height="20px" >
-          </six-header>
+          <six-header logo="bme" show-search slot="header" shift-content></six-header>
           <section slot="main"></section>
         </six-root>
       
