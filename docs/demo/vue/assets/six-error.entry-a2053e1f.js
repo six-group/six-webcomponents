@@ -1,1 +1,0 @@
-import{r as c,h as r}from"./index-a1abd9b6.js";const s=".six-error-container{text-align:left;color:var(--six-color-danger-800);width:100%}",o=s,t=class{constructor(e){c(this,e)}render(){return r("div",{key:"cb030d06c5672995c6c8077eebe7ec6e605bfbec",class:"six-error-container"},r("slot",{key:"eec715b6c3f8933ffce58f37dedc73c7e006c14b"}))}};t.style=o;export{t as six_error};
