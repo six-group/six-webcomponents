@@ -33,7 +33,7 @@ Hi! We are really excited that you are interested in contributing to the SIX Web
 
 - Make sure tests pass!
 
-- Update the "upcoming" section inside _docs/changelog.md_ with the details of your changes.
+- Update the "upcoming" section inside _docs/changelog.md_ with the details of your changes. The changelog should follow this convention: [Keepachangelog](https://keepachangelog.com/en/1.1.0/)
 
 - No need to worry about code style as long as you have installed the dev dependencies - modified files are automatically formatted with Prettier on commit (by invoking [Git Hooks](https://git-scm.com/docs/githooks) via [simple-git-hooks](https://github.com/toplenboren/simple-git-hooks)).
 
