@@ -1,4 +1,6 @@
 import { Component, Element, Event, EventEmitter, h, Listen, Prop, State } from '@stencil/core';
+import { hasSlot } from '../../utils/slot';
+
 interface ISingleFile {
   file: File;
 }
@@ -17,6 +19,7 @@ export interface SixFileUploadFailurePayload {
  * @since 2.0.0
  * @status experimental
  *
+ * @slot error-text - Error text that is shown when the status is set to invalid. Alternatively, you can use the error-text prop.
  */
 @Component({
   tag: 'six-file-upload',
@@ -30,6 +33,7 @@ export class SixFileUpload {
   private fileInput?: HTMLInputElement;
 
   @State() isOver = false;
+  @State() hasError = false;
 
   /** Set to true if file control should be small. */
   @Prop() readonly compact: boolean = false;
@@ -51,6 +55,12 @@ export class SixFileUpload {
 
   /** Set to true to draw the control in a loading state. */
   @Prop({ reflect: true }) uploading = false;
+
+  /** The error message shown, if `invalid` is set to true.  */
+  @Prop() errorText: string | string[] = '';
+
+  /** If this property is set to true and an error message is provided by `errorText`, the error message is displayed.  */
+  @Prop({ reflect: true }) invalid = false;
 
   /** Triggers when a file is added. */
   @Event({ eventName: 'six-file-upload-success' }) success!: EventEmitter<SixFileUploadSuccessPayload>;
@@ -89,6 +99,22 @@ export class SixFileUpload {
     }
   }
 
+  private handleSlotChange = () => {
+    let validType = false;
+
+    if (
+      this.errorText != null &&
+      ((typeof this.errorText == 'string' && this.errorText.trim().length > 0) ||
+        (typeof this.errorText == 'object' && this.errorText.length > 0))
+    ) {
+      validType = true;
+    }
+
+    this.hasError = validType || hasSlot(this.host, 'error-text');
+    console.log(this.errorText);
+    console.log(this.hasError);
+  };
+
   private handleFiles = (files: FileList) => {
     if (this.disabled || files.length === 0 || this.uploading) {
       return;
@@ -123,11 +149,16 @@ export class SixFileUpload {
     this.success.emit(eventPayload);
   };
 
+  componentWillLoad() {
+    this.handleSlotChange();
+  }
+
   componentDidLoad() {
     ['dragenter', 'dragover', 'dragleave', 'drop'].forEach((eventName) => {
       this.host.addEventListener(eventName, this.preventDefaults, false);
       document.body.addEventListener(eventName, this.preventDefaults, false);
     });
+    this.host.shadowRoot?.addEventListener('slotchange', this.handleSlotChange);
   }
 
   disconnectedCallback() {
@@ -135,6 +166,7 @@ export class SixFileUpload {
       this.host.removeEventListener(eventName, this.preventDefaults, false);
       document.body.removeEventListener(eventName, this.preventDefaults, false);
     });
+    this.host.shadowRoot?.removeEventListener('slotchange', this.handleSlotChange);
   }
 
   private preventDefaults(e: Event) {
@@ -166,6 +198,10 @@ export class SixFileUpload {
   render() {
     const Container = this.compact ? 'six-button' : 'six-card';
 
+    const errorMessages = (Array.isArray(this.errorText) ? this.errorText : [this.errorText]).filter(
+      (text) => text != null && text.trim() !== ''
+    );
+
     return (
       <div
         class={{
@@ -175,6 +211,7 @@ export class SixFileUpload {
       >
         <Container
           disabled={this.disabled || this.uploading}
+          aria-invalid={this.invalid ? 'true' : 'false'}
           class={{
             'six-file-upload__container--compact': this.compact,
             'six-file-upload__container--full': !this.compact,
@@ -213,6 +250,15 @@ export class SixFileUpload {
             )}
           </div>
         </Container>
+        <div aria-hidden={this.invalid ? 'false' : 'true'}>
+          <slot name="error-text">
+            {errorMessages.map((text) => (
+              <six-error>
+                <div class="six-file-upload__error-text">{text}</div>
+              </six-error>
+            ))}
+          </slot>
+        </div>
       </div>
     );
   }

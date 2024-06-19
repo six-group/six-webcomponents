@@ -217,6 +217,8 @@ export const SixFileUpload = /*@__PURE__*/ defineContainer<JSX.SixFileUpload>('s
   'multiple',
   'maxFileSize',
   'uploading',
+  'errorText',
+  'invalid',
   'six-file-upload-success',
   'six-file-upload-failure'
 ]);
@@ -240,6 +242,7 @@ export const SixHeader = /*@__PURE__*/ defineContainer<JSX.SixHeader>('six-heade
   'openHamburgerMenu',
   'openSearch',
   'clickableLogo',
+  'logo',
   'six-header-app-name-clicked',
   'six-header-app-switcher-select',
   'six-header-profile-select',

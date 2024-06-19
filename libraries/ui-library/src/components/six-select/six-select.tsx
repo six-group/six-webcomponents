@@ -6,6 +6,7 @@ import { EventListeners } from '../../utils/event-listeners';
 import { debounce, DEFAULT_DEBOUNCE_FAST } from '../../utils/execution-control';
 import { SixMenuItemData } from '../six-menu/six-menu';
 import { getLanguage } from '../../utils/error-messages';
+import { convertToValidArrayValue, convertToValidValue, valueEquals } from './util';
 
 export interface SixSelectChangePayload {
   value: string | string[];
@@ -182,20 +183,15 @@ export class SixSelect {
 
   @Watch('multiple')
   handleMultipleChange() {
-    // Cast to array | string based on `this.multiple`
-    const value = this.getValueAsArray();
-    this.value = this.multiple ? value : value[0] || '';
+    this.value = convertToValidValue(this.value, this.multiple);
     this.syncItemsFromValue();
   }
 
   @Watch('value')
   async handleValueChange() {
-    if (this.multiple && !Array.isArray(this.value)) {
-      this.value = [];
-    }
-
-    if (!this.multiple && typeof this.value !== 'string') {
-      this.value = '';
+    const newValue = convertToValidValue(this.value, this.multiple);
+    if (!valueEquals(this.value, newValue)) {
+      this.value = newValue;
     }
     await this.syncItemsFromValue();
   }
@@ -217,10 +213,8 @@ export class SixSelect {
   }
 
   componentWillLoad() {
+    this.value = convertToValidValue(this.value, this.multiple);
     this.handleSlotChange();
-    if (this.multiple && this.value != null) {
-      this.value = this.getValueAsArray();
-    }
   }
 
   componentDidLoad() {
@@ -293,12 +287,6 @@ export class SixSelect {
 
   private getSelectionContainerItems() {
     return [...(this.host.shadowRoot?.querySelectorAll('six-menu-item') || [])];
-  }
-
-  private getValueAsArray() {
-    const values = Array.isArray(this.value) ? this.value : this.value === '' ? [] : [this.value];
-    // enforce that the values are converted to 'string' before the value is compared
-    return values.map(String);
   }
 
   private handleBlur = () => {
@@ -429,13 +417,13 @@ export class SixSelect {
     }
     this.activeItemIndex = -1;
 
-    // reset display style of main items
-    const mainItems = this.getItems();
-    mainItems.forEach((item) => (item.style.display = 'unset'));
-
-    // show selected menu items in the selection container and hide them in the main container
-    const checkedItems = getCheckedItems(this.getValueAsArray(), mainItems);
     if (!this.virtualScroll && this.multiple) {
+      // reset display style of main items
+      const mainItems = this.getItems();
+      mainItems.forEach((item) => (item.style.display = 'unset'));
+
+      // show selected menu items in the selection container and hide them in the main container
+      const checkedItems = getCheckedItems(convertToValidArrayValue(this.value), mainItems);
       checkedItems.forEach((i) => (i.style.display = 'none'));
       this.selectionContainerItems = checkedItems.map((item) => {
         return (
@@ -467,6 +455,9 @@ export class SixSelect {
 
   private handleMenuHide = () => {
     this.isOpen = false;
+    if (this.multiple) {
+      this.handleBlur();
+    }
   };
 
   private handleSlotChange = () => {
@@ -482,7 +473,7 @@ export class SixSelect {
   private async syncItemsFromValue() {
     const selectionContainerItems = this.getSelectionContainerItems();
     const mainItems = this.getItems();
-    const value = this.getValueAsArray();
+    const value = convertToValidValue(this.value, this.multiple);
 
     selectionContainerItems.forEach((item) => {
       item.checkType = this.multiple ? 'checkbox' : 'check';
@@ -493,7 +484,7 @@ export class SixSelect {
       item.checked = value.includes(item.value);
     });
 
-    const checkedItems = getCheckedItems(this.getValueAsArray(), mainItems);
+    const checkedItems = getCheckedItems(convertToValidArrayValue(this.value), mainItems);
     this.displayedValues = checkedItems.map((i) => this.getItemLabel(i));
 
     if (this.autocomplete && this.autocompleteInput != null) {

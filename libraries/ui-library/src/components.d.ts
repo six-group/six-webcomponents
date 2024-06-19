@@ -678,6 +678,14 @@ export namespace Components {
          */
         "disabled": false;
         /**
+          * The error message shown, if `invalid` is set to true.
+         */
+        "errorText": string | string[];
+        /**
+          * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
+         */
+        "invalid": boolean;
+        /**
           * Label of the drop area.
          */
         "label"?: string;
@@ -743,6 +751,10 @@ export namespace Components {
           * Set whether the hamburger menu should be visible or not
          */
         "hideHamburgerMenu": boolean;
+        /**
+          * The displayed logo. Either six or bme. Defaults to six.
+         */
+        "logo": 'six' | 'bme';
         /**
           * Set the hamburger menu icon to open or closed state
          */
@@ -3793,6 +3805,14 @@ declare namespace LocalJSX {
          */
         "disabled"?: false;
         /**
+          * The error message shown, if `invalid` is set to true.
+         */
+        "errorText"?: string | string[];
+        /**
+          * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
+         */
+        "invalid"?: boolean;
+        /**
           * Label of the drop area.
          */
         "label"?: string;
@@ -3862,6 +3882,10 @@ declare namespace LocalJSX {
           * Set whether the hamburger menu should be visible or not
          */
         "hideHamburgerMenu"?: boolean;
+        /**
+          * The displayed logo. Either six or bme. Defaults to six.
+         */
+        "logo"?: 'six' | 'bme';
         /**
           * Emitted when the name of the selected app is clicked.
          */

@@ -181,19 +181,37 @@
         </script>
       </section>
 
-      <h3>Replace Logo</h3>
+      <h3>Choose Logo</h3>
+      <p>You can choose between the SIX or the BME logo with <code>logo="six"</code> or <code>logo="bme"</code>.</p>
+      <section>
+        <six-root>
+          <six-header logo="bme" show-search slot="header" shift-content></six-header>
+          <section slot="main"></section>
+        </six-root>
+      </section>
+
+      <h3>Custom Logo</h3>
       <p>
-        In case you don't want the Six Logo, you have the functionality to replace the Logo with
+        In case you don't want to use the predefined logos, you have the functionality to replace the Logo with
         <code>slot="logo"</code>.
       </p>
       <section>
         <six-root>
           <six-header show-search slot="header" shift-content>
-            <!--avatar-->
-            <img src="https://www.bolsasymercados.es/images/Base/Logo.svg?v=Six" slot="logo" height="20px" />
+            <img
+              slot="logo"
+              class="custom-logo"
+              src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"
+            />
           </six-header>
           <section slot="main"></section>
         </six-root>
+        <style>
+          .custom-logo {
+            overflow: visible;
+            height: 20px;
+          }
+        </style>
       </section>
 
       <!-- START NEW EXAMPLE -->

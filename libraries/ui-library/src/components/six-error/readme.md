@@ -1,6 +1,6 @@
 # six-error
 
-
+<!-- EXAMPLES -->
 
 <!-- Auto Generated Below -->
 
@@ -17,6 +17,7 @@
 ### Used by
 
  - [six-checkbox](../six-checkbox)
+ - [six-file-upload](../six-file-upload)
  - [six-group-label](../six-group-label)
  - [six-input](../six-input)
  - [six-range](../six-range)
@@ -28,6 +29,7 @@
 ```mermaid
 graph TD;
   six-checkbox --> six-error
+  six-file-upload --> six-error
   six-group-label --> six-error
   six-input --> six-error
   six-range --> six-error

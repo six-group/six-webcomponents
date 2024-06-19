@@ -167,20 +167,42 @@ To listen to the selected app-switcher element simply register a listener on `si
 ```
 
 
-### Replace Logo
+### Choose Logo
 
-In case you don't want the Six Logo, you have the functionality to replace the Logo with `slot="logo"`.
+You can choose between the SIX or the BME logo with `logo="six"` or `logo="bme"`.
 
 <docs-demo-six-header-1></docs-demo-six-header-1>
 
 ```html
 <six-root>
+  <six-header logo="bme" show-search slot="header" shift-content></six-header>
+  <section slot="main"></section>
+</six-root>
+```
+
+
+### Custom Logo
+
+In case you don't want to use the predefined logos, you have the functionality to replace the Logo with `slot="logo"`.
+
+<docs-demo-six-header-2></docs-demo-six-header-2>
+
+```html
+<six-root>
   <six-header show-search slot="header" shift-content>
-    
-    <img src="https://www.bolsasymercados.es/images/Base/Logo.svg?v=Six" slot="logo" height="20px" >
+    <img               slot="logo"
+      class="custom-logo"
+      src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"
+    >
   </six-header>
   <section slot="main"></section>
 </six-root>
+<style>
+  .custom-logo {
+    overflow: visible;
+    height: 20px;
+  }
+</style>
 ```
 
 
@@ -189,7 +211,7 @@ In case you don't want the Six Logo, you have the functionality to replace the L
 
 You can enforce the search bar to be open or closed by setting the `open-search` property
 
-<docs-demo-six-header-2></docs-demo-six-header-2>
+<docs-demo-six-header-3></docs-demo-six-header-3>
 
 ```html
 <six-button id="search-toggle-attribute-btn">Toggle Search via Attribute</six-button>
@@ -226,7 +248,7 @@ You can enforce the search bar to be open or closed by setting the `open-search`
 
 In case you want to e.g. navigate to the dashboard when the header logo is clicked simply listen to the `six-header-logo-clicked` event and set the `clickable-logo` attribute
 
-<docs-demo-six-header-3></docs-demo-six-header-3>
+<docs-demo-six-header-4></docs-demo-six-header-4>
 
 ```html
 <six-root>
@@ -249,13 +271,14 @@ In case you want to e.g. navigate to the dashboard when the header logo is click
 
 ## Properties
 
-| Property            | Attribute             | Description                                                               | Type      | Default |
-| ------------------- | --------------------- | ------------------------------------------------------------------------- | --------- | ------- |
-| `clickableLogo`     | `clickable-logo`      | Set whether the logo should be clickable                                  | `boolean` | `false` |
-| `hideHamburgerMenu` | `hide-hamburger-menu` | Set whether the hamburger menu should be visible or not                   | `boolean` | `false` |
-| `openHamburgerMenu` | `open-hamburger-menu` | Set the hamburger menu icon to open or closed state                       | `boolean` | `false` |
-| `openSearch`        | `open-search`         | Set the header search to be in an open or closed state                    | `boolean` | `false` |
-| `shiftContent`      | `shift-content`       | Indicates if content should be shifted down when search field is visible. | `boolean` | `false` |
+| Property            | Attribute             | Description                                                               | Type             | Default |
+| ------------------- | --------------------- | ------------------------------------------------------------------------- | ---------------- | ------- |
+| `clickableLogo`     | `clickable-logo`      | Set whether the logo should be clickable                                  | `boolean`        | `false` |
+| `hideHamburgerMenu` | `hide-hamburger-menu` | Set whether the hamburger menu should be visible or not                   | `boolean`        | `false` |
+| `logo`              | `logo`                | The displayed logo. Either six or bme. Defaults to six.                   | `"bme" \| "six"` | `'six'` |
+| `openHamburgerMenu` | `open-hamburger-menu` | Set the hamburger menu icon to open or closed state                       | `boolean`        | `false` |
+| `openSearch`        | `open-search`         | Set the header search to be in an open or closed state                    | `boolean`        | `false` |
+| `shiftContent`      | `shift-content`       | Indicates if content should be shifted down when search field is visible. | `boolean`        | `false` |
 
 
 ## Events
@@ -309,6 +332,13 @@ Type: `Promise<void>`
 | `"profile-avatar"`    | Used to define the avator in the header.                          |
 | `"profile-menu"`      | Used to define the profile menu in the header.                    |
 | `"search-field"`      | Used to define the search field component in the header.          |
+
+
+## Shadow Parts
+
+| Part       | Description |
+| ---------- | ----------- |
+| `"header"` |             |
 
 
 ## Dependencies

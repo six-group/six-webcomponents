@@ -32,6 +32,28 @@ export function isValidValue(value: unknown, multiple: boolean, menuItems: MenuI
   return getSelectedMenuItem(value, menuItems) != null;
 }
 
+export function convertToValidValue(value: unknown, multiple: boolean): string | string[] {
+  if (multiple) {
+    if (Array.isArray(value)) {
+      return value.filter((element) => typeof element === 'string');
+    } else if (typeof value === 'string' && value.length > 0) {
+      return [value];
+    } else {
+      return [];
+    }
+  } else {
+    if (typeof value === 'string') {
+      return value;
+    } else {
+      return '';
+    }
+  }
+}
+
+export function convertToValidArrayValue(value: unknown): string[] {
+  return convertToValidValue(value, true) as string[];
+}
+
 export function valueEquals(a: string | string[], b: string | string[]): boolean {
   if (Array.isArray(a) && Array.isArray(b)) {
     return a.length === b.length && a.every((element, index) => element === b[index]);
