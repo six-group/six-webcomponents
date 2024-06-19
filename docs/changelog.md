@@ -6,9 +6,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## Upcoming
 
-- Add `action-outline` value for `type` property of button
-
 ### Added
+
+- Added `action-outline` value for `type` property of button
 
 ### Changed
 
