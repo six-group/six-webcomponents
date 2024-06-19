@@ -26,6 +26,7 @@ Use the `type` attribute to set the button's type.
 <six-button type="warning">Warning</six-button>
 <six-button type="danger">Danger</six-button>
 <six-button type="action">Action</six-button>
+<six-button type="action-outline">Action Outline</six-button>
 ```
 
 
@@ -42,6 +43,7 @@ Notice on different background colors that the Link button has no background
   <six-button type="warning">Warning</six-button>
   <six-button type="danger">Danger</six-button>
   <six-button type="action">Action</six-button>
+  <six-button type="action-outline">Action Outline</six-button>
 </div>
 <div style="padding: 1em; background-color: #262626">
   <six-button>Primary</six-button>
@@ -51,6 +53,7 @@ Notice on different background colors that the Link button has no background
   <six-button type="warning">Warning</six-button>
   <six-button type="danger">Danger</six-button>
   <six-button type="action">Action</six-button>
+  <six-button type="action-outline">Action Outline</six-button>
 </div>
 ```
 
@@ -254,6 +257,7 @@ Use the `disabled` prop to disable a button. Clicks will be suppressed until the
 <six-button type="warning" disabled>Warning</six-button>
 <six-button type="danger" disabled>Danger</six-button>
 <six-button type="action" disabled>Action</six-button>
+<six-button type="action-outline" disabled>Action Outline</six-button>
 ```
 
 
@@ -263,22 +267,22 @@ Use the `disabled` prop to disable a button. Clicks will be suppressed until the
 
 ## Properties
 
-| Property   | Attribute  | Description                                                                                            | Type                                                                                   | Default     |
-| ---------- | ---------- | ------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------- | ----------- |
-| `caret`    | `caret`    | Set to true to draw the button with a caret for use with dropdowns, popovers, etc.                     | `boolean`                                                                              | `false`     |
-| `circle`   | `circle`   | Set to true to draw a circle button.                                                                   | `boolean`                                                                              | `false`     |
-| `disabled` | `disabled` | Set to true to disable the button.                                                                     | `boolean`                                                                              | `false`     |
-| `download` | `download` | Tells the browser to download the linked file as this filename. Only used when `href` is set.          | `string \| undefined`                                                                  | `undefined` |
-| `href`     | `href`     | When set, the underlying button will be rendered as an `<a>` with this `href` instead of a `<button>`. | `string \| undefined`                                                                  | `undefined` |
-| `loading`  | `loading`  | Set to true to draw the button in a loading state.                                                     | `boolean`                                                                              | `false`     |
-| `name`     | `name`     | An optional name for the button. Ignored when `href` is set.                                           | `string`                                                                               | `''`        |
-| `pill`     | `pill`     | Set to true to draw a pill-style button with rounded edges.                                            | `boolean`                                                                              | `false`     |
-| `reset`    | `reset`    | Indicates if activating the button should reset the form.                                              | `boolean`                                                                              | `false`     |
-| `size`     | `size`     | The button's size.                                                                                     | `"large" \| "medium" \| "small"`                                                       | `'medium'`  |
-| `submit`   | `submit`   | Indicates if activating the button should submit the form. Ignored when `href` is set.                 | `boolean`                                                                              | `false`     |
-| `target`   | `target`   | Tells the browser where to open the link. Only used when `href` is set.                                | `"_blank" \| "_parent" \| "_self" \| "_top" \| undefined`                              | `undefined` |
-| `type`     | `type`     | The button's type.                                                                                     | `"action" \| "danger" \| "link" \| "primary" \| "secondary" \| "success" \| "warning"` | `'primary'` |
-| `value`    | `value`    | An optional value for the button. Ignored when `href` is set.                                          | `string`                                                                               | `''`        |
+| Property   | Attribute  | Description                                                                                            | Type                                                                                                       | Default     |
+| ---------- | ---------- | ------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------- | ----------- |
+| `caret`    | `caret`    | Set to true to draw the button with a caret for use with dropdowns, popovers, etc.                     | `boolean`                                                                                                  | `false`     |
+| `circle`   | `circle`   | Set to true to draw a circle button.                                                                   | `boolean`                                                                                                  | `false`     |
+| `disabled` | `disabled` | Set to true to disable the button.                                                                     | `boolean`                                                                                                  | `false`     |
+| `download` | `download` | Tells the browser to download the linked file as this filename. Only used when `href` is set.          | `string \| undefined`                                                                                      | `undefined` |
+| `href`     | `href`     | When set, the underlying button will be rendered as an `<a>` with this `href` instead of a `<button>`. | `string \| undefined`                                                                                      | `undefined` |
+| `loading`  | `loading`  | Set to true to draw the button in a loading state.                                                     | `boolean`                                                                                                  | `false`     |
+| `name`     | `name`     | An optional name for the button. Ignored when `href` is set.                                           | `string`                                                                                                   | `''`        |
+| `pill`     | `pill`     | Set to true to draw a pill-style button with rounded edges.                                            | `boolean`                                                                                                  | `false`     |
+| `reset`    | `reset`    | Indicates if activating the button should reset the form.                                              | `boolean`                                                                                                  | `false`     |
+| `size`     | `size`     | The button's size.                                                                                     | `"large" \| "medium" \| "small"`                                                                           | `'medium'`  |
+| `submit`   | `submit`   | Indicates if activating the button should submit the form. Ignored when `href` is set.                 | `boolean`                                                                                                  | `false`     |
+| `target`   | `target`   | Tells the browser where to open the link. Only used when `href` is set.                                | `"_blank" \| "_parent" \| "_self" \| "_top" \| undefined`                                                  | `undefined` |
+| `type`     | `type`     | The button's type.                                                                                     | `"action" \| "action-outline" \| "danger" \| "link" \| "primary" \| "secondary" \| "success" \| "warning"` | `'primary'` |
+| `value`    | `value`    | An optional value for the button. Ignored when `href` is set.                                          | `string`                                                                                                   | `''`        |
 
 
 ## Events

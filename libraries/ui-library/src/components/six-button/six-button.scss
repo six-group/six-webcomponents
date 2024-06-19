@@ -224,6 +224,27 @@
       opacity: 70%;
     }
   }
+
+  &.button--action-outline {
+    border-color: var(--six-color-action-500);
+    background-color: var(--six-color-white);
+    color: var(--six-color-action-500);
+
+    &.button--disabled {
+      background-color: var(--six-color-web-rock-400);
+      border-color: var(--six-color-web-rock-400);
+      color: var(--six-color-web-rock-700);
+    }
+
+    &:hover:not(.button--disabled) {
+      background-color: var(--six-color-web-rock-100);
+    }
+
+    &:active:not(.button--disabled) {
+      border-color: var(--six-color-action-500);
+      opacity: 70%;
+    }
+  }
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -189,7 +189,14 @@ export namespace Components {
         /**
           * The button's type.
          */
-        "type": 'secondary' | 'primary' | 'link' | 'success' | 'warning' | 'danger' | 'action';
+        "type": | 'secondary'
+    | 'primary'
+    | 'link'
+    | 'success'
+    | 'warning'
+    | 'danger'
+    | 'action'
+    | 'action-outline';
         /**
           * An optional value for the button. Ignored when `href` is set.
          */
@@ -3238,7 +3245,14 @@ declare namespace LocalJSX {
         /**
           * The button's type.
          */
-        "type"?: 'secondary' | 'primary' | 'link' | 'success' | 'warning' | 'danger' | 'action';
+        "type"?: | 'secondary'
+    | 'primary'
+    | 'link'
+    | 'success'
+    | 'warning'
+    | 'danger'
+    | 'action'
+    | 'action-outline';
         /**
           * An optional value for the button. Ignored when `href` is set.
          */

@@ -36,8 +36,15 @@ export class SixButton {
   @State() hasSuffix = false;
 
   /** The button's type. */
-  @Prop({ reflect: true }) type: 'secondary' | 'primary' | 'link' | 'success' | 'warning' | 'danger' | 'action' =
-    'primary';
+  @Prop({ reflect: true }) type:
+    | 'secondary'
+    | 'primary'
+    | 'link'
+    | 'success'
+    | 'warning'
+    | 'danger'
+    | 'action'
+    | 'action-outline' = 'primary';
 
   /** The button's size. */
   @Prop({ reflect: true }) size: 'small' | 'medium' | 'large' = 'medium';
@@ -150,6 +157,7 @@ export class SixButton {
             'button--warning': this.type === 'warning',
             'button--danger': this.type === 'danger',
             'button--action': this.type === 'action',
+            'button--action-outline': this.type === 'action-outline',
 
             // Sizes
             'button--small': this.size === 'small',
