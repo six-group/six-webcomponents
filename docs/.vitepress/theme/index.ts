@@ -10,7 +10,6 @@ const modules = import.meta.glob('../../examples/**/*.vue', { eager: true });
 const exampleComponents = [];
 for (const path in modules) {
   exampleComponents.push(modules[path].default);
-  console.log(path);
 }
 export default {
   extends: DefaultTheme,
@@ -19,7 +18,7 @@ export default {
       // https://vitepress.dev/guide/extending-default-theme#layout-slots
     });
   },
-  enhanceApp({ app, router, siteData }) {
+  enhanceApp({ app }) {
     // define ui six library components
     defineCustomElements();
 

@@ -25,7 +25,6 @@
  * -------------------------------------------------------------------------- */
 
 :root {
-  /*  --vp-button-brand-border: var(--vp-c-brand-2);*/
   --vp-button-brand-text: var(--vp-c-white);
   --vp-button-brand-bg: var(--vp-c-brand-1);
   --vp-button-brand-hover-border: var(--vp-c-brand-2);
