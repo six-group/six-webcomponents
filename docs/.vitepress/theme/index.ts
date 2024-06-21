@@ -6,7 +6,7 @@ import { defineCustomElements } from '@six-group/ui-library/loader';
 import { Theme } from 'vitepress';
 
 // @ts-ignore
-const modules = import.meta.glob("../../examples/**/*.vue'", { eager: true });
+const modules = import.meta.glob('../../examples/**/*.vue', { eager: true });
 const exampleComponents = [];
 for (const path in modules) {
   exampleComponents.push(modules[path].default);
