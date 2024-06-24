@@ -8,6 +8,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+### Changed
+
+### Fixed
+
+## 4.2.3 - 2024-06-24
+
+### Added
+
 - Added `action-outline` value for `type` property of button
 - Added part to header to allow customization from outside the component.
 - `invalid` and `error-text` properties added to `six-file-upload`
