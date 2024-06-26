@@ -1,3 +1,21 @@
+/**
+ * - [ ] Nur Datum, ohne Zeit
+ *   - (https://confluence.six-group.net/display/COMSLI/Meetings: In a first step we should have six-date in a usable state (for dates only, time is excluded). )
+ *   - https://confluence.six-group.net/display/COMSLI/Date+and+DateTime+Picker
+ *
+ * - [ ] TODO handleInputChange
+ * - [x] datepicker-improvement -> feature/six-date
+ * - [x] rebase on main
+ * - [ ] fix unwanted text selections
+ * - [ ] use Language interface
+ * - [ ] Default placeholder- https://vuetifyjs.com/en/components/date-inputs/#usage
+ * - [ ] Integration in Framework Wrappers (Angular, vue, react)
+ * - [ ] string anstatt Date als value
+ * - [ ] css cleanup (use webcomponents design tokens)
+ *
+ * - [ ] date-util loswerden und ersetzen mit https://github.com/dmtrKovalenko/date-io?
+ *   - get rid of date formats
+ */
 import { Component, Element, Event, EventEmitter, h, Listen, Method, Prop, State, Watch } from '@stencil/core';
 import {
   createCalendarGrid,
@@ -26,7 +44,6 @@ import { SixDateFormats } from './six-date-formats';
 import { MonthSelection } from './components/month-selection';
 import { DaySelection } from './components/day-selection';
 import { YearSelection } from './components/year-selection';
-import { SixTimepickerChange } from '../six-timepicker/six-timepicker';
 import { calcIsDropDownContentUp } from '../../utils/popover-util';
 
 const NUMBER_OF_YEARS_SHOWN = 25;
@@ -73,11 +90,6 @@ export class SixDate {
   @State() isDropDownContentUp = false;
 
   /**
-   * Set the type.
-   */
-  @Prop() type: 'date' | 'time' | 'date-time' = 'date';
-
-  /**
    * The language used to render the weekdays and months.
    */
   @Prop() locale: 'en' | 'de' | 'fr' | 'it' | 'es' = 'en';
@@ -109,19 +121,14 @@ export class SixDate {
   @Prop() allowedDates: (date: Date) => boolean = () => true;
 
   /**
-   * The minimum datetime allowed. Value must be a date object
+   * The minimum date allowed. Value must be a date object
    */
   @Prop() min?: Date;
 
   /**
-   * The maximum datetime allowed. Value must be a date object
+   * The maximum date allowed. Value must be a date object
    */
   @Prop() max?: Date;
-
-  /**
-   * Closes the datepicker dropdown after selection
-   */
-  @Prop() closeOnSelect = this.type === 'date';
 
   /**
    * The enforced placement of the dropdown panel.
@@ -438,7 +445,7 @@ export class SixDate {
       return this.selectedDate;
     }
     if (this.defaultDate == null) {
-      return this.type === 'date' ? removeTime(now()) : now();
+      return removeTime(now());
     } else {
       return toDate(this.defaultDate, this.dateFormat);
     }
@@ -476,32 +483,8 @@ export class SixDate {
     }
 
     this.updatePointerDates();
-
-    if (this.closeOnSelect) {
-      this.closePopup();
-    }
+    this.closePopup();
   }
-
-  private onTimepickerChange = (sixTimepickerChange: CustomEvent<SixTimepickerChange>) => {
-    const time = sixTimepickerChange.detail.value;
-    const newDate = new Date();
-
-    if (this.selectedDate != null) {
-      newDate.setFullYear(this.selectedDate.getFullYear(), this.selectedDate.getMonth(), this.selectedDate.getDate());
-    }
-
-    if (time != null) {
-      const hours = !isNaN(time.hours || NaN) ? time.hours : 0;
-      const minutes = !isNaN(time.minutes || NaN) ? time.minutes : 0;
-      const seconds = !isNaN(time.seconds || NaN) ? time.seconds : 0;
-      if (hours != null) {
-        newDate.setHours(hours, minutes, seconds);
-      }
-    }
-
-    this.updateValue(newDate);
-    this.updatePointerDates();
-  };
 
   private onClickDateCell = (cell: CalendarCell) => {
     if (!cell.isDisabled) {
@@ -539,6 +522,7 @@ export class SixDate {
 
     this.updateIfChanged(inputValueDate);
     const datesOnly = inputValue.replace(/[^\d]/g, '');
+    console.log(datesOnly);
     if (datesOnly.length >= 6) {
       const date = toDate(inputValue, this.dateFormat);
       const dateAsString = formatDate(date, this.dateFormat);
@@ -590,25 +574,6 @@ export class SixDate {
       this.eventListeners.add(this.inputElement, 'six-input-blur', this.handleOnBlur);
     }
   }
-
-  private renderElements() {
-    const isDate = this.type == 'date' || this.type == 'date-time';
-    const isTime = this.type == 'time' || this.type == 'date-time';
-
-    const elements = [];
-
-    if (isDate) {
-      elements.push(this.renderHeader());
-      elements.push(this.renderBody());
-    }
-
-    if (isTime) {
-      elements.push(this.renderTimepicker());
-    }
-
-    return elements;
-  }
-
   private renderHeader() {
     return (
       <header class="datepicker-header" part="header">
@@ -687,20 +652,6 @@ export class SixDate {
     }
   }
 
-  renderTimepicker() {
-    return (
-      <six-timepicker
-        inline={true}
-        disableSizing={true}
-        debounce={0}
-        onSix-timepicker-change-debounced={(event) => this.onTimepickerChange(event)}
-        value={
-          this.selectedDate?.getHours() + ':' + this.selectedDate?.getMinutes() + ':' + this.selectedDate?.getSeconds()
-        }
-      ></six-timepicker>
-    );
-  }
-
   private renderCustomIcon() {
     const icon = hasSlot(this.host, 'custom-icon') ? (
       <slot name="custom-icon"></slot>
@@ -743,10 +694,6 @@ export class SixDate {
   }
 
   private getFormattedDateString(value: Date | undefined, format: SixDateFormats) {
-    if (this.type == 'time') {
-      format = SixDateFormats.TIME;
-    }
-
     return formatDate(value, format);
   }
 
@@ -785,7 +732,7 @@ export class SixDate {
             ) : null}
           </six-input>
           <div>
-            <six-menu class="datepicker__panel">{this.renderElements()}</six-menu>
+            <six-menu class="datepicker__panel">{[this.renderHeader(), this.renderBody()]}</six-menu>
 
             <div class="datepicker__footer">
               <slot />
