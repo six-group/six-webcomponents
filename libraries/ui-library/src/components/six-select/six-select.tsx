@@ -209,7 +209,14 @@ export class SixSelect {
     if (this.virtualScroll && this.options === null) {
       console.error('Options must be defined when using virtual scrolling');
     }
-    this.init();
+
+    this.host.shadowRoot?.addEventListener('slotchange', this.handleSlotChange);
+    this.eventListeners.forward('six-select-change', 'change', this.host);
+    this.eventListeners.forward('six-select-blur', 'blur', this.host);
+    this.eventListeners.forward('six-select-focus', 'focus', this.host);
+    if (this.displayValuesContainer) {
+      this.resizeObserver.observe(this.displayValuesContainer);
+    }
   }
 
   componentWillLoad() {
@@ -218,7 +225,9 @@ export class SixSelect {
   }
 
   componentDidLoad() {
-    this.init();
+    if (this.displayValuesContainer) {
+      this.resizeObserver.observe(this.displayValuesContainer);
+    }
 
     // We need to do an initial sync after the component has rendered, so this will suppress the re-render warning
     requestAnimationFrame(() => this.syncItemsFromValue());
@@ -249,16 +258,6 @@ export class SixSelect {
   async setFocus(options?: FocusOptions) {
     this.hasFocus = true;
     this.box?.focus(options);
-  }
-
-  private init() {
-    this.host.shadowRoot?.addEventListener('slotchange', this.handleSlotChange);
-    this.eventListeners.forward('six-select-change', 'change', this.host);
-    this.eventListeners.forward('six-select-blur', 'blur', this.host);
-    this.eventListeners.forward('six-select-focus', 'focus', this.host);
-    if (this.displayValuesContainer) {
-      this.resizeObserver.observe(this.displayValuesContainer);
-    }
   }
 
   private getItemLabel(item: HTMLSixMenuItemElement): string {
