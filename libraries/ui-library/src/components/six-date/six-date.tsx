@@ -3,11 +3,11 @@
  *   - (https://confluence.six-group.net/display/COMSLI/Meetings: In a first step we should have six-date in a usable state (for dates only, time is excluded). )
  *   - https://confluence.six-group.net/display/COMSLI/Date+and+DateTime+Picker
  *
- * - [ ] TODO handleInputChange
+ * - [x] TODO handleInputChange
  * - [x] datepicker-improvement -> feature/six-date
  * - [x] rebase on main
- * - [ ] fix unwanted text selections
- * - [ ] use Language interface
+ * - [x] fix unwanted text selections
+ * - [x] use Language interface
  * - [ ] Default placeholder- https://vuetifyjs.com/en/components/date-inputs/#usage
  * - [ ] Integration in Framework Wrappers (Angular, vue, react)
  * - [ ] string anstatt Date als value
@@ -45,6 +45,7 @@ import { MonthSelection } from './components/month-selection';
 import { DaySelection } from './components/day-selection';
 import { YearSelection } from './components/year-selection';
 import { calcIsDropDownContentUp } from '../../utils/popover-util';
+import { Language } from '../../utils/error-messages';
 
 const NUMBER_OF_YEARS_SHOWN = 25;
 
@@ -92,12 +93,12 @@ export class SixDate {
   /**
    * The language used to render the weekdays and months.
    */
-  @Prop() locale: 'en' | 'de' | 'fr' | 'it' | 'es' = 'en';
+  @Prop() locale: Language = 'en';
 
-  /** Indicates whether or not the calendar dropdown is open on startup. You can use this in lieu of the show/hide methods. */
+  /** Indicates whether the calendar dropdown is open on startup. You can use this in lieu of the show/hide methods. */
   @Prop({ mutable: true, reflect: true }) open = false;
 
-  /** Indicates whether or not the calendar should be shown as an inline (always open) component */
+  /** Indicates whether the calendar should be shown as an inline (always open) component */
   @Prop({ reflect: true }) inline = false;
 
   /**
@@ -515,23 +516,14 @@ export class SixDate {
     }
 
     const inputValueDate = toDate(inputValue, this.dateFormat);
-
     if (inputValueDate === undefined) {
       return;
     }
 
     this.updateIfChanged(inputValueDate);
-    const datesOnly = inputValue.replace(/[^\d]/g, '');
-    console.log(datesOnly);
-    if (datesOnly.length >= 6) {
-      const date = toDate(inputValue, this.dateFormat);
-      const dateAsString = formatDate(date, this.dateFormat);
-      if (isValidDateString(dateAsString, this.dateFormat)) {
-        this.selectedDate = toDate(dateAsString, this.dateFormat);
-        this.updatePointerDates();
-        this.updateValue(this.selectedDate);
-      }
-    }
+
+    this.selectedDate = inputValueDate;
+    this.updatePointerDates();
   };
 
   private handleOnBlur = (event: Event) => {
@@ -574,6 +566,7 @@ export class SixDate {
       this.eventListeners.add(this.inputElement, 'six-input-blur', this.handleOnBlur);
     }
   }
+
   private renderHeader() {
     return (
       <header class="datepicker-header" part="header">

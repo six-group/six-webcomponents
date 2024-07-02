@@ -37,6 +37,7 @@
   border-bottom: 1px solid var(--six-color-web-rock-400);
   padding: 0.5em;
   margin-bottom: 1em;
+  user-select: none;
 
   & svg {
     fill: var(--six-color-web-rock-900);
@@ -78,6 +79,7 @@
 
 .datepicker-table {
   width: 100%;
+  user-select: none;
 
   &__cell {
     text-align: center;

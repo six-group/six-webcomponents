@@ -7,6 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AlertType } from "./components/six-alert/six-alert";
 import { EmptyPayload } from "./utils/types";
+import { Language } from "./utils/error-messages";
 import { SixDateFormats } from "./components/six-date/six-date-formats";
 import { SixDateSelectPayload } from "./components/six-date/six-date";
 import { SixDateFormats as SixDateFormats1 } from "./components/six-datepicker/six-date-formats";
@@ -29,6 +30,7 @@ import { TimeFormat } from "./utils/time.util";
 import { SixTimepickerChange } from "./components/six-timepicker/six-timepicker";
 export { AlertType } from "./components/six-alert/six-alert";
 export { EmptyPayload } from "./utils/types";
+export { Language } from "./utils/error-messages";
 export { SixDateFormats } from "./components/six-date/six-date-formats";
 export { SixDateSelectPayload } from "./components/six-date/six-date";
 export { SixDateFormats as SixDateFormats1 } from "./components/six-datepicker/six-date-formats";
@@ -317,7 +319,7 @@ export namespace Components {
          */
         "iconPosition": 'left' | 'right';
         /**
-          * Indicates whether or not the calendar should be shown as an inline (always open) component
+          * Indicates whether the calendar should be shown as an inline (always open) component
          */
         "inline": boolean;
         /**
@@ -331,7 +333,7 @@ export namespace Components {
         /**
           * The language used to render the weekdays and months.
          */
-        "locale": 'en' | 'de' | 'fr' | 'it' | 'es';
+        "locale": Language;
         /**
           * The maximum date allowed. Value must be a date object
          */
@@ -345,7 +347,7 @@ export namespace Components {
          */
         "name": string;
         /**
-          * Indicates whether or not the calendar dropdown is open on startup. You can use this in lieu of the show/hide methods.
+          * Indicates whether the calendar dropdown is open on startup. You can use this in lieu of the show/hide methods.
          */
         "open": boolean;
         /**
@@ -3597,7 +3599,7 @@ declare namespace LocalJSX {
          */
         "iconPosition"?: 'left' | 'right';
         /**
-          * Indicates whether or not the calendar should be shown as an inline (always open) component
+          * Indicates whether the calendar should be shown as an inline (always open) component
          */
         "inline"?: boolean;
         /**
@@ -3611,7 +3613,7 @@ declare namespace LocalJSX {
         /**
           * The language used to render the weekdays and months.
          */
-        "locale"?: 'en' | 'de' | 'fr' | 'it' | 'es';
+        "locale"?: Language;
         /**
           * The maximum date allowed. Value must be a date object
          */
@@ -3637,7 +3639,7 @@ declare namespace LocalJSX {
          */
         "onSix-date-select"?: (event: SixDateCustomEvent<SixDateSelectPayload>) => void;
         /**
-          * Indicates whether or not the calendar dropdown is open on startup. You can use this in lieu of the show/hide methods.
+          * Indicates whether the calendar dropdown is open on startup. You can use this in lieu of the show/hide methods.
          */
         "open"?: boolean;
         /**
