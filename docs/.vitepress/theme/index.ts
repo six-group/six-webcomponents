@@ -1,23 +1,24 @@
 // https://vitepress.dev/guide/custom-theme
 import { h } from 'vue';
-import Theme from 'vitepress/theme';
+import DefaultTheme from 'vitepress/theme';
 import './style.css';
 import { defineCustomElements } from '@six-group/ui-library/loader';
+import { Theme } from 'vitepress';
 
 // @ts-ignore
-const modules = import.meta.globEager('../../examples/**/*.vue');
+const modules = import.meta.glob('../../examples/**/*.vue', { eager: true });
 const exampleComponents = [];
 for (const path in modules) {
   exampleComponents.push(modules[path].default);
 }
 export default {
-  extends: Theme,
+  extends: DefaultTheme,
   Layout: () => {
-    return h(Theme.Layout, null, {
+    return h(DefaultTheme.Layout, null, {
       // https://vitepress.dev/guide/extending-default-theme#layout-slots
     });
   },
-  enhanceApp({ app, router, siteData }) {
+  enhanceApp({ app }) {
     // define ui six library components
     defineCustomElements();
 
@@ -26,4 +27,4 @@ export default {
       app.component(component.name, component);
     });
   },
-};
+} satisfies Theme;
