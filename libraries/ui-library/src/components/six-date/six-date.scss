@@ -35,8 +35,8 @@
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid var(--six-color-web-rock-400);
-  padding: 0.5em;
-  margin-bottom: 1em;
+  padding: var(--six-spacing-x-small);
+  margin-bottom: var(--six-spacing-medium);
   user-select: none;
 
   & svg {
@@ -47,7 +47,7 @@
   &__btn {
     cursor: pointer;
     width: 2.5em;
-    height: 2.5em;
+    height: var(--six-height-medium);
     display: flex;
     vertical-align: middle;
     align-items: center;
@@ -64,7 +64,7 @@
 
     & > div {
       cursor: pointer;
-      padding: 0.5em;
+      padding: var(--six-spacing-x-small);
       display: flex;
       vertical-align: middle;
       align-items: center;
@@ -84,7 +84,7 @@
   &__cell {
     text-align: center;
     width: 2.5rem;
-    height: 2.5rem;
+    height: var(--six-height-medium);
     cursor: pointer;
 
     &:hover:not(&--is-selected) {
@@ -92,7 +92,7 @@
     }
 
     &--is-today {
-      border: 1px solid var(--six-color-web-rock-400);
+      border: var(--six-border-width) var(--six-focus-ring-style) var(--six-color-web-rock-400);
     }
 
     &--is-selected {
@@ -170,6 +170,6 @@
 // time-picker
 six-timepicker::part(dropdown) {
   border: none;
-  padding: 0.5em 0.5em 0;
+  padding: var(--six-spacing-x-small) var(--six-spacing-x-small) 0;
   min-height: 0;
 }
