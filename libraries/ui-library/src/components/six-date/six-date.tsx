@@ -11,7 +11,7 @@
  * - [ ] Default placeholder- https://vuetifyjs.com/en/components/date-inputs/#usage
  * - [ ] Integration in Framework Wrappers (Angular, vue, react)
  * - [ ] string anstatt Date als value
- * - [ ] css cleanup (use webcomponents design tokens)
+ * - [x] css cleanup (use webcomponents design tokens)
  *
  * - [ ] date-util loswerden und ersetzen mit https://github.com/dmtrKovalenko/date-io?
  *   - get rid of date formats
