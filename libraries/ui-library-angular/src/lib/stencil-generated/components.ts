@@ -1197,7 +1197,7 @@ export declare interface SixSelect extends Components.SixSelect {
 
 
 @ProxyCmp({
-  inputs: ['open', 'position', 'toggled', 'width'],
+  inputs: ['open', 'position', 'toggled'],
   methods: ['toggle', 'show', 'hide', 'selectItemByIndex', 'selectItemByName']
 })
 @Component({
@@ -1205,7 +1205,7 @@ export declare interface SixSelect extends Components.SixSelect {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['open', 'position', 'toggled', 'width'],
+  inputs: ['open', 'position', 'toggled'],
 })
 export class SixSidebar {
   protected el: HTMLElement;
