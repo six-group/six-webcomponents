@@ -15,7 +15,8 @@
   let counter = 0;
 
   fileUpload.addEventListener('six-file-upload-success', ({ detail }) => {
-    const file = detail.file;
+    // Since multiple is by default false, we know the array contains only one element
+    const file = detail.files[0];
 
     const item = Object.assign(document.createElement('six-file-list-item'), {
       id: String(counter++),
@@ -181,10 +182,10 @@ When using the `error-text` slot, it is recommended to use the `six-error` compo
 
 ## Events
 
-| Event                     | Description                                                              | Type                                         |
-| ------------------------- | ------------------------------------------------------------------------ | -------------------------------------------- |
-| `six-file-upload-failure` | Triggers when an uploaded file doesn't match MIME type or max file size. | `CustomEvent<SixFileUploadFailurePayload>`   |
-| `six-file-upload-success` | Triggers when a file is added.                                           | `CustomEvent<IMultipleFiles \| ISingleFile>` |
+| Event                     | Description                                                              | Type                                       |
+| ------------------------- | ------------------------------------------------------------------------ | ------------------------------------------ |
+| `six-file-upload-failure` | Triggers when an uploaded file doesn't match MIME type or max file size. | `CustomEvent<SixFileUploadFailurePayload>` |
+| `six-file-upload-success` | Triggers when a file is added.                                           | `CustomEvent<SixFileUploadSuccessPayload>` |
 
 
 ## Slots
