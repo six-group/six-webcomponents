@@ -19,7 +19,7 @@
   -webkit-appearance: none;
 
   &:hover:not(.icon-button--disabled),
-  &:focus:not(.icon-button--disabled) {
+  &:focus-visible:not(.icon-button--disabled) {
     color: var(--six-input-icon-color-hover);
   }
 
