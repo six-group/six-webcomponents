@@ -153,6 +153,9 @@ export class SixMenu {
 
   private getItemsShown(): number {
     const defaultItemsShown = this.virtualScroll ? DEFAULT_NUMBER_OF_ITEMS_SHOWN_FOR_VIRTUAL_SCROLLING : 0;
+    if (this.items && this.items.length === 1) {
+      return 0;
+    }
     return this.itemsShown ?? defaultItemsShown;
   }
 
@@ -275,6 +278,8 @@ export class SixMenu {
     if (this.getItemsShown() > 0) {
       // calculate the proper height to show the correct number of items
       styles.height = `${(this.getItemsShown() ?? 0) * this.sixMenuItemHeight}px`;
+    } else if (this.items && this.items.length === 1) {
+      styles.height = 'auto';
     }
     return {
       ...styles,
@@ -296,11 +301,9 @@ export class SixMenu {
 
   private getScrollbarGhostStyle() {
     const styles: Partial<StyleDeclaration> = {};
-
-    if (this.virtualScroll && this.items !== null) {
+    if (this.virtualScroll && this.items !== null && this.items.length > 1) {
       styles.height = `${this.items.length * this.sixMenuItemHeight - this.itemSize * this.sixMenuItemHeight}px`;
     }
-
     return {
       ...styles,
     };
