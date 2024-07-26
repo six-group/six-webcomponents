@@ -7,6 +7,7 @@
 
 /**
  * Colors
+ --vp-code-block-color
  * -------------------------------------------------------------------------- */
 
 :root {
@@ -14,10 +15,11 @@
   --vp-c-brand-2: #e83c1a;
   --vp-c-brand-3: #f23f1b;
   --vp-c-brand-soft: #f7401b;
-  --vp-c-brand-dimm: rgba(100, 108, 255, 0.08);
   --vp-nav-logo-height: 14px;
   --vp-local-search-highlight-bg: none;
-  --vp-code-color: #476582;
+  --vp-local-search-highlight-text: var(--vp-c-brand-1);
+  --vp-code-block-bg: #f6f6f7;
+  --vp-code-bg: #f6f6f7;
 }
 
 /**
@@ -38,4 +40,9 @@
 /* overwrite rounded design to follow six design */
 * {
   border-radius: 0 !important;
+}
+
+/* overwrite to match color of vitepress code background */
+code {
+  background: var(--vp-code-bg);
 }
