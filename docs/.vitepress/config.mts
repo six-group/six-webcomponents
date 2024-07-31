@@ -20,6 +20,7 @@ export default defineConfig({
   title: 'Web Components',
   description: 'Component Library following the SIX Style Guide',
   base: '/six-webcomponents/',
+  lastUpdated: true,
 
   // https://vitepress.dev/reference/default-theme-config
   themeConfig: {
@@ -70,7 +71,6 @@ export default defineConfig({
 
       '/components/': [{ items: componentNavItems }],
     },
-
     socialLinks: [{ icon: 'github', link: 'https://github.com/six-group/six-webcomponents' }],
   },
 
