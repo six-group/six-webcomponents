@@ -282,6 +282,7 @@ export class SixInput {
   private handleInput = (event: Event) => {
     event.stopPropagation();
     if (this.nativeInput != null) {
+      this.inputMask?._onInput(event);
       this.updateValueWhenHandlingEvent();
       this.sixInput.emit();
     }
