@@ -4,6 +4,7 @@ import { hasSlot } from '../../utils/slot';
 import { EmptyPayload } from '../../utils/types';
 import { EventListeners } from '../../utils/event-listeners';
 import { submitForm } from '../../utils/form';
+import IMask, { FactoryArg, InputMask } from 'imask';
 
 const ICON_SIZES: Record<'small' | 'medium' | 'large', 'xSmall' | 'small' | 'medium'> = {
   large: 'medium',
@@ -52,6 +53,8 @@ export class SixInput {
   private errorTextId = `input-error-text-${id}`;
   private nativeInput?: HTMLInputElement;
   private eventListeners = new EventListeners();
+  private inputMask?: InputMask<FactoryArg>;
+  private maskOptions?: FactoryArg;
 
   @Element() host!: HTMLSixInputElement;
 
@@ -105,6 +108,9 @@ export class SixInput {
 
   /** A pattern to validate input against. */
   @Prop({ reflect: true }) pattern?: string;
+
+  /** Applies a simple mask to the input element. Use setMask(maskOptions) if more options are needed */
+  @Prop({ reflect: true, attribute: 'mask' }) textMask?: string;
 
   /**
    * Internal: Styles the input for the dropdown filter search.
@@ -191,6 +197,15 @@ export class SixInput {
     this.eventListeners.forward('six-input-blur', 'blur', this.host);
   }
 
+  componentDidRender() {
+    if (this.textMask) {
+      this.maskOptions = { mask: this.textMask };
+    }
+    if (!this.inputMask && this.maskOptions && this.type === 'text') {
+      this.inputMask = IMask(this.nativeInput, this.maskOptions);
+    }
+  }
+
   componentWillLoad() {
     this.handleSlotChange();
   }
@@ -198,6 +213,9 @@ export class SixInput {
   disconnectedCallback() {
     this.host.shadowRoot?.removeEventListener('slotchange', this.handleSlotChange);
     this.eventListeners.removeAll();
+    if (this.inputMask) {
+      this.inputMask.destroy();
+    }
   }
 
   /** Sets focus on the input. */
@@ -247,10 +265,16 @@ export class SixInput {
     }
   }
 
+  /** Applies a mask on the input element. Requires a mask options object as argument, See https://imask.js.org/guide.html#masked for syntax and examples */
+  @Method()
+  async setMask(maskOptions: FactoryArg) {
+    this.maskOptions = maskOptions;
+  }
+
   private handleChange = (event: Event) => {
     event.stopPropagation();
     if (this.nativeInput != null) {
-      this.value = this.nativeInput.value;
+      this.updateValueWhenHandlingEvent();
       this.sixChange.emit();
     }
   };
@@ -258,7 +282,7 @@ export class SixInput {
   private handleInput = (event: Event) => {
     event.stopPropagation();
     if (this.nativeInput != null) {
-      this.value = this.nativeInput.value;
+      this.updateValueWhenHandlingEvent();
       this.sixInput.emit();
     }
   };
@@ -275,6 +299,7 @@ export class SixInput {
 
   private handleClearClick = (event: MouseEvent) => {
     this.value = '';
+    this.inputMask?.updateValue();
     this.sixClear.emit();
     this.sixInput.emit();
     this.sixChange.emit();
@@ -307,6 +332,14 @@ export class SixInput {
 
   private getValue(): string {
     return (this.value ?? '').toString();
+  }
+
+  private getDisplayValue(): string {
+    return this.inputMask ? (this.inputMask.displayValue ?? '').toString() : this.getValue();
+  }
+
+  private updateValueWhenHandlingEvent(): void {
+    this.value = this.inputMask ? this.inputMask.value : this.nativeInput!.value;
   }
 
   render() {
@@ -371,7 +404,7 @@ export class SixInput {
             min={this.min}
             max={this.max}
             step={this.step}
-            value={this.getValue()}
+            value={this.getDisplayValue()}
             autoCapitalize={this.autocapitalize}
             autoComplete={this.autocomplete}
             autoCorrect={this.autocorrect}
