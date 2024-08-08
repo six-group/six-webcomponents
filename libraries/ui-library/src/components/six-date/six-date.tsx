@@ -10,18 +10,21 @@
  * - [x] use Language interface
  * - [ ] Default placeholder- https://vuetifyjs.com/en/components/date-inputs/#usage
  * - [ ] Integration in Framework Wrappers (Angular, vue, react)
- * - [ ] string anstatt Date als value
+ * - [x] string anstatt Date als value
  * - [x] css cleanup (use webcomponents design tokens)
+ * - [ ] value accessor kombinieren
+ * - [ ] angular beispiel
+ * - [ ] Datepicker shouldn't be able to open when disabled
  *
  * - [ ] date-util loswerden und ersetzen mit https://github.com/dmtrKovalenko/date-io?
  *   - get rid of date formats
  */
 import { Component, Element, Event, EventEmitter, h, Listen, Method, Prop, State, Watch } from '@stencil/core';
 import {
-  createCalendarGrid,
+  createNewCalendarGrid,
   day,
   formatDate,
-  getFirstDayOfTheWeek,
+  getFirstDayOfTheWeekNew,
   hours,
   i18nDate,
   isValidDate,
@@ -29,11 +32,11 @@ import {
   minutes,
   month,
   now,
+  parseDate,
   PointerDate,
   rangeAround,
   removeTime,
   seconds,
-  toDate,
   year,
 } from '../../utils/date-util';
 import { EventListeners } from '../../utils/event-listeners';
@@ -51,7 +54,7 @@ const NUMBER_OF_YEARS_SHOWN = 25;
 
 const MIN_POPUP_HEIGHT = 400;
 
-export type SixDateSelectPayload = Date | undefined | null;
+export type SixDateSelectPayload = string | undefined | null;
 
 export interface CalendarCell {
   date: Date;
@@ -82,7 +85,7 @@ export class SixDate {
   private eventListeners = new EventListeners();
   private inputElement?: HTMLSixInputElement;
   private wrapper?: HTMLElement;
-  private selectedDate?: Date;
+  private selectedDate?: string;
 
   @Element() host!: HTMLSixDateElement;
 
@@ -119,17 +122,17 @@ export class SixDate {
    * const datepicker = document.getElementById('allowed-date-picker');
    * datepicker.allowedDates = datestring => parseInt(datestring.split('-')[2], 10) % 2 === 0;
    */
-  @Prop() allowedDates: (date: Date) => boolean = () => true;
+  @Prop() allowedDates: (date: string) => boolean = () => true;
 
   /**
    * The minimum date allowed. Value must be a date object
    */
-  @Prop() min?: Date;
+  @Prop() min?: string;
 
   /**
    * The maximum date allowed. Value must be a date object
    */
-  @Prop() max?: Date;
+  @Prop() max?: string;
 
   /**
    * The enforced placement of the dropdown panel.
@@ -150,12 +153,12 @@ export class SixDate {
   /**
    * The placeholder defines what text to be shown on the input element
    */
-  @Prop() placeholder?: string;
+  @Prop() placeholder?: string = 'dd.mm.yyyy';
 
   /**
    * The value of the form field, which accepts a date object.
    */
-  @Prop({ mutable: true }) value?: Date;
+  @Prop({ mutable: true }) value?: string;
 
   /** The label text. */
   @Prop() label = '';
@@ -216,7 +219,7 @@ export class SixDate {
    */
   @Watch('value')
   protected valueChanged() {
-    if (this.value != null && !isValidDate(this.value)) {
+    if (this.value != null && !isValidDate(new Date(this.value))) {
       console.warn('invalid date value: ', this.value);
       this.value = undefined;
       this.sixSelect.emit(this.value);
@@ -254,9 +257,9 @@ export class SixDate {
     return this.containingElement || this.host;
   }
 
-  get firstDateOfBox(): Date {
+  get firstDateOfBox(): string {
     const date = new Date(this.pointerDate.year, this.pointerDate.month, 1);
-    return getFirstDayOfTheWeek(date);
+    return getFirstDayOfTheWeekNew(date.toLocaleDateString());
   }
 
   /** Sets focus on the datepickers input. */
@@ -266,7 +269,7 @@ export class SixDate {
   }
 
   get calendarGrid() {
-    return createCalendarGrid({
+    return createNewCalendarGrid({
       firstDateOfBox: this.firstDateOfBox,
       allowedDates: this.allowedDates,
       dateFormat: this.dateFormat,
@@ -417,7 +420,7 @@ export class SixDate {
   }
 
   private updatePointerDates() {
-    const date = this.getPointerDate();
+    const date = new Date(this.getPointerDate() || new Date());
     if (this.differsFromPointerDate(date)) {
       this.pointerDate = {
         year: year(date),
@@ -441,29 +444,37 @@ export class SixDate {
     );
   }
 
-  private getPointerDate(): Date | undefined {
+  private getPointerDate(): string | undefined {
     if (this.selectedDate !== undefined && this.selectedDate !== null) {
       return this.selectedDate;
     }
     if (this.defaultDate == null) {
-      return removeTime(now());
+      return removeTime(now()).toLocaleDateString();
     } else {
-      return toDate(this.defaultDate, this.dateFormat);
+      return this.defaultDate;
     }
   }
 
-  private updateValue(newDate?: Date) {
+  private updateValue(newDate?: string) {
     this.updateIfChanged(newDate);
   }
 
-  private updateIfChanged(newDate?: Date) {
-    if (this.value?.getTime() === newDate?.getTime()) {
+  private updateIfChanged(newDate?: string) {
+    if (new Date(this.value || new Date()).getTime() === new Date(newDate || new Date()).getTime()) {
       return;
     }
-    if (this.min && newDate && this.min.getTime() > newDate.getTime()) {
+    if (
+      this.min !== undefined &&
+      newDate &&
+      parseDate(this.min, this.dateFormat, this.locale).getTime() > new Date(newDate || new Date()).getTime()
+    ) {
       return;
     }
-    if (this.max && newDate && this.max.getTime() < newDate.getTime()) {
+    if (
+      this.max !== undefined &&
+      newDate &&
+      parseDate(this.max, this.dateFormat, this.locale).getTime() < new Date(newDate || new Date()).getTime()
+    ) {
       return;
     }
     this.value = newDate;
@@ -478,9 +489,10 @@ export class SixDate {
     if (datestring == null) {
       this.updateValue(undefined);
     } else {
-      const newDate = toDate(datestring, this.dateFormat);
+      const dateParts = datestring.split('.'); // TODO: hacky fix because DD.MM.YYYY can't be parsed...
+      const newDate = new Date(+dateParts[2], +dateParts[1] - 1, +dateParts[0]);
       newDate?.setHours(this.pointerDate.hours, this.pointerDate.minutes, this.pointerDate.seconds);
-      this.updateValue(newDate);
+      this.updateValue(newDate.toLocaleDateString());
     }
 
     this.updatePointerDates();
@@ -515,14 +527,13 @@ export class SixDate {
       return;
     }
 
-    const inputValueDate = toDate(inputValue, this.dateFormat);
-    if (inputValueDate === undefined) {
+    if (inputValue === undefined) {
       return;
     }
 
-    this.updateIfChanged(inputValueDate);
+    this.updateIfChanged(inputValue);
 
-    this.selectedDate = inputValueDate;
+    this.selectedDate = inputValue;
     this.updatePointerDates();
   };
 
@@ -535,12 +546,13 @@ export class SixDate {
 
     event.stopPropagation();
     const inputValue = this.inputElement?.value;
-    const inputValueDate = toDate(inputValue, this.dateFormat);
-    const formattedDate = formatDate(this.value, this.dateFormat);
+    const inputValueDate = new Date(inputValue || new Date());
+    const formattedDate = this.value || ''; // TODO: Format it for input display
 
     if (this.inputElement != null && inputValueDate != null && inputValue !== formattedDate) {
-      // properly format date if necessary
+      // TODO: properly format date if necessary
       this.inputElement.value = formattedDate;
+      // console.log(Intl.DateTimeFormat('de-CH').format(inputValueDate));
     }
 
     this.sixBlur.emit(this.value);
@@ -630,14 +642,14 @@ export class SixDate {
         return (
           <MonthSelection
             locale={i18nDate[this.locale]}
-            selectedDate={this.selectedDate}
+            selectedDate={new Date(this.selectedDate || new Date())}
             onClickMonthCell={this.onClickMonthCell}
           />
         );
       case 'year':
         return (
           <YearSelection
-            selectedDate={this.selectedDate}
+            selectedDate={new Date(this.selectedDate || new Date())}
             yearSelection={rangeAround(this.pointerDate.year, NUMBER_OF_YEARS_SHOWN)}
             onClickYearCell={this.onClickYearCell}
           />
@@ -696,7 +708,7 @@ export class SixDate {
         <six-dropdown style={{ height: 'auto', width: '400px' }} hoist={true} showOverflow={true} open={this.open}>
           <six-input
             slot={'trigger'}
-            value={this.getFormattedDateString(this.value, this.dateFormat)}
+            value={new Date(this.value || new Date()).toLocaleDateString()} // TODO: Is formatting needed?
             ref={(el) => (this.inputElement = el)}
             placeholder={this.placeholder}
             readonly={this.readonly}
@@ -709,7 +721,7 @@ export class SixDate {
             invalid={this.invalid}
             onClick={() => this.openCalendar()}
             size={this.size}
-            class={{ 'input--empty': this.value == null }}
+            class={{ 'input--empty': this.value == null, 'input--disabled': this.disabled }}
           >
             {this.renderCustomIcon()}
             {this.renderClearable()}

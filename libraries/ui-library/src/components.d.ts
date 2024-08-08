@@ -277,7 +277,7 @@ export namespace Components {
         /**
           * Callback to determine which date in the datepicker should be selectable. the callback function will get a datestring as an argument, e.g. '2021-07-04'  Usage e.g.: const datepicker = document.getElementById('allowed-date-picker'); datepicker.allowedDates = datestring => parseInt(datestring.split('-')[2], 10) % 2 === 0;
          */
-        "allowedDates": (date: Date) => boolean;
+        "allowedDates": (date: string) => boolean;
         /**
           * Set to true to add a clear button when the input is populated.
          */
@@ -337,11 +337,11 @@ export namespace Components {
         /**
           * The maximum date allowed. Value must be a date object
          */
-        "max"?: Date;
+        "max"?: string;
         /**
           * The minimum date allowed. Value must be a date object
          */
-        "min"?: Date;
+        "min"?: string;
         /**
           * The input's name attribute.
          */
@@ -381,7 +381,7 @@ export namespace Components {
         /**
           * The value of the form field, which accepts a date object.
          */
-        "value"?: Date;
+        "value"?: string;
     }
     /**
      * @since 1.0
@@ -3487,7 +3487,7 @@ declare namespace LocalJSX {
         /**
           * Callback to determine which date in the datepicker should be selectable. the callback function will get a datestring as an argument, e.g. '2021-07-04'  Usage e.g.: const datepicker = document.getElementById('allowed-date-picker'); datepicker.allowedDates = datestring => parseInt(datestring.split('-')[2], 10) % 2 === 0;
          */
-        "allowedDates"?: (date: Date) => boolean;
+        "allowedDates"?: (date: string) => boolean;
         /**
           * Set to true to add a clear button when the input is populated.
          */
@@ -3547,11 +3547,11 @@ declare namespace LocalJSX {
         /**
           * The maximum date allowed. Value must be a date object
          */
-        "max"?: Date;
+        "max"?: string;
         /**
           * The minimum date allowed. Value must be a date object
          */
-        "min"?: Date;
+        "min"?: string;
         /**
           * The input's name attribute.
          */
@@ -3595,7 +3595,7 @@ declare namespace LocalJSX {
         /**
           * The value of the form field, which accepts a date object.
          */
-        "value"?: Date;
+        "value"?: string;
     }
     /**
      * @since 1.0
