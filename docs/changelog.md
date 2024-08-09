@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## Upcoming
 
+### Fixed
+
+- `six-menu`: overflow when using virtual-scroll and autocomplete
+
 ## 4.2.4 - 2024-07-04
 
 ### Fixed
