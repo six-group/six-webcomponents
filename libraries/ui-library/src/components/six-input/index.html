@@ -334,6 +334,40 @@
           });
         </script>
       </section>
+
+      <h2>Masks</h2>
+
+      <p>Sometimes inputs need to be masked in order to enforce a certain format.</p>
+      <p>Use the <code>mask</code> attribute to apply a simple mask.</p>
+
+      <six-input mask="000.000,00" help-text='mask="000.000,00"'></six-input>
+
+      <p>Use the <code>setMask</code> method to apply more complex masks</p>
+
+      <six-input id="complex-mask-input"></six-input>
+
+      <script type="module">
+        const maskInput = document.getElementById('complex-mask-input');
+        maskInput.setMask({
+          mask: 'XXX-XX-0000',
+          definitions: {
+            X: {
+              mask: '0',
+              displayChar: 'X',
+              placeholderChar: '#',
+            },
+          },
+          lazy: false,
+          overwrite: 'shift',
+        });
+      </script>
+
+      <p>For more info on the format of the mask object passed to <code>setMask()</code> and the <code>mask</code> attribute, take a look at <a href="https://imask.js.org/" target="_blank" rel="noreferrer noopener">https://imask.js.org/ <six-icon size="small">launch</six-icon></a></p>
+
+      <six-alert type="warning" open>
+        <six-icon slot="icon">warning</six-icon>
+        When masking a input, it's <code>value</code> will contain any additional characters added by the mask.
+      </six-alert>
     </div>
   </body>
 </html>
