@@ -6,11 +6,14 @@
     "@six-group/ui-library": "*"
   },
   "devDependencies": {
+    "@mermaid-js/mermaid-mindmap": "^9.3.0",
     "cpy-cli": "^5.0.0",
+    "mermaid": "^8.14.0",
     "node-html-parser": "^6.1.5",
     "rimraf": "^5.0.1",
     "turndown": "^7.1.2",
     "vitepress": "^1.2.3",
+    "vitepress-plugin-mermaid": "^2.0.16",
     "vue": "^3.4.21"
   },
   "scripts": {
