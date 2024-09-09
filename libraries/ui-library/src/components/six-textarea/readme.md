@@ -139,6 +139,13 @@ Type: `Promise<void | undefined>`
 | `"textarea"`     | The textarea control.                                           |
 
 
+## CSS Custom Properties
+
+| Name       | Description          |
+| ---------- | -------------------- |
+| `--height` | The textarea height. |
+
+
 ## Dependencies
 
 ### Depends on
