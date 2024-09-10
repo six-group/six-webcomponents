@@ -359,6 +359,16 @@ You can play with the following native and six-input elements to see that the ev
 
 ## Methods
 
+### `getSelectionRange() => Promise<{ selectionStart: number | undefined | null; selectionEnd: number | undefined | null; }>`
+
+Returns the start and end positions of the text selection
+
+#### Returns
+
+Type: `Promise<{ selectionStart: number | null | undefined; selectionEnd: number | null | undefined; }>`
+
+
+
 ### `removeFocus() => Promise<void>`
 
 Removes focus from the input.

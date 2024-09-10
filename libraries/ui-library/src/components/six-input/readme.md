@@ -56,6 +56,16 @@ Inputs collect data from the user.
 
 ## Methods
 
+### `getSelectionRange() => Promise<{ selectionStart: number | undefined | null; selectionEnd: number | undefined | null; }>`
+
+Returns the start and end positions of the text selection
+
+#### Returns
+
+Type: `Promise<{ selectionStart: number | null | undefined; selectionEnd: number | null | undefined; }>`
+
+
+
 ### `removeFocus() => Promise<void>`
 
 Removes focus from the input.

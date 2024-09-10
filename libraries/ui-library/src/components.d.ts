@@ -863,6 +863,10 @@ export namespace Components {
          */
         "errorTextCount"?: number;
         /**
+          * Returns the start and end positions of the text selection
+         */
+        "getSelectionRange": () => Promise<{ selectionStart: number | undefined | null; selectionEnd: number | undefined | null; }>;
+        /**
           * The input's help text. Alternatively, you can use the help-text slot.
          */
         "helpText": string;

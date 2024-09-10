@@ -228,6 +228,18 @@ export class SixInput {
     return this.nativeInput?.setSelectionRange(selectionStart, selectionEnd, selectionDirection);
   }
 
+  /** Returns the start and end positions of the text selection */
+  @Method()
+  async getSelectionRange(): Promise<{
+    selectionStart: number | undefined | null;
+    selectionEnd: number | undefined | null;
+  }> {
+    return {
+      selectionStart: this.nativeInput?.selectionStart,
+      selectionEnd: this.nativeInput?.selectionEnd,
+    };
+  }
+
   /** Replaces a range of text with a new string. */
   @Method()
   async setRangeText(
