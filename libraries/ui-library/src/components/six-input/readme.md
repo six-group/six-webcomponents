@@ -56,13 +56,13 @@ Inputs collect data from the user.
 
 ## Methods
 
-### `getSelectionRange() => Promise<{ selectionStart: number | undefined | null; selectionEnd: number | undefined | null; }>`
+### `getSelectionRange() => Promise<SelectionRange>`
 
 Returns the start and end positions of the text selection
 
 #### Returns
 
-Type: `Promise<{ selectionStart: number | null | undefined; selectionEnd: number | null | undefined; }>`
+Type: `Promise<SelectionRange>`
 
 
 
@@ -121,7 +121,7 @@ Type: `Promise<void>`
 
 
 
-### `setSelectionRange(selectionStart: number, selectionEnd: number, selectionDirection?: 'forward' | 'backward' | 'none') => Promise<void | undefined>`
+### `setSelectionRange(selectionStart: number, selectionEnd: number, selectionDirection?: SelectionRangeDirection) => Promise<void | undefined>`
 
 Sets the start and end positions of the text selection (0-based).
 
