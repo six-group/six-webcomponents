@@ -11,6 +11,13 @@ const ICON_SIZES: Record<'small' | 'medium' | 'large', 'xSmall' | 'small' | 'med
   small: 'xSmall',
 };
 
+export type SelectionRangeDirection = 'forward' | 'backward' | 'none';
+export type SelectionRange = {
+  selectionStart: number | undefined;
+  selectionEnd: number | undefined;
+  selectionDirection: SelectionRangeDirection | undefined;
+};
+
 let id = 0;
 
 /**
@@ -223,9 +230,19 @@ export class SixInput {
   async setSelectionRange(
     selectionStart: number,
     selectionEnd: number,
-    selectionDirection: 'forward' | 'backward' | 'none' = 'none'
+    selectionDirection: SelectionRangeDirection = 'none'
   ) {
     return this.nativeInput?.setSelectionRange(selectionStart, selectionEnd, selectionDirection);
+  }
+
+  /** Returns the start and end positions of the text selection */
+  @Method()
+  async getSelectionRange(): Promise<SelectionRange> {
+    return {
+      selectionStart: this.nativeInput?.selectionStart ?? undefined,
+      selectionEnd: this.nativeInput?.selectionEnd ?? undefined,
+      selectionDirection: this.nativeInput?.selectionDirection ?? undefined,
+    };
   }
 
   /** Replaces a range of text with a new string. */
