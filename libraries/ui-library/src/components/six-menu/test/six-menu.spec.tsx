@@ -46,7 +46,7 @@ describe('six-menu', () => {
     expect(page.root).toEqualHtml(`
       <six-menu virtual-scroll="">
         <mock:shadow-root>
-          <div class="menu" part="wrapper" style="height: 320px;">
+          <div class="menu" part="wrapper" style="height: 240px;">
             <div part="base" role="menu" tabindex="0" style="transform: translateY(0px);">
               <slot></slot>
             </div>

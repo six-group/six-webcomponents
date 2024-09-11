@@ -105,8 +105,6 @@ export class SixFileUpload {
     }
 
     this.hasError = validType || hasSlot(this.host, 'error-text');
-    console.log(this.errorText);
-    console.log(this.hasError);
   };
 
   private handleFiles = (files: FileList) => {

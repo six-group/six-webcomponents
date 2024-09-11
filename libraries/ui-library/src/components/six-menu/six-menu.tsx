@@ -27,7 +27,7 @@ const mapToMenuItem = ({ value, label }: SixMenuItemData) => (
 );
 
 const DEFAULT_NUMBER_OF_ITEMS_SHOWN_FOR_VIRTUAL_SCROLLING = 5;
-
+const DEFAULT_SIX_MENU_ITEM_HEIGHT_FOR_VIRTUAL_SCROLLING = 48;
 const DEFAULT_SIX_MENU_ITEM_HEIGHT = 64;
 
 /**
@@ -98,7 +98,9 @@ export class SixMenu {
   // set a default item height, this variable will be updated with the real value after the first render.
   // However, it's necessary to have a default value because we can only fetch the proper height after the first render
   @State()
-  sixMenuItemHeight = DEFAULT_SIX_MENU_ITEM_HEIGHT;
+  private sixMenuItemHeight = this.virtualScroll
+    ? DEFAULT_SIX_MENU_ITEM_HEIGHT_FOR_VIRTUAL_SCROLLING
+    : DEFAULT_SIX_MENU_ITEM_HEIGHT;
 
   connectedCallback() {
     this.handleClick = this.handleClick.bind(this);
@@ -151,6 +153,9 @@ export class SixMenu {
 
   private getItemsShown(): number {
     const defaultItemsShown = this.virtualScroll ? DEFAULT_NUMBER_OF_ITEMS_SHOWN_FOR_VIRTUAL_SCROLLING : 0;
+    if (this.items && this.items.length === 1) {
+      return 0;
+    }
     return this.itemsShown ?? defaultItemsShown;
   }
 
@@ -273,6 +278,8 @@ export class SixMenu {
     if (this.getItemsShown() > 0) {
       // calculate the proper height to show the correct number of items
       styles.height = `${(this.getItemsShown() ?? 0) * this.sixMenuItemHeight}px`;
+    } else if (this.items && this.items.length === 1) {
+      styles.height = 'auto';
     }
     return {
       ...styles,
@@ -294,11 +301,9 @@ export class SixMenu {
 
   private getScrollbarGhostStyle() {
     const styles: Partial<StyleDeclaration> = {};
-
-    if (this.virtualScroll && this.items !== null) {
+    if (this.virtualScroll && this.items !== null && this.items.length > 1) {
       styles.height = `${this.items.length * this.sixMenuItemHeight - this.itemSize * this.sixMenuItemHeight}px`;
     }
-
     return {
       ...styles,
     };
