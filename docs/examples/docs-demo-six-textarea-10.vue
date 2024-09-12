@@ -1,8 +1,8 @@
 <template>
 <div>
 
-        <six-textarea label="Simple string message" error-text="This is a simple string message" invalid>
-        </six-textarea>
+        <six-textarea rows="1" style="--height: var(--six-height-medium)"></six-textarea>
+        <six-input></six-input>
       
 </div>
 </template>

@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## Upcoming
 
+### Added
+
+- `six-textarea`: added CSS variable `--height` to set the initial height of the textarea component
+
 ### Fixed
 
 - `six-input`: fix auto size issues for type=number
