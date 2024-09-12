@@ -8,18 +8,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+### Fixed
+
+### Changed
+
+## 4.2.5 - 2024-09-12
+
+### Added
+
 - `six-textarea`: added CSS variable `--height` to set the initial height of the textarea component
+- `six-input`: new method `getSelectionRange` which exposes the cursor position from the wrapped
+  `input` element
 
 ### Fixed
 
 - `six-input`: fix auto size issues for type=number
 - `six-menu`: last item gets partially cut off when using virtual-scroll
 - `six-menu`: overflow when using virtual-scroll and autocomplete
-
-### Added
-
-- `six-input`: new method `getSelectionRange` which exposes the cursor position from the wrapped
-  `input` element
 
 ## 4.2.4 - 2024-07-04
 
