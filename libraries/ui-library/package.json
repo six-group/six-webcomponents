@@ -39,7 +39,7 @@
     "@types/resize-observer-browser": "^0.1.5"
   },
   "devDependencies": {
-    "@fontsource/noto-sans": "^4.5.11",
+    "@fontsource/noto-sans": "^5.1.0",
     "@popperjs/core": "^2.5.3",
     "@stencil-community/eslint-plugin": "^0.7.1",
     "@stencil/angular-output-target": "^0.8.2",
