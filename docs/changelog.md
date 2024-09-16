@@ -8,9 +8,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- demo app with Next.js and the six-webcomponents (experimental)
+
 ### Removed
 
 ### Changed
+
+### Fixed
+
+- react output target for the six-webcomponents usage
 
 ## 4.3.1 - 2025-01-09
 
