@@ -18,7 +18,7 @@ export const config: Config = {
   },
   outputTargets: [
     reactOutputTarget({
-      outDir: '../ui-library-react/src/lib/components/stencil-generated/',
+      outDir: '../ui-library-react/src',
     }),
     angularOutputTarget({
       componentCorePackage: '@six-group/ui-library',
@@ -57,6 +57,7 @@ export const config: Config = {
     },
     {
       type: 'dist-custom-elements',
+      externalRuntime: false,
       customElementsExportBehavior: 'bundle',
     },
     {
