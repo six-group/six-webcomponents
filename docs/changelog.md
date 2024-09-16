@@ -10,6 +10,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Fixed
 
+- `six-select`: fix displaying label instead of value in autocomplete mode
+
 ### Changed
 
 ## 4.2.5 - 2024-09-12
