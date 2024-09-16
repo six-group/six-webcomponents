@@ -243,7 +243,9 @@ export class SixSelect {
           event.stopPropagation();
         }, this.inputDebounce)
       );
-      autocompleteInput.value = Array.isArray(this.value) ? this.value.join(',') : this.value;
+
+      const selectedLabel = this.displayedValues.join(', ');
+      autocompleteInput.value = selectedLabel;
     }
   }
 
@@ -486,8 +488,9 @@ export class SixSelect {
     const checkedItems = getCheckedItems(convertToValidArrayValue(this.value), mainItems);
     this.displayedValues = checkedItems.map((i) => this.getItemLabel(i));
 
-    if (this.autocomplete && this.autocompleteInput != null) {
-      this.autocompleteInput.value = Array.isArray(this.value) ? this.value.join(',') : this.value;
+    if (this.autocomplete && this.autocompleteInput != null && !this.hasFocus) {
+      const selectedLabel = this.displayedValues.join(', ');
+      this.autocompleteInput.value = selectedLabel;
     }
 
     requestAnimationFrame(() => {
