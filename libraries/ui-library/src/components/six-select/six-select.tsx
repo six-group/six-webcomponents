@@ -243,7 +243,7 @@ export class SixSelect {
           event.stopPropagation();
         }, this.inputDebounce)
       );
-  
+
       const selectedLabel = this.displayedValues.join(', ');
       autocompleteInput.value = selectedLabel;
     }
