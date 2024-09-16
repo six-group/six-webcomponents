@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## Upcoming
 
+### Added
+
+- demo app with Next.js and the six-webcomponents (experimental)
+
 ### Removed
 
 - **Breaking**: Temporarily removed React support to unblock dependency updates.
@@ -21,6 +25,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Fixed
 
 - Fixed mermaid diagrams in component documentation.
+- react output target for the six-webcomponents usage
 
 ## 4.2.6 - 2024-10-04
 
