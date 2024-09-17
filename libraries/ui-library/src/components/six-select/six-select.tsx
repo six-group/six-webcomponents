@@ -241,6 +241,10 @@ export class SixSelect {
           this.value = autocompleteInput.value;
           this.sixChange.emit({ value: this.value, isSelected: false });
           event.stopPropagation();
+
+          if (this.virtualScroll || this.value.length > 0) {
+            this.dropdown?.show();
+          }
         }, this.inputDebounce)
       );
 
@@ -303,7 +307,8 @@ export class SixSelect {
   private handleClearClick = async (event: MouseEvent) => {
     event.stopPropagation();
     await this.clearValues();
-    await this.dropdown?.hide();
+    await this.dropdown?.show();
+    await this.setFocus();
     this.sixChange.emit({ value: this.value, isSelected: true });
   };
 
