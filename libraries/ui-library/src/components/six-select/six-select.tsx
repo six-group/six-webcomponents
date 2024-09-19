@@ -483,11 +483,20 @@ export class SixSelect {
 
     selectionContainerItems.forEach((item) => {
       item.checkType = this.multiple ? 'checkbox' : 'check';
-      item.checked = value.includes(item.value);
+      if (Array.isArray(value)) {
+        item.checked = value.some((val) => val === item.value);
+      } else {
+        item.checked = value === item.value;
+      }
     });
+
     mainItems.forEach((item) => {
       item.checkType = this.multiple ? 'checkbox' : 'check';
-      item.checked = value.includes(item.value);
+      if (Array.isArray(value)) {
+        item.checked = value.some((val) => val === item.value);
+      } else {
+        item.checked = value === item.value;
+      }
     });
 
     const checkedItems = getCheckedItems(convertToValidArrayValue(this.value), mainItems);
