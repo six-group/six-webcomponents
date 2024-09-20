@@ -1,0 +1,41 @@
+{
+  "name": "@six-group/demo-app-next",
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "next dev",
+    "build:next": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "wdio run ./wdio.conf.mts"
+  },
+  "private": true,
+  "dependencies": {
+    "html-react-parser": "^5.1.10",
+    "next": "14.2.4",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "@stencil/react-output-target": "^0.7.1",
+    "@types/node": "^18.18.5",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@wdio/cli": "^9.0.7",
+    "@wdio/globals": "^9.0.7",
+    "@wdio/local-runner": "^9.0.7",
+    "@wdio/mocha-framework": "^9.0.6",
+    "@wdio/spec-reporter": "^9.0.7",
+    "@wdio/types": "^9.0.4",
+    "autoprefixer": "^10.0.1",
+    "@six-group/ui-library": "*",
+    "@six-group/ui-library-react": "*",
+    "eslint": "^8",
+    "eslint-config-next": "14.1.4",
+    "postcss": "^8",
+    "tailwindcss": "^3.3.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5",
+    "webdriverio": "^9.0.7",
+    "wdio-next-service": "^0.1.0"
+  }
+}
