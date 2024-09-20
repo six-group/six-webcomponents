@@ -38,7 +38,7 @@
     "wdio-vite-service": "^1.0.6"
   },
   "dependencies": {
-    "@stencil/react-output-target": "^0.7.0",
+    "@stencil/react-output-target": "^0.7.1",
     "@popperjs/core": "^2.9.2",
     "react-dom": "^18.2.0",
     "@six-group/ui-library": "*"

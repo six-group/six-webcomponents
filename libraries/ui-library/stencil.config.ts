@@ -20,6 +20,10 @@ export const config: Config = {
     reactOutputTarget({
       outDir: '../ui-library-react/src',
     }),
+    reactOutputTarget({
+      outDir: '../../examples/next-app/src/app',
+      hydrateModule: './hydrate',
+    }),
     angularOutputTarget({
       componentCorePackage: '@six-group/ui-library',
       directivesProxyFile: '../ui-library-angular/src/lib/stencil-generated/components.ts',
@@ -54,6 +58,10 @@ export const config: Config = {
         { src: '../../../node_modules/@fontsource/noto-sans/files/*', dest: './files', warn: true },
         { src: './assets/**/*', dest: '.', warn: true, keepDirStructure: true },
       ],
+    },
+    {
+      type: 'dist-hydrate-script',
+      dir: './hydrate',
     },
     {
       type: 'dist-custom-elements',
