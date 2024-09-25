@@ -408,7 +408,7 @@ export class SixInput {
             data-testid="input-control"
           />
 
-          {this.clearable && (
+          {this.clearable && !this.disabled && (
             <button
               part="clear-button"
               class="input__clear"
