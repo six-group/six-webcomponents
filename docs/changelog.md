@@ -23,6 +23,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
+- **Breaking**: Temporarily remove React support to unblock dependency updates.
+
+  React no longer works with the latest Stencil output target, which is preventing us from updating
+  our dependencies to their latest versions. Since the team currently lacks the resources to fix
+  this issue, we're removing React support temporarily to prevent it from hindering progress.
+
 ## 4.2.5 - 2024-09-12
 
 ### Added
