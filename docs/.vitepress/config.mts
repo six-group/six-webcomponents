@@ -1,5 +1,5 @@
-import { defineConfig } from 'vitepress';
 import { components } from '../components/component.tags.mjs';
+import { withMermaid } from 'vitepress-plugin-mermaid';
 
 const componentNavItems = components.map((component) => {
   return {
@@ -13,7 +13,7 @@ const componentNavItems = components.map((component) => {
 });
 
 // https://vitepress.dev/reference/site-config
-export default defineConfig({
+export default withMermaid({
   ignoreDeadLinks: [/^https?:\/\/localhost/, './../wrappers/set-attributes'],
   appearance: false,
   head: [['link', { rel: 'icon', href: 'favicon.ico' }]],
