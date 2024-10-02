@@ -6,11 +6,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## Upcoming
 
-### Added
+### Removed
+
+- **Breaking**: Temporarily removed React support to unblock dependency updates.
+
+  React no longer works with the latest Stencil output target, which is preventing us from updating
+  our dependencies to their latest versions. Since the team currently lacks the resources to fix
+  this issue, we're removing React support temporarily to prevent it from hindering progress.
+
+### Changed
+
+- Updated dependencies and cleaned up test config.
 
 ### Fixed
 
-### Changed
+- Fixed mermaid diagrams in component documentation.
 
 ## 4.2.6 - 2024-10-04
 
@@ -20,16 +30,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - `six-select`: show dropdown after the value is cleared
 - `six-select`: fix multiple checkmark bug for single select mode
 - `six-input`: fix disabled input being clearable
-
-### Changed
-
-- **Breaking**: Temporarily remove React support to unblock dependency updates.
-
-  React no longer works with the latest Stencil output target, which is preventing us from updating
-  our dependencies to their latest versions. Since the team currently lacks the resources to fix
-  this issue, we're removing React support temporarily to prevent it from hindering progress.
-
-- Updated dependencies and cleand up test config for Stencil.
 
 ## 4.2.5 - 2024-09-12
 
