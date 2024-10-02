@@ -51,7 +51,6 @@ export default defineConfig({
               collapsed: false,
               items: [
                 { text: 'Angular', link: '/guide/angular' },
-                { text: 'React', link: '/guide/react' },
                 { text: 'Vue', link: '/guide/vue' },
               ],
             },
