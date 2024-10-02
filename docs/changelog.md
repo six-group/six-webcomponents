@@ -29,6 +29,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   our dependencies to their latest versions. Since the team currently lacks the resources to fix
   this issue, we're removing React support temporarily to prevent it from hindering progress.
 
+- Updated dependencies and cleand up test config for Stencil.
+
 ## 4.2.5 - 2024-09-12
 
 ### Added

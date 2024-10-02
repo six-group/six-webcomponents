@@ -1,4 +1,4 @@
-import { applyPolyfills, defineCustomElements } from '@six-group/ui-library/loader';
+import { defineCustomElements } from '@six-group/ui-library/loader';
 import { App, Plugin } from 'vue';
 import { Router } from 'vue-router';
 
@@ -9,9 +9,6 @@ export type UiLibraryVueOptions = {
 
 export const UiLibraryVue: Plugin = {
   async install(app: App, options?: UiLibraryVueOptions) {
-    if (options?.applyPolyfills) {
-      await applyPolyfills();
-    }
     defineCustomElements();
 
     if (options?.router) {
