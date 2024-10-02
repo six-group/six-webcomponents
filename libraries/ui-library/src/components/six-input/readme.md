@@ -102,7 +102,7 @@ Type: `Promise<void>`
 
 
 
-### `setRangeText(replacement: string, start: number, end: number, selectMode?: 'select' | 'start' | 'end' | 'preserve') => Promise<void>`
+### `setRangeText(replacement: string, start: number, end: number, selectMode?: "select" | "start" | "end" | "preserve") => Promise<void>`
 
 Replaces a range of text with a new string.
 

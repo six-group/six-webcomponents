@@ -943,7 +943,7 @@ export namespace Components {
         /**
           * Replaces a range of text with a new string.
          */
-        "setRangeText": (replacement: string, start: number, end: number, selectMode?: 'select' | 'start' | 'end' | 'preserve') => Promise<void>;
+        "setRangeText": (replacement: string, start: number, end: number, selectMode?: "select" | "start" | "end" | "preserve") => Promise<void>;
         /**
           * Sets the start and end positions of the text selection (0-based).
          */
@@ -1814,11 +1814,11 @@ export namespace Components {
         /**
           * Replaces a range of text with a new string.
          */
-        "setRangeText": (replacement: string, start: number, end: number, selectMode?: 'select' | 'start' | 'end' | 'preserve') => Promise<void>;
+        "setRangeText": (replacement: string, start: number, end: number, selectMode?: "select" | "start" | "end" | "preserve") => Promise<void>;
         /**
           * Sets the start and end positions of the text selection (0-based).
          */
-        "setSelectionRange": (selectionStart: number, selectionEnd: number, selectionDirection?: 'forward' | 'backward' | 'none') => Promise<void | undefined>;
+        "setSelectionRange": (selectionStart: number, selectionEnd: number, selectionDirection?: "forward" | "backward" | "none") => Promise<void | undefined>;
         /**
           * The textarea's size.
          */
