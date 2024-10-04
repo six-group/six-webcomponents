@@ -4,7 +4,6 @@ import { Router } from 'vue-router';
 
 export type UiLibraryVueOptions = {
   router?: Router;
-  applyPolyfills?: boolean;
 };
 
 export const UiLibraryVue: Plugin = {
