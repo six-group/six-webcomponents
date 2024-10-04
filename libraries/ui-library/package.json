@@ -33,7 +33,7 @@
     "codeclean": "npm run lint:fix && npm run prettier:fix"
   },
   "dependencies": {
-    "@stencil/core": "^4.21.0",
+    "@stencil/core": "^4.22.0",
     "@types/resize-observer-browser": "^0.1.5"
   },
   "devDependencies": {
@@ -48,7 +48,7 @@
     "@typescript-eslint/parser": "^7.0.0",
     "material-icons": "^1.13.12",
     "replace-in-file": "^6.3.5",
-    "rimraf": "^3.0.2"
+    "rimraf": "^5.0.0"
   },
   "engines": {
     "node": ">=16"
