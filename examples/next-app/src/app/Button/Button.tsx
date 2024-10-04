@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { SixButton } from '@/app/components';
+import { SixButton } from '@six-group/ui-library-react';
 
 function Button() {
   const [inputEvent, setInputEvent] = useState<number>(0);
