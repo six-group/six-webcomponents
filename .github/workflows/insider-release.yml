@@ -21,7 +21,7 @@ jobs:
 
       - name: Resolve version
         id: vars
-        run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+        run: echo "{name}=sha_short::$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
 
       - name: 'Version based on commit: 0.0.0-insider.${{ steps.vars.outputs.sha_short }}'
         run: npm version -w libraries 0.0.0-insider.${{ steps.vars.outputs.sha_short }} --force --no-git-tag-version
