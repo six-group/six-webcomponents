@@ -11,6 +11,7 @@
   "private": true,
   "dependencies": {
     "html-react-parser": "^5.1.10",
+    "@six-group/ui-library-react": "*",
     "next": "14.2.4",
     "react": "^18",
     "react-dom": "^18"
