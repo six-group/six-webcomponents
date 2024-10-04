@@ -1,1 +1,0 @@
-import{_ as e,c as t,o,d as a}from"./chunks/framework.DzqwsbcS.js";const f=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"README.md","filePath":"README.md","lastUpdated":1727273706000}'),i={name:"README.md"},n=a("",4),s=[n];function d(r,c,h,l,m,p){return o(),t("div",null,s)}const u=e(i,[["render",d]]);export{f as __pageData,u as default};
