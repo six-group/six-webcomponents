@@ -54,6 +54,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   our dependencies to their latest versions. Since the team currently lacks the resources to fix
   this issue, we're removing React support temporarily to prevent it from hindering progress.
 
+- Removed support for Node 16, minimal Node version of 18.10.x required
+
 ### Changed
 
 - Updated dependencies and cleaned up test config.

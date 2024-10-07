@@ -4,6 +4,8 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var stream = require('stream');
 
+const modeResolutionChain = [];
+
 function hydrateFactory($stencilWindow, $stencilHydrateOpts, $stencilHydrateResults, $stencilAfterHydrate, $stencilHydrateResolve) {
   var globalThis = $stencilWindow;
   var self = $stencilWindow;
@@ -55,6 +57,7 @@ function hydrateFactory($stencilWindow, $stencilHydrateOpts, $stencilHydrateResu
   var HTMLTemplateElement = $stencilWindow.HTMLTemplateElement;
   var HTMLTitleElement = $stencilWindow.HTMLTitleElement;
   var IntersectionObserver = $stencilWindow.IntersectionObserver;
+  var ResizeObserver = $stencilWindow.ResizeObserver;
   var KeyboardEvent = $stencilWindow.KeyboardEvent;
   var MouseEvent = $stencilWindow.MouseEvent;
   var Node = $stencilWindow.Node;
@@ -127,7 +130,7 @@ const NAMESPACE = 'ui-library';
 const BUILD = /* ui-library */ { allRenderFn: true, appendChildSlotFix: false, asyncLoading: true, attachStyles: true, cloneNodeFix: false, cmpDidLoad: true, cmpDidRender: true, cmpDidUnload: false, cmpDidUpdate: true, cmpShouldUpdate: false, cmpWillLoad: true, cmpWillRender: false, cmpWillUpdate: false, connectedCallback: true, constructableCSS: false, cssAnnotations: true, devTools: false, disconnectedCallback: true, element: false, event: true, experimentalScopedSlotChanges: false, experimentalSlotFixes: false, formAssociated: false, hasRenderFn: true, hostListener: true, hostListenerTarget: true, hostListenerTargetBody: false, hostListenerTargetDocument: false, hostListenerTargetParent: false, hostListenerTargetWindow: true, hotModuleReplacement: false, hydrateClientSide: true, hydrateServerSide: true, hydratedAttribute: false, hydratedClass: true, hydratedSelectorName: "hydrated", invisiblePrehydration: true, isDebug: false, isDev: false, isTesting: false, lazyLoad: true, lifecycle: true, lifecycleDOMEvents: false, member: true, method: true, mode: false, observeAttribute: true, profile: false, prop: true, propBoolean: true, propMutable: true, propNumber: true, propString: true, reflect: true, scoped: true, scopedSlotTextContentFix: false, scriptDataOpts: false, shadowDelegatesFocus: false, shadowDom: true, shadowDomShim: true, slot: true, slotChildNodesFix: false, slotRelocation: true, state: true, style: true, svg: true, taskQueue: true, updatable: true, vdomAttribute: true, vdomClass: true, vdomFunctional: true, vdomKey: true, vdomListener: true, vdomPropOrAttr: true, vdomRef: true, vdomRender: true, vdomStyle: true, vdomText: true, vdomXlink: false, watchCallback: true };
 
 /*
- Stencil Hydrate Platform v4.21.0 | MIT Licensed | https://stenciljs.com
+ Stencil Hydrate Platform v4.22.0 | MIT Licensed | https://stenciljs.com
  */
 var __defProp = Object.defineProperty;
 var __export = (target, all) => {
@@ -603,7 +606,7 @@ var addStyle = (styleContainerNode, cmpMeta, mode) => {
           if (!(cmpMeta.$flags$ & 1 /* shadowDomEncapsulation */)) {
             if (styleContainerNode.nodeName === "HEAD") {
               const preconnectLinks = styleContainerNode.querySelectorAll("link[rel=preconnect]");
-              const referenceNode2 = preconnectLinks.length > 0 ? preconnectLinks[preconnectLinks.length - 1].nextSibling : document.querySelector("style");
+              const referenceNode2 = preconnectLinks.length > 0 ? preconnectLinks[preconnectLinks.length - 1].nextSibling : styleContainerNode.querySelector("style");
               styleContainerNode.insertBefore(styleElm, referenceNode2);
             } else if ("host" in styleContainerNode) {
               styleContainerNode.prepend(styleElm);
@@ -12912,8 +12915,105 @@ exports.hydrateApp = hydrateApp;
   hydrateAppClosure($stencilWindow);
 }
 
+// src/app-data/index.ts
+var BUILD = {
+  allRenderFn: false,
+  cmpDidLoad: true,
+  cmpDidUnload: false,
+  cmpDidUpdate: true,
+  cmpDidRender: true,
+  cmpWillLoad: true,
+  cmpWillUpdate: true,
+  cmpWillRender: true,
+  connectedCallback: true,
+  disconnectedCallback: true,
+  element: true,
+  event: true,
+  hasRenderFn: true,
+  lifecycle: true,
+  hostListener: true,
+  hostListenerTargetWindow: true,
+  hostListenerTargetDocument: true,
+  hostListenerTargetBody: true,
+  hostListenerTargetParent: false,
+  hostListenerTarget: true,
+  member: true,
+  method: true,
+  mode: true,
+  observeAttribute: true,
+  prop: true,
+  propMutable: true,
+  reflect: true,
+  scoped: true,
+  shadowDom: true,
+  slot: true,
+  cssAnnotations: true,
+  state: true,
+  style: true,
+  formAssociated: false,
+  svg: true,
+  updatable: true,
+  vdomAttribute: true,
+  vdomXlink: true,
+  vdomClass: true,
+  vdomFunctional: true,
+  vdomKey: true,
+  vdomListener: true,
+  vdomRef: true,
+  vdomPropOrAttr: true,
+  vdomRender: true,
+  vdomStyle: true,
+  vdomText: true,
+  watchCallback: true,
+  taskQueue: true,
+  hotModuleReplacement: false,
+  isDebug: false,
+  isDev: false,
+  isTesting: false,
+  hydrateServerSide: false,
+  hydrateClientSide: false,
+  lifecycleDOMEvents: false,
+  lazyLoad: false,
+  profile: false,
+  slotRelocation: true,
+  // TODO(STENCIL-914): remove this option when `experimentalSlotFixes` is the default behavior
+  appendChildSlotFix: false,
+  // TODO(STENCIL-914): remove this option when `experimentalSlotFixes` is the default behavior
+  cloneNodeFix: false,
+  hydratedAttribute: false,
+  hydratedClass: true,
+  // TODO(STENCIL-1305): remove this option
+  scriptDataOpts: false,
+  // TODO(STENCIL-914): remove this option when `experimentalSlotFixes` is the default behavior
+  scopedSlotTextContentFix: false,
+  // TODO(STENCIL-854): Remove code related to legacy shadowDomShim field
+  shadowDomShim: false,
+  // TODO(STENCIL-914): remove this option when `experimentalSlotFixes` is the default behavior
+  slotChildNodesFix: false,
+  invisiblePrehydration: true,
+  propBoolean: true,
+  propNumber: true,
+  propString: true,
+  constructableCSS: true,
+  cmpShouldUpdate: true,
+  devTools: false,
+  shadowDelegatesFocus: true,
+  initializeNextTick: false,
+  asyncLoading: true,
+  asyncQueue: false,
+  transformTagName: false,
+  attachStyles: true,
+  // TODO(STENCIL-914): remove this option when `experimentalSlotFixes` is the default behavior
+  experimentalSlotFixes: false
+};
+var Env = {};
+var NAMESPACE = (
+  /* default */
+  "app"
+);
+
 /*
- Stencil Hydrate Runner v4.21.0 | MIT Licensed | https://stenciljs.com
+ Stencil Hydrate Runner v4.22.0 | MIT Licensed | https://stenciljs.com
  */
 var __defProp = Object.defineProperty;
 var __export = (target, all) => {
@@ -12926,6 +13026,7 @@ var CONTENT_REF_ID = "r";
 var ORG_LOCATION_ID = "o";
 var SLOT_NODE_ID = "s";
 var TEXT_NODE_ID = "t";
+var HYDRATE_ID = "s-id";
 var XLINK_NS = "http://www.w3.org/1999/xlink";
 
 // src/mock-doc/attribute.ts
@@ -13234,8 +13335,8 @@ function jsCaseToCssCase(str) {
 
 // src/mock-doc/custom-element-registry.ts
 var MockCustomElementRegistry = class {
-  constructor(win) {
-    this.win = win;
+  constructor(win2) {
+    this.win = win2;
   }
   define(tagName, cstr, options) {
     if (tagName.toLowerCase() !== tagName) {
@@ -13257,19 +13358,19 @@ var MockCustomElementRegistry = class {
         this.__whenDefined.delete(tagName);
       }
     }
-    const doc = this.win.document;
-    if (doc != null) {
-      const hosts = doc.querySelectorAll(tagName);
+    const doc2 = this.win.document;
+    if (doc2 != null) {
+      const hosts = doc2.querySelectorAll(tagName);
       hosts.forEach((host) => {
         if (upgradedElements.has(host) === false) {
-          tempDisableCallbacks.add(doc);
-          const upgradedCmp = createCustomElement(this, doc, tagName);
+          tempDisableCallbacks.add(doc2);
+          const upgradedCmp = createCustomElement(this, doc2, tagName);
           for (let i = 0; i < host.childNodes.length; i++) {
             const childNode = host.childNodes[i];
             childNode.remove();
             upgradedCmp.appendChild(childNode);
           }
-          tempDisableCallbacks.delete(doc);
+          tempDisableCallbacks.delete(doc2);
           if (proxyElements.has(host)) {
             proxyElements.set(host, upgradedCmp);
           }
@@ -13323,8 +13424,8 @@ var MockCustomElementRegistry = class {
     });
   }
 };
-function createCustomElement(customElements, ownerDocument, tagName) {
-  const Cstr = customElements.get(tagName);
+function createCustomElement(customElements2, ownerDocument, tagName) {
+  const Cstr = customElements2.get(tagName);
   if (Cstr != null) {
     const cmp = new Cstr(ownerDocument);
     cmp.nodeName = tagName.toUpperCase();
@@ -13372,8 +13473,8 @@ function connectNode(ownerDocument, node) {
   node.ownerDocument = ownerDocument;
   if (node.nodeType === 1 /* ELEMENT_NODE */) {
     if (ownerDocument != null && node.nodeName.includes("-")) {
-      const win = ownerDocument.defaultView;
-      if (win != null && typeof node.connectedCallback === "function" && node.isConnected) {
+      const win2 = ownerDocument.defaultView;
+      if (win2 != null && typeof node.connectedCallback === "function" && node.isConnected) {
         fireConnectedCallback(node);
       }
       const shadowRoot = node.shadowRoot;
@@ -17781,7 +17882,7 @@ var OpenElementStack = class {
   get currentTmplContentOrNode() {
     return this._isInTemplate() ? this.treeAdapter.getTemplateContent(this.current) : this.current;
   }
-  constructor(document, treeAdapter, handler) {
+  constructor(document2, treeAdapter, handler) {
     this.treeAdapter = treeAdapter;
     this.handler = handler;
     this.items = [];
@@ -17789,7 +17890,7 @@ var OpenElementStack = class {
     this.stackTop = -1;
     this.tmplCount = 0;
     this.currentTagId = TAG_ID.UNKNOWN;
-    this.current = document;
+    this.current = document2;
   }
   //Index of element
   _indexOf(element) {
@@ -18206,8 +18307,8 @@ var defaultTreeAdapter = {
   getTemplateContent(templateElement) {
     return templateElement.content;
   },
-  setDocumentType(document, name, publicId, systemId) {
-    const doctypeNode = document.childNodes.find((node) => node.nodeName === "#documentType");
+  setDocumentType(document2, name, publicId, systemId) {
+    const doctypeNode = document2.childNodes.find((node) => node.nodeName === "#documentType");
     if (doctypeNode) {
       doctypeNode.name = name;
       doctypeNode.publicId = publicId;
@@ -18220,14 +18321,14 @@ var defaultTreeAdapter = {
         systemId,
         parentNode: null
       };
-      defaultTreeAdapter.appendChild(document, node);
+      defaultTreeAdapter.appendChild(document2, node);
     }
   },
-  setDocumentMode(document, mode) {
-    document.mode = mode;
+  setDocumentMode(document2, mode) {
+    document2.mode = mode;
   },
-  getDocumentMode(document) {
-    return document.mode;
+  getDocumentMode(document2) {
+    return document2.mode;
   },
   detachNode(node) {
     if (node.parentNode) {
@@ -18708,7 +18809,7 @@ var defaultParserOptions = {
   onParseError: null
 };
 var Parser = class {
-  constructor(options, document, fragmentContext = null, scriptHandler = null) {
+  constructor(options, document2, fragmentContext = null, scriptHandler = null) {
     this.fragmentContext = fragmentContext;
     this.scriptHandler = scriptHandler;
     this.currentToken = null;
@@ -18733,7 +18834,7 @@ var Parser = class {
     if (this.onParseError) {
       this.options.sourceCodeLocationInfo = true;
     }
-    this.document = document !== null && document !== void 0 ? document : this.treeAdapter.createDocument();
+    this.document = document2 !== null && document2 !== void 0 ? document2 : this.treeAdapter.createDocument();
     this.tokenizer = new Tokenizer(this.options, this);
     this.activeFormattingElements = new FormattingElementList(this.treeAdapter);
     this.fragmentContextID = fragmentContext ? getTagID(this.treeAdapter.getTagName(fragmentContext)) : TAG_ID.UNKNOWN;
@@ -21710,11 +21811,11 @@ function parseFragment(fragmentContext, html, options) {
 // src/mock-doc/parse-util.ts
 var docParser = /* @__PURE__ */ new WeakMap();
 function parseDocumentUtil(ownerDocument, html) {
-  const doc = parse(html.trim(), getParser(ownerDocument));
-  doc.documentElement = doc.firstElementChild;
-  doc.head = doc.documentElement.firstElementChild;
-  doc.body = doc.head.nextElementSibling;
-  return doc;
+  const doc2 = parse(html.trim(), getParser(ownerDocument));
+  doc2.documentElement = doc2.firstElementChild;
+  doc2.head = doc2.documentElement.firstElementChild;
+  doc2.body = doc2.head.nextElementSibling;
+  return doc2;
 }
 function parseFragmentUtil(ownerDocument, html) {
   if (typeof html === "string") {
@@ -21732,9 +21833,9 @@ function getParser(ownerDocument) {
   }
   const treeAdapter = {
     createDocument() {
-      const doc = ownerDocument.createElement("#document" /* DOCUMENT_NODE */);
-      doc["x-mode"] = "no-quirks";
-      return doc;
+      const doc2 = ownerDocument.createElement("#document" /* DOCUMENT_NODE */);
+      doc2["x-mode"] = "no-quirks";
+      return doc2;
     },
     setNodeSourceCodeLocation(node, location2) {
       node.sourceCodeLocation = location2;
@@ -21772,22 +21873,22 @@ function getParser(ownerDocument) {
     getTemplateContent(templateElement) {
       return templateElement.content;
     },
-    setDocumentType(doc, name, publicId, systemId) {
-      let doctypeNode = doc.childNodes.find((n) => n.nodeType === 10 /* DOCUMENT_TYPE_NODE */);
+    setDocumentType(doc2, name, publicId, systemId) {
+      let doctypeNode = doc2.childNodes.find((n) => n.nodeType === 10 /* DOCUMENT_TYPE_NODE */);
       if (doctypeNode == null) {
         doctypeNode = ownerDocument.createDocumentTypeNode();
-        doc.insertBefore(doctypeNode, doc.firstChild);
+        doc2.insertBefore(doctypeNode, doc2.firstChild);
       }
       doctypeNode.nodeValue = "!DOCTYPE";
       doctypeNode["x-name"] = name;
       doctypeNode["x-publicId"] = publicId;
       doctypeNode["x-systemId"] = systemId;
     },
-    setDocumentMode(doc, mode) {
-      doc["x-mode"] = mode;
+    setDocumentMode(doc2, mode) {
+      doc2["x-mode"] = mode;
     },
-    getDocumentMode(doc) {
-      return doc["x-mode"];
+    getDocumentMode(doc2) {
+      return doc2["x-mode"];
     },
     detachNode(node) {
       node.remove();
@@ -21919,9 +22020,9 @@ var jquery_default = (
         nodeName: "HTML"
       }
     }
-  }, function(window, noGlobal) {
+  }, function(window2, noGlobal) {
     "use strict";
-    if (!window.document) {
+    if (!window2.document) {
       throw new Error("jQuery requires a window with a document");
     }
     var arr = [];
@@ -21956,16 +22057,16 @@ var jquery_default = (
       }
       return type === "array" || length === 0 || typeof length === "number" && length > 0 && length - 1 in obj;
     }
-    var document = window.document;
+    var document2 = window2.document;
     var preservedScriptAttributes = {
       type: true,
       src: true,
       nonce: true,
       noModule: true
     };
-    function DOMEval(code, node, doc) {
-      doc = doc || document;
-      var i2, script = doc.createElement("script");
+    function DOMEval(code, node, doc2) {
+      doc2 = doc2 || document2;
+      var i2, script = doc2.createElement("script");
       script.text = code;
       if (node) {
         for (i2 in preservedScriptAttributes) {
@@ -21974,7 +22075,7 @@ var jquery_default = (
           }
         }
       }
-      doc.head.appendChild(script).parentNode.removeChild(script);
+      doc2.head.appendChild(script).parentNode.removeChild(script);
     }
     const jQuery = {};
     var version = "4.0.0-pre+9352011a7.dirty +selector", rhtmlSuffix = /HTML$/i, jQueryOrig = function(selector, context) {
@@ -22111,8 +22212,8 @@ var jquery_default = (
       },
       // Evaluates a script in a provided context; falls back to the global one
       // if not specified.
-      globalEval: function(code, options, doc) {
-        DOMEval(code, { nonce: options && options.nonce }, doc);
+      globalEval: function(code, options, doc2) {
+        DOMEval(code, { nonce: options && options.nonce }, doc2);
       },
       each: function(obj, callback) {
         var length, i2 = 0;
@@ -22239,9 +22340,9 @@ var jquery_default = (
     }
     var pop = arr.pop;
     var whitespace = "[\\x20\\t\\r\\n\\f]";
-    var isIE = document.documentMode;
+    var isIE = document2.documentMode;
     try {
-      document.querySelector(":has(*,:jqfake)");
+      document2.querySelector(":has(*,:jqfake)");
       support.cssHas = false;
     } catch (e) {
       support.cssHas = true;
@@ -22273,7 +22374,7 @@ var jquery_default = (
     var rleadingCombinator = new RegExp("^" + whitespace + "*([>+~]|" + whitespace + ")" + whitespace + "*");
     var rdescend = new RegExp(whitespace + "|>");
     var rsibling = /[+~]/;
-    var documentElement = document.documentElement;
+    var documentElement = document2.documentElement;
     var matches2 = documentElement.matches || documentElement.msMatchesSelector;
     function createCache() {
       var keys = [];
@@ -22442,10 +22543,10 @@ var jquery_default = (
         1
       );
       if (compare & 1) {
-        if (a == document || a.ownerDocument == document && jQuery.contains(document, a)) {
+        if (a == document2 || a.ownerDocument == document2 && jQuery.contains(document2, a)) {
           return -1;
         }
-        if (b == document || b.ownerDocument == document && jQuery.contains(document, b)) {
+        if (b == document2 || b.ownerDocument == document2 && jQuery.contains(document2, b)) {
           return 1;
         }
         return 0;
@@ -22601,14 +22702,14 @@ var jquery_default = (
       });
     }
     function setDocument(node) {
-      var subWindow, doc = node ? node.ownerDocument || node : document;
-      if (doc == document$1 || doc.nodeType !== 9) {
+      var subWindow, doc2 = node ? node.ownerDocument || node : document2;
+      if (doc2 == document$1 || doc2.nodeType !== 9) {
         return;
       }
-      document$1 = doc;
+      document$1 = doc2;
       documentElement$1 = document$1.documentElement;
       documentIsHTML = !jQuery.isXMLDoc(document$1);
-      if (isIE && document != document$1 && (subWindow = document$1.defaultView) && subWindow.top !== subWindow) {
+      if (isIE && document2 != document$1 && (subWindow = document$1.defaultView) && subWindow.top !== subWindow) {
         subWindow.addEventListener("unload", unloadHandler);
       }
     }
@@ -22839,7 +22940,7 @@ var jquery_default = (
         }),
         // Miscellaneous
         target: function(elem) {
-          var hash = window.location && window.location.hash;
+          var hash = window2.location && window2.location.hash;
           return hash && hash.slice(1) === elem.id;
         },
         root: function(elem) {
@@ -23479,6 +23580,13 @@ style="${cssText}">`;
               output.indent = output.indent + ((_h = opts.indentSpaces) != null ? _h : 0);
             }
             for (let i = 0; i < childNodeLength; i++) {
+              const sId = node.attributes.getNamedItem(HYDRATE_ID);
+              const isStencilDeclarativeShadowDOM = childNodes[i].nodeName.toLowerCase() === "template" && sId;
+              if (isStencilDeclarativeShadowDOM) {
+                yield `
+${" ".repeat(output.indent)}<!--r.${sId.value}-->`;
+                continue;
+              }
               yield* streamToHtml(childNodes[i], opts, output);
             }
             if (ignoreTag === false) {
@@ -24829,9 +24937,9 @@ function createElement(ownerDocument, tagName) {
       return new MockUListElement(ownerDocument);
   }
   if (ownerDocument != null && tagName.includes("-")) {
-    const win = ownerDocument.defaultView;
-    if (win != null && win.customElements != null) {
-      return createCustomElement(win.customElements, ownerDocument, tagName);
+    const win2 = ownerDocument.defaultView;
+    if (win2 != null && win2.customElements != null) {
+      return createCustomElement(win2.customElements, ownerDocument, tagName);
     }
   }
   return new MockHTMLElement(ownerDocument, tagName);
@@ -25253,9 +25361,9 @@ var CanvasRenderingContext = class {
   }
   clearRect() {
   }
-  getImageData(_, __, w, h) {
+  getImageData(_, __, w, h2) {
     return {
-      data: new Array(w * h * 4)
+      data: new Array(w * h2 * 4)
     };
   }
   toDataURL() {
@@ -25317,9 +25425,9 @@ var MockCanvasElement = class extends MockHTMLElement {
 function fullUrl(elm, attrName) {
   const val = elm.getAttribute(attrName) || "";
   if (elm.ownerDocument != null) {
-    const win = elm.ownerDocument.defaultView;
-    if (win != null) {
-      const loc = win.location;
+    const win2 = elm.ownerDocument.defaultView;
+    if (win2 != null) {
+      const loc = win2.location;
       if (loc != null) {
         try {
           const url = new URL(val, loc.href);
@@ -25924,6 +26032,21 @@ function resetPerformance(perf) {
   }
 }
 
+// src/mock-doc/resize-observer.ts
+var MockResizeObserver = class {
+  constructor() {
+  }
+  disconnect() {
+  }
+  observe() {
+  }
+  takeRecords() {
+    return [];
+  }
+  unobserve() {
+  }
+};
+
 // src/mock-doc/storage.ts
 var MockStorage = class {
   constructor() {
@@ -26024,10 +26147,10 @@ var MockWindow = class {
   }
   get Document() {
     if (this.__docCstr == null) {
-      const win = this;
+      const win2 = this;
       this.__docCstr = class extends MockDocument {
         constructor() {
-          super(false, win);
+          super(false, win2);
           throw new Error("Illegal constructor: cannot construct Document");
         }
       };
@@ -26162,6 +26285,9 @@ var MockWindow = class {
   }
   get IntersectionObserver() {
     return MockIntersectionObserver;
+  }
+  get ResizeObserver() {
+    return MockResizeObserver;
   }
   get localStorage() {
     if (this.__localStorage == null) {
@@ -26544,14 +26670,14 @@ var MockWindow = class {
   }
 };
 addGlobalsToWindowPrototype(MockWindow.prototype);
-function resetWindowDefaults(win) {
-  win.__clearInterval = nativeClearInterval;
-  win.__clearTimeout = nativeClearTimeout;
-  win.__setInterval = nativeSetInterval;
-  win.__setTimeout = nativeSetTimeout;
-  win.__maxTimeout = 3e4;
-  win.__allowInterval = true;
-  win.URL = nativeURL;
+function resetWindowDefaults(win2) {
+  win2.__clearInterval = nativeClearInterval;
+  win2.__clearTimeout = nativeClearTimeout;
+  win2.__setInterval = nativeSetInterval;
+  win2.__setTimeout = nativeSetTimeout;
+  win2.__maxTimeout = 3e4;
+  win2.__allowInterval = true;
+  win2.URL = nativeURL;
 }
 function cloneWindow(srcWin, opts = {}) {
   if (srcWin == null) {
@@ -26570,72 +26696,72 @@ function cloneWindow(srcWin, opts = {}) {
   }
   return clonedWin;
 }
-function constrainTimeouts(win) {
-  win.__allowInterval = false;
-  win.__maxTimeout = 0;
+function constrainTimeouts(win2) {
+  win2.__allowInterval = false;
+  win2.__maxTimeout = 0;
 }
-function resetWindow(win) {
-  if (win != null) {
-    if (win.__timeouts) {
-      win.__timeouts.forEach((timeoutId) => {
+function resetWindow(win2) {
+  if (win2 != null) {
+    if (win2.__timeouts) {
+      win2.__timeouts.forEach((timeoutId) => {
         nativeClearInterval(timeoutId);
         nativeClearTimeout(timeoutId);
       });
-      win.__timeouts.clear();
+      win2.__timeouts.clear();
     }
-    if (win.customElements && win.customElements.clear) {
-      win.customElements.clear();
+    if (win2.customElements && win2.customElements.clear) {
+      win2.customElements.clear();
     }
-    resetDocument(win.document);
-    resetPerformance(win.performance);
-    for (const key in win) {
-      if (win.hasOwnProperty(key) && key !== "document" && key !== "performance" && key !== "customElements") {
-        delete win[key];
+    resetDocument(win2.document);
+    resetPerformance(win2.performance);
+    for (const key in win2) {
+      if (win2.hasOwnProperty(key) && key !== "document" && key !== "performance" && key !== "customElements") {
+        delete win2[key];
       }
     }
-    resetWindowDefaults(win);
-    resetWindowDimensions(win);
-    resetEventListeners(win);
-    if (win.document != null) {
+    resetWindowDefaults(win2);
+    resetWindowDimensions(win2);
+    resetEventListeners(win2);
+    if (win2.document != null) {
       try {
-        win.document.defaultView = win;
+        win2.document.defaultView = win2;
       } catch (e) {
       }
     }
-    win.fetch = null;
-    win.Headers = null;
-    win.Request = null;
-    win.Response = null;
-    win.FetchError = null;
+    win2.fetch = null;
+    win2.Headers = null;
+    win2.Request = null;
+    win2.Response = null;
+    win2.FetchError = null;
   }
 }
-function resetWindowDimensions(win) {
+function resetWindowDimensions(win2) {
   try {
-    win.devicePixelRatio = 1;
-    win.innerHeight = 768;
-    win.innerWidth = 1366;
-    win.pageXOffset = 0;
-    win.pageYOffset = 0;
-    win.screenLeft = 0;
-    win.screenTop = 0;
-    win.screenX = 0;
-    win.screenY = 0;
-    win.scrollX = 0;
-    win.scrollY = 0;
-    win.screen = {
-      availHeight: win.innerHeight,
+    win2.devicePixelRatio = 1;
+    win2.innerHeight = 768;
+    win2.innerWidth = 1366;
+    win2.pageXOffset = 0;
+    win2.pageYOffset = 0;
+    win2.screenLeft = 0;
+    win2.screenTop = 0;
+    win2.screenX = 0;
+    win2.screenY = 0;
+    win2.scrollX = 0;
+    win2.scrollY = 0;
+    win2.screen = {
+      availHeight: win2.innerHeight,
       availLeft: 0,
       availTop: 0,
-      availWidth: win.innerWidth,
+      availWidth: win2.innerWidth,
       colorDepth: 24,
-      height: win.innerHeight,
+      height: win2.innerHeight,
       keepAwake: false,
       orientation: {
         angle: 0,
         type: "portrait-primary"
       },
       pixelDepth: 24,
-      width: win.innerWidth
+      width: win2.innerWidth
     };
   } catch (e) {
   }
@@ -26643,11 +26769,11 @@ function resetWindowDimensions(win) {
 
 // src/mock-doc/document.ts
 var MockDocument = class _MockDocument extends MockHTMLElement {
-  constructor(html = null, win = null) {
+  constructor(html = null, win2 = null) {
     super(null, null);
     this.nodeName = "#document" /* DOCUMENT_NODE */;
     this.nodeType = 9 /* DOCUMENT_NODE */;
-    this.defaultView = win;
+    this.defaultView = win2;
     this.cookie = "";
     this.referrer = "";
     this.appendChild(this.createDocumentTypeNode());
@@ -26794,10 +26920,10 @@ var MockDocument = class _MockDocument extends MockHTMLElement {
   }
   createElement(tagName) {
     if (tagName === "#document" /* DOCUMENT_NODE */) {
-      const doc = new _MockDocument(false);
-      doc.nodeName = tagName;
-      doc.parentNode = null;
-      return doc;
+      const doc2 = new _MockDocument(false);
+      doc2.nodeName = tagName;
+      doc2.parentNode = null;
+      return doc2;
     }
     return createElement(this, tagName);
   }
@@ -26837,10 +26963,10 @@ var MockDocument = class _MockDocument extends MockHTMLElement {
     title.textContent = value;
   }
 };
-function resetDocument(doc) {
-  if (doc != null) {
-    resetEventListeners(doc);
-    const documentElement = doc.documentElement;
+function resetDocument(doc2) {
+  if (doc2 != null) {
+    resetEventListeners(doc2);
+    const documentElement = doc2.documentElement;
     if (documentElement != null) {
       resetElement(documentElement);
       for (let i = 0, ii = documentElement.childNodes.length; i < ii; i++) {
@@ -26849,25 +26975,25 @@ function resetDocument(doc) {
         childNode.childNodes.length = 0;
       }
     }
-    for (const key in doc) {
-      if (doc.hasOwnProperty(key) && !DOC_KEY_KEEPERS.has(key)) {
-        delete doc[key];
+    for (const key in doc2) {
+      if (doc2.hasOwnProperty(key) && !DOC_KEY_KEEPERS.has(key)) {
+        delete doc2[key];
       }
     }
     try {
-      doc.nodeName = "#document" /* DOCUMENT_NODE */;
+      doc2.nodeName = "#document" /* DOCUMENT_NODE */;
     } catch (e) {
     }
     try {
-      doc.nodeType = 9 /* DOCUMENT_NODE */;
+      doc2.nodeType = 9 /* DOCUMENT_NODE */;
     } catch (e) {
     }
     try {
-      doc.cookie = "";
+      doc2.cookie = "";
     } catch (e) {
     }
     try {
-      doc.referrer = "";
+      doc2.referrer = "";
     } catch (e) {
     }
   }
@@ -26923,9 +27049,33 @@ function createWindowFromHtml(templateHtml, uniqueId) {
     templateWindow = new MockWindow(templateHtml);
     templateWindows.set(uniqueId, templateWindow);
   }
-  const win = cloneWindow(templateWindow);
-  return win;
+  const win2 = cloneWindow(templateWindow);
+  return win2;
 }
+var Build = {
+  isDev: BUILD.isDev ? true : false,
+  isBrowser: true,
+  isServer: false,
+  isTesting: BUILD.isTesting ? true : false
+};
+var hostRefs = BUILD.hotModuleReplacement ? window.__STENCIL_HOSTREFS__ || (window.__STENCIL_HOSTREFS__ = /* @__PURE__ */ new WeakMap()) : /* @__PURE__ */ new WeakMap();
+var STENCIL_DEV_MODE = BUILD.isTesting ? ["STENCIL:"] : [
+  "%cstencil",
+  "color: white;background:#4c47ff;font-weight: bold; font-size:10px; padding:2px 6px; border-radius: 5px"
+];
+var win = typeof window !== "undefined" ? window : {};
+var doc = win.document || { head: {} };
+var H = win.HTMLElement || class {
+};
+var supportsShadow = BUILD.shadowDom;
+var supportsConstructableStylesheets = BUILD.constructableCSS ? /* @__PURE__ */ (() => {
+  try {
+    new CSSStyleSheet();
+    return typeof new CSSStyleSheet().replaceSync === "function";
+  } catch (e) {
+  }
+  return false;
+})() : false;
 
 // src/utils/helpers.ts
 var isString = (v) => typeof v === "string";
@@ -27017,15 +27167,20 @@ var unwrapErr = (result) => {
   }
 };
 
+// src/runtime/mode.ts
+var setMode = (handler) => modeResolutionChain.push(handler);
+var CAPTURE_EVENT_SUFFIX = "Capture";
+var CAPTURE_EVENT_REGEX = new RegExp(CAPTURE_EVENT_SUFFIX + "$");
+
 // src/compiler/html/canonical-link.ts
-var updateCanonicalLink = (doc, href) => {
+var updateCanonicalLink = (doc2, href) => {
   var _a2;
-  let canonicalLinkElm = doc.head.querySelector('link[rel="canonical"]');
+  let canonicalLinkElm = doc2.head.querySelector('link[rel="canonical"]');
   if (typeof href === "string") {
     if (canonicalLinkElm == null) {
-      canonicalLinkElm = doc.createElement("link");
+      canonicalLinkElm = doc2.createElement("link");
       canonicalLinkElm.setAttribute("rel", "canonical");
-      doc.head.appendChild(canonicalLinkElm);
+      doc2.head.appendChild(canonicalLinkElm);
     }
     canonicalLinkElm.setAttribute("href", href);
   } else {
@@ -27039,11 +27194,11 @@ var updateCanonicalLink = (doc, href) => {
 };
 
 // src/compiler/html/relocate-meta-charset.ts
-var relocateMetaCharset = (doc) => {
-  const head = doc.head;
+var relocateMetaCharset = (doc2) => {
+  const head = doc2.head;
   let charsetElm = head.querySelector("meta[charset]");
   if (charsetElm == null) {
-    charsetElm = doc.createElement("meta");
+    charsetElm = doc2.createElement("meta");
     charsetElm.setAttribute("charset", "utf-8");
   } else {
     charsetElm.remove();
@@ -27318,13 +27473,13 @@ var parseCss = (css, filePath) => {
     const m = match(/^@([-\w]+)?document *([^{]+)/);
     if (!m) return null;
     const vendor = trim(m[1]);
-    const doc = trim(m[2]);
+    const doc2 = trim(m[2]);
     if (!open()) return error(`@document missing '{'`);
     const style = comments().concat(rules());
     if (!close()) return error(`@document missing '}'`);
     return pos({
       type: 3 /* Document */,
-      document: doc,
+      document: doc2,
       vendor,
       rules: style
     });
@@ -27650,11 +27805,11 @@ var serializeCssPage = (opts, node) => {
 };
 var serializeCssDocument = (opts, node) => {
   const documentCss = serializeCssMapVisit(opts, node.rules);
-  const doc = "@" + (node.vendor || "") + "document " + node.document;
+  const doc2 = "@" + (node.vendor || "") + "document " + node.document;
   if (documentCss === "") {
     return "";
   }
-  return doc + "{" + documentCss + "}";
+  return doc2 + "{" + documentCss + "}";
 };
 var serializeCssMapVisit = (opts, nodes) => {
   let rtn = "";
@@ -27752,12 +27907,12 @@ var collectUsedSelectors = (usedSelectors, elm) => {
 };
 
 // src/compiler/html/remove-unused-styles.ts
-var removeUnusedStyles = (doc, diagnostics) => {
+var removeUnusedStyles = (doc2, diagnostics) => {
   try {
-    const styleElms = doc.head.querySelectorAll(`style[data-styles]`);
+    const styleElms = doc2.head.querySelectorAll(`style[data-styles]`);
     const styleLen = styleElms.length;
     if (styleLen > 0) {
-      const usedSelectors = getUsedSelectors(doc.documentElement);
+      const usedSelectors = getUsedSelectors(doc2.documentElement);
       for (let i = 0; i < styleLen; i++) {
         removeUnusedStyleText(usedSelectors, diagnostics, styleElms[i]);
       }
@@ -27890,49 +28045,49 @@ function collectAttributes(node) {
 var SKIP_ATTRS = /* @__PURE__ */ new Set(["s-id", "c-id"]);
 
 // src/hydrate/runner/patch-dom-implementation.ts
-function patchDomImplementation(doc, opts) {
-  let win;
-  if (doc.defaultView != null) {
+function patchDomImplementation(doc2, opts) {
+  let win2;
+  if (doc2.defaultView != null) {
     opts.destroyWindow = true;
-    patchWindow(doc.defaultView);
-    win = doc.defaultView;
+    patchWindow(doc2.defaultView);
+    win2 = doc2.defaultView;
   } else {
     opts.destroyWindow = true;
     opts.destroyDocument = false;
-    win = new MockWindow(false);
+    win2 = new MockWindow(false);
   }
-  if (win.document !== doc) {
-    win.document = doc;
+  if (win2.document !== doc2) {
+    win2.document = doc2;
   }
-  if (doc.defaultView !== win) {
-    doc.defaultView = win;
+  if (doc2.defaultView !== win2) {
+    doc2.defaultView = win2;
   }
-  const HTMLElement = doc.documentElement.constructor.prototype;
-  if (typeof HTMLElement.getRootNode !== "function") {
-    const elm = doc.createElement("unknown-element");
+  const HTMLElement2 = doc2.documentElement.constructor.prototype;
+  if (typeof HTMLElement2.getRootNode !== "function") {
+    const elm = doc2.createElement("unknown-element");
     const HTMLUnknownElement = elm.constructor.prototype;
     HTMLUnknownElement.getRootNode = getRootNode;
   }
-  if (typeof doc.createEvent === "function") {
-    const CustomEvent = doc.createEvent("CustomEvent").constructor;
-    if (win.CustomEvent !== CustomEvent) {
-      win.CustomEvent = CustomEvent;
+  if (typeof doc2.createEvent === "function") {
+    const CustomEvent2 = doc2.createEvent("CustomEvent").constructor;
+    if (win2.CustomEvent !== CustomEvent2) {
+      win2.CustomEvent = CustomEvent2;
     }
   }
   try {
-    win.__stencil_baseURI = doc.baseURI;
+    win2.__stencil_baseURI = doc2.baseURI;
   } catch (e) {
-    Object.defineProperty(doc, "baseURI", {
+    Object.defineProperty(doc2, "baseURI", {
       get() {
-        const baseElm = doc.querySelector("base[href]");
+        const baseElm = doc2.querySelector("base[href]");
         if (baseElm) {
-          return new URL(baseElm.getAttribute("href"), win.location.href).href;
+          return new URL(baseElm.getAttribute("href"), win2.location.href).href;
         }
-        return win.location.href;
+        return win2.location.href;
       }
     });
   }
-  return win;
+  return win2;
 }
 function getRootNode(opts) {
   const isComposed = opts != null && opts.composed === true;
@@ -28085,10 +28240,10 @@ function renderCatchError(results, err2) {
 }
 
 // src/hydrate/runner/runtime-log.ts
-function runtimeLogging(win, opts, results) {
+function runtimeLogging(win2, opts, results) {
   try {
-    const pathname = win.location.pathname;
-    win.console.error = (...msgs) => {
+    const pathname = win2.location.pathname;
+    win2.console.error = (...msgs) => {
       const errMsg = msgs.reduce((errMsg2, m) => {
         if (m) {
           if (m.stack != null) {
@@ -28108,7 +28263,7 @@ function runtimeLogging(win, opts, results) {
         }
       }
     };
-    win.console.debug = (...msgs) => {
+    win2.console.debug = (...msgs) => {
       renderBuildDiagnostic(results, "debug", "Hydrate Debug", [...msgs].join(", "));
       if (opts.runtimeLogging) {
         runtimeLog(pathname, "debug", msgs);
@@ -28116,7 +28271,7 @@ function runtimeLogging(win, opts, results) {
     };
     if (opts.runtimeLogging) {
       ["log", "warn", "assert", "info", "trace"].forEach((type) => {
-        win.console[type] = (...msgs) => {
+        win2.console[type] = (...msgs) => {
           runtimeLog(pathname, type, msgs);
         };
       });
@@ -28130,58 +28285,58 @@ function runtimeLog(pathname, type, msgs) {
 }
 
 // src/hydrate/runner/window-initialize.ts
-function initializeWindow(win, doc, opts, results) {
+function initializeWindow(win2, doc2, opts, results) {
   if (typeof opts.url === "string") {
     try {
-      win.location.href = opts.url;
+      win2.location.href = opts.url;
     } catch (e) {
     }
   }
   if (typeof opts.userAgent === "string") {
     try {
-      win.navigator.userAgent = opts.userAgent;
+      win2.navigator.userAgent = opts.userAgent;
     } catch (e) {
     }
   }
   if (typeof opts.cookie === "string") {
     try {
-      doc.cookie = opts.cookie;
+      doc2.cookie = opts.cookie;
     } catch (e) {
     }
   }
   if (typeof opts.referrer === "string") {
     try {
-      doc.referrer = opts.referrer;
+      doc2.referrer = opts.referrer;
     } catch (e) {
     }
   }
   if (typeof opts.direction === "string") {
     try {
-      doc.documentElement.setAttribute("dir", opts.direction);
+      doc2.documentElement.setAttribute("dir", opts.direction);
     } catch (e) {
     }
   }
   if (typeof opts.language === "string") {
     try {
-      doc.documentElement.setAttribute("lang", opts.language);
+      doc2.documentElement.setAttribute("lang", opts.language);
     } catch (e) {
     }
   }
   if (typeof opts.buildId === "string") {
     try {
-      doc.documentElement.setAttribute("data-stencil-build", opts.buildId);
+      doc2.documentElement.setAttribute("data-stencil-build", opts.buildId);
     } catch (e) {
     }
   }
   try {
-    win.customElements = null;
+    win2.customElements = null;
   } catch (e) {
   }
   if (opts.constrainTimeouts) {
-    constrainTimeouts(win);
+    constrainTimeouts(win2);
   }
-  runtimeLogging(win, opts, results);
-  return win;
+  runtimeLogging(win2, opts, results);
+  return win2;
 }
 
 // src/hydrate/runner/render.ts
@@ -28198,44 +28353,44 @@ function renderToString(html, options, asStream) {
   opts.constrainTimeouts = false;
   return hydrateDocument(html, opts, asStream);
 }
-function hydrateDocument(doc, options, asStream) {
+function hydrateDocument(doc2, options, asStream) {
   const opts = normalizeHydrateOptions(options);
-  let win = null;
+  let win2 = null;
   const results = generateHydrateResults(opts);
   if (hasError(results.diagnostics)) {
     return Promise.resolve(results);
   }
-  if (typeof doc === "string") {
+  if (typeof doc2 === "string") {
     try {
       opts.destroyWindow = true;
       opts.destroyDocument = true;
-      win = new MockWindow(doc);
+      win2 = new MockWindow(doc2);
       if (!asStream) {
-        return render(win, opts, results).then(() => results);
+        return render(win2, opts, results).then(() => results);
       }
-      return renderStream(win, opts, results);
+      return renderStream(win2, opts, results);
     } catch (e) {
-      if (win && win.close) {
-        win.close();
+      if (win2 && win2.close) {
+        win2.close();
       }
-      win = null;
+      win2 = null;
       renderCatchError(results, e);
       return Promise.resolve(results);
     }
   }
-  if (isValidDocument(doc)) {
+  if (isValidDocument(doc2)) {
     try {
       opts.destroyDocument = false;
-      win = patchDomImplementation(doc, opts);
+      win2 = patchDomImplementation(doc2, opts);
       if (!asStream) {
-        return render(win, opts, results).then(() => results);
+        return render(win2, opts, results).then(() => results);
       }
-      return renderStream(win, opts, results);
+      return renderStream(win2, opts, results);
     } catch (e) {
-      if (win && win.close) {
-        win.close();
+      if (win2 && win2.close) {
+        win2.close();
       }
-      win = null;
+      win2 = null;
       renderCatchError(results, e);
       return Promise.resolve(results);
     }
@@ -28243,75 +28398,81 @@ function hydrateDocument(doc, options, asStream) {
   renderBuildError(results, `Invalid html or document. Must be either a valid "html" string, or DOM "document".`);
   return Promise.resolve(results);
 }
-async function render(win, opts, results) {
+async function render(win2, opts, results) {
   if ("process" in globalThis && typeof process.on === "function" && !process.__stencilErrors) {
     process.__stencilErrors = true;
     process.on("unhandledRejection", (e) => {
       console.log("unhandledRejection", e);
     });
   }
-  initializeWindow(win, win.document, opts, results);
+  initializeWindow(win2, win2.document, opts, results);
   const beforeHydrateFn = typeof opts.beforeHydrate === "function" ? opts.beforeHydrate : NOOP;
   try {
-    await Promise.resolve(beforeHydrateFn(win.document));
-    return new Promise((resolve) => hydrateFactory(win, opts, results, afterHydrate, resolve));
+    await Promise.resolve(beforeHydrateFn(win2.document));
+    return new Promise((resolve) => {
+      if (Array.isArray(opts.modes)) {
+        modeResolutionChain.length = 0;
+        opts.modes.forEach((mode) => setMode(mode));
+      }
+      return hydrateFactory(win2, opts, results, afterHydrate, resolve);
+    });
   } catch (e) {
     renderCatchError(results, e);
-    return finalizeHydrate(win, win.document, opts, results);
+    return finalizeHydrate(win2, win2.document, opts, results);
   }
 }
-function renderStream(win, opts, results) {
+function renderStream(win2, opts, results) {
   async function* processRender() {
-    const renderResult = await render(win, opts, results);
+    const renderResult = await render(win2, opts, results);
     yield renderResult.html;
   }
   return stream.Readable.from(processRender());
 }
-async function afterHydrate(win, opts, results, resolve) {
+async function afterHydrate(win2, opts, results, resolve) {
   const afterHydrateFn = typeof opts.afterHydrate === "function" ? opts.afterHydrate : NOOP;
   try {
-    await Promise.resolve(afterHydrateFn(win.document));
-    return resolve(finalizeHydrate(win, win.document, opts, results));
+    await Promise.resolve(afterHydrateFn(win2.document));
+    return resolve(finalizeHydrate(win2, win2.document, opts, results));
   } catch (e) {
     renderCatchError(results, e);
-    return resolve(finalizeHydrate(win, win.document, opts, results));
+    return resolve(finalizeHydrate(win2, win2.document, opts, results));
   }
 }
-function finalizeHydrate(win, doc, opts, results) {
+function finalizeHydrate(win2, doc2, opts, results) {
   try {
-    inspectElement(results, doc.documentElement, 0);
+    inspectElement(results, doc2.documentElement, 0);
     if (opts.removeUnusedStyles !== false) {
       try {
-        removeUnusedStyles(doc, results.diagnostics);
+        removeUnusedStyles(doc2, results.diagnostics);
       } catch (e) {
         renderCatchError(results, e);
       }
     }
     if (typeof opts.title === "string") {
       try {
-        doc.title = opts.title;
+        doc2.title = opts.title;
       } catch (e) {
         renderCatchError(results, e);
       }
     }
-    results.title = doc.title;
+    results.title = doc2.title;
     if (opts.removeScripts) {
-      removeScripts(doc.documentElement);
+      removeScripts(doc2.documentElement);
     }
     try {
-      updateCanonicalLink(doc, opts.canonicalUrl);
+      updateCanonicalLink(doc2, opts.canonicalUrl);
     } catch (e) {
       renderCatchError(results, e);
     }
     try {
-      relocateMetaCharset(doc);
+      relocateMetaCharset(doc2);
     } catch (e) {
     }
     if (!hasError(results.diagnostics)) {
       results.httpStatus = 200;
     }
     try {
-      const metaStatus = doc.head.querySelector('meta[http-equiv="status"]');
+      const metaStatus = doc2.head.querySelector('meta[http-equiv="status"]');
       if (metaStatus != null) {
         const metaStatusContent = metaStatus.getAttribute("content");
         if (metaStatusContent && metaStatusContent.length > 0) {
@@ -28321,35 +28482,35 @@ function finalizeHydrate(win, doc, opts, results) {
     } catch (e) {
     }
     if (opts.clientHydrateAnnotations) {
-      doc.documentElement.classList.add("hydrated");
+      doc2.documentElement.classList.add("hydrated");
     }
     if (opts.serializeToHtml) {
-      results.html = serializeDocumentToString(doc, opts);
+      results.html = serializeDocumentToString(doc2, opts);
     }
   } catch (e) {
     renderCatchError(results, e);
   }
-  destroyWindow(win, doc, opts, results);
+  destroyWindow(win2, doc2, opts, results);
   return results;
 }
-function destroyWindow(win, doc, opts, results) {
+function destroyWindow(win2, doc2, opts, results) {
   if (!opts.destroyWindow) {
     return;
   }
   try {
     if (!opts.destroyDocument) {
-      win.document = null;
-      doc.defaultView = null;
+      win2.document = null;
+      doc2.defaultView = null;
     }
-    if (win.close) {
-      win.close();
+    if (win2.close) {
+      win2.close();
     }
   } catch (e) {
     renderCatchError(results, e);
   }
 }
-function serializeDocumentToString(doc, opts) {
-  return serializeNodeToHtml(doc, {
+function serializeDocumentToString(doc2, opts) {
+  return serializeNodeToHtml(doc2, {
     approximateLineWidth: opts.approximateLineWidth,
     outerHtml: false,
     prettyHtml: opts.prettyHtml,
@@ -28361,8 +28522,8 @@ function serializeDocumentToString(doc, opts) {
     fullDocument: opts.fullDocument
   });
 }
-function isValidDocument(doc) {
-  return doc != null && doc.nodeType === 9 && doc.documentElement != null && doc.documentElement.nodeType === 1 && doc.body != null && doc.body.nodeType === 1;
+function isValidDocument(doc2) {
+  return doc2 != null && doc2.nodeType === 9 && doc2.documentElement != null && doc2.documentElement.nodeType === 1 && doc2.body != null && doc2.body.nodeType === 1;
 }
 function removeScripts(elm) {
   const children = elm.children;
