@@ -1,5 +1,6 @@
 import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
+import { reactOutputTarget } from '@stencil/react-output-target';
 import { angularOutputTarget } from '@stencil/angular-output-target';
 import { vueOutputTarget } from '@stencil/vue-output-target';
 
@@ -16,6 +17,13 @@ export const config: Config = {
     enableImportInjection: true,
   },
   outputTargets: [
+    reactOutputTarget({
+      outDir: '../ui-library-react/src',
+    }),
+    reactOutputTarget({
+      outDir: '../../examples/next-app/src/app',
+      hydrateModule: './hydrate',
+    }),
     angularOutputTarget({
       componentCorePackage: '@six-group/ui-library',
       directivesProxyFile: '../ui-library-angular/src/lib/stencil-generated/components.ts',
@@ -52,7 +60,12 @@ export const config: Config = {
       ],
     },
     {
+      type: 'dist-hydrate-script',
+      dir: './hydrate',
+    },
+    {
       type: 'dist-custom-elements',
+      externalRuntime: false,
       customElementsExportBehavior: 'bundle',
     },
     {
