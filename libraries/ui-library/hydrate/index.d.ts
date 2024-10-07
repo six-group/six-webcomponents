@@ -3,6 +3,7 @@
 import { Readable } from 'node:stream';
 
 export declare function createWindowFromHtml(templateHtml: string, uniqueId: string): any;
+export type ResolutionHandler = (elm: HTMLElement) => string | undefined | null;
 export interface HydrateDocumentOptions {
 	/**
 	 * Build ID that will be added to `<html data-stencil-build="BUILD_ID">`. By default
@@ -149,6 +150,11 @@ export interface SerializeDocumentOptions extends HydrateDocumentOptions {
 	 * @default true
 	 */
 	fullDocument?: boolean;
+	/**
+	 * Style modes to render the component in.
+	 * @see https://stenciljs.com/docs/styling#style-modes
+	 */
+	modes?: ResolutionHandler[];
 }
 export interface HydrateFactoryOptions extends SerializeDocumentOptions {
 	serializeToHtml: boolean;
