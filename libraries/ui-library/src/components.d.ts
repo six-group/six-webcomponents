@@ -14,6 +14,7 @@ import { SixDropdownAsyncFilterPayload, SixDropdownAutoFilterPayload, SixDropdow
 import { SixFileListDownloadPayload, SixFileListRemovePayload } from "./components/six-file-list-item/six-file-list-item";
 import { SixFileUploadFailurePayload, SixFileUploadSuccessPayload } from "./components/six-file-upload/six-file-upload";
 import { SixHeaderAppSwitcherSelectPayload, SixHeaderProfileSelectPayload, SixHeaderSearchFieldToggle } from "./components/six-header/six-header";
+import { SelectionRange, SelectionRangeDirection } from "./components/six-input/six-input";
 import { ItemPickerPaddingDirection, ItemPickerType } from "./components/six-item-picker/types";
 import { SixItemPickerChangePayload } from "./components/six-item-picker/six-item-picker";
 import { SixLanguageSwitcherChangePayload, SixLanguageSwitcherInput } from "./components/six-language-switcher/six-language-switcher";
@@ -34,6 +35,7 @@ export { SixDropdownAsyncFilterPayload, SixDropdownAutoFilterPayload, SixDropdow
 export { SixFileListDownloadPayload, SixFileListRemovePayload } from "./components/six-file-list-item/six-file-list-item";
 export { SixFileUploadFailurePayload, SixFileUploadSuccessPayload } from "./components/six-file-upload/six-file-upload";
 export { SixHeaderAppSwitcherSelectPayload, SixHeaderProfileSelectPayload, SixHeaderSearchFieldToggle } from "./components/six-header/six-header";
+export { SelectionRange, SelectionRangeDirection } from "./components/six-input/six-input";
 export { ItemPickerPaddingDirection, ItemPickerType } from "./components/six-item-picker/types";
 export { SixItemPickerChangePayload } from "./components/six-item-picker/six-item-picker";
 export { SixLanguageSwitcherChangePayload, SixLanguageSwitcherInput } from "./components/six-language-switcher/six-language-switcher";
@@ -863,6 +865,10 @@ export namespace Components {
          */
         "errorTextCount"?: number;
         /**
+          * Returns the start and end positions of the text selection
+         */
+        "getSelectionRange": () => Promise<SelectionRange>;
+        /**
           * The input's help text. Alternatively, you can use the help-text slot.
          */
         "helpText": string;
@@ -937,11 +943,11 @@ export namespace Components {
         /**
           * Replaces a range of text with a new string.
          */
-        "setRangeText": (replacement: string, start: number, end: number, selectMode?: 'select' | 'start' | 'end' | 'preserve') => Promise<void>;
+        "setRangeText": (replacement: string, start: number, end: number, selectMode?: "select" | "start" | "end" | "preserve") => Promise<void>;
         /**
           * Sets the start and end positions of the text selection (0-based).
          */
-        "setSelectionRange": (selectionStart: number, selectionEnd: number, selectionDirection?: 'forward' | 'backward' | 'none') => Promise<void | undefined>;
+        "setSelectionRange": (selectionStart: number, selectionEnd: number, selectionDirection?: SelectionRangeDirection) => Promise<void | undefined>;
         /**
           * The input's size.
          */
@@ -1808,11 +1814,11 @@ export namespace Components {
         /**
           * Replaces a range of text with a new string.
          */
-        "setRangeText": (replacement: string, start: number, end: number, selectMode?: 'select' | 'start' | 'end' | 'preserve') => Promise<void>;
+        "setRangeText": (replacement: string, start: number, end: number, selectMode?: "select" | "start" | "end" | "preserve") => Promise<void>;
         /**
           * Sets the start and end positions of the text selection (0-based).
          */
-        "setSelectionRange": (selectionStart: number, selectionEnd: number, selectionDirection?: 'forward' | 'backward' | 'none') => Promise<void | undefined>;
+        "setSelectionRange": (selectionStart: number, selectionEnd: number, selectionDirection?: "forward" | "backward" | "none") => Promise<void | undefined>;
         /**
           * The textarea's size.
          */

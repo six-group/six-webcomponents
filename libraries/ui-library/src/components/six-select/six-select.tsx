@@ -241,9 +241,15 @@ export class SixSelect {
           this.value = autocompleteInput.value;
           this.sixChange.emit({ value: this.value, isSelected: false });
           event.stopPropagation();
+
+          if (this.virtualScroll || this.value.length > 0) {
+            this.dropdown?.show();
+          }
         }, this.inputDebounce)
       );
-      autocompleteInput.value = Array.isArray(this.value) ? this.value.join(',') : this.value;
+
+      const selectedLabel = this.displayedValues.join(', ');
+      autocompleteInput.value = selectedLabel;
     }
   }
 
@@ -301,7 +307,8 @@ export class SixSelect {
   private handleClearClick = async (event: MouseEvent) => {
     event.stopPropagation();
     await this.clearValues();
-    await this.dropdown?.hide();
+    await this.dropdown?.show();
+    await this.setFocus();
     this.sixChange.emit({ value: this.value, isSelected: true });
   };
 
@@ -476,18 +483,28 @@ export class SixSelect {
 
     selectionContainerItems.forEach((item) => {
       item.checkType = this.multiple ? 'checkbox' : 'check';
-      item.checked = value.includes(item.value);
+      if (Array.isArray(value)) {
+        item.checked = value.some((val) => val === item.value);
+      } else {
+        item.checked = value === item.value;
+      }
     });
+
     mainItems.forEach((item) => {
       item.checkType = this.multiple ? 'checkbox' : 'check';
-      item.checked = value.includes(item.value);
+      if (Array.isArray(value)) {
+        item.checked = value.some((val) => val === item.value);
+      } else {
+        item.checked = value === item.value;
+      }
     });
 
     const checkedItems = getCheckedItems(convertToValidArrayValue(this.value), mainItems);
     this.displayedValues = checkedItems.map((i) => this.getItemLabel(i));
 
-    if (this.autocomplete && this.autocompleteInput != null) {
-      this.autocompleteInput.value = Array.isArray(this.value) ? this.value.join(',') : this.value;
+    if (this.autocomplete && this.autocompleteInput != null && !this.hasFocus) {
+      const selectedLabel = this.displayedValues.join(', ');
+      this.autocompleteInput.value = selectedLabel;
     }
 
     requestAnimationFrame(() => {

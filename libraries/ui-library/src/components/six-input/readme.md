@@ -56,6 +56,16 @@ Inputs collect data from the user.
 
 ## Methods
 
+### `getSelectionRange() => Promise<SelectionRange>`
+
+Returns the start and end positions of the text selection
+
+#### Returns
+
+Type: `Promise<SelectionRange>`
+
+
+
 ### `removeFocus() => Promise<void>`
 
 Removes focus from the input.
@@ -92,7 +102,7 @@ Type: `Promise<void>`
 
 
 
-### `setRangeText(replacement: string, start: number, end: number, selectMode?: 'select' | 'start' | 'end' | 'preserve') => Promise<void>`
+### `setRangeText(replacement: string, start: number, end: number, selectMode?: "select" | "start" | "end" | "preserve") => Promise<void>`
 
 Replaces a range of text with a new string.
 
@@ -111,7 +121,7 @@ Type: `Promise<void>`
 
 
 
-### `setSelectionRange(selectionStart: number, selectionEnd: number, selectionDirection?: 'forward' | 'backward' | 'none') => Promise<void | undefined>`
+### `setSelectionRange(selectionStart: number, selectionEnd: number, selectionDirection?: SelectionRangeDirection) => Promise<void | undefined>`
 
 Sets the start and end positions of the text selection (0-based).
 

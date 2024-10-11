@@ -8,8 +8,8 @@ jobs:
   publish-npm:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 18
           registry-url: 'https://registry.npmjs.org'
@@ -32,7 +32,6 @@ jobs:
       - name: publish
         run: |
           npm publish --tag=insider --access=public libraries/ui-library/
-          npm publish --tag=insider --access=public libraries/ui-library-react/
           npm publish --tag=insider --access=public libraries/ui-library-vue/
           npm publish --tag=insider --access=public libraries/ui-library-angular/dist/ui-library-angular/
         env:

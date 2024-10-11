@@ -6,15 +6,44 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## Upcoming
 
-### Added
+### Removed
+
+- **Breaking**: Temporarily removed React support to unblock dependency updates.
+
+  React no longer works with the latest Stencil output target, which is preventing us from updating
+  our dependencies to their latest versions. Since the team currently lacks the resources to fix
+  this issue, we're removing React support temporarily to prevent it from hindering progress.
 
 ### Changed
 
-- BREAKING: `six-file-upload` on upload success now returns a `FileList` regardless of the value of
-  the `multiple` property
+- Updated dependencies and cleaned up test config.
+- **Breaking**: `six-file-upload` on upload success now returns a `FileList` regardless of the value of
+    the `multiple` property
 
 ### Fixed
 
+- Fixed mermaid diagrams in component documentation.
+
+## 4.2.6 - 2024-10-04
+
+### Fixed
+
+- `six-select`: fix displaying label instead of value in autocomplete mode
+- `six-select`: show dropdown after the value is cleared
+- `six-select`: fix multiple checkmark bug for single select mode
+- `six-input`: fix disabled input being clearable
+
+## 4.2.5 - 2024-09-12
+
+### Added
+
+- `six-textarea`: added CSS variable `--height` to set the initial height of the textarea component
+- `six-input`: new method `getSelectionRange` which exposes the cursor position from the wrapped
+  `input` element
+
+### Fixed
+
+- `six-input`: fix auto size issues for type=number
 - `six-menu`: last item gets partially cut off when using virtual-scroll
 - `six-menu`: overflow when using virtual-scroll and autocomplete
 

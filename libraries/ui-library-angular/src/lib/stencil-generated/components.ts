@@ -711,7 +711,7 @@ export declare interface SixIconButton extends Components.SixIconButton {}
 
 @ProxyCmp({
   inputs: ['autocapitalize', 'autocomplete', 'autocorrect', 'autofocus', 'clearable', 'disabled', 'dropdownSearch', 'errorText', 'errorTextCount', 'helpText', 'inputmode', 'invalid', 'label', 'line', 'max', 'maxlength', 'min', 'minlength', 'name', 'pattern', 'pill', 'placeholder', 'readonly', 'required', 'size', 'spellcheck', 'step', 'togglePassword', 'type', 'value'],
-  methods: ['setFocus', 'removeFocus', 'select', 'setSelectionRange', 'setRangeText']
+  methods: ['setFocus', 'removeFocus', 'select', 'setSelectionRange', 'getSelectionRange', 'setRangeText']
 })
 @Component({
   selector: 'six-input',
