@@ -17,6 +17,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Changed
 
 - Updated dependencies and cleaned up test config.
+- **Breaking**: `six-file-upload` on upload success now returns a `FileList` regardless of the value of
+    the `multiple` property
 
 ### Fixed
 
