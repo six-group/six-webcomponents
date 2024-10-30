@@ -14,10 +14,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   our dependencies to their latest versions. Since the team currently lacks the resources to fix
   this issue, we're removing React support temporarily to prevent it from hindering progress.
 
-### Fixed
-
-- `six-file-upload`: handleFiles is called twice when a file is dropped.
-
 ### Changed
 
 - Updated dependencies and cleaned up test config.
@@ -25,6 +21,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Fixed
 
 - Fixed mermaid diagrams in component documentation.
+- `six-file-upload`: handleFiles is called twice when a file is dropped.
 
 ## 4.2.6 - 2024-10-04
 
