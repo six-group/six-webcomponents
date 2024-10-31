@@ -7,8 +7,8 @@
 }
 
 .button {
-  display: inline-flex;
-  align-items: stretch;
+  display: flex;
+  align-items: center;
   justify-content: center;
   width: 100%;
   border-style: solid;
@@ -20,7 +20,7 @@
   user-select: none;
   white-space: nowrap;
   vertical-align: middle;
-  padding: 0;
+  padding: var(--six-button-padding);
   transition: var(--six-transition-fast) background-color, var(--six-transition-fast) color,
     var(--six-transition-fast) border, var(--six-transition-fast) box-shadow;
   cursor: inherit;

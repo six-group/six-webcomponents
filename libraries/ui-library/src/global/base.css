@@ -84,6 +84,7 @@ body > div.container {
 
   --six-button-font-size-medium: var(--six-font-size-medium);
   --six-button-font-size-large: var(--six-font-size-large);
+  --six-button-padding: 0;
 
   --six-focus-shadow: 0 0 0 var(--six-focus-offset-input);
   --six-input-focus-shadow: var(--six-focus-shadow) var(--six-input-border-color-focus);
