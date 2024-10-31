@@ -1,6 +1,5 @@
 # Button
 
-
 Buttons represent actions that are available to the user.
 
 <docs-demo-six-button-0></docs-demo-six-button-0>
@@ -8,7 +7,6 @@ Buttons represent actions that are available to the user.
 ```html
 <six-button>Button</six-button>
 ```
-
 
 ## Examples
 
@@ -28,7 +26,6 @@ Use the `type` attribute to set the button's type.
 <six-button type="action">Action</six-button>
 <six-button type="action-outline">Action Outline</six-button>
 ```
-
 
 Notice on different background colors that the Link button has no background
 
@@ -57,7 +54,6 @@ Notice on different background colors that the Link button has no background
 </div>
 ```
 
-
 ### Sizes
 
 Use the `size` prop to change a button's size.
@@ -70,7 +66,6 @@ Use the `size` prop to change a button's size.
 <six-button size="large">Large</six-button>
 ```
 
-
 ### Pill Buttons
 
 Use the `pill` prop to give buttons rounded edges.
@@ -82,7 +77,6 @@ Use the `pill` prop to give buttons rounded edges.
 <six-button size="medium" pill>Medium</six-button>
 <six-button size="large" pill>Large</six-button>
 ```
-
 
 ### Circle buttons
 
@@ -111,10 +105,10 @@ Use the `circle` prop to create circular icon buttons.
 </six-button>
 ```
 
-
 ### Link Buttons
 
-Use the `link` type to create text buttons that share the same size as regular buttons but don't have backgrounds or borders.
+Use the `link` type to create text buttons that share the same size as regular buttons but don't
+have backgrounds or borders.
 
 <docs-demo-six-button-6></docs-demo-six-button-6>
 
@@ -124,10 +118,12 @@ Use the `link` type to create text buttons that share the same size as regular b
 <six-button type="link" size="large">Large</six-button>
 ```
 
-
 ### Link buttons
 
-It's often helpful to have a button that works like a link. This is possible by setting the `href` attribute, which will make the component render an `<a>` under the hood. This gives you all the default link behavior the browser provides (e.g. CMD/CTRL/SHIFT + CLICK) and exposes the `target` and `download` attributes.
+It's often helpful to have a button that works like a link. This is possible by setting the `href`
+attribute, which will make the component render an `<a>` under the hood. This gives you all the
+default link behavior the browser provides (e.g. CMD/CTRL/SHIFT + CLICK) and exposes the `target`
+and `download` attributes.
 
 <docs-demo-six-button-7></docs-demo-six-button-7>
 
@@ -138,21 +134,25 @@ It's often helpful to have a button that works like a link. This is possible by 
 <six-button href="https://www.six-group.com/" disabled>Disabled</six-button>
 ```
 
-
-When a `target` is set, the link will receive `rel="noreferrer noopener"` [for security reasons](https://mathiasbynens.github.io/rel-noopener/).
+When a `target` is set, the link will receive `rel="noreferrer noopener"`
+[for security reasons](https://mathiasbynens.github.io/rel-noopener/).
 
 ### Setting a Custom Width
 
-As expected, buttons can be given a custom width by setting its `width`. This is useful for making buttons span the full width of their container on smaller screens.
+As expected, buttons can be given a custom width by setting its `width`. This is useful for making
+buttons span the full width of their container on smaller screens.
 
 <docs-demo-six-button-8></docs-demo-six-button-8>
 
 ```html
-<six-button type="secondary" size="small" style="width: 100%; margin-bottom: 1rem">Small</six-button>
-<six-button type="secondary" size="medium" style="width: 100%; margin-bottom: 1rem">Medium</six-button>
+<six-button type="secondary" size="small" style="width: 100%; margin-bottom: 1rem"
+  >Small</six-button
+>
+<six-button type="secondary" size="medium" style="width: 100%; margin-bottom: 1rem"
+  >Medium</six-button
+>
 <six-button type="secondary" size="large" style="width: 100%">Large</six-button>
 ```
-
 
 ### Prefix and Suffix Icons
 
@@ -162,7 +162,6 @@ Use the `prefix` and `suffix` slots to add icons.
 
 ```html
 <six-button size="small">
-  
   <span slot="prefix"><six-icon size="xSmall">settings</six-icon></span>
   Settings
 </six-button>
@@ -178,7 +177,7 @@ Use the `prefix` and `suffix` slots to add icons.
   Open
 </six-button>
 
-<br><br>
+<br /><br />
 
 <six-button>
   <span slot="prefix"><six-icon size="small">settings</six-icon></span>
@@ -196,7 +195,7 @@ Use the `prefix` and `suffix` slots to add icons.
   Open
 </six-button>
 
-<br><br>
+<br /><br />
 
 <six-button size="large">
   <span slot="prefix"><six-icon size="medium">settings</six-icon></span>
@@ -215,10 +214,10 @@ Use the `prefix` and `suffix` slots to add icons.
 </six-button>
 ```
 
-
 ### Caret
 
-Use the `caret` prop to add a dropdown indicator when a button will trigger a dropdown, menu, or popover.
+Use the `caret` prop to add a dropdown indicator when a button will trigger a dropdown, menu, or
+popover.
 
 <docs-demo-six-button-10></docs-demo-six-button-10>
 
@@ -228,22 +227,21 @@ Use the `caret` prop to add a dropdown indicator when a button will trigger a dr
 <six-button size="large" caret>Large</six-button>
 ```
 
-
 ### Loading
 
-Use the `loading` prop to make a button busy. The width will remain the same as before, preventing adjacent elements from moving around. Clicks will be suppressed until the loading state is removed.
+Use the `loading` prop to make a button busy. The width will remain the same as before, preventing
+adjacent elements from moving around. Clicks will be suppressed until the loading state is removed.
 
 <docs-demo-six-button-11></docs-demo-six-button-11>
 
 ```html
-<six-button type="secondary" loading>Secondary</six-button>
-<six-button loading>Primary</six-button>
+<six-button type="secondary" loading>Secondary</six-button> <six-button loading>Primary</six-button>
 ```
-
 
 ### Disabled
 
-Use the `disabled` prop to disable a button. Clicks will be suppressed until the disabled state is removed.
+Use the `disabled` prop to disable a button. Clicks will be suppressed until the disabled state is
+removed.
 
 <docs-demo-six-button-12></docs-demo-six-button-12>
 
@@ -260,10 +258,7 @@ Use the `disabled` prop to disable a button. Clicks will be suppressed until the
 <six-button type="action-outline" disabled>Action Outline</six-button>
 ```
 
-
-
 <!-- Auto Generated Below -->
-
 
 ## Properties
 
@@ -284,14 +279,12 @@ Use the `disabled` prop to disable a button. Clicks will be suppressed until the
 | `type`     | `type`     | The button's type.                                                                                     | `"action" \| "action-outline" \| "danger" \| "link" \| "primary" \| "secondary" \| "success" \| "warning"` | `'primary'` |
 | `value`    | `value`    | An optional value for the button. Ignored when `href` is set.                                          | `string`                                                                                                   | `''`        |
 
-
 ## Events
 
 | Event              | Description                          | Type                     |
 | ------------------ | ------------------------------------ | ------------------------ |
 | `six-button-blur`  | Emitted when the button loses focus. | `CustomEvent<undefined>` |
 | `six-button-focus` | Emitted when the button gains focus. | `CustomEvent<undefined>` |
-
 
 ## Methods
 
@@ -302,8 +295,6 @@ Removes focus from the button.
 #### Returns
 
 Type: `Promise<void>`
-
-
 
 ### `setFocus(options?: FocusOptions) => Promise<void>`
 
@@ -319,9 +310,6 @@ Sets focus on the button.
 
 Type: `Promise<void>`
 
-
-
-
 ## Slots
 
 | Slot       | Description                                               |
@@ -329,7 +317,6 @@ Type: `Promise<void>`
 |            | The button's label.                                       |
 | `"prefix"` | Used to prepend an icon or similar element to the button. |
 | `"suffix"` | Used to append an icon or similar element to the button.  |
-
 
 ## Shadow Parts
 
@@ -341,18 +328,26 @@ Type: `Promise<void>`
 | `"prefix"` | The prefix container.         |
 | `"suffix"` | The suffix container.         |
 
+## CSS Custom Properties
+
+| Name                            | Description                 |
+| ------------------------------- | --------------------------- |
+| `--six-button-padding`          | Padding of the button.      |
+| `--six-button-font-size-medium` | Font size of medium button. |
+| `--six-button-font-size-large`  | Font size of large button.  |
 
 ## Dependencies
 
 ### Used by
 
- - [six-select](six-select.html)
+- [six-select](six-select.html)
 
 ### Depends on
 
 - [six-spinner](six-spinner.html)
 
 ### Graph
+
 ```mermaid
 graph TD;
   six-button --> six-spinner
@@ -360,6 +355,6 @@ graph TD;
   style six-button fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
+---
 
 Copyright © 2021-present SIX-Group
