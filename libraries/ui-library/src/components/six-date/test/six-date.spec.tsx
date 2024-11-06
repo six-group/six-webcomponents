@@ -1,7 +1,5 @@
 import { newSpecPage } from '@stencil/core/testing';
 import { SixDate } from '../six-date';
-import { toDate } from '../../../utils/date-util';
-import { SixDateFormats } from '../six-date-formats';
 import { SixInput } from '../../six-input/six-input';
 
 describe('six-date', () => {
@@ -11,7 +9,7 @@ describe('six-date', () => {
       html: `<six-date></six-date>`,
     });
 
-    page.rootInstance.value = new Date('2023-05-17');
+    page.rootInstance.value = '2023-05-17';
     await page.waitForChanges();
 
     expect(page.root).toEqualHtml(`
@@ -267,8 +265,8 @@ describe('six-date', () => {
 
     const datePicker = page.rootInstance;
 
-    datePicker.min = new Date('2023-01-01');
-    datePicker.max = new Date('2023-12-31');
+    datePicker.min = '2023-01-01';
+    datePicker.max = '2023-12-31';
     await page.waitForChanges();
 
     datePicker.select('31.12.2022');
@@ -277,11 +275,11 @@ describe('six-date', () => {
 
     datePicker.select('15.06.2023');
     await page.waitForChanges();
-    expect(datePicker.value).toEqual(toDate('15.06.2023', SixDateFormats.DDMMYYY_DOT));
+    expect(datePicker.value).toEqual('15.06.2023');
 
     datePicker.select('01.01.2024');
     await page.waitForChanges();
-    expect(datePicker.value).toEqual(toDate('15.06.2023', SixDateFormats.DDMMYYY_DOT));
+    expect(datePicker.value).toEqual('15.06.2023');
   });
 
   it('renders custom icon slot', async () => {
@@ -318,7 +316,7 @@ describe('six-date', () => {
       html: `<six-date clearable></six-date>`,
     });
 
-    page.rootInstance.value = new Date('2023-05-17');
+    page.rootInstance.value = '2023-05-17';
 
     const clearButton = page.root?.shadowRoot?.querySelector('.datepicker-clear') as HTMLElement;
     clearButton.click();
@@ -345,7 +343,7 @@ describe('six-date', () => {
       html: `<six-date dateFormat="yyyy-mm-dd"></six-date>`,
     });
 
-    page.rootInstance.value = new Date('2023-05-17');
+    page.rootInstance.value = '2023-05-17';
     // page.rootInstance.dateFormat = SixDateFormats.YYYYMMDD_DASH;
     await page.waitForChanges();
 
@@ -360,7 +358,7 @@ describe('six-date', () => {
       html: `<six-date type="date-time"></six-date>`,
     });
 
-    page.rootInstance.value = new Date('2023-05-17T10:30:00');
+    page.rootInstance.value = '2023-05-17T10:30:00';
     await page.waitForChanges();
 
     const timepicker = page.root?.shadowRoot?.querySelector('six-timepicker') as HTMLSixTimepickerElement;
@@ -373,6 +371,6 @@ describe('six-date', () => {
     const changedDate = page.rootInstance.value;
     changedDate.setMilliseconds(0);
 
-    expect(changedDate).toEqual(new Date('2023-05-17T12:45:00'));
+    expect(changedDate).toEqual('2023-05-17T12:45:00');
   });
 });
