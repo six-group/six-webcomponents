@@ -1,18 +1,19 @@
 {
   "compilerOptions": {
-    "outDir": "./dist",
-    "lib": ["dom", "es2020"],
-    "module": "es2015",
-    "moduleResolution": "node",
-    "target": "es2017",
-    "skipLibCheck": true,
     "declaration": true,
-    "noImplicitAny": false,
-    "removeComments": true,
-    "noLib": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "sourceMap": true
+    "lib": ["dom", "esnext"],
+    "module": "NodeNext",
+    "moduleResolution": "Node16",
+    "noImplicitAny": false,
+    "esModuleInterop": true,
+    "outDir": "dist",
+    "removeComments": true,
+    "sourceMap": true,
+    "jsx": "react",
+    "target": "esnext",
+    "skipLibCheck": true
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"],
   "exclude": ["node_modules"]

@@ -13,7 +13,7 @@
     "build": "npm run clean && npm run compile",
     "clean": "rimraf dist",
     "compile": "npm run tsc",
-    "tsc": "tsc -p . --outDir ./dist"
+    "tsc": "tsc -p ."
   },
   "publishConfig": {
     "access": "public"
