@@ -33,7 +33,7 @@
           const selectedDate = document.getElementById('read-select-date-label');
 
           datepicker.addEventListener('six-date-select', (event) => {
-            selectedDate.innerHTML = `selected: ${event.detail.toLocaleDateString()}`;
+            selectedDate.innerHTML = `selected: ${event.detail}`;
           });
         </script>
         <style>
@@ -57,7 +57,7 @@
           const selectedDate = document.getElementById('read-select-datetime-label');
 
           datepicker.addEventListener('six-date-select', (event) => {
-            selectedDate.innerHTML = `selected: ${event.detail.toLocaleString()}`;
+            selectedDate.innerHTML = `selected: ${event.detail}`;
           });
         </script>
         <style>
@@ -277,7 +277,7 @@
           maxDatepicker.max = getDateFromNow(2);
 
           minMaxDatepicker.addEventListener('six-date-select', (event) => {
-            selectedDate.innerHTML = `${event.detail.toLocaleDateString()}`;
+            selectedDate.innerHTML = `${event.detail}`;
           });
         </script>
       </section>

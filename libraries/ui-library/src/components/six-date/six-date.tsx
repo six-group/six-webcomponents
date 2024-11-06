@@ -490,7 +490,12 @@ export class SixDate {
       this.updateValue(undefined);
     } else {
       const dateParts = datestring.split('.'); // TODO: hacky fix because DD.MM.YYYY can't be parsed...
-      const newDate = new Date(+dateParts[2], +dateParts[1] - 1, +dateParts[0]);
+      const yearPart = dateParts[2].split(' ');
+      // let timeParts = undefined
+      // if (yearPart.length > 1) {
+      //   timeParts = yearPart[1].split(":")
+      // }
+      const newDate = new Date(+yearPart[0], +dateParts[1] - 1, +dateParts[0]);
       newDate?.setHours(this.pointerDate.hours, this.pointerDate.minutes, this.pointerDate.seconds);
       this.updateValue(newDate.toLocaleDateString());
     }
@@ -547,10 +552,11 @@ export class SixDate {
     event.stopPropagation();
     const inputValue = this.inputElement?.value;
     const inputValueDate = new Date(inputValue || new Date());
-    const formattedDate = this.value || ''; // TODO: Format it for input display
+    const formattedDate =
+      this.value != null && this.value !== '' ? this.getFormattedDateString(new Date(this.value), this.dateFormat) : '';
 
     if (this.inputElement != null && inputValueDate != null && inputValue !== formattedDate) {
-      // TODO: properly format date if necessary
+      // TODO: Is setting the date here even necessary? Don't we already do that below in the input?
       this.inputElement.value = formattedDate;
       // console.log(Intl.DateTimeFormat('de-CH').format(inputValueDate));
     }
@@ -699,7 +705,7 @@ export class SixDate {
   }
 
   private getFormattedDateString(value: Date | undefined, format: SixDateFormats) {
-    return formatDate(value, format);
+    return value ? formatDate(value, format) : '';
   }
 
   render() {
@@ -708,7 +714,10 @@ export class SixDate {
         <six-dropdown style={{ height: 'auto', width: '400px' }} hoist={true} showOverflow={true} open={this.open}>
           <six-input
             slot={'trigger'}
-            value={new Date(this.value || new Date()).toLocaleDateString()} // TODO: Is formatting needed?
+            value={this.getFormattedDateString(
+              Boolean(this.value) ? new Date(this.value as string) : undefined,
+              this.dateFormat
+            )}
             ref={(el) => (this.inputElement = el)}
             placeholder={this.placeholder}
             readonly={this.readonly}
