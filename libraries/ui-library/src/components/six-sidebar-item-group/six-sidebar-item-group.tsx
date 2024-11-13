@@ -95,6 +95,7 @@ export class SixSidebarItemGroup {
         open={this.open}
         summary-icon={this.summaryIcon}
         hasContent={this.hasItems}
+        tabindex={this.renderAsHref() ? -1 : undefined}
       >
         <div slot="summary">
           <div class="six-sidebar-details__header">

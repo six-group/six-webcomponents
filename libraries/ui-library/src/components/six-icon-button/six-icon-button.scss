@@ -12,14 +12,14 @@
   border: none;
   border-radius: var(--six-border-radius-medium);
   font-size: inherit;
+  text-decoration: none;
   color: var(--six-input-icon-color);
   padding: var(--six-spacing-x-small);
   cursor: pointer;
   transition: var(--six-transition-medium) color;
   -webkit-appearance: none;
 
-  &:hover:not(.icon-button--disabled),
-  &:focus:not(.icon-button--disabled) {
+  &:hover:not(.icon-button--disabled) {
     color: var(--six-input-icon-color-hover);
   }
 

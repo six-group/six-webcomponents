@@ -6,7 +6,8 @@ import { LocationStrategy } from '@angular/common';
  * Forked from  https://github.com/ionic-team/ionic-framework/blob/main/packages/angular/common/src/directives/navigation/router-link-delegate.ts.
  */
 @Directive({
-  selector: 'six-sidebar-item[routerLink],six-sidebar-item-group[routerLink],six-button[routerLink]',
+  selector:
+    'six-sidebar-item[routerLink],six-sidebar-item-group[routerLink],six-button[routerLink],six-icon-button[routerLink]',
 })
 export class SixRouterLinkDirective implements OnInit, OnChanges {
   constructor(
@@ -41,6 +42,12 @@ export class SixRouterLinkDirective implements OnInit, OnChanges {
     if (this.routerLinkDirective?.urlTree) {
       const url = this.locationStrategy.prepareExternalUrl(this.router.serializeUrl(this.routerLinkDirective.urlTree));
       this.renderer.setAttribute(this.elementRef.nativeElement, 'href', url);
+
+      // Remove the `tabindex` attribute to prevent redundant focus behavior.
+      // Angular's RouterLink adds `tabindex="0"` to non-focusable elements (e.g., `<div>`),
+      // but custom components like `six-button` already handle focusability.
+      // Keeping the tabindex would cause the element to receive focus twice.
+      this.renderer.removeAttribute(this.elementRef.nativeElement, 'tabindex');
     }
   }
 }

@@ -10,71 +10,188 @@
   </head>
   <body>
     <div class="container">
-      <h2>Header Features</h2>
-
-      <p>To define the elements which will be shown in the profile dropdown use the <code>profile-menu</code> slot</p>
-
-      <p>To define a profile picture simply set the settings for <code>six-avatar</code></p>
       <p>
-        To define the content of the drawer menu (opens when clicking on the hamburger menu) use the
-        <code>menu-content</code> slot.
+        The <code>six-header</code> component is designed to be used within the <code>header</code> slot of the
+        <code>six-root</code> component.
       </p>
+      <p>Compose your header using <code>six-header-item</code> and <code>six-header-dropdown-item</code> elements.</p>
+      <p>Note: Ensure that the <code>custom</code> property is set, until deprecated properties are phased out.</p>
       <p>
-        SIX header provides multiple events that can be listened from the outside. Select for example an entry from the
-        app-switcher dropdown and you should see it in the output text below the header.
+        While the SIX logo must always appear, all other elements are optional. If additional elements are added, follow
+        this order:
       </p>
+      <ol>
+        <li>Hamburger Menu</li>
+        <li>SIX Logo</li>
+        <li>Custom Items</li>
+        <li>(--- Right-aligned elements start here ---)</li>
+        <li>Search Icon</li>
+        <li>Notifications</li>
+        <li>App Switcher</li>
+        <li>Profile</li>
+      </ol>
+
+      <h3>Simple Example</h3>
       <p>
-        To listen to the selected app-switcher element simply register a listener on
-        <code>six-header-app-switcher-select</code>. You can also listen on the <code>six-header-app-name-clicked</code>
-        event to detect a click on the currently selected application's name.
+        Use <code>six-header-item</code> to add items. To align elements to the right, simply apply the style
+        <code>margin-left: auto</code>. For dropdown menus, use <code>six-header-dropdown-item</code>. The dropdown item
+        will be marked as active (with a black bottom border) when open.
+      </p>
+      <section>
+        <six-header slot="header" custom>
+          <!-- logo -->
+          <six-header-item>
+            <six-icon-button href="https://six-group.github.io/six-webcomponents/">
+              <six-logo></six-logo>
+            </six-icon-button>
+          </six-header-item>
+
+          <!-- Profile -->
+          <six-header-dropdown-item style="margin-left: auto">
+            <six-icon-button slot="trigger">
+              <six-avatar
+                image="https://images.unsplash.com/photo-1529778873920-4da4926a72c2?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80"
+              >
+              </six-avatar>
+            </six-icon-button>
+            <six-menu>
+              <six-menu-item>Logout</six-menu-item>
+            </six-menu>
+          </six-header-dropdown-item>
+        </six-header>
+      </section>
+
+      <h3>Full Example</h3>
+      <p>
+        Items in <code>six-header</code> reside within a flex container. Use flex properties to adjust the width of
+        custom elements. For instance, applying <code>flex: 1 0 0</code> will allow an element to fill the remaining
+        space.
       </p>
 
       <section>
-        <six-root>
-          <six-header show-search slot="header" shift-content>
-            <!--search-->
-            <six-search-field slot="search-field" placeholder="Search for some 'a' ..." clearable>
-              <div id="search-results"></div>
-            </six-search-field>
-            <!--notifications-->
-            <six-icon-button slot="notifications" name="notifications_none">
-              <six-badge type="danger" pill>99</six-badge>
+        <six-header slot="header" custom>
+          <!-- hamburger menu -->
+          <six-header-item>
+            <six-icon-button name="menu"></six-icon-button>
+          </six-header-item>
+
+          <!-- logo -->
+          <six-header-item>
+            <six-icon-button href="https://six-group.github.io/six-webcomponents/">
+              <six-logo></six-logo>
             </six-icon-button>
-            <!--app switcher-->
-            <six-menu slot="app-switcher-menu">
+          </six-header-item>
+
+          <!-- Selection -->
+          <six-header-item style="flex: 1 0 0">
+            <six-select value="option-1" style="width: 100%">
+              <six-menu-item value="option-1">Option 1</six-menu-item>
+              <six-menu-item value="option-2">Option 2</six-menu-item>
+              <six-menu-item value="option-3">Option 3</six-menu-item>
+            </six-select>
+          </six-header-item>
+
+          <!-- Search -->
+          <six-header-item id="search-header-item">
+            <six-icon-button name="search"></six-icon-button>
+          </six-header-item>
+
+          <!-- Notifications -->
+          <six-header-item>
+            <six-icon-button name="notifications_none">
+              <six-badge type="danger" pill>2</six-badge>
+            </six-icon-button>
+          </six-header-item>
+
+          <!-- App Switcher -->
+          <six-header-dropdown-item>
+            <six-header-menu-button slot="trigger" icon="apps">Custody</six-header-menu-button>
+            <six-menu>
               <six-menu-item checked>Custody</six-menu-item>
               <six-menu-item>Swiss Interbank Clearing</six-menu-item>
               <six-menu-item>Tri-Party Agent</six-menu-item>
               <six-menu-item>Financial Information</six-menu-item>
             </six-menu>
-            <!--profile-->
-            <six-menu slot="profile-menu">
+          </six-header-dropdown-item>
+
+          <!-- Profile -->
+          <six-header-dropdown-item>
+            <six-icon-button slot="trigger">
+              <six-avatar
+                image="https://images.unsplash.com/photo-1529778873920-4da4926a72c2?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80"
+              >
+              </six-avatar>
+            </six-icon-button>
+            <six-menu>
               <six-menu-item><b>Cat Kittens</b><br />cat.kitty.kittens@themCatsBeCool.com</six-menu-item>
               <six-menu-item><b>Language</b><br /><six-language-switcher></six-language-switcher></six-menu-item>
               <six-menu-item>Change password</six-menu-item>
-              <six-menu-item id="logout">Logout</six-menu-item>
+              <six-menu-item>Logout</six-menu-item>
             </six-menu>
-            <!--avatar-->
-            <six-avatar
-              image="https://images.unsplash.com/photo-1529778873920-4da4926a72c2?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80"
-              slot="profile-avatar"
-            >
-            </six-avatar>
-            <!--custom components-->
+          </six-header-dropdown-item>
 
-            <six-icon-button name="shopping_cart" />
-          </six-header>
-          <section slot="main">
-            <six-card>
-              <h1>Main content</h1>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet atque blanditiis culpa cum earum error,
-                fuga laboriosam nam nisi pariatur rem tempora unde voluptatem? Consequuntur dicta fugit numquam
-                obcaecati perferendis?
-              </p>
-            </six-card>
-          </section>
-        </six-root>
+          <!-- search input -->
+          <six-search-field slot="search-field" placeholder="Search for some 'a' ..." clearable>
+            <div id="search-results">Some results</div>
+          </six-search-field>
+        </six-header>
+
+        <script type="module">
+          const header = document.querySelector('six-header');
+          const searchHeaderItem = document.querySelector('#search-header-item');
+          const searchIcon = searchHeaderItem.querySelector('six-icon-button');
+          searchIcon.addEventListener('click', () => {
+            header.openSearch = !header.openSearch;
+            searchHeaderItem.active = header.openSearch;
+          });
+          header.addEventListener('click', (event) => {
+            if (!searchHeaderItem.contains(event.target)) {
+              header.openSearch = false;
+              searchHeaderItem.active = false;
+            }
+          });
+        </script>
+      </section>
+
+      <h3>Example using slots <span style="color: red">(Deprecated)</span></h3>
+      <section>
+        <six-header show-search slot="header" shift-content>
+          <!--search-->
+          <six-search-field slot="search-field" placeholder="Search for some 'a' ..." clearable>
+            <div id="search-results"></div>
+          </six-search-field>
+
+          <!--notifications-->
+          <six-icon-button slot="notifications" name="notifications_none">
+            <six-badge type="danger" pill>99</six-badge>
+          </six-icon-button>
+
+          <!--app switcher-->
+          <six-menu slot="app-switcher-menu">
+            <six-menu-item checked>Custody</six-menu-item>
+            <six-menu-item>Swiss Interbank Clearing</six-menu-item>
+            <six-menu-item>Tri-Party Agent</six-menu-item>
+            <six-menu-item>Financial Information</six-menu-item>
+          </six-menu>
+
+          <!--profile-->
+          <six-menu slot="profile-menu">
+            <six-menu-item><b>Cat Kittens</b><br />cat.kitty.kittens@themCatsBeCool.com</six-menu-item>
+            <six-menu-item><b>Language</b><br /><six-language-switcher></six-language-switcher></six-menu-item>
+            <six-menu-item>Change password</six-menu-item>
+            <six-menu-item id="logout">Logout</six-menu-item>
+          </six-menu>
+
+          <!--avatar-->
+          <six-avatar
+            image="https://images.unsplash.com/photo-1529778873920-4da4926a72c2?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80"
+            slot="profile-avatar"
+          >
+          </six-avatar>
+
+          <!--custom components-->
+          <six-icon-button name="shopping_cart" />
+        </six-header>
 
         <six-dialog label="Dialog" class="dialog-overview">
           <pre></pre>
@@ -181,7 +298,7 @@
         </script>
       </section>
 
-      <h3>Choose Logo</h3>
+      <h3>Choose Logo <span style="color: red">(Deprecated)</span></h3>
       <p>You can choose between the SIX or the BME logo with <code>logo="six"</code> or <code>logo="bme"</code>.</p>
       <section>
         <six-root>
@@ -190,7 +307,7 @@
         </six-root>
       </section>
 
-      <h3>Custom Logo</h3>
+      <h3>Custom Logo <span style="color: red">(Deprecated)</span></h3>
       <p>
         In case you don't want to use the predefined logos, you have the functionality to replace the Logo with
         <code>slot="logo"</code>.
@@ -214,9 +331,7 @@
         </style>
       </section>
 
-      <!-- START NEW EXAMPLE -->
-
-      <h3>Set Search Open status</h3>
+      <h3>Set Search Open status <span style="color: red">(Deprecated)</span></h3>
 
       <p>You can enforce the search bar to be open or closed by setting the <code>open-search</code> property</p>
 
@@ -249,9 +364,7 @@
         </script>
       </section>
 
-      <!-- START NEW EXAMPLE -->
-
-      <h3>Execute callback on logo clicked</h3>
+      <h3>Execute callback on logo clicked <span style="color: red">(Deprecated)</span></h3>
       <p>
         In case you want to e.g. navigate to the dashboard when the header logo is clicked simply listen to the
         <code>six-header-logo-clicked</code> event and set the <code>clickable-logo</code> attribute
@@ -268,8 +381,6 @@
           });
         </script>
       </section>
-
-      <!-- START NEW EXAMPLE -->
     </div>
   </body>
 </html>

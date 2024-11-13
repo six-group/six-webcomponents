@@ -1,0 +1,18 @@
+/**
+ * @prop --height: The height of the logo.
+ */
+:host {
+  --height: unset;
+}
+
+svg {
+  display: block;
+}
+
+svg.six {
+  height: var(--height, 20px);
+}
+
+svg.bme {
+  height: var(--height, 40px);
+}

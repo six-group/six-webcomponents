@@ -80,11 +80,6 @@
       background-color: var(--six-color-web-rock-100);
     }
 
-    &:focus:not(.button--disabled) {
-      background-color: var(--six-color-web-rock-100);
-      border-color: var(--six-color-web-rock-400);
-    }
-
     &:active:not(.button--disabled) {
       background-color: var(--six-color-web-rock-300);
       border-color: var(--six-color-web-rock-900);

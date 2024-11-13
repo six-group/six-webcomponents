@@ -6,6 +6,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## Upcoming
 
+### Added
+
+- The `six-header` component now offers a flexible approach for customization, allowing the header
+  to be composed in a more modular way using child elements such as `six-header-item`,
+  `six-header-dropdown-item`, `six-header-menu-button`, and `six-logo`.
+- Added `six-logo` component to display the SIX- or BME-logo anywhere, not just within the
+  `six-header` component.
+
+### Deprecated
+
+- Most slots, properties and events on the `six-header` component are now deprecated and will be
+  removed in one of the next releases.
+
 ### Removed
 
 - **Breaking**: Temporarily removed React support to unblock dependency updates.
@@ -22,6 +35,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - Fixed mermaid diagrams in component documentation.
 - `six-file-upload`: handleFiles is called twice when a file is dropped.
+- Improved accessibility of `six-sidebar-item` `six-sidebar-item-group` `six-button` and
+  `six-icon-button`.
 
 ## 4.2.6 - 2024-10-04
 

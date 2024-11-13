@@ -1,31 +1,16 @@
 <template>
 <div>
 
-        <div class="icon-button-color">
-          <six-icon-button name="format_bold" label="Bold"></six-icon-button>
-          <six-icon-button name="format_italic" label="Italic"></six-icon-button>
-          <six-icon-button name="format_underline" label="Underline"></six-icon-button>
-        </div>
-
-        
+        <six-icon-button name="edit" label="Edit" size="xSmall"></six-icon-button>
+        <six-icon-button name="edit" label="Edit" size="small"></six-icon-button>
+        <six-icon-button name="edit" label="Edit" size="medium"></six-icon-button>
+        <six-icon-button name="edit" label="Edit" size="large"></six-icon-button>
+        <six-icon-button name="edit" label="Edit" size="xLarge"></six-icon-button>
       
 </div>
 </template>
 <style>
 
-          .icon-button-color six-icon-button::part(base) {
-            color: #b00091;
-          }
-
-          .icon-button-color six-icon-button::part(base):hover,
-          .icon-button-color six-icon-button::part(base):focus {
-            color: #c913aa;
-          }
-
-          .icon-button-color six-icon-button::part(base):active {
-            color: #960077;
-          }
-        
 </style>
 <script>
 export default {

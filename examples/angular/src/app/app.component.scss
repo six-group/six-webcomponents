@@ -1,3 +1,8 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
 [slot='right-sidebar'] six-sidebar {
   background: var(--six-color-web-rock-600);
 }
@@ -6,10 +11,6 @@
   padding-left: var(--six-spacing-xxx-large);
   padding-right: var(--six-spacing-xxx-large);
   padding-top: var(--six-spacing-xx-large);
-}
-
-six-root {
-  height: 100vh;
 }
 
 pre {

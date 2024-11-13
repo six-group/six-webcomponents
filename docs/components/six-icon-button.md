@@ -6,6 +6,15 @@ Icons buttons are simple, icon-only buttons that can be used for actions and in 
 <docs-demo-six-icon-button-0></docs-demo-six-icon-button-0>
 
 ```html
+<six-icon-button name="settings" label="Settings" text-left="Settings"></six-icon-button>
+<six-icon-button name="tune" label="Options" text-left="Options"></six-icon-button>
+<six-icon-button name="cancel" label="Close"></six-icon-button>
+```
+
+
+<docs-demo-six-icon-button-1></docs-demo-six-icon-button-1>
+
+```html
 <six-icon-button name="settings" label="Settings"></six-icon-button>
 <six-icon-button name="tune" label="Options"></six-icon-button>
 <six-icon-button name="cancel" label="Close"></six-icon-button>
@@ -16,7 +25,7 @@ Icons buttons are simple, icon-only buttons that can be used for actions and in 
 
 Icon buttons inherit their parent element's `font-size`.
 
-<docs-demo-six-icon-button-1></docs-demo-six-icon-button-1>
+<docs-demo-six-icon-button-2></docs-demo-six-icon-button-2>
 
 ```html
 <six-icon-button name="edit" label="Edit" size="xSmall"></six-icon-button>
@@ -31,7 +40,7 @@ Icon buttons inherit their parent element's `font-size`.
 
 Icon buttons are designed to have a uniform appearance, so their color is not inherited. However, you can still customize them by styling the `base` part.
 
-<docs-demo-six-icon-button-2></docs-demo-six-icon-button-2>
+<docs-demo-six-icon-button-3></docs-demo-six-icon-button-3>
 
 ```html
 <div class="icon-button-color">
@@ -61,7 +70,7 @@ Icon buttons are designed to have a uniform appearance, so their color is not in
 
 Wrap a tooltip around an icon button to provide contextual information to the user.
 
-<docs-demo-six-icon-button-3></docs-demo-six-icon-button-3>
+<docs-demo-six-icon-button-4></docs-demo-six-icon-button-4>
 
 ```html
 <six-tooltip content="Settings">
@@ -72,7 +81,7 @@ Wrap a tooltip around an icon button to provide contextual information to the us
 
 ## Disabled
 
-<docs-demo-six-icon-button-4></docs-demo-six-icon-button-4>
+<docs-demo-six-icon-button-5></docs-demo-six-icon-button-5>
 
 ```html
 <six-tooltip content="Settings">
@@ -85,7 +94,7 @@ Wrap a tooltip around an icon button to provide contextual information to the us
 
 Often icon buttons are combined with badges to signal new entries. For this simply add a `six-badge` to the slot
 
-<docs-demo-six-icon-button-5></docs-demo-six-icon-button-5>
+<docs-demo-six-icon-button-6></docs-demo-six-icon-button-6>
 
 ```html
 <div>
@@ -164,10 +173,13 @@ Often icon buttons are combined with badges to signal new entries. For this simp
 | Property   | Attribute  | Description                                                                                                                                                                        | Type                                                                                | Default     |
 | ---------- | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------- |
 | `disabled` | `disabled` | Set to true to disable the button.                                                                                                                                                 | `boolean`                                                                           | `false`     |
+| `download` | `download` | Tells the browser to download the linked file as this filename. Only used when `href` is set.                                                                                      | `string \| undefined`                                                               | `undefined` |
+| `href`     | `href`     | When set, the underlying button will be rendered as an `<a>` with this `href` instead of a `<button>`.                                                                             | `string \| undefined`                                                               | `undefined` |
 | `html`     | `html`     | HTML symbol code or entity.                                                                                                                                                        | `string \| undefined`                                                               | `undefined` |
 | `label`    | `label`    | A description that gets read by screen readers and other assistive devices. For optimal accessibility, you should always include a label that describes what the icon button does. | `string \| undefined`                                                               | `undefined` |
 | `name`     | `name`     | The name of the icon to draw.                                                                                                                                                      | `string \| undefined`                                                               | `undefined` |
 | `size`     | `size`     | The icon's size.                                                                                                                                                                   | `"large" \| "medium" \| "small" \| "xLarge" \| "xSmall" \| "xxLarge" \| "xxxLarge"` | `'medium'`  |
+| `target`   | `target`   | Tells the browser where to open the link. Only used when `href` is set.                                                                                                            | `"_blank" \| "_parent" \| "_self" \| "_top" \| undefined`                           | `undefined` |
 
 
 ## Shadow Parts

@@ -168,6 +168,8 @@ body > div.container {
   --six-header-border-color-open: var(--six-color-web-rock-900);
   --six-header-border-with: 1px;
   --six-header-selected-app-color-hover: var(--six-color-web-rock-600);
+  --six-header-height: 3.75rem;
+  --six-header-border-height: var(--six-spacing-xx-small);
 
   --six-menu-divider-color: var(--six-color-clay-50);
   --six-menu-item-background-color: var(--six-color-clay-50);

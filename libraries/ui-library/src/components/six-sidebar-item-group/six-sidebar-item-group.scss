@@ -35,4 +35,13 @@
   display: block;
   color: inherit;
   width: 100%;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: var(--six-focus-ring);
+    outline-offset: calc(-1 * var(--six-focus-ring-offset));
+  }
 }

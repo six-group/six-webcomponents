@@ -27,4 +27,13 @@ a {
   &.sidebar-item--selected {
     font-weight: var(--six-font-weight-bold);
   }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: var(--six-focus-ring);
+    outline-offset: var(--six-focus-ring-offset);
+  }
 }
