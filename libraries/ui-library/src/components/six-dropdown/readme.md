@@ -98,6 +98,7 @@ Type: `Promise<void>`
 ### Used by
 
  - [six-header](../six-header)
+ - [six-header-dropdown-item](../six-header-dropdown-item)
  - [six-select](../six-select)
 
 ### Depends on
@@ -121,6 +122,7 @@ graph TD;
   six-input --> six-error
   six-menu --> six-menu-item
   six-header --> six-dropdown
+  six-header-dropdown-item --> six-dropdown
   six-select --> six-dropdown
   style six-dropdown fill:#f9f,stroke:#333,stroke-width:4px
 ```

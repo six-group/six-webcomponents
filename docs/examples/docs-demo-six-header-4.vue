@@ -2,7 +2,12 @@
 <div>
 
         <six-root>
-          <six-header show-search slot="header" shift-content id="clickableLogoHeader" clickable-logo> </six-header>
+          <six-header show-search slot="header" shift-content>
+            <img               slot="logo"
+              class="custom-logo"
+              src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"
+            >
+          </six-header>
           <section slot="main"></section>
         </six-root>
         
@@ -11,15 +16,15 @@
 </template>
 <style>
 
+          .custom-logo {
+            overflow: visible;
+            height: 20px;
+          }
+        
 </style>
 <script>
 export default {
   name: 'docs-demo-six-header-4',
-  mounted() { 
-          const header = document.getElementById('clickableLogoHeader');
-          header.addEventListener('six-header-logo-clicked', () => {
-            alert('logo clicked');
-          });
-         }
+  mounted() {  }
 }
 </script>

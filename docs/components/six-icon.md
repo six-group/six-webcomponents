@@ -276,6 +276,7 @@ Enter an icon label and press enter to display an icon:
  - [six-dropdown](six-dropdown.html)
  - [six-file-list-item](six-file-list-item.html)
  - [six-file-upload](six-file-upload.html)
+ - [six-header-menu-button](six-header-menu-button.html)
  - [six-icon-button](six-icon-button.html)
  - [six-input](six-input.html)
  - [six-item-picker](six-item-picker.html)
@@ -296,6 +297,7 @@ graph TD;
   six-dropdown --> six-icon
   six-file-list-item --> six-icon
   six-file-upload --> six-icon
+  six-header-menu-button --> six-icon
   six-icon-button --> six-icon
   six-input --> six-icon
   six-item-picker --> six-icon

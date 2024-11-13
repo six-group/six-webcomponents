@@ -346,6 +346,7 @@ Type: `Promise<void>`
 
 ### Used by
 
+ - [six-header-menu-button](six-header-menu-button.html)
  - [six-select](six-select.html)
 
 ### Depends on
@@ -356,6 +357,7 @@ Type: `Promise<void>`
 ```mermaid
 graph TD;
   six-button --> six-spinner
+  six-header-menu-button --> six-button
   six-select --> six-button
   style six-button fill:#f9f,stroke:#333,stroke-width:4px
 ```

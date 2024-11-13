@@ -1,0 +1,15 @@
+:host {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0 var(--six-spacing-large);
+  border-bottom: solid var(--six-header-border-height) transparent;
+  border-top: solid var(--six-header-border-height) transparent;
+  transition: var(--six-transition-fast) border-color;
+}
+
+:host(.six-header-item--active) {
+  border-bottom: solid var(--six-header-border-height) var(--six-header-border-color-open);
+  transition: var(--six-transition-fast) border-color;
+}

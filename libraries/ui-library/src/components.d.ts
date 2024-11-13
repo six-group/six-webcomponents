@@ -743,36 +743,74 @@ export namespace Components {
     interface SixHeader {
         /**
           * Set whether the logo should be clickable
+          * @deprecated Use six-header `custom` property with `six-logo` instead
          */
         "clickableLogo": boolean;
         /**
+          * Set `custom` to `true` for complete control over the header content. When enabled, all other properties and slots are ignored.  Use `six-header-item`, `six-header-dropdown-item` and `six-header-menu-button` to structure the content.
+          * @since 4.2.7
+          * @status beta
+         */
+        "custom": boolean;
+        /**
           * Get open state for search
+          * @deprecated Use six-header `custom` property instead
          */
         "getIsSearchOpen": () => Promise<boolean>;
         /**
           * Set whether the hamburger menu should be visible or not
+          * @deprecated Use six-header `custom` property instead
          */
         "hideHamburgerMenu": boolean;
         /**
           * The displayed logo. Either six or bme. Defaults to six.
+          * @deprecated Use six-header `custom` property with `six-logo` instead
          */
         "logo": 'six' | 'bme';
         /**
           * Set the hamburger menu icon to open or closed state
+          * @deprecated Use six-header `custom` property instead
          */
         "openHamburgerMenu": boolean;
         /**
-          * Set the header search to be in an open or closed state
+          * Set the header search to be in an open or closed state.  If `custom` is `true`, focuses the first `six-input` found in the search slot.
          */
         "openSearch": boolean;
         /**
           * Sets open state for search
+          * @deprecated Use six-header `custom` property instead
          */
         "setSearchOpenState": (openState: boolean) => Promise<void>;
         /**
           * Indicates if content should be shifted down when search field is visible.
          */
         "shiftContent": boolean;
+    }
+    /**
+     * @since 4.2.7
+     * @status beta
+     */
+    interface SixHeaderDropdownItem {
+    }
+    /**
+     * @since 4.2.7
+     * @status beta
+     */
+    interface SixHeaderItem {
+        /**
+          * Indicates whether the item is styled as active. When set to `true`, a border is displayed below the trigger element.  Use <code>six-header-dropdown-item</code> to automatically set the active state for dropdowns.
+         */
+        "active": boolean;
+    }
+    /**
+     * @since 4.2.7
+     * @status beta
+     */
+    interface SixHeaderMenuButton {
+        /**
+          * The icon of the menu button.
+         */
+        "icon": string;
     }
     /**
      * @since 1.0
@@ -806,6 +844,14 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * Tells the browser to download the linked file as this filename. Only used when `href` is set.
+         */
+        "download"?: string;
+        /**
+          * When set, the underlying button will be rendered as an `<a>` with this `href` instead of a `<button>`.
+         */
+        "href"?: string;
+        /**
           * HTML symbol code or entity.
          */
         "html"?: string;
@@ -821,6 +867,10 @@ export namespace Components {
           * The icon's size.
          */
         "size": 'xSmall' | 'small' | 'medium' | 'large' | 'xLarge' | 'xxLarge' | 'xxxLarge';
+        /**
+          * Tells the browser where to open the link. Only used when `href` is set.
+         */
+        "target"?: '_blank' | '_parent' | '_self' | '_top';
     }
     /**
      * @since 1.0
@@ -1054,6 +1104,16 @@ export namespace Components {
           * Set the number of grid columns
          */
         "columns"?: number;
+    }
+    /**
+     * @since 4.2.7
+     * @status beta
+     */
+    interface SixLogo {
+        /**
+          * The brand of the logo. Either six or bme. Defaults to six.
+         */
+        "brand": 'six' | 'bme';
     }
     /**
      * @since 1.01
@@ -2495,6 +2555,36 @@ declare global {
         new (): HTMLSixHeaderElement;
     };
     /**
+     * @since 4.2.7
+     * @status beta
+     */
+    interface HTMLSixHeaderDropdownItemElement extends Components.SixHeaderDropdownItem, HTMLStencilElement {
+    }
+    var HTMLSixHeaderDropdownItemElement: {
+        prototype: HTMLSixHeaderDropdownItemElement;
+        new (): HTMLSixHeaderDropdownItemElement;
+    };
+    /**
+     * @since 4.2.7
+     * @status beta
+     */
+    interface HTMLSixHeaderItemElement extends Components.SixHeaderItem, HTMLStencilElement {
+    }
+    var HTMLSixHeaderItemElement: {
+        prototype: HTMLSixHeaderItemElement;
+        new (): HTMLSixHeaderItemElement;
+    };
+    /**
+     * @since 4.2.7
+     * @status beta
+     */
+    interface HTMLSixHeaderMenuButtonElement extends Components.SixHeaderMenuButton, HTMLStencilElement {
+    }
+    var HTMLSixHeaderMenuButtonElement: {
+        prototype: HTMLSixHeaderMenuButtonElement;
+        new (): HTMLSixHeaderMenuButtonElement;
+    };
+    /**
      * @since 1.0
      * @status stable
      */
@@ -2589,6 +2679,16 @@ declare global {
     var HTMLSixLayoutGridElement: {
         prototype: HTMLSixLayoutGridElement;
         new (): HTMLSixLayoutGridElement;
+    };
+    /**
+     * @since 4.2.7
+     * @status beta
+     */
+    interface HTMLSixLogoElement extends Components.SixLogo, HTMLStencilElement {
+    }
+    var HTMLSixLogoElement: {
+        prototype: HTMLSixLogoElement;
+        new (): HTMLSixLogoElement;
     };
     /**
      * @since 1.01
@@ -3069,12 +3169,16 @@ declare global {
         "six-footer": HTMLSixFooterElement;
         "six-group-label": HTMLSixGroupLabelElement;
         "six-header": HTMLSixHeaderElement;
+        "six-header-dropdown-item": HTMLSixHeaderDropdownItemElement;
+        "six-header-item": HTMLSixHeaderItemElement;
+        "six-header-menu-button": HTMLSixHeaderMenuButtonElement;
         "six-icon": HTMLSixIconElement;
         "six-icon-button": HTMLSixIconButtonElement;
         "six-input": HTMLSixInputElement;
         "six-item-picker": HTMLSixItemPickerElement;
         "six-language-switcher": HTMLSixLanguageSwitcherElement;
         "six-layout-grid": HTMLSixLayoutGridElement;
+        "six-logo": HTMLSixLogoElement;
         "six-main-container": HTMLSixMainContainerElement;
         "six-menu": HTMLSixMenuElement;
         "six-menu-divider": HTMLSixMenuDividerElement;
@@ -3882,52 +3986,94 @@ declare namespace LocalJSX {
     interface SixHeader {
         /**
           * Set whether the logo should be clickable
+          * @deprecated Use six-header `custom` property with `six-logo` instead
          */
         "clickableLogo"?: boolean;
         /**
+          * Set `custom` to `true` for complete control over the header content. When enabled, all other properties and slots are ignored.  Use `six-header-item`, `six-header-dropdown-item` and `six-header-menu-button` to structure the content.
+          * @since 4.2.7
+          * @status beta
+         */
+        "custom"?: boolean;
+        /**
           * Set whether the hamburger menu should be visible or not
+          * @deprecated Use six-header `custom` property instead
          */
         "hideHamburgerMenu"?: boolean;
         /**
           * The displayed logo. Either six or bme. Defaults to six.
+          * @deprecated Use six-header `custom` property with `six-logo` instead
          */
         "logo"?: 'six' | 'bme';
         /**
           * Emitted when the name of the selected app is clicked.
+          * @deprecated Use six-header `custom` property with `six-header-dropdown-item` and `six-header-menu-button` instead
          */
         "onSix-header-app-name-clicked"?: (event: SixHeaderCustomEvent<EmptyPayload>) => void;
         /**
           * Emitted when a menu item is in the app switcher menu is selected.
+          * @deprecated Use six-header `custom` property with `six-header-dropdown-item` and `six-header-menu-button` instead
          */
         "onSix-header-app-switcher-select"?: (event: SixHeaderCustomEvent<SixHeaderAppSwitcherSelectPayload>) => void;
         /**
           * Emitted when the hamburger menu is clicked.
+          * @deprecated Use six-header `custom` property instead
          */
         "onSix-header-hamburger-menu-clicked"?: (event: SixHeaderCustomEvent<EmptyPayload>) => void;
         /**
           * Emitted when the header logo is clicked.
+          * @deprecated Use six-header `custom` property instead
          */
         "onSix-header-logo-clicked"?: (event: SixHeaderCustomEvent<EmptyPayload>) => void;
         /**
           * Emitted when a menu item is in the profile menu is selected.
+          * @deprecated Use six-header `custom` property with `six-header-dropdown-item` and `six-avatar` instead
          */
         "onSix-header-profile-select"?: (event: SixHeaderCustomEvent<SixHeaderProfileSelectPayload>) => void;
         /**
           * Emitted when search field is toggled.
+          * @deprecated Use six-header `custom` property instead
          */
         "onSix-header-search-field-toggle"?: (event: SixHeaderCustomEvent<SixHeaderSearchFieldToggle>) => void;
         /**
           * Set the hamburger menu icon to open or closed state
+          * @deprecated Use six-header `custom` property instead
          */
         "openHamburgerMenu"?: boolean;
         /**
-          * Set the header search to be in an open or closed state
+          * Set the header search to be in an open or closed state.  If `custom` is `true`, focuses the first `six-input` found in the search slot.
          */
         "openSearch"?: boolean;
         /**
           * Indicates if content should be shifted down when search field is visible.
          */
         "shiftContent"?: boolean;
+    }
+    /**
+     * @since 4.2.7
+     * @status beta
+     */
+    interface SixHeaderDropdownItem {
+    }
+    /**
+     * @since 4.2.7
+     * @status beta
+     */
+    interface SixHeaderItem {
+        /**
+          * Indicates whether the item is styled as active. When set to `true`, a border is displayed below the trigger element.  Use <code>six-header-dropdown-item</code> to automatically set the active state for dropdowns.
+         */
+        "active"?: boolean;
+    }
+    /**
+     * @since 4.2.7
+     * @status beta
+     */
+    interface SixHeaderMenuButton {
+        /**
+          * The icon of the menu button.
+         */
+        "icon"?: string;
     }
     /**
      * @since 1.0
@@ -3961,6 +4107,14 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * Tells the browser to download the linked file as this filename. Only used when `href` is set.
+         */
+        "download"?: string;
+        /**
+          * When set, the underlying button will be rendered as an `<a>` with this `href` instead of a `<button>`.
+         */
+        "href"?: string;
+        /**
           * HTML symbol code or entity.
          */
         "html"?: string;
@@ -3976,6 +4130,10 @@ declare namespace LocalJSX {
           * The icon's size.
          */
         "size"?: 'xSmall' | 'small' | 'medium' | 'large' | 'xLarge' | 'xxLarge' | 'xxxLarge';
+        /**
+          * Tells the browser where to open the link. Only used when `href` is set.
+         */
+        "target"?: '_blank' | '_parent' | '_self' | '_top';
     }
     /**
      * @since 1.0
@@ -4217,6 +4375,16 @@ declare namespace LocalJSX {
           * Set the number of grid columns
          */
         "columns"?: number;
+    }
+    /**
+     * @since 4.2.7
+     * @status beta
+     */
+    interface SixLogo {
+        /**
+          * The brand of the logo. Either six or bme. Defaults to six.
+         */
+        "brand"?: 'six' | 'bme';
     }
     /**
      * @since 1.01
@@ -5241,12 +5409,16 @@ declare namespace LocalJSX {
         "six-footer": SixFooter;
         "six-group-label": SixGroupLabel;
         "six-header": SixHeader;
+        "six-header-dropdown-item": SixHeaderDropdownItem;
+        "six-header-item": SixHeaderItem;
+        "six-header-menu-button": SixHeaderMenuButton;
         "six-icon": SixIcon;
         "six-icon-button": SixIconButton;
         "six-input": SixInput;
         "six-item-picker": SixItemPicker;
         "six-language-switcher": SixLanguageSwitcher;
         "six-layout-grid": SixLayoutGrid;
+        "six-logo": SixLogo;
         "six-main-container": SixMainContainer;
         "six-menu": SixMenu;
         "six-menu-divider": SixMenuDivider;
@@ -5381,6 +5553,21 @@ declare module "@stencil/core" {
              */
             "six-header": LocalJSX.SixHeader & JSXBase.HTMLAttributes<HTMLSixHeaderElement>;
             /**
+             * @since 4.2.7
+             * @status beta
+             */
+            "six-header-dropdown-item": LocalJSX.SixHeaderDropdownItem & JSXBase.HTMLAttributes<HTMLSixHeaderDropdownItemElement>;
+            /**
+             * @since 4.2.7
+             * @status beta
+             */
+            "six-header-item": LocalJSX.SixHeaderItem & JSXBase.HTMLAttributes<HTMLSixHeaderItemElement>;
+            /**
+             * @since 4.2.7
+             * @status beta
+             */
+            "six-header-menu-button": LocalJSX.SixHeaderMenuButton & JSXBase.HTMLAttributes<HTMLSixHeaderMenuButtonElement>;
+            /**
              * @since 1.0
              * @status stable
              */
@@ -5408,6 +5595,11 @@ declare module "@stencil/core" {
              * @status stable
              */
             "six-layout-grid": LocalJSX.SixLayoutGrid & JSXBase.HTMLAttributes<HTMLSixLayoutGridElement>;
+            /**
+             * @since 4.2.7
+             * @status beta
+             */
+            "six-logo": LocalJSX.SixLogo & JSXBase.HTMLAttributes<HTMLSixLogoElement>;
             /**
              * @since 1.01
              * @status stable

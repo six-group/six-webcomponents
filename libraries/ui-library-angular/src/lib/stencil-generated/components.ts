@@ -612,7 +612,7 @@ export declare interface SixGroupLabel extends Components.SixGroupLabel {}
 
 
 @ProxyCmp({
-  inputs: ['clickableLogo', 'hideHamburgerMenu', 'logo', 'openHamburgerMenu', 'openSearch', 'shiftContent'],
+  inputs: ['clickableLogo', 'custom', 'hideHamburgerMenu', 'logo', 'openHamburgerMenu', 'openSearch', 'shiftContent'],
   methods: ['setSearchOpenState', 'getIsSearchOpen']
 })
 @Component({
@@ -620,7 +620,7 @@ export declare interface SixGroupLabel extends Components.SixGroupLabel {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['clickableLogo', 'hideHamburgerMenu', 'logo', 'openHamburgerMenu', 'openSearch', 'shiftContent'],
+  inputs: ['clickableLogo', 'custom', 'hideHamburgerMenu', 'logo', 'openHamburgerMenu', 'openSearch', 'shiftContent'],
 })
 export class SixHeader {
   protected el: HTMLElement;
@@ -639,30 +639,95 @@ import type { SixHeaderSearchFieldToggle as ISixHeaderSixHeaderSearchFieldToggle
 
 export declare interface SixHeader extends Components.SixHeader {
   /**
-   * Emitted when the name of the selected app is clicked.
+   * Emitted when the name of the selected app is clicked. @deprecated Use six-header `custom` property with `six-header-dropdown-item` and `six-header-menu-button` instead
    */
   'six-header-app-name-clicked': EventEmitter<CustomEvent<ISixHeaderEmptyPayload>>;
   /**
-   * Emitted when a menu item is in the app switcher menu is selected.
+   * Emitted when a menu item is in the app switcher menu is selected. @deprecated Use six-header `custom` property with `six-header-dropdown-item` and `six-header-menu-button` instead
    */
   'six-header-app-switcher-select': EventEmitter<CustomEvent<ISixHeaderSixHeaderAppSwitcherSelectPayload>>;
   /**
-   * Emitted when a menu item is in the profile menu is selected.
+   * Emitted when a menu item is in the profile menu is selected. @deprecated Use six-header `custom` property with `six-header-dropdown-item` and `six-avatar` instead
    */
   'six-header-profile-select': EventEmitter<CustomEvent<ISixHeaderSixHeaderProfileSelectPayload>>;
   /**
-   * Emitted when the hamburger menu is clicked.
+   * Emitted when the hamburger menu is clicked. @deprecated Use six-header `custom` property instead
    */
   'six-header-hamburger-menu-clicked': EventEmitter<CustomEvent<ISixHeaderEmptyPayload>>;
   /**
-   * Emitted when the header logo is clicked.
+   * Emitted when the header logo is clicked. @deprecated Use six-header `custom` property instead
    */
   'six-header-logo-clicked': EventEmitter<CustomEvent<ISixHeaderEmptyPayload>>;
   /**
-   * Emitted when search field is toggled.
+   * Emitted when search field is toggled. @deprecated Use six-header `custom` property instead
    */
   'six-header-search-field-toggle': EventEmitter<CustomEvent<ISixHeaderSixHeaderSearchFieldToggle>>;
 }
+
+
+@ProxyCmp({
+})
+@Component({
+  selector: 'six-header-dropdown-item',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [],
+})
+export class SixHeaderDropdownItem {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface SixHeaderDropdownItem extends Components.SixHeaderDropdownItem {}
+
+
+@ProxyCmp({
+  inputs: ['active']
+})
+@Component({
+  selector: 'six-header-item',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['active'],
+})
+export class SixHeaderItem {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface SixHeaderItem extends Components.SixHeaderItem {}
+
+
+@ProxyCmp({
+  inputs: ['icon']
+})
+@Component({
+  selector: 'six-header-menu-button',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['icon'],
+})
+export class SixHeaderMenuButton {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface SixHeaderMenuButton extends Components.SixHeaderMenuButton {}
 
 
 @ProxyCmp({
@@ -688,14 +753,14 @@ export declare interface SixIcon extends Components.SixIcon {}
 
 
 @ProxyCmp({
-  inputs: ['disabled', 'html', 'label', 'name', 'size']
+  inputs: ['disabled', 'download', 'href', 'html', 'label', 'name', 'size', 'target']
 })
 @Component({
   selector: 'six-icon-button',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['disabled', 'html', 'label', 'name', 'size'],
+  inputs: ['disabled', 'download', 'href', 'html', 'label', 'name', 'size', 'target'],
 })
 export class SixIconButton {
   protected el: HTMLElement;
@@ -840,6 +905,28 @@ export class SixLayoutGrid {
 
 
 export declare interface SixLayoutGrid extends Components.SixLayoutGrid {}
+
+
+@ProxyCmp({
+  inputs: ['brand']
+})
+@Component({
+  selector: 'six-logo',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['brand'],
+})
+export class SixLogo {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface SixLogo extends Components.SixLogo {}
 
 
 @ProxyCmp({

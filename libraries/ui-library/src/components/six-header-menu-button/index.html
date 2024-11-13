@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <script type="module" src="/build/ui-library.esm.js"></script>
+    <script nomodule src="/build/ui-library.js"></script>
+    <link rel="stylesheet" href="/build/ui-library.css" />
+    <title>six-header-menu-button</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Header Menu Button</h2>
+      <p>Header Menu button with a text and an icon. Usually used for dropdowns.</p>
+      <section>
+        <six-header custom>
+          <six-header-dropdown-item>
+            <six-header-menu-button slot="trigger" icon="apps">App 1</six-header-menu-button>
+            <six-menu>
+              <six-menu-item checked>App 1</six-menu-item>
+              <six-menu-item>App 2</six-menu-item>
+              <six-menu-item>App 3</six-menu-item>
+            </six-menu>
+          </six-header-dropdown-item>
+        </six-header>
+        <script type="module">
+          const menuItems = document.querySelectorAll('six-menu-item');
+          const headerButton = document.querySelector('six-header-menu-button');
+
+          menuItems.forEach((item) => {
+            item.addEventListener('click', () => {
+              headerButton.innerText = this.innerText;
+              menuItems.forEach((item) => (item.checked = false));
+              item.checked = true;
+            });
+          });
+        </script>
+      </section>
+    </div>
+  </body>
+</html>

@@ -1,65 +1,185 @@
 # Header
 
 
-## Header Features
+The `six-header` component is designed to be used within the `header` slot of the `six-root` component.
 
-To define the elements which will be shown in the profile dropdown use the `profile-menu` slot
+Compose your header using `six-header-item` and `six-header-dropdown-item` elements.
 
-To define a profile picture simply set the settings for `six-avatar`
+Note: Ensure that the `custom` property is set, until deprecated properties are phased out.
 
-To define the content of the drawer menu (opens when clicking on the hamburger menu) use the `menu-content` slot.
+While the SIX logo must always appear, all other elements are optional. If additional elements are added, follow this order:
 
-SIX header provides multiple events that can be listened from the outside. Select for example an entry from the app-switcher dropdown and you should see it in the output text below the header.
+1.  Hamburger Menu
+2.  SIX Logo
+3.  Custom Items
+4.  (--- Right-aligned elements start here ---)
+5.  Search Icon
+6.  Notifications
+7.  App Switcher
+8.  Profile
 
-To listen to the selected app-switcher element simply register a listener on `six-header-app-switcher-select`. You can also listen on the `six-header-app-name-clicked` event to detect a click on the currently selected application's name.
+### Simple Example
+
+Use `six-header-item` to add items. To align elements to the right, simply apply the style `margin-left: auto`. For dropdown menus, use `six-header-dropdown-item`. The dropdown item will be marked as active (with a black bottom border) when open.
 
 <docs-demo-six-header-0></docs-demo-six-header-0>
 
 ```html
-<six-root>
-  <six-header show-search slot="header" shift-content>
-    
-    <six-search-field slot="search-field" placeholder="Search for some 'a' ..." clearable>
-      <div id="search-results"></div>
-    </six-search-field>
-    
-    <six-icon-button slot="notifications" name="notifications_none">
-      <six-badge type="danger" pill>99</six-badge>
+<six-header slot="header" custom>
+  
+  <six-header-item>
+    <six-icon-button href="https://six-group.github.io/six-webcomponents/">
+      <six-logo></six-logo>
     </six-icon-button>
-    
-    <six-menu slot="app-switcher-menu">
+  </six-header-item>
+
+  
+  <six-header-dropdown-item style="margin-left: auto">
+    <six-icon-button slot="trigger">
+      <six-avatar                 image="https://images.unsplash.com/photo-1529778873920-4da4926a72c2?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80"
+      >
+      </six-avatar>
+    </six-icon-button>
+    <six-menu>
+      <six-menu-item>Logout</six-menu-item>
+    </six-menu>
+  </six-header-dropdown-item>
+</six-header>
+```
+
+
+### Full Example
+
+Items in `six-header` reside within a flex container. Use flex properties to adjust the width of custom elements. For instance, applying `flex: 1 0 0` will allow an element to fill the remaining space.
+
+<docs-demo-six-header-1></docs-demo-six-header-1>
+
+```html
+<six-header slot="header" custom>
+  
+  <six-header-item>
+    <six-icon-button name="menu"></six-icon-button>
+  </six-header-item>
+
+  
+  <six-header-item>
+    <six-icon-button href="https://six-group.github.io/six-webcomponents/">
+      <six-logo></six-logo>
+    </six-icon-button>
+  </six-header-item>
+
+  
+  <six-header-item style="flex: 1 0 0">
+    <six-select value="option-1" style="width: 100%">
+      <six-menu-item value="option-1">Option 1</six-menu-item>
+      <six-menu-item value="option-2">Option 2</six-menu-item>
+      <six-menu-item value="option-3">Option 3</six-menu-item>
+    </six-select>
+  </six-header-item>
+
+  
+  <six-header-item id="search-header-item">
+    <six-icon-button name="search"></six-icon-button>
+  </six-header-item>
+
+  
+  <six-header-item>
+    <six-icon-button name="notifications_none">
+      <six-badge type="danger" pill>2</six-badge>
+    </six-icon-button>
+  </six-header-item>
+
+  
+  <six-header-dropdown-item>
+    <six-header-menu-button slot="trigger" icon="apps">Custody</six-header-menu-button>
+    <six-menu>
       <six-menu-item checked>Custody</six-menu-item>
       <six-menu-item>Swiss Interbank Clearing</six-menu-item>
       <six-menu-item>Tri-Party Agent</six-menu-item>
       <six-menu-item>Financial Information</six-menu-item>
     </six-menu>
-    
-    <six-menu slot="profile-menu">
+  </six-header-dropdown-item>
+
+  
+  <six-header-dropdown-item>
+    <six-icon-button slot="trigger">
+      <six-avatar                 image="https://images.unsplash.com/photo-1529778873920-4da4926a72c2?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80"
+      >
+      </six-avatar>
+    </six-icon-button>
+    <six-menu>
       <six-menu-item><b>Cat Kittens</b><br>cat.kitty.kittens@themCatsBeCool.com</six-menu-item>
       <six-menu-item><b>Language</b><br><six-language-switcher></six-language-switcher></six-menu-item>
       <six-menu-item>Change password</six-menu-item>
-      <six-menu-item id="logout">Logout</six-menu-item>
+      <six-menu-item>Logout</six-menu-item>
     </six-menu>
-    
-    <six-avatar               image="https://images.unsplash.com/photo-1529778873920-4da4926a72c2?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80"
-      slot="profile-avatar"
-    >
-    </six-avatar>
-    
+  </six-header-dropdown-item>
 
-    <six-icon-button name="shopping_cart" ></six-icon-button>
-  </six-header>
-  <section slot="main">
-    <six-card>
-      <h1>Main content</h1>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet atque blanditiis culpa cum earum error,
-        fuga laboriosam nam nisi pariatur rem tempora unde voluptatem? Consequuntur dicta fugit numquam
-        obcaecati perferendis?
-      </p>
-    </six-card>
-  </section>
-</six-root>
+  
+  <six-search-field slot="search-field" placeholder="Search for some 'a' ..." clearable>
+    <div id="search-results">Some results</div>
+  </six-search-field>
+</six-header>
+
+<script type="module">
+  const header = document.querySelector('six-header');
+  const searchHeaderItem = document.querySelector('#search-header-item');
+  const searchIcon = searchHeaderItem.querySelector('six-icon-button');
+  searchIcon.addEventListener('click', () => {
+    header.openSearch = !header.openSearch;
+    searchHeaderItem.active = header.openSearch;
+  });
+  header.addEventListener('click', (event) => {
+    if (!searchHeaderItem.contains(event.target)) {
+      header.openSearch = false;
+      searchHeaderItem.active = false;
+    }
+  });
+</script>
+```
+
+
+### Example using slots (Deprecated)
+
+<docs-demo-six-header-2></docs-demo-six-header-2>
+
+```html
+<six-header show-search slot="header" shift-content>
+  
+  <six-search-field slot="search-field" placeholder="Search for some 'a' ..." clearable>
+    <div id="search-results"></div>
+  </six-search-field>
+
+  
+  <six-icon-button slot="notifications" name="notifications_none">
+    <six-badge type="danger" pill>99</six-badge>
+  </six-icon-button>
+
+  
+  <six-menu slot="app-switcher-menu">
+    <six-menu-item checked>Custody</six-menu-item>
+    <six-menu-item>Swiss Interbank Clearing</six-menu-item>
+    <six-menu-item>Tri-Party Agent</six-menu-item>
+    <six-menu-item>Financial Information</six-menu-item>
+  </six-menu>
+
+  
+  <six-menu slot="profile-menu">
+    <six-menu-item><b>Cat Kittens</b><br>cat.kitty.kittens@themCatsBeCool.com</six-menu-item>
+    <six-menu-item><b>Language</b><br><six-language-switcher></six-language-switcher></six-menu-item>
+    <six-menu-item>Change password</six-menu-item>
+    <six-menu-item id="logout">Logout</six-menu-item>
+  </six-menu>
+
+  
+  <six-avatar             image="https://images.unsplash.com/photo-1529778873920-4da4926a72c2?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80"
+    slot="profile-avatar"
+  >
+  </six-avatar>
+
+  
+  <six-icon-button name="shopping_cart" ></six-icon-button>
+</six-header>
 
 <six-dialog label="Dialog" class="dialog-overview">
   <pre></pre>
@@ -167,11 +287,11 @@ To listen to the selected app-switcher element simply register a listener on `si
 ```
 
 
-### Choose Logo
+### Choose Logo (Deprecated)
 
 You can choose between the SIX or the BME logo with `logo="six"` or `logo="bme"`.
 
-<docs-demo-six-header-1></docs-demo-six-header-1>
+<docs-demo-six-header-3></docs-demo-six-header-3>
 
 ```html
 <six-root>
@@ -181,11 +301,11 @@ You can choose between the SIX or the BME logo with `logo="six"` or `logo="bme"`
 ```
 
 
-### Custom Logo
+### Custom Logo (Deprecated)
 
 In case you don't want to use the predefined logos, you have the functionality to replace the Logo with `slot="logo"`.
 
-<docs-demo-six-header-2></docs-demo-six-header-2>
+<docs-demo-six-header-4></docs-demo-six-header-4>
 
 ```html
 <six-root>
@@ -206,12 +326,11 @@ In case you don't want to use the predefined logos, you have the functionality t
 ```
 
 
-
-### Set Search Open status
+### Set Search Open status (Deprecated)
 
 You can enforce the search bar to be open or closed by setting the `open-search` property
 
-<docs-demo-six-header-3></docs-demo-six-header-3>
+<docs-demo-six-header-5></docs-demo-six-header-5>
 
 ```html
 <six-button id="search-toggle-attribute-btn">Toggle Search via Attribute</six-button>
@@ -243,12 +362,11 @@ You can enforce the search bar to be open or closed by setting the `open-search`
 ```
 
 
-
-### Execute callback on logo clicked
+### Execute callback on logo clicked (Deprecated)
 
 In case you want to e.g. navigate to the dashboard when the header logo is clicked simply listen to the `six-header-logo-clicked` event and set the `clickable-logo` attribute
 
-<docs-demo-six-header-4></docs-demo-six-header-4>
+<docs-demo-six-header-6></docs-demo-six-header-6>
 
 ```html
 <six-root>
@@ -265,39 +383,39 @@ In case you want to e.g. navigate to the dashboard when the header logo is click
 
 
 
-
 <!-- Auto Generated Below -->
 
 
 ## Properties
 
-| Property            | Attribute             | Description                                                               | Type             | Default |
-| ------------------- | --------------------- | ------------------------------------------------------------------------- | ---------------- | ------- |
-| `clickableLogo`     | `clickable-logo`      | Set whether the logo should be clickable                                  | `boolean`        | `false` |
-| `hideHamburgerMenu` | `hide-hamburger-menu` | Set whether the hamburger menu should be visible or not                   | `boolean`        | `false` |
-| `logo`              | `logo`                | The displayed logo. Either six or bme. Defaults to six.                   | `"bme" \| "six"` | `'six'` |
-| `openHamburgerMenu` | `open-hamburger-menu` | Set the hamburger menu icon to open or closed state                       | `boolean`        | `false` |
-| `openSearch`        | `open-search`         | Set the header search to be in an open or closed state                    | `boolean`        | `false` |
-| `shiftContent`      | `shift-content`       | Indicates if content should be shifted down when search field is visible. | `boolean`        | `false` |
+| Property            | Attribute             | Description                                                                                                                                                                                                                              | Type             | Default |
+| ------------------- | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- | ------- |
+| `clickableLogo`     | `clickable-logo`      | <span style="color:red">**[DEPRECATED]**</span> Use six-header `custom` property with `six-logo` instead<br/><br/>Set whether the logo should be clickable                                                                               | `boolean`        | `false` |
+| `custom`            | `custom`              | Set `custom` to `true` for complete control over the header content. When enabled, all other properties and slots are ignored.  Use `six-header-item`, `six-header-dropdown-item` and `six-header-menu-button` to structure the content. | `boolean`        | `false` |
+| `hideHamburgerMenu` | `hide-hamburger-menu` | <span style="color:red">**[DEPRECATED]**</span> Use six-header `custom` property instead<br/><br/>Set whether the hamburger menu should be visible or not                                                                                | `boolean`        | `false` |
+| `logo`              | `logo`                | <span style="color:red">**[DEPRECATED]**</span> Use six-header `custom` property with `six-logo` instead<br/><br/>The displayed logo. Either six or bme. Defaults to six.                                                                | `"bme" \| "six"` | `'six'` |
+| `openHamburgerMenu` | `open-hamburger-menu` | <span style="color:red">**[DEPRECATED]**</span> Use six-header `custom` property instead<br/><br/>Set the hamburger menu icon to open or closed state                                                                                    | `boolean`        | `false` |
+| `openSearch`        | `open-search`         | Set the header search to be in an open or closed state.  If `custom` is `true`, focuses the first `six-input` found in the search slot.                                                                                                  | `boolean`        | `false` |
+| `shiftContent`      | `shift-content`       | Indicates if content should be shifted down when search field is visible.                                                                                                                                                                | `boolean`        | `false` |
 
 
 ## Events
 
-| Event                               | Description                                                       | Type                                             |
-| ----------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------ |
-| `six-header-app-name-clicked`       | Emitted when the name of the selected app is clicked.             | `CustomEvent<undefined>`                         |
-| `six-header-app-switcher-select`    | Emitted when a menu item is in the app switcher menu is selected. | `CustomEvent<SixHeaderAppSwitcherSelectPayload>` |
-| `six-header-hamburger-menu-clicked` | Emitted when the hamburger menu is clicked.                       | `CustomEvent<undefined>`                         |
-| `six-header-logo-clicked`           | Emitted when the header logo is clicked.                          | `CustomEvent<undefined>`                         |
-| `six-header-profile-select`         | Emitted when a menu item is in the profile menu is selected.      | `CustomEvent<SixHeaderProfileSelectPayload>`     |
-| `six-header-search-field-toggle`    | Emitted when search field is toggled.                             | `CustomEvent<SixHeaderSearchFieldToggle>`        |
+| Event                               | Description                                                                                                                                                                                                                      | Type                                             |
+| ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
+| `six-header-app-name-clicked`       | <span style="color:red">**[DEPRECATED]**</span> Use six-header `custom` property with `six-header-dropdown-item` and `six-header-menu-button` instead<br/><br/>Emitted when the name of the selected app is clicked.             | `CustomEvent<undefined>`                         |
+| `six-header-app-switcher-select`    | <span style="color:red">**[DEPRECATED]**</span> Use six-header `custom` property with `six-header-dropdown-item` and `six-header-menu-button` instead<br/><br/>Emitted when a menu item is in the app switcher menu is selected. | `CustomEvent<SixHeaderAppSwitcherSelectPayload>` |
+| `six-header-hamburger-menu-clicked` | <span style="color:red">**[DEPRECATED]**</span> Use six-header `custom` property instead<br/><br/>Emitted when the hamburger menu is clicked.                                                                                    | `CustomEvent<undefined>`                         |
+| `six-header-logo-clicked`           | <span style="color:red">**[DEPRECATED]**</span> Use six-header `custom` property instead<br/><br/>Emitted when the header logo is clicked.                                                                                       | `CustomEvent<undefined>`                         |
+| `six-header-profile-select`         | <span style="color:red">**[DEPRECATED]**</span> Use six-header `custom` property with `six-header-dropdown-item` and `six-avatar` instead<br/><br/>Emitted when a menu item is in the profile menu is selected.                  | `CustomEvent<SixHeaderProfileSelectPayload>`     |
+| `six-header-search-field-toggle`    | <span style="color:red">**[DEPRECATED]**</span> Use six-header `custom` property instead<br/><br/>Emitted when search field is toggled.                                                                                          | `CustomEvent<SixHeaderSearchFieldToggle>`        |
 
 
 ## Methods
 
 ### `getIsSearchOpen() => Promise<boolean>`
 
-Get open state for search
+<span style="color:red">**[DEPRECATED]**</span> Use six-header `custom` property instead<br/><br/>Get open state for search
 
 #### Returns
 
@@ -307,7 +425,7 @@ Type: `Promise<boolean>`
 
 ### `setSearchOpenState(openState: boolean) => Promise<void>`
 
-Sets open state for search
+<span style="color:red">**[DEPRECATED]**</span> Use six-header `custom` property instead<br/><br/>Sets open state for search
 
 #### Parameters
 
@@ -324,14 +442,14 @@ Type: `Promise<void>`
 
 ## Slots
 
-| Slot                  | Description                                                       |
-| --------------------- | ----------------------------------------------------------------- |
-|                       | Used to define a custom component that is included in the header. |
-| `"app-switcher-menu"` | Used to define the application switcher menu in the header.       |
-| `"notifications"`     | Used to define the notification component in the header.          |
-| `"profile-avatar"`    | Used to define the avator in the header.                          |
-| `"profile-menu"`      | Used to define the profile menu in the header.                    |
-| `"search-field"`      | Used to define the search field component in the header.          |
+| Slot                  | Description                                                                                                                                        |
+| --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+|                       | Used to define a custom component that is included in the header.                                                                                  |
+| `"app-switcher-menu"` | <span style="color:red">[Deprecated]</span>, use six-header `custom` property instead. Used to define the application switcher menu in the header. |
+| `"notifications"`     | <span style="color:red">[Deprecated]</span>, use six-header `custom` property instead. Used to define the notification component in the header.    |
+| `"profile-avatar"`    | <span style="color:red">[Deprecated]</span>, use six-header `custom` property instead. Used to define the avator in the header.                    |
+| `"profile-menu"`      | <span style="color:red">[Deprecated]</span>, use six-header `custom` property instead. Used to define the profile menu in the header.              |
+| `"search-field"`      | Used to define the search field component in the header.                                                                                           |
 
 
 ## Shadow Parts
@@ -345,14 +463,18 @@ Type: `Promise<void>`
 
 ### Depends on
 
+- [six-header-item](six-header-item.html)
 - [six-icon-button](six-icon-button.html)
 - [six-dropdown](six-dropdown.html)
+- [six-logo](six-logo.html)
 
 ### Graph
 ```mermaid
 graph TD;
+  six-header --> six-header-item
   six-header --> six-icon-button
   six-header --> six-dropdown
+  six-header --> six-logo
   six-icon-button --> six-icon
   six-dropdown --> six-menu-item
   six-dropdown --> six-input

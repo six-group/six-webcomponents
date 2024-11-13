@@ -237,6 +237,7 @@ export const SixGroupLabel = /*@__PURE__*/ defineContainer<JSX.SixGroupLabel>('s
 
 
 export const SixHeader = /*@__PURE__*/ defineContainer<JSX.SixHeader>('six-header', undefined, [
+  'custom',
   'shiftContent',
   'hideHamburgerMenu',
   'openHamburgerMenu',
@@ -252,6 +253,19 @@ export const SixHeader = /*@__PURE__*/ defineContainer<JSX.SixHeader>('six-heade
 ]);
 
 
+export const SixHeaderDropdownItem = /*@__PURE__*/ defineContainer<JSX.SixHeaderDropdownItem>('six-header-dropdown-item', undefined);
+
+
+export const SixHeaderItem = /*@__PURE__*/ defineContainer<JSX.SixHeaderItem>('six-header-item', undefined, [
+  'active'
+]);
+
+
+export const SixHeaderMenuButton = /*@__PURE__*/ defineContainer<JSX.SixHeaderMenuButton>('six-header-menu-button', undefined, [
+  'icon'
+]);
+
+
 export const SixIcon = /*@__PURE__*/ defineContainer<JSX.SixIcon>('six-icon', undefined, [
   'size',
   'filled'
@@ -263,7 +277,10 @@ export const SixIconButton = /*@__PURE__*/ defineContainer<JSX.SixIconButton>('s
   'size',
   'label',
   'disabled',
-  'html'
+  'html',
+  'href',
+  'target',
+  'download'
 ]);
 
 
@@ -336,6 +353,11 @@ export const SixLanguageSwitcher = /*@__PURE__*/ defineContainer<JSX.SixLanguage
 
 export const SixLayoutGrid = /*@__PURE__*/ defineContainer<JSX.SixLayoutGrid>('six-layout-grid', undefined, [
   'columns'
+]);
+
+
+export const SixLogo = /*@__PURE__*/ defineContainer<JSX.SixLogo>('six-logo', undefined, [
+  'brand'
 ]);
 
 
