@@ -39,7 +39,7 @@
   "devDependencies": {
     "@fontsource/noto-sans": "^5.1.0",
     "@popperjs/core": "^2.5.3",
-    "@stencil-community/eslint-plugin": "^0.x",
+    "@stencil-community/eslint-plugin": "^0.9.0",
     "@stencil/angular-output-target": "^0.10.0",
     "@stencil/react-output-target": "^0.7.4",
     "@stencil/vue-output-target": "^0.9.0",
