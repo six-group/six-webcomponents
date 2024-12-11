@@ -8,6 +8,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+### Removed
+
+### Changed
+
+## 4.3.0 - 2024-12-11
+
+### Added
+
 - The `six-header` component now offers a flexible approach for customization, allowing the header
   to be composed in a more modular way using child elements such as `six-header-item`,
   `six-header-dropdown-item`, `six-header-menu-button`, and `six-logo`.
