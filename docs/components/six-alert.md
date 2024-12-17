@@ -260,11 +260,56 @@ You can also create your own utility that emits toast notifications with a funct
 
 ## The Toast Stack
 
-The toast stack is a fixed position singleton element created and managed internally by the alert component. It will be added and removed from the DOM as needed when toasts are shown. When more than one toast is visible, they will stack vertically in the toast stack.
+The Toast Stack allows multiple toast notifications to be displayed in a clean, organized stack. Below is an example where 5 toast notifications are dynamically created and displayed with a short delay between each toast.
 
-By default, the toast stack is positioned at the top-right of the viewport. You can change its position by targeting `.six-toast-stack` in your stylesheet. To make toasts appear at the top-left of the viewport, for example, use the following styles.
+<docs-demo-six-alert-7></docs-demo-six-alert-7>
 
-By design, it is not possible to show toasts in more than one stack simultaneously. Such behavior is confusing and makes for a poor user experience.
+```html
+<div class="toast-stack-wrapper">
+  <six-button type="primary">Create 5 Toasts</six-button>
+</div>
+
+<script type="module">
+  (() => {
+    const toastStackWrapper = document.querySelector('.toast-stack-wrapper');
+    const createToastButton = toastStackWrapper.querySelector('six-button');
+
+    // Always escape HTML for text arguments!
+    function escapeHtml(html) {
+      const div = document.createElement('div');
+      div.textContent = html;
+      return div.innerHTML;
+    }
+
+    // Custom function to emit toast notifications
+    function createToast(message, type = 'primary', icon = 'info', duration = 4000) {
+      const toast = Object.assign(document.createElement('six-alert'), {
+        type: type,
+        closable: true,
+        duration: duration,
+        innerHTML: `
+    <six-icon slot="icon">${icon}</six-icon>
+    ${escapeHtml(message)}`,
+      });
+      document.body.appendChild(toast);
+      toast.toast();
+    }
+
+    createToastButton.addEventListener('click', () => {
+      const toastTypes = ['primary', 'success', 'info', 'warning', 'danger'];
+      let delay = 0;
+      for (let i = 1; i <= 5; i++) {
+        const randomType = toastTypes[Math.floor(Math.random() * toastTypes.length)];
+        setTimeout(() => {
+          createToast(`Toast #${i}`, randomType, 'info');
+        }, delay);
+        delay += 200;
+      }
+    });
+  })();
+</script>
+```
+
 
 
 <!-- Auto Generated Below -->
