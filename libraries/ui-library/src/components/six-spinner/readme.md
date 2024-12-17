@@ -7,9 +7,10 @@
 
 ## Properties
 
-| Property | Attribute | Description                                                               | Type      | Default |
-| -------- | --------- | ------------------------------------------------------------------------- | --------- | ------- |
-| `six`    | `six`     | Indicates if the spinner is shown as animated SIX logo or simple spinner. | `boolean` | `false` |
+| Property | Attribute | Description                                                                                   | Type                          | Default     |
+| -------- | --------- | --------------------------------------------------------------------------------------------- | ----------------------------- | ----------- |
+| `logo`   | `logo`    | Indicates if the spinner is shown as animated SIX or BME logo or a simple spinner.            | `"bme" \| "six" \| undefined` | `undefined` |
+| `six`    | `six`     | **@deprecated** Use `logo="six"` instead.  If set to true, the spinner displays the SIX logo. | `boolean \| undefined`        | `undefined` |
 
 
 ## Shadow Parts
@@ -17,7 +18,7 @@
 | Part     | Description                   |
 | -------- | ----------------------------- |
 | `"base"` | The component's base wrapper. |
-| `"svg"`  | The spinner icon              |
+| `"svg"`  | The spinner icon.             |
 
 
 ## CSS Custom Properties

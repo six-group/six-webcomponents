@@ -10,9 +10,9 @@
         </div>
 
         <div class="spinner-demo">
-          <six-spinner six="true"></six-spinner>
-          <six-spinner id="medium" six="true"></six-spinner>
-          <six-spinner id="large" six="true"></six-spinner>
+          <six-spinner logo="six"></six-spinner>
+          <six-spinner id="medium" logo="six"></six-spinner>
+          <six-spinner id="large" logo="six"></six-spinner>
         </div>
       
 </div>

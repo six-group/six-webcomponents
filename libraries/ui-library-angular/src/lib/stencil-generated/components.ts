@@ -1376,14 +1376,14 @@ export declare interface SixSidebarItemGroup extends Components.SixSidebarItemGr
 
 
 @ProxyCmp({
-  inputs: ['six']
+  inputs: ['logo', 'six']
 })
 @Component({
   selector: 'six-spinner',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['six'],
+  inputs: ['logo', 'six'],
 })
 export class SixSpinner {
   protected el: HTMLElement;
