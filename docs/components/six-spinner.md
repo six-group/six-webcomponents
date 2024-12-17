@@ -1,5 +1,6 @@
 # Spinner
 
+
 Spinners are used to show the progress of an indeterminate operation.
 
 <docs-demo-six-spinner-0></docs-demo-six-spinner-0>
@@ -8,12 +9,12 @@ Spinners are used to show the progress of an indeterminate operation.
 <six-spinner></six-spinner>
 ```
 
+
 ## Examples
 
 ### Size
 
-Spinners are sized relative to the current font size. To change their size, set the `font-size`
-property on the spinner itself or on a parent element as shown below.
+Spinners are sized relative to the current font size. To change their size, set the `font-size` property on the spinner itself or on a parent element as shown below.
 
 <docs-demo-six-spinner-1></docs-demo-six-spinner-1>
 
@@ -49,6 +50,7 @@ property on the spinner itself or on a parent element as shown below.
 </div>
 ```
 
+
 ### Stroke Width
 
 The width of the spinner can be changed by setting the `--stroke-width` custom property.
@@ -59,16 +61,17 @@ The width of the spinner can be changed by setting the `--stroke-width` custom p
 <six-spinner style="font-size: 2rem; --stroke-width: 6px"></six-spinner>
 ```
 
+
 ### Color
 
-The spinner's colors can be changed by setting the `--indicator-color` and `--track-color` custom
-properties.
+The spinner's colors can be changed by setting the `--indicator-color` and `--track-color` custom properties.
 
 <docs-demo-six-spinner-3></docs-demo-six-spinner-3>
 
 ```html
 <six-spinner style="font-size: 2rem; --indicator-color: green"></six-spinner>
 ```
+
 
 ### SIX Logo
 
@@ -80,6 +83,7 @@ Spinner can be configured as animated SIX logo.
 <six-spinner logo="six"></six-spinner>
 ```
 
+
 ### BME Logo
 
 Spinner can be configured as animated BME logo.
@@ -90,14 +94,18 @@ Spinner can be configured as animated BME logo.
 <six-spinner logo="bme"></six-spinner>
 ```
 
+
+
 <!-- Auto Generated Below -->
+
 
 ## Properties
 
-| Property | Attribute | Description                                                                                  | Type                          | Default     |
-| -------- | --------- | -------------------------------------------------------------------------------------------- | ----------------------------- | ----------- |
-| `logo`   | `logo`    | Indicates if the spinner is shown as animated SIX or BME logo or a simple spinner.           | `"bme" \| "six" \| undefined` | `undefined` |
-| `six`    | `six`     | **@deprecated** Use `logo="six"` instead. If set to true, the spinner displays the SIX logo. | `boolean \| undefined`        | `undefined` |
+| Property | Attribute | Description                                                                                   | Type                          | Default     |
+| -------- | --------- | --------------------------------------------------------------------------------------------- | ----------------------------- | ----------- |
+| `logo`   | `logo`    | Indicates if the spinner is shown as animated SIX or BME logo or a simple spinner.            | `"bme" \| "six" \| undefined` | `undefined` |
+| `six`    | `six`     | **@deprecated** Use `logo="six"` instead.  If set to true, the spinner displays the SIX logo. | `boolean \| undefined`        | `undefined` |
+
 
 ## Shadow Parts
 
@@ -105,6 +113,7 @@ Spinner can be configured as animated BME logo.
 | -------- | ----------------------------- |
 | `"base"` | The component's base wrapper. |
 | `"svg"`  | The spinner icon.             |
+
 
 ## CSS Custom Properties
 
@@ -114,15 +123,15 @@ Spinner can be configured as animated BME logo.
 | `--stroke-width`    | The width of the indicator.           |
 | `--track-color`     | The color of the spinner's track.     |
 
+
 ## Dependencies
 
 ### Used by
 
-- [six-button](six-button.html)
-- [six-file-upload](six-file-upload.html)
+ - [six-button](six-button.html)
+ - [six-file-upload](six-file-upload.html)
 
 ### Graph
-
 ```mermaid
 graph TD;
   six-button --> six-spinner
@@ -130,6 +139,6 @@ graph TD;
   style six-spinner fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
 
 Copyright © 2021-present SIX-Group
