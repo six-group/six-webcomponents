@@ -26,6 +26,9 @@ import { SixFileList as SixFileListElement, defineCustomElement as defineSixFile
 import { SixFileUpload as SixFileUploadElement, defineCustomElement as defineSixFileUpload } from "@six-group/ui-library/dist/components/six-file-upload.js";
 import { SixFooter as SixFooterElement, defineCustomElement as defineSixFooter } from "@six-group/ui-library/dist/components/six-footer.js";
 import { SixGroupLabel as SixGroupLabelElement, defineCustomElement as defineSixGroupLabel } from "@six-group/ui-library/dist/components/six-group-label.js";
+import { SixHeaderDropdownItem as SixHeaderDropdownItemElement, defineCustomElement as defineSixHeaderDropdownItem } from "@six-group/ui-library/dist/components/six-header-dropdown-item.js";
+import { SixHeaderItem as SixHeaderItemElement, defineCustomElement as defineSixHeaderItem } from "@six-group/ui-library/dist/components/six-header-item.js";
+import { SixHeaderMenuButton as SixHeaderMenuButtonElement, defineCustomElement as defineSixHeaderMenuButton } from "@six-group/ui-library/dist/components/six-header-menu-button.js";
 import { SixHeader as SixHeaderElement, defineCustomElement as defineSixHeader } from "@six-group/ui-library/dist/components/six-header.js";
 import { SixIconButton as SixIconButtonElement, defineCustomElement as defineSixIconButton } from "@six-group/ui-library/dist/components/six-icon-button.js";
 import { SixIcon as SixIconElement, defineCustomElement as defineSixIcon } from "@six-group/ui-library/dist/components/six-icon.js";
@@ -33,6 +36,7 @@ import { SixInput as SixInputElement, defineCustomElement as defineSixInput } fr
 import { SixItemPicker as SixItemPickerElement, defineCustomElement as defineSixItemPicker } from "@six-group/ui-library/dist/components/six-item-picker.js";
 import { SixLanguageSwitcher as SixLanguageSwitcherElement, defineCustomElement as defineSixLanguageSwitcher } from "@six-group/ui-library/dist/components/six-language-switcher.js";
 import { SixLayoutGrid as SixLayoutGridElement, defineCustomElement as defineSixLayoutGrid } from "@six-group/ui-library/dist/components/six-layout-grid.js";
+import { SixLogo as SixLogoElement, defineCustomElement as defineSixLogo } from "@six-group/ui-library/dist/components/six-logo.js";
 import { SixMainContainer as SixMainContainerElement, defineCustomElement as defineSixMainContainer } from "@six-group/ui-library/dist/components/six-main-container.js";
 import { SixMenuDivider as SixMenuDividerElement, defineCustomElement as defineSixMenuDivider } from "@six-group/ui-library/dist/components/six-menu-divider.js";
 import { SixMenuItem as SixMenuItemElement, defineCustomElement as defineSixMenuItem } from "@six-group/ui-library/dist/components/six-menu-item.js";
@@ -385,6 +389,39 @@ export const SixHeader: StencilReactComponent<SixHeaderElement, SixHeaderEvents>
     defineCustomElement: defineSixHeader
 });
 
+type SixHeaderDropdownItemEvents = NonNullable<unknown>;
+
+export const SixHeaderDropdownItem: StencilReactComponent<SixHeaderDropdownItemElement, SixHeaderDropdownItemEvents> = /*@__PURE__*/ createComponent<SixHeaderDropdownItemElement, SixHeaderDropdownItemEvents>({
+    tagName: 'six-header-dropdown-item',
+    elementClass: SixHeaderDropdownItemElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as SixHeaderDropdownItemEvents,
+    defineCustomElement: defineSixHeaderDropdownItem
+});
+
+type SixHeaderItemEvents = NonNullable<unknown>;
+
+export const SixHeaderItem: StencilReactComponent<SixHeaderItemElement, SixHeaderItemEvents> = /*@__PURE__*/ createComponent<SixHeaderItemElement, SixHeaderItemEvents>({
+    tagName: 'six-header-item',
+    elementClass: SixHeaderItemElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as SixHeaderItemEvents,
+    defineCustomElement: defineSixHeaderItem
+});
+
+type SixHeaderMenuButtonEvents = NonNullable<unknown>;
+
+export const SixHeaderMenuButton: StencilReactComponent<SixHeaderMenuButtonElement, SixHeaderMenuButtonEvents> = /*@__PURE__*/ createComponent<SixHeaderMenuButtonElement, SixHeaderMenuButtonEvents>({
+    tagName: 'six-header-menu-button',
+    elementClass: SixHeaderMenuButtonElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as SixHeaderMenuButtonEvents,
+    defineCustomElement: defineSixHeaderMenuButton
+});
+
 type SixIconEvents = NonNullable<unknown>;
 
 export const SixIcon: StencilReactComponent<SixIconElement, SixIconEvents> = /*@__PURE__*/ createComponent<SixIconElement, SixIconEvents>({
@@ -467,6 +504,17 @@ export const SixLayoutGrid: StencilReactComponent<SixLayoutGridElement, SixLayou
     react: React,
     events: {} as SixLayoutGridEvents,
     defineCustomElement: defineSixLayoutGrid
+});
+
+type SixLogoEvents = NonNullable<unknown>;
+
+export const SixLogo: StencilReactComponent<SixLogoElement, SixLogoEvents> = /*@__PURE__*/ createComponent<SixLogoElement, SixLogoEvents>({
+    tagName: 'six-logo',
+    elementClass: SixLogoElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as SixLogoEvents,
+    defineCustomElement: defineSixLogo
 });
 
 type SixMainContainerEvents = NonNullable<unknown>;
