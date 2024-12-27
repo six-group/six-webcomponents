@@ -1,0 +1,50 @@
+{
+  "name": "@six-group/ui-library-react",
+  "version": "4.2.4",
+  "description": "React wrapper components for @six-group/ui-library",
+  "license": "Apache-2.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "build": "npm run clean && npm run compile",
+    "clean": "rimraf dist",
+    "compile": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@typescript-eslint/eslint-plugin": "^7.2.0",
+    "@typescript-eslint/parser": "^7.2.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.6",
+    "react": "^18.2.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.8"
+  },
+  "dependencies": {
+    "@stencil/react-output-target": "0.8.1",
+    "@popperjs/core": "^2.9.2",
+    "react-dom": "^18.3.1",
+    "@six-group/ui-library": "*"
+  },
+  "peerDependencies": {
+    "react": "^^18.3.1",
+    "react-dom": "^^18.3.1"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "setupTestFrameworkScriptFile": "<rootDir>/jest.setup.js",
+    "testPathIgnorePatterns": [
+      "node_modules",
+      "dist"
+    ]
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
