@@ -21,11 +21,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   `six-header-dropdown-item`, `six-header-menu-button`, and `six-logo`.
 - Added `six-logo` component to display the SIX- or BME-logo anywhere, not just within the
   `six-header` component.
+- The `six-spinner` component now supports the BME logo as a spinner option.
 
 ### Deprecated
 
 - Most slots, properties and events on the `six-header` component are now deprecated and will be
   removed in one of the next releases.
+- The `six` prop on the `six-spinner` component is now deprecated. Use the `logo` prop instead,
+  which allows specifying either **six** or **bme** as its value.
 
 ### Removed
 

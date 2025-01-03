@@ -1,7 +1,7 @@
 <template>
 <div>
 
-        <six-spinner logo="six"></six-spinner>
+        <six-spinner logo="bme"></six-spinner>
       
 </div>
 </template>
@@ -10,7 +10,7 @@
 </style>
 <script>
 export default {
-  name: 'docs-demo-six-spinner-4',
+  name: 'docs-demo-six-spinner-5',
   mounted() {  }
 }
 </script>

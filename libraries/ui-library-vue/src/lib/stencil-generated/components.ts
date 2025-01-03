@@ -528,6 +528,7 @@ export const SixSidebarItemGroup = /*@__PURE__*/ defineContainer<JSX.SixSidebarI
 
 
 export const SixSpinner = /*@__PURE__*/ defineContainer<JSX.SixSpinner>('six-spinner', undefined, [
+  'logo',
   'six'
 ]);
 

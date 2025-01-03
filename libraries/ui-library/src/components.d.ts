@@ -1628,9 +1628,13 @@ export namespace Components {
      */
     interface SixSpinner {
         /**
-          * Indicates if the spinner is shown as animated SIX logo or simple spinner.
+          * Indicates if the spinner is shown as animated SIX or BME logo or a simple spinner.
          */
-        "six": boolean;
+        "logo"?: 'six' | 'bme';
+        /**
+          * **@deprecated** Use `logo="six"` instead.  If set to true, the spinner displays the SIX logo.
+         */
+        "six"?: boolean;
     }
     interface SixStageIndicator {
         /**
@@ -4907,7 +4911,11 @@ declare namespace LocalJSX {
      */
     interface SixSpinner {
         /**
-          * Indicates if the spinner is shown as animated SIX logo or simple spinner.
+          * Indicates if the spinner is shown as animated SIX or BME logo or a simple spinner.
+         */
+        "logo"?: 'six' | 'bme';
+        /**
+          * **@deprecated** Use `logo="six"` instead.  If set to true, the spinner displays the SIX logo.
          */
         "six"?: boolean;
     }
