@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- The `six-spinner` component now supports the BME logo as a spinner option.
+
 ### Removed
 
 ### Changed
@@ -21,7 +23,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   `six-header-dropdown-item`, `six-header-menu-button`, and `six-logo`.
 - Added `six-logo` component to display the SIX- or BME-logo anywhere, not just within the
   `six-header` component.
-- The `six-spinner` component now supports the BME logo as a spinner option.
 
 ### Deprecated
 
