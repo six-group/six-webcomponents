@@ -44,9 +44,9 @@ Spinners are sized relative to the current font size. To change their size, set 
 </div>
 
 <div class="spinner-demo">
-  <six-spinner six="true"></six-spinner>
-  <six-spinner id="medium" six="true"></six-spinner>
-  <six-spinner id="large" six="true"></six-spinner>
+  <six-spinner logo="six"></six-spinner>
+  <six-spinner id="medium" logo="six"></six-spinner>
+  <six-spinner id="large" logo="six"></six-spinner>
 </div>
 ```
 
@@ -80,7 +80,18 @@ Spinner can be configured as animated SIX logo.
 <docs-demo-six-spinner-4></docs-demo-six-spinner-4>
 
 ```html
-<six-spinner six="true"></six-spinner>
+<six-spinner logo="six"></six-spinner>
+```
+
+
+### BME Logo
+
+Spinner can be configured as animated BME logo.
+
+<docs-demo-six-spinner-5></docs-demo-six-spinner-5>
+
+```html
+<six-spinner logo="bme"></six-spinner>
 ```
 
 
@@ -90,9 +101,10 @@ Spinner can be configured as animated SIX logo.
 
 ## Properties
 
-| Property | Attribute | Description                                                               | Type      | Default |
-| -------- | --------- | ------------------------------------------------------------------------- | --------- | ------- |
-| `six`    | `six`     | Indicates if the spinner is shown as animated SIX logo or simple spinner. | `boolean` | `false` |
+| Property | Attribute | Description                                                                                   | Type                          | Default     |
+| -------- | --------- | --------------------------------------------------------------------------------------------- | ----------------------------- | ----------- |
+| `logo`   | `logo`    | Indicates if the spinner is shown as animated SIX or BME logo or a simple spinner.            | `"bme" \| "six" \| undefined` | `undefined` |
+| `six`    | `six`     | **@deprecated** Use `logo="six"` instead.  If set to true, the spinner displays the SIX logo. | `boolean \| undefined`        | `undefined` |
 
 
 ## Shadow Parts
@@ -100,7 +112,7 @@ Spinner can be configured as animated SIX logo.
 | Part     | Description                   |
 | -------- | ----------------------------- |
 | `"base"` | The component's base wrapper. |
-| `"svg"`  | The spinner icon              |
+| `"svg"`  | The spinner icon.             |
 
 
 ## CSS Custom Properties
