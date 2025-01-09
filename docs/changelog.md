@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- The `six-spinner` component now supports the BME logo as a spinner option.
+
 ### Removed
 
 ### Changed
@@ -26,6 +28,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - Most slots, properties and events on the `six-header` component are now deprecated and will be
   removed in one of the next releases.
+- The `six` prop on the `six-spinner` component is now deprecated. Use the `logo` prop instead,
+  which allows specifying either **six** or **bme** as its value.
 
 ### Removed
 
