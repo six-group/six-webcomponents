@@ -1,10 +1,12 @@
 import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
+import { reactOutputTarget } from '@stencil/react-output-target';
 import { angularOutputTarget } from '@stencil/angular-output-target';
 import { vueOutputTarget } from '@stencil/vue-output-target';
 
 export const config: Config = {
   namespace: 'ui-library',
+  taskQueue: 'async',
   globalStyle: 'src/global/base.css',
   plugins: [
     sass({
@@ -16,14 +18,20 @@ export const config: Config = {
     enableImportInjection: true,
   },
   outputTargets: [
+    reactOutputTarget({
+      outDir: '../ui-library-react/src',
+    }),
     angularOutputTarget({
       componentCorePackage: '@six-group/ui-library',
       directivesProxyFile: '../ui-library-angular/src/lib/stencil-generated/components.ts',
       directivesArrayFile: '../ui-library-angular/src/lib/stencil-generated/index.ts',
     }),
     vueOutputTarget({
+      includeImportCustomElements: true,
+      includePolyfills: false,
+      includeDefineCustomElements: false,
       componentCorePackage: '@six-group/ui-library',
-      proxiesFile: '../ui-library-vue/src/lib/stencil-generated/components.ts',
+      proxiesFile: '../ui-library-vue/src/index.ts',
       componentModels: [
         {
           elements: ['six-checkbox', 'six-switch'],
@@ -53,6 +61,7 @@ export const config: Config = {
     },
     {
       type: 'dist-custom-elements',
+      externalRuntime: false,
       customElementsExportBehavior: 'bundle',
     },
     {

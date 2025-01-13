@@ -8,9 +8,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- demo app with Next.js and the six-webcomponents (experimental)
+
 ### Removed
 
 ### Changed
+
+### Fixed
+
+- react output target for the six-webcomponents usage
 
 ## 4.3.1 - 2025-01-09
 
@@ -47,6 +53,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   React no longer works with the latest Stencil output target, which is preventing us from updating
   our dependencies to their latest versions. Since the team currently lacks the resources to fix
   this issue, we're removing React support temporarily to prevent it from hindering progress.
+
+- Removed support for Node 16, minimal Node version of 18.10.x required
 
 ### Changed
 
