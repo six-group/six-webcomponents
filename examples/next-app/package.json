@@ -17,7 +17,7 @@
     "react-dom": "^18"
   },
   "devDependencies": {
-    "@stencil/react-output-target": "0.x",
+    "@stencil/react-output-target": "0.8.2",
     "@types/node": "^18.18.5",
     "@types/react": "^18",
     "@types/react-dom": "^18",
