@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- Documentation for using web components with Angular's standalone bootstrapping
+
 ### Removed
 
 ### Changed
