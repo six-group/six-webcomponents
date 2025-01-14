@@ -12,6 +12,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
+- **⚠️ Breaking **: Upgraded library to Node 20
+
+  The SIX Webcomponents cannot be used with Node 16 or 18 anymore. Please upgrade to Node 20.
+
 ## 4.3.1 - 2025-01-09
 
 ⚠️ This will be the last release under major version 4. The next release will be version 5. ⚠️
