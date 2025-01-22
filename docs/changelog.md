@@ -12,9 +12,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
-- **⚠️ Breaking **: Upgraded library to Node 20
+- **⚠️Breaking**: Upgraded library to Node 20
 
   The SIX Webcomponents cannot be used with Node 16 or 18 anymore. Please upgrade to Node 20.
+
+- Moved `six-picto` SVG's from SCSS file to assets folder to minimize chunk size.
 
 ## 4.3.1 - 2025-01-09
 
