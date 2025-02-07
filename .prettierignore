@@ -8,6 +8,12 @@ libraries/**/components.ts
 libraries/**/components.d.ts
 libraries/ui-library/loader
 libraries/ui-library/docs
+libraries/ui-library/hydrate/index.d.ts
+libraries/ui-library/hydrate/index.js
+libraries/ui-library/hydrate/index.mjs
+libraries/ui-library/hydrate/package.json
+libraries/ui-library-react/src/ssr/components.server.ts
+libraries/ui-library-react/src/ssr/components.ts
 .angular
 stencil-generated
 docs/examples

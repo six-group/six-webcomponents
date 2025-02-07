@@ -2,6 +2,9 @@ import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
 import { angularOutputTarget } from '@stencil/angular-output-target';
 import { vueOutputTarget } from '@stencil/vue-output-target';
+import { reactOutputTarget } from '@stencil/react-output-target';
+
+const componentCorePackage = '@six-group/ui-library';
 
 export const config: Config = {
   namespace: 'ui-library',
@@ -17,12 +20,12 @@ export const config: Config = {
   },
   outputTargets: [
     angularOutputTarget({
-      componentCorePackage: '@six-group/ui-library',
+      componentCorePackage: componentCorePackage,
       directivesProxyFile: '../ui-library-angular/src/lib/stencil-generated/components.ts',
       directivesArrayFile: '../ui-library-angular/src/lib/stencil-generated/index.ts',
     }),
     vueOutputTarget({
-      componentCorePackage: '@six-group/ui-library',
+      componentCorePackage: componentCorePackage,
       proxiesFile: '../ui-library-vue/src/lib/stencil-generated/components.ts',
       componentModels: [
         {
@@ -42,6 +45,20 @@ export const config: Config = {
         },
       ],
     }),
+    reactOutputTarget({
+      outDir: '../ui-library-react/src',
+      /*      componentCorePackage,
+      includeImportCustomElements: true,
+      includePolyfills: false,
+      includeDefineCustomElements: false,
+      // Relative path to where the React components will be generated
+      proxiesFile: '../ui-library-react/src/lib/components/stencil-generated/index.ts',
+      excludeComponents: [],*/
+    }),
+    reactOutputTarget({
+      outDir: '../ui-library-react/src/ssr',
+      hydrateModule: '@six-group/ui-library/hydrate',
+    }),
     {
       type: 'dist',
       esmLoaderPath: '../loader',
@@ -54,6 +71,11 @@ export const config: Config = {
     {
       type: 'dist-custom-elements',
       customElementsExportBehavior: 'bundle',
+      externalRuntime: false,
+    },
+    {
+      type: 'dist-hydrate-script',
+      dir: './hydrate',
     },
     {
       type: 'docs-readme',

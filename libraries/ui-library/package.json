@@ -33,15 +33,15 @@
     "codeclean": "npm run lint:fix && npm run prettier:fix"
   },
   "dependencies": {
-    "@stencil/core": "^4.12.6",
+    "@stencil/core": "^4.21.0",
     "@types/resize-observer-browser": "^0.1.5"
   },
   "devDependencies": {
     "@fontsource/noto-sans": "^5.1.0",
     "@popperjs/core": "^2.5.3",
     "@stencil-community/eslint-plugin": "0.x",
-    "@stencil/angular-output-target": "0.x",
-    "@stencil/react-output-target": "0.x",
+    "@stencil/angular-output-target": "^0.10.2",
+    "@stencil/react-output-target": "^0.8.2",
     "@stencil/vue-output-target": "0.x",
     "@stencil/sass": "^3.0.7",
     "@typescript-eslint/eslint-plugin": "^6.15.0",
