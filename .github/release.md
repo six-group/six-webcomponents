@@ -7,30 +7,25 @@ required.
 It is recommended that you read through this document in its entirety before you start with the
 process!
 
-## Check for open Pull Requests
+## Check for Open Pull Requests
 
 Ensure all [open Pull Pequests](https://github.com/six-group/six-webcomponents/pulls) for this
 release are merged. Follow up with authors if needed.
 
-## Choose a version number
+## Choose a Version Number
 
 Choose the version number under which this new release will be made, following semantic versioning.
 We will call it `VERSION_NUMBER` for the rest of this document. Example: `4.3.2`.
 
-## Create release branch
+## Create Release Branch
 
-Usually releases are created from the `main` branch. But you can also create branches from a
-previous release.
-
-1. Check out the **main** branch or a **release tag**, if you want to create a patch release from a
-   previous version.
-2. Create and checkout a branch with the name `release/<VERSION_NUMBER>`.
+Create a branch with the name `release/<VERSION_NUMBER>` from `main` or from a **release tag** like
+`v4.3.1`, if you want to create a patch release from a previous version.
 
 ## Edit Changelog
 
-In the branch `release/<VERSION_NUMBER>`, edit the file `docs/changelog.md` and replace the
-`Upcoming` section with `VERSION_NUMBER - YYYY-MM-dd` and add a new Upcoming section on top.
-Example:
+In the created branch, edit the file `docs/changelog.md` and replace the `Upcoming` section with
+`VERSION_NUMBER - YYYY-MM-dd` and add a new Upcoming section on top. Example:
 
 ```
 ## Upcoming
@@ -42,9 +37,7 @@ Example:
 
 ```
 
-## Test it locally
-
-To avoid issues once the process has been started, it is good practice to test the changes locally:
+## Test it Locally
 
 1. Navigate to the root of the project.
 2. Run `npm install`.
@@ -54,45 +47,38 @@ To avoid issues once the process has been started, it is good practice to test t
 
 ## Create Pull Request
 
-Create a
-[**Draft** Pull Request](https://github.blog/news-insights/product-news/introducing-draft-pull-requests/)
-to merge with `main` with the following title/description:
+1. Commit the changes with a commit message of `docs: prepare changelog for release VERSION_NUMBER`
+2. Push to GitHub and create a Pull Request with `main` as its base branch with the following title
+   `docs: prepare changelog for release VERSION_NUMBER` (body can be empty).
 
-- Title: `docs: Update changelog for VERSION_NUMBER release`
-- Description:
-
-```
-Changelog preparation for release VERSION_NUMBER
-```
-
-A member of the Core Team should review the Pull Request. **But do not merge the Pull Request yet**.
+A member of the Core Team should review the Pull Request. **But don't merge the Pull Request yet**.
 
 ## Run 'Release' GitHub Action
 
-Now it is time to perform the actual release:
-
 1. Go to
    [https://github.com/six-group/six-webcomponents/actions/workflows/release.yml](https://github.com/six-group/six-webcomponents/actions/workflows/release.yml)
-2. Select `Run workflow` on the top right of the list. For the parameters:
-   1. Branch: `release/<VERSION_NUMBER>`
-   2. The version to release: It must match the pattern `vVERSION_NUMBER`, so for the example above
-      it would be `v4.2.3`. **Do not forget the leading `v`!**
+2. Select `Run workflow` on the top right of the list and set the following parameters:
+   - Branch: `release/<VERSION_NUMBER>`
+   - The version to release: It must match the pattern `vVERSION_NUMBER`, so for the example above
+     it would be `v4.2.3`. **Do not forget the leading `v`!**
+   - Disable _Deploy Docs_ if you release a non-stable release (like RC or alpha)
 3. Click on `Run Workflow`. This will trigger the release workflow and take care of the required
    steps.
 
 Once the workflow has completed successfully, check if new version was published on
-https://www.npmjs.com/~six-opensource.
+https://www.npmjs.com/~six-opensource. You might need to force refresh the page to see the new
+version.
 
 ## Merge Changes Back to main
 
 The GitHub action in the previous step, should have created a Pull Request with the name
-`Release vVERSION_NUMBER`.
+`Update package.json Versions for Release VERSION_NUMBER`.
 
-If you created the release **from a Tag**, simply delete this Pull Request.
+- For Releases **from main**: Find a reviewer and merge the Pull Request to the previously created
+  branch `release/<VERSION_NUMBER>`. Then merge the branch `release/<VERSION_NUMBER>` to main.
 
-**Otherwise**, merge the Pull Request with the previously created branch `release/VERSION_NUMBER`.
-
-Then merge Changelog the Pull Request into main.
+- For Releases **from a tag**: Simply delete the Pull Request. Then resolve conflicts on
+  `release/<VERSION_NUMBER>`, find a reviewer and merge it to main.
 
 ## Post on the Announcements Channel
 

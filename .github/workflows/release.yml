@@ -7,6 +7,10 @@ on:
         description: 'The version to release. Format vx.x.x(-[rc|beta].x)'
         required: true
         type: string
+      deploy_docs:
+        description: 'Deploy Docs. Set to false for non-stable releases!'
+        default: true
+        type: boolean
 
 jobs:
   publish-release:
@@ -53,7 +57,7 @@ jobs:
           git push origin ${{ inputs.version }}
 
       - name: 'Create Pull Request'
-        run: gh pr create -B ${{ github.ref_name }} -H release/package-updates-${{ inputs.version }} --title 'Update package.json Versions for Release ${{ inputs.version }} ' --body 'Created by Github action. Merge this Pull Request, if you created this Release from main.'
+        run: gh pr create -B ${{ github.ref_name }} -H release/package-updates-${{ inputs.version }} --title 'Update package.json Versions for Release ${{ inputs.version }}' --body 'Created by Github action. Merge this Pull Request, if you created this Release from main.'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -67,6 +71,7 @@ jobs:
           body: '${{ inputs.version }}'
 
       - name: 'Deploy Documentation'
+        if: ${{ inputs.deploy_docs }}
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: docs/.vitepress/dist
