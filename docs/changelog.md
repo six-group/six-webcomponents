@@ -18,6 +18,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - Moved `six-picto` SVG's from SCSS file to assets folder to minimize chunk size.
 
+## 4.3.2 - 2025-02-13
+
+No changes in functionality, but changed release creation workflow, that makes sure, that deployed
+documentation reflects the latest stable release.
+
 ## 4.3.1 - 2025-01-09
 
 ⚠️ This will be the last release under major version 4. The next release will be version 5. ⚠️
