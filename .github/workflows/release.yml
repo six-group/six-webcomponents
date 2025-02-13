@@ -34,7 +34,7 @@ jobs:
           git checkout -b feature/${{ inputs.version }}
           git add package*.json libraries/ui-library/package*.json libraries/ui-library-vue/package*.json libraries/ui-library-angular/package*.json
           git commit -m "${{ inputs.version }}"
-          git push origin feature/${{ inputs.version }}
+          git push origin release/package-updates-${{ inputs.version }}
 
       - name: 'Build project with new version'
         run: npm run build
@@ -53,7 +53,7 @@ jobs:
           git push origin ${{ inputs.version }}
 
       - name: 'Create Pull Request'
-        run: gh pr create -B main -H feature/${{ inputs.version }} --title 'Release ${{ inputs.version }}' --body 'Created by Github action'
+        run: gh pr create -B ${{ github.ref_name }} -H release/package-updates-${{ inputs.version }} --title 'Update package.json Versions for Release ${{ inputs.version }} ' --body 'Created by Github action. Merge this Pull Request, if you created this Release from main.'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
