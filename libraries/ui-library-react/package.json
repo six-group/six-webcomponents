@@ -9,6 +9,16 @@
   "files": [
     "dist"
   ],
+  "exports": {
+    ".": {
+      "import": "./dist/lib/stencil-generated/components.js",
+      "types": "./dist/types/lib/stencil-generated/components.d.ts"
+    },
+    "./ssr": {
+      "import": "./dist/lib/hydrate/components.js",
+      "types": "./dist/types/lib/hydrate/components.d.ts"
+    }
+  },
   "sideEffects": false,
   "engines": {
     "node": ">=20"
