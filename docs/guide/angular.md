@@ -44,7 +44,7 @@ Check below for configuring web components with Angular modules.
 3. In each standalone component, import the `UiLibraryAngularModule` module to get access to
    web-components components.
 
-   ```angular181html
+   ```angular-html
    @Component({
      selector: "some",
      imports: [UiLibraryAngularModule],

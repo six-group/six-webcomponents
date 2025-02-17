@@ -1,9 +1,9 @@
-import { Component, Element, h, Host, State } from '@stencil/core';
+import { Component, Element, h, Host, Prop, State } from '@stencil/core';
 import { getSlot } from '../../utils/slot';
 
 /**
  * @since 4.2.7
- * @status beta
+ * @status stable
  */
 
 @Component({
@@ -12,6 +12,17 @@ import { getSlot } from '../../utils/slot';
   shadow: true,
 })
 export class SixHeaderDropdownItem {
+  /**
+   * Set to true to allow auto filtering for entries in the dropdown.
+   * With this flag the dropdown will automatically filter itsel.
+   * If you need to coordinate the shown elements yourself,
+   * e.g. because you need to call an endpoint use asyncFilter instead
+   */
+  @Prop() filter = false;
+
+  /** The filter's placeholder text. */
+  @Prop() filterPlaceholder = 'Filter...';
+
   @State() active = false;
 
   @Element() host!: HTMLSixHeaderDropdownItemElement;
@@ -40,6 +51,8 @@ export class SixHeaderDropdownItem {
           placement="bottom-end"
           onSix-dropdown-show={() => (this.active = true)}
           onSix-dropdown-hide={() => (this.active = false)}
+          filter={this.filter}
+          filterPlaceholder={this.filterPlaceholder}
         >
           <slot slot="trigger" name="trigger" />
           <slot />

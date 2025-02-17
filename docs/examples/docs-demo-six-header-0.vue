@@ -1,10 +1,10 @@
 <template>
 <div>
 
-        <six-header slot="header" custom>
+        <six-header>
           
           <six-header-item>
-            <six-icon-button href="https://six-group.github.io/six-webcomponents/">
+            <six-icon-button href="">
               <six-logo></six-logo>
             </six-icon-button>
           </six-header-item>

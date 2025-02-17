@@ -7,6 +7,11 @@ six-button::part(base) {
   padding-right: 0;
 }
 
+six-button[disabled]::part(base) {
+  color: var(--six-color-web-rock-600);
+  background-color: transparent;
+}
+
 six-button::part(label) {
   border: none;
   font-weight: var(--six-font-weight-bold);

@@ -1,7 +1,7 @@
 <template>
 <div>
 
-        <six-header slot="header" custom>
+        <six-header>
           
           <six-header-item>
             <six-icon-button name="menu"></six-icon-button>
@@ -9,7 +9,7 @@
 
           
           <six-header-item>
-            <six-icon-button href="https://six-group.github.io/six-webcomponents/">
+            <six-icon-button href="">
               <six-logo></six-logo>
             </six-icon-button>
           </six-header-item>
@@ -60,14 +60,8 @@
               <six-menu-item>Logout</six-menu-item>
             </six-menu>
           </six-header-dropdown-item>
-
-          
-          <six-search-field slot="search-field" placeholder="Search for some 'a' ..." clearable>
-            <div id="search-results">Some results</div>
-          </six-search-field>
         </six-header>
-
-        
+        <div></div>
       
 </div>
 </template>
@@ -77,20 +71,6 @@
 <script>
 export default {
   name: 'docs-demo-six-header-1',
-  mounted() { 
-          const header = document.querySelector('six-header');
-          const searchHeaderItem = document.querySelector('#search-header-item');
-          const searchIcon = searchHeaderItem.querySelector('six-icon-button');
-          searchIcon.addEventListener('click', () => {
-            header.openSearch = !header.openSearch;
-            searchHeaderItem.active = header.openSearch;
-          });
-          header.addEventListener('click', (event) => {
-            if (!searchHeaderItem.contains(event.target)) {
-              header.openSearch = false;
-              searchHeaderItem.active = false;
-            }
-          });
-         }
+  mounted() {  }
 }
 </script>

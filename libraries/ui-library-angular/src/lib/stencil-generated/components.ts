@@ -378,7 +378,7 @@ allow you to set it on a different element in the drawer, such as an input or bu
 
 @ProxyCmp({
   inputs: ['asyncFilter', 'autofocusFilter', 'closeOnSelect', 'containingElement', 'disableHideOnEnterAndSpace', 'distance', 'filter', 'filterDebounce', 'filterPlaceholder', 'hoist', 'matchTriggerWidth', 'open', 'options', 'placement', 'skidding', 'virtualScroll'],
-  methods: ['show', 'hide', 'reposition']
+  methods: ['show', 'hide']
 })
 @Component({
   selector: 'six-dropdown',
@@ -612,67 +612,36 @@ export declare interface SixGroupLabel extends Components.SixGroupLabel {}
 
 
 @ProxyCmp({
-  inputs: ['clickableLogo', 'custom', 'hideHamburgerMenu', 'logo', 'openHamburgerMenu', 'openSearch', 'shiftContent'],
-  methods: ['setSearchOpenState', 'getIsSearchOpen']
+  inputs: ['openSearch', 'shiftContent']
 })
 @Component({
   selector: 'six-header',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['clickableLogo', 'custom', 'hideHamburgerMenu', 'logo', 'openHamburgerMenu', 'openSearch', 'shiftContent'],
+  inputs: ['openSearch', 'shiftContent'],
 })
 export class SixHeader {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['six-header-app-name-clicked', 'six-header-app-switcher-select', 'six-header-profile-select', 'six-header-hamburger-menu-clicked', 'six-header-logo-clicked', 'six-header-search-field-toggle']);
   }
 }
 
 
-import type { EmptyPayload as ISixHeaderEmptyPayload } from '@six-group/ui-library';
-import type { SixHeaderAppSwitcherSelectPayload as ISixHeaderSixHeaderAppSwitcherSelectPayload } from '@six-group/ui-library';
-import type { SixHeaderProfileSelectPayload as ISixHeaderSixHeaderProfileSelectPayload } from '@six-group/ui-library';
-import type { SixHeaderSearchFieldToggle as ISixHeaderSixHeaderSearchFieldToggle } from '@six-group/ui-library';
-
-export declare interface SixHeader extends Components.SixHeader {
-  /**
-   * Emitted when the name of the selected app is clicked. @deprecated Use six-header `custom` property with `six-header-dropdown-item` and `six-header-menu-button` instead
-   */
-  'six-header-app-name-clicked': EventEmitter<CustomEvent<ISixHeaderEmptyPayload>>;
-  /**
-   * Emitted when a menu item is in the app switcher menu is selected. @deprecated Use six-header `custom` property with `six-header-dropdown-item` and `six-header-menu-button` instead
-   */
-  'six-header-app-switcher-select': EventEmitter<CustomEvent<ISixHeaderSixHeaderAppSwitcherSelectPayload>>;
-  /**
-   * Emitted when a menu item is in the profile menu is selected. @deprecated Use six-header `custom` property with `six-header-dropdown-item` and `six-avatar` instead
-   */
-  'six-header-profile-select': EventEmitter<CustomEvent<ISixHeaderSixHeaderProfileSelectPayload>>;
-  /**
-   * Emitted when the hamburger menu is clicked. @deprecated Use six-header `custom` property instead
-   */
-  'six-header-hamburger-menu-clicked': EventEmitter<CustomEvent<ISixHeaderEmptyPayload>>;
-  /**
-   * Emitted when the header logo is clicked. @deprecated Use six-header `custom` property instead
-   */
-  'six-header-logo-clicked': EventEmitter<CustomEvent<ISixHeaderEmptyPayload>>;
-  /**
-   * Emitted when search field is toggled. @deprecated Use six-header `custom` property instead
-   */
-  'six-header-search-field-toggle': EventEmitter<CustomEvent<ISixHeaderSixHeaderSearchFieldToggle>>;
-}
+export declare interface SixHeader extends Components.SixHeader {}
 
 
 @ProxyCmp({
+  inputs: ['filter', 'filterPlaceholder']
 })
 @Component({
   selector: 'six-header-dropdown-item',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: [],
+  inputs: ['filter', 'filterPlaceholder'],
 })
 export class SixHeaderDropdownItem {
   protected el: HTMLElement;
@@ -709,14 +678,14 @@ export declare interface SixHeaderItem extends Components.SixHeaderItem {}
 
 
 @ProxyCmp({
-  inputs: ['icon']
+  inputs: ['caret', 'disabled', 'loading', 'reset', 'submit']
 })
 @Component({
   selector: 'six-header-menu-button',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['icon'],
+  inputs: ['caret', 'disabled', 'loading', 'reset', 'submit'],
 })
 export class SixHeaderMenuButton {
   protected el: HTMLElement;
@@ -1244,7 +1213,7 @@ export declare interface SixSearchField extends Components.SixSearchField {
 
 
 @ProxyCmp({
-  inputs: ['asyncFilter', 'autocomplete', 'clearable', 'disabled', 'errorText', 'errorTextCount', 'filter', 'filterDebounce', 'filterPlaceholder', 'helpText', 'hoist', 'inputDebounce', 'invalid', 'label', 'line', 'maxTagsVisible', 'multiple', 'name', 'options', 'pill', 'placeholder', 'required', 'selectAllButton', 'selectAllText', 'size', 'value', 'virtualScroll'],
+  inputs: ['asyncFilter', 'autocomplete', 'clearable', 'disabled', 'errorText', 'errorTextCount', 'filter', 'filterDebounce', 'filterPlaceholder', 'helpText', 'hoist', 'inputDebounce', 'invalid', 'label', 'line', 'multiple', 'name', 'options', 'pill', 'placeholder', 'required', 'selectAllButton', 'selectAllText', 'size', 'value', 'virtualScroll'],
   methods: ['setFocus']
 })
 @Component({
@@ -1252,7 +1221,7 @@ export declare interface SixSearchField extends Components.SixSearchField {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['asyncFilter', 'autocomplete', 'clearable', 'disabled', 'errorText', 'errorTextCount', 'filter', 'filterDebounce', 'filterPlaceholder', 'helpText', 'hoist', 'inputDebounce', 'invalid', 'label', 'line', 'maxTagsVisible', 'multiple', 'name', 'options', 'pill', 'placeholder', 'required', 'selectAllButton', 'selectAllText', 'size', 'value', 'virtualScroll'],
+  inputs: ['asyncFilter', 'autocomplete', 'clearable', 'disabled', 'errorText', 'errorTextCount', 'filter', 'filterDebounce', 'filterPlaceholder', 'helpText', 'hoist', 'inputDebounce', 'invalid', 'label', 'line', 'multiple', 'name', 'options', 'pill', 'placeholder', 'required', 'selectAllButton', 'selectAllText', 'size', 'value', 'virtualScroll'],
 })
 export class SixSelect {
   protected el: HTMLElement;
