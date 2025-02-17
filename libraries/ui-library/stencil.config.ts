@@ -2,6 +2,7 @@ import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
 import { angularOutputTarget } from '@stencil/angular-output-target';
 import { vueOutputTarget } from '@stencil/vue-output-target';
+import { reactOutputTarget } from '@stencil/react-output-target';
 
 export const config: Config = {
   namespace: 'ui-library',
@@ -16,6 +17,9 @@ export const config: Config = {
     enableImportInjection: true,
   },
   outputTargets: [
+    reactOutputTarget({
+      outDir: '../ui-library-react/src/lib/stencil-generated',
+    }),
     angularOutputTarget({
       componentCorePackage: '@six-group/ui-library',
       directivesProxyFile: '../ui-library-angular/src/lib/stencil-generated/components.ts',
@@ -55,6 +59,7 @@ export const config: Config = {
     {
       type: 'dist-custom-elements',
       customElementsExportBehavior: 'bundle',
+      externalRuntime: false,
     },
     {
       type: 'docs-readme',
