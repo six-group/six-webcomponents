@@ -1,14 +1,18 @@
 {
   "name": "@six-group/ui-library-react",
+  "description": "React wrapper components for @six-group/ui-library",
   "version": "1.0.0",
   "private": false,
-  "sideEffects": false,
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/types/index.d.ts",
   "files": [
     "dist"
   ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "build": "npm run tsc",
     "tsc": "tsc -p . --outDir ./dist"
