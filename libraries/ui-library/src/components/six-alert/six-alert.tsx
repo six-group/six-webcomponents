@@ -2,11 +2,7 @@ import { Component, Element, Event, EventEmitter, h, Method, Prop, State, Watch 
 import { EmptyPayload } from '../../utils/types';
 import { getSlot } from '../../utils/slot';
 
-let toastStack: any;
-
-if (typeof document !== 'undefined') {
-  toastStack = Object.assign(document.createElement('div'), { className: 'six-toast-stack' });
-}
+const toastStack = Object.assign(document.createElement('div'), { className: 'six-toast-stack' });
 
 /**
  * @since 1.0
