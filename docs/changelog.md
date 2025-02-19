@@ -62,6 +62,8 @@ documentation reflects the latest stable release.
 ### Changed
 
 - Updated dependencies and cleaned up test config.
+- **Breaking**: `six-file-upload` on upload success now returns a `FileList` regardless of the value of
+    the `multiple` property
 
 ### Fixed
 
