@@ -1,7 +1,7 @@
 <template>
 <div>
 
-        <six-header custom>
+        <six-header>
           <six-header-item>
             <six-logo></six-logo>
           </six-header-item>

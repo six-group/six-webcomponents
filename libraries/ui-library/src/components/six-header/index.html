@@ -15,7 +15,6 @@
         <code>six-root</code> component.
       </p>
       <p>Compose your header using <code>six-header-item</code> and <code>six-header-dropdown-item</code> elements.</p>
-      <p>Note: Ensure that the <code>custom</code> property is set, until deprecated properties are phased out.</p>
       <p>
         While the SIX logo must always appear, all other elements are optional. If additional elements are added, follow
         this order:
@@ -38,10 +37,10 @@
         will be marked as active (with a black bottom border) when open.
       </p>
       <section>
-        <six-header slot="header" custom>
+        <six-header>
           <!-- logo -->
           <six-header-item>
-            <six-icon-button href="https://six-group.github.io/six-webcomponents/">
+            <six-icon-button href="">
               <six-logo></six-logo>
             </six-icon-button>
           </six-header-item>
@@ -69,7 +68,7 @@
       </p>
 
       <section>
-        <six-header slot="header" custom>
+        <six-header>
           <!-- hamburger menu -->
           <six-header-item>
             <six-icon-button name="menu"></six-icon-button>
@@ -77,7 +76,7 @@
 
           <!-- logo -->
           <six-header-item>
-            <six-icon-button href="https://six-group.github.io/six-webcomponents/">
+            <six-icon-button href="">
               <six-logo></six-logo>
             </six-icon-button>
           </six-header-item>
@@ -129,257 +128,8 @@
               <six-menu-item>Logout</six-menu-item>
             </six-menu>
           </six-header-dropdown-item>
-
-          <!-- search input -->
-          <six-search-field slot="search-field" placeholder="Search for some 'a' ..." clearable>
-            <div id="search-results">Some results</div>
-          </six-search-field>
         </six-header>
-
-        <script type="module">
-          const header = document.querySelector('six-header');
-          const searchHeaderItem = document.querySelector('#search-header-item');
-          const searchIcon = searchHeaderItem.querySelector('six-icon-button');
-          searchIcon.addEventListener('click', () => {
-            header.openSearch = !header.openSearch;
-            searchHeaderItem.active = header.openSearch;
-          });
-          header.addEventListener('click', (event) => {
-            if (!searchHeaderItem.contains(event.target)) {
-              header.openSearch = false;
-              searchHeaderItem.active = false;
-            }
-          });
-        </script>
-      </section>
-
-      <h3>Example using slots <span style="color: red">(Deprecated)</span></h3>
-      <section>
-        <six-header show-search slot="header" shift-content>
-          <!--search-->
-          <six-search-field slot="search-field" placeholder="Search for some 'a' ..." clearable>
-            <div id="search-results"></div>
-          </six-search-field>
-
-          <!--notifications-->
-          <six-icon-button slot="notifications" name="notifications_none">
-            <six-badge type="danger" pill>99</six-badge>
-          </six-icon-button>
-
-          <!--app switcher-->
-          <six-menu slot="app-switcher-menu">
-            <six-menu-item checked>Custody</six-menu-item>
-            <six-menu-item>Swiss Interbank Clearing</six-menu-item>
-            <six-menu-item>Tri-Party Agent</six-menu-item>
-            <six-menu-item>Financial Information</six-menu-item>
-          </six-menu>
-
-          <!--profile-->
-          <six-menu slot="profile-menu">
-            <six-menu-item><b>Cat Kittens</b><br />cat.kitty.kittens@themCatsBeCool.com</six-menu-item>
-            <six-menu-item><b>Language</b><br /><six-language-switcher></six-language-switcher></six-menu-item>
-            <six-menu-item>Change password</six-menu-item>
-            <six-menu-item id="logout">Logout</six-menu-item>
-          </six-menu>
-
-          <!--avatar-->
-          <six-avatar
-            image="https://images.unsplash.com/photo-1529778873920-4da4926a72c2?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80"
-            slot="profile-avatar"
-          >
-          </six-avatar>
-
-          <!--custom components-->
-          <six-icon-button name="shopping_cart" />
-        </six-header>
-
-        <six-dialog label="Dialog" class="dialog-overview">
-          <pre></pre>
-          <six-button slot="footer" type="primary">Close</six-button>
-        </six-dialog>
-
-        <style>
-          section[slot='main'] six-card {
-            width: 100%;
-          }
-
-          six-search-field div article {
-            background-color: var(--six-color-white);
-            padding: 0.6rem;
-          }
-        </style>
-
-        <script type="module">
-          const el = Object.entries({
-            header: 'six-header',
-            dialog: 'six-dialog',
-            dialogClose: 'six-dialog six-button',
-            search: 'six-search-field',
-            searchResults: 'six-search-field div',
-            notifications: '[slot="notifications"]',
-            notificationsBadge: 'six-badge',
-            logout: '#logout',
-          }).reduce((acc, [k, v]) => ({ ...acc, [k]: document.querySelector(v) }), {});
-
-          // logging
-          const log = (event) => {
-            if (event.detail?.selectedLabel?.trim() === 'Language') {
-              return;
-            }
-            el.dialog.label = event.type;
-            el.dialog.querySelector('pre').innerHTML = JSON.stringify(event.detail, null, 2);
-            el.dialog.show();
-          };
-
-          el.header.addEventListener('six-header-hamburger-menu-clicked', log);
-          el.header.addEventListener('six-header-app-name-clicked', log);
-          el.header.addEventListener('six-header-app-switcher-select', log);
-          el.header.addEventListener('six-header-profile-select', log);
-          el.notifications.addEventListener('click', log);
-
-          // close dialog
-          el.dialogClose.addEventListener('click', () => el.dialog.hide());
-
-          // search
-          el.search.addEventListener('six-search-field-change', ({ detail }) => {
-            const term = detail.value;
-            getResults(term).then((results) => {
-              el.searchResults.innerHTML = results
-                .map((result) => {
-                  const highlighted = result.replaceAll(term, `<b>${term}</b>`);
-                  return `<article>${highlighted} <six-button type="link">...</six-button></article>`;
-                })
-                .join('');
-            });
-          });
-
-          const text =
-            'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi eveniet labore nemo nihil quae soluta sunt temporibus vitae voluptas voluptatem? Amet eius eveniet libero, minus odio officia pariatur provident tenetur.';
-
-          const getResults = (value) => {
-            const MAX_ITEMS = 3;
-            const TIMEOUT = 1000;
-            return new Promise((resolve) => {
-              const results = value
-                ? text
-                    .split([', '])
-                    .filter((item) => item.includes(value.trim()))
-                    .slice(0, MAX_ITEMS)
-                : [];
-              setTimeout(() => resolve(results), TIMEOUT);
-            });
-          };
-
-          // logout
-          el.logout.addEventListener('click', (event) => {
-            event.stopPropagation();
-            el.header.remove();
-          });
-
-          // notifications
-          let count = 99;
-
-          const updateNotifications = () =>
-            setTimeout(() => {
-              const delta = getRandomInt(-9, 9);
-              count += count + delta >= 0 && count + delta <= 99 ? delta : 0;
-              el.notificationsBadge.innerText = count;
-              updateNotifications();
-            }, getRandomInt(300, 3000));
-
-          // MDN
-          const getRandomInt = (min, max) => {
-            min = Math.ceil(min);
-            max = Math.floor(max);
-            return Math.floor(Math.random() * (max - min + 1)) + min;
-          };
-
-          updateNotifications();
-        </script>
-      </section>
-
-      <h3>Choose Logo <span style="color: red">(Deprecated)</span></h3>
-      <p>You can choose between the SIX or the BME logo with <code>logo="six"</code> or <code>logo="bme"</code>.</p>
-      <section>
-        <six-root>
-          <six-header logo="bme" show-search slot="header" shift-content></six-header>
-          <section slot="main"></section>
-        </six-root>
-      </section>
-
-      <h3>Custom Logo <span style="color: red">(Deprecated)</span></h3>
-      <p>
-        In case you don't want to use the predefined logos, you have the functionality to replace the Logo with
-        <code>slot="logo"</code>.
-      </p>
-      <section>
-        <six-root>
-          <six-header show-search slot="header" shift-content>
-            <img
-              slot="logo"
-              class="custom-logo"
-              src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"
-            />
-          </six-header>
-          <section slot="main"></section>
-        </six-root>
-        <style>
-          .custom-logo {
-            overflow: visible;
-            height: 20px;
-          }
-        </style>
-      </section>
-
-      <h3>Set Search Open status <span style="color: red">(Deprecated)</span></h3>
-
-      <p>You can enforce the search bar to be open or closed by setting the <code>open-search</code> property</p>
-
-      <section>
-        <six-button id="search-toggle-attribute-btn">Toggle Search via Attribute</six-button>
-        <six-button id="search-toggle-method-btn">Toggle Search via Method</six-button>
-
-        <six-root>
-          <six-header show-search slot="header" shift-content open-search="true" id="search-toggle-header">
-            <six-search-field slot="search-field" placeholder="Search for something" clearable>
-              <div></div>
-            </six-search-field>
-          </six-header>
-        </six-root>
-
-        <script type="module">
-          const header = document.getElementById('search-toggle-header');
-
-          const toggleAttributeBtn = document.getElementById('search-toggle-attribute-btn');
-          toggleAttributeBtn.addEventListener('click', () => {
-            const currentValue = header.attributes['open-search'].value === 'true';
-            header.setAttribute('open-search', String(!currentValue));
-          });
-
-          const toggleMethodBtn = document.getElementById('search-toggle-method-btn');
-          toggleMethodBtn.addEventListener('click', async () => {
-            const openState = await header.getIsSearchOpen();
-            await header.setSearchOpenState(!openState);
-          });
-        </script>
-      </section>
-
-      <h3>Execute callback on logo clicked <span style="color: red">(Deprecated)</span></h3>
-      <p>
-        In case you want to e.g. navigate to the dashboard when the header logo is clicked simply listen to the
-        <code>six-header-logo-clicked</code> event and set the <code>clickable-logo</code> attribute
-      </p>
-      <section>
-        <six-root>
-          <six-header show-search slot="header" shift-content id="clickableLogoHeader" clickable-logo> </six-header>
-          <section slot="main"></section>
-        </six-root>
-        <script type="module">
-          const header = document.getElementById('clickableLogoHeader');
-          header.addEventListener('six-header-logo-clicked', () => {
-            alert('logo clicked');
-          });
-        </script>
+        <div></div>
       </section>
     </div>
   </body>

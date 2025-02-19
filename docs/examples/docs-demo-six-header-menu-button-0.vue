@@ -1,9 +1,10 @@
 <template>
 <div>
 
-        <six-header custom>
+        <six-header>
           <six-header-dropdown-item>
-            <six-header-menu-button slot="trigger" icon="apps">App 1</six-header-menu-button>
+            <six-header-menu-button slot="trigger"
+              >App 1 <six-icon slot="suffix">apps</six-icon></six-header-menu-button>
             <six-menu>
               <six-menu-item checked>App 1</six-menu-item>
               <six-menu-item>App 2</six-menu-item>

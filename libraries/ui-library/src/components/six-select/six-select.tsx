@@ -80,14 +80,6 @@ export class SixSelect {
    */
   @Prop() selectAllText?: string;
 
-  /**
-   * The maximum number of tags to show when `multiple` is true. After the maximum, "+n" will be shown to indicate the
-   * number of additional items that are selected. Set to -1 to remove the limit.
-   *
-   * @deprecated: This property is ignored. The component now displays as many items as possible and computes the "+n" dynamically.
-   */
-  @Prop() maxTagsVisible = 3;
-
   /** Set to true to disable the select control. */
   @Prop() disabled = false;
 

@@ -18,21 +18,60 @@ For additional assistance with the implementation, you can also examine the
    npm install @six-group/ui-library-angular
    ```
 
-2. Add `UiLibraryAngularModule.forRoot()` to your root angular module imports section.
+### With Standalone Bootstrapping
+
+This section explains how to configure web-components in an Angular application that uses
+[standalone bootstrapping api](https://angular.dev/reference/migrations/standalone#switch-to-standalone-bootstrapping-api).
+Check below for configuring web components with Angular modules.
+
+1. Add `UiLibraryAngularModule` to your `ApplicationsConfig`s providers
+
+   ```ts
+   import { UiLibraryAngularModule } from '@six-group/ui-library-angular';
+   import { ApplicationConfig, importProvidersFrom } from '@angular/core';
+
+   export const appConfig: ApplicationConfig = {
+     providers: [importProvidersFrom(UiLibraryAngularModule.forRoot())],
+   };
+   ```
+
+2. Import the SIX styles to your global `styles.scss` file (usually located at `src/styles.scss`):
+
+   ```scss
+   @import '@six-group/ui-library/dist/ui-library/ui-library.css';
+   ```
+
+3. In each standalone component, import the `UiLibraryAngularModule` module to get access to
+   web-components components.
+
+   ```angular-html
+   @Component({
+     selector: "some",
+     imports: [UiLibraryAngularModule],
+     templateUrl: "./some.component.html",
+     styleUrl: "./some.component.scss"
+   })
+   export class SomeComponent {}
+   ```
+
+### With Module Bootstrapping
+
+This section explains how to configure web-components in an Angular application that uses NgModule.
+
+1. Add `UiLibraryAngularModule.forRoot()` to your root angular module imports section.
 
    ```ts
    @NgModule({
     declarations: [],
     imports: [
-      // other imports
-      UiLibraryAngularModule.forRoot(),
+      UiLibraryAngularModule.forRoot()
     ]
    })
    ```
 
-3. If your project contains child modules, add the `UiLibraryAngularModule` (without the
+2. If your project contains child modules, add the `UiLibraryAngularModule` (without the
    `forRoot()`) to those too.
-4. Import the SIX styles to your global `styles.scss` file (usually located at `src/styles.scss`):
+3. Import the SIX styles to your global `styles.scss` file (usually located at `src/styles.scss`):
 
    ```scss
    @import '@six-group/ui-library/dist/ui-library/ui-library.css';
