@@ -196,7 +196,6 @@ Often icon buttons are combined with badges to signal new entries. For this simp
  - [six-alert](six-alert.html)
  - [six-dialog](six-dialog.html)
  - [six-drawer](six-drawer.html)
- - [six-header](six-header.html)
  - [six-select](six-select.html)
  - [six-tab](six-tab.html)
  - [six-tab-group](six-tab-group.html)
@@ -214,7 +213,6 @@ graph TD;
   six-alert --> six-icon-button
   six-dialog --> six-icon-button
   six-drawer --> six-icon-button
-  six-header --> six-icon-button
   six-select --> six-icon-button
   six-tab --> six-icon-button
   six-tab-group --> six-icon-button

@@ -6,10 +6,8 @@
   padding: 0 var(--six-spacing-large);
   border-bottom: solid var(--six-header-border-height) transparent;
   border-top: solid var(--six-header-border-height) transparent;
-  transition: var(--six-transition-fast) border-color;
 }
 
 :host(.six-header-dropdown-item--active) {
   border-bottom: solid var(--six-header-border-height) var(--six-header-border-color-open);
-  transition: var(--six-transition-fast) border-color;
 }
