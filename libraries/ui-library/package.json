@@ -8,6 +8,12 @@
   "es2015": "dist/esm/index.mjs",
   "es2017": "dist/esm/index.mjs",
   "types": "./dist/types/types.d.ts",
+  "./hydrate": {
+    "types": "./hydrate/index.d.ts",
+    "import": "./hydrate/index.js",
+    "require": "./hydrate/index.cjs.js",
+    "default": "./hydrate/index.js"
+  },
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
   "unpkg": "dist/ui-library/ui-library.esm.js",
@@ -33,7 +39,7 @@
     "codeclean": "npm run lint:fix && npm run prettier:fix"
   },
   "dependencies": {
-    "@stencil/core": "^4.12.6",
+    "@stencil/core": "^4.26.0",
     "@types/resize-observer-browser": "^0.1.5"
   },
   "devDependencies": {
@@ -43,11 +49,11 @@
     "@popperjs/core": "^2.5.3",
     "@stencil-community/eslint-plugin": "0.x",
     "@stencil/angular-output-target": "0.x",
-    "@stencil/react-output-target": "0.x",
+    "@stencil/react-output-target": "^0.8.2",
     "@stencil/vue-output-target": "0.x",
     "@stencil/sass": "^3.0.7",
-    "@typescript-eslint/eslint-plugin": "^6.15.0",
-    "@typescript-eslint/parser": "^6.15.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
     "replace-in-file": "^6.3.5",
     "rimraf": "^3.0.2"
   },
