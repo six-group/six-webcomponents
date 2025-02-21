@@ -52,8 +52,8 @@
     "@stencil/react-output-target": "^0.8.2",
     "@stencil/vue-output-target": "0.x",
     "@stencil/sass": "^3.0.7",
-    "@typescript-eslint/eslint-plugin": "^6.15.0",
-    "@typescript-eslint/parser": "^6.15.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
     "replace-in-file": "^6.3.5",
     "rimraf": "^3.0.2"
   },
