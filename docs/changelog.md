@@ -16,8 +16,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
   The SIX Webcomponents cannot be used with Node 16 or 18 anymore. Please upgrade to Node 20.
 
-- Moved `six-picto` SVG's from SCSS file to assets folder to minimize chunk size.
-
 ## 4.3.2 - 2025-02-13
 
 No changes in functionality, but changed release creation workflow, that makes sure, that deployed
