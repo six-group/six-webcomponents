@@ -229,9 +229,17 @@ export namespace Components {
          */
         "errorText": string | string[];
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "error-text"?: string | string[];
+        /**
           * The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1
          */
         "errorTextCount"?: number;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "error-text-count"?: number;
         /**
           * Set to true to draw the checkbox in an indeterminate state.
          */
@@ -370,6 +378,10 @@ export namespace Components {
          */
         "closeOnSelect": boolean;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "close-on-select"?: boolean;
+        /**
           * The dropdown will close when the user interacts outside of this element (e.g. clicking).
          */
         "containingElement"?: HTMLElement;
@@ -377,6 +389,10 @@ export namespace Components {
           * Define the dateFormat. Valid formats are: 'dd.mm.yyyy' 'yyyy-mm-dd' 'dd-mm-yyyy' 'dd/mm/yyyy' 'yyyy/mm/dd' 'dd.mm.yy' 'yy-mm-dd' 'dd-mm-yy' 'dd/mm/yy' 'yy/mm/dd'
          */
         "dateFormat": SixDateFormats;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "date-format"?: SixDateFormats;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `dateChange` event after each keystroke.
          */
@@ -386,6 +402,10 @@ export namespace Components {
          */
         "defaultDate"?: string;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "default-date"?: string;
+        /**
           * If `true` the component is disabled.
          */
         "disabled": boolean;
@@ -394,9 +414,17 @@ export namespace Components {
          */
         "errorText": string | string[];
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "error-text"?: string | string[];
+        /**
           * The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1
          */
         "errorTextCount"?: number;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "error-text-count"?: number;
         /**
           * Enable this option to prevent the panel from being clipped when the component is placed inside a container with `overflow: auto|scroll`.
          */
@@ -405,6 +433,10 @@ export namespace Components {
           * Set the position of the icon
          */
         "iconPosition": 'left' | 'right';
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "icon-position"?: 'left' | 'right';
         /**
           * Indicates whether or not the calendar should be shown as an inline (always open) component
          */
@@ -489,6 +521,10 @@ export namespace Components {
          */
         "hasContent": boolean;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "has-content"?: boolean;
+        /**
           * Hides the detail body
          */
         "hide": () => Promise<void>;
@@ -505,6 +541,10 @@ export namespace Components {
          */
         "selectableEmpty": boolean;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "selectable-empty"?: boolean;
+        /**
           * Shows the detail body
          */
         "show": () => Promise<void>;
@@ -517,9 +557,24 @@ export namespace Components {
          */
         "summaryIcon"?: string;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "summary-icon"?: string;
+        /**
           * The icon's size.
          */
         "summaryIconSize": | 'inherit'
+    | 'xSmall'
+    | 'small'
+    | 'medium'
+    | 'large'
+    | 'xLarge'
+    | 'xxLarge'
+    | 'xxxLarge';
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "summary-icon-size"?: | 'inherit'
     | 'xSmall'
     | 'small'
     | 'medium'
@@ -546,6 +601,10 @@ export namespace Components {
           * Set to true to disable the header. This will also remove the default close button, so please ensure you provide an easy, accessible way for users to dismiss the dialog.
          */
         "noHeader": boolean;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "no-header"?: boolean;
         /**
           * Indicates whether the dialog is open. You can use this in lieu of the show/hide methods.
          */
@@ -578,6 +637,10 @@ export namespace Components {
          */
         "noHeader": boolean;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "no-header"?: boolean;
+        /**
           * Indicates whether the drawer is open. You can use this in lieu of the show/hide methods.
          */
         "open": boolean;
@@ -601,13 +664,25 @@ export namespace Components {
          */
         "asyncFilter": boolean;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "async-filter"?: boolean;
+        /**
           * By default the search field will be focused when opening a dropdown with filtering enabled.
          */
         "autofocusFilter": boolean;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "autofocus-filter"?: boolean;
+        /**
           * Determines whether the dropdown should hide when a menu item is selected.
          */
         "closeOnSelect": boolean;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "close-on-select"?: boolean;
         /**
           * The dropdown will close when the user interacts outside of this element (e.g. clicking).
          */
@@ -616,6 +691,10 @@ export namespace Components {
           * The panel can be opend/closed by pressing the spacebar or the enter key. In some cases you might want to avoid this
          */
         "disableHideOnEnterAndSpace": boolean;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "disable-hide-on-enter-and-space"?: boolean;
         /**
           * The distance in pixels from which to offset the panel away from its trigger.
          */
@@ -629,9 +708,17 @@ export namespace Components {
          */
         "filterDebounce": number;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "filter-debounce"?: number;
+        /**
           * The filter's placeholder text.
          */
         "filterPlaceholder": string;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "filter-placeholder"?: string;
         /**
           * Hides the dropdown panel
          */
@@ -644,6 +731,10 @@ export namespace Components {
           * Determines if the dropdown panel's width should match the width of the trigger element.  If set to `true`, the panel will resize its width to align with the trigger's width. If `false` or omitted, the panel will maintain its default width.
          */
         "matchTriggerWidth": boolean;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "match-trigger-width"?: boolean;
         /**
           * Indicates whether the dropdown is open. You can use this in lieu of the show/hide methods.
          */
@@ -679,6 +770,10 @@ export namespace Components {
           * Defines whether the menu list will be rendered virtually i.e. only the elements actually shown (and a couple around) are actually rendered in the DOM. If you use virtual scrolling pass the elements via prop instead of via slot.
          */
         "virtualScroll": boolean;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "virtual-scroll"?: boolean;
     }
     /**
      * @since 4.0
@@ -696,13 +791,25 @@ export namespace Components {
          */
         "customIcon"?: string;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "custom-icon"?: string;
+        /**
           * Defines a custom title.
          */
         "customTitle"?: string;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "custom-title"?: string;
+        /**
           * Defines error Code and thus displays the proper error page.
          */
         "errorCode"?: 404 | 403 | 500;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "error-code"?: 404 | 403 | 500;
         /**
           * Defines language and thus displays the proper error page in the selected language.
          */
@@ -766,6 +873,10 @@ export namespace Components {
          */
         "errorText": string | string[];
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "error-text"?: string | string[];
+        /**
           * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
          */
         "invalid": boolean;
@@ -777,6 +888,10 @@ export namespace Components {
           * Allowed max file size in bytes.
          */
         "maxFileSize"?: number;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "max-file-size"?: number;
         /**
           * More than one file allowed.
          */
@@ -806,6 +921,10 @@ export namespace Components {
          */
         "helpText": string;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "help-text"?: string;
+        /**
           * The wrapper label's label. Alternatively, you can use the label slot.
          */
         "label": string;
@@ -828,9 +947,17 @@ export namespace Components {
          */
         "openSearch": boolean;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "open-search"?: boolean;
+        /**
           * Indicates if content should be shifted down when search field is visible.
          */
         "shiftContent": boolean;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "shift-content"?: boolean;
     }
     /**
      * @since 4.2.7
@@ -845,6 +972,10 @@ export namespace Components {
           * The filter's placeholder text.
          */
         "filterPlaceholder": string;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "filter-placeholder"?: string;
     }
     /**
      * @since 4.2.7
@@ -977,13 +1108,25 @@ export namespace Components {
          */
         "dropdownSearch": boolean;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "dropdown-search"?: boolean;
+        /**
           * The error message shown, if `invalid` is set to true.
          */
         "errorText": string | string[];
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "error-text"?: string | string[];
+        /**
           * The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1
          */
         "errorTextCount"?: number;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "error-text-count"?: number;
         /**
           * Returns the start and end positions of the text selection
          */
@@ -992,6 +1135,10 @@ export namespace Components {
           * The input's help text. Alternatively, you can use the help-text slot.
          */
         "helpText": string;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "help-text"?: string;
         /**
           * The input's inputmode attribute.
          */
@@ -1085,6 +1232,10 @@ export namespace Components {
          */
         "togglePassword": boolean;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "toggle-password"?: boolean;
+        /**
           * The input's type.
          */
         "type": 'email' | 'number' | 'password' | 'search' | 'tel' | 'text' | 'url';
@@ -1127,13 +1278,25 @@ export namespace Components {
          */
         "paddingChar": string;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "padding-char"?: string;
+        /**
           * Defines whether the padding should be before or after the value. You can either use 'before' or 'after'. By default, before is selected
          */
         "paddingDirection": ItemPickerPaddingDirection;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "padding-direction"?: ItemPickerPaddingDirection;
+        /**
           * Defines the length of the padded area
          */
         "paddingLength": number;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "padding-length"?: number;
         /**
           * Define whether the picker should to a roundtrip i.e. start at max when reaching min and vice versa.
          */
@@ -1206,9 +1369,17 @@ export namespace Components {
          */
         "disableKeyboardHandling": boolean;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "disable-keyboard-handling"?: boolean;
+        /**
           * Used for virtual scrolling Define how many items should be rendered in the DOM when using virtual scrolling
          */
         "itemSize": number;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "item-size"?: number;
         /**
           * Set the options to be shown in the dropdown
          */
@@ -1218,13 +1389,25 @@ export namespace Components {
          */
         "itemsShown"?: number;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "items-shown"?: number;
+        /**
           * Set to true to remove the box-shadow
          */
         "removeBoxShadow": boolean;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "remove-box-shadow"?: boolean;
+        /**
           * Used for virtual scrolling Define the debounce for listening on scrolling changes in milliseconds. The lower the number the more sensitive the component reacts to scrolling changes.
          */
         "scrollingDebounce": number;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "scrolling-debounce"?: number;
         /**
           * Initiates type-to-select logic, which automatically selects an option based on what the user is currently typing. The key passed will be appended to the internal query and the selection will be updated. After a brief period, the internal query is cleared automatically. This method is intended to be used with the keydown event. Useful for enabling type-to-select when the menu doesn't have focus.
          */
@@ -1233,6 +1416,10 @@ export namespace Components {
           * Defines whether the menu list will be rendered virtually i.e. only the elements actually shown (and a couple around) are actually rendered in the DOM. If you use virtual scrolling pass the elements via prop instead of via slot.
          */
         "virtualScroll": boolean;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "virtual-scroll"?: boolean;
     }
     /**
      * @since 1.0
@@ -1251,6 +1438,10 @@ export namespace Components {
           * Defines if the checked state is displayed as a checkbox or a check-icon
          */
         "checkType": 'checkbox' | 'check';
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "check-type"?: 'checkbox' | 'check';
         /**
           * Internal: Draws the item in a checked state. CheckType needs to be set to 'checkbox' or 'check' to show the checked state
          */
@@ -1326,6 +1517,10 @@ export namespace Components {
           * The stroke width of the progress ring in pixels.
          */
         "strokeWidth": number;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "stroke-width"?: number;
     }
     /**
      * @since 1.0
@@ -1377,13 +1572,25 @@ export namespace Components {
          */
         "errorText": string | string[];
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "error-text"?: string | string[];
+        /**
           * The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1
          */
         "errorTextCount"?: number;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "error-text-count"?: number;
+        /**
           * The range's help text. Alternatively, you can use the help-text slot.
          */
         "helpText": string;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "help-text"?: string;
         /**
           * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
          */
@@ -1488,6 +1695,10 @@ export namespace Components {
          */
         "asyncFilter": boolean;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "async-filter"?: boolean;
+        /**
           * Set to true to turn the six-select into an autocomplete.
          */
         "autocomplete": boolean;
@@ -1504,9 +1715,17 @@ export namespace Components {
          */
         "errorText": string | string[];
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "error-text"?: string | string[];
+        /**
           * The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1
          */
         "errorTextCount"?: number;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "error-text-count"?: number;
         /**
           * Set to true to allow filtering for entries in the dropdown
          */
@@ -1516,13 +1735,25 @@ export namespace Components {
          */
         "filterDebounce"?: number;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "filter-debounce"?: number;
+        /**
           * The filter's placeholder text.
          */
         "filterPlaceholder"?: string;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "filter-placeholder"?: string;
+        /**
           * The select's help text. Alternatively, you can use the help-text slot.
          */
         "helpText": string;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "help-text"?: string;
         /**
           * Enable this option to prevent the panel from being clipped when the component is placed inside a container with `overflow: auto|scroll`.
          */
@@ -1531,6 +1762,10 @@ export namespace Components {
           * The debounce for when the input changes for autocompletes should be emitted
          */
         "inputDebounce": number;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "input-debounce"?: number;
         /**
           * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
          */
@@ -1572,9 +1807,17 @@ export namespace Components {
          */
         "selectAllButton": boolean;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "select-all-button"?: boolean;
+        /**
           * Custom text for the "select all" button. Defaults to "Select all" and equivalents in supported languages.
          */
         "selectAllText"?: string;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "select-all-text"?: string;
         /**
           * Sets focus on the select.
          */
@@ -1591,6 +1834,10 @@ export namespace Components {
           * Defines whether the menu list will be rendered virtually i.e. only the elements actually shown (and a couple around) are actually rendered in the DOM. If you use virtual scrolling pass the elements via prop instead of via slot.
          */
         "virtualScroll": boolean;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "virtual-scroll"?: boolean;
     }
     /**
      * @since 1.0
@@ -1686,6 +1933,10 @@ export namespace Components {
          */
         "summaryIcon"?: string;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "summary-icon"?: string;
+        /**
           * A unique value to store in the sidebar item of the group label. This can be used as a way to identify sidebar items when selected.
          */
         "value": string;
@@ -1730,9 +1981,17 @@ export namespace Components {
          */
         "errorText": string | string[];
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "error-text"?: string | string[];
+        /**
           * The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1
          */
         "errorTextCount"?: number;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "error-text-count"?: number;
         /**
           * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
          */
@@ -1803,6 +2062,10 @@ export namespace Components {
           * Disables the scroll arrows that appear when tabs overflow.
          */
         "noScrollControls": boolean;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "no-scroll-controls"?: boolean;
         /**
           * The placement of the tabs.
          */
@@ -1881,13 +2144,25 @@ export namespace Components {
          */
         "errorText": string | string[];
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "error-text"?: string | string[];
+        /**
           * The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1
          */
         "errorTextCount"?: number;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "error-text-count"?: number;
+        /**
           * The textarea's help text. Alternatively, you can use the help-text slot.
          */
         "helpText": string;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "help-text"?: string;
         /**
           * The textarea's inputmode attribute.
          */
@@ -1979,6 +2254,10 @@ export namespace Components {
          */
         "disableTooltip": boolean;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "disable-tooltip"?: boolean;
+        /**
           * Set to true to disable the tile.
          */
         "disabled": boolean;
@@ -1994,6 +2273,10 @@ export namespace Components {
           * The icon's name.
          */
         "iconName"?: string;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "icon-name"?: string;
         /**
           * The tile's label.
          */
@@ -2025,6 +2308,10 @@ export namespace Components {
          */
         "defaultTime"?: string;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "default-time"?: string;
+        /**
           * If `true` the component is disabled.
          */
         "disabled": boolean;
@@ -2033,9 +2320,17 @@ export namespace Components {
          */
         "errorText": string | string[];
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "error-text"?: string | string[];
+        /**
           * The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1
          */
         "errorTextCount"?: number;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "error-text-count"?: number;
         /**
           * Define the time format. Valid formats are:  HH:mm:ss hh:mm:ss:aa HH:mm:ss:ms hh:mm:ss:ms:aa HH:mm hh:mm:aa HH hh:aa mm ss ms  where HH is the 24 hour format and hh is the 12 hour format  Please notice that when using the 12-hour-clock (hh) you always need a period indicator (aa). So the time can be parsed as either am or pm
          */
@@ -2048,6 +2343,10 @@ export namespace Components {
           * Set the position of the icon
          */
         "iconPosition": 'left' | 'right';
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "icon-position"?: 'left' | 'right';
         /**
           * Indicates whether the timepicker should be shown as an inline (always open) component
          */
@@ -3474,9 +3773,17 @@ declare namespace LocalJSX {
          */
         "errorText"?: string | string[];
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "error-text"?: string | string[];
+        /**
           * The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1
          */
         "errorTextCount"?: number;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "error-text-count"?: number;
         /**
           * Set to true to draw the checkbox in an indeterminate state.
          */
@@ -3623,6 +3930,10 @@ declare namespace LocalJSX {
          */
         "closeOnSelect"?: boolean;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "close-on-select"?: boolean;
+        /**
           * The dropdown will close when the user interacts outside of this element (e.g. clicking).
          */
         "containingElement"?: HTMLElement;
@@ -3630,6 +3941,10 @@ declare namespace LocalJSX {
           * Define the dateFormat. Valid formats are: 'dd.mm.yyyy' 'yyyy-mm-dd' 'dd-mm-yyyy' 'dd/mm/yyyy' 'yyyy/mm/dd' 'dd.mm.yy' 'yy-mm-dd' 'dd-mm-yy' 'dd/mm/yy' 'yy/mm/dd'
          */
         "dateFormat"?: SixDateFormats;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "date-format"?: SixDateFormats;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `dateChange` event after each keystroke.
          */
@@ -3639,6 +3954,10 @@ declare namespace LocalJSX {
          */
         "defaultDate"?: string;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "default-date"?: string;
+        /**
           * If `true` the component is disabled.
          */
         "disabled"?: boolean;
@@ -3647,9 +3966,17 @@ declare namespace LocalJSX {
          */
         "errorText"?: string | string[];
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "error-text"?: string | string[];
+        /**
           * The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1
          */
         "errorTextCount"?: number;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "error-text-count"?: number;
         /**
           * Enable this option to prevent the panel from being clipped when the component is placed inside a container with `overflow: auto|scroll`.
          */
@@ -3658,6 +3985,10 @@ declare namespace LocalJSX {
           * Set the position of the icon
          */
         "iconPosition"?: 'left' | 'right';
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "icon-position"?: 'left' | 'right';
         /**
           * Indicates whether or not the calendar should be shown as an inline (always open) component
          */
@@ -3746,6 +4077,10 @@ declare namespace LocalJSX {
          */
         "hasContent"?: boolean;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "has-content"?: boolean;
+        /**
           * Set to true when you want to use six-details inline e.g. in a sidebar
          */
         "inline"?: boolean;
@@ -3774,6 +4109,10 @@ declare namespace LocalJSX {
          */
         "selectableEmpty"?: boolean;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "selectable-empty"?: boolean;
+        /**
           * The summary to show in the details header. If you need to display HTML, use the `summary` slot instead.
          */
         "summary"?: string;
@@ -3782,9 +4121,24 @@ declare namespace LocalJSX {
          */
         "summaryIcon"?: string;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "summary-icon"?: string;
+        /**
           * The icon's size.
          */
         "summaryIconSize"?: | 'inherit'
+    | 'xSmall'
+    | 'small'
+    | 'medium'
+    | 'large'
+    | 'xLarge'
+    | 'xxLarge'
+    | 'xxxLarge';
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "summary-icon-size"?: | 'inherit'
     | 'xSmall'
     | 'small'
     | 'medium'
@@ -3807,6 +4161,10 @@ declare namespace LocalJSX {
           * Set to true to disable the header. This will also remove the default close button, so please ensure you provide an easy, accessible way for users to dismiss the dialog.
          */
         "noHeader"?: boolean;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "no-header"?: boolean;
         /**
           * Emitted after the dialog closes and all transitions are complete.
          */
@@ -3855,6 +4213,10 @@ declare namespace LocalJSX {
          */
         "noHeader"?: boolean;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "no-header"?: boolean;
+        /**
           * Emitted after the drawer closes and all transitions are complete.
          */
         "onSix-drawer-after-hide"?: (event: SixDrawerCustomEvent<EmptyPayload>) => void;
@@ -3898,13 +4260,25 @@ declare namespace LocalJSX {
          */
         "asyncFilter"?: boolean;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "async-filter"?: boolean;
+        /**
           * By default the search field will be focused when opening a dropdown with filtering enabled.
          */
         "autofocusFilter"?: boolean;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "autofocus-filter"?: boolean;
+        /**
           * Determines whether the dropdown should hide when a menu item is selected.
          */
         "closeOnSelect"?: boolean;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "close-on-select"?: boolean;
         /**
           * The dropdown will close when the user interacts outside of this element (e.g. clicking).
          */
@@ -3913,6 +4287,10 @@ declare namespace LocalJSX {
           * The panel can be opend/closed by pressing the spacebar or the enter key. In some cases you might want to avoid this
          */
         "disableHideOnEnterAndSpace"?: boolean;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "disable-hide-on-enter-and-space"?: boolean;
         /**
           * The distance in pixels from which to offset the panel away from its trigger.
          */
@@ -3926,9 +4304,17 @@ declare namespace LocalJSX {
          */
         "filterDebounce"?: number;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "filter-debounce"?: number;
+        /**
           * The filter's placeholder text.
          */
         "filterPlaceholder"?: string;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "filter-placeholder"?: string;
         /**
           * Enable this option to prevent the panel from being clipped when the component is placed inside a container with `overflow: auto|scroll`.
          */
@@ -3937,6 +4323,10 @@ declare namespace LocalJSX {
           * Determines if the dropdown panel's width should match the width of the trigger element.  If set to `true`, the panel will resize its width to align with the trigger's width. If `false` or omitted, the panel will maintain its default width.
          */
         "matchTriggerWidth"?: boolean;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "match-trigger-width"?: boolean;
         /**
           * Emitted when the async filter is triggered
          */
@@ -3996,6 +4386,10 @@ declare namespace LocalJSX {
           * Defines whether the menu list will be rendered virtually i.e. only the elements actually shown (and a couple around) are actually rendered in the DOM. If you use virtual scrolling pass the elements via prop instead of via slot.
          */
         "virtualScroll"?: boolean;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "virtual-scroll"?: boolean;
     }
     /**
      * @since 4.0
@@ -4013,13 +4407,25 @@ declare namespace LocalJSX {
          */
         "customIcon"?: string;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "custom-icon"?: string;
+        /**
           * Defines a custom title.
          */
         "customTitle"?: string;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "custom-title"?: string;
+        /**
           * Defines error Code and thus displays the proper error page.
          */
         "errorCode"?: 404 | 403 | 500;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "error-code"?: 404 | 403 | 500;
         /**
           * Defines language and thus displays the proper error page in the selected language.
          */
@@ -4091,6 +4497,10 @@ declare namespace LocalJSX {
          */
         "errorText"?: string | string[];
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "error-text"?: string | string[];
+        /**
           * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
          */
         "invalid"?: boolean;
@@ -4102,6 +4512,10 @@ declare namespace LocalJSX {
           * Allowed max file size in bytes.
          */
         "maxFileSize"?: number;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "max-file-size"?: number;
         /**
           * More than one file allowed.
          */
@@ -4139,6 +4553,10 @@ declare namespace LocalJSX {
          */
         "helpText"?: string;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "help-text"?: string;
+        /**
           * The wrapper label's label. Alternatively, you can use the label slot.
          */
         "label"?: string;
@@ -4161,9 +4579,17 @@ declare namespace LocalJSX {
          */
         "openSearch"?: boolean;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "open-search"?: boolean;
+        /**
           * Indicates if content should be shifted down when search field is visible.
          */
         "shiftContent"?: boolean;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "shift-content"?: boolean;
     }
     /**
      * @since 4.2.7
@@ -4178,6 +4604,10 @@ declare namespace LocalJSX {
           * The filter's placeholder text.
          */
         "filterPlaceholder"?: string;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "filter-placeholder"?: string;
     }
     /**
      * @since 4.2.7
@@ -4310,17 +4740,33 @@ declare namespace LocalJSX {
          */
         "dropdownSearch"?: boolean;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "dropdown-search"?: boolean;
+        /**
           * The error message shown, if `invalid` is set to true.
          */
         "errorText"?: string | string[];
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "error-text"?: string | string[];
         /**
           * The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1
          */
         "errorTextCount"?: number;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "error-text-count"?: number;
+        /**
           * The input's help text. Alternatively, you can use the help-text slot.
          */
         "helpText"?: string;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "help-text"?: string;
         /**
           * The input's inputmode attribute.
          */
@@ -4414,6 +4860,10 @@ declare namespace LocalJSX {
          */
         "togglePassword"?: boolean;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "toggle-password"?: boolean;
+        /**
           * The input's type.
          */
         "type"?: 'email' | 'number' | 'password' | 'search' | 'tel' | 'text' | 'url';
@@ -4464,13 +4914,25 @@ declare namespace LocalJSX {
          */
         "paddingChar"?: string;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "padding-char"?: string;
+        /**
           * Defines whether the padding should be before or after the value. You can either use 'before' or 'after'. By default, before is selected
          */
         "paddingDirection"?: ItemPickerPaddingDirection;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "padding-direction"?: ItemPickerPaddingDirection;
+        /**
           * Defines the length of the padded area
          */
         "paddingLength"?: number;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "padding-length"?: number;
         /**
           * Define whether the picker should to a roundtrip i.e. start at max when reaching min and vice versa.
          */
@@ -4547,9 +5009,17 @@ declare namespace LocalJSX {
          */
         "disableKeyboardHandling"?: boolean;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "disable-keyboard-handling"?: boolean;
+        /**
           * Used for virtual scrolling Define how many items should be rendered in the DOM when using virtual scrolling
          */
         "itemSize"?: number;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "item-size"?: number;
         /**
           * Set the options to be shown in the dropdown
          */
@@ -4559,6 +5029,10 @@ declare namespace LocalJSX {
          */
         "itemsShown"?: number;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "items-shown"?: number;
+        /**
           * Emitted when a menu item is selected.
          */
         "onSix-menu-item-selected"?: (event: SixMenuCustomEvent<SixMenuItemSelectedPayload>) => void;
@@ -4567,13 +5041,25 @@ declare namespace LocalJSX {
          */
         "removeBoxShadow"?: boolean;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "remove-box-shadow"?: boolean;
+        /**
           * Used for virtual scrolling Define the debounce for listening on scrolling changes in milliseconds. The lower the number the more sensitive the component reacts to scrolling changes.
          */
         "scrollingDebounce"?: number;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "scrolling-debounce"?: number;
+        /**
           * Defines whether the menu list will be rendered virtually i.e. only the elements actually shown (and a couple around) are actually rendered in the DOM. If you use virtual scrolling pass the elements via prop instead of via slot.
          */
         "virtualScroll"?: boolean;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "virtual-scroll"?: boolean;
     }
     /**
      * @since 1.0
@@ -4592,6 +5078,10 @@ declare namespace LocalJSX {
           * Defines if the checked state is displayed as a checkbox or a check-icon
          */
         "checkType"?: 'checkbox' | 'check';
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "check-type"?: 'checkbox' | 'check';
         /**
           * Internal: Draws the item in a checked state. CheckType needs to be set to 'checkbox' or 'check' to show the checked state
          */
@@ -4655,6 +5145,10 @@ declare namespace LocalJSX {
           * The stroke width of the progress ring in pixels.
          */
         "strokeWidth"?: number;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "stroke-width"?: number;
     }
     /**
      * @since 1.0
@@ -4710,13 +5204,25 @@ declare namespace LocalJSX {
          */
         "errorText"?: string | string[];
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "error-text"?: string | string[];
+        /**
           * The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1
          */
         "errorTextCount"?: number;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "error-text-count"?: number;
+        /**
           * The range's help text. Alternatively, you can use the help-text slot.
          */
         "helpText"?: string;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "help-text"?: string;
         /**
           * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
          */
@@ -4829,6 +5335,10 @@ declare namespace LocalJSX {
          */
         "asyncFilter"?: boolean;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "async-filter"?: boolean;
+        /**
           * Set to true to turn the six-select into an autocomplete.
          */
         "autocomplete"?: boolean;
@@ -4845,9 +5355,17 @@ declare namespace LocalJSX {
          */
         "errorText"?: string | string[];
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "error-text"?: string | string[];
+        /**
           * The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1
          */
         "errorTextCount"?: number;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "error-text-count"?: number;
         /**
           * Set to true to allow filtering for entries in the dropdown
          */
@@ -4857,13 +5375,25 @@ declare namespace LocalJSX {
          */
         "filterDebounce"?: number;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "filter-debounce"?: number;
+        /**
           * The filter's placeholder text.
          */
         "filterPlaceholder"?: string;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "filter-placeholder"?: string;
+        /**
           * The select's help text. Alternatively, you can use the help-text slot.
          */
         "helpText"?: string;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "help-text"?: string;
         /**
           * Enable this option to prevent the panel from being clipped when the component is placed inside a container with `overflow: auto|scroll`.
          */
@@ -4872,6 +5402,10 @@ declare namespace LocalJSX {
           * The debounce for when the input changes for autocompletes should be emitted
          */
         "inputDebounce"?: number;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "input-debounce"?: number;
         /**
           * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
          */
@@ -4925,9 +5459,17 @@ declare namespace LocalJSX {
          */
         "selectAllButton"?: boolean;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "select-all-button"?: boolean;
+        /**
           * Custom text for the "select all" button. Defaults to "Select all" and equivalents in supported languages.
          */
         "selectAllText"?: string;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "select-all-text"?: string;
         /**
           * The select's size.
          */
@@ -4940,6 +5482,10 @@ declare namespace LocalJSX {
           * Defines whether the menu list will be rendered virtually i.e. only the elements actually shown (and a couple around) are actually rendered in the DOM. If you use virtual scrolling pass the elements via prop instead of via slot.
          */
         "virtualScroll"?: boolean;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "virtual-scroll"?: boolean;
     }
     /**
      * @since 1.0
@@ -5035,6 +5581,10 @@ declare namespace LocalJSX {
          */
         "summaryIcon"?: string;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "summary-icon"?: string;
+        /**
           * A unique value to store in the sidebar item of the group label. This can be used as a way to identify sidebar items when selected.
          */
         "value"?: string;
@@ -5079,9 +5629,17 @@ declare namespace LocalJSX {
          */
         "errorText"?: string | string[];
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "error-text"?: string | string[];
+        /**
           * The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1
          */
         "errorTextCount"?: number;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "error-text-count"?: number;
         /**
           * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
          */
@@ -5152,6 +5710,10 @@ declare namespace LocalJSX {
           * Disables the scroll arrows that appear when tabs overflow.
          */
         "noScrollControls"?: boolean;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "no-scroll-controls"?: boolean;
         /**
           * Emitted when a tab is hidden.
          */
@@ -5238,13 +5800,25 @@ declare namespace LocalJSX {
          */
         "errorText"?: string | string[];
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "error-text"?: string | string[];
+        /**
           * The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1
          */
         "errorTextCount"?: number;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "error-text-count"?: number;
+        /**
           * The textarea's help text. Alternatively, you can use the help-text slot.
          */
         "helpText"?: string;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "help-text"?: string;
         /**
           * The textarea's inputmode attribute.
          */
@@ -5332,6 +5906,10 @@ declare namespace LocalJSX {
          */
         "disableTooltip"?: boolean;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "disable-tooltip"?: boolean;
+        /**
           * Set to true to disable the tile.
          */
         "disabled"?: boolean;
@@ -5343,6 +5921,10 @@ declare namespace LocalJSX {
           * The icon's name.
          */
         "iconName"?: string;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "icon-name"?: string;
         /**
           * The tile's label.
          */
@@ -5378,6 +5960,10 @@ declare namespace LocalJSX {
          */
         "defaultTime"?: string;
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "default-time"?: string;
+        /**
           * If `true` the component is disabled.
          */
         "disabled"?: boolean;
@@ -5386,9 +5972,17 @@ declare namespace LocalJSX {
          */
         "errorText"?: string | string[];
         /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "error-text"?: string | string[];
+        /**
           * The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1
          */
         "errorTextCount"?: number;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "error-text-count"?: number;
         /**
           * Define the time format. Valid formats are:  HH:mm:ss hh:mm:ss:aa HH:mm:ss:ms hh:mm:ss:ms:aa HH:mm hh:mm:aa HH hh:aa mm ss ms  where HH is the 24 hour format and hh is the 12 hour format  Please notice that when using the 12-hour-clock (hh) you always need a period indicator (aa). So the time can be parsed as either am or pm
          */
@@ -5401,6 +5995,10 @@ declare namespace LocalJSX {
           * Set the position of the icon
          */
         "iconPosition"?: 'left' | 'right';
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "icon-position"?: 'left' | 'right';
         /**
           * Indicates whether the timepicker should be shown as an inline (always open) component
          */

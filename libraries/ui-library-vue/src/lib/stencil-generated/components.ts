@@ -1,7 +1,7 @@
 /* eslint-disable */
 /* tslint:disable */
 /* auto-generated vue proxies */
-import { defineContainer } from './vue-component-lib/utils';
+import { defineContainer } from '@stencil/vue-output-target/runtime';
 
 import type { JSX } from '@six-group/ui-library';
 
@@ -13,6 +13,11 @@ export const SixAlert = /*@__PURE__*/ defineContainer<JSX.SixAlert>('six-alert',
   'closable',
   'type',
   'duration',
+  'six-alert-show',
+  'six-alert-after-show',
+  'six-alert-hide',
+  'six-alert-after-hide'
+], [
   'six-alert-show',
   'six-alert-after-show',
   'six-alert-hide',
@@ -52,6 +57,9 @@ export const SixButton = /*@__PURE__*/ defineContainer<JSX.SixButton>('six-butto
   'download',
   'six-button-blur',
   'six-button-focus'
+], [
+  'six-button-blur',
+  'six-button-focus'
 ]);
 
 
@@ -69,6 +77,10 @@ export const SixCheckbox = /*@__PURE__*/ defineContainer<JSX.SixCheckbox, JSX.Si
   'invalid',
   'checked',
   'indeterminate',
+  'six-checkbox-blur',
+  'six-checkbox-change',
+  'six-checkbox-focus'
+], [
   'six-checkbox-blur',
   'six-checkbox-change',
   'six-checkbox-focus'
@@ -133,6 +145,10 @@ export const SixDatepicker = /*@__PURE__*/ defineContainer<JSX.SixDatepicker, JS
   'six-datepicker-select',
   'six-datepicker-clear',
   'six-datepicker-blur'
+], [
+  'six-datepicker-select',
+  'six-datepicker-clear',
+  'six-datepicker-blur'
 ],
 'value', 'change');
 
@@ -150,6 +166,11 @@ export const SixDetails = /*@__PURE__*/ defineContainer<JSX.SixDetails>('six-det
   'six-details-after-show',
   'six-details-hide',
   'six-details-after-hide'
+], [
+  'six-details-show',
+  'six-details-after-show',
+  'six-details-hide',
+  'six-details-after-hide'
 ]);
 
 
@@ -157,6 +178,13 @@ export const SixDialog = /*@__PURE__*/ defineContainer<JSX.SixDialog>('six-dialo
   'open',
   'label',
   'noHeader',
+  'six-dialog-show',
+  'six-dialog-after-show',
+  'six-dialog-hide',
+  'six-dialog-after-hide',
+  'six-dialog-initial-focus',
+  'six-dialog-overlay-dismiss'
+], [
   'six-dialog-show',
   'six-dialog-after-show',
   'six-dialog-hide',
@@ -172,6 +200,13 @@ export const SixDrawer = /*@__PURE__*/ defineContainer<JSX.SixDrawer>('six-drawe
   'placement',
   'contained',
   'noHeader',
+  'six-drawer-show',
+  'six-drawer-after-show',
+  'six-drawer-hide',
+  'six-drawer-after-hide',
+  'six-drawer-initial-focus',
+  'six-drawer-overlay-dismiss'
+], [
   'six-drawer-show',
   'six-drawer-after-show',
   'six-drawer-hide',
@@ -198,6 +233,14 @@ export const SixDropdown = /*@__PURE__*/ defineContainer<JSX.SixDropdown>('six-d
   'options',
   'virtualScroll',
   'matchTriggerWidth',
+  'six-dropdown-show',
+  'six-dropdown-after-show',
+  'six-dropdown-hide',
+  'six-dropdown-after-hide',
+  'six-dropdown-auto-filter-fired',
+  'six-async-filter-fired',
+  'six-dropdown-scroll'
+], [
   'six-dropdown-show',
   'six-dropdown-after-show',
   'six-dropdown-hide',
@@ -232,6 +275,9 @@ export const SixFileListItem = /*@__PURE__*/ defineContainer<JSX.SixFileListItem
   'nodelete',
   'six-file-list-item-download',
   'six-file-list-item-remove'
+], [
+  'six-file-list-item-download',
+  'six-file-list-item-remove'
 ]);
 
 
@@ -245,6 +291,9 @@ export const SixFileUpload = /*@__PURE__*/ defineContainer<JSX.SixFileUpload>('s
   'uploading',
   'errorText',
   'invalid',
+  'six-file-upload-success',
+  'six-file-upload-failure'
+], [
   'six-file-upload-success',
   'six-file-upload-failure'
 ]);
@@ -342,6 +391,12 @@ export const SixInput = /*@__PURE__*/ defineContainer<JSX.SixInput, JSX.SixInput
   'six-input-input',
   'six-input-focus',
   'six-input-blur'
+], [
+  'six-input-change',
+  'six-input-clear',
+  'six-input-input',
+  'six-input-focus',
+  'six-input-blur'
 ],
 'value', 'input');
 
@@ -363,12 +418,17 @@ export const SixItemPicker = /*@__PURE__*/ defineContainer<JSX.SixItemPicker>('s
   'debounce',
   'six-item-picker-change',
   'six-item-picker-change-debounced'
+], [
+  'six-item-picker-change',
+  'six-item-picker-change-debounced'
 ]);
 
 
 export const SixLanguageSwitcher = /*@__PURE__*/ defineContainer<JSX.SixLanguageSwitcher>('six-language-switcher', undefined, [
   'selected',
   'languages',
+  'six-language-switcher-change'
+], [
   'six-language-switcher-change'
 ]);
 
@@ -396,6 +456,8 @@ export const SixMenu = /*@__PURE__*/ defineContainer<JSX.SixMenu>('six-menu', un
   'itemSize',
   'scrollingDebounce',
   'disableKeyboardHandling',
+  'six-menu-item-selected'
+], [
   'six-menu-item-selected'
 ]);
 
@@ -441,6 +503,10 @@ export const SixRadio = /*@__PURE__*/ defineContainer<JSX.SixRadio>('six-radio',
   'six-radio-blur',
   'six-radio-change',
   'six-radio-focus'
+], [
+  'six-radio-blur',
+  'six-radio-change',
+  'six-radio-focus'
 ]);
 
 
@@ -462,6 +528,10 @@ export const SixRange = /*@__PURE__*/ defineContainer<JSX.SixRange, JSX.SixRange
   'six-range-change',
   'six-range-blur',
   'six-range-focus'
+], [
+  'six-range-change',
+  'six-range-blur',
+  'six-range-focus'
 ],
 'value', 'input');
 
@@ -479,6 +549,8 @@ export const SixSearchField = /*@__PURE__*/ defineContainer<JSX.SixSearchField>(
   'disabled',
   'value',
   'clearable',
+  'six-search-field-change'
+], [
   'six-search-field-change'
 ]);
 
@@ -513,6 +585,10 @@ export const SixSelect = /*@__PURE__*/ defineContainer<JSX.SixSelect, JSX.SixSel
   'six-select-change',
   'six-select-focus',
   'six-select-blur'
+], [
+  'six-select-change',
+  'six-select-focus',
+  'six-select-blur'
 ],
 'value', 'change');
 
@@ -522,6 +598,12 @@ export const SixSidebar = /*@__PURE__*/ defineContainer<JSX.SixSidebar>('six-sid
   'open',
   'width',
   'toggled',
+  'six-sidebar-show',
+  'six-sidebar-after-show',
+  'six-sidebar-hide',
+  'six-sidebar-after-hide',
+  'six-sidebar-initial-focus'
+], [
   'six-sidebar-show',
   'six-sidebar-after-show',
   'six-sidebar-hide',
@@ -573,6 +655,10 @@ export const SixSwitch = /*@__PURE__*/ defineContainer<JSX.SixSwitch, JSX.SixSwi
   'six-switch-blur',
   'six-switch-change',
   'six-switch-focus'
+], [
+  'six-switch-blur',
+  'six-switch-change',
+  'six-switch-focus'
 ],
 'checked', 'change');
 
@@ -583,12 +669,17 @@ export const SixTab = /*@__PURE__*/ defineContainer<JSX.SixTab>('six-tab', undef
   'closable',
   'disabled',
   'six-tab-close'
+], [
+  'six-tab-close'
 ]);
 
 
 export const SixTabGroup = /*@__PURE__*/ defineContainer<JSX.SixTabGroup>('six-tab-group', undefined, [
   'placement',
   'noScrollControls',
+  'six-tab-show',
+  'six-tab-hide'
+], [
   'six-tab-show',
   'six-tab-hide'
 ]);
@@ -605,6 +696,8 @@ export const SixTag = /*@__PURE__*/ defineContainer<JSX.SixTag>('six-tag', undef
   'size',
   'pill',
   'clearable',
+  'six-tag-clear'
+], [
   'six-tag-clear'
 ]);
 
@@ -636,6 +729,11 @@ export const SixTextarea = /*@__PURE__*/ defineContainer<JSX.SixTextarea, JSX.Si
   'six-textarea-input',
   'six-textarea-focus',
   'six-textarea-blur'
+], [
+  'six-textarea-change',
+  'six-textarea-input',
+  'six-textarea-focus',
+  'six-textarea-blur'
 ],
 'value', 'input');
 
@@ -648,6 +746,9 @@ export const SixTile = /*@__PURE__*/ defineContainer<JSX.SixTile>('six-tile', un
   'disableTooltip',
   'disabled',
   'size',
+  'six-tile-closed',
+  'six-tile-selected'
+], [
   'six-tile-closed',
   'six-tile-selected'
 ]);
@@ -680,6 +781,10 @@ export const SixTimepicker = /*@__PURE__*/ defineContainer<JSX.SixTimepicker>('s
   'six-timepicker-change',
   'six-timepicker-change-debounced',
   'six-timepicker-clear'
+], [
+  'six-timepicker-change',
+  'six-timepicker-change-debounced',
+  'six-timepicker-clear'
 ]);
 
 
@@ -691,6 +796,11 @@ export const SixTooltip = /*@__PURE__*/ defineContainer<JSX.SixTooltip>('six-too
   'open',
   'skidding',
   'trigger',
+  'six-tooltip-show',
+  'six-tooltip-after-show',
+  'six-tooltip-hide',
+  'six-tooltip-after-hide'
+], [
   'six-tooltip-show',
   'six-tooltip-after-show',
   'six-tooltip-hide',
