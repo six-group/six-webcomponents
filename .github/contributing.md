@@ -1,6 +1,8 @@
 # SIX Web Components Contributing Guide
 
-Hi! We are really excited that you are interested in contributing to the SIX Web Components. Before submitting your contribution, please make sure to take a moment and read through the following guidelines:
+Hi! We are really excited that you are interested in contributing to the SIX Web Components. Before
+submitting your contribution, please make sure to take a moment and read through the following
+guidelines:
 
 - [Issue Reporting Guidelines](#issue-reporting-guidelines)
 - [Pull Request Guidelines](#pull-request-guidelines)
@@ -16,40 +18,55 @@ Hi! We are really excited that you are interested in contributing to the SIX Web
 
 - Checkout a topic branch from a base branch, e.g. `main`, and merge back against that branch.
 
-- [Make sure to tick the "Allow edits from maintainers" box](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/allowing-changes-to-a-pull-request-branch-created-from-a-fork). This allows us to directly make minor edits / refactors and saves a lot of time.
+- [Make sure to tick the "Allow edits from maintainers" box](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/allowing-changes-to-a-pull-request-branch-created-from-a-fork).
+  This allows us to directly make minor edits / refactors and saves a lot of time.
 
 - If adding a new feature:
 
   - Add accompanying test case.
-  - Provide a convincing reason to add this feature. Ideally, you should open a suggestion issue first and have it approved before working on it.
+  - Provide a convincing reason to add this feature. Ideally, you should open a suggestion issue
+    first and have it approved before working on it.
 
 - If fixing a bug:
 
-  - If you are resolving a special issue, add `(fix #xxxx[,#xxxx])` (#xxxx is the issue id) in your PR title for a better release log, e.g. `update entities encoding/decoding (fix #3899)`.
+  - If you are resolving a special issue, add `(fix #xxxx[,#xxxx])` (#xxxx is the issue id) in your
+    PR title for a better release log, e.g. `update entities encoding/decoding (fix #3899)`.
   - Provide a detailed description of the bug in the PR. Live demo preferred.
-  - Add appropriate test coverage if applicable. You can check the coverage of your code addition by running `npm test -- --coverage`.
+  - Add appropriate test coverage if applicable. You can check the coverage of your code addition by
+    running `npm test -- --coverage`.
 
-- It's OK to have multiple small commits as you work on the PR - GitHub can automatically squash them before merging.
+- It's OK to have multiple small commits as you work on the PR - GitHub can automatically squash
+  them before merging.
 
 - Make sure tests pass!
 
-- Update the "upcoming" section inside _docs/changelog.md_ with the details of your changes. The changelog should follow this convention: [Keepachangelog](https://keepachangelog.com/en/1.1.0/)
+- Update the "upcoming" section inside _docs/changelog.md_ with the details of your changes. The
+  changelog should follow this convention: [Keepachangelog](https://keepachangelog.com/en/1.1.0/)
 
-- No need to worry about code style as long as you have installed the dev dependencies - modified files are automatically formatted with Prettier on commit (by invoking [Git Hooks](https://git-scm.com/docs/githooks) via [simple-git-hooks](https://github.com/toplenboren/simple-git-hooks)).
+- No need to worry about code style as long as you have installed the dev dependencies - modified
+  files are automatically formatted with Prettier on commit (by invoking
+  [Git Hooks](https://git-scm.com/docs/githooks) via
+  [simple-git-hooks](https://github.com/toplenboren/simple-git-hooks)).
 
 ### Advanced Pull Request Tips
 
-- The PR should fix the intended bug **only** and not introduce unrelated changes. This includes unnecessary refactors - a PR should focus on the fix and not code style, this makes it easier to trace changes in the future.
+- The PR should fix the intended bug **only** and not introduce unrelated changes. This includes
+  unnecessary refactors - a PR should focus on the fix and not code style, this makes it easier to
+  trace changes in the future.
 
-- Consider the performance / size impact of the changes, and whether the bug being fixes justifies the cost. If the bug being fixed is a very niche edge case, we should try to minimize the size / perf cost to make it worthwhile.
+- Consider the performance / size impact of the changes, and whether the bug being fixes justifies
+  the cost. If the bug being fixed is a very niche edge case, we should try to minimize the size /
+  perf cost to make it worthwhile.
 
-  - Is the code perf-sensitive (e.g. in "hot paths" like component updates or the vdom patch function?)
+  - Is the code perf-sensitive (e.g. in "hot paths" like component updates or the vdom patch
+    function?)
 
     - If the branch is dev-only, performance is less of a concern.
 
 ## Development Setup
 
-You will need [Node.js](https://nodejs.org) **version 16+**, and [NPM](https://www.npmjs.com/package/npm) **version 8**.
+You will need [Node.js](https://nodejs.org) **version 16+**, and
+[NPM](https://www.npmjs.com/package/npm) **version 8**.
 
 After cloning the repository, run in root directory:
 
@@ -65,7 +82,8 @@ A high level overview of tools used:
 
 ## Project Structure
 
-This repository employs a [monorepo](https://en.wikipedia.org/wiki/Monorepo) setup which hosts a number of associated packages under the `libraries` directory:
+This repository employs a [monorepo](https://en.wikipedia.org/wiki/Monorepo) setup which hosts a
+number of associated packages under the `libraries` directory:
 
 - `ui-library`: <tbd>
 
@@ -77,7 +95,9 @@ This repository employs a [monorepo](https://en.wikipedia.org/wiki/Monorepo) set
 
 ## Contributing Tests
 
-Unit tests are collocated with the code being tested in each package, inside directories named `test`. Consult the [Jest docs](https://jestjs.io/docs/en/using-matchers) and existing test cases for how to write new test specs.
+Unit tests are collocated with the code being tested in each package, inside directories named
+`test`. Consult the [Jest docs](https://jestjs.io/docs/en/using-matchers) and existing test cases
+for how to write new test specs.
 
 ## Credits
 

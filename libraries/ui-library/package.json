@@ -37,7 +37,9 @@
     "@types/resize-observer-browser": "^0.1.5"
   },
   "devDependencies": {
-    "@fontsource/noto-sans": "^5.1.0",
+    "@fontsource/noto-sans": "^5.1.1",
+    "@fontsource/material-icons": "^5.1.1",
+    "@fontsource/material-icons-outlined": "^5.1.1",
     "@popperjs/core": "^2.5.3",
     "@stencil-community/eslint-plugin": "0.x",
     "@stencil/angular-output-target": "0.x",
@@ -46,7 +48,6 @@
     "@stencil/sass": "^3.0.7",
     "@typescript-eslint/eslint-plugin": "^6.15.0",
     "@typescript-eslint/parser": "^6.15.0",
-    "material-icons": "^1.13.12",
     "replace-in-file": "^6.3.5",
     "rimraf": "^3.0.2"
   },

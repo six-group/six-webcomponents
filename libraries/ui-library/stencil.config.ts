@@ -46,7 +46,8 @@ export const config: Config = {
       type: 'dist',
       esmLoaderPath: '../loader',
       copy: [
-        { src: '../../../node_modules/material-icons/iconfont/material-icons*.*', dest: '.', warn: true },
+        { src: '../../../node_modules/@fontsource/material-icons/files/*', dest: './files', warn: true },
+        { src: '../../../node_modules/@fontsource/material-icons-outlined/files/*', dest: './files', warn: true },
         { src: '../../../node_modules/@fontsource/noto-sans/files/*', dest: './files', warn: true },
         { src: './assets/**/*', dest: '.', warn: true, keepDirStructure: true },
       ],
@@ -71,7 +72,8 @@ export const config: Config = {
       type: 'www',
       serviceWorker: null, // disable service workers
       copy: [
-        { src: '../../../node_modules/material-icons/iconfont/material-icons*.*', dest: 'build', warn: true },
+        { src: '../../../node_modules/@fontsource/material-icons/files/*', dest: 'build/files', warn: true },
+        { src: '../../../node_modules/@fontsource/material-icons-outlined/files/*', dest: 'build/files', warn: true },
         { src: '../../../node_modules/@fontsource/noto-sans/files/*', dest: 'build/files', warn: true },
         { src: '**/*.html' },
       ],
