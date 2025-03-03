@@ -39,7 +39,7 @@
     "codeclean": "npm run lint:fix && npm run prettier:fix"
   },
   "dependencies": {
-    "@stencil/core": "^4.26.0",
+    "@stencil/core": "4.26.0",
     "@types/resize-observer-browser": "^0.1.5"
   },
   "devDependencies": {
@@ -51,7 +51,7 @@
     "@stencil/angular-output-target": "0.x",
     "@stencil/react-output-target": "^0.8.2",
     "@stencil/vue-output-target": "0.x",
-    "@stencil/sass": "^3.0.7",
+    "@stencil/sass": "3.0.12",
     "@typescript-eslint/eslint-plugin": "^7.0.0",
     "@typescript-eslint/parser": "^7.0.0",
     "replace-in-file": "^6.3.5",
