@@ -470,19 +470,6 @@ export class SixDropdown {
       | undefined;
   }
 
-  /**
-   * Instructs the dropdown menu to reposition. Useful when the position or size of the trigger changes when the menu
-   * is activated.
-   *
-   * @deprecated: use the property `matchTriggerWidth` instead.
-   */
-  @Method()
-  async reposition() {
-    if (this.open && this.popover != null) {
-      this.popover.reposition();
-    }
-  }
-
   private handleDocumentKeyDown = (event: Event) => {
     const keyboardEvent = event as KeyboardEvent;
     // Close when escape is pressed
