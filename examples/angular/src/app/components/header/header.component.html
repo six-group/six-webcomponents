@@ -1,4 +1,4 @@
-<six-header custom #header>
+<six-header #header>
   <!-- hamburger menu -->
   <six-header-item>
     <six-icon-button [name]="open ? 'menu_open' : 'menu'" (click)="leftSidebarToggled.emit()" />
@@ -31,7 +31,10 @@
 
   <!-- App Switcher -->
   <six-header-dropdown-item>
-    <six-header-menu-button slot="trigger" icon="apps">{{ currentApp }}</six-header-menu-button>
+    <six-header-menu-button slot="trigger">
+      <span>{{ currentApp }}</span>
+      <six-icon slot="suffix">apps</six-icon>
+    </six-header-menu-button>
     <six-menu>
       <six-menu-item *ngFor="let app of apps" [checked]="app === currentApp" (click)="currentApp = app">
         {{ app }}

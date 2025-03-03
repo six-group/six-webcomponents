@@ -1,18 +1,19 @@
 <script setup lang="ts">
 import {
+  SixAvatar,
   SixHeader,
+  SixHeaderDropdownItem,
   SixHeaderItem,
+  SixHeaderMenuButton,
+  SixIcon,
   SixIconButton,
+  SixLogo,
+  SixMenu,
+  SixMenuItem,
   SixRoot,
   SixSearchField,
   SixSidebar,
   SixSidebarItemGroup,
-  SixHeaderDropdownItem,
-  SixMenu,
-  SixMenuItem,
-  SixLogo,
-  SixAvatar,
-  SixHeaderMenuButton,
 } from '@six-group/ui-library-vue';
 import { ref } from 'vue';
 import { RouterView } from 'vue-router';
@@ -27,7 +28,7 @@ const searchActive = ref(false);
 
 <template>
   <six-root>
-    <six-header custom slot="header" :openSearch="searchActive">
+    <six-header slot="header" :openSearch="searchActive">
       <!-- hamburger menu -->
       <six-header-item>
         <six-icon-button :name="leftSidebarOpen ? 'menu_open' : 'menu'" @click="leftSidebarOpen = !leftSidebarOpen" />
@@ -50,7 +51,10 @@ const searchActive = ref(false);
 
       <!-- App Switcher -->
       <six-header-dropdown-item>
-        <six-header-menu-button slot="trigger" icon="apps">{{ activeApp }}</six-header-menu-button>
+        <six-header-menu-button slot="trigger">
+          <span>{{ activeApp }}</span>
+          <six-icon slot="suffix">apps</six-icon>
+        </six-header-menu-button>
         <six-menu>
           <six-menu-item v-for="app of apps" :checked="activeApp === app" :value="app" @click="activeApp = app">
             {{ app }}

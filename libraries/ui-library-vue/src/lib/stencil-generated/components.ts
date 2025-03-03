@@ -237,23 +237,15 @@ export const SixGroupLabel = /*@__PURE__*/ defineContainer<JSX.SixGroupLabel>('s
 
 
 export const SixHeader = /*@__PURE__*/ defineContainer<JSX.SixHeader>('six-header', undefined, [
-  'custom',
   'shiftContent',
-  'hideHamburgerMenu',
-  'openHamburgerMenu',
-  'openSearch',
-  'clickableLogo',
-  'logo',
-  'six-header-app-name-clicked',
-  'six-header-app-switcher-select',
-  'six-header-profile-select',
-  'six-header-hamburger-menu-clicked',
-  'six-header-logo-clicked',
-  'six-header-search-field-toggle'
+  'openSearch'
 ]);
 
 
-export const SixHeaderDropdownItem = /*@__PURE__*/ defineContainer<JSX.SixHeaderDropdownItem>('six-header-dropdown-item', undefined);
+export const SixHeaderDropdownItem = /*@__PURE__*/ defineContainer<JSX.SixHeaderDropdownItem>('six-header-dropdown-item', undefined, [
+  'filter',
+  'filterPlaceholder'
+]);
 
 
 export const SixHeaderItem = /*@__PURE__*/ defineContainer<JSX.SixHeaderItem>('six-header-item', undefined, [
@@ -262,7 +254,11 @@ export const SixHeaderItem = /*@__PURE__*/ defineContainer<JSX.SixHeaderItem>('s
 
 
 export const SixHeaderMenuButton = /*@__PURE__*/ defineContainer<JSX.SixHeaderMenuButton>('six-header-menu-button', undefined, [
-  'icon'
+  'caret',
+  'disabled',
+  'loading',
+  'submit',
+  'reset'
 ]);
 
 
@@ -465,7 +461,6 @@ export const SixSelect = /*@__PURE__*/ defineContainer<JSX.SixSelect, JSX.SixSel
   'multiple',
   'selectAllButton',
   'selectAllText',
-  'maxTagsVisible',
   'disabled',
   'name',
   'placeholder',

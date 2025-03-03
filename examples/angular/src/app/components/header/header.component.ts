@@ -17,8 +17,8 @@ export class HeaderComponent {
 
   language: Language;
   languages: Language[] = [...languages];
-  apps = ['App 1', 'App 2', 'App 3', 'App 4'];
-  currentApp = 'App 1';
+  apps = ['Application 1', 'Application 2', 'Application 3', 'Application 4'];
+  currentApp = 'Application 1';
 
   constructor() {
     let lang = localStorage.getItem('six-lang') as Language;

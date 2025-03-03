@@ -30,7 +30,6 @@
  - [six-dropdown](../six-dropdown)
  - [six-file-list-item](../six-file-list-item)
  - [six-file-upload](../six-file-upload)
- - [six-header-menu-button](../six-header-menu-button)
  - [six-icon-button](../six-icon-button)
  - [six-input](../six-input)
  - [six-item-picker](../six-item-picker)
@@ -51,7 +50,6 @@ graph TD;
   six-dropdown --> six-icon
   six-file-list-item --> six-icon
   six-file-upload --> six-icon
-  six-header-menu-button --> six-icon
   six-icon-button --> six-icon
   six-input --> six-icon
   six-item-picker --> six-icon
