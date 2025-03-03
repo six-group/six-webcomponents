@@ -43,6 +43,7 @@ export default withMermaid({
         {
           items: [
             { text: 'Introduction', link: '/guide/readme' },
+            { text: 'Upgrade to v5', link: '/guide/upgrade-v5' },
             { text: 'Upgrade to v4', link: '/guide/upgrade-v4' },
             { text: 'Design', link: '/guide/design' },
             { text: 'Architecture', link: '/guide/architecture' },
