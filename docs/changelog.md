@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- **⚠️Experimental**: Support for React output target The SIX Webcomponents are now supporting a
+  React output target. We recommend to use the library with Next.js
+- **⚠️Experimental**: Added example Next.js app for the use of the React library
+
 - [Documentation](guide/angular.md) for using web components with Angular's standalone bootstrapping
 - `six-header-dropdown`: Added `filter` and `filterPlaceholder` properties.
 - `six-header-menu-button`: Added `caret`, `disabled`, `loading`, `submit` and `reset` properties.
