@@ -493,17 +493,6 @@ Type: `Promise<void>`
 
 
 
-### `reposition() => Promise<void>`
-
-<span style="color:red">**[DEPRECATED]**</span> : use the property `matchTriggerWidth` instead.<br/><br/>Instructs the dropdown menu to reposition. Useful when the position or size of the trigger changes when the menu
-is activated.
-
-#### Returns
-
-Type: `Promise<void>`
-
-
-
 ### `show() => Promise<void>`
 
 Shows the dropdown panel
@@ -538,7 +527,6 @@ Type: `Promise<void>`
 
 ### Used by
 
- - [six-header](six-header.html)
  - [six-header-dropdown-item](six-header-dropdown-item.html)
  - [six-select](six-select.html)
 
@@ -562,7 +550,6 @@ graph TD;
   six-input --> six-icon
   six-input --> six-error
   six-menu --> six-menu-item
-  six-header --> six-dropdown
   six-header-dropdown-item --> six-dropdown
   six-select --> six-dropdown
   style six-dropdown fill:#f9f,stroke:#333,stroke-width:4px
