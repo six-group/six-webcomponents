@@ -8,7 +8,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- [Documentation](guide/angular.md) for using web components with Angular's standalone bootstrapping
+- `six-header-dropdown`: Added `filter` and `filterPlaceholder` properties.
+- `six-header-menu-button`: Added `caret`, `disabled`, `loading`, `submit` and `reset` properties.
+- `six-header-menu-button`: Added `suffix` and `prefix` slots.
+
 ### Removed
+
+- **⚠️Breaking**: Removed most slots, properties and events on the `six-header` component. Replaced
+  with a flexible approach for customization, allowing the header to be composed in a modular way
+  using child elements such as `six-header-item`, `six-header-dropdown-item`,
+  `six-header-menu-button`, and `six-logo`. Check the [upgrade guide](guide/upgrade-v5.md) for
+  detailed instructions.
+- **⚠️Breaking**: Removed the previously deprecated `reposition()` method of the `six-dropdown`
+  component. You can use the `matchTriggerWidth` property instead.
+- **⚠️Breaking**: Removed the previously deprecated tag `maxTagsVisible` of the `six-select`
+  component.
 
 ### Changed
 

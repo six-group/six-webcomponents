@@ -19,19 +19,6 @@
 | `--height` | The height of the logo. |
 
 
-## Dependencies
-
-### Used by
-
- - [six-header](../six-header)
-
-### Graph
-```mermaid
-graph TD;
-  six-header --> six-logo
-  style six-logo fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 Copyright © 2021-present SIX-Group

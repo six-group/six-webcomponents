@@ -8,7 +8,7 @@ Header dropdown items provide dropdown elements in the header. Sets the active f
 <docs-demo-six-header-dropdown-item-0></docs-demo-six-header-dropdown-item-0>
 
 ```html
-<six-header custom>
+<six-header>
   <six-header-item>
     <six-logo></six-logo>
   </six-header-item>
@@ -27,6 +27,14 @@ Header dropdown items provide dropdown elements in the header. Sets the active f
 
 
 <!-- Auto Generated Below -->
+
+
+## Properties
+
+| Property            | Attribute            | Description                                                                                                                                                                                                                                            | Type      | Default       |
+| ------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------- | ------------- |
+| `filter`            | `filter`             | Set to true to allow auto filtering for entries in the dropdown. With this flag the dropdown will automatically filter itsel. If you need to coordinate the shown elements yourself, e.g. because you need to call an endpoint use asyncFilter instead | `boolean` | `false`       |
+| `filterPlaceholder` | `filter-placeholder` | The filter's placeholder text.                                                                                                                                                                                                                         | `string`  | `'Filter...'` |
 
 
 ## Dependencies

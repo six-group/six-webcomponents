@@ -2,7 +2,7 @@ import { Component, h, Host, Prop } from '@stencil/core';
 
 /**
  * @since 4.2.7
- * @status beta
+ * @status stable
  */
 
 @Component({
@@ -22,12 +22,7 @@ export class SixHeaderItem {
 
   render() {
     return (
-      <Host
-        class={{
-          'six-header-item--active': this.active,
-          foo: true,
-        }}
-      >
+      <Host class={{ 'six-header-item--active': this.active }}>
         <slot />
       </Host>
     );
