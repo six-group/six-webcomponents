@@ -2,16 +2,12 @@
 
 import Image from 'next/image';
 import styles from './page.module.css';
-import { SixButton } from '@six-group/ui-library-react';
 
-const SixButtonComponent = SixButton as React.ComponentType<any>;
+// const SixButtonComponent = SixButton as React.ComponentType<any>;
 
 export default function Home() {
   return (
     <div className={styles.page}>
-      <SixButtonComponent type="action" size="large" onClick={() => alert('Button clicked')}>
-        Button
-      </SixButtonComponent>
       <main className={styles.main}>
         <Image className={styles.logo} src="/next.svg" alt="Next.js logo" width={180} height={38} priority />
         <ol>

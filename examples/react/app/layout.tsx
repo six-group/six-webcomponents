@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import { SixRoot } from '@six-group/ui-library-react';
+import Header from '@/app/components/header';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -13,7 +15,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <SixRoot>
+          <Header open={false} taskCount={1} />
+          <main>{children}</main>
+        </SixRoot>
+      </body>
     </html>
   );
 }
