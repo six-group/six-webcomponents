@@ -9,16 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@six-group/ui-library": "*",
+    "@six-group/ui-library-react": "*",
+    "next": "15.2.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "next": "15.2.1",
-    "@six-group/ui-library-react": "*",
-    "@six-group/ui-library": "*"
+    "sass": "^1.85.1"
   },
   "devDependencies": {
-    "typescript": "^5",
     "@types/node": "^20",
     "@types/react": "^19",
-    "@types/react-dom": "^19"
+    "@types/react-dom": "^19",
+    "typescript": "^5"
   }
 }

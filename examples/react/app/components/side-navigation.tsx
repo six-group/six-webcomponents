@@ -6,7 +6,7 @@ interface NavigationProps {
 
 export default function SideNavigation({ open }: NavigationProps) {
   return (
-    <SixSidebar position="left" open={open}>
+    <SixSidebar slot="left-sidebar" position="left" open={open}>
       <SixSidebarItemGroup name="Home" icon="home"></SixSidebarItemGroup>
       <SixSidebarItemGroup name="Form" icon="assignment"></SixSidebarItemGroup>
       <SixSidebarItemGroup name="Alert" icon="notifications_active"></SixSidebarItemGroup>
