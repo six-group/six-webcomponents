@@ -7,7 +7,7 @@
 
 /* eslint-disable */
 
-import { type EmptyPayload, type SixAlertCustomEvent, type SixButtonCustomEvent, type SixCheckboxCustomEvent, type SixDatepickerCustomEvent, type SixDatepickerSelectPayload, type SixDetailsCustomEvent, type SixDialogCustomEvent, type SixDrawerCustomEvent, type SixDropdownAsyncFilterPayload, type SixDropdownAutoFilterPayload, type SixDropdownCustomEvent, type SixDropdownScrollPayload, type SixFileListDownloadPayload, type SixFileListItemCustomEvent, type SixFileListRemovePayload, type SixFileUploadCustomEvent, type SixFileUploadFailurePayload, type SixFileUploadSuccessPayload, type SixHeaderAppSwitcherSelectPayload, type SixHeaderCustomEvent, type SixHeaderProfileSelectPayload, type SixHeaderSearchFieldToggle, type SixInputCustomEvent, type SixItemPickerChangePayload, type SixItemPickerCustomEvent, type SixLanguageSwitcherChangePayload, type SixLanguageSwitcherCustomEvent, type SixMenuCustomEvent, type SixMenuItemSelectedPayload, type SixRadioCustomEvent, type SixRangeCustomEvent, type SixSearchFieldChangePayload, type SixSearchFieldCustomEvent, type SixSelectChangePayload, type SixSelectCustomEvent, type SixSidebarCustomEvent, type SixSwitchCustomEvent, type SixTabCustomEvent, type SixTabGroupCustomEvent, type SixTabHidePayload, type SixTabShowPayload, type SixTagCustomEvent, type SixTextareaCustomEvent, type SixTileCustomEvent, type SixTimepickerChange, type SixTimepickerCustomEvent, type SixTooltipCustomEvent } from "@six-group/ui-library";
+import { type EmptyPayload, type SixAlertCustomEvent, type SixButtonCustomEvent, type SixCheckboxCustomEvent, type SixDatepickerCustomEvent, type SixDatepickerSelectPayload, type SixDetailsCustomEvent, type SixDialogCustomEvent, type SixDrawerCustomEvent, type SixDropdownAsyncFilterPayload, type SixDropdownAutoFilterPayload, type SixDropdownCustomEvent, type SixDropdownScrollPayload, type SixFileListDownloadPayload, type SixFileListItemCustomEvent, type SixFileListRemovePayload, type SixFileUploadCustomEvent, type SixFileUploadFailurePayload, type SixFileUploadSuccessPayload, type SixInputCustomEvent, type SixItemPickerChangePayload, type SixItemPickerCustomEvent, type SixLanguageSwitcherChangePayload, type SixLanguageSwitcherCustomEvent, type SixMenuCustomEvent, type SixMenuItemSelectedPayload, type SixRadioCustomEvent, type SixRangeCustomEvent, type SixSearchFieldChangePayload, type SixSearchFieldCustomEvent, type SixSelectChangePayload, type SixSelectCustomEvent, type SixSidebarCustomEvent, type SixSwitchCustomEvent, type SixTabCustomEvent, type SixTabGroupCustomEvent, type SixTabHidePayload, type SixTabShowPayload, type SixTagCustomEvent, type SixTextareaCustomEvent, type SixTileCustomEvent, type SixTimepickerChange, type SixTimepickerCustomEvent, type SixTooltipCustomEvent } from "@six-group/ui-library";
 import { SixAlert as SixAlertElement, defineCustomElement as defineSixAlert } from "@six-group/ui-library/dist/components/six-alert.js";
 import { SixAvatar as SixAvatarElement, defineCustomElement as defineSixAvatar } from "@six-group/ui-library/dist/components/six-avatar.js";
 import { SixBadge as SixBadgeElement, defineCustomElement as defineSixBadge } from "@six-group/ui-library/dist/components/six-badge.js";
@@ -364,28 +364,14 @@ export const SixGroupLabel: StencilReactComponent<SixGroupLabelElement, SixGroup
     defineCustomElement: defineSixGroupLabel
 });
 
-type SixHeaderEvents = {
-    onSixHeaderAppNameClicked: EventName<SixHeaderCustomEvent<EmptyPayload>>,
-    onSixHeaderAppSwitcherSelect: EventName<SixHeaderCustomEvent<SixHeaderAppSwitcherSelectPayload>>,
-    onSixHeaderProfileSelect: EventName<SixHeaderCustomEvent<SixHeaderProfileSelectPayload>>,
-    onSixHeaderHamburgerMenuClicked: EventName<SixHeaderCustomEvent<EmptyPayload>>,
-    onSixHeaderLogoClicked: EventName<SixHeaderCustomEvent<EmptyPayload>>,
-    onSixHeaderSearchFieldToggle: EventName<SixHeaderCustomEvent<SixHeaderSearchFieldToggle>>
-};
+type SixHeaderEvents = NonNullable<unknown>;
 
 export const SixHeader: StencilReactComponent<SixHeaderElement, SixHeaderEvents> = /*@__PURE__*/ createComponent<SixHeaderElement, SixHeaderEvents>({
     tagName: 'six-header',
     elementClass: SixHeaderElement,
     // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
     react: React,
-    events: {
-        onSixHeaderAppNameClicked: 'six-header-app-name-clicked',
-        onSixHeaderAppSwitcherSelect: 'six-header-app-switcher-select',
-        onSixHeaderProfileSelect: 'six-header-profile-select',
-        onSixHeaderHamburgerMenuClicked: 'six-header-hamburger-menu-clicked',
-        onSixHeaderLogoClicked: 'six-header-logo-clicked',
-        onSixHeaderSearchFieldToggle: 'six-header-search-field-toggle'
-    } as SixHeaderEvents,
+    events: {} as SixHeaderEvents,
     defineCustomElement: defineSixHeader
 });
 
