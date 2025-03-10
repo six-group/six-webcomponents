@@ -1,6 +1,8 @@
+import styles from './home.module.scss';
+
 export default function Home() {
   return (
-    <div>
+    <div style={styles} className="home-root">
       <h1>Demo</h1>
       <p>
         <b>React Demo with Next.js </b> using
