@@ -13,6 +13,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - `six-header-menu-button`: Added `caret`, `disabled`, `loading`, `submit` and `reset` properties.
 - `six-header-menu-button`: Added `suffix` and `prefix` slots.
 
+### Fixed
+
+- `six-logo`: removed inline style tag
+
 ### Removed
 
 - **⚠️Breaking**: Removed most slots, properties and events on the `six-header` component. Replaced
