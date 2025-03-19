@@ -84,10 +84,4 @@ six-badge:not([type='danger'])::part(base) {
   background: none;
 }
 
-[slot='main'] {
-  padding-left: var(--six-spacing-xxx-large);
-  padding-right: var(--six-spacing-xxx-large);
-  padding-top: var(--six-spacing-xx-large);
-}
-
 @import '@six-group/ui-library/dist/ui-library/ui-library.css';
