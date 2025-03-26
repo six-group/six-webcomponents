@@ -24,6 +24,7 @@ import {
   createNewCalendarGrid,
   day,
   formatDate,
+  getCurrentDateAsPointer,
   getFirstDayOfTheWeekNew,
   hours,
   i18nDate,
@@ -33,7 +34,6 @@ import {
   month,
   now,
   parseDate,
-  PointerDate,
   rangeAround,
   removeTime,
   seconds,
@@ -89,7 +89,7 @@ export class SixDate {
 
   @Element() host!: HTMLSixDateElement;
 
-  @State() private pointerDate = SixDate.getCurrentDateAsPointer();
+  @State() private pointerDate = getCurrentDateAsPointer();
   @State() selectionMode: SelectionMode = 'day';
   @State() isDropDownContentUp = false;
 
@@ -262,7 +262,7 @@ export class SixDate {
     return getFirstDayOfTheWeekNew(date.toLocaleDateString());
   }
 
-  /** Sets focus on the datepickers input. */
+  /** Sets focus on the datepicker input. */
   @Method()
   async setFocus(options?: FocusOptions) {
     this.inputElement?.setFocus(options);
@@ -764,16 +764,5 @@ export class SixDate {
 
   disconnectedCallback() {
     this.eventListeners.removeAll();
-  }
-
-  private static getCurrentDateAsPointer(): PointerDate {
-    return {
-      year: year(now()),
-      month: month(now()),
-      day: day(now()),
-      hours: hours(now()),
-      minutes: minutes(now()),
-      seconds: seconds(now()),
-    };
   }
 }

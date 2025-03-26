@@ -76,6 +76,38 @@ export const SixCheckbox = /*@__PURE__*/ defineContainer<JSX.SixCheckbox, JSX.Si
 'checked', 'change');
 
 
+export const SixDate = /*@__PURE__*/ defineContainer<JSX.SixDate>('six-date', undefined, [
+  'locale',
+  'open',
+  'inline',
+  'readonly',
+  'disabled',
+  'allowedDates',
+  'min',
+  'max',
+  'placement',
+  'size',
+  'required',
+  'defaultDate',
+  'placeholder',
+  'value',
+  'label',
+  'errorText',
+  'errorTextCount',
+  'invalid',
+  'containingElement',
+  'dateFormat',
+  'debounce',
+  'name',
+  'clearable',
+  'iconPosition',
+  'hoist',
+  'six-date-select',
+  'six-date-clear',
+  'six-date-blur'
+]);
+
+
 export const SixDatepicker = /*@__PURE__*/ defineContainer<JSX.SixDatepicker, JSX.SixDatepicker["value"]>('six-datepicker', undefined, [
   'type',
   'locale',
@@ -170,6 +202,7 @@ export const SixDropdown = /*@__PURE__*/ defineContainer<JSX.SixDropdown>('six-d
   'filterDebounce',
   'disableHideOnEnterAndSpace',
   'options',
+  'showOverflow',
   'virtualScroll',
   'matchTriggerWidth',
   'six-dropdown-show',
@@ -634,6 +667,7 @@ export const SixTimepicker = /*@__PURE__*/ defineContainer<JSX.SixTimepicker>('s
   'inline',
   'readonly',
   'disabled',
+  'disableSizing',
   'placement',
   'size',
   'required',

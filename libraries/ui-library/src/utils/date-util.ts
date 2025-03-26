@@ -932,3 +932,14 @@ export function rangeAround(number: number, range: number): number[][] {
       return curr;
     }, [] as number[][]);
 }
+
+export function getCurrentDateAsPointer(): PointerDate {
+  return {
+    year: year(now()),
+    month: month(now()),
+    day: day(now()),
+    hours: hours(now()),
+    minutes: minutes(now()),
+    seconds: seconds(now()),
+  };
+}

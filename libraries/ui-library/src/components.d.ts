@@ -371,7 +371,7 @@ export namespace Components {
          */
         "select": (datestring?: string) => Promise<void>;
         /**
-          * Sets focus on the datepickers input.
+          * Sets focus on the datepicker input.
          */
         "setFocus": (options?: FocusOptions) => Promise<void>;
         /**

@@ -190,6 +190,46 @@ export declare interface SixCheckbox extends Components.SixCheckbox {
 
 
 @ProxyCmp({
+  inputs: ['allowedDates', 'clearable', 'containingElement', 'dateFormat', 'debounce', 'defaultDate', 'disabled', 'errorText', 'errorTextCount', 'hoist', 'iconPosition', 'inline', 'invalid', 'label', 'locale', 'max', 'min', 'name', 'open', 'placeholder', 'placement', 'readonly', 'required', 'size', 'value'],
+  methods: ['setFocus', 'select']
+})
+@Component({
+  selector: 'six-date',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['allowedDates', 'clearable', 'containingElement', 'dateFormat', 'debounce', 'defaultDate', 'disabled', 'errorText', 'errorTextCount', 'hoist', 'iconPosition', 'inline', 'invalid', 'label', 'locale', 'max', 'min', 'name', 'open', 'placeholder', 'placement', 'readonly', 'required', 'size', 'value'],
+})
+export class SixDate {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['six-date-select', 'six-date-clear', 'six-date-blur']);
+  }
+}
+
+
+import type { SixDateSelectPayload as ISixDateSixDateSelectPayload } from '@six-group/ui-library';
+import type { EmptyPayload as ISixDateEmptyPayload } from '@six-group/ui-library';
+
+export declare interface SixDate extends Components.SixDate {
+  /**
+   * Emitted when a option got selected.
+   */
+  'six-date-select': EventEmitter<CustomEvent<ISixDateSixDateSelectPayload>>;
+  /**
+   * Emitted when the clear button is activated.
+   */
+  'six-date-clear': EventEmitter<CustomEvent<ISixDateEmptyPayload>>;
+  /**
+   * Emitted when a option got selected.
+   */
+  'six-date-blur': EventEmitter<CustomEvent<ISixDateSixDateSelectPayload>>;
+}
+
+
+@ProxyCmp({
   inputs: ['allowedDates', 'clearable', 'closeOnSelect', 'containingElement', 'dateFormat', 'debounce', 'defaultDate', 'disabled', 'errorText', 'errorTextCount', 'hoist', 'iconPosition', 'inline', 'invalid', 'label', 'locale', 'max', 'min', 'name', 'open', 'placeholder', 'placement', 'readonly', 'required', 'size', 'type', 'value'],
   methods: ['setFocus', 'select']
 })
@@ -377,15 +417,15 @@ allow you to set it on a different element in the drawer, such as an input or bu
 
 
 @ProxyCmp({
-  inputs: ['asyncFilter', 'autofocusFilter', 'closeOnSelect', 'containingElement', 'disableHideOnEnterAndSpace', 'distance', 'filter', 'filterDebounce', 'filterPlaceholder', 'hoist', 'matchTriggerWidth', 'open', 'options', 'placement', 'skidding', 'virtualScroll'],
-  methods: ['show', 'hide']
+  inputs: ['asyncFilter', 'autofocusFilter', 'closeOnSelect', 'containingElement', 'disableHideOnEnterAndSpace', 'distance', 'filter', 'filterDebounce', 'filterPlaceholder', 'hoist', 'matchTriggerWidth', 'open', 'options', 'placement', 'showOverflow', 'skidding', 'virtualScroll'],
+  methods: ['show', 'hide', 'reposition']
 })
 @Component({
   selector: 'six-dropdown',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['asyncFilter', 'autofocusFilter', 'closeOnSelect', 'containingElement', 'disableHideOnEnterAndSpace', 'distance', 'filter', 'filterDebounce', 'filterPlaceholder', 'hoist', 'matchTriggerWidth', 'open', 'options', 'placement', 'skidding', 'virtualScroll'],
+  inputs: ['asyncFilter', 'autofocusFilter', 'closeOnSelect', 'containingElement', 'disableHideOnEnterAndSpace', 'distance', 'filter', 'filterDebounce', 'filterPlaceholder', 'hoist', 'matchTriggerWidth', 'open', 'options', 'placement', 'showOverflow', 'skidding', 'virtualScroll'],
 })
 export class SixDropdown {
   protected el: HTMLElement;
@@ -1625,7 +1665,7 @@ export declare interface SixTile extends Components.SixTile {
 
 
 @ProxyCmp({
-  inputs: ['clearable', 'debounce', 'defaultTime', 'disabled', 'errorText', 'errorTextCount', 'format', 'hoist', 'iconPosition', 'inline', 'interval', 'invalid', 'label', 'name', 'open', 'placeholder', 'placement', 'readonly', 'required', 'separator', 'size', 'timeout', 'value'],
+  inputs: ['clearable', 'debounce', 'defaultTime', 'disableSizing', 'disabled', 'errorText', 'errorTextCount', 'format', 'hoist', 'iconPosition', 'inline', 'interval', 'invalid', 'label', 'name', 'open', 'placeholder', 'placement', 'readonly', 'required', 'separator', 'size', 'timeout', 'value'],
   methods: ['setFocus']
 })
 @Component({
@@ -1633,7 +1673,7 @@ export declare interface SixTile extends Components.SixTile {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['clearable', 'debounce', 'defaultTime', 'disabled', 'errorText', 'errorTextCount', 'format', 'hoist', 'iconPosition', 'inline', 'interval', 'invalid', 'label', 'name', 'open', 'placeholder', 'placement', 'readonly', 'required', 'separator', 'size', 'timeout', 'value'],
+  inputs: ['clearable', 'debounce', 'defaultTime', 'disableSizing', 'disabled', 'errorText', 'errorTextCount', 'format', 'hoist', 'iconPosition', 'inline', 'interval', 'invalid', 'label', 'name', 'open', 'placeholder', 'placement', 'readonly', 'required', 'separator', 'size', 'timeout', 'value'],
 })
 export class SixTimepicker {
   protected el: HTMLElement;
