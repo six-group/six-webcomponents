@@ -30,6 +30,7 @@
     "libraries/ui-library-vue",
     "examples/angular",
     "examples/vue",
+    "examples/nuxt",
     "examples/js",
     "docs"
   ],
