@@ -113,12 +113,12 @@ describe('six-dropdown', () => {
     expect(page.root).toEqualHtml(`
     <six-dropdown>
       <mock:shadow-root>
-        <div class="dropdown" id="dropdown-4" part="base">
+        <div class="dropdown" id="dropdown-1" part="base">
           <span class="dropdown__trigger" part="trigger">
             <slot name="trigger"></slot>
           </span>
           <div class="dropdown__positioner" hidden="">
-            <div aria-hidden="true" aria-labelledby="dropdown-4" class="dropdown__panel" part="panel" role="menu">
+            <div aria-hidden="true" aria-labelledby="dropdown-1" class="dropdown__panel" part="panel" role="menu">
               <div class="dropdown__panel__scroll">
                 <slot></slot>
                 <six-menu part="menu">
