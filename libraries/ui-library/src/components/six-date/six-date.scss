@@ -19,15 +19,8 @@
   }
 
   &__panel {
-    //opacity: 1;
-    //pointer-events: none;
-    //transform: scale(0.9);
-    //transition: var(--six-transition-fast) opacity, var(--six-transition-fast) transform;
-    //background-color: white;
     min-width: 400px;
     height: fit-content;
-    //padding: 0.5em 0.5em 1.5em;
-    //box-shadow: 0 2px 4px -1px rgb(0 0 0 / 20%), 0 4px 5px 0 rgb(0 0 0 / 14%), 0 1px 10px 0 rgb(0 0 0 / 12%);
   }
 }
 
@@ -149,10 +142,6 @@
 .input--empty .date-clear {
   visibility: hidden;
 }
-
-//.input--disabled {
-//  pointer-events: none;
-//}
 
 // Icon position
 .prefix {

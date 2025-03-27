@@ -19,7 +19,7 @@
  * - [ ] date-util loswerden und ersetzen mit https://github.com/dmtrKovalenko/date-io?
  *   - get rid of date formats
  */
-import { Component, Element, Event, EventEmitter, h, Listen, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Method, Prop, State, Watch } from '@stencil/core';
 import {
   createNewCalendarGrid,
   day,
@@ -49,12 +49,9 @@ import { SixDateFormats } from './six-date-formats';
 import { MonthSelection } from './components/month-selection';
 import { DaySelection } from './components/day-selection';
 import { YearSelection } from './components/year-selection';
-import { calcIsDropDownContentUp } from '../../utils/popover-util';
 import { Language } from '../../utils/error-messages';
 
 const NUMBER_OF_YEARS_SHOWN = 25;
-
-const MIN_POPUP_HEIGHT = 400;
 
 export type SixDateSelectPayload = string | undefined | null;
 
@@ -245,16 +242,6 @@ export class SixDate {
    */
   @Event({ eventName: 'six-date-blur' }) sixBlur!: EventEmitter<SixDateSelectPayload>;
 
-  @Listen('resize', { target: 'window' })
-  async resizeHandler() {
-    this.updateDropdownDirection();
-  }
-
-  @Listen('scroll', { target: 'window' })
-  async scrollHandler() {
-    this.updateDropdownDirection();
-  }
-
   get container() {
     return this.containingElement || this.host;
   }
@@ -281,21 +268,6 @@ export class SixDate {
       maxDate: this.max,
       pointerDate: this.pointerDate,
     });
-  }
-
-  private updateDropdownDirection() {
-    if (this.inputElement == null || this.wrapper == null) {
-      return;
-    }
-
-    // TODO: check if this is needed (it gets the input without label and help-text
-    if (this.inputElement.shadowRoot?.children[1]) {
-      this.isDropDownContentUp = calcIsDropDownContentUp(
-        this.inputElement!.shadowRoot!.children[1]!.children[1] as HTMLElement,
-        this.wrapper,
-        MIN_POPUP_HEIGHT
-      );
-    }
   }
 
   private getMonthStringForIndex(index: number) {
