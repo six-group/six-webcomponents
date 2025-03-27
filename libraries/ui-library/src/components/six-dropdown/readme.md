@@ -23,6 +23,7 @@
 | `open`                       | `open`                            | Indicates whether the dropdown is open. You can use this in lieu of the show/hide methods.                                                                                                                                                                            | `boolean`                                                                                                                                                            | `false`          |
 | `options`                    | --                                | Set the options to be shown in the dropdown (alternative to setting the elements via html)                                                                                                                                                                            | `SixMenuItemData[]`                                                                                                                                                  | `[]`             |
 | `placement`                  | `placement`                       | The preferred placement of the dropdown panel. Note that the actual placement may vary as needed to keep the panel inside the viewport.                                                                                                                               | `"bottom" \| "bottom-end" \| "bottom-start" \| "left" \| "left-end" \| "left-start" \| "right" \| "right-end" \| "right-start" \| "top" \| "top-end" \| "top-start"` | `'bottom-start'` |
+| `showOverflow`               | `show-overflow`                   | Defines if the overflow should be shown instead of there being a scrollbar.                                                                                                                                                                                           | `boolean`                                                                                                                                                            | `false`          |
 | `skidding`                   | `skidding`                        | The distance in pixels from which to offset the panel along its trigger.                                                                                                                                                                                              | `number`                                                                                                                                                             | `0`              |
 | `virtualScroll`              | `virtual-scroll`                  | Defines whether the menu list will be rendered virtually i.e. only the elements actually shown (and a couple around) are actually rendered in the DOM. If you use virtual scrolling pass the elements via prop instead of via slot.                                   | `boolean`                                                                                                                                                            | `false`          |
 
@@ -86,6 +87,7 @@ Type: `Promise<void>`
 
 ### Used by
 
+ - [six-date](../six-date)
  - [six-header-dropdown-item](../six-header-dropdown-item)
  - [six-select](../six-select)
 
@@ -109,6 +111,7 @@ graph TD;
   six-input --> six-icon
   six-input --> six-error
   six-menu --> six-menu-item
+  six-date --> six-dropdown
   six-header-dropdown-item --> six-dropdown
   six-select --> six-dropdown
   style six-dropdown fill:#f9f,stroke:#333,stroke-width:4px
