@@ -1,9 +1,9 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { isDate, isNil, isString } from './type-check';
-import { SixDateFormats } from '../components/six-datepicker/six-date-formats';
-import { CalendarCell } from '../components/six-datepicker/six-datepicker';
+import { isDate, isNil, isString } from '../../../utils/type-check';
+import { SixDateFormats } from '../six-date-formats';
+import { CalendarCell } from '../six-date';
 
 export type DateLocale = typeof i18nDate.en;
 export const i18nDate = {
@@ -134,6 +134,41 @@ export const i18nDate = {
   },
 };
 
+// interface Date {
+//   /**
+//    * Give a more precise return type to the method `toISOString()`:
+//    * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString
+//    */
+//   toISOString(): TDateISO;
+// }
+
+type TYear = `${number}${number}${number}${number}`;
+type TMonth = `${number}${number}`;
+type TDay = `${number}${number}`;
+type THours = `${number}${number}`;
+type TMinutes = `${number}${number}`;
+type TSeconds = `${number}${number}`;
+type TMilliseconds = `${number}${number}${number}`;
+
+/**
+ * Represent a string like `2021-01-08`
+ */
+export type TDateISODate = `${TYear}-${TMonth}-${TDay}`;
+
+/**
+ * Represent a string like `14:42:34.678`
+ */
+export type TDateISOTime = `${THours}:${TMinutes}:${TSeconds}.${TMilliseconds}`;
+
+/**
+ * Represent a string like `2021-01-08T14:42:34.678Z` (format: ISO 8601).
+ *
+ * It is not possible to type more precisely (list every possible values for months, hours etc) as
+ * it would result in a warning from TypeScript:
+ *   "Expression produces a union type that is too complex to represent. ts(2590)
+ */
+export type TDateISO = `${TDateISODate}T${TDateISOTime}Z`;
+
 /**
  * Returns a JS Date instance of the exact moment
  *
@@ -235,6 +270,13 @@ export const getFirstDayOfTheWeek = (date: Date) => {
   const day = new Date(date);
   day.setDate(day.getDate() - weekdayDiff[day.getDay()]);
   return day;
+};
+
+export const getFirstDayOfTheWeekNew = (date: string) => {
+  const weekdayDiff = [6, 0, 1, 2, 3, 4, 5];
+  const day = new Date(date);
+  day.setDate(day.getDate() - weekdayDiff[day.getDay()]);
+  return day.toISOString();
 };
 
 /**
@@ -825,6 +867,17 @@ export interface CalendarGridArgs {
   selectedDate?: Date;
 }
 
+export interface CalendarGridArgsNew {
+  firstDateOfBox: string;
+  minDate?: string;
+  maxDate?: string;
+  dateFormat: SixDateFormats;
+  pointerDate: { month: number; year: number; day: number };
+  allowedDates: (date: string) => boolean;
+  locale: 'en' | 'de' | 'fr' | 'it' | 'es';
+  selectedDate?: string;
+}
+
 export const createCalendarGrid: (calendarGridArguments: CalendarGridArgs) => CalendarCell[][] = (
   calendarGridArguments: CalendarGridArgs
 ) => {
@@ -860,6 +913,43 @@ export const createCalendarGrid: (calendarGridArguments: CalendarGridArgs) => Ca
   return calendar;
 };
 
+export const createNewCalendarGrid: (calendarGridArguments: CalendarGridArgsNew) => CalendarCell[][] = (
+  calendarGridArguments: CalendarGridArgsNew
+) => {
+  const { firstDateOfBox, allowedDates, dateFormat, selectedDate, minDate, maxDate, pointerDate } =
+    calendarGridArguments;
+
+  const weekDatePointer = new Date(firstDateOfBox);
+  const dayDatePointer = new Date(firstDateOfBox);
+
+  let calendar: CalendarCell[][] = [];
+
+  do {
+    let row: CalendarCell[] = [];
+    do {
+      row = [
+        ...row,
+        {
+          date: new Date(dayDatePointer),
+          display: formatDate(dayDatePointer, dateFormat),
+          dateString: dayDatePointer.toISOString(),
+          label: day(dayDatePointer).toString(),
+          isToday: isSameDay(dayDatePointer, now()),
+          isSelected: selectedDate && isSameDay(dayDatePointer, new Date(selectedDate)),
+          isDisabled: !allowedDates(dayDatePointer) || !isInRange(dayDatePointer, new Date(minDate), new Date(maxDate)),
+          isOutdated:
+            pointerDate.month !== dayDatePointer.getMonth() ||
+            !isInRange(dayDatePointer, new Date(minDate), new Date(maxDate)),
+        },
+      ];
+      dayDatePointer.setDate(dayDatePointer.getDate() + 1);
+    } while (isSameWeek(dayDatePointer, weekDatePointer));
+    calendar = [...calendar, row];
+    weekDatePointer.setDate(weekDatePointer.getDate() + 7);
+  } while (isSameMonth(new Date(pointerDate.year, pointerDate.month, pointerDate.day), dayDatePointer));
+  return calendar;
+};
+
 /**
  * Returns a range of numbers around the given number grouped into buckets of 5.
  * @param number the given number around which you want to get the other numbers
@@ -876,4 +966,15 @@ export function rangeAround(number: number, range: number): number[][] {
       curr[curr.length - 1].push(item);
       return curr;
     }, [] as number[][]);
+}
+
+export function getCurrentDateAsPointer(): PointerDate {
+  return {
+    year: year(now()),
+    month: month(now()),
+    day: day(now()),
+    hours: hours(now()),
+    minutes: minutes(now()),
+    seconds: seconds(now()),
+  };
 }

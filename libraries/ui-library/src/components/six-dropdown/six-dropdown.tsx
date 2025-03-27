@@ -543,11 +543,9 @@ export class SixDropdown {
   };
 
   private handleTriggerClick = () => {
-    console.log(this.ignoreTrigger);
     if (this.ignoreTrigger) {
       return;
     }
-    console.log('jfsduifhdsjkhfskd');
     this.open ? this.hide() : this.show();
   };
 

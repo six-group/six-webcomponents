@@ -40,7 +40,7 @@ import {
   TDateISODate,
   toDate,
   year,
-} from '../../utils/date-util';
+} from './utils/date-util';
 import { EventListeners } from '../../utils/event-listeners';
 import { debounce, debounceEvent, DEFAULT_DEBOUNCE_FAST } from '../../utils/execution-control';
 import { hasSlot } from '../../utils/slot';
