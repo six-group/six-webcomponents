@@ -14,17 +14,17 @@ export const MonthSelection = (monthSelectionParams: MonthSelectionParams) => {
     monthSelectionParams.selectedDate?.getMonth() === locale.monthsShort.findIndex((m) => m === value);
 
   return (
-    <table class="datepicker-table" part="month-selection">
+    <table class="date-table" part="month-selection">
       <tbody>
         {locale.monthsShortGrouped.map((row: string[]) => (
-          <tr class="datepicker-table__row">
+          <tr class="date-table__row">
             {row.map((month) => (
               <td
                 onClick={() => monthSelectionParams.onClickMonthCell(month)}
                 class={{
-                  'datepicker-table__cell': true,
-                  'datepicker-table__cell--is-today': isToday(month),
-                  'datepicker-table__cell--is-selected': isSelectedMonth(month),
+                  'date-table__cell': true,
+                  'date-table__cell--is-today': isToday(month),
+                  'date-table__cell--is-selected': isSelectedMonth(month),
                 }}
               >
                 {month}

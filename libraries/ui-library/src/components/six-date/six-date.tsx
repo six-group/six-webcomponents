@@ -37,6 +37,7 @@ import {
   rangeAround,
   removeTime,
   seconds,
+  TDateISODate,
   toDate,
   year,
 } from '../../utils/date-util';
@@ -126,14 +127,14 @@ export class SixDate {
   @Prop() allowedDates: (date: string) => boolean = () => true;
 
   /**
-   * The minimum date allowed. Value must be a date object
+   * The minimum date allowed. Value must be an iso-date string.
    */
-  @Prop() min?: string;
+  @Prop() min?: TDateISODate;
 
   /**
-   * The maximum date allowed. Value must be a date object
+   * The maximum date allowed.Value must be an iso-date string.
    */
-  @Prop() max?: string;
+  @Prop() max?: TDateISODate;
 
   /**
    * The enforced placement of the dropdown panel.
@@ -582,17 +583,17 @@ export class SixDate {
 
   private renderHeader() {
     return (
-      <header class="datepicker-header" part="header">
-        <div class="datepicker-header__btn prev" onClick={this.previousUnit}>
+      <header class="date-header" part="header">
+        <div class="date-header__btn prev" onClick={this.previousUnit}>
           <svg viewBox="0 5 13 13" width="14" height="23">
             <path d="M11.67 3.87L9.9 2.1 0 12l9.9 9.9 1.77-1.77L3.54 12z" />
           </svg>
         </div>
 
-        <div class="datepicker-header__label">
+        <div class="date-header__label">
           {this.selectionMode === 'day' && (
             <div onClick={() => (this.selectionMode = 'month')}>
-              <span class="datepicker-header__label-month">{this.getMonthStringForIndex(this.pointerDate.month)}</span>
+              <span class="date-header__label-month">{this.getMonthStringForIndex(this.pointerDate.month)}</span>
               <span>
                 <svg viewBox="-3 -4 24 24" width="20" height="20">
                   <polyline points="6 9 12 15 18 9" />
@@ -603,7 +604,7 @@ export class SixDate {
 
           {this.selectionMode !== 'year' && (
             <div onClick={() => (this.selectionMode = 'year')}>
-              <span class="datepicker-header__label-year">{this.pointerDate.year}</span>
+              <span class="date-header__label-year">{this.pointerDate.year}</span>
               <span>
                 <svg viewBox="-3 -4 24 24" width="20" height="20">
                   <polyline points="6 9 12 15 18 9" />
@@ -620,7 +621,7 @@ export class SixDate {
           )}
         </div>
 
-        <div class="datepicker-header__btn next" onClick={this.nextUnit}>
+        <div class="date-header__btn next" onClick={this.nextUnit}>
           <svg viewBox="5 5 13 13" width="14" height="23">
             <path d="M5.88 4.12L13.76 12l-7.88 7.88L8 22l10-10L8 2z" />
           </svg>
@@ -685,9 +686,9 @@ export class SixDate {
         <button
           slot="suffix"
           class={{
-            'datepicker-clear': true,
-            'datepicker-clear--right': this.iconPosition === 'left',
-            'datepicker-clear--left': this.iconPosition === 'right',
+            'date-clear': true,
+            'date-clear--right': this.iconPosition === 'left',
+            'date-clear--left': this.iconPosition === 'right',
           }}
           type="button"
           onClick={this.handleClearClick}
@@ -705,7 +706,7 @@ export class SixDate {
 
   render() {
     return (
-      <div ref={(el) => (this.wrapper = el)} class="datepicker__container">
+      <div ref={(el) => (this.wrapper = el)} class="date__container">
         <six-dropdown style={{ height: 'auto', width: '400px' }} hoist={true} showOverflow={true} open={this.open}>
           <six-input
             slot={'trigger'}
@@ -741,9 +742,9 @@ export class SixDate {
             ) : null}
           </six-input>
           <div>
-            <six-menu class="datepicker__panel">{[this.renderHeader(), this.renderBody()]}</six-menu>
+            <six-menu class="date__panel">{[this.renderHeader(), this.renderBody()]}</six-menu>
 
-            <div class="datepicker__footer">
+            <div class="date__footer">
               <slot />
             </div>
           </div>

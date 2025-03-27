@@ -8,6 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AlertType } from "./components/six-alert/six-alert";
 import { EmptyPayload } from "./utils/types";
 import { Language } from "./utils/error-messages";
+import { TDateISODate } from "./utils/date-util";
 import { SixDateFormats } from "./components/six-date/six-date-formats";
 import { SixDateSelectPayload } from "./components/six-date/six-date";
 import { SixDateFormats as SixDateFormats1 } from "./components/six-datepicker/six-date-formats";
@@ -31,6 +32,7 @@ import { SixTimepickerChange } from "./components/six-timepicker/six-timepicker"
 export { AlertType } from "./components/six-alert/six-alert";
 export { EmptyPayload } from "./utils/types";
 export { Language } from "./utils/error-messages";
+export { TDateISODate } from "./utils/date-util";
 export { SixDateFormats } from "./components/six-date/six-date-formats";
 export { SixDateSelectPayload } from "./components/six-date/six-date";
 export { SixDateFormats as SixDateFormats1 } from "./components/six-datepicker/six-date-formats";
@@ -335,13 +337,13 @@ export namespace Components {
          */
         "locale": Language;
         /**
-          * The maximum date allowed. Value must be a date object
+          * The maximum date allowed.Value must be an iso-date string.
          */
-        "max"?: string;
+        "max"?: TDateISODate;
         /**
-          * The minimum date allowed. Value must be a date object
+          * The minimum date allowed. Value must be an iso-date string.
          */
-        "min"?: string;
+        "min"?: TDateISODate;
         /**
           * The input's name attribute.
          */
@@ -3615,13 +3617,13 @@ declare namespace LocalJSX {
          */
         "locale"?: Language;
         /**
-          * The maximum date allowed. Value must be a date object
+          * The maximum date allowed.Value must be an iso-date string.
          */
-        "max"?: string;
+        "max"?: TDateISODate;
         /**
-          * The minimum date allowed. Value must be a date object
+          * The minimum date allowed. Value must be an iso-date string.
          */
-        "min"?: string;
+        "min"?: TDateISODate;
         /**
           * The input's name attribute.
          */
