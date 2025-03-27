@@ -16,6 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Fixed
 
 - `six-logo`: removed inline style tag
+- `six-timepicker`: removed unnecessary bottom padding
 
 ### Removed
 
