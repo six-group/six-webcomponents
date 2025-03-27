@@ -33,6 +33,7 @@
     "libraries/ui-library-react",
     "examples/angular",
     "examples/vue",
+    "examples/nuxt",
     "examples/js",
     "examples/react",
     "docs"
