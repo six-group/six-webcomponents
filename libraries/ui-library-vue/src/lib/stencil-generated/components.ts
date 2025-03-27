@@ -203,6 +203,7 @@ export const SixDropdown = /*@__PURE__*/ defineContainer<JSX.SixDropdown>('six-d
   'disableHideOnEnterAndSpace',
   'options',
   'showOverflow',
+  'ignoreTrigger',
   'virtualScroll',
   'matchTriggerWidth',
   'six-dropdown-show',

@@ -14,7 +14,7 @@
  * - [x] css cleanup (use webcomponents design tokens)
  * - [ ] value accessor kombinieren
  * - [ ] angular beispiel
- * - [ ] Datepicker shouldn't be able to open when disabled
+ * - [x] Datepicker shouldn't be able to open when disabled
  *
  * - [ ] date-util loswerden und ersetzen mit https://github.com/dmtrKovalenko/date-io?
  *   - get rid of date formats
@@ -679,7 +679,13 @@ export class SixDate {
   render() {
     return (
       <div ref={(el) => (this.wrapper = el)} class="date__container">
-        <six-dropdown style={{ height: 'auto', width: '400px' }} hoist={true} showOverflow={true} open={this.open}>
+        <six-dropdown
+          style={{ height: 'auto', width: '400px' }}
+          hoist={true}
+          showOverflow={true}
+          ignoreTrigger={true}
+          open={this.open}
+        >
           <six-input
             slot={'trigger'}
             value={this.getFormattedDateString(
