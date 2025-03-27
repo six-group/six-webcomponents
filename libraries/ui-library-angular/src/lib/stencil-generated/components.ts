@@ -418,7 +418,7 @@ allow you to set it on a different element in the drawer, such as an input or bu
 
 @ProxyCmp({
   inputs: ['asyncFilter', 'autofocusFilter', 'closeOnSelect', 'containingElement', 'disableHideOnEnterAndSpace', 'distance', 'filter', 'filterDebounce', 'filterPlaceholder', 'hoist', 'matchTriggerWidth', 'open', 'options', 'placement', 'showOverflow', 'skidding', 'virtualScroll'],
-  methods: ['show', 'hide', 'reposition']
+  methods: ['show', 'hide']
 })
 @Component({
   selector: 'six-dropdown',
