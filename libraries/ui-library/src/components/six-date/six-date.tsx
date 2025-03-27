@@ -37,6 +37,7 @@ import {
   rangeAround,
   removeTime,
   seconds,
+  toDate,
   year,
 } from '../../utils/date-util';
 import { EventListeners } from '../../utils/event-listeners';
@@ -259,7 +260,7 @@ export class SixDate {
 
   get firstDateOfBox(): string {
     const date = new Date(this.pointerDate.year, this.pointerDate.month, 1);
-    return getFirstDayOfTheWeekNew(date.toLocaleDateString());
+    return getFirstDayOfTheWeekNew(date.toISOString());
   }
 
   /** Sets focus on the datepicker input. */
@@ -449,7 +450,7 @@ export class SixDate {
       return this.selectedDate;
     }
     if (this.defaultDate == null) {
-      return removeTime(now()).toLocaleDateString();
+      return removeTime(now()).toISOString();
     } else {
       return this.defaultDate;
     }
@@ -489,15 +490,9 @@ export class SixDate {
     if (datestring == null) {
       this.updateValue(undefined);
     } else {
-      const dateParts = datestring.split('.'); // TODO: hacky fix because DD.MM.YYYY can't be parsed...
-      const yearPart = dateParts[2].split(' ');
-      // let timeParts = undefined
-      // if (yearPart.length > 1) {
-      //   timeParts = yearPart[1].split(":")
-      // }
-      const newDate = new Date(+yearPart[0], +dateParts[1] - 1, +dateParts[0]);
+      const newDate = new Date(datestring);
       newDate?.setHours(this.pointerDate.hours, this.pointerDate.minutes, this.pointerDate.seconds);
-      this.updateValue(newDate.toLocaleDateString());
+      this.updateValue(newDate.toISOString());
     }
 
     this.updatePointerDates();
@@ -538,7 +533,7 @@ export class SixDate {
 
     this.updateIfChanged(inputValue);
 
-    this.selectedDate = inputValue;
+    this.selectedDate = toDate(inputValue, this.dateFormat)?.toISOString();
     this.updatePointerDates();
   };
 

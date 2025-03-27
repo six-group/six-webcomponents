@@ -241,7 +241,7 @@ export const getFirstDayOfTheWeekNew = (date: string) => {
   const weekdayDiff = [6, 0, 1, 2, 3, 4, 5];
   const day = new Date(date);
   day.setDate(day.getDate() - weekdayDiff[day.getDay()]);
-  return day.toLocaleDateString();
+  return day.toISOString();
 };
 
 /**
@@ -897,7 +897,7 @@ export const createNewCalendarGrid: (calendarGridArguments: CalendarGridArgsNew)
         {
           date: new Date(dayDatePointer),
           display: formatDate(dayDatePointer, dateFormat),
-          dateString: formatDate(dayDatePointer, dateFormat),
+          dateString: dayDatePointer.toISOString(),
           label: day(dayDatePointer).toString(),
           isToday: isSameDay(dayDatePointer, now()),
           isSelected: selectedDate && isSameDay(dayDatePointer, new Date(selectedDate)),
