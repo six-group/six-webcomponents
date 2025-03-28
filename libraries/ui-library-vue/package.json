@@ -24,7 +24,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@stencil/vue-output-target": "0.9.5",
+    "@stencil/vue-output-target": "0.10.7",
     "@six-group/ui-library": "*"
   },
   "peerDependencies": {
