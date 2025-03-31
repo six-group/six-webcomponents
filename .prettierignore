@@ -9,6 +9,8 @@ libraries/**/components.d.ts
 libraries/ui-library/loader
 libraries/ui-library/docs
 .angular
+.nuxt
+.output
 stencil-generated
 docs/examples
 docs/components
