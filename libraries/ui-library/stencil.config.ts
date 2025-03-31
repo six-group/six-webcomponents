@@ -22,6 +22,9 @@ export const config: Config = {
       directivesArrayFile: '../ui-library-angular/src/lib/stencil-generated/index.ts',
     }),
     vueOutputTarget({
+      includePolyfills: false,
+      includeImportCustomElements: true,
+      includeDefineCustomElements: false,
       componentCorePackage: '@six-group/ui-library',
       proxiesFile: '../ui-library-vue/src/lib/stencil-generated/components.ts',
       componentModels: [
@@ -41,6 +44,7 @@ export const config: Config = {
           targetAttr: 'value',
         },
       ],
+      hydrateModule: '@six-group/ui-library/hydrate',
     }),
     {
       type: 'dist',
@@ -55,6 +59,10 @@ export const config: Config = {
     {
       type: 'dist-custom-elements',
       customElementsExportBehavior: 'bundle',
+    },
+    {
+      type: 'dist-hydrate-script',
+      dir: './hydrate',
     },
     {
       type: 'docs-readme',
