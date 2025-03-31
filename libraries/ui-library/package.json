@@ -39,7 +39,7 @@
     "codeclean": "npm run lint:fix && npm run prettier:fix"
   },
   "dependencies": {
-    "@stencil/core": "4.26.0",
+    "@stencil/core": "4.28.2",
     "@types/resize-observer-browser": "^0.1.5"
   },
   "devDependencies": {
