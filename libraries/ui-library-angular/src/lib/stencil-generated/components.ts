@@ -190,42 +190,37 @@ export declare interface SixCheckbox extends Components.SixCheckbox {
 
 
 @ProxyCmp({
-  inputs: ['allowedDates', 'clearable', 'containingElement', 'dateFormat', 'debounce', 'defaultDate', 'disabled', 'errorText', 'errorTextCount', 'hoist', 'iconPosition', 'inline', 'invalid', 'label', 'locale', 'max', 'min', 'name', 'open', 'placeholder', 'placement', 'readonly', 'required', 'size', 'value'],
-  methods: ['setFocus', 'select']
+  inputs: ['allowedDates', 'clearable', 'dateFormat', 'debounce', 'defaultDate', 'disabled', 'errorText', 'errorTextCount', 'invalid', 'label', 'language', 'max', 'min', 'name', 'placeholder', 'placement', 'readonly', 'required', 'size', 'value'],
+  methods: ['setFocus']
 })
 @Component({
   selector: 'six-date',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['allowedDates', 'clearable', 'containingElement', 'dateFormat', 'debounce', 'defaultDate', 'disabled', 'errorText', 'errorTextCount', 'hoist', 'iconPosition', 'inline', 'invalid', 'label', 'locale', 'max', 'min', 'name', 'open', 'placeholder', 'placement', 'readonly', 'required', 'size', 'value'],
+  inputs: ['allowedDates', 'clearable', 'dateFormat', 'debounce', 'defaultDate', 'disabled', 'errorText', 'errorTextCount', 'invalid', 'label', 'language', 'max', 'min', 'name', 'placeholder', 'placement', 'readonly', 'required', 'size', 'value'],
 })
 export class SixDate {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['six-date-select', 'six-date-clear', 'six-date-blur']);
+    proxyOutputs(this, this.el, ['sixChange', 'sixBlur']);
   }
 }
 
 
-import type { SixDateSelectPayload as ISixDateSixDateSelectPayload } from '@six-group/ui-library';
-import type { EmptyPayload as ISixDateEmptyPayload } from '@six-group/ui-library';
+import type { IsoDate as ISixDateIsoDate } from '@six-group/ui-library';
 
 export declare interface SixDate extends Components.SixDate {
   /**
-   * Emitted when a option got selected.
+   * Emitted when the control's value changes.
    */
-  'six-date-select': EventEmitter<CustomEvent<ISixDateSixDateSelectPayload>>;
+  sixChange: EventEmitter<CustomEvent<ISixDateIsoDate | ''>>;
   /**
-   * Emitted when the clear button is activated.
+   * Emitted when the control loses focus.
    */
-  'six-date-clear': EventEmitter<CustomEvent<ISixDateEmptyPayload>>;
-  /**
-   * Emitted when a option got selected.
-   */
-  'six-date-blur': EventEmitter<CustomEvent<ISixDateSixDateSelectPayload>>;
+  sixBlur: EventEmitter<CustomEvent<any>>;
 }
 
 

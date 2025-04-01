@@ -1,45 +1,38 @@
 import { h } from '@stencil/core';
-import { DateLocale } from '../../../utils/date-util';
-import { CalendarCell } from '../six-date';
+import { Language } from '../../../utils/error-messages';
+import { translateWeekday } from '../translations';
+import { CalendarCell } from '../calendar-grid';
+import { IsoDate } from '../iso-date';
 
-interface DaySelectionParams {
-  locale: DateLocale;
-  calendarGrid: CalendarCell[][];
-  onClickDateCell: (cell: CalendarCell) => void;
-}
-
-export const DaySelection = (daySelectionParams: DaySelectionParams) => {
+export const DaySelection = (props: {
+  language: Language;
+  calendarGrid: CalendarCell[];
+  dayClicked: (cell: IsoDate) => void;
+}) => {
   return (
-    <table class="date-table" part="day-selection">
-      <thead part="weekday-header">
-        <tr>
-          {daySelectionParams.locale.weekdaysMin.map((weekday) => (
-            <th class="date__cell">{weekday}</th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {daySelectionParams.calendarGrid.map((row) => (
-          <tr class="date-table__row">
-            {row.map((cell) => (
-              <td
-                data-date={cell.dateString}
-                onClick={() => daySelectionParams.onClickDateCell(cell)}
-                class={{
-                  'date-table__cell': true,
-                  'date-table__cell--is-today': cell.isToday,
-                  'date-table__cell--is-selected': cell.isSelected,
-                  'date-table__cell--is-outdated': cell.isOutdated,
-                  'date-table__cell--is-disabled': cell.isDisabled,
-                  'date-table__cell--is-selectable': !cell.isDisabled,
-                }}
-              >
-                {cell.label}
-              </td>
-            ))}
-          </tr>
-        ))}
-      </tbody>
-    </table>
+    <div class="day-selection">
+      {[1, 2, 3, 4, 5, 6, 7].map((day) => (
+        <div class="cell--header">{translateWeekday(day, props.language)}</div>
+      ))}
+      {props.calendarGrid.map((day) => (
+        <div
+          data-date={day.date}
+          onClick={() => {
+            if (!day.disabled || day.outdated) {
+              props.dayClicked(day.date);
+            }
+          }}
+          class={{
+            cell: true,
+            'cell--today': day.today,
+            'cell--selected': day.selected,
+            'cell--outdated': day.outdated,
+            'cell--disabled': day.disabled,
+          }}
+        >
+          <span class="label">{day.label}</span>
+        </div>
+      ))}
+    </div>
   );
 };

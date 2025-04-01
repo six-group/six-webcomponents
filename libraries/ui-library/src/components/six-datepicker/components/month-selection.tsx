@@ -1,8 +1,8 @@
 import { h } from '@stencil/core';
-import { DateLocale, now } from '../../../utils/date-util';
+import { DateTranslation, now } from '../../../utils/date-util';
 
 interface MonthSelectionParams {
-  locale: DateLocale;
+  locale: DateTranslation;
   selectedDate?: Date;
   onClickMonthCell: (month: string) => void;
 }

@@ -6,22 +6,26 @@
 }
 
 .date {
-  &__container {
-    position: relative;
+  position: relative;
+}
 
-    six-dropdown {
-      ::part(panel) {
-        .dropdown__panel__scroll {
-          max-height: none;
-        }
-      }
-    }
-  }
+/**
+ * PANEL
+ */
+.date__panel {
+  width: 25rem;
+  opacity: 0;
+  pointer-events: none;
+  padding: var(--six-spacing-small);
+  padding-bottom: var(--six-spacing-x-large);
+  border: 1px solid var(--six-color-web-rock-300);
+  box-shadow: var(--six-shadow-small);
+  transition: var(--six-transition-fast) opacity, var(--six-transition-fast) transform;
+}
 
-  &__panel {
-    min-width: 400px;
-    height: fit-content;
-  }
+.date__panel.popover-visible {
+  opacity: 1;
+  pointer-events: all;
 }
 
 .date-header {
@@ -70,99 +74,91 @@
   }
 }
 
-.date-table {
-  width: 100%;
-  user-select: none;
-
-  &__cell {
-    text-align: center;
-    width: 2.5rem;
-    height: var(--six-height-medium);
-    cursor: pointer;
-
-    &:hover:not(&--is-selected) {
-      background-color: var(--six-color-web-rock-100);
-    }
-
-    &--is-today {
-      border: var(--six-border-width) var(--six-focus-ring-style) var(--six-color-web-rock-400);
-    }
-
-    &--is-selected {
-      background-color: var(--six-color-red);
-      color: var(--six-color-white);
-    }
-
-    &--is-disabled {
-      background-color: var(--six-color-web-rock-200);
-      cursor: initial;
-
-      &:hover {
-        background-color: var(--six-color-web-rock-200);
-      }
-    }
-
-    &--is-outdated {
-      color: var(--six-color-web-rock-400);
-    }
-  }
-}
-
-// Clearable
-.date-clear {
-  display: inline-flex;
-  align-items: center;
-  font-size: inherit;
-  color: var(--six-input-icon-color);
-  border: none;
-  background: none;
-  padding: 0;
-  transition: var(--six-transition-fast) color;
+/**
+ * CELL
+ */
+.cell {
   cursor: pointer;
+  text-align: center;
+  padding: var(--six-spacing-x-small);
 
   &:hover {
-    color: var(--six-input-icon-color-hover);
-  }
-
-  &:focus {
-    outline: none;
-  }
-
-  &--right {
-    right: 0;
-    position: absolute;
-  }
-
-  &--left {
-    right: 35px;
-    position: absolute;
+    background-color: var(--six-color-web-rock-200);
   }
 }
 
-.input--empty .date-clear {
-  visibility: hidden;
+.cell--header {
+  padding: var(--six-spacing-x-small);
+  text-align: center;
+  font-weight: var(--six-font-weight-bold);
 }
 
-// Icon position
-.prefix {
-  cursor: pointer;
+.cell--today .label {
+  padding: var(--six-spacing-xxx-small);
+  border-bottom: 2px solid var(--six-color-web-rock-900);
+}
 
-  &--right {
-    right: 0;
-    display: inline-flex;
-    position: absolute;
-    font-size: inherit;
-    color: var(--six-input-icon-color);
-    border: none;
+.cell--selected.cell--today .label {
+  border-bottom: 2px solid var(--six-color-white);
+}
+
+.cell--selected {
+  background-color: var(--six-color-red);
+  color: var(--six-color-white);
+
+  &:hover {
+    background-color: var(--six-color-danger-900);
+  }
+}
+
+.cell--disabled {
+  cursor: not-allowed;
+  color: var(--six-color-web-rock-400);
+
+  &:hover {
     background: none;
-    margin-right: var(--six-input-spacing-medium);
-    transition: var(--six-transition-fast) color;
   }
 }
 
-// time-picker
-six-timepicker::part(dropdown) {
-  border: none;
-  padding: var(--six-spacing-x-small) var(--six-spacing-x-small) 0;
-  min-height: 0;
+.cell--selected.cell--disabled {
+  color: var(--six-color-web-rock-500);
+
+  &:hover {
+    background-color: var(--six-color-red);
+  }
+}
+
+.cell--outdated {
+  color: var(--six-color-web-rock-400);
+}
+
+.cell--today.cell--disabled .label {
+  border-bottom: 2px solid var(--six-color-web-rock-400);
+}
+
+/**
+ *  DAY SELECTION
+ */
+.day-selection {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: var(--six-spacing-xx-small);
+}
+
+/**
+ *  MONTH SELECTION
+ */
+.month-selection {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--six-spacing-xx-small);
+}
+
+/**
+ *  YEAR SELECTION
+ */
+.year-selection {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--six-spacing-xx-small);
 }

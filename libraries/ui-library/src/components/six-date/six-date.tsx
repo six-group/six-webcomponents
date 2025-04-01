@@ -20,51 +20,19 @@
  *   - get rid of date formats
  */
 import { Component, Element, Event, EventEmitter, h, Method, Prop, State, Watch } from '@stencil/core';
-import {
-  createNewCalendarGrid,
-  day,
-  formatDate,
-  getCurrentDateAsPointer,
-  getFirstDayOfTheWeekNew,
-  hours,
-  i18nDate,
-  isValidDate,
-  isValidDateString,
-  minutes,
-  month,
-  now,
-  parseDate,
-  rangeAround,
-  removeTime,
-  seconds,
-  TDateISODate,
-  toDate,
-  year,
-} from './utils/date-util';
 import { EventListeners } from '../../utils/event-listeners';
-import { debounce, debounceEvent, DEFAULT_DEBOUNCE_FAST } from '../../utils/execution-control';
+import { debounce, DEFAULT_DEBOUNCE_FAST } from '../../utils/execution-control';
 import { hasSlot } from '../../utils/slot';
-import { EmptyPayload } from '../../utils/types';
-import { SixDateFormats } from './six-date-formats';
 import { MonthSelection } from './components/month-selection';
-import { DaySelection } from './components/day-selection';
 import { YearSelection } from './components/year-selection';
+import { DaySelection } from './components/day-selection';
 import { Language } from '../../utils/error-messages';
+import { formatDate, fromDateString, IsoDate, isValidIsoDate, todayAsPointerDate, toPointerDate } from './iso-date';
+import { createCalendarGrid } from './calendar-grid';
+import { translateMonth } from './translations';
+import Popover from '../../utils/popover';
 
 const NUMBER_OF_YEARS_SHOWN = 25;
-
-export type SixDateSelectPayload = string | undefined | null;
-
-export interface CalendarCell {
-  date: Date;
-  dateString: string;
-  display: string;
-  isDisabled: boolean;
-  isOutdated: boolean;
-  isSelected: boolean;
-  isToday: boolean;
-  label: string;
-}
 
 type SelectionMode = 'day' | 'month' | 'year';
 
@@ -83,25 +51,22 @@ type SelectionMode = 'day' | 'month' | 'year';
 export class SixDate {
   private eventListeners = new EventListeners();
   private inputElement?: HTMLSixInputElement;
-  private wrapper?: HTMLElement;
-  private selectedDate?: string;
+  private popover?: Popover;
+  private panel?: HTMLElement;
 
   @Element() host!: HTMLSixDateElement;
 
-  @State() private pointerDate = getCurrentDateAsPointer();
+  /**
+   * Current state of the date picker for day, month, or year selection.
+   * Independent of the currently selected date value.
+   */
+  @State() pointerDate = todayAsPointerDate();
   @State() selectionMode: SelectionMode = 'day';
-  @State() isDropDownContentUp = false;
 
   /**
    * The language used to render the weekdays and months.
    */
-  @Prop() locale: Language = 'en';
-
-  /** Indicates whether the calendar dropdown is open on startup. You can use this in lieu of the show/hide methods. */
-  @Prop({ mutable: true, reflect: true }) open = false;
-
-  /** Indicates whether the calendar should be shown as an inline (always open) component */
-  @Prop({ reflect: true }) inline = false;
+  @Prop() language: Language = 'en';
 
   /**
    * If `true` the user can only select a date via the component in the popup, but not directly edit the input field.
@@ -121,22 +86,22 @@ export class SixDate {
    * const datepicker = document.getElementById('allowed-date-picker');
    * datepicker.allowedDates = datestring => parseInt(datestring.split('-')[2], 10) % 2 === 0;
    */
-  @Prop() allowedDates: (date: string) => boolean = () => true;
+  @Prop() allowedDates: (date: IsoDate) => boolean = () => true;
 
   /**
    * The minimum date allowed. Value must be an iso-date string.
    */
-  @Prop() min?: TDateISODate;
+  @Prop() min?: IsoDate;
 
   /**
    * The maximum date allowed.Value must be an iso-date string.
    */
-  @Prop() max?: TDateISODate;
+  @Prop() max?: IsoDate;
 
   /**
    * The enforced placement of the dropdown panel.
    */
-  @Prop() placement?: 'top' | 'bottom';
+  @Prop() placement?: 'top' | 'bottom-start' = 'bottom-start';
 
   /** Datepicker size. */
   @Prop() size: 'small' | 'medium' | 'large' = 'medium';
@@ -157,7 +122,7 @@ export class SixDate {
   /**
    * The value of the form field, which accepts a date object.
    */
-  @Prop({ mutable: true }) value?: string;
+  @Prop({ mutable: true }) value: IsoDate | '' = '';
 
   /** The label text. */
   @Prop() label = '';
@@ -171,22 +136,14 @@ export class SixDate {
   /** If this property is set to true and an error message is provided by `errorText`, the error message is displayed.  */
   @Prop({ reflect: true }) invalid = false;
 
-  /** The dropdown will close when the user interacts outside of this element (e.g. clicking). */
-  @Prop() containingElement?: HTMLElement;
-
-  /** Define the dateFormat. Valid formats are:
-   * 'dd.mm.yyyy'
-   * 'yyyy-mm-dd'
-   * 'dd-mm-yyyy'
-   * 'dd/mm/yyyy'
-   * 'yyyy/mm/dd'
-   * 'dd.mm.yy'
-   * 'yy-mm-dd'
-   * 'dd-mm-yy'
-   * 'dd/mm/yy'
-   * 'yy/mm/dd'
+  /** Define the dateFormat.
+   *
+   * Available patterns:
+   * - Year: "yyyy" (e.g., "2021")
+   * - Month: "MM" (e.g., "01" for January, "12" for December)
+   * - Day: "dd" (e.g., "08" for the 8th day of the month)
    * */
-  @Prop() dateFormat: SixDateFormats = SixDateFormats.DDMMYYY_DOT;
+  @Prop() dateFormat = 'dd.MM.yyyy';
 
   /**
    * Set the amount of time, in milliseconds, to wait to trigger the `dateChange` event after each keystroke.
@@ -199,57 +156,28 @@ export class SixDate {
   /** Set to true to add a clear button when the input is populated. */
   @Prop() clearable = false;
 
-  /** Set the position of the icon */
-  @Prop() iconPosition: 'left' | 'right' = 'left';
-
-  /**
-   * Enable this option to prevent the panel from being clipped when the component is placed inside a container with
-   * `overflow: auto|scroll`.
-   */
-  @Prop() hoist = false;
-
-  @Watch('debounce')
-  protected debounceChanged() {
-    this.sixSelect = debounceEvent(this.sixSelect, this.debounce);
-  }
-
   /**
    * Update the native input element when the value changes
    */
   @Watch('value')
   protected valueChanged() {
-    if (this.value != null && !isValidDate(new Date(this.value))) {
-      console.warn('invalid date value: ', this.value);
-      this.value = undefined;
-      this.sixSelect.emit(this.value);
+    this.sanitizeValue();
+    if (isValidIsoDate(this.value)) {
+      this.pointerDate = toPointerDate(this.value);
+    } else if (this.value === '') {
+      this.pointerDate = todayAsPointerDate();
+    } else {
+      this.value = '';
+      this.pointerDate = todayAsPointerDate();
+      console.warn(`The specified value ${this.value} does not conform to the required format, "yyyy-MM-dd" `);
     }
-    this.selectedDate = this.value;
-    this.updatePointerDates();
   }
 
-  /**
-   * Emitted when a option got selected.
-   */
-  @Event({ eventName: 'six-date-select' }) sixSelect!: EventEmitter<SixDateSelectPayload>;
+  /** Emitted when the control's value changes. */
+  @Event() sixChange!: EventEmitter<IsoDate | ''>;
 
-  /**
-   * Emitted when the clear button is activated.
-   */
-  @Event({ eventName: 'six-date-clear' }) sixClear!: EventEmitter<EmptyPayload>;
-
-  /**
-   * Emitted when a option got selected.
-   */
-  @Event({ eventName: 'six-date-blur' }) sixBlur!: EventEmitter<SixDateSelectPayload>;
-
-  get container() {
-    return this.containingElement || this.host;
-  }
-
-  get firstDateOfBox(): string {
-    const date = new Date(this.pointerDate.year, this.pointerDate.month, 1);
-    return getFirstDayOfTheWeekNew(date.toISOString());
-  }
+  /** Emitted when the control loses focus. */
+  @Event() sixBlur!: EventEmitter;
 
   /** Sets focus on the datepicker input. */
   @Method()
@@ -257,306 +185,138 @@ export class SixDate {
     this.inputElement?.setFocus(options);
   }
 
-  get calendarGrid() {
-    return createNewCalendarGrid({
-      firstDateOfBox: this.firstDateOfBox,
-      allowedDates: this.allowedDates,
-      dateFormat: this.dateFormat,
-      locale: this.locale,
-      selectedDate: this.selectedDate,
-      minDate: this.min,
-      maxDate: this.max,
-      pointerDate: this.pointerDate,
-    });
-  }
-
-  private getMonthStringForIndex(index: number) {
-    return i18nDate[this.locale].months[index];
-  }
-
-  private previousUnit = () => {
-    if (this.selectionMode === 'day') {
-      this.previousMonth();
-    } else if (this.selectionMode === 'month') {
-      this.previousYear();
-    } else if (this.selectionMode === 'year') {
-      this.previousYearGroup();
+  private handlePreviousClick = () => {
+    switch (this.selectionMode) {
+      case 'day':
+        if (this.pointerDate.month === 0) {
+          this.pointerDate = { year: this.pointerDate.year - 1, month: 11, day: 1 };
+        } else {
+          this.pointerDate = { year: this.pointerDate.year, month: this.pointerDate.month - 1, day: 1 };
+        }
+        break;
+      case 'month':
+        this.pointerDate = { ...this.pointerDate, year: this.pointerDate.year - 1 };
+        break;
+      case 'year':
+        this.pointerDate = { ...this.pointerDate, year: this.pointerDate.year - NUMBER_OF_YEARS_SHOWN };
+        break;
     }
   };
 
-  private previousYear() {
-    this.pointerDate = { ...this.pointerDate, year: this.pointerDate.year - 1 };
-  }
-
-  private previousYearGroup() {
-    this.pointerDate = { ...this.pointerDate, year: this.pointerDate.year - NUMBER_OF_YEARS_SHOWN };
-  }
-
-  private previousMonth() {
-    if (this.pointerDate.month === 0) {
-      this.pointerDate = { year: this.pointerDate.year - 1, month: 11, day: 1, hours: 0, minutes: 0, seconds: 0 };
-    } else {
-      this.pointerDate = {
-        year: this.pointerDate.year,
-        month: this.pointerDate.month - 1,
-        day: 1,
-        hours: 0,
-        minutes: 0,
-        seconds: 0,
-      };
-    }
-  }
-
-  private nextUnit = () => {
+  private handleNextClick = () => {
     if (this.selectionMode === 'day') {
-      this.nextMonth();
+      if (this.pointerDate.month === 11) {
+        this.pointerDate = { year: this.pointerDate.year + 1, month: 0, day: 1 };
+      } else {
+        this.pointerDate = { year: this.pointerDate.year, month: this.pointerDate.month + 1, day: 1 };
+      }
     } else if (this.selectionMode === 'month') {
-      this.nextYear();
+      this.pointerDate = { ...this.pointerDate, year: this.pointerDate.year + 1 };
     } else if (this.selectionMode === 'year') {
-      this.nextYearGroup();
-    }
-  };
-
-  private nextMonth() {
-    if (this.pointerDate.month === 11) {
-      this.pointerDate = { year: this.pointerDate.year + 1, month: 0, day: 1, hours: 0, minutes: 0, seconds: 0 };
-    } else {
-      this.pointerDate = {
-        year: this.pointerDate.year,
-        month: this.pointerDate.month + 1,
-        day: 1,
-        hours: 0,
-        minutes: 0,
-        seconds: 0,
-      };
-    }
-  }
-
-  private nextYear() {
-    this.pointerDate = { ...this.pointerDate, year: this.pointerDate.year + 1 };
-  }
-
-  private nextYearGroup() {
-    this.pointerDate = { ...this.pointerDate, year: this.pointerDate.year + NUMBER_OF_YEARS_SHOWN };
-  }
-
-  private openCalendar() {
-    if (!this.open && !this.disabled) {
-      this.open = true;
-      this.setupEventListenersForOpenPopup();
-    }
-  }
-
-  private setupEventListenersForOpenPopup() {
-    this.eventListeners.add(document, 'keydown', this.handleDocumentKeyDown);
-    this.eventListeners.add(document, 'mousedown', this.handleDocumentMouseDown);
-  }
-
-  private handleDocumentKeyDown = (event: Event) => {
-    const keyboardEvent = event as KeyboardEvent;
-    // Close when escape is pressed
-    if (this.open && keyboardEvent.key === 'Escape') {
-      keyboardEvent.stopPropagation();
-      this.closePopup();
-      void this.inputElement?.setFocus();
-    }
-
-    // Handle tabbing
-    if (keyboardEvent.key === 'Tab') {
-      this.closePopup();
+      this.pointerDate = { ...this.pointerDate, year: this.pointerDate.year + NUMBER_OF_YEARS_SHOWN };
     }
   };
 
   private handleDocumentMouseDown = (event: Event) => {
-    // Close when clicking outside the containing element
+    // Close when clicking outside
     const path = event.composedPath() as EventTarget[];
-    if (!path.includes(this.container)) {
-      this.closePopup();
-      return;
+    if (!path.includes(this.host)) {
+      this.hide();
+      this.sixBlur.emit();
     }
   };
 
-  private handleClearClick = async (event: MouseEvent) => {
-    event.stopPropagation();
-    await this.select(undefined);
-    this.sixClear.emit();
-  };
+  private show() {
+    this.popover?.show();
+    this.eventListeners.add(document, 'mousedown', this.handleDocumentMouseDown);
+  }
 
-  private closePopup() {
-    if (this.inline) {
-      return;
-    }
-
-    this.open = false;
-    this.eventListeners.remove(document, 'keydown', this.handleDocumentKeyDown);
+  private hide() {
+    this.popover?.hide();
     this.eventListeners.remove(document, 'mousedown', this.handleDocumentMouseDown);
-    this.selectionMode = 'day';
   }
 
-  private updatePointerDates() {
-    const date = new Date(this.getPointerDate() || new Date());
-    if (this.differsFromPointerDate(date)) {
-      this.pointerDate = {
-        year: year(date),
-        month: month(date),
-        day: day(date),
-        hours: hours(date),
-        minutes: minutes(date),
-        seconds: seconds(date),
-      };
-    }
-  }
-
-  private differsFromPointerDate(date?: Date): boolean {
-    return (
-      this.pointerDate.day !== day(date) ||
-      this.pointerDate.month !== month(date) ||
-      this.pointerDate.year !== year(date) ||
-      this.pointerDate.hours !== hours(date) ||
-      this.pointerDate.minutes !== minutes(date) ||
-      this.pointerDate.seconds !== seconds(date)
-    );
-  }
-
-  private getPointerDate(): string | undefined {
-    if (this.selectedDate !== undefined && this.selectedDate !== null) {
-      return this.selectedDate;
-    }
-    if (this.defaultDate == null) {
-      return removeTime(now()).toISOString();
-    } else {
-      return this.defaultDate;
-    }
-  }
-
-  private updateValue(newDate?: string) {
-    this.updateIfChanged(newDate);
-  }
-
-  private updateIfChanged(newDate?: string) {
-    if (new Date(this.value || new Date()).getTime() === new Date(newDate || new Date()).getTime()) {
-      return;
-    }
-    if (
-      this.min !== undefined &&
-      newDate &&
-      parseDate(this.min, this.dateFormat, this.locale).getTime() > new Date(newDate || new Date()).getTime()
-    ) {
-      return;
-    }
-    if (
-      this.max !== undefined &&
-      newDate &&
-      parseDate(this.max, this.dateFormat, this.locale).getTime() < new Date(newDate || new Date()).getTime()
-    ) {
-      return;
-    }
-    this.value = newDate;
-    this.sixSelect.emit(this.value);
-  }
-
-  /**
-   * Selects an option
-   */
-  @Method()
-  async select(datestring?: string) {
-    if (datestring == null) {
-      this.updateValue(undefined);
-    } else {
-      const newDate = new Date(datestring);
-      newDate?.setHours(this.pointerDate.hours, this.pointerDate.minutes, this.pointerDate.seconds);
-      this.updateValue(newDate.toISOString());
-    }
-
-    this.updatePointerDates();
-    this.closePopup();
-  }
-
-  private onClickDateCell = (cell: CalendarCell) => {
-    if (!cell.isDisabled) {
-      void this.select(cell.dateString);
-    }
+  private handleClearClick = () => {
+    this.hide();
+    this.value = '';
+    this.pointerDate = todayAsPointerDate();
+    this.sixChange.emit(this.value);
   };
 
-  private onClickMonthCell = (selectedMonth: string) => {
-    const month = i18nDate[this.locale].monthsShort.findIndex((monthShort) => monthShort === selectedMonth);
+  private handleDayClick = (date: IsoDate) => {
+    this.value = date;
+    this.pointerDate = toPointerDate(this.value);
+    this.hide();
+    this.inputElement?.setFocus();
+  };
+
+  private handleMonthClicked = (month: number) => {
     this.pointerDate = { ...this.pointerDate, month };
     this.selectionMode = 'day';
   };
 
-  private onClickYearCell = (year: number) => {
+  private handleYearClicked = (year: number) => {
     this.pointerDate = { ...this.pointerDate, year };
     this.selectionMode = 'day';
   };
 
   private handleInputChange = (event: Event) => {
-    if (this.inputElement == null) {
-      return;
-    }
-    event.stopPropagation();
-
-    const inputValue = this.inputElement.value;
-    if (!isValidDateString(inputValue, this.dateFormat)) {
-      return;
-    }
-
-    if (inputValue === undefined) {
-      return;
-    }
-
-    this.updateIfChanged(inputValue);
-
-    this.selectedDate = toDate(inputValue, this.dateFormat)?.toISOString();
-    this.updatePointerDates();
-  };
-
-  private handleOnBlur = (event: Event) => {
-    // clear the value if the user deleted the date
-    if (this.inputElement?.value === '' && isValidDate(this.value)) {
-      this.value = undefined;
-      this.sixSelect.emit(this.value);
-    }
+    if (this.inputElement == null) return;
 
     event.stopPropagation();
-    const inputValue = this.inputElement?.value;
-    const inputValueDate = new Date(inputValue || new Date());
-    const formattedDate =
-      this.value != null && this.value !== '' ? this.getFormattedDateString(new Date(this.value), this.dateFormat) : '';
-
-    if (this.inputElement != null && inputValueDate != null && inputValue !== formattedDate) {
-      // TODO: Is setting the date here even necessary? Don't we already do that below in the input?
-      this.inputElement.value = formattedDate;
-      // console.log(Intl.DateTimeFormat('de-CH').format(inputValueDate));
+    const isoDate = fromDateString(this.inputElement.value, this.dateFormat);
+    if (isoDate != null) {
+      this.value = isoDate;
+      this.pointerDate = toPointerDate(this.value);
     }
-
-    this.sixBlur.emit(this.value);
   };
 
-  componentWillLoad() {
-    this.selectedDate = this.value;
-    this.updatePointerDates();
-    this.updateValue(this.value);
+  private initPopover() {
+    if (this.inputElement == null || this.panel == null) return;
 
-    if (this.inline) {
-      this.open = true;
-    }
+    this.popover = new Popover(this.inputElement, this.panel, {
+      strategy: 'fixed',
+      placement: this.placement,
+      distance: 4,
+      skidding: 0,
+    });
+  }
 
-    if (this.open) {
-      this.setupEventListenersForOpenPopup();
+  private sanitizeValue() {
+    if (typeof this.value !== 'string') {
+      this.value = '';
     }
   }
 
   componentDidLoad() {
-    if (this.inputElement != null) {
-      this.eventListeners.add(this.inputElement, 'six-input-input', debounce(this.handleInputChange, this.debounce));
-      this.eventListeners.add(this.inputElement, 'six-input-blur', this.handleOnBlur);
+    this.initPopover();
+  }
+
+  connectedCallback() {
+    this.sanitizeValue();
+
+    if (isValidIsoDate(this.value)) {
+      this.pointerDate = toPointerDate(this.value);
+    } else if (this.value === '') {
+      this.pointerDate = todayAsPointerDate();
+    } else {
+      this.value = '';
+      this.pointerDate = todayAsPointerDate();
+      console.warn(`The specified value ${this.value} does not conform to the required format, "yyyy-MM-dd" `);
     }
+
+    this.eventListeners.forward('sixChange', 'change', this.host);
+    this.eventListeners.forward('sixBlur', 'blur', this.host);
+  }
+
+  disconnectedCallback() {
+    this.eventListeners.removeAll();
   }
 
   private renderHeader() {
     return (
       <header class="date-header" part="header">
-        <div class="date-header__btn prev" onClick={this.previousUnit}>
+        <div class="date-header__btn prev" onClick={this.handlePreviousClick}>
           <svg viewBox="0 5 13 13" width="14" height="23">
             <path d="M11.67 3.87L9.9 2.1 0 12l9.9 9.9 1.77-1.77L3.54 12z" />
           </svg>
@@ -565,7 +325,7 @@ export class SixDate {
         <div class="date-header__label">
           {this.selectionMode === 'day' && (
             <div onClick={() => (this.selectionMode = 'month')}>
-              <span class="date-header__label-month">{this.getMonthStringForIndex(this.pointerDate.month)}</span>
+              <span class="date-header__label-month">{translateMonth(this.pointerDate.month, this.language)}</span>
               <span>
                 <svg viewBox="-3 -4 24 24" width="20" height="20">
                   <polyline points="6 9 12 15 18 9" />
@@ -593,7 +353,7 @@ export class SixDate {
           )}
         </div>
 
-        <div class="date-header__btn next" onClick={this.nextUnit}>
+        <div class="date-header__btn next" onClick={this.handleNextClick}>
           <svg viewBox="5 5 13 13" width="14" height="23">
             <path d="M5.88 4.12L13.76 12l-7.88 7.88L8 22l10-10L8 2z" />
           </svg>
@@ -607,136 +367,89 @@ export class SixDate {
       case 'day':
         return (
           <DaySelection
-            locale={i18nDate[this.locale]}
-            calendarGrid={this.calendarGrid}
-            onClickDateCell={this.onClickDateCell}
+            language={this.language}
+            calendarGrid={createCalendarGrid({
+              year: this.pointerDate.year,
+              month: this.pointerDate.month,
+              selected: this.value || undefined,
+              minDate: this.min,
+              maxDate: this.max,
+              dateFormat: this.dateFormat,
+              allowedDates: this.allowedDates,
+            })}
+            dayClicked={this.handleDayClick}
           />
         );
       case 'month':
-        return (
-          <MonthSelection
-            locale={i18nDate[this.locale]}
-            selectedDate={new Date(this.selectedDate || new Date())}
-            onClickMonthCell={this.onClickMonthCell}
-          />
-        );
+        return <MonthSelection language={this.language} selected={this.value} monthClicked={this.handleMonthClicked} />;
+
       case 'year':
         return (
           <YearSelection
-            selectedDate={new Date(this.selectedDate || new Date())}
-            yearSelection={rangeAround(this.pointerDate.year, NUMBER_OF_YEARS_SHOWN)}
-            onClickYearCell={this.onClickYearCell}
+            selected={this.value}
+            pointerYear={this.pointerDate.year}
+            yearCount={NUMBER_OF_YEARS_SHOWN}
+            yearClicked={this.handleYearClicked}
           />
         );
     }
   }
 
-  private renderCustomIcon() {
-    const icon = hasSlot(this.host, 'custom-icon') ? (
-      <slot name="custom-icon"></slot>
-    ) : (
-      <six-icon size={this.size === 'large' ? 'medium' : this.size}>today</six-icon>
-    );
-
-    return (
-      <span
-        slot="prefix"
-        part="icon"
-        class={{
-          prefix: true,
-          'prefix--right': this.iconPosition === 'right',
-        }}
-      >
-        {icon}
-      </span>
-    );
-  }
-
-  private renderClearable() {
-    return (
-      this.clearable && (
-        <button
-          slot="suffix"
-          class={{
-            'date-clear': true,
-            'date-clear--right': this.iconPosition === 'left',
-            'date-clear--left': this.iconPosition === 'right',
-          }}
-          type="button"
-          onClick={this.handleClearClick}
-          tabindex="-1"
-        >
-          <six-icon size="small">clear</six-icon>
-        </button>
-      )
-    );
-  }
-
-  private getFormattedDateString(value: Date | undefined, format: SixDateFormats) {
-    return value ? formatDate(value, format) : '';
-  }
+  private handleInputKeyDown = (event: KeyboardEvent) => {
+    if (event.key === 'Tab') {
+      this.hide();
+      this.sixBlur.emit();
+    }
+    if (event.key === 'Escape') {
+      this.hide();
+    }
+  };
 
   render() {
     return (
-      <div ref={(el) => (this.wrapper = el)} class="date__container">
-        <six-dropdown
-          style={{ height: 'auto', width: '400px' }}
-          hoist={true}
-          showOverflow={true}
-          ignoreTrigger={true}
-          open={this.open}
+      <div class="date">
+        <six-input
+          value={this.value === '' ? '' : formatDate(this.value, this.dateFormat)}
+          ref={(el) => (this.inputElement = el)}
+          placeholder={this.placeholder}
+          readonly={this.readonly}
+          disabled={this.disabled}
+          name={this.name}
+          label={this.label}
+          required={this.required}
+          errorText={this.errorText}
+          errorTextCount={this.errorTextCount}
+          invalid={this.invalid}
+          onClick={() => this.show()}
+          onKeyDown={this.handleInputKeyDown}
+          onInput={debounce(this.handleInputChange, this.debounce)}
+          onSix-input-clear={this.handleClearClick}
+          size={this.size}
+          clearable={this.clearable}
+          class={{ 'input--empty': this.value == null, 'input--disabled': this.disabled }}
         >
-          <six-input
-            slot={'trigger'}
-            value={this.getFormattedDateString(
-              Boolean(this.value) ? new Date(this.value as string) : undefined,
-              this.dateFormat
-            )}
-            ref={(el) => (this.inputElement = el)}
-            placeholder={this.placeholder}
-            readonly={this.readonly}
-            disabled={this.disabled}
-            name={this.name}
-            label={this.label}
-            required={this.required}
-            errorText={this.errorText}
-            errorTextCount={this.errorTextCount}
-            invalid={this.invalid}
-            onClick={() => this.openCalendar()}
-            size={this.size}
-            class={{ 'input--empty': this.value == null, 'input--disabled': this.disabled }}
-          >
-            {this.renderCustomIcon()}
-            {this.renderClearable()}
-            {hasSlot(this.host, 'label') ? (
-              <span slot="label">
-                <slot name="label" />
-              </span>
-            ) : null}
-            {hasSlot(this.host, 'error-text') ? (
-              <span slot="error-text">
-                <slot name="error-text"></slot>
-              </span>
-            ) : null}
-          </six-input>
-          <div>
-            <six-menu class="date__panel">{[this.renderHeader(), this.renderBody()]}</six-menu>
+          <six-icon slot="prefix" size={this.size === 'large' ? 'medium' : this.size}>
+            today
+          </six-icon>
+          {hasSlot(this.host, 'label') ? (
+            <span slot="label">
+              <slot name="label" />
+            </span>
+          ) : null}
+          {hasSlot(this.host, 'error-text') ? (
+            <span slot="error-text">
+              <slot name="error-text"></slot>
+            </span>
+          ) : null}
+        </six-input>
 
-            <div class="date__footer">
-              <slot />
-            </div>
-          </div>
-        </six-dropdown>
+        <div class="date__panel" ref={(el) => (this.panel = el)}>
+          {[this.renderHeader(), this.renderBody()]}
+        </div>
+        <div class="date__footer">
+          <slot />
+        </div>
       </div>
     );
-  }
-
-  connectedCallback() {
-    this.eventListeners.forward('six-date-select', 'change', this.host);
-    this.eventListeners.forward('six-date-blur', 'blur', this.host);
-  }
-
-  disconnectedCallback() {
-    this.eventListeners.removeAll();
   }
 }

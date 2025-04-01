@@ -5,7 +5,8 @@ import { isDate, isNil, isString } from './type-check';
 import { SixDateFormats } from '../components/six-datepicker/six-date-formats';
 import { CalendarCell } from '../components/six-datepicker/six-datepicker';
 
-export type DateLocale = typeof i18nDate.en;
+export type DateTranslation = typeof i18nDate.en;
+
 export const i18nDate = {
   en: {
     months: [

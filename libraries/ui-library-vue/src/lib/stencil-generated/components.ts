@@ -77,9 +77,7 @@ export const SixCheckbox = /*@__PURE__*/ defineContainer<JSX.SixCheckbox, JSX.Si
 
 
 export const SixDate = /*@__PURE__*/ defineContainer<JSX.SixDate>('six-date', undefined, [
-  'locale',
-  'open',
-  'inline',
+  'language',
   'readonly',
   'disabled',
   'allowedDates',
@@ -95,16 +93,12 @@ export const SixDate = /*@__PURE__*/ defineContainer<JSX.SixDate>('six-date', un
   'errorText',
   'errorTextCount',
   'invalid',
-  'containingElement',
   'dateFormat',
   'debounce',
   'name',
   'clearable',
-  'iconPosition',
-  'hoist',
-  'six-date-select',
-  'six-date-clear',
-  'six-date-blur'
+  'sixChange',
+  'sixBlur'
 ]);
 
 

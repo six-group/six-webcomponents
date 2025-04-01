@@ -1,38 +1,35 @@
 import { h } from '@stencil/core';
-import { DateLocale, now } from '../../../utils/date-util';
+import { getMonth, IsoDate, today } from '../iso-date';
+import { Language } from '../../../utils/error-messages';
+import { translateMonth } from '../translations';
 
-interface MonthSelectionParams {
-  locale: DateLocale;
-  selectedDate?: Date;
-  onClickMonthCell: (month: string) => void;
-}
-export const MonthSelection = (monthSelectionParams: MonthSelectionParams) => {
-  const locale = monthSelectionParams.locale;
-  const isToday = (value: string) => locale.monthsShort[now().getMonth()] === value;
-
-  const isSelectedMonth = (value: string) =>
-    monthSelectionParams.selectedDate?.getMonth() === locale.monthsShort.findIndex((m) => m === value);
+// TODO: move to it's own component (with styles)
+export const MonthSelection = (props: {
+  language: Language;
+  selected: IsoDate | '';
+  monthClicked: (month: number) => void;
+}) => {
+  const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((month) => ({
+    month,
+    label: translateMonth(month, props.language),
+    today: getMonth(today()) === month,
+    selected: props.selected === '' ? false : getMonth(props.selected) === month,
+  }));
 
   return (
-    <table class="date-table" part="month-selection">
-      <tbody>
-        {locale.monthsShortGrouped.map((row: string[]) => (
-          <tr class="date-table__row">
-            {row.map((month) => (
-              <td
-                onClick={() => monthSelectionParams.onClickMonthCell(month)}
-                class={{
-                  'date-table__cell': true,
-                  'date-table__cell--is-today': isToday(month),
-                  'date-table__cell--is-selected': isSelectedMonth(month),
-                }}
-              >
-                {month}
-              </td>
-            ))}
-          </tr>
-        ))}
-      </tbody>
-    </table>
+    <div class="month-selection">
+      {months.map((month) => (
+        <div
+          class={{
+            cell: true,
+            'cell--today': month.today,
+            'cell--selected': month.selected,
+          }}
+          onClick={() => props.monthClicked(month.month)}
+        >
+          <span class="label">{month.label}</span>
+        </div>
+      ))}
+    </div>
   );
 };

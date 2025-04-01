@@ -1,9 +1,9 @@
 import { h } from '@stencil/core';
-import { DateLocale } from '../../../utils/date-util';
+import { DateTranslation } from '../../../utils/date-util';
 import { CalendarCell } from '../six-datepicker';
 
 interface DaySelectionParams {
-  locale: DateLocale;
+  locale: DateTranslation;
   calendarGrid: CalendarCell[][];
   onClickDateCell: (cell: CalendarCell) => void;
 }
