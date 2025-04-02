@@ -46,7 +46,7 @@ export function Form() {
   };
 
   return (
-    <div>
+    <>
       <h2>Form</h2>
 
       <SixLayoutGrid columns={1} className={styles['layout-grid']}>
@@ -160,6 +160,6 @@ export function Form() {
           <SixButton onClick={() => setIsDisabled((oldVal) => !oldVal)}>{isDisabled ? 'Enable' : 'Disable'}</SixButton>
         </div>
       </SixLayoutGrid>
-    </div>
+    </>
   );
 }

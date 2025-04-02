@@ -2,7 +2,7 @@ import styles from './home.module.css';
 
 export function Home() {
   return (
-    <div>
+    <>
       <h1 className={styles['home-title']}>Demo</h1>
       <p className={styles['home-text']}>
         <b>React Demo App</b> using{' '}
@@ -10,6 +10,6 @@ export function Home() {
           @six-group/ui-library-react
         </a>
       </p>
-    </div>
+    </>
   );
 }
