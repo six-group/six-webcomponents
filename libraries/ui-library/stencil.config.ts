@@ -20,10 +20,6 @@ export const config: Config = {
     reactOutputTarget({
       outDir: '../ui-library-react/src/lib/stencil-generated',
     }),
-    reactOutputTarget({
-      outDir: '../ui-library-react/src/lib/hydrate',
-      hydrateModule: '@six-group/ui-library/hydrate',
-    }),
     angularOutputTarget({
       componentCorePackage: '@six-group/ui-library',
       directivesProxyFile: '../ui-library-angular/src/lib/stencil-generated/components.ts',
@@ -64,10 +60,6 @@ export const config: Config = {
       type: 'dist-custom-elements',
       customElementsExportBehavior: 'bundle',
       externalRuntime: false,
-    },
-    {
-      type: 'dist-hydrate-script',
-      dir: './hydrate',
     },
     {
       type: 'docs-readme',
