@@ -1,8 +1,6 @@
-'use client';
-
 import { SixTab, SixTabGroup, SixTabPanel } from '@six-group/ui-library-react';
 
-export default function TabGroup() {
+export function TabGroup() {
   return (
     <div>
       <SixTabGroup>

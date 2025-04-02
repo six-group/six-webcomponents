@@ -1,9 +1,3 @@
-/*
-six-layout-grid {
-  row-gap: var(--six-spacing-x-small);
-}
-*/
-
 .heading2 {
   margin-top: 0;
   margin-bottom: var(--six-spacing-x-large);
@@ -13,7 +7,3 @@ six-layout-grid {
   margin-top: var(--six-spacing-xx-large);
   margin-bottom: var(--six-spacing-large);
 }
-
-/*six-button {
-  margin-top: var(--six-spacing-medium);
-}*/

@@ -4,12 +4,13 @@ interface NavigationProps {
   open: boolean;
 }
 
-export default function SideNavigation({ open }: NavigationProps) {
+export function SideNavigation({ open }: NavigationProps) {
   return (
     <SixSidebar slot="left-sidebar" position="left" open={open} key="left-sidebar">
       <SixSidebarItemGroup href="/" name="Home" icon="home"></SixSidebarItemGroup>
+      <SixSidebarItemGroup href="form" name="Form" icon="assignment"></SixSidebarItemGroup>
       <SixSidebarItemGroup href="alert" name="Alert" icon="notifications_active"></SixSidebarItemGroup>
-      {/*<SixSidebarItemGroup name="Form" icon="assignment"></SixSidebarItemGroup> todo */}
+      todo
     </SixSidebar>
   );
 }
