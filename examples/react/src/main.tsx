@@ -9,6 +9,7 @@ import { Form } from '@views/form/form';
 import { Dialog } from '@views/dialog/dialog';
 
 import '@six-group/ui-library/dist/ui-library/ui-library.css';
+import { Details } from '@views/details/details';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -19,7 +20,7 @@ createRoot(document.getElementById('root')!).render(
           <Route path="/form" element={<Form />} />
           <Route path="/alert" element={<Alert />} />
           <Route path="/dialog" element={<Dialog />} />
-          <Route path="/details" element={<div>todo</div>} />
+          <Route path="/details" element={<Details />} />
           <Route path="/tab-group" element={<TabGroup />} />
           <Route path="*" element={<div />} />
         </Route>
