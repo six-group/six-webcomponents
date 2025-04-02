@@ -5,6 +5,7 @@ import { Layout } from 'src/routes/layout/layout';
 import { BrowserRouter, Route, Routes } from 'react-router';
 import { Alert } from '@views/alert/alert';
 import { TabGroup } from '@views/tabGroup/tabGroup';
+import { Form } from '@views/form/form';
 
 import '@six-group/ui-library/dist/ui-library/ui-library.css';
 
@@ -14,7 +15,7 @@ createRoot(document.getElementById('root')!).render(
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="/form" element={<div>todo</div>} />
+          <Route path="/form" element={<Form />} />
           <Route path="/alert" element={<Alert />} />
           <Route path="/dialog" element={<div>todo</div>} />
           <Route path="/details" element={<div>todo</div>} />

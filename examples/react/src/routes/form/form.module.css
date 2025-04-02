@@ -1,0 +1,14 @@
+.pre {
+  background-color: var(--six-color-web-rock-100);
+  padding: var(--six-spacing-medium);
+}
+
+.layout-grid {
+  row-gap: var(--six-spacing-x-small);
+  max-width: 640px;
+}
+
+.button-container {
+  display: flex;
+  gap: var(--six-spacing-x-small);
+}
