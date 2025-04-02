@@ -8,12 +8,6 @@
   "es2015": "dist/esm/index.mjs",
   "es2017": "dist/esm/index.mjs",
   "types": "./dist/types/types.d.ts",
-  "./hydrate": {
-    "types": "./hydrate/index.d.ts",
-    "import": "./hydrate/index.js",
-    "require": "./hydrate/index.cjs.js",
-    "default": "./hydrate/index.js"
-  },
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
   "unpkg": "dist/ui-library/ui-library.esm.js",
