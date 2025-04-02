@@ -1,6 +1,5 @@
 import {
   SixAvatar,
-  SixBadge,
   SixHeader,
   SixHeaderDropdownItem,
   SixHeaderItem,
@@ -28,7 +27,9 @@ interface HeaderProps {
 
 export function Header({ leftSidebar }: HeaderProps) {
   const availableLangs: Language[] = [...languages];
+
   const apps = ['Application 1', 'Application 2', 'Application 3', 'Application 4'];
+
   let currentApp = 'Application 1';
 
   const [openSearch, setOpenSearch] = useState(false);
@@ -58,14 +59,11 @@ export function Header({ leftSidebar }: HeaderProps) {
         </SixIconButton>
       </SixHeaderItem>
 
-      {/*search bar */}
-      <SixHeaderItem className="search-icon">
+      <SixHeaderItem className={styles['search-icon']}>
         <SixIconButton name="search" onClick={() => setOpenSearch(!openSearch)}></SixIconButton>
       </SixHeaderItem>
-
       <SixSearchField slot="search-field" debounce={600} clearable className={styles.searchIcon} />
 
-      {/*App Switcher */}
       <SixHeaderDropdownItem>
         <SixHeaderMenuButton slot="trigger">
           <span>{currentApp}</span>
@@ -80,7 +78,6 @@ export function Header({ leftSidebar }: HeaderProps) {
         </SixMenu>
       </SixHeaderDropdownItem>
 
-      {/*Profile*/}
       <SixHeaderDropdownItem>
         <SixIconButton slot="trigger">
           <SixAvatar image="https://images.unsplash.com/photo-1529778873920-4da4926a72c2?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80"></SixAvatar>
