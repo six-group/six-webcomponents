@@ -1,9 +1,15 @@
-.heading2 {
-  margin-top: 0;
-  margin-bottom: var(--six-spacing-x-large);
+.section {
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--six-spacing-medium);
 }
 
-.heading3 {
-  margin-top: var(--six-spacing-xx-large);
-  margin-bottom: var(--six-spacing-large);
+.buttons {
+  display: flex;
+  gap: var(--six-spacing-x-small);
+}
+
+.trigger-button {
+  align-self: flex-start;
 }

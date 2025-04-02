@@ -4,7 +4,7 @@ import styles from './tabGroup.module.css';
 
 export function TabGroup() {
   return (
-    <div>
+    <>
       <h2>Tab Group</h2>
 
       <SixTabGroup>
@@ -34,6 +34,6 @@ export function TabGroup() {
           This is a disabled tab panel.
         </SixTabPanel>
       </SixTabGroup>
-    </div>
+    </>
   );
 }
