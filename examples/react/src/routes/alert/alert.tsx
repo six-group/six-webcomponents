@@ -1,5 +1,3 @@
-'use client';
-
 import styles from './alert.module.css';
 import {
   SixAlert,
@@ -12,8 +10,8 @@ import {
 } from '@six-group/ui-library-react';
 import { showAlert } from '@six-group/ui-library';
 
-export default function Alert() {
-  function showToast($event: any) {
+export function Alert() {
+  function showToast() {
     showAlert('hello');
   }
 

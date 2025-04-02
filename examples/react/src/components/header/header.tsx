@@ -1,4 +1,3 @@
-'use client';
 import {
   SixAvatar,
   SixBadge,
@@ -15,9 +14,10 @@ import {
   SixSearchField,
 } from '@six-group/ui-library-react';
 import { Language, languages } from '@six-group/ui-library';
-import { useLanguage } from '@/app/hooks/useLocaleStorage';
-import styles from './header.module.css';
+import { useLanguage } from '@hooks/useLocaleStorage';
 import { useState } from 'react';
+
+import styles from './header.module.css';
 
 interface HeaderProps {
   taskCount: number;
@@ -27,7 +27,7 @@ interface HeaderProps {
 
 const SixHeaderComponent = SixHeader as React.ComponentType<any>;
 
-export default function Header({ toggleMenu, taskCount, toggleNotificationMenu }: HeaderProps) {
+export function Header({ toggleMenu, taskCount, toggleNotificationMenu }: HeaderProps) {
   const availableLangs: Language[] = [...languages];
   const apps = ['Application 1', 'Application 2', 'Application 3', 'Application 4'];
   let currentApp = 'Application 1';
