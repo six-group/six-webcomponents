@@ -25,12 +25,12 @@ interface HeaderProps {
   };
 }
 
+const apps = ['Application 1', 'Application 2', 'Application 3', 'Application 4'];
+
 export function Header({ leftSidebar }: HeaderProps) {
   const availableLangs: Language[] = [...languages];
 
-  const apps = ['Application 1', 'Application 2', 'Application 3', 'Application 4'];
-
-  let currentApp = 'Application 1';
+  const [currentApp, setCurrentApp] = useState('Application 2');
 
   const [openSearch, setOpenSearch] = useState(false);
 
@@ -59,7 +59,7 @@ export function Header({ leftSidebar }: HeaderProps) {
         </SixIconButton>
       </SixHeaderItem>
 
-      <SixHeaderItem className={styles['search-icon']}>
+      <SixHeaderItem className={styles['search-icon']} active={openSearch}>
         <SixIconButton name="search" onClick={() => setOpenSearch(!openSearch)}></SixIconButton>
       </SixHeaderItem>
       <SixSearchField slot="search-field" debounce={600} clearable className={styles.searchIcon} />
@@ -71,7 +71,7 @@ export function Header({ leftSidebar }: HeaderProps) {
         </SixHeaderMenuButton>
         <SixMenu>
           {apps.map((app) => (
-            <SixMenuItem value={app} checked={app === currentApp} onClick={() => (currentApp = app)} key={app}>
+            <SixMenuItem value={app} checked={app === currentApp} onClick={() => setCurrentApp(app)} key={app}>
               {app}
             </SixMenuItem>
           ))}
