@@ -1,5 +1,6 @@
 import {
   SixAvatar,
+  SixBadge,
   SixHeader,
   SixHeaderDropdownItem,
   SixHeaderItem,
@@ -15,6 +16,7 @@ import {
 import { Language, languages } from '@six-group/ui-library';
 import { useLanguage } from '@hooks/useLocaleStorage';
 import { useState } from 'react';
+import { useTasks } from '@components/tasksProvider/tasksProvider';
 
 import styles from './header.module.css';
 
@@ -23,11 +25,12 @@ interface HeaderProps {
     isOpen: boolean;
     toggle: () => void;
   };
+  toggleRightSidebar: () => void;
 }
 
 const apps = ['Application 1', 'Application 2', 'Application 3', 'Application 4'];
 
-export function Header({ leftSidebar }: HeaderProps) {
+export function Header({ leftSidebar, toggleRightSidebar }: HeaderProps) {
   const availableLangs: Language[] = [...languages];
 
   const [currentApp, setCurrentApp] = useState('Application 2');
@@ -47,6 +50,8 @@ export function Header({ leftSidebar }: HeaderProps) {
     location.reload();
   }
 
+  const taskCount = useTasks().length;
+
   return (
     <SixHeader slot="header" openSearch={openSearch} style={{ display: 'block' }}>
       <SixHeaderItem>
@@ -63,6 +68,16 @@ export function Header({ leftSidebar }: HeaderProps) {
         <SixIconButton name="search" onClick={() => setOpenSearch(!openSearch)}></SixIconButton>
       </SixHeaderItem>
       <SixSearchField slot="search-field" debounce={600} clearable className={styles.searchIcon} />
+
+      <SixHeaderItem>
+        <SixIconButton name="notifications_none" onClick={toggleRightSidebar}>
+          {taskCount > 0 && (
+            <SixBadge type="danger" pill>
+              {taskCount}
+            </SixBadge>
+          )}
+        </SixIconButton>
+      </SixHeaderItem>
 
       <SixHeaderDropdownItem>
         <SixHeaderMenuButton slot="trigger">
