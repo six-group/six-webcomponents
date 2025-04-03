@@ -15,7 +15,8 @@
   },
   "scripts": {
     "build": "npm run tsc",
-    "tsc": "tsc -p . --outDir ./dist"
+    "tsc": "tsc -p . --outDir ./dist",
+    "watch": "npm run tsc -- --watch"
   },
   "publishConfig": {
     "access": "public"
