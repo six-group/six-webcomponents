@@ -14,7 +14,7 @@ import {
   SixSearchField,
 } from '@six-group/ui-library-react';
 import { Language, languages } from '@six-group/ui-library';
-import { useLanguage } from '@hooks/useLocaleStorage';
+import { useLanguage } from '@hooks/useLanguage';
 import { useState } from 'react';
 import { useTasks } from '@components/tasksProvider/tasksProvider';
 
@@ -65,7 +65,7 @@ export function Header({ leftSidebar, toggleRightSidebar }: HeaderProps) {
       </SixHeaderItem>
 
       <SixHeaderItem className={styles['search-icon']} active={openSearch}>
-        <SixIconButton name="search" onClick={() => setOpenSearch(!openSearch)}></SixIconButton>
+        <SixIconButton name="search" onClick={() => setOpenSearch(!openSearch)} />
       </SixHeaderItem>
       <SixSearchField slot="search-field" debounce={600} clearable className={styles.searchIcon} />
 
@@ -95,13 +95,13 @@ export function Header({ leftSidebar, toggleRightSidebar }: HeaderProps) {
 
       <SixHeaderDropdownItem>
         <SixIconButton slot="trigger">
-          <SixAvatar image="https://images.unsplash.com/photo-1529778873920-4da4926a72c2?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80"></SixAvatar>
+          <SixAvatar image="https://images.unsplash.com/photo-1529778873920-4da4926a72c2?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" />
         </SixIconButton>
         <SixMenu>
           <SixMenuItem value="change-password">Change password</SixMenuItem>
           <SixMenuItem value="logout">Logout</SixMenuItem>
           <SixMenuItem>
-            <SixLanguageSwitcher selected={language} onSixLanguageSwitcherChange={changeLanguage}></SixLanguageSwitcher>
+            <SixLanguageSwitcher selected={language} onSixLanguageSwitcherChange={changeLanguage} />
           </SixMenuItem>
         </SixMenu>
       </SixHeaderDropdownItem>

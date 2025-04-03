@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { Language } from '@six-group/ui-library';
 
 export function useLocalStorage<T>(key: string, fallbackValue: T) {
   const [value, setValue] = useState(fallbackValue);
@@ -13,8 +12,4 @@ export function useLocalStorage<T>(key: string, fallbackValue: T) {
   }, [key, value]);
 
   return value;
-}
-
-export function useLanguage() {
-  return useLocalStorage<Language>('language', 'en');
 }

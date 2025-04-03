@@ -12,7 +12,7 @@ export function useModalState(initialOpen = false) {
   };
 
   const toggle = () => {
-    setIsOpen(!isOpen);
+    setIsOpen((prev) => !prev);
   };
 
   return { isOpen, open, close, toggle, setIsOpen };
