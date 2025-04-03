@@ -7,9 +7,9 @@ import { Alert } from '@views/alert/alert';
 import { TabGroup } from '@views/tabGroup/tabGroup';
 import { Form } from '@views/form/form';
 import { Dialog } from '@views/dialog/dialog';
+import { Details } from '@views/details/details';
 
 import '@six-group/ui-library/dist/ui-library/ui-library.css';
-import { Details } from '@views/details/details';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
