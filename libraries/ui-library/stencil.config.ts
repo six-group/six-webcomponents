@@ -22,9 +22,6 @@ export const config: Config = {
       directivesArrayFile: '../ui-library-angular/src/lib/stencil-generated/index.ts',
     }),
     vueOutputTarget({
-      includePolyfills: false,
-      includeImportCustomElements: true,
-      includeDefineCustomElements: false,
       componentCorePackage: '@six-group/ui-library',
       proxiesFile: '../ui-library-vue/src/lib/stencil-generated/components.ts',
       componentModels: [

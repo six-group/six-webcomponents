@@ -5,65 +5,10 @@ import { defineContainer, defineStencilSSRComponent, type StencilVueComponent } 
 
 import type { JSX } from '@six-group/ui-library';
 
-import { defineCustomElement as defineSixAlert } from '@six-group/ui-library/components/six-alert.js';
-import { defineCustomElement as defineSixAvatar } from '@six-group/ui-library/components/six-avatar.js';
-import { defineCustomElement as defineSixBadge } from '@six-group/ui-library/components/six-badge.js';
-import { defineCustomElement as defineSixButton } from '@six-group/ui-library/components/six-button.js';
-import { defineCustomElement as defineSixCard } from '@six-group/ui-library/components/six-card.js';
-import { defineCustomElement as defineSixCheckbox } from '@six-group/ui-library/components/six-checkbox.js';
-import { defineCustomElement as defineSixDatepicker } from '@six-group/ui-library/components/six-datepicker.js';
-import { defineCustomElement as defineSixDetails } from '@six-group/ui-library/components/six-details.js';
-import { defineCustomElement as defineSixDialog } from '@six-group/ui-library/components/six-dialog.js';
-import { defineCustomElement as defineSixDrawer } from '@six-group/ui-library/components/six-drawer.js';
-import { defineCustomElement as defineSixDropdown } from '@six-group/ui-library/components/six-dropdown.js';
-import { defineCustomElement as defineSixError } from '@six-group/ui-library/components/six-error.js';
-import { defineCustomElement as defineSixErrorPage } from '@six-group/ui-library/components/six-error-page.js';
-import { defineCustomElement as defineSixFileList } from '@six-group/ui-library/components/six-file-list.js';
-import { defineCustomElement as defineSixFileListItem } from '@six-group/ui-library/components/six-file-list-item.js';
-import { defineCustomElement as defineSixFileUpload } from '@six-group/ui-library/components/six-file-upload.js';
-import { defineCustomElement as defineSixFooter } from '@six-group/ui-library/components/six-footer.js';
-import { defineCustomElement as defineSixGroupLabel } from '@six-group/ui-library/components/six-group-label.js';
-import { defineCustomElement as defineSixHeader } from '@six-group/ui-library/components/six-header.js';
-import { defineCustomElement as defineSixHeaderDropdownItem } from '@six-group/ui-library/components/six-header-dropdown-item.js';
-import { defineCustomElement as defineSixHeaderItem } from '@six-group/ui-library/components/six-header-item.js';
-import { defineCustomElement as defineSixHeaderMenuButton } from '@six-group/ui-library/components/six-header-menu-button.js';
-import { defineCustomElement as defineSixIcon } from '@six-group/ui-library/components/six-icon.js';
-import { defineCustomElement as defineSixIconButton } from '@six-group/ui-library/components/six-icon-button.js';
-import { defineCustomElement as defineSixInput } from '@six-group/ui-library/components/six-input.js';
-import { defineCustomElement as defineSixItemPicker } from '@six-group/ui-library/components/six-item-picker.js';
-import { defineCustomElement as defineSixLanguageSwitcher } from '@six-group/ui-library/components/six-language-switcher.js';
-import { defineCustomElement as defineSixLayoutGrid } from '@six-group/ui-library/components/six-layout-grid.js';
-import { defineCustomElement as defineSixLogo } from '@six-group/ui-library/components/six-logo.js';
-import { defineCustomElement as defineSixMainContainer } from '@six-group/ui-library/components/six-main-container.js';
-import { defineCustomElement as defineSixMenu } from '@six-group/ui-library/components/six-menu.js';
-import { defineCustomElement as defineSixMenuDivider } from '@six-group/ui-library/components/six-menu-divider.js';
-import { defineCustomElement as defineSixMenuItem } from '@six-group/ui-library/components/six-menu-item.js';
-import { defineCustomElement as defineSixMenuLabel } from '@six-group/ui-library/components/six-menu-label.js';
-import { defineCustomElement as defineSixPicto } from '@six-group/ui-library/components/six-picto.js';
-import { defineCustomElement as defineSixProgressBar } from '@six-group/ui-library/components/six-progress-bar.js';
-import { defineCustomElement as defineSixProgressRing } from '@six-group/ui-library/components/six-progress-ring.js';
-import { defineCustomElement as defineSixRadio } from '@six-group/ui-library/components/six-radio.js';
-import { defineCustomElement as defineSixRange } from '@six-group/ui-library/components/six-range.js';
-import { defineCustomElement as defineSixRoot } from '@six-group/ui-library/components/six-root.js';
-import { defineCustomElement as defineSixSearchField } from '@six-group/ui-library/components/six-search-field.js';
-import { defineCustomElement as defineSixSelect } from '@six-group/ui-library/components/six-select.js';
-import { defineCustomElement as defineSixSidebar } from '@six-group/ui-library/components/six-sidebar.js';
-import { defineCustomElement as defineSixSidebarItem } from '@six-group/ui-library/components/six-sidebar-item.js';
-import { defineCustomElement as defineSixSidebarItemGroup } from '@six-group/ui-library/components/six-sidebar-item-group.js';
-import { defineCustomElement as defineSixSpinner } from '@six-group/ui-library/components/six-spinner.js';
-import { defineCustomElement as defineSixStageIndicator } from '@six-group/ui-library/components/six-stage-indicator.js';
-import { defineCustomElement as defineSixSwitch } from '@six-group/ui-library/components/six-switch.js';
-import { defineCustomElement as defineSixTab } from '@six-group/ui-library/components/six-tab.js';
-import { defineCustomElement as defineSixTabGroup } from '@six-group/ui-library/components/six-tab-group.js';
-import { defineCustomElement as defineSixTabPanel } from '@six-group/ui-library/components/six-tab-panel.js';
-import { defineCustomElement as defineSixTag } from '@six-group/ui-library/components/six-tag.js';
-import { defineCustomElement as defineSixTextarea } from '@six-group/ui-library/components/six-textarea.js';
-import { defineCustomElement as defineSixTile } from '@six-group/ui-library/components/six-tile.js';
-import { defineCustomElement as defineSixTimepicker } from '@six-group/ui-library/components/six-timepicker.js';
-import { defineCustomElement as defineSixTooltip } from '@six-group/ui-library/components/six-tooltip.js';
 
 
-export const SixAlert: StencilVueComponent<JSX.SixAlert> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixAlert>('six-alert', defineSixAlert, [
+
+export const SixAlert: StencilVueComponent<JSX.SixAlert> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixAlert>('six-alert', undefined, [
   'open',
   'closable',
   'type',
@@ -93,7 +38,7 @@ export const SixAlert: StencilVueComponent<JSX.SixAlert> = /*@__PURE__*/ globalT
 });
 
 
-export const SixAvatar: StencilVueComponent<JSX.SixAvatar> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixAvatar>('six-avatar', defineSixAvatar, [
+export const SixAvatar: StencilVueComponent<JSX.SixAvatar> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixAvatar>('six-avatar', undefined, [
   'image',
   'alt',
   'initials',
@@ -110,7 +55,7 @@ export const SixAvatar: StencilVueComponent<JSX.SixAvatar> = /*@__PURE__*/ globa
 });
 
 
-export const SixBadge: StencilVueComponent<JSX.SixBadge> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixBadge>('six-badge', defineSixBadge, [
+export const SixBadge: StencilVueComponent<JSX.SixBadge> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixBadge>('six-badge', undefined, [
   'type',
   'pill',
   'pulse'
@@ -125,7 +70,7 @@ export const SixBadge: StencilVueComponent<JSX.SixBadge> = /*@__PURE__*/ globalT
 });
 
 
-export const SixButton: StencilVueComponent<JSX.SixButton> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixButton>('six-button', defineSixButton, [
+export const SixButton: StencilVueComponent<JSX.SixButton> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixButton>('six-button', undefined, [
   'type',
   'size',
   'caret',
@@ -169,7 +114,7 @@ export const SixButton: StencilVueComponent<JSX.SixButton> = /*@__PURE__*/ globa
 });
 
 
-export const SixCard: StencilVueComponent<JSX.SixCard> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixCard>('six-card', defineSixCard) : defineStencilSSRComponent<JSX.SixCard>({
+export const SixCard: StencilVueComponent<JSX.SixCard> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixCard>('six-card', undefined) : defineStencilSSRComponent<JSX.SixCard>({
   tagName: 'six-card',
   hydrateModule: import('@six-group/ui-library/hydrate'),
   props: {
@@ -178,7 +123,7 @@ export const SixCard: StencilVueComponent<JSX.SixCard> = /*@__PURE__*/ globalThi
 });
 
 
-export const SixCheckbox: StencilVueComponent<JSX.SixCheckbox, JSX.SixCheckbox["checked"]> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixCheckbox, JSX.SixCheckbox["checked"]>('six-checkbox', defineSixCheckbox, [
+export const SixCheckbox: StencilVueComponent<JSX.SixCheckbox, JSX.SixCheckbox["checked"]> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixCheckbox, JSX.SixCheckbox["checked"]>('six-checkbox', undefined, [
   'name',
   'value',
   'disabled',
@@ -218,7 +163,7 @@ export const SixCheckbox: StencilVueComponent<JSX.SixCheckbox, JSX.SixCheckbox["
 });
 
 
-export const SixDatepicker: StencilVueComponent<JSX.SixDatepicker, JSX.SixDatepicker["value"]> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixDatepicker, JSX.SixDatepicker["value"]>('six-datepicker', defineSixDatepicker, [
+export const SixDatepicker: StencilVueComponent<JSX.SixDatepicker, JSX.SixDatepicker["value"]> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixDatepicker, JSX.SixDatepicker["value"]>('six-datepicker', undefined, [
   'type',
   'locale',
   'open',
@@ -287,7 +232,7 @@ export const SixDatepicker: StencilVueComponent<JSX.SixDatepicker, JSX.SixDatepi
 });
 
 
-export const SixDetails: StencilVueComponent<JSX.SixDetails> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixDetails>('six-details', defineSixDetails, [
+export const SixDetails: StencilVueComponent<JSX.SixDetails> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixDetails>('six-details', undefined, [
   'open',
   'summary',
   'summaryIcon',
@@ -325,7 +270,7 @@ export const SixDetails: StencilVueComponent<JSX.SixDetails> = /*@__PURE__*/ glo
 });
 
 
-export const SixDialog: StencilVueComponent<JSX.SixDialog> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixDialog>('six-dialog', defineSixDialog, [
+export const SixDialog: StencilVueComponent<JSX.SixDialog> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixDialog>('six-dialog', undefined, [
   'open',
   'label',
   'noHeader',
@@ -359,7 +304,7 @@ export const SixDialog: StencilVueComponent<JSX.SixDialog> = /*@__PURE__*/ globa
 });
 
 
-export const SixDrawer: StencilVueComponent<JSX.SixDrawer> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixDrawer>('six-drawer', defineSixDrawer, [
+export const SixDrawer: StencilVueComponent<JSX.SixDrawer> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixDrawer>('six-drawer', undefined, [
   'open',
   'label',
   'placement',
@@ -397,7 +342,7 @@ export const SixDrawer: StencilVueComponent<JSX.SixDrawer> = /*@__PURE__*/ globa
 });
 
 
-export const SixDropdown: StencilVueComponent<JSX.SixDropdown> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixDropdown>('six-dropdown', defineSixDropdown, [
+export const SixDropdown: StencilVueComponent<JSX.SixDropdown> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixDropdown>('six-dropdown', undefined, [
   'open',
   'placement',
   'closeOnSelect',
@@ -458,7 +403,7 @@ export const SixDropdown: StencilVueComponent<JSX.SixDropdown> = /*@__PURE__*/ g
 });
 
 
-export const SixError: StencilVueComponent<JSX.SixError> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixError>('six-error', defineSixError) : defineStencilSSRComponent<JSX.SixError>({
+export const SixError: StencilVueComponent<JSX.SixError> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixError>('six-error', undefined) : defineStencilSSRComponent<JSX.SixError>({
   tagName: 'six-error',
   hydrateModule: import('@six-group/ui-library/hydrate'),
   props: {
@@ -467,7 +412,7 @@ export const SixError: StencilVueComponent<JSX.SixError> = /*@__PURE__*/ globalT
 });
 
 
-export const SixErrorPage: StencilVueComponent<JSX.SixErrorPage> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixErrorPage>('six-error-page', defineSixErrorPage, [
+export const SixErrorPage: StencilVueComponent<JSX.SixErrorPage> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixErrorPage>('six-error-page', undefined, [
   'errorCode',
   'language',
   'customTitle',
@@ -485,7 +430,7 @@ export const SixErrorPage: StencilVueComponent<JSX.SixErrorPage> = /*@__PURE__*/
 });
 
 
-export const SixFileList: StencilVueComponent<JSX.SixFileList> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixFileList>('six-file-list', defineSixFileList) : defineStencilSSRComponent<JSX.SixFileList>({
+export const SixFileList: StencilVueComponent<JSX.SixFileList> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixFileList>('six-file-list', undefined) : defineStencilSSRComponent<JSX.SixFileList>({
   tagName: 'six-file-list',
   hydrateModule: import('@six-group/ui-library/hydrate'),
   props: {
@@ -494,7 +439,7 @@ export const SixFileList: StencilVueComponent<JSX.SixFileList> = /*@__PURE__*/ g
 });
 
 
-export const SixFileListItem: StencilVueComponent<JSX.SixFileListItem> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixFileListItem>('six-file-list-item', defineSixFileListItem, [
+export const SixFileListItem: StencilVueComponent<JSX.SixFileListItem> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixFileListItem>('six-file-list-item', undefined, [
   'identifier',
   'name',
   'date',
@@ -522,7 +467,7 @@ export const SixFileListItem: StencilVueComponent<JSX.SixFileListItem> = /*@__PU
 });
 
 
-export const SixFileUpload: StencilVueComponent<JSX.SixFileUpload> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixFileUpload>('six-file-upload', defineSixFileUpload, [
+export const SixFileUpload: StencilVueComponent<JSX.SixFileUpload> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixFileUpload>('six-file-upload', undefined, [
   'compact',
   'label',
   'disabled',
@@ -556,7 +501,7 @@ export const SixFileUpload: StencilVueComponent<JSX.SixFileUpload> = /*@__PURE__
 });
 
 
-export const SixFooter: StencilVueComponent<JSX.SixFooter> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixFooter>('six-footer', defineSixFooter) : defineStencilSSRComponent<JSX.SixFooter>({
+export const SixFooter: StencilVueComponent<JSX.SixFooter> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixFooter>('six-footer', undefined) : defineStencilSSRComponent<JSX.SixFooter>({
   tagName: 'six-footer',
   hydrateModule: import('@six-group/ui-library/hydrate'),
   props: {
@@ -565,7 +510,7 @@ export const SixFooter: StencilVueComponent<JSX.SixFooter> = /*@__PURE__*/ globa
 });
 
 
-export const SixGroupLabel: StencilVueComponent<JSX.SixGroupLabel> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixGroupLabel>('six-group-label', defineSixGroupLabel, [
+export const SixGroupLabel: StencilVueComponent<JSX.SixGroupLabel> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixGroupLabel>('six-group-label', undefined, [
   'size',
   'label',
   'helpText',
@@ -584,7 +529,7 @@ export const SixGroupLabel: StencilVueComponent<JSX.SixGroupLabel> = /*@__PURE__
 });
 
 
-export const SixHeader: StencilVueComponent<JSX.SixHeader> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixHeader>('six-header', defineSixHeader, [
+export const SixHeader: StencilVueComponent<JSX.SixHeader> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixHeader>('six-header', undefined, [
   'shiftContent',
   'openSearch'
 ]) : defineStencilSSRComponent<JSX.SixHeader>({
@@ -597,7 +542,7 @@ export const SixHeader: StencilVueComponent<JSX.SixHeader> = /*@__PURE__*/ globa
 });
 
 
-export const SixHeaderDropdownItem: StencilVueComponent<JSX.SixHeaderDropdownItem> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixHeaderDropdownItem>('six-header-dropdown-item', defineSixHeaderDropdownItem, [
+export const SixHeaderDropdownItem: StencilVueComponent<JSX.SixHeaderDropdownItem> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixHeaderDropdownItem>('six-header-dropdown-item', undefined, [
   'filter',
   'filterPlaceholder'
 ]) : defineStencilSSRComponent<JSX.SixHeaderDropdownItem>({
@@ -610,7 +555,7 @@ export const SixHeaderDropdownItem: StencilVueComponent<JSX.SixHeaderDropdownIte
 });
 
 
-export const SixHeaderItem: StencilVueComponent<JSX.SixHeaderItem> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixHeaderItem>('six-header-item', defineSixHeaderItem, [
+export const SixHeaderItem: StencilVueComponent<JSX.SixHeaderItem> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixHeaderItem>('six-header-item', undefined, [
   'active'
 ]) : defineStencilSSRComponent<JSX.SixHeaderItem>({
   tagName: 'six-header-item',
@@ -621,7 +566,7 @@ export const SixHeaderItem: StencilVueComponent<JSX.SixHeaderItem> = /*@__PURE__
 });
 
 
-export const SixHeaderMenuButton: StencilVueComponent<JSX.SixHeaderMenuButton> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixHeaderMenuButton>('six-header-menu-button', defineSixHeaderMenuButton, [
+export const SixHeaderMenuButton: StencilVueComponent<JSX.SixHeaderMenuButton> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixHeaderMenuButton>('six-header-menu-button', undefined, [
   'caret',
   'disabled',
   'loading',
@@ -640,7 +585,7 @@ export const SixHeaderMenuButton: StencilVueComponent<JSX.SixHeaderMenuButton> =
 });
 
 
-export const SixIcon: StencilVueComponent<JSX.SixIcon> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixIcon>('six-icon', defineSixIcon, [
+export const SixIcon: StencilVueComponent<JSX.SixIcon> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixIcon>('six-icon', undefined, [
   'size',
   'filled'
 ]) : defineStencilSSRComponent<JSX.SixIcon>({
@@ -653,7 +598,7 @@ export const SixIcon: StencilVueComponent<JSX.SixIcon> = /*@__PURE__*/ globalThi
 });
 
 
-export const SixIconButton: StencilVueComponent<JSX.SixIconButton> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixIconButton>('six-icon-button', defineSixIconButton, [
+export const SixIconButton: StencilVueComponent<JSX.SixIconButton> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixIconButton>('six-icon-button', undefined, [
   'name',
   'size',
   'label',
@@ -678,7 +623,7 @@ export const SixIconButton: StencilVueComponent<JSX.SixIconButton> = /*@__PURE__
 });
 
 
-export const SixInput: StencilVueComponent<JSX.SixInput, JSX.SixInput["value"]> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixInput, JSX.SixInput["value"]>('six-input', defineSixInput, [
+export const SixInput: StencilVueComponent<JSX.SixInput, JSX.SixInput["value"]> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixInput, JSX.SixInput["value"]>('six-input', undefined, [
   'type',
   'size',
   'name',
@@ -764,7 +709,7 @@ export const SixInput: StencilVueComponent<JSX.SixInput, JSX.SixInput["value"]> 
 });
 
 
-export const SixItemPicker: StencilVueComponent<JSX.SixItemPicker> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixItemPicker>('six-item-picker', defineSixItemPicker, [
+export const SixItemPicker: StencilVueComponent<JSX.SixItemPicker> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixItemPicker>('six-item-picker', undefined, [
   'value',
   'type',
   'min',
@@ -804,7 +749,7 @@ export const SixItemPicker: StencilVueComponent<JSX.SixItemPicker> = /*@__PURE__
 });
 
 
-export const SixLanguageSwitcher: StencilVueComponent<JSX.SixLanguageSwitcher> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixLanguageSwitcher>('six-language-switcher', defineSixLanguageSwitcher, [
+export const SixLanguageSwitcher: StencilVueComponent<JSX.SixLanguageSwitcher> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixLanguageSwitcher>('six-language-switcher', undefined, [
   'selected',
   'languages',
   'six-language-switcher-change'
@@ -820,7 +765,7 @@ export const SixLanguageSwitcher: StencilVueComponent<JSX.SixLanguageSwitcher> =
 });
 
 
-export const SixLayoutGrid: StencilVueComponent<JSX.SixLayoutGrid> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixLayoutGrid>('six-layout-grid', defineSixLayoutGrid, [
+export const SixLayoutGrid: StencilVueComponent<JSX.SixLayoutGrid> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixLayoutGrid>('six-layout-grid', undefined, [
   'columns'
 ]) : defineStencilSSRComponent<JSX.SixLayoutGrid>({
   tagName: 'six-layout-grid',
@@ -831,7 +776,7 @@ export const SixLayoutGrid: StencilVueComponent<JSX.SixLayoutGrid> = /*@__PURE__
 });
 
 
-export const SixLogo: StencilVueComponent<JSX.SixLogo> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixLogo>('six-logo', defineSixLogo, [
+export const SixLogo: StencilVueComponent<JSX.SixLogo> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixLogo>('six-logo', undefined, [
   'brand'
 ]) : defineStencilSSRComponent<JSX.SixLogo>({
   tagName: 'six-logo',
@@ -842,7 +787,7 @@ export const SixLogo: StencilVueComponent<JSX.SixLogo> = /*@__PURE__*/ globalThi
 });
 
 
-export const SixMainContainer: StencilVueComponent<JSX.SixMainContainer> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixMainContainer>('six-main-container', defineSixMainContainer, [
+export const SixMainContainer: StencilVueComponent<JSX.SixMainContainer> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixMainContainer>('six-main-container', undefined, [
   'padded'
 ]) : defineStencilSSRComponent<JSX.SixMainContainer>({
   tagName: 'six-main-container',
@@ -853,7 +798,7 @@ export const SixMainContainer: StencilVueComponent<JSX.SixMainContainer> = /*@__
 });
 
 
-export const SixMenu: StencilVueComponent<JSX.SixMenu> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixMenu>('six-menu', defineSixMenu, [
+export const SixMenu: StencilVueComponent<JSX.SixMenu> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixMenu>('six-menu', undefined, [
   'removeBoxShadow',
   'items',
   'itemsShown',
@@ -879,7 +824,7 @@ export const SixMenu: StencilVueComponent<JSX.SixMenu> = /*@__PURE__*/ globalThi
 });
 
 
-export const SixMenuDivider: StencilVueComponent<JSX.SixMenuDivider> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixMenuDivider>('six-menu-divider', defineSixMenuDivider) : defineStencilSSRComponent<JSX.SixMenuDivider>({
+export const SixMenuDivider: StencilVueComponent<JSX.SixMenuDivider> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixMenuDivider>('six-menu-divider', undefined) : defineStencilSSRComponent<JSX.SixMenuDivider>({
   tagName: 'six-menu-divider',
   hydrateModule: import('@six-group/ui-library/hydrate'),
   props: {
@@ -888,7 +833,7 @@ export const SixMenuDivider: StencilVueComponent<JSX.SixMenuDivider> = /*@__PURE
 });
 
 
-export const SixMenuItem: StencilVueComponent<JSX.SixMenuItem> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixMenuItem>('six-menu-item', defineSixMenuItem, [
+export const SixMenuItem: StencilVueComponent<JSX.SixMenuItem> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixMenuItem>('six-menu-item', undefined, [
   'checkType',
   'checked',
   'value',
@@ -905,7 +850,7 @@ export const SixMenuItem: StencilVueComponent<JSX.SixMenuItem> = /*@__PURE__*/ g
 });
 
 
-export const SixMenuLabel: StencilVueComponent<JSX.SixMenuLabel> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixMenuLabel>('six-menu-label', defineSixMenuLabel) : defineStencilSSRComponent<JSX.SixMenuLabel>({
+export const SixMenuLabel: StencilVueComponent<JSX.SixMenuLabel> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixMenuLabel>('six-menu-label', undefined) : defineStencilSSRComponent<JSX.SixMenuLabel>({
   tagName: 'six-menu-label',
   hydrateModule: import('@six-group/ui-library/hydrate'),
   props: {
@@ -914,7 +859,7 @@ export const SixMenuLabel: StencilVueComponent<JSX.SixMenuLabel> = /*@__PURE__*/
 });
 
 
-export const SixPicto: StencilVueComponent<JSX.SixPicto> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixPicto>('six-picto', defineSixPicto, [
+export const SixPicto: StencilVueComponent<JSX.SixPicto> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixPicto>('six-picto', undefined, [
   'size'
 ]) : defineStencilSSRComponent<JSX.SixPicto>({
   tagName: 'six-picto',
@@ -925,7 +870,7 @@ export const SixPicto: StencilVueComponent<JSX.SixPicto> = /*@__PURE__*/ globalT
 });
 
 
-export const SixProgressBar: StencilVueComponent<JSX.SixProgressBar> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixProgressBar>('six-progress-bar', defineSixProgressBar, [
+export const SixProgressBar: StencilVueComponent<JSX.SixProgressBar> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixProgressBar>('six-progress-bar', undefined, [
   'percentage',
   'indeterminate'
 ]) : defineStencilSSRComponent<JSX.SixProgressBar>({
@@ -938,7 +883,7 @@ export const SixProgressBar: StencilVueComponent<JSX.SixProgressBar> = /*@__PURE
 });
 
 
-export const SixProgressRing: StencilVueComponent<JSX.SixProgressRing> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixProgressRing>('six-progress-ring', defineSixProgressRing, [
+export const SixProgressRing: StencilVueComponent<JSX.SixProgressRing> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixProgressRing>('six-progress-ring', undefined, [
   'size',
   'strokeWidth',
   'percentage'
@@ -953,7 +898,7 @@ export const SixProgressRing: StencilVueComponent<JSX.SixProgressRing> = /*@__PU
 });
 
 
-export const SixRadio: StencilVueComponent<JSX.SixRadio> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixRadio>('six-radio', defineSixRadio, [
+export const SixRadio: StencilVueComponent<JSX.SixRadio> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixRadio>('six-radio', undefined, [
   'name',
   'value',
   'disabled',
@@ -982,7 +927,7 @@ export const SixRadio: StencilVueComponent<JSX.SixRadio> = /*@__PURE__*/ globalT
 });
 
 
-export const SixRange: StencilVueComponent<JSX.SixRange, JSX.SixRange["value"]> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixRange, JSX.SixRange["value"]>('six-range', defineSixRange, [
+export const SixRange: StencilVueComponent<JSX.SixRange, JSX.SixRange["value"]> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixRange, JSX.SixRange["value"]>('six-range', undefined, [
   'name',
   'value',
   'required',
@@ -1029,7 +974,7 @@ export const SixRange: StencilVueComponent<JSX.SixRange, JSX.SixRange["value"]> 
 });
 
 
-export const SixRoot: StencilVueComponent<JSX.SixRoot> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixRoot>('six-root', defineSixRoot, [
+export const SixRoot: StencilVueComponent<JSX.SixRoot> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixRoot>('six-root', undefined, [
   'padded',
   'stage',
   'version'
@@ -1044,7 +989,7 @@ export const SixRoot: StencilVueComponent<JSX.SixRoot> = /*@__PURE__*/ globalThi
 });
 
 
-export const SixSearchField: StencilVueComponent<JSX.SixSearchField> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixSearchField>('six-search-field', defineSixSearchField, [
+export const SixSearchField: StencilVueComponent<JSX.SixSearchField> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixSearchField>('six-search-field', undefined, [
   'placeholder',
   'debounce',
   'disabled',
@@ -1067,7 +1012,7 @@ export const SixSearchField: StencilVueComponent<JSX.SixSearchField> = /*@__PURE
 });
 
 
-export const SixSelect: StencilVueComponent<JSX.SixSelect, JSX.SixSelect["value"]> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixSelect, JSX.SixSelect["value"]>('six-select', defineSixSelect, [
+export const SixSelect: StencilVueComponent<JSX.SixSelect, JSX.SixSelect["value"]> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixSelect, JSX.SixSelect["value"]>('six-select', undefined, [
   'multiple',
   'selectAllButton',
   'selectAllText',
@@ -1138,7 +1083,7 @@ export const SixSelect: StencilVueComponent<JSX.SixSelect, JSX.SixSelect["value"
 });
 
 
-export const SixSidebar: StencilVueComponent<JSX.SixSidebar> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixSidebar>('six-sidebar', defineSixSidebar, [
+export const SixSidebar: StencilVueComponent<JSX.SixSidebar> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixSidebar>('six-sidebar', undefined, [
   'position',
   'open',
   'width',
@@ -1171,7 +1116,7 @@ export const SixSidebar: StencilVueComponent<JSX.SixSidebar> = /*@__PURE__*/ glo
 });
 
 
-export const SixSidebarItem: StencilVueComponent<JSX.SixSidebarItem> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixSidebarItem>('six-sidebar-item', defineSixSidebarItem, [
+export const SixSidebarItem: StencilVueComponent<JSX.SixSidebarItem> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixSidebarItem>('six-sidebar-item', undefined, [
   'value',
   'selected',
   'disabled',
@@ -1188,7 +1133,7 @@ export const SixSidebarItem: StencilVueComponent<JSX.SixSidebarItem> = /*@__PURE
 });
 
 
-export const SixSidebarItemGroup: StencilVueComponent<JSX.SixSidebarItemGroup> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixSidebarItemGroup>('six-sidebar-item-group', defineSixSidebarItemGroup, [
+export const SixSidebarItemGroup: StencilVueComponent<JSX.SixSidebarItemGroup> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixSidebarItemGroup>('six-sidebar-item-group', undefined, [
   'name',
   'icon',
   'value',
@@ -1209,7 +1154,7 @@ export const SixSidebarItemGroup: StencilVueComponent<JSX.SixSidebarItemGroup> =
 });
 
 
-export const SixSpinner: StencilVueComponent<JSX.SixSpinner> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixSpinner>('six-spinner', defineSixSpinner, [
+export const SixSpinner: StencilVueComponent<JSX.SixSpinner> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixSpinner>('six-spinner', undefined, [
   'logo',
   'six'
 ]) : defineStencilSSRComponent<JSX.SixSpinner>({
@@ -1222,7 +1167,7 @@ export const SixSpinner: StencilVueComponent<JSX.SixSpinner> = /*@__PURE__*/ glo
 });
 
 
-export const SixStageIndicator: StencilVueComponent<JSX.SixStageIndicator> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixStageIndicator>('six-stage-indicator', defineSixStageIndicator, [
+export const SixStageIndicator: StencilVueComponent<JSX.SixStageIndicator> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixStageIndicator>('six-stage-indicator', undefined, [
   'stage'
 ]) : defineStencilSSRComponent<JSX.SixStageIndicator>({
   tagName: 'six-stage-indicator',
@@ -1233,7 +1178,7 @@ export const SixStageIndicator: StencilVueComponent<JSX.SixStageIndicator> = /*@
 });
 
 
-export const SixSwitch: StencilVueComponent<JSX.SixSwitch, JSX.SixSwitch["checked"]> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixSwitch, JSX.SixSwitch["checked"]>('six-switch', defineSixSwitch, [
+export const SixSwitch: StencilVueComponent<JSX.SixSwitch, JSX.SixSwitch["checked"]> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixSwitch, JSX.SixSwitch["checked"]>('six-switch', undefined, [
   'name',
   'value',
   'disabled',
@@ -1271,7 +1216,7 @@ export const SixSwitch: StencilVueComponent<JSX.SixSwitch, JSX.SixSwitch["checke
 });
 
 
-export const SixTab: StencilVueComponent<JSX.SixTab> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixTab>('six-tab', defineSixTab, [
+export const SixTab: StencilVueComponent<JSX.SixTab> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixTab>('six-tab', undefined, [
   'panel',
   'active',
   'closable',
@@ -1292,7 +1237,7 @@ export const SixTab: StencilVueComponent<JSX.SixTab> = /*@__PURE__*/ globalThis.
 });
 
 
-export const SixTabGroup: StencilVueComponent<JSX.SixTabGroup> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixTabGroup>('six-tab-group', defineSixTabGroup, [
+export const SixTabGroup: StencilVueComponent<JSX.SixTabGroup> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixTabGroup>('six-tab-group', undefined, [
   'placement',
   'noScrollControls',
   'six-tab-show',
@@ -1312,7 +1257,7 @@ export const SixTabGroup: StencilVueComponent<JSX.SixTabGroup> = /*@__PURE__*/ g
 });
 
 
-export const SixTabPanel: StencilVueComponent<JSX.SixTabPanel> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixTabPanel>('six-tab-panel', defineSixTabPanel, [
+export const SixTabPanel: StencilVueComponent<JSX.SixTabPanel> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixTabPanel>('six-tab-panel', undefined, [
   'name',
   'active'
 ]) : defineStencilSSRComponent<JSX.SixTabPanel>({
@@ -1325,7 +1270,7 @@ export const SixTabPanel: StencilVueComponent<JSX.SixTabPanel> = /*@__PURE__*/ g
 });
 
 
-export const SixTag: StencilVueComponent<JSX.SixTag> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixTag>('six-tag', defineSixTag, [
+export const SixTag: StencilVueComponent<JSX.SixTag> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixTag>('six-tag', undefined, [
   'type',
   'size',
   'pill',
@@ -1346,7 +1291,7 @@ export const SixTag: StencilVueComponent<JSX.SixTag> = /*@__PURE__*/ globalThis.
 });
 
 
-export const SixTextarea: StencilVueComponent<JSX.SixTextarea, JSX.SixTextarea["value"]> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixTextarea, JSX.SixTextarea["value"]>('six-textarea', defineSixTextarea, [
+export const SixTextarea: StencilVueComponent<JSX.SixTextarea, JSX.SixTextarea["value"]> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixTextarea, JSX.SixTextarea["value"]>('six-textarea', undefined, [
   'size',
   'name',
   'value',
@@ -1413,7 +1358,7 @@ export const SixTextarea: StencilVueComponent<JSX.SixTextarea, JSX.SixTextarea["
 });
 
 
-export const SixTile: StencilVueComponent<JSX.SixTile> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixTile>('six-tile', defineSixTile, [
+export const SixTile: StencilVueComponent<JSX.SixTile> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixTile>('six-tile', undefined, [
   'label',
   'iconName',
   'closeable',
@@ -1443,7 +1388,7 @@ export const SixTile: StencilVueComponent<JSX.SixTile> = /*@__PURE__*/ globalThi
 });
 
 
-export const SixTimepicker: StencilVueComponent<JSX.SixTimepicker> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixTimepicker>('six-timepicker', defineSixTimepicker, [
+export const SixTimepicker: StencilVueComponent<JSX.SixTimepicker> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixTimepicker>('six-timepicker', undefined, [
   'format',
   'separator',
   'value',
@@ -1508,7 +1453,7 @@ export const SixTimepicker: StencilVueComponent<JSX.SixTimepicker> = /*@__PURE__
 });
 
 
-export const SixTooltip: StencilVueComponent<JSX.SixTooltip> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixTooltip>('six-tooltip', defineSixTooltip, [
+export const SixTooltip: StencilVueComponent<JSX.SixTooltip> = /*@__PURE__*/ globalThis.window ? defineContainer<JSX.SixTooltip>('six-tooltip', undefined, [
   'content',
   'placement',
   'disabled',
