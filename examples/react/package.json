@@ -1,5 +1,5 @@
 {
-  "name": "react",
+  "name": "@six-group/demo-app-react",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -21,7 +21,6 @@
     "@types/react-dom": "^19",
     "@vitejs/plugin-react": "^4.3.4",
     "typescript": "^5",
-    "vite": "^4.4.11",
     "vite-tsconfig-paths": "^5.1.4"
   }
 }
