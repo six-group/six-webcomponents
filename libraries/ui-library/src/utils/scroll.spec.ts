@@ -11,7 +11,7 @@ describe('scrollIntoView', () => {
           ({
             top: 1744,
             left: 16,
-          } as DOMRect),
+          }) as DOMRect,
       };
 
       const mockScrollTo = jest.fn();
@@ -24,7 +24,7 @@ describe('scrollIntoView', () => {
           ({
             top: 656,
             left: 16,
-          } as DOMRect),
+          }) as DOMRect,
         scrollTo: mockScrollTo,
       };
 
@@ -47,7 +47,7 @@ describe('scrollIntoView', () => {
           ({
             top: 700,
             left: 16,
-          } as DOMRect),
+          }) as DOMRect,
       };
 
       const mockScrollTo = jest.fn();
@@ -60,7 +60,7 @@ describe('scrollIntoView', () => {
           ({
             top: 656,
             left: 16,
-          } as DOMRect),
+          }) as DOMRect,
         scrollTo: mockScrollTo,
       };
 
@@ -82,7 +82,7 @@ describe('scrollIntoView', () => {
           ({
             top: 500,
             left: 330,
-          } as DOMRect),
+          }) as DOMRect,
       };
 
       const mockScrollTo = jest.fn();
@@ -95,7 +95,7 @@ describe('scrollIntoView', () => {
           ({
             top: 656,
             left: 16,
-          } as DOMRect),
+          }) as DOMRect,
         scrollTo: mockScrollTo,
       };
 
@@ -118,7 +118,7 @@ describe('scrollIntoView', () => {
           ({
             top: 500,
             left: 16,
-          } as DOMRect),
+          }) as DOMRect,
       };
 
       const mockScrollTo = jest.fn();
@@ -131,7 +131,7 @@ describe('scrollIntoView', () => {
           ({
             top: 656,
             left: 16,
-          } as DOMRect),
+          }) as DOMRect,
         scrollTo: mockScrollTo,
       };
 
