@@ -7,25 +7,27 @@ interface NavigationProps {
   open: boolean;
 }
 
+const getLinkClassName = ({ isActive }: { isActive: boolean }) => `${styles[isActive ? 'active-link' : 'link']}`;
+
 export function SideNavigation({ open }: NavigationProps) {
   return (
     <SixSidebar slot="left-sidebar" position="left" open={open} key="left-sidebar">
-      <NavLink to={'/'} className={({ isActive }) => `${styles[isActive ? 'active-link' : 'link']}`}>
+      <NavLink to={'/'} className={getLinkClassName}>
         <SixSidebarItemGroup name="Home" icon="home" />
       </NavLink>
-      <NavLink to={'/form'} className={({ isActive }) => `${styles[isActive ? 'active-link' : 'link']}`}>
+      <NavLink to={'/form'} className={getLinkClassName}>
         <SixSidebarItemGroup name="Form" icon="assignment" />
       </NavLink>
-      <NavLink to={'/alert'} className={({ isActive }) => `${styles[isActive ? 'active-link' : 'link']}`}>
+      <NavLink to={'/alert'} className={getLinkClassName}>
         <SixSidebarItemGroup name="Alert" icon="notifications_active" />
       </NavLink>
-      <NavLink to={'/dialog'} className={({ isActive }) => `${styles[isActive ? 'active-link' : 'link']}`}>
+      <NavLink to={'/dialog'} className={getLinkClassName}>
         <SixSidebarItemGroup name="Dialog" icon="web_asset" />
       </NavLink>
-      <NavLink to={'/details'} className={({ isActive }) => `${styles[isActive ? 'active-link' : 'link']}`}>
+      <NavLink to={'/details'} className={getLinkClassName}>
         <SixSidebarItemGroup name="Details" icon="unfold_more" />
       </NavLink>
-      <NavLink to={'/tab-group'} className={({ isActive }) => `${styles[isActive ? 'active-link' : 'link']}`}>
+      <NavLink to={'/tab-group'} className={getLinkClassName}>
         <SixSidebarItemGroup name="Tab Group" icon="tab" />
       </NavLink>
     </SixSidebar>

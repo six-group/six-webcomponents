@@ -26,9 +26,8 @@
     "baseUrl": "./",
     "paths": {
       "@components/*": ["./src/components/*"],
-      "@views/*": ["src/routes/*"],
-      "@hooks/*": ["./src/hooks/*"],
-      "@customTypes/*": ["./src/customTypes/*"]
+      "@routes/*": ["src/routes/*"],
+      "@hooks/*": ["./src/hooks/*"]
     }
   },
   "include": ["src"]
