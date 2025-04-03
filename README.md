@@ -25,7 +25,7 @@ Thank you to all the people who already contributed to the Six-Webcomponents!
 
 ## Examples
 
-There are example apps for Angular, Plain Javascript and Vue. You can find them in the `examples` directory.
+There are example apps for Angular, Plain Javascript, Vue and React. You can find them in the `examples` directory.
 
 ## Structure
 
