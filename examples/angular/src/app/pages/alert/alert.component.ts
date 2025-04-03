@@ -10,7 +10,10 @@ import { AlertService } from '@six-group/ui-library-angular';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AlertComponent {
-  constructor(private fb: FormBuilder, private alertService: AlertService) {}
+  constructor(
+    private fb: FormBuilder,
+    private alertService: AlertService
+  ) {}
 
   form = this.fb.group({
     message: 'Your Message',
