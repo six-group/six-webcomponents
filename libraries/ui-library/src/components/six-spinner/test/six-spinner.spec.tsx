@@ -19,10 +19,10 @@ describe('six-spinner', () => {
   it('renders as SIX logo when set', async () => {
     const page = await newSpecPage({
       components: [SixSpinner],
-      html: `<six-spinner six="true"></six-spinner>`,
+      html: `<six-spinner logo="six"></six-spinner>`,
     });
     expect(page.root).toEqualHtml(`
-      <six-spinner six="true">
+      <six-spinner logo="six">
         <mock:shadow-root>
           <span aria-busy="true" aria-live="polite" class="six-spinner">
             <div class="six-spinner__container">
