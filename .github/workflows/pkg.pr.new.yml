@@ -2,10 +2,6 @@ name: Publish PR preview release on demand
 on:
   workflow_dispatch:
 
-env:
-  PNPM_CACHE_FOLDER: .pnpm-store
-  HUSKY: 0 # Bypass husky commit hook for CI
-
 permissions: {}
 
 concurrency:
