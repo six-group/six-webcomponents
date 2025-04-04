@@ -1,0 +1,15 @@
+.section {
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--six-spacing-medium);
+}
+
+.buttons {
+  display: flex;
+  gap: var(--six-spacing-x-small);
+}
+
+.trigger-button {
+  align-self: flex-start;
+}

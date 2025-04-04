@@ -1,0 +1,8 @@
+.right-sidebar {
+  background: var(--six-color-web-rock-100);
+}
+
+.task-card {
+  width: 100%;
+  background-color: var(--six-color-white);
+}

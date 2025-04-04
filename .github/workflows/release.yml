@@ -36,7 +36,7 @@ jobs:
           git config user.name "GitHub action"
           git config user.email "<>"
           git checkout -b feature/${{ inputs.version }}
-          git add package*.json libraries/ui-library/package*.json libraries/ui-library-vue/package*.json libraries/ui-library-angular/package*.json
+          git add package*.json libraries/ui-library/package*.json libraries/ui-library-vue/package*.json libraries/ui-library-angular/package*.json libraries/ui-library-react/package*.json
           git commit -m "${{ inputs.version }}"
           git push origin release/package-updates-${{ inputs.version }}
 
@@ -49,6 +49,7 @@ jobs:
         run: |
           npm publish --tag=latest --access=public libraries/ui-library/
           npm publish --tag=latest --access=public libraries/ui-library-vue/
+          npm publish --tag=latest --access=public libraries/ui-library-react/
           npm publish --tag=latest --access=public libraries/ui-library-angular/dist/ui-library-angular/
 
       - name: 'Create tag'
