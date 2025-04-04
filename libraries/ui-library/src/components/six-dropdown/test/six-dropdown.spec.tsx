@@ -17,20 +17,20 @@ describe('six-dropdown', () => {
     });
     expect(page.root).toEqualHtml(`
       <six-dropdown>
-      <div class="dropdown" id="dropdown-1" part="base">
-        <span class="dropdown__trigger" part="trigger">
-          <six-button caret="" slot="trigger">
-            Dropdown
-          </six-button>
-         </span>
-         <div class="dropdown__positioner" hidden="">
-             <div aria-hidden="true" aria-labelledby="dropdown-1" class="dropdown__panel" part="panel" role="menu">
-             <div class="dropdown__panel__scroll">
-              <six-menu></six-menu>
+        <div class="dropdown" id="dropdown-1" part="base">
+          <span class="dropdown__trigger" part="trigger">
+            <six-button caret="" slot="trigger">
+              Dropdown
+            </six-button>
+          </span>
+          <div class="dropdown__positioner" hidden="">
+            <div aria-hidden="true" aria-labelledby="dropdown-1" class="dropdown__panel" part="panel" role="menu">
+              <div class="dropdown__panel__scroll">
+                <six-menu></six-menu>
+              </div>
             </div>
-         </div>
+          </div>
         </div>
-      </div>
       </six-dropdown>
     `);
   });
