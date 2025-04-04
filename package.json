@@ -5,6 +5,7 @@
     "start": "npm run start -w libraries/ui-library",
     "watch:lib": "npm run watch -w libraries/ui-library",
     "watch:angular": "npm run watch -w libraries/ui-library-angular",
+    "watch:vue": "npm run watch -w libraries/ui-library-vue",
     "watch:react": "npm run watch -w libraries/ui-library-react",
     "start:doc": "npm run start -w docs",
     "start:doc:fresh": "npm run build:doc && npm run start:doc",
