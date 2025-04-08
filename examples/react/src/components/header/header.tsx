@@ -13,12 +13,11 @@ import {
   SixMenuItem,
   SixSearchField,
 } from '@six-group/ui-library-react';
-import { Language, languages } from '@six-group/ui-library';
+import styles from './header.module.css';
+import { SixLanguageSwitcherCustomEvent } from '@six-group/ui-library';
 import { useLanguage } from '@hooks/useLanguage';
 import { useState } from 'react';
 import { useTasks } from '@components/tasksProvider/tasksProvider';
-
-import styles from './header.module.css';
 
 interface HeaderProps {
   leftSidebar: {
@@ -31,26 +30,17 @@ interface HeaderProps {
 const apps = ['Application 1', 'Application 2', 'Application 3', 'Application 4'];
 
 export function Header({ leftSidebar, toggleRightSidebar }: HeaderProps) {
-  const availableLangs: Language[] = [...languages];
-
   const [currentApp, setCurrentApp] = useState('Application 2');
-
   const [openSearch, setOpenSearch] = useState(false);
+  const tasks = useTasks();
+  const language = useLanguage();
 
-  let lang = useLanguage();
-  if (lang == null || !availableLangs.includes(lang)) {
-    lang = 'de';
-  }
-  let language: Language = lang;
-  document.documentElement.lang = lang;
+  document.documentElement.lang = language;
 
-  function changeLanguage(event: Event) {
-    const lang = (event as CustomEvent).detail;
-    localStorage.setItem('six-lang', lang);
+  function changeLanguage(event: SixLanguageSwitcherCustomEvent<string>) {
+    localStorage.setItem('six-lang', event.detail);
     location.reload();
   }
-
-  const taskCount = useTasks().length;
 
   return (
     <SixHeader slot="header" openSearch={openSearch} style={{ display: 'block' }}>
@@ -71,9 +61,9 @@ export function Header({ leftSidebar, toggleRightSidebar }: HeaderProps) {
 
       <SixHeaderItem>
         <SixIconButton name="notifications_none" onClick={toggleRightSidebar}>
-          {taskCount > 0 && (
+          {tasks.length > 0 && (
             <SixBadge type="danger" pill>
-              {taskCount}
+              {tasks.length}
             </SixBadge>
           )}
         </SixIconButton>

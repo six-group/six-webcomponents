@@ -16,7 +16,7 @@ export function Details() {
     <>
       <h2>Details</h2>
 
-      <section className={styles.single}>
+      <div className={styles.single}>
         <SixDetails
           open={isOpen}
           summary="Toggle Me"
@@ -40,11 +40,11 @@ export function Details() {
           onSixCheckboxChange={(e) => setIsDisabled(e.target.checked)}
           label="Disabled"
         />
-      </section>
+      </div>
 
       <h3>Grouped</h3>
 
-      <section className={styles.grouped}>
+      <div className={styles.grouped}>
         <SixDetails summary="First" open={openIndex === 0} onClick={() => toggle(0)}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
           magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -62,7 +62,7 @@ export function Details() {
           magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
           consequat.
         </SixDetails>
-      </section>
+      </div>
     </>
   );
 }

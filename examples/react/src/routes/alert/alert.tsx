@@ -20,7 +20,7 @@ export function Alert() {
       <h2>Alert</h2>
 
       <h3>Toast Notifications</h3>
-      <section className={styles.section}>
+      <div className={styles.section}>
         <div className={styles.buttons}>
           <SixButton type="primary" onClick={() => primaryRef.current?.toast()}>
             Primary
@@ -53,15 +53,15 @@ export function Alert() {
           <br />
           Settings will take effect on the next login.
         </SixAlert>
-      </section>
+      </div>
 
       <h3>Imperative Toasts</h3>
-      <section className={styles.section}>
+      <div className={styles.section}>
         <SixInput value={toastMessage} onSixInputInput={(e) => setToastMessage(e.target.value)} />
         <SixButton className={styles['trigger-button']} onClick={showToast}>
           Show Toast
         </SixButton>
-      </section>
+      </div>
     </>
   );
 }
