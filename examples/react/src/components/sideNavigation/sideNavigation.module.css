@@ -1,0 +1,8 @@
+.link {
+  text-decoration: none;
+}
+
+.active-link {
+  text-decoration: none;
+  font-weight: bolder;
+}

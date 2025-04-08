@@ -44,7 +44,6 @@ export class SixHeader {
   }
 
   render() {
-    console.log('render', this.openSearch);
     return (
       <Host>
         <header part="header" class="six-header">

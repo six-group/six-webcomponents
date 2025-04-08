@@ -5,12 +5,16 @@ build
 www
 libraries/ui-library/src/**/readme.md
 libraries/**/components.ts
+libraries/**/components.server.ts
 libraries/**/components.d.ts
 libraries/ui-library/loader
 libraries/ui-library/docs
+libraries/ui-library/hydrate
 .angular
 stencil-generated
 docs/examples
 docs/components
 docs/.vitepress/cache
 docs/.vitepress/dist
+.next
+.nuxt

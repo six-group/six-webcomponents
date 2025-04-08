@@ -1,0 +1,27 @@
+{
+  "name": "@six-group/demo-app-react",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@six-group/ui-library": "*",
+    "@six-group/ui-library-react": "*",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-router": "^7.4.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "^5",
+    "vite-tsconfig-paths": "^5.1.4",
+    "vite": "5.4.17"
+  }
+}

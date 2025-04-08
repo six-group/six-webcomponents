@@ -33,7 +33,7 @@ describe('six-select', () => {
                         expand_more
                       </six-icon>
                     </span>
-                    <six-input aria-hidden="true" class="select__hidden-select select__input" placeholder="" size="medium" tabindex="-1"></six-input>
+                    <six-input aria-hidden="true" class="select__hidden-select select__input" placeholder="" size="medium"></six-input>
                   </div>
                   <div class="selection-container"></div>
                   <six-menu class="select__menu" disable-keyboard-handling="" part="menu" remove-box-shadow="">
@@ -82,7 +82,7 @@ describe('six-select', () => {
                     <div class="display__values">
                       <span class="placeholder"></span>
                     </div>
-                    <six-input aria-hidden="true" class="select__input" placeholder="" size="medium" tabindex="-1"></six-input>
+                    <six-input aria-hidden="true" class="select__input" placeholder="" size="medium"></six-input>
                   </div>
                   <div class="selection-container"></div>
                   <six-menu class="select__menu select__menu--hidden" disable-keyboard-handling="" part="menu" remove-box-shadow="">

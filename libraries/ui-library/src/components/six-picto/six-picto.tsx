@@ -24,7 +24,7 @@ export class SixPicto {
 
   async componentWillLoad() {
     const iconName = this.host.innerHTML?.trim();
-    if (iconName) {
+    if (!!iconName) {
       try {
         const response = await fetch(`/assets/pictograms/${iconName}.svg`);
         if (response.ok) {
