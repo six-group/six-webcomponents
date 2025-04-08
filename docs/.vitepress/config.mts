@@ -53,6 +53,7 @@ export default withMermaid({
               items: [
                 { text: 'Angular', link: '/guide/angular' },
                 { text: 'Vue', link: '/guide/vue' },
+                { text: 'React', link: '/guide/react' },
               ],
             },
             {
