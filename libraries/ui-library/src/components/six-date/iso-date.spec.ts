@@ -1,5 +1,5 @@
 import {
-  fromDateString,
+  fromFormattedString,
   getDaysInMonth,
   getMonth,
   IsoDate,
@@ -43,11 +43,12 @@ describe('iso-date', () => {
     });
   });
 
-  describe('toIsoDate', () => {
+  describe('fromFormattedString', () => {
     const dateCases = [
       { input: '1.1.2022', format: 'd.M.yyyy', expected: '2022-01-01' }, // Valid
       { input: '2022-01-01', format: 'yyyy-MM-dd', expected: '2022-01-01' }, // Valid
       { input: '29.02.2020', format: 'dd.MM.yyyy', expected: '2020-02-29' }, // Valid leap year
+      { input: '2.2.2', format: 'dd.MM.yyyy', expected: undefined }, // pattern not fulfilled
       { input: 'invalid-date', format: 'yyyy-MM-dd', expected: undefined }, // Invalid string
       { input: '31.02.2022', format: 'dd.MM.yyyy', expected: undefined }, // Invalid date
       { input: '', format: 'yyyy-MM-dd', expected: undefined }, // Empty string
@@ -57,7 +58,7 @@ describe('iso-date', () => {
     test.each(dateCases)(
       'parses date string `$input` with format `$format`, expects `$expected`',
       ({ input, format, expected }) => {
-        expect(fromDateString(input, format)).toBe(expected);
+        expect(fromFormattedString(input, format)).toBe(expected);
       }
     );
   });

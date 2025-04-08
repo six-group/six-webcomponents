@@ -17,14 +17,8 @@ export const i18nDate = {
       'December',
     ],
     monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-    monthsShortGrouped: [
-      ['Jan', 'Feb', 'Mar', 'Apr'],
-      ['May', 'Jun', 'Jul', 'Aug'],
-      ['Sep', 'Oct', 'Nov', 'Dec'],
-    ],
-    weekdays: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-    weekdaysShort: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
     weekdaysMin: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
+    formatHelp: (pattern: string) => `Please enter the date in the format  ${pattern}`,
   },
   de: {
     months: [
@@ -42,14 +36,8 @@ export const i18nDate = {
       'Dezember',
     ],
     monthsShort: ['Jan.', 'Feb.', 'März', 'Apr.', 'Mai', 'Juni', 'Juli', 'Aug.', 'Sep.', 'Okt.', 'Nov.', 'Dez.'],
-    monthsShortGrouped: [
-      ['Jan.', 'Feb.', 'März', 'Apr.'],
-      ['Mai', 'Juni', 'Juli', 'Aug.'],
-      ['Sep.', 'Okt.', 'Nov.', 'Dez.'],
-    ],
-    weekdays: ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag'],
-    weekdaysShort: ['Mo.', 'Di.', 'Mi.', 'Do.', 'Fr.', 'Sa.', 'So.'],
     weekdaysMin: ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'],
+    formatHelp: (pattern: string) => `Bitte geben Sie das Datum im Format '${pattern}' ein.`,
   },
   fr: {
     months: [
@@ -67,14 +55,8 @@ export const i18nDate = {
       'décembre',
     ],
     monthsShort: ['janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août', 'sept.', 'oct.', 'nov.', 'déc.'],
-    monthsShortGrouped: [
-      ['janv.', 'févr.', 'mars', 'avr.'],
-      ['mai', 'juin', 'juil.', 'août'],
-      ['sept.', 'oct.', 'nov.', 'déc.'],
-    ],
-    weekdays: ['lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi', 'dimanche'],
-    weekdaysShort: ['lun.', 'mar.', 'mer.', 'jeu.', 'ven.', 'sam.', 'dim.'],
     weekdaysMin: ['lu', 'ma', 'me', 'je', 've', 'sa', 'di'],
+    formatHelp: (pattern: string) => `Veuillez saisir la date au format '${pattern}'.`,
   },
   it: {
     months: [
@@ -92,14 +74,8 @@ export const i18nDate = {
       'dicembre',
     ],
     monthsShort: ['gen', 'feb', 'mar', 'apr', 'mag', 'giu', 'lug', 'ago', 'set', 'ott', 'nov', 'dic'],
-    monthsShortGrouped: [
-      ['gen', 'feb', 'mar', 'apr'],
-      ['mag', 'giu', 'lug', 'ago'],
-      ['set', 'ott', 'nov', 'dic'],
-    ],
-    weekdays: ['lunedì', 'martedì', 'mercoledì', 'giovedì', 'venerdì', 'sabato', 'domenica'],
-    weekdaysShort: ['lun', 'mar', 'mer', 'gio', 'ven', 'sab', 'dom'],
     weekdaysMin: ['lu', 'ma', 'me', 'gi', 've', 'sa', 'do'],
+    formatHelp: (pattern: string) => `Si prega di inserire la data nel formato '${pattern}'.`,
   },
   es: {
     months: [
@@ -117,21 +93,23 @@ export const i18nDate = {
       'diciembre',
     ],
     monthsShort: ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'],
-    monthsShortGrouped: [
-      ['ene', 'feb', 'mar', 'abr'],
-      ['may', 'jun', 'jul', 'ago'],
-      ['sep', 'oct', 'nov', 'dic'],
-    ],
-    weekdays: ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domingo'],
-    weekdaysShort: ['lun', 'mar', 'mié', 'jue', 'vie', 'sáb', 'dom'],
     weekdaysMin: ['lu', 'ma', 'mi', 'ju', 'vi', 'sa', 'do'],
+    formatHelp: (pattern: string) => `Por favor, introduzca la fecha en el formato '${pattern}'.`,
   },
 };
 
 export function translateMonth(month: number, language: Language) {
+  return i18nDate[language].months[month - 1];
+}
+
+export function translateMonthShort(month: number, language: Language) {
   return i18nDate[language].monthsShort[month - 1];
 }
 
 export function translateWeekday(day: number, language: Language) {
   return i18nDate[language].weekdaysMin[day - 1];
+}
+
+export function translateFormatHelp(language: Language, pattern: string) {
+  return i18nDate[language].formatHelp(pattern);
 }

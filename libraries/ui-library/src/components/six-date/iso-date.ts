@@ -32,9 +32,14 @@ export interface PointerDate {
  * @param format - The expected format of the date string (e.g., "yyyy-MM-dd").
  * @returns An IsoDate if the date string is valid, otherwise undefined.
  */
-export function fromDateString(dateString: string, format: string): IsoDate | undefined {
+export function fromFormattedString(dateString: string, format: string): IsoDate | undefined {
   const date = fns.parse(dateString, format, new Date());
-  return fns.isValid(date) ? fromDate(date) : undefined;
+
+  if (fns.isValid(date) && fns.format(date, format) === dateString) {
+    return fromDate(date);
+  }
+
+  return undefined;
 }
 
 /**
@@ -80,10 +85,6 @@ export function getMonth(isoDate: IsoDate): number {
 
 export function getYear(isoDate: IsoDate): number {
   return toPointerDate(isoDate).year;
-}
-
-export function getDay(isoDate: IsoDate): number {
-  return toPointerDate(isoDate).day;
 }
 
 export function toPointerDate(isoDate: IsoDate): PointerDate {

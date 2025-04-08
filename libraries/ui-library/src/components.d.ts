@@ -281,17 +281,13 @@ export namespace Components {
          */
         "clearable": boolean;
         /**
-          * Define the dateFormat.  Available patterns: - Year: "yyyy" (e.g., "2021") - Month: "MM" (e.g., "01" for January, "12" for December) - Day: "dd" (e.g., "08" for the 8th day of the month)
+          * Define the dateFormat. Defaults to "dd.MM.yyyy".  Available patterns: - Year: "yyyy" (e.g., "2021") - Month: "MM" (e.g., "01" for January, "12" for December) - Day: "dd" (e.g., "08" for the 8th day of the month)
          */
         "dateFormat": string;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `dateChange` event after each keystroke.
          */
         "debounce": number;
-        /**
-          * The date to defines where the datepicker popup starts. The prop accepts ISO 8601 date strings (YYYY-MM-DD).
-         */
-        "defaultDate"?: string;
         /**
           * If `true` the component is disabled.
          */
@@ -332,10 +328,6 @@ export namespace Components {
           * The placeholder defines what text to be shown on the input element
          */
         "placeholder"?: string;
-        /**
-          * The enforced placement of the dropdown panel.
-         */
-        "placement"?: 'top' | 'bottom-start';
         /**
           * If `true` the user can only select a date via the component in the popup, but not directly edit the input field.
          */
@@ -3540,17 +3532,13 @@ declare namespace LocalJSX {
          */
         "clearable"?: boolean;
         /**
-          * Define the dateFormat.  Available patterns: - Year: "yyyy" (e.g., "2021") - Month: "MM" (e.g., "01" for January, "12" for December) - Day: "dd" (e.g., "08" for the 8th day of the month)
+          * Define the dateFormat. Defaults to "dd.MM.yyyy".  Available patterns: - Year: "yyyy" (e.g., "2021") - Month: "MM" (e.g., "01" for January, "12" for December) - Day: "dd" (e.g., "08" for the 8th day of the month)
          */
         "dateFormat"?: string;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `dateChange` event after each keystroke.
          */
         "debounce"?: number;
-        /**
-          * The date to defines where the datepicker popup starts. The prop accepts ISO 8601 date strings (YYYY-MM-DD).
-         */
-        "defaultDate"?: string;
         /**
           * If `true` the component is disabled.
          */
@@ -3599,10 +3587,6 @@ declare namespace LocalJSX {
           * The placeholder defines what text to be shown on the input element
          */
         "placeholder"?: string;
-        /**
-          * The enforced placement of the dropdown panel.
-         */
-        "placement"?: 'top' | 'bottom-start';
         /**
           * If `true` the user can only select a date via the component in the popup, but not directly edit the input field.
          */

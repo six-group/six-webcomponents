@@ -1,9 +1,8 @@
 import { h } from '@stencil/core';
 import { getMonth, IsoDate, today } from '../iso-date';
 import { Language } from '../../../utils/error-messages';
-import { translateMonth } from '../translations';
+import { translateMonthShort } from '../translations';
 
-// TODO: move to it's own component (with styles)
 export const MonthSelection = (props: {
   language: Language;
   selected: IsoDate | '';
@@ -11,7 +10,7 @@ export const MonthSelection = (props: {
 }) => {
   const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((month) => ({
     month,
-    label: translateMonth(month, props.language),
+    label: translateMonthShort(month, props.language),
     today: getMonth(today()) === month,
     selected: props.selected === '' ? false : getMonth(props.selected) === month,
   }));

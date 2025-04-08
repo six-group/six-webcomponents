@@ -12,8 +12,25 @@
     <div class="container">
       <p>Datepickers allow the user to manually enter a date or open a popup calendar to select a date.</p>
       <section>
-        <six-date value="abc" min="2025-04-05" label="Date" clearable></six-date>
+        <six-date value="2025-04-05" min="2025-04-05" label="Date" clearable></six-date>
       </section>
+
+      <div id="read-select-date-label">No Date selected yet!</div>
+      <six-date id="read-select-date-picker"></six-date>
+
+      <script type="module">
+        const datepicker = document.getElementById('read-select-date-picker');
+        const selectedDate = document.getElementById('read-select-date-label');
+
+        datepicker.addEventListener('change', (event) => {
+          selectedDate.innerHTML = `selected: ${event.target.value}`;
+        });
+      </script>
+      <style>
+        six-datepicker {
+          max-width: 25rem;
+        }
+      </style>
     </div>
   </body>
 </html>

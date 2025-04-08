@@ -5,77 +5,73 @@
   font-family: var(--six-font-family);
 }
 
-.date {
+.container {
   position: relative;
 }
 
 /**
  * PANEL
  */
-.date__panel {
+.positioner {
+  position: fixed;
+  z-index: var(--six-z-index-date);
+  background-color: var(--six-color-white);
+}
+
+.panel {
   width: 25rem;
-  opacity: 0;
   pointer-events: none;
   padding: var(--six-spacing-small);
   padding-bottom: var(--six-spacing-x-large);
   border: 1px solid var(--six-color-web-rock-300);
   box-shadow: var(--six-shadow-small);
-  transition: var(--six-transition-fast) opacity, var(--six-transition-fast) transform;
+
+  // animation
+  opacity: 0;
+  transform: scale(0.9);
+  transition: transform var(--six-transition-fast), opacity var(--six-transition-fast);
 }
 
-.date__panel.popover-visible {
+.popover-visible .panel {
   opacity: 1;
+  transform: none;
   pointer-events: all;
 }
 
-.date-header {
+/**
+ * PANEL HEADER
+ */
+header {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
   border-bottom: 1px solid var(--six-color-web-rock-400);
   padding: var(--six-spacing-x-small);
   margin-bottom: var(--six-spacing-medium);
   user-select: none;
 
-  & svg {
-    fill: var(--six-color-web-rock-900);
-    stroke: none;
+  six-icon-button.previous {
+    margin-right: auto;
+    margin-left: calc(-1 * var(--six-spacing-x-small));
   }
 
-  &__btn {
-    cursor: pointer;
-    width: 2.5em;
-    height: var(--six-height-medium);
+  six-icon-button.next {
+    margin-left: auto;
+    margin-right: calc(-1 * var(--six-spacing-x-small));
+  }
+
+  .selector {
     display: flex;
-    vertical-align: middle;
-    align-items: center;
-    justify-content: center;
+    cursor: pointer;
+    padding: var(--six-spacing-x-small);
 
     &:hover {
       background-color: var(--six-color-web-rock-100);
-      border-radius: 100%;
-    }
-  }
-
-  &__label {
-    display: flex;
-
-    & > div {
-      cursor: pointer;
-      padding: var(--six-spacing-x-small);
-      display: flex;
-      vertical-align: middle;
-      align-items: center;
-      justify-content: center;
-
-      &:hover {
-        background-color: var(--six-color-web-rock-100);
-      }
     }
   }
 }
 
 /**
- * CELL
+ * SELECTION CELL
  */
 .cell {
   cursor: pointer;
