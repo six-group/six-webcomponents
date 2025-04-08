@@ -17,53 +17,50 @@ For more detailed usage examples, check the
    npm install @six-group/ui-library-react
    ```
 
-2. In your main.ts file, add the `UiLibraryReact` plugin to your React application and import the
-   styles:
+2. In your main.tsx file, import the styles:
 
    ```ts
-   import { createApp } from 'react';
-   import { UiLibraryReact } from '@six-group/ui-library-react';
    import '@six-group/ui-library/dist/ui-library/ui-library.css';
-
-   const app = createApp(App);
-   app.use(UiLibraryReact);
    ```
 
 ## Using the Components
 
 The components can be used just like any other React component.
 
-1. Import the component in `<script setup>`
+1. Import the component with an import statement like this
 
    ```ts
-   import { SixButton } from '@six-group/ui-library-react';
+   import { SixMenuItem } from '@six-group/ui-library-react';
    ```
 
 2. Use it in the template
 
    ```html
-   <six-button type="primary" @click="doIt()">Click Me</six-button>
+   <SixMenuItem value="logout">Logout</SixMenuItem>
    ```
 
 ## Router
 
-If you are using `react-router` and want to use `router-link` attributes on the web components, you
-have to pass the router as part of the configuration to the `UiLibraryReact` plugin:
+If you are using `react-router` and want to use `NavLink` attributes on the web components
 
 ```ts
-app.use(UiLibraryReact, { router });
+import { NavLink } from 'react-router';
 ```
 
 You can then use `router-link` on any component from the library like this:
 
+```ts
+const getLinkClassName = ({ isActive }: { isActive: boolean }) =>
+  `${styles[isActive ? 'active-link' : 'link']}`;
+```
+
 ```html
-<six-sidebar-item-group router-link="/the-link" name="Link Demo" />
+<NavLink to={'/'} className={getLinkClassName}>
+  <SixSidebarItemGroup name="Home" icon="home" />
+</NavLink>
 ```
 
 ## Forms
-
-Form components like `six-input`, `six-checkbox` or `six-select` integrate smoothly with React’s
-`v-model` bindings.
 
 ### Error Message Translations
 
@@ -75,7 +72,3 @@ For proper translation, set the lang attribute on the `html` element. Languages 
 By default, polyfills are not included when registering the React plugin in your app.
 
 For non-browser environments, like unit tests, enable them as follows:
-
-```ts
-app.use(UiLibraryReact, { applyPolyfills: true });
-```
