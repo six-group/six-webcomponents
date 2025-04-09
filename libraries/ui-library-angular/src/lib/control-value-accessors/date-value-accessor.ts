@@ -22,4 +22,9 @@ export class DateValueAccessor extends ValueAccessor {
   handleInputEvent(el: HTMLSixInputElement): void {
     this.handleValueChange(el, el.value);
   }
+
+  override writeValue(value: any): void {
+    this.el.nativeElement.value = value == null ? '' : value;
+    this.updateValidation();
+  }
 }

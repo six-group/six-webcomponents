@@ -284,14 +284,18 @@ export class SixDate {
 
   private handleInputChange = (event: Event) => {
     if (this.inputElement == null) return;
-
     event.stopPropagation();
     const isoDate = fromFormattedString(this.inputElement.value, this.dateFormat);
+
     if (isoDate != null) {
       this.value = isoDate;
       this.pointerDate = toPointerDate(this.value);
-      this.sixChange.emit(this.value);
+    } else if (this.inputElement.value === '') {
+      this.value = '';
+      this.pointerDate = todayAsPointerDate();
+      this.selectionMode = 'day';
     }
+    this.sixChange.emit(this.value);
   };
 
   private handleOnBlur = () => {
