@@ -1,40 +1,274 @@
 # Colors
 
-The Six Webcomponents are using the brand colors from SIX underneath. In case you want to use those
-colors directly you can do so by using the following listed css variables for the corresponding
-[colors](https://github.com/six-group/six-webcomponents/blob/main/libraries/ui-library/src/global/base/colors.css).
+The Six Webcomponents library uses a comprehensive color system that includes brand colors, semantic
+status colors, and neutral tones.
 
-## Overview of CSS Variables
+## Brand Colors
 
-| CSS Variable                                             | Color                                                                    | Hex Code  |
-| -------------------------------------------------------- | ------------------------------------------------------------------------ | --------- |
-| `--six-color-red`                                        | <span style="font-size:80px;color:#de3919">&#9679;</span>                | `#de3919` |
-| `--six-color-black`                                      | <span style="font-size:80px;color:#000">&#9679;</span>                   | `#000`    |
-| `--six-color-white`                                      | <span style="font-size:80px;color:#fff;border-color:#000">&#9679;</span> | `#fff`    |
-| `--six-color-indigo`                                     | <span style="font-size:80px;color:#5c1bb8">&#9679;</span>                | `#5c1bb8` |
-| `--six-color-web-rock-900`                               | <span style="font-size:80px;color:#262626">&#9679;</span>                | `#262626` |
-| `--six-color-web-rock-800`                               | <span style="font-size:80px;color:#484848">&#9679;</span>                | `#484848` |
-| `--six-color-web-rock-700`                               | <span style="font-size:80px;color:#676767">&#9679;</span>                | `#676767` |
-| `--six-color-web-rock-600`                               | <span style="font-size:80px;color:#7b7b7b">&#9679;</span>                | `#7b7b7b` |
-| `--six-color-web-rock-500`                               | <span style="font-size:80px;color:#a5a5a5">&#9679;</span>                | `#a5a5a5` |
-| `--six-color-web-rock-400`                               | <span style="font-size:80px;color:#c3c3c3">&#9679;</span>                | `#c3c3c3` |
-| `--six-color-web-rock-300`                               | <span style="font-size:80px;color:#e5e5e5">&#9679;</span>                | `#e5e5e5` |
-| `--six-color-web-rock-200`                               | <span style="font-size:80px;color:#f1f1f1">&#9679;</span>                | `#f1f1f1` |
-| `--six-color-web-rock-100`                               | <span style="font-size:80px;color:#f6f6f6">&#9679;</span>                | `#f6f6f6` |
-| `--six-color-web-rock-50`                                | <span style="font-size:80px;color:#fbfbfb">&#9679;</span>                | `#fbfbfb` |
-| `--six-color-clay-200`                                   | <span style="font-size:80px;color:#ada398">&#9679;</span>                | `#ada398` |
-| `--six-color-clay-50`                                    | <span style="font-size:80px;color:#ebe8e7">&#9679;</span>                | `#ebe8e7` |
-| `--six-color-danger-900`                                 | <span style="font-size:80px;color:#c52c0f">&#9679;</span>                | `#c52c0f` |
-| `--six-color-danger-800`                                 | <span style="font-size:80px;color:#de3919">&#9679;</span>                | `#de3919` |
-| `--six-color-danger-light-to-be-defined`                 | <span style="font-size:80px;color:#f58c78">&#9679;</span>                | `#f58c78` |
-| `--six-color-warning-800`                                | <span style="font-size:80px;color:#ef9f25">&#9679;</span>                | `#ef9f25` |
-| `--six-color-warning-700`                                | <span style="font-size:80px;color:#f2b72c">&#9679;</span>                | `#f2b72c` |
-| `--six-color-warning-light-to-be-defined`                | <span style="font-size:80px;color:#f9deb4">&#9679;</span>                | `#f9deb4` |
-| `--six-color-success-600`                                | <span style="font-size:80px;color:#58d200">&#9679;</span>                | `#58d200` |
-| `--six-color-success-500`                                | <span style="font-size:80px;color:#6ae300">&#9679;</span>                | `#6ae300` |
-| `--six-color-success-light-to-be-defined`                | <span style="font-size:80px;color:#aaff6c">&#9679;</span>                | `#aaff6c` |
-| `--six-color-action-600`                                 | <span style="font-size:80px;color:#1f87e5">&#9679;</span>                | `#1f87e5` |
-| `--six-color-action-500`                                 | <span style="font-size:80px;color:#2196f3">&#9679;</span>                | `#2196f3` |
-| `--six-color-action-light-to-be-defined`                 | <span style="font-size:80px;color:#a8d0f5">&#9679;</span>                | `#a8d0f5` |
-| `--six-color-inactive`                                   | <span style="font-size:80px;color:#c3c3c3">&#9679;</span>                | `#c3c3c3` |
-| `--six-focus-ring-color` based on `six-color-action-600` | <span style="font-size:80px;color:#1f87e5">&#9679;</span>                | `#1f87e5` |
+<div style="display: flex; align-items: center; margin-bottom: 24px;">
+  <div style="width: 120px; font-weight: 500;">Red</div>
+  <div style="width: 60px; height: 60px; background-color: #de3919; border-radius: 4px 0 0 4px;"></div>
+  <div style="margin-left: 12px;"><code>--six-color-red</code></div>
+</div>
+
+<div style="display: flex; align-items: center; margin-bottom: 24px;">
+  <div style="width: 120px; font-weight: 500;">Indigo</div>
+  <div style="width: 60px; height: 60px; background-color: #5c1bb8; border-radius: 4px 0 0 4px;"></div>
+  <div style="margin-left: 12px;"><code>--six-color-indigo</code></div>
+</div>
+
+## Color Palettes
+
+<div style="display: flex; flex-direction: row">
+  <div style="display: flex; gap: 8px; flex-direction: column">
+    <div style="width: 175px; height: 40px; display: flex; align-items: center">
+      <span style="font-weight: 500;">
+        Web Rock
+      </span>
+    </div>
+    <span style="font-size: 12px">
+        <code>--six-color-web-rock-{n}</code>
+    </span>
+  </div>
+  <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px;">
+    <div style="text-align: center;">
+      <div style="width: 44px; height: 44px; background-color: #262626; border-radius: 4px;"></div>
+      <div style="font-size: 12px; margin-top: 4px;">900</div>
+      <div style="font-size: 10px; color: #7b7b7b;">#262626</div>
+    </div>
+    <div style="text-align: center;">
+      <div style="width: 44px; height: 44px; background-color: #484848; border-radius: 4px;"></div>
+      <div style="font-size: 12px; margin-top: 4px;">800</div>
+      <div style="font-size: 10px; color: #7b7b7b;">#484848</div>
+    </div>
+    <div style="text-align: center;">
+      <div style="width: 44px; height: 44px; background-color: #676767; border-radius: 4px;"></div>
+      <div style="font-size: 12px; margin-top: 4px;">700</div>
+      <div style="font-size: 10px; color: #7b7b7b;">#676767</div>
+    </div>
+    <div style="text-align: center;">
+      <div style="width: 44px; height: 44px; background-color: #7b7b7b; border-radius: 4px;"></div>
+      <div style="font-size: 12px; margin-top: 4px;">600</div>
+      <div style="font-size: 10px; color: #7b7b7b;">#7b7b7b</div>
+    </div>
+    <div style="text-align: center;">
+      <div style="width: 44px; height: 44px; background-color: #a5a5a5; border-radius: 4px;"></div>
+      <div style="font-size: 12px; margin-top: 4px;">500</div>
+      <div style="font-size: 10px; color: #7b7b7b;">#a5a5a5</div>
+    </div>
+    <div style="text-align: center;">
+      <div style="width: 44px; height: 44px; background-color: #c3c3c3; border-radius: 4px;"></div>
+      <div style="font-size: 12px; margin-top: 4px;">400</div>
+      <div style="font-size: 10px; color: #7b7b7b;">#c3c3c3</div>
+    </div>
+    <div style="text-align: center;">
+      <div style="width: 44px; height: 44px; background-color: #e5e5e5; border-radius: 4px;"></div>
+      <div style="font-size: 12px; margin-top: 4px;">300</div>
+      <div style="font-size: 10px; color: #7b7b7b;">#e5e5e5</div>
+    </div>
+    <div style="text-align: center;">
+      <div style="width: 44px; height: 44px; background-color: #f1f1f1; border-radius: 4px;"></div>
+      <div style="font-size: 12px; margin-top: 4px;">200</div>
+      <div style="font-size: 10px; color: #7b7b7b;">#f1f1f1</div>
+    </div>
+    <div style="text-align: center;">
+      <div style="width: 44px; height: 44px; background-color: #f6f6f6; border-radius: 4px;"></div>
+      <div style="font-size: 12px; margin-top: 4px;">100</div>
+      <div style="font-size: 10px; color: #7b7b7b;">#f6f6f6</div>
+    </div>
+    <div style="text-align: center;">
+      <div style="width: 44px; height: 44px; background-color: #fbfbfb; border-radius: 4px; border: 1px solid #e5e5e5;"></div>
+      <div style="font-size: 12px; margin-top: 4px;">50</div>
+      <div style="font-size: 10px; color: #7b7b7b;">#fbfbfb</div>
+    </div>
+  </div>
+</div>
+<div style="display: flex; flex-direction: row">
+  <div style="display: flex; gap: 8px; flex-direction: column">
+    <div style="width: 175px; height: 40px; display: flex; align-items: center">
+      <span style="font-weight: 500;">
+        Clay
+      </span>
+    </div>
+    <span style="font-size: 12px">
+        <code>--six-color-clay-{n}</code>
+    </span>
+  </div>
+  <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px;">
+    <div style="text-align: center;">
+      <div style="width: 44px; height: 44px; background-color: #ada398; border-radius: 4px;"></div>
+      <div style="font-size: 12px; margin-top: 4px;">200</div>
+      <div style="font-size: 10px; color: #7b7b7b;">#ada398</div>
+    </div>
+    <div style="text-align: center;">
+      <div style="width: 44px; height: 44px; background-color: #ebe8e7; border-radius: 4px;"></div>
+      <div style="font-size: 12px; margin-top: 4px;">50</div>
+      <div style="font-size: 10px; color: #7b7b7b;">#ebe8e7</div>
+    </div>
+  </div>
+</div>
+<div style="display: flex; flex-direction: row">
+  <div style="display: flex; gap: 8px; flex-direction: column">
+    <div style="width: 175px; height: 40px; display: flex; align-items: center">
+      <span style="font-weight: 500;">
+        Action
+      </span>
+    </div>
+    <span style="font-size: 12px">
+        <code>--six-color-action-{n}</code>
+    </span>
+  </div>
+  <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px;">
+    <div style="text-align: center;">
+      <div style="width: 44px; height: 44px; background-color: #1f87e5; border-radius: 4px;"></div>
+      <div style="font-size: 12px; margin-top: 4px;">600</div>
+      <div style="font-size: 10px; color: #7b7b7b;">#1f87e5</div>
+    </div>
+    <div style="text-align: center;">
+      <div style="width: 44px; height: 44px; background-color: #2196f3; border-radius: 4px;"></div>
+      <div style="font-size: 12px; margin-top: 4px;">500</div>
+      <div style="font-size: 10px; color: #7b7b7b;">#2196f3</div>
+    </div>
+    <div style="text-align: center;">
+      <div style="width: 44px; height: 44px; background-color: #a8d0f5; border-radius: 4px;"></div>
+      <div style="font-size: 12px; margin-top: 4px;">Light</div>
+      <div style="font-size: 10px; color: #7b7b7b;">#a8d0f5</div>
+    </div>
+  </div>
+</div>
+<div style="display: flex; flex-direction: row">
+  <div style="display: flex; gap: 8px; flex-direction: column">
+    <div style="width: 175px; height: 40px; display: flex; align-items: center">
+      <span style="font-weight: 500;">
+        Danger
+      </span>
+    </div>
+    <span style="font-size: 12px">
+        <code>--six-color-danger-{n}</code>
+    </span>
+  </div>
+  <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px;">
+    <div style="text-align: center;">
+      <div style="width: 44px; height: 44px; background-color: #c52c0f; border-radius: 4px;"></div>
+      <div style="font-size: 12px; margin-top: 4px;">900</div>
+      <div style="font-size: 10px; color: #7b7b7b;">#c52c0f</div>
+    </div>
+    <div style="text-align: center;">
+      <div style="width: 44px; height: 44px; background-color: #de3919; border-radius: 4px;"></div>
+      <div style="font-size: 12px; margin-top: 4px;">800</div>
+      <div style="font-size: 10px; color: #7b7b7b;">#de3919</div>
+    </div>
+    <div style="text-align: center;">
+      <div style="width: 44px; height: 44px; background-color: #f58c78; border-radius: 4px;"></div>
+      <div style="font-size: 12px; margin-top: 4px;">Light</div>
+      <div style="font-size: 10px; color: #7b7b7b;">#f58c78</div>
+    </div>
+  </div>
+</div>
+<div style="display: flex; flex-direction: row">
+  <div style="display: flex; gap: 8px; flex-direction: column">
+    <div style="width: 175px; height: 40px; display: flex; align-items: center">
+      <span style="font-weight: 500;">
+        Warning
+      </span>
+    </div>
+    <span style="font-size: 12px">
+        <code>--six-color-warning-{n}</code>
+    </span>
+  </div>
+  <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px;">
+    <div style="text-align: center;">
+      <div style="width: 44px; height: 44px; background-color: #ef9f25; border-radius: 4px;"></div>
+      <div style="font-size: 12px; margin-top: 4px;">800</div>
+      <div style="font-size: 10px; color: #7b7b7b;">#ef9f25</div>
+    </div>
+    <div style="text-align: center;">
+      <div style="width: 44px; height: 44px; background-color: #f2b72c; border-radius: 4px;"></div>
+      <div style="font-size: 12px; margin-top: 4px;">700</div>
+      <div style="font-size: 10px; color: #7b7b7b;">#f2b72c</div>
+    </div>
+    <div style="text-align: center;">
+      <div style="width: 44px; height: 44px; background-color: #f9deb4; border-radius: 4px;"></div>
+      <div style="font-size: 12px; margin-top: 4px;">Light</div>
+      <div style="font-size: 10px; color: #7b7b7b;">#f9deb4</div>
+    </div>
+  </div>
+</div>
+<div style="display: flex; flex-direction: row">
+  <div style="display: flex; gap: 8px; flex-direction: column">
+    <div style="width: 175px; height: 40px; display: flex; align-items: center">
+      <span style="font-weight: 500;">
+        Success
+      </span>
+    </div>
+    <span style="font-size: 12px">
+        <code>--six-color-success-{n}</code>
+    </span>
+  </div>
+  <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px;">
+    <div style="text-align: center;">
+      <div style="width: 44px; height: 44px; background-color: #58d200; border-radius: 4px;"></div>
+      <div style="font-size: 12px; margin-top: 4px;">600</div>
+      <div style="font-size: 10px; color: #7b7b7b;">#58d200</div>
+    </div>
+    <div style="text-align: center;">
+      <div style="width: 44px; height: 44px; background-color: #6ae300; border-radius: 4px;"></div>
+      <div style="font-size: 12px; margin-top: 4px;">500</div>
+      <div style="font-size: 10px; color: #7b7b7b;">#6ae300</div>
+    </div>
+    <div style="text-align: center;">
+      <div style="width: 44px; height: 44px; background-color: #aaff6c; border-radius: 4px;"></div>
+      <div style="font-size: 12px; margin-top: 4px;">Light</div>
+      <div style="font-size: 10px; color: #7b7b7b;">#aaff6c</div>
+    </div>
+  </div>
+</div>
+
+<div style="display: flex; flex-direction: row">
+  <div style="display: flex; gap: 8px; flex-direction: column">
+    <div style="width: 175px; height: 40px; display: flex; align-items: center">
+      <span style="font-weight: 500;">
+        Black & White
+      </span>
+    </div>
+    <span style="font-size: 12px">
+        <code>--six-color-black/white</code>
+    </span>
+  </div>
+  <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px;">
+    <div style="text-align: center;">
+      <div style="width: 44px; height: 44px; background-color: #000000; border-radius: 4px;"></div>
+      <div style="font-size: 12px; margin-top: 4px;">Black</div>
+      <div style="font-size: 10px; color: #7b7b7b;">#000000</div>
+    </div>
+    <div style="text-align: center;">
+      <div style="width: 44px; height: 44px; background-color: #ffffff; border-radius: 4px; border: 1px solid #e5e5e5;"></div>
+      <div style="font-size: 12px; margin-top: 4px;">White</div>
+      <div style="font-size: 10px; color: #7b7b7b;">#ffffff</div>
+    </div>
+  </div>
+</div>
+<div style="display: flex; flex-direction: row">
+  <div style="display: flex; gap: 8px; flex-direction: column">
+    <div style="width: 175px; height: 40px; display: flex; align-items: center">
+      <span style="font-weight: 500;">
+        Special Purpose
+      </span>
+    </div>
+    <span style="font-size: 12px">
+        <code>--six-color-*</code>
+    </span>
+  </div>
+  <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px;">
+    <div style="text-align: center;">
+      <div style="width: 44px; height: 44px; background-color: #c3c3c3; border-radius: 4px;"></div>
+      <div style="font-size: 12px; margin-top: 4px;">Inactive</div>
+      <div style="font-size: 10px; color: #7b7b7b;">#c3c3c3</div>
+    </div>
+    <div style="text-align: center;">
+      <div style="width: 44px; height: 44px; background-color: #1f87e5; border-radius: 4px;"></div>
+      <div style="font-size: 12px; margin-top: 4px;">Focus</div>
+      <div style="font-size: 10px; color: #7b7b7b;">#1f87e5</div>
+    </div>
+  </div>
+</div>
