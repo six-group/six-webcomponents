@@ -17,6 +17,8 @@ import {
 } from '@six-group/ui-library-vue';
 import { ref } from 'vue';
 
+import '@six-group/ui-library/dist/ui-library/ui-library.css';
+
 const leftSidebarOpen = ref(true);
 const route = useRoute();
 
@@ -29,54 +31,54 @@ const searchActive = ref(false);
 <template>
   <NuxtLayout>
     <six-root>
-      <six-header slot="header" :openSearch="searchActive">
+      <SixHeader slot="header" :openSearch="searchActive">
         <!-- hamburger menu -->
-        <six-header-item>
-          <six-icon-button :name="leftSidebarOpen ? 'menu_open' : 'menu'" @click="leftSidebarOpen = !leftSidebarOpen" />
-        </six-header-item>
+        <SixHeaderItem>
+          <SixIconButton :name="leftSidebarOpen ? 'menu_open' : 'menu'" @click="leftSidebarOpen = !leftSidebarOpen" />
+        </SixHeaderItem>
 
         <!-- logo -->
-        <six-header-item>
-          <six-icon-button href="https://six-group.github.io/six-webcomponents/demo/vue/">
+        <SixHeaderItem>
+          <SixIconButton href="https://six-group.github.io/six-webcomponents/demo/vue/">
             <six-logo></six-logo>
-          </six-icon-button>
-        </six-header-item>
+          </SixIconButton>
+        </SixHeaderItem>
 
         <!-- Search -->
-        <six-header-item :active="searchActive" class="search-icon">
-          <six-icon-button name="search" @click="searchActive = !searchActive" />
-        </six-header-item>
+        <SixHeaderItem :active="searchActive" class="search-icon">
+          <SixIconButton name="search" @click="searchActive = !searchActive" />
+        </SixHeaderItem>
 
         <!-- search input -->
         <six-search-field slot="search-field" :debounce="600" clearable />
 
         <!-- App Switcher -->
-        <six-header-dropdown-item>
-          <six-header-menu-button slot="trigger">
+        <SixHeaderDropdownItem>
+          <SixHeaderMenuButton slot="trigger">
             <span>{{ activeApp }}</span>
             <six-icon slot="suffix">apps</six-icon>
-          </six-header-menu-button>
+          </SixHeaderMenuButton>
           <six-menu>
             <six-menu-item v-for="app of apps" :checked="activeApp === app" :value="app" @click="activeApp = app">
               {{ app }}
             </six-menu-item>
           </six-menu>
-        </six-header-dropdown-item>
+        </SixHeaderDropdownItem>
 
         <!-- profile -->
-        <six-header-dropdown-item>
-          <six-icon-button slot="trigger">
+        <SixHeaderDropdownItem>
+          <SixIconButton slot="trigger">
             <six-avatar
               image="https://images.unsplash.com/photo-1529778873920-4da4926a72c2?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80"
             >
             </six-avatar>
-          </six-icon-button>
+          </SixIconButton>
           <six-menu>
             <six-menu-item value="change-password">Change password</six-menu-item>
             <six-menu-item value="logout">Logout</six-menu-item>
           </six-menu>
-        </six-header-dropdown-item>
-      </six-header>
+        </SixHeaderDropdownItem>
+      </SixHeader>
 
       <!-- sidebar -->
       <six-sidebar slot="left-sidebar" position="left" :open="leftSidebarOpen">
