@@ -9,7 +9,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Added
 
 - **⚠️Experimental**: Bringing back the support for React output target.
-- **⚠️Experimental**: Adding example React app with Vite.
+- **⚠️Experimental**: Added example React app with Vite.
+- **⚠️Experimental**: Added example Nuxt app with Client Side Rendering (CSR).
 - **⚠️Experimental**: Added the `six-date` component, intended to eventually replace the
   `six-datepicker`.
 
