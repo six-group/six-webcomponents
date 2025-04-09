@@ -172,6 +172,8 @@ export class SixDate {
     this.inputElement?.setFocus(options);
   }
 
+  private panelHideInProgress = false;
+
   private updateValueAndPointerDate() {
     if (typeof this.value !== 'string') {
       this.value = '';
@@ -188,23 +190,46 @@ export class SixDate {
     }
   }
 
+  private getSixInputBaseElement() {
+    return this.inputElement?.shadowRoot?.querySelector('div.input') as HTMLDivElement;
+  }
+
   private show() {
-    if (this.disabled) return;
+    if (this.popover?.isVisible === true || this.panelHideInProgress || this.disabled) return;
     this.popover?.show();
     this.eventListeners.add(document, 'mousedown', this.handleDocumentMouseDown);
   }
 
   private hide() {
+    if (this.popover?.isVisible === false) return;
+
     if (this.inputElement) {
       this.inputElement.value = this.value === '' ? '' : formatDate(this.value, this.dateFormat);
     }
     this.selectionMode = 'day';
     this.eventListeners.remove(document, 'mousedown', this.handleDocumentMouseDown);
+    this.panelHideInProgress = true;
     this.popover?.hide();
   }
 
-  private getSixInputBaseElement() {
-    return this.inputElement?.shadowRoot?.querySelector('div.input') as HTMLDivElement;
+  private initPopover() {
+    const sixInputBaseElement = this.getSixInputBaseElement();
+    if (this.inputElement == null || this.positioner == null || this.panel == null || sixInputBaseElement == null) {
+      return;
+    }
+
+    this.eventListeners.add(sixInputBaseElement, 'click', () => this.show());
+
+    this.popover = new Popover(sixInputBaseElement, this.positioner, {
+      strategy: 'fixed',
+      placement: 'bottom-start',
+      transitionElement: this.panel,
+      distance: 4,
+      skidding: 0,
+      onAfterHide: () => {
+        this.panelHideInProgress = false;
+      },
+    });
   }
 
   private handlePreviousClick = () => {
@@ -297,23 +322,6 @@ export class SixDate {
       this.hide();
     }
   };
-
-  private initPopover() {
-    const sixInputBaseElement = this.getSixInputBaseElement();
-    if (this.inputElement == null || this.positioner == null || this.panel == null || sixInputBaseElement == null) {
-      return;
-    }
-
-    this.eventListeners.add(sixInputBaseElement, 'click', () => this.show());
-
-    this.popover = new Popover(sixInputBaseElement, this.positioner, {
-      strategy: 'fixed',
-      placement: 'bottom-start',
-      transitionElement: this.panel,
-      distance: 4,
-      skidding: 0,
-    });
-  }
 
   connectedCallback() {
     this.initPopover();
