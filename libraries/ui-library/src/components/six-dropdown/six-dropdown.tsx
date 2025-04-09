@@ -136,10 +136,7 @@ export class SixDropdown {
   @Prop({ mutable: true }) options: SixMenuItemData[] = [];
 
   /** Defines if the overflow should be shown instead of there being a scrollbar. */
-  @Prop() showOverflow = false;
-
-  /** Whether the dropdown reacts to triggers or only to the open property **/
-  @Prop() ignoreTrigger = false;
+  @Prop({ mutable: true }) showOverflow = false;
 
   /** Defines whether the menu list will be rendered virtually i.e. only the elements actually shown (and a couple around)
    *  are actually rendered in the DOM. If you use virtual scrolling pass the elements via prop instead of via slot. */
@@ -543,9 +540,6 @@ export class SixDropdown {
   };
 
   private handleTriggerClick = () => {
-    if (this.ignoreTrigger) {
-      return;
-    }
     this.open ? this.hide() : this.show();
   };
 

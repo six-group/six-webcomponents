@@ -20,7 +20,6 @@
     "@angular/router": "~16.2.12",
     "@six-group/ui-library": "*",
     "@six-group/ui-library-angular": "*",
-    "date-fns": "^2.30.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.3"
   },
