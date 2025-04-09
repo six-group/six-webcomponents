@@ -1,23 +1,10 @@
 /**
- * - [ ] Nur Datum, ohne Zeit
- *   - (https://confluence.six-group.net/display/COMSLI/Meetings: In a first step we should have six-date in a usable state (for dates only, time is excluded). )
- *   - https://confluence.six-group.net/display/COMSLI/Date+and+DateTime+Picker
+ * @since 5.0
+ * @status experimental
  *
- * - [x] TODO handleInputChange
- * - [x] datepicker-improvement -> feature/six-date
- * - [x] rebase on main
- * - [x] fix unwanted text selections
- * - [x] use Language interface
- * - [ ] Default placeholder- https://vuetifyjs.com/en/components/date-inputs/#usage
- * - [ ] Integration in Framework Wrappers (Angular, vue, react)
- * - [x] string anstatt Date als value
- * - [x] css cleanup (use webcomponents design tokens)
- * - [ ] value accessor kombinieren
- * - [ ] angular beispiel
- * - [x] Datepicker shouldn't be able to open when disabled
- *
- * - [ ] date-util loswerden und ersetzen mit https://github.com/dmtrKovalenko/date-io?
- *   - get rid of date formats
+ * @slot label - The date's label. Alternatively, you can use the label prop.
+ * @slot help-text - Help text that describes how to use the select.
+ * @slot error-text - Error text that is shown for validation errors. Alternatively, you can use the error-text prop.
  */
 import { Component, Element, Event, EventEmitter, h, Method, Prop, State, Watch } from '@stencil/core';
 import { EventListeners } from '../../utils/event-listeners';
@@ -85,12 +72,7 @@ export class SixDate {
   @Prop() disabled = false;
 
   /**
-   * Callback to determine which date in the datepicker should be selectable.
-   * the callback function will get a datestring as an argument, e.g. '2021-07-04'
-   *
-   * Usage e.g.:
-   * const datepicker = document.getElementById('allowed-date-picker');
-   * datepicker.allowedDates = datestring => parseInt(datestring.split('-')[2], 10) % 2 === 0;
+   * Callback to determine which dates in the datepicker should be selectable.
    */
   @Prop() allowedDates: (date: IsoDate) => boolean = () => true;
 
@@ -113,7 +95,7 @@ export class SixDate {
   /**
    * The placeholder defines what text to be shown on the input element
    */
-  @Prop() placeholder?: string = 'dd.mm.yyyy';
+  @Prop() placeholder?: string;
 
   /**
    * The value of the form field, which accepts a date object.
@@ -159,7 +141,6 @@ export class SixDate {
   valueChanged() {
     this.updateValueAndPointerDate();
   }
-
   /** Emitted when the control's value changes. */
   @Event() sixChange!: EventEmitter<IsoDate | ''>;
 
@@ -347,7 +328,7 @@ export class SixDate {
         <six-input
           value={this.value === '' ? '' : formatDate(this.value, this.dateFormat)}
           ref={(el) => (this.inputElement = el)}
-          placeholder={this.placeholder}
+          placeholder={this.placeholder == null ? this.dateFormat : this.placeholder}
           readonly={this.readonly}
           disabled={this.disabled}
           name={this.name}

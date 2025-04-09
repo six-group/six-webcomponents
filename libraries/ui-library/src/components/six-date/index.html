@@ -37,7 +37,7 @@
         <six-date label="Date with constraints" min="2025-01-01" max="2025-12-31" value="2025-01-15"></six-date>
 
         <p>
-          Use the <code>allowedDates</code> attribute to specify which dates can be selected. Provide a function that
+          Use the <code>allowedDates</code> property to specify which dates can be selected. Provide a function that
           receives an date string and returns a boolean indicating if the date is allowed.
         </p>
 
@@ -48,8 +48,7 @@
 
           // You can also set the function programmatically
           weekendPicker.allowedDates = (date) => {
-            const d = new Date(date);
-            const day = d.getDay();
+            const day = new Date(date).getDay();
             return day === 0 || day === 6; // Only allow Saturday (6) and Sunday (0)
           };
         </script>
@@ -104,6 +103,19 @@
             selectedDate.innerHTML = `Selected: ${event.target.value}`;
           });
         </script>
+      </section>
+
+      <!-- Custom Date Format -->
+      <section>
+        <h2>Custom Date Format</h2>
+        <p>
+          You can customize the date format using the <code>date-format</code> attribute. By default, the component uses
+          the format <code>dd.MM.yyyy</code>.
+        </p>
+
+        <p>Example with <code>d.M.yyyy</code> format (single-digit day and month):</p>
+
+        <six-date label="Date with d.M.yyyy format" date-format="d.M.yyyy"></six-date>
       </section>
 
       <!-- Error Text and Help Text -->
