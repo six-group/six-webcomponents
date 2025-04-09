@@ -1,8 +1,7 @@
 <template>
 <div>
 
-        <six-date></six-date>
-        <six-date type="time"></six-date>
+        <six-date label="Select a date"></six-date>
       
 </div>
 </template>

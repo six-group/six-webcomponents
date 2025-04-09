@@ -1,17 +1,12 @@
 <template>
 <div>
 
-        <six-date placement="bottom"></six-date>
-        
+        <six-date label="Required date" required></six-date>
       
 </div>
 </template>
 <style>
 
-          six-date {
-            max-width: 25rem;
-          }
-        
 </style>
 <script>
 export default {

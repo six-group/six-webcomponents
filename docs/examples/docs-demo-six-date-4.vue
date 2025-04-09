@@ -1,17 +1,12 @@
 <template>
 <div>
 
-        <six-date inline="true"></six-date>
-        
+        <six-date label="Clearable date" clearable value="2025-01-15"></six-date>
       
 </div>
 </template>
 <style>
 
-          six-date {
-            max-width: 25rem;
-          }
-        
 </style>
 <script>
 export default {

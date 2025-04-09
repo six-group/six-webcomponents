@@ -1,17 +1,12 @@
 <template>
 <div>
 
-        <six-date placeholder="DD.MM.YYYY"></six-date>
-        
+        <six-date label="Name" help-text="Help text"></six-date>
       
 </div>
 </template>
 <style>
 
-          six-date {
-            max-width: 25rem;
-          }
-        
 </style>
 <script>
 export default {

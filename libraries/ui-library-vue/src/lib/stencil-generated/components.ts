@@ -88,6 +88,7 @@ export const SixDate = /*@__PURE__*/ defineContainer<JSX.SixDate>('six-date', un
   'placeholder',
   'value',
   'label',
+  'helpText',
   'errorText',
   'errorTextCount',
   'invalid',

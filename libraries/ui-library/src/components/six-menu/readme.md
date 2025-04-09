@@ -66,7 +66,6 @@ Type: `Promise<void>`
 
 ### Used by
 
- - [six-date](../six-date)
  - [six-dropdown](../six-dropdown)
  - [six-select](../six-select)
 
@@ -81,7 +80,6 @@ graph TD;
   six-menu-item --> six-checkbox
   six-menu-item --> six-icon
   six-checkbox --> six-error
-  six-date --> six-menu
   six-dropdown --> six-menu
   six-select --> six-menu
   style six-menu fill:#f9f,stroke:#333,stroke-width:4px

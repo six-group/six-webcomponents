@@ -294,6 +294,14 @@ export class SixDate {
     }
   };
 
+  private handleOnBlur = () => {
+    if (this.popover?.isVisible === false) {
+      if (this.inputElement) {
+        this.inputElement.value = this.value === '' ? '' : formatDate(this.value, this.dateFormat);
+      }
+    }
+  };
+
   private handleInputKeyDown = (event: KeyboardEvent) => {
     if (event.key === 'Tab') {
       this.hide();
@@ -340,6 +348,7 @@ export class SixDate {
           invalid={this.invalid}
           onKeyDown={this.handleInputKeyDown}
           onInput={debounce(this.handleInputChange, this.debounce)}
+          onBlur={this.handleOnBlur}
           onSix-input-clear={this.handleClearClick}
           size={this.size}
           clearable={this.clearable}

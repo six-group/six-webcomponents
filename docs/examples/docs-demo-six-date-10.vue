@@ -1,44 +1,29 @@
 <template>
 <div>
 
-        <six-date id="datepicker-adv-footer">
-          <div             style="
-              display: flex;
-              justify-content: space-between;
-              padding: 1rem 0.5rem 0 0.5rem;
-              border-top: solid 1px #c3c3c3;
-            "
-          >
-            <six-button id="datepicker-adv-footer-btn1">Today</six-button>
-            <six-button id="datepicker-adv-footer-btn2">Clear</six-button>
-          </div>
+        <six-date label="Date with help text" help-text="Select your preferred date"></six-date>
+        <six-date label="Date with error text" error-text="The date entered is invalid" invalid></six-date>
+        <six-date           label="Invalid date example"
+          error-text="You can only enter dates starting from 01/01/2025"
+          min="2025-01-01"
+          max="2025-12-31"
+          invalid
+        ></six-date>
+        <six-date label="Help text slot example">
+          <div slot="help-text">This help text is rendered via the <strong>slot</strong>.</div>
         </six-date>
-        
-        
+        <six-date label="Error text slot example" invalid>
+          <div slot="error-text">This error text is rendered via the <strong>slot</strong>.</div>
+        </six-date>
       
 </div>
 </template>
 <style>
 
-          six-date {
-            max-width: 25rem;
-          }
-        
 </style>
 <script>
 export default {
   name: 'docs-demo-six-date-10',
-  mounted() { 
-          const datepicker = document.getElementById('datepicker-adv-footer');
-          datepicker.addEventListener('six-date-select', (event) => {
-            console.log(`[ six-date-select ]`, { date: event.detail });
-          });
-
-          const btn1 = document.getElementById('datepicker-adv-footer-btn1');
-          btn1.addEventListener('click', () => (datepicker.value = new Date()));
-
-          const btn2 = document.getElementById('datepicker-adv-footer-btn2');
-          btn2.addEventListener('click', () => (datepicker.value = null));
-         }
+  mounted() {  }
 }
 </script>

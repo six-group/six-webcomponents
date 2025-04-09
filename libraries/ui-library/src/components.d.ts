@@ -273,7 +273,7 @@ export namespace Components {
      */
     interface SixDate {
         /**
-          * Callback to determine which date in the datepicker should be selectable. the callback function will get a datestring as an argument, e.g. '2021-07-04'  Usage e.g.: const datepicker = document.getElementById('allowed-date-picker'); datepicker.allowedDates = datestring => parseInt(datestring.split('-')[2], 10) % 2 === 0;
+          * Callback to determine which dates in the datepicker should be selectable.
          */
         "allowedDates": (date: IsoDate) => boolean;
         /**
@@ -300,6 +300,10 @@ export namespace Components {
           * The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1
          */
         "errorTextCount"?: number;
+        /**
+          * The input's help text. Alternatively, you can use the help-text slot.
+         */
+        "helpText": string;
         /**
           * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
          */
@@ -3524,7 +3528,7 @@ declare namespace LocalJSX {
      */
     interface SixDate {
         /**
-          * Callback to determine which date in the datepicker should be selectable. the callback function will get a datestring as an argument, e.g. '2021-07-04'  Usage e.g.: const datepicker = document.getElementById('allowed-date-picker'); datepicker.allowedDates = datestring => parseInt(datestring.split('-')[2], 10) % 2 === 0;
+          * Callback to determine which dates in the datepicker should be selectable.
          */
         "allowedDates"?: (date: IsoDate) => boolean;
         /**
@@ -3551,6 +3555,10 @@ declare namespace LocalJSX {
           * The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1
          */
         "errorTextCount"?: number;
+        /**
+          * The input's help text. Alternatively, you can use the help-text slot.
+         */
+        "helpText"?: string;
         /**
           * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
          */

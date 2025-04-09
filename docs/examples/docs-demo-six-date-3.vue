@@ -1,17 +1,14 @@
 <template>
 <div>
 
-        <six-date disabled></six-date>
-        
+        <section>
+          <six-date placeholder="Enter a date"></six-date>
+        </section>
       
 </div>
 </template>
 <style>
 
-          six-date {
-            max-width: 25rem;
-          }
-        
 </style>
 <script>
 export default {
