@@ -10,27 +10,127 @@
   </head>
   <body>
     <div class="container">
-      <p>Datepickers allow the user to manually enter a date or open a popup calendar to select a date.</p>
+      <h1>Date</h1>
+
+      <p>The Date component allows users to enter a date manually or select one from a calendar popup.</p>
+
+      <!-- Basic Usage -->
       <section>
-        <six-date value="2025-04-05" min="2025-04-05" label="Date" clearable></six-date>
+        <h2>Basic Usage</h2>
+        <p>A standard date picker with a label.</p>
+        <six-date label="Select a date"></six-date>
       </section>
 
-      <div id="read-select-date-label">No Date selected yet!</div>
-      <six-date id="read-select-date-picker"></six-date>
+      <!-- Setting a Value -->
+      <section>
+        <h2>Setting a Value</h2>
+        <p>Use the <code>value</code> attribute to set the date picker's value.</p>
+        <six-date label="Date with initial value" value="2025-01-15"></six-date>
+      </section>
 
-      <script type="module">
-        const datepicker = document.getElementById('read-select-date-picker');
-        const selectedDate = document.getElementById('read-select-date-label');
+      <!-- Date Constraints -->
+      <section>
+        <h2>Date Constraints</h2>
+        <p>
+          You can set minimum and maximum allowable dates using the <code>min</code> and <code>max</code> attributes.
+        </p>
+        <six-date label="Date with constraints" min="2025-01-01" max="2025-12-31" value="2025-01-15"></six-date>
 
-        datepicker.addEventListener('change', (event) => {
-          selectedDate.innerHTML = `selected: ${event.target.value}`;
-        });
-      </script>
-      <style>
-        six-datepicker {
-          max-width: 25rem;
-        }
-      </style>
+        <p>
+          Use the <code>allowedDates</code> attribute to specify which dates can be selected. Provide a function that
+          receives an date string and returns a boolean indicating if the date is allowed.
+        </p>
+
+        <six-date label="Only weekends allowed"></six-date>
+
+        <script type="module">
+          const weekendPicker = document.querySelector('six-date[label="Only weekends allowed"]');
+
+          // You can also set the function programmatically
+          weekendPicker.allowedDates = (date) => {
+            const d = new Date(date);
+            const day = d.getDay();
+            return day === 0 || day === 6; // Only allow Saturday (6) and Sunday (0)
+          };
+        </script>
+      </section>
+
+      <section>
+        <h2>Placeholder</h2>
+        <p>Use the <code>placeholder</code> attribute to override the default placeholder.</p>
+        <section>
+          <six-date placeholder="Enter a date"></six-date>
+        </section>
+      </section>
+
+      <!-- Clearable -->
+      <section>
+        <h2>Clearable</h2>
+        <p>Add the <code>clearable</code> attribute to show a clear button when the date picker has a value.</p>
+        <six-date label="Clearable date" clearable value="2025-01-15"></six-date>
+      </section>
+
+      <!-- Disabled -->
+      <section>
+        <h2>Disabled</h2>
+        <p>Add the <code>disabled</code> attribute to disable the date picker.</p>
+        <six-date label="Disabled date" disabled value="2025-01-15"></six-date>
+      </section>
+
+      <!-- Required -->
+      <section>
+        <h2>Required</h2>
+        <p>Add the <code>required</code> attribute to make the date picker a required field.</p>
+        <six-date label="Required date" required></six-date>
+      </section>
+
+      <section>
+        <six-date label="Name" help-text="Help text"></six-date>
+      </section>
+
+      <!-- Error Text and Help Text -->
+      <section>
+        <h2>Error Text and Help Text</h2>
+        <p>
+          The <code>help-text</code> <code>error-text</code>, <code>error-text-count</code>, and
+          <code>invalid</code> properties and slots work the same as for the <code>six-input</code> component. For more
+          details, refer to the <a href="six-input#help-text">six-input documentation</a>.
+        </p>
+
+        <six-date label="Date with help text" help-text="Select your preferred date"></six-date>
+        <six-date label="Date with error text" error-text="The date entered is invalid" invalid></six-date>
+        <six-date
+          label="Invalid date example"
+          error-text="You can only enter dates starting from 01/01/2025"
+          min="2025-01-01"
+          max="2025-12-31"
+          invalid
+        ></six-date>
+        <six-date label="Help text slot example">
+          <div slot="help-text">This help text is rendered via the <strong>slot</strong>.</div>
+        </six-date>
+        <six-date label="Error text slot example" invalid>
+          <div slot="error-text">This error text is rendered via the <strong>slot</strong>.</div>
+        </six-date>
+      </section>
+
+      <!-- Handling Events -->
+      <section>
+        <h2>Handling Events</h2>
+        <p>Listen for the <code>change</code> event to detect when the user selects a date.</p>
+
+        <div id="event-example-label">No Date selected yet!</div>
+        <six-date id="event-example-picker" label="Select a date"></six-date>
+
+        <script type="module">
+          const datepicker = document.getElementById('event-example-picker');
+          const selectedDate = document.getElementById('event-example-label');
+
+          datepicker.addEventListener('change', (event) => {
+            selectedDate.innerHTML = `Selected: ${event.target.value}`;
+          });
+        </script>
+      </section>
     </div>
   </body>
 </html>

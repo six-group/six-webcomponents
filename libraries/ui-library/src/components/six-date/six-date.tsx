@@ -36,7 +36,7 @@ import {
   toPointerDate,
 } from './iso-date';
 import { createCalendarGrid } from './calendar-grid';
-import { translateMonth, translateFormatHelp } from './translations';
+import { translateFormatHelp, translateMonth } from './translations';
 import Popover from '../../utils/popover';
 
 const NUMBER_OF_YEARS_SHOWN = 25;
@@ -122,6 +122,9 @@ export class SixDate {
 
   /** The label text. */
   @Prop() label = '';
+
+  /** The input's help text. Alternatively, you can use the help-text slot. */
+  @Prop() helpText = '';
 
   /** The error message shown, if `invalid` is set to true.  */
   @Prop() errorText: string | string[] = '';
@@ -326,6 +329,7 @@ export class SixDate {
           name={this.name}
           label={this.label}
           required={this.required}
+          helpText={this.helpText}
           errorText={this.errorText}
           errorTextCount={this.errorTextCount}
           invalid={this.invalid}
@@ -348,6 +352,11 @@ export class SixDate {
           {hasSlot(this.host, 'error-text') ? (
             <span slot="error-text">
               <slot name="error-text"></slot>
+            </span>
+          ) : null}
+          {hasSlot(this.host, 'help-text') ? (
+            <span slot="help-text">
+              <slot name="help-text"></slot>
             </span>
           ) : null}
         </six-input>
