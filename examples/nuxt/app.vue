@@ -23,6 +23,17 @@ import { defineCustomElements } from '@six-group/ui-library/loader';
 
 defineCustomElements();
 
+const router = useRouter();
+
+const navManager = {
+  navigate: (payload: { event: Event; routerLink: string }) => {
+    router.push(payload.routerLink);
+  },
+};
+
+const nuxtApp = useNuxtApp();
+nuxtApp.provide('navManager', navManager);
+
 const leftSidebarOpen = ref(true);
 const route = useRoute();
 
@@ -43,7 +54,7 @@ const searchActive = ref(false);
 
         <!-- logo -->
         <SixHeaderItem>
-          <SixIconButton href="https://six-group.github.io/six-webcomponents/demo/vue/">
+          <SixIconButton href="https://six-group.github.io/six-webcomponents/demo/nuxt/">
             <six-logo></six-logo>
           </SixIconButton>
         </SixHeaderItem>
@@ -86,24 +97,28 @@ const searchActive = ref(false);
 
       <!-- sidebar -->
       <six-sidebar slot="left-sidebar" position="left" :open="leftSidebarOpen">
-        <six-sidebar-item-group :open="route.name === 'home'" name="Home" icon="home">
-          <NuxtLink to="/"></NuxtLink>
-        </six-sidebar-item-group>
-        <six-sidebar-item-group :open="route.name === 'form'" name="Form" icon="assignment">
-          <NuxtLink to="/form"></NuxtLink>
-        </six-sidebar-item-group>
-        <six-sidebar-item-group :open="route.name === 'alert'" name="Alert" icon="notifications_active">
-          <NuxtLink to="/alert"></NuxtLink>
-        </six-sidebar-item-group>
-        <six-sidebar-item-group :open="route.name === 'dialog'" name="Dialog" icon="web_asset">
-          <NuxtLink to="/dialog"></NuxtLink>
-        </six-sidebar-item-group>
-        <six-sidebar-item-group :open="route.name === 'details'" name="Details" icon="unfold_more">
-          <NuxtLink to="/details"></NuxtLink>
-        </six-sidebar-item-group>
-        <six-sidebar-item-group :open="route.name === 'tab-group'" name="Tab Group" icon="tab">
-          <NuxtLink to="/tab-group"></NuxtLink>
-        </six-sidebar-item-group>
+        <NuxtLink to="/">
+          <six-sidebar-item-group name="Home" icon="home"> </six-sidebar-item-group>
+        </NuxtLink>
+        <NuxtLink to="/form">
+          <six-sidebar-item-group :open="route.name === 'form'" name="Form" icon="assignment"> </six-sidebar-item-group>
+        </NuxtLink>
+        <NuxtLink to="/alert">
+          <six-sidebar-item-group :open="route.name === 'alert'" name="Alert" icon="notifications_active">
+          </six-sidebar-item-group>
+        </NuxtLink>
+        <NuxtLink to="/dialog">
+          <six-sidebar-item-group :open="route.name === 'dialog'" name="Dialog" icon="web_asset">
+          </six-sidebar-item-group>
+        </NuxtLink>
+        <NuxtLink to="/details">
+          <six-sidebar-item-group :open="route.name === 'details'" name="Details" icon="unfold_more">
+          </six-sidebar-item-group>
+        </NuxtLink>
+        <NuxtLink to="/tab-group">
+          <six-sidebar-item-group :open="route.name === 'tab-group'" name="Tab Group" icon="tab">
+          </six-sidebar-item-group>
+        </NuxtLink>
       </six-sidebar>
       <div slot="main">
         <NuxtPage />
@@ -128,5 +143,9 @@ six-root {
 
 .search-icon {
   margin-left: auto;
+}
+
+a {
+  text-decoration: none;
 }
 </style>
