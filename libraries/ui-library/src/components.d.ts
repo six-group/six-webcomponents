@@ -642,10 +642,6 @@ export namespace Components {
          */
         "hoist": boolean;
         /**
-          * Whether the dropdown reacts to triggers or only to the open property *
-         */
-        "ignoreTrigger": boolean;
-        /**
           * Determines if the dropdown panel's width should match the width of the trigger element.  If set to `true`, the panel will resize its width to align with the trigger's width. If `false` or omitted, the panel will maintain its default width.
          */
         "matchTriggerWidth": boolean;
@@ -3940,10 +3936,6 @@ declare namespace LocalJSX {
           * Enable this option to prevent the panel from being clipped when the component is placed inside a container with `overflow: auto|scroll`.
          */
         "hoist"?: boolean;
-        /**
-          * Whether the dropdown reacts to triggers or only to the open property *
-         */
-        "ignoreTrigger"?: boolean;
         /**
           * Determines if the dropdown panel's width should match the width of the trigger element.  If set to `true`, the panel will resize its width to align with the trigger's width. If `false` or omitted, the panel will maintain its default width.
          */
