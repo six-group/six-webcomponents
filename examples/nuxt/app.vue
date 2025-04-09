@@ -19,6 +19,10 @@ import { ref } from 'vue';
 
 import '@six-group/ui-library/dist/ui-library/ui-library.css';
 
+import { defineCustomElements } from '@six-group/ui-library/loader';
+
+defineCustomElements();
+
 const leftSidebarOpen = ref(true);
 const route = useRoute();
 
