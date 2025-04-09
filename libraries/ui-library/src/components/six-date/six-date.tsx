@@ -199,8 +199,12 @@ export class SixDate {
       this.inputElement.value = this.value === '' ? '' : formatDate(this.value, this.dateFormat);
     }
     this.selectionMode = 'day';
-    this.popover?.hide();
     this.eventListeners.remove(document, 'mousedown', this.handleDocumentMouseDown);
+    this.popover?.hide();
+  }
+
+  private getSixInputBaseElement() {
+    return this.inputElement?.shadowRoot?.querySelector('div.input') as HTMLDivElement;
   }
 
   private handlePreviousClick = () => {
@@ -236,9 +240,12 @@ export class SixDate {
   };
 
   private handleDocumentMouseDown = (event: Event) => {
+    const baseElement = this.getSixInputBaseElement();
+    if (baseElement == null || this.panel == null) return;
+
     // Close when clicking outside
     const path = event.composedPath() as EventTarget[];
-    if (!path.includes(this.host)) {
+    if (!path.includes(this.panel) && !path.includes(baseElement)) {
       this.hide();
       this.sixBlur.emit();
     }
@@ -292,9 +299,14 @@ export class SixDate {
   };
 
   private initPopover() {
-    if (this.inputElement == null || this.positioner == null || this.panel == null) return;
+    const sixInputBaseElement = this.getSixInputBaseElement();
+    if (this.inputElement == null || this.positioner == null || this.panel == null || sixInputBaseElement == null) {
+      return;
+    }
 
-    this.popover = new Popover(this.inputElement, this.positioner, {
+    this.eventListeners.add(sixInputBaseElement, 'click', () => this.show());
+
+    this.popover = new Popover(sixInputBaseElement, this.positioner, {
       strategy: 'fixed',
       placement: 'bottom-start',
       transitionElement: this.panel,
@@ -302,18 +314,22 @@ export class SixDate {
       skidding: 0,
     });
   }
-  componentDidLoad() {
-    this.initPopover();
-  }
 
   connectedCallback() {
+    this.initPopover();
     this.updateValueAndPointerDate();
     this.eventListeners.forward('sixChange', 'change', this.host);
     this.eventListeners.forward('sixBlur', 'blur', this.host);
   }
 
+  componentDidLoad() {
+    this.initPopover();
+  }
+
   disconnectedCallback() {
     this.eventListeners.removeAll();
+    this.popover?.destroy();
+    this.popover = undefined;
   }
 
   render() {
@@ -333,7 +349,6 @@ export class SixDate {
           errorText={this.errorText}
           errorTextCount={this.errorTextCount}
           invalid={this.invalid}
-          onClick={() => this.show()}
           onKeyDown={this.handleInputKeyDown}
           onInput={debounce(this.handleInputChange, this.debounce)}
           onSix-input-clear={this.handleClearClick}

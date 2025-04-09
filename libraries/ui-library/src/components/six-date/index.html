@@ -88,6 +88,24 @@
         <six-date label="Name" help-text="Help text"></six-date>
       </section>
 
+      <!-- Handling Events -->
+      <section>
+        <h2>Handling Events</h2>
+        <p>Listen for the <code>change</code> event to detect when the user selects a date.</p>
+
+        <div id="event-example-label">No Date selected yet!</div>
+        <six-date id="event-example-picker" label="Select a date"></six-date>
+
+        <script type="module">
+          const datepicker = document.getElementById('event-example-picker');
+          const selectedDate = document.getElementById('event-example-label');
+
+          datepicker.addEventListener('change', (event) => {
+            selectedDate.innerHTML = `Selected: ${event.target.value}`;
+          });
+        </script>
+      </section>
+
       <!-- Error Text and Help Text -->
       <section>
         <h2>Error Text and Help Text</h2>
@@ -112,24 +130,6 @@
         <six-date label="Error text slot example" invalid>
           <div slot="error-text">This error text is rendered via the <strong>slot</strong>.</div>
         </six-date>
-      </section>
-
-      <!-- Handling Events -->
-      <section>
-        <h2>Handling Events</h2>
-        <p>Listen for the <code>change</code> event to detect when the user selects a date.</p>
-
-        <div id="event-example-label">No Date selected yet!</div>
-        <six-date id="event-example-picker" label="Select a date"></six-date>
-
-        <script type="module">
-          const datepicker = document.getElementById('event-example-picker');
-          const selectedDate = document.getElementById('event-example-label');
-
-          datepicker.addEventListener('change', (event) => {
-            selectedDate.innerHTML = `Selected: ${event.target.value}`;
-          });
-        </script>
       </section>
     </div>
   </body>

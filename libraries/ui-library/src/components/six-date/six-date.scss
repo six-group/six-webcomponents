@@ -15,7 +15,7 @@
 .positioner {
   position: fixed;
   z-index: var(--six-z-index-date);
-  background-color: var(--six-color-white);
+  background-color: transparent;
 }
 
 .panel {
@@ -25,6 +25,7 @@
   padding-bottom: var(--six-spacing-x-large);
   border: 1px solid var(--six-color-web-rock-300);
   box-shadow: var(--six-shadow-small);
+  background-color: var(--six-color-white);
 
   // animation
   opacity: 0;
@@ -34,7 +35,7 @@
 
 .popover-visible .panel {
   opacity: 1;
-  transform: none;
+  transform: scale(1);
   pointer-events: all;
 }
 
