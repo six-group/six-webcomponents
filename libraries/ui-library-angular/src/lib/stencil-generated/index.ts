@@ -8,6 +8,7 @@ export const DIRECTIVES = [
   d.SixButton,
   d.SixCard,
   d.SixCheckbox,
+  d.SixDate,
   d.SixDatepicker,
   d.SixDetails,
   d.SixDialog,

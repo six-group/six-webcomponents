@@ -2,13 +2,14 @@ import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { SixUiLibraryValidators } from '@six-group/ui-library-angular';
+import { IsoDate } from '@six-group/ui-library';
 
 type UserGroup = 'admin' | 'developer' | 'user';
 type Status = 'enabled' | 'disabled' | 'temporary';
 type Interest = 'sport' | 'music' | 'movies';
 
-const weekendDateFilter = (d: Date | null) => {
-  const day = (d || new Date()).getDay();
+const weekendDateFilter = (isoDate: IsoDate) => {
+  const day = new Date(isoDate).getDay();
   // Prevent Saturday and Sunday from being selected.
   return day !== 0 && day !== 6;
 };
@@ -36,7 +37,7 @@ export class FormComponent implements OnDestroy {
     internal: [false, Validators.requiredTrue],
     allowWeekends: [false],
     futureDatesOnly: [false],
-    date: [null as Date | null, [Validators.required]],
+    date: [null as IsoDate | null, [Validators.required]],
     startTime: ['', [Validators.required]],
     interests: [[] as Interest[], Validators.required],
     height: [0, Validators.min(10)],
@@ -44,10 +45,10 @@ export class FormComponent implements OnDestroy {
     acceptsTerms: [false, Validators.requiredTrue],
   });
 
-  minDate: Date | null = addDays(removeTime(new Date()), 1);
-  maxDate: Date | null = addDays(removeTime(new Date()), 40);
-  dateFilter = (d: Date | null): boolean => {
-    const day = (d || new Date()).getDay();
+  minDate: IsoDate | null = addDays(removeTime(today()), 1);
+  maxDate: IsoDate | null = addDays(removeTime(today()), 40);
+  dateFilter = (isoDate: IsoDate): boolean => {
+    const day = new Date(isoDate).getDay();
     // Prevent Saturday and Sunday from being selected.
     return day !== 0 && day !== 6;
   };
@@ -60,8 +61,11 @@ export class FormComponent implements OnDestroy {
     this.userForm.statusChanges.subscribe(() => this.formDebug$.next(getFormDebug(this.userForm)));
     this.subscriptions = this.userForm.controls.futureDatesOnly.valueChanges.subscribe((futureDatesOnly) => {
       if (futureDatesOnly) {
-        this.minDate = addDays(removeTime(new Date()), 1);
-        this.userForm.controls.date.setValidators([Validators.required, SixUiLibraryValidators.minDate(this.minDate)]);
+        this.minDate = addDays(removeTime(today()), 1);
+        this.userForm.controls.date.setValidators([
+          Validators.required,
+          SixUiLibraryValidators.minDateIso(this.minDate),
+        ]);
       } else {
         this.minDate = null;
         this.userForm.controls.date.setValidators([Validators.required]);
@@ -74,7 +78,7 @@ export class FormComponent implements OnDestroy {
         this.dateFilter = allowWeekends ? allowAllDateFilter : weekendDateFilter;
         this.userForm.controls.date.setValidators([
           Validators.required,
-          SixUiLibraryValidators.allowedDates(this.dateFilter),
+          SixUiLibraryValidators.allowedDatesIso(this.dateFilter),
         ]);
         this.userForm.controls.date.updateValueAndValidity();
       })
@@ -106,7 +110,7 @@ export class FormComponent implements OnDestroy {
       height: 10,
       description: 'A description about the user',
       acceptsTerms: true,
-      date: addDays(new Date(), 1),
+      date: addDays(today(), 1),
       startTime: '09:15:00',
     });
   }
@@ -128,17 +132,34 @@ function getFormDebug(form: FormGroup) {
   };
 }
 
-function addDays(date: Date, days: number): Date {
-  const result = new Date(date);
-  result.setDate(result.getDate() + days);
-  return result;
+function today(): IsoDate {
+  return toIsoDate(new Date());
 }
 
-function removeTime(date: Date) {
-  return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+function toIsoDate(date: Date): IsoDate {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-based, so add 1
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}` as IsoDate;
+}
+
+function addDays(date: IsoDate, days: number): IsoDate {
+  const result = new Date(date);
+  result.setDate(result.getDate() + days);
+  return toIsoDate(result);
+}
+
+function removeTime(isoDate: IsoDate): IsoDate {
+  const date = new Date(isoDate);
+  return toIsoDate(new Date(date.getFullYear(), date.getMonth(), date.getDate()));
 }
 
 function usernameValidator(control: AbstractControl): ValidationErrors | null {
+  /**
+   * Returns the current date as an ISO date string without the time component.
+   * The local timezone is taken into account for the output.
+   */
+
   if (isEmptyInputValue(control.value)) {
     return null;
   }

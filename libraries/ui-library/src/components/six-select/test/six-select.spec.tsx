@@ -33,7 +33,7 @@ describe('six-select', () => {
                         expand_more
                       </six-icon>
                     </span>
-                    <six-input aria-hidden="true" class="select__hidden-select select__input" placeholder="" size="medium"></six-input>
+                    <six-input aria-hidden="true" class="select__input sr-only" placeholder="" size="medium"></six-input>
                   </div>
                   <div class="selection-container"></div>
                   <six-menu class="select__menu" disable-keyboard-handling="" part="menu" remove-box-shadow="">

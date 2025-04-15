@@ -21,7 +21,6 @@
     "@six-group/ui-library": "*",
     "@six-group/ui-library-angular": "*",
     "rxjs": "7.8.1",
-    "date-fns": "^2.30.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.3"
   },

@@ -40,7 +40,7 @@ export const config: Config = {
           targetAttr: 'value',
         },
         {
-          elements: ['six-select', 'six-datepicker'],
+          elements: ['six-select', 'six-datepicker', 'six-date'],
           event: 'change',
           targetAttr: 'value',
         },

@@ -174,6 +174,7 @@ Type: `Promise<void | undefined>`
 
 ### Used by
 
+ - [six-date](../six-date)
  - [six-datepicker](../six-datepicker)
  - [six-dropdown](../six-dropdown)
  - [six-search-field](../six-search-field)
@@ -190,6 +191,7 @@ Type: `Promise<void | undefined>`
 graph TD;
   six-input --> six-icon
   six-input --> six-error
+  six-date --> six-input
   six-datepicker --> six-input
   six-dropdown --> six-input
   six-search-field --> six-input

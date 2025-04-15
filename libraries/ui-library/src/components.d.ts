@@ -7,6 +7,8 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AlertType } from "./components/six-alert/six-alert";
 import { EmptyPayload } from "./utils/types";
+import { Language } from "./utils/error-messages";
+import { IsoDate } from "./components/six-date/iso-date";
 import { SixDateFormats } from "./components/six-datepicker/six-date-formats";
 import { SixDatepickerSelectPayload } from "./components/six-datepicker/six-datepicker";
 import { SixMenuItemData } from "./components/six-menu/six-menu";
@@ -27,6 +29,8 @@ import { TimeFormat } from "./utils/time.util";
 import { SixTimepickerChange } from "./components/six-timepicker/six-timepicker";
 export { AlertType } from "./components/six-alert/six-alert";
 export { EmptyPayload } from "./utils/types";
+export { Language } from "./utils/error-messages";
+export { IsoDate } from "./components/six-date/iso-date";
 export { SixDateFormats } from "./components/six-datepicker/six-date-formats";
 export { SixDatepickerSelectPayload } from "./components/six-datepicker/six-datepicker";
 export { SixMenuItemData } from "./components/six-menu/six-menu";
@@ -262,6 +266,92 @@ export namespace Components {
           * The value of the checkbox does not mean if it's checked or not, use the `checked` property for that.  The value of a checkbox is analogous to the value of an `<input type="checkbox">`, it's only used when the checkbox participates in a native `<form>`.
          */
         "value": string;
+    }
+    /**
+     * @since 5.0
+     * @status experimental
+     */
+    interface SixDate {
+        /**
+          * Callback to determine which dates in the picker should be selectable.
+         */
+        "allowedDates": (date: IsoDate) => boolean;
+        /**
+          * Set to true to add a clear button when the input is populated.
+         */
+        "clearable": boolean;
+        /**
+          * Define the dateFormat. Defaults to "dd.MM.yyyy".  Available patterns: - Year: "yyyy" (e.g., "2021") - Month: "MM" (e.g., "01" for January, "12" for December) - Day: "dd" (e.g., "08" for the 8th day of the month)
+         */
+        "dateFormat": string;
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `dateChange` event after each keystroke.
+         */
+        "debounce": number;
+        /**
+          * If `true` the component is disabled.
+         */
+        "disabled": boolean;
+        /**
+          * The error message shown, if `invalid` is set to true.
+         */
+        "errorText": string | string[];
+        /**
+          * The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1
+         */
+        "errorTextCount"?: number;
+        /**
+          * The input's help text. Alternatively, you can use the help-text slot.
+         */
+        "helpText": string;
+        /**
+          * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
+         */
+        "invalid": boolean;
+        /**
+          * The label text.
+         */
+        "label": string;
+        /**
+          * The language used to render the weekdays and months.
+         */
+        "language": Language;
+        /**
+          * The maximum date allowed.Value must be an iso-date string.
+         */
+        "max"?: IsoDate;
+        /**
+          * The minimum date allowed. Value must be an iso-date string.
+         */
+        "min"?: IsoDate;
+        /**
+          * The input's name attribute.
+         */
+        "name": string;
+        /**
+          * The placeholder defines what text to be shown on the input element
+         */
+        "placeholder"?: string;
+        /**
+          * If `true` the user can only select a date via the component in the popup, but not directly edit the input field.
+         */
+        "readonly": boolean;
+        /**
+          * Set to true to show an asterisk beneath the label.
+         */
+        "required": boolean;
+        /**
+          * Sets focus on the input.
+         */
+        "setFocus": (options?: FocusOptions) => Promise<void>;
+        /**
+          * Dates size.
+         */
+        "size": 'small' | 'medium' | 'large';
+        /**
+          * The value of the form field, which accepts a date object.
+         */
+        "value": IsoDate | '';
     }
     /**
      * @since 1.0
@@ -2083,6 +2173,10 @@ export interface SixCheckboxCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLSixCheckboxElement;
 }
+export interface SixDateCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSixDateElement;
+}
 export interface SixDatepickerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLSixDatepickerElement;
@@ -2283,6 +2377,28 @@ declare global {
     var HTMLSixCheckboxElement: {
         prototype: HTMLSixCheckboxElement;
         new (): HTMLSixCheckboxElement;
+    };
+    interface HTMLSixDateElementEventMap {
+        "sixChange": IsoDate | '';
+        "sixBlur": any;
+    }
+    /**
+     * @since 5.0
+     * @status experimental
+     */
+    interface HTMLSixDateElement extends Components.SixDate, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSixDateElementEventMap>(type: K, listener: (this: HTMLSixDateElement, ev: SixDateCustomEvent<HTMLSixDateElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSixDateElementEventMap>(type: K, listener: (this: HTMLSixDateElement, ev: SixDateCustomEvent<HTMLSixDateElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLSixDateElement: {
+        prototype: HTMLSixDateElement;
+        new (): HTMLSixDateElement;
     };
     interface HTMLSixDatepickerElementEventMap {
         "six-datepicker-select": SixDatepickerSelectPayload;
@@ -3116,6 +3232,7 @@ declare global {
         "six-button": HTMLSixButtonElement;
         "six-card": HTMLSixCardElement;
         "six-checkbox": HTMLSixCheckboxElement;
+        "six-date": HTMLSixDateElement;
         "six-datepicker": HTMLSixDatepickerElement;
         "six-details": HTMLSixDetailsElement;
         "six-dialog": HTMLSixDialogElement;
@@ -3392,6 +3509,96 @@ declare namespace LocalJSX {
           * The value of the checkbox does not mean if it's checked or not, use the `checked` property for that.  The value of a checkbox is analogous to the value of an `<input type="checkbox">`, it's only used when the checkbox participates in a native `<form>`.
          */
         "value"?: string;
+    }
+    /**
+     * @since 5.0
+     * @status experimental
+     */
+    interface SixDate {
+        /**
+          * Callback to determine which dates in the picker should be selectable.
+         */
+        "allowedDates"?: (date: IsoDate) => boolean;
+        /**
+          * Set to true to add a clear button when the input is populated.
+         */
+        "clearable"?: boolean;
+        /**
+          * Define the dateFormat. Defaults to "dd.MM.yyyy".  Available patterns: - Year: "yyyy" (e.g., "2021") - Month: "MM" (e.g., "01" for January, "12" for December) - Day: "dd" (e.g., "08" for the 8th day of the month)
+         */
+        "dateFormat"?: string;
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `dateChange` event after each keystroke.
+         */
+        "debounce"?: number;
+        /**
+          * If `true` the component is disabled.
+         */
+        "disabled"?: boolean;
+        /**
+          * The error message shown, if `invalid` is set to true.
+         */
+        "errorText"?: string | string[];
+        /**
+          * The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1
+         */
+        "errorTextCount"?: number;
+        /**
+          * The input's help text. Alternatively, you can use the help-text slot.
+         */
+        "helpText"?: string;
+        /**
+          * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
+         */
+        "invalid"?: boolean;
+        /**
+          * The label text.
+         */
+        "label"?: string;
+        /**
+          * The language used to render the weekdays and months.
+         */
+        "language"?: Language;
+        /**
+          * The maximum date allowed.Value must be an iso-date string.
+         */
+        "max"?: IsoDate;
+        /**
+          * The minimum date allowed. Value must be an iso-date string.
+         */
+        "min"?: IsoDate;
+        /**
+          * The input's name attribute.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the control loses focus.
+         */
+        "onSixBlur"?: (event: SixDateCustomEvent<any>) => void;
+        /**
+          * Emitted when the control's value changes.
+         */
+        "onSixChange"?: (event: SixDateCustomEvent<IsoDate | ''>) => void;
+        /**
+          * The placeholder defines what text to be shown on the input element
+         */
+        "placeholder"?: string;
+        /**
+          * If `true` the user can only select a date via the component in the popup, but not directly edit the input field.
+         */
+        "readonly"?: boolean;
+        /**
+          * Set to true to show an asterisk beneath the label.
+         */
+        "required"?: boolean;
+        /**
+          * Dates size.
+         */
+        "size"?: 'small' | 'medium' | 'large';
+        /**
+          * The value of the form field, which accepts a date object.
+         */
+        "value"?: IsoDate | '';
     }
     /**
      * @since 1.0
@@ -5323,6 +5530,7 @@ declare namespace LocalJSX {
         "six-button": SixButton;
         "six-card": SixCard;
         "six-checkbox": SixCheckbox;
+        "six-date": SixDate;
         "six-datepicker": SixDatepicker;
         "six-details": SixDetails;
         "six-dialog": SixDialog;
@@ -5414,6 +5622,11 @@ declare module "@stencil/core" {
              * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
              */
             "six-checkbox": LocalJSX.SixCheckbox & JSXBase.HTMLAttributes<HTMLSixCheckboxElement>;
+            /**
+             * @since 5.0
+             * @status experimental
+             */
+            "six-date": LocalJSX.SixDate & JSXBase.HTMLAttributes<HTMLSixDateElement>;
             /**
              * @since 1.0
              * @status stable

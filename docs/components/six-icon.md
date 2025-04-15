@@ -271,6 +271,7 @@ Enter an icon label and press enter to display an icon:
 ### Used by
 
  - [six-avatar](six-avatar.html)
+ - [six-date](six-date.html)
  - [six-datepicker](six-datepicker.html)
  - [six-details](six-details.html)
  - [six-dropdown](six-dropdown.html)
@@ -291,6 +292,7 @@ Enter an icon label and press enter to display an icon:
 ```mermaid
 graph TD;
   six-avatar --> six-icon
+  six-date --> six-icon
   six-datepicker --> six-icon
   six-details --> six-icon
   six-dropdown --> six-icon
