@@ -1,7 +1,7 @@
 import {
   SixButton,
   SixCheckbox,
-  SixDatepicker,
+  SixDate,
   SixFileUpload,
   SixInput,
   SixLayoutGrid,
@@ -16,6 +16,7 @@ import {
 import { useState } from 'react';
 
 import styles from './form.module.css';
+import { IsoDate } from '@six-group/ui-library';
 
 export function Form() {
   const [inputValue, setInputValue] = useState('');
@@ -25,7 +26,7 @@ export function Form() {
   const [rangeValue, setRangeValue] = useState(0);
   const [radioValue, setRadioValue] = useState('Option 3');
   const [selectValue, setSelectValue] = useState('Option 2');
-  const [datepickerValue, setDatepickerValue] = useState(new Date());
+  const [dateValue, setDateValue] = useState('2025-01-01' as IsoDate | '');
 
   const [file, setFile] = useState('');
   const [uploading, setUploading] = useState(false);
@@ -135,14 +136,14 @@ export function Form() {
         </SixSelect>
         <pre className={styles.pre}>Value: {selectValue}</pre>
 
-        <SixDatepicker
+        <SixDate
           disabled={isDisabled}
           invalid={isInvalid}
           errorText="Datepicker Error"
-          value={datepickerValue}
-          onSixDatepickerSelect={(e) => setDatepickerValue(e.target.value ?? new Date())}
+          value={dateValue}
+          onSixChange={(e) => setDateValue(e.target.value ?? '')}
         />
-        <pre className={styles.pre}>Value: {datepickerValue.toString()}</pre>
+        <pre className={styles.pre}>Value: {dateValue.toString()}</pre>
 
         <SixGroupLabel label="File Upload">
           <SixFileUpload

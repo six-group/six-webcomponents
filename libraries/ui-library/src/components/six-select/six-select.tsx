@@ -686,7 +686,7 @@ export class SixSelect {
               ref={(el) => (this.autocompleteInput = el)}
               class={{
                 select__input: true,
-                'select__hidden-select': !this.autocomplete,
+                'sr-only': !this.autocomplete,
               }}
               aria-hidden="true"
               required={this.required}

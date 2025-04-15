@@ -36,6 +36,9 @@
     "@stencil/core": "4.28.2",
     "@types/resize-observer-browser": "^0.1.5"
   },
+  "peerDependencies": {
+    "date-fns": ">=3.0.0"
+  },
   "devDependencies": {
     "@fontsource/noto-sans": "^5.1.1",
     "@fontsource/material-icons": "^5.1.1",

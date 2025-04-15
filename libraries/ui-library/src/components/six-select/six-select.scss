@@ -134,11 +134,6 @@
   color: var(--six-input-placeholder-color-disabled);
 }
 
-// Hidden input (for form control validation to show)
-.select__hidden-select {
-  @include visually-hidden();
-}
-
 .select__input {
   position: absolute;
   top: 0;
