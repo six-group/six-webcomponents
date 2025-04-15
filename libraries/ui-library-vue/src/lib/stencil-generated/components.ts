@@ -76,6 +76,32 @@ export const SixCheckbox = /*@__PURE__*/ defineContainer<JSX.SixCheckbox, JSX.Si
 'checked', 'change');
 
 
+export const SixDate = /*@__PURE__*/ defineContainer<JSX.SixDate, JSX.SixDate["value"]>('six-date', undefined, [
+  'language',
+  'readonly',
+  'disabled',
+  'allowedDates',
+  'min',
+  'max',
+  'size',
+  'required',
+  'placeholder',
+  'value',
+  'label',
+  'helpText',
+  'errorText',
+  'errorTextCount',
+  'invalid',
+  'dateFormat',
+  'debounce',
+  'name',
+  'clearable',
+  'sixChange',
+  'sixBlur'
+],
+'value', 'change');
+
+
 export const SixDatepicker = /*@__PURE__*/ defineContainer<JSX.SixDatepicker, JSX.SixDatepicker["value"]>('six-datepicker', undefined, [
   'type',
   'locale',

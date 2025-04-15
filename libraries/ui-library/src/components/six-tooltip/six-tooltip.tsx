@@ -24,7 +24,7 @@ let id = 0;
 export class SixTooltip {
   private componentId = `tooltip-${++id}`;
   private isVisible = false;
-  private popover?: Popover;
+  private popoverHelper?: Popover;
   private tooltipPositioner?: HTMLElement;
   private target?: HTMLElement;
   private tooltip?: HTMLElement;
@@ -91,7 +91,7 @@ export class SixTooltip {
   componentDidLoad() {
     if (this.tooltipPositioner == null) return;
     this.target = this.getTarget();
-    this.popover = new Popover(this.target, this.tooltipPositioner, { strategy: 'fixed' });
+    this.popoverHelper = new Popover(this.target, this.tooltipPositioner, { strategy: 'fixed' });
     this.syncOptions();
 
     this.host.addEventListener('blur', this.handleBlur, true);
@@ -110,8 +110,8 @@ export class SixTooltip {
   }
 
   disconnectedCallback() {
-    if (this.popover != null) {
-      this.popover.destroy();
+    if (this.popoverHelper != null) {
+      this.popoverHelper.destroy();
     }
 
     this.host.removeEventListener('blur', this.handleBlur, true);
@@ -135,7 +135,7 @@ export class SixTooltip {
 
     this.isVisible = true;
     this.open = true;
-    this.popover?.show();
+    this.popoverHelper?.show();
   }
 
   /** Shows the tooltip. */
@@ -154,7 +154,7 @@ export class SixTooltip {
 
     this.isVisible = false;
     this.open = false;
-    this.popover?.hide();
+    this.popoverHelper?.hide();
   }
 
   private getTarget() {
@@ -226,9 +226,9 @@ export class SixTooltip {
   }
 
   private syncOptions() {
-    if (this.popover == null) return;
+    if (this.popoverHelper == null) return;
 
-    this.popover.setOptions({
+    this.popoverHelper.setOptions({
       placement: this.placement,
       distance: this.distance,
       skidding: this.skidding,

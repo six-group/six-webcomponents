@@ -190,6 +190,41 @@ export declare interface SixCheckbox extends Components.SixCheckbox {
 
 
 @ProxyCmp({
+  inputs: ['allowedDates', 'clearable', 'dateFormat', 'debounce', 'disabled', 'errorText', 'errorTextCount', 'helpText', 'invalid', 'label', 'language', 'max', 'min', 'name', 'placeholder', 'readonly', 'required', 'size', 'value'],
+  methods: ['setFocus']
+})
+@Component({
+  selector: 'six-date',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['allowedDates', 'clearable', 'dateFormat', 'debounce', 'disabled', 'errorText', 'errorTextCount', 'helpText', 'invalid', 'label', 'language', 'max', 'min', 'name', 'placeholder', 'readonly', 'required', 'size', 'value'],
+})
+export class SixDate {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['sixChange', 'sixBlur']);
+  }
+}
+
+
+import type { IsoDate as ISixDateIsoDate } from '@six-group/ui-library';
+
+export declare interface SixDate extends Components.SixDate {
+  /**
+   * Emitted when the control's value changes.
+   */
+  sixChange: EventEmitter<CustomEvent<ISixDateIsoDate | ''>>;
+  /**
+   * Emitted when the control loses focus.
+   */
+  sixBlur: EventEmitter<CustomEvent<any>>;
+}
+
+
+@ProxyCmp({
   inputs: ['allowedDates', 'clearable', 'closeOnSelect', 'containingElement', 'dateFormat', 'debounce', 'defaultDate', 'disabled', 'errorText', 'errorTextCount', 'hoist', 'iconPosition', 'inline', 'invalid', 'label', 'locale', 'max', 'min', 'name', 'open', 'placeholder', 'placement', 'readonly', 'required', 'size', 'type', 'value'],
   methods: ['setFocus', 'select']
 })
