@@ -40,7 +40,9 @@
   ::slotted(six-icon) {
     // Clicks on icons shouldn't prevent the button from gaining focus
     pointer-events: none;
-    transform: translateY(-1.5px);
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
   }
 }
 

@@ -75,6 +75,29 @@ in the Angular example application, which covers most features.
 </six-header>
 ```
 
+## Simpler use of components (None Breaking Change)
+
+- The prefix and suffix icons in the `six-button` component do not have to be wrapped in a span
+  anymore and the icon size will adapt based on the size of the button component.
+
+### Before
+
+```html
+<six-button>
+  <span slot="prefix"><six-icon size="small">settings</six-icon></span>
+  Setting
+</six-button>
+```
+
+### After
+
+```html
+<six-button>
+  <six-icon slot="prefix">settings</six-icon>
+  Setting
+</six-button>
+```
+
 ## Removed deprecated features (Breaking Change)
 
 Refer to the _Removed_ section in the [changelog](../changelog.md).

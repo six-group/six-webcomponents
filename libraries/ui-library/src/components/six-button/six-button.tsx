@@ -111,7 +111,28 @@ export class SixButton {
     this.hasLabel = hasSlot(this.host);
     this.hasPrefix = hasSlot(this.host, 'prefix');
     this.hasSuffix = hasSlot(this.host, 'suffix');
+
+    // set the correct icon size for suffix and prefix icons
+    const prefixIcon = this.host.querySelector('[slot="prefix"]');
+    const suffixIcon = this.host.querySelector('[slot="suffix"]');
+
+    if (prefixIcon?.tagName.toLowerCase() === 'six-icon') {
+      prefixIcon.setAttribute('size', this.mapSizeToIconSize(this.size));
+    }
+
+    if (suffixIcon?.tagName.toLowerCase() === 'six-icon') {
+      suffixIcon.setAttribute('size', this.mapSizeToIconSize(this.size));
+    }
   };
+
+  private mapSizeToIconSize(buttonSize: 'small' | 'medium' | 'large'): string {
+    const sizeMap = {
+      small: 'xSmall',
+      medium: 'small',
+      large: 'medium',
+    };
+    return sizeMap[buttonSize] || 'small'; // Default to small
+  }
 
   private handleBlur = () => {
     this.hasFocus = false;
