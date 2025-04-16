@@ -101,11 +101,9 @@ describe('six-file-upload', () => {
         <six-file-upload compact="">
           <div class="six-file-upload">
             <six-button aria-invalid="false" class="six-file-upload__container--compact">
-              <span slot="prefix">
-                <six-icon class="six-file-upload__label-icon">
+             <six-icon slot="prefix">
                   arrow_circle_up
                 </six-icon>
-              </span>
               <div class="six-file-upload__drop-zone six-file-upload__drop-zone--compact">
                 <div>
                   <span>
@@ -131,11 +129,9 @@ describe('six-file-upload', () => {
         <six-file-upload compact="" disabled="">
           <div class="six-file-upload six-file-upload--disabled">
             <six-button aria-invalid="false" class="six-file-upload__container--compact" disabled="">
-              <span slot="prefix">
-                <six-icon class="six-file-upload__label-icon">
+              <six-icon slot="prefix">
                   arrow_circle_up
                 </six-icon>
-              </span>
               <div class="six-file-upload__drop-zone six-file-upload__drop-zone--compact">
                 <div>
                   <span>
