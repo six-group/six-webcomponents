@@ -14,6 +14,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FormComponent } from './pages/form/form.component';
 import { AlertComponent } from './pages/alert/alert.component';
 import { DialogComponent } from './pages/dialog/dialog.component';
+import { SettingsComponent } from './pages/settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { DialogComponent } from './pages/dialog/dialog.component';
     FormComponent,
     AlertComponent,
     DialogComponent,
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,

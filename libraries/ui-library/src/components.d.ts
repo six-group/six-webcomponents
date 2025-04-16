@@ -1559,6 +1559,10 @@ export namespace Components {
          */
         "href": string | undefined;
         /**
+          * Icon of the item
+         */
+        "icon": string;
+        /**
           * Set to true to draw the item in a selected state.
          */
         "selected": boolean;
@@ -4784,6 +4788,10 @@ declare namespace LocalJSX {
           * Provide if the item should be rendered as anchor tag. Note, that the href is added automatically when using routerLink in Angular.
          */
         "href"?: string | undefined;
+        /**
+          * Icon of the item
+         */
+        "icon"?: string;
         /**
           * Set to true to draw the item in a selected state.
          */

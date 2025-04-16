@@ -20,6 +20,8 @@ import { SwitchValueAccessor } from './control-value-accessors/switch-value-acce
 import { TimepickerValueAccessor } from './control-value-accessors/timepicker-value-accessor';
 import { ValidationMessagesService } from './services/validation-messages.service';
 import { SixRouterLinkDirective } from './link/six-router-link.directive';
+import { ActiveSidebarItemDirective } from './sidebar/active-sidebar-item.directive';
+import { ActiveSidebarItemGroupDirective } from './sidebar/active-sidebar-item-group.directive';
 
 @NgModule({
   declarations: [
@@ -50,6 +52,10 @@ import { SixRouterLinkDirective } from './link/six-router-link.directive';
 
     // router link directive
     SixRouterLinkDirective,
+
+    // sidebar helpers
+    ActiveSidebarItemDirective,
+    ActiveSidebarItemGroupDirective,
   ],
   imports: [],
   exports: [
@@ -80,6 +86,10 @@ import { SixRouterLinkDirective } from './link/six-router-link.directive';
 
     // router link directive
     SixRouterLinkDirective,
+
+    // sidebar helpers
+    ActiveSidebarItemDirective,
+    ActiveSidebarItemGroupDirective,
   ],
 })
 export class UiLibraryAngularModule {
