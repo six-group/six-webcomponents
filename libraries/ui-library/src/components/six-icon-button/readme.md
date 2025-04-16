@@ -33,6 +33,7 @@ Icons buttons are simple, icon-only buttons that can be used for actions and in 
 ### Used by
 
  - [six-alert](../six-alert)
+ - [six-date](../six-date)
  - [six-dialog](../six-dialog)
  - [six-drawer](../six-drawer)
  - [six-select](../six-select)
@@ -50,6 +51,7 @@ Icons buttons are simple, icon-only buttons that can be used for actions and in 
 graph TD;
   six-icon-button --> six-icon
   six-alert --> six-icon-button
+  six-date --> six-icon-button
   six-dialog --> six-icon-button
   six-drawer --> six-icon-button
   six-select --> six-icon-button

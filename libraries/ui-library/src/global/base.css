@@ -61,6 +61,7 @@ body > div.container {
   --six-z-index-search-field: 500;
   --six-z-index-drawer: 600;
   --six-z-index-dropdown: 700;
+  --six-z-index-date: var(--six-z-index-dropdown);
   --six-z-index-toast: 800;
   --six-z-index-tooltip: 900;
   --six-z-index-dialog: 1000;

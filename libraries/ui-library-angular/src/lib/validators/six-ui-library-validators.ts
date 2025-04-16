@@ -1,5 +1,6 @@
 import { AbstractControl, NG_VALIDATORS, Validator, ValidatorFn, Validators } from '@angular/forms';
 import { Directive, Input } from '@angular/core';
+import { IsoDate } from '@six-group/ui-library';
 
 export class SixUiLibraryValidators {
   static minDate(mindate: Date): ValidatorFn {
@@ -21,6 +22,31 @@ export class SixUiLibraryValidators {
   static allowedDates(allowedDates: (date: Date) => boolean = () => true): ValidatorFn {
     return (control: AbstractControl): { [key: string]: any } | null => {
       if (control.value == null) return null;
+
+      const allowed = allowedDates(control.value);
+      return allowed ? null : { invaliddate: { actual: control.value } };
+    };
+  }
+
+  static minDateIso(mindate: IsoDate): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      if (control.value == null || control.value === '') return null;
+      const actualDate = control.value as IsoDate;
+      return actualDate >= mindate ? null : { mindate: { mindate, actual: actualDate } };
+    };
+  }
+
+  static maxDateIso(maxdate: IsoDate): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      if (control.value == null || control.value === '') return null;
+      const actualDate = control.value as IsoDate;
+      return actualDate <= maxdate ? null : { maxdate: { maxdate, actual: actualDate } };
+    };
+  }
+
+  static allowedDatesIso(allowedDates: (date: IsoDate) => boolean = () => true): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      if (control.value == null || control.value === '') return null;
 
       const allowed = allowedDates(control.value);
       return allowed ? null : { invaliddate: { actual: control.value } };
@@ -66,6 +92,47 @@ export class AllowedDatesValidator implements Validator {
   @Input() allowedDates: (date: Date) => boolean = () => true;
   validate(control: AbstractControl): { [key: string]: any } | null {
     return SixUiLibraryValidators.allowedDates(this.allowedDates)(control);
+  }
+}
+
+@Directive({
+  selector: 'six-date[min]',
+  providers: [{ provide: NG_VALIDATORS, useExisting: MinDateValidatorIso, multi: true }],
+})
+export class MinDateValidatorIso implements Validator {
+  @Input() min?: IsoDate | null;
+
+  validate(control: AbstractControl): { [key: string]: any } | null {
+    if (this.min != null) {
+      return SixUiLibraryValidators.minDateIso(this.min)(control);
+    }
+    return null;
+  }
+}
+
+@Directive({
+  selector: 'six-date[max]',
+  providers: [{ provide: NG_VALIDATORS, useExisting: MaxDateValidatorIso, multi: true }],
+})
+export class MaxDateValidatorIso implements Validator {
+  @Input() max?: IsoDate | null;
+
+  validate(control: AbstractControl): { [key: string]: any } | null {
+    if (this.max != null) {
+      return SixUiLibraryValidators.maxDateIso(this.max)(control);
+    }
+    return null;
+  }
+}
+
+@Directive({
+  selector: 'six-date[allowedDates]',
+  providers: [{ provide: NG_VALIDATORS, useExisting: AllowedDatesValidatorIso, multi: true }],
+})
+export class AllowedDatesValidatorIso implements Validator {
+  @Input() allowedDates: (date: IsoDate) => boolean = () => true;
+  validate(control: AbstractControl): { [key: string]: any } | null {
+    return SixUiLibraryValidators.allowedDatesIso(this.allowedDates)(control);
   }
 }
 
