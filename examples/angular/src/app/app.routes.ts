@@ -3,6 +3,7 @@ import { FormComponent } from './pages/form/form.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AlertComponent } from './pages/alert/alert.component';
 import { DialogComponent } from './pages/dialog/dialog.component';
+import { SettingsComponent } from './pages/settings/settings.component';
 
 export const routes: Routes = [
   {
@@ -25,5 +26,13 @@ export const routes: Routes = [
   {
     path: 'dialog',
     component: DialogComponent,
+  },
+  {
+    path: 'settings',
+    children: [
+      { path: '', redirectTo: 'data', pathMatch: 'full' },
+      { path: 'data', component: SettingsComponent },
+      { path: 'history', component: SettingsComponent },
+    ],
   },
 ];

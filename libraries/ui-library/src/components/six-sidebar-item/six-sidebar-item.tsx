@@ -22,6 +22,9 @@ export class SixSidebarItem {
   /** Set to true to draw the sidebar item in a disabled state. */
   @Prop({ reflect: true }) disabled = false;
 
+  /** Icon of the item */
+  @Prop() icon = '';
+
   /**
    * Provide if the item should be rendered as anchor tag.
    * Note, that the href is added automatically when using routerLink in Angular.
@@ -42,6 +45,7 @@ export class SixSidebarItem {
         aria-selected={this.selected ? 'true' : 'false'}
         aria-disabled={this.disabled ? 'true' : 'false'}
       >
+        {this.icon && <six-icon class="six-sidebar-item__icon">{this.icon}</six-icon>}
         <slot></slot>
       </Tag>
     );

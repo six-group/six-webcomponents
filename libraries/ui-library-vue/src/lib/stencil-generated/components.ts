@@ -508,6 +508,7 @@ export const SixSidebarItem = /*@__PURE__*/ defineContainer<JSX.SixSidebarItem>(
   'value',
   'selected',
   'disabled',
+  'icon',
   'href'
 ]);
 

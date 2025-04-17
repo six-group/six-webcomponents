@@ -12,15 +12,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - **⚠️Experimental**: Adding example React app with Vite.
 
 - [Documentation](guide/angular.md) for using web components with Angular's standalone bootstrapping
+- `ActiveSidebarItemGroupDirective` and `ActiveSidebarItemDirective`: Added angular sidbar helper
+  directives
+- Added nested sidbar menu to the angular demo application to showcase the helper directives
 - `six-header-dropdown`: Added `filter` and `filterPlaceholder` properties.
 - `six-header-menu-button`: Added `caret`, `disabled`, `loading`, `submit` and `reset` properties.
 - `six-header-menu-button`: Added `suffix` and `prefix` slots.
+- `six-sidebar-item` : added icon property analog to `six-sidebar-item-group`
 
 ### Fixed
 
 - `six-logo`: removed inline style tag
 - `six-timepicker`: removed unnecessary bottom padding
 - `six-button` : simplify use of prefix and suffix icons
+- `six-sidebar-item-group`: fixed spacing for sub items
 
 ### Removed
 

@@ -13,6 +13,7 @@ a {
   color: var(--six-sidebar-color);
   cursor: pointer;
   font-family: var(--six-font-family);
+  margin-left: var(--six-spacing-xx-small);
 
   &:hover:not(.sidebar-item--disabled) {
     color: var(--six-color-web-rock-600);
@@ -36,4 +37,8 @@ a {
     outline: var(--six-focus-ring);
     outline-offset: var(--six-focus-ring-offset);
   }
+}
+
+.six-sidebar-item__icon {
+  margin-right: 1em;
 }

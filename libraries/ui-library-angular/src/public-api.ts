@@ -29,6 +29,10 @@ export * from './lib/form/six-form.directive';
 // link helpers
 export * from './lib/link/six-router-link.directive';
 
+// sidbar helpers
+export * from './lib/sidebar/active-sidebar-item.directive';
+export * from './lib/sidebar/active-sidebar-item-group.directive';
+
 // services
 export * from './lib/services/validation-messages.service';
 export * from './lib/services/alert.service';

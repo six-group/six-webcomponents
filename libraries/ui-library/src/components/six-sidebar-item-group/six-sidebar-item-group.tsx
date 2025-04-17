@@ -28,7 +28,7 @@ export class SixSidebarItemGroup {
   @Prop({ reflect: true }) value = '';
 
   /** Indicates whether the sidebar is shown */
-  @Prop({ reflect: true }) open = false;
+  @Prop({ reflect: true, mutable: true }) open = false;
 
   /** Custom summary icon name. */
   @Prop() summaryIcon?: string;
@@ -94,6 +94,12 @@ export class SixSidebarItemGroup {
         inline={true}
         open={this.open}
         summary-icon={this.summaryIcon}
+        onSix-details-show={() => {
+          this.open = true;
+        }}
+        onSix-details-hide={() => {
+          this.open = false;
+        }}
         hasContent={this.hasItems}
         tabindex={this.renderAsHref() ? -1 : undefined}
       >

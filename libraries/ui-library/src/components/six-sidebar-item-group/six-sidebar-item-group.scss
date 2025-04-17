@@ -14,6 +14,7 @@
 
 .six-sidebar-item-group--subgroup::part(header) {
   background-color: transparent !important;
+  --horizontal-padding: var(--six-spacing-large);
 }
 
 .six-sidebar-item-group__header-icon {

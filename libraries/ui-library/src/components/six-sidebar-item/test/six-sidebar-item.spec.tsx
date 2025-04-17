@@ -49,4 +49,21 @@ describe('six-sidebar-item', () => {
       </six-sidebar-item>
     `);
   });
+
+  it('render with icon', async () => {
+    const page = await newSpecPage({
+      components: [SixSidebarItem],
+      html: `<six-sidebar-item icon="description"></six-sidebar-item>`,
+    });
+    expect(page.root).toEqualHtml(`
+      <six-sidebar-item value="" icon="description">
+        <mock:shadow-root>
+          <div aria-disabled="false" aria-selected="false" class="sidebar-item" role="menuitem">
+            <six-icon class="six-sidebar-item__icon">description</six-icon>
+            <slot></slot>
+          </div>
+        </mock:shadow-root>
+      </six-sidebar-item>
+    `);
+  });
 });
