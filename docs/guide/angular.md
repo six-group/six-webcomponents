@@ -127,3 +127,40 @@ Consult the
 [Angular example](https://github.com/six-group/six-webcomponents/tree/main/examples/angular) and the
 [source code documentation](https://github.com/six-group/six-webcomponents/blob/main/libraries/ui-library-angular/src/lib/form/six-form.directive.ts)
 of the `SixFormDirective` and for a more flexible alternative, the `SixFormUtilDirective`.
+
+## Sidebar
+
+The library provides Angular Router integration for the sidebar component through a set of
+directives that automatically manage the selection and expansion states based on the current route.
+
+To enable router integration, add the `sixRouterLinkActive` attribute to the `six-sidebar`
+component. This activates three directives that work together:
+
+- `ActiveSidebarDirective`: Enables route-based navigation in the sidebar
+- `ActiveSidebarItemDirective`: Automatically manages item selection based on the current route
+- `ActiveSidebarItemGroupDirective`: Automatically expands groups when they contain active routes
+
+Example usage:
+
+```html
+<!-- add sixRouterLinkActive to six-sidebar to include the sidebar helper directives -->
+<six-sidebar position="left" [open]="open" sixRouterLinkActive>
+  <six-sidebar-item-group routerLink="/home" name="Home" icon="home"></six-sidebar-item-group>
+  <six-sidebar-item-group routerLink="/form" name="Form" icon="assignment"></six-sidebar-item-group>
+  <six-sidebar-item-group icon="settings" name="Settings">
+    <six-sidebar-item routerLink="/settings/data" icon="analytics">Data</six-sidebar-item>
+    <six-sidebar-item routerLink="/settings/history" icon="history">History</six-sidebar-item>
+  </six-sidebar-item-group>
+</six-sidebar>
+```
+
+When the router integration is enabled:
+
+- Sidebar items are automatically selected when their route is active
+- Sidebar groups automatically expand when containing active routes
+- Manual selection state is preserved when no routes are active
+
+Consult the
+[Angular example](https://github.com/six-group/six-webcomponents/tree/main/examples/angular) and the
+[source code documentation](https://github.com/six-group/six-webcomponents/blob/main/libraries/ui-library-angular/src/lib/sidebar/active-sidebar.directive.ts)
+of the `ActiveSidebarDirective`, `ActiveSidebarItemDirective` and `ActiveSidebarItemGroupDirective`.

@@ -98,6 +98,16 @@ in the Angular example application, which covers most features.
 </six-button>
 ```
 
+## Angular specific upgrade (None Breaking Change)
+
+- Angular Router integration for the `six-sidebar` component through a set of directives that
+  automatically manage the selection and expansion states based on the current route.
+
+To enable router integration, add the `sixRouterLinkActive` attribute to the `six-sidebar`
+component.
+
+For more information and a usage example consult the [angular guide](angular.md#sidebar).
+
 ## Removed deprecated features (Breaking Change)
 
 Refer to the _Removed_ section in the [changelog](../changelog.md).

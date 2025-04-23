@@ -2,6 +2,8 @@
  * Public API Surface of ui-library-angular
  */
 
+import { ActiveSidebarDirective } from './lib/sidebar/active-sidebar.directive';
+
 export * from './lib/ui-library-angular.module';
 
 // proxies
@@ -30,8 +32,7 @@ export * from './lib/form/six-form.directive';
 export * from './lib/link/six-router-link.directive';
 
 // sidbar helpers
-export * from './lib/sidebar/active-sidebar-item.directive';
-export * from './lib/sidebar/active-sidebar-item-group.directive';
+export * from './lib/sidebar/active-sidebar.directive';
 
 // services
 export * from './lib/services/validation-messages.service';

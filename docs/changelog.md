@@ -12,8 +12,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - **⚠️Experimental**: Adding example React app with Vite.
 
 - [Documentation](guide/angular.md) for using web components with Angular's standalone bootstrapping
-- `ActiveSidebarItemGroupDirective` and `ActiveSidebarItemDirective`: Added angular sidbar helper
-  directives
+- `ActiveSidebarItemGroupDirective` and `ActiveSidebarItemDirective`: Added optional angular sidebar
+  helper directives. See the [Angular guide](guide/angular.md) for more information.
 - Added nested sidbar menu to the angular demo application to showcase the helper directives
 - `six-header-dropdown`: Added `filter` and `filterPlaceholder` properties.
 - `six-header-menu-button`: Added `caret`, `disabled`, `loading`, `submit` and `reset` properties.
