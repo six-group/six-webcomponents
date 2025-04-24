@@ -194,6 +194,7 @@ Often icon buttons are combined with badges to signal new entries. For this simp
 ### Used by
 
  - [six-alert](six-alert.html)
+ - [six-date](six-date.html)
  - [six-dialog](six-dialog.html)
  - [six-drawer](six-drawer.html)
  - [six-select](six-select.html)
@@ -211,6 +212,7 @@ Often icon buttons are combined with badges to signal new entries. For this simp
 graph TD;
   six-icon-button --> six-icon
   six-alert --> six-icon-button
+  six-date --> six-icon-button
   six-dialog --> six-icon-button
   six-drawer --> six-icon-button
   six-select --> six-icon-button

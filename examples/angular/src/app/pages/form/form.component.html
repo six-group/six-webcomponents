@@ -33,14 +33,14 @@
       <six-switch formControlName="futureDatesOnly">Future Dates Only</six-switch>
     </six-group-label>
 
-    <six-datepicker
+    <six-date
       [min]="minDate"
       [max]="maxDate"
       [allowedDates]="dateFilter"
       label="Date"
       formControlName="date"
       required
-    ></six-datepicker>
+    ></six-date>
 
     <six-timepicker label="Start time" formControlName="startTime" required></six-timepicker>
 

@@ -25,6 +25,7 @@
 ### Used by
 
  - [six-avatar](../six-avatar)
+ - [six-date](../six-date)
  - [six-datepicker](../six-datepicker)
  - [six-details](../six-details)
  - [six-dropdown](../six-dropdown)
@@ -46,6 +47,7 @@
 ```mermaid
 graph TD;
   six-avatar --> six-icon
+  six-date --> six-icon
   six-datepicker --> six-icon
   six-details --> six-icon
   six-dropdown --> six-icon

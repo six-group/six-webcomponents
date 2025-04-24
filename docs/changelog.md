@@ -10,6 +10,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - **⚠️Experimental**: Bringing back the support for React output target.
 - **⚠️Experimental**: Adding example React app with Vite.
+- **⚠️Experimental**: Added the `six-date` component, intended to eventually replace the
+  `six-datepicker`.
 
 - [Documentation](guide/angular.md) for using web components with Angular's standalone bootstrapping
 - `ActiveSidebarItemGroupDirective` and `ActiveSidebarItemDirective`: Added optional angular sidebar

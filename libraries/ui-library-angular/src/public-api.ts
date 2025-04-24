@@ -16,6 +16,7 @@ export * from './lib/control-value-accessors/text-value-accessor';
 export * from './lib/control-value-accessors/numeric-value-accessor';
 export * from './lib/control-value-accessors/radio-value-accessor';
 export * from './lib/control-value-accessors/datepicker-value-accessor';
+export * from './lib/control-value-accessors/date-value-accessor';
 export * from './lib/control-value-accessors/timepicker-value-accessor';
 export * from './lib/control-value-accessors/select-value-accessor';
 export * from './lib/control-value-accessors/checkbox-value-accessor';

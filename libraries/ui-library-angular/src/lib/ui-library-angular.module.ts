@@ -8,9 +8,12 @@ import { DatepickerValueAccessor } from './control-value-accessors/datepicker-va
 import { SixFormDirective, SixFormUtilDirective } from './form/six-form.directive';
 import {
   AllowedDatesValidator,
+  AllowedDatesValidatorIso,
   MaxDateValidator,
+  MaxDateValidatorIso,
   MaxValidator,
   MinDateValidator,
+  MinDateValidatorIso,
   MinValidator,
 } from './validators/six-ui-library-validators';
 import { SelectValueAccessor } from './control-value-accessors/select-value-accessor';
@@ -25,6 +28,7 @@ import {
   ActiveSidebarItemDirective,
   ActiveSidebarItemGroupDirective,
 } from './sidebar/active-sidebar.directive';
+import { DateValueAccessor } from './control-value-accessors/date-value-accessor';
 
 @NgModule({
   declarations: [
@@ -36,6 +40,7 @@ import {
     NumericValueAccessor,
     RadioValueAccessor,
     DatepickerValueAccessor,
+    DateValueAccessor,
     TimepickerValueAccessor,
     SelectValueAccessor,
     CheckboxValueAccessor,
@@ -48,6 +53,9 @@ import {
     MinDateValidator,
     MaxDateValidator,
     AllowedDatesValidator,
+    MinDateValidatorIso,
+    MaxDateValidatorIso,
+    AllowedDatesValidatorIso,
 
     // form helpers
     SixFormDirective,
@@ -71,6 +79,7 @@ import {
     NumericValueAccessor,
     RadioValueAccessor,
     DatepickerValueAccessor,
+    DateValueAccessor,
     TimepickerValueAccessor,
     SelectValueAccessor,
     CheckboxValueAccessor,
@@ -83,6 +92,9 @@ import {
     MinDateValidator,
     MaxDateValidator,
     AllowedDatesValidator,
+    MinDateValidatorIso,
+    MaxDateValidatorIso,
+    AllowedDatesValidatorIso,
 
     // form helpers
     SixFormDirective,
