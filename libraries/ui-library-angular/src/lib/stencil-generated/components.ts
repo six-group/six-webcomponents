@@ -1336,14 +1336,14 @@ allow you to set it on a different element in the sidebar, such as an input or b
 
 
 @ProxyCmp({
-  inputs: ['disabled', 'href', 'selected', 'value']
+  inputs: ['disabled', 'href', 'icon', 'selected', 'value']
 })
 @Component({
   selector: 'six-sidebar-item',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['disabled', 'href', 'selected', 'value'],
+  inputs: ['disabled', 'href', 'icon', 'selected', 'value'],
 })
 export class SixSidebarItem {
   protected el: HTMLElement;
