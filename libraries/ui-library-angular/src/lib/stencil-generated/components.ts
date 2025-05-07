@@ -205,22 +205,22 @@ export class SixDate {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['sixChange', 'sixBlur']);
+    proxyOutputs(this, this.el, ['six-change', 'six-blur']);
   }
 }
 
 
-import type { IsoDate as ISixDateIsoDate } from '@six-group/ui-library';
-
 export declare interface SixDate extends Components.SixDate {
   /**
    * Emitted when the control's value changes.
+Event detail contains the new date value in ISO format (yyyy-MM-dd) or an empty string if cleared.
    */
-  sixChange: EventEmitter<CustomEvent<ISixDateIsoDate | ''>>;
+  'six-change': EventEmitter<CustomEvent<string | ''>>;
   /**
-   * Emitted when the control loses focus.
+   * Emitted when the control loses focus or the date picker popup is closed.
+Does not contain event details.
    */
-  sixBlur: EventEmitter<CustomEvent<any>>;
+  'six-blur': EventEmitter<CustomEvent<any>>;
 }
 
 

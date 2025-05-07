@@ -87,17 +87,17 @@ export const SixDate = /*@__PURE__*/ defineContainer<JSX.SixDate, JSX.SixDate["v
   'required',
   'placeholder',
   'value',
+  'dateFormat',
   'label',
   'helpText',
   'errorText',
   'errorTextCount',
   'invalid',
-  'dateFormat',
   'debounce',
   'name',
   'clearable',
-  'sixChange',
-  'sixBlur'
+  'six-change',
+  'six-blur'
 ],
 'value', 'change');
 

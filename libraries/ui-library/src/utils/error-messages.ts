@@ -1,5 +1,3 @@
-import { IsoDate } from '../components/six-date/iso-date';
-
 export const languages = ['de', 'fr', 'it', 'en', 'es'] as const;
 export type Language = (typeof languages)[number];
 
@@ -14,8 +12,8 @@ export type ValidationError =
   | { key: 'pattern'; requiredPattern: string }
   | { key: 'min'; min: number }
   | { key: 'max'; max: number }
-  | { key: 'mindate'; mindate: Date; actual: Date | IsoDate }
-  | { key: 'maxdate'; maxdate: Date; actual: Date | IsoDate }
+  | { key: 'mindate'; mindate: Date; actual: Date | string }
+  | { key: 'maxdate'; maxdate: Date; actual: Date | string }
   | { key: 'invaliddate'; actual: Date }
   | { key: 'custom'; text: string };
 

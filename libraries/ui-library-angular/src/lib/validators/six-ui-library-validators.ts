@@ -1,6 +1,5 @@
 import { AbstractControl, NG_VALIDATORS, Validator, ValidatorFn, Validators } from '@angular/forms';
 import { Directive, Input } from '@angular/core';
-import { IsoDate } from '@six-group/ui-library';
 
 export class SixUiLibraryValidators {
   static minDate(mindate: Date): ValidatorFn {
@@ -28,23 +27,23 @@ export class SixUiLibraryValidators {
     };
   }
 
-  static minDateIso(mindate: IsoDate): ValidatorFn {
+  static minDateIso(mindate: string): ValidatorFn {
     return (control: AbstractControl): { [key: string]: any } | null => {
       if (control.value == null || control.value === '') return null;
-      const actualDate = control.value as IsoDate;
+      const actualDate = control.value as string;
       return actualDate >= mindate ? null : { mindate: { mindate, actual: actualDate } };
     };
   }
 
-  static maxDateIso(maxdate: IsoDate): ValidatorFn {
+  static maxDateIso(maxdate: string): ValidatorFn {
     return (control: AbstractControl): { [key: string]: any } | null => {
       if (control.value == null || control.value === '') return null;
-      const actualDate = control.value as IsoDate;
+      const actualDate = control.value as string;
       return actualDate <= maxdate ? null : { maxdate: { maxdate, actual: actualDate } };
     };
   }
 
-  static allowedDatesIso(allowedDates: (date: IsoDate) => boolean = () => true): ValidatorFn {
+  static allowedDatesIso(allowedDates: (date: string) => boolean = () => true): ValidatorFn {
     return (control: AbstractControl): { [key: string]: any } | null => {
       if (control.value == null || control.value === '') return null;
 
@@ -100,7 +99,7 @@ export class AllowedDatesValidator implements Validator {
   providers: [{ provide: NG_VALIDATORS, useExisting: MinDateValidatorIso, multi: true }],
 })
 export class MinDateValidatorIso implements Validator {
-  @Input() min?: IsoDate | null;
+  @Input() min?: string | null;
 
   validate(control: AbstractControl): { [key: string]: any } | null {
     if (this.min != null) {
@@ -115,7 +114,7 @@ export class MinDateValidatorIso implements Validator {
   providers: [{ provide: NG_VALIDATORS, useExisting: MaxDateValidatorIso, multi: true }],
 })
 export class MaxDateValidatorIso implements Validator {
-  @Input() max?: IsoDate | null;
+  @Input() max?: string | null;
 
   validate(control: AbstractControl): { [key: string]: any } | null {
     if (this.max != null) {
@@ -130,7 +129,7 @@ export class MaxDateValidatorIso implements Validator {
   providers: [{ provide: NG_VALIDATORS, useExisting: AllowedDatesValidatorIso, multi: true }],
 })
 export class AllowedDatesValidatorIso implements Validator {
-  @Input() allowedDates: (date: IsoDate) => boolean = () => true;
+  @Input() allowedDates: (date: string) => boolean = () => true;
   validate(control: AbstractControl): { [key: string]: any } | null {
     return SixUiLibraryValidators.allowedDatesIso(this.allowedDates)(control);
   }

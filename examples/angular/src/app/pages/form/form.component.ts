@@ -2,13 +2,12 @@ import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { SixUiLibraryValidators } from '@six-group/ui-library-angular';
-import { IsoDate } from '@six-group/ui-library';
 
 type UserGroup = 'admin' | 'developer' | 'user';
 type Status = 'enabled' | 'disabled' | 'temporary';
 type Interest = 'sport' | 'music' | 'movies';
 
-const weekendDateFilter = (isoDate: IsoDate) => {
+const weekendDateFilter = (isoDate: string) => {
   const day = new Date(isoDate).getDay();
   // Prevent Saturday and Sunday from being selected.
   return day !== 0 && day !== 6;
@@ -20,7 +19,6 @@ const allowAllDateFilter = () => true;
   selector: 'app-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormComponent implements OnDestroy {
   private subscriptions?: Subscription;
@@ -37,7 +35,7 @@ export class FormComponent implements OnDestroy {
     internal: [false, Validators.requiredTrue],
     allowWeekends: [false],
     futureDatesOnly: [false],
-    date: [null as IsoDate | null, [Validators.required]],
+    date: [null as string | null, [Validators.required]],
     startTime: ['', [Validators.required]],
     interests: [[] as Interest[], Validators.required],
     height: [0, Validators.min(10)],
@@ -45,9 +43,9 @@ export class FormComponent implements OnDestroy {
     acceptsTerms: [false, Validators.requiredTrue],
   });
 
-  minDate: IsoDate | null = addDays(removeTime(today()), 1);
-  maxDate: IsoDate | null = addDays(removeTime(today()), 40);
-  dateFilter = (isoDate: IsoDate): boolean => {
+  minDate: string | null = addDays(today(), 1);
+  maxDate: string | null = addDays(today(), 40);
+  dateFilter = (isoDate: string): boolean => {
     const day = new Date(isoDate).getDay();
     // Prevent Saturday and Sunday from being selected.
     return day !== 0 && day !== 6;
@@ -61,7 +59,7 @@ export class FormComponent implements OnDestroy {
     this.userForm.statusChanges.subscribe(() => this.formDebug$.next(getFormDebug(this.userForm)));
     this.subscriptions = this.userForm.controls.futureDatesOnly.valueChanges.subscribe((futureDatesOnly) => {
       if (futureDatesOnly) {
-        this.minDate = addDays(removeTime(today()), 1);
+        this.minDate = addDays(today(), 1);
         this.userForm.controls.date.setValidators([
           Validators.required,
           SixUiLibraryValidators.minDateIso(this.minDate),
@@ -132,26 +130,21 @@ function getFormDebug(form: FormGroup) {
   };
 }
 
-function today(): IsoDate {
+function today(): string {
   return toIsoDate(new Date());
 }
 
-function toIsoDate(date: Date): IsoDate {
+function toIsoDate(date: Date): string {
   const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-based, so add 1
+  const month = String(date.getMonth() + 1).padStart(2, '0');
   const day = String(date.getDate()).padStart(2, '0');
-  return `${year}-${month}-${day}` as IsoDate;
+  return `${year}-${month}-${day}`;
 }
 
-function addDays(date: IsoDate, days: number): IsoDate {
+function addDays(date: string, days: number): string {
   const result = new Date(date);
   result.setDate(result.getDate() + days);
   return toIsoDate(result);
-}
-
-function removeTime(isoDate: IsoDate): IsoDate {
-  const date = new Date(isoDate);
-  return toIsoDate(new Date(date.getFullYear(), date.getMonth(), date.getDate()));
 }
 
 function usernameValidator(control: AbstractControl): ValidationErrors | null {

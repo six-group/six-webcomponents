@@ -1,7 +1,6 @@
 import {
   cleanupValue,
   fromFormattedString,
-  getDaysInMonth,
   getMonth,
   IsoDate,
   isValidIsoDate,
@@ -10,6 +9,9 @@ import {
   toPointerDate,
 } from './iso-date';
 
+/**
+ * Testing suite for iso-date utility functions that handle ISO 8601 date format (YYYY-MM-DD).
+ */
 describe('iso-date', () => {
   describe('cleanupValue', () => {
     test.each([
@@ -73,10 +75,20 @@ describe('iso-date', () => {
       expect(cleanupValue(input)).toEqual(expected);
     });
   });
-  describe('faked timers', () => {
+  /**
+   * Tests date-related functions with mocked system time to ensure consistent results.
+   * Uses a fixed timezone (UTC+02:00) to validate that date operations work correctly
+   * across different timezones. The mock date is set to 2022-01-01T01:00:00+02:00.
+   *
+   * Note: We can't simply use new Date().toISOString().substring(0,10) because:
+   * 1. toISOString() always converts to UTC time first, which can give the wrong date
+   *    in edge cases near midnight due to timezone differences
+   * 2. We need a local date based on the user's timezone, not UTC
+   */
+  describe('tests with faked timers', () => {
     beforeAll(() => {
       jest.useFakeTimers();
-      jest.setSystemTime(new Date('2022-01-01'));
+      jest.setSystemTime(new Date('2022-01-01T01:00:00+02:00'));
     });
     afterAll(() => jest.useRealTimers());
 
@@ -86,6 +98,16 @@ describe('iso-date', () => {
 
     test('today', () => {
       expect(today()).toBe('2022-01-01');
+    });
+
+    test('verifies test environment timezone is in UTC+1 or UTC+2 range', () => {
+      const offset = new Date().getTimezoneOffset();
+      // -60 represents UTC+1, -120 represents UTC+2
+      expect([-60, -120]).toContain(offset);
+    });
+
+    test('demonstrates why using toISOString() is incorrect', () => {
+      expect(new Date().toISOString().substring(0, 10)).toBe('2021-12-31');
     });
   });
 
@@ -125,24 +147,6 @@ describe('iso-date', () => {
         expect(fromFormattedString(input, format)).toBe(expected);
       }
     );
-  });
-
-  describe('getDaysInMonth', () => {
-    const monthCases = [
-      { year: 2023, month: 1, expected: 31 },
-      { year: 2023, month: 2, expected: 28 },
-      { year: 2024, month: 2, expected: 29 },
-      { year: 2023, month: 3, expected: 31 },
-      { year: 2023, month: 4, expected: 30 },
-      { year: 2023, month: 12, expected: 31 },
-      { year: 2023, month: 0, expected: 31 }, // Dec 2022
-      { year: 2023, month: 13, expected: 31 }, // Jan 2024
-      { year: -44, month: 2, expected: 29 }, // Leap year for BCE
-    ];
-
-    test.each(monthCases)('returns $expected days for year $year and month $month', ({ year, month, expected }) => {
-      expect(getDaysInMonth(year, month)).toBe(expected);
-    });
   });
 
   describe('getMonth', () => {

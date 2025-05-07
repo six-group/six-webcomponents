@@ -6,7 +6,7 @@ import { MonthSelection } from './components/month-selection';
 import { YearSelection } from './components/year-selection';
 import { DaySelection } from './components/day-selection';
 import { Language } from '../../utils/error-messages';
-import { cleanupValue, formatDate, fromFormattedString, IsoDate, todayAsPointerDate, toPointerDate } from './iso-date';
+import { cleanupValue, formatDate, fromFormattedString, todayAsPointerDate, toPointerDate } from './iso-date';
 import { createCalendarGrid } from './calendar-grid';
 import { translateFormatHelp, translateMonth } from './translations';
 import Popover from '../../utils/popover';
@@ -14,6 +14,8 @@ import Popover from '../../utils/popover';
 const NUMBER_OF_YEARS_SHOWN = 25;
 
 /**
+ * A date picker component that allows users to select dates via a calendar popup or direct input.
+ *
  * @since 5.0
  * @status experimental
  *
@@ -49,7 +51,7 @@ export class SixDate {
   @Prop() language: Language = 'en';
 
   /**
-   * If `true` the user can only select a date via the component in the popup, but not directly edit the input field.
+   * If `true` the user can only select a date via the component in the popup but not directly edit the input field.
    */
   @Prop() readonly = false;
 
@@ -61,19 +63,25 @@ export class SixDate {
   /**
    * Callback to determine which dates in the picker should be selectable.
    */
-  @Prop() allowedDates: (date: IsoDate) => boolean = () => true;
+  @Prop() allowedDates: (date: string) => boolean = () => true;
 
   /**
-   * The minimum date allowed. Value must be an iso-date string.
+   * The minimum allowed selectable date in ISO format (yyyy-MM-dd).
+   * Dates before this value will be disabled in the date picker.
+   * Example: '2024-01-01'
    */
-  @Prop() min?: IsoDate;
+  @Prop() min?: string;
 
   /**
-   * The maximum date allowed.Value must be an iso-date string.
+   * The maximum allowed selectable date in ISO format (yyyy-MM-dd).
+   * Dates after this value will be disabled in the date picker.
+   * Example: '2025-01-01'
    */
-  @Prop() max?: IsoDate;
+  @Prop() max?: string;
 
-  /** Dates size. */
+  /**
+   * The size of the date input field.
+   */
   @Prop() size: 'small' | 'medium' | 'large' = 'medium';
 
   /** Set to true to show an asterisk beneath the label. */
@@ -85,9 +93,32 @@ export class SixDate {
   @Prop() placeholder?: string;
 
   /**
-   * The value of the form field, which accepts a date object.
+   * The value of the form field in ISO 8601 date format (yyyy-MM-dd).
+   * Example: '2024-01-01'.
+   *
+   * When an invalid date is provided, it will be replaced with an empty string (''),
+   * matching the behavior of native HTML <input type="date">.
+   *
+   * The displayed format can be customized using the dateFormat property, but the underlying
+   * value will always be stored in ISO format.
    */
-  @Prop({ mutable: true }) value: IsoDate | '' = '';
+  @Prop({ mutable: true }) value: string | '' = '';
+
+  /** Defines the format pattern for displaying dates and how dates can be entered via keyboard.
+   *
+   * Defaults to "dd.MM.yyyy".
+   *
+   * Available patterns:
+   * - Year: "yyyy" (e.g., "2021")
+   * - Month: "MM" (e.g., "01" for January) or "M" (e.g., "1" for January)
+   * - Day: "dd" (e.g., "08" for the 8th) or "d" (e.g., "8" for the 8th)
+   *
+   * Examples:
+   * - "dd.MM.yyyy" -> "31.01.2024"
+   * - "yyyy-MM-dd" -> "2024-01-31"
+   * - "d.M.yyyy" -> "31.1.2024"
+   * */
+  @Prop() dateFormat = 'dd.MM.yyyy';
 
   /** The label text. */
   @Prop() label = '';
@@ -104,17 +135,8 @@ export class SixDate {
   /** If this property is set to true and an error message is provided by `errorText`, the error message is displayed.  */
   @Prop({ reflect: true }) invalid = false;
 
-  /** Define the dateFormat. Defaults to "dd.MM.yyyy".
-   *
-   * Available patterns:
-   * - Year: "yyyy" (e.g., "2021")
-   * - Month: "MM" (e.g., "01" for January, "12" for December)
-   * - Day: "dd" (e.g., "08" for the 8th day of the month)
-   * */
-  @Prop() dateFormat = 'dd.MM.yyyy';
-
   /**
-   * Set the amount of time, in milliseconds, to wait to trigger the `dateChange` event after each keystroke.
+   * Set the amount of time, in milliseconds, to wait to trigger the `six-change` event after each keystroke.
    */
   @Prop() debounce = DEFAULT_DEBOUNCE_FAST;
 
@@ -128,11 +150,18 @@ export class SixDate {
   valueChanged() {
     this.updateValueAndPointerDate();
   }
-  /** Emitted when the control's value changes. */
-  @Event() sixChange!: EventEmitter<IsoDate | ''>;
 
-  /** Emitted when the control loses focus. */
-  @Event() sixBlur!: EventEmitter;
+  /**
+   * Emitted when the control's value changes.
+   * Event detail contains the new date value in ISO format (yyyy-MM-dd) or an empty string if cleared.
+   */
+  @Event({ eventName: 'six-change' }) sixChange!: EventEmitter<string | ''>;
+
+  /**
+   * Emitted when the control loses focus or the date picker popup is closed.
+   * Does not contain event details.
+   */
+  @Event({ eventName: 'six-blur' }) sixBlur!: EventEmitter;
 
   /** Sets focus on the input. */
   @Method()
@@ -244,7 +273,7 @@ export class SixDate {
     this.sixChange.emit(this.value);
   };
 
-  private handleDayClick = (date: IsoDate) => {
+  private handleDayClick = (date: string) => {
     this.value = date;
     this.pointerDate = toPointerDate(this.value);
     this.hide();
@@ -299,8 +328,8 @@ export class SixDate {
   connectedCallback() {
     this.initPopover();
     this.updateValueAndPointerDate();
-    this.eventListeners.forward('sixChange', 'change', this.host);
-    this.eventListeners.forward('sixBlur', 'blur', this.host);
+    this.eventListeners.forward('six-change', 'change', this.host);
+    this.eventListeners.forward('six-blur', 'blur', this.host);
   }
 
   componentDidLoad() {

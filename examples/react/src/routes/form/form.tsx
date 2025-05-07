@@ -16,7 +16,6 @@ import {
 import { useState } from 'react';
 
 import styles from './form.module.css';
-import { IsoDate } from '@six-group/ui-library';
 
 export function Form() {
   const [inputValue, setInputValue] = useState('');
@@ -26,7 +25,7 @@ export function Form() {
   const [rangeValue, setRangeValue] = useState(0);
   const [radioValue, setRadioValue] = useState('Option 3');
   const [selectValue, setSelectValue] = useState('Option 2');
-  const [dateValue, setDateValue] = useState('2025-01-01' as IsoDate | '');
+  const [dateValue, setDateValue] = useState('2025-01-01');
 
   const [file, setFile] = useState('');
   const [uploading, setUploading] = useState(false);
@@ -141,7 +140,7 @@ export function Form() {
           invalid={isInvalid}
           errorText="Datepicker Error"
           value={dateValue}
-          onSixChange={(e) => setDateValue(e.target.value ?? '')}
+          onSixChange={(e) => setDateValue(e.detail)}
         />
         <pre className={styles.pre}>Value: {dateValue.toString()}</pre>
 

@@ -16,7 +16,6 @@ import {
   SixGroupLabel,
 } from '@six-group/ui-library-vue';
 import { ref } from 'vue';
-import type { IsoDate } from '@six-group/ui-library/src/components/six-date/iso-date';
 
 const inputValue = ref('');
 const textareaValue = ref('');
@@ -27,7 +26,7 @@ const radioValues = ref(['Option 1', 'Option 2', 'Option 3', 'Option 4']);
 const radioValue = ref<string | undefined>('Option 3');
 const selectValues = ref(['Option 1', 'Option 2', 'Option 3', 'Option 4']);
 const selectValue = ref<string | undefined>('Option 2');
-const dateValue = ref<IsoDate | ''>('2025-01-01');
+const dateValue = ref<string>('2025-01-01');
 const file = ref('');
 const uploading = ref(false);
 
