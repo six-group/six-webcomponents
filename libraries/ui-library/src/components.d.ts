@@ -1630,10 +1630,6 @@ export namespace Components {
           * Define whether sidebar is toggled meaning only one menu can be open at the same time
          */
         "toggled": boolean;
-        /**
-          * Sidebar width
-         */
-        "width": string;
     }
     /**
      * @since 1.0
@@ -4977,10 +4973,6 @@ declare namespace LocalJSX {
           * Define whether sidebar is toggled meaning only one menu can be open at the same time
          */
         "toggled"?: boolean;
-        /**
-          * Sidebar width
-         */
-        "width"?: string;
     }
     /**
      * @since 1.0
