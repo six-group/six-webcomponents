@@ -8,7 +8,6 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AlertType } from "./components/six-alert/six-alert";
 import { EmptyPayload } from "./utils/types";
 import { Language } from "./utils/error-messages";
-import { IsoDate } from "./components/six-date/iso-date";
 import { SixDateFormats } from "./components/six-datepicker/six-date-formats";
 import { SixDatepickerSelectPayload } from "./components/six-datepicker/six-datepicker";
 import { SixMenuItemData } from "./components/six-menu/six-menu";
@@ -30,7 +29,6 @@ import { SixTimepickerChange } from "./components/six-timepicker/six-timepicker"
 export { AlertType } from "./components/six-alert/six-alert";
 export { EmptyPayload } from "./utils/types";
 export { Language } from "./utils/error-messages";
-export { IsoDate } from "./components/six-date/iso-date";
 export { SixDateFormats } from "./components/six-datepicker/six-date-formats";
 export { SixDatepickerSelectPayload } from "./components/six-datepicker/six-datepicker";
 export { SixMenuItemData } from "./components/six-menu/six-menu";
@@ -268,6 +266,7 @@ export namespace Components {
         "value": string;
     }
     /**
+     * A date picker component that allows users to select dates via a calendar popup or direct input.
      * @since 5.0
      * @status experimental
      */
@@ -275,17 +274,17 @@ export namespace Components {
         /**
           * Callback to determine which dates in the picker should be selectable.
          */
-        "allowedDates": (date: IsoDate) => boolean;
+        "allowedDates": (date: string) => boolean;
         /**
           * Set to true to add a clear button when the input is populated.
          */
         "clearable": boolean;
         /**
-          * Define the dateFormat. Defaults to "dd.MM.yyyy".  Available patterns: - Year: "yyyy" (e.g., "2021") - Month: "MM" (e.g., "01" for January, "12" for December) - Day: "dd" (e.g., "08" for the 8th day of the month)
+          * Defines the format pattern for displaying dates and how dates can be entered via keyboard.  Defaults to "dd.MM.yyyy".  Available patterns: - Year: "yyyy" (e.g., "2021") - Month: "MM" (e.g., "01" for January) or "M" (e.g., "1" for January) - Day: "dd" (e.g., "08" for the 8th) or "d" (e.g., "8" for the 8th)  Examples: - "dd.MM.yyyy" -> "31.01.2024" - "yyyy-MM-dd" -> "2024-01-31" - "d.M.yyyy" -> "31.1.2024"
          */
         "dateFormat": string;
         /**
-          * Set the amount of time, in milliseconds, to wait to trigger the `dateChange` event after each keystroke.
+          * Set the amount of time, in milliseconds, to wait to trigger the `six-change` event after each keystroke.
          */
         "debounce": number;
         /**
@@ -317,13 +316,13 @@ export namespace Components {
          */
         "language": Language;
         /**
-          * The maximum date allowed.Value must be an iso-date string.
+          * The maximum allowed selectable date in ISO format (yyyy-MM-dd). Dates after this value will be disabled in the date picker. Example: '2025-01-01'
          */
-        "max"?: IsoDate;
+        "max"?: string;
         /**
-          * The minimum date allowed. Value must be an iso-date string.
+          * The minimum allowed selectable date in ISO format (yyyy-MM-dd). Dates before this value will be disabled in the date picker. Example: '2024-01-01'
          */
-        "min"?: IsoDate;
+        "min"?: string;
         /**
           * The input's name attribute.
          */
@@ -333,7 +332,7 @@ export namespace Components {
          */
         "placeholder"?: string;
         /**
-          * If `true` the user can only select a date via the component in the popup, but not directly edit the input field.
+          * If `true` the user can only select a date via the component in the popup but not directly edit the input field.
          */
         "readonly": boolean;
         /**
@@ -345,13 +344,13 @@ export namespace Components {
          */
         "setFocus": (options?: FocusOptions) => Promise<void>;
         /**
-          * Dates size.
+          * The size of the date input field.
          */
         "size": 'small' | 'medium' | 'large';
         /**
-          * The value of the form field, which accepts a date object.
+          * The value of the form field in ISO 8601 date format (yyyy-MM-dd). Example: '2024-01-01'.  When an invalid date is provided, it will be replaced with an empty string (''), matching the behavior of native HTML <input type="date">.  The displayed format can be customized using the dateFormat property, but the underlying value will always be stored in ISO format.
          */
-        "value": IsoDate | '';
+        "value": string | '';
     }
     /**
      * @since 1.0
@@ -2383,10 +2382,11 @@ declare global {
         new (): HTMLSixCheckboxElement;
     };
     interface HTMLSixDateElementEventMap {
-        "sixChange": IsoDate | '';
-        "sixBlur": any;
+        "six-change": string | '';
+        "six-blur": any;
     }
     /**
+     * A date picker component that allows users to select dates via a calendar popup or direct input.
      * @since 5.0
      * @status experimental
      */
@@ -3515,6 +3515,7 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     /**
+     * A date picker component that allows users to select dates via a calendar popup or direct input.
      * @since 5.0
      * @status experimental
      */
@@ -3522,17 +3523,17 @@ declare namespace LocalJSX {
         /**
           * Callback to determine which dates in the picker should be selectable.
          */
-        "allowedDates"?: (date: IsoDate) => boolean;
+        "allowedDates"?: (date: string) => boolean;
         /**
           * Set to true to add a clear button when the input is populated.
          */
         "clearable"?: boolean;
         /**
-          * Define the dateFormat. Defaults to "dd.MM.yyyy".  Available patterns: - Year: "yyyy" (e.g., "2021") - Month: "MM" (e.g., "01" for January, "12" for December) - Day: "dd" (e.g., "08" for the 8th day of the month)
+          * Defines the format pattern for displaying dates and how dates can be entered via keyboard.  Defaults to "dd.MM.yyyy".  Available patterns: - Year: "yyyy" (e.g., "2021") - Month: "MM" (e.g., "01" for January) or "M" (e.g., "1" for January) - Day: "dd" (e.g., "08" for the 8th) or "d" (e.g., "8" for the 8th)  Examples: - "dd.MM.yyyy" -> "31.01.2024" - "yyyy-MM-dd" -> "2024-01-31" - "d.M.yyyy" -> "31.1.2024"
          */
         "dateFormat"?: string;
         /**
-          * Set the amount of time, in milliseconds, to wait to trigger the `dateChange` event after each keystroke.
+          * Set the amount of time, in milliseconds, to wait to trigger the `six-change` event after each keystroke.
          */
         "debounce"?: number;
         /**
@@ -3564,31 +3565,31 @@ declare namespace LocalJSX {
          */
         "language"?: Language;
         /**
-          * The maximum date allowed.Value must be an iso-date string.
+          * The maximum allowed selectable date in ISO format (yyyy-MM-dd). Dates after this value will be disabled in the date picker. Example: '2025-01-01'
          */
-        "max"?: IsoDate;
+        "max"?: string;
         /**
-          * The minimum date allowed. Value must be an iso-date string.
+          * The minimum allowed selectable date in ISO format (yyyy-MM-dd). Dates before this value will be disabled in the date picker. Example: '2024-01-01'
          */
-        "min"?: IsoDate;
+        "min"?: string;
         /**
           * The input's name attribute.
          */
         "name"?: string;
         /**
-          * Emitted when the control loses focus.
+          * Emitted when the control loses focus or the date picker popup is closed. Does not contain event details.
          */
-        "onSixBlur"?: (event: SixDateCustomEvent<any>) => void;
+        "onSix-blur"?: (event: SixDateCustomEvent<any>) => void;
         /**
-          * Emitted when the control's value changes.
+          * Emitted when the control's value changes. Event detail contains the new date value in ISO format (yyyy-MM-dd) or an empty string if cleared.
          */
-        "onSixChange"?: (event: SixDateCustomEvent<IsoDate | ''>) => void;
+        "onSix-change"?: (event: SixDateCustomEvent<string | ''>) => void;
         /**
           * The placeholder defines what text to be shown on the input element
          */
         "placeholder"?: string;
         /**
-          * If `true` the user can only select a date via the component in the popup, but not directly edit the input field.
+          * If `true` the user can only select a date via the component in the popup but not directly edit the input field.
          */
         "readonly"?: boolean;
         /**
@@ -3596,13 +3597,13 @@ declare namespace LocalJSX {
          */
         "required"?: boolean;
         /**
-          * Dates size.
+          * The size of the date input field.
          */
         "size"?: 'small' | 'medium' | 'large';
         /**
-          * The value of the form field, which accepts a date object.
+          * The value of the form field in ISO 8601 date format (yyyy-MM-dd). Example: '2024-01-01'.  When an invalid date is provided, it will be replaced with an empty string (''), matching the behavior of native HTML <input type="date">.  The displayed format can be customized using the dateFormat property, but the underlying value will always be stored in ISO format.
          */
-        "value"?: IsoDate | '';
+        "value"?: string | '';
     }
     /**
      * @since 1.0
@@ -5631,6 +5632,7 @@ declare module "@stencil/core" {
              */
             "six-checkbox": LocalJSX.SixCheckbox & JSXBase.HTMLAttributes<HTMLSixCheckboxElement>;
             /**
+             * A date picker component that allows users to select dates via a calendar popup or direct input.
              * @since 5.0
              * @status experimental
              */

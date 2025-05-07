@@ -19,7 +19,7 @@
     "build": "npm run clean && stencil build --docs",
     "watch": "npm run clean && stencil build --watch",
     "start": "stencil build --dev --watch --serve --no-open",
-    "test": "stencil test --spec",
+    "test": "cross-env TZ='Etc/GMT-2' stencil test --spec",
     "test:inclScrnsht": "stencil test --spec --e2e --screenshot",
     "test:inclCoverage": "stencil test --spec --coverage",
     "test:e2eInclCoverage": "stencil test --e2e --coverage",
@@ -51,6 +51,7 @@
     "@stencil/sass": "3.0.12",
     "@typescript-eslint/eslint-plugin": "^7.0.0",
     "@typescript-eslint/parser": "^7.0.0",
+    "cross-env": "^7.0.3",
     "replace-in-file": "^6.3.5",
     "rimraf": "^3.0.2"
   },

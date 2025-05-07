@@ -1,13 +1,9 @@
-import * as fns from 'date-fns';
-
-type Year = `${number}${number}${number}${number}`;
-type Month = `${number}${number}`;
-type Day = `${number}${number}`;
+import { isValid, format, parse, parseISO, formatISO } from 'date-fns';
 
 /**
  * Represent an iso date string like `2021-01-08`.
  */
-export type IsoDate = `${Year}-${Month}-${Day}`;
+export type IsoDate = string;
 
 export interface PointerDate {
   year: number;
@@ -29,13 +25,13 @@ export interface PointerDate {
  * - "MM/dd/yyyy" (e.g., "01/08/2021")
  *
  * @param dateString - The date string to validate.
- * @param format - The expected format of the date string (e.g., "yyyy-MM-dd").
+ * @param dateFormat - The expected format of the date string (e.g., "yyyy-MM-dd").
  * @returns An IsoDate if the date string is valid, otherwise undefined.
  */
-export function fromFormattedString(dateString: string, format: string): IsoDate | undefined {
-  const date = fns.parse(dateString, format, new Date());
+export function fromFormattedString(dateString: string, dateFormat: string): IsoDate | undefined {
+  const date = parse(dateString, dateFormat, new Date());
 
-  if (fns.isValid(date) && fns.format(date, format) === dateString) {
+  if (isValid(date) && format(date, dateFormat) === dateString) {
     return fromDate(date);
   }
 
@@ -56,15 +52,15 @@ export function fromFormattedString(dateString: string, format: string): IsoDate
  * - "MM/dd/yyyy" (e.g., "01/08/2021")
  *
  * @param {IsoDate} isoDate - The ISO date string to be formatted.
- * @param {string} format - The desired date format string.
+ * @param {string} dateFormat - The desired date format string.
  * @return {string} A string representing the formatted date.
  */
-export function formatDate(isoDate: IsoDate, format: string): string {
-  return fns.format(fns.parseISO(isoDate), format);
+export function formatDate(isoDate: IsoDate, dateFormat: string): string {
+  return format(parseISO(isoDate), dateFormat);
 }
 
 export function fromDate(date: Date): IsoDate {
-  return fns.formatISO(date, { representation: 'date' }) as IsoDate;
+  return formatISO(date, { representation: 'date' }) as IsoDate;
 }
 
 export function today(): IsoDate {
@@ -72,11 +68,7 @@ export function today(): IsoDate {
 }
 
 export function isValidIsoDate(isoDate: string): isoDate is IsoDate {
-  return fns.isValid(fns.parseISO(isoDate));
-}
-
-export function getDaysInMonth(year: number, month: number) {
-  return fns.getDaysInMonth(new Date(year, month - 1));
+  return isValid(parseISO(isoDate));
 }
 
 export function getMonth(isoDate: IsoDate): number {
