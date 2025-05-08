@@ -10,6 +10,9 @@ For more detailed usage examples, check the
 
 ## Setup
 
+This installation guide assumes you are using [Vite](https://vitejs.dev/) as your build tool and
+[React Router](https://reactrouter.com/) as your dedicated React framework.
+
 1. Install both the web components and React library:
 
    ```bash
@@ -73,7 +76,3 @@ a list of libraries, you can check out and which we recommend as a starting poin
 
 For proper translation, set the lang attribute on the `html` element. Languages available are `en`,
 `de`, `it`, and `fr`.
-
-```
-
-```
