@@ -6,8 +6,8 @@ Icons buttons are simple, icon-only buttons that can be used for actions and in 
 <docs-demo-six-icon-button-0></docs-demo-six-icon-button-0>
 
 ```html
-<six-icon-button name="settings" label="Settings" text-left="Settings"></six-icon-button>
-<six-icon-button name="tune" label="Options" text-left="Options"></six-icon-button>
+<six-icon-button name="settings" label="Settings"></six-icon-button>
+<six-icon-button name="tune" label="Options"></six-icon-button>
 <six-icon-button name="cancel" label="Close"></six-icon-button>
 ```
 
