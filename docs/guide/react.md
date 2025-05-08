@@ -62,13 +62,18 @@ const getLinkClassName = ({ isActive }: { isActive: boolean }) =>
 
 ## Forms
 
+If you want to use the web components in a form, you can check out the example in the React example
+app. We are not using any form library, but there are some good form libraries out there. Following
+a list of libraries, you can check out and which we recommend as a starting point:
+
+- [react-hook-form](https://react-hook-form.com/)
+- [tanstack-form](https://tanstack.com/form/latest/docs/overview)
+
 ### Error Message Translations
 
 For proper translation, set the lang attribute on the `html` element. Languages available are `en`,
 `de`, `it`, and `fr`.
 
-## Polyfills
+```
 
-By default, polyfills are not included when registering the React plugin in your app.
-
-For non-browser environments, like unit tests, enable them as follows:
+```
