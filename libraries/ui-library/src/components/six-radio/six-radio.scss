@@ -37,8 +37,11 @@
   border-radius: 50%;
   background-color: var(--six-input-background-color);
   color: transparent;
-  transition: var(--six-transition-fast) border-color, var(--six-transition-fast) background-color,
-    var(--six-transition-fast) color, var(--six-transition-fast) box-shadow;
+  transition:
+    var(--six-transition-fast) border-color,
+    var(--six-transition-fast) background-color,
+    var(--six-transition-fast) color,
+    var(--six-transition-fast) box-shadow;
 
   input[type='radio'] {
     position: absolute;

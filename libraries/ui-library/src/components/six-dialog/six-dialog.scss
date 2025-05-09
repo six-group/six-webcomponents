@@ -39,7 +39,9 @@
   box-shadow: var(--six-shadow-large);
   opacity: 0;
   transform: scale(0.8);
-  transition: var(--six-transition-medium) opacity, var(--six-transition-medium) transform;
+  transition:
+    var(--six-transition-medium) opacity,
+    var(--six-transition-medium) transform;
 
   &:focus {
     outline: none;
