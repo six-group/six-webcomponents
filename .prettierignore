@@ -11,6 +11,8 @@ libraries/ui-library/loader
 libraries/ui-library/docs
 libraries/ui-library/hydrate
 .angular
+.nuxt
+.output
 stencil-generated
 docs/examples
 docs/components

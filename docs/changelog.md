@@ -9,7 +9,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Added
 
 - **⚠️Experimental**: Bringing back the support for React output target.
-- **⚠️Experimental**: Adding example React app with Vite.
+- **⚠️Experimental**: Added example React app with Vite.
+- **⚠️Experimental**: Added example Nuxt app with Client Side Rendering (CSR).
 - **⚠️Experimental**: Added the `six-date` component, intended to eventually replace the
   `six-datepicker`.
 
@@ -48,6 +49,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   The SIX Webcomponents cannot be used with Node 16 or 18 anymore. Please upgrade to Node 20.
 
 - Moved `six-picto` SVG's from SCSS file to assets folder to minimize chunk size.
+- Upgraded Stencil to latest release and upgraded Vue output target
 
 ## 4.3.2 - 2025-02-13
 
