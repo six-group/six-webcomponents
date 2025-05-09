@@ -1,5 +1,5 @@
 import { Component, Element, Event, EventEmitter, h, Method, Prop, State, Watch } from '@stencil/core';
-import { getTextContent, hasSlot } from '../../utils/slot';
+import { getSlot, getTextContent, hasSlot } from '../../utils/slot';
 import FormControl from '../../functional-components/form-control/form-control';
 import { EmptyPayload } from '../../utils/types';
 import { EventListeners } from '../../utils/event-listeners';
@@ -268,6 +268,19 @@ export class SixSelect {
     }
   }
 
+  private getSlottedItem(item: HTMLSixMenuItemElement, slotName: 'prefix' | 'suffix') {
+    const slottedElement = getSlot(item, slotName);
+    if (slottedElement == null) {
+      return null;
+    }
+    const attributes = Object.fromEntries([...slottedElement.attributes].map((attr) => [attr.name, attr.value]));
+
+    return h(slottedElement.tagName.toLowerCase(), {
+      ...attributes,
+      innerHTML: slottedElement.innerHTML,
+    });
+  }
+
   private getItems(): HTMLSixMenuItemElement[] {
     if (this.options !== null && this.menu != null && this.menu.shadowRoot != null) {
       return [...this.menu.shadowRoot.querySelectorAll('six-menu-item')];
@@ -442,7 +455,9 @@ export class SixSelect {
               }
             }}
           >
+            {this.getSlottedItem(item, 'prefix')}
             {this.getItemLabel(item)}
+            {this.getSlottedItem(item, 'suffix')}
           </six-menu-item>
         );
       });

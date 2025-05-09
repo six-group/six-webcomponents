@@ -21,6 +21,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - `six-header-menu-button`: Added `caret`, `disabled`, `loading`, `submit` and `reset` properties.
 - `six-header-menu-button`: Added `suffix` and `prefix` slots.
 - `six-sidebar-item` : added icon property analog to `six-sidebar-item-group`
+- `six-select` : support the use of prefix/suffix slot of the `six-menu-item` which can be used as
+  links for example.
 
 ### Fixed
 
