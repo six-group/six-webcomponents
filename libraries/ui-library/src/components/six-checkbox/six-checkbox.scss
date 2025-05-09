@@ -35,8 +35,11 @@
   border-radius: 0;
   background-color: var(--six-input-background-color);
   color: var(--six-checkbox-color);
-  transition: var(--six-transition-fast) border-color, var(--six-transition-fast) background-color,
-    var(--six-transition-fast) color, var(--six-transition-fast) box-shadow;
+  transition:
+    var(--six-transition-fast) border-color,
+    var(--six-transition-fast) background-color,
+    var(--six-transition-fast) color,
+    var(--six-transition-fast) box-shadow;
 
   input[type='checkbox'] {
     position: absolute;

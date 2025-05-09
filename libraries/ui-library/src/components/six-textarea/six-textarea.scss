@@ -21,7 +21,10 @@
   background-color: var(--six-input-background-color);
   border: solid var(--six-border-width) var(--six-input-border-color);
   vertical-align: middle;
-  transition: var(--six-transition-fast) color, var(--six-transition-fast) border, var(--six-transition-fast) box-shadow;
+  transition:
+    var(--six-transition-fast) color,
+    var(--six-transition-fast) border,
+    var(--six-transition-fast) box-shadow;
   cursor: text;
 
   &:hover:not(.textarea--disabled) {

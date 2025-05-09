@@ -18,7 +18,10 @@
   border: solid var(--six-border-width) var(--six-input-border-color);
   vertical-align: middle;
   overflow: hidden;
-  transition: var(--six-transition-fast) color, var(--six-transition-fast) border, var(--six-transition-fast) box-shadow;
+  transition:
+    var(--six-transition-fast) color,
+    var(--six-transition-fast) border,
+    var(--six-transition-fast) box-shadow;
   cursor: text;
 
   &--line {

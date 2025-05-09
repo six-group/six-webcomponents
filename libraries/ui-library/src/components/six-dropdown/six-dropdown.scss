@@ -34,7 +34,9 @@
   opacity: 0;
   pointer-events: none;
   transform: scale(0.9);
-  transition: var(--six-transition-fast) opacity, var(--six-transition-fast) transform;
+  transition:
+    var(--six-transition-fast) opacity,
+    var(--six-transition-fast) transform;
   max-width: 90vw;
 }
 

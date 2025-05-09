@@ -11,7 +11,10 @@ export class ValueAccessor implements ControlValueAccessor, AfterViewInit, OnDes
   private initialErrorText?: string;
   private validationMessagesService = inject(ValidationMessagesService);
 
-  constructor(protected injector: Injector, protected el: ElementRef) {}
+  constructor(
+    protected injector: Injector,
+    protected el: ElementRef
+  ) {}
 
   private onChange: (value: any) => void = () => {};
   private onTouched: () => void = () => {};

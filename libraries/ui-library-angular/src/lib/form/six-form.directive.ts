@@ -38,7 +38,10 @@ export class SixFormDirective {
     }
   }
 
-  constructor(private elementRef: ElementRef<HTMLElement>, private formGroupDirective: FormGroupDirective) {}
+  constructor(
+    private elementRef: ElementRef<HTMLElement>,
+    private formGroupDirective: FormGroupDirective
+  ) {}
 }
 
 /**
@@ -70,7 +73,10 @@ export class SixFormDirective {
   selector: '[sixFormUtil]',
 })
 export class SixFormUtilDirective {
-  constructor(private elementRef: ElementRef<HTMLElement>, private formGroupDirective: FormGroupDirective) {}
+  constructor(
+    private elementRef: ElementRef<HTMLElement>,
+    private formGroupDirective: FormGroupDirective
+  ) {}
 
   /** markAllControlsAsDirty(Object.values(formGroup.controls));
    * Marks all form controls as touched and dirty, and focuses the first

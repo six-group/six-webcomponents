@@ -21,8 +21,11 @@
   white-space: nowrap;
   vertical-align: middle;
   padding: 0;
-  transition: var(--six-transition-fast) background-color, var(--six-transition-fast) color,
-    var(--six-transition-fast) border, var(--six-transition-fast) box-shadow;
+  transition:
+    var(--six-transition-fast) background-color,
+    var(--six-transition-fast) color,
+    var(--six-transition-fast) border,
+    var(--six-transition-fast) box-shadow;
   cursor: inherit;
 
   &::-moz-focus-inner {

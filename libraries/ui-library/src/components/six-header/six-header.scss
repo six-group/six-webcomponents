@@ -24,7 +24,9 @@
   &__search-field {
     opacity: 0;
     transform: scale(0.9);
-    transition: var(--six-transition-fast) opacity, var(--six-transition-fast) transform;
+    transition:
+      var(--six-transition-fast) opacity,
+      var(--six-transition-fast) transform;
     display: none;
 
     &--visible {
