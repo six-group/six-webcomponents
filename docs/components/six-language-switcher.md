@@ -95,10 +95,10 @@ However, as you can see in this example, the `six-language-switcher` supports se
 
 ## Properties
 
-| Property    | Attribute  | Description                                       | Type                                     | Default             |
-| ----------- | ---------- | ------------------------------------------------- | ---------------------------------------- | ------------------- |
-| `languages` | --         | The languages which should be selectable options. | `SixLanguageSwitcherInput[] \| string[]` | `DEFAULT_LANGUAGES` |
-| `selected`  | `selected` | The language which should be shown as selected    | `string \| undefined`                    | `undefined`         |
+| Property    | Attribute   | Description                                       | Type                                     | Default             |
+| ----------- | ----------- | ------------------------------------------------- | ---------------------------------------- | ------------------- |
+| `languages` | `languages` | The languages which should be selectable options. | `SixLanguageSwitcherInput[] \| string[]` | `DEFAULT_LANGUAGES` |
+| `selected`  | `selected`  | The language which should be shown as selected    | `string \| undefined`                    | `undefined`         |
 
 
 ## Events
