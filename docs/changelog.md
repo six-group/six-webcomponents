@@ -52,6 +52,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - Moved `six-picto` SVG's from SCSS file to assets folder to minimize chunk size.
 - Upgraded Stencil to latest release and upgraded Vue output target
+- Upgraded React output target to version 1.0.0
 
 ## 4.3.2 - 2025-02-13
 

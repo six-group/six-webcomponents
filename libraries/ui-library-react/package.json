@@ -28,7 +28,7 @@
     "typescript": "^5"
   },
   "dependencies": {
-    "@stencil/react-output-target": "^0.8.2"
+    "@stencil/react-output-target": "^1.0.0"
   },
   "peerDependencies": {
     "@six-group/ui-library": "*"
