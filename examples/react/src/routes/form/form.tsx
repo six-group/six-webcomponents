@@ -16,6 +16,7 @@ import {
 import { useState } from 'react';
 
 import styles from './form.module.css';
+import { SixFileUploadSuccessPayload } from '@six-group/ui-library';
 
 export function Form() {
   const [inputValue, setInputValue] = useState('');
@@ -36,7 +37,8 @@ export function Form() {
   const selectValues = ['Option 1', 'Option 2', 'Option 3', 'Option 4'];
   const radioValues = ['Option 1', 'Option 2', 'Option 3', 'Option 4'];
 
-  const onFileSelected = (selectedFile: File) => {
+  const onFileSelected = (files: FileList) => {
+    const selectedFile = files[0];
     setFile(selectedFile.name);
     setUploading(true);
     setTimeout(() => {
@@ -148,7 +150,9 @@ export function Form() {
           <SixFileUpload
             multiple={false}
             uploading={uploading}
-            onSixFileUploadSuccess={(e) => 'file' in e.detail && onFileSelected(e.detail.file)}
+            onSixFileUploadSuccess={(e) =>
+              'files' in e.detail && onFileSelected((e.detail as SixFileUploadSuccessPayload).files)
+            }
           />
           <pre className={styles.pre}>Selected file: {file}</pre>
         </SixGroupLabel>
