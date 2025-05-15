@@ -1,0 +1,6 @@
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--six-spacing-medium);
+}

@@ -5,7 +5,6 @@
     slot="header"
     (rightSidebarToggled)="rightSidebarOpen = !rightSidebarOpen"
     (leftSidebarToggled)="leftSidebarOpen = !leftSidebarOpen"
-    (itemClicked)="showEvent($event)"
   ></app-header>
   <app-left-sidebar slot="left-sidebar" [open]="leftSidebarOpen"></app-left-sidebar>
   <app-right-sidebar slot="right-sidebar" [open]="rightSidebarOpen" [tasks]="tasks"></app-right-sidebar>

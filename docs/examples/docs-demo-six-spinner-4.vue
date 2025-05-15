@@ -1,7 +1,7 @@
 <template>
 <div>
 
-        <six-spinner six="true"></six-spinner>
+        <six-spinner logo="six"></six-spinner>
       
 </div>
 </template>

@@ -25,6 +25,7 @@
 ### Used by
 
  - [six-avatar](../six-avatar)
+ - [six-date](../six-date)
  - [six-datepicker](../six-datepicker)
  - [six-details](../six-details)
  - [six-dropdown](../six-dropdown)
@@ -36,6 +37,7 @@
  - [six-menu-item](../six-menu-item)
  - [six-search-field](../six-search-field)
  - [six-select](../six-select)
+ - [six-sidebar-item](../six-sidebar-item)
  - [six-sidebar-item-group](../six-sidebar-item-group)
  - [six-stage-indicator](../six-stage-indicator)
  - [six-tile](../six-tile)
@@ -45,6 +47,7 @@
 ```mermaid
 graph TD;
   six-avatar --> six-icon
+  six-date --> six-icon
   six-datepicker --> six-icon
   six-details --> six-icon
   six-dropdown --> six-icon
@@ -56,6 +59,7 @@ graph TD;
   six-menu-item --> six-icon
   six-search-field --> six-icon
   six-select --> six-icon
+  six-sidebar-item --> six-icon
   six-sidebar-item-group --> six-icon
   six-stage-indicator --> six-icon
   six-tile --> six-icon

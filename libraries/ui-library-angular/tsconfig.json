@@ -24,6 +24,7 @@
     },
     "lib": ["ES2022", "dom"]
   },
+  "exclude": ["node_modules"],
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,

@@ -43,6 +43,7 @@ export default withMermaid({
         {
           items: [
             { text: 'Introduction', link: '/guide/readme' },
+            { text: 'Upgrade to v5', link: '/guide/upgrade-v5' },
             { text: 'Upgrade to v4', link: '/guide/upgrade-v4' },
             { text: 'Design', link: '/guide/design' },
             { text: 'Architecture', link: '/guide/architecture' },
@@ -58,9 +59,14 @@ export default withMermaid({
               text: 'Styling',
               collapsed: false,
               items: [
-                { text: 'Styles', link: '/guide/styling/styles' },
                 { text: 'Tables', link: '/guide/styling/tables' },
                 { text: 'Colors', link: '/guide/styling/colors' },
+                { text: 'Spacing', link: '/guide/styling/spacing' },
+                { text: 'Typography', link: '/guide/styling/typography' },
+                { text: 'Shadows', link: '/guide/styling/shadows' },
+                { text: 'Border Radius', link: '/guide/styling/border-radius' },
+                { text: 'Transitions', link: '/guide/styling/transitions' },
+                { text: 'Z-Index', link: '/guide/styling/z-index' },
                 { text: 'TailwindCSS', link: '/guide/styling/tailwind' },
               ],
             },

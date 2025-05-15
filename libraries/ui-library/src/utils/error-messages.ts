@@ -12,8 +12,8 @@ export type ValidationError =
   | { key: 'pattern'; requiredPattern: string }
   | { key: 'min'; min: number }
   | { key: 'max'; max: number }
-  | { key: 'mindate'; mindate: Date; actual: Date }
-  | { key: 'maxdate'; maxdate: Date; actual: Date }
+  | { key: 'mindate'; mindate: Date; actual: Date | string }
+  | { key: 'maxdate'; maxdate: Date; actual: Date | string }
   | { key: 'invaliddate'; actual: Date }
   | { key: 'custom'; text: string };
 
@@ -38,16 +38,23 @@ export function getErrorMessage(language: Language, error: ValidationError): str
       case 'max':
         return message.replace('{max}', String(error.max));
       case 'mindate':
-        return message.replace('{mindate}', dateFormat.format(error.mindate));
+        return message.replace(
+          '{mindate}',
+          dateFormat.format(typeof error.mindate === 'string' ? new Date(error.mindate) : error.mindate)
+        );
       case 'maxdate':
-        return message.replace('{maxdate}', dateFormat.format(error.maxdate));
+        return message.replace(
+          '{maxdate}',
+          dateFormat.format(typeof error.maxdate === 'string' ? new Date(error.maxdate) : error.maxdate)
+        );
       case 'invaliddate':
         return message;
       case 'custom':
         return error.text;
     }
   } catch (e) {
-    console.warn(`no error message in '${language}' for error:`, error);
+    console.warn(`no error message in '${language}' for error: ${error}`, e);
+
     return undefined;
   }
 }

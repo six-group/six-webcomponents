@@ -1,5 +1,5 @@
 import { Component, Element, Event, EventEmitter, h, Method, Prop, State, Watch } from '@stencil/core';
-import { getTextContent, hasSlot } from '../../utils/slot';
+import { getSlot, getTextContent, hasSlot } from '../../utils/slot';
 import FormControl from '../../functional-components/form-control/form-control';
 import { EmptyPayload } from '../../utils/types';
 import { EventListeners } from '../../utils/event-listeners';
@@ -79,14 +79,6 @@ export class SixSelect {
    * Custom text for the "select all" button. Defaults to "Select all" and equivalents in supported languages.
    */
   @Prop() selectAllText?: string;
-
-  /**
-   * The maximum number of tags to show when `multiple` is true. After the maximum, "+n" will be shown to indicate the
-   * number of additional items that are selected. Set to -1 to remove the limit.
-   *
-   * @deprecated: This property is ignored. The component now displays as many items as possible and computes the "+n" dynamically.
-   */
-  @Prop() maxTagsVisible = 3;
 
   /** Set to true to disable the select control. */
   @Prop() disabled = false;
@@ -276,6 +268,19 @@ export class SixSelect {
     }
   }
 
+  private getSlottedItem(item: HTMLSixMenuItemElement, slotName: 'prefix' | 'suffix') {
+    const slottedElement = getSlot(item, slotName);
+    if (slottedElement == null) {
+      return null;
+    }
+    const attributes = Object.fromEntries([...slottedElement.attributes].map((attr) => [attr.name, attr.value]));
+
+    return h(slottedElement.tagName.toLowerCase(), {
+      ...attributes,
+      innerHTML: slottedElement.innerHTML,
+    });
+  }
+
   private getItems(): HTMLSixMenuItemElement[] {
     if (this.options !== null && this.menu != null && this.menu.shadowRoot != null) {
       return [...this.menu.shadowRoot.querySelectorAll('six-menu-item')];
@@ -450,7 +455,9 @@ export class SixSelect {
               }
             }}
           >
+            {this.getSlottedItem(item, 'prefix')}
             {this.getItemLabel(item)}
+            {this.getSlottedItem(item, 'suffix')}
           </six-menu-item>
         );
       });
@@ -694,7 +701,7 @@ export class SixSelect {
               ref={(el) => (this.autocompleteInput = el)}
               class={{
                 select__input: true,
-                'select__hidden-select': !this.autocomplete,
+                'sr-only': !this.autocomplete,
               }}
               aria-hidden="true"
               required={this.required}

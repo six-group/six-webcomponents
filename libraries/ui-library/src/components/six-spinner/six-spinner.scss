@@ -71,6 +71,61 @@ $color-six-spinner-background: rgba(255, 255, 255, 0.7);
     animation: six-spinner 2s cubic-bezier(0.56, 0.39, 0.51, 0.96) infinite;
   }
 
+  polygon {
+    stroke-dasharray: 310;
+    stroke-dashoffset: 310;
+    animation: big-polygon-draw 2s ease-in-out infinite;
+    -webkit-animation: big-polygon-draw 2s ease-in-out infinite;
+  }
+
+  polygon:nth-child(2),
+  polygon:nth-child(3) {
+    stroke-dasharray: 110;
+    stroke-dashoffset: 110;
+    animation: small-polygon-draw 2s ease-in-out infinite;
+    -webkit-animation: small-polygon-draw 2s ease-in-out infinite;
+  }
+
+  @keyframes big-polygon-draw {
+    0%,
+    100% {
+      stroke-dashoffset: 310;
+    }
+    50% {
+      stroke-dashoffset: 140;
+    }
+  }
+
+  @-webkit-keyframes big-polygon-draw {
+    0%,
+    100% {
+      stroke-dashoffset: 310;
+    }
+    50% {
+      stroke-dashoffset: 140;
+    }
+  }
+
+  @keyframes small-polygon-draw {
+    0%,
+    100% {
+      stroke-dashoffset: 110;
+    }
+    50% {
+      stroke-dashoffset: 50;
+    }
+  }
+
+  @-webkit-keyframes small-polygon-draw {
+    0%,
+    100% {
+      stroke-dashoffset: 110;
+    }
+    50% {
+      stroke-dashoffset: 50;
+    }
+  }
+
   @-webkit-keyframes six-spinner {
     to {
       stroke-dashoffset: -444;

@@ -21,8 +21,11 @@
   white-space: nowrap;
   vertical-align: middle;
   padding: 0;
-  transition: var(--six-transition-fast) background-color, var(--six-transition-fast) color,
-    var(--six-transition-fast) border, var(--six-transition-fast) box-shadow;
+  transition:
+    var(--six-transition-fast) background-color,
+    var(--six-transition-fast) color,
+    var(--six-transition-fast) border,
+    var(--six-transition-fast) box-shadow;
   cursor: inherit;
 
   &::-moz-focus-inner {
@@ -40,7 +43,9 @@
   ::slotted(six-icon) {
     // Clicks on icons shouldn't prevent the button from gaining focus
     pointer-events: none;
-    transform: translateY(-1.5px);
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
   }
 }
 
@@ -78,11 +83,6 @@
 
     &:hover:not(.button--disabled) {
       background-color: var(--six-color-web-rock-100);
-    }
-
-    &:focus:not(.button--disabled) {
-      background-color: var(--six-color-web-rock-100);
-      border-color: var(--six-color-web-rock-400);
     }
 
     &:active:not(.button--disabled) {

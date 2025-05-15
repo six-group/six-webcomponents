@@ -1,7 +1,9 @@
 <template>
 <div>
 
-        <six-select id="autocomplete-example" autocomplete clearable></six-select>
+        <six-select id="infinite-scoll-dropdown">
+          <six-menu-item id="infinite-scroll-menu" value="search_list_prompt">Value 0</six-menu-item>
+        </six-select>
         
       
 </div>
@@ -13,37 +15,33 @@
 export default {
   name: 'docs-demo-six-select-19',
   mounted() { 
-          (() => {
-            const clearAllChildren = (node) => {
-              let child = node.lastElementChild;
-              while (child) {
-                node.removeChild(child);
-                child = node.lastElementChild;
+          const asyncSelect = document.querySelector('#infinite-scoll-dropdown');
+          const asyncMenu = document.querySelector('#infinite-scroll-menu').parentElement;
+
+          let id = 1;
+
+          for (let i = 0; i < 20; i++) {
+            const child = document.createElement('six-menu-item');
+            child.innerText = `Value ${id}`;
+            child.value = `value-${id}`;
+            asyncMenu.appendChild(child);
+            id++;
+          }
+
+          asyncSelect.addEventListener('six-dropdown-scroll', ($event) => {
+            const { scrollRatio } = $event.detail;
+
+            // add new elements once we reach almost bottom
+            if (scrollRatio > 0.8) {
+              for (let i = 0; i < 20; i++) {
+                const child = document.createElement('six-menu-item');
+                child.innerText = `Value ${id}`;
+                child.value = `value-${id}`;
+                asyncMenu.appendChild(child);
+                id++;
               }
-            };
-
-            const createMenuItem = (value, label) => {
-              const menuItem = document.createElement('six-menu-item');
-              menuItem.innerText = label;
-              menuItem.setAttribute('value', value);
-              return menuItem;
-            };
-
-            const select = document.getElementById('autocomplete-example');
-
-            select.addEventListener('six-select-change', (event) => {
-              if (event.detail.isSelected) {
-                // don't fetch new values on selection
-                return;
-              }
-              clearAllChildren(select);
-
-              const enteredText = event.detail.value || 'All Values';
-              new Array(5).fill('').forEach((item, idx) => {
-                select.append(createMenuItem(`option ${enteredText} ${idx}`, `Option ${enteredText} ${idx}`));
-              });
-            });
-          })();
+            }
+          });
          }
 }
 </script>

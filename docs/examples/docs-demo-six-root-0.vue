@@ -3,33 +3,43 @@
 
         <div class="six-root-wrapper">
           <six-root stage="PROD" style="height: 100%" version="PROD-1.2.3">
-            <six-header shift-content="true" slot="header">
+            <six-header slot="header">
               
-              <six-search-field slot="search-field">
-                <div></div>
+              <six-header-item>
+                <six-icon-button name="menu"></six-icon-button>
+              </six-header-item>
+
+              
+              <six-header-item>
+                <six-icon-button href="https://six-group.github.io/six-webcomponents/">
+                  <six-logo></six-logo>
+                </six-icon-button>
+              </six-header-item>
+
+              
+              <six-header-item id="search-header-item" style="margin-left: auto">
+                <six-icon-button name="search"></six-icon-button>
+              </six-header-item>
+
+              
+              <six-header-dropdown-item>
+                <six-icon-button slot="trigger">
+                  <six-avatar                     image="https://images.unsplash.com/photo-1529778873920-4da4926a72c2?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80"
+                  >
+                  </six-avatar>
+                </six-icon-button>
+                <six-menu>
+                  <six-menu-item><b>Cat Kittens</b><br>cat.kitty.kittens@themCatsBeCool.com</six-menu-item>
+                  <six-menu-item><b>Language</b><br><six-language-switcher></six-language-switcher></six-menu-item>
+                  <six-menu-item>Change password</six-menu-item>
+                  <six-menu-item>Logout</six-menu-item>
+                </six-menu>
+              </six-header-dropdown-item>
+
+              
+              <six-search-field slot="search-field" placeholder="Search for some 'a' ..." clearable>
+                <div id="search-results">Some results</div>
               </six-search-field>
-              
-              <six-icon-button name="notifications_none" slot="notifications">
-                <six-badge pill type="danger">99</six-badge>
-              </six-icon-button>
-              
-              <six-menu slot="app-switcher-menu">
-                <six-menu-item>LongAppName1</six-menu-item>
-                <six-menu-item>LongAppName2</six-menu-item>
-                <six-menu-item>VeryVeryLongApp3</six-menu-item>
-                <six-menu-item>App4</six-menu-item>
-              </six-menu>
-              
-              <six-menu slot="profile-menu">
-                <six-menu-item><b>Cat Kittens</b><br>cat.kitty.kittens@themCatsBeCool.com</six-menu-item>
-                <six-menu-item>Change password</six-menu-item>
-                <six-menu-item>Logout</six-menu-item>
-              </six-menu>
-              
-              <six-avatar                 image="https://images.unsplash.com/photo-1529778873920-4da4926a72c2?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80"
-                slot="profile-avatar"
-              >
-              </six-avatar>
             </six-header>
 
             <six-sidebar open position="left" slot="left-sidebar">
@@ -232,11 +242,11 @@ export default {
               rightSidebar: 'six-sidebar[slot="right-sidebar"]',
               drawer: 'six-drawer',
               cards: ['six-sidebar[slot="right-sidebar"] six-card'],
+              hamburger: 'six-icon-button[name="menu"]',
+              searchItem: '#search-header-item',
             });
 
-            Select.header.addEventListener('six-header-hamburger-menu-clicked', () =>
-              Select.leftSidebar.toggleAttribute('open')
-            );
+            Select.hamburger.addEventListener('click', () => Select.leftSidebar.toggleAttribute('open'));
 
             Select.leftSidebar.addEventListener('six-sidebar-hide', () => (Select.header.openHamburgerMenu = false));
 
@@ -246,6 +256,11 @@ export default {
 
             Select.cards.forEach((card) => {
               card.addEventListener('click', () => Select.drawer.toggleAttribute('open'));
+            });
+
+            Select.searchItem.addEventListener('click', () => {
+              Select.header.openSearch = !Select.header.openSearch;
+              Select.searchItem.active = Select.header.openSearch;
             });
 
             Select.textButton.addEventListener('click', () => {

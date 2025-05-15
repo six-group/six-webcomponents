@@ -6,6 +6,87 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## Upcoming
 
+### Added
+
+- **⚠️Experimental**: Bringing back the support for React output target.
+- **⚠️Experimental**: Added example React app with Vite.
+- **⚠️Experimental**: Added example Nuxt app with Client Side Rendering (CSR).
+- **⚠️Experimental**: Added the `six-date` component, intended to eventually replace the
+  `six-datepicker`.
+
+- [Documentation](guide/angular.md) for using web components with Angular's standalone bootstrapping
+- `ActiveSidebarItemGroupDirective` and `ActiveSidebarItemDirective`: Added optional angular sidebar
+  helper directives. See the [Angular guide](guide/angular.md) for more information.
+- Added nested sidbar menu to the angular demo application to showcase the helper directives
+- `six-header-dropdown`: Added `filter` and `filterPlaceholder` properties.
+- `six-header-menu-button`: Added `caret`, `disabled`, `loading`, `submit` and `reset` properties.
+- `six-header-menu-button`: Added `suffix` and `prefix` slots.
+- `six-sidebar-item` : added icon property analog to `six-sidebar-item-group`
+- `six-select` : support the use of prefix/suffix slot of the `six-menu-item` which can be used as
+  links for example.
+
+### Fixed
+
+- `six-logo`: removed inline style tag
+- `six-timepicker`: removed unnecessary bottom padding
+- `six-button` : simplify use of prefix and suffix icons
+- `six-sidebar-item-group`: fixed spacing for sub items
+
+### Removed
+
+- **⚠️Breaking**: Removed most slots, properties and events on the `six-header` component. Replaced
+  with a flexible approach for customization, allowing the header to be composed in a modular way
+  using child elements such as `six-header-item`, `six-header-dropdown-item`,
+  `six-header-menu-button`, and `six-logo`. Check the [upgrade guide](guide/upgrade-v5.md) for
+  detailed instructions.
+- **⚠️Breaking**: Removed the previously deprecated `reposition()` method of the `six-dropdown`
+  component. You can use the `matchTriggerWidth` property instead.
+- **⚠️Breaking**: Removed the previously deprecated tag `maxTagsVisible` of the `six-select`
+  component.
+
+### Changed
+
+- **⚠️Breaking**: Upgraded library to Node 20
+
+  The SIX Webcomponents cannot be used with Node 16 or 18 anymore. Please upgrade to Node 20.
+
+- Moved `six-picto` SVG's from SCSS file to assets folder to minimize chunk size.
+- Upgraded Stencil to latest release and upgraded Vue output target
+- Upgraded React output target to version 1.0.0
+
+## 4.3.2 - 2025-02-13
+
+No changes in functionality, but changed release creation workflow, that makes sure, that deployed
+documentation reflects the latest stable release.
+
+## 4.3.1 - 2025-01-09
+
+⚠️ This will be the last release under major version 4. The next release will be version 5. ⚠️
+
+### Added
+
+- The `six-spinner` component now supports the BME logo as a spinner option.
+
+### Deprecated
+
+- The `six` prop on the `six-spinner` component is now deprecated. Use the `logo` prop instead,
+  which allows specifying either **six** or **bme** as its value.
+
+## 4.3.0 - 2024-12-11
+
+### Added
+
+- The `six-header` component now offers a flexible approach for customization, allowing the header
+  to be composed in a more modular way using child elements such as `six-header-item`,
+  `six-header-dropdown-item`, `six-header-menu-button`, and `six-logo`.
+- Added `six-logo` component to display the SIX- or BME-logo anywhere, not just within the
+  `six-header` component.
+
+### Deprecated
+
+- Most slots, properties and events on the `six-header` component are now deprecated and will be
+  removed in one of the next releases.
+
 ### Removed
 
 - **Breaking**: Temporarily removed React support to unblock dependency updates.
@@ -23,6 +104,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Fixed
 
 - Fixed mermaid diagrams in component documentation.
+- `six-file-upload`: handleFiles is called twice when a file is dropped.
+- Improved accessibility of `six-sidebar-item` `six-sidebar-item-group` `six-button` and
+  `six-icon-button`.
 
 ## 4.2.6 - 2024-10-04
 

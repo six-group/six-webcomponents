@@ -8,9 +8,12 @@ import { DatepickerValueAccessor } from './control-value-accessors/datepicker-va
 import { SixFormDirective, SixFormUtilDirective } from './form/six-form.directive';
 import {
   AllowedDatesValidator,
+  AllowedDatesValidatorIso,
   MaxDateValidator,
+  MaxDateValidatorIso,
   MaxValidator,
   MinDateValidator,
+  MinDateValidatorIso,
   MinValidator,
 } from './validators/six-ui-library-validators';
 import { SelectValueAccessor } from './control-value-accessors/select-value-accessor';
@@ -20,6 +23,12 @@ import { SwitchValueAccessor } from './control-value-accessors/switch-value-acce
 import { TimepickerValueAccessor } from './control-value-accessors/timepicker-value-accessor';
 import { ValidationMessagesService } from './services/validation-messages.service';
 import { SixRouterLinkDirective } from './link/six-router-link.directive';
+import {
+  ActiveSidebarDirective,
+  ActiveSidebarItemDirective,
+  ActiveSidebarItemGroupDirective,
+} from './sidebar/active-sidebar.directive';
+import { DateValueAccessor } from './control-value-accessors/date-value-accessor';
 
 @NgModule({
   declarations: [
@@ -31,6 +40,7 @@ import { SixRouterLinkDirective } from './link/six-router-link.directive';
     NumericValueAccessor,
     RadioValueAccessor,
     DatepickerValueAccessor,
+    DateValueAccessor,
     TimepickerValueAccessor,
     SelectValueAccessor,
     CheckboxValueAccessor,
@@ -43,6 +53,9 @@ import { SixRouterLinkDirective } from './link/six-router-link.directive';
     MinDateValidator,
     MaxDateValidator,
     AllowedDatesValidator,
+    MinDateValidatorIso,
+    MaxDateValidatorIso,
+    AllowedDatesValidatorIso,
 
     // form helpers
     SixFormDirective,
@@ -50,6 +63,11 @@ import { SixRouterLinkDirective } from './link/six-router-link.directive';
 
     // router link directive
     SixRouterLinkDirective,
+
+    // sidebar helpers
+    ActiveSidebarItemDirective,
+    ActiveSidebarItemGroupDirective,
+    ActiveSidebarDirective,
   ],
   imports: [],
   exports: [
@@ -61,6 +79,7 @@ import { SixRouterLinkDirective } from './link/six-router-link.directive';
     NumericValueAccessor,
     RadioValueAccessor,
     DatepickerValueAccessor,
+    DateValueAccessor,
     TimepickerValueAccessor,
     SelectValueAccessor,
     CheckboxValueAccessor,
@@ -73,6 +92,9 @@ import { SixRouterLinkDirective } from './link/six-router-link.directive';
     MinDateValidator,
     MaxDateValidator,
     AllowedDatesValidator,
+    MinDateValidatorIso,
+    MaxDateValidatorIso,
+    AllowedDatesValidatorIso,
 
     // form helpers
     SixFormDirective,
@@ -80,6 +102,11 @@ import { SixRouterLinkDirective } from './link/six-router-link.directive';
 
     // router link directive
     SixRouterLinkDirective,
+
+    // sidebar helpers
+    ActiveSidebarItemDirective,
+    ActiveSidebarItemGroupDirective,
+    ActiveSidebarDirective,
   ],
 })
 export class UiLibraryAngularModule {

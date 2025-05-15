@@ -16,7 +16,7 @@ import { focusVisible } from '../../utils/focus-visible';
   shadow: true,
 })
 export class SixIconButton {
-  private button?: HTMLButtonElement;
+  private button?: HTMLButtonElement | HTMLAnchorElement;
 
   /** The name of the icon to draw. */
   @Prop({ reflect: true }) name?: string;
@@ -36,6 +36,15 @@ export class SixIconButton {
   /** HTML symbol code or entity. */
   @Prop({ reflect: true }) html?: string;
 
+  /** When set, the underlying button will be rendered as an `<a>` with this `href` instead of a `<button>`. */
+  @Prop() href?: string;
+
+  /** Tells the browser where to open the link. Only used when `href` is set. */
+  @Prop() target?: '_blank' | '_parent' | '_self' | '_top';
+
+  /** Tells the browser to download the linked file as this filename. Only used when `href` is set. */
+  @Prop() download?: string;
+
   componentDidLoad() {
     if (this.button != null) {
       focusVisible.observe(this.button);
@@ -49,27 +58,35 @@ export class SixIconButton {
   }
 
   render() {
+    const isLink = this.href != null;
+    const isButton = !isLink;
+    const Button = isLink ? 'a' : 'button';
     const html = this.html && <span innerHTML={this.html} />;
 
     return (
       <div onClick={this.handleClickEvent} class={{ 'icon-button-wrapper--disabled': this.disabled }}>
-        <button
+        <Button
           ref={(el) => (this.button = el)}
           part="base"
-          disabled={this.disabled}
+          disabled={isButton ? this.disabled : undefined}
+          tabindex={this.disabled ? '-1' : undefined}
           class={{
             'icon-button': true,
             'icon-button--disabled': this.disabled,
           }}
-          type="button"
+          type={isButton ? 'button' : undefined}
           aria-label={this.label}
+          href={isLink ? this.href : undefined}
+          target={isLink && this.target != null ? this.target : undefined}
+          download={isLink && this.download != null ? this.download : undefined}
+          rel={isLink && this.target != null ? 'noreferrer noopener' : undefined}
         >
           <six-icon aria-hidden="true" size={this.size}>
             {this.name}
           </six-icon>
           <slot />
           {html}
-        </button>
+        </Button>
       </div>
     );
   }

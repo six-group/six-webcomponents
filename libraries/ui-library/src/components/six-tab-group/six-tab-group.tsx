@@ -134,7 +134,7 @@ export class SixTabGroup {
     const slot = this.body?.querySelector('slot');
     if (slot == null) return [];
     return [...slot.assignedElements()].filter((el: Element) => el.tagName.toLowerCase() === 'six-tab-panel') as [
-      HTMLSixTabPanelElement
+      HTMLSixTabPanelElement,
     ];
   }
 

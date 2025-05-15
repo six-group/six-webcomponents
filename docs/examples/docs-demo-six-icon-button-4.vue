@@ -2,7 +2,7 @@
 <div>
 
         <six-tooltip content="Settings">
-          <six-icon-button name="settings" label="Settings" onClick="alert('clicked')" disabled></six-icon-button>
+          <six-icon-button name="settings" label="Settings" onClick="alert('clicked')"></six-icon-button>
         </six-tooltip>
       
 </div>

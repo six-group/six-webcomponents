@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, Prop } from '@stencil/core';
+import { Component, Element, h, Host, Prop, State } from '@stencil/core';
 
 /**
  * @since 1.1
@@ -20,17 +20,34 @@ export class SixPicto {
    */
   @Prop() size: 'xSmall' | 'small' | 'medium' | 'large' | 'xLarge' | 'xxLarge' | 'xxxLarge' | '4xl' = 'medium';
 
-  render() {
+  @State() svgContent: string | null = null;
+
+  async componentWillLoad() {
     const iconName = this.host.innerHTML?.trim();
+    if (!!iconName) {
+      try {
+        const response = await fetch(`/assets/pictograms/${iconName}.svg`);
+        if (response.ok) {
+          this.svgContent = await response.text();
+        } else {
+          console.error(`Icon "${iconName}" not found in assets/pictograms.`);
+        }
+      } catch (error) {
+        console.error(`Error loading icon "${iconName}":`, error);
+      }
+    }
+  }
+
+  render() {
     return (
       <Host>
         <div
           part="icon"
           class={{
-            [`is-size-${this.size}`]: typeof this.size != null || this.size.trim() !== '',
-            [`${iconName}`]: true,
+            [`is-size-${this.size}`]: true,
           }}
-        />
+          innerHTML={this.svgContent || ''} // Inject the loaded SVG content into the component
+        ></div>
       </Host>
     );
   }

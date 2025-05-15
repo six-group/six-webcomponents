@@ -162,55 +162,54 @@ Use the `prefix` and `suffix` slots to add icons.
 
 ```html
 <six-button size="small">
-  
-  <span slot="prefix"><six-icon size="xSmall">settings</six-icon></span>
+  <six-icon slot="prefix">settings</six-icon>
   Settings
 </six-button>
 
 <six-button size="small">
-  <span slot="suffix"><six-icon size="xSmall">refresh</six-icon></span>
+  <six-icon slot="suffix">refresh</six-icon>
   Refresh
 </six-button>
 
 <six-button size="small">
-  <span slot="prefix"><six-icon size="xSmall">settings</six-icon></span>
-  <span slot="suffix"><six-icon size="xSmall">refresh</six-icon></span>
+  <six-icon slot="prefix">settings</six-icon>
+  <six-icon slot="suffix">settings</six-icon>
   Open
 </six-button>
 
 <br><br>
 
 <six-button>
-  <span slot="prefix"><six-icon size="small">settings</six-icon></span>
+  <six-icon slot="prefix">settings</six-icon>
   Settings
 </six-button>
 
 <six-button>
-  <span slot="suffix"><six-icon size="small">refresh</six-icon></span>
+  <six-icon slot="suffix">refresh</six-icon>
   Refresh
 </six-button>
 
 <six-button>
-  <span slot="prefix"><six-icon size="small">settings</six-icon></span>
-  <span slot="suffix"><six-icon size="small">refresh</six-icon></span>
+  <six-icon slot="prefix">settings</six-icon>
+  <six-icon slot="suffix">refresh</six-icon>
   Open
 </six-button>
 
 <br><br>
 
 <six-button size="large">
-  <span slot="prefix"><six-icon size="medium">settings</six-icon></span>
+  <six-icon slot="prefix">settings</six-icon>
   Settings
 </six-button>
 
 <six-button size="large">
-  <span slot="suffix"><six-icon size="medium">refresh</six-icon></span>
+  <six-icon slot="suffix">refresh</six-icon>
   Refresh
 </six-button>
 
 <six-button size="large">
-  <span slot="prefix"><six-icon size="medium">settings</six-icon></span>
-  <span slot="suffix"><six-icon size="medium">refresh</six-icon></span>
+  <six-icon slot="prefix">settings</six-icon>
+  <six-icon slot="suffix">refresh</six-icon>
   Open
 </six-button>
 ```
@@ -346,6 +345,7 @@ Type: `Promise<void>`
 
 ### Used by
 
+ - [six-header-menu-button](six-header-menu-button.html)
  - [six-select](six-select.html)
 
 ### Depends on
@@ -356,6 +356,7 @@ Type: `Promise<void>`
 ```mermaid
 graph TD;
   six-button --> six-spinner
+  six-header-menu-button --> six-button
   six-select --> six-button
   style six-button fill:#f9f,stroke:#333,stroke-width:4px
 ```

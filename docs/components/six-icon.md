@@ -271,6 +271,7 @@ Enter an icon label and press enter to display an icon:
 ### Used by
 
  - [six-avatar](six-avatar.html)
+ - [six-date](six-date.html)
  - [six-datepicker](six-datepicker.html)
  - [six-details](six-details.html)
  - [six-dropdown](six-dropdown.html)
@@ -282,6 +283,7 @@ Enter an icon label and press enter to display an icon:
  - [six-menu-item](six-menu-item.html)
  - [six-search-field](six-search-field.html)
  - [six-select](six-select.html)
+ - [six-sidebar-item](six-sidebar-item.html)
  - [six-sidebar-item-group](six-sidebar-item-group.html)
  - [six-stage-indicator](six-stage-indicator.html)
  - [six-tile](six-tile.html)
@@ -291,6 +293,7 @@ Enter an icon label and press enter to display an icon:
 ```mermaid
 graph TD;
   six-avatar --> six-icon
+  six-date --> six-icon
   six-datepicker --> six-icon
   six-details --> six-icon
   six-dropdown --> six-icon
@@ -302,6 +305,7 @@ graph TD;
   six-menu-item --> six-icon
   six-search-field --> six-icon
   six-select --> six-icon
+  six-sidebar-item --> six-icon
   six-sidebar-item-group --> six-icon
   six-stage-indicator --> six-icon
   six-tile --> six-icon

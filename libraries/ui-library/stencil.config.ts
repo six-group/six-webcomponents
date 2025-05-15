@@ -2,6 +2,7 @@ import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
 import { angularOutputTarget } from '@stencil/angular-output-target';
 import { vueOutputTarget } from '@stencil/vue-output-target';
+import { reactOutputTarget } from '@stencil/react-output-target';
 
 export const config: Config = {
   namespace: 'ui-library',
@@ -16,6 +17,9 @@ export const config: Config = {
     enableImportInjection: true,
   },
   outputTargets: [
+    reactOutputTarget({
+      outDir: '../ui-library-react/src/lib/stencil-generated',
+    }),
     angularOutputTarget({
       componentCorePackage: '@six-group/ui-library',
       directivesProxyFile: '../ui-library-angular/src/lib/stencil-generated/components.ts',
@@ -36,17 +40,19 @@ export const config: Config = {
           targetAttr: 'value',
         },
         {
-          elements: ['six-select', 'six-datepicker'],
+          elements: ['six-select', 'six-datepicker', 'six-date'],
           event: 'change',
           targetAttr: 'value',
         },
       ],
+      /*      hydrateModule: '@six-group/ui-library/hydrate',*/
     }),
     {
       type: 'dist',
       esmLoaderPath: '../loader',
       copy: [
-        { src: '../../../node_modules/material-icons/iconfont/material-icons*.*', dest: '.', warn: true },
+        { src: '../../../node_modules/@fontsource/material-icons/files/*', dest: './files', warn: true },
+        { src: '../../../node_modules/@fontsource/material-icons-outlined/files/*', dest: './files', warn: true },
         { src: '../../../node_modules/@fontsource/noto-sans/files/*', dest: './files', warn: true },
         { src: './assets/**/*', dest: '.', warn: true, keepDirStructure: true },
       ],
@@ -54,7 +60,12 @@ export const config: Config = {
     {
       type: 'dist-custom-elements',
       customElementsExportBehavior: 'bundle',
+      externalRuntime: false,
     },
+    /*    {
+      type: 'dist-hydrate-script',
+      dir: './hydrate',
+    },*/
     {
       type: 'docs-readme',
       footer: 'Copyright © 2021-present SIX-Group',
@@ -71,7 +82,8 @@ export const config: Config = {
       type: 'www',
       serviceWorker: null, // disable service workers
       copy: [
-        { src: '../../../node_modules/material-icons/iconfont/material-icons*.*', dest: 'build', warn: true },
+        { src: '../../../node_modules/@fontsource/material-icons/files/*', dest: 'build/files', warn: true },
+        { src: '../../../node_modules/@fontsource/material-icons-outlined/files/*', dest: 'build/files', warn: true },
         { src: '../../../node_modules/@fontsource/noto-sans/files/*', dest: 'build/files', warn: true },
         { src: '**/*.html' },
       ],

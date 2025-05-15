@@ -26,6 +26,31 @@ export class SixUiLibraryValidators {
       return allowed ? null : { invaliddate: { actual: control.value } };
     };
   }
+
+  static minDateIso(mindate: string): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      if (control.value == null || control.value === '') return null;
+      const actualDate = control.value as string;
+      return actualDate >= mindate ? null : { mindate: { mindate, actual: actualDate } };
+    };
+  }
+
+  static maxDateIso(maxdate: string): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      if (control.value == null || control.value === '') return null;
+      const actualDate = control.value as string;
+      return actualDate <= maxdate ? null : { maxdate: { maxdate, actual: actualDate } };
+    };
+  }
+
+  static allowedDatesIso(allowedDates: (date: string) => boolean = () => true): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      if (control.value == null || control.value === '') return null;
+
+      const allowed = allowedDates(control.value);
+      return allowed ? null : { invaliddate: { actual: control.value } };
+    };
+  }
 }
 
 @Directive({
@@ -66,6 +91,47 @@ export class AllowedDatesValidator implements Validator {
   @Input() allowedDates: (date: Date) => boolean = () => true;
   validate(control: AbstractControl): { [key: string]: any } | null {
     return SixUiLibraryValidators.allowedDates(this.allowedDates)(control);
+  }
+}
+
+@Directive({
+  selector: 'six-date[min]',
+  providers: [{ provide: NG_VALIDATORS, useExisting: MinDateValidatorIso, multi: true }],
+})
+export class MinDateValidatorIso implements Validator {
+  @Input() min?: string | null;
+
+  validate(control: AbstractControl): { [key: string]: any } | null {
+    if (this.min != null) {
+      return SixUiLibraryValidators.minDateIso(this.min)(control);
+    }
+    return null;
+  }
+}
+
+@Directive({
+  selector: 'six-date[max]',
+  providers: [{ provide: NG_VALIDATORS, useExisting: MaxDateValidatorIso, multi: true }],
+})
+export class MaxDateValidatorIso implements Validator {
+  @Input() max?: string | null;
+
+  validate(control: AbstractControl): { [key: string]: any } | null {
+    if (this.max != null) {
+      return SixUiLibraryValidators.maxDateIso(this.max)(control);
+    }
+    return null;
+  }
+}
+
+@Directive({
+  selector: 'six-date[allowedDates]',
+  providers: [{ provide: NG_VALIDATORS, useExisting: AllowedDatesValidatorIso, multi: true }],
+})
+export class AllowedDatesValidatorIso implements Validator {
+  @Input() allowedDates: (date: string) => boolean = () => true;
+  validate(control: AbstractControl): { [key: string]: any } | null {
+    return SixUiLibraryValidators.allowedDatesIso(this.allowedDates)(control);
   }
 }
 

@@ -21,7 +21,10 @@
   background-color: var(--six-input-background-color);
   border: solid var(--six-border-width) var(--six-input-border-color);
   vertical-align: middle;
-  transition: var(--six-transition-fast) color, var(--six-transition-fast) border, var(--six-transition-fast) box-shadow;
+  transition:
+    var(--six-transition-fast) color,
+    var(--six-transition-fast) border,
+    var(--six-transition-fast) box-shadow;
   cursor: pointer;
 
   &--line {
@@ -132,11 +135,6 @@
 
 .select--disabled .placeholder {
   color: var(--six-input-placeholder-color-disabled);
-}
-
-// Hidden input (for form control validation to show)
-.select__hidden-select {
-  @include visually-hidden();
 }
 
 .select__input {

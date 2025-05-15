@@ -1,0 +1,32 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <script type="module" src="/build/ui-library.esm.js"></script>
+    <script nomodule src="/build/ui-library.js"></script>
+    <link rel="stylesheet" href="/build/ui-library.css" />
+    <title>six-logo</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2>SIX Logo</h2>
+      <p>SIX or BME Logo as as svg.</p>
+      <h3>Default Logo</h3>
+      <section>
+        <six-logo brand="six" />
+      </section>
+
+      <h3>BME Logo</h3>
+      <section>
+        <six-logo brand="bme" />
+      </section>
+
+      <h3>Custom Height</h3>
+      <p>Use the <code>--height</code> css variable to set a custom height.</p>
+      <section>
+        <six-logo brand="six" style="--height: 40px" />
+      </section>
+    </div>
+  </body>
+</html>

@@ -7,13 +7,13 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AlertType } from "./components/six-alert/six-alert";
 import { EmptyPayload } from "./utils/types";
+import { Language } from "./utils/error-messages";
 import { SixDateFormats } from "./components/six-datepicker/six-date-formats";
 import { SixDatepickerSelectPayload } from "./components/six-datepicker/six-datepicker";
 import { SixMenuItemData } from "./components/six-menu/six-menu";
 import { SixDropdownAsyncFilterPayload, SixDropdownAutoFilterPayload, SixDropdownScrollPayload } from "./components/six-dropdown/six-dropdown";
 import { SixFileListDownloadPayload, SixFileListRemovePayload } from "./components/six-file-list-item/six-file-list-item";
 import { SixFileUploadFailurePayload, SixFileUploadSuccessPayload } from "./components/six-file-upload/six-file-upload";
-import { SixHeaderAppSwitcherSelectPayload, SixHeaderProfileSelectPayload, SixHeaderSearchFieldToggle } from "./components/six-header/six-header";
 import { SelectionRange, SelectionRangeDirection } from "./components/six-input/six-input";
 import { ItemPickerPaddingDirection, ItemPickerType } from "./components/six-item-picker/types";
 import { SixItemPickerChangePayload } from "./components/six-item-picker/six-item-picker";
@@ -28,13 +28,13 @@ import { TimeFormat } from "./utils/time.util";
 import { SixTimepickerChange } from "./components/six-timepicker/six-timepicker";
 export { AlertType } from "./components/six-alert/six-alert";
 export { EmptyPayload } from "./utils/types";
+export { Language } from "./utils/error-messages";
 export { SixDateFormats } from "./components/six-datepicker/six-date-formats";
 export { SixDatepickerSelectPayload } from "./components/six-datepicker/six-datepicker";
 export { SixMenuItemData } from "./components/six-menu/six-menu";
 export { SixDropdownAsyncFilterPayload, SixDropdownAutoFilterPayload, SixDropdownScrollPayload } from "./components/six-dropdown/six-dropdown";
 export { SixFileListDownloadPayload, SixFileListRemovePayload } from "./components/six-file-list-item/six-file-list-item";
 export { SixFileUploadFailurePayload, SixFileUploadSuccessPayload } from "./components/six-file-upload/six-file-upload";
-export { SixHeaderAppSwitcherSelectPayload, SixHeaderProfileSelectPayload, SixHeaderSearchFieldToggle } from "./components/six-header/six-header";
 export { SelectionRange, SelectionRangeDirection } from "./components/six-input/six-input";
 export { ItemPickerPaddingDirection, ItemPickerType } from "./components/six-item-picker/types";
 export { SixItemPickerChangePayload } from "./components/six-item-picker/six-item-picker";
@@ -264,6 +264,93 @@ export namespace Components {
           * The value of the checkbox does not mean if it's checked or not, use the `checked` property for that.  The value of a checkbox is analogous to the value of an `<input type="checkbox">`, it's only used when the checkbox participates in a native `<form>`.
          */
         "value": string;
+    }
+    /**
+     * A date picker component that allows users to select dates via a calendar popup or direct input.
+     * @since 5.0
+     * @status experimental
+     */
+    interface SixDate {
+        /**
+          * Callback to determine which dates in the picker should be selectable.
+         */
+        "allowedDates": (date: string) => boolean;
+        /**
+          * Set to true to add a clear button when the input is populated.
+         */
+        "clearable": boolean;
+        /**
+          * Defines the format pattern for displaying dates and how dates can be entered via keyboard.  Defaults to "dd.MM.yyyy".  Available patterns: - Year: "yyyy" (e.g., "2021") - Month: "MM" (e.g., "01" for January) or "M" (e.g., "1" for January) - Day: "dd" (e.g., "08" for the 8th) or "d" (e.g., "8" for the 8th)  Examples: - "dd.MM.yyyy" -> "31.01.2024" - "yyyy-MM-dd" -> "2024-01-31" - "d.M.yyyy" -> "31.1.2024"
+         */
+        "dateFormat": string;
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `six-change` event after each keystroke.
+         */
+        "debounce": number;
+        /**
+          * If `true` the component is disabled.
+         */
+        "disabled": boolean;
+        /**
+          * The error message shown, if `invalid` is set to true.
+         */
+        "errorText": string | string[];
+        /**
+          * The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1
+         */
+        "errorTextCount"?: number;
+        /**
+          * The input's help text. Alternatively, you can use the help-text slot.
+         */
+        "helpText": string;
+        /**
+          * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
+         */
+        "invalid": boolean;
+        /**
+          * The label text.
+         */
+        "label": string;
+        /**
+          * The language used to render the weekdays and months.
+         */
+        "language": Language;
+        /**
+          * The maximum allowed selectable date in ISO format (yyyy-MM-dd). Dates after this value will be disabled in the date picker. Example: '2025-01-01'
+         */
+        "max"?: string;
+        /**
+          * The minimum allowed selectable date in ISO format (yyyy-MM-dd). Dates before this value will be disabled in the date picker. Example: '2024-01-01'
+         */
+        "min"?: string;
+        /**
+          * The input's name attribute.
+         */
+        "name": string;
+        /**
+          * The placeholder defines what text to be shown on the input element
+         */
+        "placeholder"?: string;
+        /**
+          * If `true` the user can only select a date via the component in the popup but not directly edit the input field.
+         */
+        "readonly": boolean;
+        /**
+          * Set to true to show an asterisk beneath the label.
+         */
+        "required": boolean;
+        /**
+          * Sets focus on the input.
+         */
+        "setFocus": (options?: FocusOptions) => Promise<void>;
+        /**
+          * The size of the date input field.
+         */
+        "size": 'small' | 'medium' | 'large';
+        /**
+          * The value of the form field in ISO 8601 date format (yyyy-MM-dd). Example: '2024-01-01'.  When an invalid date is provided, it will be replaced with an empty string (''), matching the behavior of native HTML <input type="date">.  The displayed format can be customized using the dateFormat property, but the underlying value will always be stored in ISO format.
+         */
+        "value": string | '';
     }
     /**
      * @since 1.0
@@ -581,11 +668,6 @@ export namespace Components {
     | 'left-start'
     | 'left-end';
         /**
-          * Instructs the dropdown menu to reposition. Useful when the position or size of the trigger changes when the menu is activated.
-          * @deprecated : use the property `matchTriggerWidth` instead.
-         */
-        "reposition": () => Promise<void>;
-        /**
           * Shows the dropdown panel
          */
         "show": () => Promise<void>;
@@ -742,37 +824,63 @@ export namespace Components {
      */
     interface SixHeader {
         /**
-          * Set whether the logo should be clickable
-         */
-        "clickableLogo": boolean;
-        /**
-          * Get open state for search
-         */
-        "getIsSearchOpen": () => Promise<boolean>;
-        /**
-          * Set whether the hamburger menu should be visible or not
-         */
-        "hideHamburgerMenu": boolean;
-        /**
-          * The displayed logo. Either six or bme. Defaults to six.
-         */
-        "logo": 'six' | 'bme';
-        /**
-          * Set the hamburger menu icon to open or closed state
-         */
-        "openHamburgerMenu": boolean;
-        /**
-          * Set the header search to be in an open or closed state
+          * Set the header search input to be in an open or closed state.  Focuses the first `six-input` found in the search slot.
          */
         "openSearch": boolean;
-        /**
-          * Sets open state for search
-         */
-        "setSearchOpenState": (openState: boolean) => Promise<void>;
         /**
           * Indicates if content should be shifted down when search field is visible.
          */
         "shiftContent": boolean;
+    }
+    /**
+     * @since 4.2.7
+     * @status stable
+     */
+    interface SixHeaderDropdownItem {
+        /**
+          * Set to true to allow auto filtering for entries in the dropdown. With this flag the dropdown will automatically filter itsel. If you need to coordinate the shown elements yourself, e.g. because you need to call an endpoint use asyncFilter instead
+         */
+        "filter": boolean;
+        /**
+          * The filter's placeholder text.
+         */
+        "filterPlaceholder": string;
+    }
+    /**
+     * @since 4.2.7
+     * @status stable
+     */
+    interface SixHeaderItem {
+        /**
+          * Indicates whether the item is styled as active. When set to `true`, a border is displayed below the trigger element.  Use <code>six-header-dropdown-item</code> to automatically set the active state for dropdowns.
+         */
+        "active": boolean;
+    }
+    /**
+     * @since 4.2.7
+     * @status stable
+     */
+    interface SixHeaderMenuButton {
+        /**
+          * Set to true to draw the button with a caret for use with dropdowns, popovers, etc.
+         */
+        "caret": boolean;
+        /**
+          * Set to true to disable the button.
+         */
+        "disabled": boolean;
+        /**
+          * Set to true to draw the button in a loading state.
+         */
+        "loading": boolean;
+        /**
+          * Indicates if activating the button should reset the form.
+         */
+        "reset": boolean;
+        /**
+          * Indicates if activating the button should submit the form. Ignored when `href` is set.
+         */
+        "submit": boolean;
     }
     /**
      * @since 1.0
@@ -806,6 +914,14 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * Tells the browser to download the linked file as this filename. Only used when `href` is set.
+         */
+        "download"?: string;
+        /**
+          * When set, the underlying button will be rendered as an `<a>` with this `href` instead of a `<button>`.
+         */
+        "href"?: string;
+        /**
           * HTML symbol code or entity.
          */
         "html"?: string;
@@ -821,6 +937,10 @@ export namespace Components {
           * The icon's size.
          */
         "size": 'xSmall' | 'small' | 'medium' | 'large' | 'xLarge' | 'xxLarge' | 'xxxLarge';
+        /**
+          * Tells the browser where to open the link. Only used when `href` is set.
+         */
+        "target"?: '_blank' | '_parent' | '_self' | '_top';
     }
     /**
      * @since 1.0
@@ -1054,6 +1174,16 @@ export namespace Components {
           * Set the number of grid columns
          */
         "columns"?: number;
+    }
+    /**
+     * @since 4.2.7
+     * @status beta
+     */
+    interface SixLogo {
+        /**
+          * The brand of the logo. Either six or bme. Defaults to six.
+         */
+        "brand": 'six' | 'bme';
     }
     /**
      * @since 1.01
@@ -1414,11 +1544,6 @@ export namespace Components {
          */
         "line": boolean;
         /**
-          * The maximum number of tags to show when `multiple` is true. After the maximum, "+n" will be shown to indicate the number of additional items that are selected. Set to -1 to remove the limit.
-          * @deprecated : This property is ignored. The component now displays as many items as possible and computes the "+n" dynamically.
-         */
-        "maxTagsVisible": number;
-        /**
           * Set to true to enable multiselect.
          */
         "multiple": boolean;
@@ -1523,6 +1648,10 @@ export namespace Components {
          */
         "href": string | undefined;
         /**
+          * Icon of the item
+         */
+        "icon": string;
+        /**
           * Set to true to draw the item in a selected state.
          */
         "selected": boolean;
@@ -1568,9 +1697,13 @@ export namespace Components {
      */
     interface SixSpinner {
         /**
-          * Indicates if the spinner is shown as animated SIX logo or simple spinner.
+          * Indicates if the spinner is shown as animated SIX or BME logo or a simple spinner.
          */
-        "six": boolean;
+        "logo"?: 'six' | 'bme';
+        /**
+          * **@deprecated** Use `logo="six"` instead.  If set to true, the spinner displays the SIX logo.
+         */
+        "six"?: boolean;
     }
     interface SixStageIndicator {
         /**
@@ -2043,6 +2176,10 @@ export interface SixCheckboxCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLSixCheckboxElement;
 }
+export interface SixDateCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSixDateElement;
+}
 export interface SixDatepickerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLSixDatepickerElement;
@@ -2070,10 +2207,6 @@ export interface SixFileListItemCustomEvent<T> extends CustomEvent<T> {
 export interface SixFileUploadCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLSixFileUploadElement;
-}
-export interface SixHeaderCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLSixHeaderElement;
 }
 export interface SixInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -2247,6 +2380,29 @@ declare global {
     var HTMLSixCheckboxElement: {
         prototype: HTMLSixCheckboxElement;
         new (): HTMLSixCheckboxElement;
+    };
+    interface HTMLSixDateElementEventMap {
+        "six-change": string | '';
+        "six-blur": any;
+    }
+    /**
+     * A date picker component that allows users to select dates via a calendar popup or direct input.
+     * @since 5.0
+     * @status experimental
+     */
+    interface HTMLSixDateElement extends Components.SixDate, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSixDateElementEventMap>(type: K, listener: (this: HTMLSixDateElement, ev: SixDateCustomEvent<HTMLSixDateElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSixDateElementEventMap>(type: K, listener: (this: HTMLSixDateElement, ev: SixDateCustomEvent<HTMLSixDateElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLSixDateElement: {
+        prototype: HTMLSixDateElement;
+        new (): HTMLSixDateElement;
     };
     interface HTMLSixDatepickerElementEventMap {
         "six-datepicker-select": SixDatepickerSelectPayload;
@@ -2468,31 +2624,45 @@ declare global {
         prototype: HTMLSixGroupLabelElement;
         new (): HTMLSixGroupLabelElement;
     };
-    interface HTMLSixHeaderElementEventMap {
-        "six-header-app-name-clicked": EmptyPayload;
-        "six-header-app-switcher-select": SixHeaderAppSwitcherSelectPayload;
-        "six-header-profile-select": SixHeaderProfileSelectPayload;
-        "six-header-hamburger-menu-clicked": EmptyPayload;
-        "six-header-logo-clicked": EmptyPayload;
-        "six-header-search-field-toggle": SixHeaderSearchFieldToggle;
-    }
     /**
      * @since 1.0
      * @status stable
      */
     interface HTMLSixHeaderElement extends Components.SixHeader, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLSixHeaderElementEventMap>(type: K, listener: (this: HTMLSixHeaderElement, ev: SixHeaderCustomEvent<HTMLSixHeaderElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLSixHeaderElementEventMap>(type: K, listener: (this: HTMLSixHeaderElement, ev: SixHeaderCustomEvent<HTMLSixHeaderElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLSixHeaderElement: {
         prototype: HTMLSixHeaderElement;
         new (): HTMLSixHeaderElement;
+    };
+    /**
+     * @since 4.2.7
+     * @status stable
+     */
+    interface HTMLSixHeaderDropdownItemElement extends Components.SixHeaderDropdownItem, HTMLStencilElement {
+    }
+    var HTMLSixHeaderDropdownItemElement: {
+        prototype: HTMLSixHeaderDropdownItemElement;
+        new (): HTMLSixHeaderDropdownItemElement;
+    };
+    /**
+     * @since 4.2.7
+     * @status stable
+     */
+    interface HTMLSixHeaderItemElement extends Components.SixHeaderItem, HTMLStencilElement {
+    }
+    var HTMLSixHeaderItemElement: {
+        prototype: HTMLSixHeaderItemElement;
+        new (): HTMLSixHeaderItemElement;
+    };
+    /**
+     * @since 4.2.7
+     * @status stable
+     */
+    interface HTMLSixHeaderMenuButtonElement extends Components.SixHeaderMenuButton, HTMLStencilElement {
+    }
+    var HTMLSixHeaderMenuButtonElement: {
+        prototype: HTMLSixHeaderMenuButtonElement;
+        new (): HTMLSixHeaderMenuButtonElement;
     };
     /**
      * @since 1.0
@@ -2589,6 +2759,16 @@ declare global {
     var HTMLSixLayoutGridElement: {
         prototype: HTMLSixLayoutGridElement;
         new (): HTMLSixLayoutGridElement;
+    };
+    /**
+     * @since 4.2.7
+     * @status beta
+     */
+    interface HTMLSixLogoElement extends Components.SixLogo, HTMLStencilElement {
+    }
+    var HTMLSixLogoElement: {
+        prototype: HTMLSixLogoElement;
+        new (): HTMLSixLogoElement;
     };
     /**
      * @since 1.01
@@ -3056,6 +3236,7 @@ declare global {
         "six-button": HTMLSixButtonElement;
         "six-card": HTMLSixCardElement;
         "six-checkbox": HTMLSixCheckboxElement;
+        "six-date": HTMLSixDateElement;
         "six-datepicker": HTMLSixDatepickerElement;
         "six-details": HTMLSixDetailsElement;
         "six-dialog": HTMLSixDialogElement;
@@ -3069,12 +3250,16 @@ declare global {
         "six-footer": HTMLSixFooterElement;
         "six-group-label": HTMLSixGroupLabelElement;
         "six-header": HTMLSixHeaderElement;
+        "six-header-dropdown-item": HTMLSixHeaderDropdownItemElement;
+        "six-header-item": HTMLSixHeaderItemElement;
+        "six-header-menu-button": HTMLSixHeaderMenuButtonElement;
         "six-icon": HTMLSixIconElement;
         "six-icon-button": HTMLSixIconButtonElement;
         "six-input": HTMLSixInputElement;
         "six-item-picker": HTMLSixItemPickerElement;
         "six-language-switcher": HTMLSixLanguageSwitcherElement;
         "six-layout-grid": HTMLSixLayoutGridElement;
+        "six-logo": HTMLSixLogoElement;
         "six-main-container": HTMLSixMainContainerElement;
         "six-menu": HTMLSixMenuElement;
         "six-menu-divider": HTMLSixMenuDividerElement;
@@ -3328,6 +3513,97 @@ declare namespace LocalJSX {
           * The value of the checkbox does not mean if it's checked or not, use the `checked` property for that.  The value of a checkbox is analogous to the value of an `<input type="checkbox">`, it's only used when the checkbox participates in a native `<form>`.
          */
         "value"?: string;
+    }
+    /**
+     * A date picker component that allows users to select dates via a calendar popup or direct input.
+     * @since 5.0
+     * @status experimental
+     */
+    interface SixDate {
+        /**
+          * Callback to determine which dates in the picker should be selectable.
+         */
+        "allowedDates"?: (date: string) => boolean;
+        /**
+          * Set to true to add a clear button when the input is populated.
+         */
+        "clearable"?: boolean;
+        /**
+          * Defines the format pattern for displaying dates and how dates can be entered via keyboard.  Defaults to "dd.MM.yyyy".  Available patterns: - Year: "yyyy" (e.g., "2021") - Month: "MM" (e.g., "01" for January) or "M" (e.g., "1" for January) - Day: "dd" (e.g., "08" for the 8th) or "d" (e.g., "8" for the 8th)  Examples: - "dd.MM.yyyy" -> "31.01.2024" - "yyyy-MM-dd" -> "2024-01-31" - "d.M.yyyy" -> "31.1.2024"
+         */
+        "dateFormat"?: string;
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `six-change` event after each keystroke.
+         */
+        "debounce"?: number;
+        /**
+          * If `true` the component is disabled.
+         */
+        "disabled"?: boolean;
+        /**
+          * The error message shown, if `invalid` is set to true.
+         */
+        "errorText"?: string | string[];
+        /**
+          * The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1
+         */
+        "errorTextCount"?: number;
+        /**
+          * The input's help text. Alternatively, you can use the help-text slot.
+         */
+        "helpText"?: string;
+        /**
+          * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
+         */
+        "invalid"?: boolean;
+        /**
+          * The label text.
+         */
+        "label"?: string;
+        /**
+          * The language used to render the weekdays and months.
+         */
+        "language"?: Language;
+        /**
+          * The maximum allowed selectable date in ISO format (yyyy-MM-dd). Dates after this value will be disabled in the date picker. Example: '2025-01-01'
+         */
+        "max"?: string;
+        /**
+          * The minimum allowed selectable date in ISO format (yyyy-MM-dd). Dates before this value will be disabled in the date picker. Example: '2024-01-01'
+         */
+        "min"?: string;
+        /**
+          * The input's name attribute.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the control loses focus or the date picker popup is closed. Does not contain event details.
+         */
+        "onSix-blur"?: (event: SixDateCustomEvent<any>) => void;
+        /**
+          * Emitted when the control's value changes. Event detail contains the new date value in ISO format (yyyy-MM-dd) or an empty string if cleared.
+         */
+        "onSix-change"?: (event: SixDateCustomEvent<string | ''>) => void;
+        /**
+          * The placeholder defines what text to be shown on the input element
+         */
+        "placeholder"?: string;
+        /**
+          * If `true` the user can only select a date via the component in the popup but not directly edit the input field.
+         */
+        "readonly"?: boolean;
+        /**
+          * Set to true to show an asterisk beneath the label.
+         */
+        "required"?: boolean;
+        /**
+          * The size of the date input field.
+         */
+        "size"?: 'small' | 'medium' | 'large';
+        /**
+          * The value of the form field in ISO 8601 date format (yyyy-MM-dd). Example: '2024-01-01'.  When an invalid date is provided, it will be replaced with an empty string (''), matching the behavior of native HTML <input type="date">.  The displayed format can be customized using the dateFormat property, but the underlying value will always be stored in ISO format.
+         */
+        "value"?: string | '';
     }
     /**
      * @since 1.0
@@ -3881,53 +4157,63 @@ declare namespace LocalJSX {
      */
     interface SixHeader {
         /**
-          * Set whether the logo should be clickable
-         */
-        "clickableLogo"?: boolean;
-        /**
-          * Set whether the hamburger menu should be visible or not
-         */
-        "hideHamburgerMenu"?: boolean;
-        /**
-          * The displayed logo. Either six or bme. Defaults to six.
-         */
-        "logo"?: 'six' | 'bme';
-        /**
-          * Emitted when the name of the selected app is clicked.
-         */
-        "onSix-header-app-name-clicked"?: (event: SixHeaderCustomEvent<EmptyPayload>) => void;
-        /**
-          * Emitted when a menu item is in the app switcher menu is selected.
-         */
-        "onSix-header-app-switcher-select"?: (event: SixHeaderCustomEvent<SixHeaderAppSwitcherSelectPayload>) => void;
-        /**
-          * Emitted when the hamburger menu is clicked.
-         */
-        "onSix-header-hamburger-menu-clicked"?: (event: SixHeaderCustomEvent<EmptyPayload>) => void;
-        /**
-          * Emitted when the header logo is clicked.
-         */
-        "onSix-header-logo-clicked"?: (event: SixHeaderCustomEvent<EmptyPayload>) => void;
-        /**
-          * Emitted when a menu item is in the profile menu is selected.
-         */
-        "onSix-header-profile-select"?: (event: SixHeaderCustomEvent<SixHeaderProfileSelectPayload>) => void;
-        /**
-          * Emitted when search field is toggled.
-         */
-        "onSix-header-search-field-toggle"?: (event: SixHeaderCustomEvent<SixHeaderSearchFieldToggle>) => void;
-        /**
-          * Set the hamburger menu icon to open or closed state
-         */
-        "openHamburgerMenu"?: boolean;
-        /**
-          * Set the header search to be in an open or closed state
+          * Set the header search input to be in an open or closed state.  Focuses the first `six-input` found in the search slot.
          */
         "openSearch"?: boolean;
         /**
           * Indicates if content should be shifted down when search field is visible.
          */
         "shiftContent"?: boolean;
+    }
+    /**
+     * @since 4.2.7
+     * @status stable
+     */
+    interface SixHeaderDropdownItem {
+        /**
+          * Set to true to allow auto filtering for entries in the dropdown. With this flag the dropdown will automatically filter itsel. If you need to coordinate the shown elements yourself, e.g. because you need to call an endpoint use asyncFilter instead
+         */
+        "filter"?: boolean;
+        /**
+          * The filter's placeholder text.
+         */
+        "filterPlaceholder"?: string;
+    }
+    /**
+     * @since 4.2.7
+     * @status stable
+     */
+    interface SixHeaderItem {
+        /**
+          * Indicates whether the item is styled as active. When set to `true`, a border is displayed below the trigger element.  Use <code>six-header-dropdown-item</code> to automatically set the active state for dropdowns.
+         */
+        "active"?: boolean;
+    }
+    /**
+     * @since 4.2.7
+     * @status stable
+     */
+    interface SixHeaderMenuButton {
+        /**
+          * Set to true to draw the button with a caret for use with dropdowns, popovers, etc.
+         */
+        "caret"?: boolean;
+        /**
+          * Set to true to disable the button.
+         */
+        "disabled"?: boolean;
+        /**
+          * Set to true to draw the button in a loading state.
+         */
+        "loading"?: boolean;
+        /**
+          * Indicates if activating the button should reset the form.
+         */
+        "reset"?: boolean;
+        /**
+          * Indicates if activating the button should submit the form. Ignored when `href` is set.
+         */
+        "submit"?: boolean;
     }
     /**
      * @since 1.0
@@ -3961,6 +4247,14 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * Tells the browser to download the linked file as this filename. Only used when `href` is set.
+         */
+        "download"?: string;
+        /**
+          * When set, the underlying button will be rendered as an `<a>` with this `href` instead of a `<button>`.
+         */
+        "href"?: string;
+        /**
           * HTML symbol code or entity.
          */
         "html"?: string;
@@ -3976,6 +4270,10 @@ declare namespace LocalJSX {
           * The icon's size.
          */
         "size"?: 'xSmall' | 'small' | 'medium' | 'large' | 'xLarge' | 'xxLarge' | 'xxxLarge';
+        /**
+          * Tells the browser where to open the link. Only used when `href` is set.
+         */
+        "target"?: '_blank' | '_parent' | '_self' | '_top';
     }
     /**
      * @since 1.0
@@ -4217,6 +4515,16 @@ declare namespace LocalJSX {
           * Set the number of grid columns
          */
         "columns"?: number;
+    }
+    /**
+     * @since 4.2.7
+     * @status beta
+     */
+    interface SixLogo {
+        /**
+          * The brand of the logo. Either six or bme. Defaults to six.
+         */
+        "brand"?: 'six' | 'bme';
     }
     /**
      * @since 1.01
@@ -4577,11 +4885,6 @@ declare namespace LocalJSX {
          */
         "line"?: boolean;
         /**
-          * The maximum number of tags to show when `multiple` is true. After the maximum, "+n" will be shown to indicate the number of additional items that are selected. Set to -1 to remove the limit.
-          * @deprecated : This property is ignored. The component now displays as many items as possible and computes the "+n" dynamically.
-         */
-        "maxTagsVisible"?: number;
-        /**
           * Set to true to enable multiselect.
          */
         "multiple"?: boolean;
@@ -4694,6 +4997,10 @@ declare namespace LocalJSX {
          */
         "href"?: string | undefined;
         /**
+          * Icon of the item
+         */
+        "icon"?: string;
+        /**
           * Set to true to draw the item in a selected state.
          */
         "selected"?: boolean;
@@ -4739,7 +5046,11 @@ declare namespace LocalJSX {
      */
     interface SixSpinner {
         /**
-          * Indicates if the spinner is shown as animated SIX logo or simple spinner.
+          * Indicates if the spinner is shown as animated SIX or BME logo or a simple spinner.
+         */
+        "logo"?: 'six' | 'bme';
+        /**
+          * **@deprecated** Use `logo="six"` instead.  If set to true, the spinner displays the SIX logo.
          */
         "six"?: boolean;
     }
@@ -5228,6 +5539,7 @@ declare namespace LocalJSX {
         "six-button": SixButton;
         "six-card": SixCard;
         "six-checkbox": SixCheckbox;
+        "six-date": SixDate;
         "six-datepicker": SixDatepicker;
         "six-details": SixDetails;
         "six-dialog": SixDialog;
@@ -5241,12 +5553,16 @@ declare namespace LocalJSX {
         "six-footer": SixFooter;
         "six-group-label": SixGroupLabel;
         "six-header": SixHeader;
+        "six-header-dropdown-item": SixHeaderDropdownItem;
+        "six-header-item": SixHeaderItem;
+        "six-header-menu-button": SixHeaderMenuButton;
         "six-icon": SixIcon;
         "six-icon-button": SixIconButton;
         "six-input": SixInput;
         "six-item-picker": SixItemPicker;
         "six-language-switcher": SixLanguageSwitcher;
         "six-layout-grid": SixLayoutGrid;
+        "six-logo": SixLogo;
         "six-main-container": SixMainContainer;
         "six-menu": SixMenu;
         "six-menu-divider": SixMenuDivider;
@@ -5316,6 +5632,12 @@ declare module "@stencil/core" {
              */
             "six-checkbox": LocalJSX.SixCheckbox & JSXBase.HTMLAttributes<HTMLSixCheckboxElement>;
             /**
+             * A date picker component that allows users to select dates via a calendar popup or direct input.
+             * @since 5.0
+             * @status experimental
+             */
+            "six-date": LocalJSX.SixDate & JSXBase.HTMLAttributes<HTMLSixDateElement>;
+            /**
              * @since 1.0
              * @status stable
              */
@@ -5381,6 +5703,21 @@ declare module "@stencil/core" {
              */
             "six-header": LocalJSX.SixHeader & JSXBase.HTMLAttributes<HTMLSixHeaderElement>;
             /**
+             * @since 4.2.7
+             * @status stable
+             */
+            "six-header-dropdown-item": LocalJSX.SixHeaderDropdownItem & JSXBase.HTMLAttributes<HTMLSixHeaderDropdownItemElement>;
+            /**
+             * @since 4.2.7
+             * @status stable
+             */
+            "six-header-item": LocalJSX.SixHeaderItem & JSXBase.HTMLAttributes<HTMLSixHeaderItemElement>;
+            /**
+             * @since 4.2.7
+             * @status stable
+             */
+            "six-header-menu-button": LocalJSX.SixHeaderMenuButton & JSXBase.HTMLAttributes<HTMLSixHeaderMenuButtonElement>;
+            /**
              * @since 1.0
              * @status stable
              */
@@ -5408,6 +5745,11 @@ declare module "@stencil/core" {
              * @status stable
              */
             "six-layout-grid": LocalJSX.SixLayoutGrid & JSXBase.HTMLAttributes<HTMLSixLayoutGridElement>;
+            /**
+             * @since 4.2.7
+             * @status beta
+             */
+            "six-logo": LocalJSX.SixLogo & JSXBase.HTMLAttributes<HTMLSixLogoElement>;
             /**
              * @since 1.01
              * @status stable

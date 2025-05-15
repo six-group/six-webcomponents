@@ -1,6 +1,10 @@
-<six-sidebar position="left" [open]="open">
+<six-sidebar position="left" [open]="open" sixRouterLinkActive>
   <six-sidebar-item-group routerLink="/home" name="Home" icon="home"></six-sidebar-item-group>
   <six-sidebar-item-group routerLink="/form" name="Form" icon="assignment"></six-sidebar-item-group>
   <six-sidebar-item-group routerLink="/alert" name="Alert" icon="notifications_active"></six-sidebar-item-group>
   <six-sidebar-item-group routerLink="/dialog" name="Dialog" icon="web_asset"></six-sidebar-item-group>
+  <six-sidebar-item-group icon="settings" name="Settings">
+    <six-sidebar-item routerLink="/settings/data" icon="analytics">Data</six-sidebar-item>
+    <six-sidebar-item routerLink="/settings/history" icon="history">History</six-sidebar-item>
+  </six-sidebar-item-group>
 </six-sidebar>

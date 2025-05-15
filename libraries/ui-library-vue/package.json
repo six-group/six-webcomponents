@@ -1,19 +1,31 @@
 {
   "name": "@six-group/ui-library-vue",
-  "version": "4.2.6",
+  "version": "4.3.1",
   "description": "Vue wrapper components for @six-group/ui-library",
   "main": "dist/index.js",
+  "type": "module",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",
     "build": "npm run tsc",
-    "tsc": "tsc -p . --outDir ./dist"
+    "tsc": "tsc -p . --outDir ./dist",
+    "watch": "npm run build -- --watch"
   },
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "@stencil/vue-output-target": "0.10.7",
+    "@six-group/ui-library": "*"
   },
   "peerDependencies": {
     "@six-group/ui-library": "*"
@@ -21,6 +33,6 @@
   "private": false,
   "sideEffects": false,
   "engines": {
-    "node": ">=16"
+    "node": ">=20"
   }
 }

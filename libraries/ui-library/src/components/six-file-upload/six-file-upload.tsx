@@ -84,12 +84,9 @@ export class SixFileUpload {
   }
 
   @Listen('drop', { capture: false })
-  dropHandler({ dataTransfer }: DragEvent) {
+  dropHandler() {
     if (!this.disabled) {
       this.isOver = false;
-      if (dataTransfer != null) {
-        this.handleFiles(dataTransfer.files);
-      }
     }
   }
 
@@ -208,11 +205,7 @@ export class SixFileUpload {
             'six-file-upload__container--full': !this.compact,
           }}
         >
-          {this.compact && !this.uploading && (
-            <span slot="prefix">
-              <six-icon class="six-file-upload__label-icon">arrow_circle_up</six-icon>
-            </span>
-          )}
+          {this.compact && !this.uploading && <six-icon slot="prefix">arrow_circle_up</six-icon>}
           <div
             class={{
               'six-file-upload__drop-zone': true,
