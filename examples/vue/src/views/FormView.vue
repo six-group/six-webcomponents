@@ -34,7 +34,7 @@ const invalid = ref(false);
 const disabled = ref(false);
 
 const onFileSelected = async (event: CustomEvent<SixFileUploadSuccessPayload>) => {
-  const selectedfile = (event.detail as { file: File }).file;
+  const selectedfile = (event.detail as SixFileUploadSuccessPayload).files[0];
   file.value = selectedfile.name;
   uploading.value = true;
   // simulate the uploading operation
