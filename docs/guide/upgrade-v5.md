@@ -98,6 +98,63 @@ in the Angular example application, which covers most features.
 </six-button>
 ```
 
+## Changed return type for `six-file-upload` (Breaking Change)
+
+We have changed the return type when a file is successfully updated. Instead of having two different
+return types depending on the value of the `multiple` property, we now return a
+`SixFileUploadSuccessPayload` for both cases.
+
+This means that you do not need to handle the two cases separately, but you always get a `FileList`
+back accessible with the `files` property.
+
+### Before
+
+```html
+<!-- For single files -->
+<six-file-upload id="six-file-upload--single"></six-file-upload>
+
+<!-- For multiple files -->
+<six-file-upload id="six-file-upload--multiple" multiple></six-file-upload>
+```
+
+```js
+// Single files
+const singleFileUpload = document.getElementById('six-file-upload--single');
+singleFileUpload.addEventListener('six-file-upload-success', ({ detail }) => {
+  const file = detail.file;
+});
+
+// Multiple files
+const multipleFileUpload = document.getElementById('six-file-upload--multiple');
+multipleFileUpload.addEventListener('six-file-upload-success', ({ detail }) => {
+  const file = detail.files; // <- Note the difference, an extra 's' is required
+});
+```
+
+### After
+
+```html
+<!-- For single files -->
+<six-file-upload id="six-file-upload--single"></six-file-upload>
+
+<!-- For multiple files -->
+<six-file-upload id="six-file-upload--multiple" multiple></six-file-upload>
+```
+
+```js
+// Single files
+const singleFileUpload = document.getElementById('six-file-upload--single');
+singleFileUpload.addEventListener('six-file-upload-success', ({ detail }) => {
+  const file = detail.files; // Array of files is returned, in this case with only one element
+});
+
+// Multiple files
+const multipleFileUpload = document.getElementById('six-file-upload--multiple');
+multipleFileUpload.addEventListener('six-file-upload-success', ({ detail }) => {
+  const file = detail.files; // In this case, we __may__ have more than one element
+});
+```
+
 ## Angular specific upgrade (None Breaking Change)
 
 - Angular Router integration for the `six-sidebar` component through a set of directives that
