@@ -16,6 +16,9 @@ hero:
     - theme: alt
       text: Vue Example
       link: https://six-group.github.io/six-webcomponents/demo/vue
+    - theme: alt
+      text: React Example (experimental)
+      link: https://six-group.github.io/six-webcomponents/demo/react
 features:
   - title: Agnostic
     details:
