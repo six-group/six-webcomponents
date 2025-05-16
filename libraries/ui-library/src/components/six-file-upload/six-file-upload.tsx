@@ -1,15 +1,9 @@
 import { Component, Element, Event, EventEmitter, h, Listen, Prop, State } from '@stencil/core';
 import { hasSlot } from '../../utils/slot';
 
-interface ISingleFile {
-  file: File;
-}
-
-interface IMultipleFiles {
+export interface SixFileUploadSuccessPayload {
   files: FileList;
 }
-
-export type SixFileUploadSuccessPayload = ISingleFile | IMultipleFiles;
 
 export interface SixFileUploadFailurePayload {
   reason: string;
@@ -140,8 +134,7 @@ export class SixFileUpload {
       }
     }
 
-    const eventPayload: SixFileUploadSuccessPayload = this.multiple ? { files } : { file: files[0] };
-    this.success.emit(eventPayload);
+    this.success.emit({ files } as SixFileUploadSuccessPayload);
   };
 
   componentWillLoad() {

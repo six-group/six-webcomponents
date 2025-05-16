@@ -22,10 +22,10 @@
 
 ## Events
 
-| Event                     | Description                                                              | Type                                         |
-| ------------------------- | ------------------------------------------------------------------------ | -------------------------------------------- |
-| `six-file-upload-failure` | Triggers when an uploaded file doesn't match MIME type or max file size. | `CustomEvent<SixFileUploadFailurePayload>`   |
-| `six-file-upload-success` | Triggers when a file is added.                                           | `CustomEvent<IMultipleFiles \| ISingleFile>` |
+| Event                     | Description                                                              | Type                                       |
+| ------------------------- | ------------------------------------------------------------------------ | ------------------------------------------ |
+| `six-file-upload-failure` | Triggers when an uploaded file doesn't match MIME type or max file size. | `CustomEvent<SixFileUploadFailurePayload>` |
+| `six-file-upload-success` | Triggers when a file is added.                                           | `CustomEvent<SixFileUploadSuccessPayload>` |
 
 
 ## Slots
