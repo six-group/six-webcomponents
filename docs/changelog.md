@@ -24,13 +24,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - `six-sidebar-item` : added icon property analog to `six-sidebar-item-group`
 - `six-select` : support the use of prefix/suffix slot of the `six-menu-item` which can be used as
   links for example.
+- Added support for aria-attributes in JSX typings through upgrade of an underlying library
 
 ### Fixed
 
 - `six-logo`: removed inline style tag
 - `six-timepicker`: removed unnecessary bottom padding
 - `six-button` : simplify use of prefix and suffix icons
-- `six-sidebar-item-group`: fixed spacing for sub items
+- `six-sidebar-item-group`: fixed spacing for subitems
 
 ### Removed
 
