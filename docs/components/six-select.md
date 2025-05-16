@@ -147,9 +147,9 @@ To allow multiple options to be selected, use the `multiple` attribute. It's a g
 ```
 
 
-### Multiple with Links
+### Multiple with Icons
 
-With the prefix and suffix slots you can add links to the menu items. This is useful for adding actions to the menu items.
+With the prefix and suffix slots you can display icons in the menu items.
 
 .demo-multiple-icons six-menu-item::part(base) { display: flex; align-items: center; }
 
@@ -159,32 +159,13 @@ With the prefix and suffix slots you can add links to the menu items. This is us
 <six-select filter placeholder="Select a few" multiple clearable>
   <six-menu-item value="option-1"
     >Option 1
-    <six-icon-button               size="small"
-      slot="suffix"
-      target="_blank"
-      href="#"
-      name="favorite"
-      onclick="event.stopPropagation()"
-    ></six-icon-button>
+    <six-icon-button size="small" slot="suffix" name="favorite"></six-icon-button>
   </six-menu-item>
   <six-menu-item value="option-2"
-    >Option 2
-    <six-icon-button               size="small"
-      slot="suffix"
-      target="_blank"
-      href="#"
-      name="favorite"
-      onclick="event.stopPropagation()"
-    ></six-icon-button></six-menu-item>
+    >Option 2 <six-icon-button size="small" slot="suffix" name="favorite"></six-icon-button></six-menu-item>
   <six-menu-item value="option-3"
     >Option 3
-    <six-icon-button               size="small"
-      slot="suffix"
-      target="_blank"
-      href="#"
-      name="favorite"
-      onclick="event.stopPropagation()"
-    ></six-icon-button>
+    <six-icon-button size="small" slot="suffix" name="favorite"></six-icon-button>
   </six-menu-item>
 </six-select>
 ```
