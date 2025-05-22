@@ -45,7 +45,7 @@
     "@fontsource/material-icons-outlined": "^5.1.1",
     "@popperjs/core": "^2.5.3",
     "@stencil-community/eslint-plugin": "0.x",
-    "@stencil/angular-output-target": "0.9.0",
+    "@stencil/angular-output-target": "0.10.2",
     "@stencil/react-output-target": "^1.0.0",
     "@stencil/vue-output-target": "0.10.7",
     "@stencil/sass": "3.0.12",
