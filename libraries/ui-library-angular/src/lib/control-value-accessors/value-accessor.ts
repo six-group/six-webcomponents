@@ -17,9 +17,7 @@ export class ValueAccessor implements ControlValueAccessor, AfterViewInit, OnDes
   constructor(
     protected injector: Injector,
     protected el: ElementRef
-  ) {
-    console.debug('Using configuration', this.config);
-  }
+  ) {}
 
   private onChange: (value: any) => void = () => {};
   private onTouched: () => void = () => {};
@@ -78,6 +76,7 @@ export class ValueAccessor implements ControlValueAccessor, AfterViewInit, OnDes
       element.invalid = invalid;
       element.errorText = errorTexts ?? '';
 
+      // MARK: Apply configuration passed at init time
       if (this.config.showAsteriskOnRequiredValidator) {
         element.required = this.ngControl.control.hasValidator(Validators.required);
       }
