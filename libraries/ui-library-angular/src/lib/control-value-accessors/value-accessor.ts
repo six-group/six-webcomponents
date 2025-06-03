@@ -1,4 +1,4 @@
-import { AfterViewInit, Directive, ElementRef, HostListener, Inject, inject, Injector, OnDestroy } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, HostListener, inject, Injector, OnDestroy } from '@angular/core';
 import { AbstractControl, ControlValueAccessor, NgControl, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { getLanguage, ValidationError } from '@six-group/ui-library';
@@ -76,9 +76,9 @@ export class ValueAccessor implements ControlValueAccessor, AfterViewInit, OnDes
       element.invalid = invalid;
       element.errorText = errorTexts ?? '';
 
-      // MARK: Apply configuration passed at init time
-      if (this.config.showAsteriskOnRequiredValidator) {
-        element.required = this.ngControl.control.hasValidator(Validators.required);
+      // When the module is configured to do so, display an asterisk next to any form control that has a required validator
+      if (this.config.showAsteriskOnRequiredValidator && this.ngControl.control.hasValidator(Validators.required)) {
+        element.required = true;
       }
     });
   }

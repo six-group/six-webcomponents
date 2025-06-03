@@ -1,7 +1,7 @@
 import { InjectionToken } from '@angular/core';
 
 export interface UiLibraryConfig {
-  showAsteriskOnRequiredValidator?: boolean;
+  showAsteriskOnRequiredValidator: boolean;
 }
 
 export const DEFAULT_UI_LIBRARY_CONFIG: UiLibraryConfig = {
