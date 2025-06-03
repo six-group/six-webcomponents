@@ -24,6 +24,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - `six-sidebar-item` : added icon property analog to `six-sidebar-item-group`
 - `six-select` : support the use of prefix/suffix slot of the `six-menu-item` to display icons.
 - Added support for aria-attributes in JSX typings through upgrade of an underlying library
+- `six-file-upload`: added `code` attribute to `SixFileUploadFailurePayload`, which specifies the
+  type of error that has occurred
 
 ### Fixed
 
