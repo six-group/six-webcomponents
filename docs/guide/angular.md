@@ -77,6 +77,57 @@ This section explains how to configure web-components in an Angular application 
    @import '@six-group/ui-library/dist/ui-library/ui-library.css';
    ```
 
+## Configuration
+
+The Angular library provides the ability to customise some of its behaviour when initialising it
+
+### Automatic `required` when using `FormControl` and `Validators.required`
+
+Instead of having to specify the `required` flag property on the component, the flag can be
+automatically applied whenever a `FormControl` is used and the `Validators.required` validator is
+applied.
+
+So instead of doing:
+
+```
+// my-component.component.html
+<six-input [formControl]="formControl" [required]="true"></six-input>
+
+// my-component.component.ts
+@Component({
+  ...
+})
+export class MyComponent {
+  formControl = new FormControl<string>('', Validators.required);
+  // ...
+}
+```
+
+when initialising the library pass the `showAsteriskOnRequiredValidator` property like so:
+
+```
+UiLibraryAngularModule.forRoot({
+  showAsteriskOnRequiredValidator: true
+})
+```
+
+Now your component will apply the required flag automatically, without requiring you to set it
+manually:
+
+```
+// my-component.component.html
+<six-input [formControl]="formControl"></six-input> // <-- [required] prop can be omitted
+
+// my-component.component.ts
+@Component({
+  ...
+})
+export class MyComponent {
+  formControl = new FormControl<string>('', Validators.required);
+  // ...
+}
+```
+
 ## Using the Components
 
 The components can be utilized just like any other Angular component. However, there's one caveat:
