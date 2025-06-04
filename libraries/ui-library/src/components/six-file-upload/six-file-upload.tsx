@@ -1,6 +1,5 @@
 import { Component, Element, Event, EventEmitter, h, Listen, Prop, State } from '@stencil/core';
 import { hasSlot } from '../../utils/slot';
-import { SixFileUploadFailureErrorCode } from './types';
 
 export interface SixFileUploadSuccessPayload {
   files: FileList;
@@ -8,7 +7,12 @@ export interface SixFileUploadSuccessPayload {
 
 export interface SixFileUploadFailurePayload {
   reason: string;
-  code: SixFileUploadFailureErrorCode;
+  code:
+    | 'ONLY_ONE_FILE_ALLOWED'
+    | 'ONE_OR_MORE_FILES_HAVE_INVALID_MIME_TYPE'
+    | 'INVALID_MIME_TYPE'
+    | 'ONE_OR_MULTIPLE_FILES_TOO_BIG'
+    | 'FILE_TOO_BIG';
 }
 
 /**
