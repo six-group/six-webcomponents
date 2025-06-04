@@ -1,8 +1,9 @@
 import { AfterViewInit, Directive, ElementRef, HostListener, inject, Injector, OnDestroy } from '@angular/core';
-import { AbstractControl, ControlValueAccessor, NgControl } from '@angular/forms';
+import { AbstractControl, ControlValueAccessor, NgControl, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { getLanguage, ValidationError } from '@six-group/ui-library';
 import { ValidationMessagesService } from '../services/validation-messages.service';
+import { UI_LIBRARY_CONFIG, UiLibraryConfig } from '../ui-library-angular-config';
 
 @Directive()
 export class ValueAccessor implements ControlValueAccessor, AfterViewInit, OnDestroy {
@@ -10,6 +11,8 @@ export class ValueAccessor implements ControlValueAccessor, AfterViewInit, OnDes
   private ngControl?: NgControl;
   private initialErrorText?: string;
   private validationMessagesService = inject(ValidationMessagesService);
+
+  protected config: UiLibraryConfig = inject(UI_LIBRARY_CONFIG);
 
   constructor(
     protected injector: Injector,
@@ -72,6 +75,11 @@ export class ValueAccessor implements ControlValueAccessor, AfterViewInit, OnDes
       }
       element.invalid = invalid;
       element.errorText = errorTexts ?? '';
+
+      // When the module is configured to do so, display an asterisk next to any form control that has a required validator
+      if (this.config.showAsteriskOnRequiredValidator && this.ngControl.control.hasValidator(Validators.required)) {
+        element.required = true;
+      }
     });
   }
 

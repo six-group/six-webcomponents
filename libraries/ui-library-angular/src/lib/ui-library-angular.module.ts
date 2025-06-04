@@ -29,6 +29,7 @@ import {
   ActiveSidebarItemGroupDirective,
 } from './sidebar/active-sidebar.directive';
 import { DateValueAccessor } from './control-value-accessors/date-value-accessor';
+import { DEFAULT_UI_LIBRARY_CONFIG, UI_LIBRARY_CONFIG, UiLibraryConfig } from './ui-library-angular-config';
 
 @NgModule({
   declarations: [
@@ -111,8 +112,14 @@ import { DateValueAccessor } from './control-value-accessors/date-value-accessor
 })
 export class UiLibraryAngularModule {
   static forRoot<T extends ValidationMessagesService>(
-    customValidationMessagesService?: Type<T>
+    customValidationMessagesService?: Type<T>,
+    config?: UiLibraryConfig
   ): ModuleWithProviders<UiLibraryAngularModule> {
+    const mergedConfig: UiLibraryConfig = {
+      ...DEFAULT_UI_LIBRARY_CONFIG,
+      ...config,
+    };
+
     return {
       ngModule: UiLibraryAngularModule,
       providers: [
@@ -122,6 +129,7 @@ export class UiLibraryAngularModule {
           multi: true,
         },
         { provide: ValidationMessagesService, useClass: customValidationMessagesService ?? ValidationMessagesService },
+        { provide: UI_LIBRARY_CONFIG, useValue: mergedConfig },
       ],
     };
   }

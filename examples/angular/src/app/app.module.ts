@@ -34,7 +34,9 @@ import { SettingsComponent } from './pages/settings/settings.component';
     RouterModule.forRoot(routes, { useHash: true }),
     FormsModule,
     ReactiveFormsModule,
-    UiLibraryAngularModule.forRoot(CustomValidationMessagesService),
+    UiLibraryAngularModule.forRoot(CustomValidationMessagesService, {
+      showAsteriskOnRequiredValidator: true,
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],
