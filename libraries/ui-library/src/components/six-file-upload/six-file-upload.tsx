@@ -7,6 +7,12 @@ export interface SixFileUploadSuccessPayload {
 
 export interface SixFileUploadFailurePayload {
   reason: string;
+  code:
+    | 'ONLY_ONE_FILE_ALLOWED'
+    | 'ONE_OR_MORE_FILES_HAVE_INVALID_MIME_TYPE'
+    | 'INVALID_MIME_TYPE'
+    | 'ONE_OR_MULTIPLE_FILES_TOO_BIG'
+    | 'FILE_TOO_BIG';
 }
 
 /**
@@ -110,7 +116,10 @@ export class SixFileUpload {
     }
 
     if (!this.multiple && files.length > 1) {
-      return this.failure.emit({ reason: 'Only one file is allowed.' });
+      return this.failure.emit({
+        reason: 'Only one file is allowed.',
+        code: 'ONLY_ONE_FILE_ALLOWED',
+      });
     }
 
     for (const file of files) {
@@ -125,12 +134,14 @@ export class SixFileUpload {
 
       if (acceptedTypesList.length > 0 && acceptedTypesList.indexOf(file.type) === -1) {
         const reason = files.length > 1 ? 'One or more files have invalid MIME type.' : 'File has invalid MIME type.';
-        return this.failure.emit({ reason });
+        const code = files.length > 1 ? 'ONE_OR_MORE_FILES_HAVE_INVALID_MIME_TYPE' : 'INVALID_MIME_TYPE';
+        return this.failure.emit({ reason, code });
       }
 
       if (this.maxFileSize != null && file.size > this.maxFileSize) {
         const reason = files.length > 1 ? 'One or more files are too big' : 'File is too big.';
-        return this.failure.emit({ reason });
+        const code = files.length > 1 ? 'ONE_OR_MULTIPLE_FILES_TOO_BIG' : 'FILE_TOO_BIG';
+        return this.failure.emit({ reason, code });
       }
     }
 

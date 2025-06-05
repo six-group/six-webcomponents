@@ -28,6 +28,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   `Validators.required` on Angular. See
   [docs](./guide/angular.md#automatic-required-when-using-formcontrol-and-validatorsrequired) for
   more details.
+- `six-file-upload`: added `code` attribute to `SixFileUploadFailurePayload`, which specifies the
+  type of error that has occurred
 
 ### Fixed
 
