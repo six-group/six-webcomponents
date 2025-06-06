@@ -190,7 +190,7 @@ export declare interface SixCheckbox extends Components.SixCheckbox {
 
 
 @ProxyCmp({
-  inputs: ['allowedDates', 'clearable', 'dateFormat', 'debounce', 'disabled', 'errorText', 'errorTextCount', 'helpText', 'invalid', 'label', 'language', 'max', 'min', 'name', 'placeholder', 'readonly', 'required', 'size', 'value'],
+  inputs: ['allowedDates', 'clearable', 'dateFormat', 'disabled', 'errorText', 'errorTextCount', 'helpText', 'invalid', 'label', 'language', 'max', 'min', 'name', 'placeholder', 'readonly', 'required', 'size', 'value'],
   methods: ['setFocus']
 })
 @Component({
@@ -198,7 +198,7 @@ export declare interface SixCheckbox extends Components.SixCheckbox {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['allowedDates', 'clearable', 'dateFormat', 'debounce', 'disabled', 'errorText', 'errorTextCount', 'helpText', 'invalid', 'label', 'language', 'max', 'min', 'name', 'placeholder', 'readonly', 'required', 'size', 'value'],
+  inputs: ['allowedDates', 'clearable', 'dateFormat', 'disabled', 'errorText', 'errorTextCount', 'helpText', 'invalid', 'label', 'language', 'max', 'min', 'name', 'placeholder', 'readonly', 'required', 'size', 'value'],
 })
 export class SixDate {
   protected el: HTMLSixDateElement;

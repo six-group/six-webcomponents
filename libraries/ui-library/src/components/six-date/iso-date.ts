@@ -1,4 +1,4 @@
-import { isValid, format, parse, parseISO, formatISO } from 'date-fns';
+import { format, formatISO, isValid, parse, parseISO } from 'date-fns';
 
 /**
  * Represent an iso date string like `2021-01-08`.
@@ -30,11 +30,9 @@ export interface PointerDate {
  */
 export function fromFormattedString(dateString: string, dateFormat: string): IsoDate | undefined {
   const date = parse(dateString, dateFormat, new Date());
-
-  if (isValid(date) && format(date, dateFormat) === dateString) {
+  if (isValid(date)) {
     return fromDate(date);
   }
-
   return undefined;
 }
 

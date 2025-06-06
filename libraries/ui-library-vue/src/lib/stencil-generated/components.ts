@@ -105,7 +105,6 @@ export const SixDate: StencilVueComponent<JSX.SixDate, JSX.SixDate["value"]> = /
   'errorText',
   'errorTextCount',
   'invalid',
-  'debounce',
   'name',
   'clearable',
   'six-change',
