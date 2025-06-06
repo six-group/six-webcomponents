@@ -1,7 +1,7 @@
 <template>
 <div>
 
-        <six-date label="Date with d.M.yyyy format" date-format="d.M.yyyy"></six-date>
+        <six-date label="Date with dd/MM/yy format" date-format="dd/MM/yy"></six-date>
       
 </div>
 </template>

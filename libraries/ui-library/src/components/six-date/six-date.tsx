@@ -1,6 +1,5 @@
 import { Component, Element, Event, EventEmitter, h, Method, Prop, State, Watch } from '@stencil/core';
 import { EventListeners } from '../../utils/event-listeners';
-import { debounce, DEFAULT_DEBOUNCE_FAST } from '../../utils/execution-control';
 import { hasSlot } from '../../utils/slot';
 import { MonthSelection } from './components/month-selection';
 import { YearSelection } from './components/year-selection';
@@ -17,7 +16,7 @@ const NUMBER_OF_YEARS_SHOWN = 25;
  * A date picker component that allows users to select dates via a calendar popup or direct input.
  *
  * @since 5.0
- * @status experimental
+ * @status beta
  *
  * @slot label - The date's label. Alternatively, you can use the label prop.
  * @slot help-text - Help text that describes the usage.
@@ -106,6 +105,11 @@ export class SixDate {
 
   /** Defines the format pattern for displaying dates and how dates can be entered via keyboard.
    *
+   * The parser accepts flexible input that doesn't strictly match the format pattern.
+   * Input with missing leading zeros or incomplete years will be automatically normalized.
+   * For example, with the pattern "dd.MM.yyyy": "1.1.2025" becomes "01.01.2025" and
+   * "1.1.225" becomes "01.01.0225".
+   *
    * Defaults to "dd.MM.yyyy".
    *
    * Available patterns:
@@ -134,11 +138,6 @@ export class SixDate {
 
   /** If this property is set to true and an error message is provided by `errorText`, the error message is displayed.  */
   @Prop({ reflect: true }) invalid = false;
-
-  /**
-   * Set the amount of time, in milliseconds, to wait to trigger the `six-change` event after each keystroke.
-   */
-  @Prop() debounce = DEFAULT_DEBOUNCE_FAST;
 
   /** The input's name attribute. */
   @Prop({ reflect: true }) name = '';
@@ -193,9 +192,7 @@ export class SixDate {
   private hide() {
     if (this.popoverHelper?.isVisible === false) return;
 
-    if (this.inputElement) {
-      this.inputElement.value = this.value === '' ? '' : formatDate(this.value, this.dateFormat);
-    }
+    this.updateInputElementValue();
     this.selectionMode = 'day';
     this.eventListeners.remove(document, 'mousedown', this.handleDocumentMouseDown);
     this.panelHideInProgress = true;
@@ -266,13 +263,6 @@ export class SixDate {
     }
   };
 
-  private handleClearClick = () => {
-    this.hide();
-    this.value = '';
-    this.pointerDate = todayAsPointerDate();
-    this.sixChange.emit(this.value);
-  };
-
   private handleDayClick = (date: string) => {
     this.value = date;
     this.pointerDate = toPointerDate(this.value);
@@ -307,12 +297,17 @@ export class SixDate {
     this.sixChange.emit(this.value);
   };
 
-  private handleOnBlur = () => {
+  private handleInputBlur = () => {
     if (this.popoverHelper?.isVisible === false) {
-      if (this.inputElement) {
-        this.inputElement.value = this.value === '' ? '' : formatDate(this.value, this.dateFormat);
-      }
+      this.updateInputElementValue();
     }
+  };
+
+  private handleInputClearClick = () => {
+    this.hide();
+    this.value = '';
+    this.pointerDate = todayAsPointerDate();
+    this.sixChange.emit(this.value);
   };
 
   private handleInputKeyDown = (event: KeyboardEvent) => {
@@ -325,6 +320,12 @@ export class SixDate {
     }
   };
 
+  private updateInputElementValue() {
+    if (this.inputElement) {
+      this.inputElement.value = this.value === '' ? '' : formatDate(this.value, this.dateFormat);
+    }
+  }
+
   connectedCallback() {
     this.initPopover();
     this.updateValueAndPointerDate();
@@ -333,6 +334,7 @@ export class SixDate {
   }
 
   componentDidLoad() {
+    this.updateInputElementValue();
     this.initPopover();
   }
 
@@ -347,7 +349,6 @@ export class SixDate {
       <div class="container">
         {/* INPUT */}
         <six-input
-          value={this.value === '' ? '' : formatDate(this.value, this.dateFormat)}
           ref={(el) => (this.inputElement = el)}
           placeholder={this.placeholder == null ? this.dateFormat : this.placeholder}
           readonly={this.readonly}
@@ -360,9 +361,9 @@ export class SixDate {
           errorTextCount={this.errorTextCount}
           invalid={this.invalid}
           onKeyDown={this.handleInputKeyDown}
-          onInput={debounce(this.handleInputChange, this.debounce)}
-          onBlur={this.handleOnBlur}
-          onSix-input-clear={this.handleClearClick}
+          onInput={this.handleInputChange}
+          onBlur={this.handleInputBlur}
+          onSix-input-clear={this.handleInputClearClick}
           size={this.size}
           clearable={this.clearable}
           aria-describedby="date-format"

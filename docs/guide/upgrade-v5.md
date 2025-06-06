@@ -155,6 +155,16 @@ multipleFileUpload.addEventListener('six-file-upload-success', ({ detail }) => {
 });
 ```
 
+## Replacement for six-datepicker (Beta)
+
+The current implementation of `six-datepicker` has several bugs that proved challenging to fix. To
+address these issues, we developed an entirely new component called `six-date`, which is currently
+in beta state. You can try out this new component in this release.
+
+Looking ahead, we plan to replace `six-datepicker` with `six-date` in future releases to ensure a
+more robust and reliable date selection experience. For the time being, however, `six-datepicker`
+will remain available for backward compatibility.
+
 ## Angular specific upgrade (None Breaking Change)
 
 - Angular Router integration for the `six-sidebar` component through a set of directives that
