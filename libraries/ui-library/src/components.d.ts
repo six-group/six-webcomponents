@@ -268,7 +268,7 @@ export namespace Components {
     /**
      * A date picker component that allows users to select dates via a calendar popup or direct input.
      * @since 5.0
-     * @status experimental
+     * @status beta
      */
     interface SixDate {
         /**
@@ -280,13 +280,9 @@ export namespace Components {
          */
         "clearable": boolean;
         /**
-          * Defines the format pattern for displaying dates and how dates can be entered via keyboard.  Defaults to "dd.MM.yyyy".  Available patterns: - Year: "yyyy" (e.g., "2021") - Month: "MM" (e.g., "01" for January) or "M" (e.g., "1" for January) - Day: "dd" (e.g., "08" for the 8th) or "d" (e.g., "8" for the 8th)  Examples: - "dd.MM.yyyy" -> "31.01.2024" - "yyyy-MM-dd" -> "2024-01-31" - "d.M.yyyy" -> "31.1.2024"
+          * Defines the format pattern for displaying dates and how dates can be entered via keyboard.  The parser accepts flexible input that doesn't strictly match the format pattern. Input with missing leading zeros or incomplete years will be automatically normalized. For example, with the pattern "dd.MM.yyyy": "1.1.2025" becomes "01.01.2025" and "1.1.225" becomes "01.01.0225".  Defaults to "dd.MM.yyyy".  Available patterns: - Year: "yyyy" (e.g., "2021") - Month: "MM" (e.g., "01" for January) or "M" (e.g., "1" for January) - Day: "dd" (e.g., "08" for the 8th) or "d" (e.g., "8" for the 8th)  Examples: - "dd.MM.yyyy" -> "31.01.2024" - "yyyy-MM-dd" -> "2024-01-31" - "d.M.yyyy" -> "31.1.2024"
          */
         "dateFormat": string;
-        /**
-          * Set the amount of time, in milliseconds, to wait to trigger the `six-change` event after each keystroke.
-         */
-        "debounce": number;
         /**
           * If `true` the component is disabled.
          */
@@ -2388,7 +2384,7 @@ declare global {
     /**
      * A date picker component that allows users to select dates via a calendar popup or direct input.
      * @since 5.0
-     * @status experimental
+     * @status beta
      */
     interface HTMLSixDateElement extends Components.SixDate, HTMLStencilElement {
         addEventListener<K extends keyof HTMLSixDateElementEventMap>(type: K, listener: (this: HTMLSixDateElement, ev: SixDateCustomEvent<HTMLSixDateElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -3517,7 +3513,7 @@ declare namespace LocalJSX {
     /**
      * A date picker component that allows users to select dates via a calendar popup or direct input.
      * @since 5.0
-     * @status experimental
+     * @status beta
      */
     interface SixDate {
         /**
@@ -3529,13 +3525,9 @@ declare namespace LocalJSX {
          */
         "clearable"?: boolean;
         /**
-          * Defines the format pattern for displaying dates and how dates can be entered via keyboard.  Defaults to "dd.MM.yyyy".  Available patterns: - Year: "yyyy" (e.g., "2021") - Month: "MM" (e.g., "01" for January) or "M" (e.g., "1" for January) - Day: "dd" (e.g., "08" for the 8th) or "d" (e.g., "8" for the 8th)  Examples: - "dd.MM.yyyy" -> "31.01.2024" - "yyyy-MM-dd" -> "2024-01-31" - "d.M.yyyy" -> "31.1.2024"
+          * Defines the format pattern for displaying dates and how dates can be entered via keyboard.  The parser accepts flexible input that doesn't strictly match the format pattern. Input with missing leading zeros or incomplete years will be automatically normalized. For example, with the pattern "dd.MM.yyyy": "1.1.2025" becomes "01.01.2025" and "1.1.225" becomes "01.01.0225".  Defaults to "dd.MM.yyyy".  Available patterns: - Year: "yyyy" (e.g., "2021") - Month: "MM" (e.g., "01" for January) or "M" (e.g., "1" for January) - Day: "dd" (e.g., "08" for the 8th) or "d" (e.g., "8" for the 8th)  Examples: - "dd.MM.yyyy" -> "31.01.2024" - "yyyy-MM-dd" -> "2024-01-31" - "d.M.yyyy" -> "31.1.2024"
          */
         "dateFormat"?: string;
-        /**
-          * Set the amount of time, in milliseconds, to wait to trigger the `six-change` event after each keystroke.
-         */
-        "debounce"?: number;
         /**
           * If `true` the component is disabled.
          */
@@ -5634,7 +5626,7 @@ declare module "@stencil/core" {
             /**
              * A date picker component that allows users to select dates via a calendar popup or direct input.
              * @since 5.0
-             * @status experimental
+             * @status beta
              */
             "six-date": LocalJSX.SixDate & JSXBase.HTMLAttributes<HTMLSixDateElement>;
             /**
