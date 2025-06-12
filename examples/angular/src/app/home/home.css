@@ -1,3 +1,7 @@
+:host {
+  display: block;
+}
+
 .home {
   text-align: center;
 }

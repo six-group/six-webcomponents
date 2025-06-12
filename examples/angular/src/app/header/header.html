@@ -1,7 +1,7 @@
 <six-header #header>
   <!-- hamburger menu -->
   <six-header-item>
-    <six-icon-button [name]="open ? 'menu_open' : 'menu'" (click)="leftSidebarToggled.emit()" />
+    <six-icon-button [name]="open() ? 'menu_open' : 'menu'" (click)="leftSidebarToggled.emit()" />
   </six-header-item>
 
   <!-- logo -->
@@ -25,20 +25,20 @@
   <!-- notifications -->
   <six-header-item>
     <six-icon-button name="notifications_none" (click)="rightSidebarToggled.emit()">
-      <six-badge type="danger" pill>{{ taskCount }}</six-badge>
+      <six-badge type="danger" pill>{{ taskCount() }}</six-badge>
     </six-icon-button>
   </six-header-item>
 
   <!-- App Switcher -->
   <six-header-dropdown-item>
     <six-header-menu-button slot="trigger">
-      <span>{{ currentApp }}</span>
+      <span>{{ currentApp() }}</span>
       <six-icon slot="suffix">apps</six-icon>
     </six-header-menu-button>
     <six-menu>
-      <six-menu-item *ngFor="let app of apps" [checked]="app === currentApp" (click)="currentApp = app">
-        {{ app }}
-      </six-menu-item>
+      @for (app of apps; track app) {
+      <six-menu-item [checked]="app === currentApp()" (click)="currentApp.set(app)"> {{ app }} </six-menu-item>
+      }
     </six-menu>
   </six-header-dropdown-item>
 

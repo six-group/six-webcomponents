@@ -1,5 +1,5 @@
-six-layout-grid {
-  row-gap: var(--six-spacing-x-small);
+:host {
+  display: block;
 }
 
 h2 {
@@ -7,9 +7,13 @@ h2 {
   margin-bottom: var(--six-spacing-x-large);
 }
 
-h3 {
-  margin-top: var(--six-spacing-xx-large);
+form {
+  max-width: 40rem;
   margin-bottom: var(--six-spacing-large);
+}
+
+six-button {
+  align-self: end;
 }
 
 six-button {

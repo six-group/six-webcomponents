@@ -15,6 +15,10 @@
     "@six-group/ui-library-vue": "*",
     "nuxt": "^3.16.2"
   },
+  "optionalDependencies": {
+    "@oxc-parser/binding-linux-x64-gnu": "^0.72.3",
+    "@rollup/rollup-linux-x64-gnu": "^4.43.0"
+  },
   "devDependencies": {
     "@wdio/cli": "^9.4.5",
     "@wdio/globals": "^9.1.3",
