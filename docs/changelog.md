@@ -61,6 +61,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Upgraded Stencil to latest release and upgraded Vue output target
 - Upgraded React output target to version 1.0.0
 - Upgraded Angular output target to version 0.10.2
+- Upgraded Angular Demo App to version 20. Rewritten with
+  [standalone bootstrapping](https://angular.dev/reference/migrations/standalone#switch-to-standalone-bootstrapping-api),
+  signals, new template syntax, etc.
 
 ## 4.3.2 - 2025-02-13
 
