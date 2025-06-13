@@ -8,6 +8,7 @@ import { LocationStrategy } from '@angular/common';
 @Directive({
   selector:
     'six-sidebar-item[routerLink],six-sidebar-item-group[routerLink],six-button[routerLink],six-icon-button[routerLink]',
+  standalone: false,
 })
 export class SixRouterLinkDirective implements OnInit, OnChanges {
   constructor(

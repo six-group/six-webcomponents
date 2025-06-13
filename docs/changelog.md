@@ -52,10 +52,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
-- **⚠️Breaking**: Upgraded library to Node 20
-
-  The SIX Webcomponents cannot be used with Node 16 or 18 anymore. Please upgrade to Node 20.
-
+- **⚠️Breaking**: Upgraded Angular support to version 19. Please upgrade your application to version
+  19 or higher.
+- **⚠️Breaking**: Upgraded library to Node 22. The SIX Webcomponents cannot be used with Node 16 or
+  18 or 20 anymore. Please upgrade to Node 22.
 - **⚠️Breaking**: `six-file-upload` on upload success now returns a `FileList` regardless of the
   value of the `multiple` property
 - Upgraded Stencil to latest release and upgraded Vue output target
