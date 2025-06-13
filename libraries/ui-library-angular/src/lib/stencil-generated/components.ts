@@ -12,6 +12,7 @@ import { Components } from '@six-group/ui-library';
   methods: ['show', 'hide', 'toast']
 })
 @Component({
+  standalone: false,
   selector: 'six-alert',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -54,6 +55,7 @@ export declare interface SixAlert extends Components.SixAlert {
   inputs: ['alt', 'image', 'initials', 'shape']
 })
 @Component({
+  standalone: false,
   selector: 'six-avatar',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -76,6 +78,7 @@ export declare interface SixAvatar extends Components.SixAvatar {}
   inputs: ['pill', 'pulse', 'type']
 })
 @Component({
+  standalone: false,
   selector: 'six-badge',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -99,6 +102,7 @@ export declare interface SixBadge extends Components.SixBadge {}
   methods: ['setFocus', 'removeFocus']
 })
 @Component({
+  standalone: false,
   selector: 'six-button',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -132,6 +136,7 @@ export declare interface SixButton extends Components.SixButton {
 @ProxyCmp({
 })
 @Component({
+  standalone: false,
   selector: 'six-card',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -155,6 +160,7 @@ export declare interface SixCard extends Components.SixCard {}
   methods: ['setFocus', 'removeFocus']
 })
 @Component({
+  standalone: false,
   selector: 'six-checkbox',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -194,6 +200,7 @@ export declare interface SixCheckbox extends Components.SixCheckbox {
   methods: ['setFocus']
 })
 @Component({
+  standalone: false,
   selector: 'six-date',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -229,6 +236,7 @@ Does not contain event details.
   methods: ['setFocus', 'select']
 })
 @Component({
+  standalone: false,
   selector: 'six-datepicker',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -269,6 +277,7 @@ export declare interface SixDatepicker extends Components.SixDatepicker {
   methods: ['show', 'hide']
 })
 @Component({
+  standalone: false,
   selector: 'six-details',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -312,6 +321,7 @@ export declare interface SixDetails extends Components.SixDetails {
   methods: ['show', 'hide']
 })
 @Component({
+  standalone: false,
   selector: 'six-dialog',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -364,6 +374,7 @@ allow you to set it on a different element in the dialog, such as an input or bu
   methods: ['show', 'hide']
 })
 @Component({
+  standalone: false,
   selector: 'six-drawer',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -416,6 +427,7 @@ allow you to set it on a different element in the drawer, such as an input or bu
   methods: ['show', 'hide']
 })
 @Component({
+  standalone: false,
   selector: 'six-dropdown',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -472,6 +484,7 @@ export declare interface SixDropdown extends Components.SixDropdown {
 @ProxyCmp({
 })
 @Component({
+  standalone: false,
   selector: 'six-error',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -494,6 +507,7 @@ export declare interface SixError extends Components.SixError {}
   inputs: ['customDescription', 'customIcon', 'customTitle', 'errorCode', 'language']
 })
 @Component({
+  standalone: false,
   selector: 'six-error-page',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -515,6 +529,7 @@ export declare interface SixErrorPage extends Components.SixErrorPage {}
 @ProxyCmp({
 })
 @Component({
+  standalone: false,
   selector: 'six-file-list',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -537,6 +552,7 @@ export declare interface SixFileList extends Components.SixFileList {}
   inputs: ['date', 'identifier', 'name', 'nodelete', 'nodownload', 'size']
 })
 @Component({
+  standalone: false,
   selector: 'six-file-list-item',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -572,6 +588,7 @@ export declare interface SixFileListItem extends Components.SixFileListItem {
   inputs: ['accept', 'compact', 'disabled', 'errorText', 'invalid', 'label', 'maxFileSize', 'multiple', 'uploading']
 })
 @Component({
+  standalone: false,
   selector: 'six-file-upload',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -606,6 +623,7 @@ export declare interface SixFileUpload extends Components.SixFileUpload {
 @ProxyCmp({
 })
 @Component({
+  standalone: false,
   selector: 'six-footer',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -628,6 +646,7 @@ export declare interface SixFooter extends Components.SixFooter {}
   inputs: ['disabled', 'helpText', 'label', 'required', 'size']
 })
 @Component({
+  standalone: false,
   selector: 'six-group-label',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -650,6 +669,7 @@ export declare interface SixGroupLabel extends Components.SixGroupLabel {}
   inputs: ['openSearch', 'shiftContent']
 })
 @Component({
+  standalone: false,
   selector: 'six-header',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -672,6 +692,7 @@ export declare interface SixHeader extends Components.SixHeader {}
   inputs: ['filter', 'filterPlaceholder']
 })
 @Component({
+  standalone: false,
   selector: 'six-header-dropdown-item',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -694,6 +715,7 @@ export declare interface SixHeaderDropdownItem extends Components.SixHeaderDropd
   inputs: ['active']
 })
 @Component({
+  standalone: false,
   selector: 'six-header-item',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -716,6 +738,7 @@ export declare interface SixHeaderItem extends Components.SixHeaderItem {}
   inputs: ['caret', 'disabled', 'loading', 'reset', 'submit']
 })
 @Component({
+  standalone: false,
   selector: 'six-header-menu-button',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -738,6 +761,7 @@ export declare interface SixHeaderMenuButton extends Components.SixHeaderMenuBut
   inputs: ['filled', 'size']
 })
 @Component({
+  standalone: false,
   selector: 'six-icon',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -760,6 +784,7 @@ export declare interface SixIcon extends Components.SixIcon {}
   inputs: ['disabled', 'download', 'href', 'html', 'label', 'name', 'size', 'target']
 })
 @Component({
+  standalone: false,
   selector: 'six-icon-button',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -783,6 +808,7 @@ export declare interface SixIconButton extends Components.SixIconButton {}
   methods: ['setFocus', 'removeFocus', 'select', 'setSelectionRange', 'getSelectionRange', 'setRangeText']
 })
 @Component({
+  standalone: false,
   selector: 'six-input',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -829,6 +855,7 @@ export declare interface SixInput extends Components.SixInput {
   inputs: ['debounce', 'interval', 'items', 'max', 'min', 'padded', 'paddingChar', 'paddingDirection', 'paddingLength', 'roundtrip', 'step', 'timeout', 'type', 'value']
 })
 @Component({
+  standalone: false,
   selector: 'six-item-picker',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -863,6 +890,7 @@ export declare interface SixItemPicker extends Components.SixItemPicker {
   inputs: ['languages', 'selected']
 })
 @Component({
+  standalone: false,
   selector: 'six-language-switcher',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -893,6 +921,7 @@ export declare interface SixLanguageSwitcher extends Components.SixLanguageSwitc
   inputs: ['columns']
 })
 @Component({
+  standalone: false,
   selector: 'six-layout-grid',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -915,6 +944,7 @@ export declare interface SixLayoutGrid extends Components.SixLayoutGrid {}
   inputs: ['brand']
 })
 @Component({
+  standalone: false,
   selector: 'six-logo',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -937,6 +967,7 @@ export declare interface SixLogo extends Components.SixLogo {}
   inputs: ['padded']
 })
 @Component({
+  standalone: false,
   selector: 'six-main-container',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -960,6 +991,7 @@ export declare interface SixMainContainer extends Components.SixMainContainer {}
   methods: ['typeToSelect']
 })
 @Component({
+  standalone: false,
   selector: 'six-menu',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -989,6 +1021,7 @@ export declare interface SixMenu extends Components.SixMenu {
 @ProxyCmp({
 })
 @Component({
+  standalone: false,
   selector: 'six-menu-divider',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -1012,6 +1045,7 @@ export declare interface SixMenuDivider extends Components.SixMenuDivider {}
   methods: ['setFocus', 'removeFocus', 'getTextLabel']
 })
 @Component({
+  standalone: false,
   selector: 'six-menu-item',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -1033,6 +1067,7 @@ export declare interface SixMenuItem extends Components.SixMenuItem {}
 @ProxyCmp({
 })
 @Component({
+  standalone: false,
   selector: 'six-menu-label',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -1055,6 +1090,7 @@ export declare interface SixMenuLabel extends Components.SixMenuLabel {}
   inputs: ['size']
 })
 @Component({
+  standalone: false,
   selector: 'six-picto',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -1077,6 +1113,7 @@ export declare interface SixPicto extends Components.SixPicto {}
   inputs: ['indeterminate', 'percentage']
 })
 @Component({
+  standalone: false,
   selector: 'six-progress-bar',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -1099,6 +1136,7 @@ export declare interface SixProgressBar extends Components.SixProgressBar {}
   inputs: ['percentage', 'size', 'strokeWidth']
 })
 @Component({
+  standalone: false,
   selector: 'six-progress-ring',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -1122,6 +1160,7 @@ export declare interface SixProgressRing extends Components.SixProgressRing {}
   methods: ['setFocus', 'removeFocus']
 })
 @Component({
+  standalone: false,
   selector: 'six-radio',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -1161,6 +1200,7 @@ export declare interface SixRadio extends Components.SixRadio {
   methods: ['setFocus', 'removeFocus']
 })
 @Component({
+  standalone: false,
   selector: 'six-range',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -1199,6 +1239,7 @@ export declare interface SixRange extends Components.SixRange {
   inputs: ['padded', 'stage', 'version']
 })
 @Component({
+  standalone: false,
   selector: 'six-root',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -1221,6 +1262,7 @@ export declare interface SixRoot extends Components.SixRoot {}
   inputs: ['clearable', 'debounce', 'disabled', 'placeholder', 'value']
 })
 @Component({
+  standalone: false,
   selector: 'six-search-field',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -1252,6 +1294,7 @@ export declare interface SixSearchField extends Components.SixSearchField {
   methods: ['setFocus']
 })
 @Component({
+  standalone: false,
   selector: 'six-select',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -1292,6 +1335,7 @@ export declare interface SixSelect extends Components.SixSelect {
   methods: ['toggle', 'show', 'hide', 'selectItemByIndex', 'selectItemByName']
 })
 @Component({
+  standalone: false,
   selector: 'six-sidebar',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -1339,6 +1383,7 @@ allow you to set it on a different element in the sidebar, such as an input or b
   inputs: ['disabled', 'href', 'icon', 'selected', 'value']
 })
 @Component({
+  standalone: false,
   selector: 'six-sidebar-item',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -1361,6 +1406,7 @@ export declare interface SixSidebarItem extends Components.SixSidebarItem {}
   inputs: ['href', 'icon', 'name', 'open', 'summaryIcon', 'value']
 })
 @Component({
+  standalone: false,
   selector: 'six-sidebar-item-group',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -1383,6 +1429,7 @@ export declare interface SixSidebarItemGroup extends Components.SixSidebarItemGr
   inputs: ['logo', 'six']
 })
 @Component({
+  standalone: false,
   selector: 'six-spinner',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -1405,6 +1452,7 @@ export declare interface SixSpinner extends Components.SixSpinner {}
   inputs: ['stage']
 })
 @Component({
+  standalone: false,
   selector: 'six-stage-indicator',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -1428,6 +1476,7 @@ export declare interface SixStageIndicator extends Components.SixStageIndicator 
   methods: ['setFocus', 'removeFocus']
 })
 @Component({
+  standalone: false,
   selector: 'six-switch',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -1467,6 +1516,7 @@ export declare interface SixSwitch extends Components.SixSwitch {
   methods: ['setFocus', 'removeFocus']
 })
 @Component({
+  standalone: false,
   selector: 'six-tab',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -1498,6 +1548,7 @@ export declare interface SixTab extends Components.SixTab {
   methods: ['show']
 })
 @Component({
+  standalone: false,
   selector: 'six-tab-group',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -1533,6 +1584,7 @@ export declare interface SixTabGroup extends Components.SixTabGroup {
   inputs: ['active', 'name']
 })
 @Component({
+  standalone: false,
   selector: 'six-tab-panel',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -1555,6 +1607,7 @@ export declare interface SixTabPanel extends Components.SixTabPanel {}
   inputs: ['clearable', 'pill', 'size', 'type']
 })
 @Component({
+  standalone: false,
   selector: 'six-tag',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -1586,6 +1639,7 @@ export declare interface SixTag extends Components.SixTag {
   methods: ['setFocus', 'removeFocus', 'select', 'setSelectionRange', 'setRangeText']
 })
 @Component({
+  standalone: false,
   selector: 'six-textarea',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -1629,6 +1683,7 @@ export declare interface SixTextarea extends Components.SixTextarea {
   methods: ['hide', 'show']
 })
 @Component({
+  standalone: false,
   selector: 'six-tile',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -1664,6 +1719,7 @@ export declare interface SixTile extends Components.SixTile {
   methods: ['setFocus']
 })
 @Component({
+  standalone: false,
   selector: 'six-timepicker',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -1704,6 +1760,7 @@ export declare interface SixTimepicker extends Components.SixTimepicker {
   methods: ['show', 'hide']
 })
 @Component({
+  standalone: false,
   selector: 'six-tooltip',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',

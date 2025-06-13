@@ -22,6 +22,7 @@ import { AbstractControl, FormArray, FormControl, FormGroup, FormGroupDirective 
  */
 @Directive({
   selector: 'form[sixForm]',
+  standalone: false,
 })
 export class SixFormDirective {
   /**
@@ -71,6 +72,7 @@ export class SixFormDirective {
  */
 @Directive({
   selector: '[sixFormUtil]',
+  standalone: false,
 })
 export class SixFormUtilDirective {
   constructor(
