@@ -11,6 +11,7 @@ import { ValueAccessor } from './value-accessor';
       multi: true,
     },
   ],
+  standalone: false,
 })
 export class RadioValueAccessor extends ValueAccessor implements OnInit {
   constructor(injector: Injector, el: ElementRef) {

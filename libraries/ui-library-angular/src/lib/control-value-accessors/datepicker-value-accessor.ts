@@ -11,6 +11,7 @@ import { ValueAccessor } from './value-accessor';
       multi: true,
     },
   ],
+  standalone: false,
 })
 export class DatepickerValueAccessor extends ValueAccessor {
   constructor(injector: Injector, el: ElementRef) {

@@ -24,6 +24,7 @@ export const config: Config = {
       componentCorePackage: '@six-group/ui-library',
       directivesProxyFile: '../ui-library-angular/src/lib/stencil-generated/components.ts',
       directivesArrayFile: '../ui-library-angular/src/lib/stencil-generated/index.ts',
+      outputType: 'component',
     }),
     vueOutputTarget({
       componentCorePackage: '@six-group/ui-library',

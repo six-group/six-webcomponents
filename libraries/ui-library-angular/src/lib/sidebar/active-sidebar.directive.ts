@@ -22,6 +22,7 @@ import { SixSidebarItem, SixSidebarItemGroup } from '../stencil-generated/compon
  */
 @Directive({
   selector: 'six-sidebar[sixRouterLinkActive]',
+  standalone: false,
 })
 export class ActiveSidebarDirective {}
 
@@ -37,6 +38,7 @@ export class ActiveSidebarDirective {}
 @Directive({
   selector: 'six-sidebar-item',
   hostDirectives: [RouterLinkActive],
+  standalone: false,
 })
 export class ActiveSidebarItemDirective {
   private routerLinkActive = inject(RouterLinkActive);
@@ -66,6 +68,7 @@ export class ActiveSidebarItemDirective {
 @Directive({
   selector: 'six-sidebar-item-group',
   hostDirectives: [RouterLinkActive],
+  standalone: false,
 })
 export class ActiveSidebarItemGroupDirective {
   private routerLinkActive = inject(RouterLinkActive);
