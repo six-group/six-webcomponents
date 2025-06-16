@@ -25,12 +25,6 @@
     "ng-packagr": "^19.2.0",
     "typescript": "~5.7.2"
   },
-  "overrides": {
-    "@angular/common": "^19.2.0",
-    "@angular/core": "^19.2.0",
-    "@angular/router": "^19.2.0",
-    "@angular/forms": "^19.2.0"
-  },
   "sideEffects": false,
   "engines": {
     "node": ">=22"
