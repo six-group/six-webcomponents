@@ -58,6 +58,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   18 or 20 anymore. Please upgrade to Node 22.
 - **⚠️Breaking**: `six-file-upload` on upload success now returns a `FileList` regardless of the
   value of the `multiple` property
+- **⚠️Breaking**: `six-drawer`: replaced the `six-drawer-overlay-dismiss` event with
+  `six-drawer-request-close`, which allows preventing the drawer from closing not only when clicking
+  the overlay but also when clicking the close button or pressing `Escape`.
+- **⚠️Breaking**: `six-dialog`: replaced the `six-dialog-overlay-dismiss` event with
+  `six-dialog-request-close`, which allows preventing the dialog from closing not only when clicking
+  the overlay but also when clicking the close button or pressing `Escape`.
 - Upgraded Stencil to latest release and upgraded Vue output target
 - Upgraded React output target to version 1.0.0
 - Upgraded Angular output target to version 0.10.2

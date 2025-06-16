@@ -185,14 +185,14 @@ export const SixDialog: StencilVueComponent<JSX.SixDialog> = /*@__PURE__*/ defin
   'six-dialog-hide',
   'six-dialog-after-hide',
   'six-dialog-initial-focus',
-  'six-dialog-overlay-dismiss'
+  'six-dialog-request-close'
 ], [
   'six-dialog-show',
   'six-dialog-after-show',
   'six-dialog-hide',
   'six-dialog-after-hide',
   'six-dialog-initial-focus',
-  'six-dialog-overlay-dismiss'
+  'six-dialog-request-close'
 ]);
 
 
@@ -207,14 +207,14 @@ export const SixDrawer: StencilVueComponent<JSX.SixDrawer> = /*@__PURE__*/ defin
   'six-drawer-hide',
   'six-drawer-after-hide',
   'six-drawer-initial-focus',
-  'six-drawer-overlay-dismiss'
+  'six-drawer-request-close'
 ], [
   'six-drawer-show',
   'six-drawer-after-show',
   'six-drawer-hide',
   'six-drawer-after-hide',
   'six-drawer-initial-focus',
-  'six-drawer-overlay-dismiss'
+  'six-drawer-request-close'
 ]);
 
 

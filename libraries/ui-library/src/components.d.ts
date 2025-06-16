@@ -10,6 +10,8 @@ import { EmptyPayload } from "./utils/types";
 import { Language } from "./utils/error-messages";
 import { SixDateFormats } from "./components/six-datepicker/six-date-formats";
 import { SixDatepickerSelectPayload } from "./components/six-datepicker/six-datepicker";
+import { SixDialogRequestClose } from "./components/six-dialog/six-dialog";
+import { SixDrawerRequestClose } from "./components/six-drawer/six-drawer";
 import { SixMenuItemData } from "./components/six-menu/six-menu";
 import { SixDropdownAsyncFilterPayload, SixDropdownAutoFilterPayload, SixDropdownScrollPayload } from "./components/six-dropdown/six-dropdown";
 import { SixFileListDownloadPayload, SixFileListRemovePayload } from "./components/six-file-list-item/six-file-list-item";
@@ -31,6 +33,8 @@ export { EmptyPayload } from "./utils/types";
 export { Language } from "./utils/error-messages";
 export { SixDateFormats } from "./components/six-datepicker/six-date-formats";
 export { SixDatepickerSelectPayload } from "./components/six-datepicker/six-datepicker";
+export { SixDialogRequestClose } from "./components/six-dialog/six-dialog";
+export { SixDrawerRequestClose } from "./components/six-drawer/six-drawer";
 export { SixMenuItemData } from "./components/six-menu/six-menu";
 export { SixDropdownAsyncFilterPayload, SixDropdownAutoFilterPayload, SixDropdownScrollPayload } from "./components/six-dropdown/six-dropdown";
 export { SixFileListDownloadPayload, SixFileListRemovePayload } from "./components/six-file-list-item/six-file-list-item";
@@ -2454,7 +2458,7 @@ declare global {
         "six-dialog-hide": EmptyPayload;
         "six-dialog-after-hide": EmptyPayload;
         "six-dialog-initial-focus": EmptyPayload;
-        "six-dialog-overlay-dismiss": EmptyPayload;
+        "six-dialog-request-close": SixDialogRequestClose;
     }
     /**
      * @since 1.0
@@ -2481,7 +2485,7 @@ declare global {
         "six-drawer-hide": EmptyPayload;
         "six-drawer-after-hide": EmptyPayload;
         "six-drawer-initial-focus": EmptyPayload;
-        "six-drawer-overlay-dismiss": EmptyPayload;
+        "six-drawer-request-close": SixDrawerRequestClose;
     }
     /**
      * @since 1.0
@@ -3816,9 +3820,9 @@ declare namespace LocalJSX {
          */
         "onSix-dialog-initial-focus"?: (event: SixDialogCustomEvent<EmptyPayload>) => void;
         /**
-          * Emitted when the overlay is clicked. Calling `event.preventDefault()` will prevent the dialog from closing.
+          * Emitted when the user attempts to close the drawer by clicking the close button, clicking the overlay, or pressing escape. Calling `event.preventDefault()` will keep the drawer open. Avoid using this unless closing the drawer will result in destructive behavior such as data loss.
          */
-        "onSix-dialog-overlay-dismiss"?: (event: SixDialogCustomEvent<EmptyPayload>) => void;
+        "onSix-dialog-request-close"?: (event: SixDialogCustomEvent<SixDialogRequestClose>) => void;
         /**
           * Emitted when the dialog opens. Calling `event.preventDefault()` will prevent it from being opened.
          */
@@ -3863,9 +3867,9 @@ declare namespace LocalJSX {
          */
         "onSix-drawer-initial-focus"?: (event: SixDrawerCustomEvent<EmptyPayload>) => void;
         /**
-          * Emitted when the overlay is clicked. Calling `event.preventDefault()` will prevent the drawer from closing.
+          * Emitted when the user attempts to close the drawer by clicking the close button, clicking the overlay, or pressing escape. Calling `event.preventDefault()` will keep the drawer open. Avoid using this unless closing the drawer will result in destructive behavior such as data loss.
          */
-        "onSix-drawer-overlay-dismiss"?: (event: SixDrawerCustomEvent<EmptyPayload>) => void;
+        "onSix-drawer-request-close"?: (event: SixDrawerCustomEvent<SixDrawerRequestClose>) => void;
         /**
           * Emitted when the drawer opens. Calling `event.preventDefault()` will prevent it from being opened.
          */

@@ -2,9 +2,9 @@
   #myDialog
   label="Dialog"
   class="dialog-overview"
-  (six-dialog-overlay-dismiss)="preventClosing.checked ? $event.preventDefault() : true"
+  (six-dialog-request-close)="preventClosing.checked ? $event.preventDefault() : true"
 >
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. aölkjölkjaölsdfas öl
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
   <six-button slot="footer" type="primary" (click)="myDialog.hide()">Close</six-button>
 </six-dialog>
 

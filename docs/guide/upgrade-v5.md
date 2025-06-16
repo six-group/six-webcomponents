@@ -155,6 +155,12 @@ multipleFileUpload.addEventListener('six-file-upload-success', ({ detail }) => {
 });
 ```
 
+## Replaced event to prevent dialog and drawer from closing (Breaking)
+
+We have changed the event to prevent a dialog from closing from `six-...-overlay-dismiss` to
+`six-...-request-close`. This allows preventing the dialog/drawer from closing not only when
+clicking the overlay but also when clicking the close button or pressing `Escape`.
+
 ## Replacement for six-datepicker (Beta)
 
 The current implementation of `six-datepicker` has several bugs that proved challenging to fix. To

@@ -7,7 +7,7 @@
 
 /* eslint-disable */
 
-import { type EmptyPayload, type SixAlertCustomEvent, type SixButtonCustomEvent, type SixCheckboxCustomEvent, type SixDatepickerCustomEvent, type SixDatepickerSelectPayload, type SixDetailsCustomEvent, type SixDialogCustomEvent, type SixDrawerCustomEvent, type SixDropdownAsyncFilterPayload, type SixDropdownAutoFilterPayload, type SixDropdownCustomEvent, type SixDropdownScrollPayload, type SixFileListDownloadPayload, type SixFileListItemCustomEvent, type SixFileListRemovePayload, type SixFileUploadCustomEvent, type SixFileUploadFailurePayload, type SixFileUploadSuccessPayload, type SixInputCustomEvent, type SixItemPickerChangePayload, type SixItemPickerCustomEvent, type SixLanguageSwitcherChangePayload, type SixLanguageSwitcherCustomEvent, type SixMenuCustomEvent, type SixMenuItemSelectedPayload, type SixRadioCustomEvent, type SixRangeCustomEvent, type SixSearchFieldChangePayload, type SixSearchFieldCustomEvent, type SixSelectChangePayload, type SixSelectCustomEvent, type SixSidebarCustomEvent, type SixSwitchCustomEvent, type SixTabCustomEvent, type SixTabGroupCustomEvent, type SixTabHidePayload, type SixTabShowPayload, type SixTagCustomEvent, type SixTextareaCustomEvent, type SixTileCustomEvent, type SixTimepickerChange, type SixTimepickerCustomEvent, type SixTooltipCustomEvent } from "@six-group/ui-library";
+import { type EmptyPayload, type SixAlertCustomEvent, type SixButtonCustomEvent, type SixCheckboxCustomEvent, type SixDatepickerCustomEvent, type SixDatepickerSelectPayload, type SixDetailsCustomEvent, type SixDialogCustomEvent, type SixDialogRequestClose, type SixDrawerCustomEvent, type SixDrawerRequestClose, type SixDropdownAsyncFilterPayload, type SixDropdownAutoFilterPayload, type SixDropdownCustomEvent, type SixDropdownScrollPayload, type SixFileListDownloadPayload, type SixFileListItemCustomEvent, type SixFileListRemovePayload, type SixFileUploadCustomEvent, type SixFileUploadFailurePayload, type SixFileUploadSuccessPayload, type SixInputCustomEvent, type SixItemPickerChangePayload, type SixItemPickerCustomEvent, type SixLanguageSwitcherChangePayload, type SixLanguageSwitcherCustomEvent, type SixMenuCustomEvent, type SixMenuItemSelectedPayload, type SixRadioCustomEvent, type SixRangeCustomEvent, type SixSearchFieldChangePayload, type SixSearchFieldCustomEvent, type SixSelectChangePayload, type SixSelectCustomEvent, type SixSidebarCustomEvent, type SixSwitchCustomEvent, type SixTabCustomEvent, type SixTabGroupCustomEvent, type SixTabHidePayload, type SixTabShowPayload, type SixTagCustomEvent, type SixTextareaCustomEvent, type SixTileCustomEvent, type SixTimepickerChange, type SixTimepickerCustomEvent, type SixTooltipCustomEvent } from "@six-group/ui-library";
 import { SixAlert as SixAlertElement, defineCustomElement as defineSixAlert } from "@six-group/ui-library/dist/components/six-alert.js";
 import { SixAvatar as SixAvatarElement, defineCustomElement as defineSixAvatar } from "@six-group/ui-library/dist/components/six-avatar.js";
 import { SixBadge as SixBadgeElement, defineCustomElement as defineSixBadge } from "@six-group/ui-library/dist/components/six-badge.js";
@@ -222,7 +222,7 @@ export type SixDialogEvents = {
     onSixDialogHide: EventName<SixDialogCustomEvent<EmptyPayload>>,
     onSixDialogAfterHide: EventName<SixDialogCustomEvent<EmptyPayload>>,
     onSixDialogInitialFocus: EventName<SixDialogCustomEvent<EmptyPayload>>,
-    onSixDialogOverlayDismiss: EventName<SixDialogCustomEvent<EmptyPayload>>
+    onSixDialogRequestClose: EventName<SixDialogCustomEvent<SixDialogRequestClose>>
 };
 
 export const SixDialog: StencilReactComponent<SixDialogElement, SixDialogEvents> = /*@__PURE__*/ createComponent<SixDialogElement, SixDialogEvents>({
@@ -236,7 +236,7 @@ export const SixDialog: StencilReactComponent<SixDialogElement, SixDialogEvents>
         onSixDialogHide: 'six-dialog-hide',
         onSixDialogAfterHide: 'six-dialog-after-hide',
         onSixDialogInitialFocus: 'six-dialog-initial-focus',
-        onSixDialogOverlayDismiss: 'six-dialog-overlay-dismiss'
+        onSixDialogRequestClose: 'six-dialog-request-close'
     } as SixDialogEvents,
     defineCustomElement: defineSixDialog
 });
@@ -247,7 +247,7 @@ export type SixDrawerEvents = {
     onSixDrawerHide: EventName<SixDrawerCustomEvent<EmptyPayload>>,
     onSixDrawerAfterHide: EventName<SixDrawerCustomEvent<EmptyPayload>>,
     onSixDrawerInitialFocus: EventName<SixDrawerCustomEvent<EmptyPayload>>,
-    onSixDrawerOverlayDismiss: EventName<SixDrawerCustomEvent<EmptyPayload>>
+    onSixDrawerRequestClose: EventName<SixDrawerCustomEvent<SixDrawerRequestClose>>
 };
 
 export const SixDrawer: StencilReactComponent<SixDrawerElement, SixDrawerEvents> = /*@__PURE__*/ createComponent<SixDrawerElement, SixDrawerEvents>({
@@ -261,7 +261,7 @@ export const SixDrawer: StencilReactComponent<SixDrawerElement, SixDrawerEvents>
         onSixDrawerHide: 'six-drawer-hide',
         onSixDrawerAfterHide: 'six-drawer-after-hide',
         onSixDrawerInitialFocus: 'six-drawer-initial-focus',
-        onSixDrawerOverlayDismiss: 'six-drawer-overlay-dismiss'
+        onSixDrawerRequestClose: 'six-drawer-request-close'
     } as SixDrawerEvents,
     defineCustomElement: defineSixDrawer
 });
