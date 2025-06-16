@@ -1,8 +1,8 @@
 <template>
 <div>
 
-        <six-dialog label="Dialog" class="dialog-no-overlay-dismiss">
-          This dialog will not be closed when you click outside of it.
+        <six-dialog label="Dialog" class="six-dialog-request-close">
+          This dialog will not be closed when you click outside, on the close button or press <kbd>Escape</kbd>.
           <six-button slot="footer" type="primary">Close</six-button>
         </six-dialog>
 
@@ -19,14 +19,22 @@
 export default {
   name: 'docs-demo-six-dialog-3',
   mounted() { 
-          const dialogNoOverlay = document.querySelector('.dialog-no-overlay-dismiss');
-          const openButtonNoOverlay = dialogNoOverlay.nextElementSibling;
-          const closeButtonNoOverlay = dialogNoOverlay.querySelector('six-button[slot="footer"]');
+          const dialogNoClose = document.querySelector('.six-dialog-request-close');
+          const openButtonNoOverlay = dialogNoClose.nextElementSibling;
+          const closeButtonNoOverlay = dialogNoClose.querySelector('six-button[slot="footer"]');
 
-          openButtonNoOverlay.addEventListener('click', () => dialogNoOverlay.show());
-          closeButtonNoOverlay.addEventListener('click', () => dialogNoOverlay.hide());
+          openButtonNoOverlay.addEventListener('click', () => dialogNoClose.show());
+          closeButtonNoOverlay.addEventListener('click', () => dialogNoClose.hide());
 
-          dialogNoOverlay.addEventListener('six-dialog-overlay-dismiss', (event) => event.preventDefault());
+          dialogNoClose.addEventListener('six-dialog-request-close', (event) => {
+            if (
+              event.detail.source === 'overlay' ||
+              event.detail.source === 'close-button' ||
+              event.detail.source === 'keyboard'
+            ) {
+              event.preventDefault();
+            }
+          });
          }
 }
 </script>

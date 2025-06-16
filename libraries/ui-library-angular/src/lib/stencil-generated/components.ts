@@ -333,12 +333,13 @@ export class SixDialog {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['six-dialog-show', 'six-dialog-after-show', 'six-dialog-hide', 'six-dialog-after-hide', 'six-dialog-initial-focus', 'six-dialog-overlay-dismiss']);
+    proxyOutputs(this, this.el, ['six-dialog-show', 'six-dialog-after-show', 'six-dialog-hide', 'six-dialog-after-hide', 'six-dialog-initial-focus', 'six-dialog-request-close']);
   }
 }
 
 
 import type { EmptyPayload as ISixDialogEmptyPayload } from '@six-group/ui-library';
+import type { SixDialogRequestClose as ISixDialogSixDialogRequestClose } from '@six-group/ui-library';
 
 export declare interface SixDialog extends Components.SixDialog {
   /**
@@ -363,9 +364,11 @@ allow you to set it on a different element in the dialog, such as an input or bu
    */
   'six-dialog-initial-focus': EventEmitter<CustomEvent<ISixDialogEmptyPayload>>;
   /**
-   * Emitted when the overlay is clicked. Calling `event.preventDefault()` will prevent the dialog from closing.
+   * Emitted when the user attempts to close the drawer by clicking the close button, clicking the overlay, or
+pressing escape. Calling `event.preventDefault()` will keep the drawer open. Avoid using this unless closing
+the drawer will result in destructive behavior such as data loss.
    */
-  'six-dialog-overlay-dismiss': EventEmitter<CustomEvent<ISixDialogEmptyPayload>>;
+  'six-dialog-request-close': EventEmitter<CustomEvent<ISixDialogSixDialogRequestClose>>;
 }
 
 
@@ -386,12 +389,13 @@ export class SixDrawer {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['six-drawer-show', 'six-drawer-after-show', 'six-drawer-hide', 'six-drawer-after-hide', 'six-drawer-initial-focus', 'six-drawer-overlay-dismiss']);
+    proxyOutputs(this, this.el, ['six-drawer-show', 'six-drawer-after-show', 'six-drawer-hide', 'six-drawer-after-hide', 'six-drawer-initial-focus', 'six-drawer-request-close']);
   }
 }
 
 
 import type { EmptyPayload as ISixDrawerEmptyPayload } from '@six-group/ui-library';
+import type { SixDrawerRequestClose as ISixDrawerSixDrawerRequestClose } from '@six-group/ui-library';
 
 export declare interface SixDrawer extends Components.SixDrawer {
   /**
@@ -416,9 +420,11 @@ allow you to set it on a different element in the drawer, such as an input or bu
    */
   'six-drawer-initial-focus': EventEmitter<CustomEvent<ISixDrawerEmptyPayload>>;
   /**
-   * Emitted when the overlay is clicked. Calling `event.preventDefault()` will prevent the drawer from closing.
+   * Emitted when the user attempts to close the drawer by clicking the close button, clicking the overlay, or
+pressing escape. Calling `event.preventDefault()` will keep the drawer open. Avoid using this unless closing
+the drawer will result in destructive behavior such as data loss.
    */
-  'six-drawer-overlay-dismiss': EventEmitter<CustomEvent<ISixDrawerEmptyPayload>>;
+  'six-drawer-request-close': EventEmitter<CustomEvent<ISixDrawerSixDrawerRequestClose>>;
 }
 
 

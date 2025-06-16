@@ -14,7 +14,7 @@ export function Dialog() {
         label="Dialog"
         open={isVisible}
         onSixDialogHide={() => setIsVisible(false)}
-        onSixDialogOverlayDismiss={(e) => {
+        onSixDialogRequestClose={(e) => {
           if (shouldIgnoreOverlayClicks) {
             e.preventDefault();
           }
