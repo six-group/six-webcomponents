@@ -16,7 +16,7 @@
     "react-router": "^7.4.1"
   },
   "devDependencies": {
-    "@types/node": "^20",
+    "@types/node": "^22.15.32",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@vitejs/plugin-react": "^4.3.4",
