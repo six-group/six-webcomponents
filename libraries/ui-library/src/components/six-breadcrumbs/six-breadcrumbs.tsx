@@ -15,10 +15,10 @@ export class SixBreadcrumbs {
   render() {
     return (
       <host class={{ 'six-breadcrumbs': true }}>
-        <div>
+        <div part="base">
           <slot />
           {this.data && this.data.map(({ name, disabled, onSixClick }) =>
-            <six-breadcrumb-item name={name} disabled={disabled} onSixClick={onSixClick} />,
+            <six-breadcrumbs-item name={name} disabled={disabled} onSixClick={onSixClick} />,
           )}
         </div>
       </host>)
