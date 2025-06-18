@@ -1,8 +1,6 @@
 @import '../../../src/global/component';
 
-
 :host {
-
   a {
     color: var(--six-breadcrumbs-link-color) !important;
     cursor: pointer;
@@ -14,5 +12,4 @@
     color: var(--six-breadcrumbs-separator-color);
     padding-left: var(--six-breadcrumbs-padding);
   }
-
 }
