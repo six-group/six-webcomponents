@@ -24,7 +24,7 @@
     gap: $padding;
     padding: $padding;
 
-    ::slotted(a), ::slotted(div), six-breadcrumb-item {
+    ::slotted(a), ::slotted(div), six-breadcrumbs-item {
       &:after {
         content: var(--six-breadcrumbs-separator);
         color: var(--six-breadcrumbs-separator-color);
@@ -34,7 +34,7 @@
 
     ::slotted(:last-of-type):after,
     div:last-of-type:after,
-    six-breadcrumb-item:last-of-type:after {
+    six-breadcrumbs-item:last-of-type:after {
       content: none;
       padding-left: unset;
     }

@@ -98,39 +98,10 @@ export declare interface SixBadge extends Components.SixBadge {}
 
 
 @ProxyCmp({
-  inputs: ['disabled', 'name']
-})
-@Component({
-  selector: 'six-breadcrumb-item',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['disabled', 'name'],
-})
-export class SixBreadcrumbItem {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['sixClick']);
-  }
-}
-
-
-import type { EmptyPayload as ISixBreadcrumbItemEmptyPayload } from '@six-group/ui-library';
-
-export declare interface SixBreadcrumbItem extends Components.SixBreadcrumbItem {
-  /**
-   * Emitted on click.
-   */
-  sixClick: EventEmitter<CustomEvent<ISixBreadcrumbItemEmptyPayload>>;
-}
-
-
-@ProxyCmp({
   inputs: ['data']
 })
 @Component({
+  standalone: false,
   selector: 'six-breadcrumbs',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -147,6 +118,37 @@ export class SixBreadcrumbs {
 
 
 export declare interface SixBreadcrumbs extends Components.SixBreadcrumbs {}
+
+
+@ProxyCmp({
+  inputs: ['disabled', 'name']
+})
+@Component({
+  standalone: false,
+  selector: 'six-breadcrumbs-item',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['disabled', 'name'],
+})
+export class SixBreadcrumbsItem {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['sixClick']);
+  }
+}
+
+
+import type { EmptyPayload as ISixBreadcrumbsItemEmptyPayload } from '@six-group/ui-library';
+
+export declare interface SixBreadcrumbsItem extends Components.SixBreadcrumbsItem {
+  /**
+   * Emitted on click.
+   */
+  sixClick: EventEmitter<CustomEvent<ISixBreadcrumbsItemEmptyPayload>>;
+}
 
 
 @ProxyCmp({
