@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+  <script type="module" src="/build/ui-library.esm.js"></script>
+  <script nomodule src="/build/ui-library.js"></script>
+  <link rel="stylesheet" href="/build/ui-library.css" />
+  <title>Breadcrumbs</title>
+</head>
+<body>
+
+<h1>Breadcrumbs</h1>
+<div class="container">
+  <section>
+    <h2>Anchors</h2>
+    <p>Using anchors as child elements</p>
+    <six-breadcrumbs>
+      <a>One</a>
+      <a>Two</a>
+      <a>Three</a>
+    </six-breadcrumbs>
+  </section>
+  <section>
+    <h2>Containers</h2>
+    <p>Using div containers as child elements</p>
+    <six-breadcrumbs>
+      <div>One</div>
+      <div>Two</div>
+      <div>Three</div>
+    </six-breadcrumbs>
+  </section>
+  <section>
+    <h2>Breadcrumb Item</h2>
+    <p>Using six-breadcrumb-item as child elements</p>
+    <six-breadcrumbs>
+      <six-breadcrumb-item name="A"></six-breadcrumb-item>
+      <six-breadcrumb-item name="B"></six-breadcrumb-item>
+      <six-breadcrumb-item name="C" disabled></six-breadcrumb-item>
+    </six-breadcrumbs>
+  </section>
+  <section>
+    <h2>Data array</h2>
+    <p>Passing six-breadcrumb as a child (disabled/non-anchor) and an array of data</p>
+    <six-breadcrumbs id="breadcrumb-1">
+      <six-breadcrumb-item name="Fixed" disabled />
+    </six-breadcrumbs>
+  </section>
+</div>
+
+<script type="module">
+  (async () => {
+    const breadcrumb1 = document.querySelector('six-breadcrumbs#breadcrumb-1');
+    breadcrumb1.data = [];
+    for (let i = 0; i <= 10; i++) {
+      breadcrumb1.data.push({
+        name: 'Crumb ' + i,
+        onSixClick: () => window.location = 'http://six-group.com',
+      });
+    }
+    breadcrumb1.data.push({
+      name: 'Current',
+      disabled: true,
+    });
+  })();
+</script>
+
+</body>
+</html>

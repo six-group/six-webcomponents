@@ -7,6 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AlertType } from "./components/six-alert/six-alert";
 import { EmptyPayload } from "./utils/types";
+import { SixBreadcrumbsData } from "./components/six-breadcrumbs/types";
 import { Language } from "./utils/error-messages";
 import { SixDateFormats } from "./components/six-datepicker/six-date-formats";
 import { SixDatepickerSelectPayload } from "./components/six-datepicker/six-datepicker";
@@ -30,6 +31,7 @@ import { TimeFormat } from "./utils/time.util";
 import { SixTimepickerChange } from "./components/six-timepicker/six-timepicker";
 export { AlertType } from "./components/six-alert/six-alert";
 export { EmptyPayload } from "./utils/types";
+export { SixBreadcrumbsData } from "./components/six-breadcrumbs/types";
 export { Language } from "./utils/error-messages";
 export { SixDateFormats } from "./components/six-datepicker/six-date-formats";
 export { SixDatepickerSelectPayload } from "./components/six-datepicker/six-datepicker";
@@ -140,6 +142,22 @@ export namespace Components {
           * @default 'primary'
          */
         "type": 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'info' | 'action';
+    }
+    interface SixBreadcrumbItem {
+        /**
+          * If the breadcrumb is disabled
+         */
+        "disabled": boolean;
+        /**
+          * Name or label of the breadcrumb
+         */
+        "name": string;
+    }
+    interface SixBreadcrumbs {
+        /**
+          * Data for the breadcrumbs
+         */
+        "data": SixBreadcrumbsData;
     }
     /**
      * @since 1.0
@@ -2534,6 +2552,10 @@ export interface SixAlertCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLSixAlertElement;
 }
+export interface SixBreadcrumbItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSixBreadcrumbItemElement;
+}
 export interface SixButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLSixButtonElement;
@@ -2693,6 +2715,29 @@ declare global {
     var HTMLSixBadgeElement: {
         prototype: HTMLSixBadgeElement;
         new (): HTMLSixBadgeElement;
+    };
+    interface HTMLSixBreadcrumbItemElementEventMap {
+        "sixClick": EmptyPayload;
+    }
+    interface HTMLSixBreadcrumbItemElement extends Components.SixBreadcrumbItem, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSixBreadcrumbItemElementEventMap>(type: K, listener: (this: HTMLSixBreadcrumbItemElement, ev: SixBreadcrumbItemCustomEvent<HTMLSixBreadcrumbItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSixBreadcrumbItemElementEventMap>(type: K, listener: (this: HTMLSixBreadcrumbItemElement, ev: SixBreadcrumbItemCustomEvent<HTMLSixBreadcrumbItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLSixBreadcrumbItemElement: {
+        prototype: HTMLSixBreadcrumbItemElement;
+        new (): HTMLSixBreadcrumbItemElement;
+    };
+    interface HTMLSixBreadcrumbsElement extends Components.SixBreadcrumbs, HTMLStencilElement {
+    }
+    var HTMLSixBreadcrumbsElement: {
+        prototype: HTMLSixBreadcrumbsElement;
+        new (): HTMLSixBreadcrumbsElement;
     };
     interface HTMLSixButtonElementEventMap {
         "six-button-blur": EmptyPayload;
@@ -3622,6 +3667,8 @@ declare global {
         "six-alert": HTMLSixAlertElement;
         "six-avatar": HTMLSixAvatarElement;
         "six-badge": HTMLSixBadgeElement;
+        "six-breadcrumb-item": HTMLSixBreadcrumbItemElement;
+        "six-breadcrumbs": HTMLSixBreadcrumbsElement;
         "six-button": HTMLSixButtonElement;
         "six-card": HTMLSixCardElement;
         "six-checkbox": HTMLSixCheckboxElement;
@@ -3771,6 +3818,26 @@ declare namespace LocalJSX {
           * @default 'primary'
          */
         "type"?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'info' | 'action';
+    }
+    interface SixBreadcrumbItem {
+        /**
+          * If the breadcrumb is disabled
+         */
+        "disabled"?: boolean;
+        /**
+          * Name or label of the breadcrumb
+         */
+        "name"?: string;
+        /**
+          * Emitted on click.
+         */
+        "onSixClick"?: (event: SixBreadcrumbItemCustomEvent<EmptyPayload>) => void;
+    }
+    interface SixBreadcrumbs {
+        /**
+          * Data for the breadcrumbs
+         */
+        "data"?: SixBreadcrumbsData;
     }
     /**
      * @since 1.0
@@ -6300,6 +6367,8 @@ declare namespace LocalJSX {
         "six-alert": SixAlert;
         "six-avatar": SixAvatar;
         "six-badge": SixBadge;
+        "six-breadcrumb-item": SixBreadcrumbItem;
+        "six-breadcrumbs": SixBreadcrumbs;
         "six-button": SixButton;
         "six-card": SixCard;
         "six-checkbox": SixCheckbox;
@@ -6379,6 +6448,8 @@ declare module "@stencil/core" {
              * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
              */
             "six-badge": LocalJSX.SixBadge & JSXBase.HTMLAttributes<HTMLSixBadgeElement>;
+            "six-breadcrumb-item": LocalJSX.SixBreadcrumbItem & JSXBase.HTMLAttributes<HTMLSixBreadcrumbItemElement>;
+            "six-breadcrumbs": LocalJSX.SixBreadcrumbs & JSXBase.HTMLAttributes<HTMLSixBreadcrumbsElement>;
             /**
              * @since 1.0
              * @status stable
