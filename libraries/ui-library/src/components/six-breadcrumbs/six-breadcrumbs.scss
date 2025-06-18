@@ -2,7 +2,7 @@
 
 :host {
   display: block;
-  --six-breadcrumbs-separator: "/";
+  --six-breadcrumbs-separator: '/';
   --six-breadcrumbs-background-color: var(--six-color-web-rock-200);
   --six-breadcrumbs-padding: var(--six-spacing-x-small);
   --six-breadcrumbs-color: pink;
@@ -15,7 +15,8 @@
   $padding: var(--six-breadcrumbs-padding);
   background-color: var(--six-breadcrumbs-background-color);
 
-  > div { /*  Container */
+  > div {
+    /*  Container */
 
     display: inline-flex;
     flex-wrap: wrap;
@@ -24,7 +25,9 @@
     gap: $padding;
     padding: $padding;
 
-    ::slotted(a), ::slotted(div), six-breadcrumbs-item {
+    ::slotted(a),
+    ::slotted(div),
+    six-breadcrumbs-item {
       &:after {
         content: var(--six-breadcrumbs-separator);
         color: var(--six-breadcrumbs-separator-color);
@@ -39,7 +42,8 @@
       padding-left: unset;
     }
 
-    a, ::slotted(a) {
+    a,
+    ::slotted(a) {
       color: var(--six-breadcrumbs-link-color) !important;
       cursor: pointer;
       text-decoration: none;
@@ -48,8 +52,5 @@
         text-decoration: underline;
       }
     }
-
   }
 }
-
-

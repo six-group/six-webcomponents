@@ -1,50 +1,48 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-  <script type="module" src="/build/ui-library.esm.js"></script>
-  <script nomodule src="/build/ui-library.js"></script>
-  <link rel="stylesheet" href="/build/ui-library.css" />
-  <title>Breadcrumbs Item</title>
-</head>
-<body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <script type="module" src="/build/ui-library.esm.js"></script>
+    <script nomodule src="/build/ui-library.js"></script>
+    <link rel="stylesheet" href="/build/ui-library.css" />
+    <title>Breadcrumbs Item</title>
+  </head>
+  <body>
+    <h1>Breadcrumbs Item</h1>
+    <div class="container">
+      <section>
+        <p>Using six-breadcrumbs-item as child elements</p>
+        <six-breadcrumbs>
+          <six-breadcrumbs-item name="A"></six-breadcrumbs-item>
+          <six-breadcrumbs-item name="B"></six-breadcrumbs-item>
+          <six-breadcrumbs-item name="C" disabled></six-breadcrumbs-item>
+        </six-breadcrumbs>
+      </section>
+      <section>
+        <h2>Data array</h2>
+        <p>Passing six-breadcrumbs-item as a child (disabled/non-anchor) and an array of data</p>
+        <six-breadcrumbs id="breadcrumb-1">
+          <six-breadcrumbs-item name="Fixed" disabled />
+        </six-breadcrumbs>
+      </section>
+    </div>
 
-<h1>Breadcrumbs Item</h1>
-<div class="container">
-  <section>
-    <p>Using six-breadcrumbs-item as child elements</p>
-    <six-breadcrumbs>
-      <six-breadcrumbs-item name="A"></six-breadcrumbs-item>
-      <six-breadcrumbs-item name="B"></six-breadcrumbs-item>
-      <six-breadcrumbs-item name="C" disabled></six-breadcrumbs-item>
-    </six-breadcrumbs>
-  </section>
-  <section>
-    <h2>Data array</h2>
-    <p>Passing six-breadcrumbs-item as a child (disabled/non-anchor) and an array of data</p>
-    <six-breadcrumbs id="breadcrumb-1">
-      <six-breadcrumbs-item name="Fixed" disabled />
-    </six-breadcrumbs>
-  </section>
-</div>
-
-<script type="module">
-  (async () => {
-    const breadcrumb1 = document.querySelector('six-breadcrumbs#breadcrumb-1');
-    breadcrumb1.data = [];
-    for (let i = 0; i <= 10; i++) {
-      breadcrumb1.data.push({
-        name: 'Crumb ' + i,
-        onSixClick: () => window.location = 'http://six-group.com',
-      });
-    }
-    breadcrumb1.data.push({
-      name: 'Current',
-      disabled: true,
-    });
-  })();
-</script>
-
-</body>
+    <script type="module">
+      (async () => {
+        const breadcrumb1 = document.querySelector('six-breadcrumbs#breadcrumb-1');
+        breadcrumb1.data = [];
+        for (let i = 0; i <= 10; i++) {
+          breadcrumb1.data.push({
+            name: 'Crumb ' + i,
+            onSixClick: () => (window.location = 'http://six-group.com'),
+          });
+        }
+        breadcrumb1.data.push({
+          name: 'Current',
+          disabled: true,
+        });
+      })();
+    </script>
+  </body>
 </html>
