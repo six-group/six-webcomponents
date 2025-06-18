@@ -1,0 +1,18 @@
+@import '../../../src/global/component';
+
+
+:host {
+
+  a {
+    color: var(--six-breadcrumbs-link-color) !important;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  &:after {
+    content: var(--six-breadcrumbs-separator);
+    color: var(--six-breadcrumbs-separator-color);
+    padding-left: var(--six-breadcrumbs-padding);
+  }
+
+}
