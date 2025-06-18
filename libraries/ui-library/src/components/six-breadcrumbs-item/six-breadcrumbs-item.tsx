@@ -3,11 +3,11 @@ import { EmptyPayload } from '../../utils/types';
 
 
 @Component({
-  tag: 'six-breadcrumb-item',
-  styleUrl: 'six-breadcrumb-item.scss',
+  tag: 'six-breadcrumbs-item',
+  styleUrl: 'six-breadcrumbs-item.scss',
   shadow: true,
 })
-export class SixBreadcrumbItem {
+export class SixBreadcrumbsItem {
 
   /** Name or label of the breadcrumb */
   @Prop() name: string = '';

@@ -29,8 +29,8 @@
 ### Graph
 ```mermaid
 graph TD;
-  six-breadcrumbs --> six-breadcrumb-item
-  style six-breadcrumb-item fill:#f9f,stroke:#333,stroke-width:4px
+  six-breadcrumbs --> six-breadcrumbs-item
+  style six-breadcrumbs-item fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

@@ -35,15 +35,15 @@ export const SixBadge = /*@__PURE__*/ defineContainer<JSX.SixBadge>('six-badge',
 ]);
 
 
-export const SixBreadcrumbItem = /*@__PURE__*/ defineContainer<JSX.SixBreadcrumbItem>('six-breadcrumb-item', undefined, [
-  'name',
-  'disabled',
-  'sixClick'
+export const SixBreadcrumbs = /*@__PURE__*/ defineContainer<JSX.SixBreadcrumbs>('six-breadcrumbs', undefined, [
+  'data'
 ]);
 
 
-export const SixBreadcrumbs = /*@__PURE__*/ defineContainer<JSX.SixBreadcrumbs>('six-breadcrumbs', undefined, [
-  'data'
+export const SixBreadcrumbsItem = /*@__PURE__*/ defineContainer<JSX.SixBreadcrumbsItem>('six-breadcrumbs-item', undefined, [
+  'name',
+  'disabled',
+  'sixClick'
 ]);
 
 
@@ -105,7 +105,6 @@ export const SixDate = /*@__PURE__*/ defineContainer<JSX.SixDate, JSX.SixDate["v
   'errorText',
   'errorTextCount',
   'invalid',
-  'debounce',
   'name',
   'clearable',
   'six-change',
@@ -174,7 +173,7 @@ export const SixDialog = /*@__PURE__*/ defineContainer<JSX.SixDialog>('six-dialo
   'six-dialog-hide',
   'six-dialog-after-hide',
   'six-dialog-initial-focus',
-  'six-dialog-overlay-dismiss'
+  'six-dialog-request-close'
 ]);
 
 
@@ -189,7 +188,7 @@ export const SixDrawer = /*@__PURE__*/ defineContainer<JSX.SixDrawer>('six-drawe
   'six-drawer-hide',
   'six-drawer-after-hide',
   'six-drawer-initial-focus',
-  'six-drawer-overlay-dismiss'
+  'six-drawer-request-close'
 ]);
 
 

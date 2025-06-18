@@ -11,7 +11,7 @@ describe('six-breadcrumbs', () => {
   <six-breadcrumbs>
     <mock:shadow-root>
       <host class="six-breadcrumbs">
-        <div>
+        <div part="base">
           <slot></slot>
         </div>
       </host>
@@ -34,6 +34,6 @@ describe('six-breadcrumbs', () => {
     page.rootInstance.data = mockData;
     await page?.waitForChanges();
 
-    expect(page?.root?.shadowRoot?.querySelectorAll('six-breadcrumb-item').length).toBe(2);
+    expect(page?.root?.shadowRoot?.querySelectorAll('six-breadcrumbs-item').length).toBe(2);
   });
 });
