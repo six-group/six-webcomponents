@@ -1,11 +1,11 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { SixBreadcrumbItem } from '../six-breadcrumb-item';
+import { SixBreadcrumbsItem } from '../six-breadcrumbs-item';
 
-describe('six-breadcrumb-item', () => {
+describe('six-breadcrumbs-item', () => {
   it('renders enabled item with <a>', async () => {
     const page = await newSpecPage({
-      components: [SixBreadcrumbItem],
-      html: `<six-breadcrumb-item name="Home"></six-breadcrumb-item>`,
+      components: [SixBreadcrumbsItem],
+      html: `<six-breadcrumbs-item name="Home"></six-breadcrumbs-item>`,
     });
     expect(page?.root?.shadowRoot?.innerHTML).toContain('<a');
     expect(page?.root?.shadowRoot?.textContent).toContain('Home');
@@ -13,8 +13,8 @@ describe('six-breadcrumb-item', () => {
 
   it('renders disabled item without <a>', async () => {
     const page = await newSpecPage({
-      components: [SixBreadcrumbItem],
-      html: `<six-breadcrumb-item name="Home" disabled></six-breadcrumb-item>`,
+      components: [SixBreadcrumbsItem],
+      html: `<six-breadcrumbs-item name="Home" disabled></six-breadcrumbs-item>`,
     });
     expect(page?.root?.shadowRoot?.innerHTML).not.toContain('<a');
     expect(page?.root?.shadowRoot?.textContent).toContain('Home');
@@ -22,8 +22,8 @@ describe('six-breadcrumb-item', () => {
 
   it('emits sixClick on click if not disabled', async () => {
     const page = await newSpecPage({
-      components: [SixBreadcrumbItem],
-      html: `<six-breadcrumb-item name="Home"></six-breadcrumb-item>`,
+      components: [SixBreadcrumbsItem],
+      html: `<six-breadcrumbs-item name="Home"></six-breadcrumbs-item>`,
     });
 
     const eventSpy = jest.fn();
