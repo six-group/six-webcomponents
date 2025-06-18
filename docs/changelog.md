@@ -43,6 +43,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - `six-file-upload`: added `code` attribute to `SixFileUploadFailurePayload`, which specifies the
   type of error that has occurred
 - New `six-rating` form component
+- New six-breadcrumbs and six-breadscrumb-item component
 
 ### Fixed
 
