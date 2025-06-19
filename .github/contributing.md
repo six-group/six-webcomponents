@@ -65,8 +65,8 @@ guidelines:
 
 ## Development Setup
 
-You will need [Node.js](https://nodejs.org) **version 16+**, and
-[NPM](https://www.npmjs.com/package/npm) **version 8**.
+You will need [Node.js](https://nodejs.org) **version 22+**, and
+[NPM](https://www.npmjs.com/package/npm) **version 10.9.x**.
 
 After cloning the repository, run in root directory:
 

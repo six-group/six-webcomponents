@@ -38,6 +38,8 @@ There are example apps for Angular, Plain Javascript, Vue and React. You can fin
 | `examples/angular`             | Angular demo app showing some components and features of the ui-library  |
 | `examples/js`                  | Plain JS demo app showing some components and features the of ui-library |
 | `examples/vue`                 | Vue demo app showing some components and features of the ui-library      |
+| `examples/react`               | React demo app showing some components and features of the ui-library    |
+| `examples/nuxt`                | Nuxt demo app showing some components and features of the ui-library     |
 | `docs`                         | API documentation built with VitePress                                   |
 
 ## Credits
