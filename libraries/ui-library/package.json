@@ -16,7 +16,7 @@
     "loader/"
   ],
   "scripts": {
-    "build": "npm run clean && stencil build --docs && npm run angular-standalone-fix",
+    "build": "npm run clean && stencil build --docs",
     "watch": "npm run clean && stencil build --watch",
     "start": "stencil build --dev --watch --serve --no-open",
     "test": "cross-env TZ='Etc/GMT-2' stencil test --spec",
@@ -30,8 +30,7 @@
     "clean": "rimraf dist loader www docs",
     "lint": "    eslint       src/**/*{.ts,.tsx}",
     "lint:fix": "eslint --fix src/**/*{.ts,.tsx}",
-    "codeclean": "npm run lint:fix && npm run prettier:fix",
-    "angular-standalone-fix": "node scripts/standalone-fix.js ../ui-library-angular/src/lib/stencil-generated/components.ts"
+    "codeclean": "npm run lint:fix && npm run prettier:fix"
   },
   "dependencies": {
     "@stencil/core": "4.32.0",
@@ -46,7 +45,7 @@
     "@fontsource/material-icons-outlined": "^5.1.1",
     "@popperjs/core": "^2.5.3",
     "@stencil-community/eslint-plugin": "0.x",
-    "@stencil/angular-output-target": "0.10.2",
+    "@stencil/angular-output-target": "1.0.0",
     "@stencil/react-output-target": "^1.0.4",
     "@stencil/vue-output-target": "0.10.8",
     "@stencil/sass": "3.0.12",
