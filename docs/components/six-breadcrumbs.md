@@ -1,4 +1,4 @@
-# six-breadcrumbs
+# Breadcrumbs
 
 
 
@@ -23,7 +23,7 @@
 
 ### Depends on
 
-- [six-breadcrumbs-item](../six-breadcrumbs-item)
+- [six-breadcrumbs-item](six-breadcrumbs-item.html)
 
 ### Graph
 ```mermaid
