@@ -7,6 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AlertType } from "./components/six-alert/six-alert";
 import { EmptyPayload } from "./utils/types";
+import { SixBreadcrumbsData } from "./components/six-breadcrumbs/types";
 import { Language } from "./utils/error-messages";
 import { SixDateFormats } from "./components/six-datepicker/six-date-formats";
 import { SixDatepickerSelectPayload } from "./components/six-datepicker/six-datepicker";
@@ -30,6 +31,7 @@ import { TimeFormat } from "./utils/time.util";
 import { SixTimepickerChange } from "./components/six-timepicker/six-timepicker";
 export { AlertType } from "./components/six-alert/six-alert";
 export { EmptyPayload } from "./utils/types";
+export { SixBreadcrumbsData } from "./components/six-breadcrumbs/types";
 export { Language } from "./utils/error-messages";
 export { SixDateFormats } from "./components/six-datepicker/six-date-formats";
 export { SixDatepickerSelectPayload } from "./components/six-datepicker/six-datepicker";
@@ -60,12 +62,10 @@ export namespace Components {
     interface SixAlert {
         /**
           * Set to true to make the alert closable.
-          * @default false
          */
         "closable": boolean;
         /**
           * The length of time, in milliseconds, the alert will show before closing itself. If the user hovers over the toast alert, the timer will pause. On leaving the element with the mouse, the timer resets.
-          * @default Infinity
          */
         "duration": number;
         /**
@@ -74,7 +74,6 @@ export namespace Components {
         "hide": () => Promise<void>;
         /**
           * Indicates whether or not the alert is open. You can use this in lieu of the show/hide methods.
-          * @default false
          */
         "open": boolean;
         /**
@@ -88,7 +87,6 @@ export namespace Components {
         "toast": (adjustPosition?: boolean) => Promise<void>;
         /**
           * The type of alert.
-          * @default 'primary'
          */
         "type": AlertType;
     }
@@ -100,22 +98,18 @@ export namespace Components {
     interface SixAvatar {
         /**
           * Alternative text for the image.
-          * @default ''
          */
         "alt": string;
         /**
           * The image source to use for the avatar.
-          * @default ''
          */
         "image": string;
         /**
           * Initials to use as a fallback when no image is available (1-2 characters max recommended).
-          * @default ''
          */
         "initials": string;
         /**
           * The shape of the avatar.
-          * @default 'circle'
          */
         "shape": 'circle' | 'square' | 'rounded';
     }
@@ -127,19 +121,32 @@ export namespace Components {
     interface SixBadge {
         /**
           * Set to true to draw a pill-style badge with rounded edges.
-          * @default false
          */
         "pill": boolean;
         /**
           * Set to true to make the badge pulsate to draw attention.
-          * @default false
          */
         "pulse": boolean;
         /**
           * The badge's type.
-          * @default 'primary'
          */
         "type": 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'info' | 'action';
+    }
+    interface SixBreadcrumbs {
+        /**
+          * Data for the breadcrumbs
+         */
+        "data": SixBreadcrumbsData;
+    }
+    interface SixBreadcrumbsItem {
+        /**
+          * If the breadcrumb is disabled
+         */
+        "disabled": boolean;
+        /**
+          * Name or label of the breadcrumb
+         */
+        "name": string;
     }
     /**
      * @since 1.0
@@ -149,17 +156,14 @@ export namespace Components {
     interface SixButton {
         /**
           * Set to true to draw the button with a caret for use with dropdowns, popovers, etc.
-          * @default false
          */
         "caret": boolean;
         /**
           * Set to true to draw a circle button.
-          * @default false
          */
         "circle": boolean;
         /**
           * Set to true to disable the button.
-          * @default false
          */
         "disabled": boolean;
         /**
@@ -172,17 +176,14 @@ export namespace Components {
         "href"?: string;
         /**
           * Set to true to draw the button in a loading state.
-          * @default false
          */
         "loading": boolean;
         /**
           * An optional name for the button. Ignored when `href` is set.
-          * @default ''
          */
         "name": string;
         /**
           * Set to true to draw a pill-style button with rounded edges.
-          * @default false
          */
         "pill": boolean;
         /**
@@ -191,7 +192,6 @@ export namespace Components {
         "removeFocus": () => Promise<void>;
         /**
           * Indicates if activating the button should reset the form.
-          * @default false
          */
         "reset": boolean;
         /**
@@ -200,12 +200,10 @@ export namespace Components {
         "setFocus": (options?: FocusOptions) => Promise<void>;
         /**
           * The button's size.
-          * @default 'medium'
          */
         "size": 'small' | 'medium' | 'large';
         /**
           * Indicates if activating the button should submit the form. Ignored when `href` is set.
-          * @default false
          */
         "submit": boolean;
         /**
@@ -214,7 +212,6 @@ export namespace Components {
         "target"?: '_blank' | '_parent' | '_self' | '_top';
         /**
           * The button's type.
-          * @default 'primary'
          */
         "type": | 'secondary'
     | 'primary'
@@ -226,7 +223,6 @@ export namespace Components {
     | 'action-outline';
         /**
           * An optional value for the button. Ignored when `href` is set.
-          * @default ''
          */
         "value": string;
     }
@@ -244,17 +240,14 @@ export namespace Components {
     interface SixCheckbox {
         /**
           * Set to true to draw the checkbox in a checked state.
-          * @default false
          */
         "checked": boolean;
         /**
           * Set to true to disable the checkbox.
-          * @default false
          */
         "disabled": boolean;
         /**
           * The error message shown, if `invalid` is set to true.
-          * @default ''
          */
         "errorText": string | string[];
         /**
@@ -263,22 +256,18 @@ export namespace Components {
         "errorTextCount"?: number;
         /**
           * Set to true to draw the checkbox in an indeterminate state.
-          * @default false
          */
         "indeterminate": boolean;
         /**
           * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
-          * @default false
          */
         "invalid": boolean;
         /**
           * The label text.
-          * @default ''
          */
         "label": string;
         /**
           * The checkbox's name attribute.
-          * @default ''
          */
         "name": string;
         /**
@@ -287,7 +276,6 @@ export namespace Components {
         "removeFocus": () => Promise<void>;
         /**
           * Set to true to show an asterisk beneath the label.
-          * @default false
          */
         "required": boolean;
         /**
@@ -296,7 +284,6 @@ export namespace Components {
         "setFocus": (options?: FocusOptions) => Promise<void>;
         /**
           * The value of the checkbox does not mean if it's checked or not, use the `checked` property for that.  The value of a checkbox is analogous to the value of an `<input type="checkbox">`, it's only used when the checkbox participates in a native `<form>`.
-          * @default 'on'
          */
         "value": string;
     }
@@ -308,27 +295,22 @@ export namespace Components {
     interface SixDate {
         /**
           * Callback to determine which dates in the picker should be selectable.
-          * @default () => true
          */
         "allowedDates": (date: string) => boolean;
         /**
           * Set to true to add a clear button when the input is populated.
-          * @default false
          */
         "clearable": boolean;
         /**
           * Defines the format pattern for displaying dates and how dates can be entered via keyboard.  The parser accepts flexible input that doesn't strictly match the format pattern. Input with missing leading zeros or incomplete years will be automatically normalized. For example, with the pattern "dd.MM.yyyy": "1.1.2025" becomes "01.01.2025" and "1.1.225" becomes "01.01.0225".  Defaults to "dd.MM.yyyy".  Available patterns: - Year: "yyyy" (e.g., "2021") - Month: "MM" (e.g., "01" for January) or "M" (e.g., "1" for January) - Day: "dd" (e.g., "08" for the 8th) or "d" (e.g., "8" for the 8th)  Examples: - "dd.MM.yyyy" -> "31.01.2024" - "yyyy-MM-dd" -> "2024-01-31" - "d.M.yyyy" -> "31.1.2024"
-          * @default 'dd.MM.yyyy'
          */
         "dateFormat": string;
         /**
           * If `true` the component is disabled.
-          * @default false
          */
         "disabled": boolean;
         /**
           * The error message shown, if `invalid` is set to true.
-          * @default ''
          */
         "errorText": string | string[];
         /**
@@ -337,22 +319,18 @@ export namespace Components {
         "errorTextCount"?: number;
         /**
           * The input's help text. Alternatively, you can use the help-text slot.
-          * @default ''
          */
         "helpText": string;
         /**
           * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
-          * @default false
          */
         "invalid": boolean;
         /**
           * The label text.
-          * @default ''
          */
         "label": string;
         /**
           * The language used to render the weekdays and months.
-          * @default 'en'
          */
         "language": Language;
         /**
@@ -365,7 +343,6 @@ export namespace Components {
         "min"?: string;
         /**
           * The input's name attribute.
-          * @default ''
          */
         "name": string;
         /**
@@ -374,12 +351,10 @@ export namespace Components {
         "placeholder"?: string;
         /**
           * If `true` the user can only select a date via the component in the popup but not directly edit the input field.
-          * @default false
          */
         "readonly": boolean;
         /**
           * Set to true to show an asterisk beneath the label.
-          * @default false
          */
         "required": boolean;
         /**
@@ -388,12 +363,10 @@ export namespace Components {
         "setFocus": (options?: FocusOptions) => Promise<void>;
         /**
           * The size of the date input field.
-          * @default 'medium'
          */
         "size": 'small' | 'medium' | 'large';
         /**
           * The value of the form field in ISO 8601 date format (yyyy-MM-dd). Example: '2024-01-01'.  When an invalid date is provided, it will be replaced with an empty string (''), matching the behavior of native HTML <input type="date">.  The displayed format can be customized using the dateFormat property, but the underlying value will always be stored in ISO format.
-          * @default ''
          */
         "value": string | '';
     }
@@ -404,17 +377,14 @@ export namespace Components {
     interface SixDatepicker {
         /**
           * Callback to determine which date in the datepicker should be selectable. the callback function will get a datestring as an argument, e.g. '2021-07-04'  Usage e.g.: const datepicker = document.getElementById('allowed-date-picker'); datepicker.allowedDates = datestring => parseInt(datestring.split('-')[2], 10) % 2 === 0;
-          * @default () => true
          */
         "allowedDates": (date: Date) => boolean;
         /**
           * Set to true to add a clear button when the input is populated.
-          * @default false
          */
         "clearable": boolean;
         /**
           * Closes the datepicker dropdown after selection
-          * @default this.type === 'date'
          */
         "closeOnSelect": boolean;
         /**
@@ -423,12 +393,10 @@ export namespace Components {
         "containingElement"?: HTMLElement;
         /**
           * Define the dateFormat. Valid formats are: 'dd.mm.yyyy' 'yyyy-mm-dd' 'dd-mm-yyyy' 'dd/mm/yyyy' 'yyyy/mm/dd' 'dd.mm.yy' 'yy-mm-dd' 'dd-mm-yy' 'dd/mm/yy' 'yy/mm/dd'
-          * @default SixDateFormats.DDMMYYY_DOT
          */
         "dateFormat": SixDateFormats;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `dateChange` event after each keystroke.
-          * @default DEFAULT_DEBOUNCE_FAST
          */
         "debounce": number;
         /**
@@ -437,12 +405,10 @@ export namespace Components {
         "defaultDate"?: string;
         /**
           * If `true` the component is disabled.
-          * @default false
          */
         "disabled": boolean;
         /**
           * The error message shown, if `invalid` is set to true.
-          * @default ''
          */
         "errorText": string | string[];
         /**
@@ -451,32 +417,26 @@ export namespace Components {
         "errorTextCount"?: number;
         /**
           * Enable this option to prevent the panel from being clipped when the component is placed inside a container with `overflow: auto|scroll`.
-          * @default false
          */
         "hoist": boolean;
         /**
           * Set the position of the icon
-          * @default 'left'
          */
         "iconPosition": 'left' | 'right';
         /**
           * Indicates whether or not the calendar should be shown as an inline (always open) component
-          * @default false
          */
         "inline": boolean;
         /**
           * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
-          * @default false
          */
         "invalid": boolean;
         /**
           * The label text.
-          * @default ''
          */
         "label": string;
         /**
           * The language used to render the weekdays and months.
-          * @default 'en'
          */
         "locale": 'en' | 'de' | 'fr' | 'it' | 'es';
         /**
@@ -489,12 +449,10 @@ export namespace Components {
         "min"?: Date;
         /**
           * The input's name attribute.
-          * @default ''
          */
         "name": string;
         /**
           * Indicates whether or not the calendar dropdown is open on startup. You can use this in lieu of the show/hide methods.
-          * @default false
          */
         "open": boolean;
         /**
@@ -507,12 +465,10 @@ export namespace Components {
         "placement"?: 'top' | 'bottom';
         /**
           * If `true` the user can only select a date via the component in the popup, but not directly edit the input field.
-          * @default false
          */
         "readonly": boolean;
         /**
           * Set to true to show an asterisk beneath the label.
-          * @default false
          */
         "required": boolean;
         /**
@@ -525,12 +481,10 @@ export namespace Components {
         "setFocus": (options?: FocusOptions) => Promise<void>;
         /**
           * Datepicker size.
-          * @default 'medium'
          */
         "size": 'small' | 'medium' | 'large';
         /**
           * Set the type.
-          * @default 'date'
          */
         "type": 'date' | 'date-time';
         /**
@@ -546,12 +500,10 @@ export namespace Components {
     interface SixDetails {
         /**
           * Set to true to prevent the user from toggling the details.
-          * @default false
          */
         "disabled": boolean;
         /**
           * Set to false when you want to hide the summary icon and disable the open/close mechanism. Usually not needed, but used internally by 'six-sidebar-item-group'
-          * @default true
          */
         "hasContent": boolean;
         /**
@@ -560,17 +512,14 @@ export namespace Components {
         "hide": () => Promise<void>;
         /**
           * Set to true when you want to use six-details inline e.g. in a sidebar
-          * @default false
          */
         "inline": boolean;
         /**
           * Indicates whether the details is open. You can use this in lieu of the show/hide methods.
-          * @default false
          */
         "open": boolean;
         /**
           * Set to true when you want details without content to be selectable. This is important if you e.g. have a toggled sidebar where some menus have no children
-          * @default false
          */
         "selectableEmpty": boolean;
         /**
@@ -579,7 +528,6 @@ export namespace Components {
         "show": () => Promise<void>;
         /**
           * The summary to show in the details header. If you need to display HTML, use the `summary` slot instead.
-          * @default ''
          */
         "summary": string;
         /**
@@ -588,7 +536,6 @@ export namespace Components {
         "summaryIcon"?: string;
         /**
           * The icon's size.
-          * @default 'inherit'
          */
         "summaryIconSize": | 'inherit'
     | 'xSmall'
@@ -611,17 +558,14 @@ export namespace Components {
         "hide": () => Promise<void>;
         /**
           * The dialog's label as displayed in the header. You should always include a relevant label even when using `no-header`, as it is required for proper accessibility.
-          * @default ''
          */
         "label": string;
         /**
           * Set to true to disable the header. This will also remove the default close button, so please ensure you provide an easy, accessible way for users to dismiss the dialog.
-          * @default false
          */
         "noHeader": boolean;
         /**
           * Indicates whether the dialog is open. You can use this in lieu of the show/hide methods.
-          * @default false
          */
         "open": boolean;
         /**
@@ -637,7 +581,6 @@ export namespace Components {
     interface SixDrawer {
         /**
           * By default, the drawer slides out of its containing block (usually the viewport). To make the drawer slide out of its parent element, set this prop and add `position: relative` to the parent.
-          * @default false
          */
         "contained": boolean;
         /**
@@ -646,22 +589,18 @@ export namespace Components {
         "hide": () => Promise<void>;
         /**
           * The drawer's label as displayed in the header. You should always include a relevant label even when using `no-header`, as it is required for proper accessibility.
-          * @default ''
          */
         "label": string;
         /**
           * Removes the header. This will also remove the default close button, so please ensure you provide an easy, accessible way for users to dismiss the drawer.
-          * @default false
          */
         "noHeader": boolean;
         /**
           * Indicates whether the drawer is open. You can use this in lieu of the show/hide methods.
-          * @default false
          */
         "open": boolean;
         /**
           * The direction from which the drawer will open.
-          * @default 'right'
          */
         "placement": 'top' | 'right' | 'bottom' | 'left';
         /**
@@ -677,17 +616,14 @@ export namespace Components {
     interface SixDropdown {
         /**
           * Set to true to allow async filtering. When you enter something in the search field the component will only emit an event but not filter any elements itself. You can then simply listen to the 'six-async-filter-fired' event to manage the shown menu-items yourself
-          * @default false
          */
         "asyncFilter": boolean;
         /**
           * By default the search field will be focused when opening a dropdown with filtering enabled.
-          * @default true
          */
         "autofocusFilter": boolean;
         /**
           * Determines whether the dropdown should hide when a menu item is selected.
-          * @default true
          */
         "closeOnSelect": boolean;
         /**
@@ -696,27 +632,22 @@ export namespace Components {
         "containingElement"?: HTMLElement;
         /**
           * The panel can be opend/closed by pressing the spacebar or the enter key. In some cases you might want to avoid this
-          * @default false
          */
         "disableHideOnEnterAndSpace": boolean;
         /**
           * The distance in pixels from which to offset the panel away from its trigger.
-          * @default 4
          */
         "distance": number;
         /**
           * Set to true to allow auto filtering for entries in the dropdown. With this flag the dropdown will automatically filter itsel. If you need to coordinate the shown elements yourself, e.g. because you need to call an endpoint use asyncFilter instead
-          * @default false
          */
         "filter": boolean;
         /**
           * The debounce for the filter callbacks.
-          * @default 0
          */
         "filterDebounce": number;
         /**
           * The filter's placeholder text.
-          * @default 'Filter...'
          */
         "filterPlaceholder": string;
         /**
@@ -725,27 +656,22 @@ export namespace Components {
         "hide": () => Promise<void>;
         /**
           * Enable this option to prevent the panel from being clipped when the component is placed inside a container with `overflow: auto|scroll`.
-          * @default false
          */
         "hoist": boolean;
         /**
           * Determines if the dropdown panel's width should match the width of the trigger element.  If set to `true`, the panel will resize its width to align with the trigger's width. If `false` or omitted, the panel will maintain its default width.
-          * @default false
          */
         "matchTriggerWidth": boolean;
         /**
           * Indicates whether the dropdown is open. You can use this in lieu of the show/hide methods.
-          * @default false
          */
         "open": boolean;
         /**
           * Set the options to be shown in the dropdown (alternative to setting the elements via html)
-          * @default []
          */
         "options": SixMenuItemData[];
         /**
           * The preferred placement of the dropdown panel. Note that the actual placement may vary as needed to keep the panel inside the viewport.
-          * @default 'bottom-start'
          */
         "placement": | 'top'
     | 'top-start'
@@ -765,12 +691,10 @@ export namespace Components {
         "show": () => Promise<void>;
         /**
           * The distance in pixels from which to offset the panel along its trigger.
-          * @default 0
          */
         "skidding": number;
         /**
           * Defines whether the menu list will be rendered virtually i.e. only the elements actually shown (and a couple around) are actually rendered in the DOM. If you use virtual scrolling pass the elements via prop instead of via slot.
-          * @default false
          */
         "virtualScroll": boolean;
     }
@@ -799,7 +723,6 @@ export namespace Components {
         "errorCode"?: 404 | 403 | 500;
         /**
           * Defines language and thus displays the proper error page in the selected language.
-          * @default 'en'
          */
         "language": 'en' | 'de';
     }
@@ -816,27 +739,22 @@ export namespace Components {
     interface SixFileListItem {
         /**
           * The date when the file was uploaded
-          * @default ''
          */
         "date": string;
         /**
           * An id to clearly identify the file
-          * @default ''
          */
         "identifier": string;
         /**
           * The filename
-          * @default ''
          */
         "name": string;
         /**
           * Set to true if you don't want to allow to delete this file
-          * @default false
          */
         "nodelete": boolean;
         /**
           * Set to true if you don't want to allow to download this file
-          * @default false
          */
         "nodownload": boolean;
         /**
@@ -855,22 +773,18 @@ export namespace Components {
         "accept"?: string;
         /**
           * Set to true if file control should be small.
-          * @default false
          */
         "compact": boolean;
         /**
           * Set when button is disabled.
-          * @default false
          */
         "disabled": false;
         /**
           * The error message shown, if `invalid` is set to true.
-          * @default ''
          */
         "errorText": string | string[];
         /**
           * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
-          * @default false
          */
         "invalid": boolean;
         /**
@@ -883,12 +797,10 @@ export namespace Components {
         "maxFileSize"?: number;
         /**
           * More than one file allowed.
-          * @default false
          */
         "multiple": false;
         /**
           * Set to true to draw the control in a loading state.
-          * @default false
          */
         "uploading": boolean;
     }
@@ -905,27 +817,22 @@ export namespace Components {
     interface SixGroupLabel {
         /**
           * Set to true to disable the label.
-          * @default false
          */
         "disabled": boolean;
         /**
           * The wrapper label's help text. Alternatively, you can use the help-text slot.
-          * @default ''
          */
         "helpText": string;
         /**
           * The wrapper label's label. Alternatively, you can use the label slot.
-          * @default ''
          */
         "label": string;
         /**
           * Set to true to show an asterisk beneath the label.
-          * @default false
          */
         "required": boolean;
         /**
           * The label's size.
-          * @default 'medium'
          */
         "size": 'small' | 'medium' | 'large';
     }
@@ -936,12 +843,10 @@ export namespace Components {
     interface SixHeader {
         /**
           * Set the header search input to be in an open or closed state.  Focuses the first `six-input` found in the search slot.
-          * @default false
          */
         "openSearch": boolean;
         /**
           * Indicates if content should be shifted down when search field is visible.
-          * @default false
          */
         "shiftContent": boolean;
     }
@@ -952,12 +857,10 @@ export namespace Components {
     interface SixHeaderDropdownItem {
         /**
           * Set to true to allow auto filtering for entries in the dropdown. With this flag the dropdown will automatically filter itsel. If you need to coordinate the shown elements yourself, e.g. because you need to call an endpoint use asyncFilter instead
-          * @default false
          */
         "filter": boolean;
         /**
           * The filter's placeholder text.
-          * @default 'Filter...'
          */
         "filterPlaceholder": string;
     }
@@ -968,7 +871,6 @@ export namespace Components {
     interface SixHeaderItem {
         /**
           * Indicates whether the item is styled as active. When set to `true`, a border is displayed below the trigger element.  Use <code>six-header-dropdown-item</code> to automatically set the active state for dropdowns.
-          * @default false
          */
         "active": boolean;
     }
@@ -979,27 +881,22 @@ export namespace Components {
     interface SixHeaderMenuButton {
         /**
           * Set to true to draw the button with a caret for use with dropdowns, popovers, etc.
-          * @default false
          */
         "caret": boolean;
         /**
           * Set to true to disable the button.
-          * @default false
          */
         "disabled": boolean;
         /**
           * Set to true to draw the button in a loading state.
-          * @default false
          */
         "loading": boolean;
         /**
           * Indicates if activating the button should reset the form.
-          * @default false
          */
         "reset": boolean;
         /**
           * Indicates if activating the button should submit the form. Ignored when `href` is set.
-          * @default false
          */
         "submit": boolean;
     }
@@ -1010,12 +907,10 @@ export namespace Components {
     interface SixIcon {
         /**
           * If set to true the default material outlined icons are not used.
-          * @default false
          */
         "filled": boolean;
         /**
           * The icon's size.
-          * @default 'inherit'
          */
         "size": | 'inherit'
     | 'xSmall'
@@ -1034,7 +929,6 @@ export namespace Components {
     interface SixIconButton {
         /**
           * Set to true to disable the button.
-          * @default false
          */
         "disabled": boolean;
         /**
@@ -1059,7 +953,6 @@ export namespace Components {
         "name"?: string;
         /**
           * The icon's size.
-          * @default 'medium'
          */
         "size": 'xSmall' | 'small' | 'medium' | 'large' | 'xLarge' | 'xxLarge' | 'xxxLarge';
         /**
@@ -1075,42 +968,34 @@ export namespace Components {
     interface SixInput {
         /**
           * The input's autocaptialize attribute.
-          * @default 'off'
          */
         "autocapitalize": string;
         /**
           * The input's autocomplete attribute.
-          * @default 'off'
          */
         "autocomplete": string;
         /**
           * The input's autocorrect attribute.
-          * @default 'off'
          */
         "autocorrect": 'on' | 'off';
         /**
           * The input's autofocus attribute.
-          * @default false
          */
         "autofocus": boolean;
         /**
           * Set to true to add a clear button when the input is populated.
-          * @default false
          */
         "clearable": boolean;
         /**
           * Set to true to disable the input.
-          * @default false
          */
         "disabled": boolean;
         /**
           * Internal: Styles the input for the dropdown filter search.
-          * @default false
          */
         "dropdownSearch": boolean;
         /**
           * The error message shown, if `invalid` is set to true.
-          * @default ''
          */
         "errorText": string | string[];
         /**
@@ -1123,7 +1008,6 @@ export namespace Components {
         "getSelectionRange": () => Promise<SelectionRange>;
         /**
           * The input's help text. Alternatively, you can use the help-text slot.
-          * @default ''
          */
         "helpText": string;
         /**
@@ -1132,17 +1016,14 @@ export namespace Components {
         "inputmode"?: 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
         /**
           * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
-          * @default false
          */
         "invalid": boolean;
         /**
           * The label text.
-          * @default ''
          */
         "label": string;
         /**
           * Set to render as line
-          * @default false
          */
         "line": boolean;
         /**
@@ -1163,7 +1044,6 @@ export namespace Components {
         "minlength"?: number;
         /**
           * The input's name attribute.
-          * @default ''
          */
         "name": string;
         /**
@@ -1172,7 +1052,6 @@ export namespace Components {
         "pattern"?: string;
         /**
           * Set to true to draw a pill-style input with rounded edges.
-          * @default false
          */
         "pill": boolean;
         /**
@@ -1181,7 +1060,6 @@ export namespace Components {
         "placeholder"?: string;
         /**
           * Set to true to make the input readonly.
-          * @default false
          */
         "readonly": boolean;
         /**
@@ -1190,7 +1068,6 @@ export namespace Components {
         "removeFocus": () => Promise<void>;
         /**
           * Set to true to show an asterisk beneath the label.
-          * @default false
          */
         "required": boolean;
         /**
@@ -1211,12 +1088,10 @@ export namespace Components {
         "setSelectionRange": (selectionStart: number, selectionEnd: number, selectionDirection?: SelectionRangeDirection) => Promise<void | undefined>;
         /**
           * The input's size.
-          * @default 'medium'
          */
         "size": 'small' | 'medium' | 'large';
         /**
           * Enables spell checking on the input.
-          * @default false
          */
         "spellcheck": boolean;
         /**
@@ -1225,17 +1100,14 @@ export namespace Components {
         "step"?: number;
         /**
           * Set to true to add a password toggle button for password inputs.
-          * @default false
          */
         "togglePassword": boolean;
         /**
           * The input's type.
-          * @default 'text'
          */
         "type": 'email' | 'number' | 'password' | 'search' | 'tel' | 'text' | 'url';
         /**
           * The input's value attribute.
-          * @default ''
          */
         "value": string;
     }
@@ -1246,12 +1118,10 @@ export namespace Components {
     interface SixItemPicker {
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `six-item-picker-change-debounced` event. If you want your change debounce event to not trigger when keeping the nav button pressed before, make sure debounce is a bit bigger than timeout, otherwise keeping the button pressed will trigger the event twice: once you click (and keep pressed) and once you release
-          * @default DEFAULT_DEBOUNCE_FAST
          */
         "debounce": number;
         /**
           * Set the amount of time, in milliseconds, to wait between switching to next item when mouse button is held pressed.
-          * @default DEFAULT_DEBOUNCE_INSANELY_FAST
          */
         "interval": number;
         /**
@@ -1268,54 +1138,44 @@ export namespace Components {
         "min"?: number | string;
         /**
           * Defines whether the items should be padded
-          * @default false
          */
         "padded": boolean;
         /**
           * Defines the character used for padding
-          * @default '0'
          */
         "paddingChar": string;
         /**
           * Defines whether the padding should be before or after the value. You can either use 'before' or 'after'. By default, before is selected
-          * @default ItemPickerPaddingDirection.BEFORE
          */
         "paddingDirection": ItemPickerPaddingDirection;
         /**
           * Defines the length of the padded area
-          * @default 2
          */
         "paddingLength": number;
         /**
           * Define whether the picker should to a roundtrip i.e. start at max when reaching min and vice versa.
-          * @default true
          */
         "roundtrip": boolean;
         /**
           * Defines how many steps should be taken when navigating
-          * @default 1
          */
         "step": number;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger faster switching between items.
-          * @default DEFAULT_DEBOUNCE_FAST
          */
         "timeout": number;
         /**
           * The type of items you want to rotate through.
-          * @default ItemPickerType.NUMBER
          */
         "type": ItemPickerType;
         /**
           * The item picker's value attribute.
-          * @default ''
          */
         "value": number | string;
     }
     interface SixLanguageSwitcher {
         /**
           * The languages which should be selectable options.
-          * @default DEFAULT_LANGUAGES
          */
         "languages": string[] | SixLanguageSwitcherInput[];
         /**
@@ -1340,7 +1200,6 @@ export namespace Components {
     interface SixLogo {
         /**
           * The brand of the logo. Either six or bme. Defaults to six.
-          * @default 'six'
          */
         "brand": 'six' | 'bme';
     }
@@ -1351,7 +1210,6 @@ export namespace Components {
     interface SixMainContainer {
         /**
           * Set to false to remove top and bottom padding.
-          * @default true
          */
         "padded": boolean;
     }
@@ -1363,17 +1221,14 @@ export namespace Components {
     interface SixMenu {
         /**
           * Internal: Disables handling of key presses.
-          * @default false
          */
         "disableKeyboardHandling": boolean;
         /**
           * Used for virtual scrolling Define how many items should be rendered in the DOM when using virtual scrolling
-          * @default 10
          */
         "itemSize": number;
         /**
           * Set the options to be shown in the dropdown
-          * @default null
          */
         "items": SixMenuItemData1[] | null;
         /**
@@ -1382,12 +1237,10 @@ export namespace Components {
         "itemsShown"?: number;
         /**
           * Set to true to remove the box-shadow
-          * @default false
          */
         "removeBoxShadow": boolean;
         /**
           * Used for virtual scrolling Define the debounce for listening on scrolling changes in milliseconds. The lower the number the more sensitive the component reacts to scrolling changes.
-          * @default 15
          */
         "scrollingDebounce": number;
         /**
@@ -1396,7 +1249,6 @@ export namespace Components {
         "typeToSelect": (key: string) => Promise<void>;
         /**
           * Defines whether the menu list will be rendered virtually i.e. only the elements actually shown (and a couple around) are actually rendered in the DOM. If you use virtual scrolling pass the elements via prop instead of via slot.
-          * @default false
          */
         "virtualScroll": boolean;
     }
@@ -1415,17 +1267,14 @@ export namespace Components {
     interface SixMenuItem {
         /**
           * Defines if the checked state is displayed as a checkbox or a check-icon
-          * @default 'check'
          */
         "checkType": 'checkbox' | 'check';
         /**
           * Internal: Draws the item in a checked state. CheckType needs to be set to 'checkbox' or 'check' to show the checked state
-          * @default false
          */
         "checked": boolean;
         /**
           * Set to true to draw the menu item in a disabled state.
-          * @default false
          */
         "disabled": boolean;
         /**
@@ -1442,7 +1291,6 @@ export namespace Components {
         "setFocus": (options?: FocusOptions) => Promise<void>;
         /**
           * A unique value to store in the menu item. This can be used as a way to identify menu items when selected.
-          * @default ''
          */
         "value": string;
     }
@@ -1460,7 +1308,6 @@ export namespace Components {
     interface SixPicto {
         /**
           * Defines the size of the icon.
-          * @default 'medium'
          */
         "size": 'xSmall' | 'small' | 'medium' | 'large' | 'xLarge' | 'xxLarge' | 'xxxLarge' | '4xl';
     }
@@ -1472,12 +1319,10 @@ export namespace Components {
     interface SixProgressBar {
         /**
           * When true, percentage is ignored, the label is hidden, and the progress bar is drawn in an indeterminate state.
-          * @default false
          */
         "indeterminate": boolean;
         /**
           * The progress bar's percentage, 0 to 100.
-          * @default 0
          */
         "percentage": number;
     }
@@ -1489,17 +1334,14 @@ export namespace Components {
     interface SixProgressRing {
         /**
           * The current progress percentage, 0 - 100.
-          * @default 0
          */
         "percentage": number;
         /**
           * The size of the progress ring in pixels.
-          * @default 128
          */
         "size": number;
         /**
           * The stroke width of the progress ring in pixels.
-          * @default 4
          */
         "strokeWidth": number;
     }
@@ -1511,22 +1353,18 @@ export namespace Components {
     interface SixRadio {
         /**
           * Set to true to draw the radio in a checked state.
-          * @default false
          */
         "checked": boolean;
         /**
           * Set to true to disable the radio.
-          * @default false
          */
         "disabled": boolean;
         /**
           * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
-          * @default false
          */
         "invalid": boolean;
         /**
           * The radio's name attribute.
-          * @default ''
          */
         "name": string;
         /**
@@ -1539,7 +1377,6 @@ export namespace Components {
         "setFocus": (options?: FocusOptions) => Promise<void>;
         /**
           * The radio's value attribute.
-          * @default 'on'
          */
         "value": string;
     }
@@ -1551,12 +1388,10 @@ export namespace Components {
     interface SixRange {
         /**
           * Set to true to disable the input.
-          * @default false
          */
         "disabled": boolean;
         /**
           * The error message shown, if `invalid` is set to true.
-          * @default ''
          */
         "errorText": string | string[];
         /**
@@ -1565,32 +1400,26 @@ export namespace Components {
         "errorTextCount"?: number;
         /**
           * The range's help text. Alternatively, you can use the help-text slot.
-          * @default ''
          */
         "helpText": string;
         /**
           * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
-          * @default false
          */
         "invalid": boolean;
         /**
           * The label text.
-          * @default ''
          */
         "label": string;
         /**
           * The input's max attribute.
-          * @default 100
          */
         "max": number;
         /**
           * The input's min attribute.
-          * @default 0
          */
         "min": number;
         /**
           * The input's name attribute.
-          * @default ''
          */
         "name": string;
         /**
@@ -1599,7 +1428,6 @@ export namespace Components {
         "removeFocus": () => Promise<void>;
         /**
           * Set to true to show an asterisk beneath the label.
-          * @default false
          */
         "required": boolean;
         /**
@@ -1608,22 +1436,18 @@ export namespace Components {
         "setFocus": (options?: FocusOptions) => Promise<void>;
         /**
           * The input's step attribute.
-          * @default 1
          */
         "step": number;
         /**
           * The preferred placedment of the tooltip.
-          * @default 'top'
          */
         "tooltip": 'top' | 'bottom' | 'none';
         /**
           * A function used to format the tooltip's value.
-          * @default (value: number) => value.toString()
          */
         "tooltipFormatter": (value: number) => string;
         /**
           * The input's value attribute.
-          * @default 0
          */
         "value": number;
     }
@@ -1634,17 +1458,14 @@ export namespace Components {
     interface SixRoot {
         /**
           * Defines whether the content section should be padded
-          * @default true
          */
         "padded": boolean;
         /**
           * Defines the stage of the application
-          * @default null
          */
         "stage": StageType;
         /**
           * Defines the version of the application
-          * @default ''
          */
         "version": string;
     }
@@ -1655,17 +1476,14 @@ export namespace Components {
     interface SixSearchField {
         /**
           * Set to true to add a clear button when the input is populated.
-          * @default false
          */
         "clearable": boolean;
         /**
           * Debounce time in milliseconds, default is 300 ms
-          * @default DEFAULT_DEBOUNCE_FAST
          */
         "debounce": number;
         /**
           * Set to true to disable the input.
-          * @default false
          */
         "disabled": boolean;
         /**
@@ -1674,7 +1492,6 @@ export namespace Components {
         "placeholder"?: string;
         /**
           * The input's value attribute.
-          * @default ''
          */
         "value": string;
     }
@@ -1686,27 +1503,22 @@ export namespace Components {
     interface SixSelect {
         /**
           * Set to true to allow async filtering. When you enter something in the search field the component will only emit an event but not filter any elements itself. You can then simply listen to the 'six-async-filter-fired' event to manage the shown menu-items yourself
-          * @default false
          */
         "asyncFilter": boolean;
         /**
           * Set to true to turn the six-select into an autocomplete.
-          * @default false
          */
         "autocomplete": boolean;
         /**
           * Set to true to add a clear button when the select is populated.
-          * @default false
          */
         "clearable": boolean;
         /**
           * Set to true to disable the select control.
-          * @default false
          */
         "disabled": boolean;
         /**
           * The error message shown, if `invalid` is set to true.
-          * @default ''
          */
         "errorText": string | string[];
         /**
@@ -1715,7 +1527,6 @@ export namespace Components {
         "errorTextCount"?: number;
         /**
           * Set to true to allow filtering for entries in the dropdown
-          * @default false
          */
         "filter": boolean;
         /**
@@ -1728,67 +1539,54 @@ export namespace Components {
         "filterPlaceholder"?: string;
         /**
           * The select's help text. Alternatively, you can use the help-text slot.
-          * @default ''
          */
         "helpText": string;
         /**
           * Enable this option to prevent the panel from being clipped when the component is placed inside a container with `overflow: auto|scroll`.
-          * @default false
          */
         "hoist": boolean;
         /**
           * The debounce for when the input changes for autocompletes should be emitted
-          * @default DEFAULT_DEBOUNCE_FAST
          */
         "inputDebounce": number;
         /**
           * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
-          * @default false
          */
         "invalid": boolean;
         /**
           * The label text.
-          * @default ''
          */
         "label": string;
         /**
           * Set to render as line
-          * @default false
          */
         "line": boolean;
         /**
           * Set to true to enable multiselect.
-          * @default false
          */
         "multiple": boolean;
         /**
           * The select's name.
-          * @default ''
          */
         "name": string;
         /**
           * Set the options to be shown in the dropdown (alternative to setting the elements via html)
-          * @default null
          */
         "options": SixMenuItemData[] | null;
         /**
           * Set to true to draw a pill-style select with rounded edges.
-          * @default false
          */
         "pill": boolean;
         /**
           * The select's placeholder text.
-          * @default ''
          */
         "placeholder": string;
         /**
           * Set to true to show an asterisk beneath the label.
-          * @default false
          */
         "required": boolean;
         /**
           * Enables the select all button.
-          * @default false
          */
         "selectAllButton": boolean;
         /**
@@ -1801,17 +1599,14 @@ export namespace Components {
         "setFocus": (options?: FocusOptions) => Promise<void>;
         /**
           * The select's size.
-          * @default 'medium'
          */
         "size": 'small' | 'medium' | 'large';
         /**
           * The value of the control. This will be a string or an array depending on `multiple`.
-          * @default ''
          */
         "value": string | string[];
         /**
           * Defines whether the menu list will be rendered virtually i.e. only the elements actually shown (and a couple around) are actually rendered in the DOM. If you use virtual scrolling pass the elements via prop instead of via slot.
-          * @default false
          */
         "virtualScroll": boolean;
     }
@@ -1826,12 +1621,10 @@ export namespace Components {
         "hide": () => Promise<void>;
         /**
           * Indicates whether the sidebar is open. You can use this in lieu of the show/hide methods.
-          * @default false
          */
         "open": boolean;
         /**
           * Sidebar position
-          * @default 'left'
          */
         "position": 'left' | 'right';
         /**
@@ -1852,12 +1645,10 @@ export namespace Components {
         "toggle": () => Promise<void>;
         /**
           * Define whether sidebar is toggled meaning only one menu can be open at the same time
-          * @default false
          */
         "toggled": boolean;
         /**
           * Sidebar width
-          * @default '16rem'
          */
         "width": string;
     }
@@ -1868,7 +1659,6 @@ export namespace Components {
     interface SixSidebarItem {
         /**
           * Set to true to draw the sidebar item in a disabled state.
-          * @default false
          */
         "disabled": boolean;
         /**
@@ -1877,17 +1667,14 @@ export namespace Components {
         "href": string | undefined;
         /**
           * Icon of the item
-          * @default ''
          */
         "icon": string;
         /**
           * Set to true to draw the item in a selected state.
-          * @default false
          */
         "selected": boolean;
         /**
           * A unique value to store in the sidebar item. This can be used as a way to identify sidebar items when selected.
-          * @default ''
          */
         "value": string;
     }
@@ -1902,17 +1689,14 @@ export namespace Components {
         "href": string | undefined;
         /**
           * Icon of the group
-          * @default ''
          */
         "icon": string;
         /**
           * Title of item group
-          * @default ''
          */
         "name": string;
         /**
           * Indicates whether the sidebar is shown
-          * @default false
          */
         "open": boolean;
         /**
@@ -1921,7 +1705,6 @@ export namespace Components {
         "summaryIcon"?: string;
         /**
           * A unique value to store in the sidebar item of the group label. This can be used as a way to identify sidebar items when selected.
-          * @default ''
          */
         "value": string;
     }
@@ -1943,7 +1726,6 @@ export namespace Components {
     interface SixStageIndicator {
         /**
           * The indicators value attribute
-          * @default null
          */
         "stage": StageType1;
     }
@@ -1955,17 +1737,14 @@ export namespace Components {
     interface SixSwitch {
         /**
           * Set to true to draw the switch in a checked state.
-          * @default false
          */
         "checked": boolean;
         /**
           * Set to true to disable the switch.
-          * @default false
          */
         "disabled": boolean;
         /**
           * The error message shown, if `invalid` is set to true.
-          * @default ''
          */
         "errorText": string | string[];
         /**
@@ -1974,17 +1753,14 @@ export namespace Components {
         "errorTextCount"?: number;
         /**
           * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
-          * @default false
          */
         "invalid": boolean;
         /**
           * The label text.
-          * @default ''
          */
         "label": string;
         /**
           * The switch's name attribute.
-          * @default ''
          */
         "name": string;
         /**
@@ -1993,7 +1769,6 @@ export namespace Components {
         "removeFocus": () => Promise<void>;
         /**
           * Set to true to show an asterisk beneath the label.
-          * @default false
          */
         "required": boolean;
         /**
@@ -2002,7 +1777,6 @@ export namespace Components {
         "setFocus": (options?: FocusOptions) => Promise<void>;
         /**
           * The switch's value attribute.
-          * @default 'on'
          */
         "value": string;
     }
@@ -2014,22 +1788,18 @@ export namespace Components {
     interface SixTab {
         /**
           * Set to true to draw the tab in an active state.
-          * @default false
          */
         "active": boolean;
         /**
           * When true, the tab will be rendered with a close icon.
-          * @default false
          */
         "closable": boolean;
         /**
           * Set to true to draw the tab in a disabled state.
-          * @default false
          */
         "disabled": boolean;
         /**
           * The name of the tab panel the tab will control. The panel must be located in the same tab group.
-          * @default ''
          */
         "panel": string;
         /**
@@ -2049,12 +1819,10 @@ export namespace Components {
     interface SixTabGroup {
         /**
           * Disables the scroll arrows that appear when tabs overflow.
-          * @default false
          */
         "noScrollControls": boolean;
         /**
           * The placement of the tabs.
-          * @default 'top'
          */
         "placement": 'top' | 'bottom' | 'left' | 'right';
         /**
@@ -2070,12 +1838,10 @@ export namespace Components {
     interface SixTabPanel {
         /**
           * When true, the tab panel will be shown.
-          * @default false
          */
         "active": boolean;
         /**
           * The tab panel's name.
-          * @default ''
          */
         "name": string;
     }
@@ -2087,22 +1853,18 @@ export namespace Components {
     interface SixTag {
         /**
           * Set to true to make the tag clearable.
-          * @default false
          */
         "clearable": boolean;
         /**
           * Set to true to draw a pill-style tag with rounded edges.
-          * @default false
          */
         "pill": boolean;
         /**
           * The tag's size.
-          * @default 'medium'
          */
         "size": 'small' | 'medium' | 'large';
         /**
           * The tag's type.
-          * @default 'primary'
          */
         "type": 'primary' | 'success' | 'info' | 'warning' | 'danger' | 'action' | 'text';
     }
@@ -2114,32 +1876,26 @@ export namespace Components {
     interface SixTextarea {
         /**
           * The textarea's autocaptialize attribute.
-          * @default 'off'
          */
         "autocapitalize": string;
         /**
           * The textarea's autocomplete attribute.
-          * @default 'off'
          */
         "autocomplete": string;
         /**
           * The textarea's autocorrect attribute.
-          * @default 'off'
          */
         "autocorrect": 'on' | 'off';
         /**
           * The textarea's autofocus attribute.
-          * @default false
          */
         "autofocus": boolean;
         /**
           * Set to true to disable the textarea.
-          * @default false
          */
         "disabled": boolean;
         /**
           * The error message shown, if `invalid` is set to true.
-          * @default ''
          */
         "errorText": string | string[];
         /**
@@ -2148,7 +1904,6 @@ export namespace Components {
         "errorTextCount"?: number;
         /**
           * The textarea's help text. Alternatively, you can use the help-text slot.
-          * @default ''
          */
         "helpText": string;
         /**
@@ -2157,12 +1912,10 @@ export namespace Components {
         "inputmode"?: 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
         /**
           * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
-          * @default false
          */
         "invalid": boolean;
         /**
           * The label text.
-          * @default ''
          */
         "label": string;
         /**
@@ -2175,7 +1928,6 @@ export namespace Components {
         "minlength"?: number;
         /**
           * The textarea's name attribute.
-          * @default ''
          */
         "name": string;
         /**
@@ -2184,7 +1936,6 @@ export namespace Components {
         "placeholder"?: string;
         /**
           * Set to true for a readonly textarea.
-          * @default false
          */
         "readonly": boolean;
         /**
@@ -2193,17 +1944,14 @@ export namespace Components {
         "removeFocus": () => Promise<void>;
         /**
           * Set to true to show an asterisk beneath the label.
-          * @default false
          */
         "required": boolean;
         /**
           * Controls how the textarea can be resized.
-          * @default 'vertical'
          */
         "resize": 'none' | 'vertical' | 'auto';
         /**
           * The number of rows to display by default.
-          * @default 4
          */
         "rows": number;
         /**
@@ -2224,17 +1972,14 @@ export namespace Components {
         "setSelectionRange": (selectionStart: number, selectionEnd: number, selectionDirection?: "forward" | "backward" | "none") => Promise<void | undefined>;
         /**
           * The textarea's size.
-          * @default 'medium'
          */
         "size": 'small' | 'medium' | 'large';
         /**
           * The textarea's spellcheck attribute.
-          * @default false
          */
         "spellcheck": boolean;
         /**
           * The textarea's value attribute.
-          * @default ''
          */
         "value": string;
     }
@@ -2245,22 +1990,18 @@ export namespace Components {
     interface SixTile {
         /**
           * Flag, whether the tile is closeable.
-          * @default true
          */
         "closeable": boolean;
         /**
           * Enables tile tooltip for tiles
-          * @default true
          */
         "disableTooltip": boolean;
         /**
           * Set to true to disable the tile.
-          * @default false
          */
         "disabled": boolean;
         /**
           * Flag, whether the tile should cast a shadow.
-          * @default false
          */
         "elevated": boolean;
         /**
@@ -2273,7 +2014,6 @@ export namespace Components {
         "iconName"?: string;
         /**
           * The tile's label.
-          * @default ''
          */
         "label": string;
         /**
@@ -2282,7 +2022,6 @@ export namespace Components {
         "show": () => Promise<void>;
         /**
           * The tile's size.
-          * @default 'medium'
          */
         "size": 'small' | 'medium' | 'large';
     }
@@ -2293,12 +2032,10 @@ export namespace Components {
     interface SixTimepicker {
         /**
           * Set to true to add a clear button when the input is populated.
-          * @default false
          */
         "clearable": boolean;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `six-timepicker-change-debounced` event. If you want your change debounce event to not trigger when keeping the nav button pressed before, make sure debounce is a bit bigger than timeout, otherwise keeping the button pressed will trigger the event twice: once you click (and keep pressed) and once you release
-          * @default DEFAULT_DEBOUNCE_FAST
          */
         "debounce": number;
         /**
@@ -2307,12 +2044,10 @@ export namespace Components {
         "defaultTime"?: string;
         /**
           * If `true` the component is disabled.
-          * @default false
          */
         "disabled": boolean;
         /**
           * The input's error text. Alternatively, you can use the error-text slot.
-          * @default ''
          */
         "errorText": string | string[];
         /**
@@ -2321,47 +2056,38 @@ export namespace Components {
         "errorTextCount"?: number;
         /**
           * Define the time format. Valid formats are:  HH:mm:ss hh:mm:ss:aa HH:mm:ss:ms hh:mm:ss:ms:aa HH:mm hh:mm:aa HH hh:aa mm ss ms  where HH is the 24 hour format and hh is the 12 hour format  Please notice that when using the 12-hour-clock (hh) you always need a period indicator (aa). So the time can be parsed as either am or pm
-          * @default 'HH:mm:ss'
          */
         "format": TimeFormat;
         /**
           * Enable this option to prevent the panel from being clipped when the component is placed inside a container with `overflow: auto|scroll`.
-          * @default false
          */
         "hoist": boolean;
         /**
           * Set the position of the icon
-          * @default 'left'
          */
         "iconPosition": 'left' | 'right';
         /**
           * Indicates whether the timepicker should be shown as an inline (always open) component
-          * @default false
          */
         "inline": boolean;
         /**
           * Set the amount of time, in milliseconds, to wait between switching to next timeunit (e.g. next hour) when mouse button is held pressed.
-          * @default DEFAULT_DEBOUNCE_INSANELY_FAST
          */
         "interval": number;
         /**
           * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
-          * @default false
          */
         "invalid": boolean;
         /**
           * The input's label. Alternatively, you can use the label slot.
-          * @default ''
          */
         "label": string;
         /**
           * The input's name attribute.
-          * @default ''
          */
         "name": string;
         /**
           * Indicates whether the timepicker dropdown is open on startup. You can use this in lieu of the show/hide methods.
-          * @default false
          */
         "open": boolean;
         /**
@@ -2374,17 +2100,14 @@ export namespace Components {
         "placement"?: 'top' | 'bottom';
         /**
           * If `true` the user can only select a time via the timepicker but not directly edit the input field.
-          * @default false
          */
         "readonly": boolean;
         /**
           * Set to true to show an asterisk beneath the label.
-          * @default false
          */
         "required": boolean;
         /**
           * Define the separator to be shown between the time unit pickers. Please be aware that this property will modify the displayed separator only. The separator for a timestring is always expected to be a colon (eg. '13:52:20')
-          * @default ':'
          */
         "separator": string;
         /**
@@ -2393,17 +2116,14 @@ export namespace Components {
         "setFocus": (options?: FocusOptions) => Promise<void>;
         /**
           * Timepicker size.
-          * @default 'medium'
          */
         "size": 'small' | 'medium' | 'large';
         /**
           * Set the amount of time, in milliseconds, to wait to trigger faster switching between timeunits (e.g. hours).
-          * @default DEFAULT_DEBOUNCE_FAST
          */
         "timeout": number;
         /**
           * The value of the timepicker provided as a string. The string mast match the provided format (or default format)
-          * @default ''
          */
         "value": string;
     }
@@ -2415,17 +2135,14 @@ export namespace Components {
     interface SixTooltip {
         /**
           * The tooltip's content. Alternatively, you can use the content slot.
-          * @default ''
          */
         "content": string;
         /**
           * Set to true to disable the tooltip, so it won't show when triggered.
-          * @default false
          */
         "disabled": boolean;
         /**
           * The distance in pixels from which to offset the tooltip away from its target.
-          * @default 10
          */
         "distance": number;
         /**
@@ -2434,12 +2151,10 @@ export namespace Components {
         "hide": () => Promise<void>;
         /**
           * Indicates whether the tooltip is open. You can use this in lieu of the show/hide methods.
-          * @default false
          */
         "open": boolean;
         /**
           * The preferred placement of the tooltip. Note that the actual placement may vary as needed to keep the tooltip inside the viewport.
-          * @default 'top'
          */
         "placement": | 'top'
     | 'top-start'
@@ -2459,12 +2174,10 @@ export namespace Components {
         "show": () => Promise<void>;
         /**
           * The distance in pixels from which to offset the tooltip along its target.
-          * @default 0
          */
         "skidding": number;
         /**
           * Controls how the tooltip is activated. Possible options include `click`, `hover`, `focus`, and `manual`. Multiple options can be passed by separating them with a space. When manual is used, the tooltip must be activated programmatically.
-          * @default 'hover focus'
          */
         "trigger": string;
     }
@@ -2472,6 +2185,10 @@ export namespace Components {
 export interface SixAlertCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLSixAlertElement;
+}
+export interface SixBreadcrumbsItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSixBreadcrumbsItemElement;
 }
 export interface SixButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -2628,6 +2345,29 @@ declare global {
     var HTMLSixBadgeElement: {
         prototype: HTMLSixBadgeElement;
         new (): HTMLSixBadgeElement;
+    };
+    interface HTMLSixBreadcrumbsElement extends Components.SixBreadcrumbs, HTMLStencilElement {
+    }
+    var HTMLSixBreadcrumbsElement: {
+        prototype: HTMLSixBreadcrumbsElement;
+        new (): HTMLSixBreadcrumbsElement;
+    };
+    interface HTMLSixBreadcrumbsItemElementEventMap {
+        "sixClick": EmptyPayload;
+    }
+    interface HTMLSixBreadcrumbsItemElement extends Components.SixBreadcrumbsItem, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSixBreadcrumbsItemElementEventMap>(type: K, listener: (this: HTMLSixBreadcrumbsItemElement, ev: SixBreadcrumbsItemCustomEvent<HTMLSixBreadcrumbsItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSixBreadcrumbsItemElementEventMap>(type: K, listener: (this: HTMLSixBreadcrumbsItemElement, ev: SixBreadcrumbsItemCustomEvent<HTMLSixBreadcrumbsItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLSixBreadcrumbsItemElement: {
+        prototype: HTMLSixBreadcrumbsItemElement;
+        new (): HTMLSixBreadcrumbsItemElement;
     };
     interface HTMLSixButtonElementEventMap {
         "six-button-blur": EmptyPayload;
@@ -3538,6 +3278,8 @@ declare global {
         "six-alert": HTMLSixAlertElement;
         "six-avatar": HTMLSixAvatarElement;
         "six-badge": HTMLSixBadgeElement;
+        "six-breadcrumbs": HTMLSixBreadcrumbsElement;
+        "six-breadcrumbs-item": HTMLSixBreadcrumbsItemElement;
         "six-button": HTMLSixButtonElement;
         "six-card": HTMLSixCardElement;
         "six-checkbox": HTMLSixCheckboxElement;
@@ -3603,12 +3345,10 @@ declare namespace LocalJSX {
     interface SixAlert {
         /**
           * Set to true to make the alert closable.
-          * @default false
          */
         "closable"?: boolean;
         /**
           * The length of time, in milliseconds, the alert will show before closing itself. If the user hovers over the toast alert, the timer will pause. On leaving the element with the mouse, the timer resets.
-          * @default Infinity
          */
         "duration"?: number;
         /**
@@ -3629,12 +3369,10 @@ declare namespace LocalJSX {
         "onSix-alert-show"?: (event: SixAlertCustomEvent<EmptyPayload>) => void;
         /**
           * Indicates whether or not the alert is open. You can use this in lieu of the show/hide methods.
-          * @default false
          */
         "open"?: boolean;
         /**
           * The type of alert.
-          * @default 'primary'
          */
         "type"?: AlertType;
     }
@@ -3646,22 +3384,18 @@ declare namespace LocalJSX {
     interface SixAvatar {
         /**
           * Alternative text for the image.
-          * @default ''
          */
         "alt"?: string;
         /**
           * The image source to use for the avatar.
-          * @default ''
          */
         "image"?: string;
         /**
           * Initials to use as a fallback when no image is available (1-2 characters max recommended).
-          * @default ''
          */
         "initials"?: string;
         /**
           * The shape of the avatar.
-          * @default 'circle'
          */
         "shape"?: 'circle' | 'square' | 'rounded';
     }
@@ -3673,19 +3407,36 @@ declare namespace LocalJSX {
     interface SixBadge {
         /**
           * Set to true to draw a pill-style badge with rounded edges.
-          * @default false
          */
         "pill"?: boolean;
         /**
           * Set to true to make the badge pulsate to draw attention.
-          * @default false
          */
         "pulse"?: boolean;
         /**
           * The badge's type.
-          * @default 'primary'
          */
         "type"?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'info' | 'action';
+    }
+    interface SixBreadcrumbs {
+        /**
+          * Data for the breadcrumbs
+         */
+        "data"?: SixBreadcrumbsData;
+    }
+    interface SixBreadcrumbsItem {
+        /**
+          * If the breadcrumb is disabled
+         */
+        "disabled"?: boolean;
+        /**
+          * Name or label of the breadcrumb
+         */
+        "name"?: string;
+        /**
+          * Emitted on click.
+         */
+        "onSixClick"?: (event: SixBreadcrumbsItemCustomEvent<EmptyPayload>) => void;
     }
     /**
      * @since 1.0
@@ -3695,17 +3446,14 @@ declare namespace LocalJSX {
     interface SixButton {
         /**
           * Set to true to draw the button with a caret for use with dropdowns, popovers, etc.
-          * @default false
          */
         "caret"?: boolean;
         /**
           * Set to true to draw a circle button.
-          * @default false
          */
         "circle"?: boolean;
         /**
           * Set to true to disable the button.
-          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -3718,12 +3466,10 @@ declare namespace LocalJSX {
         "href"?: string;
         /**
           * Set to true to draw the button in a loading state.
-          * @default false
          */
         "loading"?: boolean;
         /**
           * An optional name for the button. Ignored when `href` is set.
-          * @default ''
          */
         "name"?: string;
         /**
@@ -3736,22 +3482,18 @@ declare namespace LocalJSX {
         "onSix-button-focus"?: (event: SixButtonCustomEvent<EmptyPayload>) => void;
         /**
           * Set to true to draw a pill-style button with rounded edges.
-          * @default false
          */
         "pill"?: boolean;
         /**
           * Indicates if activating the button should reset the form.
-          * @default false
          */
         "reset"?: boolean;
         /**
           * The button's size.
-          * @default 'medium'
          */
         "size"?: 'small' | 'medium' | 'large';
         /**
           * Indicates if activating the button should submit the form. Ignored when `href` is set.
-          * @default false
          */
         "submit"?: boolean;
         /**
@@ -3760,7 +3502,6 @@ declare namespace LocalJSX {
         "target"?: '_blank' | '_parent' | '_self' | '_top';
         /**
           * The button's type.
-          * @default 'primary'
          */
         "type"?: | 'secondary'
     | 'primary'
@@ -3772,7 +3513,6 @@ declare namespace LocalJSX {
     | 'action-outline';
         /**
           * An optional value for the button. Ignored when `href` is set.
-          * @default ''
          */
         "value"?: string;
     }
@@ -3790,17 +3530,14 @@ declare namespace LocalJSX {
     interface SixCheckbox {
         /**
           * Set to true to draw the checkbox in a checked state.
-          * @default false
          */
         "checked"?: boolean;
         /**
           * Set to true to disable the checkbox.
-          * @default false
          */
         "disabled"?: boolean;
         /**
           * The error message shown, if `invalid` is set to true.
-          * @default ''
          */
         "errorText"?: string | string[];
         /**
@@ -3809,22 +3546,18 @@ declare namespace LocalJSX {
         "errorTextCount"?: number;
         /**
           * Set to true to draw the checkbox in an indeterminate state.
-          * @default false
          */
         "indeterminate"?: boolean;
         /**
           * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
-          * @default false
          */
         "invalid"?: boolean;
         /**
           * The label text.
-          * @default ''
          */
         "label"?: string;
         /**
           * The checkbox's name attribute.
-          * @default ''
          */
         "name"?: string;
         /**
@@ -3841,12 +3574,10 @@ declare namespace LocalJSX {
         "onSix-checkbox-focus"?: (event: SixCheckboxCustomEvent<EmptyPayload>) => void;
         /**
           * Set to true to show an asterisk beneath the label.
-          * @default false
          */
         "required"?: boolean;
         /**
           * The value of the checkbox does not mean if it's checked or not, use the `checked` property for that.  The value of a checkbox is analogous to the value of an `<input type="checkbox">`, it's only used when the checkbox participates in a native `<form>`.
-          * @default 'on'
          */
         "value"?: string;
     }
@@ -3858,27 +3589,22 @@ declare namespace LocalJSX {
     interface SixDate {
         /**
           * Callback to determine which dates in the picker should be selectable.
-          * @default () => true
          */
         "allowedDates"?: (date: string) => boolean;
         /**
           * Set to true to add a clear button when the input is populated.
-          * @default false
          */
         "clearable"?: boolean;
         /**
           * Defines the format pattern for displaying dates and how dates can be entered via keyboard.  The parser accepts flexible input that doesn't strictly match the format pattern. Input with missing leading zeros or incomplete years will be automatically normalized. For example, with the pattern "dd.MM.yyyy": "1.1.2025" becomes "01.01.2025" and "1.1.225" becomes "01.01.0225".  Defaults to "dd.MM.yyyy".  Available patterns: - Year: "yyyy" (e.g., "2021") - Month: "MM" (e.g., "01" for January) or "M" (e.g., "1" for January) - Day: "dd" (e.g., "08" for the 8th) or "d" (e.g., "8" for the 8th)  Examples: - "dd.MM.yyyy" -> "31.01.2024" - "yyyy-MM-dd" -> "2024-01-31" - "d.M.yyyy" -> "31.1.2024"
-          * @default 'dd.MM.yyyy'
          */
         "dateFormat"?: string;
         /**
           * If `true` the component is disabled.
-          * @default false
          */
         "disabled"?: boolean;
         /**
           * The error message shown, if `invalid` is set to true.
-          * @default ''
          */
         "errorText"?: string | string[];
         /**
@@ -3887,22 +3613,18 @@ declare namespace LocalJSX {
         "errorTextCount"?: number;
         /**
           * The input's help text. Alternatively, you can use the help-text slot.
-          * @default ''
          */
         "helpText"?: string;
         /**
           * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
-          * @default false
          */
         "invalid"?: boolean;
         /**
           * The label text.
-          * @default ''
          */
         "label"?: string;
         /**
           * The language used to render the weekdays and months.
-          * @default 'en'
          */
         "language"?: Language;
         /**
@@ -3915,7 +3637,6 @@ declare namespace LocalJSX {
         "min"?: string;
         /**
           * The input's name attribute.
-          * @default ''
          */
         "name"?: string;
         /**
@@ -3932,22 +3653,18 @@ declare namespace LocalJSX {
         "placeholder"?: string;
         /**
           * If `true` the user can only select a date via the component in the popup but not directly edit the input field.
-          * @default false
          */
         "readonly"?: boolean;
         /**
           * Set to true to show an asterisk beneath the label.
-          * @default false
          */
         "required"?: boolean;
         /**
           * The size of the date input field.
-          * @default 'medium'
          */
         "size"?: 'small' | 'medium' | 'large';
         /**
           * The value of the form field in ISO 8601 date format (yyyy-MM-dd). Example: '2024-01-01'.  When an invalid date is provided, it will be replaced with an empty string (''), matching the behavior of native HTML <input type="date">.  The displayed format can be customized using the dateFormat property, but the underlying value will always be stored in ISO format.
-          * @default ''
          */
         "value"?: string | '';
     }
@@ -3958,17 +3675,14 @@ declare namespace LocalJSX {
     interface SixDatepicker {
         /**
           * Callback to determine which date in the datepicker should be selectable. the callback function will get a datestring as an argument, e.g. '2021-07-04'  Usage e.g.: const datepicker = document.getElementById('allowed-date-picker'); datepicker.allowedDates = datestring => parseInt(datestring.split('-')[2], 10) % 2 === 0;
-          * @default () => true
          */
         "allowedDates"?: (date: Date) => boolean;
         /**
           * Set to true to add a clear button when the input is populated.
-          * @default false
          */
         "clearable"?: boolean;
         /**
           * Closes the datepicker dropdown after selection
-          * @default this.type === 'date'
          */
         "closeOnSelect"?: boolean;
         /**
@@ -3977,12 +3691,10 @@ declare namespace LocalJSX {
         "containingElement"?: HTMLElement;
         /**
           * Define the dateFormat. Valid formats are: 'dd.mm.yyyy' 'yyyy-mm-dd' 'dd-mm-yyyy' 'dd/mm/yyyy' 'yyyy/mm/dd' 'dd.mm.yy' 'yy-mm-dd' 'dd-mm-yy' 'dd/mm/yy' 'yy/mm/dd'
-          * @default SixDateFormats.DDMMYYY_DOT
          */
         "dateFormat"?: SixDateFormats;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `dateChange` event after each keystroke.
-          * @default DEFAULT_DEBOUNCE_FAST
          */
         "debounce"?: number;
         /**
@@ -3991,12 +3703,10 @@ declare namespace LocalJSX {
         "defaultDate"?: string;
         /**
           * If `true` the component is disabled.
-          * @default false
          */
         "disabled"?: boolean;
         /**
           * The error message shown, if `invalid` is set to true.
-          * @default ''
          */
         "errorText"?: string | string[];
         /**
@@ -4005,32 +3715,26 @@ declare namespace LocalJSX {
         "errorTextCount"?: number;
         /**
           * Enable this option to prevent the panel from being clipped when the component is placed inside a container with `overflow: auto|scroll`.
-          * @default false
          */
         "hoist"?: boolean;
         /**
           * Set the position of the icon
-          * @default 'left'
          */
         "iconPosition"?: 'left' | 'right';
         /**
           * Indicates whether or not the calendar should be shown as an inline (always open) component
-          * @default false
          */
         "inline"?: boolean;
         /**
           * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
-          * @default false
          */
         "invalid"?: boolean;
         /**
           * The label text.
-          * @default ''
          */
         "label"?: string;
         /**
           * The language used to render the weekdays and months.
-          * @default 'en'
          */
         "locale"?: 'en' | 'de' | 'fr' | 'it' | 'es';
         /**
@@ -4043,7 +3747,6 @@ declare namespace LocalJSX {
         "min"?: Date;
         /**
           * The input's name attribute.
-          * @default ''
          */
         "name"?: string;
         /**
@@ -4060,7 +3763,6 @@ declare namespace LocalJSX {
         "onSix-datepicker-select"?: (event: SixDatepickerCustomEvent<SixDatepickerSelectPayload>) => void;
         /**
           * Indicates whether or not the calendar dropdown is open on startup. You can use this in lieu of the show/hide methods.
-          * @default false
          */
         "open"?: boolean;
         /**
@@ -4073,22 +3775,18 @@ declare namespace LocalJSX {
         "placement"?: 'top' | 'bottom';
         /**
           * If `true` the user can only select a date via the component in the popup, but not directly edit the input field.
-          * @default false
          */
         "readonly"?: boolean;
         /**
           * Set to true to show an asterisk beneath the label.
-          * @default false
          */
         "required"?: boolean;
         /**
           * Datepicker size.
-          * @default 'medium'
          */
         "size"?: 'small' | 'medium' | 'large';
         /**
           * Set the type.
-          * @default 'date'
          */
         "type"?: 'date' | 'date-time';
         /**
@@ -4104,17 +3802,14 @@ declare namespace LocalJSX {
     interface SixDetails {
         /**
           * Set to true to prevent the user from toggling the details.
-          * @default false
          */
         "disabled"?: boolean;
         /**
           * Set to false when you want to hide the summary icon and disable the open/close mechanism. Usually not needed, but used internally by 'six-sidebar-item-group'
-          * @default true
          */
         "hasContent"?: boolean;
         /**
           * Set to true when you want to use six-details inline e.g. in a sidebar
-          * @default false
          */
         "inline"?: boolean;
         /**
@@ -4135,17 +3830,14 @@ declare namespace LocalJSX {
         "onSix-details-show"?: (event: SixDetailsCustomEvent<EmptyPayload>) => void;
         /**
           * Indicates whether the details is open. You can use this in lieu of the show/hide methods.
-          * @default false
          */
         "open"?: boolean;
         /**
           * Set to true when you want details without content to be selectable. This is important if you e.g. have a toggled sidebar where some menus have no children
-          * @default false
          */
         "selectableEmpty"?: boolean;
         /**
           * The summary to show in the details header. If you need to display HTML, use the `summary` slot instead.
-          * @default ''
          */
         "summary"?: string;
         /**
@@ -4154,7 +3846,6 @@ declare namespace LocalJSX {
         "summaryIcon"?: string;
         /**
           * The icon's size.
-          * @default 'inherit'
          */
         "summaryIconSize"?: | 'inherit'
     | 'xSmall'
@@ -4173,12 +3864,10 @@ declare namespace LocalJSX {
     interface SixDialog {
         /**
           * The dialog's label as displayed in the header. You should always include a relevant label even when using `no-header`, as it is required for proper accessibility.
-          * @default ''
          */
         "label"?: string;
         /**
           * Set to true to disable the header. This will also remove the default close button, so please ensure you provide an easy, accessible way for users to dismiss the dialog.
-          * @default false
          */
         "noHeader"?: boolean;
         /**
@@ -4207,7 +3896,6 @@ declare namespace LocalJSX {
         "onSix-dialog-show"?: (event: SixDialogCustomEvent<EmptyPayload>) => void;
         /**
           * Indicates whether the dialog is open. You can use this in lieu of the show/hide methods.
-          * @default false
          */
         "open"?: boolean;
     }
@@ -4219,17 +3907,14 @@ declare namespace LocalJSX {
     interface SixDrawer {
         /**
           * By default, the drawer slides out of its containing block (usually the viewport). To make the drawer slide out of its parent element, set this prop and add `position: relative` to the parent.
-          * @default false
          */
         "contained"?: boolean;
         /**
           * The drawer's label as displayed in the header. You should always include a relevant label even when using `no-header`, as it is required for proper accessibility.
-          * @default ''
          */
         "label"?: string;
         /**
           * Removes the header. This will also remove the default close button, so please ensure you provide an easy, accessible way for users to dismiss the drawer.
-          * @default false
          */
         "noHeader"?: boolean;
         /**
@@ -4258,12 +3943,10 @@ declare namespace LocalJSX {
         "onSix-drawer-show"?: (event: SixDrawerCustomEvent<EmptyPayload>) => void;
         /**
           * Indicates whether the drawer is open. You can use this in lieu of the show/hide methods.
-          * @default false
          */
         "open"?: boolean;
         /**
           * The direction from which the drawer will open.
-          * @default 'right'
          */
         "placement"?: 'top' | 'right' | 'bottom' | 'left';
     }
@@ -4275,17 +3958,14 @@ declare namespace LocalJSX {
     interface SixDropdown {
         /**
           * Set to true to allow async filtering. When you enter something in the search field the component will only emit an event but not filter any elements itself. You can then simply listen to the 'six-async-filter-fired' event to manage the shown menu-items yourself
-          * @default false
          */
         "asyncFilter"?: boolean;
         /**
           * By default the search field will be focused when opening a dropdown with filtering enabled.
-          * @default true
          */
         "autofocusFilter"?: boolean;
         /**
           * Determines whether the dropdown should hide when a menu item is selected.
-          * @default true
          */
         "closeOnSelect"?: boolean;
         /**
@@ -4294,37 +3974,30 @@ declare namespace LocalJSX {
         "containingElement"?: HTMLElement;
         /**
           * The panel can be opend/closed by pressing the spacebar or the enter key. In some cases you might want to avoid this
-          * @default false
          */
         "disableHideOnEnterAndSpace"?: boolean;
         /**
           * The distance in pixels from which to offset the panel away from its trigger.
-          * @default 4
          */
         "distance"?: number;
         /**
           * Set to true to allow auto filtering for entries in the dropdown. With this flag the dropdown will automatically filter itsel. If you need to coordinate the shown elements yourself, e.g. because you need to call an endpoint use asyncFilter instead
-          * @default false
          */
         "filter"?: boolean;
         /**
           * The debounce for the filter callbacks.
-          * @default 0
          */
         "filterDebounce"?: number;
         /**
           * The filter's placeholder text.
-          * @default 'Filter...'
          */
         "filterPlaceholder"?: string;
         /**
           * Enable this option to prevent the panel from being clipped when the component is placed inside a container with `overflow: auto|scroll`.
-          * @default false
          */
         "hoist"?: boolean;
         /**
           * Determines if the dropdown panel's width should match the width of the trigger element.  If set to `true`, the panel will resize its width to align with the trigger's width. If `false` or omitted, the panel will maintain its default width.
-          * @default false
          */
         "matchTriggerWidth"?: boolean;
         /**
@@ -4357,17 +4030,14 @@ declare namespace LocalJSX {
         "onSix-dropdown-show"?: (event: SixDropdownCustomEvent<EmptyPayload>) => void;
         /**
           * Indicates whether the dropdown is open. You can use this in lieu of the show/hide methods.
-          * @default false
          */
         "open"?: boolean;
         /**
           * Set the options to be shown in the dropdown (alternative to setting the elements via html)
-          * @default []
          */
         "options"?: SixMenuItemData[];
         /**
           * The preferred placement of the dropdown panel. Note that the actual placement may vary as needed to keep the panel inside the viewport.
-          * @default 'bottom-start'
          */
         "placement"?: | 'top'
     | 'top-start'
@@ -4383,12 +4053,10 @@ declare namespace LocalJSX {
     | 'left-end';
         /**
           * The distance in pixels from which to offset the panel along its trigger.
-          * @default 0
          */
         "skidding"?: number;
         /**
           * Defines whether the menu list will be rendered virtually i.e. only the elements actually shown (and a couple around) are actually rendered in the DOM. If you use virtual scrolling pass the elements via prop instead of via slot.
-          * @default false
          */
         "virtualScroll"?: boolean;
     }
@@ -4417,7 +4085,6 @@ declare namespace LocalJSX {
         "errorCode"?: 404 | 403 | 500;
         /**
           * Defines language and thus displays the proper error page in the selected language.
-          * @default 'en'
          */
         "language"?: 'en' | 'de';
     }
@@ -4434,27 +4101,22 @@ declare namespace LocalJSX {
     interface SixFileListItem {
         /**
           * The date when the file was uploaded
-          * @default ''
          */
         "date"?: string;
         /**
           * An id to clearly identify the file
-          * @default ''
          */
         "identifier"?: string;
         /**
           * The filename
-          * @default ''
          */
         "name"?: string;
         /**
           * Set to true if you don't want to allow to delete this file
-          * @default false
          */
         "nodelete"?: boolean;
         /**
           * Set to true if you don't want to allow to download this file
-          * @default false
          */
         "nodownload"?: boolean;
         /**
@@ -4481,22 +4143,18 @@ declare namespace LocalJSX {
         "accept"?: string;
         /**
           * Set to true if file control should be small.
-          * @default false
          */
         "compact"?: boolean;
         /**
           * Set when button is disabled.
-          * @default false
          */
         "disabled"?: false;
         /**
           * The error message shown, if `invalid` is set to true.
-          * @default ''
          */
         "errorText"?: string | string[];
         /**
           * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
-          * @default false
          */
         "invalid"?: boolean;
         /**
@@ -4509,7 +4167,6 @@ declare namespace LocalJSX {
         "maxFileSize"?: number;
         /**
           * More than one file allowed.
-          * @default false
          */
         "multiple"?: false;
         /**
@@ -4522,7 +4179,6 @@ declare namespace LocalJSX {
         "onSix-file-upload-success"?: (event: SixFileUploadCustomEvent<SixFileUploadSuccessPayload>) => void;
         /**
           * Set to true to draw the control in a loading state.
-          * @default false
          */
         "uploading"?: boolean;
     }
@@ -4539,27 +4195,22 @@ declare namespace LocalJSX {
     interface SixGroupLabel {
         /**
           * Set to true to disable the label.
-          * @default false
          */
         "disabled"?: boolean;
         /**
           * The wrapper label's help text. Alternatively, you can use the help-text slot.
-          * @default ''
          */
         "helpText"?: string;
         /**
           * The wrapper label's label. Alternatively, you can use the label slot.
-          * @default ''
          */
         "label"?: string;
         /**
           * Set to true to show an asterisk beneath the label.
-          * @default false
          */
         "required"?: boolean;
         /**
           * The label's size.
-          * @default 'medium'
          */
         "size"?: 'small' | 'medium' | 'large';
     }
@@ -4570,12 +4221,10 @@ declare namespace LocalJSX {
     interface SixHeader {
         /**
           * Set the header search input to be in an open or closed state.  Focuses the first `six-input` found in the search slot.
-          * @default false
          */
         "openSearch"?: boolean;
         /**
           * Indicates if content should be shifted down when search field is visible.
-          * @default false
          */
         "shiftContent"?: boolean;
     }
@@ -4586,12 +4235,10 @@ declare namespace LocalJSX {
     interface SixHeaderDropdownItem {
         /**
           * Set to true to allow auto filtering for entries in the dropdown. With this flag the dropdown will automatically filter itsel. If you need to coordinate the shown elements yourself, e.g. because you need to call an endpoint use asyncFilter instead
-          * @default false
          */
         "filter"?: boolean;
         /**
           * The filter's placeholder text.
-          * @default 'Filter...'
          */
         "filterPlaceholder"?: string;
     }
@@ -4602,7 +4249,6 @@ declare namespace LocalJSX {
     interface SixHeaderItem {
         /**
           * Indicates whether the item is styled as active. When set to `true`, a border is displayed below the trigger element.  Use <code>six-header-dropdown-item</code> to automatically set the active state for dropdowns.
-          * @default false
          */
         "active"?: boolean;
     }
@@ -4613,27 +4259,22 @@ declare namespace LocalJSX {
     interface SixHeaderMenuButton {
         /**
           * Set to true to draw the button with a caret for use with dropdowns, popovers, etc.
-          * @default false
          */
         "caret"?: boolean;
         /**
           * Set to true to disable the button.
-          * @default false
          */
         "disabled"?: boolean;
         /**
           * Set to true to draw the button in a loading state.
-          * @default false
          */
         "loading"?: boolean;
         /**
           * Indicates if activating the button should reset the form.
-          * @default false
          */
         "reset"?: boolean;
         /**
           * Indicates if activating the button should submit the form. Ignored when `href` is set.
-          * @default false
          */
         "submit"?: boolean;
     }
@@ -4644,12 +4285,10 @@ declare namespace LocalJSX {
     interface SixIcon {
         /**
           * If set to true the default material outlined icons are not used.
-          * @default false
          */
         "filled"?: boolean;
         /**
           * The icon's size.
-          * @default 'inherit'
          */
         "size"?: | 'inherit'
     | 'xSmall'
@@ -4668,7 +4307,6 @@ declare namespace LocalJSX {
     interface SixIconButton {
         /**
           * Set to true to disable the button.
-          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -4693,7 +4331,6 @@ declare namespace LocalJSX {
         "name"?: string;
         /**
           * The icon's size.
-          * @default 'medium'
          */
         "size"?: 'xSmall' | 'small' | 'medium' | 'large' | 'xLarge' | 'xxLarge' | 'xxxLarge';
         /**
@@ -4709,42 +4346,34 @@ declare namespace LocalJSX {
     interface SixInput {
         /**
           * The input's autocaptialize attribute.
-          * @default 'off'
          */
         "autocapitalize"?: string;
         /**
           * The input's autocomplete attribute.
-          * @default 'off'
          */
         "autocomplete"?: string;
         /**
           * The input's autocorrect attribute.
-          * @default 'off'
          */
         "autocorrect"?: 'on' | 'off';
         /**
           * The input's autofocus attribute.
-          * @default false
          */
         "autofocus"?: boolean;
         /**
           * Set to true to add a clear button when the input is populated.
-          * @default false
          */
         "clearable"?: boolean;
         /**
           * Set to true to disable the input.
-          * @default false
          */
         "disabled"?: boolean;
         /**
           * Internal: Styles the input for the dropdown filter search.
-          * @default false
          */
         "dropdownSearch"?: boolean;
         /**
           * The error message shown, if `invalid` is set to true.
-          * @default ''
          */
         "errorText"?: string | string[];
         /**
@@ -4753,7 +4382,6 @@ declare namespace LocalJSX {
         "errorTextCount"?: number;
         /**
           * The input's help text. Alternatively, you can use the help-text slot.
-          * @default ''
          */
         "helpText"?: string;
         /**
@@ -4762,17 +4390,14 @@ declare namespace LocalJSX {
         "inputmode"?: 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
         /**
           * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
-          * @default false
          */
         "invalid"?: boolean;
         /**
           * The label text.
-          * @default ''
          */
         "label"?: string;
         /**
           * Set to render as line
-          * @default false
          */
         "line"?: boolean;
         /**
@@ -4793,7 +4418,6 @@ declare namespace LocalJSX {
         "minlength"?: number;
         /**
           * The input's name attribute.
-          * @default ''
          */
         "name"?: string;
         /**
@@ -4822,7 +4446,6 @@ declare namespace LocalJSX {
         "pattern"?: string;
         /**
           * Set to true to draw a pill-style input with rounded edges.
-          * @default false
          */
         "pill"?: boolean;
         /**
@@ -4831,22 +4454,18 @@ declare namespace LocalJSX {
         "placeholder"?: string;
         /**
           * Set to true to make the input readonly.
-          * @default false
          */
         "readonly"?: boolean;
         /**
           * Set to true to show an asterisk beneath the label.
-          * @default false
          */
         "required"?: boolean;
         /**
           * The input's size.
-          * @default 'medium'
          */
         "size"?: 'small' | 'medium' | 'large';
         /**
           * Enables spell checking on the input.
-          * @default false
          */
         "spellcheck"?: boolean;
         /**
@@ -4855,17 +4474,14 @@ declare namespace LocalJSX {
         "step"?: number;
         /**
           * Set to true to add a password toggle button for password inputs.
-          * @default false
          */
         "togglePassword"?: boolean;
         /**
           * The input's type.
-          * @default 'text'
          */
         "type"?: 'email' | 'number' | 'password' | 'search' | 'tel' | 'text' | 'url';
         /**
           * The input's value attribute.
-          * @default ''
          */
         "value"?: string;
     }
@@ -4876,12 +4492,10 @@ declare namespace LocalJSX {
     interface SixItemPicker {
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `six-item-picker-change-debounced` event. If you want your change debounce event to not trigger when keeping the nav button pressed before, make sure debounce is a bit bigger than timeout, otherwise keeping the button pressed will trigger the event twice: once you click (and keep pressed) and once you release
-          * @default DEFAULT_DEBOUNCE_FAST
          */
         "debounce"?: number;
         /**
           * Set the amount of time, in milliseconds, to wait between switching to next item when mouse button is held pressed.
-          * @default DEFAULT_DEBOUNCE_INSANELY_FAST
          */
         "interval"?: number;
         /**
@@ -4906,54 +4520,44 @@ declare namespace LocalJSX {
         "onSix-item-picker-change-debounced"?: (event: SixItemPickerCustomEvent<SixItemPickerChangePayload>) => void;
         /**
           * Defines whether the items should be padded
-          * @default false
          */
         "padded"?: boolean;
         /**
           * Defines the character used for padding
-          * @default '0'
          */
         "paddingChar"?: string;
         /**
           * Defines whether the padding should be before or after the value. You can either use 'before' or 'after'. By default, before is selected
-          * @default ItemPickerPaddingDirection.BEFORE
          */
         "paddingDirection"?: ItemPickerPaddingDirection;
         /**
           * Defines the length of the padded area
-          * @default 2
          */
         "paddingLength"?: number;
         /**
           * Define whether the picker should to a roundtrip i.e. start at max when reaching min and vice versa.
-          * @default true
          */
         "roundtrip"?: boolean;
         /**
           * Defines how many steps should be taken when navigating
-          * @default 1
          */
         "step"?: number;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger faster switching between items.
-          * @default DEFAULT_DEBOUNCE_FAST
          */
         "timeout"?: number;
         /**
           * The type of items you want to rotate through.
-          * @default ItemPickerType.NUMBER
          */
         "type"?: ItemPickerType;
         /**
           * The item picker's value attribute.
-          * @default ''
          */
         "value"?: number | string;
     }
     interface SixLanguageSwitcher {
         /**
           * The languages which should be selectable options.
-          * @default DEFAULT_LANGUAGES
          */
         "languages"?: string[] | SixLanguageSwitcherInput[];
         /**
@@ -4982,7 +4586,6 @@ declare namespace LocalJSX {
     interface SixLogo {
         /**
           * The brand of the logo. Either six or bme. Defaults to six.
-          * @default 'six'
          */
         "brand"?: 'six' | 'bme';
     }
@@ -4993,7 +4596,6 @@ declare namespace LocalJSX {
     interface SixMainContainer {
         /**
           * Set to false to remove top and bottom padding.
-          * @default true
          */
         "padded"?: boolean;
     }
@@ -5005,17 +4607,14 @@ declare namespace LocalJSX {
     interface SixMenu {
         /**
           * Internal: Disables handling of key presses.
-          * @default false
          */
         "disableKeyboardHandling"?: boolean;
         /**
           * Used for virtual scrolling Define how many items should be rendered in the DOM when using virtual scrolling
-          * @default 10
          */
         "itemSize"?: number;
         /**
           * Set the options to be shown in the dropdown
-          * @default null
          */
         "items"?: SixMenuItemData1[] | null;
         /**
@@ -5028,17 +4627,14 @@ declare namespace LocalJSX {
         "onSix-menu-item-selected"?: (event: SixMenuCustomEvent<SixMenuItemSelectedPayload>) => void;
         /**
           * Set to true to remove the box-shadow
-          * @default false
          */
         "removeBoxShadow"?: boolean;
         /**
           * Used for virtual scrolling Define the debounce for listening on scrolling changes in milliseconds. The lower the number the more sensitive the component reacts to scrolling changes.
-          * @default 15
          */
         "scrollingDebounce"?: number;
         /**
           * Defines whether the menu list will be rendered virtually i.e. only the elements actually shown (and a couple around) are actually rendered in the DOM. If you use virtual scrolling pass the elements via prop instead of via slot.
-          * @default false
          */
         "virtualScroll"?: boolean;
     }
@@ -5057,22 +4653,18 @@ declare namespace LocalJSX {
     interface SixMenuItem {
         /**
           * Defines if the checked state is displayed as a checkbox or a check-icon
-          * @default 'check'
          */
         "checkType"?: 'checkbox' | 'check';
         /**
           * Internal: Draws the item in a checked state. CheckType needs to be set to 'checkbox' or 'check' to show the checked state
-          * @default false
          */
         "checked"?: boolean;
         /**
           * Set to true to draw the menu item in a disabled state.
-          * @default false
          */
         "disabled"?: boolean;
         /**
           * A unique value to store in the menu item. This can be used as a way to identify menu items when selected.
-          * @default ''
          */
         "value"?: string;
     }
@@ -5090,7 +4682,6 @@ declare namespace LocalJSX {
     interface SixPicto {
         /**
           * Defines the size of the icon.
-          * @default 'medium'
          */
         "size"?: 'xSmall' | 'small' | 'medium' | 'large' | 'xLarge' | 'xxLarge' | 'xxxLarge' | '4xl';
     }
@@ -5102,12 +4693,10 @@ declare namespace LocalJSX {
     interface SixProgressBar {
         /**
           * When true, percentage is ignored, the label is hidden, and the progress bar is drawn in an indeterminate state.
-          * @default false
          */
         "indeterminate"?: boolean;
         /**
           * The progress bar's percentage, 0 to 100.
-          * @default 0
          */
         "percentage"?: number;
     }
@@ -5119,17 +4708,14 @@ declare namespace LocalJSX {
     interface SixProgressRing {
         /**
           * The current progress percentage, 0 - 100.
-          * @default 0
          */
         "percentage"?: number;
         /**
           * The size of the progress ring in pixels.
-          * @default 128
          */
         "size"?: number;
         /**
           * The stroke width of the progress ring in pixels.
-          * @default 4
          */
         "strokeWidth"?: number;
     }
@@ -5141,22 +4727,18 @@ declare namespace LocalJSX {
     interface SixRadio {
         /**
           * Set to true to draw the radio in a checked state.
-          * @default false
          */
         "checked"?: boolean;
         /**
           * Set to true to disable the radio.
-          * @default false
          */
         "disabled"?: boolean;
         /**
           * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
-          * @default false
          */
         "invalid"?: boolean;
         /**
           * The radio's name attribute.
-          * @default ''
          */
         "name"?: string;
         /**
@@ -5173,7 +4755,6 @@ declare namespace LocalJSX {
         "onSix-radio-focus"?: (event: SixRadioCustomEvent<EmptyPayload>) => void;
         /**
           * The radio's value attribute.
-          * @default 'on'
          */
         "value"?: string;
     }
@@ -5185,12 +4766,10 @@ declare namespace LocalJSX {
     interface SixRange {
         /**
           * Set to true to disable the input.
-          * @default false
          */
         "disabled"?: boolean;
         /**
           * The error message shown, if `invalid` is set to true.
-          * @default ''
          */
         "errorText"?: string | string[];
         /**
@@ -5199,32 +4778,26 @@ declare namespace LocalJSX {
         "errorTextCount"?: number;
         /**
           * The range's help text. Alternatively, you can use the help-text slot.
-          * @default ''
          */
         "helpText"?: string;
         /**
           * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
-          * @default false
          */
         "invalid"?: boolean;
         /**
           * The label text.
-          * @default ''
          */
         "label"?: string;
         /**
           * The input's max attribute.
-          * @default 100
          */
         "max"?: number;
         /**
           * The input's min attribute.
-          * @default 0
          */
         "min"?: number;
         /**
           * The input's name attribute.
-          * @default ''
          */
         "name"?: string;
         /**
@@ -5241,27 +4814,22 @@ declare namespace LocalJSX {
         "onSix-range-focus"?: (event: SixRangeCustomEvent<EmptyPayload>) => void;
         /**
           * Set to true to show an asterisk beneath the label.
-          * @default false
          */
         "required"?: boolean;
         /**
           * The input's step attribute.
-          * @default 1
          */
         "step"?: number;
         /**
           * The preferred placedment of the tooltip.
-          * @default 'top'
          */
         "tooltip"?: 'top' | 'bottom' | 'none';
         /**
           * A function used to format the tooltip's value.
-          * @default (value: number) => value.toString()
          */
         "tooltipFormatter"?: (value: number) => string;
         /**
           * The input's value attribute.
-          * @default 0
          */
         "value"?: number;
     }
@@ -5272,17 +4840,14 @@ declare namespace LocalJSX {
     interface SixRoot {
         /**
           * Defines whether the content section should be padded
-          * @default true
          */
         "padded"?: boolean;
         /**
           * Defines the stage of the application
-          * @default null
          */
         "stage"?: StageType;
         /**
           * Defines the version of the application
-          * @default ''
          */
         "version"?: string;
     }
@@ -5293,17 +4858,14 @@ declare namespace LocalJSX {
     interface SixSearchField {
         /**
           * Set to true to add a clear button when the input is populated.
-          * @default false
          */
         "clearable"?: boolean;
         /**
           * Debounce time in milliseconds, default is 300 ms
-          * @default DEFAULT_DEBOUNCE_FAST
          */
         "debounce"?: number;
         /**
           * Set to true to disable the input.
-          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -5316,7 +4878,6 @@ declare namespace LocalJSX {
         "placeholder"?: string;
         /**
           * The input's value attribute.
-          * @default ''
          */
         "value"?: string;
     }
@@ -5328,27 +4889,22 @@ declare namespace LocalJSX {
     interface SixSelect {
         /**
           * Set to true to allow async filtering. When you enter something in the search field the component will only emit an event but not filter any elements itself. You can then simply listen to the 'six-async-filter-fired' event to manage the shown menu-items yourself
-          * @default false
          */
         "asyncFilter"?: boolean;
         /**
           * Set to true to turn the six-select into an autocomplete.
-          * @default false
          */
         "autocomplete"?: boolean;
         /**
           * Set to true to add a clear button when the select is populated.
-          * @default false
          */
         "clearable"?: boolean;
         /**
           * Set to true to disable the select control.
-          * @default false
          */
         "disabled"?: boolean;
         /**
           * The error message shown, if `invalid` is set to true.
-          * @default ''
          */
         "errorText"?: string | string[];
         /**
@@ -5357,7 +4913,6 @@ declare namespace LocalJSX {
         "errorTextCount"?: number;
         /**
           * Set to true to allow filtering for entries in the dropdown
-          * @default false
          */
         "filter"?: boolean;
         /**
@@ -5370,42 +4925,34 @@ declare namespace LocalJSX {
         "filterPlaceholder"?: string;
         /**
           * The select's help text. Alternatively, you can use the help-text slot.
-          * @default ''
          */
         "helpText"?: string;
         /**
           * Enable this option to prevent the panel from being clipped when the component is placed inside a container with `overflow: auto|scroll`.
-          * @default false
          */
         "hoist"?: boolean;
         /**
           * The debounce for when the input changes for autocompletes should be emitted
-          * @default DEFAULT_DEBOUNCE_FAST
          */
         "inputDebounce"?: number;
         /**
           * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
-          * @default false
          */
         "invalid"?: boolean;
         /**
           * The label text.
-          * @default ''
          */
         "label"?: string;
         /**
           * Set to render as line
-          * @default false
          */
         "line"?: boolean;
         /**
           * Set to true to enable multiselect.
-          * @default false
          */
         "multiple"?: boolean;
         /**
           * The select's name.
-          * @default ''
          */
         "name"?: string;
         /**
@@ -5422,27 +4969,22 @@ declare namespace LocalJSX {
         "onSix-select-focus"?: (event: SixSelectCustomEvent<EmptyPayload>) => void;
         /**
           * Set the options to be shown in the dropdown (alternative to setting the elements via html)
-          * @default null
          */
         "options"?: SixMenuItemData[] | null;
         /**
           * Set to true to draw a pill-style select with rounded edges.
-          * @default false
          */
         "pill"?: boolean;
         /**
           * The select's placeholder text.
-          * @default ''
          */
         "placeholder"?: string;
         /**
           * Set to true to show an asterisk beneath the label.
-          * @default false
          */
         "required"?: boolean;
         /**
           * Enables the select all button.
-          * @default false
          */
         "selectAllButton"?: boolean;
         /**
@@ -5451,17 +4993,14 @@ declare namespace LocalJSX {
         "selectAllText"?: string;
         /**
           * The select's size.
-          * @default 'medium'
          */
         "size"?: 'small' | 'medium' | 'large';
         /**
           * The value of the control. This will be a string or an array depending on `multiple`.
-          * @default ''
          */
         "value"?: string | string[];
         /**
           * Defines whether the menu list will be rendered virtually i.e. only the elements actually shown (and a couple around) are actually rendered in the DOM. If you use virtual scrolling pass the elements via prop instead of via slot.
-          * @default false
          */
         "virtualScroll"?: boolean;
     }
@@ -5492,22 +5031,18 @@ declare namespace LocalJSX {
         "onSix-sidebar-show"?: (event: SixSidebarCustomEvent<EmptyPayload>) => void;
         /**
           * Indicates whether the sidebar is open. You can use this in lieu of the show/hide methods.
-          * @default false
          */
         "open"?: boolean;
         /**
           * Sidebar position
-          * @default 'left'
          */
         "position"?: 'left' | 'right';
         /**
           * Define whether sidebar is toggled meaning only one menu can be open at the same time
-          * @default false
          */
         "toggled"?: boolean;
         /**
           * Sidebar width
-          * @default '16rem'
          */
         "width"?: string;
     }
@@ -5518,7 +5053,6 @@ declare namespace LocalJSX {
     interface SixSidebarItem {
         /**
           * Set to true to draw the sidebar item in a disabled state.
-          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -5527,17 +5061,14 @@ declare namespace LocalJSX {
         "href"?: string | undefined;
         /**
           * Icon of the item
-          * @default ''
          */
         "icon"?: string;
         /**
           * Set to true to draw the item in a selected state.
-          * @default false
          */
         "selected"?: boolean;
         /**
           * A unique value to store in the sidebar item. This can be used as a way to identify sidebar items when selected.
-          * @default ''
          */
         "value"?: string;
     }
@@ -5552,17 +5083,14 @@ declare namespace LocalJSX {
         "href"?: string | undefined;
         /**
           * Icon of the group
-          * @default ''
          */
         "icon"?: string;
         /**
           * Title of item group
-          * @default ''
          */
         "name"?: string;
         /**
           * Indicates whether the sidebar is shown
-          * @default false
          */
         "open"?: boolean;
         /**
@@ -5571,7 +5099,6 @@ declare namespace LocalJSX {
         "summaryIcon"?: string;
         /**
           * A unique value to store in the sidebar item of the group label. This can be used as a way to identify sidebar items when selected.
-          * @default ''
          */
         "value"?: string;
     }
@@ -5593,7 +5120,6 @@ declare namespace LocalJSX {
     interface SixStageIndicator {
         /**
           * The indicators value attribute
-          * @default null
          */
         "stage"?: StageType1;
     }
@@ -5605,17 +5131,14 @@ declare namespace LocalJSX {
     interface SixSwitch {
         /**
           * Set to true to draw the switch in a checked state.
-          * @default false
          */
         "checked"?: boolean;
         /**
           * Set to true to disable the switch.
-          * @default false
          */
         "disabled"?: boolean;
         /**
           * The error message shown, if `invalid` is set to true.
-          * @default ''
          */
         "errorText"?: string | string[];
         /**
@@ -5624,17 +5147,14 @@ declare namespace LocalJSX {
         "errorTextCount"?: number;
         /**
           * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
-          * @default false
          */
         "invalid"?: boolean;
         /**
           * The label text.
-          * @default ''
          */
         "label"?: string;
         /**
           * The switch's name attribute.
-          * @default ''
          */
         "name"?: string;
         /**
@@ -5651,12 +5171,10 @@ declare namespace LocalJSX {
         "onSix-switch-focus"?: (event: SixSwitchCustomEvent<EmptyPayload>) => void;
         /**
           * Set to true to show an asterisk beneath the label.
-          * @default false
          */
         "required"?: boolean;
         /**
           * The switch's value attribute.
-          * @default 'on'
          */
         "value"?: string;
     }
@@ -5668,17 +5186,14 @@ declare namespace LocalJSX {
     interface SixTab {
         /**
           * Set to true to draw the tab in an active state.
-          * @default false
          */
         "active"?: boolean;
         /**
           * When true, the tab will be rendered with a close icon.
-          * @default false
          */
         "closable"?: boolean;
         /**
           * Set to true to draw the tab in a disabled state.
-          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -5687,7 +5202,6 @@ declare namespace LocalJSX {
         "onSix-tab-close"?: (event: SixTabCustomEvent<EmptyPayload>) => void;
         /**
           * The name of the tab panel the tab will control. The panel must be located in the same tab group.
-          * @default ''
          */
         "panel"?: string;
     }
@@ -5699,7 +5213,6 @@ declare namespace LocalJSX {
     interface SixTabGroup {
         /**
           * Disables the scroll arrows that appear when tabs overflow.
-          * @default false
          */
         "noScrollControls"?: boolean;
         /**
@@ -5712,7 +5225,6 @@ declare namespace LocalJSX {
         "onSix-tab-show"?: (event: SixTabGroupCustomEvent<SixTabShowPayload>) => void;
         /**
           * The placement of the tabs.
-          * @default 'top'
          */
         "placement"?: 'top' | 'bottom' | 'left' | 'right';
     }
@@ -5724,12 +5236,10 @@ declare namespace LocalJSX {
     interface SixTabPanel {
         /**
           * When true, the tab panel will be shown.
-          * @default false
          */
         "active"?: boolean;
         /**
           * The tab panel's name.
-          * @default ''
          */
         "name"?: string;
     }
@@ -5741,7 +5251,6 @@ declare namespace LocalJSX {
     interface SixTag {
         /**
           * Set to true to make the tag clearable.
-          * @default false
          */
         "clearable"?: boolean;
         /**
@@ -5750,17 +5259,14 @@ declare namespace LocalJSX {
         "onSix-tag-clear"?: (event: SixTagCustomEvent<EmptyPayload>) => void;
         /**
           * Set to true to draw a pill-style tag with rounded edges.
-          * @default false
          */
         "pill"?: boolean;
         /**
           * The tag's size.
-          * @default 'medium'
          */
         "size"?: 'small' | 'medium' | 'large';
         /**
           * The tag's type.
-          * @default 'primary'
          */
         "type"?: 'primary' | 'success' | 'info' | 'warning' | 'danger' | 'action' | 'text';
     }
@@ -5772,32 +5278,26 @@ declare namespace LocalJSX {
     interface SixTextarea {
         /**
           * The textarea's autocaptialize attribute.
-          * @default 'off'
          */
         "autocapitalize"?: string;
         /**
           * The textarea's autocomplete attribute.
-          * @default 'off'
          */
         "autocomplete"?: string;
         /**
           * The textarea's autocorrect attribute.
-          * @default 'off'
          */
         "autocorrect"?: 'on' | 'off';
         /**
           * The textarea's autofocus attribute.
-          * @default false
          */
         "autofocus"?: boolean;
         /**
           * Set to true to disable the textarea.
-          * @default false
          */
         "disabled"?: boolean;
         /**
           * The error message shown, if `invalid` is set to true.
-          * @default ''
          */
         "errorText"?: string | string[];
         /**
@@ -5806,7 +5306,6 @@ declare namespace LocalJSX {
         "errorTextCount"?: number;
         /**
           * The textarea's help text. Alternatively, you can use the help-text slot.
-          * @default ''
          */
         "helpText"?: string;
         /**
@@ -5815,12 +5314,10 @@ declare namespace LocalJSX {
         "inputmode"?: 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
         /**
           * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
-          * @default false
          */
         "invalid"?: boolean;
         /**
           * The label text.
-          * @default ''
          */
         "label"?: string;
         /**
@@ -5833,7 +5330,6 @@ declare namespace LocalJSX {
         "minlength"?: number;
         /**
           * The textarea's name attribute.
-          * @default ''
          */
         "name"?: string;
         /**
@@ -5858,37 +5354,30 @@ declare namespace LocalJSX {
         "placeholder"?: string;
         /**
           * Set to true for a readonly textarea.
-          * @default false
          */
         "readonly"?: boolean;
         /**
           * Set to true to show an asterisk beneath the label.
-          * @default false
          */
         "required"?: boolean;
         /**
           * Controls how the textarea can be resized.
-          * @default 'vertical'
          */
         "resize"?: 'none' | 'vertical' | 'auto';
         /**
           * The number of rows to display by default.
-          * @default 4
          */
         "rows"?: number;
         /**
           * The textarea's size.
-          * @default 'medium'
          */
         "size"?: 'small' | 'medium' | 'large';
         /**
           * The textarea's spellcheck attribute.
-          * @default false
          */
         "spellcheck"?: boolean;
         /**
           * The textarea's value attribute.
-          * @default ''
          */
         "value"?: string;
     }
@@ -5899,22 +5388,18 @@ declare namespace LocalJSX {
     interface SixTile {
         /**
           * Flag, whether the tile is closeable.
-          * @default true
          */
         "closeable"?: boolean;
         /**
           * Enables tile tooltip for tiles
-          * @default true
          */
         "disableTooltip"?: boolean;
         /**
           * Set to true to disable the tile.
-          * @default false
          */
         "disabled"?: boolean;
         /**
           * Flag, whether the tile should cast a shadow.
-          * @default false
          */
         "elevated"?: boolean;
         /**
@@ -5923,7 +5408,6 @@ declare namespace LocalJSX {
         "iconName"?: string;
         /**
           * The tile's label.
-          * @default ''
          */
         "label"?: string;
         /**
@@ -5936,7 +5420,6 @@ declare namespace LocalJSX {
         "onSix-tile-selected"?: (event: SixTileCustomEvent<EmptyPayload>) => void;
         /**
           * The tile's size.
-          * @default 'medium'
          */
         "size"?: 'small' | 'medium' | 'large';
     }
@@ -5947,12 +5430,10 @@ declare namespace LocalJSX {
     interface SixTimepicker {
         /**
           * Set to true to add a clear button when the input is populated.
-          * @default false
          */
         "clearable"?: boolean;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `six-timepicker-change-debounced` event. If you want your change debounce event to not trigger when keeping the nav button pressed before, make sure debounce is a bit bigger than timeout, otherwise keeping the button pressed will trigger the event twice: once you click (and keep pressed) and once you release
-          * @default DEFAULT_DEBOUNCE_FAST
          */
         "debounce"?: number;
         /**
@@ -5961,12 +5442,10 @@ declare namespace LocalJSX {
         "defaultTime"?: string;
         /**
           * If `true` the component is disabled.
-          * @default false
          */
         "disabled"?: boolean;
         /**
           * The input's error text. Alternatively, you can use the error-text slot.
-          * @default ''
          */
         "errorText"?: string | string[];
         /**
@@ -5975,42 +5454,34 @@ declare namespace LocalJSX {
         "errorTextCount"?: number;
         /**
           * Define the time format. Valid formats are:  HH:mm:ss hh:mm:ss:aa HH:mm:ss:ms hh:mm:ss:ms:aa HH:mm hh:mm:aa HH hh:aa mm ss ms  where HH is the 24 hour format and hh is the 12 hour format  Please notice that when using the 12-hour-clock (hh) you always need a period indicator (aa). So the time can be parsed as either am or pm
-          * @default 'HH:mm:ss'
          */
         "format"?: TimeFormat;
         /**
           * Enable this option to prevent the panel from being clipped when the component is placed inside a container with `overflow: auto|scroll`.
-          * @default false
          */
         "hoist"?: boolean;
         /**
           * Set the position of the icon
-          * @default 'left'
          */
         "iconPosition"?: 'left' | 'right';
         /**
           * Indicates whether the timepicker should be shown as an inline (always open) component
-          * @default false
          */
         "inline"?: boolean;
         /**
           * Set the amount of time, in milliseconds, to wait between switching to next timeunit (e.g. next hour) when mouse button is held pressed.
-          * @default DEFAULT_DEBOUNCE_INSANELY_FAST
          */
         "interval"?: number;
         /**
           * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
-          * @default false
          */
         "invalid"?: boolean;
         /**
           * The input's label. Alternatively, you can use the label slot.
-          * @default ''
          */
         "label"?: string;
         /**
           * The input's name attribute.
-          * @default ''
          */
         "name"?: string;
         /**
@@ -6027,7 +5498,6 @@ declare namespace LocalJSX {
         "onSix-timepicker-clear"?: (event: SixTimepickerCustomEvent<EmptyPayload>) => void;
         /**
           * Indicates whether the timepicker dropdown is open on startup. You can use this in lieu of the show/hide methods.
-          * @default false
          */
         "open"?: boolean;
         /**
@@ -6040,32 +5510,26 @@ declare namespace LocalJSX {
         "placement"?: 'top' | 'bottom';
         /**
           * If `true` the user can only select a time via the timepicker but not directly edit the input field.
-          * @default false
          */
         "readonly"?: boolean;
         /**
           * Set to true to show an asterisk beneath the label.
-          * @default false
          */
         "required"?: boolean;
         /**
           * Define the separator to be shown between the time unit pickers. Please be aware that this property will modify the displayed separator only. The separator for a timestring is always expected to be a colon (eg. '13:52:20')
-          * @default ':'
          */
         "separator"?: string;
         /**
           * Timepicker size.
-          * @default 'medium'
          */
         "size"?: 'small' | 'medium' | 'large';
         /**
           * Set the amount of time, in milliseconds, to wait to trigger faster switching between timeunits (e.g. hours).
-          * @default DEFAULT_DEBOUNCE_FAST
          */
         "timeout"?: number;
         /**
           * The value of the timepicker provided as a string. The string mast match the provided format (or default format)
-          * @default ''
          */
         "value"?: string;
     }
@@ -6077,17 +5541,14 @@ declare namespace LocalJSX {
     interface SixTooltip {
         /**
           * The tooltip's content. Alternatively, you can use the content slot.
-          * @default ''
          */
         "content"?: string;
         /**
           * Set to true to disable the tooltip, so it won't show when triggered.
-          * @default false
          */
         "disabled"?: boolean;
         /**
           * The distance in pixels from which to offset the tooltip away from its target.
-          * @default 10
          */
         "distance"?: number;
         /**
@@ -6108,12 +5569,10 @@ declare namespace LocalJSX {
         "onSix-tooltip-show"?: (event: SixTooltipCustomEvent<EmptyPayload>) => void;
         /**
           * Indicates whether the tooltip is open. You can use this in lieu of the show/hide methods.
-          * @default false
          */
         "open"?: boolean;
         /**
           * The preferred placement of the tooltip. Note that the actual placement may vary as needed to keep the tooltip inside the viewport.
-          * @default 'top'
          */
         "placement"?: | 'top'
     | 'top-start'
@@ -6129,12 +5588,10 @@ declare namespace LocalJSX {
     | 'left-end';
         /**
           * The distance in pixels from which to offset the tooltip along its target.
-          * @default 0
          */
         "skidding"?: number;
         /**
           * Controls how the tooltip is activated. Possible options include `click`, `hover`, `focus`, and `manual`. Multiple options can be passed by separating them with a space. When manual is used, the tooltip must be activated programmatically.
-          * @default 'hover focus'
          */
         "trigger"?: string;
     }
@@ -6142,6 +5599,8 @@ declare namespace LocalJSX {
         "six-alert": SixAlert;
         "six-avatar": SixAvatar;
         "six-badge": SixBadge;
+        "six-breadcrumbs": SixBreadcrumbs;
+        "six-breadcrumbs-item": SixBreadcrumbsItem;
         "six-button": SixButton;
         "six-card": SixCard;
         "six-checkbox": SixCheckbox;
@@ -6220,6 +5679,8 @@ declare module "@stencil/core" {
              * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
              */
             "six-badge": LocalJSX.SixBadge & JSXBase.HTMLAttributes<HTMLSixBadgeElement>;
+            "six-breadcrumbs": LocalJSX.SixBreadcrumbs & JSXBase.HTMLAttributes<HTMLSixBreadcrumbsElement>;
+            "six-breadcrumbs-item": LocalJSX.SixBreadcrumbsItem & JSXBase.HTMLAttributes<HTMLSixBreadcrumbsItemElement>;
             /**
              * @since 1.0
              * @status stable
