@@ -29,6 +29,7 @@ export const config: Config = {
     }),
     vueOutputTarget({
       componentCorePackage: '@six-group/ui-library',
+      includePolyfills: false,
       proxiesFile: '../ui-library-vue/src/lib/stencil-generated/components.ts',
       componentModels: [
         {
