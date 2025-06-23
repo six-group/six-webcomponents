@@ -10,7 +10,7 @@ export class SixBreadcrumbsItem {
   /** Name or label of the breadcrumb */
   @Prop() name: string = '';
 
-  /** If the breadcrumb is disabled */
+  /** Set to true to disable the breadcrumb item. */
   @Prop() disabled: boolean = false;
 
   /** Emitted on click. */
