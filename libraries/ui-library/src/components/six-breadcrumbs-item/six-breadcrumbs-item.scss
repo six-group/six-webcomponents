@@ -2,13 +2,6 @@
 
 :host {
   --six-breadcrumbs-item-margin: var(--six-spacing-xx-small);
-  /*
-  &:after {
-    content: var(--six-breadcrumbs-separator);
-    color: var(--six-breadcrumbs-separator-color);
-    padding-left: var(--six-breadcrumbs-padding);
-  }
-  */
 
   &::part(label) {
     padding: unset;
@@ -24,16 +17,4 @@
     user-select: none;
     -webkit-user-select: none;
   }
-}
-
-:host(:not(:last-of-type)) .six-breadcrumbs-item__item {
-  color: var(--six-color-web-rock-500);
-}
-
-:host(:not(:last-of-type)) .six-breadcrumbs-item__item:hover {
-  color: var(--six-color-action-500);
-}
-
-:host(:not(:last-of-type)) .six-breadcrumbs-item__item:active {
-  color: var(--six-color-action-500);
 }
