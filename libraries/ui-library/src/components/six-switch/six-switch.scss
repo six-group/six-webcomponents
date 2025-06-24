@@ -34,8 +34,9 @@
   height: var(--height);
   background-color: var(--six-selection-control-color-disabled);
   border-radius: var(--height);
-  transition: var(--six-transition-fast) border-color,
-  var(--six-transition-fast) background-color;
+  transition:
+    var(--six-transition-fast) border-color,
+    var(--six-transition-fast) background-color;
 
   .switch__thumb {
     width: var(--thumb-size);
@@ -43,10 +44,11 @@
     background-color: var(--six-input-background-color);
     border-radius: 50%;
     transform: translateX(calc(var(--width) / -2 + var(--thumb-size) / 2 - (var(--thumb-size) - var(--height)) / 2));
-    transition: var(--six-transition-fast) transform ease,
-    var(--six-transition-fast) background-color,
-    var(--six-transition-fast) border-color,
-    var(--six-transition-fast) box-shadow;
+    transition:
+      var(--six-transition-fast) transform ease,
+      var(--six-transition-fast) background-color,
+      var(--six-transition-fast) border-color,
+      var(--six-transition-fast) box-shadow;
   }
 
   input[type='checkbox'] {
