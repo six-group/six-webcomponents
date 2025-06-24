@@ -28,7 +28,6 @@ export class SixBreadcrumbs {
     ) as HTMLElement[];
     items.forEach((item, index) => {
       if (index === items.length - 1) {
-        console.log('abort');
         item.removeAttribute('aria-current');
         item.setAttribute('disabled', 'true');
         return;
