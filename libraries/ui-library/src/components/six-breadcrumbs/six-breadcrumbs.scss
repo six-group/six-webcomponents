@@ -2,12 +2,10 @@
 
 :host {
   display: block;
-  --six-breadcrumbs-separator: '/';
   --six-breadcrumbs-background-color: var(--six-color-web-rock-200);
-  --six-breadcrumbs-padding: var(--six-spacing-x-small);
-  --six-breadcrumbs-color: pink;
-  --six-breadcrumbs-separator-color: var(--six-color-web-rock-500);
-  --six-breadcrumbs-link-color: var(--six-color-action-600);
+  --six-breadcrumbs-padding: var(--six-spacing-xx-small);
+  --six-breadcrumbs-margin: var(--six-spacing-xxx-small);
+  --six-breadcrumbs-color: var(--six-color-web-rock-500);
 }
 
 .six-breadcrumbs {
@@ -15,42 +13,17 @@
   $padding: var(--six-breadcrumbs-padding);
   background-color: var(--six-breadcrumbs-background-color);
 
-  > div {
-    /*  Container */
-
-    display: inline-flex;
+  > nav {
+    display: flex;
+    align-items: center;
     flex-wrap: wrap;
     width: inherit;
     color: var(--six-breadcrumbs-color);
-    gap: $padding;
+    gap: unset;
     padding: $padding;
 
-    ::slotted(a),
-    ::slotted(div),
-    six-breadcrumbs-item {
-      &:after {
-        content: var(--six-breadcrumbs-separator);
-        color: var(--six-breadcrumbs-separator-color);
-        padding-left: var(--six-breadcrumbs-padding);
-      }
-    }
-
-    ::slotted(:last-of-type):after,
-    div:last-of-type:after,
-    six-breadcrumbs-item:last-of-type:after {
-      content: none;
-      padding-left: unset;
-    }
-
-    a,
-    ::slotted(a) {
-      color: var(--six-breadcrumbs-link-color) !important;
-      cursor: pointer;
-      text-decoration: none;
-
-      &:hover {
-        text-decoration: underline;
-      }
+    ::slotted(six-breadcrumbs-item) {
+      --six-breadcrumbs-item-margin: var(--six-breadcrumbs-margin);
     }
   }
 }

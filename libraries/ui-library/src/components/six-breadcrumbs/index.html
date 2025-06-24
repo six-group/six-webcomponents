@@ -12,56 +12,26 @@
     <h1>Breadcrumbs</h1>
     <div class="container">
       <section>
-        <h2>Anchors</h2>
-        <p>Using anchors as child elements</p>
+        <p>Character / as separators</p>
         <six-breadcrumbs>
-          <a>One</a>
-          <a>Two</a>
-          <a>Three</a>
+          <span slot="separator">/</span>
+          <six-breadcrumbs-item>A</six-breadcrumbs-item>
+          <six-breadcrumbs-item>B</six-breadcrumbs-item>
+          <six-breadcrumbs-item>C</six-breadcrumbs-item>
         </six-breadcrumbs>
-      </section>
-      <section>
-        <h2>Containers</h2>
-        <p>Using div containers as child elements</p>
+
+        <p>six-icon as separators and with a prefix</p>
         <six-breadcrumbs>
-          <div>One</div>
-          <div>Two</div>
-          <div>Three</div>
-        </six-breadcrumbs>
-      </section>
-      <section>
-        <h2>Breadcrumb Item</h2>
-        <p>Using six-breadcrumbs-item as child elements</p>
-        <six-breadcrumbs>
-          <six-breadcrumbs-item name="A"></six-breadcrumbs-item>
-          <six-breadcrumbs-item name="B"></six-breadcrumbs-item>
-          <six-breadcrumbs-item name="C" disabled></six-breadcrumbs-item>
-        </six-breadcrumbs>
-      </section>
-      <section>
-        <h2>Data array</h2>
-        <p>Passing six-breadcrumbs-item as a child (disabled/non-anchor) and an array of data</p>
-        <six-breadcrumbs id="breadcrumb-1">
-          <six-breadcrumbs-item name="Fixed" disabled />
+          <six-icon slot="separator" size="small">arrow_forward</six-icon>
+          <six-breadcrumbs-item href="http://six-group.com" target="_blank">
+            <six-icon slot="prefix" size="small">house</six-icon>
+            Home
+          </six-breadcrumbs-item>
+          <six-breadcrumbs-item href="http://six-group.com" target="_blank">A</six-breadcrumbs-item>
+          <six-breadcrumbs-item href="http://six-group.com" target="_blank">B</six-breadcrumbs-item>
+          <six-breadcrumbs-item href="http://six-group.com" target="_blank">Current</six-breadcrumbs-item>
         </six-breadcrumbs>
       </section>
     </div>
-
-    <script type="module">
-      (async () => {
-        const breadcrumb1 = document.querySelector('six-breadcrumbs#breadcrumb-1');
-        breadcrumb1.data = [];
-        for (let i = 0; i <= 10; i++) {
-          breadcrumb1.data.push({
-            name: 'Crumb ' + i,
-            onSixClick: () => (window.location = 'http://six-group.com'),
-          });
-        }
-        breadcrumb1.data.push({
-          name: 'Current',
-          disabled: true,
-        });
-      })();
-    </script>
   </body>
 </html>

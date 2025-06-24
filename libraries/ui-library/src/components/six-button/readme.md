@@ -86,6 +86,7 @@ Type: `Promise<void>`
 
 ### Used by
 
+ - [six-breadcrumbs-item](../six-breadcrumbs-item)
  - [six-header-menu-button](../six-header-menu-button)
  - [six-select](../six-select)
 
@@ -97,6 +98,7 @@ Type: `Promise<void>`
 ```mermaid
 graph TD;
   six-button --> six-spinner
+  six-breadcrumbs-item --> six-button
   six-header-menu-button --> six-button
   six-select --> six-button
   style six-button fill:#f9f,stroke:#333,stroke-width:4px

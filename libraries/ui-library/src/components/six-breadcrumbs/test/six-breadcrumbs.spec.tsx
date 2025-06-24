@@ -1,39 +1,31 @@
 import { newSpecPage } from '@stencil/core/testing';
 import { SixBreadcrumbs } from '../six-breadcrumbs';
+import { SixBreadcrumbsItem } from '../../six-breadcrumbs-item/six-breadcrumbs-item';
 
 describe('six-breadcrumbs', () => {
-  it('renders with no data', async () => {
+  it('adds separators and disables the last item', async () => {
     const page = await newSpecPage({
-      components: [SixBreadcrumbs],
-      html: `<six-breadcrumbs></six-breadcrumbs>`,
-    });
-    expect(page?.root)?.toEqualHtml(`
-  <six-breadcrumbs>
-    <mock:shadow-root>
-      <host class="six-breadcrumbs">
-        <div part="base">
-          <slot></slot>
-        </div>
-      </host>
-    </mock:shadow-root>
-  </six-breadcrumbs>
-`);
-  });
-
-  it('renders breadcrumb items from data prop', async () => {
-    const mockData = [
-      { name: 'Home', disabled: false, onSixClick: jest.fn() },
-      { name: 'About', disabled: true, onSixClick: jest.fn() },
-    ];
-
-    const page = await newSpecPage({
-      components: [SixBreadcrumbs],
-      html: `<six-breadcrumbs></six-breadcrumbs>`,
+      components: [SixBreadcrumbs, SixBreadcrumbsItem],
+      html: `
+        <six-breadcrumbs>
+          <six-breadcrumbs-item>Home</six-breadcrumbs-item>
+          <six-breadcrumbs-item>Docs</six-breadcrumbs-item>
+          <six-breadcrumbs-item>API</six-breadcrumbs-item>
+          <span slot="separator">/</span>
+        </six-breadcrumbs>
+      `,
     });
 
-    page.rootInstance.data = mockData;
-    await page?.waitForChanges();
+    // force slot processing
+    page?.root?.shadowRoot!.querySelector('slot')!.dispatchEvent(new Event('slotchange'));
+    await page.waitForChanges();
 
-    expect(page?.root?.shadowRoot?.querySelectorAll('six-breadcrumbs-item').length).toBe(2);
+    const items = page.root!.querySelectorAll('six-breadcrumbs-item');
+
+    expect(items.length).toBe(3);
+    expect(items[0].querySelector('[slot="separator"]')).not.toBeNull();
+    expect(items[1].querySelector('[slot="separator"]')).not.toBeNull();
+    expect(items[2].querySelector('[slot="separator"]')).toBeNull();
+    expect(items[2].hasAttribute('disabled')).toBe(true);
   });
 });
