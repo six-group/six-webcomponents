@@ -1,0 +1,50 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <script type="module" src="/build/ui-library.esm.js"></script>
+    <script nomodule src="/build/ui-library.js"></script>
+    <link rel="stylesheet" href="/build/ui-library.css" />
+    <title>six-rating</title>
+  </head>
+  <body>
+    <h1>Rating</h1>
+    <div class="container">
+      <p>Rating allow the user to rate something.</p>
+      <section>
+        <six-rating></six-rating>
+      </section>
+
+      <h2>Examples</h2>
+
+      <section>
+        <h3>Small</h3>
+        <p>Small size value=3</p>
+        <six-rating value="3" size="small"></six-rating>
+      </section>
+
+      <hr />
+
+      <section>
+        <h3>Medium</h3>
+        <p>Medium size value=2, readonly</p>
+        <six-rating value="2" readonly></six-rating>
+        <p>With form label</p>
+        <six-rating value="0" label="My label"></six-rating>
+        <p>Disabled</p>
+        <six-rating value="3" disabled></six-rating>
+        <p>Error text</p>
+        <six-rating value="3" error-text="This is a simple string message"></six-rating>
+      </section>
+
+      <hr />
+
+      <section>
+        <h3>Large</h3>
+        <p>Large size value=0</p>
+        <six-rating value="0" size="xxLarge"></six-rating>
+      </section>
+    </div>
+  </body>
+</html>

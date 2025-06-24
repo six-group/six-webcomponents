@@ -191,6 +191,10 @@ body > div.container {
   --six-tab-border-color: var(--six-color-white);
   --six-tab-border-width: 3px;
   --six-tab-border-color-active: var(--six-color-web-rock-900);
+
+  --six-rating-color: var(--six-color-web-rock-500);
+  --six-rating-color-active: var(--six-color-success-600);
+  --six-rating-color-disabled-opacity: 0.4;
 }
 
 [hidden] {
