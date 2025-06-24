@@ -1,15 +1,39 @@
 @import '../../../src/global/component';
 
 :host {
-  a {
-    color: var(--six-breadcrumbs-link-color) !important;
-    cursor: pointer;
-    text-decoration: none;
-  }
-
+  --six-breadcrumbs-item-margin: var(--six-spacing-xx-small);
+  /*
   &:after {
     content: var(--six-breadcrumbs-separator);
     color: var(--six-breadcrumbs-separator-color);
     padding-left: var(--six-breadcrumbs-padding);
   }
+  */
+
+  &::part(label) {
+    padding: unset;
+  }
+
+  display: inline-flex;
+}
+
+.six-breadcrumbs-item {
+  &__separator {
+    align-items: center;
+    margin: 0 var(--six-breadcrumbs-item-margin);
+    user-select: none;
+    -webkit-user-select: none;
+  }
+}
+
+:host(:not(:last-of-type)) .six-breadcrumbs-item__item {
+  color: var(--six-color-web-rock-500);
+}
+
+:host(:not(:last-of-type)) .six-breadcrumbs-item__item:hover {
+  color: var(--six-color-action-500);
+}
+
+:host(:not(:last-of-type)) .six-breadcrumbs-item__item:active {
+  color: var(--six-color-action-500);
 }

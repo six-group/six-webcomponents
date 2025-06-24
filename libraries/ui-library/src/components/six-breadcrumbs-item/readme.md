@@ -1,38 +1,43 @@
 # six-breadcrumb-item
 
-
-
 <!-- Auto Generated Below -->
-
 
 ## Properties
 
-| Property   | Attribute  | Description                     | Type      | Default |
-| ---------- | ---------- | ------------------------------- | --------- | ------- |
-| `disabled` | `disabled` | If the breadcrumb is disabled   | `boolean` | `false` |
-| `name`     | `name`     | Name or label of the breadcrumb | `string`  | `''`    |
-
+| Property   | Attribute  | Description                                 | Type      | Default |
+| ---------- | ---------- | ------------------------------------------- | --------- | ------- |
+| `disabled` | `disabled` | Set to true to disable the breadcrumb item. | `boolean` | `false` |
 
 ## Events
 
-| Event      | Description       | Type                     |
-| ---------- | ----------------- | ------------------------ |
-| `sixClick` | Emitted on click. | `CustomEvent<undefined>` |
+| Event       | Description       | Type                     |
+| ----------- | ----------------- | ------------------------ |
+| `six-click` | Emitted on click. | `CustomEvent<undefined>` |
 
+## Shadow Parts
+
+| Part       | Description |
+| ---------- | ----------- |
+| `"base"`   |             |
+| `"button"` |             |
+| `"prefix"` |             |
+| `"suffix"` |             |
 
 ## Dependencies
 
-### Used by
+### Depends on
 
- - [six-breadcrumbs](../six-breadcrumbs)
+- [six-button](../six-button)
 
 ### Graph
+
 ```mermaid
 graph TD;
-  six-breadcrumbs --> six-breadcrumbs-item
+  six-breadcrumbs-item --> six-button
+  six-button --> six-spinner
   style six-breadcrumbs-item fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
+---
 
 Copyright © 2021-present SIX-Group
