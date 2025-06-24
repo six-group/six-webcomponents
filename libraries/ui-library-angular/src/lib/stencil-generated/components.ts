@@ -106,6 +106,7 @@ export declare interface SixBadge extends Components.SixBadge {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: [],
+  standalone: false
 })
 export class SixBreadcrumbs {
   protected el: HTMLSixBreadcrumbsElement;
@@ -129,6 +130,7 @@ export declare interface SixBreadcrumbs extends Components.SixBreadcrumbs {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['disabled', 'href', 'size', 'target'],
+  standalone: false
 })
 export class SixBreadcrumbsItem {
   protected el: HTMLSixBreadcrumbsItemElement;
