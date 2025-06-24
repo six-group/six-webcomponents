@@ -97,7 +97,6 @@ export declare interface SixBadge extends Components.SixBadge {}
 @ProxyCmp({
 })
 @Component({
-  standalone: false,
   selector: 'six-breadcrumbs',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -120,7 +119,6 @@ export declare interface SixBreadcrumbs extends Components.SixBreadcrumbs {}
   inputs: ['disabled', 'href', 'size', 'target']
 })
 @Component({
-  standalone: false,
   selector: 'six-breadcrumbs-item',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
