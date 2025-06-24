@@ -26,14 +26,7 @@ export class SixBreadcrumbsItem {
 
   render() {
     return (
-      <div
-        part="base"
-        class={{
-          'six-breadcrumbs-item': true,
-          'six-breadcrumbs-item--has-prefix': !!this.el.querySelector('[slot="prefix"]'),
-          'six-breadcrumbs-item--has-suffix': !!this.el.querySelector('[slot="suffix"]'),
-        }}
-      >
+      <div part="base" class={{ 'six-breadcrumbs-item': true }}>
         <six-button
           part="button"
           disabled={this.disabled}
