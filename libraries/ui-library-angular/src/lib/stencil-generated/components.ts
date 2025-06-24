@@ -17,7 +17,6 @@ import { Components } from '@six-group/ui-library';
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['closable', 'duration', 'open', 'type'],
-  standalone: false
 })
 export class SixAlert {
   protected el: HTMLSixAlertElement;
@@ -60,7 +59,6 @@ export declare interface SixAlert extends Components.SixAlert {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['alt', 'image', 'initials', 'shape'],
-  standalone: false
 })
 export class SixAvatar {
   protected el: HTMLSixAvatarElement;
@@ -83,7 +81,6 @@ export declare interface SixAvatar extends Components.SixAvatar {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['pill', 'pulse', 'type'],
-  standalone: false
 })
 export class SixBadge {
   protected el: HTMLSixBadgeElement;
@@ -106,7 +103,6 @@ export declare interface SixBadge extends Components.SixBadge {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: [],
-  standalone: false
 })
 export class SixBreadcrumbs {
   protected el: HTMLSixBreadcrumbsElement;
@@ -130,7 +126,6 @@ export declare interface SixBreadcrumbs extends Components.SixBreadcrumbs {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['disabled', 'href', 'size', 'target'],
-  standalone: false
 })
 export class SixBreadcrumbsItem {
   protected el: HTMLSixBreadcrumbsItemElement;
@@ -162,7 +157,6 @@ export declare interface SixBreadcrumbsItem extends Components.SixBreadcrumbsIte
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['caret', 'circle', 'disabled', 'download', 'href', 'loading', 'name', 'pill', 'reset', 'size', 'submit', 'target', 'type', 'value'],
-  standalone: false
 })
 export class SixButton {
   protected el: HTMLSixButtonElement;
@@ -196,7 +190,6 @@ export declare interface SixButton extends Components.SixButton {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: [],
-  standalone: false
 })
 export class SixCard {
   protected el: HTMLSixCardElement;
@@ -220,7 +213,6 @@ export declare interface SixCard extends Components.SixCard {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['checked', 'disabled', 'errorText', 'errorTextCount', 'indeterminate', 'invalid', 'label', 'name', 'required', 'value'],
-  standalone: false
 })
 export class SixCheckbox {
   protected el: HTMLSixCheckboxElement;
@@ -260,7 +252,6 @@ export declare interface SixCheckbox extends Components.SixCheckbox {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['allowedDates', 'clearable', 'dateFormat', 'disabled', 'errorText', 'errorTextCount', 'helpText', 'invalid', 'label', 'language', 'max', 'min', 'name', 'placeholder', 'readonly', 'required', 'size', 'value'],
-  standalone: false
 })
 export class SixDate {
   protected el: HTMLSixDateElement;
@@ -296,7 +287,6 @@ Does not contain event details.
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['allowedDates', 'clearable', 'closeOnSelect', 'containingElement', 'dateFormat', 'debounce', 'defaultDate', 'disabled', 'errorText', 'errorTextCount', 'hoist', 'iconPosition', 'inline', 'invalid', 'label', 'locale', 'max', 'min', 'name', 'open', 'placeholder', 'placement', 'readonly', 'required', 'size', 'type', 'value'],
-  standalone: false
 })
 export class SixDatepicker {
   protected el: HTMLSixDatepickerElement;
@@ -337,7 +327,6 @@ export declare interface SixDatepicker extends Components.SixDatepicker {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['disabled', 'hasContent', 'inline', 'open', 'selectableEmpty', 'summary', 'summaryIcon', 'summaryIconSize'],
-  standalone: false
 })
 export class SixDetails {
   protected el: HTMLSixDetailsElement;
@@ -381,7 +370,6 @@ export declare interface SixDetails extends Components.SixDetails {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['label', 'noHeader', 'open'],
-  standalone: false
 })
 export class SixDialog {
   protected el: HTMLSixDialogElement;
@@ -437,7 +425,6 @@ the drawer will result in destructive behavior such as data loss.
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['contained', 'label', 'noHeader', 'open', 'placement'],
-  standalone: false
 })
 export class SixDrawer {
   protected el: HTMLSixDrawerElement;
@@ -493,7 +480,6 @@ the drawer will result in destructive behavior such as data loss.
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['asyncFilter', 'autofocusFilter', 'closeOnSelect', 'containingElement', 'disableHideOnEnterAndSpace', 'distance', 'filter', 'filterDebounce', 'filterPlaceholder', 'hoist', 'matchTriggerWidth', 'open', 'options', 'placement', 'skidding', 'virtualScroll'],
-  standalone: false
 })
 export class SixDropdown {
   protected el: HTMLSixDropdownElement;
@@ -550,7 +536,6 @@ export declare interface SixDropdown extends Components.SixDropdown {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: [],
-  standalone: false
 })
 export class SixError {
   protected el: HTMLSixErrorElement;
@@ -573,7 +558,6 @@ export declare interface SixError extends Components.SixError {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['customDescription', 'customIcon', 'customTitle', 'errorCode', 'language'],
-  standalone: false
 })
 export class SixErrorPage {
   protected el: HTMLSixErrorPageElement;
@@ -595,7 +579,6 @@ export declare interface SixErrorPage extends Components.SixErrorPage {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: [],
-  standalone: false
 })
 export class SixFileList {
   protected el: HTMLSixFileListElement;
@@ -618,7 +601,6 @@ export declare interface SixFileList extends Components.SixFileList {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['date', 'identifier', 'name', 'nodelete', 'nodownload', 'size'],
-  standalone: false
 })
 export class SixFileListItem {
   protected el: HTMLSixFileListItemElement;
@@ -654,7 +636,6 @@ export declare interface SixFileListItem extends Components.SixFileListItem {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['accept', 'compact', 'disabled', 'errorText', 'invalid', 'label', 'maxFileSize', 'multiple', 'uploading'],
-  standalone: false
 })
 export class SixFileUpload {
   protected el: HTMLSixFileUploadElement;
@@ -689,7 +670,6 @@ export declare interface SixFileUpload extends Components.SixFileUpload {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: [],
-  standalone: false
 })
 export class SixFooter {
   protected el: HTMLSixFooterElement;
@@ -712,7 +692,6 @@ export declare interface SixFooter extends Components.SixFooter {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['disabled', 'helpText', 'label', 'required', 'size'],
-  standalone: false
 })
 export class SixGroupLabel {
   protected el: HTMLSixGroupLabelElement;
@@ -735,7 +714,6 @@ export declare interface SixGroupLabel extends Components.SixGroupLabel {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['openSearch', 'shiftContent'],
-  standalone: false
 })
 export class SixHeader {
   protected el: HTMLSixHeaderElement;
@@ -758,7 +736,6 @@ export declare interface SixHeader extends Components.SixHeader {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['filter', 'filterPlaceholder'],
-  standalone: false
 })
 export class SixHeaderDropdownItem {
   protected el: HTMLSixHeaderDropdownItemElement;
@@ -781,7 +758,6 @@ export declare interface SixHeaderDropdownItem extends Components.SixHeaderDropd
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['active'],
-  standalone: false
 })
 export class SixHeaderItem {
   protected el: HTMLSixHeaderItemElement;
@@ -804,7 +780,6 @@ export declare interface SixHeaderItem extends Components.SixHeaderItem {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['caret', 'disabled', 'loading', 'reset', 'submit'],
-  standalone: false
 })
 export class SixHeaderMenuButton {
   protected el: HTMLSixHeaderMenuButtonElement;
@@ -827,7 +802,6 @@ export declare interface SixHeaderMenuButton extends Components.SixHeaderMenuBut
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['filled', 'size'],
-  standalone: false
 })
 export class SixIcon {
   protected el: HTMLSixIconElement;
@@ -850,7 +824,6 @@ export declare interface SixIcon extends Components.SixIcon {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['disabled', 'download', 'href', 'html', 'label', 'name', 'size', 'target'],
-  standalone: false
 })
 export class SixIconButton {
   protected el: HTMLSixIconButtonElement;
@@ -874,7 +847,6 @@ export declare interface SixIconButton extends Components.SixIconButton {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['autocapitalize', 'autocomplete', 'autocorrect', 'autofocus', 'clearable', 'disabled', 'dropdownSearch', 'errorText', 'errorTextCount', 'helpText', 'inputmode', 'invalid', 'label', 'line', 'max', 'maxlength', 'min', 'minlength', 'name', 'pattern', 'pill', 'placeholder', 'readonly', 'required', 'size', 'spellcheck', 'step', 'togglePassword', 'type', 'value'],
-  standalone: false
 })
 export class SixInput {
   protected el: HTMLSixInputElement;
@@ -921,7 +893,6 @@ export declare interface SixInput extends Components.SixInput {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['debounce', 'interval', 'items', 'max', 'min', 'padded', 'paddingChar', 'paddingDirection', 'paddingLength', 'roundtrip', 'step', 'timeout', 'type', 'value'],
-  standalone: false
 })
 export class SixItemPicker {
   protected el: HTMLSixItemPickerElement;
@@ -956,7 +927,6 @@ export declare interface SixItemPicker extends Components.SixItemPicker {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['languages', 'selected'],
-  standalone: false
 })
 export class SixLanguageSwitcher {
   protected el: HTMLSixLanguageSwitcherElement;
@@ -987,7 +957,6 @@ export declare interface SixLanguageSwitcher extends Components.SixLanguageSwitc
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['columns'],
-  standalone: false
 })
 export class SixLayoutGrid {
   protected el: HTMLSixLayoutGridElement;
@@ -1010,7 +979,6 @@ export declare interface SixLayoutGrid extends Components.SixLayoutGrid {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['brand'],
-  standalone: false
 })
 export class SixLogo {
   protected el: HTMLSixLogoElement;
@@ -1033,7 +1001,6 @@ export declare interface SixLogo extends Components.SixLogo {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['padded'],
-  standalone: false
 })
 export class SixMainContainer {
   protected el: HTMLSixMainContainerElement;
@@ -1057,7 +1024,6 @@ export declare interface SixMainContainer extends Components.SixMainContainer {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['disableKeyboardHandling', 'itemSize', 'items', 'itemsShown', 'removeBoxShadow', 'scrollingDebounce', 'virtualScroll'],
-  standalone: false
 })
 export class SixMenu {
   protected el: HTMLSixMenuElement;
@@ -1087,7 +1053,6 @@ export declare interface SixMenu extends Components.SixMenu {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: [],
-  standalone: false
 })
 export class SixMenuDivider {
   protected el: HTMLSixMenuDividerElement;
@@ -1111,7 +1076,6 @@ export declare interface SixMenuDivider extends Components.SixMenuDivider {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['checkType', 'checked', 'disabled', 'value'],
-  standalone: false
 })
 export class SixMenuItem {
   protected el: HTMLSixMenuItemElement;
@@ -1133,7 +1097,6 @@ export declare interface SixMenuItem extends Components.SixMenuItem {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: [],
-  standalone: false
 })
 export class SixMenuLabel {
   protected el: HTMLSixMenuLabelElement;
@@ -1156,7 +1119,6 @@ export declare interface SixMenuLabel extends Components.SixMenuLabel {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['size'],
-  standalone: false
 })
 export class SixPicto {
   protected el: HTMLSixPictoElement;
@@ -1179,7 +1141,6 @@ export declare interface SixPicto extends Components.SixPicto {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['indeterminate', 'percentage'],
-  standalone: false
 })
 export class SixProgressBar {
   protected el: HTMLSixProgressBarElement;
@@ -1202,7 +1163,6 @@ export declare interface SixProgressBar extends Components.SixProgressBar {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['percentage', 'size', 'strokeWidth'],
-  standalone: false
 })
 export class SixProgressRing {
   protected el: HTMLSixProgressRingElement;
@@ -1226,7 +1186,6 @@ export declare interface SixProgressRing extends Components.SixProgressRing {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['checked', 'disabled', 'invalid', 'name', 'value'],
-  standalone: false
 })
 export class SixRadio {
   protected el: HTMLSixRadioElement;
@@ -1266,7 +1225,6 @@ export declare interface SixRadio extends Components.SixRadio {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['disabled', 'errorText', 'errorTextCount', 'helpText', 'invalid', 'label', 'max', 'min', 'name', 'required', 'step', 'tooltip', 'tooltipFormatter', 'value'],
-  standalone: false
 })
 export class SixRange {
   protected el: HTMLSixRangeElement;
@@ -1305,7 +1263,6 @@ export declare interface SixRange extends Components.SixRange {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['padded', 'stage', 'version'],
-  standalone: false
 })
 export class SixRoot {
   protected el: HTMLSixRootElement;
@@ -1328,7 +1285,6 @@ export declare interface SixRoot extends Components.SixRoot {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['clearable', 'debounce', 'disabled', 'placeholder', 'value'],
-  standalone: false
 })
 export class SixSearchField {
   protected el: HTMLSixSearchFieldElement;
@@ -1360,7 +1316,6 @@ export declare interface SixSearchField extends Components.SixSearchField {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['asyncFilter', 'autocomplete', 'clearable', 'disabled', 'errorText', 'errorTextCount', 'filter', 'filterDebounce', 'filterPlaceholder', 'helpText', 'hoist', 'inputDebounce', 'invalid', 'label', 'line', 'multiple', 'name', 'options', 'pill', 'placeholder', 'required', 'selectAllButton', 'selectAllText', 'size', 'value', 'virtualScroll'],
-  standalone: false
 })
 export class SixSelect {
   protected el: HTMLSixSelectElement;
@@ -1401,7 +1356,6 @@ export declare interface SixSelect extends Components.SixSelect {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['open', 'position', 'toggled', 'width'],
-  standalone: false
 })
 export class SixSidebar {
   protected el: HTMLSixSidebarElement;
@@ -1449,7 +1403,6 @@ allow you to set it on a different element in the sidebar, such as an input or b
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['disabled', 'href', 'icon', 'selected', 'value'],
-  standalone: false
 })
 export class SixSidebarItem {
   protected el: HTMLSixSidebarItemElement;
@@ -1472,7 +1425,6 @@ export declare interface SixSidebarItem extends Components.SixSidebarItem {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['href', 'icon', 'name', 'open', 'summaryIcon', 'value'],
-  standalone: false
 })
 export class SixSidebarItemGroup {
   protected el: HTMLSixSidebarItemGroupElement;
@@ -1495,7 +1447,6 @@ export declare interface SixSidebarItemGroup extends Components.SixSidebarItemGr
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['logo', 'six'],
-  standalone: false
 })
 export class SixSpinner {
   protected el: HTMLSixSpinnerElement;
@@ -1518,7 +1469,6 @@ export declare interface SixSpinner extends Components.SixSpinner {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['stage'],
-  standalone: false
 })
 export class SixStageIndicator {
   protected el: HTMLSixStageIndicatorElement;
@@ -1542,7 +1492,6 @@ export declare interface SixStageIndicator extends Components.SixStageIndicator 
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['checked', 'disabled', 'errorText', 'errorTextCount', 'invalid', 'label', 'name', 'required', 'value'],
-  standalone: false
 })
 export class SixSwitch {
   protected el: HTMLSixSwitchElement;
@@ -1582,7 +1531,6 @@ export declare interface SixSwitch extends Components.SixSwitch {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['active', 'closable', 'disabled', 'panel'],
-  standalone: false
 })
 export class SixTab {
   protected el: HTMLSixTabElement;
@@ -1614,7 +1562,6 @@ export declare interface SixTab extends Components.SixTab {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['noScrollControls', 'placement'],
-  standalone: false
 })
 export class SixTabGroup {
   protected el: HTMLSixTabGroupElement;
@@ -1650,7 +1597,6 @@ export declare interface SixTabGroup extends Components.SixTabGroup {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['active', 'name'],
-  standalone: false
 })
 export class SixTabPanel {
   protected el: HTMLSixTabPanelElement;
@@ -1673,7 +1619,6 @@ export declare interface SixTabPanel extends Components.SixTabPanel {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['clearable', 'pill', 'size', 'type'],
-  standalone: false
 })
 export class SixTag {
   protected el: HTMLSixTagElement;
@@ -1705,7 +1650,6 @@ export declare interface SixTag extends Components.SixTag {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['autocapitalize', 'autocomplete', 'autocorrect', 'autofocus', 'disabled', 'errorText', 'errorTextCount', 'helpText', 'inputmode', 'invalid', 'label', 'maxlength', 'minlength', 'name', 'placeholder', 'readonly', 'required', 'resize', 'rows', 'size', 'spellcheck', 'value'],
-  standalone: false
 })
 export class SixTextarea {
   protected el: HTMLSixTextareaElement;
@@ -1749,7 +1693,6 @@ export declare interface SixTextarea extends Components.SixTextarea {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['closeable', 'disableTooltip', 'disabled', 'elevated', 'iconName', 'label', 'size'],
-  standalone: false
 })
 export class SixTile {
   protected el: HTMLSixTileElement;
@@ -1785,7 +1728,6 @@ export declare interface SixTile extends Components.SixTile {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['clearable', 'debounce', 'defaultTime', 'disabled', 'errorText', 'errorTextCount', 'format', 'hoist', 'iconPosition', 'inline', 'interval', 'invalid', 'label', 'name', 'open', 'placeholder', 'placement', 'readonly', 'required', 'separator', 'size', 'timeout', 'value'],
-  standalone: false
 })
 export class SixTimepicker {
   protected el: HTMLSixTimepickerElement;
@@ -1826,7 +1768,6 @@ export declare interface SixTimepicker extends Components.SixTimepicker {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['content', 'disabled', 'distance', 'open', 'placement', 'skidding', 'trigger'],
-  standalone: false
 })
 export class SixTooltip {
   protected el: HTMLSixTooltipElement;
