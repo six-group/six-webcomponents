@@ -2,7 +2,6 @@
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property   | Attribute  | Description                                                                                            | Type                                                      | Default     |
@@ -12,13 +11,11 @@
 | `size`     | `size`     | The button's size.                                                                                     | `"large" \| "medium" \| "small"`                          | `'medium'`  |
 | `target`   | `target`   | Tells the browser where to open the link. Only used when `href` is set.                                | `"_blank" \| "_parent" \| "_self" \| "_top" \| undefined` | `undefined` |
 
-
 ## Events
 
 | Event       | Description                                  | Type                     |
 | ----------- | -------------------------------------------- | ------------------------ |
 | `six-click` | Emitted when the breadcrumb item is clicked. | `CustomEvent<undefined>` |
-
 
 ## Shadow Parts
 
@@ -28,7 +25,6 @@
 | `"button"`    |             |
 | `"separator"` |             |
 
-
 ## Dependencies
 
 ### Depends on
@@ -36,6 +32,7 @@
 - [six-button](../six-button)
 
 ### Graph
+
 ```mermaid
 graph TD;
   six-breadcrumbs-item --> six-button
@@ -43,6 +40,6 @@ graph TD;
   style six-breadcrumbs-item fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
+---
 
 Copyright © 2021-present SIX-Group
