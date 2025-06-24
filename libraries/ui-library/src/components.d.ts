@@ -3836,7 +3836,7 @@ declare namespace LocalJSX {
          */
         "href"?: string;
         /**
-          * Emitted on click.
+          * Emitted when the breadcrumb item is clicked.
          */
         "onSix-click"?: (event: SixBreadcrumbsItemCustomEvent<EmptyPayload>) => void;
         /**
