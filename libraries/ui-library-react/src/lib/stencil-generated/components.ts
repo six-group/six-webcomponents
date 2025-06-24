@@ -71,7 +71,7 @@ import type { EventName, StencilReactComponent } from '@stencil/react-output-tar
 import { createComponent } from '@stencil/react-output-target/runtime';
 import React from 'react';
 
-type SixAlertEvents = {
+export type SixAlertEvents = {
     onSixAlertShow: EventName<SixAlertCustomEvent<EmptyPayload>>,
     onSixAlertAfterShow: EventName<SixAlertCustomEvent<EmptyPayload>>,
     onSixAlertHide: EventName<SixAlertCustomEvent<EmptyPayload>>,
@@ -81,7 +81,7 @@ type SixAlertEvents = {
 export const SixAlert: StencilReactComponent<SixAlertElement, SixAlertEvents> = /*@__PURE__*/ createComponent<SixAlertElement, SixAlertEvents>({
     tagName: 'six-alert',
     elementClass: SixAlertElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onSixAlertShow: 'six-alert-show',
@@ -92,51 +92,51 @@ export const SixAlert: StencilReactComponent<SixAlertElement, SixAlertEvents> = 
     defineCustomElement: defineSixAlert
 });
 
-type SixAvatarEvents = NonNullable<unknown>;
+export type SixAvatarEvents = NonNullable<unknown>;
 
 export const SixAvatar: StencilReactComponent<SixAvatarElement, SixAvatarEvents> = /*@__PURE__*/ createComponent<SixAvatarElement, SixAvatarEvents>({
     tagName: 'six-avatar',
     elementClass: SixAvatarElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixAvatarEvents,
     defineCustomElement: defineSixAvatar
 });
 
-type SixBadgeEvents = NonNullable<unknown>;
+export type SixBadgeEvents = NonNullable<unknown>;
 
 export const SixBadge: StencilReactComponent<SixBadgeElement, SixBadgeEvents> = /*@__PURE__*/ createComponent<SixBadgeElement, SixBadgeEvents>({
     tagName: 'six-badge',
     elementClass: SixBadgeElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixBadgeEvents,
     defineCustomElement: defineSixBadge
 });
 
-type SixBreadcrumbsEvents = NonNullable<unknown>;
+export type SixBreadcrumbsEvents = NonNullable<unknown>;
 
 export const SixBreadcrumbs: StencilReactComponent<SixBreadcrumbsElement, SixBreadcrumbsEvents> = /*@__PURE__*/ createComponent<SixBreadcrumbsElement, SixBreadcrumbsEvents>({
     tagName: 'six-breadcrumbs',
     elementClass: SixBreadcrumbsElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixBreadcrumbsEvents,
     defineCustomElement: defineSixBreadcrumbs
 });
 
-type SixBreadcrumbsItemEvents = { onSixClick: EventName<SixBreadcrumbsItemCustomEvent<EmptyPayload>> };
+export type SixBreadcrumbsItemEvents = { onSixClick: EventName<SixBreadcrumbsItemCustomEvent<EmptyPayload>> };
 
 export const SixBreadcrumbsItem: StencilReactComponent<SixBreadcrumbsItemElement, SixBreadcrumbsItemEvents> = /*@__PURE__*/ createComponent<SixBreadcrumbsItemElement, SixBreadcrumbsItemEvents>({
     tagName: 'six-breadcrumbs-item',
     elementClass: SixBreadcrumbsItemElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
-    events: { onSixClick: 'sixClick' } as SixBreadcrumbsItemEvents,
+    events: { onSixClick: 'six-click' } as SixBreadcrumbsItemEvents,
     defineCustomElement: defineSixBreadcrumbsItem
 });
 
-type SixButtonEvents = {
+export type SixButtonEvents = {
     onSixButtonBlur: EventName<SixButtonCustomEvent<EmptyPayload>>,
     onSixButtonFocus: EventName<SixButtonCustomEvent<EmptyPayload>>
 };
@@ -144,7 +144,7 @@ type SixButtonEvents = {
 export const SixButton: StencilReactComponent<SixButtonElement, SixButtonEvents> = /*@__PURE__*/ createComponent<SixButtonElement, SixButtonEvents>({
     tagName: 'six-button',
     elementClass: SixButtonElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onSixButtonBlur: 'six-button-blur',
@@ -153,18 +153,18 @@ export const SixButton: StencilReactComponent<SixButtonElement, SixButtonEvents>
     defineCustomElement: defineSixButton
 });
 
-type SixCardEvents = NonNullable<unknown>;
+export type SixCardEvents = NonNullable<unknown>;
 
 export const SixCard: StencilReactComponent<SixCardElement, SixCardEvents> = /*@__PURE__*/ createComponent<SixCardElement, SixCardEvents>({
     tagName: 'six-card',
     elementClass: SixCardElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixCardEvents,
     defineCustomElement: defineSixCard
 });
 
-type SixCheckboxEvents = {
+export type SixCheckboxEvents = {
     onSixCheckboxBlur: EventName<SixCheckboxCustomEvent<EmptyPayload>>,
     onSixCheckboxChange: EventName<SixCheckboxCustomEvent<EmptyPayload>>,
     onSixCheckboxFocus: EventName<SixCheckboxCustomEvent<EmptyPayload>>
@@ -173,7 +173,7 @@ type SixCheckboxEvents = {
 export const SixCheckbox: StencilReactComponent<SixCheckboxElement, SixCheckboxEvents> = /*@__PURE__*/ createComponent<SixCheckboxElement, SixCheckboxEvents>({
     tagName: 'six-checkbox',
     elementClass: SixCheckboxElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onSixCheckboxBlur: 'six-checkbox-blur',
@@ -183,7 +183,7 @@ export const SixCheckbox: StencilReactComponent<SixCheckboxElement, SixCheckboxE
     defineCustomElement: defineSixCheckbox
 });
 
-type SixDateEvents = {
+export type SixDateEvents = {
     onSixChange: EventName<CustomEvent<string | ''>>,
     onSixBlur: EventName<CustomEvent<any>>
 };
@@ -191,7 +191,7 @@ type SixDateEvents = {
 export const SixDate: StencilReactComponent<SixDateElement, SixDateEvents> = /*@__PURE__*/ createComponent<SixDateElement, SixDateEvents>({
     tagName: 'six-date',
     elementClass: SixDateElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onSixChange: 'six-change',
@@ -200,7 +200,7 @@ export const SixDate: StencilReactComponent<SixDateElement, SixDateEvents> = /*@
     defineCustomElement: defineSixDate
 });
 
-type SixDatepickerEvents = {
+export type SixDatepickerEvents = {
     onSixDatepickerSelect: EventName<SixDatepickerCustomEvent<SixDatepickerSelectPayload>>,
     onSixDatepickerClear: EventName<SixDatepickerCustomEvent<EmptyPayload>>,
     onSixDatepickerBlur: EventName<SixDatepickerCustomEvent<SixDatepickerSelectPayload>>
@@ -209,7 +209,7 @@ type SixDatepickerEvents = {
 export const SixDatepicker: StencilReactComponent<SixDatepickerElement, SixDatepickerEvents> = /*@__PURE__*/ createComponent<SixDatepickerElement, SixDatepickerEvents>({
     tagName: 'six-datepicker',
     elementClass: SixDatepickerElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onSixDatepickerSelect: 'six-datepicker-select',
@@ -219,7 +219,7 @@ export const SixDatepicker: StencilReactComponent<SixDatepickerElement, SixDatep
     defineCustomElement: defineSixDatepicker
 });
 
-type SixDetailsEvents = {
+export type SixDetailsEvents = {
     onSixDetailsShow: EventName<SixDetailsCustomEvent<EmptyPayload>>,
     onSixDetailsAfterShow: EventName<SixDetailsCustomEvent<EmptyPayload>>,
     onSixDetailsHide: EventName<SixDetailsCustomEvent<EmptyPayload>>,
@@ -229,7 +229,7 @@ type SixDetailsEvents = {
 export const SixDetails: StencilReactComponent<SixDetailsElement, SixDetailsEvents> = /*@__PURE__*/ createComponent<SixDetailsElement, SixDetailsEvents>({
     tagName: 'six-details',
     elementClass: SixDetailsElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onSixDetailsShow: 'six-details-show',
@@ -240,7 +240,7 @@ export const SixDetails: StencilReactComponent<SixDetailsElement, SixDetailsEven
     defineCustomElement: defineSixDetails
 });
 
-type SixDialogEvents = {
+export type SixDialogEvents = {
     onSixDialogShow: EventName<SixDialogCustomEvent<EmptyPayload>>,
     onSixDialogAfterShow: EventName<SixDialogCustomEvent<EmptyPayload>>,
     onSixDialogHide: EventName<SixDialogCustomEvent<EmptyPayload>>,
@@ -252,7 +252,7 @@ type SixDialogEvents = {
 export const SixDialog: StencilReactComponent<SixDialogElement, SixDialogEvents> = /*@__PURE__*/ createComponent<SixDialogElement, SixDialogEvents>({
     tagName: 'six-dialog',
     elementClass: SixDialogElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onSixDialogShow: 'six-dialog-show',
@@ -265,7 +265,7 @@ export const SixDialog: StencilReactComponent<SixDialogElement, SixDialogEvents>
     defineCustomElement: defineSixDialog
 });
 
-type SixDrawerEvents = {
+export type SixDrawerEvents = {
     onSixDrawerShow: EventName<SixDrawerCustomEvent<EmptyPayload>>,
     onSixDrawerAfterShow: EventName<SixDrawerCustomEvent<EmptyPayload>>,
     onSixDrawerHide: EventName<SixDrawerCustomEvent<EmptyPayload>>,
@@ -277,7 +277,7 @@ type SixDrawerEvents = {
 export const SixDrawer: StencilReactComponent<SixDrawerElement, SixDrawerEvents> = /*@__PURE__*/ createComponent<SixDrawerElement, SixDrawerEvents>({
     tagName: 'six-drawer',
     elementClass: SixDrawerElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onSixDrawerShow: 'six-drawer-show',
@@ -290,7 +290,7 @@ export const SixDrawer: StencilReactComponent<SixDrawerElement, SixDrawerEvents>
     defineCustomElement: defineSixDrawer
 });
 
-type SixDropdownEvents = {
+export type SixDropdownEvents = {
     onSixDropdownShow: EventName<SixDropdownCustomEvent<EmptyPayload>>,
     onSixDropdownAfterShow: EventName<SixDropdownCustomEvent<EmptyPayload>>,
     onSixDropdownHide: EventName<SixDropdownCustomEvent<EmptyPayload>>,
@@ -303,7 +303,7 @@ type SixDropdownEvents = {
 export const SixDropdown: StencilReactComponent<SixDropdownElement, SixDropdownEvents> = /*@__PURE__*/ createComponent<SixDropdownElement, SixDropdownEvents>({
     tagName: 'six-dropdown',
     elementClass: SixDropdownElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onSixDropdownShow: 'six-dropdown-show',
@@ -317,40 +317,40 @@ export const SixDropdown: StencilReactComponent<SixDropdownElement, SixDropdownE
     defineCustomElement: defineSixDropdown
 });
 
-type SixErrorEvents = NonNullable<unknown>;
+export type SixErrorEvents = NonNullable<unknown>;
 
 export const SixError: StencilReactComponent<SixErrorElement, SixErrorEvents> = /*@__PURE__*/ createComponent<SixErrorElement, SixErrorEvents>({
     tagName: 'six-error',
     elementClass: SixErrorElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixErrorEvents,
     defineCustomElement: defineSixError
 });
 
-type SixErrorPageEvents = NonNullable<unknown>;
+export type SixErrorPageEvents = NonNullable<unknown>;
 
 export const SixErrorPage: StencilReactComponent<SixErrorPageElement, SixErrorPageEvents> = /*@__PURE__*/ createComponent<SixErrorPageElement, SixErrorPageEvents>({
     tagName: 'six-error-page',
     elementClass: SixErrorPageElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixErrorPageEvents,
     defineCustomElement: defineSixErrorPage
 });
 
-type SixFileListEvents = NonNullable<unknown>;
+export type SixFileListEvents = NonNullable<unknown>;
 
 export const SixFileList: StencilReactComponent<SixFileListElement, SixFileListEvents> = /*@__PURE__*/ createComponent<SixFileListElement, SixFileListEvents>({
     tagName: 'six-file-list',
     elementClass: SixFileListElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixFileListEvents,
     defineCustomElement: defineSixFileList
 });
 
-type SixFileListItemEvents = {
+export type SixFileListItemEvents = {
     onSixFileListItemDownload: EventName<SixFileListItemCustomEvent<SixFileListDownloadPayload>>,
     onSixFileListItemRemove: EventName<SixFileListItemCustomEvent<SixFileListRemovePayload>>
 };
@@ -358,7 +358,7 @@ type SixFileListItemEvents = {
 export const SixFileListItem: StencilReactComponent<SixFileListItemElement, SixFileListItemEvents> = /*@__PURE__*/ createComponent<SixFileListItemElement, SixFileListItemEvents>({
     tagName: 'six-file-list-item',
     elementClass: SixFileListItemElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onSixFileListItemDownload: 'six-file-list-item-download',
@@ -367,7 +367,7 @@ export const SixFileListItem: StencilReactComponent<SixFileListItemElement, SixF
     defineCustomElement: defineSixFileListItem
 });
 
-type SixFileUploadEvents = {
+export type SixFileUploadEvents = {
     onSixFileUploadSuccess: EventName<SixFileUploadCustomEvent<SixFileUploadSuccessPayload>>,
     onSixFileUploadFailure: EventName<SixFileUploadCustomEvent<SixFileUploadFailurePayload>>
 };
@@ -375,7 +375,7 @@ type SixFileUploadEvents = {
 export const SixFileUpload: StencilReactComponent<SixFileUploadElement, SixFileUploadEvents> = /*@__PURE__*/ createComponent<SixFileUploadElement, SixFileUploadEvents>({
     tagName: 'six-file-upload',
     elementClass: SixFileUploadElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onSixFileUploadSuccess: 'six-file-upload-success',
@@ -384,95 +384,95 @@ export const SixFileUpload: StencilReactComponent<SixFileUploadElement, SixFileU
     defineCustomElement: defineSixFileUpload
 });
 
-type SixFooterEvents = NonNullable<unknown>;
+export type SixFooterEvents = NonNullable<unknown>;
 
 export const SixFooter: StencilReactComponent<SixFooterElement, SixFooterEvents> = /*@__PURE__*/ createComponent<SixFooterElement, SixFooterEvents>({
     tagName: 'six-footer',
     elementClass: SixFooterElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixFooterEvents,
     defineCustomElement: defineSixFooter
 });
 
-type SixGroupLabelEvents = NonNullable<unknown>;
+export type SixGroupLabelEvents = NonNullable<unknown>;
 
 export const SixGroupLabel: StencilReactComponent<SixGroupLabelElement, SixGroupLabelEvents> = /*@__PURE__*/ createComponent<SixGroupLabelElement, SixGroupLabelEvents>({
     tagName: 'six-group-label',
     elementClass: SixGroupLabelElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixGroupLabelEvents,
     defineCustomElement: defineSixGroupLabel
 });
 
-type SixHeaderEvents = NonNullable<unknown>;
+export type SixHeaderEvents = NonNullable<unknown>;
 
 export const SixHeader: StencilReactComponent<SixHeaderElement, SixHeaderEvents> = /*@__PURE__*/ createComponent<SixHeaderElement, SixHeaderEvents>({
     tagName: 'six-header',
     elementClass: SixHeaderElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixHeaderEvents,
     defineCustomElement: defineSixHeader
 });
 
-type SixHeaderDropdownItemEvents = NonNullable<unknown>;
+export type SixHeaderDropdownItemEvents = NonNullable<unknown>;
 
 export const SixHeaderDropdownItem: StencilReactComponent<SixHeaderDropdownItemElement, SixHeaderDropdownItemEvents> = /*@__PURE__*/ createComponent<SixHeaderDropdownItemElement, SixHeaderDropdownItemEvents>({
     tagName: 'six-header-dropdown-item',
     elementClass: SixHeaderDropdownItemElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixHeaderDropdownItemEvents,
     defineCustomElement: defineSixHeaderDropdownItem
 });
 
-type SixHeaderItemEvents = NonNullable<unknown>;
+export type SixHeaderItemEvents = NonNullable<unknown>;
 
 export const SixHeaderItem: StencilReactComponent<SixHeaderItemElement, SixHeaderItemEvents> = /*@__PURE__*/ createComponent<SixHeaderItemElement, SixHeaderItemEvents>({
     tagName: 'six-header-item',
     elementClass: SixHeaderItemElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixHeaderItemEvents,
     defineCustomElement: defineSixHeaderItem
 });
 
-type SixHeaderMenuButtonEvents = NonNullable<unknown>;
+export type SixHeaderMenuButtonEvents = NonNullable<unknown>;
 
 export const SixHeaderMenuButton: StencilReactComponent<SixHeaderMenuButtonElement, SixHeaderMenuButtonEvents> = /*@__PURE__*/ createComponent<SixHeaderMenuButtonElement, SixHeaderMenuButtonEvents>({
     tagName: 'six-header-menu-button',
     elementClass: SixHeaderMenuButtonElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixHeaderMenuButtonEvents,
     defineCustomElement: defineSixHeaderMenuButton
 });
 
-type SixIconEvents = NonNullable<unknown>;
+export type SixIconEvents = NonNullable<unknown>;
 
 export const SixIcon: StencilReactComponent<SixIconElement, SixIconEvents> = /*@__PURE__*/ createComponent<SixIconElement, SixIconEvents>({
     tagName: 'six-icon',
     elementClass: SixIconElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixIconEvents,
     defineCustomElement: defineSixIcon
 });
 
-type SixIconButtonEvents = NonNullable<unknown>;
+export type SixIconButtonEvents = NonNullable<unknown>;
 
 export const SixIconButton: StencilReactComponent<SixIconButtonElement, SixIconButtonEvents> = /*@__PURE__*/ createComponent<SixIconButtonElement, SixIconButtonEvents>({
     tagName: 'six-icon-button',
     elementClass: SixIconButtonElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixIconButtonEvents,
     defineCustomElement: defineSixIconButton
 });
 
-type SixInputEvents = {
+export type SixInputEvents = {
     onSixInputChange: EventName<SixInputCustomEvent<EmptyPayload>>,
     onSixInputClear: EventName<SixInputCustomEvent<EmptyPayload>>,
     onSixInputInput: EventName<SixInputCustomEvent<EmptyPayload>>,
@@ -483,7 +483,7 @@ type SixInputEvents = {
 export const SixInput: StencilReactComponent<SixInputElement, SixInputEvents> = /*@__PURE__*/ createComponent<SixInputElement, SixInputEvents>({
     tagName: 'six-input',
     elementClass: SixInputElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onSixInputChange: 'six-input-change',
@@ -495,7 +495,7 @@ export const SixInput: StencilReactComponent<SixInputElement, SixInputEvents> = 
     defineCustomElement: defineSixInput
 });
 
-type SixItemPickerEvents = {
+export type SixItemPickerEvents = {
     onSixItemPickerChange: EventName<SixItemPickerCustomEvent<SixItemPickerChangePayload>>,
     onSixItemPickerChangeDebounced: EventName<SixItemPickerCustomEvent<SixItemPickerChangePayload>>
 };
@@ -503,7 +503,7 @@ type SixItemPickerEvents = {
 export const SixItemPicker: StencilReactComponent<SixItemPickerElement, SixItemPickerEvents> = /*@__PURE__*/ createComponent<SixItemPickerElement, SixItemPickerEvents>({
     tagName: 'six-item-picker',
     elementClass: SixItemPickerElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onSixItemPickerChange: 'six-item-picker-change',
@@ -512,128 +512,128 @@ export const SixItemPicker: StencilReactComponent<SixItemPickerElement, SixItemP
     defineCustomElement: defineSixItemPicker
 });
 
-type SixLanguageSwitcherEvents = { onSixLanguageSwitcherChange: EventName<SixLanguageSwitcherCustomEvent<SixLanguageSwitcherChangePayload>> };
+export type SixLanguageSwitcherEvents = { onSixLanguageSwitcherChange: EventName<SixLanguageSwitcherCustomEvent<SixLanguageSwitcherChangePayload>> };
 
 export const SixLanguageSwitcher: StencilReactComponent<SixLanguageSwitcherElement, SixLanguageSwitcherEvents> = /*@__PURE__*/ createComponent<SixLanguageSwitcherElement, SixLanguageSwitcherEvents>({
     tagName: 'six-language-switcher',
     elementClass: SixLanguageSwitcherElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onSixLanguageSwitcherChange: 'six-language-switcher-change' } as SixLanguageSwitcherEvents,
     defineCustomElement: defineSixLanguageSwitcher
 });
 
-type SixLayoutGridEvents = NonNullable<unknown>;
+export type SixLayoutGridEvents = NonNullable<unknown>;
 
 export const SixLayoutGrid: StencilReactComponent<SixLayoutGridElement, SixLayoutGridEvents> = /*@__PURE__*/ createComponent<SixLayoutGridElement, SixLayoutGridEvents>({
     tagName: 'six-layout-grid',
     elementClass: SixLayoutGridElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixLayoutGridEvents,
     defineCustomElement: defineSixLayoutGrid
 });
 
-type SixLogoEvents = NonNullable<unknown>;
+export type SixLogoEvents = NonNullable<unknown>;
 
 export const SixLogo: StencilReactComponent<SixLogoElement, SixLogoEvents> = /*@__PURE__*/ createComponent<SixLogoElement, SixLogoEvents>({
     tagName: 'six-logo',
     elementClass: SixLogoElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixLogoEvents,
     defineCustomElement: defineSixLogo
 });
 
-type SixMainContainerEvents = NonNullable<unknown>;
+export type SixMainContainerEvents = NonNullable<unknown>;
 
 export const SixMainContainer: StencilReactComponent<SixMainContainerElement, SixMainContainerEvents> = /*@__PURE__*/ createComponent<SixMainContainerElement, SixMainContainerEvents>({
     tagName: 'six-main-container',
     elementClass: SixMainContainerElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixMainContainerEvents,
     defineCustomElement: defineSixMainContainer
 });
 
-type SixMenuEvents = { onSixMenuItemSelected: EventName<SixMenuCustomEvent<SixMenuItemSelectedPayload>> };
+export type SixMenuEvents = { onSixMenuItemSelected: EventName<SixMenuCustomEvent<SixMenuItemSelectedPayload>> };
 
 export const SixMenu: StencilReactComponent<SixMenuElement, SixMenuEvents> = /*@__PURE__*/ createComponent<SixMenuElement, SixMenuEvents>({
     tagName: 'six-menu',
     elementClass: SixMenuElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onSixMenuItemSelected: 'six-menu-item-selected' } as SixMenuEvents,
     defineCustomElement: defineSixMenu
 });
 
-type SixMenuDividerEvents = NonNullable<unknown>;
+export type SixMenuDividerEvents = NonNullable<unknown>;
 
 export const SixMenuDivider: StencilReactComponent<SixMenuDividerElement, SixMenuDividerEvents> = /*@__PURE__*/ createComponent<SixMenuDividerElement, SixMenuDividerEvents>({
     tagName: 'six-menu-divider',
     elementClass: SixMenuDividerElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixMenuDividerEvents,
     defineCustomElement: defineSixMenuDivider
 });
 
-type SixMenuItemEvents = NonNullable<unknown>;
+export type SixMenuItemEvents = NonNullable<unknown>;
 
 export const SixMenuItem: StencilReactComponent<SixMenuItemElement, SixMenuItemEvents> = /*@__PURE__*/ createComponent<SixMenuItemElement, SixMenuItemEvents>({
     tagName: 'six-menu-item',
     elementClass: SixMenuItemElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixMenuItemEvents,
     defineCustomElement: defineSixMenuItem
 });
 
-type SixMenuLabelEvents = NonNullable<unknown>;
+export type SixMenuLabelEvents = NonNullable<unknown>;
 
 export const SixMenuLabel: StencilReactComponent<SixMenuLabelElement, SixMenuLabelEvents> = /*@__PURE__*/ createComponent<SixMenuLabelElement, SixMenuLabelEvents>({
     tagName: 'six-menu-label',
     elementClass: SixMenuLabelElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixMenuLabelEvents,
     defineCustomElement: defineSixMenuLabel
 });
 
-type SixPictoEvents = NonNullable<unknown>;
+export type SixPictoEvents = NonNullable<unknown>;
 
 export const SixPicto: StencilReactComponent<SixPictoElement, SixPictoEvents> = /*@__PURE__*/ createComponent<SixPictoElement, SixPictoEvents>({
     tagName: 'six-picto',
     elementClass: SixPictoElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixPictoEvents,
     defineCustomElement: defineSixPicto
 });
 
-type SixProgressBarEvents = NonNullable<unknown>;
+export type SixProgressBarEvents = NonNullable<unknown>;
 
 export const SixProgressBar: StencilReactComponent<SixProgressBarElement, SixProgressBarEvents> = /*@__PURE__*/ createComponent<SixProgressBarElement, SixProgressBarEvents>({
     tagName: 'six-progress-bar',
     elementClass: SixProgressBarElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixProgressBarEvents,
     defineCustomElement: defineSixProgressBar
 });
 
-type SixProgressRingEvents = NonNullable<unknown>;
+export type SixProgressRingEvents = NonNullable<unknown>;
 
 export const SixProgressRing: StencilReactComponent<SixProgressRingElement, SixProgressRingEvents> = /*@__PURE__*/ createComponent<SixProgressRingElement, SixProgressRingEvents>({
     tagName: 'six-progress-ring',
     elementClass: SixProgressRingElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixProgressRingEvents,
     defineCustomElement: defineSixProgressRing
 });
 
-type SixRadioEvents = {
+export type SixRadioEvents = {
     onSixRadioBlur: EventName<SixRadioCustomEvent<EmptyPayload>>,
     onSixRadioChange: EventName<SixRadioCustomEvent<EmptyPayload>>,
     onSixRadioFocus: EventName<SixRadioCustomEvent<EmptyPayload>>
@@ -642,7 +642,7 @@ type SixRadioEvents = {
 export const SixRadio: StencilReactComponent<SixRadioElement, SixRadioEvents> = /*@__PURE__*/ createComponent<SixRadioElement, SixRadioEvents>({
     tagName: 'six-radio',
     elementClass: SixRadioElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onSixRadioBlur: 'six-radio-blur',
@@ -652,7 +652,7 @@ export const SixRadio: StencilReactComponent<SixRadioElement, SixRadioEvents> = 
     defineCustomElement: defineSixRadio
 });
 
-type SixRangeEvents = {
+export type SixRangeEvents = {
     onSixRangeChange: EventName<SixRangeCustomEvent<EmptyPayload>>,
     onSixRangeBlur: EventName<SixRangeCustomEvent<EmptyPayload>>,
     onSixRangeFocus: EventName<SixRangeCustomEvent<EmptyPayload>>
@@ -661,7 +661,7 @@ type SixRangeEvents = {
 export const SixRange: StencilReactComponent<SixRangeElement, SixRangeEvents> = /*@__PURE__*/ createComponent<SixRangeElement, SixRangeEvents>({
     tagName: 'six-range',
     elementClass: SixRangeElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onSixRangeChange: 'six-range-change',
@@ -671,29 +671,29 @@ export const SixRange: StencilReactComponent<SixRangeElement, SixRangeEvents> = 
     defineCustomElement: defineSixRange
 });
 
-type SixRootEvents = NonNullable<unknown>;
+export type SixRootEvents = NonNullable<unknown>;
 
 export const SixRoot: StencilReactComponent<SixRootElement, SixRootEvents> = /*@__PURE__*/ createComponent<SixRootElement, SixRootEvents>({
     tagName: 'six-root',
     elementClass: SixRootElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixRootEvents,
     defineCustomElement: defineSixRoot
 });
 
-type SixSearchFieldEvents = { onSixSearchFieldChange: EventName<SixSearchFieldCustomEvent<SixSearchFieldChangePayload>> };
+export type SixSearchFieldEvents = { onSixSearchFieldChange: EventName<SixSearchFieldCustomEvent<SixSearchFieldChangePayload>> };
 
 export const SixSearchField: StencilReactComponent<SixSearchFieldElement, SixSearchFieldEvents> = /*@__PURE__*/ createComponent<SixSearchFieldElement, SixSearchFieldEvents>({
     tagName: 'six-search-field',
     elementClass: SixSearchFieldElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onSixSearchFieldChange: 'six-search-field-change' } as SixSearchFieldEvents,
     defineCustomElement: defineSixSearchField
 });
 
-type SixSelectEvents = {
+export type SixSelectEvents = {
     onSixSelectChange: EventName<SixSelectCustomEvent<SixSelectChangePayload>>,
     onSixSelectFocus: EventName<SixSelectCustomEvent<EmptyPayload>>,
     onSixSelectBlur: EventName<SixSelectCustomEvent<EmptyPayload>>
@@ -702,7 +702,7 @@ type SixSelectEvents = {
 export const SixSelect: StencilReactComponent<SixSelectElement, SixSelectEvents> = /*@__PURE__*/ createComponent<SixSelectElement, SixSelectEvents>({
     tagName: 'six-select',
     elementClass: SixSelectElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onSixSelectChange: 'six-select-change',
@@ -712,7 +712,7 @@ export const SixSelect: StencilReactComponent<SixSelectElement, SixSelectEvents>
     defineCustomElement: defineSixSelect
 });
 
-type SixSidebarEvents = {
+export type SixSidebarEvents = {
     onSixSidebarShow: EventName<SixSidebarCustomEvent<EmptyPayload>>,
     onSixSidebarAfterShow: EventName<SixSidebarCustomEvent<EmptyPayload>>,
     onSixSidebarHide: EventName<SixSidebarCustomEvent<EmptyPayload>>,
@@ -723,7 +723,7 @@ type SixSidebarEvents = {
 export const SixSidebar: StencilReactComponent<SixSidebarElement, SixSidebarEvents> = /*@__PURE__*/ createComponent<SixSidebarElement, SixSidebarEvents>({
     tagName: 'six-sidebar',
     elementClass: SixSidebarElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onSixSidebarShow: 'six-sidebar-show',
@@ -735,51 +735,51 @@ export const SixSidebar: StencilReactComponent<SixSidebarElement, SixSidebarEven
     defineCustomElement: defineSixSidebar
 });
 
-type SixSidebarItemEvents = NonNullable<unknown>;
+export type SixSidebarItemEvents = NonNullable<unknown>;
 
 export const SixSidebarItem: StencilReactComponent<SixSidebarItemElement, SixSidebarItemEvents> = /*@__PURE__*/ createComponent<SixSidebarItemElement, SixSidebarItemEvents>({
     tagName: 'six-sidebar-item',
     elementClass: SixSidebarItemElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixSidebarItemEvents,
     defineCustomElement: defineSixSidebarItem
 });
 
-type SixSidebarItemGroupEvents = NonNullable<unknown>;
+export type SixSidebarItemGroupEvents = NonNullable<unknown>;
 
 export const SixSidebarItemGroup: StencilReactComponent<SixSidebarItemGroupElement, SixSidebarItemGroupEvents> = /*@__PURE__*/ createComponent<SixSidebarItemGroupElement, SixSidebarItemGroupEvents>({
     tagName: 'six-sidebar-item-group',
     elementClass: SixSidebarItemGroupElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixSidebarItemGroupEvents,
     defineCustomElement: defineSixSidebarItemGroup
 });
 
-type SixSpinnerEvents = NonNullable<unknown>;
+export type SixSpinnerEvents = NonNullable<unknown>;
 
 export const SixSpinner: StencilReactComponent<SixSpinnerElement, SixSpinnerEvents> = /*@__PURE__*/ createComponent<SixSpinnerElement, SixSpinnerEvents>({
     tagName: 'six-spinner',
     elementClass: SixSpinnerElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixSpinnerEvents,
     defineCustomElement: defineSixSpinner
 });
 
-type SixStageIndicatorEvents = NonNullable<unknown>;
+export type SixStageIndicatorEvents = NonNullable<unknown>;
 
 export const SixStageIndicator: StencilReactComponent<SixStageIndicatorElement, SixStageIndicatorEvents> = /*@__PURE__*/ createComponent<SixStageIndicatorElement, SixStageIndicatorEvents>({
     tagName: 'six-stage-indicator',
     elementClass: SixStageIndicatorElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixStageIndicatorEvents,
     defineCustomElement: defineSixStageIndicator
 });
 
-type SixSwitchEvents = {
+export type SixSwitchEvents = {
     onSixSwitchBlur: EventName<CustomEvent<boolean>>,
     onSixSwitchChange: EventName<CustomEvent<boolean>>,
     onSixSwitchFocus: EventName<SixSwitchCustomEvent<EmptyPayload>>
@@ -788,7 +788,7 @@ type SixSwitchEvents = {
 export const SixSwitch: StencilReactComponent<SixSwitchElement, SixSwitchEvents> = /*@__PURE__*/ createComponent<SixSwitchElement, SixSwitchEvents>({
     tagName: 'six-switch',
     elementClass: SixSwitchElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onSixSwitchBlur: 'six-switch-blur',
@@ -798,18 +798,18 @@ export const SixSwitch: StencilReactComponent<SixSwitchElement, SixSwitchEvents>
     defineCustomElement: defineSixSwitch
 });
 
-type SixTabEvents = { onSixTabClose: EventName<SixTabCustomEvent<EmptyPayload>> };
+export type SixTabEvents = { onSixTabClose: EventName<SixTabCustomEvent<EmptyPayload>> };
 
 export const SixTab: StencilReactComponent<SixTabElement, SixTabEvents> = /*@__PURE__*/ createComponent<SixTabElement, SixTabEvents>({
     tagName: 'six-tab',
     elementClass: SixTabElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onSixTabClose: 'six-tab-close' } as SixTabEvents,
     defineCustomElement: defineSixTab
 });
 
-type SixTabGroupEvents = {
+export type SixTabGroupEvents = {
     onSixTabShow: EventName<SixTabGroupCustomEvent<SixTabShowPayload>>,
     onSixTabHide: EventName<SixTabGroupCustomEvent<SixTabHidePayload>>
 };
@@ -817,7 +817,7 @@ type SixTabGroupEvents = {
 export const SixTabGroup: StencilReactComponent<SixTabGroupElement, SixTabGroupEvents> = /*@__PURE__*/ createComponent<SixTabGroupElement, SixTabGroupEvents>({
     tagName: 'six-tab-group',
     elementClass: SixTabGroupElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onSixTabShow: 'six-tab-show',
@@ -826,29 +826,29 @@ export const SixTabGroup: StencilReactComponent<SixTabGroupElement, SixTabGroupE
     defineCustomElement: defineSixTabGroup
 });
 
-type SixTabPanelEvents = NonNullable<unknown>;
+export type SixTabPanelEvents = NonNullable<unknown>;
 
 export const SixTabPanel: StencilReactComponent<SixTabPanelElement, SixTabPanelEvents> = /*@__PURE__*/ createComponent<SixTabPanelElement, SixTabPanelEvents>({
     tagName: 'six-tab-panel',
     elementClass: SixTabPanelElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixTabPanelEvents,
     defineCustomElement: defineSixTabPanel
 });
 
-type SixTagEvents = { onSixTagClear: EventName<SixTagCustomEvent<EmptyPayload>> };
+export type SixTagEvents = { onSixTagClear: EventName<SixTagCustomEvent<EmptyPayload>> };
 
 export const SixTag: StencilReactComponent<SixTagElement, SixTagEvents> = /*@__PURE__*/ createComponent<SixTagElement, SixTagEvents>({
     tagName: 'six-tag',
     elementClass: SixTagElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onSixTagClear: 'six-tag-clear' } as SixTagEvents,
     defineCustomElement: defineSixTag
 });
 
-type SixTextareaEvents = {
+export type SixTextareaEvents = {
     onSixTextareaChange: EventName<SixTextareaCustomEvent<EmptyPayload>>,
     onSixTextareaInput: EventName<SixTextareaCustomEvent<EmptyPayload>>,
     onSixTextareaFocus: EventName<SixTextareaCustomEvent<EmptyPayload>>,
@@ -858,7 +858,7 @@ type SixTextareaEvents = {
 export const SixTextarea: StencilReactComponent<SixTextareaElement, SixTextareaEvents> = /*@__PURE__*/ createComponent<SixTextareaElement, SixTextareaEvents>({
     tagName: 'six-textarea',
     elementClass: SixTextareaElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onSixTextareaChange: 'six-textarea-change',
@@ -869,7 +869,7 @@ export const SixTextarea: StencilReactComponent<SixTextareaElement, SixTextareaE
     defineCustomElement: defineSixTextarea
 });
 
-type SixTileEvents = {
+export type SixTileEvents = {
     onSixTileClosed: EventName<SixTileCustomEvent<EmptyPayload>>,
     onSixTileSelected: EventName<SixTileCustomEvent<EmptyPayload>>
 };
@@ -877,7 +877,7 @@ type SixTileEvents = {
 export const SixTile: StencilReactComponent<SixTileElement, SixTileEvents> = /*@__PURE__*/ createComponent<SixTileElement, SixTileEvents>({
     tagName: 'six-tile',
     elementClass: SixTileElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onSixTileClosed: 'six-tile-closed',
@@ -886,7 +886,7 @@ export const SixTile: StencilReactComponent<SixTileElement, SixTileEvents> = /*@
     defineCustomElement: defineSixTile
 });
 
-type SixTimepickerEvents = {
+export type SixTimepickerEvents = {
     onSixTimepickerChange: EventName<SixTimepickerCustomEvent<SixTimepickerChange>>,
     onSixTimepickerChangeDebounced: EventName<SixTimepickerCustomEvent<SixTimepickerChange>>,
     onSixTimepickerClear: EventName<SixTimepickerCustomEvent<EmptyPayload>>
@@ -895,7 +895,7 @@ type SixTimepickerEvents = {
 export const SixTimepicker: StencilReactComponent<SixTimepickerElement, SixTimepickerEvents> = /*@__PURE__*/ createComponent<SixTimepickerElement, SixTimepickerEvents>({
     tagName: 'six-timepicker',
     elementClass: SixTimepickerElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onSixTimepickerChange: 'six-timepicker-change',
@@ -905,7 +905,7 @@ export const SixTimepicker: StencilReactComponent<SixTimepickerElement, SixTimep
     defineCustomElement: defineSixTimepicker
 });
 
-type SixTooltipEvents = {
+export type SixTooltipEvents = {
     onSixTooltipShow: EventName<SixTooltipCustomEvent<EmptyPayload>>,
     onSixTooltipAfterShow: EventName<SixTooltipCustomEvent<EmptyPayload>>,
     onSixTooltipHide: EventName<SixTooltipCustomEvent<EmptyPayload>>,
@@ -915,7 +915,7 @@ type SixTooltipEvents = {
 export const SixTooltip: StencilReactComponent<SixTooltipElement, SixTooltipEvents> = /*@__PURE__*/ createComponent<SixTooltipElement, SixTooltipEvents>({
     tagName: 'six-tooltip',
     elementClass: SixTooltipElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onSixTooltipShow: 'six-tooltip-show',

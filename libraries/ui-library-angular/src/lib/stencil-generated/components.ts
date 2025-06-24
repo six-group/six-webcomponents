@@ -20,7 +20,7 @@ import { Components } from '@six-group/ui-library';
   standalone: false
 })
 export class SixAlert {
-  protected el: HTMLElement;
+  protected el: HTMLSixAlertElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -63,7 +63,7 @@ export declare interface SixAlert extends Components.SixAlert {
   standalone: false
 })
 export class SixAvatar {
-  protected el: HTMLElement;
+  protected el: HTMLSixAvatarElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -86,7 +86,7 @@ export declare interface SixAvatar extends Components.SixAvatar {}
   standalone: false
 })
 export class SixBadge {
-  protected el: HTMLElement;
+  protected el: HTMLSixBadgeElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -98,7 +98,6 @@ export declare interface SixBadge extends Components.SixBadge {}
 
 
 @ProxyCmp({
-  inputs: ['data']
 })
 @Component({
   standalone: false,
@@ -106,10 +105,10 @@ export declare interface SixBadge extends Components.SixBadge {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['data'],
+  inputs: [],
 })
 export class SixBreadcrumbs {
-  protected el: HTMLElement;
+  protected el: HTMLSixBreadcrumbsElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -121,7 +120,7 @@ export declare interface SixBreadcrumbs extends Components.SixBreadcrumbs {}
 
 
 @ProxyCmp({
-  inputs: ['disabled', 'name']
+  inputs: ['disabled', 'href', 'size', 'target']
 })
 @Component({
   standalone: false,
@@ -129,14 +128,14 @@ export declare interface SixBreadcrumbs extends Components.SixBreadcrumbs {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['disabled', 'name'],
+  inputs: ['disabled', 'href', 'size', 'target'],
 })
 export class SixBreadcrumbsItem {
-  protected el: HTMLElement;
+  protected el: HTMLSixBreadcrumbsItemElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['sixClick']);
+    proxyOutputs(this, this.el, ['six-click']);
   }
 }
 
@@ -145,9 +144,9 @@ import type { EmptyPayload as ISixBreadcrumbsItemEmptyPayload } from '@six-group
 
 export declare interface SixBreadcrumbsItem extends Components.SixBreadcrumbsItem {
   /**
-   * Emitted on click.
+   * Emitted when the breadcrumb item is clicked.
    */
-  sixClick: EventEmitter<CustomEvent<ISixBreadcrumbsItemEmptyPayload>>;
+  'six-click': EventEmitter<CustomEvent<ISixBreadcrumbsItemEmptyPayload>>;
 }
 
 
@@ -164,7 +163,7 @@ export declare interface SixBreadcrumbsItem extends Components.SixBreadcrumbsIte
   standalone: false
 })
 export class SixButton {
-  protected el: HTMLElement;
+  protected el: HTMLSixButtonElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -198,7 +197,7 @@ export declare interface SixButton extends Components.SixButton {
   standalone: false
 })
 export class SixCard {
-  protected el: HTMLElement;
+  protected el: HTMLSixCardElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -222,7 +221,7 @@ export declare interface SixCard extends Components.SixCard {}
   standalone: false
 })
 export class SixCheckbox {
-  protected el: HTMLElement;
+  protected el: HTMLSixCheckboxElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -262,7 +261,7 @@ export declare interface SixCheckbox extends Components.SixCheckbox {
   standalone: false
 })
 export class SixDate {
-  protected el: HTMLElement;
+  protected el: HTMLSixDateElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -298,7 +297,7 @@ Does not contain event details.
   standalone: false
 })
 export class SixDatepicker {
-  protected el: HTMLElement;
+  protected el: HTMLSixDatepickerElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -339,7 +338,7 @@ export declare interface SixDatepicker extends Components.SixDatepicker {
   standalone: false
 })
 export class SixDetails {
-  protected el: HTMLElement;
+  protected el: HTMLSixDetailsElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -383,7 +382,7 @@ export declare interface SixDetails extends Components.SixDetails {
   standalone: false
 })
 export class SixDialog {
-  protected el: HTMLElement;
+  protected el: HTMLSixDialogElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -439,7 +438,7 @@ the drawer will result in destructive behavior such as data loss.
   standalone: false
 })
 export class SixDrawer {
-  protected el: HTMLElement;
+  protected el: HTMLSixDrawerElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -495,7 +494,7 @@ the drawer will result in destructive behavior such as data loss.
   standalone: false
 })
 export class SixDropdown {
-  protected el: HTMLElement;
+  protected el: HTMLSixDropdownElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -552,7 +551,7 @@ export declare interface SixDropdown extends Components.SixDropdown {
   standalone: false
 })
 export class SixError {
-  protected el: HTMLElement;
+  protected el: HTMLSixErrorElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -575,7 +574,7 @@ export declare interface SixError extends Components.SixError {}
   standalone: false
 })
 export class SixErrorPage {
-  protected el: HTMLElement;
+  protected el: HTMLSixErrorPageElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -597,7 +596,7 @@ export declare interface SixErrorPage extends Components.SixErrorPage {}
   standalone: false
 })
 export class SixFileList {
-  protected el: HTMLElement;
+  protected el: HTMLSixFileListElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -620,7 +619,7 @@ export declare interface SixFileList extends Components.SixFileList {}
   standalone: false
 })
 export class SixFileListItem {
-  protected el: HTMLElement;
+  protected el: HTMLSixFileListItemElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -656,7 +655,7 @@ export declare interface SixFileListItem extends Components.SixFileListItem {
   standalone: false
 })
 export class SixFileUpload {
-  protected el: HTMLElement;
+  protected el: HTMLSixFileUploadElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -691,7 +690,7 @@ export declare interface SixFileUpload extends Components.SixFileUpload {
   standalone: false
 })
 export class SixFooter {
-  protected el: HTMLElement;
+  protected el: HTMLSixFooterElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -714,7 +713,7 @@ export declare interface SixFooter extends Components.SixFooter {}
   standalone: false
 })
 export class SixGroupLabel {
-  protected el: HTMLElement;
+  protected el: HTMLSixGroupLabelElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -737,7 +736,7 @@ export declare interface SixGroupLabel extends Components.SixGroupLabel {}
   standalone: false
 })
 export class SixHeader {
-  protected el: HTMLElement;
+  protected el: HTMLSixHeaderElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -760,7 +759,7 @@ export declare interface SixHeader extends Components.SixHeader {}
   standalone: false
 })
 export class SixHeaderDropdownItem {
-  protected el: HTMLElement;
+  protected el: HTMLSixHeaderDropdownItemElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -783,7 +782,7 @@ export declare interface SixHeaderDropdownItem extends Components.SixHeaderDropd
   standalone: false
 })
 export class SixHeaderItem {
-  protected el: HTMLElement;
+  protected el: HTMLSixHeaderItemElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -806,7 +805,7 @@ export declare interface SixHeaderItem extends Components.SixHeaderItem {}
   standalone: false
 })
 export class SixHeaderMenuButton {
-  protected el: HTMLElement;
+  protected el: HTMLSixHeaderMenuButtonElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -829,7 +828,7 @@ export declare interface SixHeaderMenuButton extends Components.SixHeaderMenuBut
   standalone: false
 })
 export class SixIcon {
-  protected el: HTMLElement;
+  protected el: HTMLSixIconElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -852,7 +851,7 @@ export declare interface SixIcon extends Components.SixIcon {}
   standalone: false
 })
 export class SixIconButton {
-  protected el: HTMLElement;
+  protected el: HTMLSixIconButtonElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -876,7 +875,7 @@ export declare interface SixIconButton extends Components.SixIconButton {}
   standalone: false
 })
 export class SixInput {
-  protected el: HTMLElement;
+  protected el: HTMLSixInputElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -923,7 +922,7 @@ export declare interface SixInput extends Components.SixInput {
   standalone: false
 })
 export class SixItemPicker {
-  protected el: HTMLElement;
+  protected el: HTMLSixItemPickerElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -958,7 +957,7 @@ export declare interface SixItemPicker extends Components.SixItemPicker {
   standalone: false
 })
 export class SixLanguageSwitcher {
-  protected el: HTMLElement;
+  protected el: HTMLSixLanguageSwitcherElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -989,7 +988,7 @@ export declare interface SixLanguageSwitcher extends Components.SixLanguageSwitc
   standalone: false
 })
 export class SixLayoutGrid {
-  protected el: HTMLElement;
+  protected el: HTMLSixLayoutGridElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1012,7 +1011,7 @@ export declare interface SixLayoutGrid extends Components.SixLayoutGrid {}
   standalone: false
 })
 export class SixLogo {
-  protected el: HTMLElement;
+  protected el: HTMLSixLogoElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1035,7 +1034,7 @@ export declare interface SixLogo extends Components.SixLogo {}
   standalone: false
 })
 export class SixMainContainer {
-  protected el: HTMLElement;
+  protected el: HTMLSixMainContainerElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1059,7 +1058,7 @@ export declare interface SixMainContainer extends Components.SixMainContainer {}
   standalone: false
 })
 export class SixMenu {
-  protected el: HTMLElement;
+  protected el: HTMLSixMenuElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1089,7 +1088,7 @@ export declare interface SixMenu extends Components.SixMenu {
   standalone: false
 })
 export class SixMenuDivider {
-  protected el: HTMLElement;
+  protected el: HTMLSixMenuDividerElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1113,7 +1112,7 @@ export declare interface SixMenuDivider extends Components.SixMenuDivider {}
   standalone: false
 })
 export class SixMenuItem {
-  protected el: HTMLElement;
+  protected el: HTMLSixMenuItemElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1135,7 +1134,7 @@ export declare interface SixMenuItem extends Components.SixMenuItem {}
   standalone: false
 })
 export class SixMenuLabel {
-  protected el: HTMLElement;
+  protected el: HTMLSixMenuLabelElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1158,7 +1157,7 @@ export declare interface SixMenuLabel extends Components.SixMenuLabel {}
   standalone: false
 })
 export class SixPicto {
-  protected el: HTMLElement;
+  protected el: HTMLSixPictoElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1181,7 +1180,7 @@ export declare interface SixPicto extends Components.SixPicto {}
   standalone: false
 })
 export class SixProgressBar {
-  protected el: HTMLElement;
+  protected el: HTMLSixProgressBarElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1204,7 +1203,7 @@ export declare interface SixProgressBar extends Components.SixProgressBar {}
   standalone: false
 })
 export class SixProgressRing {
-  protected el: HTMLElement;
+  protected el: HTMLSixProgressRingElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1228,7 +1227,7 @@ export declare interface SixProgressRing extends Components.SixProgressRing {}
   standalone: false
 })
 export class SixRadio {
-  protected el: HTMLElement;
+  protected el: HTMLSixRadioElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1268,7 +1267,7 @@ export declare interface SixRadio extends Components.SixRadio {
   standalone: false
 })
 export class SixRange {
-  protected el: HTMLElement;
+  protected el: HTMLSixRangeElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1346,7 +1345,7 @@ export declare interface SixRating extends Components.SixRating {
   standalone: false
 })
 export class SixRoot {
-  protected el: HTMLElement;
+  protected el: HTMLSixRootElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1369,7 +1368,7 @@ export declare interface SixRoot extends Components.SixRoot {}
   standalone: false
 })
 export class SixSearchField {
-  protected el: HTMLElement;
+  protected el: HTMLSixSearchFieldElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1401,7 +1400,7 @@ export declare interface SixSearchField extends Components.SixSearchField {
   standalone: false
 })
 export class SixSelect {
-  protected el: HTMLElement;
+  protected el: HTMLSixSelectElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1442,7 +1441,7 @@ export declare interface SixSelect extends Components.SixSelect {
   standalone: false
 })
 export class SixSidebar {
-  protected el: HTMLElement;
+  protected el: HTMLSixSidebarElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1490,7 +1489,7 @@ allow you to set it on a different element in the sidebar, such as an input or b
   standalone: false
 })
 export class SixSidebarItem {
-  protected el: HTMLElement;
+  protected el: HTMLSixSidebarItemElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1513,7 +1512,7 @@ export declare interface SixSidebarItem extends Components.SixSidebarItem {}
   standalone: false
 })
 export class SixSidebarItemGroup {
-  protected el: HTMLElement;
+  protected el: HTMLSixSidebarItemGroupElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1536,7 +1535,7 @@ export declare interface SixSidebarItemGroup extends Components.SixSidebarItemGr
   standalone: false
 })
 export class SixSpinner {
-  protected el: HTMLElement;
+  protected el: HTMLSixSpinnerElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1559,7 +1558,7 @@ export declare interface SixSpinner extends Components.SixSpinner {}
   standalone: false
 })
 export class SixStageIndicator {
-  protected el: HTMLElement;
+  protected el: HTMLSixStageIndicatorElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1583,7 +1582,7 @@ export declare interface SixStageIndicator extends Components.SixStageIndicator 
   standalone: false
 })
 export class SixSwitch {
-  protected el: HTMLElement;
+  protected el: HTMLSixSwitchElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1623,7 +1622,7 @@ export declare interface SixSwitch extends Components.SixSwitch {
   standalone: false
 })
 export class SixTab {
-  protected el: HTMLElement;
+  protected el: HTMLSixTabElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1655,7 +1654,7 @@ export declare interface SixTab extends Components.SixTab {
   standalone: false
 })
 export class SixTabGroup {
-  protected el: HTMLElement;
+  protected el: HTMLSixTabGroupElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1691,7 +1690,7 @@ export declare interface SixTabGroup extends Components.SixTabGroup {
   standalone: false
 })
 export class SixTabPanel {
-  protected el: HTMLElement;
+  protected el: HTMLSixTabPanelElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1714,7 +1713,7 @@ export declare interface SixTabPanel extends Components.SixTabPanel {}
   standalone: false
 })
 export class SixTag {
-  protected el: HTMLElement;
+  protected el: HTMLSixTagElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1746,7 +1745,7 @@ export declare interface SixTag extends Components.SixTag {
   standalone: false
 })
 export class SixTextarea {
-  protected el: HTMLElement;
+  protected el: HTMLSixTextareaElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1790,7 +1789,7 @@ export declare interface SixTextarea extends Components.SixTextarea {
   standalone: false
 })
 export class SixTile {
-  protected el: HTMLElement;
+  protected el: HTMLSixTileElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1826,7 +1825,7 @@ export declare interface SixTile extends Components.SixTile {
   standalone: false
 })
 export class SixTimepicker {
-  protected el: HTMLElement;
+  protected el: HTMLSixTimepickerElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1867,7 +1866,7 @@ export declare interface SixTimepicker extends Components.SixTimepicker {
   standalone: false
 })
 export class SixTooltip {
-  protected el: HTMLElement;
+  protected el: HTMLSixTooltipElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
