@@ -1,4 +1,4 @@
-# six-rating
+# Rating
 
 <!-- Auto Generated Below -->
 
@@ -41,8 +41,8 @@
 
 ### Depends on
 
-- [six-icon](../six-icon)
-- [six-error](../six-error)
+- [six-icon](six-icon.html)
+- [six-error](six-error.html)
 
 ### Graph
 ```mermaid
