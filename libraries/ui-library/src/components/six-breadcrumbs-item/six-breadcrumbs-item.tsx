@@ -21,7 +21,7 @@ export class SixBreadcrumbsItem {
   /** Set to true to disable the breadcrumb item. */
   @Prop() disabled: boolean = false;
 
-  /** Emitted on click. */
+  /** Emitted when the breadcrumb item is clicked. */
   @Event({ eventName: 'six-click' }) sixClickEvent!: EventEmitter<EmptyPayload>;
 
   render() {
