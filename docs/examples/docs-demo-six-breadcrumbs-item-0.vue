@@ -1,11 +1,24 @@
 <template>
 <div>
 
-        <p>Using six-breadcrumbs-item as child elements</p>
+        <p>Character / as separators</p>
         <six-breadcrumbs>
-          <six-breadcrumbs-item name="A"></six-breadcrumbs-item>
-          <six-breadcrumbs-item name="B"></six-breadcrumbs-item>
-          <six-breadcrumbs-item name="C" disabled></six-breadcrumbs-item>
+          <span slot="separator">/</span>
+          <six-breadcrumbs-item>A</six-breadcrumbs-item>
+          <six-breadcrumbs-item>B</six-breadcrumbs-item>
+          <six-breadcrumbs-item>C</six-breadcrumbs-item>
+        </six-breadcrumbs>
+
+        <p>six-icon as separators and with a prefix</p>
+        <six-breadcrumbs>
+          <six-icon slot="separator" size="small">arrow_forward</six-icon>
+          <six-breadcrumbs-item href="http://six-group.com" target="_blank">
+            <six-icon slot="prefix" size="small">house</six-icon>
+            Home
+          </six-breadcrumbs-item>
+          <six-breadcrumbs-item href="http://six-group.com" target="_blank">A</six-breadcrumbs-item>
+          <six-breadcrumbs-item href="http://six-group.com" target="_blank">B</six-breadcrumbs-item>
+          <six-breadcrumbs-item href="http://six-group.com" target="_blank">Current</six-breadcrumbs-item>
         </six-breadcrumbs>
       
 </div>
