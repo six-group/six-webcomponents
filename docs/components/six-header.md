@@ -16,6 +16,10 @@ While the SIX logo must always appear, all other elements are optional. If addit
 7.  App Switcher
 8.  Profile
 
+### Positioning
+
+Items in `six-header` are positioned within a flex container. Use `margin-left: auto` to align items to the right, for example, or `flex: 1 0 0` to make an item fill available space.
+
 ### Simple Example
 
 Use `six-header-item` to add items. To align elements to the right, simply apply the style `margin-left: auto`. For dropdown menus, use `six-header-dropdown-item`. The dropdown item will be marked as active (with a black bottom border) when open.
