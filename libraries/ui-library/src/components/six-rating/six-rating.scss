@@ -1,0 +1,33 @@
+@import '../../../src/global/component';
+
+:host {
+  --six-rating-color: var(--six-color-web-rock-500);
+  --six-rating-color-active: var(--six-color-success-600);
+  --six-rating-color-disabled-opacity: 0.4;
+
+  display: block;
+}
+
+.six-rating {
+  display: inline-flex;
+  flex-direction: row;
+  user-select: none;
+  cursor: pointer;
+
+  &--readonly {
+    cursor: unset;
+  }
+
+  &--disabled {
+    cursor: not-allowed;
+    opacity: var(--six-rating-color-disabled-opacity);
+  }
+
+  &__star {
+    color: var(--six-rating-color);
+
+    &--filled {
+      color: var(--six-rating-color-active);
+    }
+  }
+}

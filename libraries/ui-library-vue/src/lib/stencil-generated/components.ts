@@ -538,6 +538,28 @@ export const SixRange: StencilVueComponent<JSX.SixRange, JSX.SixRange["value"]> 
 'value', 'input');
 
 
+export const SixRating: StencilVueComponent<JSX.SixRating> = /*@__PURE__*/ defineContainer<JSX.SixRating>('six-rating', undefined, [
+  'name',
+  'value',
+  'disabled',
+  'required',
+  'label',
+  'errorText',
+  'errorTextCount',
+  'invalid',
+  'max',
+  'size',
+  'readonly',
+  'six-rating-blur',
+  'six-rating-change',
+  'six-rating-focus'
+], [
+  'six-rating-blur',
+  'six-rating-change',
+  'six-rating-focus'
+]);
+
+
 export const SixRoot: StencilVueComponent<JSX.SixRoot> = /*@__PURE__*/ defineContainer<JSX.SixRoot>('six-root', undefined, [
   'padded',
   'stage',

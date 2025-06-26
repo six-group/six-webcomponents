@@ -1627,6 +1627,62 @@ export namespace Components {
          */
         "value": number;
     }
+    interface SixRating {
+        /**
+          * Set to true to disable the rating.
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * The error message shown, if `invalid` is set to true.
+          * @default ''
+         */
+        "errorText": string | string[];
+        /**
+          * The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1
+         */
+        "errorTextCount"?: number;
+        /**
+          * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
+          * @default false
+         */
+        "invalid": boolean;
+        /**
+          * The label text.
+          * @default ''
+         */
+        "label": string;
+        /**
+          * Maximum number of stars. Default is 5
+          * @default 5
+         */
+        "max": number;
+        /**
+          * The rating's name attribute.
+          * @default ''
+         */
+        "name": string;
+        /**
+          * If its readonly
+          * @default false
+         */
+        "readonly": boolean;
+        /**
+          * Set to true to show an asterisk beneath the label.
+          * @default false
+         */
+        "required": boolean;
+        /**
+          * Size of the stars
+          * @default 'medium'
+         */
+        "size": 'xSmall' | 'small' | 'medium' | 'large' | 'xLarge' | 'xxLarge' | 'xxxLarge';
+        /**
+          * The rating's value attribute.
+          * @default 0
+         */
+        "value": number;
+    }
     /**
      * @since 1.0
      * @status stable
@@ -2537,6 +2593,10 @@ export interface SixRangeCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLSixRangeElement;
 }
+export interface SixRatingCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSixRatingElement;
+}
 export interface SixSearchFieldCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLSixSearchFieldElement;
@@ -3220,6 +3280,25 @@ declare global {
         prototype: HTMLSixRangeElement;
         new (): HTMLSixRangeElement;
     };
+    interface HTMLSixRatingElementEventMap {
+        "six-rating-blur": number;
+        "six-rating-change": number;
+        "six-rating-focus": EmptyPayload;
+    }
+    interface HTMLSixRatingElement extends Components.SixRating, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSixRatingElementEventMap>(type: K, listener: (this: HTMLSixRatingElement, ev: SixRatingCustomEvent<HTMLSixRatingElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSixRatingElementEventMap>(type: K, listener: (this: HTMLSixRatingElement, ev: SixRatingCustomEvent<HTMLSixRatingElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLSixRatingElement: {
+        prototype: HTMLSixRatingElement;
+        new (): HTMLSixRatingElement;
+    };
     /**
      * @since 1.0
      * @status stable
@@ -3575,6 +3654,7 @@ declare global {
         "six-progress-ring": HTMLSixProgressRingElement;
         "six-radio": HTMLSixRadioElement;
         "six-range": HTMLSixRangeElement;
+        "six-rating": HTMLSixRatingElement;
         "six-root": HTMLSixRootElement;
         "six-search-field": HTMLSixSearchFieldElement;
         "six-select": HTMLSixSelectElement;
@@ -5265,6 +5345,74 @@ declare namespace LocalJSX {
          */
         "value"?: number;
     }
+    interface SixRating {
+        /**
+          * Set to true to disable the rating.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * The error message shown, if `invalid` is set to true.
+          * @default ''
+         */
+        "errorText"?: string | string[];
+        /**
+          * The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1
+         */
+        "errorTextCount"?: number;
+        /**
+          * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
+          * @default false
+         */
+        "invalid"?: boolean;
+        /**
+          * The label text.
+          * @default ''
+         */
+        "label"?: string;
+        /**
+          * Maximum number of stars. Default is 5
+          * @default 5
+         */
+        "max"?: number;
+        /**
+          * The rating's name attribute.
+          * @default ''
+         */
+        "name"?: string;
+        /**
+          * Emitted when the control loses focus.
+         */
+        "onSix-rating-blur"?: (event: SixRatingCustomEvent<number>) => void;
+        /**
+          * Emitted when the control's checked state changes.
+         */
+        "onSix-rating-change"?: (event: SixRatingCustomEvent<number>) => void;
+        /**
+          * Emitted when the control gains focus.
+         */
+        "onSix-rating-focus"?: (event: SixRatingCustomEvent<EmptyPayload>) => void;
+        /**
+          * If its readonly
+          * @default false
+         */
+        "readonly"?: boolean;
+        /**
+          * Set to true to show an asterisk beneath the label.
+          * @default false
+         */
+        "required"?: boolean;
+        /**
+          * Size of the stars
+          * @default 'medium'
+         */
+        "size"?: 'xSmall' | 'small' | 'medium' | 'large' | 'xLarge' | 'xxLarge' | 'xxxLarge';
+        /**
+          * The rating's value attribute.
+          * @default 0
+         */
+        "value"?: number;
+    }
     /**
      * @since 1.0
      * @status stable
@@ -6179,6 +6327,7 @@ declare namespace LocalJSX {
         "six-progress-ring": SixProgressRing;
         "six-radio": SixRadio;
         "six-range": SixRange;
+        "six-rating": SixRating;
         "six-root": SixRoot;
         "six-search-field": SixSearchField;
         "six-select": SixSelect;
@@ -6414,6 +6563,7 @@ declare module "@stencil/core" {
              * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
              */
             "six-range": LocalJSX.SixRange & JSXBase.HTMLAttributes<HTMLSixRangeElement>;
+            "six-rating": LocalJSX.SixRating & JSXBase.HTMLAttributes<HTMLSixRatingElement>;
             /**
              * @since 1.0
              * @status stable
