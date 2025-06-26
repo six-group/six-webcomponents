@@ -25,7 +25,7 @@ https://github.com/six-group/six-webcomponents/blob/dev/.github/CONTRIBUTING.md#
 
 <!-- Describe your changes in detail -->
 <!-- Why is this change required? What problem does it solve? -->
-<!-- If it resolves an open issue, please link to the issue here. For example "Resolves #1337" -->
+<!-- If it resolves an open issue, please link to the issue here. For example, "Resolves #1337" -->
 
 ### 📝 Checklist
 
