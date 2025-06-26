@@ -5,6 +5,8 @@ export const DIRECTIVES = [
   d.SixAlert,
   d.SixAvatar,
   d.SixBadge,
+  d.SixBreadcrumbs,
+  d.SixBreadcrumbsItem,
   d.SixButton,
   d.SixCard,
   d.SixCheckbox,

@@ -1,0 +1,29 @@
+@import '../../../src/global/component';
+
+:host {
+  display: block;
+  --six-breadcrumbs-background-color: var(--six-color-web-rock-200);
+  --six-breadcrumbs-padding: var(--six-spacing-xx-small);
+  --six-breadcrumbs-margin: var(--six-spacing-xxx-small);
+  --six-breadcrumbs-color: var(--six-color-web-rock-500);
+}
+
+.six-breadcrumbs {
+  display: block;
+  $padding: var(--six-breadcrumbs-padding);
+  background-color: var(--six-breadcrumbs-background-color);
+
+  > nav {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    width: inherit;
+    color: var(--six-breadcrumbs-color);
+    gap: unset;
+    padding: $padding;
+
+    ::slotted(six-breadcrumbs-item) {
+      --six-breadcrumbs-item-margin: var(--six-breadcrumbs-margin);
+    }
+  }
+}
