@@ -132,7 +132,7 @@ export class SixRating {
         <six-icon
           class={{
             'six-rating__star': true,
-            'six-rating__star--filled': i < this.hoveredValue || i < this.value,
+            'six-rating__star--filled': i < this.hoveredValue,
           }}
           filled
           size={this.size}
