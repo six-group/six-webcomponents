@@ -44,6 +44,9 @@ export class SixRating {
   /** If its readonly */
   @Prop() readonly: boolean = false;
 
+  /** The rating's help text. Alternatively, you can use the help-text slot. */
+  @Prop() helpText = '';
+
   /** Emitted when the control loses focus. */
   @Event({ eventName: 'six-rating-blur' }) sixBlur!: EventEmitter<number>;
 
@@ -156,6 +159,7 @@ export class SixRating {
         errorTextId={this.errorTextId}
         errorText={this.errorText}
         errorTextCount={this.errorTextCount}
+        helpText={this.helpText}
         hasErrorTextSlot={this.hasErrorTextSlot}
         size="medium"
         disabled={this.disabled}

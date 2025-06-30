@@ -1643,6 +1643,11 @@ export namespace Components {
          */
         "errorTextCount"?: number;
         /**
+          * The rating's help text. Alternatively, you can use the help-text slot.
+          * @default ''
+         */
+        "helpText": string;
+        /**
           * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
           * @default false
          */
@@ -5360,6 +5365,11 @@ declare namespace LocalJSX {
           * The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1
          */
         "errorTextCount"?: number;
+        /**
+          * The rating's help text. Alternatively, you can use the help-text slot.
+          * @default ''
+         */
+        "helpText"?: string;
         /**
           * If this property is set to true and an error message is provided by `errorText`, the error message is displayed.
           * @default false

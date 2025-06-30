@@ -550,6 +550,7 @@ export const SixRating: StencilVueComponent<JSX.SixRating> = /*@__PURE__*/ defin
   'max',
   'size',
   'readonly',
+  'helpText',
   'six-rating-blur',
   'six-rating-change',
   'six-rating-focus'

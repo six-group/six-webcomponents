@@ -1,50 +1,134 @@
 <!doctype html>
 <html dir="ltr" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-    <script type="module" src="/build/ui-library.esm.js"></script>
-    <script nomodule src="/build/ui-library.js"></script>
-    <link rel="stylesheet" href="/build/ui-library.css" />
-    <title>six-rating</title>
-  </head>
-  <body>
-    <h1>Rating</h1>
-    <div class="container">
-      <p>Rating allow the user to rate something.</p>
-      <section>
-        <six-rating></six-rating>
-      </section>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+  <script type="module" src="/build/ui-library.esm.js"></script>
+  <script nomodule src="/build/ui-library.js"></script>
+  <link rel="stylesheet" href="/build/ui-library.css" />
+  <title>six-rating</title>
+</head>
+<body>
+<div class="container">
+  <h2>Rating</h2>
 
-      <h2>Examples</h2>
+  <p>Rating allow the user to rate something.</p>
+  <section>
+    <six-rating></six-rating>
+  </section>
 
-      <section>
-        <h3>Small</h3>
-        <p>Small size value=3</p>
-        <six-rating value="3" size="small"></six-rating>
-      </section>
+  <h2>Examples</h2>
 
-      <hr />
+  <h3>Disabled</h3>
+  <p>Use the <code>disabled</code> prop to disable it.</p>
+  <section class="demo" style="width: 300px">
+    <six-rating value="3" disabled></six-rating>
+  </section>
 
-      <section>
-        <h3>Medium</h3>
-        <p>Medium size value=2, readonly</p>
-        <six-rating value="2" readonly></six-rating>
-        <p>With form label</p>
-        <six-rating value="0" label="My label"></six-rating>
-        <p>Disabled</p>
-        <six-rating value="3" disabled></six-rating>
-        <p>Error text</p>
-        <six-rating value="3" error-text="This is a simple string message"></six-rating>
-      </section>
+  <h3>Readonly</h3>
+  <p>Use the <code>readonly</code> prop to make it readonly.</p>
+  <section class="demo" style="width: 300px">
+    <six-rating value="3" readonly></six-rating>
+  </section>
 
-      <hr />
+  <h3>Labels</h3>
+  <p>
+    Use the <code>label</code> attribute to give the rating an accessible label. For labels that contain HTML, use
+    the label <code>slot</code> instead.
+  </p>
+  <section class="demo" style="width: 300px">
+    <six-rating label="Rating" max="5"></six-rating>
+  </section>
 
-      <section>
-        <h3>Large</h3>
-        <p>Large size value=0</p>
-        <six-rating value="0" size="xxLarge"></six-rating>
-      </section>
-    </div>
-  </body>
+
+  <h3>Help Text</h3>
+  <p>
+    Add descriptive help text to a rating with the <code>help-text</code> attribute. For help texts that contain
+    HTML, use the <code>help-text</code> slot instead.
+  </p>
+  <section class="demo" style="width: 300px">
+    <six-rating label="Rating" help-text="Controls the volume of the current song."></six-rating>
+  </section>
+
+  <h3>Max</h3>
+  <p>
+    Use the <code>max</code> attribute to change the number of stars. The default is 5.
+    <br />e.g. max = 10
+  </p>
+  <section class="demo" style="width: 300px">
+    <six-rating max="10" value="6"></six-rating>
+  </section>
+
+  <h2>Sizes</h2>
+  <p>
+    Use the
+    <code>size</code>
+    attribute to change an rating's size.
+  </p>
+
+  <section>
+    <six-rating size="xSmall" value="5"></six-rating>
+    <br />
+    <six-rating size="small" value="5"></six-rating>
+    <br />
+    <six-rating size="medium" value="5"></six-rating>
+    <br />
+    <six-rating size="large" value="5"></six-rating>
+    <br />
+    <six-rating size="xLarge" value="5"></six-rating>
+  </section>
+
+
+  <h2>Error Text</h2>
+
+  <p>Add a descriptive error message using either the <code>error-text</code> prop, or the equally named slot.</p>
+
+  <six-alert type="warning" open>
+    <six-icon slot="icon">warning</six-icon>
+    There are two caveats when using the <code>error-text</code> prop/slot:
+    <ol>
+      <li>
+        Remember to set the <code>invalid</code> prop as well! If you only provide some content to the
+        <code>error-text</code> prop/slot, it won't be shown unless the <code>invalid</code> prop is set to true
+      </li>
+      <li>
+        When using the prop, and you need to show more than one message, remember to also set the
+        <code>error-text-count</code> prop to a value that is the same or bigger than the length of the list of
+        messages you are using. Otherwise only one message will be shown at a time
+      </li>
+    </ol>
+  </six-alert>
+
+  <p>The <code>error-text</code> prop accepts either a simple string message, or a list of messages.</p>
+
+  <section class="demo">
+    <six-rating label="Simple string message" error-text="This is a simple string message" invalid></six-rating>
+  </section>
+
+  <section class="demo">
+    <six-rating id="multiple-error-text" label="List of string message" invalid></six-rating>
+    <script type="module">
+      const sixRating = document.getElementById('multiple-error-text');
+      sixRating.errorText = ['Message 1', 'Message 2'];
+      sixRating.errorTextCount = 3;
+    </script>
+  </section>
+
+  <p>
+    When using the <code>error-text</code> slot, it is recommended to use the <code>six-error</code> component to
+    wrap the error message(s). This will provide the correct styling out of the box
+  </p>
+  <section class="demo">
+    <six-rating invalid>
+      <div slot="error-text">
+        <six-error
+        >An error message
+          <a href="https://github.com/six-group/six-webcomponents" target="_blank">with a link</a></six-error
+        >
+      </div>
+    </six-rating>
+  </section>
+
+</div>
+</body>
 </html>

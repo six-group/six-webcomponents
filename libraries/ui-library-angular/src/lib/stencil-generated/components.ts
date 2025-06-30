@@ -1242,14 +1242,14 @@ export declare interface SixRange extends Components.SixRange {
 
 
 @ProxyCmp({
-  inputs: ['disabled', 'errorText', 'errorTextCount', 'invalid', 'label', 'max', 'name', 'readonly', 'required', 'size', 'value']
+  inputs: ['disabled', 'errorText', 'errorTextCount', 'helpText', 'invalid', 'label', 'max', 'name', 'readonly', 'required', 'size', 'value']
 })
 @Component({
   selector: 'six-rating',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['disabled', 'errorText', 'errorTextCount', 'invalid', 'label', 'max', 'name', 'readonly', 'required', 'size', 'value'],
+  inputs: ['disabled', 'errorText', 'errorTextCount', 'helpText', 'invalid', 'label', 'max', 'name', 'readonly', 'required', 'size', 'value'],
   standalone: false
 })
 export class SixRating {
