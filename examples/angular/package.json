@@ -20,7 +20,7 @@
     "@six-group/ui-library-angular": "*"
   },
   "devDependencies": {
-    "@angular/build": "^20.0.2",
+    "@angular/build": "^20.0.4",
     "@angular/cli": "^20.0.2",
     "@angular/compiler-cli": "^20.0.0",
     "typescript": "~5.8.2"
