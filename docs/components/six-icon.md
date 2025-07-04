@@ -281,6 +281,7 @@ Enter an icon label and press enter to display an icon:
  - [six-input](six-input.html)
  - [six-item-picker](six-item-picker.html)
  - [six-menu-item](six-menu-item.html)
+ - [six-rating](six-rating.html)
  - [six-search-field](six-search-field.html)
  - [six-select](six-select.html)
  - [six-sidebar-item](six-sidebar-item.html)
@@ -303,6 +304,7 @@ graph TD;
   six-input --> six-icon
   six-item-picker --> six-icon
   six-menu-item --> six-icon
+  six-rating --> six-icon
   six-search-field --> six-icon
   six-select --> six-icon
   six-sidebar-item --> six-icon
