@@ -9,8 +9,14 @@ import { getSlot } from '../../utils/slot';
 export class SixBreadcrumbs {
   @Element() el!: HTMLSixBreadcrumbsElement;
 
+  private getDefaultSeparator() {
+    const span = document.createElement('span');
+    span.innerText = '/';
+    return span;
+  }
+
   private getSeparator(): HTMLElement {
-    return getSlot(this.el, 'separator') as HTMLSlotElement;
+    return (getSlot(this.el, 'separator') as HTMLSlotElement) || this.getDefaultSeparator();
   }
 
   private cloneSeparator(): HTMLElement {
@@ -43,7 +49,7 @@ export class SixBreadcrumbs {
 
   render() {
     return (
-      <host class={{ 'six-breadcrumbs': true }}>
+      <host>
         <nav part="base">
           <slot onSlotchange={this.handleSlotChange} />
         </nav>
