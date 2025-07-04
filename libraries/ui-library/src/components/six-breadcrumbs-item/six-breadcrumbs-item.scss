@@ -1,0 +1,18 @@
+@import '../../../src/global/component';
+
+:host {
+  --six-breadcrumbs-item-margin: var(--six-spacing-xx-small);
+
+  &::part(label) {
+    padding: unset;
+  }
+
+  display: inline-flex;
+
+  &::part(separator) {
+    align-items: center;
+    margin: 0 var(--six-breadcrumbs-item-margin);
+    user-select: none;
+    -webkit-user-select: none;
+  }
+}
