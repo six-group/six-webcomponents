@@ -8,10 +8,8 @@
   }
 
   display: inline-flex;
-}
 
-.six-breadcrumbs-item {
-  &__separator {
+  &::part(separator) {
     align-items: center;
     margin: 0 var(--six-breadcrumbs-item-margin);
     user-select: none;

@@ -1,9 +1,8 @@
 <template>
 <div>
 
-        <p>Character / as separators</p>
+        <p>Character / as default separators</p>
         <six-breadcrumbs>
-          <span slot="separator">/</span>
           <six-breadcrumbs-item>A</six-breadcrumbs-item>
           <six-breadcrumbs-item>B</six-breadcrumbs-item>
           <six-breadcrumbs-item>C</six-breadcrumbs-item>

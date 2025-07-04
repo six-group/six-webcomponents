@@ -24,9 +24,15 @@ export class SixBreadcrumbsItem {
   /** Emitted when the breadcrumb item is clicked. */
   @Event({ eventName: 'six-click' }) sixClickEvent!: EventEmitter<EmptyPayload>;
 
+  private handleClick() {
+    if (!this.disabled) {
+      this.sixClickEvent.emit();
+    }
+  }
+
   render() {
     return (
-      <div part="base" class={{ 'six-breadcrumbs-item': true }}>
+      <div part="base">
         <six-button
           part="button"
           disabled={this.disabled}
@@ -34,14 +40,13 @@ export class SixBreadcrumbsItem {
           href={this.href}
           target={this.target}
           size={this.size}
-          class="six-breadcrumbs-item__item six-breadcrumbs-item__item--button"
+          onClick={this.handleClick}
         >
           <slot name="prefix" slot="prefix" />
           <slot />
           <slot name="suffix" slot="suffix" />
         </six-button>
-
-        <span part="separator" class="six-breadcrumbs-item__separator" aria-hidden="true">
+        <span part="separator" aria-hidden="true">
           <slot name="separator" />
         </span>
       </div>
