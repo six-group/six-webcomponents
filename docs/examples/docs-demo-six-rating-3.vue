@@ -1,10 +1,8 @@
 <template>
 <div>
 
-        <h3>Large</h3>
-        <p>Large size value=0</p>
-        <six-rating value="0" size="xxLarge"></six-rating>
-      
+    <six-rating label="Rating" max="5"></six-rating>
+  
 </div>
 </template>
 <style>

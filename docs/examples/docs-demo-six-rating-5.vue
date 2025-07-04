@@ -1,7 +1,7 @@
 <template>
 <div>
 
-    <six-rating value="3" disabled></six-rating>
+    <six-rating max="10" value="6"></six-rating>
   
 </div>
 </template>
@@ -10,7 +10,7 @@
 </style>
 <script>
 export default {
-  name: 'docs-demo-six-rating-1',
+  name: 'docs-demo-six-rating-5',
   mounted() {  }
 }
 </script>
