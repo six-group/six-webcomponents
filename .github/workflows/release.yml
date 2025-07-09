@@ -76,4 +76,5 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: docs/.vitepress/dist
-          target-folder: docs
+          # this folder needs to be kept in sync with the base property in /docs/.vitepress/config.mts
+          target-folder: docs/v5
