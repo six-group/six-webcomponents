@@ -145,14 +145,14 @@ export namespace Components {
     }
     interface SixBreadcrumbsItem {
         /**
-          * Set to true to disable the breadcrumb item.
-          * @default false
-         */
-        "disabled": boolean;
-        /**
           * When set, the underlying button will be rendered as an `<a>` with this `href` instead of a `<button>`.
          */
         "href"?: string;
+        /**
+          * Set to true to readonly the breadcrumb item.
+          * @default false
+         */
+        "readonly": boolean;
         /**
           * The button's size.
           * @default 'medium'
@@ -3827,11 +3827,6 @@ declare namespace LocalJSX {
     }
     interface SixBreadcrumbsItem {
         /**
-          * Set to true to disable the breadcrumb item.
-          * @default false
-         */
-        "disabled"?: boolean;
-        /**
           * When set, the underlying button will be rendered as an `<a>` with this `href` instead of a `<button>`.
          */
         "href"?: string;
@@ -3839,6 +3834,11 @@ declare namespace LocalJSX {
           * Emitted when the breadcrumb item is clicked.
          */
         "onSix-click"?: (event: SixBreadcrumbsItemCustomEvent<EmptyPayload>) => void;
+        /**
+          * Set to true to readonly the breadcrumb item.
+          * @default false
+         */
+        "readonly"?: boolean;
         /**
           * The button's size.
           * @default 'medium'

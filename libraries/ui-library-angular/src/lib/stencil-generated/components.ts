@@ -120,14 +120,14 @@ export declare interface SixBreadcrumbs extends Components.SixBreadcrumbs {}
 
 
 @ProxyCmp({
-  inputs: ['disabled', 'href', 'size', 'target']
+  inputs: ['href', 'readonly', 'size', 'target']
 })
 @Component({
   selector: 'six-breadcrumbs-item',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['disabled', 'href', 'size', 'target'],
+  inputs: ['href', 'readonly', 'size', 'target'],
   standalone: false
 })
 export class SixBreadcrumbsItem {

@@ -2,17 +2,29 @@
 
 :host {
   --six-breadcrumbs-item-margin: var(--six-spacing-xx-small);
+  --six-breadcrumbs-item-readonly-color: var(--six-color-web-rock-500);
+
+  display: inline-flex;
 
   &::part(label) {
     padding: unset;
   }
-
-  display: inline-flex;
 
   &::part(separator) {
     align-items: center;
     margin: 0 var(--six-breadcrumbs-item-margin);
     user-select: none;
     -webkit-user-select: none;
+  }
+
+  six-button::part(label) {
+    padding-left: var(--six-spacing-xx-small);
+  }
+}
+
+:host([read-only]) {
+
+  six-button::part(base) {
+    color: var(--six-breadcrumbs-item-readonly-color);
   }
 }
