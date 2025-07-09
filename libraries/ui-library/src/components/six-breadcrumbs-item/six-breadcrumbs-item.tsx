@@ -18,14 +18,14 @@ export class SixBreadcrumbsItem {
   /** The button's size. */
   @Prop({ reflect: true }) size: 'small' | 'medium' | 'large' = 'medium';
 
-  /** Set to true to disable the breadcrumb item. */
-  @Prop() disabled: boolean = false;
+  /** Set to true to readonly the breadcrumb item. */
+  @Prop({ attribute: 'read-only', reflect: true }) readonly: boolean = false;
 
   /** Emitted when the breadcrumb item is clicked. */
   @Event({ eventName: 'six-click' }) sixClickEvent!: EventEmitter<EmptyPayload>;
 
   private handleClick() {
-    if (!this.disabled) {
+    if (!!this.readonly) {
       this.sixClickEvent.emit();
     }
   }
@@ -35,9 +35,8 @@ export class SixBreadcrumbsItem {
       <div part="base">
         <six-button
           part="button"
-          disabled={this.disabled}
           type="link"
-          href={this.href}
+          href={(this.readonly) ? undefined : this.href}
           target={this.target}
           size={this.size}
           onClick={this.handleClick}

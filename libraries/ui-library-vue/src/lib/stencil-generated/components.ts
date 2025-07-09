@@ -47,7 +47,7 @@ export const SixBreadcrumbsItem: StencilVueComponent<JSX.SixBreadcrumbsItem> = /
   'href',
   'target',
   'size',
-  'disabled',
+  'readonly',
   'six-click'
 ], [
   'six-click'

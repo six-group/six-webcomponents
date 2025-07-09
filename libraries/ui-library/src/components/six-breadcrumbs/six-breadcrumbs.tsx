@@ -34,18 +34,15 @@ export class SixBreadcrumbs {
     ) as HTMLElement[];
     items.forEach((item, index) => {
       if (index === items.length - 1) {
-        item.removeAttribute('aria-current');
-        item.setAttribute('disabled', 'true');
+        item.setAttribute('aria-current', 'page');
+        item.setAttribute('read-only', 'true');
         return;
       }
-      item.setAttribute('aria-current', 'page');
       item.appendChild(this.cloneSeparator());
     });
   }
 
-  private handleSlotChange = () => {
-    this.appendSeparatorForEachItem();
-  };
+  private handleSlotChange = () => this.appendSeparatorForEachItem();
 
   render() {
     return (
