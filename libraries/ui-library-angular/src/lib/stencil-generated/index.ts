@@ -2,6 +2,7 @@
 import * as d from './components';
 
 export const DIRECTIVES = [
+  d.MyComponent,
   d.SixAlert,
   d.SixAvatar,
   d.SixBadge,

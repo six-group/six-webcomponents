@@ -8,6 +8,11 @@ import type { JSX } from '@six-group/ui-library';
 
 
 
+export const MyComponent: StencilVueComponent<JSX.MyComponent> = /*@__PURE__*/ defineContainer<JSX.MyComponent>('my-component', undefined, [
+  'mode'
+]);
+
+
 export const SixAlert: StencilVueComponent<JSX.SixAlert> = /*@__PURE__*/ defineContainer<JSX.SixAlert>('six-alert', undefined, [
   'open',
   'closable',

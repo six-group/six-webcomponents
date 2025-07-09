@@ -52,6 +52,13 @@ export { SixTabHidePayload, SixTabShowPayload } from "./components/six-tab-group
 export { TimeFormat } from "./utils/time.util";
 export { SixTimepickerChange } from "./components/six-timepicker/six-timepicker";
 export namespace Components {
+    interface MyComponent {
+        /**
+          * The first name
+          * @default "dark"
+         */
+        "mode": "dark" | "light";
+    }
     /**
      * @since 1.0
      * @status stable
@@ -2608,6 +2615,12 @@ export interface SixTooltipCustomEvent<T> extends CustomEvent<T> {
     target: HTMLSixTooltipElement;
 }
 declare global {
+    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
+    }
+    var HTMLMyComponentElement: {
+        prototype: HTMLMyComponentElement;
+        new (): HTMLMyComponentElement;
+    };
     interface HTMLSixAlertElementEventMap {
         "six-alert-show": EmptyPayload;
         "six-alert-after-show": EmptyPayload;
@@ -3584,6 +3597,7 @@ declare global {
         new (): HTMLSixTooltipElement;
     };
     interface HTMLElementTagNameMap {
+        "my-component": HTMLMyComponentElement;
         "six-alert": HTMLSixAlertElement;
         "six-avatar": HTMLSixAvatarElement;
         "six-badge": HTMLSixBadgeElement;
@@ -3646,6 +3660,13 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface MyComponent {
+        /**
+          * The first name
+          * @default "dark"
+         */
+        "mode"?: "dark" | "light";
+    }
     /**
      * @since 1.0
      * @status stable
@@ -6216,6 +6237,7 @@ declare namespace LocalJSX {
         "trigger"?: string;
     }
     interface IntrinsicElements {
+        "my-component": MyComponent;
         "six-alert": SixAlert;
         "six-avatar": SixAvatar;
         "six-badge": SixBadge;
@@ -6281,6 +6303,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             /**
              * @since 1.0
              * @status stable

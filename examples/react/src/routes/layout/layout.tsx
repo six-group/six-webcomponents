@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router';
 import { Header } from '@components/header/header';
 import { SideNavigation } from '@components/sideNavigation/sideNavigation';
-import { SixRoot } from '@six-group/ui-library-react';
+import { MyComponent, SixRoot } from '@six-group/ui-library-react';
 import { useModal } from '@hooks/useModal';
 import { TasksProvider } from '@components/tasksProvider/tasksProvider';
 import { RightSidebar } from '@components/rightSidebar/rightSidebar';
@@ -19,6 +19,7 @@ export function Layout() {
         <SideNavigation open={leftSidebar.isOpen} />
         <RightSidebar isOpen={rightSidebar.isOpen} />
         <main slot="main" className={styles['layout-padding']}>
+          <MyComponent mode={"dark"}></MyComponent>
           <Outlet />
         </main>
       </SixRoot>

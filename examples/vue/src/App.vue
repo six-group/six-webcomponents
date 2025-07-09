@@ -121,6 +121,7 @@ const searchActive = ref(false);
       </six-sidebar-item-group>
     </six-sidebar>
     <div slot="main">
+      <my-component></my-component>
       <router-view></router-view>
     </div>
   </six-root>

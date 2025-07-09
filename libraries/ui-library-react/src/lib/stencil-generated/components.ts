@@ -8,6 +8,7 @@
 /* eslint-disable */
 
 import { type EmptyPayload, type SixAlertCustomEvent, type SixBreadcrumbsItemCustomEvent, type SixButtonCustomEvent, type SixCheckboxCustomEvent, type SixDatepickerCustomEvent, type SixDatepickerSelectPayload, type SixDetailsCustomEvent, type SixDialogCustomEvent, type SixDialogRequestClose, type SixDrawerCustomEvent, type SixDrawerRequestClose, type SixDropdownAsyncFilterPayload, type SixDropdownAutoFilterPayload, type SixDropdownCustomEvent, type SixDropdownScrollPayload, type SixFileListDownloadPayload, type SixFileListItemCustomEvent, type SixFileListRemovePayload, type SixFileUploadCustomEvent, type SixFileUploadFailurePayload, type SixFileUploadSuccessPayload, type SixInputCustomEvent, type SixItemPickerChangePayload, type SixItemPickerCustomEvent, type SixLanguageSwitcherChangePayload, type SixLanguageSwitcherCustomEvent, type SixMenuCustomEvent, type SixMenuItemSelectedPayload, type SixRadioCustomEvent, type SixRangeCustomEvent, type SixSearchFieldChangePayload, type SixSearchFieldCustomEvent, type SixSelectChangePayload, type SixSelectCustomEvent, type SixSidebarCustomEvent, type SixSwitchCustomEvent, type SixTabCustomEvent, type SixTabGroupCustomEvent, type SixTabHidePayload, type SixTabShowPayload, type SixTagCustomEvent, type SixTextareaCustomEvent, type SixTileCustomEvent, type SixTimepickerChange, type SixTimepickerCustomEvent, type SixTooltipCustomEvent } from "@six-group/ui-library";
+import { MyComponent as MyComponentElement, defineCustomElement as defineMyComponent } from "@six-group/ui-library/dist/components/my-component.js";
 import { SixAlert as SixAlertElement, defineCustomElement as defineSixAlert } from "@six-group/ui-library/dist/components/six-alert.js";
 import { SixAvatar as SixAvatarElement, defineCustomElement as defineSixAvatar } from "@six-group/ui-library/dist/components/six-avatar.js";
 import { SixBadge as SixBadgeElement, defineCustomElement as defineSixBadge } from "@six-group/ui-library/dist/components/six-badge.js";
@@ -70,6 +71,17 @@ import { SixTooltip as SixTooltipElement, defineCustomElement as defineSixToolti
 import type { EventName, StencilReactComponent } from '@stencil/react-output-target/runtime';
 import { createComponent } from '@stencil/react-output-target/runtime';
 import React from 'react';
+
+export type MyComponentEvents = NonNullable<unknown>;
+
+export const MyComponent: StencilReactComponent<MyComponentElement, MyComponentEvents> = /*@__PURE__*/ createComponent<MyComponentElement, MyComponentEvents>({
+    tagName: 'my-component',
+    elementClass: MyComponentElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as MyComponentEvents,
+    defineCustomElement: defineMyComponent
+});
 
 export type SixAlertEvents = {
     onSixAlertShow: EventName<SixAlertCustomEvent<EmptyPayload>>,

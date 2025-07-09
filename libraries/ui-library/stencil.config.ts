@@ -7,6 +7,7 @@ import { reactOutputTarget } from '@stencil/react-output-target';
 export const config: Config = {
   namespace: 'ui-library',
   globalStyle: 'src/global/base.css',
+  globalScript: 'src/global.ts',
   plugins: [
     sass({
       injectGlobalPaths: ['src/global/animation.scss'],

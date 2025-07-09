@@ -8,6 +8,29 @@ import { Components } from '@six-group/ui-library';
 
 
 @ProxyCmp({
+  inputs: ['mode']
+})
+@Component({
+  selector: 'my-component',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['mode'],
+  standalone: false
+})
+export class MyComponent {
+  protected el: HTMLMyComponentElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface MyComponent extends Components.MyComponent {}
+
+
+@ProxyCmp({
   inputs: ['closable', 'duration', 'open', 'type'],
   methods: ['show', 'hide', 'toast']
 })
