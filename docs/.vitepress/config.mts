@@ -19,7 +19,8 @@ export default withMermaid({
   head: [['link', { rel: 'icon', href: 'favicon.ico' }]],
   title: 'Web Components',
   description: 'Component Library following the SIX Style Guide',
-  base: '/six-webcomponents/',
+  // keep this in sync with the target folder in the "Deploy Documentation" section of /.github/workflows/release.yml
+  base: '/six-webcomponents/v4/',
   lastUpdated: true,
 
   // https://vitepress.dev/reference/default-theme-config

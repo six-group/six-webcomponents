@@ -12,10 +12,10 @@ hero:
       link: /guide/readme
     - theme: alt
       text: Angular Example
-      link: https://six-group.github.io/six-webcomponents/demo/angular
+      link: https://six-group.github.io/six-webcomponents/v4/demo/angular
     - theme: alt
       text: Vue Example
-      link: https://six-group.github.io/six-webcomponents/demo/vue
+      link: https://six-group.github.io/six-webcomponents/v4/demo/vue
 features:
   - title: Agnostic
     details:

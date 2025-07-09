@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --base-href /six-webcomponents/demo/angular/",
+    "build": "ng build --base-href /six-webcomponents/v4/demo/angular/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
