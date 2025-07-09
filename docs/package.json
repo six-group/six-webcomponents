@@ -6,7 +6,7 @@
     "@six-group/ui-library": "*"
   },
   "devDependencies": {
-    "cpy-cli": "^5.0.0",
+    "shx": "^0.4.0",
     "mermaid": "^11.2.1",
     "node-html-parser": "^6.1.5",
     "rimraf": "^5.0.1",
@@ -20,8 +20,8 @@
     "build": "run-s clean generate:components build:doc copy:angular copy:vue",
     "preview": "vitepress preview",
     "build:doc": "vitepress build",
-    "copy:angular": "cpy '../examples/angular/dist/demo-app-angular/**/*' ./.vitepress/dist/demo/angular/",
-    "copy:vue": "cpy '../examples/vue/dist/**/*' ./.vitepress/dist/demo/vue/",
+    "copy:angular": "shx mkdir -p ./.vitepress/dist/demo/angular && shx cp -r ../examples/angular/dist/demo-app-angular/* ./.vitepress/dist/demo/angular/",
+    "copy:vue": "shx mkdir -p ./.vitepress/dist/demo/vue && shx cp -r ../examples/vue/dist/* ./.vitepress/dist/demo/vue/",
     "generate:components": "node scripts/components.mjs",
     "clean": "rimraf examples components .vitepress/dist"
   },

@@ -12,6 +12,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
+## 4.3.3 - 2025-07-09
+
+Deploy release 4 documentation at
+[https://six-group.github.io/six-webcomponents/v4](https://six-group.github.io/six-webcomponents/v4)
+to enable multi-version documentation support in the future.
+
 ## 4.3.2 - 2025-02-13
 
 No changes in functionality, but changed release creation workflow, that makes sure, that deployed
