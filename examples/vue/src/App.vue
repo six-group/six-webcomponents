@@ -36,7 +36,7 @@ const searchActive = ref(false);
 
       <!-- logo -->
       <six-header-item>
-        <six-icon-button href="https://six-group.github.io/six-webcomponents/demo/vue/">
+        <six-icon-button href="https://six-group.github.io/six-webcomponents/v5/demo/vue/">
           <six-logo></six-logo>
         </six-icon-button>
       </six-header-item>

@@ -49,7 +49,7 @@ export function Header({ leftSidebar, toggleRightSidebar }: HeaderProps) {
       </SixHeaderItem>
 
       <SixHeaderItem>
-        <SixIconButton href={'https://six-group.github.io/six-webcomponents/demo/react/'}>
+        <SixIconButton href={'https://six-group.github.io/six-webcomponents/demo/v5/react/'}>
           <SixLogo />
         </SixIconButton>
       </SixHeaderItem>
