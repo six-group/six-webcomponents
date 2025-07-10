@@ -1,4 +1,13 @@
-# SIX UI Library
+# SIX UI Library Website
 
-SIX UI Library is an open source project providing Web Components for SIX web applications. The library can however also
-be used for other projects (simply override the css variables).
+Documentation of the [SIX Web Components](https://github.com/six-group/six-webcomponents).
+
+## Test locally
+
+```bash
+npx http-server docs
+```
+
+
+
+
