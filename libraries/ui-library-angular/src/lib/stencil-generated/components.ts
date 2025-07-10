@@ -98,6 +98,59 @@ export declare interface SixBadge extends Components.SixBadge {}
 
 
 @ProxyCmp({
+})
+@Component({
+  selector: 'six-breadcrumbs',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [],
+  standalone: false
+})
+export class SixBreadcrumbs {
+  protected el: HTMLSixBreadcrumbsElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface SixBreadcrumbs extends Components.SixBreadcrumbs {}
+
+
+@ProxyCmp({
+  inputs: ['href', 'readonly', 'size', 'target']
+})
+@Component({
+  selector: 'six-breadcrumbs-item',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['href', 'readonly', 'size', 'target'],
+  standalone: false
+})
+export class SixBreadcrumbsItem {
+  protected el: HTMLSixBreadcrumbsItemElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['six-click']);
+  }
+}
+
+
+import type { EmptyPayload as ISixBreadcrumbsItemEmptyPayload } from '@six-group/ui-library';
+
+export declare interface SixBreadcrumbsItem extends Components.SixBreadcrumbsItem {
+  /**
+   * Emitted when the breadcrumb item is clicked.
+   */
+  'six-click': EventEmitter<CustomEvent<ISixBreadcrumbsItemEmptyPayload>>;
+}
+
+
+@ProxyCmp({
   inputs: ['caret', 'circle', 'disabled', 'download', 'href', 'loading', 'name', 'pill', 'reset', 'size', 'submit', 'target', 'type', 'value'],
   methods: ['setFocus', 'removeFocus']
 })
