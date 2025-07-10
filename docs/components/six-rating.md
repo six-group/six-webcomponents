@@ -126,7 +126,7 @@ When using the `error-text` slot, it is recommended to use the `six-error` compo
 ```html
 <six-rating invalid>
   <div slot="error-text">
-    <six-error         >An error message
+    <six-error               >An error message
       <a href="https://github.com/six-group/six-webcomponents" target="_blank">with a link</a></six-error>
   </div>
 </six-rating>

@@ -1,8 +1,8 @@
 <template>
 <div>
 
-    <six-rating label="Rating" help-text="Controls the volume of the current song."></six-rating>
-  
+        <six-rating label="Rating" help-text="Controls the volume of the current song."></six-rating>
+      
 </div>
 </template>
 <style>

@@ -1,8 +1,8 @@
 <template>
 <div>
 
-    <six-rating></six-rating>
-  
+        <six-rating></six-rating>
+      
 </div>
 </template>
 <style>

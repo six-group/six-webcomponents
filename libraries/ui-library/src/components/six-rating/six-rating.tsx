@@ -59,7 +59,8 @@ export class SixRating {
   // --
 
   @State() hasFocus = false;
-  @State() hasErrorTextSlot = false;
+  @State() hasLabelSlot = false;
+  @State() hasErrorSlot = false;
   @State() hoveredValue = this.value;
 
   private static id: number = 0;
@@ -82,7 +83,8 @@ export class SixRating {
   }
 
   private handleSlotChange = () => {
-    this.hasErrorTextSlot = hasSlot(this.el, 'error-text');
+    this.hasLabelSlot = hasSlot(this.el, 'label');
+    this.hasErrorSlot = hasSlot(this.el, 'error-text');
   };
 
   private handleBlur = () => {
@@ -155,12 +157,12 @@ export class SixRating {
         inputId={this.ratingId}
         label={this.label}
         labelId={this.labelId}
-        hasLabelSlot={false}
+        hasLabelSlot={this.hasLabelSlot}
         errorTextId={this.errorTextId}
         errorText={this.errorText}
         errorTextCount={this.errorTextCount}
         helpText={this.helpText}
-        hasErrorTextSlot={this.hasErrorTextSlot}
+        hasErrorTextSlot={this.hasErrorSlot}
         size="medium"
         disabled={this.disabled}
         required={this.required}
