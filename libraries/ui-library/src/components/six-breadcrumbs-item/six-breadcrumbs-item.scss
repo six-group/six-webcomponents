@@ -23,7 +23,6 @@
 }
 
 :host([read-only]) {
-
   six-button::part(base) {
     color: var(--six-breadcrumbs-item-readonly-color);
   }

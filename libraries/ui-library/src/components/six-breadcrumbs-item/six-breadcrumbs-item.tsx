@@ -36,7 +36,7 @@ export class SixBreadcrumbsItem {
         <six-button
           part="button"
           type="link"
-          href={(this.readonly) ? undefined : this.href}
+          href={this.readonly ? undefined : this.href}
           target={this.target}
           size={this.size}
           onClick={this.handleClick}
