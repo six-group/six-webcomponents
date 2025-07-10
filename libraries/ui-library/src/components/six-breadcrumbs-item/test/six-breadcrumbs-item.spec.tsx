@@ -16,10 +16,10 @@ describe('six-breadcrumbs-item', () => {
   it('reflects disabled attribute', async () => {
     const page = await newSpecPage({
       components: [SixBreadcrumbsItem],
-      html: `<six-breadcrumbs-item disabled>Disabled</six-breadcrumbs-item>`,
+      html: `<six-breadcrumbs-item read-only>Readonly</six-breadcrumbs-item>`,
     });
 
-    expect(page.root!.hasAttribute('disabled')).toBe(true);
+    expect(page.root!.hasAttribute('read-only')).toBe(true);
   });
 
   it('renders and the inner six-button responds to click (no six-click emitted)', async () => {
