@@ -32,6 +32,7 @@ Simple error container for forms. Used in the `error-text` slot for multiple inp
  - [six-group-label](six-group-label.html)
  - [six-input](six-input.html)
  - [six-range](six-range.html)
+ - [six-rating](six-rating.html)
  - [six-select](six-select.html)
  - [six-switch](six-switch.html)
  - [six-textarea](six-textarea.html)
@@ -44,6 +45,7 @@ graph TD;
   six-group-label --> six-error
   six-input --> six-error
   six-range --> six-error
+  six-rating --> six-error
   six-select --> six-error
   six-switch --> six-error
   six-textarea --> six-error

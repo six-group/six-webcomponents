@@ -26,6 +26,6 @@ describe('six-breadcrumbs', () => {
     expect(items[0].querySelector('[slot="separator"]')).not.toBeNull();
     expect(items[1].querySelector('[slot="separator"]')).not.toBeNull();
     expect(items[2].querySelector('[slot="separator"]')).toBeNull();
-    expect(items[2].hasAttribute('disabled')).toBe(true);
+    expect(items[2].hasAttribute('read-only')).toBe(true);
   });
 });
