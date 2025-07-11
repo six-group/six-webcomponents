@@ -12,6 +12,7 @@ import {
   SixSwitch,
   SixTextarea,
   SixGroupLabel,
+  SixRating,
 } from '@six-group/ui-library-react';
 import { useState } from 'react';
 
@@ -24,6 +25,7 @@ export function Form() {
   const [checkboxValue, setCheckboxValue] = useState(true);
   const [switchValue, setSwitchValue] = useState(true);
   const [rangeValue, setRangeValue] = useState(0);
+  const [ratingValue, setRatingValue] = useState(0);
   const [radioValue, setRadioValue] = useState('Option 3');
   const [selectValue, setSelectValue] = useState('Option 2');
   const [dateValue, setDateValue] = useState('2025-01-01');
@@ -84,6 +86,16 @@ export function Form() {
           onSixRangeChange={(e) => setRangeValue(Number(e.target.value))}
         />
         <pre className={styles.pre}>Value: {rangeValue}</pre>
+
+        <SixRating
+          label="Rating"
+          disabled={isDisabled}
+          invalid={isInvalid}
+          errorText="Rating Error"
+          value={ratingValue}
+          onSixRatingChange={(e) => setRatingValue(Number(e.detail))}
+        />
+        <pre className={styles.pre}>Value: {ratingValue}</pre>
 
         <SixSwitch
           label="Switch"

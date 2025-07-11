@@ -42,6 +42,7 @@ export const DIRECTIVES = [
   d.SixProgressRing,
   d.SixRadio,
   d.SixRange,
+  d.SixRating,
   d.SixRoot,
   d.SixSearchField,
   d.SixSelect,
