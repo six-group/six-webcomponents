@@ -20,6 +20,7 @@ export const config: Config = {
     reactOutputTarget({
       outDir: '../ui-library-react/src/lib/stencil-generated',
       hydrateModule: '@six-group/ui-library/hydrate',
+      serializeShadowRoot: { scoped: [], default: 'declarative-shadow-dom' },
     }),
     angularOutputTarget({
       componentCorePackage: '@six-group/ui-library',
@@ -29,7 +30,6 @@ export const config: Config = {
     }),
     vueOutputTarget({
       componentCorePackage: '@six-group/ui-library',
-      includePolyfills: false,
       proxiesFile: '../ui-library-vue/src/lib/stencil-generated/components.ts',
       componentModels: [
         {
