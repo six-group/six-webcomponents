@@ -20,6 +20,7 @@ export const config: Config = {
     reactOutputTarget({
       outDir: '../ui-library-react/src/lib/stencil-generated',
       hydrateModule: '@six-group/ui-library/hydrate',
+      clientModule: '@six-group/ui-library-react',
       serializeShadowRoot: { scoped: [], default: 'declarative-shadow-dom' },
     }),
     angularOutputTarget({
@@ -48,7 +49,6 @@ export const config: Config = {
           targetAttr: 'value',
         },
       ],
-      hydrateModule: '@six-group/ui-library/hydrate',
     }),
     {
       type: 'dist',

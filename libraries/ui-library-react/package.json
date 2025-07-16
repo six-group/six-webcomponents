@@ -3,9 +3,18 @@
   "description": "React wrapper components for @six-group/ui-library",
   "version": "5.0.0-rc.1",
   "private": false,
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "types": "dist/types/index.d.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts",
+      "node": "./dist/components.server.js"
+    },
+    "./server": {
+      "import": "./dist/components.server.js",
+      "types": "./dist/types/components.server.d.ts"
+    }
+  },
   "files": [
     "dist"
   ],
@@ -24,11 +33,11 @@
   "devDependencies": {
     "@types/react": "^19",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0",
     "typescript": "^5"
   },
   "dependencies": {
-    "@stencil/react-output-target": "^1.2.0"
+    "@stencil/react-output-target": "^1.2.0",
+    "react-dom": "^19.1.0"
   },
   "peerDependencies": {
     "@six-group/ui-library": "*"
