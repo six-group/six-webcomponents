@@ -141,6 +141,28 @@ export namespace Components {
          */
         "type": 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'info' | 'action';
     }
+    interface SixBreadcrumbs {
+    }
+    interface SixBreadcrumbsItem {
+        /**
+          * When set, the underlying button will be rendered as an `<a>` with this `href` instead of a `<button>`.
+         */
+        "href"?: string;
+        /**
+          * Set to true to readonly the breadcrumb item.
+          * @default false
+         */
+        "readonly": boolean;
+        /**
+          * The button's size.
+          * @default 'medium'
+         */
+        "size": 'small' | 'medium' | 'large';
+        /**
+          * Tells the browser where to open the link. Only used when `href` is set.
+         */
+        "target"?: '_blank' | '_parent' | '_self' | '_top';
+    }
     /**
      * @since 1.0
      * @status stable
@@ -2473,6 +2495,10 @@ export interface SixAlertCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLSixAlertElement;
 }
+export interface SixBreadcrumbsItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSixBreadcrumbsItemElement;
+}
 export interface SixButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLSixButtonElement;
@@ -2628,6 +2654,29 @@ declare global {
     var HTMLSixBadgeElement: {
         prototype: HTMLSixBadgeElement;
         new (): HTMLSixBadgeElement;
+    };
+    interface HTMLSixBreadcrumbsElement extends Components.SixBreadcrumbs, HTMLStencilElement {
+    }
+    var HTMLSixBreadcrumbsElement: {
+        prototype: HTMLSixBreadcrumbsElement;
+        new (): HTMLSixBreadcrumbsElement;
+    };
+    interface HTMLSixBreadcrumbsItemElementEventMap {
+        "six-click": EmptyPayload;
+    }
+    interface HTMLSixBreadcrumbsItemElement extends Components.SixBreadcrumbsItem, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSixBreadcrumbsItemElementEventMap>(type: K, listener: (this: HTMLSixBreadcrumbsItemElement, ev: SixBreadcrumbsItemCustomEvent<HTMLSixBreadcrumbsItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSixBreadcrumbsItemElementEventMap>(type: K, listener: (this: HTMLSixBreadcrumbsItemElement, ev: SixBreadcrumbsItemCustomEvent<HTMLSixBreadcrumbsItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLSixBreadcrumbsItemElement: {
+        prototype: HTMLSixBreadcrumbsItemElement;
+        new (): HTMLSixBreadcrumbsItemElement;
     };
     interface HTMLSixButtonElementEventMap {
         "six-button-blur": EmptyPayload;
@@ -3538,6 +3587,8 @@ declare global {
         "six-alert": HTMLSixAlertElement;
         "six-avatar": HTMLSixAvatarElement;
         "six-badge": HTMLSixBadgeElement;
+        "six-breadcrumbs": HTMLSixBreadcrumbsElement;
+        "six-breadcrumbs-item": HTMLSixBreadcrumbsItemElement;
         "six-button": HTMLSixButtonElement;
         "six-card": HTMLSixCardElement;
         "six-checkbox": HTMLSixCheckboxElement;
@@ -3686,6 +3737,32 @@ declare namespace LocalJSX {
           * @default 'primary'
          */
         "type"?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'info' | 'action';
+    }
+    interface SixBreadcrumbs {
+    }
+    interface SixBreadcrumbsItem {
+        /**
+          * When set, the underlying button will be rendered as an `<a>` with this `href` instead of a `<button>`.
+         */
+        "href"?: string;
+        /**
+          * Emitted when the breadcrumb item is clicked.
+         */
+        "onSix-click"?: (event: SixBreadcrumbsItemCustomEvent<EmptyPayload>) => void;
+        /**
+          * Set to true to readonly the breadcrumb item.
+          * @default false
+         */
+        "readonly"?: boolean;
+        /**
+          * The button's size.
+          * @default 'medium'
+         */
+        "size"?: 'small' | 'medium' | 'large';
+        /**
+          * Tells the browser where to open the link. Only used when `href` is set.
+         */
+        "target"?: '_blank' | '_parent' | '_self' | '_top';
     }
     /**
      * @since 1.0
@@ -6142,6 +6219,8 @@ declare namespace LocalJSX {
         "six-alert": SixAlert;
         "six-avatar": SixAvatar;
         "six-badge": SixBadge;
+        "six-breadcrumbs": SixBreadcrumbs;
+        "six-breadcrumbs-item": SixBreadcrumbsItem;
         "six-button": SixButton;
         "six-card": SixCard;
         "six-checkbox": SixCheckbox;
@@ -6220,6 +6299,8 @@ declare module "@stencil/core" {
              * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
              */
             "six-badge": LocalJSX.SixBadge & JSXBase.HTMLAttributes<HTMLSixBadgeElement>;
+            "six-breadcrumbs": LocalJSX.SixBreadcrumbs & JSXBase.HTMLAttributes<HTMLSixBreadcrumbsElement>;
+            "six-breadcrumbs-item": LocalJSX.SixBreadcrumbsItem & JSXBase.HTMLAttributes<HTMLSixBreadcrumbsItemElement>;
             /**
              * @since 1.0
              * @status stable

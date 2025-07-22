@@ -7,10 +7,12 @@
 
 /* eslint-disable */
 
-import { type EmptyPayload, type SixAlertCustomEvent, type SixButtonCustomEvent, type SixCheckboxCustomEvent, type SixDatepickerCustomEvent, type SixDatepickerSelectPayload, type SixDetailsCustomEvent, type SixDialogCustomEvent, type SixDialogRequestClose, type SixDrawerCustomEvent, type SixDrawerRequestClose, type SixDropdownAsyncFilterPayload, type SixDropdownAutoFilterPayload, type SixDropdownCustomEvent, type SixDropdownScrollPayload, type SixFileListDownloadPayload, type SixFileListItemCustomEvent, type SixFileListRemovePayload, type SixFileUploadCustomEvent, type SixFileUploadFailurePayload, type SixFileUploadSuccessPayload, type SixInputCustomEvent, type SixItemPickerChangePayload, type SixItemPickerCustomEvent, type SixLanguageSwitcherChangePayload, type SixLanguageSwitcherCustomEvent, type SixMenuCustomEvent, type SixMenuItemSelectedPayload, type SixRadioCustomEvent, type SixRangeCustomEvent, type SixSearchFieldChangePayload, type SixSearchFieldCustomEvent, type SixSelectChangePayload, type SixSelectCustomEvent, type SixSidebarCustomEvent, type SixSwitchCustomEvent, type SixTabCustomEvent, type SixTabGroupCustomEvent, type SixTabHidePayload, type SixTabShowPayload, type SixTagCustomEvent, type SixTextareaCustomEvent, type SixTileCustomEvent, type SixTimepickerChange, type SixTimepickerCustomEvent, type SixTooltipCustomEvent } from "@six-group/ui-library";
+import { type EmptyPayload, type SixAlertCustomEvent, type SixBreadcrumbsItemCustomEvent, type SixButtonCustomEvent, type SixCheckboxCustomEvent, type SixDatepickerCustomEvent, type SixDatepickerSelectPayload, type SixDetailsCustomEvent, type SixDialogCustomEvent, type SixDialogRequestClose, type SixDrawerCustomEvent, type SixDrawerRequestClose, type SixDropdownAsyncFilterPayload, type SixDropdownAutoFilterPayload, type SixDropdownCustomEvent, type SixDropdownScrollPayload, type SixFileListDownloadPayload, type SixFileListItemCustomEvent, type SixFileListRemovePayload, type SixFileUploadCustomEvent, type SixFileUploadFailurePayload, type SixFileUploadSuccessPayload, type SixInputCustomEvent, type SixItemPickerChangePayload, type SixItemPickerCustomEvent, type SixLanguageSwitcherChangePayload, type SixLanguageSwitcherCustomEvent, type SixMenuCustomEvent, type SixMenuItemSelectedPayload, type SixRadioCustomEvent, type SixRangeCustomEvent, type SixSearchFieldChangePayload, type SixSearchFieldCustomEvent, type SixSelectChangePayload, type SixSelectCustomEvent, type SixSidebarCustomEvent, type SixSwitchCustomEvent, type SixTabCustomEvent, type SixTabGroupCustomEvent, type SixTabHidePayload, type SixTabShowPayload, type SixTagCustomEvent, type SixTextareaCustomEvent, type SixTileCustomEvent, type SixTimepickerChange, type SixTimepickerCustomEvent, type SixTooltipCustomEvent } from "@six-group/ui-library";
 import { SixAlert as SixAlertElement, defineCustomElement as defineSixAlert } from "@six-group/ui-library/dist/components/six-alert.js";
 import { SixAvatar as SixAvatarElement, defineCustomElement as defineSixAvatar } from "@six-group/ui-library/dist/components/six-avatar.js";
 import { SixBadge as SixBadgeElement, defineCustomElement as defineSixBadge } from "@six-group/ui-library/dist/components/six-badge.js";
+import { SixBreadcrumbsItem as SixBreadcrumbsItemElement, defineCustomElement as defineSixBreadcrumbsItem } from "@six-group/ui-library/dist/components/six-breadcrumbs-item.js";
+import { SixBreadcrumbs as SixBreadcrumbsElement, defineCustomElement as defineSixBreadcrumbs } from "@six-group/ui-library/dist/components/six-breadcrumbs.js";
 import { SixButton as SixButtonElement, defineCustomElement as defineSixButton } from "@six-group/ui-library/dist/components/six-button.js";
 import { SixCard as SixCardElement, defineCustomElement as defineSixCard } from "@six-group/ui-library/dist/components/six-card.js";
 import { SixCheckbox as SixCheckboxElement, defineCustomElement as defineSixCheckbox } from "@six-group/ui-library/dist/components/six-checkbox.js";
@@ -110,6 +112,28 @@ export const SixBadge: StencilReactComponent<SixBadgeElement, SixBadgeEvents> = 
     react: React,
     events: {} as SixBadgeEvents,
     defineCustomElement: defineSixBadge
+});
+
+export type SixBreadcrumbsEvents = NonNullable<unknown>;
+
+export const SixBreadcrumbs: StencilReactComponent<SixBreadcrumbsElement, SixBreadcrumbsEvents> = /*@__PURE__*/ createComponent<SixBreadcrumbsElement, SixBreadcrumbsEvents>({
+    tagName: 'six-breadcrumbs',
+    elementClass: SixBreadcrumbsElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as SixBreadcrumbsEvents,
+    defineCustomElement: defineSixBreadcrumbs
+});
+
+export type SixBreadcrumbsItemEvents = { onSixClick: EventName<SixBreadcrumbsItemCustomEvent<EmptyPayload>> };
+
+export const SixBreadcrumbsItem: StencilReactComponent<SixBreadcrumbsItemElement, SixBreadcrumbsItemEvents> = /*@__PURE__*/ createComponent<SixBreadcrumbsItemElement, SixBreadcrumbsItemEvents>({
+    tagName: 'six-breadcrumbs-item',
+    elementClass: SixBreadcrumbsItemElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: { onSixClick: 'six-click' } as SixBreadcrumbsItemEvents,
+    defineCustomElement: defineSixBreadcrumbsItem
 });
 
 export type SixButtonEvents = {
