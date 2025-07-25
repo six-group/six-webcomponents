@@ -21,6 +21,7 @@
  - [six-group-label](../six-group-label)
  - [six-input](../six-input)
  - [six-range](../six-range)
+ - [six-rating](../six-rating)
  - [six-select](../six-select)
  - [six-switch](../six-switch)
  - [six-textarea](../six-textarea)
@@ -33,6 +34,7 @@ graph TD;
   six-group-label --> six-error
   six-input --> six-error
   six-range --> six-error
+  six-rating --> six-error
   six-select --> six-error
   six-switch --> six-error
   six-textarea --> six-error

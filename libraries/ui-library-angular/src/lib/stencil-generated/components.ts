@@ -1242,6 +1242,45 @@ export declare interface SixRange extends Components.SixRange {
 
 
 @ProxyCmp({
+  inputs: ['disabled', 'errorText', 'errorTextCount', 'helpText', 'invalid', 'label', 'max', 'name', 'readonly', 'required', 'size', 'value']
+})
+@Component({
+  selector: 'six-rating',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['disabled', 'errorText', 'errorTextCount', 'helpText', 'invalid', 'label', 'max', 'name', 'readonly', 'required', 'size', 'value'],
+  standalone: false
+})
+export class SixRating {
+  protected el: HTMLSixRatingElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['six-rating-blur', 'six-rating-change', 'six-rating-focus']);
+  }
+}
+
+
+import type { EmptyPayload as ISixRatingEmptyPayload } from '@six-group/ui-library';
+
+export declare interface SixRating extends Components.SixRating {
+  /**
+   * Emitted when the control loses focus.
+   */
+  'six-rating-blur': EventEmitter<CustomEvent<number>>;
+  /**
+   * Emitted when the control's checked state changes.
+   */
+  'six-rating-change': EventEmitter<CustomEvent<number>>;
+  /**
+   * Emitted when the control gains focus.
+   */
+  'six-rating-focus': EventEmitter<CustomEvent<ISixRatingEmptyPayload>>;
+}
+
+
+@ProxyCmp({
   inputs: ['padded', 'stage', 'version']
 })
 @Component({

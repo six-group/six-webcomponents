@@ -35,6 +35,7 @@
  - [six-input](../six-input)
  - [six-item-picker](../six-item-picker)
  - [six-menu-item](../six-menu-item)
+ - [six-rating](../six-rating)
  - [six-search-field](../six-search-field)
  - [six-select](../six-select)
  - [six-sidebar-item](../six-sidebar-item)
@@ -57,6 +58,7 @@ graph TD;
   six-input --> six-icon
   six-item-picker --> six-icon
   six-menu-item --> six-icon
+  six-rating --> six-icon
   six-search-field --> six-icon
   six-select --> six-icon
   six-sidebar-item --> six-icon
