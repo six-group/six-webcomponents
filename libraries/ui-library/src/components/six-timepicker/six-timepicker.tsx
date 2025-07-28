@@ -263,6 +263,7 @@ export class SixTimepicker {
         // emit empty event if time string is invalid
         if (!isValidTimeString(inputElement.value, this.format)) {
           this.value = inputElement.value;
+          console.log('six-input event');
           this.sixChange.emit({
             value: {},
             valueAsString: '',
@@ -298,7 +299,8 @@ export class SixTimepicker {
   private updateValue() {
     // normalize value
     if (typeof this.value !== 'string' || !isValidTimeString(this.value, this.format)) {
-      this.value = '';
+      console.warn('invalid timepicker value: ', this.value);
+      // this.value = '';
     }
 
     // update popup value
@@ -336,6 +338,7 @@ export class SixTimepicker {
     if (this.popupValue == null) {
       return;
     }
+    console.log('event', event);
 
     // update the internal state
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
