@@ -263,21 +263,20 @@ export class SixTimepicker {
         // emit empty event if time string is invalid
         if (!isValidTimeString(inputElement.value, this.format)) {
           this.value = inputElement.value;
-          console.log('six-input event');
           this.sixChange.emit({
             value: {},
             valueAsString: '',
           });
           return;
+        } else {
+          // update value and popup value and emit the new value
+          this.value = inputElement.value;
+          this.popupValue = parseTimeString(inputElement.value, this.format);
+          this.sixChange.emit({
+            value: this.popupValue,
+            valueAsString: createTimeString(this.popupValue, this.format),
+          });
         }
-
-        // update value and popup value, and emit the new value
-        this.value = inputElement.value;
-        this.popupValue = parseTimeString(inputElement.value, this.format);
-        this.sixChange.emit({
-          value: this.popupValue,
-          valueAsString: createTimeString(this.popupValue, this.format),
-        });
       }, this.debounce)
     );
   }
@@ -299,8 +298,9 @@ export class SixTimepicker {
   private updateValue() {
     // normalize value
     if (typeof this.value !== 'string' || !isValidTimeString(this.value, this.format)) {
-      console.warn('invalid timepicker value: ', this.value);
-      // this.value = '';
+      this.value = '';
+    } else if (this.inputElement != null) {
+      this.inputElement.value = this.value;
     }
 
     // update popup value
@@ -338,7 +338,6 @@ export class SixTimepicker {
     if (this.popupValue == null) {
       return;
     }
-    console.log('event', event);
 
     // update the internal state
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -497,6 +496,9 @@ export class SixTimepicker {
 
   private handleClearClick = (event: MouseEvent) => {
     event.stopPropagation();
+    if (this.inputElement != null) {
+      this.inputElement.value = '';
+    }
     this.value = '';
     this.sixClear.emit();
     this.sixChange.emit({
@@ -553,7 +555,6 @@ export class SixTimepicker {
           ref={(el) => (this.inputElement = el)}
           part="input"
           onClick={() => this.openPopup()}
-          value={this.value}
           placeholder={this.placeholder}
           readonly={this.readonly}
           disabled={this.disabled}
