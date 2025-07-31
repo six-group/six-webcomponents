@@ -268,15 +268,15 @@ export class SixTimepicker {
             valueAsString: '',
           });
           return;
+        } else {
+          // update value and popup value and emit the new value
+          this.value = inputElement.value;
+          this.popupValue = parseTimeString(inputElement.value, this.format);
+          this.sixChange.emit({
+            value: this.popupValue,
+            valueAsString: createTimeString(this.popupValue, this.format),
+          });
         }
-
-        // update value and popup value, and emit the new value
-        this.value = inputElement.value;
-        this.popupValue = parseTimeString(inputElement.value, this.format);
-        this.sixChange.emit({
-          value: this.popupValue,
-          valueAsString: createTimeString(this.popupValue, this.format),
-        });
       }, this.debounce)
     );
   }
@@ -299,6 +299,8 @@ export class SixTimepicker {
     // normalize value
     if (typeof this.value !== 'string' || !isValidTimeString(this.value, this.format)) {
       this.value = '';
+    } else if (this.inputElement != null) {
+      this.inputElement.value = this.value;
     }
 
     // update popup value
@@ -494,6 +496,9 @@ export class SixTimepicker {
 
   private handleClearClick = (event: MouseEvent) => {
     event.stopPropagation();
+    if (this.inputElement != null) {
+      this.inputElement.value = '';
+    }
     this.value = '';
     this.sixClear.emit();
     this.sixChange.emit({
@@ -550,7 +555,6 @@ export class SixTimepicker {
           ref={(el) => (this.inputElement = el)}
           part="input"
           onClick={() => this.openPopup()}
-          value={this.value}
           placeholder={this.placeholder}
           readonly={this.readonly}
           disabled={this.disabled}
