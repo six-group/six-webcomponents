@@ -19,6 +19,9 @@ export const config: Config = {
   outputTargets: [
     reactOutputTarget({
       outDir: '../ui-library-react/src/lib/stencil-generated',
+      hydrateModule: '@six-group/ui-library/hydrate',
+      clientModule: '@six-group/ui-library-react',
+      serializeShadowRoot: { scoped: [], default: 'declarative-shadow-dom' },
     }),
     angularOutputTarget({
       componentCorePackage: '@six-group/ui-library',
@@ -46,7 +49,6 @@ export const config: Config = {
           targetAttr: 'value',
         },
       ],
-      /*      hydrateModule: '@six-group/ui-library/hydrate',*/
     }),
     {
       type: 'dist',
@@ -63,10 +65,10 @@ export const config: Config = {
       customElementsExportBehavior: 'bundle',
       externalRuntime: false,
     },
-    /*    {
+    {
       type: 'dist-hydrate-script',
       dir: './hydrate',
-    },*/
+    },
     {
       type: 'docs-readme',
       footer: 'Copyright © 2021-present SIX-Group',
