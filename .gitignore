@@ -3,3 +3,5 @@ dist
 docs/.vitepress/cache
 docs/.vitepress/dist
 test-results
+/libraries/ui-library-react/dist/
+
