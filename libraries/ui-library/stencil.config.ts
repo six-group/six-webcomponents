@@ -18,7 +18,7 @@ export const config: Config = {
   },
   outputTargets: [
     reactOutputTarget({
-      outDir: '../ui-library-react/src/lib/stencil-generated',
+      outDir: '../ui-library-react/src',
       clientModule: '@six-group/ui-library-react',
       hydrateModule: '@six-group/ui-library/hydrate',
     }),

@@ -14,29 +14,28 @@
       "import": "./dist/components.server.js"
     }
   },
-  "files": [
-    "dist"
-  ],
   "sideEffects": false,
   "engines": {
     "node": ">=22"
   },
   "scripts": {
-    "build": "npm run tsc",
-    "tsc": "tsc -p . --outDir ./dist",
-    "watch": "npm run tsc -- --watch"
+    "dev": "tsc -p tsconfig.json --watch",
+    "build": "tsc"
   },
   "publishConfig": {
     "access": "public"
   },
   "devDependencies": {
-    "@types/react": "^19",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "typescript": "^5"
+    "@types/node": "^22.15.32",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "typescript": "^5.6.3",
+    "vite": "^6.3.5"
   },
   "dependencies": {
-    "@stencil/react-output-target": "^1.2.0"
+    "@stencil/react-output-target": "^1.2.0",
+    "react-dom": "^18.3.1",
+    "@six-group/ui-library": "*"
   },
   "peerDependencies": {
     "@six-group/ui-library": "*"
