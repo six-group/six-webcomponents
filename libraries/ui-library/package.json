@@ -3,14 +3,45 @@
   "version": "5.0.0-rc.1",
   "description": "Web components in alignment with the SIX corporate styleguide",
   "license": "Apache-2.0",
+  "type": "module",
   "main": "dist/index.cjs.js",
   "module": "./dist/index.js",
   "es2015": "dist/esm/index.mjs",
   "es2017": "dist/esm/index.mjs",
-  "types": "./dist/types/types.d.ts",
+  "types": "./dist/types/index.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
   "unpkg": "dist/ui-library/ui-library.esm.js",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs.js",
+      "default": "./dist/index.mjs"
+    },
+    "./hydrate": {
+      "types": "./hydrate/index.d.ts",
+      "import": "./hydrate/index.mjs",
+      "require": "./hydrate/index.js",
+      "default": "./hydrate/index.mjs"
+    },
+    "./loader": {
+      "types": "./loader/index.d.ts",
+      "import": "./loader/index.js",
+      "require": "./loader/index.js",
+      "default": "./loader/index.js"
+    },
+    "./components/*.js": {
+      "types": "./dist/types/components/*.d.ts",
+      "import": "./components/*.js"
+    },
+    "./components": {
+      "types": "./dist/types/components.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs.js",
+      "default": "./dist/index.js"
+    }
+  },
   "files": [
     "dist/",
     "loader/"
@@ -33,7 +64,7 @@
     "codeclean": "npm run lint:fix && npm run prettier:fix"
   },
   "dependencies": {
-    "@stencil/core": "4.32.0",
+    "@stencil/core": "4.36.1",
     "@types/resize-observer-browser": "^0.1.5"
   },
   "peerDependencies": {
@@ -45,9 +76,9 @@
     "@fontsource/material-icons-outlined": "^5.1.1",
     "@popperjs/core": "^2.5.3",
     "@stencil-community/eslint-plugin": "0.x",
-    "@stencil/angular-output-target": "1.0.0",
-    "@stencil/react-output-target": "^1.0.4",
-    "@stencil/vue-output-target": "0.10.8",
+    "@stencil/angular-output-target": "1.1.1",
+    "@stencil/react-output-target": "^1.2.0",
+    "@stencil/vue-output-target": "0.11.8",
     "@stencil/sass": "3.0.12",
     "@typescript-eslint/eslint-plugin": "^7.0.0",
     "@typescript-eslint/parser": "^7.0.0",
@@ -56,6 +87,6 @@
     "rimraf": "^3.0.2"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   }
 }
