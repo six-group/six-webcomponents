@@ -6,7 +6,7 @@
   "private": false,
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
+      "types": "./dist/types/index.d.ts",
       "import": "./dist/index.js"
     },
     "./next": {
@@ -20,22 +20,22 @@
   },
   "scripts": {
     "dev": "tsc -p tsconfig.json --watch",
-    "build": "tsc"
+    "build": "npm run tsc"
   },
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "@stencil/react-output-target": "^1.2.0",
+    "@six-group/ui-library": "*",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@types/node": "^22.15.32",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "typescript": "^5.6.3",
+    "typescript": "^5.8.3",
     "vite": "^6.3.5"
-  },
-  "dependencies": {
-    "@stencil/react-output-target": "^1.2.0",
-    "react-dom": "^18.3.1",
-    "@six-group/ui-library": "*"
   },
   "peerDependencies": {
     "@six-group/ui-library": "*"

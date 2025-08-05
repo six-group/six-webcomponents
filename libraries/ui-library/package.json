@@ -3,9 +3,12 @@
   "version": "5.0.0-rc.1",
   "description": "Web components in alignment with the SIX corporate styleguide",
   "license": "Apache-2.0",
+  "type": "module",
   "main": "dist/index.cjs.js",
   "module": "./dist/index.js",
-  "types": "./dist/types/types.d.ts",
+  "es2015": "dist/esm/index.mjs",
+  "es2017": "dist/esm/index.mjs",
+  "types": "./dist/types/index.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
   "unpkg": "dist/ui-library/ui-library.esm.js",
@@ -84,6 +87,6 @@
     "rimraf": "^3.0.2"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   }
 }
