@@ -2,9 +2,10 @@
 <div>
 
         <six-breadcrumbs>
+          <six-icon slot="separator" size="small">arrow_forward</six-icon>
           <six-breadcrumbs-item>A</six-breadcrumbs-item>
           <six-breadcrumbs-item>B</six-breadcrumbs-item>
-          <six-breadcrumbs-item>C</six-breadcrumbs-item>
+          <six-breadcrumbs-item>Current</six-breadcrumbs-item>
         </six-breadcrumbs>
       
 </div>
@@ -14,7 +15,7 @@
 </style>
 <script>
 export default {
-  name: 'docs-demo-six-breadcrumbs-item-0',
+  name: 'docs-demo-six-breadcrumbs-1',
   mounted() {  }
 }
 </script>

@@ -6,34 +6,19 @@
     <script type="module" src="/build/ui-library.esm.js"></script>
     <script nomodule src="/build/ui-library.js"></script>
     <link rel="stylesheet" href="/build/ui-library.css" />
-    <title>Breadcrumbs</title>
+    <title>Breadcrumbs Item</title>
   </head>
   <body>
-    <h1>Breadcrumbs Item</h1>
-
-    Breadcrumb items are intended for use with the six-breadcrumbs component. For usage details, see the
-    <a href="six-breadcrumbs/index.html">six-breadcrumbs documentation</a>.
-
     <div class="container">
+      <p>
+        Breadcrumb items are intended for use with the six-breadcrumbs component. For usage details, see the
+        <a href="six-breadcrumbs.html">six-breadcrumbs documentation</a>.
+      </p>
       <section>
-        <p>Character / as separators</p>
         <six-breadcrumbs>
-          <span slot="separator">/</span>
           <six-breadcrumbs-item>A</six-breadcrumbs-item>
           <six-breadcrumbs-item>B</six-breadcrumbs-item>
           <six-breadcrumbs-item>C</six-breadcrumbs-item>
-        </six-breadcrumbs>
-
-        <p>six-icon as separators and with a prefix</p>
-        <six-breadcrumbs>
-          <six-icon slot="separator" size="small">arrow_forward</six-icon>
-          <six-breadcrumbs-item href="http://six-group.com" target="_blank">
-            <six-icon slot="prefix" size="small">house</six-icon>
-            Home
-          </six-breadcrumbs-item>
-          <six-breadcrumbs-item href="http://six-group.com" target="_blank">A</six-breadcrumbs-item>
-          <six-breadcrumbs-item href="http://six-group.com" target="_blank">B</six-breadcrumbs-item>
-          <six-breadcrumbs-item href="http://six-group.com" target="_blank">Current</six-breadcrumbs-item>
         </six-breadcrumbs>
       </section>
     </div>

@@ -1,29 +1,50 @@
 @import '../../../src/global/component';
 
+/**
+* @prop --separator-color: The color of the separator
+* @prop --last-item-color: The color of the last breadcrumbs item
+*/
 :host {
-  --six-breadcrumbs-item-margin: var(--six-spacing-xx-small);
-  --six-breadcrumbs-item-readonly-color: var(--six-color-web-rock-500);
-
-  display: inline-flex;
+  --last-item-color: var(--six-color-web-rock-700);
+  --separator-color: var(--six-color-web-rock-700);
 
   &::part(label) {
     padding: unset;
   }
 
+  &::part(base) {
+    display: flex;
+    align-items: center;
+  }
+
   &::part(separator) {
     align-items: center;
-    margin: 0 var(--six-breadcrumbs-item-margin);
     user-select: none;
     -webkit-user-select: none;
   }
 
   six-button::part(label) {
     padding-left: var(--six-spacing-xx-small);
+    padding-right: var(--six-spacing-xx-small);
   }
 }
 
 :host([read-only]) {
   six-button::part(base) {
-    color: var(--six-breadcrumbs-item-readonly-color);
+    color: var(--last-item-color);
   }
+}
+
+.breadcrumb-item-readonly {
+  cursor: default;
+}
+
+.breadcrumb-item__separator {
+  display: flex;
+  align-items: center;
+  color: var(--separator-color);
+}
+
+:host(:last-of-type) .breadcrumb-item__separator {
+  display: none;
 }

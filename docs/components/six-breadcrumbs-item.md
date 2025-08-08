@@ -1,7 +1,26 @@
-# six-breadcrumb-item
+# Breadcrumbs Item
+
+
+Breadcrumb items are intended for use with the six-breadcrumbs component. For usage details, see the [six-breadcrumbs documentation](six-breadcrumbs.html).
+
+<docs-demo-six-breadcrumbs-item-0></docs-demo-six-breadcrumbs-item-0>
+
+```html
+<six-breadcrumbs>
+  <six-breadcrumbs-item>A</six-breadcrumbs-item>
+  <six-breadcrumbs-item>B</six-breadcrumbs-item>
+  <six-breadcrumbs-item>C</six-breadcrumbs-item>
+</six-breadcrumbs>
+```
+
+
 
 <!-- Auto Generated Below -->
 
+
+## Overview
+
+Breadcrumb items are used inside breadcrumbs to represent different links.
 
 ## Properties
 
@@ -20,13 +39,31 @@
 | `six-click` | Emitted when the breadcrumb item is clicked. | `CustomEvent<undefined>` |
 
 
+## Slots
+
+| Slot          | Description                                                                                                                                                                                         |
+| ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|               | The breadcrumb item’s label.                                                                                                                                                                        |
+| `"prefix"`    | An optional prefix, usually an icon or icon button.                                                                                                                                                 |
+| `"separator"` | The separator to use for the breadcrumb item. This will only change the separator for this item. If you want to change it for all items in the group, set the separator on six-breadcrumbs instead. |
+| `"suffix"`    | An optional suffix, usually an icon or icon button.                                                                                                                                                 |
+
+
 ## Shadow Parts
 
-| Part          | Description |
-| ------------- | ----------- |
-| `"base"`      |             |
-| `"button"`    |             |
-| `"separator"` |             |
+| Part          | Description                      |
+| ------------- | -------------------------------- |
+| `"base"`      | The component's base wrapper.    |
+| `"button"`    | The button that renders the item |
+| `"separator"` | The separator                    |
+
+
+## CSS Custom Properties
+
+| Name                | Description                            |
+| ------------------- | -------------------------------------- |
+| `--last-item-color` | The color of the last breadcrumbs item |
+| `--separator-color` | The color of the separator             |
 
 
 ## Dependencies
