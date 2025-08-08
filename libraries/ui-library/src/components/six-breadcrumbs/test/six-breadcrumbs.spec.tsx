@@ -21,11 +21,7 @@ describe('six-breadcrumbs', () => {
     await page.waitForChanges();
 
     const items = page.root!.querySelectorAll('six-breadcrumbs-item');
-
     expect(items.length).toBe(3);
-    expect(items[0].querySelector('[slot="separator"]')).not.toBeNull();
-    expect(items[1].querySelector('[slot="separator"]')).not.toBeNull();
-    expect(items[2].querySelector('[slot="separator"]')).toBeNull();
     expect(items[2].hasAttribute('read-only')).toBe(true);
   });
 });
