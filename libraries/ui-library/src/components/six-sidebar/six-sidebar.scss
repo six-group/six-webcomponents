@@ -3,6 +3,8 @@
 @import 'src/global/mixins/scrollbar';
 
 :host {
+  --width: 16rem;
+
   display: block;
   height: 100%;
 }
@@ -13,13 +15,11 @@
     height: 100%;
     overflow: auto;
 
-    &.sidebar--open {
-      border-right: 1px solid var(--six-color-web-rock-300);
-    }
-
     &:not(.sidebar--visible) {
       @include hidden;
     }
+
+    width: var(--width);
   }
 
   &--left {
@@ -31,14 +31,28 @@
     background-size: 300vw 70%;
     background-position: bottom;
     background-repeat: no-repeat;
+
+    margin-left: calc(1rem - var(--width));
+
+    &.sidebar--open {
+      margin-left: 0;
+      border-right: 1px solid var(--six-color-web-rock-300);
+    }
   }
 
   &--right {
     // collapse
     transition: var(--six-transition-medium) margin-right;
+
+    margin-right: calc(1rem - var(--width));
+
+    &.sidebar--open {
+      margin-right: 0;
+      border-left: 1px solid var(--six-color-web-rock-300);
+    }
   }
 
-  // if the sidebar is embedded within six-root it cuts-off the border styling, for thus we need to guarante a margin
+  // if the sidebar is embedded within six-root it cuts-off the border styling, for thus we need to guarantee a margin
   &--open {
     &.sidebar--left {
       margin-right: 2px;
