@@ -151,8 +151,6 @@ To allow multiple options to be selected, use the `multiple` attribute. It's a g
 
 With the prefix and suffix slots you can display icons in the menu items.
 
-.demo-multiple-icons six-menu-item::part(base) { display: flex; align-items: center; }
-
 <docs-demo-six-select-9></docs-demo-six-select-9>
 
 ```html
