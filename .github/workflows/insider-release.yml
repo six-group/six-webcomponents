@@ -8,10 +8,10 @@ jobs:
   publish-npm:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version: 22
           registry-url: 'https://registry.npmjs.org'
           cache: 'npm'
         env:
@@ -32,14 +32,8 @@ jobs:
       - name: publish
         run: |
           npm publish --tag=insider --access=public libraries/ui-library/
-          npm publish --tag=insider --access=public libraries/ui-library-react/
           npm publish --tag=insider --access=public libraries/ui-library-vue/
           npm publish --tag=insider --access=public libraries/ui-library-angular/dist/ui-library-angular/
+          npm publish --tag=insider --access=public libraries/ui-library-react/
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
-
-      - name: 'Deploy Documentation'
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: docs/.vitepress/dist
-          target-folder: docs

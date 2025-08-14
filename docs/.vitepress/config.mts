@@ -1,5 +1,5 @@
-import { defineConfig } from 'vitepress';
 import { components } from '../components/component.tags.mjs';
+import { withMermaid } from 'vitepress-plugin-mermaid';
 
 const componentNavItems = components.map((component) => {
   return {
@@ -13,13 +13,15 @@ const componentNavItems = components.map((component) => {
 });
 
 // https://vitepress.dev/reference/site-config
-export default defineConfig({
+export default withMermaid({
   ignoreDeadLinks: [/^https?:\/\/localhost/, './../wrappers/set-attributes'],
   appearance: false,
   head: [['link', { rel: 'icon', href: 'favicon.ico' }]],
   title: 'Web Components',
   description: 'Component Library following the SIX Style Guide',
-  base: '/six-webcomponents/',
+  // keep this in sync with the target folder in the "Deploy Documentation" section of /.github/workflows/release.yml
+  base: '/six-webcomponents/v5/',
+  lastUpdated: true,
 
   // https://vitepress.dev/reference/default-theme-config
   themeConfig: {
@@ -35,6 +37,7 @@ export default defineConfig({
       },
       { text: 'Components', link: componentNavItems[0].link },
       { text: 'Changelog', link: '/changelog' },
+      { text: 'Go to v4 docs', link: 'https://six-group.github.io/six-webcomponents/v4/' },
     ],
 
     sidebar: {
@@ -42,6 +45,7 @@ export default defineConfig({
         {
           items: [
             { text: 'Introduction', link: '/guide/readme' },
+            { text: 'Upgrade to v5', link: '/guide/upgrade-v5' },
             { text: 'Upgrade to v4', link: '/guide/upgrade-v4' },
             { text: 'Design', link: '/guide/design' },
             { text: 'Architecture', link: '/guide/architecture' },
@@ -50,17 +54,22 @@ export default defineConfig({
               collapsed: false,
               items: [
                 { text: 'Angular', link: '/guide/angular' },
-                { text: 'React', link: '/guide/react' },
                 { text: 'Vue', link: '/guide/vue' },
+                { text: 'React', link: '/guide/react' },
               ],
             },
             {
               text: 'Styling',
               collapsed: false,
               items: [
-                { text: 'Styles', link: '/guide/styling/styles' },
                 { text: 'Tables', link: '/guide/styling/tables' },
                 { text: 'Colors', link: '/guide/styling/colors' },
+                { text: 'Spacing', link: '/guide/styling/spacing' },
+                { text: 'Typography', link: '/guide/styling/typography' },
+                { text: 'Shadows', link: '/guide/styling/shadows' },
+                { text: 'Border Radius', link: '/guide/styling/border-radius' },
+                { text: 'Transitions', link: '/guide/styling/transitions' },
+                { text: 'Z-Index', link: '/guide/styling/z-index' },
                 { text: 'TailwindCSS', link: '/guide/styling/tailwind' },
               ],
             },
@@ -70,7 +79,6 @@ export default defineConfig({
 
       '/components/': [{ items: componentNavItems }],
     },
-
     socialLinks: [{ icon: 'github', link: 'https://github.com/six-group/six-webcomponents' }],
   },
 

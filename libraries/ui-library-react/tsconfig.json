@@ -1,27 +1,23 @@
 {
   "compilerOptions": {
-    "allowUnreachableCode": false,
-    "allowSyntheticDefaultImports": true,
     "declaration": true,
+    "noImplicitAny": false,
+    "removeComments": true,
+    "noLib": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "esModuleInterop": true,
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "module": "esnext",
-    "moduleResolution": "node",
-    "noImplicitAny": true,
-    "noImplicitReturns": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "outDir": "dist",
-    "removeComments": false,
     "sourceMap": true,
+    "outDir": "./dist",
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "skipLibCheck": true,
     "jsx": "react",
-    "target": "es2017",
-    "types": ["jest", "node"]
+    "allowSyntheticDefaultImports": true,
+    "declarationDir": "./dist/types"
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx"],
-  "exclude": ["./__tests__/**", "node_modules"],
-  "compileOnSave": false,
-  "buildOnSave": false
+  "include": ["src"],
+  "exclude": ["node_modules"]
 }

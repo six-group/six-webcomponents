@@ -20,7 +20,8 @@ export default {
           let counter = 0;
 
           fileUpload.addEventListener('six-file-upload-success', ({ detail }) => {
-            const file = detail.file;
+            // Since multiple is by default false, we know the array contains only one element
+            const file = detail.files[0];
 
             const item = Object.assign(document.createElement('six-file-list-item'), {
               id: String(counter++),

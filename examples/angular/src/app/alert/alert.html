@@ -1,0 +1,20 @@
+<h2>Alert</h2>
+
+<form class="grid-6" [formGroup]="form" sixForm (sixSubmit)="onSubmit()">
+  <six-select class="column-span-2" label="AlertType" formControlName="alertType">
+    <six-menu-item value="primary">Primary</six-menu-item>
+    <six-menu-item value="success">Success</six-menu-item>
+    <six-menu-item value="info">Info</six-menu-item>
+    <six-menu-item value="warning">Warning</six-menu-item>
+    <six-menu-item value="danger">Danger</six-menu-item>
+  </six-select>
+  <six-input class="column-span-2" label="Message" formControlName="message" />
+  <six-button class="column-span-2" submit>Show Toast</six-button>
+</form>
+
+<six-button type="primary" (click)="customAlert.toast()">Show Custom Toast</six-button>
+<six-alert #customAlert type="danger" duration="5000" closable>
+  <six-icon slot="icon">report</six-icon>
+  <strong>A custom Alert</strong><br />
+  If you want to use <strong>html</strong> in your alert message.
+</six-alert>

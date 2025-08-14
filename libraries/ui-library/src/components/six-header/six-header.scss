@@ -1,8 +1,5 @@
 @import 'src/global/component';
 
-$header-height: 3.75rem;
-$border-height: 0.25rem;
-
 :host {
   display: block;
   user-select: none;
@@ -18,64 +15,18 @@ $border-height: 0.25rem;
 .six-header {
   display: flex;
   width: 100%;
-  height: $header-height;
+  height: var(--six-header-height);
   background-color: var(--six-header-background-color);
-  align-items: center;
-  flex-wrap: wrap;
+  align-items: stretch;
   box-shadow: var(--six-shadow-medium);
   border-bottom: var(--six-header-border-with) solid var(--six-header-border-color);
-
-  &__logo {
-    width: 6rem;
-    margin-top: 0.15rem;
-
-    &--clickable {
-      cursor: pointer;
-    }
-  }
-
-  &__placeholder {
-    flex: 1;
-  }
-
-  &__menu,
-  &__logo,
-  &__custom,
-  &__search,
-  &__notification,
-  &__app-switcher,
-  &__profile {
-    height: calc(100% - #{$border-height} - 1px);
-    padding: 0 1.25rem;
-    display: flex;
-    align-items: center;
-    border-bottom: solid $border-height transparent;
-
-    &--open {
-      border-bottom: solid $border-height var(--six-header-border-color-open);
-    }
-  }
-
-  &__app-switcher-dropdown {
-    display: flex;
-    align-items: center;
-  }
-
-  &__selected-app {
-    cursor: pointer;
-    font-size: 0.9rem;
-    font-weight: 600;
-    padding-right: 0;
-    padding-left: 0.3rem;
-    &:hover {
-      color: var(--six-header-selected-app-color-hover);
-    }
-  }
 
   &__search-field {
     opacity: 0;
     transform: scale(0.9);
-    transition: var(--six-transition-fast) opacity, var(--six-transition-fast) transform;
+    transition:
+      var(--six-transition-fast) opacity,
+      var(--six-transition-fast) transform;
     display: none;
 
     &--visible {

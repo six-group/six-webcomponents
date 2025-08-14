@@ -1,14 +1,14 @@
 /* eslint-disable */
 /* tslint:disable */
 /* auto-generated vue proxies */
-import { defineContainer } from './vue-component-lib/utils';
+import { defineContainer, type StencilVueComponent } from '@stencil/vue-output-target/runtime';
 
 import type { JSX } from '@six-group/ui-library';
 
 
 
 
-export const SixAlert = /*@__PURE__*/ defineContainer<JSX.SixAlert>('six-alert', undefined, [
+export const SixAlert: StencilVueComponent<JSX.SixAlert> = /*@__PURE__*/ defineContainer<JSX.SixAlert>('six-alert', undefined, [
   'open',
   'closable',
   'type',
@@ -17,10 +17,15 @@ export const SixAlert = /*@__PURE__*/ defineContainer<JSX.SixAlert>('six-alert',
   'six-alert-after-show',
   'six-alert-hide',
   'six-alert-after-hide'
+], [
+  'six-alert-show',
+  'six-alert-after-show',
+  'six-alert-hide',
+  'six-alert-after-hide'
 ]);
 
 
-export const SixAvatar = /*@__PURE__*/ defineContainer<JSX.SixAvatar>('six-avatar', undefined, [
+export const SixAvatar: StencilVueComponent<JSX.SixAvatar> = /*@__PURE__*/ defineContainer<JSX.SixAvatar>('six-avatar', undefined, [
   'image',
   'alt',
   'initials',
@@ -28,14 +33,14 @@ export const SixAvatar = /*@__PURE__*/ defineContainer<JSX.SixAvatar>('six-avata
 ]);
 
 
-export const SixBadge = /*@__PURE__*/ defineContainer<JSX.SixBadge>('six-badge', undefined, [
+export const SixBadge: StencilVueComponent<JSX.SixBadge> = /*@__PURE__*/ defineContainer<JSX.SixBadge>('six-badge', undefined, [
   'type',
   'pill',
   'pulse'
 ]);
 
 
-export const SixButton = /*@__PURE__*/ defineContainer<JSX.SixButton>('six-button', undefined, [
+export const SixButton: StencilVueComponent<JSX.SixButton> = /*@__PURE__*/ defineContainer<JSX.SixButton>('six-button', undefined, [
   'type',
   'size',
   'caret',
@@ -52,13 +57,16 @@ export const SixButton = /*@__PURE__*/ defineContainer<JSX.SixButton>('six-butto
   'download',
   'six-button-blur',
   'six-button-focus'
+], [
+  'six-button-blur',
+  'six-button-focus'
 ]);
 
 
-export const SixCard = /*@__PURE__*/ defineContainer<JSX.SixCard>('six-card', undefined);
+export const SixCard: StencilVueComponent<JSX.SixCard> = /*@__PURE__*/ defineContainer<JSX.SixCard>('six-card', undefined);
 
 
-export const SixCheckbox = /*@__PURE__*/ defineContainer<JSX.SixCheckbox, JSX.SixCheckbox["checked"]>('six-checkbox', undefined, [
+export const SixCheckbox: StencilVueComponent<JSX.SixCheckbox, JSX.SixCheckbox["checked"]> = /*@__PURE__*/ defineContainer<JSX.SixCheckbox, JSX.SixCheckbox["checked"]>('six-checkbox', undefined, [
   'name',
   'value',
   'disabled',
@@ -72,11 +80,43 @@ export const SixCheckbox = /*@__PURE__*/ defineContainer<JSX.SixCheckbox, JSX.Si
   'six-checkbox-blur',
   'six-checkbox-change',
   'six-checkbox-focus'
+], [
+  'six-checkbox-blur',
+  'six-checkbox-change',
+  'six-checkbox-focus'
 ],
 'checked', 'change');
 
 
-export const SixDatepicker = /*@__PURE__*/ defineContainer<JSX.SixDatepicker, JSX.SixDatepicker["value"]>('six-datepicker', undefined, [
+export const SixDate: StencilVueComponent<JSX.SixDate, JSX.SixDate["value"]> = /*@__PURE__*/ defineContainer<JSX.SixDate, JSX.SixDate["value"]>('six-date', undefined, [
+  'language',
+  'readonly',
+  'disabled',
+  'allowedDates',
+  'min',
+  'max',
+  'size',
+  'required',
+  'placeholder',
+  'value',
+  'dateFormat',
+  'label',
+  'helpText',
+  'errorText',
+  'errorTextCount',
+  'invalid',
+  'name',
+  'clearable',
+  'six-change',
+  'six-blur'
+], [
+  'six-change',
+  'six-blur'
+],
+'value', 'change');
+
+
+export const SixDatepicker: StencilVueComponent<JSX.SixDatepicker, JSX.SixDatepicker["value"]> = /*@__PURE__*/ defineContainer<JSX.SixDatepicker, JSX.SixDatepicker["value"]>('six-datepicker', undefined, [
   'type',
   'locale',
   'open',
@@ -107,11 +147,15 @@ export const SixDatepicker = /*@__PURE__*/ defineContainer<JSX.SixDatepicker, JS
   'six-datepicker-select',
   'six-datepicker-clear',
   'six-datepicker-blur'
+], [
+  'six-datepicker-select',
+  'six-datepicker-clear',
+  'six-datepicker-blur'
 ],
 'value', 'change');
 
 
-export const SixDetails = /*@__PURE__*/ defineContainer<JSX.SixDetails>('six-details', undefined, [
+export const SixDetails: StencilVueComponent<JSX.SixDetails> = /*@__PURE__*/ defineContainer<JSX.SixDetails>('six-details', undefined, [
   'open',
   'summary',
   'summaryIcon',
@@ -124,10 +168,15 @@ export const SixDetails = /*@__PURE__*/ defineContainer<JSX.SixDetails>('six-det
   'six-details-after-show',
   'six-details-hide',
   'six-details-after-hide'
+], [
+  'six-details-show',
+  'six-details-after-show',
+  'six-details-hide',
+  'six-details-after-hide'
 ]);
 
 
-export const SixDialog = /*@__PURE__*/ defineContainer<JSX.SixDialog>('six-dialog', undefined, [
+export const SixDialog: StencilVueComponent<JSX.SixDialog> = /*@__PURE__*/ defineContainer<JSX.SixDialog>('six-dialog', undefined, [
   'open',
   'label',
   'noHeader',
@@ -136,11 +185,18 @@ export const SixDialog = /*@__PURE__*/ defineContainer<JSX.SixDialog>('six-dialo
   'six-dialog-hide',
   'six-dialog-after-hide',
   'six-dialog-initial-focus',
-  'six-dialog-overlay-dismiss'
+  'six-dialog-request-close'
+], [
+  'six-dialog-show',
+  'six-dialog-after-show',
+  'six-dialog-hide',
+  'six-dialog-after-hide',
+  'six-dialog-initial-focus',
+  'six-dialog-request-close'
 ]);
 
 
-export const SixDrawer = /*@__PURE__*/ defineContainer<JSX.SixDrawer>('six-drawer', undefined, [
+export const SixDrawer: StencilVueComponent<JSX.SixDrawer> = /*@__PURE__*/ defineContainer<JSX.SixDrawer>('six-drawer', undefined, [
   'open',
   'label',
   'placement',
@@ -151,11 +207,18 @@ export const SixDrawer = /*@__PURE__*/ defineContainer<JSX.SixDrawer>('six-drawe
   'six-drawer-hide',
   'six-drawer-after-hide',
   'six-drawer-initial-focus',
-  'six-drawer-overlay-dismiss'
+  'six-drawer-request-close'
+], [
+  'six-drawer-show',
+  'six-drawer-after-show',
+  'six-drawer-hide',
+  'six-drawer-after-hide',
+  'six-drawer-initial-focus',
+  'six-drawer-request-close'
 ]);
 
 
-export const SixDropdown = /*@__PURE__*/ defineContainer<JSX.SixDropdown>('six-dropdown', undefined, [
+export const SixDropdown: StencilVueComponent<JSX.SixDropdown> = /*@__PURE__*/ defineContainer<JSX.SixDropdown>('six-dropdown', undefined, [
   'open',
   'placement',
   'closeOnSelect',
@@ -179,13 +242,21 @@ export const SixDropdown = /*@__PURE__*/ defineContainer<JSX.SixDropdown>('six-d
   'six-dropdown-auto-filter-fired',
   'six-async-filter-fired',
   'six-dropdown-scroll'
+], [
+  'six-dropdown-show',
+  'six-dropdown-after-show',
+  'six-dropdown-hide',
+  'six-dropdown-after-hide',
+  'six-dropdown-auto-filter-fired',
+  'six-async-filter-fired',
+  'six-dropdown-scroll'
 ]);
 
 
-export const SixError = /*@__PURE__*/ defineContainer<JSX.SixError>('six-error', undefined);
+export const SixError: StencilVueComponent<JSX.SixError> = /*@__PURE__*/ defineContainer<JSX.SixError>('six-error', undefined);
 
 
-export const SixErrorPage = /*@__PURE__*/ defineContainer<JSX.SixErrorPage>('six-error-page', undefined, [
+export const SixErrorPage: StencilVueComponent<JSX.SixErrorPage> = /*@__PURE__*/ defineContainer<JSX.SixErrorPage>('six-error-page', undefined, [
   'errorCode',
   'language',
   'customTitle',
@@ -194,10 +265,10 @@ export const SixErrorPage = /*@__PURE__*/ defineContainer<JSX.SixErrorPage>('six
 ]);
 
 
-export const SixFileList = /*@__PURE__*/ defineContainer<JSX.SixFileList>('six-file-list', undefined);
+export const SixFileList: StencilVueComponent<JSX.SixFileList> = /*@__PURE__*/ defineContainer<JSX.SixFileList>('six-file-list', undefined);
 
 
-export const SixFileListItem = /*@__PURE__*/ defineContainer<JSX.SixFileListItem>('six-file-list-item', undefined, [
+export const SixFileListItem: StencilVueComponent<JSX.SixFileListItem> = /*@__PURE__*/ defineContainer<JSX.SixFileListItem>('six-file-list-item', undefined, [
   'identifier',
   'name',
   'date',
@@ -206,10 +277,13 @@ export const SixFileListItem = /*@__PURE__*/ defineContainer<JSX.SixFileListItem
   'nodelete',
   'six-file-list-item-download',
   'six-file-list-item-remove'
+], [
+  'six-file-list-item-download',
+  'six-file-list-item-remove'
 ]);
 
 
-export const SixFileUpload = /*@__PURE__*/ defineContainer<JSX.SixFileUpload>('six-file-upload', undefined, [
+export const SixFileUpload: StencilVueComponent<JSX.SixFileUpload> = /*@__PURE__*/ defineContainer<JSX.SixFileUpload>('six-file-upload', undefined, [
   'compact',
   'label',
   'disabled',
@@ -217,15 +291,20 @@ export const SixFileUpload = /*@__PURE__*/ defineContainer<JSX.SixFileUpload>('s
   'multiple',
   'maxFileSize',
   'uploading',
+  'errorText',
+  'invalid',
+  'six-file-upload-success',
+  'six-file-upload-failure'
+], [
   'six-file-upload-success',
   'six-file-upload-failure'
 ]);
 
 
-export const SixFooter = /*@__PURE__*/ defineContainer<JSX.SixFooter>('six-footer', undefined);
+export const SixFooter: StencilVueComponent<JSX.SixFooter> = /*@__PURE__*/ defineContainer<JSX.SixFooter>('six-footer', undefined);
 
 
-export const SixGroupLabel = /*@__PURE__*/ defineContainer<JSX.SixGroupLabel>('six-group-label', undefined, [
+export const SixGroupLabel: StencilVueComponent<JSX.SixGroupLabel> = /*@__PURE__*/ defineContainer<JSX.SixGroupLabel>('six-group-label', undefined, [
   'size',
   'label',
   'helpText',
@@ -234,37 +313,51 @@ export const SixGroupLabel = /*@__PURE__*/ defineContainer<JSX.SixGroupLabel>('s
 ]);
 
 
-export const SixHeader = /*@__PURE__*/ defineContainer<JSX.SixHeader>('six-header', undefined, [
+export const SixHeader: StencilVueComponent<JSX.SixHeader> = /*@__PURE__*/ defineContainer<JSX.SixHeader>('six-header', undefined, [
   'shiftContent',
-  'hideHamburgerMenu',
-  'openHamburgerMenu',
-  'openSearch',
-  'clickableLogo',
-  'six-header-app-name-clicked',
-  'six-header-app-switcher-select',
-  'six-header-profile-select',
-  'six-header-hamburger-menu-clicked',
-  'six-header-logo-clicked',
-  'six-header-search-field-toggle'
+  'openSearch'
 ]);
 
 
-export const SixIcon = /*@__PURE__*/ defineContainer<JSX.SixIcon>('six-icon', undefined, [
+export const SixHeaderDropdownItem: StencilVueComponent<JSX.SixHeaderDropdownItem> = /*@__PURE__*/ defineContainer<JSX.SixHeaderDropdownItem>('six-header-dropdown-item', undefined, [
+  'filter',
+  'filterPlaceholder'
+]);
+
+
+export const SixHeaderItem: StencilVueComponent<JSX.SixHeaderItem> = /*@__PURE__*/ defineContainer<JSX.SixHeaderItem>('six-header-item', undefined, [
+  'active'
+]);
+
+
+export const SixHeaderMenuButton: StencilVueComponent<JSX.SixHeaderMenuButton> = /*@__PURE__*/ defineContainer<JSX.SixHeaderMenuButton>('six-header-menu-button', undefined, [
+  'caret',
+  'disabled',
+  'loading',
+  'submit',
+  'reset'
+]);
+
+
+export const SixIcon: StencilVueComponent<JSX.SixIcon> = /*@__PURE__*/ defineContainer<JSX.SixIcon>('six-icon', undefined, [
   'size',
   'filled'
 ]);
 
 
-export const SixIconButton = /*@__PURE__*/ defineContainer<JSX.SixIconButton>('six-icon-button', undefined, [
+export const SixIconButton: StencilVueComponent<JSX.SixIconButton> = /*@__PURE__*/ defineContainer<JSX.SixIconButton>('six-icon-button', undefined, [
   'name',
   'size',
   'label',
   'disabled',
-  'html'
+  'html',
+  'href',
+  'target',
+  'download'
 ]);
 
 
-export const SixInput = /*@__PURE__*/ defineContainer<JSX.SixInput, JSX.SixInput["value"]>('six-input', undefined, [
+export const SixInput: StencilVueComponent<JSX.SixInput, JSX.SixInput["value"]> = /*@__PURE__*/ defineContainer<JSX.SixInput, JSX.SixInput["value"]>('six-input', undefined, [
   'type',
   'size',
   'name',
@@ -300,11 +393,17 @@ export const SixInput = /*@__PURE__*/ defineContainer<JSX.SixInput, JSX.SixInput
   'six-input-input',
   'six-input-focus',
   'six-input-blur'
+], [
+  'six-input-change',
+  'six-input-clear',
+  'six-input-input',
+  'six-input-focus',
+  'six-input-blur'
 ],
 'value', 'input');
 
 
-export const SixItemPicker = /*@__PURE__*/ defineContainer<JSX.SixItemPicker>('six-item-picker', undefined, [
+export const SixItemPicker: StencilVueComponent<JSX.SixItemPicker> = /*@__PURE__*/ defineContainer<JSX.SixItemPicker>('six-item-picker', undefined, [
   'value',
   'type',
   'min',
@@ -321,27 +420,37 @@ export const SixItemPicker = /*@__PURE__*/ defineContainer<JSX.SixItemPicker>('s
   'debounce',
   'six-item-picker-change',
   'six-item-picker-change-debounced'
+], [
+  'six-item-picker-change',
+  'six-item-picker-change-debounced'
 ]);
 
 
-export const SixLanguageSwitcher = /*@__PURE__*/ defineContainer<JSX.SixLanguageSwitcher>('six-language-switcher', undefined, [
+export const SixLanguageSwitcher: StencilVueComponent<JSX.SixLanguageSwitcher> = /*@__PURE__*/ defineContainer<JSX.SixLanguageSwitcher>('six-language-switcher', undefined, [
   'selected',
   'languages',
+  'six-language-switcher-change'
+], [
   'six-language-switcher-change'
 ]);
 
 
-export const SixLayoutGrid = /*@__PURE__*/ defineContainer<JSX.SixLayoutGrid>('six-layout-grid', undefined, [
+export const SixLayoutGrid: StencilVueComponent<JSX.SixLayoutGrid> = /*@__PURE__*/ defineContainer<JSX.SixLayoutGrid>('six-layout-grid', undefined, [
   'columns'
 ]);
 
 
-export const SixMainContainer = /*@__PURE__*/ defineContainer<JSX.SixMainContainer>('six-main-container', undefined, [
+export const SixLogo: StencilVueComponent<JSX.SixLogo> = /*@__PURE__*/ defineContainer<JSX.SixLogo>('six-logo', undefined, [
+  'brand'
+]);
+
+
+export const SixMainContainer: StencilVueComponent<JSX.SixMainContainer> = /*@__PURE__*/ defineContainer<JSX.SixMainContainer>('six-main-container', undefined, [
   'padded'
 ]);
 
 
-export const SixMenu = /*@__PURE__*/ defineContainer<JSX.SixMenu>('six-menu', undefined, [
+export const SixMenu: StencilVueComponent<JSX.SixMenu> = /*@__PURE__*/ defineContainer<JSX.SixMenu>('six-menu', undefined, [
   'removeBoxShadow',
   'items',
   'itemsShown',
@@ -350,13 +459,15 @@ export const SixMenu = /*@__PURE__*/ defineContainer<JSX.SixMenu>('six-menu', un
   'scrollingDebounce',
   'disableKeyboardHandling',
   'six-menu-item-selected'
+], [
+  'six-menu-item-selected'
 ]);
 
 
-export const SixMenuDivider = /*@__PURE__*/ defineContainer<JSX.SixMenuDivider>('six-menu-divider', undefined);
+export const SixMenuDivider: StencilVueComponent<JSX.SixMenuDivider> = /*@__PURE__*/ defineContainer<JSX.SixMenuDivider>('six-menu-divider', undefined);
 
 
-export const SixMenuItem = /*@__PURE__*/ defineContainer<JSX.SixMenuItem>('six-menu-item', undefined, [
+export const SixMenuItem: StencilVueComponent<JSX.SixMenuItem> = /*@__PURE__*/ defineContainer<JSX.SixMenuItem>('six-menu-item', undefined, [
   'checkType',
   'checked',
   'value',
@@ -364,28 +475,28 @@ export const SixMenuItem = /*@__PURE__*/ defineContainer<JSX.SixMenuItem>('six-m
 ]);
 
 
-export const SixMenuLabel = /*@__PURE__*/ defineContainer<JSX.SixMenuLabel>('six-menu-label', undefined);
+export const SixMenuLabel: StencilVueComponent<JSX.SixMenuLabel> = /*@__PURE__*/ defineContainer<JSX.SixMenuLabel>('six-menu-label', undefined);
 
 
-export const SixPicto = /*@__PURE__*/ defineContainer<JSX.SixPicto>('six-picto', undefined, [
+export const SixPicto: StencilVueComponent<JSX.SixPicto> = /*@__PURE__*/ defineContainer<JSX.SixPicto>('six-picto', undefined, [
   'size'
 ]);
 
 
-export const SixProgressBar = /*@__PURE__*/ defineContainer<JSX.SixProgressBar>('six-progress-bar', undefined, [
+export const SixProgressBar: StencilVueComponent<JSX.SixProgressBar> = /*@__PURE__*/ defineContainer<JSX.SixProgressBar>('six-progress-bar', undefined, [
   'percentage',
   'indeterminate'
 ]);
 
 
-export const SixProgressRing = /*@__PURE__*/ defineContainer<JSX.SixProgressRing>('six-progress-ring', undefined, [
+export const SixProgressRing: StencilVueComponent<JSX.SixProgressRing> = /*@__PURE__*/ defineContainer<JSX.SixProgressRing>('six-progress-ring', undefined, [
   'size',
   'strokeWidth',
   'percentage'
 ]);
 
 
-export const SixRadio = /*@__PURE__*/ defineContainer<JSX.SixRadio>('six-radio', undefined, [
+export const SixRadio: StencilVueComponent<JSX.SixRadio> = /*@__PURE__*/ defineContainer<JSX.SixRadio>('six-radio', undefined, [
   'name',
   'value',
   'disabled',
@@ -394,10 +505,14 @@ export const SixRadio = /*@__PURE__*/ defineContainer<JSX.SixRadio>('six-radio',
   'six-radio-blur',
   'six-radio-change',
   'six-radio-focus'
+], [
+  'six-radio-blur',
+  'six-radio-change',
+  'six-radio-focus'
 ]);
 
 
-export const SixRange = /*@__PURE__*/ defineContainer<JSX.SixRange, JSX.SixRange["value"]>('six-range', undefined, [
+export const SixRange: StencilVueComponent<JSX.SixRange, JSX.SixRange["value"]> = /*@__PURE__*/ defineContainer<JSX.SixRange, JSX.SixRange["value"]>('six-range', undefined, [
   'name',
   'value',
   'required',
@@ -415,32 +530,60 @@ export const SixRange = /*@__PURE__*/ defineContainer<JSX.SixRange, JSX.SixRange
   'six-range-change',
   'six-range-blur',
   'six-range-focus'
+], [
+  'six-range-change',
+  'six-range-blur',
+  'six-range-focus'
 ],
 'value', 'input');
 
 
-export const SixRoot = /*@__PURE__*/ defineContainer<JSX.SixRoot>('six-root', undefined, [
+export const SixRating: StencilVueComponent<JSX.SixRating> = /*@__PURE__*/ defineContainer<JSX.SixRating>('six-rating', undefined, [
+  'name',
+  'value',
+  'disabled',
+  'required',
+  'label',
+  'errorText',
+  'errorTextCount',
+  'invalid',
+  'max',
+  'size',
+  'readonly',
+  'helpText',
+  'six-rating-blur',
+  'six-rating-change',
+  'six-rating-focus'
+], [
+  'six-rating-blur',
+  'six-rating-change',
+  'six-rating-focus'
+]);
+
+
+export const SixRoot: StencilVueComponent<JSX.SixRoot> = /*@__PURE__*/ defineContainer<JSX.SixRoot>('six-root', undefined, [
   'padded',
   'stage',
   'version'
 ]);
 
 
-export const SixSearchField = /*@__PURE__*/ defineContainer<JSX.SixSearchField>('six-search-field', undefined, [
+export const SixSearchField: StencilVueComponent<JSX.SixSearchField> = /*@__PURE__*/ defineContainer<JSX.SixSearchField>('six-search-field', undefined, [
   'placeholder',
   'debounce',
   'disabled',
   'value',
   'clearable',
   'six-search-field-change'
+], [
+  'six-search-field-change'
 ]);
 
 
-export const SixSelect = /*@__PURE__*/ defineContainer<JSX.SixSelect, JSX.SixSelect["value"]>('six-select', undefined, [
+export const SixSelect: StencilVueComponent<JSX.SixSelect, JSX.SixSelect["value"]> = /*@__PURE__*/ defineContainer<JSX.SixSelect, JSX.SixSelect["value"]>('six-select', undefined, [
   'multiple',
   'selectAllButton',
   'selectAllText',
-  'maxTagsVisible',
   'disabled',
   'name',
   'placeholder',
@@ -467,11 +610,15 @@ export const SixSelect = /*@__PURE__*/ defineContainer<JSX.SixSelect, JSX.SixSel
   'six-select-change',
   'six-select-focus',
   'six-select-blur'
+], [
+  'six-select-change',
+  'six-select-focus',
+  'six-select-blur'
 ],
 'value', 'change');
 
 
-export const SixSidebar = /*@__PURE__*/ defineContainer<JSX.SixSidebar>('six-sidebar', undefined, [
+export const SixSidebar: StencilVueComponent<JSX.SixSidebar> = /*@__PURE__*/ defineContainer<JSX.SixSidebar>('six-sidebar', undefined, [
   'position',
   'open',
   'toggled',
@@ -480,18 +627,25 @@ export const SixSidebar = /*@__PURE__*/ defineContainer<JSX.SixSidebar>('six-sid
   'six-sidebar-hide',
   'six-sidebar-after-hide',
   'six-sidebar-initial-focus'
+], [
+  'six-sidebar-show',
+  'six-sidebar-after-show',
+  'six-sidebar-hide',
+  'six-sidebar-after-hide',
+  'six-sidebar-initial-focus'
 ]);
 
 
-export const SixSidebarItem = /*@__PURE__*/ defineContainer<JSX.SixSidebarItem>('six-sidebar-item', undefined, [
+export const SixSidebarItem: StencilVueComponent<JSX.SixSidebarItem> = /*@__PURE__*/ defineContainer<JSX.SixSidebarItem>('six-sidebar-item', undefined, [
   'value',
   'selected',
   'disabled',
+  'icon',
   'href'
 ]);
 
 
-export const SixSidebarItemGroup = /*@__PURE__*/ defineContainer<JSX.SixSidebarItemGroup>('six-sidebar-item-group', undefined, [
+export const SixSidebarItemGroup: StencilVueComponent<JSX.SixSidebarItemGroup> = /*@__PURE__*/ defineContainer<JSX.SixSidebarItemGroup>('six-sidebar-item-group', undefined, [
   'name',
   'icon',
   'value',
@@ -501,17 +655,18 @@ export const SixSidebarItemGroup = /*@__PURE__*/ defineContainer<JSX.SixSidebarI
 ]);
 
 
-export const SixSpinner = /*@__PURE__*/ defineContainer<JSX.SixSpinner>('six-spinner', undefined, [
+export const SixSpinner: StencilVueComponent<JSX.SixSpinner> = /*@__PURE__*/ defineContainer<JSX.SixSpinner>('six-spinner', undefined, [
+  'logo',
   'six'
 ]);
 
 
-export const SixStageIndicator = /*@__PURE__*/ defineContainer<JSX.SixStageIndicator>('six-stage-indicator', undefined, [
+export const SixStageIndicator: StencilVueComponent<JSX.SixStageIndicator> = /*@__PURE__*/ defineContainer<JSX.SixStageIndicator>('six-stage-indicator', undefined, [
   'stage'
 ]);
 
 
-export const SixSwitch = /*@__PURE__*/ defineContainer<JSX.SixSwitch, JSX.SixSwitch["checked"]>('six-switch', undefined, [
+export const SixSwitch: StencilVueComponent<JSX.SixSwitch, JSX.SixSwitch["checked"]> = /*@__PURE__*/ defineContainer<JSX.SixSwitch, JSX.SixSwitch["checked"]>('six-switch', undefined, [
   'name',
   'value',
   'disabled',
@@ -524,43 +679,54 @@ export const SixSwitch = /*@__PURE__*/ defineContainer<JSX.SixSwitch, JSX.SixSwi
   'six-switch-blur',
   'six-switch-change',
   'six-switch-focus'
+], [
+  'six-switch-blur',
+  'six-switch-change',
+  'six-switch-focus'
 ],
 'checked', 'change');
 
 
-export const SixTab = /*@__PURE__*/ defineContainer<JSX.SixTab>('six-tab', undefined, [
+export const SixTab: StencilVueComponent<JSX.SixTab> = /*@__PURE__*/ defineContainer<JSX.SixTab>('six-tab', undefined, [
   'panel',
   'active',
   'closable',
   'disabled',
   'six-tab-close'
+], [
+  'six-tab-close'
 ]);
 
 
-export const SixTabGroup = /*@__PURE__*/ defineContainer<JSX.SixTabGroup>('six-tab-group', undefined, [
+export const SixTabGroup: StencilVueComponent<JSX.SixTabGroup> = /*@__PURE__*/ defineContainer<JSX.SixTabGroup>('six-tab-group', undefined, [
   'placement',
   'noScrollControls',
+  'six-tab-show',
+  'six-tab-hide'
+], [
   'six-tab-show',
   'six-tab-hide'
 ]);
 
 
-export const SixTabPanel = /*@__PURE__*/ defineContainer<JSX.SixTabPanel>('six-tab-panel', undefined, [
+export const SixTabPanel: StencilVueComponent<JSX.SixTabPanel> = /*@__PURE__*/ defineContainer<JSX.SixTabPanel>('six-tab-panel', undefined, [
   'name',
   'active'
 ]);
 
 
-export const SixTag = /*@__PURE__*/ defineContainer<JSX.SixTag>('six-tag', undefined, [
+export const SixTag: StencilVueComponent<JSX.SixTag> = /*@__PURE__*/ defineContainer<JSX.SixTag>('six-tag', undefined, [
   'type',
   'size',
   'pill',
   'clearable',
   'six-tag-clear'
+], [
+  'six-tag-clear'
 ]);
 
 
-export const SixTextarea = /*@__PURE__*/ defineContainer<JSX.SixTextarea, JSX.SixTextarea["value"]>('six-textarea', undefined, [
+export const SixTextarea: StencilVueComponent<JSX.SixTextarea, JSX.SixTextarea["value"]> = /*@__PURE__*/ defineContainer<JSX.SixTextarea, JSX.SixTextarea["value"]>('six-textarea', undefined, [
   'size',
   'name',
   'value',
@@ -587,11 +753,16 @@ export const SixTextarea = /*@__PURE__*/ defineContainer<JSX.SixTextarea, JSX.Si
   'six-textarea-input',
   'six-textarea-focus',
   'six-textarea-blur'
+], [
+  'six-textarea-change',
+  'six-textarea-input',
+  'six-textarea-focus',
+  'six-textarea-blur'
 ],
 'value', 'input');
 
 
-export const SixTile = /*@__PURE__*/ defineContainer<JSX.SixTile>('six-tile', undefined, [
+export const SixTile: StencilVueComponent<JSX.SixTile> = /*@__PURE__*/ defineContainer<JSX.SixTile>('six-tile', undefined, [
   'label',
   'iconName',
   'closeable',
@@ -601,10 +772,13 @@ export const SixTile = /*@__PURE__*/ defineContainer<JSX.SixTile>('six-tile', un
   'size',
   'six-tile-closed',
   'six-tile-selected'
+], [
+  'six-tile-closed',
+  'six-tile-selected'
 ]);
 
 
-export const SixTimepicker = /*@__PURE__*/ defineContainer<JSX.SixTimepicker>('six-timepicker', undefined, [
+export const SixTimepicker: StencilVueComponent<JSX.SixTimepicker> = /*@__PURE__*/ defineContainer<JSX.SixTimepicker>('six-timepicker', undefined, [
   'format',
   'separator',
   'value',
@@ -631,10 +805,14 @@ export const SixTimepicker = /*@__PURE__*/ defineContainer<JSX.SixTimepicker>('s
   'six-timepicker-change',
   'six-timepicker-change-debounced',
   'six-timepicker-clear'
+], [
+  'six-timepicker-change',
+  'six-timepicker-change-debounced',
+  'six-timepicker-clear'
 ]);
 
 
-export const SixTooltip = /*@__PURE__*/ defineContainer<JSX.SixTooltip>('six-tooltip', undefined, [
+export const SixTooltip: StencilVueComponent<JSX.SixTooltip> = /*@__PURE__*/ defineContainer<JSX.SixTooltip>('six-tooltip', undefined, [
   'content',
   'placement',
   'disabled',
@@ -642,6 +820,11 @@ export const SixTooltip = /*@__PURE__*/ defineContainer<JSX.SixTooltip>('six-too
   'open',
   'skidding',
   'trigger',
+  'six-tooltip-show',
+  'six-tooltip-after-show',
+  'six-tooltip-hide',
+  'six-tooltip-after-hide'
+], [
   'six-tooltip-show',
   'six-tooltip-after-show',
   'six-tooltip-hide',

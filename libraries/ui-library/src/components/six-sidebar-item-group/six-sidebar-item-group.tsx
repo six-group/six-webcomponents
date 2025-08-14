@@ -1,5 +1,6 @@
 import { Component, Element, h, Prop, State } from '@stencil/core';
 import { hasSlot } from '../../utils/slot';
+import { SixDetailsCustomEvent } from '../../components';
 
 /**
  * @since 1.0
@@ -28,7 +29,7 @@ export class SixSidebarItemGroup {
   @Prop({ reflect: true }) value = '';
 
   /** Indicates whether the sidebar is shown */
-  @Prop({ reflect: true }) open = false;
+  @Prop({ reflect: true, mutable: true }) open = false;
 
   /** Custom summary icon name. */
   @Prop() summaryIcon?: string;
@@ -60,6 +61,16 @@ export class SixSidebarItemGroup {
   private renderAsHref(): boolean {
     return this.href != null && !this.hasItems;
   }
+
+  private handleDetailsShow = (event: SixDetailsCustomEvent<undefined>) => {
+    event.stopPropagation();
+    this.open = true;
+  };
+
+  private handleDetailsHide = (event: SixDetailsCustomEvent<undefined>) => {
+    event.stopPropagation();
+    this.open = false;
+  };
 
   private provideSlot = (name: string) => {
     if (this.summaryIconHasContent) {
@@ -94,7 +105,10 @@ export class SixSidebarItemGroup {
         inline={true}
         open={this.open}
         summary-icon={this.summaryIcon}
+        onSix-details-show={this.handleDetailsShow}
+        onSix-details-hide={this.handleDetailsHide}
         hasContent={this.hasItems}
+        tabindex={this.renderAsHref() ? -1 : undefined}
       >
         <div slot="summary">
           <div class="six-sidebar-details__header">

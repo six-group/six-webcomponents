@@ -1,0 +1,13 @@
+:host {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0 var(--six-spacing-large);
+  border-bottom: solid var(--six-header-border-height) transparent;
+  border-top: solid var(--six-header-border-height) transparent;
+}
+
+:host(.six-header-dropdown-item--active) {
+  border-bottom: solid var(--six-header-border-height) var(--six-header-border-color-open);
+}

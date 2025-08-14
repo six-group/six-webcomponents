@@ -15,7 +15,8 @@
   let counter = 0;
 
   fileUpload.addEventListener('six-file-upload-success', ({ detail }) => {
-    const file = detail.file;
+    // Since multiple is by default false, we know the array contains only one element
+    const file = detail.files[0];
 
     const item = Object.assign(document.createElement('six-file-list-item'), {
       id: String(counter++),
@@ -125,29 +126,73 @@ You can define a custom label via the `label` attribute
 ```
 
 
+### Invalid with error text
+
+The `error-text` prop accepts either a simple string message, or a list of messages. If `invalid`, all of them will be displayed.
+
+<docs-demo-six-file-upload-6></docs-demo-six-file-upload-6>
+
+```html
+<six-file-upload           id="invalid-with-errors"
+  invalid
+  error-text="This is a simple string message"
+></six-file-upload>
+<script type="module">
+  const sixInput = document.getElementById('invalid-with-errors');
+  sixInput.errorText = ['File is too large', 'Message 2'];
+  sixInput.errorTextCount = 3;
+</script>
+```
+
+
+### Invalid with error slot
+
+When using the `error-text` slot, it is recommended to use the `six-error` component to wrap the error message(s). This will provide the correct styling out of the box.
+
+<docs-demo-six-file-upload-7></docs-demo-six-file-upload-7>
+
+```html
+<six-file-upload invalid="false">
+  <div slot="error-text">
+    <six-error               >An error message
+      <a href="https://github.com/six-group/six-webcomponents" target="_blank">with a link</a></six-error>
+  </div>
+</six-file-upload>
+```
+
+
 
 <!-- Auto Generated Below -->
 
 
 ## Properties
 
-| Property      | Attribute       | Description                                         | Type                  | Default     |
-| ------------- | --------------- | --------------------------------------------------- | --------------------- | ----------- |
-| `accept`      | `accept`        | Accepted MIME-Types.                                | `string \| undefined` | `undefined` |
-| `compact`     | `compact`       | Set to true if file control should be small.        | `boolean`             | `false`     |
-| `disabled`    | `disabled`      | Set when button is disabled.                        | `boolean`             | `false`     |
-| `label`       | `label`         | Label of the drop area.                             | `string \| undefined` | `undefined` |
-| `maxFileSize` | `max-file-size` | Allowed max file size in bytes.                     | `number \| undefined` | `undefined` |
-| `multiple`    | `multiple`      | More than one file allowed.                         | `boolean`             | `false`     |
-| `uploading`   | `uploading`     | Set to true to draw the control in a loading state. | `boolean`             | `false`     |
+| Property      | Attribute       | Description                                                                                                      | Type                  | Default     |
+| ------------- | --------------- | ---------------------------------------------------------------------------------------------------------------- | --------------------- | ----------- |
+| `accept`      | `accept`        | Accepted MIME-Types.                                                                                             | `string \| undefined` | `undefined` |
+| `compact`     | `compact`       | Set to true if file control should be small.                                                                     | `boolean`             | `false`     |
+| `disabled`    | `disabled`      | Set when button is disabled.                                                                                     | `boolean`             | `false`     |
+| `errorText`   | `error-text`    | The error message shown, if `invalid` is set to true.                                                            | `string \| string[]`  | `''`        |
+| `invalid`     | `invalid`       | If this property is set to true and an error message is provided by `errorText`, the error message is displayed. | `boolean`             | `false`     |
+| `label`       | `label`         | Label of the drop area.                                                                                          | `string \| undefined` | `undefined` |
+| `maxFileSize` | `max-file-size` | Allowed max file size in bytes.                                                                                  | `number \| undefined` | `undefined` |
+| `multiple`    | `multiple`      | More than one file allowed.                                                                                      | `boolean`             | `false`     |
+| `uploading`   | `uploading`     | Set to true to draw the control in a loading state.                                                              | `boolean`             | `false`     |
 
 
 ## Events
 
-| Event                     | Description                                                              | Type                                         |
-| ------------------------- | ------------------------------------------------------------------------ | -------------------------------------------- |
-| `six-file-upload-failure` | Triggers when an uploaded file doesn't match MIME type or max file size. | `CustomEvent<SixFileUploadFailurePayload>`   |
-| `six-file-upload-success` | Triggers when a file is added.                                           | `CustomEvent<IMultipleFiles \| ISingleFile>` |
+| Event                     | Description                                                              | Type                                       |
+| ------------------------- | ------------------------------------------------------------------------ | ------------------------------------------ |
+| `six-file-upload-failure` | Triggers when an uploaded file doesn't match MIME type or max file size. | `CustomEvent<SixFileUploadFailurePayload>` |
+| `six-file-upload-success` | Triggers when a file is added.                                           | `CustomEvent<SixFileUploadSuccessPayload>` |
+
+
+## Slots
+
+| Slot           | Description                                                                                                 |
+| -------------- | ----------------------------------------------------------------------------------------------------------- |
+| `"error-text"` | Error text that is shown when the status is set to invalid. Alternatively, you can use the error-text prop. |
 
 
 ## Dependencies
@@ -156,12 +201,14 @@ You can define a custom label via the `label` attribute
 
 - [six-icon](six-icon.html)
 - [six-spinner](six-spinner.html)
+- [six-error](six-error.html)
 
 ### Graph
 ```mermaid
 graph TD;
   six-file-upload --> six-icon
   six-file-upload --> six-spinner
+  six-file-upload --> six-error
   style six-file-upload fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

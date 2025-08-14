@@ -1,7 +1,11 @@
 @import 'src/global/component';
 @import '../../functional-components/form-control/form-control';
 
+/**
+ * @prop --height: The textarea height.
+ */
 :host {
+  --height: 100%;
   display: block;
 }
 
@@ -17,7 +21,10 @@
   background-color: var(--six-input-background-color);
   border: solid var(--six-border-width) var(--six-input-border-color);
   vertical-align: middle;
-  transition: var(--six-transition-fast) color, var(--six-transition-fast) border, var(--six-transition-fast) box-shadow;
+  transition:
+    var(--six-transition-fast) color,
+    var(--six-transition-fast) border,
+    var(--six-transition-fast) box-shadow;
   cursor: text;
 
   &:hover:not(.textarea--disabled) {
@@ -57,6 +64,7 @@
 
 .textarea__control {
   flex: 1 1 auto;
+  height: calc(var(--height) - 2 * var(--six-border-width));
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;

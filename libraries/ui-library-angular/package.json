@@ -1,6 +1,6 @@
 {
   "name": "@six-group/ui-library-angular",
-  "version": "4.2.2",
+  "version": "5.0.0-rc.1",
   "description": "Angular wrapper components for @six-group/ui-library",
   "private": false,
   "scripts": {
@@ -9,23 +9,24 @@
     "watch": "ng build --watch --configuration development"
   },
   "peerDependencies": {
-    "@angular/common": ">=16.0.0",
-    "@angular/core": ">=16.0.0",
-    "@angular/router": ">=16.0.0",
-    "@angular/forms": ">=16.0.0",
+    "@angular/common": ">=19.0.0",
+    "@angular/core": ">=19.0.0",
+    "@angular/router": ">=19.0.0",
+    "@angular/forms": ">=19.0.0",
     "@six-group/ui-library": "*"
   },
   "dependencies": {
     "tslib": "^2.3.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~16.2.10",
-    "@angular/cli": "~16.2.10",
-    "@angular/compiler-cli": "~16.2.12",
-    "ng-packagr": "~16.2.3"
+    "@angular-devkit/build-angular": "^19.2.15",
+    "@angular/cli": "^19.2.14",
+    "@angular/compiler-cli": "^19.2.0",
+    "ng-packagr": "^19.2.0",
+    "typescript": "~5.7.2"
   },
   "sideEffects": false,
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=22"
   }
 }

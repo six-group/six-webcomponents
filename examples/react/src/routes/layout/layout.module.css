@@ -1,0 +1,9 @@
+.layout-root {
+  display: block;
+  height: 100vh;
+}
+
+.layout-padding {
+  padding-left: var(--six-spacing-xxx-large);
+  padding-right: var(--six-spacing-xxx-large);
+}

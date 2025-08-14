@@ -29,10 +29,6 @@ $margin: 1rem;
     }
   }
 
-  &__label-icon {
-    margin-right: 0.5rem;
-  }
-
   &__drop-zone {
     padding: 2rem 0;
     display: flex;
@@ -82,5 +78,9 @@ $margin: 1rem;
 
   &--disabled &__input {
     cursor: not-allowed;
+  }
+
+  &__error-text {
+    font-size: var(--six-input-help-text-font-size-medium);
   }
 }

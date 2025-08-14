@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html dir="ltr" lang="en">
   <head>
     <meta charset="utf-8" />
@@ -117,7 +117,31 @@
           <six-menu-item value="option-3">Option 3</six-menu-item>
           <six-menu-item value="option-4">Option 4</six-menu-item>
           <six-menu-item value="option-5">Option 5</six-menu-item>
-          <six-menu-item value="option-6">Option 6 (with tooltip due to long text)</six-menu-item>
+          <six-menu-item value="option-6">Option 6 (with tooltip due to long long long long text)</six-menu-item>
+        </six-select>
+      </section>
+
+      <h3>Multiple with Icons</h3>
+      <p>With the prefix and suffix slots you can display icons in the menu items.</p>
+      <style>
+        .demo-multiple-icons six-menu-item::part(base) {
+          display: flex;
+          align-items: center;
+        }
+      </style>
+      <section class="demo demo-multiple-icons" style="width: 300px">
+        <six-select filter placeholder="Select a few" multiple clearable>
+          <six-menu-item value="option-1"
+            >Option 1
+            <six-icon-button size="small" slot="suffix" name="favorite"></six-icon-button>
+          </six-menu-item>
+          <six-menu-item value="option-2"
+            >Option 2 <six-icon-button size="small" slot="suffix" name="favorite"></six-icon-button
+          ></six-menu-item>
+          <six-menu-item value="option-3"
+            >Option 3
+            <six-icon-button size="small" slot="suffix" name="favorite"></six-icon-button>
+          </six-menu-item>
         </six-select>
       </section>
 

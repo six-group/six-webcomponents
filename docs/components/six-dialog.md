@@ -84,29 +84,41 @@ By design, a dialog's height will never exceed that of the viewport. As such, di
 ```
 
 
-### Ignoring Clicks on the Overlay
+## Preventing the Dialog from Closing
 
-By default, dialogs are closed when the user clicks or taps on the overlay. To prevent this behavior, cancel the `six-overlay-dismiss` event.
+By default, dialogs will close when the user clicks the close button, clicks the overlay, or presses the Escape key. In most cases, the default behavior is the best behavior in terms of UX. However, there are situations where this may be undesirable, such as when data loss will occur.
+
+To keep the dialog open in such cases, you can cancel the `six-dialog-request-close` event. When canceled, the dialog will remain open and pulse briefly to draw the user’s attention to it.
+
+You can use `event.detail.source` to determine what triggered the request to close. This example prevents the dialog from closing when the overlay is clicked, but allows the close button or Escape to dismiss it.
 
 <docs-demo-six-dialog-3></docs-demo-six-dialog-3>
 
 ```html
-<six-dialog label="Dialog" class="dialog-no-overlay-dismiss">
-  This dialog will not be closed when you click outside of it.
+<six-dialog label="Dialog" class="six-dialog-request-close">
+  This dialog will not be closed when you click outside, on the close button or press <kbd>Escape</kbd>.
   <six-button slot="footer" type="primary">Close</six-button>
 </six-dialog>
 
 <six-button>Open Dialog</six-button>
 
 <script type="module">
-  const dialogNoOverlay = document.querySelector('.dialog-no-overlay-dismiss');
-  const openButtonNoOverlay = dialogNoOverlay.nextElementSibling;
-  const closeButtonNoOverlay = dialogNoOverlay.querySelector('six-button[slot="footer"]');
+  const dialogNoClose = document.querySelector('.six-dialog-request-close');
+  const openButtonNoOverlay = dialogNoClose.nextElementSibling;
+  const closeButtonNoOverlay = dialogNoClose.querySelector('six-button[slot="footer"]');
 
-  openButtonNoOverlay.addEventListener('click', () => dialogNoOverlay.show());
-  closeButtonNoOverlay.addEventListener('click', () => dialogNoOverlay.hide());
+  openButtonNoOverlay.addEventListener('click', () => dialogNoClose.show());
+  closeButtonNoOverlay.addEventListener('click', () => dialogNoClose.hide());
 
-  dialogNoOverlay.addEventListener('six-dialog-overlay-dismiss', (event) => event.preventDefault());
+  dialogNoClose.addEventListener('six-dialog-request-close', (event) => {
+    if (
+      event.detail.source === 'overlay' ||
+      event.detail.source === 'close-button' ||
+      event.detail.source === 'keyboard'
+    ) {
+      event.preventDefault();
+    }
+  });
 </script>
 ```
 
@@ -157,14 +169,14 @@ By default, the dialog's panel will gain focus when opened. To set focus on a di
 
 ## Events
 
-| Event                        | Description                                                                                                                                                                                            | Type                     |
-| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------ |
-| `six-dialog-after-hide`      | Emitted after the dialog closes and all transitions are complete.                                                                                                                                      | `CustomEvent<undefined>` |
-| `six-dialog-after-show`      | Emitted after the dialog opens and all transitions are complete.                                                                                                                                       | `CustomEvent<undefined>` |
-| `six-dialog-hide`            | Emitted when the dialog closes. Calling `event.preventDefault()` will prevent it from being closed.                                                                                                    | `CustomEvent<undefined>` |
-| `six-dialog-initial-focus`   | Emitted when the dialog opens and the panel gains focus. Calling `event.preventDefault()` will prevent focus and allow you to set it on a different element in the dialog, such as an input or button. | `CustomEvent<undefined>` |
-| `six-dialog-overlay-dismiss` | Emitted when the overlay is clicked. Calling `event.preventDefault()` will prevent the dialog from closing.                                                                                            | `CustomEvent<undefined>` |
-| `six-dialog-show`            | Emitted when the dialog opens. Calling `event.preventDefault()` will prevent it from being opened.                                                                                                     | `CustomEvent<undefined>` |
+| Event                      | Description                                                                                                                                                                                                                                                                              | Type                                 |
+| -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ |
+| `six-dialog-after-hide`    | Emitted after the dialog closes and all transitions are complete.                                                                                                                                                                                                                        | `CustomEvent<undefined>`             |
+| `six-dialog-after-show`    | Emitted after the dialog opens and all transitions are complete.                                                                                                                                                                                                                         | `CustomEvent<undefined>`             |
+| `six-dialog-hide`          | Emitted when the dialog closes. Calling `event.preventDefault()` will prevent it from being closed.                                                                                                                                                                                      | `CustomEvent<undefined>`             |
+| `six-dialog-initial-focus` | Emitted when the dialog opens and the panel gains focus. Calling `event.preventDefault()` will prevent focus and allow you to set it on a different element in the dialog, such as an input or button.                                                                                   | `CustomEvent<undefined>`             |
+| `six-dialog-request-close` | Emitted when the user attempts to close the drawer by clicking the close button, clicking the overlay, or pressing escape. Calling `event.preventDefault()` will keep the drawer open. Avoid using this unless closing the drawer will result in destructive behavior such as data loss. | `CustomEvent<SixDialogRequestClose>` |
+| `six-dialog-show`          | Emitted when the dialog opens. Calling `event.preventDefault()` will prevent it from being opened.                                                                                                                                                                                       | `CustomEvent<undefined>`             |
 
 
 ## Methods

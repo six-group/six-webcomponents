@@ -7,15 +7,19 @@ on:
         description: 'The version to release. Format vx.x.x(-[rc|beta].x)'
         required: true
         type: string
+      deploy_docs:
+        description: 'Deploy Docs. Set to false for non-stable releases!'
+        default: true
+        type: boolean
 
 jobs:
   publish-release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version: 22
           registry-url: 'https://registry.npmjs.org'
           cache: 'npm'
         env:
@@ -31,10 +35,10 @@ jobs:
         run: |
           git config user.name "GitHub action"
           git config user.email "<>"
-          git checkout -b feature/${{ inputs.version }}
-          git add package*.json libraries/ui-library/package*.json libraries/ui-library-react/package*.json libraries/ui-library-vue/package*.json libraries/ui-library-angular/package*.json
+          git checkout -b release/package-updates-${{ inputs.version }}
+          git add package*.json libraries/ui-library/package*.json libraries/ui-library-vue/package*.json libraries/ui-library-angular/package*.json libraries/ui-library-react/package*.json
           git commit -m "${{ inputs.version }}"
-          git push origin feature/${{ inputs.version }}
+          git push origin release/package-updates-${{ inputs.version }}
 
       - name: 'Build project with new version'
         run: npm run build
@@ -44,8 +48,8 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
         run: |
           npm publish --tag=latest --access=public libraries/ui-library/
-          npm publish --tag=latest --access=public libraries/ui-library-react/
           npm publish --tag=latest --access=public libraries/ui-library-vue/
+          npm publish --tag=latest --access=public libraries/ui-library-react/
           npm publish --tag=latest --access=public libraries/ui-library-angular/dist/ui-library-angular/
 
       - name: 'Create tag'
@@ -54,7 +58,7 @@ jobs:
           git push origin ${{ inputs.version }}
 
       - name: 'Create Pull Request'
-        run: gh pr create -B main -H feature/${{ inputs.version }} --title 'Release ${{ inputs.version }}' --body 'Created by Github action'
+        run: gh pr create -B ${{ github.ref_name }} -H release/package-updates-${{ inputs.version }} --title 'Update package.json Versions for Release ${{ inputs.version }}' --body 'Created by Github action. Merge this Pull Request, if you created this Release from main.'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -68,7 +72,9 @@ jobs:
           body: '${{ inputs.version }}'
 
       - name: 'Deploy Documentation'
+        if: ${{ inputs.deploy_docs }}
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: docs/.vitepress/dist
-          target-folder: docs
+          # this folder needs to be kept in sync with the base property in /docs/.vitepress/config.mts
+          target-folder: docs/v5

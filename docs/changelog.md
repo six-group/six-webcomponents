@@ -10,9 +10,183 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+### Fixed
+
+- `six-timepicker`: fixed issue with value getting cleared while typing
+
+### Removed
+
 ### Changed
 
+## 5.0.0-rc.1 - 2025-07-10
+
+### Added
+
+- **⚠️Experimental**: Bringing back the support for React output target.
+- **⚠️Experimental**: Added example React app with Vite.
+- **⚠️Experimental**: Added example Nuxt app with Client Side Rendering (CSR).
+- **⚠️Experimental**: Added the `six-date` component, intended to eventually replace the
+  `six-datepicker`.
+
+- [Documentation](guide/angular.md) for using web components with Angular's standalone bootstrapping
+- `ActiveSidebarItemGroupDirective` and `ActiveSidebarItemDirective`: Added optional angular sidebar
+  helper directives. See the [Angular guide](guide/angular.md) for more information.
+- Added nested sidebar menu to the angular demo application to showcase the helper directives
+- `six-header-dropdown`: Added `filter` and `filterPlaceholder` properties.
+- `six-header-menu-button`: Added `caret`, `disabled`, `loading`, `submit` and `reset` properties.
+- `six-header-menu-button`: Added `suffix` and `prefix` slots.
+- `six-sidebar-item` : added icon property analog to `six-sidebar-item-group`
+- `six-select` : support the use of prefix/suffix slot of the `six-menu-item` to display icons.
+- Added support for aria-attributes in JSX typings through upgrade of an underlying library
+- When enabled, added automatic `required` flag on input components using `FormControl` and
+  `Validators.required` on Angular. See
+  [docs](./guide/angular.md#automatic-required-when-using-formcontrol-and-validatorsrequired) for
+  more details.
+- `six-file-upload`: added `code` attribute to `SixFileUploadFailurePayload`, which specifies the
+  type of error that has occurred
+- New `six-rating` form component
+
 ### Fixed
+
+- `six-logo`: removed inline style tag
+- `six-timepicker`: removed unnecessary bottom padding
+- `six-button` : simplify use of prefix and suffix icons
+- `six-sidebar-item-group`: fixed spacing for subitems
+- Vue `v-model` issue through an update of the underlying library
+- `six-tab` animation smoothing when using left / right layout
+
+### Removed
+
+- **⚠️Breaking**: Removed most slots, properties and events on the `six-header` component. Replaced
+  with a flexible approach for customization, allowing the header to be composed modularly using
+  child elements such as `six-header-item`, `six-header-dropdown-item`, `six-header-menu-button`,
+  and `six-logo`. Check the [upgrade guide](guide/upgrade-v5.md) for detailed instructions.
+- **⚠️Breaking**: Removed the previously deprecated `reposition()` method of the `six-dropdown`
+  component. You can use the `matchTriggerWidth` property instead.
+- **⚠️Breaking**: Removed the previously deprecated tag `maxTagsVisible` of the `six-select`
+  component.
+
+### Changed
+
+- **⚠️Breaking**: Upgraded Angular support to version 19. Please upgrade your application to version
+  19 or higher.
+- **⚠️Breaking**: Upgraded library to Node 22. The SIX Webcomponents cannot be used with Node 16 or
+  18 or 20 anymore. Please upgrade to Node 22.
+- **⚠️Breaking**: `six-file-upload` on upload success now returns a `FileList` regardless of the
+  value of the `multiple` property
+- **⚠️Breaking**: `six-drawer`: replaced the `six-drawer-overlay-dismiss` event with
+  `six-drawer-request-close`, which allows preventing the drawer from closing not only when clicking
+  the overlay but also when clicking the close button or pressing `Escape`.
+- **⚠️Breaking**: `six-dialog`: replaced the `six-dialog-overlay-dismiss` event with
+  `six-dialog-request-close`, which allows preventing the dialog from closing not only when clicking
+  the overlay but also when clicking the close button or pressing `Escape`.
+- Upgraded Angular Demo App to version 20. Rewritten with
+  [standalone bootstrapping](https://angular.dev/reference/migrations/standalone#switch-to-standalone-bootstrapping-api),
+  signals, new template syntax, etc.
+
+## 4.3.2 - 2025-02-13
+
+No changes in functionality, but changed release creation workflow, that makes sure, that deployed
+documentation reflects the latest stable release.
+
+## 4.3.1 - 2025-01-09
+
+⚠️ This will be the last release under major version 4. The next release will be version 5. ⚠️
+
+### Added
+
+- The `six-spinner` component now supports the BME logo as a spinner option.
+
+### Deprecated
+
+- The `six` prop on the `six-spinner` component is now deprecated. Use the `logo` prop instead,
+  which allows specifying either **six** or **bme** as its value.
+
+## 4.3.0 - 2024-12-11
+
+### Added
+
+- The `six-header` component now offers a flexible approach for customization, allowing the header
+  to be composed in a more modular way using child elements such as `six-header-item`,
+  `six-header-dropdown-item`, `six-header-menu-button`, and `six-logo`.
+- Added `six-logo` component to display the SIX- or BME-logo anywhere, not just within the
+  `six-header` component.
+
+### Deprecated
+
+- Most slots, properties and events on the `six-header` component are now deprecated and will be
+  removed in one of the next releases.
+
+### Removed
+
+- **Breaking**: Temporarily removed React support to unblock dependency updates.
+
+  React no longer works with the latest Stencil output target, which is preventing us from updating
+  our dependencies to their latest versions. Since the team currently lacks the resources to fix
+  this issue, we're removing React support temporarily to prevent it from hindering progress.
+
+### Changed
+
+- Updated dependencies and cleaned up test config.
+
+### Fixed
+
+- Fixed mermaid diagrams in component documentation.
+- `six-file-upload`: handleFiles is called twice when a file is dropped.
+- Improved accessibility of `six-sidebar-item` `six-sidebar-item-group` `six-button` and
+  `six-icon-button`.
+
+## 4.2.6 - 2024-10-04
+
+### Fixed
+
+- `six-select`: fix displaying label instead of value in autocomplete mode
+- `six-select`: show dropdown after the value is cleared
+- `six-select`: fix multiple checkmark bug for single select mode
+- `six-input`: fix disabled input being clearable
+
+## 4.2.5 - 2024-09-12
+
+### Added
+
+- `six-textarea`: added CSS variable `--height` to set the initial height of the textarea component
+- `six-input`: new method `getSelectionRange` which exposes the cursor position from the wrapped
+  `input` element
+
+### Fixed
+
+- `six-input`: fix auto size issues for type=number
+- `six-menu`: last item gets partially cut off when using virtual-scroll
+- `six-menu`: overflow when using virtual-scroll and autocomplete
+
+## 4.2.4 - 2024-07-04
+
+### Fixed
+
+- select change event fires twice
+- font-size for six-error
+
+## 4.2.3 - 2024-06-24
+
+### Added
+
+- Added `action-outline` value for `type` property of button
+- Added part to header to allow customization from outside the component.
+- `invalid` and `error-text` properties added to `six-file-upload`
+- `active-tab-indicator` part for the indicator in the six-tab component
+- ability to choose between the six- and the bme-logo in the header with the attribute `logo`.
+
+### Changed
+
+- Upgrade project to internally build with Node18
+
+### Fixed
+
+- `six-select` not rendering when multiple is enabled and value is set to [null]
+- `six-datepicker` can have an invalid value after blur
+- `six-error` examples not showing in the docs
+- Fire blur event when leaving multiselect component
+- Apply the debounce property from the date-picker to the time-picker
 
 ## 4.2.2 - 2024-03-28
 

@@ -554,22 +554,23 @@ export class SixDatepicker {
   };
 
   private handleOnBlur = (event: Event) => {
+    event.stopPropagation();
+
     // clear the value if the user deleted the date
     if (this.inputElement?.value === '' && isValidDate(this.value)) {
       this.value = undefined;
       this.sixSelect.emit(this.value);
     }
 
-    event.stopPropagation();
-    const inputValue = this.inputElement?.value;
-    const inputValueDate = toDate(inputValue, this.dateFormat);
-    const formattedDate = formatDate(this.value, this.dateFormat);
-
-    if (this.inputElement != null && inputValueDate != null && inputValue !== formattedDate) {
-      // properly format date if necessary
-      this.inputElement.value = formattedDate;
+    const currentDate = toDate(this.inputElement?.value, this.dateFormat);
+    if (isValidDate(currentDate) && this.value?.getTime() !== currentDate?.getTime()) {
+      // Set the value if the input field's value has changed. This can happen if the blur occurs
+      // before the change event had a chance to fire due to its debouncing.
+      this.value = currentDate;
     }
-
+    if (this.inputElement != null) {
+      this.inputElement.value = formatDate(this.value, this.dateFormat);
+    }
     this.sixBlur.emit(this.value);
   };
 
@@ -766,6 +767,7 @@ export class SixDatepicker {
             {this.renderBody()}
             {this.type === 'date-time' && (
               <six-timepicker
+                debounce={this.debounce}
                 inline={true}
                 onSix-timepicker-change-debounced={(event) => this.onTimepickerChange(event)}
                 value={

@@ -27,7 +27,9 @@
   color: var(--six-color-web-rock-700);
   opacity: 0;
   transform: scale(0.9);
-  transition: var(--six-transition-medium) opacity ease, var(--six-transition-medium) transform ease;
+  transition:
+    var(--six-transition-medium) opacity ease,
+    var(--six-transition-medium) transform ease;
   margin: inherit;
 
   &:not(.alert--visible) {

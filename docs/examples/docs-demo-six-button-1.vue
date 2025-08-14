@@ -8,6 +8,7 @@
         <six-button type="warning">Warning</six-button>
         <six-button type="danger">Danger</six-button>
         <six-button type="action">Action</six-button>
+        <six-button type="action-outline">Action Outline</six-button>
       
 </div>
 </template>

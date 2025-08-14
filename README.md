@@ -7,6 +7,13 @@ Please find the deployed documentation listing all components [here](https://six
 
 Please find the changelog for the webcomponents [here](docs/changelog.md).
 
+| Project               | Package                                                                                        | Version                                                                                                                                          | Documentation                                      |
+| --------------------- | ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------- |
+| UI Library            | [`@six-group/ui-library`](https://www.npmjs.com/package/@six-group/ui-library)                 | [![version](https://img.shields.io/npm/v/@six-group/ui-library/latest.svg)](https://www.npmjs.com/package/@six-group/ui-library)                 | [README](./libraries/ui-library/README.md)         |
+| React Output Target   | [`@six-group/ui-library-react`](https://www.npmjs.com/package/@six-group/ui-library-react)     | [![version](https://img.shields.io/npm/v/@six-group/ui-library-react/latest.svg)](https://www.npmjs.com/package/@six-group/ui-library-react)     | [README](./libraries/ui-library-react/README.md)   |
+| Angular Output Target | [`@six-group/ui-library-angular`](https://www.npmjs.com/package/@six-group/ui-library-angular) | [![version](https://img.shields.io/npm/v/@six-group/ui-library-angular/latest.svg)](https://www.npmjs.com/package/@six-group/ui-library-angular) | [README](./libraries/ui-library-angular/README.md) |
+| Vue Output Target     | [`@six-group/ui-library-vue`](https://www.npmjs.com/package/@six-group/ui-library-vue)         | [![version](https://img.shields.io/npm/v/@six-group/ui-library-vue/latest.svg)](https://www.npmjs.com/package/@six-group/ui-library-vue)         | [README](./libraries/ui-library-vue/README.md)     |
+
 ## Links
 
 - [Documentation](https://six-group.github.io/six-webcomponents/)
@@ -25,7 +32,7 @@ Thank you to all the people who already contributed to the Six-Webcomponents!
 
 ## Examples
 
-There are example apps for Angular, Plain Javascript and Vue. You can find them in the `examples` directory.
+There are example apps for Angular, Plain Javascript, Vue and React. You can find them in the `examples` directory.
 
 ## Structure
 
@@ -38,6 +45,8 @@ There are example apps for Angular, Plain Javascript and Vue. You can find them 
 | `examples/angular`             | Angular demo app showing some components and features of the ui-library  |
 | `examples/js`                  | Plain JS demo app showing some components and features the of ui-library |
 | `examples/vue`                 | Vue demo app showing some components and features of the ui-library      |
+| `examples/react`               | React demo app showing some components and features of the ui-library    |
+| `examples/nuxt`                | Nuxt demo app showing some components and features of the ui-library     |
 | `docs`                         | API documentation built with VitePress                                   |
 
 ## Credits

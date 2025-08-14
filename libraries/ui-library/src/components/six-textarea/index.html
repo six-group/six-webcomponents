@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html dir="ltr" lang="en">
   <head>
     <meta charset="utf-8" />
@@ -81,6 +81,21 @@
       </p>
       <section class="demo" style="width: 300px">
         <six-textarea resize="auto"></six-textarea>
+      </section>
+
+      <h3>Custom Height</h3>
+      <p>Use the css property <code>--height</code> to set a fixed initial height of six-textarea</p>
+      <section class="demo" style="width: 300px">
+        <six-textarea style="--height: 150px"></six-textarea>
+      </section>
+
+      <p>
+        With <code>rows=1</code> and <code>--height</code> set to a six css height variable the height matches other six
+        inputs
+      </p>
+      <section class="demo" style="width: 600px; display: grid; grid-template-columns: 200px 200px; gap: 10px">
+        <six-textarea rows="1" style="--height: var(--six-height-medium)"></six-textarea>
+        <six-input></six-input>
       </section>
 
       <h2>Events Discalimer</h2>

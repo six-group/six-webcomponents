@@ -1,11 +1,9 @@
 <template>
 <div>
 
-        <six-icon-button name="edit" label="Edit" size="xSmall"></six-icon-button>
-        <six-icon-button name="edit" label="Edit" size="small"></six-icon-button>
-        <six-icon-button name="edit" label="Edit" size="medium"></six-icon-button>
-        <six-icon-button name="edit" label="Edit" size="large"></six-icon-button>
-        <six-icon-button name="edit" label="Edit" size="xLarge"></six-icon-button>
+        <six-icon-button name="settings" label="Settings"></six-icon-button>
+        <six-icon-button name="tune" label="Options"></six-icon-button>
+        <six-icon-button name="cancel" label="Close"></six-icon-button>
       
 </div>
 </template>

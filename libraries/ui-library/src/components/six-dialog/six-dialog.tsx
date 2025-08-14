@@ -3,6 +3,11 @@ import { lockBodyScrolling, unlockBodyScrolling } from '../../utils/scroll';
 import { hasSlot } from '../../utils/slot';
 import Modal from '../../utils/modal';
 import { EmptyPayload } from '../../utils/types';
+import { animateTo } from '../../utils/animation';
+
+export interface SixDialogRequestClose {
+  source: 'close-button' | 'keyboard' | 'overlay';
+}
 
 let id = 0;
 
@@ -82,8 +87,12 @@ export class SixDialog {
    */
   @Event({ eventName: 'six-dialog-initial-focus' }) sixInitialFocus!: EventEmitter<EmptyPayload>;
 
-  /** Emitted when the overlay is clicked. Calling `event.preventDefault()` will prevent the dialog from closing. */
-  @Event({ eventName: 'six-dialog-overlay-dismiss' }) sixOverlayDismiss!: EventEmitter<EmptyPayload>;
+  /**
+   * Emitted when the user attempts to close the drawer by clicking the close button, clicking the overlay, or
+   * pressing escape. Calling `event.preventDefault()` will keep the drawer open. Avoid using this unless closing
+   * the drawer will result in destructive behavior such as data loss.
+   */
+  @Event({ eventName: 'six-dialog-request-close' }) sixRequestClose!: EventEmitter<SixDialogRequestClose>;
 
   connectedCallback() {
     this.modal = new Modal(this.host, {
@@ -158,22 +167,29 @@ export class SixDialog {
   }
 
   private handleCloseClick = () => {
-    this.hide();
+    this.preventClose('close-button');
   };
 
   private handleKeyDown = (event: KeyboardEvent) => {
     if (event.key === 'Escape') {
-      this.hide();
+      this.preventClose('keyboard');
     }
   };
 
   private handleOverlayClick = () => {
-    const sixOverlayDismiss = this.sixOverlayDismiss.emit();
-
-    if (!sixOverlayDismiss.defaultPrevented) {
-      this.hide();
-    }
+    this.preventClose('overlay');
   };
+
+  private preventClose(source: 'close-button' | 'keyboard' | 'overlay') {
+    const sixRequestClose = this.sixRequestClose.emit({ source });
+
+    if (sixRequestClose.defaultPrevented && this.panel) {
+      animateTo(this.panel, [{ scale: 1 }, { scale: 1.01 }, { scale: 1 }], { duration: 250 });
+      return;
+    }
+
+    this.hide();
+  }
 
   private handleSlotChange = () => {
     this.hasFooter = hasSlot(this.host, 'footer');

@@ -4,29 +4,25 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --base-href /six-webcomponents/demo/angular/",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "build": "ng build --base-href /six-webcomponents/v5/demo/angular/"
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~16.2.12",
-    "@angular/common": "~16.2.12",
-    "@angular/compiler": "~16.2.12",
-    "@angular/core": "~16.2.12",
-    "@angular/forms": "~16.2.12",
-    "@angular/platform-browser": "~16.2.12",
-    "@angular/platform-browser-dynamic": "~16.2.12",
-    "@angular/router": "~16.2.12",
-    "@six-group/ui-library": "*",
-    "@six-group/ui-library-angular": "*",
-    "date-fns": "^2.30.0",
+    "@angular/common": "^20.0.0",
+    "@angular/compiler": "^20.0.0",
+    "@angular/core": "^20.0.0",
+    "@angular/forms": "^20.0.0",
+    "@angular/platform-browser": "^20.0.0",
+    "@angular/router": "^20.0.0",
+    "rxjs": "~7.8.2",
     "tslib": "^2.3.0",
-    "zone.js": "~0.13.3"
+    "@six-group/ui-library": "*",
+    "@six-group/ui-library-angular": "*"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~16.2.10",
-    "@angular/cli": "~16.2.10",
-    "@angular/compiler-cli": "~16.2.12"
+    "@angular/build": "^20.0.2",
+    "@angular/cli": "^20.0.2",
+    "@angular/compiler-cli": "^20.0.0",
+    "typescript": "~5.8.2"
   }
 }

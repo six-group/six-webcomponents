@@ -3,11 +3,15 @@
 
         <six-sidebar position="left" width="20rem" open>
           <six-sidebar-item-group icon="description" name="Upload" value="upload">
-            <six-sidebar-item value="data" disabled="true">Data</six-sidebar-item>
-            <six-sidebar-item value="history">History</six-sidebar-item>
+            <six-sidebar-item value="data" icon="analytics" disabled="true">Data</six-sidebar-item>
+            <six-sidebar-item value="history" icon="history">History</six-sidebar-item>
             <six-sidebar-item-group icon="settings" name="Settings">
-              <six-sidebar-item value="data" selected>Data</six-sidebar-item>
-              <six-sidebar-item value="history">History</six-sidebar-item>
+              <six-sidebar-item value="settingA" selected>Setting A</six-sidebar-item>
+              <six-sidebar-item value="settingB">Setting B</six-sidebar-item>
+              <six-sidebar-item-group icon="settings" name="Nested Settings">
+                <six-sidebar-item value="sectionA" selected>Section A</six-sidebar-item>
+                <six-sidebar-item value="sectionB">Section B</six-sidebar-item>
+              </six-sidebar-item-group>
             </six-sidebar-item-group>
           </six-sidebar-item-group>
           <six-sidebar-item-group             icon="task"

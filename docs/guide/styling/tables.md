@@ -12,7 +12,7 @@ implementation. If your application depends on tables, you have the following op
 ### Plain HTML
 
 ```scss
-table.sic-table {
+table.six-table {
   width: 100%;
   border-collapse: collapse;
   font-size: var(--six-font-size-small);

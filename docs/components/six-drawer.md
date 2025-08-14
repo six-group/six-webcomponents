@@ -208,15 +208,19 @@ By design, a drawer's height will never exceed 100% of its container. As such, d
 ```
 
 
-## Ignoring Clicks on the Overlay
+## Preventing the Drawer from Closing
 
-By default, drawers are closed when the user clicks or taps on the overlay. To prevent this behavior, cancel the `six-overlay-dismiss` event.
+By default, drawers will close when the user clicks the close button, clicks the overlay, or presses the Escape key. In most cases, the default behavior is the best behavior in terms of UX. However, there are situations where this may be undesirable, such as when data loss will occur.
+
+To keep the drawer open in such cases, you can cancel the `six-drawer-request-close` event. When canceled, the drawer will remain open and pulse briefly to draw the user’s attention to it.
+
+You can use `event.detail.source` to determine what triggered the request to close. This example prevents the drawer from closing when the overlay is clicked, but allows the close button or Escape to dismiss it.
 
 <docs-demo-six-drawer-7></docs-demo-six-drawer-7>
 
 ```html
-<six-drawer label="Drawer" class="drawer-no-overlay-dismiss">
-  This drawer will not be closed when you click outside of it.
+<six-drawer label="Drawer" class="six-drawer-request-close">
+  This drawer will not be closed when you click outside, on the close button or press <kbd>Escape</kbd>.
   <six-button slot="footer">Close</six-button>
 </six-drawer>
 
@@ -224,14 +228,22 @@ By default, drawers are closed when the user clicks or taps on the overlay. To p
 
 <script type="module">
   (() => {
-    let drawer = document.querySelector('.drawer-no-overlay-dismiss');
+    let drawer = document.querySelector('.six-drawer-request-close');
     let openButton = drawer.nextElementSibling;
     let closeButton = drawer.querySelector('six-button');
 
     openButton.addEventListener('click', () => drawer.show());
     closeButton.addEventListener('click', () => drawer.hide());
 
-    drawer.addEventListener('six-drawer-overlay-dismiss', (event) => event.preventDefault());
+    drawer.addEventListener('six-drawer-request-close', (event) => {
+      if (
+        event.detail.source === 'overlay' ||
+        event.detail.source === 'close-button' ||
+        event.detail.source === 'keyboard'
+      ) {
+        event.preventDefault();
+      }
+    });
   })();
 </script>
 ```
@@ -287,14 +299,14 @@ By default, the drawer's panel will gain focus when opened. To set focus on a di
 
 ## Events
 
-| Event                        | Description                                                                                                                                                                                            | Type                     |
-| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------ |
-| `six-drawer-after-hide`      | Emitted after the drawer closes and all transitions are complete.                                                                                                                                      | `CustomEvent<undefined>` |
-| `six-drawer-after-show`      | Emitted after the drawer opens and all transitions are complete.                                                                                                                                       | `CustomEvent<undefined>` |
-| `six-drawer-hide`            | Emitted when the drawer closes. Calling `event.preventDefault()` will prevent it from being closed.                                                                                                    | `CustomEvent<undefined>` |
-| `six-drawer-initial-focus`   | Emitted when the drawer opens and the panel gains focus. Calling `event.preventDefault()` will prevent focus and allow you to set it on a different element in the drawer, such as an input or button. | `CustomEvent<undefined>` |
-| `six-drawer-overlay-dismiss` | Emitted when the overlay is clicked. Calling `event.preventDefault()` will prevent the drawer from closing.                                                                                            | `CustomEvent<undefined>` |
-| `six-drawer-show`            | Emitted when the drawer opens. Calling `event.preventDefault()` will prevent it from being opened.                                                                                                     | `CustomEvent<undefined>` |
+| Event                      | Description                                                                                                                                                                                                                                                                              | Type                                 |
+| -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ |
+| `six-drawer-after-hide`    | Emitted after the drawer closes and all transitions are complete.                                                                                                                                                                                                                        | `CustomEvent<undefined>`             |
+| `six-drawer-after-show`    | Emitted after the drawer opens and all transitions are complete.                                                                                                                                                                                                                         | `CustomEvent<undefined>`             |
+| `six-drawer-hide`          | Emitted when the drawer closes. Calling `event.preventDefault()` will prevent it from being closed.                                                                                                                                                                                      | `CustomEvent<undefined>`             |
+| `six-drawer-initial-focus` | Emitted when the drawer opens and the panel gains focus. Calling `event.preventDefault()` will prevent focus and allow you to set it on a different element in the drawer, such as an input or button.                                                                                   | `CustomEvent<undefined>`             |
+| `six-drawer-request-close` | Emitted when the user attempts to close the drawer by clicking the close button, clicking the overlay, or pressing escape. Calling `event.preventDefault()` will keep the drawer open. Avoid using this unless closing the drawer will result in destructive behavior such as data loss. | `CustomEvent<SixDrawerRequestClose>` |
+| `six-drawer-show`          | Emitted when the drawer opens. Calling `event.preventDefault()` will prevent it from being opened.                                                                                                                                                                                       | `CustomEvent<undefined>`             |
 
 
 ## Methods

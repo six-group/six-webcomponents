@@ -36,8 +36,15 @@ export class SixButton {
   @State() hasSuffix = false;
 
   /** The button's type. */
-  @Prop({ reflect: true }) type: 'secondary' | 'primary' | 'link' | 'success' | 'warning' | 'danger' | 'action' =
-    'primary';
+  @Prop({ reflect: true }) type:
+    | 'secondary'
+    | 'primary'
+    | 'link'
+    | 'success'
+    | 'warning'
+    | 'danger'
+    | 'action'
+    | 'action-outline' = 'primary';
 
   /** The button's size. */
   @Prop({ reflect: true }) size: 'small' | 'medium' | 'large' = 'medium';
@@ -104,7 +111,28 @@ export class SixButton {
     this.hasLabel = hasSlot(this.host);
     this.hasPrefix = hasSlot(this.host, 'prefix');
     this.hasSuffix = hasSlot(this.host, 'suffix');
+
+    // set the correct icon size for suffix and prefix icons
+    const prefixIcon = this.host.querySelector('[slot="prefix"]');
+    const suffixIcon = this.host.querySelector('[slot="suffix"]');
+
+    if (prefixIcon?.tagName.toLowerCase() === 'six-icon') {
+      prefixIcon.setAttribute('size', this.mapSizeToIconSize(this.size));
+    }
+
+    if (suffixIcon?.tagName.toLowerCase() === 'six-icon') {
+      suffixIcon.setAttribute('size', this.mapSizeToIconSize(this.size));
+    }
   };
+
+  private mapSizeToIconSize(buttonSize: 'small' | 'medium' | 'large'): string {
+    const sizeMap = {
+      small: 'xSmall',
+      medium: 'small',
+      large: 'medium',
+    };
+    return sizeMap[buttonSize] || 'small'; // Default to small
+  }
 
   private handleBlur = () => {
     this.hasFocus = false;
@@ -150,6 +178,7 @@ export class SixButton {
             'button--warning': this.type === 'warning',
             'button--danger': this.type === 'danger',
             'button--action': this.type === 'action',
+            'button--action-outline': this.type === 'action-outline',
 
             // Sizes
             'button--small': this.size === 'small',

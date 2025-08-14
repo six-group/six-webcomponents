@@ -3,7 +3,7 @@ import type { SixFileUploadSuccessPayload } from '@six-group/ui-library';
 import {
   SixButton,
   SixCheckbox,
-  SixDatepicker,
+  SixDate,
   SixFileUpload,
   SixInput,
   SixLayoutGrid,
@@ -26,7 +26,7 @@ const radioValues = ref(['Option 1', 'Option 2', 'Option 3', 'Option 4']);
 const radioValue = ref<string | undefined>('Option 3');
 const selectValues = ref(['Option 1', 'Option 2', 'Option 3', 'Option 4']);
 const selectValue = ref<string | undefined>('Option 2');
-const datepickerValue = ref<Date>(new Date());
+const dateValue = ref<string>('2025-01-01');
 const file = ref('');
 const uploading = ref(false);
 
@@ -34,7 +34,7 @@ const invalid = ref(false);
 const disabled = ref(false);
 
 const onFileSelected = async (event: CustomEvent<SixFileUploadSuccessPayload>) => {
-  const selectedfile = (event.detail as { file: File }).file;
+  const selectedfile = (event.detail as SixFileUploadSuccessPayload).files[0];
   file.value = selectedfile.name;
   uploading.value = true;
   // simulate the uploading operation
@@ -122,13 +122,8 @@ const onFileSelected = async (event: CustomEvent<SixFileUploadSuccessPayload>) =
     </six-select>
     <pre>Value: {{ selectValue }}</pre>
 
-    <six-datepicker
-      v-model="datepickerValue"
-      :disabled="disabled"
-      :invalid="invalid"
-      error-text="Datepicker Error"
-    ></six-datepicker>
-    <pre>Value: {{ datepickerValue }}</pre>
+    <six-date v-model="dateValue" :disabled="disabled" :invalid="invalid" error-text="Datepicker Error"></six-date>
+    <pre>Value: {{ dateValue }}</pre>
 
     <six-group-label label="File Upload">
       <six-file-upload :uploading="uploading" @six-file-upload-success="onFileSelected"></six-file-upload>

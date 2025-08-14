@@ -43,6 +43,22 @@
   &:hover:not(.tab--disabled) {
     color: var(--six-tab-color-hover);
   }
+
+  &.tab--left,
+  &.tab--right {
+    display: inline-block;
+    text-align: left;
+  }
+
+  &.tab--left::before,
+  &.tab--right::before {
+    display: block;
+    font-weight: var(--six-font-weight-bold);
+    content: attr(title);
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+  }
 }
 
 .tab__close-button {

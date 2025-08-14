@@ -1,4 +1,5 @@
-@import '~material-icons/iconfont/material-icons.css';
+@import '~@fontsource/material-icons/latin.css';
+@import '~@fontsource/material-icons-outlined/latin.css';
 @import '~@fontsource/noto-sans/latin.css';
 @import 'base/colors.css';
 @import 'base/typography.css';
@@ -60,6 +61,7 @@ body > div.container {
   --six-z-index-search-field: 500;
   --six-z-index-drawer: 600;
   --six-z-index-dropdown: 700;
+  --six-z-index-date: var(--six-z-index-dropdown);
   --six-z-index-toast: 800;
   --six-z-index-tooltip: 900;
   --six-z-index-dialog: 1000;
@@ -168,6 +170,8 @@ body > div.container {
   --six-header-border-color-open: var(--six-color-web-rock-900);
   --six-header-border-with: 1px;
   --six-header-selected-app-color-hover: var(--six-color-web-rock-600);
+  --six-header-height: 3.75rem;
+  --six-header-border-height: var(--six-spacing-xx-small);
 
   --six-menu-divider-color: var(--six-color-clay-50);
   --six-menu-item-background-color: var(--six-color-clay-50);
@@ -187,6 +191,10 @@ body > div.container {
   --six-tab-border-color: var(--six-color-white);
   --six-tab-border-width: 3px;
   --six-tab-border-color-active: var(--six-color-web-rock-900);
+
+  --six-rating-color: var(--six-color-web-rock-500);
+  --six-rating-color-active: var(--six-color-success-600);
+  --six-rating-color-disabled-opacity: 0.4;
 }
 
 [hidden] {

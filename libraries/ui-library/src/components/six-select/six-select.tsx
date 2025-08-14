@@ -1,11 +1,12 @@
 import { Component, Element, Event, EventEmitter, h, Method, Prop, State, Watch } from '@stencil/core';
-import { getTextContent, hasSlot } from '../../utils/slot';
+import { getSlot, getTextContent, hasSlot } from '../../utils/slot';
 import FormControl from '../../functional-components/form-control/form-control';
 import { EmptyPayload } from '../../utils/types';
 import { EventListeners } from '../../utils/event-listeners';
 import { debounce, DEFAULT_DEBOUNCE_FAST } from '../../utils/execution-control';
 import { SixMenuItemData } from '../six-menu/six-menu';
 import { getLanguage } from '../../utils/error-messages';
+import { convertToValidArrayValue, convertToValidValue, valueEquals } from './util';
 
 export interface SixSelectChangePayload {
   value: string | string[];
@@ -78,14 +79,6 @@ export class SixSelect {
    * Custom text for the "select all" button. Defaults to "Select all" and equivalents in supported languages.
    */
   @Prop() selectAllText?: string;
-
-  /**
-   * The maximum number of tags to show when `multiple` is true. After the maximum, "+n" will be shown to indicate the
-   * number of additional items that are selected. Set to -1 to remove the limit.
-   *
-   * @deprecated: This property is ignored. The component now displays as many items as possible and computes the "+n" dynamically.
-   */
-  @Prop() maxTagsVisible = 3;
 
   /** Set to true to disable the select control. */
   @Prop() disabled = false;
@@ -182,20 +175,15 @@ export class SixSelect {
 
   @Watch('multiple')
   handleMultipleChange() {
-    // Cast to array | string based on `this.multiple`
-    const value = this.getValueAsArray();
-    this.value = this.multiple ? value : value[0] || '';
+    this.value = convertToValidValue(this.value, this.multiple);
     this.syncItemsFromValue();
   }
 
   @Watch('value')
   async handleValueChange() {
-    if (this.multiple && !Array.isArray(this.value)) {
-      this.value = [];
-    }
-
-    if (!this.multiple && typeof this.value !== 'string') {
-      this.value = '';
+    const newValue = convertToValidValue(this.value, this.multiple);
+    if (!valueEquals(this.value, newValue)) {
+      this.value = newValue;
     }
     await this.syncItemsFromValue();
   }
@@ -213,18 +201,25 @@ export class SixSelect {
     if (this.virtualScroll && this.options === null) {
       console.error('Options must be defined when using virtual scrolling');
     }
-    this.init();
-  }
 
-  componentWillLoad() {
-    this.handleSlotChange();
-    if (this.multiple && this.value != null) {
-      this.value = this.getValueAsArray();
+    this.host.shadowRoot?.addEventListener('slotchange', this.handleSlotChange);
+    this.eventListeners.forward('six-select-change', 'change', this.host);
+    this.eventListeners.forward('six-select-blur', 'blur', this.host);
+    this.eventListeners.forward('six-select-focus', 'focus', this.host);
+    if (this.displayValuesContainer) {
+      this.resizeObserver.observe(this.displayValuesContainer);
     }
   }
 
+  componentWillLoad() {
+    this.value = convertToValidValue(this.value, this.multiple);
+    this.handleSlotChange();
+  }
+
   componentDidLoad() {
-    this.init();
+    if (this.displayValuesContainer) {
+      this.resizeObserver.observe(this.displayValuesContainer);
+    }
 
     // We need to do an initial sync after the component has rendered, so this will suppress the re-render warning
     requestAnimationFrame(() => this.syncItemsFromValue());
@@ -238,9 +233,15 @@ export class SixSelect {
           this.value = autocompleteInput.value;
           this.sixChange.emit({ value: this.value, isSelected: false });
           event.stopPropagation();
+
+          if (this.virtualScroll || this.value.length > 0) {
+            this.dropdown?.show();
+          }
         }, this.inputDebounce)
       );
-      autocompleteInput.value = Array.isArray(this.value) ? this.value.join(',') : this.value;
+
+      const selectedLabel = this.displayedValues.join(', ');
+      autocompleteInput.value = selectedLabel;
     }
   }
 
@@ -257,16 +258,6 @@ export class SixSelect {
     this.box?.focus(options);
   }
 
-  private init() {
-    this.host.shadowRoot?.addEventListener('slotchange', this.handleSlotChange);
-    this.eventListeners.forward('six-select-change', 'change', this.host);
-    this.eventListeners.forward('six-select-blur', 'blur', this.host);
-    this.eventListeners.forward('six-select-focus', 'focus', this.host);
-    if (this.displayValuesContainer) {
-      this.resizeObserver.observe(this.displayValuesContainer);
-    }
-  }
-
   private getItemLabel(item: HTMLSixMenuItemElement): string {
     const slot = item.shadowRoot?.querySelector('slot:not([name])') as HTMLSlotElement;
     if (slot != null) {
@@ -275,6 +266,19 @@ export class SixSelect {
       // bugfix/COMSLI-203-six-select-value-is-not-updated-if-the-slot-is-changed
       return item.textContent ?? '';
     }
+  }
+
+  private getSlottedItem(item: HTMLSixMenuItemElement, slotName: 'prefix' | 'suffix') {
+    const slottedElement = getSlot(item, slotName);
+    if (slottedElement == null) {
+      return null;
+    }
+    const attributes = Object.fromEntries([...slottedElement.attributes].map((attr) => [attr.name, attr.value]));
+
+    return h(slottedElement.tagName.toLowerCase(), {
+      ...attributes,
+      innerHTML: slottedElement.innerHTML,
+    });
   }
 
   private getItems(): HTMLSixMenuItemElement[] {
@@ -295,12 +299,6 @@ export class SixSelect {
     return [...(this.host.shadowRoot?.querySelectorAll('six-menu-item') || [])];
   }
 
-  private getValueAsArray() {
-    const values = Array.isArray(this.value) ? this.value : this.value === '' ? [] : [this.value];
-    // enforce that the values are converted to 'string' before the value is compared
-    return values.map(String);
-  }
-
   private handleBlur = () => {
     this.hasFocus = false;
     this.sixBlur.emit();
@@ -314,7 +312,8 @@ export class SixSelect {
   private handleClearClick = async (event: MouseEvent) => {
     event.stopPropagation();
     await this.clearValues();
-    await this.dropdown?.hide();
+    await this.dropdown?.show();
+    await this.setFocus();
     this.sixChange.emit({ value: this.value, isSelected: true });
   };
 
@@ -429,13 +428,13 @@ export class SixSelect {
     }
     this.activeItemIndex = -1;
 
-    // reset display style of main items
-    const mainItems = this.getItems();
-    mainItems.forEach((item) => (item.style.display = 'unset'));
-
-    // show selected menu items in the selection container and hide them in the main container
-    const checkedItems = getCheckedItems(this.getValueAsArray(), mainItems);
     if (!this.virtualScroll && this.multiple) {
+      // reset display style of main items
+      const mainItems = this.getItems();
+      mainItems.forEach((item) => (item.style.display = 'unset'));
+
+      // show selected menu items in the selection container and hide them in the main container
+      const checkedItems = getCheckedItems(convertToValidArrayValue(this.value), mainItems);
       checkedItems.forEach((i) => (i.style.display = 'none'));
       this.selectionContainerItems = checkedItems.map((item) => {
         return (
@@ -456,7 +455,9 @@ export class SixSelect {
               }
             }}
           >
+            {this.getSlottedItem(item, 'prefix')}
             {this.getItemLabel(item)}
+            {this.getSlottedItem(item, 'suffix')}
           </six-menu-item>
         );
       });
@@ -467,6 +468,9 @@ export class SixSelect {
 
   private handleMenuHide = () => {
     this.isOpen = false;
+    if (this.multiple) {
+      this.handleBlur();
+    }
   };
 
   private handleSlotChange = () => {
@@ -482,22 +486,32 @@ export class SixSelect {
   private async syncItemsFromValue() {
     const selectionContainerItems = this.getSelectionContainerItems();
     const mainItems = this.getItems();
-    const value = this.getValueAsArray();
+    const value = convertToValidValue(this.value, this.multiple);
 
     selectionContainerItems.forEach((item) => {
       item.checkType = this.multiple ? 'checkbox' : 'check';
-      item.checked = value.includes(item.value);
+      if (Array.isArray(value)) {
+        item.checked = value.some((val) => val === item.value);
+      } else {
+        item.checked = value === item.value;
+      }
     });
+
     mainItems.forEach((item) => {
       item.checkType = this.multiple ? 'checkbox' : 'check';
-      item.checked = value.includes(item.value);
+      if (Array.isArray(value)) {
+        item.checked = value.some((val) => val === item.value);
+      } else {
+        item.checked = value === item.value;
+      }
     });
 
-    const checkedItems = getCheckedItems(this.getValueAsArray(), mainItems);
+    const checkedItems = getCheckedItems(convertToValidArrayValue(this.value), mainItems);
     this.displayedValues = checkedItems.map((i) => this.getItemLabel(i));
 
-    if (this.autocomplete && this.autocompleteInput != null) {
-      this.autocompleteInput.value = Array.isArray(this.value) ? this.value.join(',') : this.value;
+    if (this.autocomplete && this.autocompleteInput != null && !this.hasFocus) {
+      const selectedLabel = this.displayedValues.join(', ');
+      this.autocompleteInput.value = selectedLabel;
     }
 
     requestAnimationFrame(() => {
@@ -687,7 +701,7 @@ export class SixSelect {
               ref={(el) => (this.autocompleteInput = el)}
               class={{
                 select__input: true,
-                'select__hidden-select': !this.autocomplete,
+                'sr-only': !this.autocomplete,
               }}
               aria-hidden="true"
               required={this.required}

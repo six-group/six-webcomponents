@@ -56,6 +56,16 @@ Inputs collect data from the user.
 
 ## Methods
 
+### `getSelectionRange() => Promise<SelectionRange>`
+
+Returns the start and end positions of the text selection
+
+#### Returns
+
+Type: `Promise<SelectionRange>`
+
+
+
 ### `removeFocus() => Promise<void>`
 
 Removes focus from the input.
@@ -92,7 +102,7 @@ Type: `Promise<void>`
 
 
 
-### `setRangeText(replacement: string, start: number, end: number, selectMode?: 'select' | 'start' | 'end' | 'preserve') => Promise<void>`
+### `setRangeText(replacement: string, start: number, end: number, selectMode?: "select" | "start" | "end" | "preserve") => Promise<void>`
 
 Replaces a range of text with a new string.
 
@@ -111,7 +121,7 @@ Type: `Promise<void>`
 
 
 
-### `setSelectionRange(selectionStart: number, selectionEnd: number, selectionDirection?: 'forward' | 'backward' | 'none') => Promise<void | undefined>`
+### `setSelectionRange(selectionStart: number, selectionEnd: number, selectionDirection?: SelectionRangeDirection) => Promise<void | undefined>`
 
 Sets the start and end positions of the text selection (0-based).
 
@@ -164,6 +174,7 @@ Type: `Promise<void | undefined>`
 
 ### Used by
 
+ - [six-date](../six-date)
  - [six-datepicker](../six-datepicker)
  - [six-dropdown](../six-dropdown)
  - [six-search-field](../six-search-field)
@@ -180,6 +191,7 @@ Type: `Promise<void | undefined>`
 graph TD;
   six-input --> six-icon
   six-input --> six-error
+  six-date --> six-input
   six-datepicker --> six-input
   six-dropdown --> six-input
   six-search-field --> six-input

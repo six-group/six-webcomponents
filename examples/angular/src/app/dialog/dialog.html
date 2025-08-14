@@ -1,0 +1,14 @@
+<six-dialog
+  #myDialog
+  label="Dialog"
+  class="dialog-overview"
+  (six-dialog-request-close)="preventClosing.checked ? $event.preventDefault() : true"
+>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  <six-button slot="footer" type="primary" (click)="myDialog.hide()">Close</six-button>
+</six-dialog>
+
+<div class="controls">
+  <six-button (click)="myDialog.show()">Show Dialog</six-button>
+  <six-checkbox [value]="false" #preventClosing>Ignore Clicks on Overlay</six-checkbox>
+</div>

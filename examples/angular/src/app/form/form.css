@@ -1,0 +1,13 @@
+h2 {
+  margin-top: 0;
+  margin-bottom: var(--six-spacing-x-large);
+}
+
+pre {
+  background-color: var(--six-color-web-rock-100);
+  padding: var(--six-spacing-medium);
+}
+
+form {
+  max-width: 50rem;
+}

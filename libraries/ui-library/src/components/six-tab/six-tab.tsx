@@ -88,6 +88,7 @@ export class SixTab {
           aria-disabled={this.disabled ? 'true' : 'false'}
           aria-selected={this.active ? 'true' : 'false'}
           tabindex={this.disabled || !this.active ? '-1' : '0'}
+          title={this.host.innerHTML}
         >
           <slot />
           {this.closable && (
@@ -103,6 +104,7 @@ export class SixTab {
           )}
         </div>
         <div
+          part={this.active ? 'active-tab-indicator' : ''}
           class={{
             tab__indicator: true,
             'tab__indicator--active': this.active,

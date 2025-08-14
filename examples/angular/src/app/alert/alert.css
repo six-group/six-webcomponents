@@ -1,0 +1,21 @@
+:host {
+  display: block;
+}
+
+h2 {
+  margin-top: 0;
+  margin-bottom: var(--six-spacing-x-large);
+}
+
+form {
+  max-width: 40rem;
+  margin-bottom: var(--six-spacing-large);
+}
+
+six-button {
+  align-self: end;
+}
+
+six-button {
+  margin-top: var(--six-spacing-medium);
+}

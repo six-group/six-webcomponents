@@ -55,8 +55,8 @@ const FormControl = (props: FormControlProps, children: VNode[]) => {
     (text) => text != null && text.trim() !== ''
   );
 
-  const hasLabel = props.label != null && props.label.trim() !== '' ? true : props.hasLabelSlot ?? false;
-  const hasHelpText = props.helpText != null && props.helpText.trim() !== '' ? true : props.hasHelpTextSlot ?? false;
+  const hasLabel = props.label != null && props.label.trim() !== '' ? true : (props.hasLabelSlot ?? false);
+  const hasHelpText = props.helpText != null && props.helpText.trim() !== '' ? true : (props.hasHelpTextSlot ?? false);
   const hasErrorText = (errorMessages.length > 0 || (props.hasErrorTextSlot ?? false)) && (props.displayError ?? false);
 
   return (

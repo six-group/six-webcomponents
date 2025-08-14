@@ -1,0 +1,17 @@
+.single {
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--six-spacing-medium);
+}
+
+.grouped {
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--six-spacing-xx-small);
+}
+
+.trigger-button {
+  align-self: flex-start;
+}

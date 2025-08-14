@@ -50,7 +50,7 @@ export class SixDropdown {
   private scrollPanel?: HTMLElement;
   private panelSlot?: HTMLSlotElement;
   private positioner?: HTMLElement;
-  private popover?: Popover;
+  private popoverHelper?: Popover;
   private trigger?: HTMLElement;
   private triggerSlot?: HTMLSlotElement;
   private resizeObserver = new ResizeObserver(debounce(() => this.updatePanelPosition(), 100));
@@ -188,9 +188,9 @@ export class SixDropdown {
   @Watch('placement')
   @Watch('skidding')
   handlePopoverOptionsChange() {
-    if (this.popover == null) return;
+    if (this.popoverHelper == null) return;
 
-    this.popover.setOptions({
+    this.popoverHelper.setOptions({
       strategy: this.hoist ? 'fixed' : 'absolute',
       placement: this.placement,
       distance: this.distance,
@@ -303,7 +303,7 @@ export class SixDropdown {
 
   private initPopover() {
     if (this.trigger == null || this.positioner == null) return;
-    this.popover = new Popover(this.trigger, this.positioner, {
+    this.popoverHelper = new Popover(this.trigger, this.positioner, {
       strategy: this.hoist ? 'fixed' : 'absolute',
       placement: this.placement,
       distance: this.distance,
@@ -371,15 +371,15 @@ export class SixDropdown {
     this.resizeObserver.disconnect();
     this.eventListeners.removeAll();
     void this.hide();
-    this.popover?.destroy();
-    this.popover = undefined;
+    this.popoverHelper?.destroy();
+    this.popoverHelper = undefined;
   }
 
   /** Shows the dropdown panel */
   @Method()
   async show() {
     // Prevent subsequent calls to the method, whether manually or triggered by the `open` watcher
-    if (this.isVisible || this.popover == null || this.panel == null) {
+    if (this.isVisible || this.popoverHelper == null || this.panel == null) {
       return;
     }
 
@@ -400,7 +400,7 @@ export class SixDropdown {
       this.resizeObserver.observe(this.trigger);
     }
     this.updatePanelPosition();
-    this.popover.show();
+    this.popoverHelper.show();
 
     if (this.filterEnabled && this.autofocusFilter) {
       requestAnimationFrame(() => {
@@ -422,8 +422,8 @@ export class SixDropdown {
       this.panel.style.minWidth = `${width}px`;
     }
 
-    if (this.popover != null) {
-      this.popover.reposition();
+    if (this.popoverHelper != null) {
+      this.popoverHelper.reposition();
     }
   }
 
@@ -433,7 +433,7 @@ export class SixDropdown {
     this.resizeObserver.disconnect();
 
     // Prevent subsequent calls to the method, whether manually or triggered by the `open` watcher
-    if (!this.isVisible || this.panel == null || this.popover == null) {
+    if (!this.isVisible || this.panel == null || this.popoverHelper == null) {
       return;
     }
 
@@ -449,7 +449,7 @@ export class SixDropdown {
 
     this.isVisible = false;
     this.open = false;
-    this.popover.hide();
+    this.popoverHelper.hide();
   }
 
   private focusOnTrigger() {
@@ -468,19 +468,6 @@ export class SixDropdown {
     return this.panelSlot?.assignedElements({ flatten: true }).filter(isSixMenu).at(0) as
       | HTMLSixMenuElement
       | undefined;
-  }
-
-  /**
-   * Instructs the dropdown menu to reposition. Useful when the position or size of the trigger changes when the menu
-   * is activated.
-   *
-   * @deprecated: use the property `matchTriggerWidth` instead.
-   */
-  @Method()
-  async reposition() {
-    if (this.open && this.popover != null) {
-      this.popover.reposition();
-    }
   }
 
   private handleDocumentKeyDown = (event: Event) => {

@@ -22,6 +22,7 @@ import { AbstractControl, FormArray, FormControl, FormGroup, FormGroupDirective 
  */
 @Directive({
   selector: 'form[sixForm]',
+  standalone: false,
 })
 export class SixFormDirective {
   /**
@@ -38,7 +39,10 @@ export class SixFormDirective {
     }
   }
 
-  constructor(private elementRef: ElementRef<HTMLElement>, private formGroupDirective: FormGroupDirective) {}
+  constructor(
+    private elementRef: ElementRef<HTMLElement>,
+    private formGroupDirective: FormGroupDirective
+  ) {}
 }
 
 /**
@@ -68,9 +72,13 @@ export class SixFormDirective {
  */
 @Directive({
   selector: '[sixFormUtil]',
+  standalone: false,
 })
 export class SixFormUtilDirective {
-  constructor(private elementRef: ElementRef<HTMLElement>, private formGroupDirective: FormGroupDirective) {}
+  constructor(
+    private elementRef: ElementRef<HTMLElement>,
+    private formGroupDirective: FormGroupDirective
+  ) {}
 
   /** markAllControlsAsDirty(Object.values(formGroup.controls));
    * Marks all form controls as touched and dirty, and focuses the first

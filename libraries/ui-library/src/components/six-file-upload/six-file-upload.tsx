@@ -1,22 +1,25 @@
 import { Component, Element, Event, EventEmitter, h, Listen, Prop, State } from '@stencil/core';
-interface ISingleFile {
-  file: File;
-}
+import { hasSlot } from '../../utils/slot';
 
-interface IMultipleFiles {
+export interface SixFileUploadSuccessPayload {
   files: FileList;
 }
 
-export type SixFileUploadSuccessPayload = ISingleFile | IMultipleFiles;
-
 export interface SixFileUploadFailurePayload {
   reason: string;
+  code:
+    | 'ONLY_ONE_FILE_ALLOWED'
+    | 'ONE_OR_MORE_FILES_HAVE_INVALID_MIME_TYPE'
+    | 'INVALID_MIME_TYPE'
+    | 'ONE_OR_MULTIPLE_FILES_TOO_BIG'
+    | 'FILE_TOO_BIG';
 }
 
 /**
  * @since 2.0.0
  * @status experimental
  *
+ * @slot error-text - Error text that is shown when the status is set to invalid. Alternatively, you can use the error-text prop.
  */
 @Component({
   tag: 'six-file-upload',
@@ -30,6 +33,7 @@ export class SixFileUpload {
   private fileInput?: HTMLInputElement;
 
   @State() isOver = false;
+  @State() hasError = false;
 
   /** Set to true if file control should be small. */
   @Prop() readonly compact: boolean = false;
@@ -51,6 +55,12 @@ export class SixFileUpload {
 
   /** Set to true to draw the control in a loading state. */
   @Prop({ reflect: true }) uploading = false;
+
+  /** The error message shown, if `invalid` is set to true.  */
+  @Prop() errorText: string | string[] = '';
+
+  /** If this property is set to true and an error message is provided by `errorText`, the error message is displayed.  */
+  @Prop({ reflect: true }) invalid = false;
 
   /** Triggers when a file is added. */
   @Event({ eventName: 'six-file-upload-success' }) success!: EventEmitter<SixFileUploadSuccessPayload>;
@@ -80,14 +90,25 @@ export class SixFileUpload {
   }
 
   @Listen('drop', { capture: false })
-  dropHandler({ dataTransfer }: DragEvent) {
+  dropHandler() {
     if (!this.disabled) {
       this.isOver = false;
-      if (dataTransfer != null) {
-        this.handleFiles(dataTransfer.files);
-      }
     }
   }
+
+  private handleSlotChange = () => {
+    let validType = false;
+
+    if (
+      this.errorText != null &&
+      ((typeof this.errorText == 'string' && this.errorText.trim().length > 0) ||
+        (typeof this.errorText == 'object' && this.errorText.length > 0))
+    ) {
+      validType = true;
+    }
+
+    this.hasError = validType || hasSlot(this.host, 'error-text');
+  };
 
   private handleFiles = (files: FileList) => {
     if (this.disabled || files.length === 0 || this.uploading) {
@@ -95,7 +116,10 @@ export class SixFileUpload {
     }
 
     if (!this.multiple && files.length > 1) {
-      return this.failure.emit({ reason: 'Only one file is allowed.' });
+      return this.failure.emit({
+        reason: 'Only one file is allowed.',
+        code: 'ONLY_ONE_FILE_ALLOWED',
+      });
     }
 
     for (const file of files) {
@@ -110,24 +134,30 @@ export class SixFileUpload {
 
       if (acceptedTypesList.length > 0 && acceptedTypesList.indexOf(file.type) === -1) {
         const reason = files.length > 1 ? 'One or more files have invalid MIME type.' : 'File has invalid MIME type.';
-        return this.failure.emit({ reason });
+        const code = files.length > 1 ? 'ONE_OR_MORE_FILES_HAVE_INVALID_MIME_TYPE' : 'INVALID_MIME_TYPE';
+        return this.failure.emit({ reason, code });
       }
 
       if (this.maxFileSize != null && file.size > this.maxFileSize) {
         const reason = files.length > 1 ? 'One or more files are too big' : 'File is too big.';
-        return this.failure.emit({ reason });
+        const code = files.length > 1 ? 'ONE_OR_MULTIPLE_FILES_TOO_BIG' : 'FILE_TOO_BIG';
+        return this.failure.emit({ reason, code });
       }
     }
 
-    const eventPayload: SixFileUploadSuccessPayload = this.multiple ? { files } : { file: files[0] };
-    this.success.emit(eventPayload);
+    this.success.emit({ files } as SixFileUploadSuccessPayload);
   };
+
+  componentWillLoad() {
+    this.handleSlotChange();
+  }
 
   componentDidLoad() {
     ['dragenter', 'dragover', 'dragleave', 'drop'].forEach((eventName) => {
       this.host.addEventListener(eventName, this.preventDefaults, false);
       document.body.addEventListener(eventName, this.preventDefaults, false);
     });
+    this.host.shadowRoot?.addEventListener('slotchange', this.handleSlotChange);
   }
 
   disconnectedCallback() {
@@ -135,6 +165,7 @@ export class SixFileUpload {
       this.host.removeEventListener(eventName, this.preventDefaults, false);
       document.body.removeEventListener(eventName, this.preventDefaults, false);
     });
+    this.host.shadowRoot?.removeEventListener('slotchange', this.handleSlotChange);
   }
 
   private preventDefaults(e: Event) {
@@ -166,6 +197,10 @@ export class SixFileUpload {
   render() {
     const Container = this.compact ? 'six-button' : 'six-card';
 
+    const errorMessages = (Array.isArray(this.errorText) ? this.errorText : [this.errorText]).filter(
+      (text) => text != null && text.trim() !== ''
+    );
+
     return (
       <div
         class={{
@@ -175,16 +210,13 @@ export class SixFileUpload {
       >
         <Container
           disabled={this.disabled || this.uploading}
+          aria-invalid={this.invalid ? 'true' : 'false'}
           class={{
             'six-file-upload__container--compact': this.compact,
             'six-file-upload__container--full': !this.compact,
           }}
         >
-          {this.compact && !this.uploading && (
-            <span slot="prefix">
-              <six-icon class="six-file-upload__label-icon">arrow_circle_up</six-icon>
-            </span>
-          )}
+          {this.compact && !this.uploading && <six-icon slot="prefix">arrow_circle_up</six-icon>}
           <div
             class={{
               'six-file-upload__drop-zone': true,
@@ -213,6 +245,15 @@ export class SixFileUpload {
             )}
           </div>
         </Container>
+        <div aria-hidden={this.invalid ? 'false' : 'true'}>
+          <slot name="error-text">
+            {errorMessages.map((text) => (
+              <six-error>
+                <div class="six-file-upload__error-text">{text}</div>
+              </six-error>
+            ))}
+          </slot>
+        </div>
       </div>
     );
   }

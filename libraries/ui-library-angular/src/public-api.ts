@@ -2,6 +2,8 @@
  * Public API Surface of ui-library-angular
  */
 
+import { ActiveSidebarDirective } from './lib/sidebar/active-sidebar.directive';
+
 export * from './lib/ui-library-angular.module';
 
 // proxies
@@ -14,6 +16,7 @@ export * from './lib/control-value-accessors/text-value-accessor';
 export * from './lib/control-value-accessors/numeric-value-accessor';
 export * from './lib/control-value-accessors/radio-value-accessor';
 export * from './lib/control-value-accessors/datepicker-value-accessor';
+export * from './lib/control-value-accessors/date-value-accessor';
 export * from './lib/control-value-accessors/timepicker-value-accessor';
 export * from './lib/control-value-accessors/select-value-accessor';
 export * from './lib/control-value-accessors/checkbox-value-accessor';
@@ -28,6 +31,9 @@ export * from './lib/form/six-form.directive';
 
 // link helpers
 export * from './lib/link/six-router-link.directive';
+
+// sidbar helpers
+export * from './lib/sidebar/active-sidebar.directive';
 
 // services
 export * from './lib/services/validation-messages.service';

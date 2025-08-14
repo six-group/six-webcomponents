@@ -24,7 +24,6 @@ specifying the _insider_ tag. For instance `npm install @six-group/ui-library@in
 For detailed instructions tailored to specific frameworks, consult the respective guides:
 
 - [Angular](angular.md)
-- [React](react.md)
 - [Vue](vue.md)
 
 ## Contribute
