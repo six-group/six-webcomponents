@@ -6,7 +6,7 @@
             <six-header slot="header">
               
               <six-header-item>
-                <six-icon-button name="menu"></six-icon-button>
+                <six-icon-button id="menu-button" name="menu"></six-icon-button>
               </six-header-item>
 
               
@@ -242,7 +242,7 @@ export default {
               rightSidebar: 'six-sidebar[slot="right-sidebar"]',
               drawer: 'six-drawer',
               cards: ['six-sidebar[slot="right-sidebar"] six-card'],
-              hamburger: 'six-icon-button[name="menu"]',
+              hamburger: '#menu-button',
               searchItem: '#search-header-item',
             });
 
