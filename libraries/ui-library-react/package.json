@@ -10,33 +10,32 @@
       "import": "./dist/index.js"
     },
     "./next": {
-      "types": "./dist/components.server.d.ts",
-      "import": "./dist/components.server.js"
+      "types": "./dist/lib/stencil-generated/components.server.d.ts",
+      "import": "./dist/lib/stencil-generated/components.server.js"
     }
   },
-  "files": [
-    "dist"
-  ],
   "sideEffects": false,
   "engines": {
     "node": ">=22"
   },
   "scripts": {
     "build": "npm run tsc",
-    "tsc": "tsc -p . --outDir ./dist",
+    "tsc": "tsc",
     "watch": "npm run tsc -- --watch"
   },
   "publishConfig": {
     "access": "public"
   },
   "devDependencies": {
-    "@types/react": "^19",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "typescript": "^5"
+    "@types/node": "^22.15.32",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "react": "^18.3.1",
+    "typescript": "^5.6.3"
   },
   "dependencies": {
-    "@stencil/react-output-target": "^1.2.0"
+    "@stencil/react-output-target": "^1.2.0",
+    "react-dom": "^18.3.1"
   },
   "peerDependencies": {
     "@six-group/ui-library": "*"
