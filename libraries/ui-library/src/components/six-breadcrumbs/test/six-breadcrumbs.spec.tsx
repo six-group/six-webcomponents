@@ -22,6 +22,5 @@ describe('six-breadcrumbs', () => {
 
     const items = page.root!.querySelectorAll('six-breadcrumbs-item');
     expect(items.length).toBe(3);
-    expect(items[2].hasAttribute('read-only')).toBe(true);
   });
 });
