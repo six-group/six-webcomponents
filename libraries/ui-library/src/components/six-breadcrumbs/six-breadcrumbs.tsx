@@ -1,4 +1,4 @@
-import { Component, Element, h } from '@stencil/core';
+import { Component, Element, h, Prop } from '@stencil/core';
 
 /**
  * Breadcrumbs provide a group of links so users can easily navigate a website's hierarchy.
@@ -17,7 +17,10 @@ import { Component, Element, h } from '@stencil/core';
   shadow: true,
 })
 export class SixBreadcrumbs {
+
   @Element() host!: HTMLSixBreadcrumbsElement;
+
+  @Prop({ attribute: 'separator-icon', reflect: true }) separatorIcon: string = '';
 
   private updateBreadcrumbItems = () => {
     const items = [...this.host.querySelectorAll('six-breadcrumbs-item')] as HTMLSixBreadcrumbsItemElement[];
@@ -31,16 +34,12 @@ export class SixBreadcrumbs {
       } else if (separator.hasAttribute('data-default')) {
         // A default separator exists, replace it
         separator.replaceWith(this.createSeparatorElement());
-      } else {
-        // The user provided a custom separator, leave it alone
       }
 
       // The last breadcrumb item is the "current page"
       if (index === items.length - 1) {
-        item.setAttribute('read-only', 'true');
         item.setAttribute('aria-current', 'page');
       } else {
-        item.removeAttribute('read-only');
         item.removeAttribute('aria-current');
       }
     });
@@ -48,8 +47,8 @@ export class SixBreadcrumbs {
 
   private createSeparatorElement(): HTMLElement {
     // Find a custom separator by checking direct children only
-    const customSeparator = Array.from(this.host.children).find((child) => child.getAttribute('slot') === 'separator');
-
+    const customSeparator = this.getCustomSeparator();
+    console.log(customSeparator);
     if (customSeparator) {
       const clone = customSeparator.cloneNode(true) as HTMLElement;
       clone.removeAttribute('id');
@@ -64,6 +63,16 @@ export class SixBreadcrumbs {
     span.slot = 'separator';
     span.setAttribute('data-default', '');
     return span;
+  }
+
+  private getCustomSeparator() {
+    if (this.separatorIcon) {
+      const sixIcon = document.createElement('six-icon');
+      sixIcon.innerText = this.separatorIcon;
+      sixIcon.setAttribute('size', 'small');
+      return sixIcon;
+    }
+    return Array.from(this.host.children).find((child) => child.getAttribute('slot') === 'separator');
   }
 
   render() {

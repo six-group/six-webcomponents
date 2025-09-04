@@ -147,6 +147,10 @@ export namespace Components {
      * @status beta
      */
     interface SixBreadcrumbs {
+        /**
+          * @default ''
+         */
+        "separatorIcon": string;
     }
     /**
      * Breadcrumb items are used inside breadcrumbs to represent different links.
@@ -164,7 +168,7 @@ export namespace Components {
          */
         "readonly": boolean;
         /**
-          * The button's size.
+          * The breadcrumbs item size.
           * @default 'medium'
          */
         "size": 'small' | 'medium' | 'large';
@@ -2566,10 +2570,6 @@ export interface SixAlertCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLSixAlertElement;
 }
-export interface SixBreadcrumbsItemCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLSixBreadcrumbsItemElement;
-}
 export interface SixButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLSixButtonElement;
@@ -2741,23 +2741,12 @@ declare global {
         prototype: HTMLSixBreadcrumbsElement;
         new (): HTMLSixBreadcrumbsElement;
     };
-    interface HTMLSixBreadcrumbsItemElementEventMap {
-        "six-click": EmptyPayload;
-    }
     /**
      * Breadcrumb items are used inside breadcrumbs to represent different links.
      * @since 5.0
      * @status beta
      */
     interface HTMLSixBreadcrumbsItemElement extends Components.SixBreadcrumbsItem, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLSixBreadcrumbsItemElementEventMap>(type: K, listener: (this: HTMLSixBreadcrumbsItemElement, ev: SixBreadcrumbsItemCustomEvent<HTMLSixBreadcrumbsItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLSixBreadcrumbsItemElementEventMap>(type: K, listener: (this: HTMLSixBreadcrumbsItemElement, ev: SixBreadcrumbsItemCustomEvent<HTMLSixBreadcrumbsItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLSixBreadcrumbsItemElement: {
         prototype: HTMLSixBreadcrumbsItemElement;
@@ -3849,6 +3838,10 @@ declare namespace LocalJSX {
      * @status beta
      */
     interface SixBreadcrumbs {
+        /**
+          * @default ''
+         */
+        "separatorIcon"?: string;
     }
     /**
      * Breadcrumb items are used inside breadcrumbs to represent different links.
@@ -3861,16 +3854,12 @@ declare namespace LocalJSX {
          */
         "href"?: string;
         /**
-          * Emitted when the breadcrumb item is clicked.
-         */
-        "onSix-click"?: (event: SixBreadcrumbsItemCustomEvent<EmptyPayload>) => void;
-        /**
           * Set to true to readonly the breadcrumb item.
           * @default false
          */
         "readonly"?: boolean;
         /**
-          * The button's size.
+          * The breadcrumbs item size.
           * @default 'medium'
          */
         "size"?: 'small' | 'medium' | 'large';

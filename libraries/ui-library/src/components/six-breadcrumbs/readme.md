@@ -9,6 +9,13 @@
 
 Breadcrumbs provide a group of links so users can easily navigate a website's hierarchy.
 
+## Properties
+
+| Property        | Attribute        | Description | Type     | Default |
+| --------------- | ---------------- | ----------- | -------- | ------- |
+| `separatorIcon` | `separator-icon` |             | `string` | `''`    |
+
+
 ## Slots
 
 | Slot          | Description                                                              |
@@ -23,6 +30,19 @@ Breadcrumbs provide a group of links so users can easily navigate a website's hi
 | -------- | ----------------------------- |
 | `"base"` | The component's base wrapper. |
 
+
+## Dependencies
+
+### Depends on
+
+- [six-icon](../six-icon)
+
+### Graph
+```mermaid
+graph TD;
+  six-breadcrumbs --> six-icon
+  style six-breadcrumbs fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 

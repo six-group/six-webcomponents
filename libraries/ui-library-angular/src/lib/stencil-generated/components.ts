@@ -98,13 +98,14 @@ export declare interface SixBadge extends Components.SixBadge {}
 
 
 @ProxyCmp({
+  inputs: ['separatorIcon']
 })
 @Component({
   selector: 'six-breadcrumbs',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: [],
+  inputs: ['separatorIcon'],
   standalone: false
 })
 export class SixBreadcrumbs {
@@ -135,19 +136,11 @@ export class SixBreadcrumbsItem {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['six-click']);
   }
 }
 
 
-import type { EmptyPayload as ISixBreadcrumbsItemEmptyPayload } from '@six-group/ui-library';
-
-export declare interface SixBreadcrumbsItem extends Components.SixBreadcrumbsItem {
-  /**
-   * Emitted when the breadcrumb item is clicked.
-   */
-  'six-click': EventEmitter<CustomEvent<ISixBreadcrumbsItemEmptyPayload>>;
-}
+export declare interface SixBreadcrumbsItem extends Components.SixBreadcrumbsItem {}
 
 
 @ProxyCmp({
