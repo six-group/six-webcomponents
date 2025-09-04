@@ -1,5 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, Prop } from '@stencil/core';
-import { EmptyPayload } from '../../utils/types';
+import { Component, Element, h, Prop } from '@stencil/core';
 
 /**
  * Breadcrumb items are used inside breadcrumbs to represent different links.
@@ -30,20 +29,11 @@ export class SixBreadcrumbsItem {
   /** Tells the browser where to open the link. Only used when `href` is set. */
   @Prop() target?: '_blank' | '_parent' | '_self' | '_top';
 
-  /** The button's size. */
+  /** The breadcrumbs item size. */
   @Prop({ reflect: true }) size: 'small' | 'medium' | 'large' = 'medium';
 
   /** Set to true to readonly the breadcrumb item. */
   @Prop({ attribute: 'read-only', reflect: true }) readonly: boolean = false;
-
-  /** Emitted when the breadcrumb item is clicked. */
-  @Event({ eventName: 'six-click' }) sixClickEvent!: EventEmitter<EmptyPayload>;
-
-  private handleClick() {
-    if (!!this.readonly) {
-      this.sixClickEvent.emit();
-    }
-  }
 
   render() {
     return (
@@ -55,9 +45,7 @@ export class SixBreadcrumbsItem {
           href={this.readonly ? undefined : this.href}
           tabindex={this.readonly ? -1 : undefined}
           target={this.target}
-          size={this.size}
-          onClick={this.handleClick}
-        >
+          size={this.size}>
           <slot name="prefix" slot="prefix" />
           <slot />
           <slot name="suffix" slot="suffix" />
