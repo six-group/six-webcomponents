@@ -17,9 +17,9 @@ import { Component, Element, h, Prop } from '@stencil/core';
   shadow: true,
 })
 export class SixBreadcrumbs {
-
   @Element() host!: HTMLSixBreadcrumbsElement;
 
+  /** Defines an icon as a separator without having to place a slot **/
   @Prop({ attribute: 'separator-icon', reflect: true }) separatorIcon: string = '';
 
   private updateBreadcrumbItems = () => {
@@ -66,7 +66,7 @@ export class SixBreadcrumbs {
   }
 
   private getCustomSeparator() {
-    if (this.separatorIcon) {
+    if (Boolean(this.separatorIcon?.length)) {
       const sixIcon = document.createElement('six-icon');
       sixIcon.innerText = this.separatorIcon;
       sixIcon.setAttribute('size', 'small');

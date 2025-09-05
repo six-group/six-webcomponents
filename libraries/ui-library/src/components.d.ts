@@ -148,6 +148,7 @@ export namespace Components {
      */
     interface SixBreadcrumbs {
         /**
+          * Defines an icon as a separator without having to place a slot *
           * @default ''
          */
         "separatorIcon": string;
@@ -3839,6 +3840,7 @@ declare namespace LocalJSX {
      */
     interface SixBreadcrumbs {
         /**
+          * Defines an icon as a separator without having to place a slot *
           * @default ''
          */
         "separatorIcon"?: string;
