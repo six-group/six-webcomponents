@@ -45,7 +45,8 @@ export class SixBreadcrumbsItem {
           href={this.readonly ? undefined : this.href}
           tabindex={this.readonly ? -1 : undefined}
           target={this.target}
-          size={this.size}>
+          size={this.size}
+        >
           <slot name="prefix" slot="prefix" />
           <slot />
           <slot name="suffix" slot="suffix" />
