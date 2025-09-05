@@ -142,6 +142,43 @@ export namespace Components {
         "type": 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'info' | 'action';
     }
     /**
+     * Breadcrumbs provide a group of links so users can easily navigate a website's hierarchy.
+     * @since 5.0
+     * @status beta
+     */
+    interface SixBreadcrumbs {
+        /**
+          * Defines an icon as a separator without having to place a slot *
+          * @default ''
+         */
+        "separatorIcon": string;
+    }
+    /**
+     * Breadcrumb items are used inside breadcrumbs to represent different links.
+     * @since 5.0
+     * @status beta
+     */
+    interface SixBreadcrumbsItem {
+        /**
+          * When set, the underlying button will be rendered as an `<a>` with this `href` instead of a `<button>`.
+         */
+        "href"?: string;
+        /**
+          * Set to true to readonly the breadcrumb item.
+          * @default false
+         */
+        "readonly": boolean;
+        /**
+          * The breadcrumbs item size.
+          * @default 'medium'
+         */
+        "size": 'small' | 'medium' | 'large';
+        /**
+          * Tells the browser where to open the link. Only used when `href` is set.
+         */
+        "target"?: '_blank' | '_parent' | '_self' | '_top';
+    }
+    /**
      * @since 1.0
      * @status stable
      * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
@@ -2694,6 +2731,28 @@ declare global {
         prototype: HTMLSixBadgeElement;
         new (): HTMLSixBadgeElement;
     };
+    /**
+     * Breadcrumbs provide a group of links so users can easily navigate a website's hierarchy.
+     * @since 5.0
+     * @status beta
+     */
+    interface HTMLSixBreadcrumbsElement extends Components.SixBreadcrumbs, HTMLStencilElement {
+    }
+    var HTMLSixBreadcrumbsElement: {
+        prototype: HTMLSixBreadcrumbsElement;
+        new (): HTMLSixBreadcrumbsElement;
+    };
+    /**
+     * Breadcrumb items are used inside breadcrumbs to represent different links.
+     * @since 5.0
+     * @status beta
+     */
+    interface HTMLSixBreadcrumbsItemElement extends Components.SixBreadcrumbsItem, HTMLStencilElement {
+    }
+    var HTMLSixBreadcrumbsItemElement: {
+        prototype: HTMLSixBreadcrumbsItemElement;
+        new (): HTMLSixBreadcrumbsItemElement;
+    };
     interface HTMLSixButtonElementEventMap {
         "six-button-blur": EmptyPayload;
         "six-button-focus": EmptyPayload;
@@ -3622,6 +3681,8 @@ declare global {
         "six-alert": HTMLSixAlertElement;
         "six-avatar": HTMLSixAvatarElement;
         "six-badge": HTMLSixBadgeElement;
+        "six-breadcrumbs": HTMLSixBreadcrumbsElement;
+        "six-breadcrumbs-item": HTMLSixBreadcrumbsItemElement;
         "six-button": HTMLSixButtonElement;
         "six-card": HTMLSixCardElement;
         "six-checkbox": HTMLSixCheckboxElement;
@@ -3771,6 +3832,43 @@ declare namespace LocalJSX {
           * @default 'primary'
          */
         "type"?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'info' | 'action';
+    }
+    /**
+     * Breadcrumbs provide a group of links so users can easily navigate a website's hierarchy.
+     * @since 5.0
+     * @status beta
+     */
+    interface SixBreadcrumbs {
+        /**
+          * Defines an icon as a separator without having to place a slot *
+          * @default ''
+         */
+        "separatorIcon"?: string;
+    }
+    /**
+     * Breadcrumb items are used inside breadcrumbs to represent different links.
+     * @since 5.0
+     * @status beta
+     */
+    interface SixBreadcrumbsItem {
+        /**
+          * When set, the underlying button will be rendered as an `<a>` with this `href` instead of a `<button>`.
+         */
+        "href"?: string;
+        /**
+          * Set to true to readonly the breadcrumb item.
+          * @default false
+         */
+        "readonly"?: boolean;
+        /**
+          * The breadcrumbs item size.
+          * @default 'medium'
+         */
+        "size"?: 'small' | 'medium' | 'large';
+        /**
+          * Tells the browser where to open the link. Only used when `href` is set.
+         */
+        "target"?: '_blank' | '_parent' | '_self' | '_top';
     }
     /**
      * @since 1.0
@@ -6300,6 +6398,8 @@ declare namespace LocalJSX {
         "six-alert": SixAlert;
         "six-avatar": SixAvatar;
         "six-badge": SixBadge;
+        "six-breadcrumbs": SixBreadcrumbs;
+        "six-breadcrumbs-item": SixBreadcrumbsItem;
         "six-button": SixButton;
         "six-card": SixCard;
         "six-checkbox": SixCheckbox;
@@ -6379,6 +6479,18 @@ declare module "@stencil/core" {
              * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
              */
             "six-badge": LocalJSX.SixBadge & JSXBase.HTMLAttributes<HTMLSixBadgeElement>;
+            /**
+             * Breadcrumbs provide a group of links so users can easily navigate a website's hierarchy.
+             * @since 5.0
+             * @status beta
+             */
+            "six-breadcrumbs": LocalJSX.SixBreadcrumbs & JSXBase.HTMLAttributes<HTMLSixBreadcrumbsElement>;
+            /**
+             * Breadcrumb items are used inside breadcrumbs to represent different links.
+             * @since 5.0
+             * @status beta
+             */
+            "six-breadcrumbs-item": LocalJSX.SixBreadcrumbsItem & JSXBase.HTMLAttributes<HTMLSixBreadcrumbsItemElement>;
             /**
              * @since 1.0
              * @status stable

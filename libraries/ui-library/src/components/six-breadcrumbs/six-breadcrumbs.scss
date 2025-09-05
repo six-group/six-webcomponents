@@ -1,0 +1,10 @@
+@import '../../../src/global/component';
+
+:host {
+  display: block;
+  nav {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+}

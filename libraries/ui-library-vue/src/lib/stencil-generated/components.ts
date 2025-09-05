@@ -40,6 +40,19 @@ export const SixBadge: StencilVueComponent<JSX.SixBadge> = /*@__PURE__*/ defineC
 ]);
 
 
+export const SixBreadcrumbs: StencilVueComponent<JSX.SixBreadcrumbs> = /*@__PURE__*/ defineContainer<JSX.SixBreadcrumbs>('six-breadcrumbs', undefined, [
+  'separatorIcon'
+]);
+
+
+export const SixBreadcrumbsItem: StencilVueComponent<JSX.SixBreadcrumbsItem> = /*@__PURE__*/ defineContainer<JSX.SixBreadcrumbsItem>('six-breadcrumbs-item', undefined, [
+  'href',
+  'target',
+  'size',
+  'readonly'
+]);
+
+
 export const SixButton: StencilVueComponent<JSX.SixButton> = /*@__PURE__*/ defineContainer<JSX.SixButton>('six-button', undefined, [
   'type',
   'size',
