@@ -1,9 +1,19 @@
-import { SixButton, SixCheckbox, SixDetails } from '@six-group/ui-library-react';
+import {
+  SixBreadcrumbs,
+  SixBreadcrumbsItem,
+  SixButton,
+  SixCheckbox,
+  SixDetails,
+  SixIcon,
+} from '@six-group/ui-library-react';
 import { useState } from 'react';
 
 import styles from './details.module.css';
+import { useNavigate } from 'react-router';
 
 export function Details() {
+
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
   const [openIndex, setOpenIndex] = useState(2);
@@ -14,6 +24,15 @@ export function Details() {
 
   return (
     <>
+      <SixBreadcrumbs>
+        <SixBreadcrumbsItem onClick={() => navigate('/')}>
+          <SixIcon slot="prefix" size="small">house</SixIcon>
+          Home
+        </SixBreadcrumbsItem>
+        <SixBreadcrumbsItem>B</SixBreadcrumbsItem>
+        <SixBreadcrumbsItem>Current</SixBreadcrumbsItem>
+      </SixBreadcrumbs>
+
       <h2>Details</h2>
 
       <div className={styles.single}>

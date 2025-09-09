@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { SixButton, SixCheckbox, SixDetails } from '@six-group/ui-library-vue';
+import { useRouter, useRoute } from 'vue-router'
 import { ref } from 'vue';
+
+const router = useRouter()
 
 const isOpen = ref(false);
 const isDisabled = ref(false);
@@ -12,6 +15,15 @@ function toggle(index: number) {
 </script>
 
 <template>
+  <six-breadcrumbs>
+    <six-breadcrumbs-item @click="router.push('/')">
+      <six-icon slot="prefix" size="small">house</six-icon>
+      Home
+    </six-breadcrumbs-item>
+    <six-breadcrumbs-item>B</six-breadcrumbs-item>
+    <six-breadcrumbs-item>Current</six-breadcrumbs-item>
+  </six-breadcrumbs>
+
   <h2>Details</h2>
 
   <section>
