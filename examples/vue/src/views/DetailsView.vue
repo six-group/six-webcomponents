@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { SixButton, SixCheckbox, SixDetails } from '@six-group/ui-library-vue';
-import { useRouter, useRoute } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router';
 import { ref } from 'vue';
 
-const router = useRouter()
+const router = useRouter();
 
 const isOpen = ref(false);
 const isDisabled = ref(false);

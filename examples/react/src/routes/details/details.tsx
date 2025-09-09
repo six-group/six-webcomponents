@@ -12,7 +12,6 @@ import styles from './details.module.css';
 import { useNavigate } from 'react-router';
 
 export function Details() {
-
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
@@ -26,7 +25,9 @@ export function Details() {
     <>
       <SixBreadcrumbs>
         <SixBreadcrumbsItem onClick={() => navigate('/')}>
-          <SixIcon slot="prefix" size="small">house</SixIcon>
+          <SixIcon slot="prefix" size="small">
+            house
+          </SixIcon>
           Home
         </SixBreadcrumbsItem>
         <SixBreadcrumbsItem>B</SixBreadcrumbsItem>
