@@ -30,11 +30,24 @@ Use the separator slot to change the separator that goes between breadcrumb item
 ```
 
 
+Using `separator-icon` attribute
+
+<docs-demo-six-breadcrumbs-2></docs-demo-six-breadcrumbs-2>
+
+```html
+<six-breadcrumbs separator-icon="arrow_forward">
+  <six-breadcrumbs-item>A</six-breadcrumbs-item>
+  <six-breadcrumbs-item>B</six-breadcrumbs-item>
+  <six-breadcrumbs-item>Current</six-breadcrumbs-item>
+</six-breadcrumbs>
+```
+
+
 ## Prefixes
 
 Use the prefix slot to add content before any breadcrumb item.
 
-<docs-demo-six-breadcrumbs-2></docs-demo-six-breadcrumbs-2>
+<docs-demo-six-breadcrumbs-3></docs-demo-six-breadcrumbs-3>
 
 ```html
 <six-breadcrumbs>
@@ -53,7 +66,7 @@ Use the prefix slot to add content before any breadcrumb item.
 
 Use the suffix slot to add content after any breadcrumb item.
 
-<docs-demo-six-breadcrumbs-3></docs-demo-six-breadcrumbs-3>
+<docs-demo-six-breadcrumbs-4></docs-demo-six-breadcrumbs-4>
 
 ```html
 <six-breadcrumbs>
@@ -72,7 +85,7 @@ Use the suffix slot to add content after any breadcrumb item.
 
 Use CSS custom properties to customize the appearance of breadcrumb items.
 
-<docs-demo-six-breadcrumbs-4></docs-demo-six-breadcrumbs-4>
+<docs-demo-six-breadcrumbs-5></docs-demo-six-breadcrumbs-5>
 
 ```html
 <div class="parent">
@@ -83,20 +96,6 @@ Use CSS custom properties to customize the appearance of breadcrumb items.
     <six-breadcrumbs-item>Current</six-breadcrumbs-item>
   </six-breadcrumbs>
 </div>
-
-<style>
-  .parent six-breadcrumbs-item {
-    --separator-color: var(--six-color-web-rock-900);
-    --last-item-color: var(--six-color-danger-900);
-  }
-  .parent {
-    background-color: var(--six-color-web-rock-100);
-
-    six-breadcrumbs-item::part(separator) {
-      margin: 0 var(--six-spacing-large);
-    }
-  }
-</style>
 ```
 
 
@@ -104,7 +103,7 @@ Use CSS custom properties to customize the appearance of breadcrumb items.
 
 Items can be dynamically added and removed.
 
-<docs-demo-six-breadcrumbs-5></docs-demo-six-breadcrumbs-5>
+<docs-demo-six-breadcrumbs-6></docs-demo-six-breadcrumbs-6>
 
 ```html
 <six-button type="secondary" id="remove-button">Remove</six-button>
@@ -140,6 +139,13 @@ Items can be dynamically added and removed.
 
 Breadcrumbs provide a group of links so users can easily navigate a website's hierarchy.
 
+## Properties
+
+| Property        | Attribute        | Description                                                     | Type     | Default |
+| --------------- | ---------------- | --------------------------------------------------------------- | -------- | ------- |
+| `separatorIcon` | `separator-icon` | Defines an icon as a separator without having to place a slot * | `string` | `''`    |
+
+
 ## Slots
 
 | Slot          | Description                                                              |
@@ -154,6 +160,19 @@ Breadcrumbs provide a group of links so users can easily navigate a website's hi
 | -------- | ----------------------------- |
 | `"base"` | The component's base wrapper. |
 
+
+## Dependencies
+
+### Depends on
+
+- [six-icon](six-icon.html)
+
+### Graph
+```mermaid
+graph TD;
+  six-breadcrumbs --> six-icon
+  style six-breadcrumbs fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 

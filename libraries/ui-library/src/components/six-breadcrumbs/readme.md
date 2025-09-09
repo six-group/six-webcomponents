@@ -11,9 +11,9 @@ Breadcrumbs provide a group of links so users can easily navigate a website's hi
 
 ## Properties
 
-| Property        | Attribute        | Description | Type     | Default |
-| --------------- | ---------------- | ----------- | -------- | ------- |
-| `separatorIcon` | `separator-icon` |             | `string` | `''`    |
+| Property        | Attribute        | Description                                                     | Type     | Default |
+| --------------- | ---------------- | --------------------------------------------------------------- | -------- | ------- |
+| `separatorIcon` | `separator-icon` | Defines an icon as a separator without having to place a slot * | `string` | `''`    |
 
 
 ## Slots

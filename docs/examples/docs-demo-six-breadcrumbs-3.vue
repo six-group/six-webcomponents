@@ -3,12 +3,12 @@
 
         <six-breadcrumbs>
           <six-icon slot="separator" size="small">arrow_forward</six-icon>
-          <six-breadcrumbs-item>Home</six-breadcrumbs-item>
-          <six-breadcrumbs-item>Page</six-breadcrumbs-item>
           <six-breadcrumbs-item>
-            <six-icon slot="suffix" size="small">lock</six-icon>
-            Current
+            <six-icon slot="prefix" size="small">house</six-icon>
+            Home
           </six-breadcrumbs-item>
+          <six-breadcrumbs-item>Page</six-breadcrumbs-item>
+          <six-breadcrumbs-item>Current</six-breadcrumbs-item>
         </six-breadcrumbs>
       
 </div>
