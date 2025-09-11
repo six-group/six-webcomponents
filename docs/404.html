@@ -8,22 +8,22 @@
         // Get the current path
         const currentPath = window.location.pathname;
 
-        // Check if the path starts with /six-webcomponents/ but not /six-webcomponents/v4/
-        if (currentPath.startsWith('/six-webcomponents/') && !currentPath.startsWith('/six-webcomponents/v4/')) {
+        // Check if the path starts with /six-webcomponents/ but not /six-webcomponents/v5/
+        if (currentPath.startsWith('/six-webcomponents/') && !currentPath.startsWith('/six-webcomponents/v5/')) {
             // Extract the part after /six-webcomponents/
             const pathAfterSix = currentPath.replace('/six-webcomponents/', '');
 
-            // Redirect to /six-webcomponents/v4/ + the remaining path
-            const newPath = '/six-webcomponents/v4/' + pathAfterSix;
+            // Redirect to /six-webcomponents/v5/ + the remaining path
+            const newPath = '/six-webcomponents/v5/' + pathAfterSix;
             window.location.href = newPath;
         } else {
-            // For other cases, redirect to the main v4 index
-            window.location.href = '/six-webcomponents/v4/';
+            // For other cases, redirect to the main v5 index
+            window.location.href = '/six-webcomponents/v5/';
         }
     </script>
 </head>
 <body>
 <p>Redirecting to the latest version...</p>
-<p>If you are not redirected automatically, <a href="/six-webcomponents/v4/">click here</a>.</p>
+<p>If you are not redirected automatically, <a href="/six-webcomponents/v5/">click here</a>.</p>
 </body>
 </html>
