@@ -1,7 +1,7 @@
 {
   "name": "@six-group/ui-library-react",
   "description": "React wrapper components for @six-group/ui-library",
-  "version": "5.0.0-rc.2",
+  "version": "5.0.0",
   "private": false,
   "main": "dist/index.js",
   "module": "dist/index.js",
