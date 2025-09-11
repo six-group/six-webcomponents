@@ -6,22 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## Upcoming
 
-## 5.0.0-rc.2 - 2025-08-28
-
-### Fixed
-
-- `six-timepicker`: fixed issue with value getting cleared while typing
-
-## 5.0.0-rc.1 - 2025-07-10
+## 5.0.0 - 2025-09-11
 
 ### Added
 
-- **⚠️Experimental**: Bringing back the support for React output target.
-- **⚠️Experimental**: Added example React app with Vite.
-- **⚠️Experimental**: Added example Nuxt app with Client Side Rendering (CSR).
-- **⚠️Experimental**: Added the `six-date` component, intended to eventually replace the
-  `six-datepicker`.
-
+- New `six-date` component, which replaces `six-datepicker`. Check the
+  [upgrade guide](guide/upgrade-v5.md) for detailed instructions.
+- New `six-rating` form component
 - [Documentation](guide/angular.md) for using web components with Angular's standalone bootstrapping
 - `ActiveSidebarItemGroupDirective` and `ActiveSidebarItemDirective`: Added optional angular sidebar
   helper directives. See the [Angular guide](guide/angular.md) for more information.
@@ -38,7 +29,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   more details.
 - `six-file-upload`: added `code` attribute to `SixFileUploadFailurePayload`, which specifies the
   type of error that has occurred
-- New `six-rating` form component
+- **⚠️Experimental**: Bringing back the support for React output target.
+- **⚠️Experimental**: Added example React app with Vite.
+- **⚠️Experimental**: Added example Nuxt app with Client Side Rendering (CSR).
 
 ### Fixed
 
@@ -48,6 +41,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - `six-sidebar-item-group`: fixed spacing for subitems
 - Vue `v-model` issue through an update of the underlying library
 - `six-tab` animation smoothing when using left / right layout
+- `six-timepicker`: fixed issue with value getting cleared while typing
 
 ### Removed
 
@@ -77,6 +71,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Upgraded Angular Demo App to version 20. Rewritten with
   [standalone bootstrapping](https://angular.dev/reference/migrations/standalone#switch-to-standalone-bootstrapping-api),
   signals, new template syntax, etc.
+
+### Deprecated
+
+- The `six-datepicker` component is now deprecated. Please use the new `six-date` component.
 
 ## 4.3.2 - 2025-02-13
 
