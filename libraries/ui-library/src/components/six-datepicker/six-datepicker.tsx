@@ -59,7 +59,7 @@ enum SelectionMode {
 
 /**
  * @since 1.0
- * @status stable
+ * @status deprecated. Use six-date instead.
  *
  * @slot - Used to define a footer for the date picker.
  * @slot error-text - Error text that is shown for validation errors. Alternatively, you can use the error-text prop.

@@ -81,12 +81,41 @@ export function toPointerDate(isoDate: IsoDate): PointerDate {
   if (!isValidIsoDate(isoDate)) {
     throw new Error(`Invalid ISO date: ${isoDate}`);
   }
-
   return {
     year: parseInt(isoDate.slice(0, 4), 10),
     month: parseInt(isoDate.slice(5, 7), 10),
     day: parseInt(isoDate.slice(8), 10),
   };
+}
+
+export function nextPointerDate(selectionMode: 'day' | 'month' | 'year', pointerDate: PointerDate): PointerDate {
+  if (selectionMode === 'day') {
+    if (pointerDate.month === 12) {
+      return { year: pointerDate.year + 1, month: 1, day: 1 };
+    } else {
+      return { year: pointerDate.year, month: pointerDate.month + 1, day: 1 };
+    }
+  } else if (selectionMode === 'month') {
+    return { ...pointerDate, year: pointerDate.year + 1 };
+  } else if (selectionMode === 'year') {
+    return { ...pointerDate, year: pointerDate.year + 25 };
+  }
+  return pointerDate;
+}
+
+export function previousPointerDate(selectionMode: 'day' | 'month' | 'year', pointerDate: PointerDate): PointerDate {
+  switch (selectionMode) {
+    case 'day':
+      if (pointerDate.month === 1) {
+        return { year: pointerDate.year - 1, month: 12, day: 1 };
+      } else {
+        return { year: pointerDate.year, month: pointerDate.month - 1, day: 1 };
+      }
+    case 'month':
+      return { ...pointerDate, year: pointerDate.year - 1 };
+    case 'year':
+      return { ...pointerDate, year: pointerDate.year - 25 };
+  }
 }
 
 export function todayAsPointerDate(): PointerDate {

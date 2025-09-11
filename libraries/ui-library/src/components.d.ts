@@ -399,7 +399,7 @@ export namespace Components {
     }
     /**
      * @since 1.0
-     * @status stable
+     * @status deprecated. Use six-date instead.
      */
     interface SixDatepicker {
         /**
@@ -2781,7 +2781,7 @@ declare global {
     }
     /**
      * @since 1.0
-     * @status stable
+     * @status deprecated. Use six-date instead.
      */
     interface HTMLSixDatepickerElement extends Components.SixDatepicker, HTMLStencilElement {
         addEventListener<K extends keyof HTMLSixDatepickerElementEventMap>(type: K, listener: (this: HTMLSixDatepickerElement, ev: SixDatepickerCustomEvent<HTMLSixDatepickerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4038,7 +4038,7 @@ declare namespace LocalJSX {
     }
     /**
      * @since 1.0
-     * @status stable
+     * @status deprecated. Use six-date instead.
      */
     interface SixDatepicker {
         /**
@@ -6404,7 +6404,7 @@ declare module "@stencil/core" {
             "six-date": LocalJSX.SixDate & JSXBase.HTMLAttributes<HTMLSixDateElement>;
             /**
              * @since 1.0
-             * @status stable
+             * @status deprecated. Use six-date instead.
              */
             "six-datepicker": LocalJSX.SixDatepicker & JSXBase.HTMLAttributes<HTMLSixDatepickerElement>;
             /**

@@ -1,5 +1,9 @@
 # six-datepicker
 
+::: warning
+The six-datepicker component is deprecated. Please use the [six-date](./six-date.md) component instead.
+:::
+
 <!-- EXAMPLES -->
 
 <!-- Auto Generated Below -->
