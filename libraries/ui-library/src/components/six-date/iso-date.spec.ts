@@ -4,6 +4,7 @@ import {
   getMonth,
   IsoDate,
   isValidIsoDate,
+  nextPointerDate,
   today,
   todayAsPointerDate,
   toPointerDate,
@@ -109,6 +110,55 @@ describe('iso-date', () => {
     test('demonstrates why using toISOString() is incorrect', () => {
       expect(new Date().toISOString().substring(0, 10)).toBe('2021-12-31');
     });
+  });
+
+  describe('nextPointerDate', () => {
+    const nextPointerDateCases = [
+      {
+        selectionMode: 'day' as const,
+        pointerDate: { year: 2022, month: 6, day: 15 },
+        expected: { year: 2022, month: 7, day: 1 },
+      },
+      {
+        selectionMode: 'day' as const,
+        pointerDate: { year: 2022, month: 12, day: 31 },
+        expected: { year: 2023, month: 1, day: 1 },
+      },
+      {
+        selectionMode: 'day' as const,
+        pointerDate: { year: 2022, month: 1, day: 1 },
+        expected: { year: 2022, month: 2, day: 1 },
+      },
+
+      {
+        selectionMode: 'month' as const,
+        pointerDate: { year: 2022, month: 6, day: 15 },
+        expected: { year: 2023, month: 6, day: 15 },
+      },
+      {
+        selectionMode: 'month' as const,
+        pointerDate: { year: 2021, month: 12, day: 31 },
+        expected: { year: 2022, month: 12, day: 31 },
+      },
+
+      {
+        selectionMode: 'year' as const,
+        pointerDate: { year: 2022, month: 6, day: 15 },
+        expected: { year: 2047, month: 6, day: 15 },
+      },
+      {
+        selectionMode: 'year' as const,
+        pointerDate: { year: 2000, month: 1, day: 1 },
+        expected: { year: 2025, month: 1, day: 1 },
+      },
+    ];
+
+    test.each(nextPointerDateCases)(
+      'calculates next pointer date for selectionMode `$selectionMode` and pointerDate $pointerDate, expects $expected',
+      ({ selectionMode, pointerDate, expected }) => {
+        expect(nextPointerDate(selectionMode, pointerDate)).toEqual(expected);
+      }
+    );
   });
 
   describe('isValidIsoDate', () => {
