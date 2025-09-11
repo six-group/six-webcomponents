@@ -12,6 +12,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
+## 4.3.4 - 2025-09-11
+
+Added a link to the version 5 documentation.
+
 ## 4.3.3 - 2025-07-09
 
 Deploy release 4 documentation at

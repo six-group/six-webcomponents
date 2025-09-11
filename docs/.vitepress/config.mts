@@ -37,6 +37,7 @@ export default withMermaid({
       },
       { text: 'Components', link: componentNavItems[0].link },
       { text: 'Changelog', link: '/changelog' },
+      { text: 'Go to v5 docs', link: 'https://six-group.github.io/six-webcomponents/v5/' },
     ],
 
     sidebar: {
