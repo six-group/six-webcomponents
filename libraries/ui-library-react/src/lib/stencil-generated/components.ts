@@ -11,6 +11,8 @@ import { type EmptyPayload, type SixAlertCustomEvent, type SixButtonCustomEvent,
 import { SixAlert as SixAlertElement, defineCustomElement as defineSixAlert } from "@six-group/ui-library/dist/components/six-alert.js";
 import { SixAvatar as SixAvatarElement, defineCustomElement as defineSixAvatar } from "@six-group/ui-library/dist/components/six-avatar.js";
 import { SixBadge as SixBadgeElement, defineCustomElement as defineSixBadge } from "@six-group/ui-library/dist/components/six-badge.js";
+import { SixBreadcrumbsItem as SixBreadcrumbsItemElement, defineCustomElement as defineSixBreadcrumbsItem } from "@six-group/ui-library/dist/components/six-breadcrumbs-item.js";
+import { SixBreadcrumbs as SixBreadcrumbsElement, defineCustomElement as defineSixBreadcrumbs } from "@six-group/ui-library/dist/components/six-breadcrumbs.js";
 import { SixButton as SixButtonElement, defineCustomElement as defineSixButton } from "@six-group/ui-library/dist/components/six-button.js";
 import { SixCard as SixCardElement, defineCustomElement as defineSixCard } from "@six-group/ui-library/dist/components/six-card.js";
 import { SixCheckbox as SixCheckboxElement, defineCustomElement as defineSixCheckbox } from "@six-group/ui-library/dist/components/six-checkbox.js";
@@ -111,6 +113,28 @@ export const SixBadge: StencilReactComponent<SixBadgeElement, SixBadgeEvents> = 
     react: React,
     events: {} as SixBadgeEvents,
     defineCustomElement: defineSixBadge
+});
+
+export type SixBreadcrumbsEvents = NonNullable<unknown>;
+
+export const SixBreadcrumbs: StencilReactComponent<SixBreadcrumbsElement, SixBreadcrumbsEvents> = /*@__PURE__*/ createComponent<SixBreadcrumbsElement, SixBreadcrumbsEvents>({
+    tagName: 'six-breadcrumbs',
+    elementClass: SixBreadcrumbsElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as SixBreadcrumbsEvents,
+    defineCustomElement: defineSixBreadcrumbs
+});
+
+export type SixBreadcrumbsItemEvents = NonNullable<unknown>;
+
+export const SixBreadcrumbsItem: StencilReactComponent<SixBreadcrumbsItemElement, SixBreadcrumbsItemEvents> = /*@__PURE__*/ createComponent<SixBreadcrumbsItemElement, SixBreadcrumbsItemEvents>({
+    tagName: 'six-breadcrumbs-item',
+    elementClass: SixBreadcrumbsItemElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as SixBreadcrumbsItemEvents,
+    defineCustomElement: defineSixBreadcrumbsItem
 });
 
 export type SixButtonEvents = {

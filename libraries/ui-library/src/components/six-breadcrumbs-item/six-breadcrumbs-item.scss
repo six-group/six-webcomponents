@@ -1,0 +1,50 @@
+@import '../../../src/global/component';
+
+/**
+* @prop --separator-color: The color of the separator
+* @prop --last-item-color: The color of the last breadcrumbs item
+*/
+:host {
+  --last-item-color: var(--six-color-web-rock-700);
+  --separator-color: var(--six-color-web-rock-700);
+
+  &::part(label) {
+    padding: unset;
+  }
+
+  &::part(base) {
+    display: flex;
+    align-items: center;
+  }
+
+  &::part(separator) {
+    align-items: center;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  six-button::part(label) {
+    padding-left: var(--six-spacing-xx-small);
+    padding-right: var(--six-spacing-xx-small);
+  }
+}
+
+:host([read-only]) {
+  six-button::part(base) {
+    color: var(--last-item-color);
+  }
+}
+
+.breadcrumb-item-readonly {
+  cursor: default;
+}
+
+.breadcrumb-item__separator {
+  display: flex;
+  align-items: center;
+  color: var(--separator-color);
+}
+
+:host(:last-of-type) .breadcrumb-item__separator {
+  display: none;
+}
