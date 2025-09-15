@@ -335,7 +335,7 @@ export class SixMenu {
         part="wrapper"
         class={{
           menu: true,
-          '.no-shadow': this.removeBoxShadow,
+          'no-shadow': this.removeBoxShadow,
         }}
       >
         <div
