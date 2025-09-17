@@ -7,7 +7,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## Upcoming
 
 ### Added
-- `six-icon`: Opt-in support for **Material Symbols** using the variable font. Enable via the new `symbols` boolean prop; the existing `filled` prop now toggles the `FILL` axis when `symbols` is enabled. Legacy **Material Icons** remain the default.
+
+- `six-icon`: Opt-in support for **Material Symbols** using the variable font. Enable via the new
+  `symbols` boolean prop; the existing `filled` prop now toggles the `FILL` axis when `symbols` is
+  enabled. Legacy **Material Icons** remain the default.
 
 ## 5.0.0 - 2025-09-11
 
