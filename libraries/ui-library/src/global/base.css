@@ -11,9 +11,6 @@
 @import 'base/colors.css';
 @import 'base/typography.css';
 
-@import 'base/colors.css';
-@import 'base/typography.css';
-
 body > div.container {
   margin: 1rem;
 }
