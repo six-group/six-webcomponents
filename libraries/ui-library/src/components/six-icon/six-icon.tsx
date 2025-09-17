@@ -33,7 +33,7 @@ export class SixIcon {
   render() {
     // inside render()
     const isSymbols = this.symbols;
-    const symbolsStyle = isSymbols ? ({ '--six-icon-fill': this.filled ? '1' : '0' } as any) : undefined;
+    const symbolsStyle = isSymbols ? { '--six-icon-fill': this.filled ? '1' : '0' } : undefined;
     return (
       <i
         style={symbolsStyle}
