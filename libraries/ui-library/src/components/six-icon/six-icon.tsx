@@ -15,7 +15,14 @@ import { Component, h, Prop } from '@stencil/core';
 export class SixIcon {
   /** The icon's size. */
   @Prop({ reflect: true }) size:
-    | 'inherit' | 'xSmall' | 'small' | 'medium' | 'large' | 'xLarge' | 'xxLarge' | 'xxxLarge' = 'inherit';
+    | 'inherit'
+    | 'xSmall'
+    | 'small'
+    | 'medium'
+    | 'large'
+    | 'xLarge'
+    | 'xxLarge'
+    | 'xxxLarge' = 'inherit';
 
   /** If set to true the default material outlined icons are not used. */
   @Prop() filled = false;
@@ -26,28 +33,28 @@ export class SixIcon {
   render() {
     // inside render()
     const isSymbols = this.symbols;
-    const symbolsStyle = isSymbols
-      ? ({ '--six-icon-fill': this.filled ? '1' : '0' } as any)
-      : undefined;
+    const symbolsStyle = isSymbols ? ({ '--six-icon-fill': this.filled ? '1' : '0' } as any) : undefined;
     return (
-      <i style={symbolsStyle} class={{
-        'material-icons': !isSymbols,
-        'material-icons-outlined': !isSymbols && !this.filled,
-        'material-icons-filled': !isSymbols && this.filled,
+      <i
+        style={symbolsStyle}
+        class={{
+          'material-icons': !isSymbols,
+          'material-icons-outlined': !isSymbols && !this.filled,
+          'material-icons-filled': !isSymbols && this.filled,
 
-        'material-symbols-outlined': isSymbols && !this.filled,
-        'material-symbols': isSymbols && this.filled,
+          'material-symbols-outlined': isSymbols && !this.filled,
+          'material-symbols': isSymbols && this.filled,
 
-        // sizes … (unchanged)
-        'icon--xsmall': this.size === 'xSmall',
-        'icon--small': this.size === 'small',
-        'icon--medium': this.size === 'medium',
-        'icon--large': this.size === 'large',
-        'icon--xlarge': this.size === 'xLarge',
-        'icon--xxlarge': this.size === 'xxLarge',
-        'icon--xxxlarge': this.size === 'xxxLarge',
-        'icon--inherit': this.size === 'inherit',
-      }}
+          // sizes … (unchanged)
+          'icon--xsmall': this.size === 'xSmall',
+          'icon--small': this.size === 'small',
+          'icon--medium': this.size === 'medium',
+          'icon--large': this.size === 'large',
+          'icon--xlarge': this.size === 'xLarge',
+          'icon--xxlarge': this.size === 'xxLarge',
+          'icon--xxxlarge': this.size === 'xxxLarge',
+          'icon--inherit': this.size === 'inherit',
+        }}
       >
         <slot></slot>
       </i>

@@ -15,12 +15,12 @@
   user-select: none;
 }
 
-.material-icons-filled { 
-  font-family: 'Material Icons'; 
+.material-icons-filled {
+  font-family: 'Material Icons';
 }
 
-.material-icons-outlined { 
-  font-family: 'Material Icons Outlined'; 
+.material-icons-outlined {
+  font-family: 'Material Icons Outlined';
 }
 
 /* NEW: Material Symbols styles */
@@ -29,29 +29,55 @@
   font-family: 'Material Symbols Outlined Variable'; // Changed: Added "Variable"
   font-weight: normal;
   font-style: normal;
-  font-variation-settings: 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  font-variation-settings:
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
   font-feature-settings: 'liga';
   line-height: 1;
   vertical-align: middle;
   user-select: none;
 }
 
-.material-symbols-outlined { 
-  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; 
+.material-symbols-outlined {
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
 }
 
-.material-symbols { 
-  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; 
+.material-symbols {
+  font-variation-settings:
+    'FILL' 1,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
 }
-
 
 .icon {
-  &--xsmall { font-size: 12px; }
-  &--small { font-size: 18px; }
-  &--medium { font-size: 24px; }
-  &--large { font-size: 36px; }
-  &--xlarge { font-size: 48px; }
-  &--xxlarge { font-size: 72px; }
-  &--xxxlarge { font-size: 96px; }
-  &--inherit { font-size: 1.5em; }
+  &--xsmall {
+    font-size: 12px;
+  }
+  &--small {
+    font-size: 18px;
+  }
+  &--medium {
+    font-size: 24px;
+  }
+  &--large {
+    font-size: 36px;
+  }
+  &--xlarge {
+    font-size: 48px;
+  }
+  &--xxlarge {
+    font-size: 72px;
+  }
+  &--xxxlarge {
+    font-size: 96px;
+  }
+  &--inherit {
+    font-size: 1.5em;
+  }
 }
