@@ -55,12 +55,24 @@ export const config: Config = {
         { src: '../../../node_modules/@fontsource/material-icons/files/**/*', dest: './files', warn: true },
         { src: '../../../node_modules/@fontsource/material-icons-outlined/files/**/*', dest: './files', warn: true },
         { src: '../../../node_modules/@fontsource/noto-sans/files/**/*', dest: './files', warn: true },
-        
+
         // NEW: Material Symbols (use /**/* for subdirectories)
-        { src: '../../../node_modules/@fontsource-variable/material-symbols-outlined/files/**/*', dest: './files', warn: true },
-        { src: '../../../node_modules/@fontsource-variable/material-symbols-rounded/files/**/*', dest: './files', warn: true },
-        { src: '../../../node_modules/@fontsource-variable/material-symbols-sharp/files/**/*', dest: './files', warn: true },
-        
+        {
+          src: '../../../node_modules/@fontsource-variable/material-symbols-outlined/files/**/*',
+          dest: './files',
+          warn: true,
+        },
+        {
+          src: '../../../node_modules/@fontsource-variable/material-symbols-rounded/files/**/*',
+          dest: './files',
+          warn: true,
+        },
+        {
+          src: '../../../node_modules/@fontsource-variable/material-symbols-sharp/files/**/*',
+          dest: './files',
+          warn: true,
+        },
+
         { src: './assets/**/*', dest: '.', warn: true, keepDirStructure: true },
       ],
     },
@@ -90,14 +102,30 @@ export const config: Config = {
       serviceWorker: null, // disable service workers
       copy: [
         { src: '../../../node_modules/@fontsource/material-icons/files/**/*', dest: 'build/files', warn: true },
-        { src: '../../../node_modules/@fontsource/material-icons-outlined/files/**/*', dest: 'build/files', warn: true },
+        {
+          src: '../../../node_modules/@fontsource/material-icons-outlined/files/**/*',
+          dest: 'build/files',
+          warn: true,
+        },
         { src: '../../../node_modules/@fontsource/noto-sans/files/**/*', dest: 'build/files', warn: true },
-        
+
         // NEW: Material Symbols (use /**/* for subdirectories)
-        { src: '../../../node_modules/@fontsource-variable/material-symbols-outlined/files/**/*', dest: 'build/files', warn: true },
-        { src: '../../../node_modules/@fontsource-variable/material-symbols-rounded/files/**/*', dest: 'build/files', warn: true },
-        { src: '../../../node_modules/@fontsource-variable/material-symbols-sharp/files/**/*', dest: 'build/files', warn: true },
-        
+        {
+          src: '../../../node_modules/@fontsource-variable/material-symbols-outlined/files/**/*',
+          dest: 'build/files',
+          warn: true,
+        },
+        {
+          src: '../../../node_modules/@fontsource-variable/material-symbols-rounded/files/**/*',
+          dest: 'build/files',
+          warn: true,
+        },
+        {
+          src: '../../../node_modules/@fontsource-variable/material-symbols-sharp/files/**/*',
+          dest: 'build/files',
+          warn: true,
+        },
+
         { src: '**/*.html' },
       ],
     },
