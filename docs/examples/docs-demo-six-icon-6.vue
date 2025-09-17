@@ -1,14 +1,14 @@
 <template>
 <div>
 
-        <div style="display: flex; gap: 1em; min-height: 5rem; align-items: center">
-          <six-icon size="large">search</six-icon>
-          <six-icon size="large">done</six-icon>
-          <six-icon size="large">settings</six-icon>
-          <six-icon size="large">home</six-icon>
-          <six-icon size="large">info</six-icon>
-        </div>
-      
+      <div style="display:flex;gap:1em;min-height:5rem;align-items:center">
+        <six-icon size="medium">search</six-icon>
+        <six-icon size="medium">done</six-icon>
+        <six-icon size="medium">settings</six-icon>
+        <six-icon size="medium">home</six-icon>
+        <six-icon size="medium">info</six-icon>
+      </div>
+    
 </div>
 </template>
 <style>

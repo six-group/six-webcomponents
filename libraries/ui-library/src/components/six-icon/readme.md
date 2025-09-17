@@ -7,11 +7,11 @@
 
 ## Properties
 
-| Property  | Attribute | Description                                                      | Type                                                                                             | Default     |
-| --------- | --------- | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ | ----------- |
-| `filled`  | `filled`  | If set to true the default material outlined icons are not used. | `boolean`                                                                                        | `false`     |
-| `size`    | `size`    |                                                                  | `"inherit" \| "large" \| "medium" \| "small" \| "xLarge" \| "xSmall" \| "xxLarge" \| "xxxLarge"` | `'inherit'` |
-| `symbols` | `symbols` | Opt-in to Material Symbols (keeps BC by default).                | `boolean`                                                                                        | `false`     |
+| Property  | Attribute | Description                                                           | Type                                                                                             | Default     |
+| --------- | --------- | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ | ----------- |
+| `filled`  | `filled`  | If set to true the default material outlined icons are not used.      | `boolean`                                                                                        | `false`     |
+| `size`    | `size`    | The icon's size.                                                      | `"inherit" \| "large" \| "medium" \| "small" \| "xLarge" \| "xSmall" \| "xxLarge" \| "xxxLarge"` | `'inherit'` |
+| `symbols` | `symbols` | Opt-in to Material Symbols (keeps backward compatibility by default). | `boolean`                                                                                        | `false`     |
 
 
 ## Slots
