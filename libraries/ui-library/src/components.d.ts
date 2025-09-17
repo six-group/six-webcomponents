@@ -1054,14 +1054,12 @@ export namespace Components {
           * The icon's size.
           * @default 'inherit'
          */
-        "size": | 'inherit'
-    | 'xSmall'
-    | 'small'
-    | 'medium'
-    | 'large'
-    | 'xLarge'
-    | 'xxLarge'
-    | 'xxxLarge';
+        "size": | 'inherit' | 'xSmall' | 'small' | 'medium' | 'large' | 'xLarge' | 'xxLarge' | 'xxxLarge';
+        /**
+          * Opt-in to Material Symbols (keeps backward compatibility by default).
+          * @default false
+         */
+        "symbols": boolean;
     }
     /**
      * @since 1.0
@@ -4834,14 +4832,12 @@ declare namespace LocalJSX {
           * The icon's size.
           * @default 'inherit'
          */
-        "size"?: | 'inherit'
-    | 'xSmall'
-    | 'small'
-    | 'medium'
-    | 'large'
-    | 'xLarge'
-    | 'xxLarge'
-    | 'xxxLarge';
+        "size"?: | 'inherit' | 'xSmall' | 'small' | 'medium' | 'large' | 'xLarge' | 'xxLarge' | 'xxxLarge';
+        /**
+          * Opt-in to Material Symbols (keeps backward compatibility by default).
+          * @default false
+         */
+        "symbols"?: boolean;
     }
     /**
      * @since 1.0
