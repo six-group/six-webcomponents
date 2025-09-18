@@ -589,7 +589,7 @@ export class SixTimepicker {
             part="popup"
             class={{
               timepicker__popup: true,
-              'timepicker__popup--is-up': this.placement == null ? this.placement === 'top' : this.isPopupContentUp,
+              'timepicker__popup--is-up': this.placement == null ? this.isPopupContentUp : this.placement === 'top',
               'timepicker__popup--is-inline': this.inline,
             }}
           >
