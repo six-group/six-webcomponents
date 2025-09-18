@@ -12,6 +12,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   `symbols` boolean prop; the existing `filled` prop now toggles the `FILL` axis when `symbols` is
   enabled. Legacy **Material Icons** remain the default.
 
+### Fixed
+
+- `six-timepicker`: placement configuration not working
+- Fixed typo in box shadow class of `six-menu`
+
 ## 5.0.0 - 2025-09-11
 
 ### Added
