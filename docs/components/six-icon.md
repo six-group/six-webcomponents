@@ -13,7 +13,7 @@ SIX UI Library supports Material **Icons** and **Symbols**. Browse: [Material Ic
 <docs-demo-six-icon-0></docs-demo-six-icon-0>
 
 ```html
-<div style="display:flex;gap:1em;min-height:5rem;align-items:center">
+<div style="display: flex; gap: 1em; min-height: 5rem; align-items: center">
   <six-icon>pie_chart</six-icon>
   <six-icon>settings</six-icon>
   <six-icon>sick</six-icon>
@@ -28,7 +28,7 @@ SIX UI Library supports Material **Icons** and **Symbols**. Browse: [Material Ic
 <docs-demo-six-icon-1></docs-demo-six-icon-1>
 
 ```html
-<div style="display:flex;gap:1em;min-height:5rem;align-items:center">
+<div style="display: flex; gap: 1em; min-height: 5rem; align-items: center">
   <six-icon filled>pie_chart</six-icon>
   <six-icon filled>settings</six-icon>
   <six-icon filled>sick</six-icon>
@@ -46,7 +46,7 @@ SIX UI Library supports Material **Icons** and **Symbols**. Browse: [Material Ic
 <docs-demo-six-icon-2></docs-demo-six-icon-2>
 
 ```html
-<div style="display:flex;gap:1em;min-height:5rem;align-items:center">
+<div style="display: flex; gap: 1em; min-height: 5rem; align-items: center">
   <six-icon symbols>home</six-icon>
   <six-icon symbols>settings</six-icon>
   <six-icon symbols>favorite</six-icon>
@@ -61,7 +61,7 @@ SIX UI Library supports Material **Icons** and **Symbols**. Browse: [Material Ic
 <docs-demo-six-icon-3></docs-demo-six-icon-3>
 
 ```html
-<div style="display:flex;gap:1em;min-height:5rem;align-items:center">
+<div style="display: flex; gap: 1em; min-height: 5rem; align-items: center">
   <six-icon symbols filled>home</six-icon>
   <six-icon symbols filled>settings</six-icon>
   <six-icon symbols filled>favorite</six-icon>
@@ -81,7 +81,7 @@ The icons are available in different sizes. Default size is medium (24px).
 <docs-demo-six-icon-4></docs-demo-six-icon-4>
 
 ```html
-<div style="display:flex;gap:1em;min-height:5rem;align-items:center">
+<div style="display: flex; gap: 1em; min-height: 5rem; align-items: center">
   <six-icon size="xSmall">search</six-icon>
   <six-icon size="xSmall">done</six-icon>
   <six-icon size="xSmall">settings</six-icon>
@@ -96,7 +96,7 @@ The icons are available in different sizes. Default size is medium (24px).
 <docs-demo-six-icon-5></docs-demo-six-icon-5>
 
 ```html
-<div style="display:flex;gap:1em;min-height:5rem;align-items:center">
+<div style="display: flex; gap: 1em; min-height: 5rem; align-items: center">
   <six-icon size="small">search</six-icon>
   <six-icon size="small">done</six-icon>
   <six-icon size="small">settings</six-icon>
@@ -111,7 +111,7 @@ The icons are available in different sizes. Default size is medium (24px).
 <docs-demo-six-icon-6></docs-demo-six-icon-6>
 
 ```html
-<div style="display:flex;gap:1em;min-height:5rem;align-items:center">
+<div style="display: flex; gap: 1em; min-height: 5rem; align-items: center">
   <six-icon size="medium">search</six-icon>
   <six-icon size="medium">done</six-icon>
   <six-icon size="medium">settings</six-icon>
@@ -126,7 +126,7 @@ The icons are available in different sizes. Default size is medium (24px).
 <docs-demo-six-icon-7></docs-demo-six-icon-7>
 
 ```html
-<div style="display:flex;gap:1em;min-height:5rem;align-items:center">
+<div style="display: flex; gap: 1em; min-height: 5rem; align-items: center">
   <six-icon size="large">search</six-icon>
   <six-icon size="large">done</six-icon>
   <six-icon size="large">settings</six-icon>
@@ -141,7 +141,7 @@ The icons are available in different sizes. Default size is medium (24px).
 <docs-demo-six-icon-8></docs-demo-six-icon-8>
 
 ```html
-<div style="display:flex;gap:1em;min-height:5rem;align-items:center">
+<div style="display: flex; gap: 1em; min-height: 5rem; align-items: center">
   <six-icon size="xLarge">search</six-icon>
   <six-icon size="xLarge">done</six-icon>
   <six-icon size="xLarge">settings</six-icon>
@@ -156,7 +156,7 @@ The icons are available in different sizes. Default size is medium (24px).
 <docs-demo-six-icon-9></docs-demo-six-icon-9>
 
 ```html
-<div style="display:flex;gap:1em;min-height:5rem;align-items:center">
+<div style="display: flex; gap: 1em; min-height: 5rem; align-items: center">
   <six-icon size="xxLarge">search</six-icon>
   <six-icon size="xxLarge">done</six-icon>
   <six-icon size="xxLarge">settings</six-icon>
@@ -171,7 +171,7 @@ The icons are available in different sizes. Default size is medium (24px).
 <docs-demo-six-icon-10></docs-demo-six-icon-10>
 
 ```html
-<div style="display:flex;gap:1em;min-height:6rem;align-items:center">
+<div style="display: flex; gap: 1em; min-height: 6rem; align-items: center">
   <six-icon size="xxxLarge">search</six-icon>
   <six-icon size="xxxLarge">done</six-icon>
   <six-icon size="xxxLarge">settings</six-icon>
@@ -186,14 +186,15 @@ The icons are available in different sizes. Default size is medium (24px).
 <docs-demo-six-icon-11></docs-demo-six-icon-11>
 
 ```html
-<div style="display:flex;gap:1em;min-height:5rem;align-items:center">
-  <span style="font-size:1rem">
+<div style="display: flex; gap: 1em; min-height: 5rem; align-items: center">
+  <span style="font-size: 1rem"
+    >
     <six-icon size="inherit">search</six-icon>
   </span>
-  <span style="font-size:2rem">
+  <span style="font-size: 2rem">
     <six-icon size="inherit" symbols>search</six-icon>
   </span>
-  <span style="font-size:3rem">
+  <span style="font-size: 3rem">
     <six-icon size="inherit" symbols filled>search</six-icon>
   </span>
 </div>
@@ -206,23 +207,25 @@ Enter an icon label and press enter to filter:
 <docs-demo-six-icon-12></docs-demo-six-icon-12>
 
 ```html
-<div style="border:solid 1px #f6f6f6">
-  <div style="display:flex">
-    <six-input placeholder="search for an icon..." style="margin-bottom:1em;width:100%"
-      id="icon-search"></six-input>
+<div style="border: solid 1px #f6f6f6">
+  <div style="display: flex">
+    <six-input               placeholder="search for an icon..."
+      style="margin-bottom: 1em; width: 100%"
+      id="icon-search"
+    ></six-input>
   </div>
-  <div id="icon-showcase" style="max-height:70vh;overflow:auto">
-    <h1 style="margin-left:1rem">Icons · Outlined</h1>
-    <div id="icon-showcase-outlined" style="display:flex;flex-wrap:wrap"></div>
+  <div id="icon-showcase" style="max-height: 70vh; overflow: auto">
+    <h1 style="margin-left: 1rem">Icons · Outlined</h1>
+    <div id="icon-showcase-outlined" style="display: flex; flex-wrap: wrap"></div>
 
-    <h1 style="margin-left:1rem">Icons · Filled</h1>
-    <div id="icon-showcase-filled" style="display:flex;flex-wrap:wrap"></div>
+    <h1 style="margin-left: 1rem">Icons · Filled</h1>
+    <div id="icon-showcase-filled" style="display: flex; flex-wrap: wrap"></div>
 
-    <h1 style="margin-left:1rem">Symbols · Outlined</h1>
-    <div id="icon-showcase-symbols-outlined" style="display:flex;flex-wrap:wrap"></div>
+    <h1 style="margin-left: 1rem">Symbols · Outlined</h1>
+    <div id="icon-showcase-symbols-outlined" style="display: flex; flex-wrap: wrap"></div>
 
-    <h1 style="margin-left:1rem">Symbols · Filled</h1>
-    <div id="icon-showcase-symbols-filled" style="display:flex;flex-wrap:wrap"></div>
+    <h1 style="margin-left: 1rem">Symbols · Filled</h1>
+    <div id="icon-showcase-symbols-filled" style="display: flex; flex-wrap: wrap"></div>
   </div>
 </div>
 
@@ -232,17 +235,23 @@ Enter an icon label and press enter to filter:
 
   const card = (name, attrs = '') =>
     `<div data-option="${name}" style="word-break:break-all;margin:1em;padding:1em;height:7.5em;width:10em;text-align:center;background-color:rgba(164,164,164,.04);">
-         <six-icon size="xLarge" ${attrs}>${name}</six-icon>
-         <div style="padding:.5em;">${name}</div>
-       </div>`;
+       <six-icon size="xLarge" ${attrs}>${name}</six-icon>
+       <div style="padding:.5em;">${name}</div>
+     </div>`;
 
   // Legacy icons
-  const getIcons = filled =>
-    icons.split(';').map(i => card(i, `filled="${filled}"`)).join('\n');
+  const getIcons = (filled) =>
+    icons
+      .split(';')
+      .map((i) => card(i, `filled="${filled}"`))
+      .join('\n');
 
   // Symbols (presence-only boolean attrs to avoid filled="false")
-  const getSymbols = filled =>
-    icons.split(';').map(i => card(i, `symbols ${filled ? 'filled' : ''}`)).join('\n');
+  const getSymbols = (filled) =>
+    icons
+      .split(';')
+      .map((i) => card(i, `symbols ${filled ? 'filled' : ''}`))
+      .join('\n');
 
   document.getElementById('icon-showcase-outlined').innerHTML = getIcons(false);
   document.getElementById('icon-showcase-filled').innerHTML = getIcons(true);
@@ -251,11 +260,11 @@ Enter an icon label and press enter to filter:
 
   const iconSearch = document.querySelector('#icon-search');
   iconSearch.addEventListener('six-input-input', () => {
-    const filter = id =>
-      Array.from(document.getElementById(id).children).forEach(n => {
+    const filter = (id) =>
+      Array.from(document.getElementById(id).children).forEach((n) => {
         const label = n.getAttribute('data-option');
         const terms = iconSearch.value.trim().split(' ').filter(Boolean);
-        const hit = terms.every(t => label.includes(t));
+        const hit = terms.every((t) => label.includes(t));
         n.style.display = hit ? 'initial' : 'none';
       });
 
