@@ -810,14 +810,14 @@ export declare interface SixHeaderMenuButton extends Components.SixHeaderMenuBut
 
 
 @ProxyCmp({
-  inputs: ['filled', 'size']
+  inputs: ['filled', 'library', 'size']
 })
 @Component({
   selector: 'six-icon',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['filled', 'size'],
+  inputs: ['filled', 'library', 'size'],
   standalone: false
 })
 export class SixIcon {

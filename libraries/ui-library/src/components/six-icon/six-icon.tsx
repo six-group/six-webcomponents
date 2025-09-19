@@ -1,4 +1,5 @@
 import { Component, h, Prop } from '@stencil/core';
+import { getDefaultIconLibrary, IconLibrary } from '../../utils/icon';
 
 /**
  * @since 1.0
@@ -27,13 +28,32 @@ export class SixIcon {
   /** If set to true the default material outlined icons are not used. */
   @Prop() filled = false;
 
+  /**
+   * Icon library for this instance. Overrides the global default.
+   * - "classic"  → Material Icons (Outlined/Regular)
+   * - "symbols"  → Material Symbols (variable font)
+   */
+  @Prop({ reflect: true }) library?: IconLibrary;
+
+  private isSymbols(): boolean {
+    const lib = this.library ?? getDefaultIconLibrary();
+    return lib === 'material-symbols';
+  }
+
   render() {
+    // inside render()
+    const isSymbols = this.isSymbols();
     return (
       <i
         class={{
-          'material-icons': true,
-          'material-icons-outlined': !this.filled,
-          'material-icons-filled': this.filled,
+          'material-icons': !isSymbols,
+          'material-icons-outlined': !isSymbols && !this.filled,
+          'material-icons-filled': !isSymbols && this.filled,
+
+          'material-symbols-outlined': isSymbols && !this.filled,
+          'material-symbols': isSymbols && this.filled,
+
+          // sizes … (unchanged)
           'icon--xsmall': this.size === 'xSmall',
           'icon--small': this.size === 'small',
           'icon--medium': this.size === 'medium',
