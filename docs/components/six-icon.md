@@ -49,9 +49,9 @@ SIX UI Library supports Material **Icons** and **Symbols**. Browse: [Material Ic
 <div style="display: flex; gap: 1em; min-height: 5rem; align-items: center">
   <six-icon library="material-symbols">home</six-icon>
   <six-icon library="material-symbols">settings</six-icon>
-  <six-icon library="material-symbols">favorite</six-icon>
-  <six-icon library="material-symbols">language</six-icon>
   <six-icon library="material-symbols">database</six-icon>
+  <six-icon library="material-symbols">language</six-icon>
+  <six-icon library="material-symbols">person</six-icon>
 </div>
 ```
 
@@ -64,9 +64,9 @@ SIX UI Library supports Material **Icons** and **Symbols**. Browse: [Material Ic
 <div style="display: flex; gap: 1em; min-height: 5rem; align-items: center">
   <six-icon library="material-symbols" filled>home</six-icon>
   <six-icon library="material-symbols" filled>settings</six-icon>
-  <six-icon library="material-symbols" filled>favorite</six-icon>
-  <six-icon library="material-symbols" filled>language</six-icon>
   <six-icon library="material-symbols" filled>database</six-icon>
+  <six-icon library="material-symbols" filled>language</six-icon>
+  <six-icon library="material-symbols" filled>person</six-icon>
 </div>
 ```
 
@@ -187,8 +187,7 @@ The icons are available in different sizes. Default size is medium (24px).
 
 ```html
 <div style="display: flex; gap: 1em; min-height: 5rem; align-items: center">
-  <span style="font-size: 1rem"
-    >
+  <span style="font-size: 1rem">
     <six-icon size="inherit">search</six-icon>
   </span>
   <span style="font-size: 2rem">
@@ -209,10 +208,8 @@ Enter an icon label and press enter to filter:
 ```html
 <div style="border: solid 1px #f6f6f6">
   <div style="display: flex">
-    <six-input               placeholder="search for an icon..."
-      style="margin-bottom: 1em; width: 100%"
-      id="icon-search"
-    ></six-input>
+    <six-input placeholder="search for an icon..." style="margin-bottom: 1em; width: 100%"
+      id="icon-search"></six-input>
   </div>
   <div id="icon-showcase" style="max-height: 70vh; overflow: auto">
     <h1 style="margin-left: 1rem">Icons · Outlined</h1>
@@ -235,9 +232,9 @@ Enter an icon label and press enter to filter:
 
   const card = (name, attrs = '') =>
     `<div data-option="${name}" style="word-break:break-all;margin:1em;padding:1em;height:7.5em;width:10em;text-align:center;background-color:rgba(164,164,164,.04);">
-       <six-icon size="xLarge" ${attrs}>${name}</six-icon>
-       <div style="padding:.5em;">${name}</div>
-     </div>`;
+         <six-icon size="xLarge" ${attrs}>${name}</six-icon>
+         <div style="padding:.5em;">${name}</div>
+       </div>`;
 
   // Legacy icons
   const getIcons = (filled) =>

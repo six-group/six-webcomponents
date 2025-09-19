@@ -1,5 +1,5 @@
 import { Component, h, Prop } from '@stencil/core';
-import { getDefaultIconLibrary, IconLibrary } from './icon-config';
+import { getDefaultIconLibrary, IconLibrary } from '../../utils/icon';
 
 /**
  * @since 1.0
