@@ -2,11 +2,11 @@
 <div>
 
         <div style="display: flex; gap: 1em; min-height: 5rem; align-items: center">
-          <six-icon symbols>home</six-icon>
-          <six-icon symbols>settings</six-icon>
-          <six-icon symbols>favorite</six-icon>
-          <six-icon symbols>language</six-icon>
-          <six-icon symbols>person</six-icon>
+          <six-icon library="material-symbols">home</six-icon>
+          <six-icon library="material-symbols">settings</six-icon>
+          <six-icon library="material-symbols">favorite</six-icon>
+          <six-icon library="material-symbols">language</six-icon>
+          <six-icon library="material-symbols">database</six-icon>
         </div>
       
 </div>

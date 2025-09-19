@@ -47,11 +47,11 @@ SIX UI Library supports Material **Icons** and **Symbols**. Browse: [Material Ic
 
 ```html
 <div style="display: flex; gap: 1em; min-height: 5rem; align-items: center">
-  <six-icon symbols>home</six-icon>
-  <six-icon symbols>settings</six-icon>
-  <six-icon symbols>favorite</six-icon>
-  <six-icon symbols>language</six-icon>
-  <six-icon symbols>person</six-icon>
+  <six-icon library="material-symbols">home</six-icon>
+  <six-icon library="material-symbols">settings</six-icon>
+  <six-icon library="material-symbols">favorite</six-icon>
+  <six-icon library="material-symbols">language</six-icon>
+  <six-icon library="material-symbols">database</six-icon>
 </div>
 ```
 
@@ -62,11 +62,11 @@ SIX UI Library supports Material **Icons** and **Symbols**. Browse: [Material Ic
 
 ```html
 <div style="display: flex; gap: 1em; min-height: 5rem; align-items: center">
-  <six-icon symbols filled>home</six-icon>
-  <six-icon symbols filled>settings</six-icon>
-  <six-icon symbols filled>favorite</six-icon>
-  <six-icon symbols filled>language</six-icon>
-  <six-icon symbols filled>person</six-icon>
+  <six-icon library="material-symbols" filled>home</six-icon>
+  <six-icon library="material-symbols" filled>settings</six-icon>
+  <six-icon library="material-symbols" filled>favorite</six-icon>
+  <six-icon library="material-symbols" filled>language</six-icon>
+  <six-icon library="material-symbols" filled>database</six-icon>
 </div>
 ```
 
@@ -283,11 +283,11 @@ Enter an icon label and press enter to filter:
 
 ## Properties
 
-| Property  | Attribute | Description                                                           | Type                                                                                             | Default     |
-| --------- | --------- | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ | ----------- |
-| `filled`  | `filled`  | If set to true the default material outlined icons are not used.      | `boolean`                                                                                        | `false`     |
-| `size`    | `size`    | The icon's size.                                                      | `"inherit" \| "large" \| "medium" \| "small" \| "xLarge" \| "xSmall" \| "xxLarge" \| "xxxLarge"` | `'inherit'` |
-| `symbols` | `symbols` | Opt-in to Material Symbols (keeps backward compatibility by default). | `boolean`                                                                                        | `false`     |
+| Property  | Attribute | Description                                                                                                                                                    | Type                                                                                             | Default     |
+| --------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ | ----------- |
+| `filled`  | `filled`  | If set to true the default material outlined icons are not used.                                                                                               | `boolean`                                                                                        | `false`     |
+| `library` | `library` | Icon library for this instance. Overrides the global default. - "classic"  → Material Icons (Outlined/Regular) - "symbols"  → Material Symbols (variable font) | `"material-icons" \| "material-symbols" \| undefined`                                            | `undefined` |
+| `size`    | `size`    | The icon's size.                                                                                                                                               | `"inherit" \| "large" \| "medium" \| "small" \| "xLarge" \| "xSmall" \| "xxLarge" \| "xxxLarge"` | `'inherit'` |
 
 
 ## Slots
