@@ -29,9 +29,19 @@ export class SixIcon {
   @Prop() filled = false;
 
   /**
+   * Icon library to use when no `library` prop is provided.
+   * By default, all `<six-icon>` instances fall back to the globally configured
+   * default library (via `setDefaultIconLibrary()` / `getDefaultIconLibrary()`),
+   * which is `"material-icons"` unless changed at runtime.
+   *
+   * This allows teams to switch the default across an entire project without
+   * having to set the `library` prop on every `<six-icon>` instance.
+   */
+
+  /**
    * Icon library for this instance. Overrides the global default.
-   * - "classic"  → Material Icons (Outlined/Regular)
-   * - "symbols"  → Material Symbols (variable font)
+   * - "material-icons"  → Material Icons
+   * - "material-symbols"  → Material Symbols
    */
   @Prop({ reflect: true }) library?: IconLibrary;
 
@@ -41,7 +51,6 @@ export class SixIcon {
   }
 
   render() {
-    // inside render()
     const isSymbols = this.isSymbols();
     return (
       <i
@@ -53,7 +62,6 @@ export class SixIcon {
           'material-symbols-outlined': isSymbols && !this.filled,
           'material-symbols': isSymbols && this.filled,
 
-          // sizes … (unchanged)
           'icon--xsmall': this.size === 'xSmall',
           'icon--small': this.size === 'small',
           'icon--medium': this.size === 'medium',

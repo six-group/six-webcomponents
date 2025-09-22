@@ -7,11 +7,11 @@
 
 ## Properties
 
-| Property  | Attribute | Description                                                                                                                                                    | Type                                                                                             | Default     |
-| --------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ | ----------- |
-| `filled`  | `filled`  | If set to true the default material outlined icons are not used.                                                                                               | `boolean`                                                                                        | `false`     |
-| `library` | `library` | Icon library for this instance. Overrides the global default. - "classic"  → Material Icons (Outlined/Regular) - "symbols"  → Material Symbols (variable font) | `"material-icons" \| "material-symbols" \| undefined`                                            | `undefined` |
-| `size`    | `size`    | The icon's size.                                                                                                                                               | `"inherit" \| "large" \| "medium" \| "small" \| "xLarge" \| "xSmall" \| "xxLarge" \| "xxxLarge"` | `'inherit'` |
+| Property  | Attribute | Description                                                                                                                                 | Type                                                                                             | Default     |
+| --------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ | ----------- |
+| `filled`  | `filled`  | If set to true the default material outlined icons are not used.                                                                            | `boolean`                                                                                        | `false`     |
+| `library` | `library` | Icon library for this instance. Overrides the global default. - "material-icons"  → Material Icons - "material-symbols"  → Material Symbols | `"material-icons" \| "material-symbols" \| undefined`                                            | `undefined` |
+| `size`    | `size`    | The icon's size.                                                                                                                            | `"inherit" \| "large" \| "medium" \| "small" \| "xLarge" \| "xSmall" \| "xxLarge" \| "xxxLarge"` | `'inherit'` |
 
 
 ## Slots

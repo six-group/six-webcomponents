@@ -1053,7 +1053,7 @@ export namespace Components {
          */
         "filled": boolean;
         /**
-          * Icon library for this instance. Overrides the global default. - "classic"  → Material Icons (Outlined/Regular) - "symbols"  → Material Symbols (variable font)
+          * Icon library for this instance. Overrides the global default. - "material-icons"  → Material Icons - "material-symbols"  → Material Symbols
          */
         "library"?: IconLibrary;
         /**
@@ -4837,7 +4837,7 @@ declare namespace LocalJSX {
          */
         "filled"?: boolean;
         /**
-          * Icon library for this instance. Overrides the global default. - "classic"  → Material Icons (Outlined/Regular) - "symbols"  → Material Symbols (variable font)
+          * Icon library for this instance. Overrides the global default. - "material-icons"  → Material Icons - "material-symbols"  → Material Symbols
          */
         "library"?: IconLibrary;
         /**

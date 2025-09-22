@@ -8,9 +8,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
-- `six-icon`: Opt-in support for **Material Symbols** using the variable font. Enable via the new
-  `symbols` boolean prop; the existing `filled` prop now toggles the `FILL` axis when `symbols` is
-  enabled. Legacy **Material Icons** remain the default.
+- `six-icon`: Support for **Material Symbols** (variable font). Select per instance via the new
+  `library` prop (`"material-icons"` | `"material-symbols"`). The existing `filled` prop continues
+  to control the filled variant for both libraries. Legacy **Material Icons** remain the default.
+- `six-icon`: Global utilities `setDefaultIconLibrary()` and `getDefaultIconLibrary()` to set or
+  read the default icon library for all `<six-icon>` instances that don’t specify `library`.
 
 ### Fixed
 

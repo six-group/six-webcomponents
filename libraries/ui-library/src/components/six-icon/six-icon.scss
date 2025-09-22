@@ -7,7 +7,7 @@
 .material-icons-filled,
 .material-symbols-outlined,
 .material-symbols {
-  display: inline-block; /* more predictable than inline text */
+  display: inline-block;
   vertical-align: middle;
   line-height: 1;
   letter-spacing: normal;
@@ -23,7 +23,7 @@
   font-feature-settings: 'liga';
   font-style: normal;
   font-weight: normal;
-  font-synthesis-weight: none; /* avoid UA synthesizing weights */
+  font-synthesis-weight: none;
   user-select: none;
 }
 
@@ -32,13 +32,10 @@
    ========================================================================== */
 
 .material-icons-filled {
-  /* Filled weight is a separate static font face */
   font-family: 'Material Icons';
 }
 
-.material-icons-outlined,
-.material-icons {
-  /* Keep .material-icons for legacy ligature support */
+.material-icons-outlined {
   font-family: 'Material Icons Outlined';
 }
 
@@ -50,8 +47,7 @@
 
 .material-symbols-outlined,
 .material-symbols {
-  /* Robust family fallback order */
-  font-family: 'Material Symbols Outlined Variable', 'Material Symbols Outlined', 'Material Symbols', sans-serif;
+  font-family: 'Material Symbols Outlined Variable';
 
   /* Base variations shared by both */
   font-variation-settings:
@@ -106,5 +102,5 @@
   }
   &--inherit {
     font-size: 1.5em;
-  } /* keeps your previous behavior */
+  }
 }
