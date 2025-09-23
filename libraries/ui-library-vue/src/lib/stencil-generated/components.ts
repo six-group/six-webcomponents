@@ -354,7 +354,8 @@ export const SixHeaderMenuButton: StencilVueComponent<JSX.SixHeaderMenuButton> =
 
 export const SixIcon: StencilVueComponent<JSX.SixIcon> = /*@__PURE__*/ defineContainer<JSX.SixIcon>('six-icon', undefined, [
   'size',
-  'filled'
+  'filled',
+  'library'
 ]);
 
 

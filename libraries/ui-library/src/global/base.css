@@ -1,5 +1,12 @@
+/* Material Icons */
 @import '~@fontsource/material-icons/latin.css';
 @import '~@fontsource/material-icons-outlined/latin.css';
+
+/* Material Symbols */
+@import '~@fontsource-variable/material-symbols-outlined/full.css';
+@import '~@fontsource-variable/material-symbols-rounded/full.css';
+@import '~@fontsource-variable/material-symbols-sharp/full.css';
+
 @import '~@fontsource/noto-sans/latin.css';
 @import 'base/colors.css';
 @import 'base/typography.css';

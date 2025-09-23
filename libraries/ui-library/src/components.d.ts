@@ -16,6 +16,7 @@ import { SixMenuItemData } from "./components/six-menu/six-menu";
 import { SixDropdownAsyncFilterPayload, SixDropdownAutoFilterPayload, SixDropdownScrollPayload } from "./components/six-dropdown/six-dropdown";
 import { SixFileListDownloadPayload, SixFileListRemovePayload } from "./components/six-file-list-item/six-file-list-item";
 import { SixFileUploadFailurePayload, SixFileUploadSuccessPayload } from "./components/six-file-upload/six-file-upload";
+import { IconLibrary } from "./utils/icon";
 import { SelectionRange, SelectionRangeDirection } from "./components/six-input/six-input";
 import { ItemPickerPaddingDirection, ItemPickerType } from "./components/six-item-picker/types";
 import { SixItemPickerChangePayload } from "./components/six-item-picker/six-item-picker";
@@ -39,6 +40,7 @@ export { SixMenuItemData } from "./components/six-menu/six-menu";
 export { SixDropdownAsyncFilterPayload, SixDropdownAutoFilterPayload, SixDropdownScrollPayload } from "./components/six-dropdown/six-dropdown";
 export { SixFileListDownloadPayload, SixFileListRemovePayload } from "./components/six-file-list-item/six-file-list-item";
 export { SixFileUploadFailurePayload, SixFileUploadSuccessPayload } from "./components/six-file-upload/six-file-upload";
+export { IconLibrary } from "./utils/icon";
 export { SelectionRange, SelectionRangeDirection } from "./components/six-input/six-input";
 export { ItemPickerPaddingDirection, ItemPickerType } from "./components/six-item-picker/types";
 export { SixItemPickerChangePayload } from "./components/six-item-picker/six-item-picker";
@@ -1050,6 +1052,10 @@ export namespace Components {
           * @default false
          */
         "filled": boolean;
+        /**
+          * Icon library for this instance. Overrides the global default. - "material-icons"  → Material Icons - "material-symbols"  → Material Symbols
+         */
+        "library"?: IconLibrary;
         /**
           * The icon's size.
           * @default 'inherit'
@@ -4830,6 +4836,10 @@ declare namespace LocalJSX {
           * @default false
          */
         "filled"?: boolean;
+        /**
+          * Icon library for this instance. Overrides the global default. - "material-icons"  → Material Icons - "material-symbols"  → Material Symbols
+         */
+        "library"?: IconLibrary;
         /**
           * The icon's size.
           * @default 'inherit'
