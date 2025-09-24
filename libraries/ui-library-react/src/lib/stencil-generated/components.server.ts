@@ -12,6 +12,8 @@ import { type EmptyPayload, type SixAlertCustomEvent, type SixButtonCustomEvent,
 import { SixAlert as SixAlertElement } from "@six-group/ui-library/dist/components/six-alert.js";
 import { SixAvatar as SixAvatarElement } from "@six-group/ui-library/dist/components/six-avatar.js";
 import { SixBadge as SixBadgeElement } from "@six-group/ui-library/dist/components/six-badge.js";
+import { SixBreadcrumbsItem as SixBreadcrumbsItemElement } from "@six-group/ui-library/dist/components/six-breadcrumbs-item.js";
+import { SixBreadcrumbs as SixBreadcrumbsElement } from "@six-group/ui-library/dist/components/six-breadcrumbs.js";
 import { SixButton as SixButtonElement } from "@six-group/ui-library/dist/components/six-button.js";
 import { SixCard as SixCardElement } from "@six-group/ui-library/dist/components/six-card.js";
 import { SixCheckbox as SixCheckboxElement } from "@six-group/ui-library/dist/components/six-checkbox.js";
@@ -118,6 +120,31 @@ export const SixBadge: StencilReactComponent<SixBadgeElement, SixBadgeEvents> = 
     },
     hydrateModule: import('@six-group/ui-library/hydrate') as Promise<HydrateModule>,
     clientModule: clientComponents.SixBadge as ReactWebComponent<SixBadgeElement, SixBadgeEvents>,
+    serializeShadowRoot,
+});
+
+export type SixBreadcrumbsEvents = NonNullable<unknown>;
+
+export const SixBreadcrumbs: StencilReactComponent<SixBreadcrumbsElement, SixBreadcrumbsEvents> = /*@__PURE__*/ createComponent<SixBreadcrumbsElement, SixBreadcrumbsEvents>({
+    tagName: 'six-breadcrumbs',
+    properties: { separatorIcon: 'separator-icon' },
+    hydrateModule: import('@six-group/ui-library/hydrate') as Promise<HydrateModule>,
+    clientModule: clientComponents.SixBreadcrumbs as ReactWebComponent<SixBreadcrumbsElement, SixBreadcrumbsEvents>,
+    serializeShadowRoot,
+});
+
+export type SixBreadcrumbsItemEvents = NonNullable<unknown>;
+
+export const SixBreadcrumbsItem: StencilReactComponent<SixBreadcrumbsItemElement, SixBreadcrumbsItemEvents> = /*@__PURE__*/ createComponent<SixBreadcrumbsItemElement, SixBreadcrumbsItemEvents>({
+    tagName: 'six-breadcrumbs-item',
+    properties: {
+        href: 'href',
+        target: 'target',
+        size: 'size',
+        readonly: 'read-only'
+    },
+    hydrateModule: import('@six-group/ui-library/hydrate') as Promise<HydrateModule>,
+    clientModule: clientComponents.SixBreadcrumbsItem as ReactWebComponent<SixBreadcrumbsItemElement, SixBreadcrumbsItemEvents>,
     serializeShadowRoot,
 });
 
@@ -524,7 +551,8 @@ export const SixIcon: StencilReactComponent<SixIconElement, SixIconEvents> = /*@
     tagName: 'six-icon',
     properties: {
         size: 'size',
-        filled: 'filled'
+        filled: 'filled',
+        library: 'library'
     },
     hydrateModule: import('@six-group/ui-library/hydrate') as Promise<HydrateModule>,
     clientModule: clientComponents.SixIcon as ReactWebComponent<SixIconElement, SixIconEvents>,
