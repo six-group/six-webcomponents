@@ -161,15 +161,20 @@ We have changed the event to prevent a dialog from closing from `six-...-overlay
 `six-...-request-close`. This allows preventing the dialog/drawer from closing not only when
 clicking the overlay but also when clicking the close button or pressing `Escape`.
 
-## Replacement for six-datepicker (Beta)
+## Replacement for six-datepicker
 
-The current implementation of `six-datepicker` has several bugs that proved challenging to fix. To
-address these issues, we developed an entirely new component called `six-date`, which is currently
-in beta state. You can try out this new component in this release.
+The `six-datepicker` component has been **deprecated** in version 5 and replaced by the new
+[`six-date`](/components/six-date.md) component. The previous implementation of `six-datepicker`
+contained several issues that were difficult to resolve, so we built a new component from the ground
+up.
 
-Looking ahead, we plan to replace `six-datepicker` with `six-date` in future releases to ensure a
-more robust and reliable date selection experience. For the time being, however, `six-datepicker`
-will remain available for backward compatibility.
+The main difference is the type of the `value` property. Instead of a `Date` object, it now accepts
+a string, which is also compatible with the native date input. The same applies to the `min` and
+`max` properties.
+
+In version 5, `six-datepicker` is still available but marked as **deprecated** and will be removed
+in a future major release. We recommend migrating to `six-date` to take advantage of ongoing
+improvements and bug fixes.
 
 ## Angular specific upgrade (None Breaking Change)
 

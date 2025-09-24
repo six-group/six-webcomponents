@@ -1,0 +1,133 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <script type="module" src="/build/ui-library.esm.js"></script>
+    <script nomodule src="/build/ui-library.js"></script>
+    <link rel="stylesheet" href="/build/ui-library.css" />
+    <title>Breadcrumbs</title>
+    <style>
+      .parent {
+        background-color: var(--six-color-web-rock-100);
+
+        six-breadcrumbs-item::part(separator) {
+          margin: 0 var(--six-spacing-large);
+        }
+      }
+
+      .parent six-breadcrumbs-item {
+        --separator-color: var(--six-color-web-rock-900);
+        --last-item-color: var(--six-color-danger-900);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <p>
+        Breadcrumbs provide a group of links so users can easily navigate a website’s hierarchy. Breadcrumbs are usually
+        placed before a page’s main content with the current page shown last to indicate the user’s position in the
+        navigation.
+      </p>
+      <section>
+        <six-breadcrumbs>
+          <six-breadcrumbs-item>A</six-breadcrumbs-item>
+          <six-breadcrumbs-item>B</six-breadcrumbs-item>
+          <six-breadcrumbs-item>C</six-breadcrumbs-item>
+        </six-breadcrumbs>
+      </section>
+
+      <h2>Custom Separators</h2>
+      <p>
+        Use the separator slot to change the separator that goes between breadcrumb items. Icons work well, but you can
+        also use text or an image.
+      </p>
+      <section>
+        <six-breadcrumbs>
+          <six-icon slot="separator" size="small">arrow_forward</six-icon>
+          <six-breadcrumbs-item>A</six-breadcrumbs-item>
+          <six-breadcrumbs-item>B</six-breadcrumbs-item>
+          <six-breadcrumbs-item>Current</six-breadcrumbs-item>
+        </six-breadcrumbs>
+      </section>
+
+      <p>Using <code>separator-icon</code> attribute</p>
+      <section>
+        <six-breadcrumbs separator-icon="arrow_forward">
+          <six-breadcrumbs-item>A</six-breadcrumbs-item>
+          <six-breadcrumbs-item>B</six-breadcrumbs-item>
+          <six-breadcrumbs-item>Current</six-breadcrumbs-item>
+        </six-breadcrumbs>
+      </section>
+
+      <h2>Prefixes</h2>
+      <p>Use the prefix slot to add content before any breadcrumb item.</p>
+      <section>
+        <six-breadcrumbs>
+          <six-icon slot="separator" size="small">arrow_forward</six-icon>
+          <six-breadcrumbs-item>
+            <six-icon slot="prefix" size="small">house</six-icon>
+            Home
+          </six-breadcrumbs-item>
+          <six-breadcrumbs-item>Page</six-breadcrumbs-item>
+          <six-breadcrumbs-item>Current</six-breadcrumbs-item>
+        </six-breadcrumbs>
+      </section>
+
+      <h2>Suffixes</h2>
+      <p>Use the suffix slot to add content after any breadcrumb item.</p>
+      <section>
+        <six-breadcrumbs>
+          <six-icon slot="separator" size="small">arrow_forward</six-icon>
+          <six-breadcrumbs-item>Home</six-breadcrumbs-item>
+          <six-breadcrumbs-item>Page</six-breadcrumbs-item>
+          <six-breadcrumbs-item>
+            <six-icon slot="suffix" size="small">lock</six-icon>
+            Current
+          </six-breadcrumbs-item>
+        </six-breadcrumbs>
+      </section>
+
+      <h2>Styling</h2>
+      <p>Use CSS custom properties to customize the appearance of breadcrumb items.</p>
+      <section>
+        <div class="parent">
+          <six-breadcrumbs>
+            <six-icon slot="separator" size="small">arrow_forward</six-icon>
+            <six-breadcrumbs-item>Home</six-breadcrumbs-item>
+            <six-breadcrumbs-item>Page</six-breadcrumbs-item>
+            <six-breadcrumbs-item>Current</six-breadcrumbs-item>
+          </six-breadcrumbs>
+        </div>
+      </section>
+
+      <h2>Dynamically Add/Remove Items</h2>
+      <p>Items can be dynamically added and removed.</p>
+
+      <section>
+        <six-button type="secondary" id="remove-button">Remove</six-button>
+        <six-button type="secondary" id="add-button">Add</six-button>
+
+        <six-breadcrumbs id="dynamic-breadcrumbs">
+          <six-breadcrumbs-item>Item 0</six-breadcrumbs-item>
+          <six-breadcrumbs-item>Item 1</six-breadcrumbs-item>
+        </six-breadcrumbs>
+
+        <script type="module">
+          let counter = 2;
+          const breadcrumbs = document.getElementById('dynamic-breadcrumbs');
+
+          document.getElementById('remove-button').addEventListener('click', () => {
+            breadcrumbs.lastElementChild?.remove();
+          });
+
+          document.getElementById('add-button').addEventListener('click', () => {
+            const item = document.createElement('six-breadcrumbs-item');
+            item.textContent = `Item ${counter++}`;
+            breadcrumbs.append(item);
+          });
+        </script>
+      </section>
+    </div>
+  </body>
+</html>

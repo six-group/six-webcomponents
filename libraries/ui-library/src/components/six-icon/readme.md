@@ -7,10 +7,11 @@
 
 ## Properties
 
-| Property | Attribute | Description                                                      | Type                                                                                             | Default     |
-| -------- | --------- | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ | ----------- |
-| `filled` | `filled`  | If set to true the default material outlined icons are not used. | `boolean`                                                                                        | `false`     |
-| `size`   | `size`    | The icon's size.                                                 | `"inherit" \| "large" \| "medium" \| "small" \| "xLarge" \| "xSmall" \| "xxLarge" \| "xxxLarge"` | `'inherit'` |
+| Property  | Attribute | Description                                                                                                                                 | Type                                                                                             | Default     |
+| --------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ | ----------- |
+| `filled`  | `filled`  | If set to true the default material outlined icons are not used.                                                                            | `boolean`                                                                                        | `false`     |
+| `library` | `library` | Icon library for this instance. Overrides the global default. - "material-icons"  → Material Icons - "material-symbols"  → Material Symbols | `"material-icons" \| "material-symbols" \| undefined`                                            | `undefined` |
+| `size`    | `size`    | The icon's size.                                                                                                                            | `"inherit" \| "large" \| "medium" \| "small" \| "xLarge" \| "xSmall" \| "xxLarge" \| "xxxLarge"` | `'inherit'` |
 
 
 ## Slots
@@ -25,6 +26,7 @@
 ### Used by
 
  - [six-avatar](../six-avatar)
+ - [six-breadcrumbs](../six-breadcrumbs)
  - [six-date](../six-date)
  - [six-datepicker](../six-datepicker)
  - [six-details](../six-details)
@@ -48,6 +50,7 @@
 ```mermaid
 graph TD;
   six-avatar --> six-icon
+  six-breadcrumbs --> six-icon
   six-date --> six-icon
   six-datepicker --> six-icon
   six-details --> six-icon

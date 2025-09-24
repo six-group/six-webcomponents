@@ -16,6 +16,7 @@ import { SixMenuItemData } from "./components/six-menu/six-menu";
 import { SixDropdownAsyncFilterPayload, SixDropdownAutoFilterPayload, SixDropdownScrollPayload } from "./components/six-dropdown/six-dropdown";
 import { SixFileListDownloadPayload, SixFileListRemovePayload } from "./components/six-file-list-item/six-file-list-item";
 import { SixFileUploadFailurePayload, SixFileUploadSuccessPayload } from "./components/six-file-upload/six-file-upload";
+import { IconLibrary } from "./utils/icon";
 import { SelectionRange, SelectionRangeDirection } from "./components/six-input/six-input";
 import { ItemPickerPaddingDirection, ItemPickerType } from "./components/six-item-picker/types";
 import { SixItemPickerChangePayload } from "./components/six-item-picker/six-item-picker";
@@ -39,6 +40,7 @@ export { SixMenuItemData } from "./components/six-menu/six-menu";
 export { SixDropdownAsyncFilterPayload, SixDropdownAutoFilterPayload, SixDropdownScrollPayload } from "./components/six-dropdown/six-dropdown";
 export { SixFileListDownloadPayload, SixFileListRemovePayload } from "./components/six-file-list-item/six-file-list-item";
 export { SixFileUploadFailurePayload, SixFileUploadSuccessPayload } from "./components/six-file-upload/six-file-upload";
+export { IconLibrary } from "./utils/icon";
 export { SelectionRange, SelectionRangeDirection } from "./components/six-input/six-input";
 export { ItemPickerPaddingDirection, ItemPickerType } from "./components/six-item-picker/types";
 export { SixItemPickerChangePayload } from "./components/six-item-picker/six-item-picker";
@@ -140,6 +142,43 @@ export namespace Components {
           * @default 'primary'
          */
         "type": 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'info' | 'action';
+    }
+    /**
+     * Breadcrumbs provide a group of links so users can easily navigate a website's hierarchy.
+     * @since 5.0
+     * @status beta
+     */
+    interface SixBreadcrumbs {
+        /**
+          * Defines an icon as a separator without having to place a slot *
+          * @default ''
+         */
+        "separatorIcon": string;
+    }
+    /**
+     * Breadcrumb items are used inside breadcrumbs to represent different links.
+     * @since 5.0
+     * @status beta
+     */
+    interface SixBreadcrumbsItem {
+        /**
+          * When set, the underlying button will be rendered as an `<a>` with this `href` instead of a `<button>`.
+         */
+        "href"?: string;
+        /**
+          * Set to true to readonly the breadcrumb item.
+          * @default false
+         */
+        "readonly": boolean;
+        /**
+          * The breadcrumbs item size.
+          * @default 'medium'
+         */
+        "size": 'small' | 'medium' | 'large';
+        /**
+          * Tells the browser where to open the link. Only used when `href` is set.
+         */
+        "target"?: '_blank' | '_parent' | '_self' | '_top';
     }
     /**
      * @since 1.0
@@ -399,7 +438,7 @@ export namespace Components {
     }
     /**
      * @since 1.0
-     * @status stable
+     * @status deprecated. Use six-date instead.
      */
     interface SixDatepicker {
         /**
@@ -1013,6 +1052,10 @@ export namespace Components {
           * @default false
          */
         "filled": boolean;
+        /**
+          * Icon library for this instance. Overrides the global default. - "material-icons"  → Material Icons - "material-symbols"  → Material Symbols
+         */
+        "library"?: IconLibrary;
         /**
           * The icon's size.
           * @default 'inherit'
@@ -2694,6 +2737,28 @@ declare global {
         prototype: HTMLSixBadgeElement;
         new (): HTMLSixBadgeElement;
     };
+    /**
+     * Breadcrumbs provide a group of links so users can easily navigate a website's hierarchy.
+     * @since 5.0
+     * @status beta
+     */
+    interface HTMLSixBreadcrumbsElement extends Components.SixBreadcrumbs, HTMLStencilElement {
+    }
+    var HTMLSixBreadcrumbsElement: {
+        prototype: HTMLSixBreadcrumbsElement;
+        new (): HTMLSixBreadcrumbsElement;
+    };
+    /**
+     * Breadcrumb items are used inside breadcrumbs to represent different links.
+     * @since 5.0
+     * @status beta
+     */
+    interface HTMLSixBreadcrumbsItemElement extends Components.SixBreadcrumbsItem, HTMLStencilElement {
+    }
+    var HTMLSixBreadcrumbsItemElement: {
+        prototype: HTMLSixBreadcrumbsItemElement;
+        new (): HTMLSixBreadcrumbsItemElement;
+    };
     interface HTMLSixButtonElementEventMap {
         "six-button-blur": EmptyPayload;
         "six-button-focus": EmptyPayload;
@@ -2781,7 +2846,7 @@ declare global {
     }
     /**
      * @since 1.0
-     * @status stable
+     * @status deprecated. Use six-date instead.
      */
     interface HTMLSixDatepickerElement extends Components.SixDatepicker, HTMLStencilElement {
         addEventListener<K extends keyof HTMLSixDatepickerElementEventMap>(type: K, listener: (this: HTMLSixDatepickerElement, ev: SixDatepickerCustomEvent<HTMLSixDatepickerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -3622,6 +3687,8 @@ declare global {
         "six-alert": HTMLSixAlertElement;
         "six-avatar": HTMLSixAvatarElement;
         "six-badge": HTMLSixBadgeElement;
+        "six-breadcrumbs": HTMLSixBreadcrumbsElement;
+        "six-breadcrumbs-item": HTMLSixBreadcrumbsItemElement;
         "six-button": HTMLSixButtonElement;
         "six-card": HTMLSixCardElement;
         "six-checkbox": HTMLSixCheckboxElement;
@@ -3771,6 +3838,43 @@ declare namespace LocalJSX {
           * @default 'primary'
          */
         "type"?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'info' | 'action';
+    }
+    /**
+     * Breadcrumbs provide a group of links so users can easily navigate a website's hierarchy.
+     * @since 5.0
+     * @status beta
+     */
+    interface SixBreadcrumbs {
+        /**
+          * Defines an icon as a separator without having to place a slot *
+          * @default ''
+         */
+        "separatorIcon"?: string;
+    }
+    /**
+     * Breadcrumb items are used inside breadcrumbs to represent different links.
+     * @since 5.0
+     * @status beta
+     */
+    interface SixBreadcrumbsItem {
+        /**
+          * When set, the underlying button will be rendered as an `<a>` with this `href` instead of a `<button>`.
+         */
+        "href"?: string;
+        /**
+          * Set to true to readonly the breadcrumb item.
+          * @default false
+         */
+        "readonly"?: boolean;
+        /**
+          * The breadcrumbs item size.
+          * @default 'medium'
+         */
+        "size"?: 'small' | 'medium' | 'large';
+        /**
+          * Tells the browser where to open the link. Only used when `href` is set.
+         */
+        "target"?: '_blank' | '_parent' | '_self' | '_top';
     }
     /**
      * @since 1.0
@@ -4038,7 +4142,7 @@ declare namespace LocalJSX {
     }
     /**
      * @since 1.0
-     * @status stable
+     * @status deprecated. Use six-date instead.
      */
     interface SixDatepicker {
         /**
@@ -4732,6 +4836,10 @@ declare namespace LocalJSX {
           * @default false
          */
         "filled"?: boolean;
+        /**
+          * Icon library for this instance. Overrides the global default. - "material-icons"  → Material Icons - "material-symbols"  → Material Symbols
+         */
+        "library"?: IconLibrary;
         /**
           * The icon's size.
           * @default 'inherit'
@@ -6300,6 +6408,8 @@ declare namespace LocalJSX {
         "six-alert": SixAlert;
         "six-avatar": SixAvatar;
         "six-badge": SixBadge;
+        "six-breadcrumbs": SixBreadcrumbs;
+        "six-breadcrumbs-item": SixBreadcrumbsItem;
         "six-button": SixButton;
         "six-card": SixCard;
         "six-checkbox": SixCheckbox;
@@ -6380,6 +6490,18 @@ declare module "@stencil/core" {
              */
             "six-badge": LocalJSX.SixBadge & JSXBase.HTMLAttributes<HTMLSixBadgeElement>;
             /**
+             * Breadcrumbs provide a group of links so users can easily navigate a website's hierarchy.
+             * @since 5.0
+             * @status beta
+             */
+            "six-breadcrumbs": LocalJSX.SixBreadcrumbs & JSXBase.HTMLAttributes<HTMLSixBreadcrumbsElement>;
+            /**
+             * Breadcrumb items are used inside breadcrumbs to represent different links.
+             * @since 5.0
+             * @status beta
+             */
+            "six-breadcrumbs-item": LocalJSX.SixBreadcrumbsItem & JSXBase.HTMLAttributes<HTMLSixBreadcrumbsItemElement>;
+            /**
              * @since 1.0
              * @status stable
              * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
@@ -6404,7 +6526,7 @@ declare module "@stencil/core" {
             "six-date": LocalJSX.SixDate & JSXBase.HTMLAttributes<HTMLSixDateElement>;
             /**
              * @since 1.0
-             * @status stable
+             * @status deprecated. Use six-date instead.
              */
             "six-datepicker": LocalJSX.SixDatepicker & JSXBase.HTMLAttributes<HTMLSixDatepickerElement>;
             /**

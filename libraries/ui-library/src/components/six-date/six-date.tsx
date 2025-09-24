@@ -5,7 +5,15 @@ import { MonthSelection } from './components/month-selection';
 import { YearSelection } from './components/year-selection';
 import { DaySelection } from './components/day-selection';
 import { Language } from '../../utils/error-messages';
-import { cleanupValue, formatDate, fromFormattedString, todayAsPointerDate, toPointerDate } from './iso-date';
+import {
+  cleanupValue,
+  formatDate,
+  fromFormattedString,
+  nextPointerDate,
+  previousPointerDate,
+  todayAsPointerDate,
+  toPointerDate,
+} from './iso-date';
 import { createCalendarGrid } from './calendar-grid';
 import { translateFormatHelp, translateMonth } from './translations';
 import Popover from '../../utils/popover';
@@ -177,6 +185,7 @@ export class SixDate {
     if (warning != null) {
       console.warn(warning);
     }
+    this.updateInputElementValue();
   }
 
   private getSixInputBaseElement() {
@@ -220,35 +229,11 @@ export class SixDate {
   }
 
   private handlePreviousClick = () => {
-    switch (this.selectionMode) {
-      case 'day':
-        if (this.pointerDate.month === 0) {
-          this.pointerDate = { year: this.pointerDate.year - 1, month: 11, day: 1 };
-        } else {
-          this.pointerDate = { year: this.pointerDate.year, month: this.pointerDate.month - 1, day: 1 };
-        }
-        break;
-      case 'month':
-        this.pointerDate = { ...this.pointerDate, year: this.pointerDate.year - 1 };
-        break;
-      case 'year':
-        this.pointerDate = { ...this.pointerDate, year: this.pointerDate.year - NUMBER_OF_YEARS_SHOWN };
-        break;
-    }
+    this.pointerDate = previousPointerDate(this.selectionMode, this.pointerDate);
   };
 
   private handleNextClick = () => {
-    if (this.selectionMode === 'day') {
-      if (this.pointerDate.month === 11) {
-        this.pointerDate = { year: this.pointerDate.year + 1, month: 0, day: 1 };
-      } else {
-        this.pointerDate = { year: this.pointerDate.year, month: this.pointerDate.month + 1, day: 1 };
-      }
-    } else if (this.selectionMode === 'month') {
-      this.pointerDate = { ...this.pointerDate, year: this.pointerDate.year + 1 };
-    } else if (this.selectionMode === 'year') {
-      this.pointerDate = { ...this.pointerDate, year: this.pointerDate.year + NUMBER_OF_YEARS_SHOWN };
-    }
+    this.pointerDate = nextPointerDate(this.selectionMode, this.pointerDate);
   };
 
   private handleDocumentMouseDown = (event: Event) => {
@@ -321,7 +306,7 @@ export class SixDate {
   };
 
   private updateInputElementValue() {
-    if (this.inputElement) {
+    if (this.inputElement && document.activeElement !== this.host) {
       this.inputElement.value = this.value === '' ? '' : formatDate(this.value, this.dateFormat);
     }
   }

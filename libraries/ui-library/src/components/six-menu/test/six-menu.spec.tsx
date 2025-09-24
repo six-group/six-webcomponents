@@ -28,7 +28,7 @@ describe('six-menu', () => {
     expect(page.root).toEqualHtml(`
       <six-menu remove-box-shadow="">
         <mock:shadow-root>
-          <div class=".no-shadow menu" part="wrapper">
+          <div class="no-shadow menu" part="wrapper">
             <div part="base" role="menu" tabindex="0">
               <slot></slot>
             </div>

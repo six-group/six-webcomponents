@@ -1,5 +1,9 @@
 # Datepicker
 
+::: warning
+The six-datepicker component is deprecated. Please use the [six-date](./six-date.md) component instead.
+:::
+
 
 Datepickers allow the user to manually enter a date or open a popup calendar to select a date.
 
