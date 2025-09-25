@@ -2,11 +2,11 @@
 <div>
 
         <div style="display: flex; gap: 1em; min-height: 5rem; align-items: center">
-          <six-icon filled>pie_chart</six-icon>
-          <six-icon filled>settings</six-icon>
-          <six-icon filled>sick</six-icon>
-          <six-icon filled>fort</six-icon>
-          <six-icon filled>castle</six-icon>
+          <six-icon library="material-symbols">home</six-icon>
+          <six-icon library="material-symbols">settings</six-icon>
+          <six-icon library="material-symbols">database</six-icon>
+          <six-icon library="material-symbols">language</six-icon>
+          <six-icon library="material-symbols">person</six-icon>
         </div>
       
 </div>

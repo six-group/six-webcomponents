@@ -1,4 +1,5 @@
 import { Component, h, Prop } from '@stencil/core';
+import { getDefaultIconLibrary, IconLibrary } from '../../utils/icon';
 
 /**
  * @since 1.0
@@ -27,13 +28,40 @@ export class SixIcon {
   /** If set to true the default material outlined icons are not used. */
   @Prop() filled = false;
 
+  /**
+   * Icon library to use when no `library` prop is provided.
+   * By default, all `<six-icon>` instances fall back to the globally configured
+   * default library (via `setDefaultIconLibrary()` / `getDefaultIconLibrary()`),
+   * which is `"material-icons"` unless changed at runtime.
+   *
+   * This allows teams to switch the default across an entire project without
+   * having to set the `library` prop on every `<six-icon>` instance.
+   */
+
+  /**
+   * Icon library for this instance. Overrides the global default.
+   * - "material-icons"  → Material Icons
+   * - "material-symbols"  → Material Symbols
+   */
+  @Prop({ reflect: true }) library?: IconLibrary;
+
+  private isSymbols(): boolean {
+    const lib = this.library ?? getDefaultIconLibrary();
+    return lib === 'material-symbols';
+  }
+
   render() {
+    const isSymbols = this.isSymbols();
     return (
       <i
         class={{
-          'material-icons': true,
-          'material-icons-outlined': !this.filled,
-          'material-icons-filled': this.filled,
+          'material-icons': !isSymbols,
+          'material-icons-outlined': !isSymbols && !this.filled,
+          'material-icons-filled': !isSymbols && this.filled,
+
+          'material-symbols-outlined': isSymbols && !this.filled,
+          'material-symbols': isSymbols && this.filled,
+
           'icon--xsmall': this.size === 'xSmall',
           'icon--small': this.size === 'small',
           'icon--medium': this.size === 'medium',
