@@ -1,6 +1,6 @@
 {
   "name": "@six-group/ui-library",
-  "version": "5.0.0",
+  "version": "5.1.0-rc.1",
   "description": "Web components in alignment with the SIX corporate styleguide",
   "license": "Apache-2.0",
   "main": "dist/index.cjs.js",
@@ -40,15 +40,18 @@
     "date-fns": ">=3.0.0"
   },
   "devDependencies": {
-    "@fontsource/noto-sans": "^5.1.1",
     "@fontsource/material-icons": "^5.1.1",
     "@fontsource/material-icons-outlined": "^5.1.1",
+    "@fontsource-variable/material-symbols-outlined": "^5.2.22",
+    "@fontsource-variable/material-symbols-rounded": "^5.2.22",
+    "@fontsource-variable/material-symbols-sharp": "^5.2.22",
+    "@fontsource/noto-sans": "^5.1.1",
     "@popperjs/core": "^2.5.3",
     "@stencil-community/eslint-plugin": "0.x",
     "@stencil/angular-output-target": "1.0.0",
     "@stencil/react-output-target": "^1.0.4",
-    "@stencil/vue-output-target": "0.10.8",
     "@stencil/sass": "3.0.12",
+    "@stencil/vue-output-target": "0.10.8",
     "@typescript-eslint/eslint-plugin": "^7.0.0",
     "@typescript-eslint/parser": "^7.0.0",
     "cross-env": "^7.0.3",
