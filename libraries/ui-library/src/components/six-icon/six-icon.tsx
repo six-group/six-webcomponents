@@ -36,9 +36,7 @@ export class SixIcon {
    *
    * This allows teams to switch the default across an entire project without
    * having to set the `library` prop on every `<six-icon>` instance.
-   */
-
-  /**
+   *
    * Icon library for this instance. Overrides the global default.
    * - "material-icons"  → Material Icons
    * - "material-symbols"  → Material Symbols
