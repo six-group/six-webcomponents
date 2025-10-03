@@ -39,3 +39,10 @@ jobs:
           npm publish --tag=insider --access=public libraries/ui-library-react/
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+
+      - name: 'Deploy Documentation'
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: docs/.vitepress/dist
+          # this folder needs to be kept in sync with the base property in /docs/.vitepress/config.mts
+          target-folder: docs/v5
