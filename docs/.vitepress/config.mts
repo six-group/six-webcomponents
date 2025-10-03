@@ -49,6 +49,7 @@ export default withMermaid({
             { text: 'Upgrade to v4', link: '/guide/upgrade-v4' },
             { text: 'Design', link: '/guide/design' },
             { text: 'Architecture', link: '/guide/architecture' },
+            { text: 'Security', link: '/guide/security' },
             {
               text: 'Framework Integrations',
               collapsed: false,
