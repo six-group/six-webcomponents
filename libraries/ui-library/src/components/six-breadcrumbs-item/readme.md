@@ -38,14 +38,6 @@ Breadcrumb items are used inside breadcrumbs to represent different links.
 | `"separator"` | The separator                    |
 
 
-## CSS Custom Properties
-
-| Name                | Description                            |
-| ------------------- | -------------------------------------- |
-| `--last-item-color` | The color of the last breadcrumbs item |
-| `--separator-color` | The color of the separator             |
-
-
 ## Dependencies
 
 ### Depends on

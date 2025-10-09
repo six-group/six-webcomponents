@@ -38,6 +38,9 @@ export class SixTab {
   /** Set to true to draw the tab in a disabled state. */
   @Prop({ reflect: true }) disabled = false;
 
+  /** Control the hover title of the tab. If not specified, the title will be the same as the tab's content.'*/
+  @Prop({ reflect: true }) hoverTitle?: string | undefined;
+
   /** Emitted when the tab is closable and the close button is activated. */
   @Event({ eventName: 'six-tab-close' }) sixClose!: EventEmitter<EmptyPayload>;
 
@@ -88,7 +91,7 @@ export class SixTab {
           aria-disabled={this.disabled ? 'true' : 'false'}
           aria-selected={this.active ? 'true' : 'false'}
           tabindex={this.disabled || !this.active ? '-1' : '0'}
-          title={this.host.innerHTML}
+          title={this.hoverTitle ?? this.host.innerHTML}
         >
           <slot />
           {this.closable && (

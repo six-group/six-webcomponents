@@ -2132,6 +2132,10 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * Control the hover title of the tab. If not specified, the title will be the same as the tab's content.'
+         */
+        "hoverTitle"?: string | undefined;
+        /**
           * The name of the tab panel the tab will control. The panel must be located in the same tab group.
           * @default ''
          */
@@ -5947,6 +5951,10 @@ declare namespace LocalJSX {
           * @default false
          */
         "disabled"?: boolean;
+        /**
+          * Control the hover title of the tab. If not specified, the title will be the same as the tab's content.'
+         */
+        "hoverTitle"?: string | undefined;
         /**
           * Emitted when the tab is closable and the close button is activated.
          */

@@ -7,12 +7,13 @@
 
 ## Properties
 
-| Property   | Attribute  | Description                                                                                      | Type      | Default |
-| ---------- | ---------- | ------------------------------------------------------------------------------------------------ | --------- | ------- |
-| `active`   | `active`   | Set to true to draw the tab in an active state.                                                  | `boolean` | `false` |
-| `closable` | `closable` | When true, the tab will be rendered with a close icon.                                           | `boolean` | `false` |
-| `disabled` | `disabled` | Set to true to draw the tab in a disabled state.                                                 | `boolean` | `false` |
-| `panel`    | `panel`    | The name of the tab panel the tab will control. The panel must be located in the same tab group. | `string`  | `''`    |
+| Property     | Attribute     | Description                                                                                             | Type                  | Default     |
+| ------------ | ------------- | ------------------------------------------------------------------------------------------------------- | --------------------- | ----------- |
+| `active`     | `active`      | Set to true to draw the tab in an active state.                                                         | `boolean`             | `false`     |
+| `closable`   | `closable`    | When true, the tab will be rendered with a close icon.                                                  | `boolean`             | `false`     |
+| `disabled`   | `disabled`    | Set to true to draw the tab in a disabled state.                                                        | `boolean`             | `false`     |
+| `hoverTitle` | `hover-title` | Control the hover title of the tab. If not specified, the title will be the same as the tab's content.' | `string \| undefined` | `undefined` |
+| `panel`      | `panel`       | The name of the tab panel the tab will control. The panel must be located in the same tab group.        | `string`              | `''`        |
 
 
 ## Events

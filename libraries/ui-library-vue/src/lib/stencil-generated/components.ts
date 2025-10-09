@@ -707,6 +707,7 @@ export const SixTab: StencilVueComponent<JSX.SixTab> = /*@__PURE__*/ defineConta
   'active',
   'closable',
   'disabled',
+  'hoverTitle',
   'six-tab-close'
 ], [
   'six-tab-close'

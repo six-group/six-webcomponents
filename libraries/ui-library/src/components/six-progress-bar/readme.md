@@ -29,16 +29,6 @@
 | `"label"`     | The progress bar label.       |
 
 
-## CSS Custom Properties
-
-| Name                | Description                |
-| ------------------- | -------------------------- |
-| `--height`          | The progress bar's height. |
-| `--indicator-color` | The indicator color.       |
-| `--label-color`     | The label color.           |
-| `--track-color`     | The track color.           |
-
-
 ----------------------------------------------
 
 Copyright © 2021-present SIX-Group

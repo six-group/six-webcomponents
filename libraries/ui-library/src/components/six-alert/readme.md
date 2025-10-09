@@ -86,13 +86,6 @@ Type: `Promise<void>`
 | `"message"`      | The alert message.                       |
 
 
-## CSS Custom Properties
-
-| Name           | Description             |
-| -------------- | ----------------------- |
-| `--box-shadow` | The alert's box shadow. |
-
-
 ## Dependencies
 
 ### Depends on
