@@ -1,11 +1,11 @@
 <template>
 <div>
 
-        <six-select id="infinite-scoll-dropdown">
-          <six-menu-item id="infinite-scroll-menu" value="search_list_prompt">Value 0</six-menu-item>
-        </six-select>
-        
+      <six-select id="async-select" async-filter filter-placeholder="Enter a number">
+        <six-menu-item id="async-menu-item" value="search_list_prompt">Use search to show entries</six-menu-item>
+      </six-select>
       
+    
 </div>
 </template>
 <style>
@@ -15,33 +15,39 @@
 export default {
   name: 'docs-demo-six-select-19',
   mounted() { 
-          const asyncSelect = document.querySelector('#infinite-scoll-dropdown');
-          const asyncMenu = document.querySelector('#infinite-scroll-menu').parentElement;
+        const asyncSelect = document.querySelector('#async-select');
+        const asyncMenu = document.querySelector('#async-menu-item').parentElement;
 
-          let id = 1;
+        for (let i = 0; i < 500; i++) {
+          const child = document.createElement('six-menu-item');
+          child.innerText = `Value ${i}`;
+          child.value = `value-${i}`;
+          asyncMenu.appendChild(child);
+        }
 
-          for (let i = 0; i < 20; i++) {
-            const child = document.createElement('six-menu-item');
-            child.innerText = `Value ${id}`;
-            child.value = `value-${id}`;
-            asyncMenu.appendChild(child);
-            id++;
+        const removeAllChildNodes = (parent) => {
+          while (parent.firstChild) {
+            parent.removeChild(parent.firstChild);
           }
+        };
 
-          asyncSelect.addEventListener('six-dropdown-scroll', ($event) => {
-            const { scrollRatio } = $event.detail;
-
-            // add new elements once we reach almost bottom
-            if (scrollRatio > 0.8) {
-              for (let i = 0; i < 20; i++) {
-                const child = document.createElement('six-menu-item');
-                child.innerText = `Value ${id}`;
-                child.value = `value-${id}`;
-                asyncMenu.appendChild(child);
-                id++;
-              }
+        asyncSelect.addEventListener('six-async-filter-fired', ($event) => {
+          const filterValue = $event.detail.filterValue;
+          removeAllChildNodes(asyncMenu);
+          for (let i = 0; i < 500; i++) {
+            const child = document.createElement('six-menu-item');
+            child.innerText = `Value ${i}`;
+            child.value = `value-${i}`;
+            if (
+              filterValue.includes(`${i}`) ||
+              filterValue.toLocaleLowerCase().includes(`value`) ||
+              filterValue.toLocaleLowerCase().includes(`value ${i}`) ||
+              filterValue === ''
+            ) {
+              asyncMenu.appendChild(child);
             }
-          });
-         }
+          }
+        });
+       }
 }
 </script>
