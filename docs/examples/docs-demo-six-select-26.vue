@@ -1,13 +1,9 @@
 <template>
 <div>
 
-        <six-select invalid>
-          <div slot="error-text">
-            <six-error               >An error message
-              <a href="https://github.com/six-group/six-webcomponents" target="_blank">with a link</a></six-error>
-          </div>
-        </six-select>
+      <six-select id="multiple-error-text" label="List of string message" invalid></six-select>
       
+    
 </div>
 </template>
 <style>
@@ -16,6 +12,10 @@
 <script>
 export default {
   name: 'docs-demo-six-select-26',
-  mounted() {  }
+  mounted() { 
+        const sixSelect = document.getElementById('multiple-error-text');
+        sixSelect.errorText = ['Message 1', 'Message 2'];
+        sixSelect.errorTextCount = 3;
+       }
 }
 </script>

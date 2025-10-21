@@ -155,16 +155,33 @@ With the prefix and suffix slots you can display icons in the menu items.
 
 ```html
 <six-select filter placeholder="Select a few" multiple clearable>
-  <six-menu-item value="option-1"
-    >Option 1
+  <six-menu-item value="option-1">Option 1
     <six-icon-button size="small" slot="suffix" name="favorite"></six-icon-button>
   </six-menu-item>
-  <six-menu-item value="option-2"
-    >Option 2 <six-icon-button size="small" slot="suffix" name="favorite"></six-icon-button></six-menu-item>
-  <six-menu-item value="option-3"
-    >Option 3
+  <six-menu-item value="option-2">Option 2 <six-icon-button size="small" slot="suffix"
+      name="favorite"></six-icon-button></six-menu-item>
+  <six-menu-item value="option-3">Option 3
     <six-icon-button size="small" slot="suffix" name="favorite"></six-icon-button>
   </six-menu-item>
+</six-select>
+```
+
+
+### No Data
+
+When no options are available in the select, you can show either a default message via the `no-data-text` prop or provide fully customized content through the `no-data-text` slot.
+
+<docs-demo-six-select-10></docs-demo-six-select-10>
+
+```html
+<six-select label="Example using the no-data-text prop" no-data-text="No options available"></six-select>
+
+<six-select label="Example using the no-data-text slot">
+  <div slot="no-data-text" style="padding: 0.5rem 0; opacity: 0.7">
+    <h4 style="margin: 0 0 0.25rem 0">No Data</h4>
+    <small>No options are currently available</small>
+    <six-icon library="material-symbols">folder_open</six-icon>
+  </div>
 </six-select>
 ```
 
@@ -173,7 +190,7 @@ With the prefix and suffix slots you can display icons in the menu items.
 
 Options can be grouped visually using menu labels and menu dividers.
 
-<docs-demo-six-select-10></docs-demo-six-select-10>
+<docs-demo-six-select-11></docs-demo-six-select-11>
 
 ```html
 <six-select placeholder="Select one">
@@ -194,7 +211,7 @@ Options can be grouped visually using menu labels and menu dividers.
 
 Use the `size` attribute to change a select's size.
 
-<docs-demo-six-select-11></docs-demo-six-select-11>
+<docs-demo-six-select-12></docs-demo-six-select-12>
 
 ```html
 <six-select placeholder="Small" size="small" multiple>
@@ -225,7 +242,7 @@ Use the `size` attribute to change a select's size.
 
 The `value` prop is bound to the current selection. As the selection changes, so will the value. To programmatically manage the selection, update the value property.
 
-<docs-demo-six-select-12></docs-demo-six-select-12>
+<docs-demo-six-select-13></docs-demo-six-select-13>
 
 ```html
 <div class="selecting-example">
@@ -261,7 +278,7 @@ The `value` prop is bound to the current selection. As the selection changes, so
 
 Use the `label` attribute to give the select an accessible label. For labels that contain HTML, use the `label` slot instead.
 
-<docs-demo-six-select-13></docs-demo-six-select-13>
+<docs-demo-six-select-14></docs-demo-six-select-14>
 
 ```html
 <six-select label="Select one">
@@ -276,7 +293,7 @@ Use the `label` attribute to give the select an accessible label. For labels tha
 
 Add descriptive help text to a select with the `help-text` attribute. For help texts that contain HTML, use the help-text slot instead.
 
-<docs-demo-six-select-14></docs-demo-six-select-14>
+<docs-demo-six-select-15></docs-demo-six-select-15>
 
 ```html
 <six-select label="Experience" help-text="Please tell us your skill level.">
@@ -291,7 +308,7 @@ Add descriptive help text to a select with the `help-text` attribute. For help t
 
 Dropdown panels will be clipped if they're inside a container that has overflow: auto|hidden. The hoist attribute forces the panel to use a fixed positioning strategy, allowing it to break out of the container. In this case, the panel will be positioned relative to its containing block, which is usually the viewport unless an ancestor uses a transform, perspective, or filter.
 
-<docs-demo-six-select-15></docs-demo-six-select-15>
+<docs-demo-six-select-16></docs-demo-six-select-16>
 
 ```html
 <div style="overflow: hidden; border: solid 1px grey; padding: 0.5em; display: flex">
@@ -314,7 +331,7 @@ Dropdown panels will be clipped if they're inside a container that has overflow:
 
 There was a bug where hoisting inside drawers caused a problem
 
-<docs-demo-six-select-16></docs-demo-six-select-16>
+<docs-demo-six-select-17></docs-demo-six-select-17>
 
 ```html
 <six-button id="hoistingDrawerBtn">Open Drawer</six-button>
@@ -377,7 +394,7 @@ You can filter the items shown by simply adding `filter="true"` to six-select
 
 You can also pass a custom placeholder with `filter-placeholder` to be shown in the filter input field (will be 'Filter...' by default)
 
-<docs-demo-six-select-17></docs-demo-six-select-17>
+<docs-demo-six-select-18></docs-demo-six-select-18>
 
 ```html
 <six-select label="Experience" filter multiple select-all-button clearable>
@@ -403,7 +420,7 @@ In such a scenario simply add the `async-filter` attribute to your dropdown comp
 
 If you want to change the default debounce timeout use e.g. `filter-debounce="500"`
 
-<docs-demo-six-select-18></docs-demo-six-select-18>
+<docs-demo-six-select-19></docs-demo-six-select-19>
 
 ```html
 <six-select id="async-select" async-filter filter-placeholder="Enter a number">
@@ -451,7 +468,7 @@ If you want to change the default debounce timeout use e.g. `filter-debounce="50
 
 If you have huge amounts of data you want to present in the dropdown you can't render all at once or it will crash your browser. For these usescases listen to the scroll event to decide which data to present.
 
-<docs-demo-six-select-19></docs-demo-six-select-19>
+<docs-demo-six-select-20></docs-demo-six-select-20>
 
 ```html
 <six-select id="infinite-scoll-dropdown">
@@ -497,7 +514,7 @@ Autocomplete does currently not support multiselect!
 
 You can adjust the debounce timeout via the `input-debounce` attribute
 
-<docs-demo-six-select-20></docs-demo-six-select-20>
+<docs-demo-six-select-21></docs-demo-six-select-21>
 
 ```html
 <six-select id="autocomplete-example" autocomplete clearable></six-select>
@@ -541,7 +558,7 @@ You can adjust the debounce timeout via the `input-debounce` attribute
 
 If you don't want to create a `six-menu-item` but simply want to pass an array with all options, you can do so via the `options` attribute.
 
-<docs-demo-six-select-21></docs-demo-six-select-21>
+<docs-demo-six-select-22></docs-demo-six-select-22>
 
 ```html
 <six-select filter multiple id="six-select-dynamic-options"></six-select>
@@ -559,7 +576,7 @@ If you don't want to create a `six-menu-item` but simply want to pass an array w
 
 If you have a lot of items in the menu (100'000 in the following example), rendering all of them might lead to some performance issues. To avoid such issues use `virtual-scroll`
 
-<docs-demo-six-select-22></docs-demo-six-select-22>
+<docs-demo-six-select-23></docs-demo-six-select-23>
 
 ```html
 <six-select id="six-select-virtual-scroll" virtual-scroll></six-select>
@@ -577,7 +594,7 @@ If you have a lot of items in the menu (100'000 in the following example), rende
 
 In the following example you see the combination of `autocomplete` with `virtual-scroll`. The list contains 10'000 entries. Enter a number in the input field and you can virtually scroll through all elements which contain this number.
 
-<docs-demo-six-select-23></docs-demo-six-select-23>
+<docs-demo-six-select-24></docs-demo-six-select-24>
 
 ```html
 <six-select id="virtual-autocomplete-example" autocomplete clearable virtual-scroll></six-select>
@@ -626,14 +643,14 @@ warning There are two caveats when using the `error-text` prop/slot:
 
 The `error-text` prop accepts either a simple string message, or a list of messages.
 
-<docs-demo-six-select-24></docs-demo-six-select-24>
+<docs-demo-six-select-25></docs-demo-six-select-25>
 
 ```html
 <six-select label="Simple string message" error-text="This is a simple string message" invalid> </six-select>
 ```
 
 
-<docs-demo-six-select-25></docs-demo-six-select-25>
+<docs-demo-six-select-26></docs-demo-six-select-26>
 
 ```html
 <six-select id="multiple-error-text" label="List of string message" invalid></six-select>
@@ -647,12 +664,12 @@ The `error-text` prop accepts either a simple string message, or a list of messa
 
 When using the `error-text` slot, it is recommended to use the `six-error` component to wrap the error message(s). This will provide the correct styling out of the box
 
-<docs-demo-six-select-26></docs-demo-six-select-26>
+<docs-demo-six-select-27></docs-demo-six-select-27>
 
 ```html
 <six-select invalid>
   <div slot="error-text">
-    <six-error               >An error message
+    <six-error>An error message
       <a href="https://github.com/six-group/six-webcomponents" target="_blank">with a link</a></six-error>
   </div>
 </six-select>
@@ -684,6 +701,7 @@ When using the `error-text` slot, it is recommended to use the `six-error` compo
 | `line`              | `line`               | Set to render as line                                                                                                                                                                                                                                                 | `boolean`                        | `false`                 |
 | `multiple`          | `multiple`           | Set to true to enable multiselect.                                                                                                                                                                                                                                    | `boolean`                        | `false`                 |
 | `name`              | `name`               | The select's name.                                                                                                                                                                                                                                                    | `string`                         | `''`                    |
+| `noDataText`        | `no-data-text`       | The info message shown, if no data is available for the dropdown                                                                                                                                                                                                      | `string`                         | `'No data'`             |
 | `options`           | `options`            | Set the options to be shown in the dropdown (alternative to setting the elements via html)                                                                                                                                                                            | `SixMenuItemData[] \| null`      | `null`                  |
 | `pill`              | `pill`               | Set to true to draw a pill-style select with rounded edges.                                                                                                                                                                                                           | `boolean`                        | `false`                 |
 | `placeholder`       | `placeholder`        | The select's placeholder text.                                                                                                                                                                                                                                        | `string`                         | `''`                    |
@@ -725,12 +743,13 @@ Type: `Promise<void>`
 
 ## Slots
 
-| Slot           | Description                                                                                     |
-| -------------- | ----------------------------------------------------------------------------------------------- |
-|                | The select's options in the form of menu items.                                                 |
-| `"error-text"` | Error text that is shown for validation errors. Alternatively, you can use the error-text prop. |
-| `"help-text"`  | Help text that describes how to use the select.                                                 |
-| `"label"`      | The select's label. Alternatively, you can use the label prop.                                  |
+| Slot             | Description                                                                                                               |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------- |
+|                  | The select's options in the form of menu items.                                                                           |
+| `"error-text"`   | Error text that is shown for validation errors. Alternatively, you can use the error-text prop.                           |
+| `"help-text"`    | Help text that describes how to use the select.                                                                           |
+| `"label"`        | The select's label. Alternatively, you can use the label prop.                                                            |
+| `"no-data-text"` | No data text that is shown if there is no data available in the select. Alternatively, you can use the no-data-text prop. |
 
 
 ## Shadow Parts
