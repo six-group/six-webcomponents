@@ -25,6 +25,7 @@ let id = 0;
  * @slot label - The select's label. Alternatively, you can use the label prop.
  * @slot help-text - Help text that describes how to use the select.
  * @slot error-text - Error text that is shown for validation errors. Alternatively, you can use the error-text prop.
+ * @slot no-data-text - No data text that is shown if there is no data available in the select. Alternatively, you can use the no-data-text prop.
  *
  * @part base - The component's base wrapper.
  * @part clear-button - The input's clear button, exported from six-input.
@@ -63,6 +64,7 @@ export class SixSelect {
   @State() hasHelpTextSlot = false;
   @State() hasLabelSlot = false;
   @State() hasErrorTextSlot = false;
+  @State() hasNoDataTextSlot = false;
   @State() isOpen = false;
   @State() displayedValues: string[] = [];
 
@@ -122,6 +124,9 @@ export class SixSelect {
   /** The label text. */
   @Prop() label = '';
 
+  /** The info message shown, if no data is available for the dropdown */
+  @Prop() noDataText = 'No data';
+
   /** The error message shown, if `invalid` is set to true.  */
   @Prop() errorText: string | string[] = '';
 
@@ -168,6 +173,7 @@ export class SixSelect {
 
   @Watch('helpText')
   @Watch('errorText')
+  @Watch('noDataText')
   @Watch('label')
   handleLabelChange() {
     this.handleSlotChange();
@@ -477,6 +483,7 @@ export class SixSelect {
     this.hasHelpTextSlot = hasSlot(this.host, 'help-text');
     this.hasLabelSlot = hasSlot(this.host, 'label');
     this.hasErrorTextSlot = hasSlot(this.host, 'error-text');
+    this.hasNoDataTextSlot = hasSlot(this.host, 'no-data-text');
     this.syncItemsFromValue();
   };
 
@@ -731,8 +738,7 @@ export class SixSelect {
             ref={(el) => (this.menu = el)}
             part="menu"
             class={{
-              select__menu: true,
-              'select__menu--hidden': !hasMenuItems,
+              select__menu: true, 
             }}
             onSix-menu-item-selected={this.handleMenuSelect}
             items={this.options}
@@ -741,6 +747,17 @@ export class SixSelect {
             disable-keyboard-handling={true}
           >
             <slot onSlotchange={this.handleSlotChange} />
+            {!hasMenuItems &&
+              (this.hasNoDataTextSlot ? (
+                <slot name="no-data-text" />
+              ) : (
+                <div class="select-no-data-text">
+                  <six-icon library="material-symbols" size="large">
+                    folder_open
+                  </six-icon>
+                  <span>{this.noDataText}</span>
+                </div>
+              ))}
           </six-menu>
 
           {/* Select all */}

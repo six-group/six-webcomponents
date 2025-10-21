@@ -1871,6 +1871,11 @@ export namespace Components {
          */
         "name": string;
         /**
+          * The info message shown, if no data is available for the dropdown
+          * @default 'No data'
+         */
+        "noDataText": string;
+        /**
           * Set the options to be shown in the dropdown (alternative to setting the elements via html)
           * @default null
          */
@@ -5674,6 +5679,11 @@ declare namespace LocalJSX {
           * @default ''
          */
         "name"?: string;
+        /**
+          * The info message shown, if no data is available for the dropdown
+          * @default 'No data'
+         */
+        "noDataText"?: string;
         /**
           * Emitted when the control loses focus.
          */

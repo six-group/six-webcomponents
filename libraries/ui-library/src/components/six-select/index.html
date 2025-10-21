@@ -1,609 +1,626 @@
 <!doctype html>
 <html dir="ltr" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-    <script type="module" src="/build/ui-library.esm.js"></script>
-    <script nomodule src="/build/ui-library.js"></script>
-    <link rel="stylesheet" href="/build/ui-library.css" />
-    <title>six-select</title>
-  </head>
-  <body>
-    <div class="container">
-      <h2>Select</h2>
 
-      <p>
-        Selects allow you to choose one or more items from a dropdown menu, usually you wrap this component with a html
-        form. If you're looking for a dropdown menu to trigger actions, you should try
-        <a href="six-dropdown.html">six-dropdown</a>.
-      </p>
-      <section class="demo" style="width: 300px">
-        <six-select>
-          <six-menu-item value="option-1">Option 1</six-menu-item>
-          <six-menu-item value="option-2">Option 2</six-menu-item>
-          <six-menu-item value="option-3">Option 3</six-menu-item>
-          <six-menu-item value="option-4">Option 4</six-menu-item>
-          <six-menu-item value="option-5">Option 5</six-menu-item>
-          <six-menu-item value="option-6">Option 6</six-menu-item>
-          <six-menu-item value="option-7">Option 7</six-menu-item>
-          <six-menu-item value="option-8">Option 8</six-menu-item>
-          <six-menu-item value="option-9">Option 9</six-menu-item>
-        </six-select>
-      </section>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+  <script type="module" src="/build/ui-library.esm.js"></script>
+  <script nomodule src="/build/ui-library.js"></script>
+  <link rel="stylesheet" href="/build/ui-library.css" />
+  <title>six-select</title>
+</head>
 
-      <h2>Examples</h2>
+<body>
+  <div class="container">
+    <h2>Select</h2>
 
-      <h3>Placeholders</h3>
-      <p>Use the <code>placeholder</code> attribute to add a placeholder.</p>
-      <section class="demo" style="width: 300px">
-        <six-select placeholder="Select one">
-          <six-menu-item value="option-1">Option 1</six-menu-item>
-          <six-menu-item value="option-2">Option 2</six-menu-item>
-          <six-menu-item value="option-3">Option 3</six-menu-item>
-        </six-select>
-      </section>
+    <p>
+      Selects allow you to choose one or more items from a dropdown menu, usually you wrap this component with a html
+      form. If you're looking for a dropdown menu to trigger actions, you should try
+      <a href="six-dropdown.html">six-dropdown</a>.
+    </p>
+    <section class="demo" style="width: 300px">
+      <six-select>
+        <six-menu-item value="option-1">Option 1</six-menu-item>
+        <six-menu-item value="option-2">Option 2</six-menu-item>
+        <six-menu-item value="option-3">Option 3</six-menu-item>
+        <six-menu-item value="option-4">Option 4</six-menu-item>
+        <six-menu-item value="option-5">Option 5</six-menu-item>
+        <six-menu-item value="option-6">Option 6</six-menu-item>
+        <six-menu-item value="option-7">Option 7</six-menu-item>
+        <six-menu-item value="option-8">Option 8</six-menu-item>
+        <six-menu-item value="option-9">Option 9</six-menu-item>
+      </six-select>
+    </section>
 
-      <h3>Clearable</h3>
-      <p>Use the <code>clearable</code> attribute to make the control clearable.</p>
-      <section class="demo" style="width: 300px">
-        <six-select placeholder="Clearable" clearable>
-          <six-menu-item value="option-1">Option 1</six-menu-item>
-          <six-menu-item value="option-2">Option 2</six-menu-item>
-          <six-menu-item value="option-3">Option 3</six-menu-item>
-        </six-select>
-      </section>
+    <h2>Examples</h2>
 
-      <h3>Preselecting a Value</h3>
-      <p>Use the <code>value</code> attribute to preselect a default value</p>
-      <section class="demo" style="width: 300px">
-        <six-select value="option-2" clearable>
-          <six-menu-item value="option-1">Option 1</six-menu-item>
-          <six-menu-item value="option-2">Option 2</six-menu-item>
-          <six-menu-item value="option-3">Option 3</six-menu-item>
-        </six-select>
-      </section>
+    <h3>Placeholders</h3>
+    <p>Use the <code>placeholder</code> attribute to add a placeholder.</p>
+    <section class="demo" style="width: 300px">
+      <six-select placeholder="Select one">
+        <six-menu-item value="option-1">Option 1</six-menu-item>
+        <six-menu-item value="option-2">Option 2</six-menu-item>
+        <six-menu-item value="option-3">Option 3</six-menu-item>
+      </six-select>
+    </section>
 
-      <h3>Default Value</h3>
+    <h3>Clearable</h3>
+    <p>Use the <code>clearable</code> attribute to make the control clearable.</p>
+    <section class="demo" style="width: 300px">
+      <six-select placeholder="Clearable" clearable>
+        <six-menu-item value="option-1">Option 1</six-menu-item>
+        <six-menu-item value="option-2">Option 2</six-menu-item>
+        <six-menu-item value="option-3">Option 3</six-menu-item>
+      </six-select>
+    </section>
 
-      <p>If you want the select to be reset to a default value use the attribute <code>default-value</code></p>
+    <h3>Preselecting a Value</h3>
+    <p>Use the <code>value</code> attribute to preselect a default value</p>
+    <section class="demo" style="width: 300px">
+      <six-select value="option-2" clearable>
+        <six-menu-item value="option-1">Option 1</six-menu-item>
+        <six-menu-item value="option-2">Option 2</six-menu-item>
+        <six-menu-item value="option-3">Option 3</six-menu-item>
+      </six-select>
+    </section>
 
-      <section class="demo" style="width: 300px">
-        <six-select value="option-2" default-value="option-3" clearable>
-          <six-menu-item value="option-1">Option 1</six-menu-item>
-          <six-menu-item value="option-2">Option 2</six-menu-item>
-          <six-menu-item value="option-3">Option 3</six-menu-item>
-        </six-select>
-      </section>
+    <h3>Default Value</h3>
 
-      <h3>Pill</h3>
-      <p>Use the <code>pill</code> prop to give selects rounded edges.</p>
-      <section class="demo" style="width: 300px">
-        <six-select pill>
-          <six-menu-item value="option-1">Option 1</six-menu-item>
-          <six-menu-item value="option-2">Option 2</six-menu-item>
-          <six-menu-item value="option-3">Option 3</six-menu-item>
-        </six-select>
-      </section>
+    <p>If you want the select to be reset to a default value use the attribute <code>default-value</code></p>
 
-      <h3>Line</h3>
-      <p>Use the <code>line</code> prop to give show selection in line style.</p>
-      <section class="demo" style="width: 300px">
-        <six-select line>
-          <six-menu-item value="option-1">Option 1</six-menu-item>
-          <six-menu-item value="option-2">Option 2</six-menu-item>
-          <six-menu-item value="option-3">Option 3</six-menu-item>
-        </six-select>
-      </section>
+    <section class="demo" style="width: 300px">
+      <six-select value="option-2" default-value="option-3" clearable>
+        <six-menu-item value="option-1">Option 1</six-menu-item>
+        <six-menu-item value="option-2">Option 2</six-menu-item>
+        <six-menu-item value="option-3">Option 3</six-menu-item>
+      </six-select>
+    </section>
 
-      <h3>Disabled</h3>
-      <p>Use the <code>disabled</code> prop to disable a select.</p>
-      <section class="demo" style="width: 300px">
-        <six-select placeholder="Disabled" disabled>
-          <six-menu-item value="option-1">Option 1</six-menu-item>
-          <six-menu-item value="option-2">Option 2</six-menu-item>
-          <six-menu-item value="option-3">Option 3</six-menu-item>
-        </six-select>
-      </section>
+    <h3>Pill</h3>
+    <p>Use the <code>pill</code> prop to give selects rounded edges.</p>
+    <section class="demo" style="width: 300px">
+      <six-select pill>
+        <six-menu-item value="option-1">Option 1</six-menu-item>
+        <six-menu-item value="option-2">Option 2</six-menu-item>
+        <six-menu-item value="option-3">Option 3</six-menu-item>
+      </six-select>
+    </section>
 
-      <h3>Multiple</h3>
-      <p>
-        To allow multiple options to be selected, use the <code>multiple</code> attribute. It's a good practice to use
-        clearable when this option is enabled. When using this option, value will be an array instead of a string.
-      </p>
-      <section class="demo" style="width: 300px">
-        <six-select filter placeholder="Select a few" multiple clearable>
-          <six-menu-item value="option-1">Option 1</six-menu-item>
-          <six-menu-item value="option-2">Option 2</six-menu-item>
-          <six-menu-item value="option-3">Option 3</six-menu-item>
-          <six-menu-item value="option-4">Option 4</six-menu-item>
-          <six-menu-item value="option-5">Option 5</six-menu-item>
-          <six-menu-item value="option-6">Option 6 (with tooltip due to long long long long text)</six-menu-item>
-        </six-select>
-      </section>
+    <h3>Line</h3>
+    <p>Use the <code>line</code> prop to give show selection in line style.</p>
+    <section class="demo" style="width: 300px">
+      <six-select line>
+        <six-menu-item value="option-1">Option 1</six-menu-item>
+        <six-menu-item value="option-2">Option 2</six-menu-item>
+        <six-menu-item value="option-3">Option 3</six-menu-item>
+      </six-select>
+    </section>
 
-      <h3>Multiple with Icons</h3>
-      <p>With the prefix and suffix slots you can display icons in the menu items.</p>
-      <section class="demo demo-multiple-icons" style="width: 300px">
-        <six-select filter placeholder="Select a few" multiple clearable>
-          <six-menu-item value="option-1"
-            >Option 1
-            <six-icon-button size="small" slot="suffix" name="favorite"></six-icon-button>
-          </six-menu-item>
-          <six-menu-item value="option-2"
-            >Option 2 <six-icon-button size="small" slot="suffix" name="favorite"></six-icon-button
-          ></six-menu-item>
-          <six-menu-item value="option-3"
-            >Option 3
-            <six-icon-button size="small" slot="suffix" name="favorite"></six-icon-button>
-          </six-menu-item>
-        </six-select>
-      </section>
+    <h3>Disabled</h3>
+    <p>Use the <code>disabled</code> prop to disable a select.</p>
+    <section class="demo" style="width: 300px">
+      <six-select placeholder="Disabled" disabled>
+        <six-menu-item value="option-1">Option 1</six-menu-item>
+        <six-menu-item value="option-2">Option 2</six-menu-item>
+        <six-menu-item value="option-3">Option 3</six-menu-item>
+      </six-select>
+    </section>
 
-      <h3>Grouping Options</h3>
-      <p>Options can be grouped visually using menu labels and menu dividers.</p>
-      <section class="demo" style="width: 300px">
-        <six-select placeholder="Select one">
-          <six-menu-label>Group 1</six-menu-label>
-          <six-menu-item value="option-1">Option 1</six-menu-item>
-          <six-menu-item value="option-2">Option 2</six-menu-item>
-          <six-menu-item value="option-3">Option 3</six-menu-item>
-          <six-menu-divider></six-menu-divider>
-          <six-menu-label>Group 2</six-menu-label>
-          <six-menu-item value="option-4">Option 4</six-menu-item>
-          <six-menu-item value="option-5">Option 5</six-menu-item>
-          <six-menu-item value="option-6">Option 6</six-menu-item>
-        </six-select>
-      </section>
+    <h3>Multiple</h3>
+    <p>
+      To allow multiple options to be selected, use the <code>multiple</code> attribute. It's a good practice to use
+      clearable when this option is enabled. When using this option, value will be an array instead of a string.
+    </p>
+    <section class="demo" style="width: 300px">
+      <six-select filter placeholder="Select a few" multiple clearable>
+        <six-menu-item value="option-1">Option 1</six-menu-item>
+        <six-menu-item value="option-2">Option 2</six-menu-item>
+        <six-menu-item value="option-3">Option 3</six-menu-item>
+        <six-menu-item value="option-4">Option 4</six-menu-item>
+        <six-menu-item value="option-5">Option 5</six-menu-item>
+        <six-menu-item value="option-6">Option 6 (with tooltip due to long long long long text)</six-menu-item>
+      </six-select>
+    </section>
 
-      <h3>Sizes</h3>
-      <p>Use the <code>size</code> attribute to change a select's size.</p>
-      <section class="demo" style="width: 300px">
-        <six-select placeholder="Small" size="small" multiple>
-          <six-menu-item value="option-1">Option 1</six-menu-item>
-          <six-menu-item value="option-2">Option 2</six-menu-item>
-          <six-menu-item value="option-3">Option 3</six-menu-item>
-        </six-select>
+    <h3>Multiple with Icons</h3>
+    <p>With the prefix and suffix slots you can display icons in the menu items.</p>
+    <section class="demo demo-multiple-icons" style="width: 300px">
+      <six-select filter placeholder="Select a few" multiple clearable>
+        <six-menu-item value="option-1">Option 1
+          <six-icon-button size="small" slot="suffix" name="favorite"></six-icon-button>
+        </six-menu-item>
+        <six-menu-item value="option-2">Option 2 <six-icon-button size="small" slot="suffix"
+            name="favorite"></six-icon-button></six-menu-item>
+        <six-menu-item value="option-3">Option 3
+          <six-icon-button size="small" slot="suffix" name="favorite"></six-icon-button>
+        </six-menu-item>
+      </six-select>
+    </section>
 
-        <br />
+    <h3>No Data</h3>
+    <p>
+      When no options are available in the select, you can show either a default message via the
+      <code>no-data-text</code> prop or provide fully customized content through the
+      <code>no-data-text</code> slot.
+    </p>
 
-        <six-select placeholder="Medium" size="medium" multiple>
-          <six-menu-item value="option-1">Option 1</six-menu-item>
-          <six-menu-item value="option-2">Option 2</six-menu-item>
-          <six-menu-item value="option-3">Option 3</six-menu-item>
-        </six-select>
+    <section class="demo" style="width: 300px">
+      <six-select label="Example using the no-data-text prop" no-data-text="No options available"></six-select>
 
-        <br />
-
-        <six-select placeholder="Large" size="large" multiple>
-          <six-menu-item value="option-1">Option 1</six-menu-item>
-          <six-menu-item value="option-2">Option 2</six-menu-item>
-          <six-menu-item value="option-3">Option 3</six-menu-item>
-        </six-select>
-      </section>
-
-      <h3>Selecting Options Programmatically</h3>
-      <p>
-        The <code>value</code> prop is bound to the current selection. As the selection changes, so will the value. To
-        programmatically manage the selection, update the value property.
-      </p>
-      <section class="demo" style="width: 300px">
-        <div class="selecting-example">
-          <six-select placeholder="">
-            <six-menu-item value="option-1">Option 1</six-menu-item>
-            <six-menu-item value="option-2">Option 2</six-menu-item>
-            <six-menu-item value="option-3">Option 3</six-menu-item>
-          </six-select>
-
-          <br />
-
-          <six-button data-option="option-1">Set 1</six-button>
-          <six-button data-option="option-2">Set 2</six-button>
-          <six-button data-option="option-3">Set 3</six-button>
+      <six-select label="Example using the no-data-text slot">
+        <div slot="no-data-text" style="padding: 0.5rem 0; opacity: 0.7">
+          <h4 style="margin: 0 0 0.25rem 0">No Data</h4>
+          <small>No options are currently available</small>
+          <six-icon library="material-symbols">folder_open</six-icon>
         </div>
+      </six-select>
+    </section>
 
-        <script type="module">
-          (() => {
-            const container = document.querySelector('.selecting-example');
-            const select = container.querySelector('six-select');
+    <h3>Grouping Options</h3>
+    <p>Options can be grouped visually using menu labels and menu dividers.</p>
+    <section class="demo" style="width: 300px">
+      <six-select placeholder="Select one">
+        <six-menu-label>Group 1</six-menu-label>
+        <six-menu-item value="option-1">Option 1</six-menu-item>
+        <six-menu-item value="option-2">Option 2</six-menu-item>
+        <six-menu-item value="option-3">Option 3</six-menu-item>
+        <six-menu-divider></six-menu-divider>
+        <six-menu-label>Group 2</six-menu-label>
+        <six-menu-item value="option-4">Option 4</six-menu-item>
+        <six-menu-item value="option-5">Option 5</six-menu-item>
+        <six-menu-item value="option-6">Option 6</six-menu-item>
+      </six-select>
+    </section>
 
-            [...container.querySelectorAll('six-button')].map((button) => {
-              button.addEventListener('click', () => {
-                select.value = button.dataset.option;
-              });
-            });
-          })();
-        </script>
-      </section>
+    <h3>Sizes</h3>
+    <p>Use the <code>size</code> attribute to change a select's size.</p>
+    <section class="demo" style="width: 300px">
+      <six-select placeholder="Small" size="small" multiple>
+        <six-menu-item value="option-1">Option 1</six-menu-item>
+        <six-menu-item value="option-2">Option 2</six-menu-item>
+        <six-menu-item value="option-3">Option 3</six-menu-item>
+      </six-select>
 
-      <h3>Labels</h3>
-      <p>
-        Use the <code>label</code> attribute to give the select an accessible label. For labels that contain HTML, use
-        the <code>label</code> slot instead.
-      </p>
-      <section class="demo" style="width: 300px">
-        <six-select label="Select one">
+      <br />
+
+      <six-select placeholder="Medium" size="medium" multiple>
+        <six-menu-item value="option-1">Option 1</six-menu-item>
+        <six-menu-item value="option-2">Option 2</six-menu-item>
+        <six-menu-item value="option-3">Option 3</six-menu-item>
+      </six-select>
+
+      <br />
+
+      <six-select placeholder="Large" size="large" multiple>
+        <six-menu-item value="option-1">Option 1</six-menu-item>
+        <six-menu-item value="option-2">Option 2</six-menu-item>
+        <six-menu-item value="option-3">Option 3</six-menu-item>
+      </six-select>
+    </section>
+
+    <h3>Selecting Options Programmatically</h3>
+    <p>
+      The <code>value</code> prop is bound to the current selection. As the selection changes, so will the value. To
+      programmatically manage the selection, update the value property.
+    </p>
+    <section class="demo" style="width: 300px">
+      <div class="selecting-example">
+        <six-select placeholder="">
           <six-menu-item value="option-1">Option 1</six-menu-item>
           <six-menu-item value="option-2">Option 2</six-menu-item>
           <six-menu-item value="option-3">Option 3</six-menu-item>
         </six-select>
-      </section>
 
-      <h3>Help Text</h3>
-      <p>
-        Add descriptive help text to a select with the <code>help-text</code> attribute. For help texts that contain
-        HTML, use the help-text slot instead.
-      </p>
-      <section class="demo" style="width: 300px">
-        <six-select label="Experience" help-text="Please tell us your skill level.">
+        <br />
+
+        <six-button data-option="option-1">Set 1</six-button>
+        <six-button data-option="option-2">Set 2</six-button>
+        <six-button data-option="option-3">Set 3</six-button>
+      </div>
+
+      <script type="module">
+        (() => {
+          const container = document.querySelector('.selecting-example');
+          const select = container.querySelector('six-select');
+
+          [...container.querySelectorAll('six-button')].map((button) => {
+            button.addEventListener('click', () => {
+              select.value = button.dataset.option;
+            });
+          });
+        })();
+      </script>
+    </section>
+
+    <h3>Labels</h3>
+    <p>
+      Use the <code>label</code> attribute to give the select an accessible label. For labels that contain HTML, use
+      the <code>label</code> slot instead.
+    </p>
+    <section class="demo" style="width: 300px">
+      <six-select label="Select one">
+        <six-menu-item value="option-1">Option 1</six-menu-item>
+        <six-menu-item value="option-2">Option 2</six-menu-item>
+        <six-menu-item value="option-3">Option 3</six-menu-item>
+      </six-select>
+    </section>
+
+    <h3>Help Text</h3>
+    <p>
+      Add descriptive help text to a select with the <code>help-text</code> attribute. For help texts that contain
+      HTML, use the help-text slot instead.
+    </p>
+    <section class="demo" style="width: 300px">
+      <six-select label="Experience" help-text="Please tell us your skill level.">
+        <six-menu-item value="option-1">Novice</six-menu-item>
+        <six-menu-item value="option-2">Intermediate</six-menu-item>
+        <six-menu-item value="option-3">Advanced</six-menu-item>
+      </six-select>
+    </section>
+
+    <h3>Hoisting</h3>
+    <p>
+      Dropdown panels will be clipped if they're inside a container that has overflow: auto|hidden. The hoist
+      attribute forces the panel to use a fixed positioning strategy, allowing it to break out of the container. In
+      this case, the panel will be positioned relative to its containing block, which is usually the viewport unless
+      an ancestor uses a transform, perspective, or filter.
+    </p>
+    <section class="demo" style="width: 300px">
+      <div style="overflow: hidden; border: solid 1px grey; padding: 0.5em; display: flex">
+        <six-select placeholder="No Hoisting" style="width: 10em">
           <six-menu-item value="option-1">Novice</six-menu-item>
           <six-menu-item value="option-2">Intermediate</six-menu-item>
           <six-menu-item value="option-3">Advanced</six-menu-item>
         </six-select>
-      </section>
 
-      <h3>Hoisting</h3>
-      <p>
-        Dropdown panels will be clipped if they're inside a container that has overflow: auto|hidden. The hoist
-        attribute forces the panel to use a fixed positioning strategy, allowing it to break out of the container. In
-        this case, the panel will be positioned relative to its containing block, which is usually the viewport unless
-        an ancestor uses a transform, perspective, or filter.
-      </p>
-      <section class="demo" style="width: 300px">
-        <div style="overflow: hidden; border: solid 1px grey; padding: 0.5em; display: flex">
-          <six-select placeholder="No Hoisting" style="width: 10em">
-            <six-menu-item value="option-1">Novice</six-menu-item>
-            <six-menu-item value="option-2">Intermediate</six-menu-item>
-            <six-menu-item value="option-3">Advanced</six-menu-item>
-          </six-select>
+        <six-select placeholder="Hoisting" filter="true" hoist style="width: 10em">
+          <six-menu-item value="option-1">Novice</six-menu-item>
+          <six-menu-item value="option-2">Intermediate</six-menu-item>
+          <six-menu-item value="option-3">Advanced</six-menu-item>
+        </six-select>
+      </div>
+    </section>
 
-          <six-select placeholder="Hoisting" filter="true" hoist style="width: 10em">
-            <six-menu-item value="option-1">Novice</six-menu-item>
-            <six-menu-item value="option-2">Intermediate</six-menu-item>
-            <six-menu-item value="option-3">Advanced</six-menu-item>
-          </six-select>
-        </div>
-      </section>
+    <h4>Hoisting inside Drawer</h4>
 
-      <h4>Hoisting inside Drawer</h4>
+    <p>There was a bug where hoisting inside drawers caused a problem</p>
 
-      <p>There was a bug where hoisting inside drawers caused a problem</p>
-
-      <section>
-        <six-button id="hoistingDrawerBtn">Open Drawer</six-button>
-        <six-drawer id="hoistingDrawer" label="Drawer" class="drawer-overview">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          <six-button slot="footer">Close</six-button>
-          <div class="demo" style="width: 300px">
-            <six-tooltip content="something">
-              <div>some tooltip</div>
-            </six-tooltip>
-            <div style="overflow: hidden; border: solid 1px grey; padding: 0.5em; display: flex">
-              <six-select placeholder="No Hoisting" style="width: 10em">
-                <six-tooltip content="something">
-                  <six-menu-item value="option-1">Novice</six-menu-item>
-                </six-tooltip>
-                <six-menu-item value="option-2">Intermediate</six-menu-item>
-                <six-menu-item value="option-3">Advanced</six-menu-item>
-              </six-select>
-
-              <six-select placeholder="Hoisting" hoist style="width: 10em">
+    <section>
+      <six-button id="hoistingDrawerBtn">Open Drawer</six-button>
+      <six-drawer id="hoistingDrawer" label="Drawer" class="drawer-overview">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        <six-button slot="footer">Close</six-button>
+        <div class="demo" style="width: 300px">
+          <six-tooltip content="something">
+            <div>some tooltip</div>
+          </six-tooltip>
+          <div style="overflow: hidden; border: solid 1px grey; padding: 0.5em; display: flex">
+            <six-select placeholder="No Hoisting" style="width: 10em">
+              <six-tooltip content="something">
                 <six-menu-item value="option-1">Novice</six-menu-item>
-                <six-menu-item value="option-2">Intermediate</six-menu-item>
-                <six-menu-item value="option-3">Advanced</six-menu-item>
-              </six-select>
-            </div>
+              </six-tooltip>
+              <six-menu-item value="option-2">Intermediate</six-menu-item>
+              <six-menu-item value="option-3">Advanced</six-menu-item>
+            </six-select>
 
-            <div style="overflow: hidden; border: solid 1px grey; padding: 0.5em; display: flex">
-              <six-dropdown>
-                <six-button slot="trigger" caret>No Hoist</six-button>
-                <six-menu>
-                  <six-menu-item>Item 1</six-menu-item>
-                  <six-menu-item>Item 2</six-menu-item>
-                  <six-menu-item>Item 3</six-menu-item>
-                </six-menu>
-              </six-dropdown>
-
-              <six-dropdown hoist>
-                <six-button slot="trigger" caret>Hoist</six-button>
-                <six-menu>
-                  <six-menu-item>Item 1</six-menu-item>
-                  <six-menu-item>Item 2</six-menu-item>
-                  <six-menu-item>Item 3</six-menu-item>
-                </six-menu>
-              </six-dropdown>
-            </div>
+            <six-select placeholder="Hoisting" hoist style="width: 10em">
+              <six-menu-item value="option-1">Novice</six-menu-item>
+              <six-menu-item value="option-2">Intermediate</six-menu-item>
+              <six-menu-item value="option-3">Advanced</six-menu-item>
+            </six-select>
           </div>
-        </six-drawer>
 
-        <script type="module">
-          const sixDrawerBtn = document.querySelector('#hoistingDrawerBtn');
-          const sixDrawer = document.querySelector('#hoistingDrawer');
-          sixDrawerBtn.addEventListener('click', () => (sixDrawer.open = true));
-        </script>
-      </section>
+          <div style="overflow: hidden; border: solid 1px grey; padding: 0.5em; display: flex">
+            <six-dropdown>
+              <six-button slot="trigger" caret>No Hoist</six-button>
+              <six-menu>
+                <six-menu-item>Item 1</six-menu-item>
+                <six-menu-item>Item 2</six-menu-item>
+                <six-menu-item>Item 3</six-menu-item>
+              </six-menu>
+            </six-dropdown>
 
-      <h3>Enable Filtering Items</h3>
-      <p>You can filter the items shown by simply adding <code>filter="true"</code> to six-select</p>
-      <p>
-        You can also pass a custom placeholder with <code>filter-placeholder</code> to be shown in the filter input
-        field (will be 'Filter...' by default)
-      </p>
-      <section class="demo" style="width: 300px">
-        <six-select label="Experience" filter multiple select-all-button clearable>
-          <six-menu-item value="AUSTRALIA">Australia</six-menu-item>
-          <six-menu-item value="BRAZIL">Brazil</six-menu-item>
-          <six-menu-item value="CHINA">China</six-menu-item>
-          <six-menu-item value="EGYPT">Egypt</six-menu-item>
-          <six-menu-item value="FRANCE">France</six-menu-item>
-          <six-menu-item value="GERMANY">Germany</six-menu-item>
-          <six-menu-item value="INDIA">India</six-menu-item>
-          <six-menu-item value="JAPAN">Japan</six-menu-item>
-          <six-menu-item value="SPAIN">Spain</six-menu-item>
-          <six-menu-item value="UNITED_STATES">United States</six-menu-item>
-        </six-select>
-      </section>
+            <six-dropdown hoist>
+              <six-button slot="trigger" caret>Hoist</six-button>
+              <six-menu>
+                <six-menu-item>Item 1</six-menu-item>
+                <six-menu-item>Item 2</six-menu-item>
+                <six-menu-item>Item 3</six-menu-item>
+              </six-menu>
+            </six-dropdown>
+          </div>
+        </div>
+      </six-drawer>
 
-      <h3>Async Filtering</h3>
-      <p>
-        You might have a usecase where the full list of items in the dropdown would be too large and you need to call a
-        backend when filtering the dropdown
-      </p>
-      <p>In such a scenario simply add the <code>async-filter</code> attribute to your dropdown component</p>
-      <p>If you want to change the default debounce timeout use e.g. <code>filter-debounce="500"</code></p>
-      <section class="demo" style="width: 300px">
-        <six-select id="async-select" async-filter filter-placeholder="Enter a number">
-          <six-menu-item id="async-menu-item" value="search_list_prompt">Use search to show entries</six-menu-item>
-        </six-select>
-        <script type="module">
-          const asyncSelect = document.querySelector('#async-select');
-          const asyncMenu = document.querySelector('#async-menu-item').parentElement;
+      <script type="module">
+        const sixDrawerBtn = document.querySelector('#hoistingDrawerBtn');
+        const sixDrawer = document.querySelector('#hoistingDrawer');
+        sixDrawerBtn.addEventListener('click', () => (sixDrawer.open = true));
+      </script>
+    </section>
 
+    <h3>Enable Filtering Items</h3>
+    <p>You can filter the items shown by simply adding <code>filter="true"</code> to six-select</p>
+    <p>
+      You can also pass a custom placeholder with <code>filter-placeholder</code> to be shown in the filter input
+      field (will be 'Filter...' by default)
+    </p>
+    <section class="demo" style="width: 300px">
+      <six-select label="Experience" filter multiple select-all-button clearable>
+        <six-menu-item value="AUSTRALIA">Australia</six-menu-item>
+        <six-menu-item value="BRAZIL">Brazil</six-menu-item>
+        <six-menu-item value="CHINA">China</six-menu-item>
+        <six-menu-item value="EGYPT">Egypt</six-menu-item>
+        <six-menu-item value="FRANCE">France</six-menu-item>
+        <six-menu-item value="GERMANY">Germany</six-menu-item>
+        <six-menu-item value="INDIA">India</six-menu-item>
+        <six-menu-item value="JAPAN">Japan</six-menu-item>
+        <six-menu-item value="SPAIN">Spain</six-menu-item>
+        <six-menu-item value="UNITED_STATES">United States</six-menu-item>
+      </six-select>
+    </section>
+
+    <h3>Async Filtering</h3>
+    <p>
+      You might have a usecase where the full list of items in the dropdown would be too large and you need to call a
+      backend when filtering the dropdown
+    </p>
+    <p>In such a scenario simply add the <code>async-filter</code> attribute to your dropdown component</p>
+    <p>If you want to change the default debounce timeout use e.g. <code>filter-debounce="500"</code></p>
+    <section class="demo" style="width: 300px">
+      <six-select id="async-select" async-filter filter-placeholder="Enter a number">
+        <six-menu-item id="async-menu-item" value="search_list_prompt">Use search to show entries</six-menu-item>
+      </six-select>
+      <script type="module">
+        const asyncSelect = document.querySelector('#async-select');
+        const asyncMenu = document.querySelector('#async-menu-item').parentElement;
+
+        for (let i = 0; i < 500; i++) {
+          const child = document.createElement('six-menu-item');
+          child.innerText = `Value ${i}`;
+          child.value = `value-${i}`;
+          asyncMenu.appendChild(child);
+        }
+
+        const removeAllChildNodes = (parent) => {
+          while (parent.firstChild) {
+            parent.removeChild(parent.firstChild);
+          }
+        };
+
+        asyncSelect.addEventListener('six-async-filter-fired', ($event) => {
+          const filterValue = $event.detail.filterValue;
+          removeAllChildNodes(asyncMenu);
           for (let i = 0; i < 500; i++) {
             const child = document.createElement('six-menu-item');
             child.innerText = `Value ${i}`;
             child.value = `value-${i}`;
-            asyncMenu.appendChild(child);
+            if (
+              filterValue.includes(`${i}`) ||
+              filterValue.toLocaleLowerCase().includes(`value`) ||
+              filterValue.toLocaleLowerCase().includes(`value ${i}`) ||
+              filterValue === ''
+            ) {
+              asyncMenu.appendChild(child);
+            }
           }
+        });
+      </script>
+    </section>
 
-          const removeAllChildNodes = (parent) => {
-            while (parent.firstChild) {
-              parent.removeChild(parent.firstChild);
+    <h3>Infinite Scrolling</h3>
+    <p>
+      If you have huge amounts of data you want to present in the dropdown you can't render all at once or it will
+      crash your browser. For these usescases listen to the scroll event to decide which data to present.
+    </p>
+
+    <section class="demo" style="width: 300px">
+      <six-select id="infinite-scoll-dropdown">
+        <six-menu-item id="infinite-scroll-menu" value="search_list_prompt">Value 0</six-menu-item>
+      </six-select>
+      <script type="module">
+        const asyncSelect = document.querySelector('#infinite-scoll-dropdown');
+        const asyncMenu = document.querySelector('#infinite-scroll-menu').parentElement;
+
+        let id = 1;
+
+        for (let i = 0; i < 20; i++) {
+          const child = document.createElement('six-menu-item');
+          child.innerText = `Value ${id}`;
+          child.value = `value-${id}`;
+          asyncMenu.appendChild(child);
+          id++;
+        }
+
+        asyncSelect.addEventListener('six-dropdown-scroll', ($event) => {
+          const { scrollRatio } = $event.detail;
+
+          // add new elements once we reach almost bottom
+          if (scrollRatio > 0.8) {
+            for (let i = 0; i < 20; i++) {
+              const child = document.createElement('six-menu-item');
+              child.innerText = `Value ${id}`;
+              child.value = `value-${id}`;
+              asyncMenu.appendChild(child);
+              id++;
+            }
+          }
+        });
+      </script>
+    </section>
+
+    <h3>Autocomplete</h3>
+
+    <p>AutoComplete is an input element providing a panel with real-time suggestions on typing.</p>
+
+    <p>Autocomplete does currently not support multiselect!</p>
+
+    <p>You can adjust the debounce timeout via the <code>input-debounce</code> attribute</p>
+
+    <section class="demo" style="width: 300px">
+      <six-select id="autocomplete-example" autocomplete clearable></six-select>
+      <script type="module">
+        (() => {
+          const clearAllChildren = (node) => {
+            let child = node.lastElementChild;
+            while (child) {
+              node.removeChild(child);
+              child = node.lastElementChild;
             }
           };
 
-          asyncSelect.addEventListener('six-async-filter-fired', ($event) => {
-            const filterValue = $event.detail.filterValue;
-            removeAllChildNodes(asyncMenu);
-            for (let i = 0; i < 500; i++) {
-              const child = document.createElement('six-menu-item');
-              child.innerText = `Value ${i}`;
-              child.value = `value-${i}`;
-              if (
-                filterValue.includes(`${i}`) ||
-                filterValue.toLocaleLowerCase().includes(`value`) ||
-                filterValue.toLocaleLowerCase().includes(`value ${i}`) ||
-                filterValue === ''
-              ) {
-                asyncMenu.appendChild(child);
-              }
-            }
-          });
-        </script>
-      </section>
+          const createMenuItem = (value, label) => {
+            const menuItem = document.createElement('six-menu-item');
+            menuItem.innerText = label;
+            menuItem.setAttribute('value', value);
+            return menuItem;
+          };
 
-      <h3>Infinite Scrolling</h3>
-      <p>
-        If you have huge amounts of data you want to present in the dropdown you can't render all at once or it will
-        crash your browser. For these usescases listen to the scroll event to decide which data to present.
-      </p>
+          const select = document.getElementById('autocomplete-example');
 
-      <section class="demo" style="width: 300px">
-        <six-select id="infinite-scoll-dropdown">
-          <six-menu-item id="infinite-scroll-menu" value="search_list_prompt">Value 0</six-menu-item>
-        </six-select>
-        <script type="module">
-          const asyncSelect = document.querySelector('#infinite-scoll-dropdown');
-          const asyncMenu = document.querySelector('#infinite-scroll-menu').parentElement;
-
-          let id = 1;
-
-          for (let i = 0; i < 20; i++) {
-            const child = document.createElement('six-menu-item');
-            child.innerText = `Value ${id}`;
-            child.value = `value-${id}`;
-            asyncMenu.appendChild(child);
-            id++;
-          }
-
-          asyncSelect.addEventListener('six-dropdown-scroll', ($event) => {
-            const { scrollRatio } = $event.detail;
-
-            // add new elements once we reach almost bottom
-            if (scrollRatio > 0.8) {
-              for (let i = 0; i < 20; i++) {
-                const child = document.createElement('six-menu-item');
-                child.innerText = `Value ${id}`;
-                child.value = `value-${id}`;
-                asyncMenu.appendChild(child);
-                id++;
-              }
-            }
-          });
-        </script>
-      </section>
-
-      <h3>Autocomplete</h3>
-
-      <p>AutoComplete is an input element providing a panel with real-time suggestions on typing.</p>
-
-      <p>Autocomplete does currently not support multiselect!</p>
-
-      <p>You can adjust the debounce timeout via the <code>input-debounce</code> attribute</p>
-
-      <section class="demo" style="width: 300px">
-        <six-select id="autocomplete-example" autocomplete clearable></six-select>
-        <script type="module">
-          (() => {
-            const clearAllChildren = (node) => {
-              let child = node.lastElementChild;
-              while (child) {
-                node.removeChild(child);
-                child = node.lastElementChild;
-              }
-            };
-
-            const createMenuItem = (value, label) => {
-              const menuItem = document.createElement('six-menu-item');
-              menuItem.innerText = label;
-              menuItem.setAttribute('value', value);
-              return menuItem;
-            };
-
-            const select = document.getElementById('autocomplete-example');
-
-            select.addEventListener('six-select-change', (event) => {
-              if (event.detail.isSelected) {
-                // don't fetch new values on selection
-                return;
-              }
-              clearAllChildren(select);
-
-              const enteredText = event.detail.value || 'All Values';
-              new Array(5).fill('').forEach((item, idx) => {
-                select.append(createMenuItem(`option ${enteredText} ${idx}`, `Option ${enteredText} ${idx}`));
-              });
-            });
-          })();
-        </script>
-      </section>
-      <h2>Passing items via options attribute</h2>
-
-      <p>
-        If you don't want to create a <code>six-menu-item</code> but simply want to pass an array with all options, you
-        can do so via the <code>options</code> attribute.
-      </p>
-
-      <section>
-        <six-select filter multiple id="six-select-dynamic-options"></six-select>
-        <script type="module">
-          const sixSelectDynamicOptions = document.getElementById('six-select-dynamic-options');
-          sixSelectDynamicOptions.options = Array.from(Array(100).keys()).map((idx) => ({
-            label: `label ${idx}`,
-            value: `value ${idx}`,
-          }));
-        </script>
-      </section>
-
-      <h2>Virtual Scrolling</h2>
-
-      <p>
-        If you have a lot of items in the menu (100'000 in the following example), rendering all of them might lead to
-        some performance issues. To avoid such issues use <code>virtual-scroll</code>
-      </p>
-
-      <section>
-        <six-select id="six-select-virtual-scroll" virtual-scroll></six-select>
-        <script type="module">
-          const sixSelectDynamicOptions = document.getElementById('six-select-virtual-scroll');
-          sixSelectDynamicOptions.options = Array.from(Array(100000).keys()).map((idx) => ({
-            label: `label ${idx}`,
-            value: `value ${idx}`,
-          }));
-        </script>
-      </section>
-
-      <h3>Virtually scrolled Autocomplete</h3>
-
-      <p>
-        In the following example you see the combination of <code>autocomplete</code> with <code>virtual-scroll</code>.
-        The list contains 10'000 entries. Enter a number in the input field and you can virtually scroll through all
-        elements which contain this number.
-      </p>
-
-      <section class="demo" style="width: 300px">
-        <six-select id="virtual-autocomplete-example" autocomplete clearable virtual-scroll></six-select>
-        <script type="module">
-          const virtualAutocomplete = document.getElementById('virtual-autocomplete-example');
-
-          // generate some options
-          const allOptions = Array.from(Array(10000).keys()).map((idx) => ({
-            label: `label ${idx}`,
-            value: `value ${idx}`,
-          }));
-
-          // assign the options to the six-select
-          virtualAutocomplete.options = allOptions;
-
-          // set up an eventlistener on change
-          virtualAutocomplete.addEventListener('six-select-change', (event) => {
+          select.addEventListener('six-select-change', (event) => {
             if (event.detail.isSelected) {
               // don't fetch new values on selection
               return;
             }
+            clearAllChildren(select);
 
-            const enteredText = event.detail.value;
-            if (!enteredText) {
-              // if no text has been entered all options should be available
-              virtualAutocomplete.options = allOptions;
-            }
-
-            // otherwise if a text has been entered filter for all options which contain the entered text
-            virtualAutocomplete.options = allOptions.filter(
-              (option) => option.label.includes(enteredText) || option.value.includes(enteredText)
-            );
+            const enteredText = event.detail.value || 'All Values';
+            new Array(5).fill('').forEach((item, idx) => {
+              select.append(createMenuItem(`option ${enteredText} ${idx}`, `Option ${enteredText} ${idx}`));
+            });
           });
-        </script>
-      </section>
+        })();
+      </script>
+    </section>
+    <h2>Passing items via options attribute</h2>
 
-      <h2>Error Text</h2>
+    <p>
+      If you don't want to create a <code>six-menu-item</code> but simply want to pass an array with all options, you
+      can do so via the <code>options</code> attribute.
+    </p>
 
-      <p>Add a descriptive error message using either the <code>error-text</code> prop, or the equally named slot.</p>
+    <section>
+      <six-select filter multiple id="six-select-dynamic-options"></six-select>
+      <script type="module">
+        const sixSelectDynamicOptions = document.getElementById('six-select-dynamic-options');
+        sixSelectDynamicOptions.options = Array.from(Array(100).keys()).map((idx) => ({
+          label: `label ${idx}`,
+          value: `value ${idx}`,
+        }));
+      </script>
+    </section>
 
-      <six-alert type="warning" open>
-        <six-icon slot="icon">warning</six-icon>
-        There are two caveats when using the <code>error-text</code> prop/slot:
-        <ol>
-          <li>
-            Remember to set the <code>invalid</code> prop as well! If you only provide some content to the
-            <code>error-text</code> prop/slot, it won't be shown unless the <code>invalid</code> prop is set to true
-          </li>
-          <li>
-            When using the prop, and you need to show more than one message, remember to also set the
-            <code>error-text-count</code> prop to a value that is the same or bigger than the length of the list of
-            messages you are using. Otherwise only one message will be shown at a time
-          </li>
-        </ol>
-      </six-alert>
+    <h2>Virtual Scrolling</h2>
 
-      <p>The <code>error-text</code> prop accepts either a simple string message, or a list of messages.</p>
+    <p>
+      If you have a lot of items in the menu (100'000 in the following example), rendering all of them might lead to
+      some performance issues. To avoid such issues use <code>virtual-scroll</code>
+    </p>
 
-      <section class="demo">
-        <six-select label="Simple string message" error-text="This is a simple string message" invalid> </six-select>
-      </section>
+    <section>
+      <six-select id="six-select-virtual-scroll" virtual-scroll></six-select>
+      <script type="module">
+        const sixSelectDynamicOptions = document.getElementById('six-select-virtual-scroll');
+        sixSelectDynamicOptions.options = Array.from(Array(100000).keys()).map((idx) => ({
+          label: `label ${idx}`,
+          value: `value ${idx}`,
+        }));
+      </script>
+    </section>
 
-      <section class="demo">
-        <six-select id="multiple-error-text" label="List of string message" invalid></six-select>
-        <script type="module">
-          const sixSelect = document.getElementById('multiple-error-text');
-          sixSelect.errorText = ['Message 1', 'Message 2'];
-          sixSelect.errorTextCount = 3;
-        </script>
-      </section>
+    <h3>Virtually scrolled Autocomplete</h3>
 
-      <p>
-        When using the <code>error-text</code> slot, it is recommended to use the <code>six-error</code> component to
-        wrap the error message(s). This will provide the correct styling out of the box
-      </p>
-      <section class="demo">
-        <six-select invalid>
-          <div slot="error-text">
-            <six-error
-              >An error message
-              <a href="https://github.com/six-group/six-webcomponents" target="_blank">with a link</a></six-error
-            >
-          </div>
-        </six-select>
-      </section>
-    </div>
-  </body>
+    <p>
+      In the following example you see the combination of <code>autocomplete</code> with <code>virtual-scroll</code>.
+      The list contains 10'000 entries. Enter a number in the input field and you can virtually scroll through all
+      elements which contain this number.
+    </p>
+
+    <section class="demo" style="width: 300px">
+      <six-select id="virtual-autocomplete-example" autocomplete clearable virtual-scroll></six-select>
+      <script type="module">
+        const virtualAutocomplete = document.getElementById('virtual-autocomplete-example');
+
+        // generate some options
+        const allOptions = Array.from(Array(10000).keys()).map((idx) => ({
+          label: `label ${idx}`,
+          value: `value ${idx}`,
+        }));
+
+        // assign the options to the six-select
+        virtualAutocomplete.options = allOptions;
+
+        // set up an eventlistener on change
+        virtualAutocomplete.addEventListener('six-select-change', (event) => {
+          if (event.detail.isSelected) {
+            // don't fetch new values on selection
+            return;
+          }
+
+          const enteredText = event.detail.value;
+          if (!enteredText) {
+            // if no text has been entered all options should be available
+            virtualAutocomplete.options = allOptions;
+          }
+
+          // otherwise if a text has been entered filter for all options which contain the entered text
+          virtualAutocomplete.options = allOptions.filter(
+            (option) => option.label.includes(enteredText) || option.value.includes(enteredText)
+          );
+        });
+      </script>
+    </section>
+
+    <h2>Error Text</h2>
+
+    <p>Add a descriptive error message using either the <code>error-text</code> prop, or the equally named slot.</p>
+
+    <six-alert type="warning" open>
+      <six-icon slot="icon">warning</six-icon>
+      There are two caveats when using the <code>error-text</code> prop/slot:
+      <ol>
+        <li>
+          Remember to set the <code>invalid</code> prop as well! If you only provide some content to the
+          <code>error-text</code> prop/slot, it won't be shown unless the <code>invalid</code> prop is set to true
+        </li>
+        <li>
+          When using the prop, and you need to show more than one message, remember to also set the
+          <code>error-text-count</code> prop to a value that is the same or bigger than the length of the list of
+          messages you are using. Otherwise only one message will be shown at a time
+        </li>
+      </ol>
+    </six-alert>
+
+    <p>The <code>error-text</code> prop accepts either a simple string message, or a list of messages.</p>
+
+    <section class="demo">
+      <six-select label="Simple string message" error-text="This is a simple string message" invalid> </six-select>
+    </section>
+
+    <section class="demo">
+      <six-select id="multiple-error-text" label="List of string message" invalid></six-select>
+      <script type="module">
+        const sixSelect = document.getElementById('multiple-error-text');
+        sixSelect.errorText = ['Message 1', 'Message 2'];
+        sixSelect.errorTextCount = 3;
+      </script>
+    </section>
+
+    <p>
+      When using the <code>error-text</code> slot, it is recommended to use the <code>six-error</code> component to
+      wrap the error message(s). This will provide the correct styling out of the box
+    </p>
+    <section class="demo">
+      <six-select invalid>
+        <div slot="error-text">
+          <six-error>An error message
+            <a href="https://github.com/six-group/six-webcomponents" target="_blank">with a link</a></six-error>
+        </div>
+      </six-select>
+    </section>
+  </div>
+</body>
+
 </html>
