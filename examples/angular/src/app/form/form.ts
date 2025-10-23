@@ -1,5 +1,5 @@
 import { JsonPipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, effect, inject, signal } from '@angular/core';
 import {
   AbstractControl,
   NonNullableFormBuilder,
@@ -8,6 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { AlertService, UiLibraryAngularModule } from '@six-group/ui-library-angular';
+import { City, CITY_DATA, Country } from './data';
 
 @Component({
   selector: 'app-form',
@@ -25,6 +26,8 @@ export class Form {
     lastName: [''],
     email: ['', Validators.email],
     username: ['', [Validators.required, usernameValidator, Validators.minLength(3)]],
+    country: ['' as Country | '', Validators.required],
+    city: ['' as string, Validators.required],
     iban: ['', Validators.pattern(/[A-Z]{2}\d{2}[A-Z ]+/)],
     age: [null as number | null, Validators.min(18)],
     userGroup: ['user' as UserGroup, Validators.required],
@@ -42,6 +45,35 @@ export class Form {
     const day = new Date(isoDate).getDay();
     return day !== 0 && day !== 6;
   };
+
+  selectedCountry = signal<Country | ''>('');
+  CITY_DATA: any;
+
+  constructor() {
+    effect(() => {
+      this.form.controls.country.valueChanges.subscribe((country) => {
+        this.selectedCountry.set(country as Country | '');
+        this.form.controls.city.reset();
+      });
+    });
+  }
+
+  getCitiesForCountry(): City[] {
+    const country = this.selectedCountry();
+    if (!country) {
+      return [];
+    }
+    return CITY_DATA[country] || [];
+  }
+
+  getCityNoDataText(): string {
+    const country = this.selectedCountry();
+    if (!country) {
+      return 'Please select a country first';
+    }
+    return 'No cities available';
+  }
+
 
   onSubmit() {
     this.alertService.showAlert('Form submitted successfully!');
