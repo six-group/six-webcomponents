@@ -74,7 +74,6 @@ export class Form {
     return 'No cities available';
   }
 
-
   onSubmit() {
     this.alertService.showAlert('Form submitted successfully!');
   }

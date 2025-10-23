@@ -738,7 +738,7 @@ export class SixSelect {
             ref={(el) => (this.menu = el)}
             part="menu"
             class={{
-              select__menu: true, 
+              select__menu: true,
             }}
             onSix-menu-item-selected={this.handleMenuSelect}
             items={this.options}

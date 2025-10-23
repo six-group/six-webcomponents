@@ -3,27 +3,43 @@
 <form class="grid-6" [formGroup]="form" sixForm (sixSubmit)="onSubmit()">
   <six-input class="column-span-2" label="First Name" type="text" [formControl]="form.controls.firstName" required />
   <six-input class="column-span-2" label="Last Name" type="text" [formControl]="form.controls.lastName" />
-  <six-input class="column-span-2" label="Username" [formControl]="form.controls.username" required
-    errorTextCount="2" />
+  <six-input
+    class="column-span-2"
+    label="Username"
+    [formControl]="form.controls.username"
+    required
+    errorTextCount="2"
+  />
   <six-input class="column-span-4" label="Email" type="email" [formControl]="form.controls.email" required />
   <six-input class="column-span-1" label="Age" type="number" [formControl]="form.controls.age" />
   <six-range class="column-span-1" label="Height" min="0" max="100" step="1" [formControl]="form.controls.height" />
 
-  <six-select class="column-span-3" label="Country" placeholder="Select a country" clearable required
-    [formControl]="form.controls.country">
+  <six-select
+    class="column-span-3"
+    label="Country"
+    placeholder="Select a country"
+    clearable
+    required
+    [formControl]="form.controls.country"
+  >
     <six-menu-item value="switzerland">Switzerland</six-menu-item>
     <six-menu-item value="germany">Germany</six-menu-item>
     <six-menu-item value="france">France</six-menu-item>
     <six-menu-item value="italy">Italy</six-menu-item>
   </six-select>
 
-  <six-select class="column-span-3" label="City" placeholder="Select a city" clearable required
-    [formControl]="form.controls.city" [noDataText]="getCityNoDataText()">
-    @if (selectedCountry()) {
-    @for (city of getCitiesForCountry(); track city.value) {
+  <six-select
+    class="column-span-3"
+    label="City"
+    placeholder="Select a city"
+    clearable
+    required
+    [formControl]="form.controls.city"
+    [noDataText]="getCityNoDataText()"
+  >
+    @if (selectedCountry()) { @for (city of getCitiesForCountry(); track city.value) {
     <six-menu-item [value]="city.value">{{ city.label }}</six-menu-item>
-    }
-    }
+    } }
   </six-select>
 
   <six-input class="column-span-6" label="IBAN" [formControl]="form.controls.iban" required />
@@ -34,8 +50,14 @@
     <six-menu-item value="temporary">Temporary</six-menu-item>
   </six-select>
 
-  <six-select class="column-span-2" label="interests" multiple clearable required
-    [formControl]="form.controls.interests">
+  <six-select
+    class="column-span-2"
+    label="interests"
+    multiple
+    clearable
+    required
+    [formControl]="form.controls.interests"
+  >
     <six-menu-item value="sport">Sport</six-menu-item>
     <six-menu-item value="music">Music</six-menu-item>
     <six-menu-item value="movies">Movies</six-menu-item>
@@ -45,8 +67,15 @@
     <six-switch [formControl]="form.controls.internal">Internal</six-switch>
   </six-group-label>
 
-  <six-date class="column-span-3" min="2025-01-01" max="2027-05-23" [allowedDates]="weekendsOnly" label="Date"
-    [formControl]="form.controls.date" required />
+  <six-date
+    class="column-span-3"
+    min="2025-01-01"
+    max="2027-05-23"
+    [allowedDates]="weekendsOnly"
+    label="Date"
+    [formControl]="form.controls.date"
+    required
+  />
 
   <six-timepicker class="column-span-3" label="Start time" [formControl]="form.controls.startTime" required />
 
@@ -59,8 +88,9 @@
   </six-group-label>
 
   <six-textarea class="column-span-6" label="Description" [formControl]="form.controls.description" />
-  <six-checkbox class="column-span-6" [formControl]="form.controls.acceptsTerms">Accept to Terms and
-    Condition</six-checkbox>
+  <six-checkbox class="column-span-6" [formControl]="form.controls.acceptsTerms"
+    >Accept to Terms and Condition</six-checkbox
+  >
 
   <six-button class="column-span-1" submit>Submit</six-button>
   <six-button class="column-span-1" reset type="secondary" (click)="form.reset()">Reset</six-button>
@@ -69,5 +99,6 @@
   <pre class="column-span-6">
   Status: {{ form.status}}
 
-  {{ form.value | json }}</pre>
+  {{ form.value | json }}</pre
+  >
 </form>
