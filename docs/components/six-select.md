@@ -155,12 +155,14 @@ With the prefix and suffix slots you can display icons in the menu items.
 
 ```html
 <six-select filter placeholder="Select a few" multiple clearable>
-  <six-menu-item value="option-1">Option 1
+  <six-menu-item value="option-1"
+    >Option 1
     <six-icon-button size="small" slot="suffix" name="favorite"></six-icon-button>
   </six-menu-item>
-  <six-menu-item value="option-2">Option 2 <six-icon-button size="small" slot="suffix"
-      name="favorite"></six-icon-button></six-menu-item>
-  <six-menu-item value="option-3">Option 3
+  <six-menu-item value="option-2"
+    >Option 2 <six-icon-button size="small" slot="suffix" name="favorite"></six-icon-button></six-menu-item>
+  <six-menu-item value="option-3"
+    >Option 3
     <six-icon-button size="small" slot="suffix" name="favorite"></six-icon-button>
   </six-menu-item>
 </six-select>
@@ -669,7 +671,7 @@ When using the `error-text` slot, it is recommended to use the `six-error` compo
 ```html
 <six-select invalid>
   <div slot="error-text">
-    <six-error>An error message
+    <six-error               >An error message
       <a href="https://github.com/six-group/six-webcomponents" target="_blank">with a link</a></six-error>
   </div>
 </six-select>

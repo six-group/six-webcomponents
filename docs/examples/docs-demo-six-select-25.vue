@@ -1,8 +1,8 @@
 <template>
 <div>
 
-      <six-select label="Simple string message" error-text="This is a simple string message" invalid> </six-select>
-    
+        <six-select label="Simple string message" error-text="This is a simple string message" invalid> </six-select>
+      
 </div>
 </template>
 <style>
