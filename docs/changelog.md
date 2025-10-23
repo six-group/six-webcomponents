@@ -10,7 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - `six-select`: Added no-data-text prop and slot to the six-select to handle if there is no data
   available in the dropdown.
-  
+
 ## 5.1.0 - 2025-10-23
 
 ### Added
