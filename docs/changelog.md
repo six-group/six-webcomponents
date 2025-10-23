@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   to control the filled variant for both libraries. Legacy **Material Icons** remain the default.
 - `six-icon`: Global utilities `setDefaultIconLibrary()` and `getDefaultIconLibrary()` to set or
   read the default icon library for all `<six-icon>` instances that don’t specify `library`.
+- `six-select`: Added no-data-text prop and slot to the six-select to handle if there is no data available in the dropdown.
 
 ### Fixed
 
