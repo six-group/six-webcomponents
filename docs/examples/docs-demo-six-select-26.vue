@@ -1,9 +1,9 @@
 <template>
 <div>
 
-      <six-select id="multiple-error-text" label="List of string message" invalid></six-select>
+        <six-select id="multiple-error-text" label="List of string message" invalid></six-select>
+        
       
-    
 </div>
 </template>
 <style>
@@ -13,9 +13,9 @@
 export default {
   name: 'docs-demo-six-select-26',
   mounted() { 
-        const sixSelect = document.getElementById('multiple-error-text');
-        sixSelect.errorText = ['Message 1', 'Message 2'];
-        sixSelect.errorTextCount = 3;
-       }
+          const sixSelect = document.getElementById('multiple-error-text');
+          sixSelect.errorText = ['Message 1', 'Message 2'];
+          sixSelect.errorTextCount = 3;
+         }
 }
 </script>
