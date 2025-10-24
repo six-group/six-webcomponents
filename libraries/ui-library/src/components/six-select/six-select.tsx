@@ -64,7 +64,7 @@ export class SixSelect {
   @State() hasHelpTextSlot = false;
   @State() hasLabelSlot = false;
   @State() hasErrorTextSlot = false;
-  @State() hasNoDataTextSlot = false;
+  @State() hasnoItemsTextSlot = false;
   @State() isOpen = false;
   @State() displayedValues: string[] = [];
 
@@ -125,7 +125,7 @@ export class SixSelect {
   @Prop() label = '';
 
   /** The info message shown, if no data is available for the dropdown */
-  @Prop() noDataText = 'No data';
+  @Prop() noItemsText = 'No data';
 
   /** The error message shown, if `invalid` is set to true.  */
   @Prop() errorText: string | string[] = '';
@@ -173,7 +173,7 @@ export class SixSelect {
 
   @Watch('helpText')
   @Watch('errorText')
-  @Watch('noDataText')
+  @Watch('noItemsText')
   @Watch('label')
   handleLabelChange() {
     this.handleSlotChange();
@@ -483,7 +483,7 @@ export class SixSelect {
     this.hasHelpTextSlot = hasSlot(this.host, 'help-text');
     this.hasLabelSlot = hasSlot(this.host, 'label');
     this.hasErrorTextSlot = hasSlot(this.host, 'error-text');
-    this.hasNoDataTextSlot = hasSlot(this.host, 'no-data-text');
+    this.hasnoItemsTextSlot = hasSlot(this.host, 'no-data-text');
     this.syncItemsFromValue();
   };
 
@@ -748,14 +748,14 @@ export class SixSelect {
           >
             <slot onSlotchange={this.handleSlotChange} />
             {!hasMenuItems &&
-              (this.hasNoDataTextSlot ? (
+              (this.hasnoItemsTextSlot ? (
                 <slot name="no-data-text" />
               ) : (
                 <div class="select-no-data-text">
                   <six-icon library="material-symbols" size="large">
                     folder_open
                   </six-icon>
-                  <span>{this.noDataText}</span>
+                  <span>{this.noItemsText}</span>
                 </div>
               ))}
           </six-menu>
