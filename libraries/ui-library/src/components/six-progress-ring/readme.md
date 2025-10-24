@@ -29,14 +29,6 @@
 | `"label"` | The progress ring label.      |
 
 
-## CSS Custom Properties
-
-| Name                | Description          |
-| ------------------- | -------------------- |
-| `--indicator-color` | The indicator color. |
-| `--track-color`     | The track color.     |
-
-
 ----------------------------------------------
 
 Copyright © 2021-present SIX-Group

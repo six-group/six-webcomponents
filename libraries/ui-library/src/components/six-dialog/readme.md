@@ -72,13 +72,6 @@ Type: `Promise<void>`
 | `"title"`        | The dialog title.                                                |
 
 
-## CSS Custom Properties
-
-| Name      | Description                                                                                         |
-| --------- | --------------------------------------------------------------------------------------------------- |
-| `--width` | The preferred width of the dialog. Note that the dialog will shrink to accommodate smaller screens. |
-
-
 ## Dependencies
 
 ### Depends on

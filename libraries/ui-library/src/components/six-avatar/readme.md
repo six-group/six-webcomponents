@@ -32,13 +32,6 @@
 | `"initials"` | The container that wraps the avatar initials. |
 
 
-## CSS Custom Properties
-
-| Name     | Description             |
-| -------- | ----------------------- |
-| `--size` | The size of the avatar. |
-
-
 ## Dependencies
 
 ### Depends on

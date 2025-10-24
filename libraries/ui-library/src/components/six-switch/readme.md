@@ -76,15 +76,6 @@ Type: `Promise<void>`
 | `"thumb"`   | The switch position indicator. |
 
 
-## CSS Custom Properties
-
-| Name           | Description               |
-| -------------- | ------------------------- |
-| `--height`     | The height of the switch. |
-| `--thumb-size` | The size of the thumb.    |
-| `--width`      | The width of the switch.  |
-
-
 ## Dependencies
 
 ### Depends on

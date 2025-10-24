@@ -68,19 +68,6 @@ Type: `Promise<void>`
 | `"base"` | The component's base wrapper. |
 
 
-## CSS Custom Properties
-
-| Name                     | Description                                                  |
-| ------------------------ | ------------------------------------------------------------ |
-| `--hide-delay`           | The amount of time to wait before hiding the tooltip.        |
-| `--hide-duration`        | The amount of time the hide transition takes to complete.    |
-| `--hide-timing-function` | The timing function (easing) to use for the hide transition. |
-| `--max-width`            | The maximum width of the tooltip.                            |
-| `--show-delay`           | The amount of time to wait before showing the tooltip.       |
-| `--show-duration`        | The amount of time the show transition takes to complete.    |
-| `--show-timing-function` | The timing function (easing) to use for the show transition. |
-
-
 ## Dependencies
 
 ### Used by

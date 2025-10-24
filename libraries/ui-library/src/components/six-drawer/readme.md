@@ -78,13 +78,6 @@ Type: `Promise<void>`
 | `"title"`        | The drawer title.                                                |
 
 
-## CSS Custom Properties
-
-| Name     | Description                                                                                                                                                                           |
-| -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--size` | The preferred size of the drawer. This will be applied to the drawer's width or height depending on its `placement`. Note that the drawer will shrink to accommodate smaller screens. |
-
-
 ## Dependencies
 
 ### Depends on

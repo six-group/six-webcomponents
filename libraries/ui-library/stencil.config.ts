@@ -87,6 +87,7 @@ export const config: Config = {
         { src: '../../../node_modules/@fontsource/material-icons-outlined/files/*', dest: 'build/files', warn: true },
         { src: '../../../node_modules/@fontsource/noto-sans/files/*', dest: 'build/files', warn: true },
         { src: '**/*.html' },
+        { src: '**/*.scss' },
       ],
     },
   ],
