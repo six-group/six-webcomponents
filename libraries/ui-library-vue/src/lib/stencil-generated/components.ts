@@ -611,7 +611,7 @@ export const SixSelect: StencilVueComponent<JSX.SixSelect, JSX.SixSelect["value"
   'required',
   'clearable',
   'label',
-  'noDataText',
+  'noItemsText',
   'errorText',
   'errorTextCount',
   'invalid',

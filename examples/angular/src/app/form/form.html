@@ -35,7 +35,7 @@
     clearable
     required
     [formControl]="form.controls.city"
-    [noDataText]="getCityNoDataText()"
+    [noItemsText]="getCitynoItemsText()"
   >
     @if (selectedCountry()) { @for (city of getCitiesForCountry(); track city.value) {
     <six-menu-item [value]="city.value">{{ city.label }}</six-menu-item>

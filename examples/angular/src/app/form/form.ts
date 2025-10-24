@@ -66,7 +66,7 @@ export class Form {
     return CITY_DATA[country] || [];
   }
 
-  getCityNoDataText(): string {
+  getCitynoItemsText(): string {
     const country = this.selectedCountry();
     if (!country) {
       return 'Please select a country first';
