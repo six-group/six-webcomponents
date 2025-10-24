@@ -25,8 +25,20 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - run: npm ci
       - run: npm run test
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+      - name: Run E2E tests
+        run: npm run test:e2e
       - run: npm run build
       - run: npm run prettier:check
       - run: npm run lint:lib
       - name: verify clean build
         run: git diff --exit-code
+
+        # Upload Playwright report on failure
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report
+          path: ./libraries/ui-library/playwright-report/
+          retention-days: 30
