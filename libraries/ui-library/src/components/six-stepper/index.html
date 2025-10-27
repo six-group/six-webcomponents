@@ -107,11 +107,7 @@
         </div>
         <script type="module">
           const currentStepper = document.getElementById('current-stepper');
-          currentStepper.steps = [
-            { title: 'Waiting' },
-            { title: 'In Progress' },
-            { title: 'Complete' },
-          ];
+          currentStepper.steps = [{ title: 'Waiting' }, { title: 'In Progress' }, { title: 'Complete' }];
           currentStepper.current = 1;
 
           document.getElementById('step-btn-0').addEventListener('click', () => {
@@ -193,20 +189,12 @@
         <six-stepper id="green-stepper"></six-stepper>
         <script type="module">
           const blueStepper = document.getElementById('blue-stepper');
-          blueStepper.steps = [
-            { title: 'Start' },
-            { title: 'In Progress' },
-            { title: 'Complete' },
-          ];
+          blueStepper.steps = [{ title: 'Start' }, { title: 'In Progress' }, { title: 'Complete' }];
           blueStepper.current = 1;
           blueStepper.color = 'blue';
 
           const greenStepper = document.getElementById('green-stepper');
-          greenStepper.steps = [
-            { title: 'Start' },
-            { title: 'In Progress' },
-            { title: 'Complete' },
-          ];
+          greenStepper.steps = [{ title: 'Start' }, { title: 'In Progress' }, { title: 'Complete' }];
           greenStepper.current = 1;
           greenStepper.color = 'green';
         </script>
@@ -227,11 +215,7 @@
         </div>
         <script type="module">
           const statusStepper = document.getElementById('status-stepper');
-          statusStepper.steps = [
-            { title: 'Step 1' },
-            { title: 'Step 2' },
-            { title: 'Step 3' },
-          ];
+          statusStepper.steps = [{ title: 'Step 1' }, { title: 'Step 2' }, { title: 'Step 3' }];
           statusStepper.current = 1;
 
           document.getElementById('status-wait').addEventListener('click', () => {
@@ -378,11 +362,7 @@
           const eventStepper = document.getElementById('event-stepper');
           const eventLog = document.getElementById('event-log');
 
-          eventStepper.steps = [
-            { title: 'Step 1' },
-            { title: 'Step 2' },
-            { title: 'Step 3' },
-          ];
+          eventStepper.steps = [{ title: 'Step 1' }, { title: 'Step 2' }, { title: 'Step 3' }];
           eventStepper.current = 0;
           eventStepper.clickable = true;
 

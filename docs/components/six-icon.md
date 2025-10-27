@@ -243,6 +243,7 @@ The icons are available in different sizes. Default size is medium (24px).
  - [six-sidebar-item](six-sidebar-item.html)
  - [six-sidebar-item-group](six-sidebar-item-group.html)
  - [six-stage-indicator](six-stage-indicator.html)
+ - [six-stepper](six-stepper.html)
  - [six-tile](six-tile.html)
  - [six-timepicker](six-timepicker.html)
 
@@ -267,6 +268,7 @@ graph TD;
   six-sidebar-item --> six-icon
   six-sidebar-item-group --> six-icon
   six-stage-indicator --> six-icon
+  six-stepper --> six-icon
   six-tile --> six-icon
   six-timepicker --> six-icon
   style six-icon fill:#f9f,stroke:#333,stroke-width:4px

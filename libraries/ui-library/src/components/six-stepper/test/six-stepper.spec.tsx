@@ -1,1 +1,1 @@
-describe('six-stepper', () => {})
+describe('six-stepper', () => {});

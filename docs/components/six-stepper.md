@@ -1,4 +1,4 @@
-# six-stepper
+# Stepper
 
 
 
@@ -46,7 +46,7 @@
 
 ### Depends on
 
-- [six-icon](../six-icon)
+- [six-icon](six-icon.html)
 
 ### Graph
 ```mermaid

@@ -43,6 +43,7 @@
  - [six-sidebar-item](../six-sidebar-item)
  - [six-sidebar-item-group](../six-sidebar-item-group)
  - [six-stage-indicator](../six-stage-indicator)
+ - [six-stepper](../six-stepper)
  - [six-tile](../six-tile)
  - [six-timepicker](../six-timepicker)
 
@@ -67,6 +68,7 @@ graph TD;
   six-sidebar-item --> six-icon
   six-sidebar-item-group --> six-icon
   six-stage-indicator --> six-icon
+  six-stepper --> six-icon
   six-tile --> six-icon
   six-timepicker --> six-icon
   style six-icon fill:#f9f,stroke:#333,stroke-width:4px
