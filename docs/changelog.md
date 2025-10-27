@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## Upcoming
 
+### Added
+
+- `six-stepper`: Added stepper component for multi-step workflows with clickable navigation, custom
+  Material Icons, progress indicators, and configurable status states.
+
 ## 5.1.0 - 2025-10-23
 
 ### Added

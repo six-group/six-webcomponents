@@ -35,7 +35,7 @@ export interface StepItem {
 })
 export class SixStepper {
   /** Array of steps to display */
-  @Prop() steps: StepItem[] = [];
+  @Prop({ mutable: true }) steps: StepItem[] = [];
 
   /** Current active step index (0-based) */
   @Prop({ mutable: true }) current: number = 0;
