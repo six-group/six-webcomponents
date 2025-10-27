@@ -681,6 +681,20 @@ export const SixStageIndicator: StencilVueComponent<JSX.SixStageIndicator> = /*@
 ]);
 
 
+export const SixStepper: StencilVueComponent<JSX.SixStepper> = /*@__PURE__*/ defineContainer<JSX.SixStepper>('six-stepper', undefined, [
+  'steps',
+  'current',
+  'initial',
+  'color',
+  'status',
+  'clickable',
+  'percent',
+  'six-stepper-change'
+], [
+  'six-stepper-change'
+]);
+
+
 export const SixSwitch: StencilVueComponent<JSX.SixSwitch, JSX.SixSwitch["checked"]> = /*@__PURE__*/ defineContainer<JSX.SixSwitch, JSX.SixSwitch["checked"]>('six-switch', undefined, [
   'name',
   'value',

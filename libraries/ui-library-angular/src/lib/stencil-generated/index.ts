@@ -53,6 +53,7 @@ export const DIRECTIVES = [
   d.SixSidebarItemGroup,
   d.SixSpinner,
   d.SixStageIndicator,
+  d.SixStepper,
   d.SixSwitch,
   d.SixTab,
   d.SixTabGroup,

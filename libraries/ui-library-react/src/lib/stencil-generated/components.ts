@@ -59,6 +59,7 @@ import { SixSidebarItem as SixSidebarItemElement, defineCustomElement as defineS
 import { SixSidebar as SixSidebarElement, defineCustomElement as defineSixSidebar } from "@six-group/ui-library/dist/components/six-sidebar.js";
 import { SixSpinner as SixSpinnerElement, defineCustomElement as defineSixSpinner } from "@six-group/ui-library/dist/components/six-spinner.js";
 import { SixStageIndicator as SixStageIndicatorElement, defineCustomElement as defineSixStageIndicator } from "@six-group/ui-library/dist/components/six-stage-indicator.js";
+import { SixStepper as SixStepperElement, defineCustomElement as defineSixStepper } from "@six-group/ui-library/dist/components/six-stepper.js";
 import { SixSwitch as SixSwitchElement, defineCustomElement as defineSixSwitch } from "@six-group/ui-library/dist/components/six-switch.js";
 import { SixTabGroup as SixTabGroupElement, defineCustomElement as defineSixTabGroup } from "@six-group/ui-library/dist/components/six-tab-group.js";
 import { SixTabPanel as SixTabPanelElement, defineCustomElement as defineSixTabPanel } from "@six-group/ui-library/dist/components/six-tab-panel.js";
@@ -797,6 +798,17 @@ export const SixStageIndicator: StencilReactComponent<SixStageIndicatorElement, 
     react: React,
     events: {} as SixStageIndicatorEvents,
     defineCustomElement: defineSixStageIndicator
+});
+
+export type SixStepperEvents = { onSixStepperChange: EventName<CustomEvent<number>> };
+
+export const SixStepper: StencilReactComponent<SixStepperElement, SixStepperEvents> = /*@__PURE__*/ createComponent<SixStepperElement, SixStepperEvents>({
+    tagName: 'six-stepper',
+    elementClass: SixStepperElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: { onSixStepperChange: 'six-stepper-change' } as SixStepperEvents,
+    defineCustomElement: defineSixStepper
 });
 
 export type SixSwitchEvents = {

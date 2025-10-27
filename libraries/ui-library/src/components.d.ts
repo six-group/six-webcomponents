@@ -26,6 +26,7 @@ import { StageType } from "./components/six-stage-indicator/six-stage-indicator"
 import { SixSearchFieldChangePayload } from "./components/six-search-field/six-search-field";
 import { SixSelectChangePayload } from "./components/six-select/six-select";
 import { StageType as StageType1 } from "./components/six-stage-indicator/six-stage-indicator";
+import { StepItem, StepStatus } from "./components/six-stepper/six-stepper";
 import { SixTabHidePayload, SixTabShowPayload } from "./components/six-tab-group/six-tab-group";
 import { TimeFormat } from "./utils/time.util";
 import { SixTimepickerChange } from "./components/six-timepicker/six-timepicker";
@@ -50,6 +51,7 @@ export { StageType } from "./components/six-stage-indicator/six-stage-indicator"
 export { SixSearchFieldChangePayload } from "./components/six-search-field/six-search-field";
 export { SixSelectChangePayload } from "./components/six-select/six-select";
 export { StageType as StageType1 } from "./components/six-stage-indicator/six-stage-indicator";
+export { StepItem, StepStatus } from "./components/six-stepper/six-stepper";
 export { SixTabHidePayload, SixTabShowPayload } from "./components/six-tab-group/six-tab-group";
 export { TimeFormat } from "./utils/time.util";
 export { SixTimepickerChange } from "./components/six-timepicker/six-timepicker";
@@ -2054,6 +2056,46 @@ export namespace Components {
     /**
      * @since 1.0
      * @status stable
+     */
+    interface SixStepper {
+        /**
+          * Enable clickable steps
+          * @default false
+         */
+        "clickable": boolean;
+        /**
+          * Color theme
+          * @default 'blue'
+         */
+        "color": 'blue' | 'green';
+        /**
+          * Current active step index (0-based)
+          * @default 0
+         */
+        "current": number;
+        /**
+          * Initial step index (0-based)
+          * @default 0
+         */
+        "initial": number;
+        /**
+          * Progress percentage for current step (0-100)
+         */
+        "percent"?: number;
+        /**
+          * Status of the current step
+          * @default 'process'
+         */
+        "status": StepStatus;
+        /**
+          * Array of steps to display
+          * @default []
+         */
+        "steps": StepItem[];
+    }
+    /**
+     * @since 1.0
+     * @status stable
      * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
      */
     interface SixSwitch {
@@ -2656,6 +2698,10 @@ export interface SixSelectCustomEvent<T> extends CustomEvent<T> {
 export interface SixSidebarCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLSixSidebarElement;
+}
+export interface SixStepperCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSixStepperElement;
 }
 export interface SixSwitchCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -3486,6 +3532,27 @@ declare global {
         prototype: HTMLSixStageIndicatorElement;
         new (): HTMLSixStageIndicatorElement;
     };
+    interface HTMLSixStepperElementEventMap {
+        "six-stepper-change": number;
+    }
+    /**
+     * @since 1.0
+     * @status stable
+     */
+    interface HTMLSixStepperElement extends Components.SixStepper, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSixStepperElementEventMap>(type: K, listener: (this: HTMLSixStepperElement, ev: SixStepperCustomEvent<HTMLSixStepperElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSixStepperElementEventMap>(type: K, listener: (this: HTMLSixStepperElement, ev: SixStepperCustomEvent<HTMLSixStepperElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLSixStepperElement: {
+        prototype: HTMLSixStepperElement;
+        new (): HTMLSixStepperElement;
+    };
     interface HTMLSixSwitchElementEventMap {
         "six-switch-blur": boolean;
         "six-switch-change": boolean;
@@ -3735,6 +3802,7 @@ declare global {
         "six-sidebar-item-group": HTMLSixSidebarItemGroupElement;
         "six-spinner": HTMLSixSpinnerElement;
         "six-stage-indicator": HTMLSixStageIndicatorElement;
+        "six-stepper": HTMLSixStepperElement;
         "six-switch": HTMLSixSwitchElement;
         "six-tab": HTMLSixTabElement;
         "six-tab-group": HTMLSixTabGroupElement;
@@ -5866,6 +5934,50 @@ declare namespace LocalJSX {
     /**
      * @since 1.0
      * @status stable
+     */
+    interface SixStepper {
+        /**
+          * Enable clickable steps
+          * @default false
+         */
+        "clickable"?: boolean;
+        /**
+          * Color theme
+          * @default 'blue'
+         */
+        "color"?: 'blue' | 'green';
+        /**
+          * Current active step index (0-based)
+          * @default 0
+         */
+        "current"?: number;
+        /**
+          * Initial step index (0-based)
+          * @default 0
+         */
+        "initial"?: number;
+        /**
+          * Emitted when step is changed
+         */
+        "onSix-stepper-change"?: (event: SixStepperCustomEvent<number>) => void;
+        /**
+          * Progress percentage for current step (0-100)
+         */
+        "percent"?: number;
+        /**
+          * Status of the current step
+          * @default 'process'
+         */
+        "status"?: StepStatus;
+        /**
+          * Array of steps to display
+          * @default []
+         */
+        "steps"?: StepItem[];
+    }
+    /**
+     * @since 1.0
+     * @status stable
      * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
      */
     interface SixSwitch {
@@ -6456,6 +6568,7 @@ declare namespace LocalJSX {
         "six-sidebar-item-group": SixSidebarItemGroup;
         "six-spinner": SixSpinner;
         "six-stage-indicator": SixStageIndicator;
+        "six-stepper": SixStepper;
         "six-switch": SixSwitch;
         "six-tab": SixTab;
         "six-tab-group": SixTabGroup;
@@ -6734,6 +6847,11 @@ declare module "@stencil/core" {
              */
             "six-spinner": LocalJSX.SixSpinner & JSXBase.HTMLAttributes<HTMLSixSpinnerElement>;
             "six-stage-indicator": LocalJSX.SixStageIndicator & JSXBase.HTMLAttributes<HTMLSixStageIndicatorElement>;
+            /**
+             * @since 1.0
+             * @status stable
+             */
+            "six-stepper": LocalJSX.SixStepper & JSXBase.HTMLAttributes<HTMLSixStepperElement>;
             /**
              * @since 1.0
              * @status stable

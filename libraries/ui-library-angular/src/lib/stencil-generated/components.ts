@@ -1563,6 +1563,35 @@ export declare interface SixStageIndicator extends Components.SixStageIndicator 
 
 
 @ProxyCmp({
+  inputs: ['clickable', 'color', 'current', 'initial', 'percent', 'status', 'steps']
+})
+@Component({
+  selector: 'six-stepper',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['clickable', 'color', 'current', 'initial', 'percent', 'status', 'steps'],
+  standalone: false
+})
+export class SixStepper {
+  protected el: HTMLSixStepperElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['six-stepper-change']);
+  }
+}
+
+
+export declare interface SixStepper extends Components.SixStepper {
+  /**
+   * Emitted when step is changed
+   */
+  'six-stepper-change': EventEmitter<CustomEvent<number>>;
+}
+
+
+@ProxyCmp({
   inputs: ['checked', 'disabled', 'errorText', 'errorTextCount', 'invalid', 'label', 'name', 'required', 'value'],
   methods: ['setFocus', 'removeFocus']
 })
