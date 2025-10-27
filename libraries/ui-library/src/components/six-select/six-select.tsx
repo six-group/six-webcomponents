@@ -25,7 +25,7 @@ let id = 0;
  * @slot label - The select's label. Alternatively, you can use the label prop.
  * @slot help-text - Help text that describes how to use the select.
  * @slot error-text - Error text that is shown for validation errors. Alternatively, you can use the error-text prop.
- * @slot no-data-text - No data text that is shown if there is no data available in the select. Alternatively, you can use the no-data-text prop.
+ * @slot no-items-text - No data text that is shown if there is no data available in the select. Alternatively, you can use the no-data-text prop.
  *
  * @part base - The component's base wrapper.
  * @part clear-button - The input's clear button, exported from six-input.

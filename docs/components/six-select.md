@@ -171,7 +171,7 @@ With the prefix and suffix slots you can display icons in the menu items.
 
 ### No Data
 
-When no options are available in the select, you can show either a default message via the `no-data-text` prop or provide fully customized content through the `no-data-text` slot.
+When no items are available in the select, you can show either a default message via the `no-data-text` prop or provide fully customized content through the `no-data-text` slot.
 
 <docs-demo-six-select-10></docs-demo-six-select-10>
 
@@ -181,7 +181,7 @@ When no options are available in the select, you can show either a default messa
 <six-select label="Example using the no-data-text slot">
   <div slot="no-data-text" style="padding: 0.5rem 0; opacity: 0.7">
     <h4 style="margin: 0 0 0.25rem 0">No Data</h4>
-    <small>No options are currently available</small>
+    <small>No items are currently available</small>
     <six-icon library="material-symbols">folder_open</six-icon>
   </div>
 </six-select>
@@ -703,7 +703,7 @@ When using the `error-text` slot, it is recommended to use the `six-error` compo
 | `line`              | `line`               | Set to render as line                                                                                                                                                                                                                                                 | `boolean`                        | `false`                 |
 | `multiple`          | `multiple`           | Set to true to enable multiselect.                                                                                                                                                                                                                                    | `boolean`                        | `false`                 |
 | `name`              | `name`               | The select's name.                                                                                                                                                                                                                                                    | `string`                         | `''`                    |
-| `noItemsText`        | `no-data-text`       | The info message shown, if no data is available for the dropdown                                                                                                                                                                                                      | `string`                         | `'No data'`             |
+| `noItemsText`       | `no-items-text`      | The info message shown, if no data is available for the dropdown                                                                                                                                                                                                      | `string`                         | `'No data'`             |
 | `options`           | `options`            | Set the options to be shown in the dropdown (alternative to setting the elements via html)                                                                                                                                                                            | `SixMenuItemData[] \| null`      | `null`                  |
 | `pill`              | `pill`               | Set to true to draw a pill-style select with rounded edges.                                                                                                                                                                                                           | `boolean`                        | `false`                 |
 | `placeholder`       | `placeholder`        | The select's placeholder text.                                                                                                                                                                                                                                        | `string`                         | `''`                    |
@@ -745,13 +745,13 @@ Type: `Promise<void>`
 
 ## Slots
 
-| Slot             | Description                                                                                                               |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------------- |
-|                  | The select's options in the form of menu items.                                                                           |
-| `"error-text"`   | Error text that is shown for validation errors. Alternatively, you can use the error-text prop.                           |
-| `"help-text"`    | Help text that describes how to use the select.                                                                           |
-| `"label"`        | The select's label. Alternatively, you can use the label prop.                                                            |
-| `"no-data-text"` | No data text that is shown if there is no data available in the select. Alternatively, you can use the no-data-text prop. |
+| Slot              | Description                                                                                                               |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------- |
+|                   | The select's options in the form of menu items.                                                                           |
+| `"error-text"`    | Error text that is shown for validation errors. Alternatively, you can use the error-text prop.                           |
+| `"help-text"`     | Help text that describes how to use the select.                                                                           |
+| `"label"`         | The select's label. Alternatively, you can use the label prop.                                                            |
+| `"no-items-text"` | No data text that is shown if there is no data available in the select. Alternatively, you can use the no-data-text prop. |
 
 
 ## Shadow Parts

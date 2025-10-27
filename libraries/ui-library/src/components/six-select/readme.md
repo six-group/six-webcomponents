@@ -26,7 +26,7 @@
 | `line`              | `line`               | Set to render as line                                                                                                                                                                                                                                                 | `boolean`                        | `false`                 |
 | `multiple`          | `multiple`           | Set to true to enable multiselect.                                                                                                                                                                                                                                    | `boolean`                        | `false`                 |
 | `name`              | `name`               | The select's name.                                                                                                                                                                                                                                                    | `string`                         | `''`                    |
-| `noItemsText`        | `no-data-text`       | The info message shown, if no data is available for the dropdown                                                                                                                                                                                                      | `string`                         | `'No data'`             |
+| `noItemsText`       | `no-items-text`      | The info message shown, if no data is available for the dropdown                                                                                                                                                                                                      | `string`                         | `'No data'`             |
 | `options`           | `options`            | Set the options to be shown in the dropdown (alternative to setting the elements via html)                                                                                                                                                                            | `SixMenuItemData[] \| null`      | `null`                  |
 | `pill`              | `pill`               | Set to true to draw a pill-style select with rounded edges.                                                                                                                                                                                                           | `boolean`                        | `false`                 |
 | `placeholder`       | `placeholder`        | The select's placeholder text.                                                                                                                                                                                                                                        | `string`                         | `''`                    |
@@ -68,13 +68,13 @@ Type: `Promise<void>`
 
 ## Slots
 
-| Slot             | Description                                                                                                               |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------------- |
-|                  | The select's options in the form of menu items.                                                                           |
-| `"error-text"`   | Error text that is shown for validation errors. Alternatively, you can use the error-text prop.                           |
-| `"help-text"`    | Help text that describes how to use the select.                                                                           |
-| `"label"`        | The select's label. Alternatively, you can use the label prop.                                                            |
-| `"no-data-text"` | No data text that is shown if there is no data available in the select. Alternatively, you can use the no-data-text prop. |
+| Slot              | Description                                                                                                               |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------- |
+|                   | The select's options in the form of menu items.                                                                           |
+| `"error-text"`    | Error text that is shown for validation errors. Alternatively, you can use the error-text prop.                           |
+| `"help-text"`     | Help text that describes how to use the select.                                                                           |
+| `"label"`         | The select's label. Alternatively, you can use the label prop.                                                            |
+| `"no-items-text"` | No data text that is shown if there is no data available in the select. Alternatively, you can use the no-data-text prop. |
 
 
 ## Shadow Parts
