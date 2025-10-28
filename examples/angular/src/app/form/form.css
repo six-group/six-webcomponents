@@ -3,11 +3,101 @@ h2 {
   margin-bottom: var(--six-spacing-x-large);
 }
 
-pre {
-  background-color: var(--six-color-web-rock-100);
-  padding: var(--six-spacing-medium);
+/* Stepper Spacing */
+six-stepper {
+  margin-bottom: var(--six-spacing-xx-large);
 }
 
-form {
-  max-width: 50rem;
+/* Step Introduction Text */
+.step-intro {
+  margin: 0 0 var(--six-spacing-medium) 0;
+  color: var(--six-color-web-rock-600);
+  font-size: var(--six-font-size-small);
+  line-height: 1.5;
+}
+
+/* Review Cards */
+.review-card {
+  background-color: var(--six-color-web-rock-50);
+  padding: var(--six-spacing-large);
+  border-radius: var(--six-border-radius-medium);
+  border: 0.0625rem solid var(--six-color-web-rock-200);
+  margin-bottom: var(--six-spacing-medium);
+}
+
+.review-card h3 {
+  margin: 0 0 var(--six-spacing-medium) 0;
+  color: var(--six-color-web-rock-900);
+  font-size: var(--six-font-size-large);
+  font-weight: 600;
+  padding-bottom: var(--six-spacing-small);
+  border-bottom: 0.0625rem solid var(--six-color-web-rock-200);
+}
+
+.review-item {
+  display: flex;
+  margin: var(--six-spacing-small) 0;
+  line-height: 1.6;
+}
+
+.review-label {
+  color: var(--six-color-web-rock-700);
+  font-weight: 600;
+  min-width: 10rem;
+  flex-shrink: 0;
+}
+
+.review-value {
+  color: var(--six-color-web-rock-900);
+  word-break: break-word;
+}
+
+/* Navigation Buttons */
+.navigation-buttons {
+  display: flex;
+  gap: var(--six-spacing-medium);
+  align-items: center;
+  margin-top: var(--six-spacing-large);
+  padding-top: var(--six-spacing-large);
+  border-top: 0.0625rem solid var(--six-color-web-rock-200);
+}
+
+.navigation-buttons six-button:last-child {
+  margin-left: auto;
+}
+
+/* Debug Info */
+.debug-info {
+  background-color: var(--six-color-web-rock-100);
+  padding: var(--six-spacing-medium);
+  margin: 0;
+  border-radius: var(--six-border-radius-small);
+  font-size: var(--six-font-size-small);
+  overflow-x: auto;
+  font-family: monospace;
+}
+
+six-details {
+  margin-top: var(--six-spacing-medium);
+}
+
+/* Alerts */
+six-alert {
+  margin-bottom: var(--six-spacing-medium);
+}
+
+/* Smooth transitions for step content */
+.grid-6 > * {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(0.625rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

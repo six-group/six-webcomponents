@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/build/ui-library.css" />
     <title>six-stepper</title>
   </head>
+
   <body>
     <div class="container">
       <h2>Stepper</h2>
@@ -145,6 +146,9 @@
           document.getElementById('reset-initial-btn').addEventListener('click', () => {
             initialStepper.current = initialStepper.initial;
           });
+          initialStepper.addEventListener('six-stepper-change', (event) => {
+            initialStepper.current = event.detail;
+          });
         </script>
       </section>
 
@@ -176,6 +180,8 @@
           ];
 
           clickableStepper.addEventListener('six-stepper-change', (event) => {
+            // Update current prop to reflect the change (controlled component)
+            clickableStepper.current = event.detail;
             stepContent.innerHTML = contents[event.detail];
           });
         </script>
@@ -299,7 +305,7 @@
       <h3>Disabled Steps</h3>
       <p>Individual steps can be disabled by setting <code>disabled: true</code> in the step configuration.</p>
       <section class="demo">
-        <six-stepper id="disabled-stepper"></six-stepper>
+        <six-stepper id="disabled-stepper" clickable initial="1"></six-stepper>
         <script type="module">
           const disabledStepper = document.getElementById('disabled-stepper');
           disabledStepper.steps = [
@@ -307,8 +313,11 @@
             { title: 'Step 2', description: 'Available', icon: 'radio_button_checked' },
             { title: 'Step 3', description: 'Locked', icon: 'lock', disabled: true },
           ];
-          disabledStepper.current = 0;
-          disabledStepper.clickable = true;
+
+          disabledStepper.addEventListener('six-stepper-change', (event) => {
+            // Update current prop (controlled component)
+            disabledStepper.current = event.detail;
+          });
         </script>
       </section>
 
@@ -368,6 +377,8 @@
 
           const events = [];
           eventStepper.addEventListener('six-stepper-change', (event) => {
+            // Update current prop (controlled component)
+            eventStepper.current = event.detail;
             const timestamp = new Date().toLocaleTimeString();
             events.unshift(`[${timestamp}] Step changed to: ${event.detail + 1}`);
             eventLog.innerHTML = events.slice(0, 5).join('<br>');

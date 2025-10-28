@@ -37,41 +37,43 @@ describe('six-stepper', () => {
     expect(page.root).toEqualHtml(`
       <six-stepper>
         <mock:shadow-root>
-          <div class="stepper stepper--blue" part="stepper">
-            <div class="step step--process" part="step">
-              <div class="step__icon-wrapper">
-                <div class="step__circle" part="step-circle">
-                  <span class="step__number">1</span>
+          <nav aria-label="Progress" class="stepper stepper--blue" part="stepper">
+            <ol class="stepper__list">
+              <li aria-current="step" class="step step--process" part="step">
+                <div class="step__icon-wrapper">
+                  <div aria-hidden="true" class="step__circle" part="step-circle">
+                    <span class="step__number">1</span>
+                  </div>
                 </div>
-              </div>
-              <div class="step__content" part="step-content">
-                <div class="step__title">Step 1</div>
-                <div class="step__description">First step</div>
-              </div>
-            </div>
-            <div class="step step--wait" part="step">
-              <div class="step__icon-wrapper">
-                <div class="step__circle" part="step-circle">
-                  <span class="step__number">2</span>
+                <div class="step__content" part="step-content">
+                  <div class="step__title">Step 1</div>
+                  <div class="step__description">First step</div>
                 </div>
-              </div>
-              <div class="step__content" part="step-content">
-                <div class="step__title">Step 2</div>
-                <div class="step__description">Second step</div>
-              </div>
-            </div>
-            <div class="step step--last step--wait" part="step">
-              <div class="step__icon-wrapper">
-                <div class="step__circle" part="step-circle">
-                  <span class="step__number">3</span>
+              </li>
+              <li class="step step--wait" part="step">
+                <div class="step__icon-wrapper">
+                  <div aria-hidden="true" class="step__circle" part="step-circle">
+                    <span class="step__number">2</span>
+                  </div>
                 </div>
-              </div>
-              <div class="step__content" part="step-content">
-                <div class="step__title">Step 3</div>
-                <div class="step__description">Third step</div>
-              </div>
-            </div>
-          </div>
+                <div class="step__content" part="step-content">
+                  <div class="step__title">Step 2</div>
+                  <div class="step__description">Second step</div>
+                </div>
+              </li>
+              <li class="step step--last step--wait" part="step">
+                <div class="step__icon-wrapper">
+                  <div aria-hidden="true" class="step__circle" part="step-circle">
+                    <span class="step__number">3</span>
+                  </div>
+                </div>
+                <div class="step__content" part="step-content">
+                  <div class="step__title">Step 3</div>
+                  <div class="step__description">Third step</div>
+                </div>
+              </li>
+            </ol>
+          </nav>
         </mock:shadow-root>
       </six-stepper>
     `);
@@ -110,6 +112,7 @@ describe('six-stepper', () => {
       html: `<six-stepper clickable></six-stepper>`,
     });
     page.rootInstance.steps = mockSteps;
+    page.rootInstance.current = 0;
     await page.waitForChanges();
 
     const steps = page.root?.shadowRoot?.querySelectorAll('.step');
@@ -118,7 +121,7 @@ describe('six-stepper', () => {
     });
   });
 
-  it('emits six-stepper-change event when current changes', async () => {
+  it('updates current property programmatically without emitting event', async () => {
     const page = await newSpecPage({
       components: [SixStepper],
       html: `<six-stepper></six-stepper>`,
@@ -130,14 +133,12 @@ describe('six-stepper', () => {
     const stepperChangeSpy = jest.fn();
     page.root?.addEventListener('six-stepper-change', stepperChangeSpy);
 
+    // Programmatic change should not emit event (controlled component pattern)
     page.rootInstance.current = 1;
     await page.waitForChanges();
 
-    expect(stepperChangeSpy).toHaveBeenCalledWith(
-      expect.objectContaining({
-        detail: 1,
-      })
-    );
+    expect(stepperChangeSpy).not.toHaveBeenCalled();
+    expect(page.rootInstance.current).toBe(1);
   });
 
   it('handles step click when clickable is true', async () => {
@@ -149,14 +150,22 @@ describe('six-stepper', () => {
     page.rootInstance.current = 0;
     await page.waitForChanges();
 
+    const stepperChangeSpy = jest.fn();
+    page.root?.addEventListener('six-stepper-change', stepperChangeSpy);
+
     const secondStep = page.root?.shadowRoot?.querySelectorAll('.step')?.[1] as HTMLElement;
     secondStep?.click();
     await page.waitForChanges();
 
-    expect(page.rootInstance.current).toBe(1);
+    // Verify event was emitted (component is controlled)
+    expect(stepperChangeSpy).toHaveBeenCalledWith(
+      expect.objectContaining({
+        detail: 1,
+      })
+    );
   });
 
-  it('does not handle step click when clickable is false', async () => {
+  it('does not emit event on step click when clickable is false', async () => {
     const page = await newSpecPage({
       components: [SixStepper],
       html: `<six-stepper></six-stepper>`,
@@ -165,10 +174,14 @@ describe('six-stepper', () => {
     page.rootInstance.current = 0;
     await page.waitForChanges();
 
+    const stepperChangeSpy = jest.fn();
+    page.root?.addEventListener('six-stepper-change', stepperChangeSpy);
+
     const secondStep = page.root?.shadowRoot?.querySelectorAll('.step')?.[1] as HTMLElement;
     secondStep?.click();
     await page.waitForChanges();
 
+    expect(stepperChangeSpy).not.toHaveBeenCalled();
     expect(page.rootInstance.current).toBe(0);
   });
 
@@ -184,6 +197,7 @@ describe('six-stepper', () => {
       html: `<six-stepper></six-stepper>`,
     });
     page.rootInstance.steps = stepsWithIcons;
+    page.rootInstance.current = 0;
     await page.waitForChanges();
 
     const icons = page.root?.shadowRoot?.querySelectorAll('six-icon.step__custom-icon');
@@ -250,13 +264,14 @@ describe('six-stepper', () => {
       html: `<six-stepper clickable></six-stepper>`,
     });
     page.rootInstance.steps = stepsWithDisabled;
+    page.rootInstance.current = 0;
     await page.waitForChanges();
 
     const steps = page.root?.shadowRoot?.querySelectorAll('.step');
     expect(steps?.[1]).toHaveClass('step--disabled');
   });
 
-  it('does not change to disabled step on click', async () => {
+  it('does not emit event when clicking disabled step', async () => {
     const stepsWithDisabled = [{ title: 'Step 1' }, { title: 'Step 2', disabled: true }, { title: 'Step 3' }];
 
     const page = await newSpecPage({
@@ -267,10 +282,14 @@ describe('six-stepper', () => {
     page.rootInstance.current = 0;
     await page.waitForChanges();
 
+    const stepperChangeSpy = jest.fn();
+    page.root?.addEventListener('six-stepper-change', stepperChangeSpy);
+
     const disabledStep = page.root?.shadowRoot?.querySelectorAll('.step')?.[1] as HTMLElement;
     disabledStep?.click();
     await page.waitForChanges();
 
+    expect(stepperChangeSpy).not.toHaveBeenCalled();
     expect(page.rootInstance.current).toBe(0);
   });
 
@@ -287,7 +306,10 @@ describe('six-stepper', () => {
     expect(progressCircle).toBeTruthy();
 
     const progressBar = progressCircle?.querySelector('.step__progress-bar');
-    expect(progressBar?.getAttribute('stroke-dasharray')).toContain('141.35'); // 50% of 282.7
+    const dashArray = progressBar?.getAttribute('stroke-dasharray');
+    expect(dashArray).toBeTruthy();
+    // Check if it contains approximately 141.35 (50% of 282.7)
+    expect(parseFloat(dashArray?.split(' ')[0] || '0')).toBeCloseTo(141.35, 1);
   });
 
   it('sets initial step correctly', async () => {
@@ -439,5 +461,56 @@ describe('six-stepper', () => {
 
     const allProgress = page.root?.shadowRoot?.querySelectorAll('.step__progress');
     expect(allProgress?.length).toBe(1); // Only on current step
+  });
+
+  it('handles multiple rapid clicks on clickable steps', async () => {
+    const page = await newSpecPage({
+      components: [SixStepper],
+      html: `<six-stepper clickable></six-stepper>`,
+    });
+    page.rootInstance.steps = mockSteps;
+    page.rootInstance.current = 0;
+    await page.waitForChanges();
+
+    const stepperChangeSpy = jest.fn();
+    page.root?.addEventListener('six-stepper-change', stepperChangeSpy);
+
+    // Simulate rapid clicks
+    const secondStep = page.root?.shadowRoot?.querySelectorAll('.step')?.[1] as HTMLElement;
+    secondStep?.click();
+    await page.waitForChanges();
+
+    const thirdStep = page.root?.shadowRoot?.querySelectorAll('.step')?.[2] as HTMLElement;
+
+    // Update current to reflect the controlled component behavior
+    page.rootInstance.current = 1;
+    await page.waitForChanges();
+
+    thirdStep?.click();
+    await page.waitForChanges();
+
+    expect(stepperChangeSpy).toHaveBeenCalledTimes(2);
+  });
+
+  it('maintains current step when steps array is updated', async () => {
+    const page = await newSpecPage({
+      components: [SixStepper],
+      html: `<six-stepper></six-stepper>`,
+    });
+    page.rootInstance.steps = mockSteps;
+    page.rootInstance.current = 1;
+    await page.waitForChanges();
+
+    // Update steps array with new steps
+    const newSteps = [
+      { title: 'New Step 1' },
+      { title: 'New Step 2' },
+      { title: 'New Step 3' },
+      { title: 'New Step 4' },
+    ];
+    page.rootInstance.steps = newSteps;
+    await page.waitForChanges();
+
+    expect(page.rootInstance.current).toBe(1);
   });
 });

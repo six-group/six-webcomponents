@@ -1,4 +1,4 @@
-import { Component, h, Prop, Event, EventEmitter, Watch } from '@stencil/core';
+import { Component, h, Prop, Event, EventEmitter } from '@stencil/core';
 
 export type StepStatus = 'wait' | 'process' | 'finish' | 'error';
 
@@ -58,11 +58,6 @@ export class SixStepper {
   /** Emitted when step is changed */
   @Event({ eventName: 'six-stepper-change' }) stepperChange!: EventEmitter<number>;
 
-  @Watch('current')
-  handleCurrentChange(newValue: number) {
-    this.stepperChange.emit(newValue);
-  }
-
   componentWillLoad() {
     // Set initial step if provided
     if (this.initial !== 0) {
@@ -94,7 +89,9 @@ export class SixStepper {
    */
   private handleStepClick(index: number, step: StepItem) {
     if (this.clickable && !step.disabled) {
-      this.current = index;
+      // Don't change current directly - let the parent decide via event
+      // This allows parent to validate before allowing the change
+      this.stepperChange.emit(index);
     }
   }
 
@@ -144,62 +141,70 @@ export class SixStepper {
     };
 
     return (
-      <div class={stepperClasses} part="stepper">
-        {this.steps.map((step, index) => {
-          const stepStatus = this.getStepStatus(index, step);
-          const isLast = index === this.steps.length - 1;
-          const isClickable = this.clickable && !step.disabled;
+      <nav class={stepperClasses} part="stepper" aria-label="Progress">
+        <ol class="stepper__list">
+          {this.steps.map((step, index) => {
+            const stepStatus = this.getStepStatus(index, step);
+            const isLast = index === this.steps.length - 1;
+            const isClickable = this.clickable && !step.disabled;
+            const isCurrent = index === this.current;
 
-          const stepClasses = {
-            step: true,
-            'step--wait': stepStatus === 'wait',
-            'step--process': stepStatus === 'process',
-            'step--finish': stepStatus === 'finish',
-            'step--error': stepStatus === 'error',
-            'step--last': isLast,
-            'step--clickable': isClickable,
-            'step--disabled': step.disabled || false,
-          };
+            const stepClasses = {
+              step: true,
+              'step--wait': stepStatus === 'wait',
+              'step--process': stepStatus === 'process',
+              'step--finish': stepStatus === 'finish',
+              'step--error': stepStatus === 'error',
+              'step--last': isLast,
+              'step--clickable': isClickable,
+              'step--disabled': step.disabled || false,
+            };
 
-          return (
-            <div class={stepClasses} part="step" onClick={() => this.handleStepClick(index, step)}>
-              {/* Circle/Icon with optional progress ring */}
-              <div class="step__icon-wrapper">
-                {/* Progress ring (behind the circle) */}
-                {stepStatus === 'process' && this.percent !== undefined && (
-                  <div class="step__progress">
-                    <svg viewBox="0 0 100 100">
-                      <circle class="step__progress-bg" cx="50" cy="50" r="45" fill="none" stroke-width="8" />
-                      <circle
-                        class="step__progress-bar"
-                        cx="50"
-                        cy="50"
-                        r="45"
-                        fill="none"
-                        stroke-width="8"
-                        stroke-dasharray={`${this.percent * 2.827} 282.7`}
-                        transform="rotate(-90 50 50)"
-                      />
-                    </svg>
+            return (
+              <li
+                class={stepClasses}
+                part="step"
+                onClick={() => this.handleStepClick(index, step)}
+                aria-current={isCurrent ? 'step' : undefined}
+                aria-disabled={step.disabled ? 'true' : undefined}
+              >
+                {/* Circle/Icon with optional progress ring */}
+                <div class="step__icon-wrapper">
+                  {/* Progress ring (behind the circle) */}
+                  {stepStatus === 'process' && this.percent !== undefined && (
+                    <div class="step__progress">
+                      <svg viewBox="0 0 100 100" aria-hidden="true">
+                        <circle class="step__progress-bg" cx="50" cy="50" r="45" fill="none" stroke-width="8" />
+                        <circle
+                          class="step__progress-bar"
+                          cx="50"
+                          cy="50"
+                          r="45"
+                          fill="none"
+                          stroke-width="8"
+                          stroke-dasharray={`${this.percent * 2.827} 282.7`}
+                        />
+                      </svg>
+                    </div>
+                  )}
+
+                  {/* Main circle */}
+                  <div class="step__circle" part="step-circle" aria-hidden="true">
+                    {this.renderStepIcon(step, stepStatus, index)}
                   </div>
-                )}
-
-                {/* Main circle */}
-                <div class="step__circle" part="step-circle">
-                  {this.renderStepIcon(step, stepStatus, index)}
                 </div>
-              </div>
 
-              {/* Content */}
-              <div class="step__content" part="step-content">
-                <div class="step__title">{step.title}</div>
-                {step.subTitle && <div class="step__subtitle">{step.subTitle}</div>}
-                {step.description && <div class="step__description">{step.description}</div>}
-              </div>
-            </div>
-          );
-        })}
-      </div>
+                {/* Content */}
+                <div class="step__content" part="step-content">
+                  <div class="step__title">{step.title}</div>
+                  {step.subTitle && <div class="step__subtitle">{step.subTitle}</div>}
+                  {step.description && <div class="step__description">{step.description}</div>}
+                </div>
+              </li>
+            );
+          })}
+        </ol>
+      </nav>
     );
   }
 }

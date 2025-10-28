@@ -26,6 +26,16 @@ $line-gap: 0.5rem; // Gap between circle and line
   width: 100%;
 }
 
+.stepper__list {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
 .stepper-empty {
   padding: 1.25rem;
   text-align: center;
@@ -147,7 +157,7 @@ $line-gap: 0.5rem; // Gap between circle and line
   svg {
     width: 100%;
     height: 100%;
-    transform: rotate(1deg);
+    transform: rotate(-90deg);
   }
 
   // Background circle (gray track)
