@@ -22,6 +22,7 @@ export class Form {
 
   // Stepper state
   currentStep = signal(0);
+  currentStatus = signal('process');
 
   // Stepper configuration
   steps = [
@@ -79,13 +80,14 @@ export class Form {
 
   onStepChange(event: CustomEvent<number>) {
     const newStep = event.detail;
+    const isForwardNavigation = newStep > this.currentStep();
 
-    // Validate current step before allowing forward navigation
-    if (newStep > this.currentStep() && !this.isStepValid(this.currentStep())) {
+    if (isForwardNavigation && !this.isStepValid(this.currentStep())) {
       this.alertService.showAlert('Please complete all required fields');
-    } else {
-      this.currentStep.set(newStep);
+      return;
     }
+
+    this.currentStep.set(newStep);
   }
 
   nextStep() {
@@ -159,6 +161,7 @@ export class Form {
     if (this.form.valid) {
       this.alertService.showAlert('Form submitted successfully!');
       console.log('Form data:', this.form.value);
+      this.currentStatus.set('finish');
 
       // Reset form and stepper after submission
       // this.form.reset();

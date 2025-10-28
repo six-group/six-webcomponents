@@ -450,6 +450,7 @@
               wizardStepper.current++;
               updateWizard();
             } else {
+              wizardStepper.status = 'finish';
               alert('Wizard completed!');
             }
           });

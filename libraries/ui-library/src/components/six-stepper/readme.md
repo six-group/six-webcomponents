@@ -10,7 +10,7 @@
 | Property    | Attribute   | Description                                  | Type                                         | Default     |
 | ----------- | ----------- | -------------------------------------------- | -------------------------------------------- | ----------- |
 | `clickable` | `clickable` | Enable clickable steps                       | `boolean`                                    | `false`     |
-| `color`     | `color`     | Color theme                                  | `"blue" \| "green"`                          | `'blue'`    |
+| `color`     | `color`     | Color theme                                  | `"blue" \| "green" \| "web-rock"`            | `'blue'`    |
 | `current`   | `current`   | Current active step index (0-based)          | `number`                                     | `0`         |
 | `initial`   | `initial`   | Initial step index (0-based)                 | `number`                                     | `0`         |
 | `percent`   | `percent`   | Progress percentage for current step (0-100) | `number \| undefined`                        | `undefined` |

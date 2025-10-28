@@ -1,9 +1,9 @@
 <template>
 <div>
 
-      <six-stepper id="basic-stepper"></six-stepper>
+        <six-stepper id="basic-stepper"></six-stepper>
+        
       
-    
 </div>
 </template>
 <style>
@@ -13,13 +13,13 @@
 export default {
   name: 'docs-demo-six-stepper-0',
   mounted() { 
-        const basicStepper = document.getElementById('basic-stepper');
-        basicStepper.steps = [
-          { title: 'Personal & Financial' },
-          { title: 'To Decommission' },
-          { title: 'Confirmation' },
-        ];
-        basicStepper.current = 0;
-       }
+          const basicStepper = document.getElementById('basic-stepper');
+          basicStepper.steps = [
+            { title: 'Personal & Financial' },
+            { title: 'To Decommission' },
+            { title: 'Confirmation' },
+          ];
+          basicStepper.current = 0;
+         }
 }
 </script>
