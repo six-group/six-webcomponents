@@ -81,12 +81,10 @@ export class Form {
     const newStep = event.detail;
 
     // Validate current step before allowing forward navigation
-    if (newStep > this.currentStep()) {
-      if (!this.isStepValid(this.currentStep())) {
-        this.alertService.showAlert('Please complete all required fields');
-      } else {
-        this.currentStep.set(newStep);
-      }
+    if (newStep > this.currentStep() && !this.isStepValid(this.currentStep())) {
+      this.alertService.showAlert('Please complete all required fields');
+    } else {
+      this.currentStep.set(newStep);
     }
   }
 

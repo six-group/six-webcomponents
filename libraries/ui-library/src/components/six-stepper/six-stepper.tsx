@@ -44,7 +44,7 @@ export class SixStepper {
   @Prop() initial: number = 0;
 
   /** Color theme */
-  @Prop() color: 'blue' | 'green' = 'blue';
+  @Prop() color: 'blue' | 'green'| 'web-rock' = 'blue';
 
   /** Status of the current step */
   @Prop() status: StepStatus = 'process';

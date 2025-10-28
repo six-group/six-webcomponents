@@ -2067,7 +2067,7 @@ export namespace Components {
           * Color theme
           * @default 'blue'
          */
-        "color": 'blue' | 'green';
+        "color": 'blue' | 'green'| 'web-rock';
         /**
           * Current active step index (0-based)
           * @default 0
@@ -5945,7 +5945,7 @@ declare namespace LocalJSX {
           * Color theme
           * @default 'blue'
          */
-        "color"?: 'blue' | 'green';
+        "color"?: 'blue' | 'green'| 'web-rock';
         /**
           * Current active step index (0-based)
           * @default 0

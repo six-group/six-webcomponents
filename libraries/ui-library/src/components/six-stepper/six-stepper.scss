@@ -1,14 +1,27 @@
-// Color variables
-$color-blue: #2196f3;
+// SIX Color System - Primary Colors
+$color-web-rock: #262626;
+$color-clay: #ada398;
+$color-white: #ffffff;
+
+// SIX Color System - Feedback Colors
+$color-alert-red: #de3919;
+$color-warning-orange: #f2b72c;
+$color-success-green: #6ae300;
+$color-action-blue: #2196f3;
+$color-inactive-gray: #c3c3c3;
+$color-web-rock-400: #c3c3c3;
+
+// Light variants (for backgrounds)
 $color-blue-light: #e3f2fd;
-$color-green: #6ae300;
 $color-green-light: #e8f5e9;
-$color-gray: #e0e0e0;
-$color-gray-dark: #9e9e9e;
-$color-gray-text: #666;
-$color-error: #de3919;
 $color-error-light: #ffebee;
-$color-white: #fff;
+$color-web-rock-light: #f5f5f5;
+
+// Semantic aliases
+$color-gray: $color-clay;
+$color-gray-dark: $color-web-rock-400;
+$color-gray-text: #666666;
+$color-error: $color-alert-red;
 
 // Sizing
 $circle-size: 2.5rem;
@@ -277,12 +290,38 @@ $line-gap: 0.5rem; // Gap between circle and line
 // ============================================
 
 .stepper--blue {
-  --step-color: #{$color-blue};
+  --step-color: #{$color-action-blue};
   --step-color-light: #{$color-blue-light};
 }
 
 .stepper--green {
-  --step-color: #{$color-green};
+  --step-color: #{$color-success-green};
+  --step-color-light: #{$color-green-light};
+}
+
+.stepper--web-rock {
+  --step-color: #{$color-web-rock};
+  --step-color-light: #{$color-web-rock-light};
+}
+
+// Additional SIX feedback color themes
+.stepper--alert {
+  --step-color: #{$color-alert-red};
+  --step-color-light: #{$color-error-light};
+}
+
+.stepper--warning {
+  --step-color: #{$color-warning-orange};
+  --step-color-light: #fff8e1;
+}
+
+.stepper--action {
+  --step-color: #{$color-action-blue};
+  --step-color-light: #{$color-blue-light};
+}
+
+.stepper--success {
+  --step-color: #{$color-success-green};
   --step-color-light: #{$color-green-light};
 }
 
