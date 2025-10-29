@@ -1603,7 +1603,7 @@ export declare interface SixSwitch extends Components.SixSwitch {
 
 
 @ProxyCmp({
-  inputs: ['active', 'closable', 'disabled', 'panel'],
+  inputs: ['active', 'closable', 'disabled', 'hoverContent', 'panel'],
   methods: ['setFocus', 'removeFocus']
 })
 @Component({
@@ -1611,7 +1611,7 @@ export declare interface SixSwitch extends Components.SixSwitch {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['active', 'closable', 'disabled', 'panel'],
+  inputs: ['active', 'closable', 'disabled', 'hoverContent', 'panel'],
   standalone: false
 })
 export class SixTab {
