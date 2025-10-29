@@ -62,7 +62,7 @@ export default {
               wizardStepper.current++;
               updateWizard();
             } else {
-              wizardStepper.status = "finish"
+              wizardStepper.status = 'finish';
               alert('Wizard completed!');
             }
           });

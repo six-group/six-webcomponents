@@ -2069,6 +2069,11 @@ export namespace Components {
          */
         "color": 'blue' | 'green' | 'web-rock';
         /**
+          * Mark all steps as completed
+          * @default false
+         */
+        "completed": boolean;
+        /**
           * Current active step index (0-based)
           * @default 0
          */
@@ -5946,6 +5951,11 @@ declare namespace LocalJSX {
           * @default 'blue'
          */
         "color"?: 'blue' | 'green' | 'web-rock';
+        /**
+          * Mark all steps as completed
+          * @default false
+         */
+        "completed"?: boolean;
         /**
           * Current active step index (0-based)
           * @default 0

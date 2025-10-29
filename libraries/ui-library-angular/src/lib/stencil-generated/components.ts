@@ -1563,14 +1563,14 @@ export declare interface SixStageIndicator extends Components.SixStageIndicator 
 
 
 @ProxyCmp({
-  inputs: ['clickable', 'color', 'current', 'initial', 'percent', 'status', 'steps']
+  inputs: ['clickable', 'color', 'completed', 'current', 'initial', 'percent', 'status', 'steps']
 })
 @Component({
   selector: 'six-stepper',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['clickable', 'color', 'current', 'initial', 'percent', 'status', 'steps'],
+  inputs: ['clickable', 'color', 'completed', 'current', 'initial', 'percent', 'status', 'steps'],
   standalone: false
 })
 export class SixStepper {

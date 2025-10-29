@@ -35,13 +35,16 @@ export interface StepItem {
 })
 export class SixStepper {
   /** Array of steps to display */
-  @Prop({ mutable: true }) steps: StepItem[] = [];
+  @Prop() steps: StepItem[] = [];
 
   /** Current active step index (0-based) */
   @Prop({ mutable: true }) current: number = 0;
 
   /** Initial step index (0-based) */
   @Prop() initial: number = 0;
+
+  /** Mark all steps as completed */
+  @Prop() completed: boolean = false;
 
   /** Color theme */
   @Prop() color: 'blue' | 'green' | 'web-rock' = 'blue';
@@ -70,8 +73,13 @@ export class SixStepper {
    */
   private getStepStatus(index: number, step: StepItem): StepStatus {
     // If step has explicit status, use it
-    if (step.status) {
+    if (step.status !== undefined) {
       return step.status;
+    }
+
+    // If all steps are marked as completed
+    if (this.completed) {
+      return 'finish';
     }
 
     // Auto-calculate based on current step
@@ -100,7 +108,7 @@ export class SixStepper {
    */
   private renderStepIcon(step: StepItem, stepStatus: StepStatus, index: number) {
     // Custom icon from Material Icons
-    if (step.icon) {
+    if (step.icon !== undefined && step.icon !== '') {
       return (
         <six-icon size="medium" class="step__custom-icon">
           {step.icon}
@@ -131,7 +139,7 @@ export class SixStepper {
   }
 
   render() {
-    if (!this.steps || this.steps.length === 0) {
+    if (this.steps === undefined || this.steps === null || this.steps.length === 0) {
       return <div class="stepper-empty">No steps provided</div>;
     }
 
@@ -157,7 +165,7 @@ export class SixStepper {
               'step--error': stepStatus === 'error',
               'step--last': isLast,
               'step--clickable': isClickable,
-              'step--disabled': step.disabled || false,
+              'step--disabled': step.disabled === true,
             };
 
             return (
@@ -197,8 +205,12 @@ export class SixStepper {
                 {/* Content */}
                 <div class="step__content" part="step-content">
                   <div class="step__title">{step.title}</div>
-                  {step.subTitle && <div class="step__subtitle">{step.subTitle}</div>}
-                  {step.description && <div class="step__description">{step.description}</div>}
+                  {step.subTitle !== undefined && step.subTitle !== '' && (
+                    <div class="step__subtitle">{step.subTitle}</div>
+                  )}
+                  {step.description !== undefined && step.description !== '' && (
+                    <div class="step__description">{step.description}</div>
+                  )}
                 </div>
               </li>
             );

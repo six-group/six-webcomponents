@@ -1,284 +1,286 @@
 <h2>Multi-Step Form</h2>
 
-<!-- Stepper -->
-<six-stepper
-  [steps]="steps"
-  [current]="currentStep()"
-  [clickable]="true"
-  [status]="currentStatus()"
-  color="blue"
-  (six-stepper-change)="onStepChange($event)"
-></six-stepper>
+<div class="form-container">
+  <!-- Stepper -->
+  <six-stepper
+    [steps]="steps"
+    [current]="currentStep()"
+    [clickable]="true"
+    [status]="currentStatus()"
+    color="blue"
+    (six-stepper-change)="onStepChange($event)"
+  ></six-stepper>
 
-<form class="grid-6" [formGroup]="form" sixForm (sixSubmit)="onSubmit()">
-  <!-- Step 1: Personal Details -->
-  @if (currentStep() === 0) {
-  <six-group-label class="column-span-6" label="Personal Details">
-    <p class="step-intro">Enter your basic personal information</p>
-  </six-group-label>
+  <form class="form" [formGroup]="form" sixForm (sixSubmit)="onSubmit()">
+    <!-- Step 1: Personal Details -->
+    @if (currentStep() === 0) {
+    <six-group-label class="column-span-6" label="Personal Details">
+      <p class="step-intro">Enter your basic personal information</p>
+    </six-group-label>
 
-  <six-input
-    class="column-span-3"
-    label="First Name"
-    type="text"
-    [formControl]="form.controls.firstName"
-    required
-    placeholder="John"
-  />
+    <six-input
+      class="column-span-3"
+      label="First Name"
+      type="text"
+      [formControl]="form.controls.firstName"
+      required
+      placeholder="John"
+    />
 
-  <six-input
-    class="column-span-3"
-    label="Last Name"
-    type="text"
-    [formControl]="form.controls.lastName"
-    required
-    placeholder="Doe"
-  />
+    <six-input
+      class="column-span-3"
+      label="Last Name"
+      type="text"
+      [formControl]="form.controls.lastName"
+      required
+      placeholder="Doe"
+    />
 
-  <six-input
-    class="column-span-3"
-    label="Username"
-    [formControl]="form.controls.username"
-    required
-    errorTextCount="2"
-    placeholder="john-doe"
-    help-text="Only lowercase letters and hyphens allowed"
-  />
+    <six-input
+      class="column-span-3"
+      label="Username"
+      [formControl]="form.controls.username"
+      required
+      errorTextCount="2"
+      placeholder="john-doe"
+      help-text="Only lowercase letters and hyphens allowed"
+    />
 
-  <six-input
-    class="column-span-3"
-    label="Email"
-    type="email"
-    [formControl]="form.controls.email"
-    required
-    placeholder="john.doe@example.com"
-  />
+    <six-input
+      class="column-span-3"
+      label="Email"
+      type="email"
+      [formControl]="form.controls.email"
+      required
+      placeholder="john.doe@example.com"
+    />
 
-  <six-input
-    class="column-span-2"
-    label="Age"
-    type="number"
-    [formControl]="form.controls.age"
-    required
-    min="18"
-    placeholder="25"
-  />
+    <six-input
+      class="column-span-2"
+      label="Age"
+      type="number"
+      [formControl]="form.controls.age"
+      required
+      min="18"
+      placeholder="25"
+    />
 
-  <six-range
-    class="column-span-4"
-    label="Height (cm)"
-    min="100"
-    max="220"
-    step="1"
-    [formControl]="form.controls.height"
-  />
-  }
-
-  <!-- Step 2: Contact Info -->
-  @if (currentStep() === 1) {
-  <six-group-label class="column-span-6" label="Contact Information">
-    <p class="step-intro">Provide your contact details and availability</p>
-  </six-group-label>
-
-  <six-input
-    class="column-span-6"
-    label="IBAN"
-    [formControl]="form.controls.iban"
-    required
-    placeholder="CH93 0076 2011 6238 5295 7"
-    help-text="International Bank Account Number"
-  />
-
-  <six-date
-    class="column-span-3"
-    min="2025-01-01"
-    max="2027-12-31"
-    [allowedDates]="weekendsOnly"
-    label="Preferred Contact Date"
-    [formControl]="form.controls.date"
-    required
-    help-text="Weekdays only"
-  />
-
-  <six-timepicker
-    class="column-span-3"
-    label="Preferred Contact Time"
-    [formControl]="form.controls.startTime"
-    required
-    placeholder="09:00"
-  />
-  }
-
-  <!-- Step 3: Preferences -->
-  @if (currentStep() === 2) {
-  <six-group-label class="column-span-6" label="Account Preferences">
-    <p class="step-intro">Configure your account settings and preferences</p>
-  </six-group-label>
-
-  <six-select class="column-span-3" label="Account Status" clearable [formControl]="form.controls.status" required>
-    <six-menu-item value="enabled">Enabled</six-menu-item>
-    <six-menu-item value="disabled">Disabled</six-menu-item>
-    <six-menu-item value="temporary">Temporary</six-menu-item>
-  </six-select>
-
-  <six-select
-    class="column-span-3"
-    label="Interests"
-    multiple
-    clearable
-    required
-    [formControl]="form.controls.interests"
-    placeholder="Select your interests"
-  >
-    <six-menu-item value="sport">Sport</six-menu-item>
-    <six-menu-item value="music">Music</six-menu-item>
-    <six-menu-item value="movies">Movies</six-menu-item>
-  </six-select>
-
-  <six-group-label class="column-span-6" label="User Role">
-    <six-layout-grid columns="3">
-      <six-radio value="user" [formControl]="form.controls.userGroup">User</six-radio>
-      <six-radio value="developer" [formControl]="form.controls.userGroup">Developer</six-radio>
-      <six-radio value="admin" [formControl]="form.controls.userGroup">Administrator</six-radio>
-    </six-layout-grid>
-  </six-group-label>
-
-  <six-group-label class="column-span-3" label="Employment Type">
-    <six-switch [formControl]="form.controls.internal">Internal Employee</six-switch>
-  </six-group-label>
-
-  <six-textarea
-    class="column-span-6"
-    label="Additional Notes"
-    [formControl]="form.controls.description"
-    placeholder="Tell us anything else we should know..."
-    rows="4"
-    help-text="Optional: Minimum 20 characters if provided"
-  />
-  }
-
-  <!-- Step 4: Review & Submit -->
-  @if (currentStep() === 3) {
-  <six-group-label class="column-span-6" label="Review Your Information">
-    <p class="step-intro">Please review your details before submitting</p>
-  </six-group-label>
-
-  <!-- Review Section -->
-  <div class="column-span-6 review-card">
-    <h3>Personal Details</h3>
-    <div class="review-item">
-      <span class="review-label">Name:</span>
-      <span class="review-value">{{ form.controls.firstName.value }} {{ form.controls.lastName.value }}</span>
-    </div>
-    <div class="review-item">
-      <span class="review-label">Username:</span>
-      <span class="review-value">{{ form.controls.username.value }}</span>
-    </div>
-    <div class="review-item">
-      <span class="review-label">Email:</span>
-      <span class="review-value">{{ form.controls.email.value }}</span>
-    </div>
-    <div class="review-item">
-      <span class="review-label">Age:</span>
-      <span class="review-value">{{ form.controls.age.value }} years</span>
-    </div>
-    <div class="review-item">
-      <span class="review-label">Height:</span>
-      <span class="review-value">{{ form.controls.height.value }} cm</span>
-    </div>
-  </div>
-
-  <div class="column-span-6 review-card">
-    <h3>Contact Information</h3>
-    <div class="review-item">
-      <span class="review-label">IBAN:</span>
-      <span class="review-value">{{ form.controls.iban.value }}</span>
-    </div>
-    <div class="review-item">
-      <span class="review-label">Contact Date:</span>
-      <span class="review-value">{{ form.controls.date.value }}</span>
-    </div>
-    <div class="review-item">
-      <span class="review-label">Contact Time:</span>
-      <span class="review-value">{{ form.controls.startTime.value }}</span>
-    </div>
-  </div>
-
-  <div class="column-span-6 review-card">
-    <h3>Preferences</h3>
-    <div class="review-item">
-      <span class="review-label">Account Status:</span>
-      <span class="review-value">{{ form.controls.status.value }}</span>
-    </div>
-    <div class="review-item">
-      <span class="review-label">Interests:</span>
-      <span class="review-value">{{ form.controls.interests.value.join(', ') || 'None' }}</span>
-    </div>
-    <div class="review-item">
-      <span class="review-label">User Role:</span>
-      <span class="review-value">{{ form.controls.userGroup.value }}</span>
-    </div>
-    <div class="review-item">
-      <span class="review-label">Internal Employee:</span>
-      <span class="review-value">{{ form.controls.internal.value ? 'Yes' : 'No' }}</span>
-    </div>
-    @if (form.controls.description.value) {
-    <div class="review-item">
-      <span class="review-label">Notes:</span>
-      <span class="review-value">{{ form.controls.description.value }}</span>
-    </div>
-    }
-  </div>
-
-  <six-checkbox class="column-span-6" [formControl]="form.controls.acceptsTerms" required>
-    I accept the Terms and Conditions and confirm that all information provided is accurate
-  </six-checkbox>
-
-  @if (form.valid) {
-  <six-alert type="success" open class="column-span-6">
-    <six-icon slot="icon">check_circle</six-icon>
-    All required fields are completed. You're ready to submit!
-  </six-alert>
-  } @if (form.invalid && form.touched) {
-  <six-alert type="warning" open class="column-span-6">
-    <six-icon slot="icon">warning</six-icon>
-    Please complete all required fields before submitting.
-  </six-alert>
-  } }
-
-  <!-- Navigation Buttons -->
-  <div class="column-span-6 navigation-buttons">
-    <six-button type="secondary" [disabled]="currentStep() === 0" (click)="previousStep()">
-      <six-icon slot="prefix">arrow_back</six-icon>
-      Previous
-    </six-button>
-
-    @if (currentStep() < 3) {
-    <six-button (click)="nextStep()">
-      Next
-      <six-icon slot="suffix">arrow_forward</six-icon>
-    </six-button>
-    } @if (currentStep() === 3) {
-    <six-button submit [disabled]="form.invalid">
-      <six-icon slot="prefix">send</six-icon>
-      Submit
-    </six-button>
+    <six-range
+      class="column-span-4"
+      label="Height (cm)"
+      min="100"
+      max="220"
+      step="1"
+      [formControl]="form.controls.height"
+    />
     }
 
-    <six-button type="secondary" (click)="resetForm()">
-      <six-icon slot="prefix">refresh</six-icon>
-      Reset
-    </six-button>
-  </div>
+    <!-- Step 2: Contact Info -->
+    @if (currentStep() === 1) {
+    <six-group-label class="column-span-6" label="Contact Information">
+      <p class="step-intro">Provide your contact details and availability</p>
+    </six-group-label>
 
-  <!-- Debug Info -->
-  <six-details class="column-span-6" summary="Debug Information">
-    <pre class="debug-info">
-Current Step: {{ currentStep() }}
-Form Status: {{ form.status }}
-Form Valid: {{ form.valid }}
+    <six-input
+      class="column-span-6"
+      label="IBAN"
+      [formControl]="form.controls.iban"
+      required
+      placeholder="CH93 0076 2011 6238 5295 7"
+      help-text="International Bank Account Number"
+    />
 
-{{ form.value | json }}</pre
+    <six-date
+      class="column-span-3"
+      min="2025-01-01"
+      max="2027-12-31"
+      [allowedDates]="weekendsOnly"
+      label="Preferred Contact Date"
+      [formControl]="form.controls.date"
+      required
+      help-text="Weekdays only"
+    />
+
+    <six-timepicker
+      class="column-span-3"
+      label="Preferred Contact Time"
+      [formControl]="form.controls.startTime"
+      required
+      placeholder="09:00"
+    />
+    }
+
+    <!-- Step 3: Preferences -->
+    @if (currentStep() === 2) {
+    <six-group-label class="column-span-6" label="Account Preferences">
+      <p class="step-intro">Configure your account settings and preferences</p>
+    </six-group-label>
+
+    <six-select class="column-span-3" label="Account Status" clearable [formControl]="form.controls.status" required>
+      <six-menu-item value="enabled">Enabled</six-menu-item>
+      <six-menu-item value="disabled">Disabled</six-menu-item>
+      <six-menu-item value="temporary">Temporary</six-menu-item>
+    </six-select>
+
+    <six-select
+      class="column-span-3"
+      label="Interests"
+      multiple
+      clearable
+      required
+      [formControl]="form.controls.interests"
+      placeholder="Select your interests"
     >
-  </six-details>
-</form>
+      <six-menu-item value="sport">Sport</six-menu-item>
+      <six-menu-item value="music">Music</six-menu-item>
+      <six-menu-item value="movies">Movies</six-menu-item>
+    </six-select>
+
+    <six-group-label class="column-span-6" label="User Role">
+      <six-layout-grid columns="3">
+        <six-radio value="user" [formControl]="form.controls.userGroup">User</six-radio>
+        <six-radio value="developer" [formControl]="form.controls.userGroup">Developer</six-radio>
+        <six-radio value="admin" [formControl]="form.controls.userGroup">Administrator</six-radio>
+      </six-layout-grid>
+    </six-group-label>
+
+    <six-group-label class="column-span-3" label="Employment Type">
+      <six-switch [formControl]="form.controls.internal">Internal Employee</six-switch>
+    </six-group-label>
+
+    <six-textarea
+      class="column-span-6"
+      label="Additional Notes"
+      [formControl]="form.controls.description"
+      placeholder="Tell us anything else we should know..."
+      rows="4"
+      help-text="Optional: Minimum 20 characters if provided"
+    />
+    }
+
+    <!-- Step 4: Review & Submit -->
+    @if (currentStep() === 3) {
+    <six-group-label class="column-span-6" label="Review Your Information">
+      <p class="step-intro">Please review your details before submitting</p>
+    </six-group-label>
+
+    <!-- Review Section -->
+    <div class="column-span-6 review-card">
+      <h3>Personal Details</h3>
+      <div class="review-item">
+        <span class="review-label">Name:</span>
+        <span class="review-value">{{ form.controls.firstName.value }} {{ form.controls.lastName.value }}</span>
+      </div>
+      <div class="review-item">
+        <span class="review-label">Username:</span>
+        <span class="review-value">{{ form.controls.username.value }}</span>
+      </div>
+      <div class="review-item">
+        <span class="review-label">Email:</span>
+        <span class="review-value">{{ form.controls.email.value }}</span>
+      </div>
+      <div class="review-item">
+        <span class="review-label">Age:</span>
+        <span class="review-value">{{ form.controls.age.value }} years</span>
+      </div>
+      <div class="review-item">
+        <span class="review-label">Height:</span>
+        <span class="review-value">{{ form.controls.height.value }} cm</span>
+      </div>
+    </div>
+
+    <div class="column-span-6 review-card">
+      <h3>Contact Information</h3>
+      <div class="review-item">
+        <span class="review-label">IBAN:</span>
+        <span class="review-value">{{ form.controls.iban.value }}</span>
+      </div>
+      <div class="review-item">
+        <span class="review-label">Contact Date:</span>
+        <span class="review-value">{{ form.controls.date.value }}</span>
+      </div>
+      <div class="review-item">
+        <span class="review-label">Contact Time:</span>
+        <span class="review-value">{{ form.controls.startTime.value }}</span>
+      </div>
+    </div>
+
+    <div class="column-span-6 review-card">
+      <h3>Preferences</h3>
+      <div class="review-item">
+        <span class="review-label">Account Status:</span>
+        <span class="review-value">{{ form.controls.status.value }}</span>
+      </div>
+      <div class="review-item">
+        <span class="review-label">Interests:</span>
+        <span class="review-value">{{ form.controls.interests.value.join(', ') || 'None' }}</span>
+      </div>
+      <div class="review-item">
+        <span class="review-label">User Role:</span>
+        <span class="review-value">{{ form.controls.userGroup.value }}</span>
+      </div>
+      <div class="review-item">
+        <span class="review-label">Internal Employee:</span>
+        <span class="review-value">{{ form.controls.internal.value ? 'Yes' : 'No' }}</span>
+      </div>
+      @if (form.controls.description.value) {
+      <div class="review-item">
+        <span class="review-label">Notes:</span>
+        <span class="review-value">{{ form.controls.description.value }}</span>
+      </div>
+      }
+    </div>
+
+    <six-checkbox class="column-span-6" [formControl]="form.controls.acceptsTerms" required>
+      I accept the Terms and Conditions and confirm that all information provided is accurate
+    </six-checkbox>
+
+    @if (form.valid) {
+    <six-alert type="success" open class="column-span-6">
+      <six-icon slot="icon">check_circle</six-icon>
+      All required fields are completed. You're ready to submit!
+    </six-alert>
+    } @if (form.invalid && form.touched) {
+    <six-alert type="warning" open class="column-span-6">
+      <six-icon slot="icon">warning</six-icon>
+      Please complete all required fields before submitting.
+    </six-alert>
+    } }
+
+    <!-- Navigation Buttons -->
+    <div class="column-span-6 navigation-buttons">
+      <six-button type="secondary" [disabled]="currentStep() === 0" (click)="previousStep()">
+        <six-icon slot="prefix">arrow_back</six-icon>
+        Previous
+      </six-button>
+
+      @if (currentStep() < 3) {
+      <six-button (click)="nextStep()">
+        Next
+        <six-icon slot="suffix">arrow_forward</six-icon>
+      </six-button>
+      } @if (currentStep() === 3) {
+      <six-button submit [disabled]="form.invalid">
+        <six-icon slot="prefix">send</six-icon>
+        Submit
+      </six-button>
+      }
+
+      <six-button type="secondary" (click)="resetForm()">
+        <six-icon slot="prefix">refresh</six-icon>
+        Reset
+      </six-button>
+    </div>
+
+    <!-- Debug Info -->
+    <six-details class="column-span-6" summary="Debug Information">
+      <pre class="debug-info">
+  Current Step: {{ currentStep() }}
+  Form Status: {{ form.status }}
+  Form Valid: {{ form.valid }}
+
+  {{ form.value | json }}</pre
+      >
+    </six-details>
+  </form>
+</div>

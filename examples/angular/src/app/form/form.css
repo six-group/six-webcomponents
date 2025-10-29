@@ -1,11 +1,47 @@
 h2 {
   margin-top: 0;
   margin-bottom: var(--six-spacing-x-large);
+  text-align: center;
 }
 
-/* Stepper Spacing */
+/* Form Container - Centered with max width */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 70rem; /* ~800px für bessere Lesbarkeit */
+  margin: 0 auto;
+  padding: 0 var(--six-spacing-large);
+}
+
+/* Stepper - Full width of container */
 six-stepper {
+  width: 100%;
   margin-bottom: var(--six-spacing-xx-large);
+}
+
+/* Form - Full width with proper grid */
+.form {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--six-spacing-large);
+  row-gap: var(--six-spacing-x-large);
+}
+
+/* Step sections get visual separation */
+six-group-label {
+  margin-bottom: var(--six-spacing-medium);
+}
+
+/* Add spacing between logical groups */
+six-group-label.column-span-6 {
+  margin-top: var(--six-spacing-xx-large);
+}
+
+six-group-label.column-span-6:first-child {
+  margin-top: 0;
 }
 
 /* Step Introduction Text */
@@ -57,9 +93,9 @@ six-stepper {
   display: flex;
   gap: var(--six-spacing-medium);
   align-items: center;
-  margin-top: var(--six-spacing-large);
   padding-top: var(--six-spacing-large);
   border-top: 0.0625rem solid var(--six-color-web-rock-200);
+  margin-top: var(--six-spacing-x-large);
 }
 
 .navigation-buttons six-button:last-child {
@@ -87,7 +123,7 @@ six-alert {
 }
 
 /* Smooth transitions for step content */
-.grid-6 > * {
+.form > * {
   animation: fadeIn 0.3s ease-in-out;
 }
 

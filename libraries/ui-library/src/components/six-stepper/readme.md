@@ -1,6 +1,6 @@
 # six-stepper
 
-
+<!-- EXAMPLES -->
 
 <!-- Auto Generated Below -->
 
@@ -11,6 +11,7 @@
 | ----------- | ----------- | -------------------------------------------- | -------------------------------------------- | ----------- |
 | `clickable` | `clickable` | Enable clickable steps                       | `boolean`                                    | `false`     |
 | `color`     | `color`     | Color theme                                  | `"blue" \| "green" \| "web-rock"`            | `'blue'`    |
+| `completed` | `completed` | Mark all steps as completed                  | `boolean`                                    | `false`     |
 | `current`   | `current`   | Current active step index (0-based)          | `number`                                     | `0`         |
 | `initial`   | `initial`   | Initial step index (0-based)                 | `number`                                     | `0`         |
 | `percent`   | `percent`   | Progress percentage for current step (0-100) | `number \| undefined`                        | `undefined` |
