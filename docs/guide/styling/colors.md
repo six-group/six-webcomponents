@@ -17,6 +17,12 @@ status colors, and neutral tones.
   <div style="margin-left: 12px;"><code>--six-color-indigo</code></div>
 </div>
 
+<div style="display: flex; align-items: center; margin-bottom: 24px;">
+  <div style="width: 120px; font-weight: 500;">Marine</div>
+  <div style="width: 60px; height: 60px; background-color: #002c5f; border-radius: 4px 0 0 4px;"></div>
+  <div style="margin-left: 12px;"><code>--six-color-marine</code></div>
+</div>
+
 ## Color Palettes
 
 <div style="display: flex; flex-direction: row">
