@@ -290,3 +290,13 @@ six-icon-button::part(base) {
   display: flex;
   justify-content: end;
 }
+
+.select-no-data-text {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0.7;
+  width: 100%;
+  justify-content: center;
+  flex-direction: column;
+}

@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- `six-select`: Added no-items-text prop and slot to the six-select to handle if there is no data
+  available in the dropdown.
 - Added `hoverContent` prop to `six-tab` to override the default hover content.
 
 ### Fixed

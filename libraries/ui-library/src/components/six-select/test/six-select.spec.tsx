@@ -85,8 +85,16 @@ describe('six-select', () => {
                     <six-input aria-hidden="true" class="select__input" placeholder="" size="medium"></six-input>
                   </div>
                   <div class="selection-container"></div>
-                  <six-menu class="select__menu select__menu--hidden" disable-keyboard-handling="" part="menu" remove-box-shadow="">
+                  <six-menu class="select__menu" disable-keyboard-handling="" part="menu" remove-box-shadow="">
                     <slot></slot>
+                    <div class="select-no-data-text">
+                    <six-icon library="material-symbols" size="large">
+                      folder_open
+                    </six-icon>
+                    <span>
+                      No data
+                    </span>
+                  </div>
                   </six-menu>
                 </six-dropdown>
               </div>

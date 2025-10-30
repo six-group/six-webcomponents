@@ -13,6 +13,35 @@
   <six-input class="column-span-4" label="Email" type="email" [formControl]="form.controls.email" required />
   <six-input class="column-span-1" label="Age" type="number" [formControl]="form.controls.age" />
   <six-range class="column-span-1" label="Height" min="0" max="100" step="1" [formControl]="form.controls.height" />
+
+  <six-select
+    class="column-span-3"
+    label="Country"
+    placeholder="Select a country"
+    clearable
+    required
+    [formControl]="form.controls.country"
+  >
+    <six-menu-item value="switzerland">Switzerland</six-menu-item>
+    <six-menu-item value="germany">Germany</six-menu-item>
+    <six-menu-item value="france">France</six-menu-item>
+    <six-menu-item value="italy">Italy</six-menu-item>
+  </six-select>
+
+  <six-select
+    class="column-span-3"
+    label="City"
+    placeholder="Select a city"
+    clearable
+    required
+    [formControl]="form.controls.city"
+    [noItemsText]="getCitynoItemsText()"
+  >
+    @if (selectedCountry()) { @for (city of getCitiesForCountry(); track city.value) {
+    <six-menu-item [value]="city.value">{{ city.label }}</six-menu-item>
+    } }
+  </six-select>
+
   <six-input class="column-span-6" label="IBAN" [formControl]="form.controls.iban" required />
 
   <six-select class="column-span-2" label="Status" clearable [formControl]="form.controls.status">
