@@ -63,9 +63,9 @@ Use the `subTitle` property to add subtitles to steps.
 ```
 
 
-### Custom Icons
+### Material Icons
 
-Use the `icon` property in step items to add Material Icons. The component uses `six-icon` internally.
+Use the `icon` property in step items to add Material Icons. You can pass a string for the icon name, or an object with `iconName` and `iconLibrary` properties to override the default library.
 
 <docs-demo-six-stepper-3></docs-demo-six-stepper-3>
 
@@ -74,9 +74,9 @@ Use the `icon` property in step items to add Material Icons. The component uses 
 <script type="module">
   const iconStepper = document.getElementById('icon-stepper');
   iconStepper.steps = [
-    { title: 'Login', icon: 'person', description: 'User authentication' },
-    { title: 'Verify', icon: 'email', description: 'Email verification' },
-    { title: 'Complete', icon: 'check_circle', description: 'Setup complete' },
+    { title: 'Login', icon: { iconName: 'person', iconLibrary: 'material-icons' }, description: 'User authentication' },
+    { title: 'Verify', icon: { iconName: 'email', iconLibrary: 'material-icons' }, description: 'Email verification' },
+    { title: 'Complete', icon: { iconName: 'check_circle', iconLibrary: 'material-icons' }, description: 'Setup complete' },
   ];
   iconStepper.current = 1;
 </script>
@@ -85,7 +85,7 @@ Use the `icon` property in step items to add Material Icons. The component uses 
 
 ### Material Symbols
 
-You can also use Material Symbols for icons.
+The stepper uses Material Symbols as the default icon library. Simply pass a string with the icon name, and it will automatically use Material Symbols.
 
 <docs-demo-six-stepper-4></docs-demo-six-stepper-4>
 
@@ -506,16 +506,17 @@ A complete example showing a multi-step wizard with navigation controls and icon
 
 ## Properties
 
-| Property    | Attribute   | Description                                  | Type                                         | Default     |
-| ----------- | ----------- | -------------------------------------------- | -------------------------------------------- | ----------- |
-| `clickable` | `clickable` | Enable clickable steps                       | `boolean`                                    | `false`     |
-| `color`     | `color`     | Color theme                                  | `"blue" \| "green" \| "web-rock"`            | `'blue'`    |
-| `completed` | `completed` | Mark all steps as completed                  | `boolean`                                    | `false`     |
-| `current`   | `current`   | Current active step index (0-based)          | `number`                                     | `0`         |
-| `initial`   | `initial`   | Initial step index (0-based)                 | `number`                                     | `0`         |
-| `percent`   | `percent`   | Progress percentage for current step (0-100) | `number \| undefined`                        | `undefined` |
-| `status`    | `status`    | Status of the current step                   | `"error" \| "finish" \| "process" \| "wait"` | `'process'` |
-| `steps`     | `steps`     | Array of steps to display                    | `StepItem[]`                                 | `[]`        |
+| Property             | Attribute              | Description                                  | Type                                         | Default              |
+| -------------------- | ---------------------- | -------------------------------------------- | -------------------------------------------- | -------------------- |
+| `clickable`          | `clickable`            | Enable clickable steps                       | `boolean`                                    | `false`              |
+| `color`              | `color`                | Color theme                                  | `"blue" \| "green" \| "web-rock"`            | `'blue'`             |
+| `completed`          | `completed`            | Mark all steps as completed                  | `boolean`                                    | `false`              |
+| `current`            | `current`              | Current active step index (0-based)          | `number`                                     | `0`                  |
+| `defaultIconLibrary` | `default-icon-library` | Default icon library for all icons           | `"material-icons" \| "material-symbols"`     | `'material-symbols'` |
+| `initial`            | `initial`              | Initial step index (0-based)                 | `number`                                     | `0`                  |
+| `percent`            | `percent`              | Progress percentage for current step (0-100) | `number \| undefined`                        | `undefined`          |
+| `status`             | `status`               | Status of the current step                   | `"error" \| "finish" \| "process" \| "wait"` | `'process'`          |
+| `steps`              | `steps`                | Array of steps to display                    | `StepItem[]`                                 | `[]`                 |
 
 
 ## Events

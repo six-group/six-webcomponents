@@ -1,6 +1,12 @@
 import { Component, h, Prop, Event, EventEmitter } from '@stencil/core';
+import { IconLibrary } from '../../components';
 
 export type StepStatus = 'wait' | 'process' | 'finish' | 'error';
+
+export interface Icon {
+  iconName: string;
+  iconLibrary?: IconLibrary; // Made optional
+}
 
 export interface StepItem {
   /** Title of the step */
@@ -9,8 +15,8 @@ export interface StepItem {
   description?: string;
   /** Subtitle of the step (optional) */
   subTitle?: string;
-  /** Custom icon name for Material Icons/Symbols (optional) */
-  icon?: string;
+  /** Custom icon name for Material Icons/Symbols (optional). Can be a string (icon name) or Icon object */
+  icon?: string | Icon;
   /** Status of individual step (optional, will be auto-calculated if not set) */
   status?: StepStatus;
   /** Disable click on this step */
@@ -58,6 +64,9 @@ export class SixStepper {
   /** Progress percentage for current step (0-100) */
   @Prop() percent?: number;
 
+  /** Default icon library for all icons */
+  @Prop() defaultIconLibrary: IconLibrary = 'material-symbols';
+
   /** Emitted when step is changed */
   @Event({ eventName: 'six-stepper-change' }) stepperChange!: EventEmitter<number>;
 
@@ -66,6 +75,25 @@ export class SixStepper {
     if (this.initial !== 0) {
       this.current = this.initial;
     }
+  }
+
+  /**
+   * Normalize icon input to Icon object with defaults
+   */
+  private normalizeIcon(icon: string | Icon | undefined): Icon | undefined {
+    if (icon === undefined || icon === null) return undefined;
+
+    if (typeof icon === 'string') {
+      return {
+        iconName: icon,
+        iconLibrary: this.defaultIconLibrary,
+      };
+    }
+
+    return {
+      iconName: icon.iconName,
+      iconLibrary: icon.iconLibrary ?? this.defaultIconLibrary,
+    };
   }
 
   /**
@@ -107,11 +135,12 @@ export class SixStepper {
    * Render the icon inside the circle
    */
   private renderStepIcon(step: StepItem, stepStatus: StepStatus, index: number) {
-    // Custom icon from Material Icons
-    if (step.icon !== undefined && step.icon !== '') {
+    // Custom icon from Material Icons/Symbols
+    const normalizedIcon = this.normalizeIcon(step.icon);
+    if (normalizedIcon !== undefined) {
       return (
-        <six-icon size="medium" class="step__custom-icon">
-          {step.icon}
+        <six-icon size="medium" class="step__custom-icon" library={normalizedIcon.iconLibrary}>
+          {normalizedIcon.iconName}
         </six-icon>
       );
     }
@@ -119,7 +148,7 @@ export class SixStepper {
     // Checkmark for finished steps
     if (stepStatus === 'finish') {
       return (
-        <six-icon size="medium" class="step__check">
+        <six-icon size="medium" class="step__check" library={this.defaultIconLibrary}>
           check
         </six-icon>
       );
@@ -128,7 +157,7 @@ export class SixStepper {
     // Error icon for error steps
     if (stepStatus === 'error') {
       return (
-        <six-icon size="medium" class="step__error">
+        <six-icon size="medium" class="step__error" library={this.defaultIconLibrary}>
           close
         </six-icon>
       );

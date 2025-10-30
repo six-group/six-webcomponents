@@ -27,6 +27,7 @@ import { SixSearchFieldChangePayload } from "./components/six-search-field/six-s
 import { SixSelectChangePayload } from "./components/six-select/six-select";
 import { StageType as StageType1 } from "./components/six-stage-indicator/six-stage-indicator";
 import { StepItem, StepStatus } from "./components/six-stepper/six-stepper";
+import { IconLibrary as IconLibrary1 } from "./components";
 import { SixTabHidePayload, SixTabShowPayload } from "./components/six-tab-group/six-tab-group";
 import { TimeFormat } from "./utils/time.util";
 import { SixTimepickerChange } from "./components/six-timepicker/six-timepicker";
@@ -52,6 +53,7 @@ export { SixSearchFieldChangePayload } from "./components/six-search-field/six-s
 export { SixSelectChangePayload } from "./components/six-select/six-select";
 export { StageType as StageType1 } from "./components/six-stage-indicator/six-stage-indicator";
 export { StepItem, StepStatus } from "./components/six-stepper/six-stepper";
+export { IconLibrary as IconLibrary1 } from "./components";
 export { SixTabHidePayload, SixTabShowPayload } from "./components/six-tab-group/six-tab-group";
 export { TimeFormat } from "./utils/time.util";
 export { SixTimepickerChange } from "./components/six-timepicker/six-timepicker";
@@ -2078,6 +2080,11 @@ export namespace Components {
           * @default 0
          */
         "current": number;
+        /**
+          * Default icon library for all icons
+          * @default 'material-symbols'
+         */
+        "defaultIconLibrary": IconLibrary1;
         /**
           * Initial step index (0-based)
           * @default 0
@@ -5961,6 +5968,11 @@ declare namespace LocalJSX {
           * @default 0
          */
         "current"?: number;
+        /**
+          * Default icon library for all icons
+          * @default 'material-symbols'
+         */
+        "defaultIconLibrary"?: IconLibrary1;
         /**
           * Initial step index (0-based)
           * @default 0

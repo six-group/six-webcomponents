@@ -690,6 +690,7 @@ export const SixStepper: StencilVueComponent<JSX.SixStepper> = /*@__PURE__*/ def
   'status',
   'clickable',
   'percent',
+  'defaultIconLibrary',
   'six-stepper-change'
 ], [
   'six-stepper-change'

@@ -7,6 +7,13 @@
     <script nomodule src="/build/ui-library.js"></script>
     <link rel="stylesheet" href="/build/ui-library.css" />
     <title>six-stepper</title>
+
+    <script type="module">
+      document.addEventListener('DOMContentLoaded', () => {
+        // Set Material Symbols as the default for all <six-icon>
+        window.six.setDefaultIconLibrary('material-symbols');
+      });
+    </script>
   </head>
 
   <body>
@@ -64,26 +71,41 @@
         </script>
       </section>
 
-      <h3>Custom Icons</h3>
+      <h3>Material Icons</h3>
       <p>
-        Use the <code>icon</code> property in step items to add Material Icons. The component uses
-        <code>six-icon</code> internally.
+        Use the <code>icon</code> property in step items to add Material Icons. You can pass a string for the icon name,
+        or an object with <code>iconName</code> and <code>iconLibrary</code> properties to override the default library.
       </p>
       <section class="demo">
         <six-stepper id="icon-stepper"></six-stepper>
         <script type="module">
           const iconStepper = document.getElementById('icon-stepper');
           iconStepper.steps = [
-            { title: 'Login', icon: 'person', description: 'User authentication' },
-            { title: 'Verify', icon: 'email', description: 'Email verification' },
-            { title: 'Complete', icon: 'check_circle', description: 'Setup complete' },
+            {
+              title: 'Login',
+              icon: { iconName: 'person', iconLibrary: 'material-icons' },
+              description: 'User authentication',
+            },
+            {
+              title: 'Verify',
+              icon: { iconName: 'email', iconLibrary: 'material-icons' },
+              description: 'Email verification',
+            },
+            {
+              title: 'Complete',
+              icon: { iconName: 'check_circle', iconLibrary: 'material-icons' },
+              description: 'Setup complete',
+            },
           ];
           iconStepper.current = 1;
         </script>
       </section>
 
       <h3>Material Symbols</h3>
-      <p>You can also use Material Symbols for icons.</p>
+      <p>
+        The stepper uses Material Symbols as the default icon library. Simply pass a string with the icon name, and it
+        will automatically use Material Symbols.
+      </p>
       <section class="demo">
         <six-stepper id="symbols-stepper"></six-stepper>
         <script type="module">
