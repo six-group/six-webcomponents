@@ -11,6 +11,7 @@ import { Language } from "./utils/error-messages";
 import { SixDateFormats } from "./components/six-datepicker/six-date-formats";
 import { SixDatepickerSelectPayload } from "./components/six-datepicker/six-datepicker";
 import { SixDialogRequestClose } from "./components/six-dialog/six-dialog";
+import { DividerSpacing } from "./components/six-divider/six-divider";
 import { SixDrawerRequestClose } from "./components/six-drawer/six-drawer";
 import { SixMenuItemData } from "./components/six-menu/six-menu";
 import { SixDropdownAsyncFilterPayload, SixDropdownAutoFilterPayload, SixDropdownScrollPayload } from "./components/six-dropdown/six-dropdown";
@@ -35,6 +36,7 @@ export { Language } from "./utils/error-messages";
 export { SixDateFormats } from "./components/six-datepicker/six-date-formats";
 export { SixDatepickerSelectPayload } from "./components/six-datepicker/six-datepicker";
 export { SixDialogRequestClose } from "./components/six-dialog/six-dialog";
+export { DividerSpacing } from "./components/six-divider/six-divider";
 export { SixDrawerRequestClose } from "./components/six-drawer/six-drawer";
 export { SixMenuItemData } from "./components/six-menu/six-menu";
 export { SixDropdownAsyncFilterPayload, SixDropdownAutoFilterPayload, SixDropdownScrollPayload } from "./components/six-dropdown/six-dropdown";
@@ -667,6 +669,17 @@ export namespace Components {
           * Shows the dialog
          */
         "show": () => Promise<void>;
+    }
+    /**
+     * @since 1.0
+     * @status stable
+     */
+    interface SixDivider {
+        /**
+          * Spacing size: small (24px), medium (28px), or large (36px)
+          * @default 'small'
+         */
+        "spacing": DividerSpacing;
     }
     /**
      * @since 1.0
@@ -2918,6 +2931,16 @@ declare global {
         prototype: HTMLSixDialogElement;
         new (): HTMLSixDialogElement;
     };
+    /**
+     * @since 1.0
+     * @status stable
+     */
+    interface HTMLSixDividerElement extends Components.SixDivider, HTMLStencilElement {
+    }
+    var HTMLSixDividerElement: {
+        prototype: HTMLSixDividerElement;
+        new (): HTMLSixDividerElement;
+    };
     interface HTMLSixDrawerElementEventMap {
         "six-drawer-show": EmptyPayload;
         "six-drawer-after-show": EmptyPayload;
@@ -3700,6 +3723,7 @@ declare global {
         "six-datepicker": HTMLSixDatepickerElement;
         "six-details": HTMLSixDetailsElement;
         "six-dialog": HTMLSixDialogElement;
+        "six-divider": HTMLSixDividerElement;
         "six-drawer": HTMLSixDrawerElement;
         "six-dropdown": HTMLSixDropdownElement;
         "six-error": HTMLSixErrorElement;
@@ -4403,6 +4427,17 @@ declare namespace LocalJSX {
           * @default false
          */
         "open"?: boolean;
+    }
+    /**
+     * @since 1.0
+     * @status stable
+     */
+    interface SixDivider {
+        /**
+          * Spacing size: small (24px), medium (28px), or large (36px)
+          * @default 'small'
+         */
+        "spacing"?: DividerSpacing;
     }
     /**
      * @since 1.0
@@ -6425,6 +6460,7 @@ declare namespace LocalJSX {
         "six-datepicker": SixDatepicker;
         "six-details": SixDetails;
         "six-dialog": SixDialog;
+        "six-divider": SixDivider;
         "six-drawer": SixDrawer;
         "six-dropdown": SixDropdown;
         "six-error": SixError;
@@ -6549,6 +6585,11 @@ declare module "@stencil/core" {
              * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
              */
             "six-dialog": LocalJSX.SixDialog & JSXBase.HTMLAttributes<HTMLSixDialogElement>;
+            /**
+             * @since 1.0
+             * @status stable
+             */
+            "six-divider": LocalJSX.SixDivider & JSXBase.HTMLAttributes<HTMLSixDividerElement>;
             /**
              * @since 1.0
              * @status stable

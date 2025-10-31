@@ -419,6 +419,29 @@ the drawer will result in destructive behavior such as data loss.
 
 
 @ProxyCmp({
+  inputs: ['spacing']
+})
+@Component({
+  selector: 'six-divider',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['spacing'],
+  standalone: false
+})
+export class SixDivider {
+  protected el: HTMLSixDividerElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface SixDivider extends Components.SixDivider {}
+
+
+@ProxyCmp({
   inputs: ['contained', 'label', 'noHeader', 'open', 'placement'],
   methods: ['show', 'hide']
 })

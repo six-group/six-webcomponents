@@ -209,6 +209,11 @@ export const SixDialog: StencilVueComponent<JSX.SixDialog> = /*@__PURE__*/ defin
 ]);
 
 
+export const SixDivider: StencilVueComponent<JSX.SixDivider> = /*@__PURE__*/ defineContainer<JSX.SixDivider>('six-divider', undefined, [
+  'spacing'
+]);
+
+
 export const SixDrawer: StencilVueComponent<JSX.SixDrawer> = /*@__PURE__*/ defineContainer<JSX.SixDrawer>('six-drawer', undefined, [
   'open',
   'label',

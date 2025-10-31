@@ -14,6 +14,7 @@ export const DIRECTIVES = [
   d.SixDatepicker,
   d.SixDetails,
   d.SixDialog,
+  d.SixDivider,
   d.SixDrawer,
   d.SixDropdown,
   d.SixError,

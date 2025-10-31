@@ -1,0 +1,240 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <script type="module" src="/build/ui-library.esm.js"></script>
+    <script nomodule src="/build/ui-library.js"></script>
+    <link rel="stylesheet" href="/build/ui-library.css" />
+    <title>six-divider</title>
+    <style>
+      .demo {
+        margin: 2rem 0;
+        padding: 1rem;
+        border: 1px solid #e0e0e0;
+        border-radius: 4px;
+      }
+
+      code {
+        background: #f5f5f5;
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-family: 'Courier New', monospace;
+      }
+
+      .demo-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .demo-table th,
+      .demo-table td {
+        padding: 0.5rem;
+        text-align: left;
+        border-bottom: 1px solid #e0e0e0;
+      }
+
+      .demo-table th {
+        font-weight: 600;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Divider</h1>
+
+      <h3>Lineart</h3>
+      <p>
+        A divider is a visual line that separates content, helping to organize a page and improve clarity. It allows
+        users to quickly understand information and the hierarchy within an interface.
+      </p>
+      <p>The SIX Divider is a minimal, solid line (#C3C3C3) designed for clear separation.</p>
+
+      <h2>Basic Usage</h2>
+      <p>The divider is a simple horizontal line that separates content with default small (24px) spacing.</p>
+
+      <section class="demo">
+        <p>Content above the divider</p>
+        <six-divider></six-divider>
+        <p>Content below the divider</p>
+      </section>
+
+      <h2>Spacing Options</h2>
+      <p>
+        The divider supports three predefined spacing options: <code>small</code> (24px, default),
+        <code>medium</code> (28px), and <code>large</code> (36px). These ensure consistent spacing throughout your
+        application.
+      </p>
+
+      <section class="demo">
+        <h4>Small Space (Default - 24px)</h4>
+        <table class="demo-table">
+          <thead>
+            <tr>
+              <th>Status</th>
+              <th>System</th>
+              <th>Date</th>
+              <th>Information</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Active</td>
+              <td>System (TIG)</td>
+              <td>March 29, 2023</td>
+              <td>12:58:10</td>
+            </tr>
+          </tbody>
+        </table>
+        <six-divider></six-divider>
+        <p>Default spacing: 24px top and bottom</p>
+      </section>
+
+      <section class="demo">
+        <h4>Medium Space (28px)</h4>
+        <table class="demo-table">
+          <thead>
+            <tr>
+              <th>Status</th>
+              <th>System</th>
+              <th>Date</th>
+              <th>Information</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Active</td>
+              <td>System (TIG)</td>
+              <td>March 29, 2023</td>
+              <td>12:58:10</td>
+            </tr>
+          </tbody>
+        </table>
+        <six-divider spacing="medium"></six-divider>
+        <p>Medium spacing: 28px top and bottom</p>
+      </section>
+
+      <section class="demo">
+        <h4>Large Space (36px)</h4>
+        <table class="demo-table">
+          <thead>
+            <tr>
+              <th>Status</th>
+              <th>System</th>
+              <th>Date</th>
+              <th>Information</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Active</td>
+              <td>System (TIG)</td>
+              <td>March 29, 2023</td>
+              <td>12:58:10</td>
+            </tr>
+          </tbody>
+        </table>
+        <six-divider spacing="large"></six-divider>
+        <p>Large spacing: 36px top and bottom</p>
+      </section>
+
+      <h2>Usage Examples</h2>
+
+      <h3>In Lists</h3>
+      <p>Dividers work well to separate list items with consistent spacing.</p>
+
+      <section class="demo">
+        <div>
+          <p><strong>Item 1</strong><br />Description of first item</p>
+          <six-divider></six-divider>
+
+          <p><strong>Item 2</strong><br />Description of second item</p>
+          <six-divider></six-divider>
+
+          <p><strong>Item 3</strong><br />Description of third item</p>
+        </div>
+      </section>
+
+      <h3>Section Separators</h3>
+      <p>Use large spacing to separate major sections.</p>
+
+      <section class="demo">
+        <div>
+          <h4>Section 1</h4>
+          <p>Content for the first section with important information.</p>
+          <six-divider spacing="large"></six-divider>
+
+          <h4>Section 2</h4>
+          <p>Content for the second section with more details.</p>
+          <six-divider spacing="large"></six-divider>
+
+          <h4>Section 3</h4>
+          <p>Content for the third section concluding the page.</p>
+        </div>
+      </section>
+
+      <h3>Compact Lists</h3>
+      <p>Use small or default spacing for compact lists.</p>
+
+      <section class="demo">
+        <div>
+          <p style="margin: 0.5rem 0">Short item 1</p>
+          <six-divider></six-divider>
+
+          <p style="margin: 0.5rem 0">Short item 2</p>
+          <six-divider></six-divider>
+
+          <p style="margin: 0.5rem 0">Short item 3</p>
+        </div>
+      </section>
+
+      <h3>Mixed Spacing for Visual Hierarchy</h3>
+      <p>Combine different spacing sizes to create visual hierarchy.</p>
+
+      <section class="demo">
+        <div>
+          <h4>Main Section</h4>
+          <p>Important content here</p>
+          <six-divider spacing="large"></six-divider>
+
+          <h5>Subsection A</h5>
+          <p>Some details</p>
+          <six-divider spacing="medium"></six-divider>
+
+          <h5>Subsection B</h5>
+          <p>More details</p>
+          <six-divider spacing="medium"></six-divider>
+
+          <p>Additional notes</p>
+          <six-divider></six-divider>
+
+          <p>Final remarks</p>
+        </div>
+      </section>
+
+      <h3>All Spacing Sizes Comparison</h3>
+      <p>Visual comparison of all three spacing sizes.</p>
+
+      <section class="demo">
+        <div>
+          <p>Content before small divider</p>
+          <six-divider></six-divider>
+          <p>Content after small divider (24px)</p>
+
+          <br />
+
+          <p>Content before medium divider</p>
+          <six-divider spacing="medium"></six-divider>
+          <p>Content after medium divider (28px)</p>
+
+          <br />
+
+          <p>Content before large divider</p>
+          <six-divider spacing="large"></six-divider>
+          <p>Content after large divider (36px)</p>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

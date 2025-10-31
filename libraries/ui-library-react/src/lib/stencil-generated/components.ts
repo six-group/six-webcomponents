@@ -20,6 +20,7 @@ import { SixDate as SixDateElement, defineCustomElement as defineSixDate } from 
 import { SixDatepicker as SixDatepickerElement, defineCustomElement as defineSixDatepicker } from "@six-group/ui-library/dist/components/six-datepicker.js";
 import { SixDetails as SixDetailsElement, defineCustomElement as defineSixDetails } from "@six-group/ui-library/dist/components/six-details.js";
 import { SixDialog as SixDialogElement, defineCustomElement as defineSixDialog } from "@six-group/ui-library/dist/components/six-dialog.js";
+import { SixDivider as SixDividerElement, defineCustomElement as defineSixDivider } from "@six-group/ui-library/dist/components/six-divider.js";
 import { SixDrawer as SixDrawerElement, defineCustomElement as defineSixDrawer } from "@six-group/ui-library/dist/components/six-drawer.js";
 import { SixDropdown as SixDropdownElement, defineCustomElement as defineSixDropdown } from "@six-group/ui-library/dist/components/six-dropdown.js";
 import { SixErrorPage as SixErrorPageElement, defineCustomElement as defineSixErrorPage } from "@six-group/ui-library/dist/components/six-error-page.js";
@@ -264,6 +265,17 @@ export const SixDialog: StencilReactComponent<SixDialogElement, SixDialogEvents>
         onSixDialogRequestClose: 'six-dialog-request-close'
     } as SixDialogEvents,
     defineCustomElement: defineSixDialog
+});
+
+export type SixDividerEvents = NonNullable<unknown>;
+
+export const SixDivider: StencilReactComponent<SixDividerElement, SixDividerEvents> = /*@__PURE__*/ createComponent<SixDividerElement, SixDividerEvents>({
+    tagName: 'six-divider',
+    elementClass: SixDividerElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as SixDividerEvents,
+    defineCustomElement: defineSixDivider
 });
 
 export type SixDrawerEvents = {
