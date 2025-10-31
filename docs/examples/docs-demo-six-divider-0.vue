@@ -1,10 +1,10 @@
 <template>
 <div>
 
-            <p>Content above the divider</p>
-            <six-divider></six-divider>
-            <p>Content below the divider</p>
-        
+        <p>Content above the divider</p>
+        <six-divider></six-divider>
+        <p>Content below the divider</p>
+      
 </div>
 </template>
 <style>

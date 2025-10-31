@@ -1,16 +1,16 @@
 <template>
 <div>
 
-            <div>
-                <p style="margin: 0.5rem 0">Short item 1</p>
-                <six-divider></six-divider>
+        <div>
+          <p style="margin: 0.5rem 0">Short item 1</p>
+          <six-divider></six-divider>
 
-                <p style="margin: 0.5rem 0">Short item 2</p>
-                <six-divider></six-divider>
+          <p style="margin: 0.5rem 0">Short item 2</p>
+          <six-divider></six-divider>
 
-                <p style="margin: 0.5rem 0">Short item 3</p>
-            </div>
-        
+          <p style="margin: 0.5rem 0">Short item 3</p>
+        </div>
+      
 </div>
 </template>
 <style>
