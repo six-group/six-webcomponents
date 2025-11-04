@@ -46,7 +46,7 @@ export const config: Config = {
           targetAttr: 'value',
         },
       ],
-      /*      hydrateModule: '@six-group/ui-library/hydrate',*/
+      hydrateModule: '@six-group/ui-library/hydrate',
     }),
     {
       type: 'dist',
@@ -81,10 +81,10 @@ export const config: Config = {
       customElementsExportBehavior: 'bundle',
       externalRuntime: false,
     },
-    /*    {
+    {
       type: 'dist-hydrate-script',
       dir: './hydrate',
-    },*/
+    },
     {
       type: 'docs-readme',
       footer: 'Copyright © 2021-present SIX-Group',
