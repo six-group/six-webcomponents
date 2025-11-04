@@ -8,8 +8,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
-- Added `hoverContent` prop to `six-tab` to override the default hover content.
-
 ### Fixed
 
 ### Removed
@@ -17,6 +15,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Changed
 
 ### Deprecated
+
+## 5.1.1 - 2025-11-04
+
+### Added
+
+- Added `hoverContent` prop to `six-tab` to override the default hover content.
 
 ## 5.1.0 - 2025-10-23
 
