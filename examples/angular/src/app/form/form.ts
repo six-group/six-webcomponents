@@ -28,6 +28,7 @@ export class Form {
     iban: ['', Validators.pattern(/[A-Z]{2}\d{2}[A-Z ]+/)],
     age: [null as number | null, Validators.min(18)],
     userGroup: ['user' as UserGroup, Validators.required],
+    privileges: [['read'] as Privilege[]],
     status: ['enabled' as Status | null, Validators.required],
     internal: [false, Validators.requiredTrue],
     date: [null as string | null, [Validators.required]],
@@ -63,3 +64,4 @@ function usernameValidator(control: AbstractControl): ValidationErrors | null {
 type UserGroup = 'admin' | 'developer' | 'user';
 type Status = 'enabled' | 'disabled' | 'temporary';
 type Interest = 'sport' | 'music' | 'movies';
+type Privilege = 'read' | 'write' | 'delete';

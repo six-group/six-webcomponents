@@ -21,6 +21,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Added
 
 - Added `hoverContent` prop to `six-tab` to override the default hover content.
+- Added `CheckboxMultiSelectValueAccessor` which binds checkbox values to an array analog to a
+  multiselect
 
 ## 5.1.0 - 2025-10-23
 
