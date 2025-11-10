@@ -67,3 +67,14 @@ npm run demo:angular
 
 The demo app at http://localhost:4200 automatically update whenever changes are made to the
 ui-library, the Angular library, or the demo code.
+
+### Playwright - E2E Tests
+
+Run the following to install playwright webdrivers:
+
+```bash
+run npx playwright
+```
+
+For iIntelliJ IDEA it is recommended to install the Test Automation plugin, which helps develop and
+maintain automated UI tests.

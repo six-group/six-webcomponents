@@ -127,6 +127,7 @@ export const config: Config = {
         },
 
         { src: '**/*.html' },
+        { src: '**/*.scss' },
       ],
     },
   ],
