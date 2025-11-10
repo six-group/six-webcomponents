@@ -72,8 +72,8 @@ export class ValueAccessor implements ControlValueAccessor, AfterViewInit, OnDes
       element.invalid = invalid;
 
       // If the module is configured to do so, display error messages for invalid controls
-      if (!this.config.disableValidationService && invalid) {
-        const errorTexts = this.initialErrorText || this.getErrorTexts(control);
+      if (!this.config.disableValidationService) {
+        const errorTexts = invalid ? this.initialErrorText || this.getErrorTexts(control) : undefined;
         element.errorText = errorTexts ?? '';
       }
 
