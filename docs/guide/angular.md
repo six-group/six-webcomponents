@@ -89,10 +89,12 @@ applied.
 
 So instead of doing:
 
-```
+```angular2html
 // my-component.component.html
 <six-input [formControl]="formControl" [required]="true"></six-input>
+```
 
+```ts
 // my-component.component.ts
 @Component({
   ...
@@ -105,8 +107,8 @@ export class MyComponent {
 
 when initialising the library pass the `showAsteriskOnRequiredValidator` property like so:
 
-```
-UiLibraryAngularModule.forRoot({
+```ts
+UiLibraryAngularModule.forRoot(/* ... other options*/,{
   showAsteriskOnRequiredValidator: true
 })
 ```
@@ -114,10 +116,12 @@ UiLibraryAngularModule.forRoot({
 Now your component will apply the required flag automatically, without requiring you to set it
 manually:
 
-```
+```angular2html
 // my-component.component.html
 <six-input [formControl]="formControl"></six-input> // <-- [required] prop can be omitted
+```
 
+```ts
 // my-component.component.ts
 @Component({
   ...
@@ -127,6 +131,26 @@ export class MyComponent {
   // ...
 }
 ```
+
+### Customising/Disabling `ValidationService`
+
+The Angular library ships with a built-in `ValidationService` that can be used to validate
+`FormControl`s.
+
+To override it, create your own implementation that extends `ValidationMessagesService`. You can
+then override the `getErrorMessage(language: Language, error: ValidationError)` method to return
+custom error messages.
+
+To completely disable the `ValidationService`, pass the `disableValidation` option to the
+`forRoot()` method:
+
+```ts
+UiLibraryAngularModule.forRoot(/* ... other options*/, {
+  disableValidationService: true
+})
+```
+
+WARNING: This will disable any sort of validation service. Even if you pass your .
 
 ## Using the Components
 
