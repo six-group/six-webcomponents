@@ -150,7 +150,7 @@ UiLibraryAngularModule.forRoot(/* ... other options*/, {
 })
 ```
 
-WARNING: This will disable any sort of validation service. Even if you pass your .
+WARNING: This will disable any sort of validation service. Even if you pass your own implementation!
 
 ## Using the Components
 
