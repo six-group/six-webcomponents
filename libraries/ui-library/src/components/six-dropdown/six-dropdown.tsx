@@ -109,6 +109,15 @@ export class SixDropdown {
   @Prop() filter = false;
 
   /**
+   * Set to true if you want to disable the default dropdown panel scroll behavior.
+   */
+  @Prop() noScroll = false;
+
+  get scrollEnabled() {
+    return !this.noScroll;
+  }
+
+  /**
    * Set to true to allow async filtering.
    * When you enter something in the search field the component will only emit an event but not filter any elements itself.
    * You can then simply listen to the 'six-async-filter-fired' event to manage the shown menu-items yourself
@@ -696,19 +705,29 @@ export class SixDropdown {
                 </six-icon>
               </six-input>
             )}
-            <div
-              class={{
-                dropdown__panel__scroll: true,
-                'dropdown__panel__scroll--virtual': this.virtualScroll,
-              }}
-              onScroll={this.handleDropdownScroll}
-              ref={(el) => (this.scrollPanel = el)}
-            >
-              <slot ref={(el) => (this.panelSlot = el as HTMLSlotElement)} />
-              {this.options.length > 0 && (
-                <six-menu part="menu" items={this.renderedOptions} virtualScroll={this.virtualScroll}></six-menu>
-              )}
-            </div>
+            {this.scrollEnabled ? (
+              <div
+                class={{
+                  dropdown__panel__scroll: true,
+                  'dropdown__panel__scroll--virtual': this.virtualScroll,
+                }}
+                onScroll={this.handleDropdownScroll}
+                ref={(el) => (this.scrollPanel = el)}
+              >
+                <slot ref={(el) => (this.panelSlot = el as HTMLSlotElement)} />
+                {this.options.length > 0 && (
+                  <six-menu part="menu" items={this.renderedOptions} virtualScroll={this.virtualScroll}></six-menu>
+                )}
+              </div>
+            ) : (
+              <div ref={(el) => (this.scrollPanel = el)}>
+                <slot ref={(el) => (this.panelSlot = el as HTMLSlotElement)} />
+                {this.options.length > 0 && (
+                  <six-menu part="menu" items={this.renderedOptions} virtualScroll={this.virtualScroll}></six-menu>
+                )}
+              </div>
+            )}
+
             <slot name="dropdown-footer"></slot>
           </div>
         </div>
