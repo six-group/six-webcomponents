@@ -114,6 +114,13 @@
 .theme-light {
   color: black;
 
+  --six-alert-background-color: var(--six-color-white);
+  --six-alert-border-color: var(--six-color-web-rock-200);
+  --six-alert-color: var(--six-color-web-rock-700);
+  --six-alert-primary-color: var(--six-color-web-rock-900);
+
+  --six-card-border-color: var(--six-color-web-rock-100);
+
   --six-button-transparent-background-color: var(--needed-additional-color);
   --six-button-transparent-background-color-hover: var(--six-color-web-rock-100);
   --six-button-secondary-border-color: var(--six-color-web-rock-900);
@@ -161,7 +168,7 @@
   --six-tooltip-background-color: var(--six-color-web-rock-900);
   --six-tooltip-color: var(--six-color-white);
 
-  --six-avatar-color: var(--six-color-white);
+  --six-avatar-color: var(--six-color-web-rock-700);
   --six-avatar-background-color: var(--six-color-web-rock-300);
 
   --six-checkbox-color: var(--six-color-white);
@@ -208,6 +215,13 @@
   --needed-additional-color: #151515;
 
   color: white;
+
+  --six-alert-background-color: var(--needed-additional-color);
+  --six-alert-border-color: var(--six-color-web-rock-900);
+  --six-alert-color: var(--six-color-web-rock-400);
+  --six-alert-primary-color: var(--six-color-web-rock-800);
+
+  --six-card-border-color: var(--six-color-web-rock-900);
 
   --six-button-transparent-background-color: var(--needed-additional-color);
   --six-button-transparent-background-color-hover: var(--six-color-web-rock-900);
@@ -257,7 +271,7 @@
   --six-tooltip-color: var(--six-color-white);
 
   --six-avatar-color: var(--six-color-white);
-  --six-avatar-background-color: var(--six-color-web-rock-300);
+  --six-avatar-background-color: var(--six-color-web-rock-800);
 
   --six-checkbox-color: var(--six-color-white);
 
