@@ -1,0 +1,102 @@
+:root {
+  --six-dark-color-red: #de3919;
+  --six-dark-color-black: #fff;
+  --six-dark-color-white: #000;
+  --six-dark-color-indigo: #efe8f8;
+  --six-dark-color-marine: #88c1e4;
+
+  --six-dark-color-web-rock-900: #fbfbfb;
+  --six-dark-color-web-rock-800: #f6f6f6;
+  --six-dark-color-web-rock-700: #f1f1f1;
+  --six-dark-color-web-rock-600: #e5e5e5;
+  --six-dark-color-web-rock-500: #c3c3c3;
+  --six-dark-color-web-rock-400: #a5a5a5;
+  --six-dark-color-web-rock-300: #7b7b7b;
+  --six-dark-color-web-rock-200: #676767;
+  --six-dark-color-web-rock-100: #484848;
+  --six-dark-color-web-rock-50: #262626;
+
+  --six-dark-color-clay-200: #ebe8e7;
+  --six-dark-color-clay-50: #ada398;
+
+  --six-dark-color-danger-900: #fce9e7;
+  --six-dark-color-danger-800: #ffcbbd;
+  --six-dark-color-danger-700: #ffa992;
+  --six-dark-color-danger-600: #ff8767;
+  --six-dark-color-danger-500: #ff6b46;
+  --six-dark-color-danger-400: #ff4e27;
+  --six-dark-color-danger-300: #fa4823;
+  --six-dark-color-danger-200: #ec411d;
+  --six-dark-color-danger-100: #de3919;
+  --six-dark-color-danger-50: #c52c0f;
+
+  --six-dark-color-warning-900: #fefce6;
+  --six-dark-color-warning-800: #fdf5c2;
+  --six-dark-color-warning-700: #fbef9a;
+  --six-dark-color-warning-600: #f9e973;
+  --six-dark-color-warning-500: #f7e454;
+  --six-dark-color-warning-400: #f5df36;
+  --six-dark-color-warning-300: #f5ce33;
+  --six-dark-color-warning-200: #f2b72c;
+  --six-dark-color-warning-100: #ef9f25;
+  --six-dark-color-warning-50: #ea7719;
+
+  --six-dark-color-success-900: #f0fde7;
+  --six-dark-color-success-800: #d9f8c3;
+  --six-dark-color-success-700: #bef39b;
+  --six-dark-color-success-600: #a0ee6e;
+  --six-dark-color-success-500: #85e845;
+  --six-dark-color-success-400: #6ae300;
+  --six-dark-color-success-300: #58d200;
+  --six-dark-color-success-200: #3abd00;
+  --six-dark-color-success-100: #09a800;
+  --six-dark-color-success-50: #008600;
+
+  --six-dark-color-action-900: #e3f2fd;
+  --six-dark-color-action-800: #bbdefb;
+  --six-dark-color-action-700: #90c9f9;
+  --six-dark-color-action-600: #63b4f6;
+  --six-dark-color-action-500: #42a4f5;
+  --six-dark-color-action-400: #2196f3;
+  --six-dark-color-action-300: #1f87e5;
+  --six-dark-color-action-200: #1a75d2;
+  --six-dark-color-action-100: #1764c0;
+  --six-dark-color-action-50: #1045a1;
+
+  --six-dark-color-marine-900: #e5e9ef;
+  --six-dark-color-marine-800: #ccd4df;
+  --six-dark-color-marine-700: #b2bfcf;
+  --six-dark-color-marine-600: #99aabe;
+  --six-dark-color-marine-500: #7f95af;
+  --six-dark-color-marine-400: #66809f;
+  --six-dark-color-marine-300: #4c6b8f;
+  --six-dark-color-marine-200: #33567e;
+  --six-dark-color-marine-100: #19416f;
+  --six-dark-color-marine-50: #002c5f;
+
+  --six-dark-color-horizon-900: #f3f9fc;
+  --six-dark-color-horizon-800: #e7f2f9;
+  --six-dark-color-horizon-700: #dbecf7;
+  --six-dark-color-horizon-600: #cfe6f4;
+  --six-dark-color-horizon-500: #c3e0f1;
+  --six-dark-color-horizon-400: #b7d9ee;
+  --six-dark-color-horizon-300: #abd3ec;
+  --six-dark-color-horizon-200: #9fcde9;
+  --six-dark-color-horizon-100: #94c7e7;
+  --six-dark-color-horizon-50: #88c1e4;
+
+  --six-dark-color-indigo-900: #efe8f8;
+  --six-dark-color-indigo-800: #ded1f1;
+  --six-dark-color-indigo-700: #cebbea;
+  --six-dark-color-indigo-600: #bea4e3;
+  --six-dark-color-indigo-500: #ae8ddc;
+  --six-dark-color-indigo-400: #9d76d4;
+  --six-dark-color-indigo-300: #8d5fcd;
+  --six-dark-color-indigo-200: #7d49c6;
+  --six-dark-color-indigo-100: #6c32bf;
+  --six-dark-color-indigo-50: #5c1bb8;
+
+  /* ---dark- Fixed / Utility Tokens --- */
+  --six-dark-color-inactive: #262626;
+  --six-dark-focus-ring-color: var(--six-color-action-400);
+}

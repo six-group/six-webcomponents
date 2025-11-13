@@ -1,0 +1,102 @@
+:root {
+  --six-light-color-red: #de3919;
+  --six-light-color-black: #000;
+  --six-light-color-white: #fff;
+  --six-light-color-indigo: #5c1bb8;
+  --six-light-color-marine: #002c5f;
+
+  --six-light-color-web-rock-900: #262626;
+  --six-light-color-web-rock-800: #484848;
+  --six-light-color-web-rock-700: #676767;
+  --six-light-color-web-rock-600: #7b7b7b;
+  --six-light-color-web-rock-500: #a5a5a5;
+  --six-light-color-web-rock-400: #c3c3c3;
+  --six-light-color-web-rock-300: #e5e5e5;
+  --six-light-color-web-rock-200: #f1f1f1;
+  --six-light-color-web-rock-100: #f6f6f6;
+  --six-light-color-web-rock-50: #fbfbfb;
+
+  --six-light-color-clay-200: #ada398;
+  --six-light-color-clay-50: #ebe8e7;
+
+  --six-light-color-danger-900: #c52c0f;
+  --six-light-color-danger-800: #de3919;
+  --six-light-color-danger-700: #ec411d;
+  --six-light-color-danger-600: #fa4823;
+  --six-light-color-danger-500: #ff4e27;
+  --six-light-color-danger-400: #ff6b46;
+  --six-light-color-danger-300: #ff8767;
+  --six-light-color-danger-200: #ffa992;
+  --six-light-color-danger-100: #ffcbbd;
+  --six-light-color-danger-50: #fce9e7;
+
+  --six-light-color-warning-900: #ea7719;
+  --six-light-color-warning-800: #ef9f25;
+  --six-light-color-warning-700: #f2b72c;
+  --six-light-color-warning-600: #f5ce33;
+  --six-light-color-warning-500: #f5df36;
+  --six-light-color-warning-400: #f7e454;
+  --six-light-color-warning-300: #f9e973;
+  --six-light-color-warning-200: #fbef9a;
+  --six-light-color-warning-100: #fdf5c2;
+  --six-light-color-warning-50: #fefce6;
+
+  --six-light-color-success-900: #008600;
+  --six-light-color-success-800: #09a800;
+  --six-light-color-success-700: #3abd00;
+  --six-light-color-success-600: #58d200;
+  --six-light-color-success-500: #6ae300;
+  --six-light-color-success-400: #85e845;
+  --six-light-color-success-300: #a0ee6e;
+  --six-light-color-success-200: #bef39b;
+  --six-light-color-success-100: #d9f8c3;
+  --six-light-color-success-50: #f0fde7;
+
+  --six-light-color-action-900: #1045a1;
+  --six-light-color-action-800: #1764c0;
+  --six-light-color-action-700: #1a75d2;
+  --six-light-color-action-600: #1f87e5;
+  --six-light-color-action-500: #2196f3;
+  --six-light-color-action-400: #42a4f5;
+  --six-light-color-action-300: #63b4f6;
+  --six-light-color-action-200: #90c9f9;
+  --six-light-color-action-100: #bbdefb;
+  --six-light-color-action-50: #e3f2fd;
+
+  --six-light-color-marine-900: #002c5f;
+  --six-light-color-marine-800: #19416f;
+  --six-light-color-marine-700: #33567e;
+  --six-light-color-marine-600: #4c6b8f;
+  --six-light-color-marine-500: #66809f;
+  --six-light-color-marine-400: #7f95af;
+  --six-light-color-marine-300: #99aabe;
+  --six-light-color-marine-200: #b2bfcf;
+  --six-light-color-marine-100: #ccd4df;
+  --six-light-color-marine-50: #e5e9ef;
+
+  --six-light-color-horizon-900: #88c1e4;
+  --six-light-color-horizon-800: #94c7e7;
+  --six-light-color-horizon-700: #9fcde9;
+  --six-light-color-horizon-600: #abd3ec;
+  --six-light-color-horizon-500: #b7d9ee;
+  --six-light-color-horizon-400: #c3e0f1;
+  --six-light-color-horizon-300: #cfe6f4;
+  --six-light-color-horizon-200: #dbecf7;
+  --six-light-color-horizon-100: #e7f2f9;
+  --six-light-color-horizon-50: #f3f9fc;
+
+  --six-light-color-indigo-900: #5c1bb8;
+  --six-light-color-indigo-800: #6c32bf;
+  --six-light-color-indigo-700: #7d49c6;
+  --six-light-color-indigo-600: #8d5fcd;
+  --six-light-color-indigo-500: #9d76d4;
+  --six-light-color-indigo-400: #ae8ddc;
+  --six-light-color-indigo-300: #bea4e3;
+  --six-light-color-indigo-200: #cebbea;
+  --six-light-color-indigo-100: #ded1f1;
+  --six-light-color-indigo-50: #efe8f8;
+
+  /* ---light- Fixed / Utility Tokens --- */
+  --six-light-color-inactive: #c3c3c3;
+  --six-light-focus-ring-color: var(--six-color-action-600);
+}

@@ -1,6 +1,6 @@
 # Root
 
-Six root gives you a [basic layout](<https://en.wikipedia.org/wiki/Holy_grail_(web_design)>) skeleton.
+Six root gives you a [basic layout](<https://en.wikipedia.org/wiki/Holy_grail_(web_design)>) skeleton and manages the application theme.
 
 
 ## Basic Layout with all elements
@@ -11,11 +11,15 @@ You can remove the content padding by adding `padded="false"` to `six-root`.
 
 You can provide a stage indicator by adding `stage="DEV"` to `six-root` as well as provide version information by adding `version="DEV-1.1.2"`to `six-root`. Providing nothing or `PROD` will disable stage indication
 
+## Theme Support
+
+`six-root` includes built-in theme management. Set the `theme` attribute to `light`, `dark`, or `auto` (follows system preference).
+
 <docs-demo-six-root-0></docs-demo-six-root-0>
 
 ```html
 <div class="six-root-wrapper">
-  <six-root stage="PROD" style="height: 100%" version="PROD-1.2.3">
+  <six-root id="app-root" stage="PROD" style="height: 100%" version="PROD-1.2.3">
     <six-header slot="header">
       
       <six-header-item>
@@ -35,6 +39,11 @@ You can provide a stage indicator by adding `stage="DEV"` to `six-root` as well 
       </six-header-item>
 
       
+      <six-header-item>
+        <six-icon-button id="theme-toggle" name="dark_mode"></six-icon-button>
+      </six-header-item>
+
+      
       <six-header-dropdown-item>
         <six-icon-button slot="trigger">
           <six-avatar                     image="https://images.unsplash.com/photo-1529778873920-4da4926a72c2?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80"
@@ -44,6 +53,9 @@ You can provide a stage indicator by adding `stage="DEV"` to `six-root` as well 
         <six-menu>
           <six-menu-item><b>Cat Kittens</b><br>cat.kitty.kittens@themCatsBeCool.com</six-menu-item>
           <six-menu-item><b>Language</b><br><six-language-switcher></six-language-switcher></six-menu-item>
+          <six-menu-item id="menu-theme-light">Theme: Light</six-menu-item>
+          <six-menu-item id="menu-theme-dark">Theme: Dark</six-menu-item>
+          <six-menu-item id="menu-theme-auto">Theme: Auto</six-menu-item>
           <six-menu-item>Change password</six-menu-item>
           <six-menu-item>Logout</six-menu-item>
         </six-menu>
@@ -103,7 +115,28 @@ You can provide a stage indicator by adding `stage="DEV"` to `six-root` as well 
     </six-sidebar>
 
     <div slot="main">
-      <p>Content</p>
+      <h2>Theme Demo</h2>
+      <p>
+        Current theme: <strong id="current-theme">light</strong> | Applied theme:
+        <strong id="applied-theme">light</strong>
+      </p>
+
+      <div style="display: flex; gap: 1rem; margin: 2rem 0; flex-wrap: wrap">
+        <six-button id="theme-light-btn">Light Theme</six-button>
+        <six-button id="theme-dark-btn">Dark Theme</six-button>
+        <six-button id="theme-auto-btn">Auto Theme</six-button>
+        <six-button id="theme-toggle-btn">Toggle Theme</six-button>
+      </div>
+
+      <h3>Component Examples</h3>
+      <six-input label="Input Field" placeholder="Type something" value="Sample text"></six-input>
+      <br>
+      <six-textarea label="Textarea" placeholder="Type something" rows="3"></six-textarea>
+      <br>
+      <six-button>Primary Button</six-button>
+      <six-button type="secondary">Secondary Button</six-button>
+
+      <h3>Content</h3>
       <div>
         <six-button id="show-tasks">Show some tasks...</six-button>
         <six-button id="toggle-text">Toggle some text...</six-button>
@@ -225,6 +258,7 @@ You can provide a stage indicator by adding `stage="DEV"` to `six-root` as well 
       );
 
     const Select = getElements({
+      root: '#app-root',
       header: 'six-header',
       leftSidebar: 'six-sidebar[slot="left-sidebar"]',
       tasksButton: '#show-tasks',
@@ -235,7 +269,26 @@ You can provide a stage indicator by adding `stage="DEV"` to `six-root` as well 
       cards: ['six-sidebar[slot="right-sidebar"] six-card'],
       hamburger: '#menu-button',
       searchItem: '#search-header-item',
+      themeToggle: '#theme-toggle',
+      themeLightBtn: '#theme-light-btn',
+      themeDarkBtn: '#theme-dark-btn',
+      themeAutoBtn: '#theme-auto-btn',
+      themeToggleBtn: '#theme-toggle-btn',
+      currentThemeSpan: '#current-theme',
+      appliedThemeSpan: '#applied-theme',
+      menuThemeLight: '#menu-theme-light',
+      menuThemeDark: '#menu-theme-dark',
+      menuThemeAuto: '#menu-theme-auto',
     });
+
+    const updateThemeDisplay = async () => {
+      if (window.SixTheme) {
+        const { theme, appliedTheme } = await window.SixTheme.getTheme();
+        Select.currentThemeSpan.textContent = theme;
+        Select.appliedThemeSpan.textContent = appliedTheme;
+        Select.themeToggle.setAttribute('name', appliedTheme === 'dark' ? 'light_mode' : 'dark_mode');
+      }
+    };
 
     Select.hamburger.addEventListener('click', () => Select.leftSidebar.toggleAttribute('open'));
 
@@ -257,6 +310,48 @@ You can provide a stage indicator by adding `stage="DEV"` to `six-root` as well 
     Select.textButton.addEventListener('click', () => {
       Select.textSection.style.display = Select.textSection.style.display === 'none' ? 'block' : 'none';
     });
+
+    Select.themeToggle.addEventListener('click', async () => {
+      await window.SixTheme.toggle();
+      await updateThemeDisplay();
+    });
+
+    Select.themeLightBtn.addEventListener('click', async () => {
+      await window.SixTheme.setTheme('light');
+      await updateThemeDisplay();
+    });
+
+    Select.themeDarkBtn.addEventListener('click', async () => {
+      await window.SixTheme.setTheme('dark');
+      await updateThemeDisplay();
+    });
+
+    Select.themeAutoBtn.addEventListener('click', async () => {
+      await window.SixTheme.setTheme('auto');
+      await updateThemeDisplay();
+    });
+
+    Select.themeToggleBtn.addEventListener('click', async () => {
+      await window.SixTheme.toggle();
+      await updateThemeDisplay();
+    });
+
+    Select.menuThemeLight.addEventListener('click', async () => {
+      await window.SixTheme.setTheme('light');
+      await updateThemeDisplay();
+    });
+
+    Select.menuThemeDark.addEventListener('click', async () => {
+      await window.SixTheme.setTheme('dark');
+      await updateThemeDisplay();
+    });
+
+    Select.menuThemeAuto.addEventListener('click', async () => {
+      await window.SixTheme.setTheme('auto');
+      await updateThemeDisplay();
+    });
+
+    updateThemeDisplay();
   })();
 </script>
 <style>
@@ -280,11 +375,51 @@ You can provide a stage indicator by adding `stage="DEV"` to `six-root` as well 
 
 ## Properties
 
-| Property  | Attribute | Description                                          | Type                                                        | Default |
-| --------- | --------- | ---------------------------------------------------- | ----------------------------------------------------------- | ------- |
-| `padded`  | `padded`  | Defines whether the content section should be padded | `boolean`                                                   | `true`  |
-| `stage`   | `stage`   | Defines the stage of the application                 | `"ACCEPTANCE" \| "DEV" \| "ETU" \| "ITU" \| "PROD" \| null` | `null`  |
-| `version` | `version` | Defines the version of the application               | `string`                                                    | `''`    |
+| Property  | Attribute | Description                                          | Type                                                        | Default   |
+| --------- | --------- | ---------------------------------------------------- | ----------------------------------------------------------- | --------- |
+| `padded`  | `padded`  | Defines whether the content section should be padded | `boolean`                                                   | `true`    |
+| `stage`   | `stage`   | Defines the stage of the application                 | `"ACCEPTANCE" \| "DEV" \| "ETU" \| "ITU" \| "PROD" \| null` | `null`    |
+| `theme`   | `theme`   | Defines the theme                                    | `"auto" \| "dark" \| "light"`                               | `'light'` |
+| `version` | `version` | Defines the version of the application               | `string`                                                    | `''`      |
+
+
+## Methods
+
+### `getTheme() => Promise<{ theme: SixTheme; appliedTheme: "light" | "dark"; }>`
+
+Gets the current theme and applied theme.
+
+#### Returns
+
+Type: `Promise<{ theme: SixTheme; appliedTheme: "light" | "dark"; }>`
+
+
+
+### `setTheme(theme: SixTheme) => Promise<void>`
+
+Sets the theme.
+
+#### Parameters
+
+| Name    | Type                          | Description |
+| ------- | ----------------------------- | ----------- |
+| `theme` | `"auto" \| "light" \| "dark"` |             |
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `toggleTheme() => Promise<void>`
+
+Toggles between light and dark theme.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
 
 
 ## Slots

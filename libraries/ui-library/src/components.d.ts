@@ -23,6 +23,7 @@ import { SixItemPickerChangePayload } from "./components/six-item-picker/six-ite
 import { SixLanguageSwitcherChangePayload, SixLanguageSwitcherInput } from "./components/six-language-switcher/six-language-switcher";
 import { SixMenuItemData as SixMenuItemData1, SixMenuItemSelectedPayload } from "./components/six-menu/six-menu";
 import { StageType } from "./components/six-stage-indicator/six-stage-indicator";
+import { SixTheme } from "./components/six-root/six-root";
 import { SixSearchFieldChangePayload } from "./components/six-search-field/six-search-field";
 import { SixSelectChangePayload } from "./components/six-select/six-select";
 import { StageType as StageType1 } from "./components/six-stage-indicator/six-stage-indicator";
@@ -47,6 +48,7 @@ export { SixItemPickerChangePayload } from "./components/six-item-picker/six-ite
 export { SixLanguageSwitcherChangePayload, SixLanguageSwitcherInput } from "./components/six-language-switcher/six-language-switcher";
 export { SixMenuItemData as SixMenuItemData1, SixMenuItemSelectedPayload } from "./components/six-menu/six-menu";
 export { StageType } from "./components/six-stage-indicator/six-stage-indicator";
+export { SixTheme } from "./components/six-root/six-root";
 export { SixSearchFieldChangePayload } from "./components/six-search-field/six-search-field";
 export { SixSelectChangePayload } from "./components/six-select/six-select";
 export { StageType as StageType1 } from "./components/six-stage-indicator/six-stage-indicator";
@@ -1737,15 +1739,32 @@ export namespace Components {
      */
     interface SixRoot {
         /**
+          * Gets the current theme and applied theme.
+         */
+        "getTheme": () => Promise<{ theme: SixTheme; appliedTheme: "light" | "dark"; }>;
+        /**
           * Defines whether the content section should be padded
           * @default true
          */
         "padded": boolean;
         /**
+          * Sets the theme.
+         */
+        "setTheme": (theme: SixTheme) => Promise<void>;
+        /**
           * Defines the stage of the application
           * @default null
          */
         "stage": StageType;
+        /**
+          * Defines the theme
+          * @default 'light'
+         */
+        "theme": SixTheme;
+        /**
+          * Toggles between light and dark theme.
+         */
+        "toggleTheme": () => Promise<void>;
         /**
           * Defines the version of the application
           * @default ''
@@ -5550,6 +5569,11 @@ declare namespace LocalJSX {
           * @default null
          */
         "stage"?: StageType;
+        /**
+          * Defines the theme
+          * @default 'light'
+         */
+        "theme"?: SixTheme;
         /**
           * Defines the version of the application
           * @default ''

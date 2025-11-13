@@ -9,7 +9,7 @@ describe('six-root', () => {
     });
 
     expect(page.root).toEqualHtml(`
-      <six-root>
+      <six-root theme="light">
         <mock:shadow-root>
           <host class="six-root">
             <header part="header">
@@ -33,5 +33,40 @@ describe('six-root', () => {
         </mock:shadow-root>
       </six-root>
     `);
+  });
+
+  it('applies theme correctly', async () => {
+    const page = await newSpecPage({
+      components: [SixRoot],
+      html: `<six-root theme="dark"></six-root>`,
+    });
+
+    expect(page.root?.getAttribute('theme')).toBe('dark');
+  });
+
+  it('can toggle theme', async () => {
+    const page = await newSpecPage({
+      components: [SixRoot],
+      html: `<six-root theme="light"></six-root>`,
+    });
+
+    const root = page.rootInstance as SixRoot;
+    await root.toggleTheme();
+
+    const theme = await root.getTheme();
+    expect(theme.theme).toBe('dark');
+  });
+
+  it('can set theme programmatically', async () => {
+    const page = await newSpecPage({
+      components: [SixRoot],
+      html: `<six-root></six-root>`,
+    });
+
+    const root = page.rootInstance as SixRoot;
+    await root.setTheme('dark');
+
+    const theme = await root.getTheme();
+    expect(theme.theme).toBe('dark');
   });
 });

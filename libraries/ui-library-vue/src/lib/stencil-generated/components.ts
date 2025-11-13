@@ -578,7 +578,8 @@ export const SixRating: StencilVueComponent<JSX.SixRating> = /*@__PURE__*/ defin
 export const SixRoot: StencilVueComponent<JSX.SixRoot> = /*@__PURE__*/ defineContainer<JSX.SixRoot>('six-root', undefined, [
   'padded',
   'stage',
-  'version'
+  'version',
+  'theme'
 ]);
 
 

@@ -1,41 +1,222 @@
+/* ============================================
+   DYNAMIC THEME COLOR SYSTEM
+   ============================================
+   Light theme is default.
+   Theme switcher component will toggle .theme-dark class
+   on <html> to switch colors.
+============================================ */
+@import 'dark.css';
+@import 'light.css';
+
 :root {
   --six-color-red: #de3919;
-  --six-color-black: #000;
-  --six-color-white: #fff;
-  --six-color-indigo: #5c1bb8;
-  --six-color-marine: #002c5f;
+  --six-color-black: var(--six-light-color-black);
+  --six-color-white: var(--six-light-color-white);
+  --six-color-indigo: var(--six-light-color-indigo);
+  --six-color-marine: var(--six-light-color-marine);
 
-  --six-color-web-rock-900: #262626;
-  --six-color-web-rock-800: #484848;
-  --six-color-web-rock-700: #676767;
-  --six-color-web-rock-600: #7b7b7b;
-  --six-color-web-rock-500: #a5a5a5;
-  --six-color-web-rock-400: #c3c3c3;
-  --six-color-web-rock-300: #e5e5e5;
-  --six-color-web-rock-200: #f1f1f1;
-  --six-color-web-rock-100: #f6f6f6;
-  --six-color-web-rock-50: #fbfbfb;
+  --six-color-web-rock-900: var(--six-light-color-web-rock-900);
+  --six-color-web-rock-800: var(--six-light-color-web-rock-800);
+  --six-color-web-rock-700: var(--six-light-color-web-rock-700);
+  --six-color-web-rock-600: var(--six-light-color-web-rock-600);
+  --six-color-web-rock-500: var(--six-light-color-web-rock-500);
+  --six-color-web-rock-400: var(--six-light-color-web-rock-400);
+  --six-color-web-rock-300: var(--six-light-color-web-rock-300);
+  --six-color-web-rock-200: var(--six-light-color-web-rock-200);
+  --six-color-web-rock-100: var(--six-light-color-web-rock-100);
+  --six-color-web-rock-50: var(--six-light-color-web-rock-50);
 
-  --six-color-clay-200: #ada398;
-  --six-color-clay-50: #ebe8e7;
+  --six-color-clay-200: var(--six-light-color-clay-200);
+  --six-color-clay-50: var(--six-light-color-clay-50);
 
-  --six-color-danger-900: #c52c0f;
-  --six-color-danger-800: #de3919;
+  --six-color-danger-900: var(--six-light-color-danger-900);
+  --six-color-danger-800: var(--six-light-color-danger-800);
+  --six-color-danger-700: var(--six-light-color-danger-700);
+  --six-color-danger-600: var(--six-light-color-danger-600);
+  --six-color-danger-500: var(--six-light-color-danger-500);
+  --six-color-danger-400: var(--six-light-color-danger-400);
+  --six-color-danger-300: var(--six-light-color-danger-300);
+  --six-color-danger-200: var(--six-light-color-danger-200);
+  --six-color-danger-100: var(--six-light-color-danger-100);
+  --six-color-danger-50: var(--six-light-color-danger-50);
   --six-color-danger-light-to-be-defined: #f58c78;
 
-  --six-color-warning-800: #ef9f25;
-  --six-color-warning-700: #f2b72c;
+  --six-color-warning-900: var(--six-light-color-warning-900);
+  --six-color-warning-800: var(--six-light-color-warning-800);
+  --six-color-warning-700: var(--six-light-color-warning-700);
+  --six-color-warning-600: var(--six-light-color-warning-600);
+  --six-color-warning-500: var(--six-light-color-warning-500);
+  --six-color-warning-400: var(--six-light-color-warning-400);
+  --six-color-warning-300: var(--six-light-color-warning-300);
+  --six-color-warning-200: var(--six-light-color-warning-200);
+  --six-color-warning-100: var(--six-light-color-warning-100);
+  --six-color-warning-50: var(--six-light-color-warning-50);
   --six-color-warning-light-to-be-defined: #f9deb4;
 
-  --six-color-success-600: #58d200;
-  --six-color-success-500: #6ae300;
+  --six-color-success-900: var(--six-light-color-success-900);
+  --six-color-success-800: var(--six-light-color-success-800);
+  --six-color-success-700: var(--six-light-color-success-700);
+  --six-color-success-600: var(--six-light-color-success-600);
+  --six-color-success-500: var(--six-light-color-success-500);
+  --six-color-success-400: var(--six-light-color-success-400);
+  --six-color-success-300: var(--six-light-color-success-300);
+  --six-color-success-200: var(--six-light-color-success-200);
+  --six-color-success-100: var(--six-light-color-success-100);
+  --six-color-success-50: var(--six-light-color-success-50);
   --six-color-success-light-to-be-defined: #aaff6c;
 
-  --six-color-action-600: #1f87e5;
-  --six-color-action-500: #2196f3;
+  --six-color-action-900: var(--six-light-color-action-900);
+  --six-color-action-800: var(--six-light-color-action-800);
+  --six-color-action-700: var(--six-light-color-action-700);
+  --six-color-action-600: var(--six-light-color-action-600);
+  --six-color-action-500: var(--six-light-color-action-500);
+  --six-color-action-400: var(--six-light-color-action-400);
+  --six-color-action-300: var(--six-light-color-action-300);
+  --six-color-action-200: var(--six-light-color-action-200);
+  --six-color-action-100: var(--six-light-color-action-100);
+  --six-color-action-50: var(--six-light-color-action-50);
   --six-color-action-light-to-be-defined: #a8d0f5;
 
-  --six-color-inactive: #c3c3c3;
+  --six-color-marine-900: var(--six-light-color-marine-900);
+  --six-color-marine-800: var(--six-light-color-marine-800);
+  --six-color-marine-700: var(--six-light-color-marine-700);
+  --six-color-marine-600: var(--six-light-color-marine-600);
+  --six-color-marine-500: var(--six-light-color-marine-500);
+  --six-color-marine-400: var(--six-light-color-marine-400);
+  --six-color-marine-300: var(--six-light-color-marine-300);
+  --six-color-marine-200: var(--six-light-color-marine-200);
+  --six-color-marine-100: var(--six-light-color-marine-100);
+  --six-color-marine-50: var(--six-light-color-marine-50);
 
-  --six-focus-ring-color: var(--six-color-action-600);
+  --six-color-horizon-900: var(--six-light-color-horizon-900);
+  --six-color-horizon-800: var(--six-light-color-horizon-800);
+  --six-color-horizon-700: var(--six-light-color-horizon-700);
+  --six-color-horizon-600: var(--six-light-color-horizon-600);
+  --six-color-horizon-500: var(--six-light-color-horizon-500);
+  --six-color-horizon-400: var(--six-light-color-horizon-400);
+  --six-color-horizon-300: var(--six-light-color-horizon-300);
+  --six-color-horizon-200: var(--six-light-color-horizon-200);
+  --six-color-horizon-100: var(--six-light-color-horizon-100);
+  --six-color-horizon-50: var(--six-light-color-horizon-50);
+
+  --six-color-indigo-900: var(--six-light-color-indigo-900);
+  --six-color-indigo-800: var(--six-light-color-indigo-800);
+  --six-color-indigo-700: var(--six-light-color-indigo-700);
+  --six-color-indigo-600: var(--six-light-color-indigo-600);
+  --six-color-indigo-500: var(--six-light-color-indigo-500);
+  --six-color-indigo-400: var(--six-light-color-indigo-400);
+  --six-color-indigo-300: var(--six-light-color-indigo-300);
+  --six-color-indigo-200: var(--six-light-color-indigo-200);
+  --six-color-indigo-100: var(--six-light-color-indigo-100);
+  --six-color-indigo-50: var(--six-light-color-indigo-50);
+
+  --six-color-inactive: var(--six-light-color-inactive);
+  --six-focus-ring-color: var(--six-light-focus-ring-color);
+}
+
+/* Dark Theme Override */
+.theme-dark {
+  --six-color-red: #de3919;
+  --six-color-black: var(--six-dark-color-black);
+  --six-color-white: var(--six-dark-color-white);
+  --six-color-indigo: var(--six-dark-color-indigo);
+  --six-color-marine: var(--six-dark-color-marine);
+
+  --six-color-web-rock-900: var(--six-dark-color-web-rock-900);
+  --six-color-web-rock-800: var(--six-dark-color-web-rock-800);
+  --six-color-web-rock-700: var(--six-dark-color-web-rock-700);
+  --six-color-web-rock-600: var(--six-dark-color-web-rock-600);
+  --six-color-web-rock-500: var(--six-dark-color-web-rock-500);
+  --six-color-web-rock-400: var(--six-dark-color-web-rock-400);
+  --six-color-web-rock-300: var(--six-dark-color-web-rock-300);
+  --six-color-web-rock-200: var(--six-dark-color-web-rock-200);
+  --six-color-web-rock-100: var(--six-dark-color-web-rock-100);
+  --six-color-web-rock-50: var(--six-dark-color-web-rock-50);
+
+  --six-color-clay-200: var(--six-dark-color-clay-200);
+  --six-color-clay-50: var(--six-dark-color-clay-50);
+
+  --six-color-danger-900: var(--six-dark-color-danger-900);
+  --six-color-danger-800: var(--six-dark-color-danger-800);
+  --six-color-danger-700: var(--six-dark-color-danger-700);
+  --six-color-danger-600: var(--six-dark-color-danger-600);
+  --six-color-danger-500: var(--six-dark-color-danger-500);
+  --six-color-danger-400: var(--six-dark-color-danger-400);
+  --six-color-danger-300: var(--six-dark-color-danger-300);
+  --six-color-danger-200: var(--six-dark-color-danger-200);
+  --six-color-danger-100: var(--six-dark-color-danger-100);
+  --six-color-danger-50: var(--six-dark-color-danger-50);
+  --six-color-danger-light-to-be-defined: #ffa992; /* using light-200 */
+
+  --six-color-warning-900: var(--six-dark-color-warning-900);
+  --six-color-warning-800: var(--six-dark-color-warning-800);
+  --six-color-warning-700: var(--six-dark-color-warning-700);
+  --six-color-warning-600: var(--six-dark-color-warning-600);
+  --six-color-warning-500: var(--six-dark-color-warning-500);
+  --six-color-warning-400: var(--six-dark-color-warning-400);
+  --six-color-warning-300: var(--six-dark-color-warning-300);
+  --six-color-warning-200: var(--six-dark-color-warning-200);
+  --six-color-warning-100: var(--six-dark-color-warning-100);
+  --six-color-warning-50: var(--six-dark-color-warning-50);
+  --six-color-warning-light-to-be-defined: #fbef9a; /* using light-200 */
+
+  --six-color-success-900: var(--six-dark-color-success-900);
+  --six-color-success-800: var(--six-dark-color-success-800);
+  --six-color-success-700: var(--six-dark-color-success-700);
+  --six-color-success-600: var(--six-dark-color-success-600);
+  --six-color-success-500: var(--six-dark-color-success-500);
+  --six-color-success-400: var(--six-dark-color-success-400);
+  --six-color-success-300: var(--six-dark-color-success-300);
+  --six-color-success-200: var(--six-dark-color-success-200);
+  --six-color-success-100: var(--six-dark-color-success-100);
+  --six-color-success-50: var(--six-dark-color-success-50);
+  --six-color-success-light-to-be-defined: #bef39b; /* using light-200 */
+
+  --six-color-action-900: var(--six-dark-color-action-900);
+  --six-color-action-800: var(--six-dark-color-action-800);
+  --six-color-action-700: var(--six-dark-color-action-700);
+  --six-color-action-600: var(--six-dark-color-action-600);
+  --six-color-action-500: var(--six-dark-color-action-500);
+  --six-color-action-400: var(--six-dark-color-action-400);
+  --six-color-action-300: var(--six-dark-color-action-300);
+  --six-color-action-200: var(--six-dark-color-action-200);
+  --six-color-action-100: var(--six-dark-color-action-100);
+  --six-color-action-50: var(--six-dark-color-action-50);
+  --six-color-action-light-to-be-defined: #90c9f9; /* using light-200 */
+
+  --six-color-marine-900: var(--six-dark-color-marine-900);
+  --six-color-marine-800: var(--six-dark-color-marine-800);
+  --six-color-marine-700: var(--six-dark-color-marine-700);
+  --six-color-marine-600: var(--six-dark-color-marine-600);
+  --six-color-marine-500: var(--six-dark-color-marine-500);
+  --six-color-marine-400: var(--six-dark-color-marine-400);
+  --six-color-marine-300: var(--six-dark-color-marine-300);
+  --six-color-marine-200: var(--six-dark-color-marine-200);
+  --six-color-marine-100: var(--six-dark-color-marine-100);
+  --six-color-marine-50: var(--six-dark-color-marine-50);
+
+  --six-color-horizon-900: var(--six-dark-color-horizon-900);
+  --six-color-horizon-800: var(--six-dark-color-horizon-800);
+  --six-color-horizon-700: var(--six-dark-color-horizon-700);
+  --six-color-horizon-600: var(--six-dark-color-horizon-600);
+  --six-color-horizon-500: var(--six-dark-color-horizon-500);
+  --six-color-horizon-400: var(--six-dark-color-horizon-400);
+  --six-color-horizon-300: var(--six-dark-color-horizon-300);
+  --six-color-horizon-200: var(--six-dark-color-horizon-200);
+  --six-color-horizon-100: var(--six-dark-color-horizon-100);
+  --six-color-horizon-50: var(--six-dark-color-horizon-50);
+
+  --six-color-indigo-900: var(--six-dark-color-indigo-900);
+  --six-color-indigo-800: var(--six-dark-color-indigo-800);
+  --six-color-indigo-700: var(--six-dark-color-indigo-700);
+  --six-color-indigo-600: var(--six-dark-color-indigo-600);
+  --six-color-indigo-500: var(--six-dark-color-indigo-500);
+  --six-color-indigo-400: var(--six-dark-color-indigo-400);
+  --six-color-indigo-300: var(--six-dark-color-indigo-300);
+  --six-color-indigo-200: var(--six-dark-color-indigo-200);
+  --six-color-indigo-100: var(--six-dark-color-indigo-100);
+  --six-color-indigo-50: var(--six-dark-color-indigo-50);
+
+  --six-color-inactive: var(--six-dark-color-inactive);
+  --six-focus-ring-color: var(--six-dark-focus-ring-color);
 }

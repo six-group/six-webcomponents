@@ -1327,14 +1327,15 @@ export declare interface SixRating extends Components.SixRating {
 
 
 @ProxyCmp({
-  inputs: ['padded', 'stage', 'version']
+  inputs: ['padded', 'stage', 'theme', 'version'],
+  methods: ['setTheme', 'getTheme', 'toggleTheme']
 })
 @Component({
   selector: 'six-root',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['padded', 'stage', 'version'],
+  inputs: ['padded', 'stage', 'theme', 'version'],
   standalone: false
 })
 export class SixRoot {
