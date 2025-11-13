@@ -77,7 +77,7 @@
   }
 
   &.button--secondary {
-    background-color: var(--six-button-transparent-background-color);
+    background-color: transparent;
     border-color: var(--six-button-secondary-border-color);
     color: var(--six-button-secondary-color);
 
@@ -196,7 +196,7 @@
 
   &.button--action-outline {
     border-color: var(--six-color-action-500);
-    background-color: var(--six-button-transparent-background-color);
+    background-color: transparent;
     color: var(--six-color-action-500);
 
     &:hover:not(.button--disabled) {
