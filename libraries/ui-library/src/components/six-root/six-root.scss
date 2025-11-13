@@ -12,18 +12,21 @@
   height: 100%;
 
   &__container {
+    background: var(--six-root-main-background-color);
     &--padded {
       padding: var(--six-spacing-xxx-large);
     }
   }
 
   &__left-sidebar {
+    background: var(--six-root-main-background-color);
     height: 100%;
     overflow: scroll;
     grid-column: 1 / 2;
   }
 
   &__right-sidebar {
+    background: var(--six-root-main-background-color);
     height: 100%;
     overflow: scroll;
     grid-column: 3 / 4;
@@ -45,7 +48,6 @@ header {
 
 main {
   height: 100%;
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
