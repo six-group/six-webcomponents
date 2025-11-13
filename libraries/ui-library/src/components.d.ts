@@ -773,6 +773,11 @@ export namespace Components {
          */
         "matchTriggerWidth": boolean;
         /**
+          * Set to true if you want to disable the default dropdown panel scroll behavior.
+          * @default false
+         */
+        "noScroll": boolean;
+        /**
           * Indicates whether the dropdown is open. You can use this in lieu of the show/hide methods.
           * @default false
          */
@@ -4520,6 +4525,11 @@ declare namespace LocalJSX {
           * @default false
          */
         "matchTriggerWidth"?: boolean;
+        /**
+          * Set to true if you want to disable the default dropdown panel scroll behavior.
+          * @default false
+         */
+        "noScroll"?: boolean;
         /**
           * Emitted when the async filter is triggered
          */
