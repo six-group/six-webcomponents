@@ -134,6 +134,10 @@ body > div.container {
   --six-rating-color-disabled-opacity: 0.4;
 }
 
+html.theme-dark {
+  background-color: var(--needed-additional-color);
+}
+
 [hidden] {
   display: none !important;
 }
