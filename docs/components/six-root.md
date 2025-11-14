@@ -112,7 +112,6 @@ You can provide a stage indicator by adding `stage="DEV"` to `six-root` as well 
     </six-sidebar>
 
     <div slot="main">
-      <h3>Component Examples</h3>
       <six-input label="Input Field" placeholder="Type something" value="Sample text"></six-input>
       <br>
       <six-textarea label="Textarea" placeholder="Type something" rows="3"></six-textarea>
