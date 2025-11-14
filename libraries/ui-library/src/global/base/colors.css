@@ -140,6 +140,8 @@ html {
 
   --six-dialog-color: var(--six-color-web-rock-900);
 
+  --six-logo-bme-color: var(--six-color-web-rock-900);
+
   --six-language-switcher-color-hover: var(--six-color-web-rock-600);
   --six-language-switcher-color-selected: var(--six-color-black);
 
@@ -269,6 +271,8 @@ html {
   --six-date-cell-outdated-color: var(--six-color-web-rock-700);
 
   --six-dialog-color: var(--six-color-web-rock-200);
+
+  --six-logo-bme-color: var(--six-color-web-rock-600);
 
   --six-language-switcher-color-hover: var(--six-color-web-rock-400);
   --six-language-switcher-color-selected: var(--six-color-white);
