@@ -111,7 +111,7 @@
   --six-focus-ring-color: var(--six-color-action-600);
 }
 
-.theme-light {
+html {
   color: black;
 
   --six-alert-background-color: var(--six-color-white);
@@ -120,6 +120,11 @@
   --six-alert-primary-color: var(--six-color-web-rock-900);
 
   --six-card-border-color: var(--six-color-web-rock-100);
+
+  --six-picto-background-color: var(--six-color-black);
+
+  --six-item-picker-color-disabled: var(--six-color-web-rock-300);
+  --six-item-picker-background-color-hover: var(--six-color-web-rock-100);
 
   --six-file-list-item-icon-color-hover: var(--six-color-web-rock-900);
 
@@ -134,6 +139,9 @@
   --six-date-cell-outdated-color: var(--six-color-web-rock-400);
 
   --six-dialog-color: var(--six-color-web-rock-900);
+
+  --six-language-switcher-color-hover: var(--six-color-web-rock-600);
+  --six-language-switcher-color-selected: var(--six-color-black);
 
   --six-button-transparent-background-color-hover: var(--six-color-web-rock-100);
   --six-button-secondary-border-color: var(--six-color-web-rock-900);
@@ -238,6 +246,11 @@
 
   --six-card-border-color: var(--six-color-web-rock-900);
 
+  --six-picto-background-color: var(--six-color-white);
+
+  --six-item-picker-color-disabled: var(--six-color-web-rock-800);
+  --six-item-picker-background-color-hover: var(--six-color-web-rock-900);
+
   --six-file-list-item-icon-color-hover: var(--six-color-web-rock-300);
 
   --six-dropdown-border-color: var(--six-color-web-rock-800);
@@ -251,6 +264,9 @@
   --six-date-cell-outdated-color: var(--six-color-web-rock-700);
 
   --six-dialog-color: var(--six-color-web-rock-200);
+
+  --six-language-switcher-color-hover: var(--six-color-web-rock-400);
+  --six-language-switcher-color-selected: var(--six-color-white);
 
   --six-button-transparent-background-color-hover: var(--six-color-web-rock-900);
   --six-button-secondary-border-color: var(--six-color-web-rock-100);
