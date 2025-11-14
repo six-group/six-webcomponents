@@ -372,12 +372,12 @@ html {
   --six-sidebar-border-color: var(--six-color-web-rock-800);
   --six-sidebar-item-color-hover: var(--six-color-web-rock-400);
 
-  --six-tab-color: var(--six-color-web-rock-900);
-  --six-tab-color-active: var(--six-color-web-rock-900);
-  --six-tab-color-hover: var(--six-color-web-rock-700);
-  --six-tab-color-disabled: var(--six-color-web-rock-400);
-  --six-tab-border-color: var(--six-color-white);
-  --six-tab-border-color-active: var(--six-color-web-rock-900);
+  --six-tab-color: var(--six-color-web-rock-100);
+  --six-tab-color-active: var(--six-color-web-rock-100);
+  --six-tab-color-hover: var(--six-color-web-rock-300);
+  --six-tab-color-disabled: var(--six-color-web-rock-600);
+  --six-tab-border-color: var(--six-color-black);
+  --six-tab-border-color-active: var(--six-color-web-rock-100);
 
   --six-rating-color: var(--six-color-web-rock-800);
   --six-rating-color-active: var(--six-color-success-600);

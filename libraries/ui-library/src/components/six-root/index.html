@@ -129,10 +129,18 @@
             <div slot="main">
               <h2>Compoments Testing:</h2>
 
-              <six-switch checked>Checked</six-switch>
-              <six-switch> Checked</six-switch>
-              <six-switch disabled checked>Checked</six-switch>
-              <six-switch disabled>Checked</six-switch>
+              <six-tab-group>
+                <six-tab slot="nav" panel="general">General</six-tab>
+                <six-tab slot="nav" panel="custom">Custom</six-tab>
+                <six-tab slot="nav" panel="advanced">Advanced</six-tab>
+                <six-tab slot="nav" panel="disabled" disabled>Disabled</six-tab>
+
+                <six-tab-panel name="general">This is the general tab panel.</six-tab-panel>
+                <six-tab-panel name="custom">This is the custom tab panel.</six-tab-panel>
+                <six-tab-panel name="advanced">This is the advanced tab panel.</six-tab-panel>
+                <six-tab-panel name="disabled">This is a disabled tab panel.</six-tab-panel>
+              </six-tab-group>
+
               <h2>Theme Demo</h2>
               <p>
                 Current theme: <strong id="current-theme">light</strong> | Applied theme:
