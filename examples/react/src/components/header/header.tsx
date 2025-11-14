@@ -12,6 +12,7 @@ import {
   SixMenu,
   SixMenuItem,
   SixSearchField,
+  SixThemeSwitcher,
 } from '@six-group/ui-library-react';
 import styles from './header.module.css';
 import { SixLanguageSwitcherCustomEvent } from '@six-group/ui-library';
@@ -67,6 +68,10 @@ export function Header({ leftSidebar, toggleRightSidebar }: HeaderProps) {
             </SixBadge>
           )}
         </SixIconButton>
+      </SixHeaderItem>
+
+      <SixHeaderItem>
+        <SixThemeSwitcher label="Toggle Theme"></SixThemeSwitcher>
       </SixHeaderItem>
 
       <SixHeaderDropdownItem>

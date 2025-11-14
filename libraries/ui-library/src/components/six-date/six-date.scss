@@ -23,9 +23,9 @@
   pointer-events: none;
   padding: var(--six-spacing-small);
   padding-bottom: var(--six-spacing-x-large);
-  border: 1px solid var(--six-color-web-rock-300);
+  border: 1px solid var(--six-date-panel-border-color);
   box-shadow: var(--six-shadow-small);
-  background-color: var(--six-color-white);
+  background-color: var(--six-date-panel-background-color);
 
   // animation
   opacity: 0;
@@ -68,7 +68,7 @@ header {
     padding: var(--six-spacing-x-small);
 
     &:hover {
-      background-color: var(--six-color-web-rock-100);
+      background-color: var(--six-date-selector-background-color-hover);
     }
   }
 }
@@ -82,7 +82,7 @@ header {
   padding: var(--six-spacing-x-small);
 
   &:hover {
-    background-color: var(--six-color-web-rock-200);
+    background-color: var(--six-date-cell-background-color-hover);
   }
 }
 
@@ -94,7 +94,7 @@ header {
 
 .cell--today .label {
   padding: var(--six-spacing-xxx-small);
-  border-bottom: 2px solid var(--six-color-web-rock-900);
+  border-bottom: 2px solid var(--six-date-cell-today-border-color);
 }
 
 .cell--selected.cell--today .label {
@@ -128,7 +128,7 @@ header {
 }
 
 .cell--outdated {
-  color: var(--six-color-web-rock-400);
+  color: var(--six-date-cell-outdated-color);
 }
 
 .cell--today.cell--disabled .label {

@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - Added the ability to disable the `ValidationService` on Angular. See
   [docs](./guide/angular.md#customisingdisabling-validationservice) for more details.
+- `six-root`: Added theme support (dark/light/auto) in coordination with design team.
 
 ### Fixed
 

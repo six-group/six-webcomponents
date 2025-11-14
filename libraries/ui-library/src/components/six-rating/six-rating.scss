@@ -2,8 +2,6 @@
 @import '../../functional-components/form-control/form-control';
 
 :host {
-  --six-rating-color: var(--six-color-web-rock-500);
-  --six-rating-color-active: var(--six-color-warning-700);
   --six-rating-color-disabled-opacity: 0.4;
 
   display: block;

@@ -14,7 +14,7 @@
     overflow: auto;
 
     &.sidebar--open {
-      border-right: 1px solid var(--six-color-web-rock-300);
+      border-right: 1px solid var(--six-sidebar-border-color);
     }
 
     &:not(.sidebar--visible) {

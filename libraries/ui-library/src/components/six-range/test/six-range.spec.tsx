@@ -18,7 +18,7 @@ describe('six-range', () => {
          </label>
          <div class="form-control__input">
           <div class="range" part="base">
-           <input class="range__control" max="100" min="0" part="input" step="1" type="range" value="0" style="background: -webkit-linear-gradient(left, var(--track-color) 0%, var(--track-color) 0%, var(--six-color-web-rock-300) 0%);">
+           <input class="range__control" max="100" min="0" part="input" step="1" type="range" value="0" style="background: -webkit-linear-gradient(left, var(--track-color) 0%, var(--track-color) 0%, var(--six-range-track-color-disabled) 0%);">
           </div>
          </div>
          <div aria-hidden="true" class="form-control__error-text" id="input-error-text-1" part="error-text">
