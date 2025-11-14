@@ -4,8 +4,8 @@
 :host {
   --thumb-size: 14px;
   --tooltip-offset-y: 10px;
-  --track-color: var(--six-color-web-rock-900);
-  --thumb-color: var(--six-color-web-rock-900);
+  --track-color: var(--six-range-track-color);
+  --thumb-color: var(--six-range-thumb-color);
   --track-height: 3px;
 
   display: block;
@@ -67,7 +67,7 @@
     &::-moz-range-track {
       width: 100%;
       height: var(--track-height);
-      background-color: var(--six-progress-track-color);
+      background-color: red;
       border-radius: 3px;
       border: none;
     }
@@ -115,16 +115,16 @@
     &:disabled {
       &::-webkit-slider-thumb {
         cursor: not-allowed;
-        color: var(--six-color-web-rock-300);
-        border-color: var(--six-color-web-rock-300);
-        background-color: var(--six-color-web-rock-300);
+        color: var(--six-range-color-disabled);
+        border-color: var(--six-range-color-disabled);
+        background-color: var(--six-range-color-disabled);
       }
 
       &::-moz-range-thumb {
         cursor: not-allowed;
-        color: var(--six-color-web-rock-300);
-        border-color: var(--six-color-web-rock-300);
-        background-color: var(--six-color-web-rock-300);
+        color: var(--six-range-color-disabled);
+        border-color: var(--six-range-color-disabled);
+        background-color: var(--six-range-color-disabled);
       }
     }
   }

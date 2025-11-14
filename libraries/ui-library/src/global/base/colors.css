@@ -186,6 +186,11 @@ html {
   --six-progress-indicator-color: var(--six-color-danger-800);
   --six-progress-label-color: var(--six-color-white);
 
+  --six-range-track-color: var(--six-color-web-rock-900);
+  --six-range-thumb-color: var(--six-color-web-rock-900);
+  --six-range-color-disabled: var(--six-color-web-rock-300);
+  --six-range-track-color-disabled: var(--six-color-web-rock-300);
+
   --six-tooltip-background-color: var(--six-color-web-rock-900);
   --six-tooltip-color: var(--six-color-white);
 
@@ -307,9 +312,14 @@ html {
   --six-panel-background-color: var(--six-color-web-rock-800);
   --six-panel-border-color: var(--six-color-clay-50);
 
-  --six-progress-track-color: var(--six-color-web-rock-300);
+  --six-progress-track-color: var(--six-color-web-rock-900);
   --six-progress-indicator-color: var(--six-color-danger-800);
   --six-progress-label-color: var(--six-color-white);
+
+  --six-range-track-color: var(--six-color-web-rock-400);
+  --six-range-thumb-color: var(--six-color-web-rock-400);
+  --six-range-color-disabled: var(--six-color-web-rock-900);
+  --six-range-track-color-disabled: var(--six-color-web-rock-900);
 
   --six-tooltip-background-color: var(--six-color-web-rock-900);
   --six-tooltip-color: var(--six-color-white);
