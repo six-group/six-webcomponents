@@ -1771,6 +1771,37 @@ export declare interface SixTextarea extends Components.SixTextarea {
 
 
 @ProxyCmp({
+  inputs: ['disabled', 'label', 'size']
+})
+@Component({
+  selector: 'six-theme-switcher',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['disabled', 'label', 'size'],
+  standalone: false
+})
+export class SixThemeSwitcher {
+  protected el: HTMLSixThemeSwitcherElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['six-theme-switcher-change']);
+  }
+}
+
+
+import type { EmptyPayload as ISixThemeSwitcherEmptyPayload } from '@six-group/ui-library';
+
+export declare interface SixThemeSwitcher extends Components.SixThemeSwitcher {
+  /**
+   * Emitted when the theme is changed.
+   */
+  'six-theme-switcher-change': EventEmitter<CustomEvent<ISixThemeSwitcherEmptyPayload>>;
+}
+
+
+@ProxyCmp({
   inputs: ['closeable', 'disableTooltip', 'disabled', 'elevated', 'iconName', 'label', 'size'],
   methods: ['hide', 'show']
 })

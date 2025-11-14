@@ -7,7 +7,7 @@
 
 /* eslint-disable */
 
-import { type EmptyPayload, type SixAlertCustomEvent, type SixButtonCustomEvent, type SixCheckboxCustomEvent, type SixDatepickerCustomEvent, type SixDatepickerSelectPayload, type SixDetailsCustomEvent, type SixDialogCustomEvent, type SixDialogRequestClose, type SixDrawerCustomEvent, type SixDrawerRequestClose, type SixDropdownAsyncFilterPayload, type SixDropdownAutoFilterPayload, type SixDropdownCustomEvent, type SixDropdownScrollPayload, type SixFileListDownloadPayload, type SixFileListItemCustomEvent, type SixFileListRemovePayload, type SixFileUploadCustomEvent, type SixFileUploadFailurePayload, type SixFileUploadSuccessPayload, type SixInputCustomEvent, type SixItemPickerChangePayload, type SixItemPickerCustomEvent, type SixLanguageSwitcherChangePayload, type SixLanguageSwitcherCustomEvent, type SixMenuCustomEvent, type SixMenuItemSelectedPayload, type SixRadioCustomEvent, type SixRangeCustomEvent, type SixRatingCustomEvent, type SixSearchFieldChangePayload, type SixSearchFieldCustomEvent, type SixSelectChangePayload, type SixSelectCustomEvent, type SixSidebarCustomEvent, type SixSwitchCustomEvent, type SixTabCustomEvent, type SixTabGroupCustomEvent, type SixTabHidePayload, type SixTabShowPayload, type SixTagCustomEvent, type SixTextareaCustomEvent, type SixTileCustomEvent, type SixTimepickerChange, type SixTimepickerCustomEvent, type SixTooltipCustomEvent } from "@six-group/ui-library";
+import { type EmptyPayload, type SixAlertCustomEvent, type SixButtonCustomEvent, type SixCheckboxCustomEvent, type SixDatepickerCustomEvent, type SixDatepickerSelectPayload, type SixDetailsCustomEvent, type SixDialogCustomEvent, type SixDialogRequestClose, type SixDrawerCustomEvent, type SixDrawerRequestClose, type SixDropdownAsyncFilterPayload, type SixDropdownAutoFilterPayload, type SixDropdownCustomEvent, type SixDropdownScrollPayload, type SixFileListDownloadPayload, type SixFileListItemCustomEvent, type SixFileListRemovePayload, type SixFileUploadCustomEvent, type SixFileUploadFailurePayload, type SixFileUploadSuccessPayload, type SixInputCustomEvent, type SixItemPickerChangePayload, type SixItemPickerCustomEvent, type SixLanguageSwitcherChangePayload, type SixLanguageSwitcherCustomEvent, type SixMenuCustomEvent, type SixMenuItemSelectedPayload, type SixRadioCustomEvent, type SixRangeCustomEvent, type SixRatingCustomEvent, type SixSearchFieldChangePayload, type SixSearchFieldCustomEvent, type SixSelectChangePayload, type SixSelectCustomEvent, type SixSidebarCustomEvent, type SixSwitchCustomEvent, type SixTabCustomEvent, type SixTabGroupCustomEvent, type SixTabHidePayload, type SixTabShowPayload, type SixTagCustomEvent, type SixTextareaCustomEvent, type SixThemeSwitcherCustomEvent, type SixTileCustomEvent, type SixTimepickerChange, type SixTimepickerCustomEvent, type SixTooltipCustomEvent } from "@six-group/ui-library";
 import { SixAlert as SixAlertElement, defineCustomElement as defineSixAlert } from "@six-group/ui-library/dist/components/six-alert.js";
 import { SixAvatar as SixAvatarElement, defineCustomElement as defineSixAvatar } from "@six-group/ui-library/dist/components/six-avatar.js";
 import { SixBadge as SixBadgeElement, defineCustomElement as defineSixBadge } from "@six-group/ui-library/dist/components/six-badge.js";
@@ -65,6 +65,7 @@ import { SixTabPanel as SixTabPanelElement, defineCustomElement as defineSixTabP
 import { SixTab as SixTabElement, defineCustomElement as defineSixTab } from "@six-group/ui-library/dist/components/six-tab.js";
 import { SixTag as SixTagElement, defineCustomElement as defineSixTag } from "@six-group/ui-library/dist/components/six-tag.js";
 import { SixTextarea as SixTextareaElement, defineCustomElement as defineSixTextarea } from "@six-group/ui-library/dist/components/six-textarea.js";
+import { SixThemeSwitcher as SixThemeSwitcherElement, defineCustomElement as defineSixThemeSwitcher } from "@six-group/ui-library/dist/components/six-theme-switcher.js";
 import { SixTile as SixTileElement, defineCustomElement as defineSixTile } from "@six-group/ui-library/dist/components/six-tile.js";
 import { SixTimepicker as SixTimepickerElement, defineCustomElement as defineSixTimepicker } from "@six-group/ui-library/dist/components/six-timepicker.js";
 import { SixTooltip as SixTooltipElement, defineCustomElement as defineSixTooltip } from "@six-group/ui-library/dist/components/six-tooltip.js";
@@ -887,6 +888,17 @@ export const SixTextarea: StencilReactComponent<SixTextareaElement, SixTextareaE
         onSixTextareaBlur: 'six-textarea-blur'
     } as SixTextareaEvents,
     defineCustomElement: defineSixTextarea
+});
+
+export type SixThemeSwitcherEvents = { onSixThemeSwitcherChange: EventName<SixThemeSwitcherCustomEvent<EmptyPayload>> };
+
+export const SixThemeSwitcher: StencilReactComponent<SixThemeSwitcherElement, SixThemeSwitcherEvents> = /*@__PURE__*/ createComponent<SixThemeSwitcherElement, SixThemeSwitcherEvents>({
+    tagName: 'six-theme-switcher',
+    elementClass: SixThemeSwitcherElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: { onSixThemeSwitcherChange: 'six-theme-switcher-change' } as SixThemeSwitcherEvents,
+    defineCustomElement: defineSixThemeSwitcher
 });
 
 export type SixTileEvents = {

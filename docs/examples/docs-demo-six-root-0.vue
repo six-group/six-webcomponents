@@ -23,7 +23,7 @@
 
               
               <six-header-item>
-                <six-icon-button id="theme-toggle" name="dark_mode"></six-icon-button>
+                <six-theme-switcher></six-theme-switcher>
               </six-header-item>
 
               
@@ -36,9 +36,6 @@
                 <six-menu>
                   <six-menu-item><b>Cat Kittens</b><br>cat.kitty.kittens@themCatsBeCool.com</six-menu-item>
                   <six-menu-item><b>Language</b><br><six-language-switcher></six-language-switcher></six-menu-item>
-                  <six-menu-item id="menu-theme-light">Theme: Light</six-menu-item>
-                  <six-menu-item id="menu-theme-dark">Theme: Dark</six-menu-item>
-                  <six-menu-item id="menu-theme-auto">Theme: Auto</six-menu-item>
                   <six-menu-item>Change password</six-menu-item>
                   <six-menu-item>Logout</six-menu-item>
                 </six-menu>
@@ -98,19 +95,6 @@
             </six-sidebar>
 
             <div slot="main">
-              <h2>Theme Demo</h2>
-              <p>
-                Current theme: <strong id="current-theme">light</strong> | Applied theme:
-                <strong id="applied-theme">light</strong>
-              </p>
-
-              <div style="display: flex; gap: 1rem; margin: 2rem 0; flex-wrap: wrap">
-                <six-button id="theme-light-btn">Light Theme</six-button>
-                <six-button id="theme-dark-btn">Dark Theme</six-button>
-                <six-button id="theme-auto-btn">Auto Theme</six-button>
-                <six-button id="theme-toggle-btn">Toggle Theme</six-button>
-              </div>
-
               <h3>Component Examples</h3>
               <six-input label="Input Field" placeholder="Type something" value="Sample text"></six-input>
               <br>
@@ -118,6 +102,11 @@
               <br>
               <six-button>Primary Button</six-button>
               <six-button type="secondary">Secondary Button</six-button>
+              <br><br>
+              <six-alert type="info" open>
+                <six-icon slot="icon">info</six-icon>
+                This is an info alert. Toggle the theme using the switcher in the header to see how components adapt.
+              </six-alert>
 
               <h3>Content</h3>
               <div>
@@ -274,26 +263,7 @@ export default {
               cards: ['six-sidebar[slot="right-sidebar"] six-card'],
               hamburger: '#menu-button',
               searchItem: '#search-header-item',
-              themeToggle: '#theme-toggle',
-              themeLightBtn: '#theme-light-btn',
-              themeDarkBtn: '#theme-dark-btn',
-              themeAutoBtn: '#theme-auto-btn',
-              themeToggleBtn: '#theme-toggle-btn',
-              currentThemeSpan: '#current-theme',
-              appliedThemeSpan: '#applied-theme',
-              menuThemeLight: '#menu-theme-light',
-              menuThemeDark: '#menu-theme-dark',
-              menuThemeAuto: '#menu-theme-auto',
             });
-
-            const updateThemeDisplay = async () => {
-              if (window.SixTheme) {
-                const { theme, appliedTheme } = await window.SixTheme.getTheme();
-                Select.currentThemeSpan.textContent = theme;
-                Select.appliedThemeSpan.textContent = appliedTheme;
-                Select.themeToggle.setAttribute('name', appliedTheme === 'dark' ? 'light_mode' : 'dark_mode');
-              }
-            };
 
             Select.hamburger.addEventListener('click', () => Select.leftSidebar.toggleAttribute('open'));
 
@@ -315,48 +285,6 @@ export default {
             Select.textButton.addEventListener('click', () => {
               Select.textSection.style.display = Select.textSection.style.display === 'none' ? 'block' : 'none';
             });
-
-            Select.themeToggle.addEventListener('click', async () => {
-              await window.SixTheme.toggle();
-              await updateThemeDisplay();
-            });
-
-            Select.themeLightBtn.addEventListener('click', async () => {
-              await window.SixTheme.setTheme('light');
-              await updateThemeDisplay();
-            });
-
-            Select.themeDarkBtn.addEventListener('click', async () => {
-              await window.SixTheme.setTheme('dark');
-              await updateThemeDisplay();
-            });
-
-            Select.themeAutoBtn.addEventListener('click', async () => {
-              await window.SixTheme.setTheme('auto');
-              await updateThemeDisplay();
-            });
-
-            Select.themeToggleBtn.addEventListener('click', async () => {
-              await window.SixTheme.toggle();
-              await updateThemeDisplay();
-            });
-
-            Select.menuThemeLight.addEventListener('click', async () => {
-              await window.SixTheme.setTheme('light');
-              await updateThemeDisplay();
-            });
-
-            Select.menuThemeDark.addEventListener('click', async () => {
-              await window.SixTheme.setTheme('dark');
-              await updateThemeDisplay();
-            });
-
-            Select.menuThemeAuto.addEventListener('click', async () => {
-              await window.SixTheme.setTheme('auto');
-              await updateThemeDisplay();
-            });
-
-            updateThemeDisplay();
           })();
          }
 }

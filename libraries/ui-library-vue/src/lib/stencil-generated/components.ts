@@ -779,6 +779,16 @@ export const SixTextarea: StencilVueComponent<JSX.SixTextarea, JSX.SixTextarea["
 'value', 'input');
 
 
+export const SixThemeSwitcher: StencilVueComponent<JSX.SixThemeSwitcher> = /*@__PURE__*/ defineContainer<JSX.SixThemeSwitcher>('six-theme-switcher', undefined, [
+  'size',
+  'disabled',
+  'label',
+  'six-theme-switcher-change'
+], [
+  'six-theme-switcher-change'
+]);
+
+
 export const SixTile: StencilVueComponent<JSX.SixTile> = /*@__PURE__*/ defineContainer<JSX.SixTile>('six-tile', undefined, [
   'label',
   'iconName',
