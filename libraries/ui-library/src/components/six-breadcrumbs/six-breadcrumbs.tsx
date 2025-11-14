@@ -48,7 +48,6 @@ export class SixBreadcrumbs {
   private createSeparatorElement(): HTMLElement {
     // Find a custom separator by checking direct children only
     const customSeparator = this.getCustomSeparator();
-    console.log(customSeparator);
     if (customSeparator) {
       const clone = customSeparator.cloneNode(true) as HTMLElement;
       clone.removeAttribute('id');

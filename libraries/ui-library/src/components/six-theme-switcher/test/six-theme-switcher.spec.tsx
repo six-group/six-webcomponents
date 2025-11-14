@@ -9,7 +9,7 @@ describe('six-theme-switcher', () => {
     });
 
     expect(page.root).toEqualHtml(`
-      <six-theme-switcher size="medium">
+      <six-theme-switcher label="Toggle theme" size="medium">
         <mock:shadow-root>
           <six-icon-button label="Toggle theme" name="dark_mode" part="base" size="medium"></six-icon-button>
         </mock:shadow-root>
