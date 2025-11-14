@@ -244,6 +244,26 @@ html {
 
   --six-rating-color: var(--six-color-web-rock-500);
   --six-rating-color-active: var(--six-color-success-600);
+
+  --six-scrollbar-background-color: var(--six-color-web-rock-300);
+  --six-scrollbar-thumb-color: var(--six-color-web-rock-500);
+  --six-scrollbar-thumb-hover-color: var(--six-color-web-rock-600);
+
+  /* Firefox, Chrome, Safari, Edge, Opera */
+  scrollbar-color: var(--six-scrollbar-thumb-color) var(--six-scrollbar-background-color);
+
+  /* Safari */
+  &::-webkit-scrollbar-track {
+    background: var(--six-scrollbar-background-color);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--six-scrollbar-thumb-color);
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: var(--six-scrollbar-thumb-hover-color);
+  }
 }
 
 .theme-dark {
@@ -383,4 +403,24 @@ html {
   --six-rating-color-active: var(--six-color-success-600);
 
   --six-root-main-background-color: var(--needed-additional-color);
+
+  --six-scrollbar-background-color: var(--six-color-web-rock-900);
+  --six-scrollbar-thumb-color: var(--six-color-web-rock-700);
+  --six-scrollbar-thumb-hover-color: var(--six-color-web-rock-600);
+
+  /* Firefox, Chrome, Safari, Edge, Opera */
+  scrollbar-color: var(--six-scrollbar-thumb-color) var(--six-scrollbar-background-color);
+
+  /* Safari */
+  &::-webkit-scrollbar-track {
+    background: var(--six-scrollbar-background-color);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--six-scrollbar-thumb-color);
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: var(--six-scrollbar-thumb-hover-color);
+  }
 }
