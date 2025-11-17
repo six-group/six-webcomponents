@@ -5,8 +5,6 @@
    Theme switcher component will toggle .theme-dark class
    on <html> to switch colors.
 ============================================ */
-@import 'dark.css';
-@import 'light.css';
 
 :root {
   --six-color-red: #de3919;
