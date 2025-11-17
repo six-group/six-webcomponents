@@ -15,7 +15,6 @@ const componentNavItems = components.map((component) => {
 // https://vitepress.dev/reference/site-config
 export default withMermaid({
   ignoreDeadLinks: [/^https?:\/\/localhost/, './../wrappers/set-attributes'],
-  appearance: false,
   head: [['link', { rel: 'icon', href: 'favicon.ico' }]],
   title: 'Web Components',
   description: 'Component Library following the SIX Style Guide',

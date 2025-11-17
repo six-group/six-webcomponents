@@ -6,20 +6,59 @@
  */
 
 /**
- * Colors
- --vp-code-block-color
+ * Colors - Light Theme
  * -------------------------------------------------------------------------- */
 
 :root {
+  /* Brand colors */
   --vp-c-brand-1: #de3919;
   --vp-c-brand-2: #e83c1a;
   --vp-c-brand-3: #f23f1b;
   --vp-c-brand-soft: #f7401b;
+
+  /* Text colors */
+  --vp-c-text-1: unset;
+
+  /* Layout */
   --vp-nav-logo-height: 14px;
+
+  /* Search */
   --vp-local-search-highlight-bg: none;
   --vp-local-search-highlight-text: var(--vp-c-brand-1);
+
+  /* Code blocks - Light theme */
   --vp-code-block-bg: #f6f6f7;
   --vp-code-bg: #f6f6f7;
+  --vp-code-color: #383a42;
+}
+
+/**
+ * Colors - Dark Theme
+ * -------------------------------------------------------------------------- */
+
+.theme-dark {
+  /* Code blocks - Dark theme */
+  --vp-code-block-bg: #1e1e1e;
+  --vp-code-bg: #1e1e1e;
+  --vp-code-color: #abb2bf;
+
+  /* Background colors */
+  --vp-c-bg: #1a1a1a;
+  --vp-c-bg-soft: #242424;
+  --vp-c-bg-mute: #2c2c2c;
+  --vp-c-bg-alt: #151515;
+
+  /* Divider colors */
+  --vp-c-divider: #2e2e2e;
+  --vp-c-gutter: #1a1a1a;
+
+  /* Text colors */
+  --vp-c-text-1: rgba(255, 255, 245, 0.86);
+  --vp-c-text-2: rgba(235, 235, 245, 0.6);
+  --vp-c-text-3: rgba(235, 235, 245, 0.38);
+
+  /* Sidebar */
+  --vp-sidebar-bg-color: #1a1a1a;
 }
 
 /**
@@ -45,4 +84,24 @@
 /* overwrite to match color of vitepress code background */
 code {
   background: var(--vp-code-bg);
+  color: var(--vp-code-color);
+}
+
+/* Code blocks styling */
+.vp-doc div[class*='language-'] {
+  background-color: var(--vp-code-block-bg);
+}
+
+.vp-doc div[class*='language-'] code {
+  color: var(--vp-code-color);
+}
+
+/* Improve code block header visibility in dark mode */
+.theme-dark .vp-doc div[class*='language-'] .lang {
+  color: rgba(235, 235, 245, 0.6);
+}
+
+/* Improve line numbers visibility */
+.theme-dark .vp-doc .line-numbers-wrapper {
+  color: rgba(235, 235, 245, 0.3);
 }
