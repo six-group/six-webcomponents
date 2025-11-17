@@ -21,6 +21,15 @@ function syncThemeClass(isDark: boolean) {
   htmlElement.classList.add(isDark ? 'theme-dark' : 'theme-light');
 }
 
+// Initialize theme class immediately on load (before Vue mounts)
+if (typeof window !== 'undefined') {
+  const savedTheme = localStorage.getItem('vitepress-theme-appearance');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const isDark =
+    savedTheme === 'dark' || (savedTheme === 'auto' && prefersDark) || (!savedTheme && prefersDark);
+  syncThemeClass(isDark);
+}
+
 export default {
   extends: DefaultTheme,
   Layout: () => {

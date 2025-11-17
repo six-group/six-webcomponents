@@ -35,7 +35,7 @@
 /**
  * Colors - Dark Theme
  * -------------------------------------------------------------------------- */
-
+.dark,
 .theme-dark {
   /* Code blocks - Dark theme */
   --vp-code-block-bg: #1e1e1e;
@@ -43,7 +43,7 @@
   --vp-code-color: #abb2bf;
 
   /* Background colors */
-  --vp-c-bg: #1a1a1a;
+  --vp-c-bg: var(--needed-additional-color);
   --vp-c-bg-soft: #242424;
   --vp-c-bg-mute: #2c2c2c;
   --vp-c-bg-alt: #151515;
@@ -58,7 +58,7 @@
   --vp-c-text-3: rgba(235, 235, 245, 0.38);
 
   /* Sidebar */
-  --vp-sidebar-bg-color: #1a1a1a;
+  --vp-sidebar-bg-color: #232323;
 }
 
 /**
@@ -97,11 +97,13 @@ code {
 }
 
 /* Improve code block header visibility in dark mode */
+.dark .vp-doc div[class*='language-'] .lang,
 .theme-dark .vp-doc div[class*='language-'] .lang {
   color: rgba(235, 235, 245, 0.6);
 }
 
 /* Improve line numbers visibility */
+.dark .vp-doc .line-numbers-wrapper,
 .theme-dark .vp-doc .line-numbers-wrapper {
   color: rgba(235, 235, 245, 0.3);
 }
