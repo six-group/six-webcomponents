@@ -705,29 +705,19 @@ export class SixDropdown {
                 </six-icon>
               </six-input>
             )}
-            {this.scrollEnabled ? (
-              <div
-                class={{
-                  dropdown__panel__scroll: true,
-                  'dropdown__panel__scroll--virtual': this.virtualScroll,
-                }}
-                onScroll={this.handleDropdownScroll}
-                ref={(el) => (this.scrollPanel = el)}
-              >
-                <slot ref={(el) => (this.panelSlot = el as HTMLSlotElement)} />
-                {this.options.length > 0 && (
-                  <six-menu part="menu" items={this.renderedOptions} virtualScroll={this.virtualScroll}></six-menu>
-                )}
-              </div>
-            ) : (
-              <div ref={(el) => (this.scrollPanel = el)}>
-                <slot ref={(el) => (this.panelSlot = el as HTMLSlotElement)} />
-                {this.options.length > 0 && (
-                  <six-menu part="menu" items={this.renderedOptions} virtualScroll={this.virtualScroll}></six-menu>
-                )}
-              </div>
-            )}
-
+            <div
+              class={{
+                dropdown__panel__scroll: this.scrollEnabled,
+                'dropdown__panel__scroll--virtual': this.virtualScroll,
+              }}
+              onScroll={this.handleDropdownScroll}
+              ref={(el) => (this.scrollPanel = el)}
+            >
+              <slot ref={(el) => (this.panelSlot = el as HTMLSlotElement)} />
+              {this.options.length > 0 && (
+                <six-menu part="menu" items={this.renderedOptions} virtualScroll={this.virtualScroll}></six-menu>
+              )}
+            </div>
             <slot name="dropdown-footer"></slot>
           </div>
         </div>
