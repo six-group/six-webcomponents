@@ -8,11 +8,9 @@ describe('six-icon', () => {
       html: `<six-icon>home</six-icon>`,
     });
     expect(page.root).toEqualHtml(`
-      <six-icon size="inherit">
+      <six-icon size="inherit" class="six-icon--inherit material-icons material-icons-outlined">
         <mock:shadow-root>
-          <i class="icon--inherit material-icons material-icons-outlined">
             <slot></slot>
-          </i>
         </mock:shadow-root>
         home
       </six-icon>
@@ -25,11 +23,9 @@ describe('six-icon', () => {
       html: `<six-icon library="material-symbols">home</six-icon>`,
     });
     expect(page.root).toEqualHtml(`
-      <six-icon size="inherit" library="material-symbols">
+      <six-icon size="inherit" library="material-symbols" class="six-icon--inherit material-symbols-outlined">
         <mock:shadow-root>
-          <i class="icon--inherit material-symbols-outlined">
             <slot></slot>
-          </i>
         </mock:shadow-root>
         home
       </six-icon>
@@ -42,11 +38,9 @@ describe('six-icon', () => {
       html: `<six-icon library="material-symbols" filled>home</six-icon>`,
     });
     expect(page.root).toEqualHtml(`
-      <six-icon size="inherit" library="material-symbols" filled="">
+      <six-icon size="inherit" library="material-symbols" filled=""  class="six-icon--inherit material-symbols">
         <mock:shadow-root>
-          <i class="icon--inherit material-symbols">
             <slot></slot>
-          </i>
         </mock:shadow-root>
         home
       </six-icon>
