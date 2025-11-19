@@ -1053,8 +1053,19 @@ export namespace Components {
         "submit": boolean;
     }
     /**
-     * @since 1.0
+     * @since 5.2
      * @status stable
+     * @summary Renders a Material icon, Material Symbol, or external SVG source in a unified way.
+     * - Without `src`, it renders a ligature-based Material icon / symbol using the component’s text content.
+     * - With `src` pointing to an image or SVG file, it renders either an `<img>` or `<svg><use/></svg>` sprite.
+     * @csspart svg - The `<svg>` element when `inlineSvg` is true.
+     * @prop {string} [src] - Icon name, path to an SVG file, or data URL.
+     * @prop {boolean} [inlineSvg=false] - When `true` and `src` is an SVG, renders `<svg><use/></svg>` instead of `<img>`.
+     * @prop {'inherit' | 'xSmall' | 'small' | 'medium' | 'large' | 'xLarge' | 'xxLarge' | 'xxxLarge'} [size='inherit']
+     * Visual size of the icon.
+     * @prop {boolean} [filled=false] - For Material fonts, toggles between outlined and filled variants when available.
+     * @prop {'material-icons' | 'material-symbols'} [library]
+     * Icon library to use when rendering ligature-based Material icons. Defaults to the globally configured library.
      */
     interface SixIcon {
         /**
@@ -1063,7 +1074,7 @@ export namespace Components {
          */
         "filled": boolean;
         /**
-          * If the src is a svg, either render <svg><use/></svg> or <img>  - <svg><use/></svg> is better for styling (e.g. currentColor), but slower at rendering. - <img> is better for HTTP caching, but you cannot style the internal SVG elements.
+          * If the src is a svg, either render <svg><use/></svg> or <img>  - <svg><use/></svg> is better for styling (e.g. fill: red), but slower at rendering. - <img> is better for HTTP caching, but you cannot style the internal SVG elements.
           * @default false
          */
         "inlineSvg": boolean;
@@ -3123,8 +3134,19 @@ declare global {
         new (): HTMLSixHeaderMenuButtonElement;
     };
     /**
-     * @since 1.0
+     * @since 5.2
      * @status stable
+     * @summary Renders a Material icon, Material Symbol, or external SVG source in a unified way.
+     * - Without `src`, it renders a ligature-based Material icon / symbol using the component’s text content.
+     * - With `src` pointing to an image or SVG file, it renders either an `<img>` or `<svg><use/></svg>` sprite.
+     * @csspart svg - The `<svg>` element when `inlineSvg` is true.
+     * @prop {string} [src] - Icon name, path to an SVG file, or data URL.
+     * @prop {boolean} [inlineSvg=false] - When `true` and `src` is an SVG, renders `<svg><use/></svg>` instead of `<img>`.
+     * @prop {'inherit' | 'xSmall' | 'small' | 'medium' | 'large' | 'xLarge' | 'xxLarge' | 'xxxLarge'} [size='inherit']
+     * Visual size of the icon.
+     * @prop {boolean} [filled=false] - For Material fonts, toggles between outlined and filled variants when available.
+     * @prop {'material-icons' | 'material-symbols'} [library]
+     * Icon library to use when rendering ligature-based Material icons. Defaults to the globally configured library.
      */
     interface HTMLSixIconElement extends Components.SixIcon, HTMLStencilElement {
     }
@@ -4860,8 +4882,19 @@ declare namespace LocalJSX {
         "submit"?: boolean;
     }
     /**
-     * @since 1.0
+     * @since 5.2
      * @status stable
+     * @summary Renders a Material icon, Material Symbol, or external SVG source in a unified way.
+     * - Without `src`, it renders a ligature-based Material icon / symbol using the component’s text content.
+     * - With `src` pointing to an image or SVG file, it renders either an `<img>` or `<svg><use/></svg>` sprite.
+     * @csspart svg - The `<svg>` element when `inlineSvg` is true.
+     * @prop {string} [src] - Icon name, path to an SVG file, or data URL.
+     * @prop {boolean} [inlineSvg=false] - When `true` and `src` is an SVG, renders `<svg><use/></svg>` instead of `<img>`.
+     * @prop {'inherit' | 'xSmall' | 'small' | 'medium' | 'large' | 'xLarge' | 'xxLarge' | 'xxxLarge'} [size='inherit']
+     * Visual size of the icon.
+     * @prop {boolean} [filled=false] - For Material fonts, toggles between outlined and filled variants when available.
+     * @prop {'material-icons' | 'material-symbols'} [library]
+     * Icon library to use when rendering ligature-based Material icons. Defaults to the globally configured library.
      */
     interface SixIcon {
         /**
@@ -4870,7 +4903,7 @@ declare namespace LocalJSX {
          */
         "filled"?: boolean;
         /**
-          * If the src is a svg, either render <svg><use/></svg> or <img>  - <svg><use/></svg> is better for styling (e.g. currentColor), but slower at rendering. - <img> is better for HTTP caching, but you cannot style the internal SVG elements.
+          * If the src is a svg, either render <svg><use/></svg> or <img>  - <svg><use/></svg> is better for styling (e.g. fill: red), but slower at rendering. - <img> is better for HTTP caching, but you cannot style the internal SVG elements.
           * @default false
          */
         "inlineSvg"?: boolean;
@@ -6651,8 +6684,19 @@ declare module "@stencil/core" {
              */
             "six-header-menu-button": LocalJSX.SixHeaderMenuButton & JSXBase.HTMLAttributes<HTMLSixHeaderMenuButtonElement>;
             /**
-             * @since 1.0
+             * @since 5.2
              * @status stable
+             * @summary Renders a Material icon, Material Symbol, or external SVG source in a unified way.
+             * - Without `src`, it renders a ligature-based Material icon / symbol using the component’s text content.
+             * - With `src` pointing to an image or SVG file, it renders either an `<img>` or `<svg><use/></svg>` sprite.
+             * @csspart svg - The `<svg>` element when `inlineSvg` is true.
+             * @prop {string} [src] - Icon name, path to an SVG file, or data URL.
+             * @prop {boolean} [inlineSvg=false] - When `true` and `src` is an SVG, renders `<svg><use/></svg>` instead of `<img>`.
+             * @prop {'inherit' | 'xSmall' | 'small' | 'medium' | 'large' | 'xLarge' | 'xxLarge' | 'xxxLarge'} [size='inherit']
+             * Visual size of the icon.
+             * @prop {boolean} [filled=false] - For Material fonts, toggles between outlined and filled variants when available.
+             * @prop {'material-icons' | 'material-symbols'} [library]
+             * Icon library to use when rendering ligature-based Material icons. Defaults to the globally configured library.
              */
             "six-icon": LocalJSX.SixIcon & JSXBase.HTMLAttributes<HTMLSixIconElement>;
             /**
