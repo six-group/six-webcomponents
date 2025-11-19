@@ -235,20 +235,20 @@ The icons are available in different sizes. Default size is medium (24px).
 
 ## Properties
 
-| Property    | Attribute    | Description                                                                                                                                                                                                                                | Type                                                                                             | Default     |
-| ----------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ----------- |
-| `filled`    | `filled`     | If set to true the default material outlined icons are not used.                                                                                                                                                                           | `boolean`                                                                                        | `false`     |
-| `inlineSvg` | `inline-svg` | If the src is a svg, either render <svg><use/></svg> or <img>  - <svg><use/></svg> is better for styling (e.g. currentColor), but slower at rendering. - <img> is better for HTTP caching, but you cannot style the internal SVG elements. | `boolean`                                                                                        | `false`     |
-| `library`   | `library`    | Icon library for this instance. Overrides the global default. - "material-icons"    → Material Icons - "material-symbols"  → Material Symbols                                                                                              | `"material-icons" \| "material-symbols" \| undefined`                                            | `undefined` |
-| `size`      | `size`       | The icon's size.                                                                                                                                                                                                                           | `"inherit" \| "large" \| "medium" \| "small" \| "xLarge" \| "xSmall" \| "xxLarge" \| "xxxLarge"` | `'inherit'` |
-| `src`       | `src`        | Name of the icon, path to SVG file or a data image                                                                                                                                                                                         | `string \| undefined`                                                                            | `undefined` |
+| Property    | Attribute    | Description                                                                                                                                                                                                                             | Type                                                                                             | Default     |
+| ----------- | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ | ----------- |
+| `filled`    | `filled`     | If set to true the default material outlined icons are not used.                                                                                                                                                                        | `boolean`                                                                                        | `false`     |
+| `inlineSvg` | `inline-svg` | If the src is a svg, either render <svg><use/></svg> or <img>  - <svg><use/></svg> is better for styling (e.g. fill: red), but slower at rendering. - <img> is better for HTTP caching, but you cannot style the internal SVG elements. | `boolean`                                                                                        | `false`     |
+| `library`   | `library`    | Icon library for this instance. Overrides the global default. - "material-icons"    → Material Icons - "material-symbols"  → Material Symbols                                                                                           | `"material-icons" \| "material-symbols" \| undefined`                                            | `undefined` |
+| `size`      | `size`       | The icon's size.                                                                                                                                                                                                                        | `"inherit" \| "large" \| "medium" \| "small" \| "xLarge" \| "xSmall" \| "xxLarge" \| "xxxLarge"` | `'inherit'` |
+| `src`       | `src`        | Name of the icon, path to SVG file or a data image                                                                                                                                                                                      | `string \| undefined`                                                                            | `undefined` |
 
 
 ## Slots
 
-| Slot | Description                            |
-| ---- | -------------------------------------- |
-|      | Used to define the material icon name. |
+| Slot | Description                                                                 |
+| ---- | --------------------------------------------------------------------------- |
+|      | Used to define the material icon or symbol name when `src` is not provided. |
 
 
 ## Shadow Parts
