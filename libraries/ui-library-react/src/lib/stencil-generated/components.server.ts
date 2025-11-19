@@ -1042,6 +1042,7 @@ export const SixTab: StencilReactComponent<SixTabElement, SixTabEvents> = /*@__P
         panel: 'panel',
         active: 'active',
         closable: 'closable',
+        hoverContent: 'hover-content',
         disabled: 'disabled'
     },
     hydrateModule: import('@six-group/ui-library/hydrate') as Promise<HydrateModule>,
