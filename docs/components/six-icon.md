@@ -17,8 +17,8 @@ SIX UI Library supports Material **Icons** and **Symbols**. Browse: [Material Ic
   <six-icon>pie_chart</six-icon>
   <six-icon>settings</six-icon>
   <six-icon>sick</six-icon>
-  <six-icon>fort</six-icon>
-  <six-icon>castle</six-icon>
+  <six-icon src="fort"></six-icon>
+  <six-icon src="castle"></six-icon>
 </div>
 ```
 
@@ -201,24 +201,61 @@ The icons are available in different sizes. Default size is medium (24px).
 ```
 
 
+#### Custom SVG
+
+<docs-demo-six-icon-12></docs-demo-six-icon-12>
+
+```html
+<div style="display: flex; gap: 1em; min-height: 6rem; align-items: center">
+  <six-icon size="xSmall" src="/assets/test.svg"></six-icon>
+  <six-icon size="small" src="/assets/test.svg"></six-icon>
+  <six-icon size="large" src="/assets/test.svg"></six-icon>
+  <six-icon size="xxLarge" src="/assets/test.svg"></six-icon>
+</div>
+```
+
+
+#### Custom SVG inline
+
+<docs-demo-six-icon-13></docs-demo-six-icon-13>
+
+```html
+<div style="display: flex; gap: 1em; min-height: 6rem; align-items: center; fill: red">
+  <six-icon size="xSmall" src="/assets/test.svg" inline-svg></six-icon>
+  <six-icon size="small" src="/assets/test.svg" inline-svg></six-icon>
+  <six-icon size="large" src="/assets/test.svg" inline-svg></six-icon>
+  <six-icon size="xxLarge" src="/assets/test.svg" inline-svg></six-icon>
+</div>
+```
+
+
 
 <!-- Auto Generated Below -->
 
 
 ## Properties
 
-| Property  | Attribute | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Type                                                                                             | Default     |
-| --------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ | ----------- |
-| `filled`  | `filled`  | If set to true the default material outlined icons are not used.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | `boolean`                                                                                        | `false`     |
-| `library` | `library` | Icon library to use when no `library` prop is provided. By default, all `<six-icon>` instances fall back to the globally configured default library (via `setDefaultIconLibrary()` / `getDefaultIconLibrary()`), which is `"material-icons"` unless changed at runtime.  This allows teams to switch the default across an entire project without having to set the `library` prop on every `<six-icon>` instance.  Icon library for this instance. Overrides the global default. - "material-icons"  → Material Icons - "material-symbols"  → Material Symbols | `"material-icons" \| "material-symbols" \| undefined`                                            | `undefined` |
-| `size`    | `size`    | The icon's size.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | `"inherit" \| "large" \| "medium" \| "small" \| "xLarge" \| "xSmall" \| "xxLarge" \| "xxxLarge"` | `'inherit'` |
+| Property    | Attribute    | Description                                                                                                                                                                                                                             | Type                                                                                             | Default     |
+| ----------- | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ | ----------- |
+| `filled`    | `filled`     | If set to true the default material outlined icons are not used.                                                                                                                                                                        | `boolean`                                                                                        | `false`     |
+| `inlineSvg` | `inline-svg` | If the src is a svg, either render <svg><use/></svg> or <img>  - <svg><use/></svg> is better for styling (e.g. fill: red), but slower at rendering. - <img> is better for HTTP caching, but you cannot style the internal SVG elements. | `boolean`                                                                                        | `false`     |
+| `library`   | `library`    | Icon library for this instance. Overrides the global default. - "material-icons"    → Material Icons - "material-symbols"  → Material Symbols                                                                                           | `"material-icons" \| "material-symbols" \| undefined`                                            | `undefined` |
+| `size`      | `size`       | The icon's size.                                                                                                                                                                                                                        | `"inherit" \| "large" \| "medium" \| "small" \| "xLarge" \| "xSmall" \| "xxLarge" \| "xxxLarge"` | `'inherit'` |
+| `src`       | `src`        | Name of the icon, path to SVG file or a data image                                                                                                                                                                                      | `string \| undefined`                                                                            | `undefined` |
 
 
 ## Slots
 
-| Slot | Description                            |
-| ---- | -------------------------------------- |
-|      | Used to define the material icon name. |
+| Slot | Description                                                                 |
+| ---- | --------------------------------------------------------------------------- |
+|      | Used to define the material icon or symbol name when `src` is not provided. |
+
+
+## Shadow Parts
+
+| Part    | Description |
+| ------- | ----------- |
+| `"svg"` |             |
 
 
 ## Dependencies
