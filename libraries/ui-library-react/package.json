@@ -2,33 +2,41 @@
   "name": "@six-group/ui-library-react",
   "description": "React wrapper components for @six-group/ui-library",
   "version": "5.1.1",
+  "type": "module",
   "private": false,
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "types": "dist/types/index.d.ts",
-  "files": [
-    "dist"
-  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./next": {
+      "types": "./dist/lib/stencil-generated/components.server.d.ts",
+      "import": "./dist/lib/stencil-generated/components.server.js"
+    }
+  },
   "sideEffects": false,
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   },
   "scripts": {
     "build": "npm run tsc",
-    "tsc": "tsc -p . --outDir ./dist",
+    "tsc": "tsc",
     "watch": "npm run tsc -- --watch"
   },
   "publishConfig": {
     "access": "public"
   },
   "devDependencies": {
-    "@types/react": "^19",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "typescript": "^5"
+    "@types/node": "^22.15.32",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "react": "^18.3.1",
+    "typescript": "^5.6.3"
   },
   "dependencies": {
-    "@stencil/react-output-target": "^1.0.4"
+    "@stencil/react-output-target": "^1.2.0",
+    "@six-group/ui-library": "*",
+    "react-dom": "^18.3.1"
   },
   "peerDependencies": {
     "@six-group/ui-library": "*"
