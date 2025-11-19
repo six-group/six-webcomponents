@@ -7,11 +7,13 @@
 
 ## Properties
 
-| Property  | Attribute | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Type                                                                                             | Default     |
-| --------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ | ----------- |
-| `filled`  | `filled`  | If set to true the default material outlined icons are not used.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | `boolean`                                                                                        | `false`     |
-| `library` | `library` | Icon library to use when no `library` prop is provided. By default, all `<six-icon>` instances fall back to the globally configured default library (via `setDefaultIconLibrary()` / `getDefaultIconLibrary()`), which is `"material-icons"` unless changed at runtime.  This allows teams to switch the default across an entire project without having to set the `library` prop on every `<six-icon>` instance.  Icon library for this instance. Overrides the global default. - "material-icons"  → Material Icons - "material-symbols"  → Material Symbols | `"material-icons" \| "material-symbols" \| undefined`                                            | `undefined` |
-| `size`    | `size`    | The icon's size.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | `"inherit" \| "large" \| "medium" \| "small" \| "xLarge" \| "xSmall" \| "xxLarge" \| "xxxLarge"` | `'inherit'` |
+| Property    | Attribute    | Description                                                                                                                                                                                                                                | Type                                                                                             | Default     |
+| ----------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ----------- |
+| `filled`    | `filled`     | If set to true the default material outlined icons are not used.                                                                                                                                                                           | `boolean`                                                                                        | `false`     |
+| `inlineSvg` | `inline-svg` | If the src is a svg, either render <svg><use/></svg> or <img>  - <svg><use/></svg> is better for styling (e.g. currentColor), but slower at rendering. - <img> is better for HTTP caching, but you cannot style the internal SVG elements. | `boolean`                                                                                        | `false`     |
+| `library`   | `library`    | Icon library for this instance. Overrides the global default. - "material-icons"    → Material Icons - "material-symbols"  → Material Symbols                                                                                              | `"material-icons" \| "material-symbols" \| undefined`                                            | `undefined` |
+| `size`      | `size`       | The icon's size.                                                                                                                                                                                                                           | `"inherit" \| "large" \| "medium" \| "small" \| "xLarge" \| "xSmall" \| "xxLarge" \| "xxxLarge"` | `'inherit'` |
+| `src`       | `src`        | Name of the icon, path to SVG file or a data image                                                                                                                                                                                         | `string \| undefined`                                                                            | `undefined` |
 
 
 ## Slots
@@ -19,6 +21,13 @@
 | Slot | Description                            |
 | ---- | -------------------------------------- |
 |      | Used to define the material icon name. |
+
+
+## Shadow Parts
+
+| Part    | Description |
+| ------- | ----------- |
+| `"svg"` |             |
 
 
 ## Dependencies
