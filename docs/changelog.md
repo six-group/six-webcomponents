@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Fixed
 
+- `six-spinner` fix container alignment, which doesn't match svg size and position
 - `six-file-upload`: fixed drag and drop file handling not triggering file upload
 
 ### Removed
