@@ -187,16 +187,16 @@ The icons are available in different sizes. Default size is medium (24px).
 
 ```html
 <div style="display: flex; gap: 1em; min-height: 5rem; align-items: center">
-      <span style="font-size: 1rem"
-      >
-        <six-icon size="inherit">search</six-icon>
-      </span>
+  <span style="font-size: 1rem"
+    >
+    <six-icon size="inherit">search</six-icon>
+  </span>
   <span style="font-size: 2rem">
-        <six-icon size="inherit" symbols>search</six-icon>
-      </span>
+    <six-icon size="inherit" symbols>search</six-icon>
+  </span>
   <span style="font-size: 3rem">
-        <six-icon size="inherit" symbols filled>search</six-icon>
-      </span>
+    <six-icon size="inherit" symbols filled>search</six-icon>
+  </span>
 </div>
 ```
 
@@ -206,7 +206,7 @@ The icons are available in different sizes. Default size is medium (24px).
 <docs-demo-six-icon-12></docs-demo-six-icon-12>
 
 ```html
-<div style="display: flex; gap: 1em; min-height: 6rem; align-items: center;">
+<div style="display: flex; gap: 1em; min-height: 6rem; align-items: center">
   <six-icon size="xSmall" src="/assets/test.svg"></six-icon>
   <six-icon size="small" src="/assets/test.svg"></six-icon>
   <six-icon size="large" src="/assets/test.svg"></six-icon>
@@ -220,7 +220,7 @@ The icons are available in different sizes. Default size is medium (24px).
 <docs-demo-six-icon-13></docs-demo-six-icon-13>
 
 ```html
-<div style="display: flex; gap: 1em; min-height: 6rem; align-items: center; fill:red">
+<div style="display: flex; gap: 1em; min-height: 6rem; align-items: center; fill: red">
   <six-icon size="xSmall" src="/assets/test.svg" inline-svg></six-icon>
   <six-icon size="small" src="/assets/test.svg" inline-svg></six-icon>
   <six-icon size="large" src="/assets/test.svg" inline-svg></six-icon>
