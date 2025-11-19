@@ -1,4 +1,4 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h, Host, Prop } from '@stencil/core';
 import { getDefaultIconLibrary, IconLibrary } from '../../utils/icon';
 
 /**
@@ -14,6 +14,17 @@ import { getDefaultIconLibrary, IconLibrary } from '../../utils/icon';
   shadow: true,
 })
 export class SixIcon {
+  /** Name of the icon, path to SVG file or a data image */
+  @Prop() src?: string;
+
+  /**
+   * If the src is a svg, either render <svg><use/></svg> or <img>
+   *
+   * - <svg><use/></svg> is better for styling (e.g. currentColor), but slower at rendering.
+   * - <img> is better for HTTP caching, but you cannot style the internal SVG elements.
+   */
+  @Prop({ reflect: true }) inlineSvg: boolean = false;
+
   /** The icon's size. */
   @Prop({ reflect: true }) size:
     | 'inherit'
@@ -29,49 +40,72 @@ export class SixIcon {
   @Prop() filled = false;
 
   /**
-   * Icon library to use when no `library` prop is provided.
-   * By default, all `<six-icon>` instances fall back to the globally configured
-   * default library (via `setDefaultIconLibrary()` / `getDefaultIconLibrary()`),
-   * which is `"material-icons"` unless changed at runtime.
-   *
-   * This allows teams to switch the default across an entire project without
-   * having to set the `library` prop on every `<six-icon>` instance.
-   *
    * Icon library for this instance. Overrides the global default.
-   * - "material-icons"  → Material Icons
+   * - "material-icons"    → Material Icons
    * - "material-symbols"  → Material Symbols
    */
   @Prop({ reflect: true }) library?: IconLibrary;
 
-  private isSymbols(): boolean {
+  private isSvgSrc = (src?: string): boolean => {
+    if (src === undefined) {
+      return false;
+    }
+    const lower = src.toLowerCase();
+    return lower.includes('.svg') || lower.startsWith('data:image/svg+xml');
+  };
+
+  private isSymbolsLibrary = (): boolean => {
     const lib = this.library ?? getDefaultIconLibrary();
     return lib === 'material-symbols';
+  };
+
+  private renderContent(isSvg: boolean) {
+    if (this.src !== undefined) {
+      if (isSvg) {
+        if (this.inlineSvg) {
+          return (
+            <svg part="svg">
+              <use href={`${this.src}#img`} />
+            </svg>
+          );
+        }
+        return <img src={this.src} />;
+      }
+      return this.src;
+    }
+    return <slot />;
   }
 
   render() {
-    const isSymbols = this.isSymbols();
+    const isSvg = this.isSvgSrc(this.src);
+    const isSymbols = this.isSymbolsLibrary();
+
     return (
-      <i
+      <Host
         class={{
-          'material-icons': !isSymbols,
-          'material-icons-outlined': !isSymbols && !this.filled,
-          'material-icons-filled': !isSymbols && this.filled,
+          'six-icon--xsmall': this.size === 'xSmall',
+          'six-icon--small': this.size === 'small',
+          'six-icon--medium': this.size === 'medium',
+          'six-icon--large': this.size === 'large',
+          'six-icon--xlarge': this.size === 'xLarge',
+          'six-icon--xxlarge': this.size === 'xxLarge',
+          'six-icon--xxxlarge': this.size === 'xxxLarge',
+          'six-icon--inherit': this.size === 'inherit',
 
-          'material-symbols-outlined': isSymbols && !this.filled,
-          'material-symbols': isSymbols && this.filled,
-
-          'icon--xsmall': this.size === 'xSmall',
-          'icon--small': this.size === 'small',
-          'icon--medium': this.size === 'medium',
-          'icon--large': this.size === 'large',
-          'icon--xlarge': this.size === 'xLarge',
-          'icon--xxlarge': this.size === 'xxLarge',
-          'icon--xxxlarge': this.size === 'xxxLarge',
-          'icon--inherit': this.size === 'inherit',
+          // only apply material classes when not rendering SVG
+          ...(!isSvg
+            ? {
+                'material-icons': !isSymbols,
+                'material-icons-outlined': !isSymbols && !this.filled,
+                'material-icons-filled': !isSymbols && this.filled,
+                'material-symbols-outlined': isSymbols && !this.filled,
+                'material-symbols': isSymbols && this.filled,
+              }
+            : {}),
         }}
       >
-        <slot></slot>
-      </i>
+        {this.renderContent(isSvg)}
+      </Host>
     );
   }
 }

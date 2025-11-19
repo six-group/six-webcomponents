@@ -1053,7 +1053,12 @@ export namespace Components {
          */
         "filled": boolean;
         /**
-          * Icon library to use when no `library` prop is provided. By default, all `<six-icon>` instances fall back to the globally configured default library (via `setDefaultIconLibrary()` / `getDefaultIconLibrary()`), which is `"material-icons"` unless changed at runtime.  This allows teams to switch the default across an entire project without having to set the `library` prop on every `<six-icon>` instance.  Icon library for this instance. Overrides the global default. - "material-icons"  → Material Icons - "material-symbols"  → Material Symbols
+          * If the src is a svg, either render <svg><use/></svg> or <img>  - <svg><use/></svg> is better for styling (e.g. currentColor), but slower at rendering. - <img> is better for HTTP caching, but you cannot style the internal SVG elements.
+          * @default false
+         */
+        "inlineSvg": boolean;
+        /**
+          * Icon library for this instance. Overrides the global default. - "material-icons"    → Material Icons - "material-symbols"  → Material Symbols
          */
         "library"?: IconLibrary;
         /**
@@ -1068,6 +1073,10 @@ export namespace Components {
     | 'xLarge'
     | 'xxLarge'
     | 'xxxLarge';
+        /**
+          * Name of the icon, path to SVG file or a data image
+         */
+        "src"?: string;
     }
     /**
      * @since 1.0
@@ -4841,7 +4850,12 @@ declare namespace LocalJSX {
          */
         "filled"?: boolean;
         /**
-          * Icon library to use when no `library` prop is provided. By default, all `<six-icon>` instances fall back to the globally configured default library (via `setDefaultIconLibrary()` / `getDefaultIconLibrary()`), which is `"material-icons"` unless changed at runtime.  This allows teams to switch the default across an entire project without having to set the `library` prop on every `<six-icon>` instance.  Icon library for this instance. Overrides the global default. - "material-icons"  → Material Icons - "material-symbols"  → Material Symbols
+          * If the src is a svg, either render <svg><use/></svg> or <img>  - <svg><use/></svg> is better for styling (e.g. currentColor), but slower at rendering. - <img> is better for HTTP caching, but you cannot style the internal SVG elements.
+          * @default false
+         */
+        "inlineSvg"?: boolean;
+        /**
+          * Icon library for this instance. Overrides the global default. - "material-icons"    → Material Icons - "material-symbols"  → Material Symbols
          */
         "library"?: IconLibrary;
         /**
@@ -4856,6 +4870,10 @@ declare namespace LocalJSX {
     | 'xLarge'
     | 'xxLarge'
     | 'xxxLarge';
+        /**
+          * Name of the icon, path to SVG file or a data image
+         */
+        "src"?: string;
     }
     /**
      * @since 1.0
