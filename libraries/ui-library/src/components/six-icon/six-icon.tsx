@@ -2,10 +2,26 @@ import { Component, h, Host, Prop } from '@stencil/core';
 import { getDefaultIconLibrary, IconLibrary } from '../../utils/icon';
 
 /**
- * @since 1.0
+ * @since 5.2
  * @status stable
  *
- * @slot - Used to define the material icon name.
+ * @summary
+ * Renders a Material icon, Material Symbol, or external SVG source in a unified way.
+ *
+ * - Without `src`, it renders a ligature-based Material icon / symbol using the component’s text content.
+ * - With `src` pointing to an image or SVG file, it renders either an `<img>` or `<svg><use/></svg>` sprite.
+ *
+ * @slot - Used to define the material icon or symbol name when `src` is not provided.
+ *
+ * @csspart svg - The `<svg>` element when `inlineSvg` is true.
+ *
+ * @prop {string} [src] - Icon name, path to an SVG file, or data URL.
+ * @prop {boolean} [inlineSvg=false] - When `true` and `src` is an SVG, renders `<svg><use/></svg>` instead of `<img>`.
+ * @prop {'inherit' | 'xSmall' | 'small' | 'medium' | 'large' | 'xLarge' | 'xxLarge' | 'xxxLarge'} [size='inherit']
+ *   Visual size of the icon.
+ * @prop {boolean} [filled=false] - For Material fonts, toggles between outlined and filled variants when available.
+ * @prop {'material-icons' | 'material-symbols'} [library]
+ *   Icon library to use when rendering ligature-based Material icons. Defaults to the globally configured library.
  */
 
 @Component({
@@ -20,7 +36,7 @@ export class SixIcon {
   /**
    * If the src is a svg, either render <svg><use/></svg> or <img>
    *
-   * - <svg><use/></svg> is better for styling (e.g. currentColor), but slower at rendering.
+   * - <svg><use/></svg> is better for styling (e.g. fill: red), but slower at rendering.
    * - <img> is better for HTTP caching, but you cannot style the internal SVG elements.
    */
   @Prop({ reflect: true }) inlineSvg: boolean = false;
