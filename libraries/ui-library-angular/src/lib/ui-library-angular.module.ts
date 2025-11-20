@@ -20,7 +20,7 @@ import { SelectValueAccessor } from './control-value-accessors/select-value-acce
 import { CheckboxValueAccessor } from './control-value-accessors/checkbox-value-accessor';
 import {
   CheckboxMultiSelectValueAccessor,
-  SixMultipleDirective,
+  SixCheckboxGroupDirective,
 } from './control-value-accessors/checkbox-multi-select-value-accessor';
 import { RangeValueAccessor } from './control-value-accessors/range-value-accessor';
 import { SwitchValueAccessor } from './control-value-accessors/switch-value-accessor';
@@ -50,7 +50,7 @@ import { DEFAULT_UI_LIBRARY_CONFIG, UI_LIBRARY_CONFIG, UiLibraryConfig } from '.
     SelectValueAccessor,
     CheckboxValueAccessor,
     CheckboxMultiSelectValueAccessor,
-    SixMultipleDirective,
+    SixCheckboxGroupDirective,
     SwitchValueAccessor,
     RangeValueAccessor,
 
@@ -91,7 +91,7 @@ import { DEFAULT_UI_LIBRARY_CONFIG, UI_LIBRARY_CONFIG, UiLibraryConfig } from '.
     SelectValueAccessor,
     CheckboxValueAccessor,
     CheckboxMultiSelectValueAccessor,
-    SixMultipleDirective,
+    SixCheckboxGroupDirective,
     SwitchValueAccessor,
     RangeValueAccessor,
 

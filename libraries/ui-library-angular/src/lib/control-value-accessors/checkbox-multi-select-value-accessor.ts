@@ -3,14 +3,14 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { ValueAccessor } from './value-accessor';
 
 @Directive({
-  selector: '[sixMultiple]',
+  selector: '[six-checkbox-group]',
   standalone: false,
 })
-export class SixMultipleDirective {}
+export class SixCheckboxGroupDirective {}
 
-// Accessor applies only when the SixMultipleDirective attribute is present
+// Accessor applies only when the SixCheckboxGroupDirective attribute is present
 @Directive({
-  selector: 'six-checkbox[sixMultiple]',
+  selector: 'six-checkbox[six-checkbox-group]',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -34,11 +34,7 @@ export class CheckboxMultiSelectValueAccessor<T extends string = string> extends
     if (!current) return;
 
     const set = new Set<T>(current);
-    if (checked) {
-      set.add(this.value);
-    } else {
-      set.delete(this.value);
-    }
+    checked ? set.add(this.value) : set.delete(this.value);
 
     this.handleValueChange(el, Array.from(set));
   }

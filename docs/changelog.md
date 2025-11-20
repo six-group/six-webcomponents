@@ -8,7 +8,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- Added the ability to disable the `ValidationService` on Angular. See
+  [docs](./guide/angular.md#customisingdisabling-validationservice) for more details.
+
 ### Fixed
+
+- `six-spinner` fix container alignment, which doesn't match svg size and position
+- `six-file-upload`: fixed drag and drop file handling not triggering file upload
 
 ### Removed
 
@@ -21,8 +27,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Added
 
 - Added `hoverContent` prop to `six-tab` to override the default hover content.
-- Added `CheckboxMultiSelectValueAccessor` which binds checkbox values to an array analog to a
-  multiselect
+- Added `CheckboxMultiSelectValueAccessor` on Angular which binds checkbox values to an array analog
+  to a multiselect
 
 ## 5.1.0 - 2025-10-23
 
