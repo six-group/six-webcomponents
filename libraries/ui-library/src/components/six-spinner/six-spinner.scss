@@ -11,6 +11,7 @@
   --stroke-width: 2px;
 
   display: inline-flex;
+  font-size: 40px;
 }
 
 .spinner {
@@ -33,35 +34,14 @@
   }
 }
 
-$color-six-spinner-background: rgba(255, 255, 255, 0.7);
-
 .six-spinner {
-  width: auto;
-  height: auto;
-  position: relative;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  line-height: 0;
 
-  .six-spinner__container {
-    margin: 0;
-    transform: translateX(0);
-  }
-
-  .six-spinner__container svg {
-    transform: translateX(0);
-  }
-
-  &__container {
-    position: relative;
-    margin: 0 auto;
-    top: calc(50% - 20px);
-    z-index: 1;
-  }
-
-  &__container,
   &__container svg {
-    width: 40px;
-    height: 40px;
     display: block;
-    transform: translateX(40px);
   }
 
   path {
