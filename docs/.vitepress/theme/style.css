@@ -43,7 +43,7 @@
   --vp-code-color: #abb2bf;
 
   /* Background colors */
-  --vp-c-bg: var(--needed-additional-color);
+  --vp-c-bg: var(--six-color-dark-background-color);
   --vp-c-bg-soft: #242424;
   --vp-c-bg-mute: #2c2c2c;
   --vp-c-bg-alt: #151515;

@@ -135,7 +135,7 @@ body > div.container {
 }
 
 html.theme-dark {
-  background-color: var(--needed-additional-color);
+  background-color: var(--six-color-dark-background-color);
 }
 
 [hidden] {

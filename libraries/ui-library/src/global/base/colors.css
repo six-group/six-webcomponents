@@ -24,7 +24,15 @@
   --six-color-web-rock-100: #f6f6f6;
   --six-color-web-rock-50: #fbfbfb;
 
+  --six-color-clay-900: #5f574f;
+  --six-color-clay-800: #6f665d;
+  --six-color-clay-700: #7e756c;
+  --six-color-clay-600: #8e847b;
+  --six-color-clay-500: #9e9389;
+  --six-color-clay-400: #aea297;
+  --six-color-clay-300: #beb1a6;
   --six-color-clay-200: #ada398;
+  --six-color-clay-100: #d6d1cd;
   --six-color-clay-50: #ebe8e7;
 
   --six-color-danger-900: #c52c0f;
@@ -267,11 +275,11 @@ html {
 }
 
 .theme-dark {
-  --needed-additional-color: #151515;
-
   color: white;
 
-  --six-alert-background-color: var(--needed-additional-color);
+  --six-color-dark-background-color: #151515;
+
+  --six-alert-background-color: var(--six-color-dark-background-color);
   --six-alert-border-color: var(--six-color-web-rock-900);
   --six-alert-color: var(--six-color-web-rock-400);
   --six-alert-primary-color: var(--six-color-web-rock-700);
@@ -367,12 +375,12 @@ html {
   --six-selection-control-color-disabled: var(--six-color-web-rock-400);
 
   --six-details-color: var(--six-color-web-rock-300);
-  --six-details-body-background-color: var(--six-color-web-rock-700);
+  --six-details-body-background-color: var(--six-color-web-rock-800);
 
   --six-drawer-color: var(--six-color-web-rock-200);
   --six-drawer-background-color: var(--six-color-web-rock-900);
 
-  --six-footer-background-color: var(--needed-additional-color);
+  --six-footer-background-color: var(--six-color-dark-background-color);
   --six-footer-color: var(--six-color-web-rock-400);
 
   --six-header-background-color: var(--six-color-web-rock-900);
@@ -388,7 +396,7 @@ html {
   --six-sidebar-color: var(--six-color-web-rock-50);
   --six-sidebar-background-color: var(--six-color-web-rock-900);
   --six-sidebar-hover-background-color: var(--six-color-web-rock-800);
-  --six-sidebar-header-background-color: var(--six-color-web-rock-800);
+  --six-sidebar-header-background-color: var(--six-color-web-rock-700);
   --six-sidebar-border-color: var(--six-color-web-rock-800);
   --six-sidebar-item-color-hover: var(--six-color-web-rock-400);
 
@@ -402,7 +410,7 @@ html {
   --six-rating-color: var(--six-color-web-rock-800);
   --six-rating-color-active: var(--six-color-success-600);
 
-  --six-root-main-background-color: var(--needed-additional-color);
+  --six-root-main-background-color: var(--six-color-dark-background-color);
 
   --six-scrollbar-background-color: var(--six-color-web-rock-900);
   --six-scrollbar-thumb-color: var(--six-color-web-rock-700);
