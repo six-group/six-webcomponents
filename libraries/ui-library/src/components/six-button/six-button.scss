@@ -70,47 +70,40 @@
     outline-offset: var(--six-focus-ring-offset);
   }
 
-  &.button--secondary {
-    background-color: var(--six-color-white);
-    border-color: var(--six-color-web-rock-900);
-    color: var(--six-color-web-rock-900);
+  &.button--disabled:not(.button--link) {
+    background-color: var(--six-button-background-color-disabled);
+    border-color: var(--six-button-border-color-disabled);
+    color: var(--six-button-color-disabled);
+  }
 
-    &.button--disabled {
-      background-color: var(--six-color-web-rock-400);
-      border-color: var(--six-color-web-rock-400);
-      color: var(--six-color-web-rock-700);
-    }
+  &.button--secondary {
+    background-color: transparent;
+    border-color: var(--six-button-secondary-border-color);
+    color: var(--six-button-secondary-color);
 
     &:hover:not(.button--disabled) {
-      background-color: var(--six-color-web-rock-100);
+      background-color: var(--six-button-transparent-background-color-hover);
     }
 
     &:active:not(.button--disabled) {
-      background-color: var(--six-color-web-rock-300);
-      border-color: var(--six-color-web-rock-900);
+      opacity: 70%;
       border-width: 1px;
     }
   }
 
   &.button--primary {
-    background-color: var(--six-color-web-rock-900);
-    border-color: var(--six-color-web-rock-900);
-    color: var(--six-color-white);
-
-    &.button--disabled {
-      background-color: var(--six-color-web-rock-400);
-      border-color: var(--six-color-web-rock-400);
-      color: var(--six-color-web-rock-700);
-    }
+    background-color: var(--six-button-primary-background-color);
+    border-color: var(--six-button-primary-background-color);
+    color: var(--six-button-primary-color);
 
     &:hover:not(.button--disabled) {
-      background-color: var(--six-color-web-rock-800);
-      border-color: var(--six-color-web-rock-800);
+      background-color: var(--six-button-primary-background-color-hover);
+      border-color: var(--six-button-primary-background-color-hover);
     }
 
     &:active:not(.button--disabled) {
-      background-color: var(--six-color-web-rock-900);
-      border-color: var(--six-color-web-rock-900);
+      background-color: var(--six-button-primary-background-color-active);
+      border-color: var(--six-button-primary-background-color-active);
       opacity: 70%;
     }
   }
@@ -129,7 +122,7 @@
     }
 
     &:active:not(.button--disabled) {
-      color: var(--six-color-action-light-to-be-defined);
+      color: var(--six-color-action-200);
     }
   }
 
@@ -137,12 +130,6 @@
     background-color: var(--six-color-danger-800);
     border-color: var(--six-color-danger-800);
     color: var(--six-color-white);
-
-    &.button--disabled {
-      background-color: var(--six-color-web-rock-400);
-      border-color: var(--six-color-web-rock-400);
-      color: var(--six-color-web-rock-700);
-    }
 
     &:hover:not(.button--disabled) {
       background-color: var(--six-color-danger-900);
@@ -161,12 +148,6 @@
     border-color: var(--six-color-warning-700);
     color: var(--six-color-web-rock-900);
 
-    &.button--disabled {
-      background-color: var(--six-color-web-rock-400);
-      border-color: var(--six-color-web-rock-400);
-      color: var(--six-color-web-rock-700);
-    }
-
     &:hover:not(.button--disabled) {
       background-color: var(--six-color-warning-800);
       border-color: var(--six-color-warning-800);
@@ -183,12 +164,6 @@
     background-color: var(--six-color-success-500);
     border-color: var(--six-color-success-500);
     color: var(--six-color-web-rock-900);
-
-    &.button--disabled {
-      background-color: var(--six-color-web-rock-400);
-      border-color: var(--six-color-web-rock-400);
-      color: var(--six-color-web-rock-700);
-    }
 
     &:hover:not(.button--disabled) {
       background-color: var(--six-color-success-600);
@@ -207,12 +182,6 @@
     border-color: var(--six-color-action-500);
     color: var(--six-color-white);
 
-    &.button--disabled {
-      background-color: var(--six-color-web-rock-400);
-      border-color: var(--six-color-web-rock-400);
-      color: var(--six-color-web-rock-700);
-    }
-
     &:hover:not(.button--disabled) {
       background-color: var(--six-color-action-600);
       border-color: var(--six-color-action-600);
@@ -227,17 +196,11 @@
 
   &.button--action-outline {
     border-color: var(--six-color-action-500);
-    background-color: var(--six-color-white);
+    background-color: transparent;
     color: var(--six-color-action-500);
 
-    &.button--disabled {
-      background-color: var(--six-color-web-rock-400);
-      border-color: var(--six-color-web-rock-400);
-      color: var(--six-color-web-rock-700);
-    }
-
     &:hover:not(.button--disabled) {
-      background-color: var(--six-color-web-rock-100);
+      background-color: var(--six-button-transparent-background-color-hover);
     }
 
     &:active:not(.button--disabled) {

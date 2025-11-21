@@ -201,6 +201,7 @@ Often icon buttons are combined with badges to signal new entries. For this simp
  - [six-tab](six-tab.html)
  - [six-tab-group](six-tab-group.html)
  - [six-tag](six-tag.html)
+ - [six-theme-switcher](six-theme-switcher.html)
  - [six-tile](six-tile.html)
 
 ### Depends on
@@ -219,6 +220,7 @@ graph TD;
   six-tab --> six-icon-button
   six-tab-group --> six-icon-button
   six-tag --> six-icon-button
+  six-theme-switcher --> six-icon-button
   six-tile --> six-icon-button
   style six-icon-button fill:#f9f,stroke:#333,stroke-width:4px
 ```

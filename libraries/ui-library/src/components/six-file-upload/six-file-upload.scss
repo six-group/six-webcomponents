@@ -1,6 +1,5 @@
 @import 'src/global/component';
 
-$over-color: var(--six-color-action-light-to-be-defined);
 $disabled-color: var(--six-color-inactive);
 $transition: 0.3s;
 $margin: 1rem;
@@ -69,7 +68,7 @@ $margin: 1rem;
 
   &:not(.six-file-upload--disabled) &__drop-zone:hover,
   &__drop-zone--hover {
-    background-color: $over-color;
+    background-color: var(--six-color-action-200);
 
     &.six-file-upload__drop-zone--compact {
       background-color: inherit;

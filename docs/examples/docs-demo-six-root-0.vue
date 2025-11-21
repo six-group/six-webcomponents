@@ -2,7 +2,7 @@
 <div>
 
         <div class="six-root-wrapper">
-          <six-root stage="PROD" style="height: 100%" version="PROD-1.2.3">
+          <six-root id="app-root" stage="PROD" style="height: 100%" version="PROD-1.2.3">
             <six-header slot="header">
               
               <six-header-item>
@@ -19,6 +19,11 @@
               
               <six-header-item id="search-header-item" style="margin-left: auto">
                 <six-icon-button name="search"></six-icon-button>
+              </six-header-item>
+
+              
+              <six-header-item>
+                <six-theme-switcher></six-theme-switcher>
               </six-header-item>
 
               
@@ -90,7 +95,19 @@
             </six-sidebar>
 
             <div slot="main">
-              <p>Content</p>
+              <six-input label="Input Field" placeholder="Type something" value="Sample text"></six-input>
+              <br>
+              <six-textarea label="Textarea" placeholder="Type something" rows="3"></six-textarea>
+              <br>
+              <six-button>Primary Button</six-button>
+              <six-button type="secondary">Secondary Button</six-button>
+              <br><br>
+              <six-alert type="info" open>
+                <six-icon slot="icon">info</six-icon>
+                This is an info alert. Toggle the theme using the switcher in the header to see how components adapt.
+              </six-alert>
+
+              <h3>Content</h3>
               <div>
                 <six-button id="show-tasks">Show some tasks...</six-button>
                 <six-button id="toggle-text">Toggle some text...</six-button>
@@ -234,6 +251,7 @@ export default {
               );
 
             const Select = getElements({
+              root: '#app-root',
               header: 'six-header',
               leftSidebar: 'six-sidebar[slot="left-sidebar"]',
               tasksButton: '#show-tasks',

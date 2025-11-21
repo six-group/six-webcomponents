@@ -96,15 +96,6 @@ body > div.container {
 
   --six-focus-shadow: 0 0 0 var(--six-focus-offset-input);
   --six-input-focus-shadow: var(--six-focus-shadow) var(--six-input-border-color-focus);
-  --six-input-background-color: var(--six-color-white);
-  --six-input-background-color-hover: var(--six-color-white);
-  --six-input-background-color-focus: var(--six-color-white);
-  --six-input-background-color-disabled: var(--six-color-web-rock-100);
-  --six-input-border-color: var(--six-color-web-rock-400);
-  --six-input-border-color-hover: var(--six-color-web-rock-600);
-  --six-input-border-color-focus: var(--six-color-action-600);
-  --six-input-border-color-danger: var(--six-color-danger-800);
-  --six-input-border-color-disabled: var(--six-color-web-rock-400);
   --six-input-border-radius-small: var(--six-border-radius-medium);
   --six-input-border-radius-medium: var(--six-border-radius-medium);
   --six-input-border-radius-large: var(--six-border-radius-medium);
@@ -113,15 +104,6 @@ body > div.container {
   --six-input-font-size-medium: var(--six-font-size-small);
   --six-input-font-size-large: var(--six-font-size-medium);
   --six-input-letter-spacing: var(--six-letter-spacing-normal);
-  --six-input-color: var(--six-color-web-rock-900);
-  --six-input-color-hover: var(--six-color-web-rock-900);
-  --six-input-color-focus: var(--six-color-web-rock-900);
-  --six-input-color-disabled: var(--six-color-web-rock-600);
-  --six-input-icon-color: var(--six-color-web-rock-900);
-  --six-input-icon-color-hover: var(--six-color-web-rock-600);
-  --six-input-icon-color-focus: var(--six-color-web-rock-900);
-  --six-input-placeholder-color: var(--six-color-web-rock-500);
-  --six-input-placeholder-color-disabled: var(--six-color-web-rock-500);
   --six-input-spacing-small: var(--six-spacing-small);
   --six-input-spacing-medium: var(--six-spacing-medium);
   --six-input-spacing-large: var(--six-spacing-large);
@@ -131,77 +113,29 @@ body > div.container {
   --six-input-label-font-size-small: var(--six-font-size-xx-small);
   --six-input-label-font-size-medium: var(--six-font-size-x-small);
   --six-input-label-font-size-large: var(--six-font-size-small);
-  --six-input-label-color: var(--six-color-web-rock-900);
-  --six-input-label-color-disabled: var(--six-color-web-rock-600);
   --six-input-help-text-font-size-small: var(--six-font-size-xx-small);
   --six-input-help-text-font-size-medium: var(--six-font-size-x-small);
   --six-input-help-text-font-size-large: var(--six-font-size-small);
-  --six-input-help-text-color: var(--six-color-web-rock-600);
-  --six-input-help-text-color-disabled: var(--six-color-web-rock-600);
 
-  --six-overlay-background-color: var(--six-color-web-rock-900);
-
-  --six-panel-background-color: var(--six-color-white);
-  --six-panel-border-color: var(--six-color-clay-50);
-
-  --six-progress-track-color: var(--six-color-web-rock-300);
-  --six-progress-indicator-color: var(--six-color-danger-800);
-  --six-progress-label-color: var(--six-color-white);
-
-  /* add component specific variables here (used for a dedicated component) */
-  --six-tooltip-background-color: var(--six-color-web-rock-900);
-  --six-tooltip-color: var(--six-color-white);
   --six-tooltip-arrow-size: 5px;
   --six-tooltip-arrow-start-end-offset: 8px;
   --six-tooltip-font-size: var(--six-font-size-small);
   --six-tooltip-font-weight: var(--six-font-weight-normal);
   --six-tooltip-line-height: var(--six-line-height-dense);
 
-  --six-avatar-color: var(--six-color-white);
-  --six-avatar-background-color: var(--six-color-web-rock-300);
-
-  --six-checkbox-color: var(--six-color-white);
-  --six-selection-control-color: var(--six-color-action-500);
-  --six-selection-control-color-disabled: var(--six-color-web-rock-400);
   --six-selection-control-toggle-size: 1rem;
 
-  --six-details-color: var(--six-color-web-rock-900);
-
-  --six-drawer-color: var(--six-color-web-rock-900);
-  --six-drawer-background-color: var(--six-color-clay-50);
-
-  --six-footer-background-color: var(--six-color-white);
-
-  --six-header-background-color: var(--six-color-white);
-  --six-header-border-color: var(--six-color-web-rock-300);
-  --six-header-border-color-open: var(--six-color-web-rock-900);
   --six-header-border-with: 1px;
-  --six-header-selected-app-color-hover: var(--six-color-web-rock-600);
   --six-header-height: 3.75rem;
   --six-header-border-height: var(--six-spacing-xx-small);
 
-  --six-menu-divider-color: var(--six-color-clay-50);
-  --six-menu-item-background-color: var(--six-color-clay-50);
-
-  --six-search-color: var(--six-color-action-600);
-
-  --six-sidebar-color: var(--six-color-web-rock-900);
-  --six-sidebar-background-color: var(--six-color-white);
-  --six-sidebar-hover-background-color: var(--six-color-clay-50);
-  --six-sidebar-header-background-color: var(--six-color-clay-50);
-  --six-sidebar-item-background-color: var(--six-color-web-rock-50);
-
-  --six-tab-color: var(--six-color-web-rock-900);
-  --six-tab-color-active: var(--six-color-web-rock-900);
-  --six-tab-color-hover: var(--six-color-web-rock-700);
-  --six-tab-color-disabled: var(--six-color-web-rock-400);
-  --six-tab-border-color: var(--six-color-white);
   --six-tab-border-width: 3px;
-  --six-tab-border-color-active: var(--six-color-web-rock-900);
 
-  --six-rating-color: var(--six-color-web-rock-500);
-  --six-rating-color-active: var(--six-color-success-600);
   --six-rating-color-disabled-opacity: 0.4;
+}
+
+html.theme-dark {
+  background-color: var(--six-color-dark-background-color);
 }
 
 [hidden] {

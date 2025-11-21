@@ -23,5 +23,8 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - run: npm ci
-      - run: npm run build
-      - run: npx pkg-pr-new publish './libraries/*'
+      - run: |
+          npx pkg-pr-new publish ./libraries/ui-library
+          npx pkg-pr-new publish ./libraries/ui-library-vue
+          npx pkg-pr-new publish ./libraries/ui-library-react
+          npx pkg-pr-new publish ./libraries/ui-library-angular/dist/ui-library-angular
