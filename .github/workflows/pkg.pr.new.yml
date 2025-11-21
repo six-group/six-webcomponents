@@ -24,4 +24,4 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - run: npm ci
       - run: npm run build
-      - run: npx pkg-pr-new publish './libraries/*'
+      - run: npx pkg-pr-new publish ./libraries/*/dist
