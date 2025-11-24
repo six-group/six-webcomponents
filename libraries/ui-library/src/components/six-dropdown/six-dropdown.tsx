@@ -109,6 +109,15 @@ export class SixDropdown {
   @Prop() filter = false;
 
   /**
+   * Set to true if you want to disable the default dropdown panel scroll behavior.
+   */
+  @Prop() noScroll = false;
+
+  get scrollEnabled() {
+    return !this.noScroll;
+  }
+
+  /**
    * Set to true to allow async filtering.
    * When you enter something in the search field the component will only emit an event but not filter any elements itself.
    * You can then simply listen to the 'six-async-filter-fired' event to manage the shown menu-items yourself
@@ -698,7 +707,7 @@ export class SixDropdown {
             )}
             <div
               class={{
-                dropdown__panel__scroll: true,
+                dropdown__panel__scroll: this.scrollEnabled,
                 'dropdown__panel__scroll--virtual': this.virtualScroll,
               }}
               onScroll={this.handleDropdownScroll}

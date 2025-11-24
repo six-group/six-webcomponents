@@ -21,7 +21,9 @@ jobs:
 
       - name: Resolve version
         id: vars
-        run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+        run: |
+          SHORT_SHA=$(git rev-parse --short HEAD)
+          echo "sha_short=${SHORT_SHA}" >> $GITHUB_OUTPUT
 
       - name: 'Version based on commit: 0.0.0-insider.${{ steps.vars.outputs.sha_short }}'
         run: npm version -w libraries 0.0.0-insider.${{ steps.vars.outputs.sha_short }} --force --no-git-tag-version
@@ -37,3 +39,10 @@ jobs:
           npm publish --tag=insider --access=public libraries/ui-library-react/
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+
+      - name: 'Deploy Documentation'
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: docs/.vitepress/dist
+          # this folder needs to be kept in sync with the base property in /docs/.vitepress/config.mts
+          target-folder: docs/v5

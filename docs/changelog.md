@@ -8,6 +8,32 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- Added the ability to disable the `ValidationService` on Angular. See
+  [docs](./guide/angular.md#customisingdisabling-validationservice) for more details.
+- `six-dropdown` : Added `noScroll` property to disable the default panel scroll behavior. Defaults
+  to false.
+
+### Fixed
+
+- `six-spinner` fix container alignment, which doesn't match svg size and position
+- `six-file-upload`: fixed drag and drop file handling not triggering file upload
+
+### Removed
+
+### Changed
+
+### Deprecated
+
+## 5.1.1 - 2025-11-04
+
+### Added
+
+- Added `hoverContent` prop to `six-tab` to override the default hover content.
+
+## 5.1.0 - 2025-10-23
+
+### Added
+
 - `six-icon`: Support for **Material Symbols** (variable font). Select per instance via the new
   `library` prop (`"material-icons"` | `"material-symbols"`). The existing `filled` prop continues
   to control the filled variant for both libraries. Legacy **Material Icons** remain the default.

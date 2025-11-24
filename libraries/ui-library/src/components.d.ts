@@ -773,6 +773,11 @@ export namespace Components {
          */
         "matchTriggerWidth": boolean;
         /**
+          * Set to true if you want to disable the default dropdown panel scroll behavior.
+          * @default false
+         */
+        "noScroll": boolean;
+        /**
           * Indicates whether the dropdown is open. You can use this in lieu of the show/hide methods.
           * @default false
          */
@@ -1053,7 +1058,7 @@ export namespace Components {
          */
         "filled": boolean;
         /**
-          * Icon library for this instance. Overrides the global default. - "material-icons"  → Material Icons - "material-symbols"  → Material Symbols
+          * Icon library to use when no `library` prop is provided. By default, all `<six-icon>` instances fall back to the globally configured default library (via `setDefaultIconLibrary()` / `getDefaultIconLibrary()`), which is `"material-icons"` unless changed at runtime.  This allows teams to switch the default across an entire project without having to set the `library` prop on every `<six-icon>` instance.  Icon library for this instance. Overrides the global default. - "material-icons"  → Material Icons - "material-symbols"  → Material Symbols
          */
         "library"?: IconLibrary;
         /**
@@ -2131,6 +2136,10 @@ export namespace Components {
           * @default false
          */
         "disabled": boolean;
+        /**
+          * The content to display when the user hovers over the tab's title. Useful if the tab's title has html content in it
+         */
+        "hoverContent"?: string;
         /**
           * The name of the tab panel the tab will control. The panel must be located in the same tab group.
           * @default ''
@@ -4517,6 +4526,11 @@ declare namespace LocalJSX {
          */
         "matchTriggerWidth"?: boolean;
         /**
+          * Set to true if you want to disable the default dropdown panel scroll behavior.
+          * @default false
+         */
+        "noScroll"?: boolean;
+        /**
           * Emitted when the async filter is triggered
          */
         "onSix-async-filter-fired"?: (event: SixDropdownCustomEvent<SixDropdownAsyncFilterPayload>) => void;
@@ -4837,7 +4851,7 @@ declare namespace LocalJSX {
          */
         "filled"?: boolean;
         /**
-          * Icon library for this instance. Overrides the global default. - "material-icons"  → Material Icons - "material-symbols"  → Material Symbols
+          * Icon library to use when no `library` prop is provided. By default, all `<six-icon>` instances fall back to the globally configured default library (via `setDefaultIconLibrary()` / `getDefaultIconLibrary()`), which is `"material-icons"` unless changed at runtime.  This allows teams to switch the default across an entire project without having to set the `library` prop on every `<six-icon>` instance.  Icon library for this instance. Overrides the global default. - "material-icons"  → Material Icons - "material-symbols"  → Material Symbols
          */
         "library"?: IconLibrary;
         /**
@@ -5947,6 +5961,10 @@ declare namespace LocalJSX {
           * @default false
          */
         "disabled"?: boolean;
+        /**
+          * The content to display when the user hovers over the tab's title. Useful if the tab's title has html content in it
+         */
+        "hoverContent"?: string;
         /**
           * Emitted when the tab is closable and the close button is activated.
          */
