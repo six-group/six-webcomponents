@@ -1,4 +1,4 @@
-import { AfterViewInit, Directive, ElementRef, HostListener, inject, Injector, OnDestroy } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, HostListener, inject, Injector, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, ControlValueAccessor, NgControl, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { getLanguage, ValidationError } from '@six-group/ui-library';
@@ -69,12 +69,13 @@ export class ValueAccessor implements ControlValueAccessor, AfterViewInit, OnDes
       const control = this.ngControl?.control;
 
       const invalid = control.status === 'INVALID' && control.dirty && control.touched;
-      let errorTexts;
-      if (invalid) {
-        errorTexts = this.initialErrorText || this.getErrorTexts(control);
-      }
       element.invalid = invalid;
-      element.errorText = errorTexts ?? '';
+
+      // If the module is configured to do so, display error messages for invalid controls
+      if (!this.config.disableValidationService) {
+        const errorTexts = invalid ? this.initialErrorText || this.getErrorTexts(control) : undefined;
+        element.errorText = errorTexts ?? '';
+      }
 
       // When the module is configured to do so, display an asterisk next to any form control that has a required validator
       if (this.config.showAsteriskOnRequiredValidator && this.ngControl.control.hasValidator(Validators.required)) {

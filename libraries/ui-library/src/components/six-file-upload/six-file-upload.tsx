@@ -90,9 +90,12 @@ export class SixFileUpload {
   }
 
   @Listen('drop', { capture: false })
-  dropHandler() {
+  dropHandler(event: DragEvent) {
     if (!this.disabled) {
       this.isOver = false;
+      if (event.dataTransfer?.files) {
+        this.handleFiles(event.dataTransfer.files);
+      }
     }
   }
 

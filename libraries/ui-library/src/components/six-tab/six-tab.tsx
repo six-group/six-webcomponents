@@ -35,6 +35,9 @@ export class SixTab {
   /** When true, the tab will be rendered with a close icon. */
   @Prop() closable = false;
 
+  /** The content to display when the user hovers over the tab's title. Useful if the tab's title has html content in it*/
+  @Prop() hoverContent?: string;
+
   /** Set to true to draw the tab in a disabled state. */
   @Prop({ reflect: true }) disabled = false;
 
@@ -88,7 +91,7 @@ export class SixTab {
           aria-disabled={this.disabled ? 'true' : 'false'}
           aria-selected={this.active ? 'true' : 'false'}
           tabindex={this.disabled || !this.active ? '-1' : '0'}
-          title={this.host.innerHTML}
+          title={this.hoverContent ?? this.host.innerHTML}
         >
           <slot />
           {this.closable && (
