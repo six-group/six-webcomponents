@@ -475,7 +475,7 @@ the drawer will result in destructive behavior such as data loss.
 
 
 @ProxyCmp({
-  inputs: ['asyncFilter', 'autofocusFilter', 'closeOnSelect', 'containingElement', 'disableHideOnEnterAndSpace', 'distance', 'filter', 'filterDebounce', 'filterPlaceholder', 'hoist', 'matchTriggerWidth', 'open', 'options', 'placement', 'skidding', 'virtualScroll'],
+  inputs: ['asyncFilter', 'autofocusFilter', 'closeOnSelect', 'containingElement', 'disableHideOnEnterAndSpace', 'distance', 'filter', 'filterDebounce', 'filterPlaceholder', 'hoist', 'matchTriggerWidth', 'noScroll', 'open', 'options', 'placement', 'skidding', 'virtualScroll'],
   methods: ['show', 'hide']
 })
 @Component({
@@ -483,7 +483,7 @@ the drawer will result in destructive behavior such as data loss.
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['asyncFilter', 'autofocusFilter', 'closeOnSelect', 'containingElement', 'disableHideOnEnterAndSpace', 'distance', 'filter', 'filterDebounce', 'filterPlaceholder', 'hoist', 'matchTriggerWidth', 'open', 'options', 'placement', 'skidding', 'virtualScroll'],
+  inputs: ['asyncFilter', 'autofocusFilter', 'closeOnSelect', 'containingElement', 'disableHideOnEnterAndSpace', 'distance', 'filter', 'filterDebounce', 'filterPlaceholder', 'hoist', 'matchTriggerWidth', 'noScroll', 'open', 'options', 'placement', 'skidding', 'virtualScroll'],
   standalone: false
 })
 export class SixDropdown {
