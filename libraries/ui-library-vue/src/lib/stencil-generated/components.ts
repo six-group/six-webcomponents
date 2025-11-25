@@ -636,7 +636,6 @@ export const SixSelect: StencilVueComponent<JSX.SixSelect, JSX.SixSelect["value"
 export const SixSidebar: StencilVueComponent<JSX.SixSidebar> = /*@__PURE__*/ defineContainer<JSX.SixSidebar>('six-sidebar', undefined, [
   'position',
   'open',
-  'width',
   'toggled',
   'six-sidebar-show',
   'six-sidebar-after-show',
