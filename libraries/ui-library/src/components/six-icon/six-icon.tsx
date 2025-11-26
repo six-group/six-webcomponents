@@ -2,7 +2,7 @@ import { Component, h, Host, Prop } from '@stencil/core';
 import { getDefaultIconLibrary, IconLibrary } from '../../utils/icon';
 
 /**
- * @since 5.2
+ * @since 1.0
  * @status stable
  *
  * @summary
@@ -30,7 +30,11 @@ import { getDefaultIconLibrary, IconLibrary } from '../../utils/icon';
   shadow: true,
 })
 export class SixIcon {
-  /** Name of the icon, path to SVG file or a data image */
+
+  /** Name of the icon */
+  @Prop() name?: string;
+
+  /** Path to SVG file or a data image */
   @Prop() src?: string;
 
   /**
@@ -57,18 +61,10 @@ export class SixIcon {
 
   /**
    * Icon library for this instance. Overrides the global default.
-   * - "material-icons"    → Material Icons
+   * - "material-icons"  → Material Icons
    * - "material-symbols"  → Material Symbols
    */
   @Prop({ reflect: true }) library?: IconLibrary;
-
-  private isSvgSrc = (src?: string): boolean => {
-    if (src === undefined) {
-      return false;
-    }
-    const lower = src.toLowerCase();
-    return lower.includes('.svg') || lower.startsWith('data:image/svg+xml');
-  };
 
   private isSymbolsLibrary = (): boolean => {
     const lib = this.library ?? getDefaultIconLibrary();
@@ -76,24 +72,27 @@ export class SixIcon {
   };
 
   private renderContent(isSvg: boolean) {
-    if (this.src !== undefined) {
-      if (isSvg) {
-        if (this.inlineSvg) {
-          return (
-            <svg part="svg">
-              <use href={`${this.src}#img`} />
-            </svg>
-          );
-        }
-        return <img src={this.src} />;
+    if (!isSvg) {
+      if (this.name) {
+        return this.name;
       }
-      return this.src;
+
+      return <slot />;
     }
-    return <slot />;
+
+    if (!this.inlineSvg) {
+      return <img src={this.src} />;
+    }
+
+    return (
+      <svg part="svg">
+        <use href={`${this.src}#img`} />
+      </svg>
+    );
   }
 
   render() {
-    const isSvg = this.isSvgSrc(this.src);
+    const isSvg = this.src !== undefined;
     const isSymbols = this.isSymbolsLibrary();
 
     return (
@@ -111,12 +110,12 @@ export class SixIcon {
           // only apply material classes when not rendering SVG
           ...(!isSvg
             ? {
-                'material-icons': !isSymbols,
-                'material-icons-outlined': !isSymbols && !this.filled,
-                'material-icons-filled': !isSymbols && this.filled,
-                'material-symbols-outlined': isSymbols && !this.filled,
-                'material-symbols': isSymbols && this.filled,
-              }
+              'material-icons': !isSymbols,
+              'material-icons-outlined': !isSymbols && !this.filled,
+              'material-icons-filled': !isSymbols && this.filled,
+              'material-symbols-outlined': isSymbols && !this.filled,
+              'material-symbols': isSymbols && this.filled,
+            }
             : {}),
         }}
       >

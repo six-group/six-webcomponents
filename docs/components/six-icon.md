@@ -203,6 +203,10 @@ The icons are available in different sizes. Default size is medium (24px).
 
 #### Custom SVG
 
+You can pass your own SVG file to `six-icon` via the `src` attribute.
+The component will render the SVG in any supported icon size. 
+The default behavior loads the SVG as an external resource, preserving the colors and styling defined inside the file.
+
 <docs-demo-six-icon-12></docs-demo-six-icon-12>
 
 ```html
@@ -215,7 +219,12 @@ The icons are available in different sizes. Default size is medium (24px).
 ```
 
 
-#### Custom SVG inline
+##### SVG inline
+
+When you add the inline-svg attribute, the svg is rendered as svg.
+This allows the icon to be styled from the outside (for example, using fill, stroke, or theme colors on a parent element), 
+which is the main difference compared to the default external rendering above.
+The only downside is that the browser does not cache it.
 
 <docs-demo-six-icon-13></docs-demo-six-icon-13>
 
