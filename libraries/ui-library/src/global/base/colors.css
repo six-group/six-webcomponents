@@ -1,41 +1,88 @@
+body {
+  color: var(--six-color-black);
+  background-color: var(--six-color-white);
+}
+
 :root {
-  --six-color-red: #de3919;
-  --six-color-black: #000;
-  --six-color-white: #fff;
-  --six-color-indigo: #5c1bb8;
-  --six-color-marine: #002c5f;
+  --six-color-red: hsl(10, 80%, 52%);
+  --six-color-black: hsl(0, 0%, 100%);
+  --six-color-white: hsl(0, 0%, 11%);
+  --six-color-indigo: hsl(265, 74%, 59%);
+  --six-color-marine: hsl(212, 100%, 81%);
 
-  --six-color-web-rock-900: #262626;
-  --six-color-web-rock-800: #484848;
-  --six-color-web-rock-700: #676767;
-  --six-color-web-rock-600: #7b7b7b;
-  --six-color-web-rock-500: #a5a5a5;
-  --six-color-web-rock-400: #c3c3c3;
-  --six-color-web-rock-300: #e5e5e5;
-  --six-color-web-rock-200: #f1f1f1;
-  --six-color-web-rock-100: #f6f6f6;
-  --six-color-web-rock-50: #fbfbfb;
+  --six-color-web-rock-900: hsl(0, 0%, 91.8%);
+  --six-color-web-rock-800: hsl(0, 0%, 84%);
+  --six-color-web-rock-700: hsl(0, 0%, 73%);
+  --six-color-web-rock-600: hsl(0, 0%, 58%);
+  --six-color-web-rock-500: hsl(0, 0%, 44%);
+  --six-color-web-rock-400: hsl(0, 0%, 35.5%);
+  --six-color-web-rock-300: hsl(0, 0%, 27.6%);
+  --six-color-web-rock-200: hsl(0, 0%, 22%);
+  --six-color-web-rock-100: hsl(0, 0%, 18.2%);
+  --six-color-web-rock-50: hsl(0, 0%, 15%);
 
-  --six-color-clay-200: #ada398;
-  --six-color-clay-50: #ebe8e7;
+  --six-color-clay-200: hsl(31, 11%, 36%);
+  --six-color-clay-50: hsl(15, 9%, 9%);
 
-  --six-color-danger-900: #c52c0f;
-  --six-color-danger-800: #de3919;
-  --six-color-danger-light-to-be-defined: #f58c78;
+  --six-color-danger-900: hsl(10, 86%, 58%);
+  --six-color-danger-800: hsl(10, 80%, 52%);
+  --six-color-danger-light-to-be-defined: hsl(10, 86%, 28%);
 
-  --six-color-warning-800: #ef9f25;
-  --six-color-warning-700: #f2b72c;
-  --six-color-warning-light-to-be-defined: #f9deb4;
+  --six-color-warning-800: hsl(36, 86%, 46%);
+  --six-color-warning-700: hsl(42, 88%, 44%);
+  --six-color-warning-light-to-be-defined: hsl(37, 85%, 16%);
 
-  --six-color-success-600: #58d200;
-  --six-color-success-500: #6ae300;
-  --six-color-success-light-to-be-defined: #aaff6c;
+  --six-color-success-600: hsl(95, 100%, 34%);
+  --six-color-success-500: hsl(92, 100%, 30%);
+  --six-color-success-light-to-be-defined: hsl(95, 100%, 29%);
 
-  --six-color-action-600: #1f87e5;
-  --six-color-action-500: #2196f3;
-  --six-color-action-light-to-be-defined: #a8d0f5;
+  --six-color-action-600: hsl(208, 79%, 49%);
+  --six-color-action-500: hsl(207, 90%, 46%);
+  --six-color-action-light-to-be-defined: hsl(209, 79%, 19%);
 
-  --six-color-inactive: #c3c3c3;
+  --six-color-inactive: hsl(0, 0%, 24%);
 
   --six-focus-ring-color: var(--six-color-action-600);
+
+  .light {
+    --six-color-red: hsl(10, 80%, 48%);
+    --six-color-black: hsl(0, 0%, 0%);
+    --six-color-white: hsl(0, 0%, 100%);
+    --six-color-indigo: hsl(265, 74%, 41%);
+    --six-color-marine: hsl(212, 100%, 19%);
+
+    --six-color-web-rock-900: hsl(0, 0%, 15%);
+    --six-color-web-rock-800: hsl(0, 0%, 28%);
+    --six-color-web-rock-700: hsl(0, 0%, 40%);
+    --six-color-web-rock-600: hsl(0, 0%, 48%);
+    --six-color-web-rock-500: hsl(0, 0%, 65%);
+    --six-color-web-rock-400: hsl(0, 0%, 76%);
+    --six-color-web-rock-300: hsl(0, 0%, 90%);
+    --six-color-web-rock-200: hsl(0, 0%, 95%);
+    --six-color-web-rock-100: hsl(0, 0%, 96%);
+    --six-color-web-rock-50: hsl(0, 0%, 98%);
+
+    --six-color-clay-200: hsl(31, 11%, 64%);
+    --six-color-clay-50: hsl(15, 9%, 91%);
+
+    --six-color-danger-900: hsl(10, 86%, 42%);
+    --six-color-danger-800: hsl(10, 80%, 48%);
+    --six-color-danger-light-to-be-defined: hsl(10, 86%, 72%);
+
+    --six-color-warning-800: hsl(36, 86%, 54%);
+    --six-color-warning-700: hsl(42, 88%, 56%);
+    --six-color-warning-light-to-be-defined: hsl(37, 85%, 84%);
+
+    --six-color-success-600: hsl(95, 100%, 41%);
+    --six-color-success-500: hsl(92, 100%, 45%);
+    --six-color-success-light-to-be-defined: hsl(95, 100%, 71%);
+
+    --six-color-action-600: hsl(208, 79%, 51%);
+    --six-color-action-500: hsl(207, 90%, 54%);
+    --six-color-action-light-to-be-defined: hsl(209, 79%, 81%);
+
+    --six-color-inactive: hsl(0, 0%, 76%);
+
+    --six-focus-ring-color: var(--six-color-action-600);
+  }
 }
