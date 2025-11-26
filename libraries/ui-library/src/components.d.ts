@@ -1053,7 +1053,7 @@ export namespace Components {
         "submit": boolean;
     }
     /**
-     * @since 5.2
+     * @since 1.0
      * @status stable
      * @summary Renders a Material icon, Material Symbol, or external SVG source in a unified way.
      * - Without `src`, it renders a ligature-based Material icon / symbol using the component’s text content.
@@ -1079,9 +1079,13 @@ export namespace Components {
          */
         "inlineSvg": boolean;
         /**
-          * Icon library for this instance. Overrides the global default. - "material-icons"    → Material Icons - "material-symbols"  → Material Symbols
+          * Icon library for this instance. Overrides the global default. - "material-icons"  → Material Icons - "material-symbols"  → Material Symbols
          */
         "library"?: IconLibrary;
+        /**
+          * Name of the icon
+         */
+        "name"?: string;
         /**
           * The icon's size.
           * @default 'inherit'
@@ -1095,7 +1099,7 @@ export namespace Components {
     | 'xxLarge'
     | 'xxxLarge';
         /**
-          * Name of the icon, path to SVG file or a data image
+          * Path to SVG file or a data image
          */
         "src"?: string;
     }
@@ -3134,7 +3138,7 @@ declare global {
         new (): HTMLSixHeaderMenuButtonElement;
     };
     /**
-     * @since 5.2
+     * @since 1.0
      * @status stable
      * @summary Renders a Material icon, Material Symbol, or external SVG source in a unified way.
      * - Without `src`, it renders a ligature-based Material icon / symbol using the component’s text content.
@@ -4882,7 +4886,7 @@ declare namespace LocalJSX {
         "submit"?: boolean;
     }
     /**
-     * @since 5.2
+     * @since 1.0
      * @status stable
      * @summary Renders a Material icon, Material Symbol, or external SVG source in a unified way.
      * - Without `src`, it renders a ligature-based Material icon / symbol using the component’s text content.
@@ -4908,9 +4912,13 @@ declare namespace LocalJSX {
          */
         "inlineSvg"?: boolean;
         /**
-          * Icon library for this instance. Overrides the global default. - "material-icons"    → Material Icons - "material-symbols"  → Material Symbols
+          * Icon library for this instance. Overrides the global default. - "material-icons"  → Material Icons - "material-symbols"  → Material Symbols
          */
         "library"?: IconLibrary;
+        /**
+          * Name of the icon
+         */
+        "name"?: string;
         /**
           * The icon's size.
           * @default 'inherit'
@@ -4924,7 +4932,7 @@ declare namespace LocalJSX {
     | 'xxLarge'
     | 'xxxLarge';
         /**
-          * Name of the icon, path to SVG file or a data image
+          * Path to SVG file or a data image
          */
         "src"?: string;
     }
@@ -6684,7 +6692,7 @@ declare module "@stencil/core" {
              */
             "six-header-menu-button": LocalJSX.SixHeaderMenuButton & JSXBase.HTMLAttributes<HTMLSixHeaderMenuButtonElement>;
             /**
-             * @since 5.2
+             * @since 1.0
              * @status stable
              * @summary Renders a Material icon, Material Symbol, or external SVG source in a unified way.
              * - Without `src`, it renders a ligature-based Material icon / symbol using the component’s text content.

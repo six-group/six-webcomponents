@@ -1,19 +1,16 @@
 :host {
-  display: inline-flex;
+  display: inline-block;
   vertical-align: middle;
 }
 
 :host svg,
 :host img {
-  display: block;
-  text-align: center;
-  // to follow the sizes
   width: 1em;
   height: 1em;
 }
 
 /* ==========================================================================
- Size helpers (unchanged API, a bit more explicit)
+ Size helpers
  ========================================================================== */
 
 :host(.six-icon--xsmall) {
@@ -58,8 +55,6 @@
 :host(.material-icons-filled),
 :host(.material-symbols-outlined),
 :host(.material-symbols) {
-  display: inline-block;
-  vertical-align: middle;
   letter-spacing: normal;
   word-wrap: normal;
   white-space: nowrap;
@@ -99,26 +94,23 @@
   font-family: 'Material Symbols Outlined Variable';
 
   /* Base variations shared by both */
-  font-variation-settings:
-    'wght' 400,
-    'GRAD' 0,
-    'opsz' 24;
+  font-variation-settings: 'wght' 400,
+  'GRAD' 0,
+  'opsz' 24;
 }
 
 /* Outlined → FILL 0 */
 :host(.material-symbols-outlined) {
-  font-variation-settings:
-    'FILL' 0,
-    'wght' 400,
-    'GRAD' 0,
-    'opsz' 24;
+  font-variation-settings: 'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24;
 }
 
 /* Filled → FILL 1 */
 :host(.material-symbols) {
-  font-variation-settings:
-    'FILL' 1,
-    'wght' 400,
-    'GRAD' 0,
-    'opsz' 24;
+  font-variation-settings: 'FILL' 1,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24;
 }
