@@ -23,7 +23,39 @@ permissions:
   contents: read
 
 jobs:
+  ### publish insider release
+  publish-insider-release:
+    if: ${{ !inputs.is_release }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: 'https://registry.npmjs.org'
+          cache: 'npm'
+      - run: npm ci
+
+      - name: 'Build project with new version'
+        run: npm run build
+
+      - name: 'Publish insider release to NPM'
+        run: |
+          npm publish --tag=insider --access=public libraries/ui-library/
+          npm publish --tag=insider --access=public libraries/ui-library-vue/
+          npm publish --tag=insider --access=public libraries/ui-library-angular/dist/ui-library-angular/
+          npm publish --tag=insider --access=public libraries/ui-library-react/
+
+      - name: 'Deploy Documentation'
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: docs/.vitepress/dist
+          # this folder needs to be kept in sync with the base property in /docs/.vitepress/config.mts
+          target-folder: docs/v5
+
+    ### publish regular release
   publish-release:
+    if: ${{ inputs.is_release }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -37,13 +69,11 @@ jobs:
       - run: npm ci
 
       - name: 'Set version in package.json files to ${{ inputs.version }}'
-        if: ${{ inputs.is_release }}
         run: |
           npm version ${{ inputs.version }} --force --no-git-tag-version
           npm version ${{ inputs.version }} -w libraries/ --force --no-git-tag-version
 
       - name: 'Commit changes to release branch'
-        if: ${{ inputs.is_release }}
         run: |
           git config user.name "GitHub action"
           git config user.email "<>"
@@ -55,16 +85,7 @@ jobs:
       - name: 'Build project with new version'
         run: npm run build
 
-      - name: 'Publish insider release to NPM'
-        if: ${{ !inputs.is_release }}
-        run: |
-          npm publish --tag=insider --access=public libraries/ui-library/
-          npm publish --tag=insider --access=public libraries/ui-library-vue/
-          npm publish --tag=insider --access=public libraries/ui-library-angular/dist/ui-library-angular/
-          npm publish --tag=insider --access=public libraries/ui-library-react/
-
       - name: 'Publish to NPM'
-        if: ${{ inputs.is_release }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
         run: |
@@ -74,19 +95,16 @@ jobs:
           npm publish --tag=latest --access=public libraries/ui-library-angular/dist/ui-library-angular/
 
       - name: 'Create tag'
-        if: ${{ inputs.is_release }}
         run: |
           git tag ${{ inputs.version }}
           git push origin ${{ inputs.version }}
 
       - name: 'Create Pull Request'
-        if: ${{ inputs.is_release }}
         run: gh pr create -B ${{ github.ref_name }} -H release/package-updates-${{ inputs.version }} --title 'Update package.json Versions for Release ${{ inputs.version }}' --body 'Created by Github action. Merge this Pull Request, if you created this Release from main.'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: 'Create GitHub release'
-        if: ${{ inputs.is_release }}
         uses: actions/create-release@latest
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
