@@ -20,7 +20,8 @@ on:
           - insider
           - regular
   push:
-    branches: [main]
+    branches:
+      - main
 
 permissions:
   id-token: write # Required for OIDC
@@ -29,7 +30,7 @@ permissions:
 jobs:
   ### publish insider release
   publish-insider-release:
-    if: ${{ inputs.release_type == 'insider' }}
+    if: ${{ inputs.release_type == 'insider' || github.event_name == 'push' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -42,6 +43,18 @@ jobs:
 
       - name: 'Build project with new version'
         run: npm run build
+
+      - name: Resolve version
+        id: vars
+        run: |
+          SHORT_SHA=$(git rev-parse --short HEAD)
+          echo "sha_short=${SHORT_SHA}" >> $GITHUB_OUTPUT
+
+      - name: 'Version based on commit: 0.0.0-insider.${{ steps.vars.outputs.sha_short }}'
+        run: npm version -w libraries 0.0.0-insider.${{ steps.vars.outputs.sha_short }} --force --no-git-tag-version
+
+      - name: 'rebuild ui-library-angular to reflect version in libraries/ui-library-angular/dist/ui-library-angular/package.json'
+        run: npm run build -w libraries/ui-library-angular
 
       - name: 'Publish insider release to NPM'
         run: |
