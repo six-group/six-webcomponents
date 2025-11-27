@@ -15,6 +15,10 @@
     "dist/",
     "loader/"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/six-group/six-webcomponents.git"
+  },
   "scripts": {
     "build": "npm run clean && stencil build --docs",
     "watch": "npm run clean && stencil build --watch",
