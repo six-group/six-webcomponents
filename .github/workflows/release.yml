@@ -20,7 +20,8 @@ on:
           - insider
           - regular
   push:
-    branches: [main]
+    branches:
+      - main
 
 permissions:
   id-token: write # Required for OIDC
@@ -29,7 +30,7 @@ permissions:
 jobs:
   ### publish insider release
   publish-insider-release:
-    if: ${{ inputs.release_type == 'insider' }}
+    if: ${{ inputs.release_type == 'insider' || github.event_name == 'push' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
