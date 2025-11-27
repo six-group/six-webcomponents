@@ -21,7 +21,8 @@
     "watch": "npm run build -- --watch"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   },
   "dependencies": {
     "@stencil/vue-output-target": "0.10.8",

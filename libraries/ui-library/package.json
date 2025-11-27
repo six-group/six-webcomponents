@@ -35,6 +35,10 @@
     "lint:fix": "eslint --fix src/**/*{.ts,.tsx}",
     "codeclean": "npm run lint:fix && npm run prettier:fix"
   },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
   "dependencies": {
     "@stencil/core": "4.32.0",
     "@types/resize-observer-browser": "^0.1.5"
