@@ -22,6 +22,10 @@
   "dependencies": {
     "tslib": "^2.3.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/six-group/six-webcomponents.git"
+  },
   "devDependencies": {
     "@angular-devkit/build-angular": "^19.2.15",
     "@angular/cli": "^19.2.14",

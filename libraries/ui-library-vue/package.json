@@ -8,6 +8,10 @@
   "files": [
     "dist"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/six-group/six-webcomponents.git"
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
