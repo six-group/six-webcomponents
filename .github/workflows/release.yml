@@ -5,7 +5,8 @@ on:
     inputs:
       version:
         description: 'The version to release. Format vx.x.x(-[rc|beta].x)'
-        required: true
+        required: false
+        default: ''
         type: string
       deploy_docs:
         description: 'Deploy Docs. Set to false for non-stable releases!'
@@ -59,7 +60,7 @@ jobs:
 
     ### publish regular release
   publish-release:
-    if: ${{ inputs.release_type == 'regular' }}
+    if: ${{ inputs.release_type == 'regular' && inputs.version != '' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
