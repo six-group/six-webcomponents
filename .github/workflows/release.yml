@@ -11,10 +11,14 @@ on:
         description: 'Deploy Docs. Set to false for non-stable releases!'
         default: true
         type: boolean
-      is_release:
-        description: 'Determines if an insider or regular release is performed. Set to false for insider releases!'
-        default: false
-        type: boolean
+      release_type:
+        description: 'Release Type'
+        required: true
+        default: 'insider'
+        type: choice
+        options:
+          - insider
+          - regular
   push:
     branches: [main]
 
@@ -25,7 +29,7 @@ permissions:
 jobs:
   ### publish insider release
   publish-insider-release:
-    if: ${{ !inputs.is_release }}
+    if: ${{ inputs.release_type == 'insider' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -55,7 +59,7 @@ jobs:
 
     ### publish regular release
   publish-release:
-    if: ${{ inputs.is_release }}
+    if: ${{ inputs.release_type == 'regular' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
