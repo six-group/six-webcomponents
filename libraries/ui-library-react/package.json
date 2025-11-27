@@ -19,7 +19,8 @@
     "watch": "npm run tsc -- --watch"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   },
   "devDependencies": {
     "@types/react": "^19",

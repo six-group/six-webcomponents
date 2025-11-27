@@ -36,7 +36,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 24
           registry-url: 'https://registry.npmjs.org'
           cache: 'npm'
       - run: npm ci
@@ -57,6 +57,8 @@ jobs:
         run: npm run build -w libraries/ui-library-angular
 
       - name: 'Publish insider release to NPM'
+        env:
+          NPM_CONFIG_PROVENANCE: true
         run: |
           npm publish --tag=insider --access=public libraries/ui-library/
           npm publish --tag=insider --access=public libraries/ui-library-vue/
@@ -105,6 +107,7 @@ jobs:
       - name: 'Publish to NPM'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+          NPM_CONFIG_PROVENANCE: true
         run: |
           npm publish --tag=latest --access=public libraries/ui-library/
           npm publish --tag=latest --access=public libraries/ui-library-vue/
