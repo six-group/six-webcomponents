@@ -13,7 +13,7 @@
   "dependencies": {
     "@six-group/ui-library": "*",
     "@six-group/ui-library-vue": "*",
-    "nuxt": "^3.16.2"
+    "nuxt": "^3.19.3"
   },
   "optionalDependencies": {
     "@oxc-parser/binding-linux-x64-gnu": "^0.72.3",
@@ -27,7 +27,7 @@
     "@wdio/spec-reporter": "^9.1.3",
     "sass": "^1.89.2",
     "tsx": "^4.19.1",
-    "typescript": "^5.4.5",
+    "typescript": "^5.8.3",
     "wdio-nuxt-service": "^0.2.0"
   }
 }
