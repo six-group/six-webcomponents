@@ -9,6 +9,10 @@
   "files": [
     "dist"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/six-group/six-webcomponents.git"
+  },
   "sideEffects": false,
   "engines": {
     "node": ">=20"
@@ -19,7 +23,8 @@
     "watch": "npm run tsc -- --watch"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   },
   "devDependencies": {
     "@types/react": "^19",

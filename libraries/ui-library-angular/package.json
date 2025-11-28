@@ -15,8 +15,16 @@
     "@angular/forms": ">=19.0.0",
     "@six-group/ui-library": "*"
   },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
   "dependencies": {
     "tslib": "^2.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/six-group/six-webcomponents.git"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^19.2.15",

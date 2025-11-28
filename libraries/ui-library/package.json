@@ -15,6 +15,10 @@
     "dist/",
     "loader/"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/six-group/six-webcomponents.git"
+  },
   "scripts": {
     "build": "npm run clean && stencil build --docs",
     "watch": "npm run clean && stencil build --watch",
@@ -26,11 +30,18 @@
     "test:allInclCoverage": "stencil test --spec --e2e --coverage",
     "test:debug": "stencil test --spec --e2e --devtools",
     "test.watch": "stencil test --spec --e2e --watchAll",
+    "test:e2e": "playwright test",
+    "test:e2eDebug": "playwright test --debug --headed",
+    "test:e2eUi": "playwright test --ui",
     "generate": "stencil generate",
     "clean": "rimraf dist loader www docs",
     "lint": "    eslint       src/**/*{.ts,.tsx}",
     "lint:fix": "eslint --fix src/**/*{.ts,.tsx}",
     "codeclean": "npm run lint:fix && npm run prettier:fix"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
   },
   "dependencies": {
     "@stencil/core": "4.32.0",
@@ -40,6 +51,8 @@
     "date-fns": ">=3.0.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.56.1",
+    "@stencil/playwright": "^0.2.1",
     "@fontsource/material-icons": "^5.1.1",
     "@fontsource/material-icons-outlined": "^5.1.1",
     "@fontsource-variable/material-symbols-outlined": "^5.2.22",
@@ -55,6 +68,7 @@
     "@typescript-eslint/eslint-plugin": "^7.0.0",
     "@typescript-eslint/parser": "^7.0.0",
     "cross-env": "^7.0.3",
+    "puppeteer": "^20.9.0",
     "replace-in-file": "^6.3.5",
     "rimraf": "^3.0.2"
   },
