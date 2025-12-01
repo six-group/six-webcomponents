@@ -25,6 +25,3 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: npx pkg-pr-new publish libraries/ui-library-angular/dist/ui-library-angular/
-      - run: npx pkg-pr-new publish libraries/ui-library-react/
-      - run: npx pkg-pr-new publish libraries/ui-library-vue/
-      - run: npx pkg-pr-new publish libraries/ui-library/
