@@ -68,7 +68,7 @@ $margin: 1rem;
 
   &:not(.six-file-upload--disabled) &__drop-zone:hover,
   &__drop-zone--hover {
-    background-color: var(--six-color-action-200);
+    background-color: var(--six-file-upload-drop-zone-hover-background-color);
 
     &.six-file-upload__drop-zone--compact {
       background-color: inherit;

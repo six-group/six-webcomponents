@@ -127,6 +127,8 @@ html {
 
   --six-card-border-color: var(--six-color-web-rock-100);
 
+  --six-file-upload-drop-zone-hover-background-color: var(--six-color-action-200);
+
   --six-picto-background-color: var(--six-color-black);
 
   --six-item-picker-color-disabled: var(--six-color-web-rock-300);
@@ -285,6 +287,8 @@ html {
   --six-alert-primary-color: var(--six-color-web-rock-700);
 
   --six-card-border-color: var(--six-color-web-rock-900);
+
+  --six-file-upload-drop-zone-hover-background-color: var(--six-color-action-800);
 
   --six-picto-background-color: var(--six-color-white);
 
