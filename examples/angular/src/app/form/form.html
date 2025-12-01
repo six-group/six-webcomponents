@@ -58,6 +58,14 @@
     </six-layout-grid>
   </six-group-label>
 
+  <six-group-label class="column-span-6 checkbox-group" label="Privileges">
+    <six-layout-grid columns="1">
+      <six-checkbox value="read" six-checkbox-group [formControl]="form.controls.privileges">read</six-checkbox>
+      <six-checkbox value="write" six-checkbox-group [formControl]="form.controls.privileges">write</six-checkbox>
+      <six-checkbox value="delete" six-checkbox-group [formControl]="form.controls.privileges">delete</six-checkbox>
+    </six-layout-grid>
+  </six-group-label>
+
   <six-textarea class="column-span-6" label="Description" [formControl]="form.controls.description" />
   <six-checkbox class="column-span-6" [formControl]="form.controls.acceptsTerms"
     >Accept to Terms and Condition</six-checkbox

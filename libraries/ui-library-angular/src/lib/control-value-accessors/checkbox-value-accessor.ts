@@ -3,7 +3,7 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { ValueAccessor } from './value-accessor';
 
 @Directive({
-  selector: 'six-checkbox',
+  selector: 'six-checkbox:not([six-checkbox-group])',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

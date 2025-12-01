@@ -20,6 +20,7 @@ export * from './lib/control-value-accessors/date-value-accessor';
 export * from './lib/control-value-accessors/timepicker-value-accessor';
 export * from './lib/control-value-accessors/select-value-accessor';
 export * from './lib/control-value-accessors/checkbox-value-accessor';
+export * from './lib/control-value-accessors/checkbox-multi-select-value-accessor';
 export * from './lib/control-value-accessors/switch-value-accessor';
 export * from './lib/control-value-accessors/range-value-accessor';
 
