@@ -25,7 +25,8 @@ on:
 
 permissions:
   id-token: write # Required for OIDC
-  contents: read
+  pages: write
+  contents: write
 
 jobs:
   ### publish insider release
@@ -71,8 +72,6 @@ jobs:
           folder: docs/.vitepress/dist
           # this folder needs to be kept in sync with the base property in /docs/.vitepress/config.mts
           target-folder: docs/v5
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     ### publish regular release
   publish-release:
@@ -141,5 +140,3 @@ jobs:
           folder: docs/.vitepress/dist
           # this folder needs to be kept in sync with the base property in /docs/.vitepress/config.mts
           target-folder: docs/v5
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
