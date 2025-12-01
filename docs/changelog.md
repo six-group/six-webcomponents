@@ -12,6 +12,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   [docs](./guide/angular.md#customisingdisabling-validationservice) for more details.
 - `six-dropdown` : Added `noScroll` property to disable the default panel scroll behavior. Defaults
   to false.
+- Added `CheckboxMultiSelectValueAccessor` on Angular which binds checkbox values to an array analog
+  to a multiselect
 
 ### Fixed
 
@@ -29,8 +31,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Added
 
 - Added `hoverContent` prop to `six-tab` to override the default hover content.
-- Added `CheckboxMultiSelectValueAccessor` on Angular which binds checkbox values to an array analog
-  to a multiselect
 
 ## 5.1.0 - 2025-10-23
 
