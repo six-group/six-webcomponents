@@ -1050,6 +1050,17 @@ export namespace Components {
     /**
      * @since 1.0
      * @status stable
+     * @summary Renders a Material icon, Material Symbol, or external SVG source in a unified way.
+     * - Without `src`, it renders a ligature-based Material icon / symbol using the component’s text content.
+     * - With `src` pointing to an image or SVG file, it renders either an `<img>` or `<svg><use/></svg>` sprite.
+     * @csspart svg - The `<svg>` element when `inlineSvg` is true.
+     * @prop {string} [src] - Icon name, path to an SVG file, or data URL.
+     * @prop {boolean} [inlineSvg=false] - When `true` and `src` is an SVG, renders `<svg><use/></svg>` instead of `<img>`.
+     * @prop {'inherit' | 'xSmall' | 'small' | 'medium' | 'large' | 'xLarge' | 'xxLarge' | 'xxxLarge'} [size='inherit']
+     * Visual size of the icon.
+     * @prop {boolean} [filled=false] - For Material fonts, toggles between outlined and filled variants when available.
+     * @prop {'material-icons' | 'material-symbols'} [library]
+     * Icon library to use when rendering ligature-based Material icons. Defaults to the globally configured library.
      */
     interface SixIcon {
         /**
@@ -1058,9 +1069,18 @@ export namespace Components {
          */
         "filled": boolean;
         /**
-          * Icon library to use when no `library` prop is provided. By default, all `<six-icon>` instances fall back to the globally configured default library (via `setDefaultIconLibrary()` / `getDefaultIconLibrary()`), which is `"material-icons"` unless changed at runtime.  This allows teams to switch the default across an entire project without having to set the `library` prop on every `<six-icon>` instance.  Icon library for this instance. Overrides the global default. - "material-icons"  → Material Icons - "material-symbols"  → Material Symbols
+          * If the src is a svg, either render <svg><use/></svg> or <img>  - <svg><use/></svg> is better for styling (e.g. fill: red), but slower at rendering. - <img> is better for HTTP caching, but you cannot style the internal SVG elements.
+          * @default false
+         */
+        "inlineSvg": boolean;
+        /**
+          * Icon library for this instance. Overrides the global default. - "material-icons"  → Material Icons - "material-symbols"  → Material Symbols
          */
         "library"?: IconLibrary;
+        /**
+          * Name of the icon
+         */
+        "name"?: string;
         /**
           * The icon's size.
           * @default 'inherit'
@@ -1073,6 +1093,10 @@ export namespace Components {
     | 'xLarge'
     | 'xxLarge'
     | 'xxxLarge';
+        /**
+          * Path to SVG file or a data image
+         */
+        "src"?: string;
     }
     /**
      * @since 1.0
@@ -3111,6 +3135,17 @@ declare global {
     /**
      * @since 1.0
      * @status stable
+     * @summary Renders a Material icon, Material Symbol, or external SVG source in a unified way.
+     * - Without `src`, it renders a ligature-based Material icon / symbol using the component’s text content.
+     * - With `src` pointing to an image or SVG file, it renders either an `<img>` or `<svg><use/></svg>` sprite.
+     * @csspart svg - The `<svg>` element when `inlineSvg` is true.
+     * @prop {string} [src] - Icon name, path to an SVG file, or data URL.
+     * @prop {boolean} [inlineSvg=false] - When `true` and `src` is an SVG, renders `<svg><use/></svg>` instead of `<img>`.
+     * @prop {'inherit' | 'xSmall' | 'small' | 'medium' | 'large' | 'xLarge' | 'xxLarge' | 'xxxLarge'} [size='inherit']
+     * Visual size of the icon.
+     * @prop {boolean} [filled=false] - For Material fonts, toggles between outlined and filled variants when available.
+     * @prop {'material-icons' | 'material-symbols'} [library]
+     * Icon library to use when rendering ligature-based Material icons. Defaults to the globally configured library.
      */
     interface HTMLSixIconElement extends Components.SixIcon, HTMLStencilElement {
     }
@@ -4843,6 +4878,17 @@ declare namespace LocalJSX {
     /**
      * @since 1.0
      * @status stable
+     * @summary Renders a Material icon, Material Symbol, or external SVG source in a unified way.
+     * - Without `src`, it renders a ligature-based Material icon / symbol using the component’s text content.
+     * - With `src` pointing to an image or SVG file, it renders either an `<img>` or `<svg><use/></svg>` sprite.
+     * @csspart svg - The `<svg>` element when `inlineSvg` is true.
+     * @prop {string} [src] - Icon name, path to an SVG file, or data URL.
+     * @prop {boolean} [inlineSvg=false] - When `true` and `src` is an SVG, renders `<svg><use/></svg>` instead of `<img>`.
+     * @prop {'inherit' | 'xSmall' | 'small' | 'medium' | 'large' | 'xLarge' | 'xxLarge' | 'xxxLarge'} [size='inherit']
+     * Visual size of the icon.
+     * @prop {boolean} [filled=false] - For Material fonts, toggles between outlined and filled variants when available.
+     * @prop {'material-icons' | 'material-symbols'} [library]
+     * Icon library to use when rendering ligature-based Material icons. Defaults to the globally configured library.
      */
     interface SixIcon {
         /**
@@ -4851,9 +4897,18 @@ declare namespace LocalJSX {
          */
         "filled"?: boolean;
         /**
-          * Icon library to use when no `library` prop is provided. By default, all `<six-icon>` instances fall back to the globally configured default library (via `setDefaultIconLibrary()` / `getDefaultIconLibrary()`), which is `"material-icons"` unless changed at runtime.  This allows teams to switch the default across an entire project without having to set the `library` prop on every `<six-icon>` instance.  Icon library for this instance. Overrides the global default. - "material-icons"  → Material Icons - "material-symbols"  → Material Symbols
+          * If the src is a svg, either render <svg><use/></svg> or <img>  - <svg><use/></svg> is better for styling (e.g. fill: red), but slower at rendering. - <img> is better for HTTP caching, but you cannot style the internal SVG elements.
+          * @default false
+         */
+        "inlineSvg"?: boolean;
+        /**
+          * Icon library for this instance. Overrides the global default. - "material-icons"  → Material Icons - "material-symbols"  → Material Symbols
          */
         "library"?: IconLibrary;
+        /**
+          * Name of the icon
+         */
+        "name"?: string;
         /**
           * The icon's size.
           * @default 'inherit'
@@ -4866,6 +4921,10 @@ declare namespace LocalJSX {
     | 'xLarge'
     | 'xxLarge'
     | 'xxxLarge';
+        /**
+          * Path to SVG file or a data image
+         */
+        "src"?: string;
     }
     /**
      * @since 1.0
@@ -6625,6 +6684,17 @@ declare module "@stencil/core" {
             /**
              * @since 1.0
              * @status stable
+             * @summary Renders a Material icon, Material Symbol, or external SVG source in a unified way.
+             * - Without `src`, it renders a ligature-based Material icon / symbol using the component’s text content.
+             * - With `src` pointing to an image or SVG file, it renders either an `<img>` or `<svg><use/></svg>` sprite.
+             * @csspart svg - The `<svg>` element when `inlineSvg` is true.
+             * @prop {string} [src] - Icon name, path to an SVG file, or data URL.
+             * @prop {boolean} [inlineSvg=false] - When `true` and `src` is an SVG, renders `<svg><use/></svg>` instead of `<img>`.
+             * @prop {'inherit' | 'xSmall' | 'small' | 'medium' | 'large' | 'xLarge' | 'xxLarge' | 'xxxLarge'} [size='inherit']
+             * Visual size of the icon.
+             * @prop {boolean} [filled=false] - For Material fonts, toggles between outlined and filled variants when available.
+             * @prop {'material-icons' | 'material-symbols'} [library]
+             * Icon library to use when rendering ligature-based Material icons. Defaults to the globally configured library.
              */
             "six-icon": LocalJSX.SixIcon & JSXBase.HTMLAttributes<HTMLSixIconElement>;
             /**
