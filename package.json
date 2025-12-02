@@ -48,7 +48,7 @@
     "jest-cli": "^29.7.0",
     "npm-run-all2": "^8.0.4",
     "pkg-pr-new": "^0.0.51",
-    "prettier": "^3.5.3",
+    "prettier": "^3.7.3",
     "typescript": "^5.8.3"
   },
   "license": "Apache-2.0"
