@@ -132,7 +132,14 @@ export class MyComponent {
 }
 ```
 
-### Customising/Disabling `ValidationService`
+### <Badge type="warning" text="⚠️Experimental" /> Customising/Disabling `ValidationService`
+
+<six-alert type="warning" open style="margin-top: 8px">
+  <six-icon slot="icon">warning_amber</six-icon>
+  <strong>This feature is experimental</strong><br>
+  The API, behaviour and implementation may/will change in the future. Please proceed at your own risk.<br>
+  For any feedback, please open an issue on the <a href="https://github.com/six-group/six-webcomponents/issues">GitHub repository</a>.
+</six-alert>
 
 The Angular library ships with a built-in `ValidationService` that can be used to validate
 `FormControl`s.
@@ -150,7 +157,10 @@ UiLibraryAngularModule.forRoot(/* ... other options*/, {
 })
 ```
 
-WARNING: This will disable any sort of validation service. Even if you pass your own implementation!
+<six-alert type="info" open style="margin-top: 8px">
+  <six-icon slot="icon">info</six-icon>
+  <strong>Warning:</strong> This will disable any sort of validation service. Even if you pass your own implementation!
+</six-alert>
 
 ## Using the Components
 
