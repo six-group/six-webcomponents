@@ -6,10 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## Upcoming
 
+## 5.2.0 - 2025-12-11
+
 ### Added
 
 - **⚠️Experimental**: Added the ability to disable the `ValidationService` on Angular. See
-  [docs](./guide/angular.md#customisingdisabling-validationservice) for more details.
+  [docs](./guide/angular#customising-disabling-validationservice) for more details.
 - `six-dropdown` : Added `noScroll` property to disable the default panel scroll behavior. Defaults
   to false.
 - Added `CheckboxMultiSelectValueAccessor` on Angular which binds checkbox values to an array analog
@@ -22,12 +24,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   for more details.
 - `six-spinner` fix container alignment, which doesn't match svg size and position
 - `six-file-upload`: fixed drag and drop file handling not triggering file upload
-
-### Removed
-
-### Changed
-
-### Deprecated
 
 ## 5.1.1 - 2025-11-04
 
