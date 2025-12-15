@@ -1,8 +1,8 @@
 /* tslint:disable */
 /* auto-generated angular directive proxies */
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, NgZone } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, Output, NgZone } from '@angular/core';
 
-import { ProxyCmp, proxyOutputs } from './angular-component-lib/utils';
+import { ProxyCmp } from './angular-component-lib/utils';
 
 import { Components } from '@six-group/ui-library';
 
@@ -17,14 +17,18 @@ import { Components } from '@six-group/ui-library';
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['closable', 'duration', 'open', 'type'],
+  outputs: ['six-alert-show', 'six-alert-after-show', 'six-alert-hide', 'six-alert-after-hide'],
   standalone: false
 })
 export class SixAlert {
   protected el: HTMLSixAlertElement;
+  @Output() sixAlertShow = new EventEmitter<CustomEvent<ISixAlertEmptyPayload>>();
+  @Output() sixAlertAfterShow = new EventEmitter<CustomEvent<ISixAlertEmptyPayload>>();
+  @Output() sixAlertHide = new EventEmitter<CustomEvent<ISixAlertEmptyPayload>>();
+  @Output() sixAlertAfterHide = new EventEmitter<CustomEvent<ISixAlertEmptyPayload>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['six-alert-show', 'six-alert-after-show', 'six-alert-hide', 'six-alert-after-hide']);
   }
 }
 
@@ -153,14 +157,16 @@ export declare interface SixBreadcrumbsItem extends Components.SixBreadcrumbsIte
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['caret', 'circle', 'disabled', 'download', 'href', 'loading', 'name', 'pill', 'reset', 'size', 'submit', 'target', 'type', 'value'],
+  outputs: ['six-button-blur', 'six-button-focus'],
   standalone: false
 })
 export class SixButton {
   protected el: HTMLSixButtonElement;
+  @Output() sixButtonBlur = new EventEmitter<CustomEvent<ISixButtonEmptyPayload>>();
+  @Output() sixButtonFocus = new EventEmitter<CustomEvent<ISixButtonEmptyPayload>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['six-button-blur', 'six-button-focus']);
   }
 }
 
@@ -211,14 +217,17 @@ export declare interface SixCard extends Components.SixCard {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['checked', 'disabled', 'errorText', 'errorTextCount', 'indeterminate', 'invalid', 'label', 'name', 'required', 'value'],
+  outputs: ['six-checkbox-blur', 'six-checkbox-change', 'six-checkbox-focus'],
   standalone: false
 })
 export class SixCheckbox {
   protected el: HTMLSixCheckboxElement;
+  @Output() sixCheckboxBlur = new EventEmitter<CustomEvent<ISixCheckboxEmptyPayload>>();
+  @Output() sixCheckboxChange = new EventEmitter<CustomEvent<ISixCheckboxEmptyPayload>>();
+  @Output() sixCheckboxFocus = new EventEmitter<CustomEvent<ISixCheckboxEmptyPayload>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['six-checkbox-blur', 'six-checkbox-change', 'six-checkbox-focus']);
   }
 }
 
@@ -251,14 +260,16 @@ export declare interface SixCheckbox extends Components.SixCheckbox {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['allowedDates', 'clearable', 'dateFormat', 'disabled', 'errorText', 'errorTextCount', 'helpText', 'invalid', 'label', 'language', 'max', 'min', 'name', 'placeholder', 'readonly', 'required', 'size', 'value'],
+  outputs: ['six-change', 'six-blur'],
   standalone: false
 })
 export class SixDate {
   protected el: HTMLSixDateElement;
+  @Output() sixChange = new EventEmitter<CustomEvent<string | ''>>();
+  @Output() sixBlur = new EventEmitter<CustomEvent<any>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['six-change', 'six-blur']);
   }
 }
 
@@ -287,14 +298,17 @@ Does not contain event details.
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['allowedDates', 'clearable', 'closeOnSelect', 'containingElement', 'dateFormat', 'debounce', 'defaultDate', 'disabled', 'errorText', 'errorTextCount', 'hoist', 'iconPosition', 'inline', 'invalid', 'label', 'locale', 'max', 'min', 'name', 'open', 'placeholder', 'placement', 'readonly', 'required', 'size', 'type', 'value'],
+  outputs: ['six-datepicker-select', 'six-datepicker-clear', 'six-datepicker-blur'],
   standalone: false
 })
 export class SixDatepicker {
   protected el: HTMLSixDatepickerElement;
+  @Output() sixDatepickerSelect = new EventEmitter<CustomEvent<ISixDatepickerSixDatepickerSelectPayload>>();
+  @Output() sixDatepickerClear = new EventEmitter<CustomEvent<ISixDatepickerEmptyPayload>>();
+  @Output() sixDatepickerBlur = new EventEmitter<CustomEvent<ISixDatepickerSixDatepickerSelectPayload>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['six-datepicker-select', 'six-datepicker-clear', 'six-datepicker-blur']);
   }
 }
 
@@ -328,14 +342,18 @@ export declare interface SixDatepicker extends Components.SixDatepicker {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['disabled', 'hasContent', 'inline', 'open', 'selectableEmpty', 'summary', 'summaryIcon', 'summaryIconSize'],
+  outputs: ['six-details-show', 'six-details-after-show', 'six-details-hide', 'six-details-after-hide'],
   standalone: false
 })
 export class SixDetails {
   protected el: HTMLSixDetailsElement;
+  @Output() sixDetailsShow = new EventEmitter<CustomEvent<ISixDetailsEmptyPayload>>();
+  @Output() sixDetailsAfterShow = new EventEmitter<CustomEvent<ISixDetailsEmptyPayload>>();
+  @Output() sixDetailsHide = new EventEmitter<CustomEvent<ISixDetailsEmptyPayload>>();
+  @Output() sixDetailsAfterHide = new EventEmitter<CustomEvent<ISixDetailsEmptyPayload>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['six-details-show', 'six-details-after-show', 'six-details-hide', 'six-details-after-hide']);
   }
 }
 
@@ -372,14 +390,20 @@ export declare interface SixDetails extends Components.SixDetails {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['label', 'noHeader', 'open'],
+  outputs: ['six-dialog-show', 'six-dialog-after-show', 'six-dialog-hide', 'six-dialog-after-hide', 'six-dialog-initial-focus', 'six-dialog-request-close'],
   standalone: false
 })
 export class SixDialog {
   protected el: HTMLSixDialogElement;
+  @Output() sixDialogShow = new EventEmitter<CustomEvent<ISixDialogEmptyPayload>>();
+  @Output() sixDialogAfterShow = new EventEmitter<CustomEvent<ISixDialogEmptyPayload>>();
+  @Output() sixDialogHide = new EventEmitter<CustomEvent<ISixDialogEmptyPayload>>();
+  @Output() sixDialogAfterHide = new EventEmitter<CustomEvent<ISixDialogEmptyPayload>>();
+  @Output() sixDialogInitialFocus = new EventEmitter<CustomEvent<ISixDialogEmptyPayload>>();
+  @Output() sixDialogRequestClose = new EventEmitter<CustomEvent<ISixDialogSixDialogRequestClose>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['six-dialog-show', 'six-dialog-after-show', 'six-dialog-hide', 'six-dialog-after-hide', 'six-dialog-initial-focus', 'six-dialog-request-close']);
   }
 }
 
@@ -428,14 +452,20 @@ the drawer will result in destructive behavior such as data loss.
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['contained', 'label', 'noHeader', 'open', 'placement'],
+  outputs: ['six-drawer-show', 'six-drawer-after-show', 'six-drawer-hide', 'six-drawer-after-hide', 'six-drawer-initial-focus', 'six-drawer-request-close'],
   standalone: false
 })
 export class SixDrawer {
   protected el: HTMLSixDrawerElement;
+  @Output() sixDrawerShow = new EventEmitter<CustomEvent<ISixDrawerEmptyPayload>>();
+  @Output() sixDrawerAfterShow = new EventEmitter<CustomEvent<ISixDrawerEmptyPayload>>();
+  @Output() sixDrawerHide = new EventEmitter<CustomEvent<ISixDrawerEmptyPayload>>();
+  @Output() sixDrawerAfterHide = new EventEmitter<CustomEvent<ISixDrawerEmptyPayload>>();
+  @Output() sixDrawerInitialFocus = new EventEmitter<CustomEvent<ISixDrawerEmptyPayload>>();
+  @Output() sixDrawerRequestClose = new EventEmitter<CustomEvent<ISixDrawerSixDrawerRequestClose>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['six-drawer-show', 'six-drawer-after-show', 'six-drawer-hide', 'six-drawer-after-hide', 'six-drawer-initial-focus', 'six-drawer-request-close']);
   }
 }
 
@@ -484,14 +514,21 @@ the drawer will result in destructive behavior such as data loss.
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['asyncFilter', 'autofocusFilter', 'closeOnSelect', 'containingElement', 'disableHideOnEnterAndSpace', 'distance', 'filter', 'filterDebounce', 'filterPlaceholder', 'hoist', 'matchTriggerWidth', 'noScroll', 'open', 'options', 'placement', 'skidding', 'virtualScroll'],
+  outputs: ['six-dropdown-show', 'six-dropdown-after-show', 'six-dropdown-hide', 'six-dropdown-after-hide', 'six-dropdown-auto-filter-fired', 'six-async-filter-fired', 'six-dropdown-scroll'],
   standalone: false
 })
 export class SixDropdown {
   protected el: HTMLSixDropdownElement;
+  @Output() sixDropdownShow = new EventEmitter<CustomEvent<ISixDropdownEmptyPayload>>();
+  @Output() sixDropdownAfterShow = new EventEmitter<CustomEvent<ISixDropdownEmptyPayload>>();
+  @Output() sixDropdownHide = new EventEmitter<CustomEvent<ISixDropdownEmptyPayload>>();
+  @Output() sixDropdownAfterHide = new EventEmitter<CustomEvent<ISixDropdownEmptyPayload>>();
+  @Output() sixDropdownAutoFilterFired = new EventEmitter<CustomEvent<ISixDropdownSixDropdownAutoFilterPayload>>();
+  @Output() sixAsyncFilterFired = new EventEmitter<CustomEvent<ISixDropdownSixDropdownAsyncFilterPayload>>();
+  @Output() sixDropdownScroll = new EventEmitter<CustomEvent<ISixDropdownSixDropdownScrollPayload>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['six-dropdown-show', 'six-dropdown-after-show', 'six-dropdown-hide', 'six-dropdown-after-hide', 'six-dropdown-auto-filter-fired', 'six-async-filter-fired', 'six-dropdown-scroll']);
   }
 }
 
@@ -609,14 +646,16 @@ export declare interface SixFileList extends Components.SixFileList {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['date', 'identifier', 'name', 'nodelete', 'nodownload', 'size'],
+  outputs: ['six-file-list-item-download', 'six-file-list-item-remove'],
   standalone: false
 })
 export class SixFileListItem {
   protected el: HTMLSixFileListItemElement;
+  @Output() sixFileListItemDownload = new EventEmitter<CustomEvent<ISixFileListItemSixFileListDownloadPayload>>();
+  @Output() sixFileListItemRemove = new EventEmitter<CustomEvent<ISixFileListItemSixFileListRemovePayload>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['six-file-list-item-download', 'six-file-list-item-remove']);
   }
 }
 
@@ -645,14 +684,16 @@ export declare interface SixFileListItem extends Components.SixFileListItem {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['accept', 'compact', 'disabled', 'errorText', 'invalid', 'label', 'maxFileSize', 'multiple', 'uploading'],
+  outputs: ['six-file-upload-success', 'six-file-upload-failure'],
   standalone: false
 })
 export class SixFileUpload {
   protected el: HTMLSixFileUploadElement;
+  @Output() sixFileUploadSuccess = new EventEmitter<CustomEvent<ISixFileUploadSixFileUploadSuccessPayload>>();
+  @Output() sixFileUploadFailure = new EventEmitter<CustomEvent<ISixFileUploadSixFileUploadFailurePayload>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['six-file-upload-success', 'six-file-upload-failure']);
   }
 }
 
@@ -865,14 +906,19 @@ export declare interface SixIconButton extends Components.SixIconButton {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['autocapitalize', 'autocomplete', 'autocorrect', 'autofocus', 'clearable', 'disabled', 'dropdownSearch', 'errorText', 'errorTextCount', 'helpText', 'inputmode', 'invalid', 'label', 'line', 'max', 'maxlength', 'min', 'minlength', 'name', 'pattern', 'pill', 'placeholder', 'readonly', 'required', 'size', 'spellcheck', 'step', 'togglePassword', 'type', 'value'],
+  outputs: ['six-input-change', 'six-input-clear', 'six-input-input', 'six-input-focus', 'six-input-blur'],
   standalone: false
 })
 export class SixInput {
   protected el: HTMLSixInputElement;
+  @Output() sixInputChange = new EventEmitter<CustomEvent<ISixInputEmptyPayload>>();
+  @Output() sixInputClear = new EventEmitter<CustomEvent<ISixInputEmptyPayload>>();
+  @Output() sixInputInput = new EventEmitter<CustomEvent<ISixInputEmptyPayload>>();
+  @Output() sixInputFocus = new EventEmitter<CustomEvent<ISixInputEmptyPayload>>();
+  @Output() sixInputBlur = new EventEmitter<CustomEvent<ISixInputEmptyPayload>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['six-input-change', 'six-input-clear', 'six-input-input', 'six-input-focus', 'six-input-blur']);
   }
 }
 
@@ -912,14 +958,16 @@ export declare interface SixInput extends Components.SixInput {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['debounce', 'interval', 'items', 'max', 'min', 'padded', 'paddingChar', 'paddingDirection', 'paddingLength', 'roundtrip', 'step', 'timeout', 'type', 'value'],
+  outputs: ['six-item-picker-change', 'six-item-picker-change-debounced'],
   standalone: false
 })
 export class SixItemPicker {
   protected el: HTMLSixItemPickerElement;
+  @Output() sixItemPickerChange = new EventEmitter<CustomEvent<ISixItemPickerSixItemPickerChangePayload>>();
+  @Output() sixItemPickerChangeDebounced = new EventEmitter<CustomEvent<ISixItemPickerSixItemPickerChangePayload>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['six-item-picker-change', 'six-item-picker-change-debounced']);
   }
 }
 
@@ -947,14 +995,15 @@ export declare interface SixItemPicker extends Components.SixItemPicker {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['languages', 'selected'],
+  outputs: ['six-language-switcher-change'],
   standalone: false
 })
 export class SixLanguageSwitcher {
   protected el: HTMLSixLanguageSwitcherElement;
+  @Output() sixLanguageSwitcherChange = new EventEmitter<CustomEvent<ISixLanguageSwitcherSixLanguageSwitcherChangePayload>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['six-language-switcher-change']);
   }
 }
 
@@ -1048,14 +1097,15 @@ export declare interface SixMainContainer extends Components.SixMainContainer {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['disableKeyboardHandling', 'itemSize', 'items', 'itemsShown', 'removeBoxShadow', 'scrollingDebounce', 'virtualScroll'],
+  outputs: ['six-menu-item-selected'],
   standalone: false
 })
 export class SixMenu {
   protected el: HTMLSixMenuElement;
+  @Output() sixMenuItemSelected = new EventEmitter<CustomEvent<ISixMenuSixMenuItemSelectedPayload>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['six-menu-item-selected']);
   }
 }
 
@@ -1217,14 +1267,17 @@ export declare interface SixProgressRing extends Components.SixProgressRing {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['checked', 'disabled', 'invalid', 'name', 'value'],
+  outputs: ['six-radio-blur', 'six-radio-change', 'six-radio-focus'],
   standalone: false
 })
 export class SixRadio {
   protected el: HTMLSixRadioElement;
+  @Output() sixRadioBlur = new EventEmitter<CustomEvent<ISixRadioEmptyPayload>>();
+  @Output() sixRadioChange = new EventEmitter<CustomEvent<ISixRadioEmptyPayload>>();
+  @Output() sixRadioFocus = new EventEmitter<CustomEvent<ISixRadioEmptyPayload>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['six-radio-blur', 'six-radio-change', 'six-radio-focus']);
   }
 }
 
@@ -1257,14 +1310,17 @@ export declare interface SixRadio extends Components.SixRadio {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['disabled', 'errorText', 'errorTextCount', 'helpText', 'invalid', 'label', 'max', 'min', 'name', 'required', 'step', 'tooltip', 'tooltipFormatter', 'value'],
+  outputs: ['six-range-change', 'six-range-blur', 'six-range-focus'],
   standalone: false
 })
 export class SixRange {
   protected el: HTMLSixRangeElement;
+  @Output() sixRangeChange = new EventEmitter<CustomEvent<ISixRangeEmptyPayload>>();
+  @Output() sixRangeBlur = new EventEmitter<CustomEvent<ISixRangeEmptyPayload>>();
+  @Output() sixRangeFocus = new EventEmitter<CustomEvent<ISixRangeEmptyPayload>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['six-range-change', 'six-range-blur', 'six-range-focus']);
   }
 }
 
@@ -1296,14 +1352,17 @@ export declare interface SixRange extends Components.SixRange {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['disabled', 'errorText', 'errorTextCount', 'helpText', 'invalid', 'label', 'max', 'name', 'readonly', 'required', 'size', 'value'],
+  outputs: ['six-rating-blur', 'six-rating-change', 'six-rating-focus'],
   standalone: false
 })
 export class SixRating {
   protected el: HTMLSixRatingElement;
+  @Output() sixRatingBlur = new EventEmitter<CustomEvent<number>>();
+  @Output() sixRatingChange = new EventEmitter<CustomEvent<number>>();
+  @Output() sixRatingFocus = new EventEmitter<CustomEvent<ISixRatingEmptyPayload>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['six-rating-blur', 'six-rating-change', 'six-rating-focus']);
   }
 }
 
@@ -1358,14 +1417,15 @@ export declare interface SixRoot extends Components.SixRoot {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['clearable', 'debounce', 'disabled', 'placeholder', 'value'],
+  outputs: ['six-search-field-change'],
   standalone: false
 })
 export class SixSearchField {
   protected el: HTMLSixSearchFieldElement;
+  @Output() sixSearchFieldChange = new EventEmitter<CustomEvent<ISixSearchFieldSixSearchFieldChangePayload>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['six-search-field-change']);
   }
 }
 
@@ -1390,14 +1450,17 @@ export declare interface SixSearchField extends Components.SixSearchField {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['asyncFilter', 'autocomplete', 'clearable', 'disabled', 'errorText', 'errorTextCount', 'filter', 'filterDebounce', 'filterPlaceholder', 'helpText', 'hoist', 'inputDebounce', 'invalid', 'label', 'line', 'multiple', 'name', 'options', 'pill', 'placeholder', 'required', 'selectAllButton', 'selectAllText', 'size', 'value', 'virtualScroll'],
+  outputs: ['six-select-change', 'six-select-focus', 'six-select-blur'],
   standalone: false
 })
 export class SixSelect {
   protected el: HTMLSixSelectElement;
+  @Output() sixSelectChange = new EventEmitter<CustomEvent<ISixSelectSixSelectChangePayload>>();
+  @Output() sixSelectFocus = new EventEmitter<CustomEvent<ISixSelectEmptyPayload>>();
+  @Output() sixSelectBlur = new EventEmitter<CustomEvent<ISixSelectEmptyPayload>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['six-select-change', 'six-select-focus', 'six-select-blur']);
   }
 }
 
@@ -1431,14 +1494,19 @@ export declare interface SixSelect extends Components.SixSelect {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['open', 'position', 'toggled', 'width'],
+  outputs: ['six-sidebar-show', 'six-sidebar-after-show', 'six-sidebar-hide', 'six-sidebar-after-hide', 'six-sidebar-initial-focus'],
   standalone: false
 })
 export class SixSidebar {
   protected el: HTMLSixSidebarElement;
+  @Output() sixSidebarShow = new EventEmitter<CustomEvent<ISixSidebarEmptyPayload>>();
+  @Output() sixSidebarAfterShow = new EventEmitter<CustomEvent<ISixSidebarEmptyPayload>>();
+  @Output() sixSidebarHide = new EventEmitter<CustomEvent<ISixSidebarEmptyPayload>>();
+  @Output() sixSidebarAfterHide = new EventEmitter<CustomEvent<ISixSidebarEmptyPayload>>();
+  @Output() sixSidebarInitialFocus = new EventEmitter<CustomEvent<ISixSidebarEmptyPayload>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['six-sidebar-show', 'six-sidebar-after-show', 'six-sidebar-hide', 'six-sidebar-after-hide', 'six-sidebar-initial-focus']);
   }
 }
 
@@ -1572,14 +1640,17 @@ export declare interface SixStageIndicator extends Components.SixStageIndicator 
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['checked', 'disabled', 'errorText', 'errorTextCount', 'invalid', 'label', 'name', 'required', 'value'],
+  outputs: ['six-switch-blur', 'six-switch-change', 'six-switch-focus'],
   standalone: false
 })
 export class SixSwitch {
   protected el: HTMLSixSwitchElement;
+  @Output() sixSwitchBlur = new EventEmitter<CustomEvent<boolean>>();
+  @Output() sixSwitchChange = new EventEmitter<CustomEvent<boolean>>();
+  @Output() sixSwitchFocus = new EventEmitter<CustomEvent<ISixSwitchEmptyPayload>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['six-switch-blur', 'six-switch-change', 'six-switch-focus']);
   }
 }
 
@@ -1612,14 +1683,15 @@ export declare interface SixSwitch extends Components.SixSwitch {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['active', 'closable', 'disabled', 'hoverContent', 'panel'],
+  outputs: ['six-tab-close'],
   standalone: false
 })
 export class SixTab {
   protected el: HTMLSixTabElement;
+  @Output() sixTabClose = new EventEmitter<CustomEvent<ISixTabEmptyPayload>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['six-tab-close']);
   }
 }
 
@@ -1644,14 +1716,16 @@ export declare interface SixTab extends Components.SixTab {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['noScrollControls', 'placement'],
+  outputs: ['six-tab-show', 'six-tab-hide'],
   standalone: false
 })
 export class SixTabGroup {
   protected el: HTMLSixTabGroupElement;
+  @Output() sixTabShow = new EventEmitter<CustomEvent<ISixTabGroupSixTabShowPayload>>();
+  @Output() sixTabHide = new EventEmitter<CustomEvent<ISixTabGroupSixTabHidePayload>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['six-tab-show', 'six-tab-hide']);
   }
 }
 
@@ -1703,14 +1777,15 @@ export declare interface SixTabPanel extends Components.SixTabPanel {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['clearable', 'pill', 'size', 'type'],
+  outputs: ['six-tag-clear'],
   standalone: false
 })
 export class SixTag {
   protected el: HTMLSixTagElement;
+  @Output() sixTagClear = new EventEmitter<CustomEvent<ISixTagEmptyPayload>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['six-tag-clear']);
   }
 }
 
@@ -1735,14 +1810,18 @@ export declare interface SixTag extends Components.SixTag {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['autocapitalize', 'autocomplete', 'autocorrect', 'autofocus', 'disabled', 'errorText', 'errorTextCount', 'helpText', 'inputmode', 'invalid', 'label', 'maxlength', 'minlength', 'name', 'placeholder', 'readonly', 'required', 'resize', 'rows', 'size', 'spellcheck', 'value'],
+  outputs: ['six-textarea-change', 'six-textarea-input', 'six-textarea-focus', 'six-textarea-blur'],
   standalone: false
 })
 export class SixTextarea {
   protected el: HTMLSixTextareaElement;
+  @Output() sixTextareaChange = new EventEmitter<CustomEvent<ISixTextareaEmptyPayload>>();
+  @Output() sixTextareaInput = new EventEmitter<CustomEvent<ISixTextareaEmptyPayload>>();
+  @Output() sixTextareaFocus = new EventEmitter<CustomEvent<ISixTextareaEmptyPayload>>();
+  @Output() sixTextareaBlur = new EventEmitter<CustomEvent<ISixTextareaEmptyPayload>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['six-textarea-change', 'six-textarea-input', 'six-textarea-focus', 'six-textarea-blur']);
   }
 }
 
@@ -1779,14 +1858,16 @@ export declare interface SixTextarea extends Components.SixTextarea {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['closeable', 'disableTooltip', 'disabled', 'elevated', 'iconName', 'label', 'size'],
+  outputs: ['six-tile-closed', 'six-tile-selected'],
   standalone: false
 })
 export class SixTile {
   protected el: HTMLSixTileElement;
+  @Output() sixTileClosed = new EventEmitter<CustomEvent<ISixTileEmptyPayload>>();
+  @Output() sixTileSelected = new EventEmitter<CustomEvent<ISixTileEmptyPayload>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['six-tile-closed', 'six-tile-selected']);
   }
 }
 
@@ -1815,14 +1896,17 @@ export declare interface SixTile extends Components.SixTile {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['clearable', 'debounce', 'defaultTime', 'disabled', 'errorText', 'errorTextCount', 'format', 'hoist', 'iconPosition', 'inline', 'interval', 'invalid', 'label', 'name', 'open', 'placeholder', 'placement', 'readonly', 'required', 'separator', 'size', 'timeout', 'value'],
+  outputs: ['six-timepicker-change', 'six-timepicker-change-debounced', 'six-timepicker-clear'],
   standalone: false
 })
 export class SixTimepicker {
   protected el: HTMLSixTimepickerElement;
+  @Output() sixTimepickerChange = new EventEmitter<CustomEvent<ISixTimepickerSixTimepickerChange>>();
+  @Output() sixTimepickerChangeDebounced = new EventEmitter<CustomEvent<ISixTimepickerSixTimepickerChange>>();
+  @Output() sixTimepickerClear = new EventEmitter<CustomEvent<ISixTimepickerEmptyPayload>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['six-timepicker-change', 'six-timepicker-change-debounced', 'six-timepicker-clear']);
   }
 }
 
@@ -1856,14 +1940,18 @@ export declare interface SixTimepicker extends Components.SixTimepicker {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['content', 'disabled', 'distance', 'open', 'placement', 'skidding', 'trigger'],
+  outputs: ['six-tooltip-show', 'six-tooltip-after-show', 'six-tooltip-hide', 'six-tooltip-after-hide'],
   standalone: false
 })
 export class SixTooltip {
   protected el: HTMLSixTooltipElement;
+  @Output() sixTooltipShow = new EventEmitter<CustomEvent<ISixTooltipEmptyPayload>>();
+  @Output() sixTooltipAfterShow = new EventEmitter<CustomEvent<ISixTooltipEmptyPayload>>();
+  @Output() sixTooltipHide = new EventEmitter<CustomEvent<ISixTooltipEmptyPayload>>();
+  @Output() sixTooltipAfterHide = new EventEmitter<CustomEvent<ISixTooltipEmptyPayload>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['six-tooltip-show', 'six-tooltip-after-show', 'six-tooltip-hide', 'six-tooltip-after-hide']);
   }
 }
 

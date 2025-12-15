@@ -36,7 +36,7 @@
     "@six-group/ui-library": "*"
   },
   "devDependencies": {
-    "typescript": "^5.8.3"
+    "typescript": "~5.8.3"
   },
   "private": false,
   "sideEffects": false,
