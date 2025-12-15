@@ -45,8 +45,10 @@
   },
   "dependencies": {
     "@stencil/core": "4.32.0",
-    "@types/resize-observer-browser": "^0.1.5",
-    "date-fns": "4.1.0"
+    "@types/resize-observer-browser": "^0.1.5"
+  },
+  "peerDependencies": {
+    "date-fns": ">=3.0.0"
   },
   "devDependencies": {
     "@playwright/test": "^1.56.1",
