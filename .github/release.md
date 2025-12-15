@@ -58,10 +58,11 @@ A member of the Core Team should review the Pull Request. **But don't merge the 
 1. Go to
    [https://github.com/six-group/six-webcomponents/actions/workflows/release.yml](https://github.com/six-group/six-webcomponents/actions/workflows/release.yml)
 2. Select `Run workflow` on the top right of the list and set the following parameters:
-   - Branch: `release/<VERSION_NUMBER>`
+   - Branch: `release/<VERSION_NUMBER>` or `main` (which is the default)
    - The version to release: It must match the pattern `vVERSION_NUMBER`, so for the example above
      it would be `v4.2.3`. **Do not forget the leading `v`!**
    - Disable _Deploy Docs_ if you release a non-stable release (like RC or beta)
+   - Type of release `insider` or `regular` based on the release you want to create.
 3. Click on `Run Workflow`
 
 Once the workflow has completed successfully, check if new version was published on

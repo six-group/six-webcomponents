@@ -1,6 +1,6 @@
 {
   "name": "@six-group/workspace",
-  "version": "5.1.1",
+  "version": "5.2.0",
   "scripts": {
     "start": "npm run start -w libraries/ui-library",
     "watch:lib": "npm run watch -w libraries/ui-library",
@@ -50,6 +50,12 @@
     "pkg-pr-new": "^0.0.51",
     "prettier": "^3.7.3",
     "typescript": "^5.8.3"
+  },
+  "overrides": {
+    "vitepress": {
+      "@docsearch/js": "3.9.0",
+      "@docsearch/css": "3.9.0"
+    }
   },
   "license": "Apache-2.0"
 }
