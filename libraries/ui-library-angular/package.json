@@ -9,10 +9,10 @@
     "watch": "ng build --watch --configuration development"
   },
   "peerDependencies": {
-    "@angular/common": ">=19.0.0",
-    "@angular/core": ">=19.0.0",
-    "@angular/router": ">=19.0.0",
-    "@angular/forms": ">=19.0.0",
+    "@angular/common": ">=19.0.0 || ^20.0.0 || ^21.0.0",
+    "@angular/core": ">=19.0.0 || ^20.0.0 || ^21.0.0",
+    "@angular/router": ">=19.0.0 || ^20.0.0 || ^21.0.0",
+    "@angular/forms": ">=19.0.0 || ^20.0.0 || ^21.0.0",
     "@six-group/ui-library": "*"
   },
   "publishConfig": {
