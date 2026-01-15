@@ -1,9 +1,10 @@
 # SIX UI Library
 
-SIX UI Library is an open source project providing Web Components for SIX web applications. The library can however also
-be used for other projects (simply override the css variables).
+SIX UI Library is an open source project providing Web Components for SIX web applications. The
+library can however also be used for other projects (simply override the css variables).
 
-Please find the deployed documentation listing all components [here](https://six-group.github.io/six-webcomponents/).
+Please find the deployed documentation listing all components
+[here](https://six-group.github.io/six-webcomponents/).
 
 Please find the changelog for the webcomponents [here](docs/changelog.md).
 
@@ -20,11 +21,14 @@ Please find the changelog for the webcomponents [here](docs/changelog.md).
 
 ## Issues
 
-Please make sure to respect issue requirements when opening an issue. Issues not conforming to the guidelines may be closed immediately.
+Please make sure to respect issue requirements when opening an issue. Issues not conforming to the
+guidelines may be closed immediately.
 
 ## Contribution
 
-Please make sure to read the [Contributing Guide](https://github.com/six-group/six-webcomponents/blob/main/.github/contributing.md) before making a pull request.
+Please make sure to read the
+[Contributing Guide](https://github.com/six-group/six-webcomponents/blob/main/.github/contributing.md)
+before making a pull request.
 
 Thank you to all the people who already contributed to the Six-Webcomponents!
 
@@ -32,7 +36,8 @@ Thank you to all the people who already contributed to the Six-Webcomponents!
 
 ## Examples
 
-There are example apps for Angular, Plain Javascript, Vue and React. You can find them in the `examples` directory.
+There are example apps for Angular, Plain Javascript, Vue and React. You can find them in the
+`examples` directory.
 
 ## Structure
 
@@ -51,6 +56,7 @@ There are example apps for Angular, Plain Javascript, Vue and React. You can fin
 
 ## Credits
 
-Credit where credit is due. The SIX webcomponents started as clone of the [shoelace project](https://shoelace.style/) and were inspired by the baloise
-design-system. Some parts of six-datepicker were copied from the bal-datepicker.
-The third party licenses are listed [here](libraries/ui-library/third-party-licenses).
+Credit where credit is due. The SIX webcomponents started as clone of the
+[shoelace project](https://shoelace.style/) and were inspired by the baloise design-system. Some
+parts of six-datepicker were copied from the bal-datepicker. The third party licenses are listed
+[here](libraries/ui-library/third-party-licenses).

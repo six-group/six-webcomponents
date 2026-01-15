@@ -48,7 +48,6 @@ export default withMermaid({
             { text: 'Upgrade to v5', link: '/guide/upgrade-v5' },
             { text: 'Upgrade to v4', link: '/guide/upgrade-v4' },
             { text: 'Design', link: '/guide/design' },
-            { text: 'Architecture', link: '/guide/architecture' },
             { text: 'Security', link: '/guide/security' },
             {
               text: 'Framework Integrations',
@@ -72,6 +71,15 @@ export default withMermaid({
                 { text: 'Transitions', link: '/guide/styling/transitions' },
                 { text: 'Z-Index', link: '/guide/styling/z-index' },
                 { text: 'TailwindCSS', link: '/guide/styling/tailwind' },
+              ],
+            },
+            {
+              text: 'Contributing',
+              collapsed: true,
+              items: [
+                { text: 'Getting Started', link: '/guide/contributing/getting-started' },
+                { text: 'Architecture', link: '/guide/contributing/architecture' },
+                { text: 'Testing', link: '/guide/contributing/testing' },
               ],
             },
           ],
