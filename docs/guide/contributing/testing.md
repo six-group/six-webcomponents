@@ -36,8 +36,10 @@ For implementation examples, consult the
    ```
 
 ::: warning Run Tests Faster
+
 Run `npm start` first. Tests run faster when the dev server is already running because it is reused
 across all tests instead of a new server being started for each test file.
+
 :::
 
 ## Test File Structure
