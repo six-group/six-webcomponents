@@ -49,7 +49,8 @@ In the created branch, edit the file `docs/changelog.md` and replace the `Upcomi
 
 1. Commit the changes with a commit message of `docs: prepare changelog for release VERSION_NUMBER`.
 2. Push the branch to GitHub
-3. If you branched from main, create a Pull Request with `main` as the base branch. Otherwise, no PR needs to be created.
+3. If you branched from main, create a Pull Request with `main` as the base branch. Otherwise, no PR
+   needs to be created.
 
 A member of the Core Team should review the Pull Request. **But don't merge the Pull Request yet**.
 
