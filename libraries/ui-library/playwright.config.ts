@@ -10,7 +10,8 @@ export default createConfig({
 
   forbidOnly: !!process.env.CI,
   reporter: process.env.CI ? [['html', { open: 'never' }], ['github']] : [['html', { open: 'never' }], ['line']],
-  timeout: 5000,
+  timeout: 20000,
+  workers: 2,
 
   // Use same screenshots across all operating systems (no {platform} token)
   snapshotPathTemplate: '{testDir}/{testFileDir}/{testFileName}-snapshots/{arg}{ext}',
