@@ -1,23 +1,40 @@
 import { expect } from '@playwright/test';
 import { matchers, createConfig } from '@stencil/playwright';
 
-// Add custom Stencil matchers to Playwright assertions
 expect.extend(matchers);
 
 export default createConfig({
-  testDir: './src',
   testMatch: '**/*.e2e.ts',
-  reporter: 'html',
+  fullyParallel: true,
+  globalTeardown: './src/test-utils/coverage-teardown.ts',
+
+  forbidOnly: !!process.env.CI,
+  reporter: process.env.CI ? [['html', { open: 'never' }], ['github']] : [['html', { open: 'never' }], ['line']],
+  timeout: 5000,
+
+  // Use same screenshots across all operating systems (no {platform} token)
+  snapshotPathTemplate: '{testDir}/{testFileDir}/{testFileName}-snapshots/{arg}{ext}',
+
+  expect: {
+    toHaveScreenshot: {
+      maxDiffPixelRatio: 0.04,
+    },
+  },
+
   use: {
-    baseURL: 'http://localhost:3333',
+    // 400px width is wide enough for popup panels (date picker, dropdown, etc.)
+    viewport: { width: 400, height: 640 },
     screenshot: 'only-on-failure',
     trace: 'retain-on-failure',
     video: 'retain-on-failure',
+    launchOptions: {
+      args: ['--disable-gpu'],
+    },
   },
 
   webServer: {
-    command: 'npm run start',
-    reuseExistingServer: !process.env.CI,
-    timeout: 120000,
+    // Use npx to ensure stencil is found when running from IDEs (e.g., IntelliJ)
+    // Workaround for: https://github.com/stenciljs/playwright/blob/main/src/create-config.ts#L41
+    command: 'npx stencil build --dev --watch --serve --no-open',
   },
 });
