@@ -7,13 +7,13 @@
   },
   "devDependencies": {
     "shx": "^0.4.0",
-    "mermaid": "^11.2.1",
-    "node-html-parser": "^6.1.5",
-    "rimraf": "^5.0.1",
-    "turndown": "^7.1.2",
-    "vitepress": "^1.6.3",
+    "mermaid": "^11.12.2",
+    "node-html-parser": "^7.0.2",
+    "rimraf": "^6.1.2",
+    "turndown": "^7.2.2",
+    "vitepress": "^1.6.4",
     "vitepress-plugin-mermaid": "^2.0.17",
-    "vue": "^3.4.21"
+    "vue": "^3.5.26"
   },
   "scripts": {
     "start": "vitepress dev",

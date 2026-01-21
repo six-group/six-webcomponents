@@ -5,14 +5,16 @@
   "private": false,
   "scripts": {
     "ng": "ng",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development"
+    "fix:outputs": "node scripts/fix-angular-outputs.mjs",
+    "build": "npm run fix:outputs && ng build",
+    "watch": "npm run fix:outputs && ng build --watch --configuration development"
   },
+  "packageManager": "npm@11.7.0",
   "peerDependencies": {
     "@angular/common": ">=19.0.0",
     "@angular/core": ">=19.0.0",
-    "@angular/router": ">=19.0.0",
     "@angular/forms": ">=19.0.0",
+    "@angular/router": ">=19.0.0",
     "@six-group/ui-library": "*"
   },
   "publishConfig": {
@@ -20,21 +22,21 @@
     "provenance": true
   },
   "dependencies": {
-    "tslib": "^2.3.0"
+    "tslib": "^2.8.1"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/six-group/six-webcomponents.git"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^19.2.15",
-    "@angular/cli": "^19.2.14",
-    "@angular/compiler-cli": "^19.2.0",
-    "ng-packagr": "^19.2.0",
-    "typescript": "~5.7.2"
+    "@angular/build": "^21.1.0",
+    "@angular/cli": "^21.1.0",
+    "@angular/compiler-cli": "^21.1.0",
+    "ng-packagr": "^21.1.0",
+    "typescript": "~5.9.3"
   },
   "sideEffects": false,
   "engines": {
-    "node": ">=22"
+    "node": ">=24"
   }
 }

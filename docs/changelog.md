@@ -17,6 +17,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   behavior, visual regression, and accessibility
 - New [Playwright testing guide](guide/contributing/testing.md) with patterns and best practices
 - Improved [Contributing](guide/contributing/getting-started.md) section in documentation
+- **⚠️Breaking**: Updated minimum Node.js version requirement to 24. CI workflows and package
+  engines now require Node.js >= 24.
 
 ## 5.2.0 - 2025-12-11
 
@@ -306,7 +308,6 @@ documentation reflects the latest stable release.
   on the view port width.
 
 - Improved `six-select` functionality and appearance:
-
   - Display checked items as checkboxes in multiselect mode.
   - Group selected options on top in multiselect mode.
   - Added a button to select/deselect all items.
