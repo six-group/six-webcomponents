@@ -1,5 +1,5 @@
-@import 'src/global/component';
-@import 'src/global/mixins/hidden';
+@use 'src/global/component';
+@use 'src/global/mixins/hidden' as *;
 
 /**
  * @prop --width: The preferred width of the dialog. Note that the dialog will shrink to accommodate smaller screens.

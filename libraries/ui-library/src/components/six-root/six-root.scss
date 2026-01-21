@@ -1,4 +1,4 @@
-@import 'src/global/mixins/scrollbar';
+@use 'src/global/mixins/scrollbar' as *;
 
 :host {
   display: block;
