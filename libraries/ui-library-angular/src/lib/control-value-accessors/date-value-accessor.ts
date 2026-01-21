@@ -20,8 +20,10 @@ export class DateValueAccessor extends ValueAccessor {
   }
 
   @HostListener('change', ['$event.target'])
-  handleInputEvent(el: HTMLSixInputElement): void {
-    this.handleValueChange(el, el.value);
+  handleInputEvent(el: EventTarget | null): void {
+    if (el) {
+      this.handleValueChange(el as HTMLElement, (el as HTMLSixInputElement).value);
+    }
   }
 
   override writeValue(value: any): void {

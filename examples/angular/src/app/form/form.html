@@ -1,14 +1,20 @@
 <h2>Form Example</h2>
 
 <form class="grid-6" [formGroup]="form" sixForm (sixSubmit)="onSubmit()">
-  <six-input class="column-span-2" label="First Name" type="text" [formControl]="form.controls.firstName" required />
+  <six-input
+    class="column-span-2"
+    label="First Name"
+    type="text"
+    [formControl]="form.controls.firstName"
+    [required]="true"
+  />
   <six-input class="column-span-2" label="Last Name" type="text" [formControl]="form.controls.lastName" />
   <six-select
     (six-select-change)="countryQueryChanged($event)"
     class="column-span-2"
     label="Country"
-    autocomplete
-    clearable
+    [autocomplete]="true"
+    [clearable]="true"
     [formControl]="form.controls.country"
   >
     @for (country of countryOptions(); track country) {
@@ -19,15 +25,22 @@
     class="column-span-2"
     label="Username"
     [formControl]="form.controls.username"
-    required
-    errorTextCount="2"
+    [required]="true"
+    [errorTextCount]="2"
   />
-  <six-input class="column-span-2" label="Email" type="email" [formControl]="form.controls.email" required />
+  <six-input class="column-span-2" label="Email" type="email" [formControl]="form.controls.email" [required]="true" />
   <six-input class="column-span-1" label="Age" type="number" [formControl]="form.controls.age" />
-  <six-range class="column-span-1" label="Height" min="0" max="100" step="1" [formControl]="form.controls.height" />
-  <six-input class="column-span-6" label="IBAN" [formControl]="form.controls.iban" required />
+  <six-range
+    class="column-span-1"
+    label="Height"
+    [min]="0"
+    [max]="100"
+    [step]="1"
+    [formControl]="form.controls.height"
+  />
+  <six-input class="column-span-6" label="IBAN" [formControl]="form.controls.iban" [required]="true" />
 
-  <six-select class="column-span-2" label="Status" clearable [formControl]="form.controls.status">
+  <six-select class="column-span-2" label="Status" [clearable]="true" [formControl]="form.controls.status">
     <six-menu-item value="enabled">Enabled</six-menu-item>
     <six-menu-item value="disabled">Disabled</six-menu-item>
     <six-menu-item value="temporary">Temporary</six-menu-item>
@@ -36,9 +49,9 @@
   <six-select
     class="column-span-2"
     label="interests"
-    multiple
-    clearable
-    required
+    [multiple]="true"
+    [clearable]="true"
+    [required]="true"
     [formControl]="form.controls.interests"
   >
     <six-menu-item value="sport">Sport</six-menu-item>
@@ -57,13 +70,13 @@
     [allowedDates]="weekendsOnly"
     label="Date"
     [formControl]="form.controls.date"
-    required
+    [required]="true"
   />
 
-  <six-timepicker class="column-span-3" label="Start time" [formControl]="form.controls.startTime" required />
+  <six-timepicker class="column-span-3" label="Start time" [formControl]="form.controls.startTime" [required]="true" />
 
   <six-group-label class="column-span-6" label="User Group">
-    <six-layout-grid columns="1">
+    <six-layout-grid [columns]="1">
       <six-radio value="user" [formControl]="form.controls.userGroup">User</six-radio>
       <six-radio value="developer" [formControl]="form.controls.userGroup">Developer</six-radio>
       <six-radio value="admin" [formControl]="form.controls.userGroup">Administrator</six-radio>
@@ -71,7 +84,7 @@
   </six-group-label>
 
   <six-group-label class="column-span-6 checkbox-group" label="Privileges">
-    <six-layout-grid columns="1">
+    <six-layout-grid [columns]="1">
       <six-checkbox value="read" six-checkbox-group [formControl]="form.controls.privileges">read</six-checkbox>
       <six-checkbox value="write" six-checkbox-group [formControl]="form.controls.privileges">write</six-checkbox>
       <six-checkbox value="delete" six-checkbox-group [formControl]="form.controls.privileges">delete</six-checkbox>
@@ -83,9 +96,9 @@
     >Accept to Terms and Condition</six-checkbox
   >
 
-  <six-button class="column-span-1" submit>Submit</six-button>
-  <six-button class="column-span-1" reset type="secondary" (click)="form.reset()">Reset</six-button>
-  <six-button class="column-span-1" reset type="link" (click)="fillValues()">Set Example Values</six-button>
+  <six-button class="column-span-1" [submit]="true">Submit</six-button>
+  <six-button class="column-span-1" [reset]="true" type="secondary" (click)="form.reset()">Reset</six-button>
+  <six-button class="column-span-1" [reset]="true" type="link" (click)="fillValues()">Set Example Values</six-button>
   <span class="column-span-4"></span>
 
   <pre class="column-span-6">

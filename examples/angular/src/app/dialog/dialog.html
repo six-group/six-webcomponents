@@ -1,3 +1,5 @@
+<h2>Dialog Example</h2>
+
 <six-dialog
   #myDialog
   label="Dialog"
@@ -10,5 +12,5 @@
 
 <div class="controls">
   <six-button (click)="myDialog.show()">Show Dialog</six-button>
-  <six-checkbox [value]="false" #preventClosing>Ignore Clicks on Overlay</six-checkbox>
+  <six-checkbox #preventClosing>Ignore Clicks on Overlay</six-checkbox>
 </div>

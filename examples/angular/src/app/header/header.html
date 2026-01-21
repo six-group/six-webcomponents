@@ -20,12 +20,12 @@
   </six-header-item>
 
   <!-- search input -->
-  <six-search-field slot="search-field" debounce="600" clearable />
+  <six-search-field slot="search-field" [debounce]="600" [clearable]="true" />
 
   <!-- notifications -->
   <six-header-item>
     <six-icon-button name="notifications_none" (click)="rightSidebarToggled.emit()">
-      <six-badge type="danger" pill>{{ taskCount() }}</six-badge>
+      <six-badge type="danger" [pill]="true">{{ taskCount() }}</six-badge>
     </six-icon-button>
   </six-header-item>
 
@@ -55,7 +55,7 @@
       <six-menu-item value="logout">Logout</six-menu-item>
       <six-menu-item>
         <six-language-switcher
-          [selected]="language"
+          [selected]="language()"
           (six-language-switcher-change)="changeLanguage($event)"
           [languages]="languages"
         ></six-language-switcher>

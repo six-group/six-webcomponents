@@ -1,6 +1,13 @@
 {
   "$schema": "../../node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
+  "cli": {
+    "packageManager": "npm",
+    "analytics": false,
+    "cache": {
+      "enabled": false
+    }
+  },
   "projects": {
     "ui-library-angular": {
       "projectType": "library",
@@ -9,27 +16,15 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
-          "options": {
-            "project": "ng-package.json"
-          },
+          "builder": "@angular/build:ng-packagr",
+          "options": { "project": "ng-package.json" },
           "configurations": {
-            "production": {
-              "tsConfig": "tsconfig.lib.prod.json"
-            },
-            "development": {
-              "tsConfig": "tsconfig.lib.json"
-            }
+            "production": { "tsConfig": "./tsconfig.lib.prod.json" },
+            "development": { "tsConfig": "./tsconfig.lib.json" }
           },
           "defaultConfiguration": "production"
         }
       }
-    }
-  },
-  "cli": {
-    "analytics": false,
-    "cache": {
-      "enabled": false
     }
   }
 }
