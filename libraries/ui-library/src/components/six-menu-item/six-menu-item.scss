@@ -11,7 +11,7 @@
 .menu-item {
   position: relative;
   display: flex;
-  align-items: stretch;
+  align-items: center;
   font-family: var(--six-font-sans);
   font-size: var(--six-font-size-small);
   font-weight: var(--six-font-weight-normal);
@@ -77,7 +77,10 @@
   }
 
   .menu-item__checkbox {
-    margin-top: -1px;
+    display: flex;
+    align-items: center;
+    margin-top: 0;
+    flex: 0 0 auto;
   }
 }
 
