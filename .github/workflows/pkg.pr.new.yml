@@ -20,4 +20,4 @@ jobs:
           node-version: 24
       - run: npm ci
       - run: npm run build
-      - run: npx pkg-pr-new publish './libraries/*'
+      - run: npx pkg-pr-new publish 'libraries/ui-library/' 'libraries/ui-library-vue/' 'libraries/ui-library-react/' 'libraries/ui-library-angular/dist/ui-library-angular/'
