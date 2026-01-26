@@ -6,6 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## Upcoming
 
+### Changed
+
+- Replaced E2E test with comprehensive Playwright tests for most components covering functional
+  behavior, visual regression, and accessibility
+- New [Playwright testing guide](guide/contributing/testing.md) with patterns and best practices
+- Improved [Contributing](guide/contributing/getting-started.md) section in documentation
+
 ## 5.2.0 - 2025-12-11
 
 ### Added

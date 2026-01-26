@@ -22,22 +22,17 @@
   "scripts": {
     "build": "npm run clean && stencil build --docs",
     "watch": "npm run clean && stencil build --watch",
-    "start": "stencil build --dev --watch --serve --no-open",
+    "start": "stencil build --dev --watch --serve",
     "test": "cross-env TZ='Etc/GMT-2' stencil test --spec",
-    "test:inclScrnsht": "stencil test --spec --e2e --screenshot",
-    "test:inclCoverage": "stencil test --spec --coverage",
-    "test:e2eInclCoverage": "stencil test --e2e --coverage",
-    "test:allInclCoverage": "stencil test --spec --e2e --coverage",
-    "test:debug": "stencil test --spec --e2e --devtools",
-    "test.watch": "stencil test --spec --e2e --watchAll",
     "test:e2e": "playwright test",
-    "test:e2eDebug": "playwright test --debug --headed",
-    "test:e2eUi": "playwright test --ui",
+    "test:e2e-headed": "playwright test --headed",
+    "test:e2e-ui": "playwright test --ui",
+    "test:e2e-install": "playwright install",
+    "test:e2e-update-screenshots": "playwright test --update-snapshots",
     "generate": "stencil generate",
     "clean": "rimraf dist loader www docs",
-    "lint": "    eslint       src/**/*{.ts,.tsx}",
-    "lint:fix": "eslint --fix src/**/*{.ts,.tsx}",
-    "codeclean": "npm run lint:fix && npm run prettier:fix"
+    "lint": "eslint src/**/*{.ts,.tsx}",
+    "lint:fix": "eslint --fix src/**/*{.ts,.tsx}"
   },
   "publishConfig": {
     "access": "public",
@@ -51,6 +46,7 @@
     "date-fns": ">=3.0.0"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.11.0",
     "@playwright/test": "^1.56.1",
     "@stencil/playwright": "^0.2.1",
     "@fontsource/material-icons": "^5.1.1",

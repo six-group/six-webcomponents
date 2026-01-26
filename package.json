@@ -17,6 +17,8 @@
     "lint:lib": "npm run lint -w libraries --if-present",
     "test": "npm run test -w libraries/ui-library",
     "test:e2e": "npm run test:e2e -w libraries/ui-library",
+    "test:e2e-install": "npm run test:e2e-install -w libraries/ui-library",
+    "test:e2e-update-screenshots": "npm run test:e2e-update-screenshots -w libraries/ui-library",
     "demo:angular": "npm start -w examples/angular",
     "demo:vue": "npm run dev -w examples/vue",
     "demo:react": "npm run dev -w examples/react",

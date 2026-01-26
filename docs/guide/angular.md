@@ -44,7 +44,7 @@ Check below for configuring web components with Angular modules.
 3. In each standalone component, import the `UiLibraryAngularModule` module to get access to
    web-components components.
 
-   ```angular-html
+   ```angular-ts
    @Component({
      selector: "some",
      imports: [UiLibraryAngularModule],
@@ -60,7 +60,7 @@ This section explains how to configure web-components in an Angular application 
 
 1. Add `UiLibraryAngularModule.forRoot()` to your root angular module imports section.
 
-   ```ts
+   ```angular-ts
    @NgModule({
     declarations: [],
     imports: [
@@ -89,12 +89,12 @@ applied.
 
 So instead of doing:
 
-```angular2html
+```angular-html
 // my-component.component.html
 <six-input [formControl]="formControl" [required]="true"></six-input>
 ```
 
-```ts
+```angular-ts
 // my-component.component.ts
 @Component({
   ...
@@ -116,12 +116,12 @@ UiLibraryAngularModule.forRoot(/* ... other options*/,{
 Now your component will apply the required flag automatically, without requiring you to set it
 manually:
 
-```angular2html
+```angular-html
 // my-component.component.html
 <six-input [formControl]="formControl"></six-input> // <-- [required] prop can be omitted
 ```
 
-```ts
+```angular-ts
 // my-component.component.ts
 @Component({
   ...
@@ -200,7 +200,7 @@ first field that contains an error.
 
 To use it, simply add the `sixForm` directive and replace `ngSubmit` with `sixSubmit`:
 
-```html
+```angular-html
 <!-- add sixForm and replace (ngSubmit) with (sixSubmit) -->
 <form sixForm (sixSubmit)="onSubmit()" [formGroup]="form">
   <six-input>...</six-input>
@@ -227,7 +227,7 @@ component. This activates three directives that work together:
 
 Example usage:
 
-```html
+```angular-html
 <!-- add sixRouterLinkActive to six-sidebar to include the sidebar helper directives -->
 <six-sidebar position="left" [open]="open" sixRouterLinkActive>
   <six-sidebar-item-group routerLink="/home" name="Home" icon="home"></six-sidebar-item-group>
