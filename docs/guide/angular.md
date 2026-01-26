@@ -46,10 +46,10 @@ Check below for configuring web components with Angular modules.
 
    ```angular-ts
    @Component({
-     selector: "some",
+     selector: 'some',
      imports: [UiLibraryAngularModule],
-     templateUrl: "./some.component.html",
-     styleUrl: "./some.component.scss"
+     templateUrl: './some.component.html',
+     styleUrl: './some.component.scss',
    })
    export class SomeComponent {}
    ```
@@ -90,8 +90,7 @@ applied.
 So instead of doing:
 
 ```angular-html
-// my-component.component.html
-<six-input [formControl]="formControl" [required]="true"></six-input>
+// my-component.component.html <six-input [formControl]="formControl" [required]="true"></six-input>
 ```
 
 ```angular-ts
@@ -117,8 +116,8 @@ Now your component will apply the required flag automatically, without requiring
 manually:
 
 ```angular-html
-// my-component.component.html
-<six-input [formControl]="formControl"></six-input> // <-- [required] prop can be omitted
+// my-component.component.html <six-input [formControl]="formControl"></six-input> // <-- [required]
+prop can be omitted
 ```
 
 ```angular-ts
