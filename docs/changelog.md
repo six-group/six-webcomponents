@@ -36,6 +36,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   for more details.
 - `six-spinner` fix container alignment, which doesn't match svg size and position
 - `six-file-upload`: fixed drag and drop file handling not triggering file upload
+- `six-select`: fixed menu-item alignment with the checkboxes in multiselect mode
 
 ## 5.1.1 - 2025-11-04
 
