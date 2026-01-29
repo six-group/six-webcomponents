@@ -739,6 +739,11 @@ export namespace Components {
          */
         "disableHideOnEnterAndSpace": boolean;
         /**
+          * A boolean flag that determines whether the type-to-select functionality is disabled. When set to `true`, users will not be able to select options by typing matching characters. When set to `false`, the type-to-select functionality remains enabled, allowing users to quickly navigate options by typing.
+          * @default false
+         */
+        "disableTypeToSelect": boolean;
+        /**
           * The distance in pixels from which to offset the panel away from its trigger.
           * @default 4
          */
@@ -4495,6 +4500,11 @@ declare namespace LocalJSX {
           * @default false
          */
         "disableHideOnEnterAndSpace"?: boolean;
+        /**
+          * A boolean flag that determines whether the type-to-select functionality is disabled. When set to `true`, users will not be able to select options by typing matching characters. When set to `false`, the type-to-select functionality remains enabled, allowing users to quickly navigate options by typing.
+          * @default false
+         */
+        "disableTypeToSelect"?: boolean;
         /**
           * The distance in pixels from which to offset the panel away from its trigger.
           * @default 4

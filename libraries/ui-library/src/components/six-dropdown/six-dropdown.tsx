@@ -141,6 +141,14 @@ export class SixDropdown {
   /** The panel can be opend/closed by pressing the spacebar or the enter key. In some cases you might want to avoid this */
   @Prop() disableHideOnEnterAndSpace = false;
 
+  /**
+   * A boolean flag that determines whether the type-to-select functionality is disabled.
+   * When set to `true`, users will not be able to select options by typing matching characters.
+   * When set to `false`, the type-to-select functionality remains enabled, allowing users
+   * to quickly navigate options by typing.
+   */
+  @Prop() disableTypeToSelect = false;
+
   /** Set the options to be shown in the dropdown (alternative to setting the elements via html)*/
   @Prop({ mutable: true }) options: SixMenuItemData[] = [];
 
@@ -599,7 +607,7 @@ export class SixDropdown {
 
     // Other keys bring focus to the menu and initiate type-to-select behavior
     const ignoredKeys = ['Tab', 'Shift', 'Meta', 'Ctrl', 'Alt'];
-    if (this.open && menu != null && !ignoredKeys.includes(event.key)) {
+    if (this.open && menu != null && !ignoredKeys.includes(event.key) && !this.disableTypeToSelect) {
       void menu.typeToSelect(event.key);
       return;
     }

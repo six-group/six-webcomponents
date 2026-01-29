@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## Upcoming
 
+### Fixed
+
+- `six-select`: Fixed type-to-select interfering with autocomplete input by adding
+  `disableTypeToSelect` prop to `six-dropdown`
+
 ### Changed
 
 - Replaced E2E test with comprehensive Playwright tests for most components covering functional

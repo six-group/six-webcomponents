@@ -246,6 +246,7 @@ export const SixDropdown: StencilVueComponent<JSX.SixDropdown> = /*@__PURE__*/ d
   'autofocusFilter',
   'filterDebounce',
   'disableHideOnEnterAndSpace',
+  'disableTypeToSelect',
   'options',
   'virtualScroll',
   'matchTriggerWidth',

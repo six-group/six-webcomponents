@@ -3,6 +3,18 @@
 <form class="grid-6" [formGroup]="form" sixForm (sixSubmit)="onSubmit()">
   <six-input class="column-span-2" label="First Name" type="text" [formControl]="form.controls.firstName" required />
   <six-input class="column-span-2" label="Last Name" type="text" [formControl]="form.controls.lastName" />
+  <six-select
+    (six-select-change)="countryQueryChanged($event)"
+    class="column-span-2"
+    label="Country"
+    autocomplete
+    clearable
+    [formControl]="form.controls.country"
+  >
+    @for (country of countryOptions(); track country) {
+    <six-menu-item value="{{ country }}">{{ country }}</six-menu-item>
+    }
+  </six-select>
   <six-input
     class="column-span-2"
     label="Username"
@@ -10,7 +22,7 @@
     required
     errorTextCount="2"
   />
-  <six-input class="column-span-4" label="Email" type="email" [formControl]="form.controls.email" required />
+  <six-input class="column-span-2" label="Email" type="email" [formControl]="form.controls.email" required />
   <six-input class="column-span-1" label="Age" type="number" [formControl]="form.controls.age" />
   <six-range class="column-span-1" label="Height" min="0" max="100" step="1" [formControl]="form.controls.height" />
   <six-input class="column-span-6" label="IBAN" [formControl]="form.controls.iban" required />
@@ -73,6 +85,7 @@
 
   <six-button class="column-span-1" submit>Submit</six-button>
   <six-button class="column-span-1" reset type="secondary" (click)="form.reset()">Reset</six-button>
+  <six-button class="column-span-1" reset type="link" (click)="fillValues()">Set Example Values</six-button>
   <span class="column-span-4"></span>
 
   <pre class="column-span-6">
