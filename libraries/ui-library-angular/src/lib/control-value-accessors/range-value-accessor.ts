@@ -20,8 +20,10 @@ export class RangeValueAccessor extends ValueAccessor {
   }
 
   @HostListener('input', ['$event.target'])
-  handleInputEvent(el: HTMLSixRangeElement): void {
-    this.handleValueChange(el, el.value);
+  handleInputEvent(el: EventTarget | null): void {
+    if (el) {
+      this.handleValueChange(el as HTMLElement, (el as HTMLSixRangeElement).value);
+    }
   }
 
   override registerOnChange(fn: (_: number | null) => void): void {

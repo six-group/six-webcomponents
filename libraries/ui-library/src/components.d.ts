@@ -1138,9 +1138,9 @@ export namespace Components {
         "autocomplete": string;
         /**
           * The input's autocorrect attribute.
-          * @default 'off'
+          * @default false
          */
-        "autocorrect": 'on' | 'off';
+        "autocorrect": boolean;
         /**
           * The input's autofocus attribute.
           * @default false
@@ -2242,9 +2242,9 @@ export namespace Components {
         "autocomplete": string;
         /**
           * The textarea's autocorrect attribute.
-          * @default 'off'
+          * @default false
          */
-        "autocorrect": 'on' | 'off';
+        "autocorrect": boolean;
         /**
           * The textarea's autofocus attribute.
           * @default false
@@ -4936,9 +4936,9 @@ declare namespace LocalJSX {
         "autocomplete"?: string;
         /**
           * The input's autocorrect attribute.
-          * @default 'off'
+          * @default false
          */
-        "autocorrect"?: 'on' | 'off';
+        "autocorrect"?: boolean;
         /**
           * The input's autofocus attribute.
           * @default false
@@ -6076,9 +6076,9 @@ declare namespace LocalJSX {
         "autocomplete"?: string;
         /**
           * The textarea's autocorrect attribute.
-          * @default 'off'
+          * @default false
          */
-        "autocorrect"?: 'on' | 'off';
+        "autocorrect"?: boolean;
         /**
           * The textarea's autofocus attribute.
           * @default false

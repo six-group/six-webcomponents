@@ -23,8 +23,10 @@ export class RadioValueAccessor extends ValueAccessor implements OnInit {
   @Input() name?: string;
 
   @HostListener('change', ['$event.target'])
-  handleChangeEvent(el: HTMLSixRadioElement): void {
-    this.handleValueChange(el, this.value);
+  handleChangeEvent(el: EventTarget | null): void {
+    if (el) {
+      this.handleValueChange(el as HTMLElement, this.value);
+    }
   }
 
   ngOnInit(): void {

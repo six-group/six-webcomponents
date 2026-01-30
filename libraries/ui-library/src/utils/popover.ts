@@ -84,7 +84,7 @@ export default class Popover {
   show() {
     this.isVisible = true;
     this.popover.hidden = false;
-    this.popover.clientWidth; // force reflow
+    void this.popover.clientWidth; // force reflow
     requestAnimationFrame(() => {
       if (this.options.visibleClass != null) {
         this.popover.classList.add(this.options.visibleClass);

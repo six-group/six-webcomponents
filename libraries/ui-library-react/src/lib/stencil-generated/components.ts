@@ -7,7 +7,7 @@
 
 /* eslint-disable */
 
-import { type EmptyPayload, type SixAlertCustomEvent, type SixButtonCustomEvent, type SixCheckboxCustomEvent, type SixDatepickerCustomEvent, type SixDatepickerSelectPayload, type SixDetailsCustomEvent, type SixDialogCustomEvent, type SixDialogRequestClose, type SixDrawerCustomEvent, type SixDrawerRequestClose, type SixDropdownAsyncFilterPayload, type SixDropdownAutoFilterPayload, type SixDropdownCustomEvent, type SixDropdownScrollPayload, type SixFileListDownloadPayload, type SixFileListItemCustomEvent, type SixFileListRemovePayload, type SixFileUploadCustomEvent, type SixFileUploadFailurePayload, type SixFileUploadSuccessPayload, type SixInputCustomEvent, type SixItemPickerChangePayload, type SixItemPickerCustomEvent, type SixLanguageSwitcherChangePayload, type SixLanguageSwitcherCustomEvent, type SixMenuCustomEvent, type SixMenuItemSelectedPayload, type SixRadioCustomEvent, type SixRangeCustomEvent, type SixRatingCustomEvent, type SixSearchFieldChangePayload, type SixSearchFieldCustomEvent, type SixSelectChangePayload, type SixSelectCustomEvent, type SixSidebarCustomEvent, type SixSwitchCustomEvent, type SixTabCustomEvent, type SixTabGroupCustomEvent, type SixTabHidePayload, type SixTabShowPayload, type SixTagCustomEvent, type SixTextareaCustomEvent, type SixTileCustomEvent, type SixTimepickerChange, type SixTimepickerCustomEvent, type SixTooltipCustomEvent } from "@six-group/ui-library";
+import { type EmptyPayload, type SixAlertCustomEvent, type SixButtonCustomEvent, type SixCheckboxCustomEvent, type SixDateCustomEvent, type SixDatepickerCustomEvent, type SixDatepickerSelectPayload, type SixDetailsCustomEvent, type SixDialogCustomEvent, type SixDialogRequestClose, type SixDrawerCustomEvent, type SixDrawerRequestClose, type SixDropdownAsyncFilterPayload, type SixDropdownAutoFilterPayload, type SixDropdownCustomEvent, type SixDropdownScrollPayload, type SixFileListDownloadPayload, type SixFileListItemCustomEvent, type SixFileListRemovePayload, type SixFileUploadCustomEvent, type SixFileUploadFailurePayload, type SixFileUploadSuccessPayload, type SixInputCustomEvent, type SixItemPickerChangePayload, type SixItemPickerCustomEvent, type SixLanguageSwitcherChangePayload, type SixLanguageSwitcherCustomEvent, type SixMenuCustomEvent, type SixMenuItemSelectedPayload, type SixRadioCustomEvent, type SixRangeCustomEvent, type SixRatingCustomEvent, type SixSearchFieldChangePayload, type SixSearchFieldCustomEvent, type SixSelectChangePayload, type SixSelectCustomEvent, type SixSidebarCustomEvent, type SixSwitchCustomEvent, type SixTabCustomEvent, type SixTabGroupCustomEvent, type SixTabHidePayload, type SixTabShowPayload, type SixTagCustomEvent, type SixTextareaCustomEvent, type SixTileCustomEvent, type SixTimepickerChange, type SixTimepickerCustomEvent, type SixTooltipCustomEvent } from "@six-group/ui-library";
 import { SixAlert as SixAlertElement, defineCustomElement as defineSixAlert } from "@six-group/ui-library/dist/components/six-alert.js";
 import { SixAvatar as SixAvatarElement, defineCustomElement as defineSixAvatar } from "@six-group/ui-library/dist/components/six-avatar.js";
 import { SixBadge as SixBadgeElement, defineCustomElement as defineSixBadge } from "@six-group/ui-library/dist/components/six-badge.js";
@@ -185,8 +185,8 @@ export const SixCheckbox: StencilReactComponent<SixCheckboxElement, SixCheckboxE
 });
 
 export type SixDateEvents = {
-    onSixChange: EventName<CustomEvent<string | ''>>,
-    onSixBlur: EventName<CustomEvent<any>>
+    onSixChange: EventName<SixDateCustomEvent<string | ''>>,
+    onSixBlur: EventName<SixDateCustomEvent<any>>
 };
 
 export const SixDate: StencilReactComponent<SixDateElement, SixDateEvents> = /*@__PURE__*/ createComponent<SixDateElement, SixDateEvents>({
@@ -673,8 +673,8 @@ export const SixRange: StencilReactComponent<SixRangeElement, SixRangeEvents> = 
 });
 
 export type SixRatingEvents = {
-    onSixRatingBlur: EventName<CustomEvent<number>>,
-    onSixRatingChange: EventName<CustomEvent<number>>,
+    onSixRatingBlur: EventName<SixRatingCustomEvent<number>>,
+    onSixRatingChange: EventName<SixRatingCustomEvent<number>>,
     onSixRatingFocus: EventName<SixRatingCustomEvent<EmptyPayload>>
 };
 
@@ -800,8 +800,8 @@ export const SixStageIndicator: StencilReactComponent<SixStageIndicatorElement, 
 });
 
 export type SixSwitchEvents = {
-    onSixSwitchBlur: EventName<CustomEvent<boolean>>,
-    onSixSwitchChange: EventName<CustomEvent<boolean>>,
+    onSixSwitchBlur: EventName<SixSwitchCustomEvent<boolean>>,
+    onSixSwitchChange: EventName<SixSwitchCustomEvent<boolean>>,
     onSixSwitchFocus: EventName<SixSwitchCustomEvent<EmptyPayload>>
 };
 

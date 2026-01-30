@@ -28,15 +28,17 @@ export class CheckboxMultiSelectValueAccessor<T extends string = string> extends
   }
 
   @HostListener('change', ['$event.target'])
-  onHostChange(el: HTMLSixCheckboxElement) {
-    const checked = el.checked;
+  onHostChange(el: EventTarget | null) {
+    if (!el) return;
+    const checkbox = el as HTMLSixCheckboxElement;
+    const checked = checkbox.checked;
     const current = this.ngControl?.value;
     if (!current) return;
 
     const set = new Set<T>(current);
     checked ? set.add(this.value) : set.delete(this.value);
 
-    this.handleValueChange(el, Array.from(set));
+    this.handleValueChange(el as HTMLElement, Array.from(set));
   }
 
   override writeValue(values: T[]): void {

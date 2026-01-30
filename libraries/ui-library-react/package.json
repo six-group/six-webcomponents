@@ -15,7 +15,7 @@
   },
   "sideEffects": false,
   "engines": {
-    "node": ">=20"
+    "node": ">=24"
   },
   "scripts": {
     "build": "npm run tsc",
@@ -28,12 +28,12 @@
   },
   "devDependencies": {
     "@types/react": "^19",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
     "typescript": "^5"
   },
   "dependencies": {
-    "@stencil/react-output-target": "^1.0.4"
+    "@stencil/react-output-target": "^1.3.0"
   },
   "peerDependencies": {
     "@six-group/ui-library": "*"
