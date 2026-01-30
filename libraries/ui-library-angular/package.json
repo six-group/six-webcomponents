@@ -29,9 +29,9 @@
     "url": "https://github.com/six-group/six-webcomponents.git"
   },
   "devDependencies": {
-    "@angular/build": "^21.1.0",
-    "@angular/cli": "^21.1.0",
-    "@angular/compiler-cli": "^21.1.0",
+    "@angular/build": "^21.1.2",
+    "@angular/cli": "^21.1.2",
+    "@angular/compiler-cli": "^21.1.2",
     "ng-packagr": "^21.1.0",
     "typescript": "~5.9.3"
   },
