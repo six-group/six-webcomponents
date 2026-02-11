@@ -6,11 +6,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## Upcoming
 
+....
+
+## 5.3.0 - 2026-02-11
+
 ### Fixed
 
 - `six-select`: Fixed type-to-select interfering with autocomplete input by adding
   `disableTypeToSelect` prop to `six-dropdown`
 - `six-select`: fixed menu-item alignment with the checkboxes in multiselect mode
+- Updated and fixed vulnerable dependencies within the libraries
 
 ### Changed
 
