@@ -1,6 +1,6 @@
 {
   "name": "@six-group/workspace",
-  "version": "5.3.0-rc.2",
+  "version": "5.3.0",
   "scripts": {
     "start": "npm run start -w libraries/ui-library",
     "watch:lib": "npm run watch -w libraries/ui-library",
