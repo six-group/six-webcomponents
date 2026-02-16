@@ -280,11 +280,11 @@ You can provide a stage indicator by adding `stage="DEV"` to `six-root` as well 
 
 ## Properties
 
-| Property  | Attribute | Description                                          | Type                                                        | Default |
-| --------- | --------- | ---------------------------------------------------- | ----------------------------------------------------------- | ------- |
-| `padded`  | `padded`  | Defines whether the content section should be padded | `boolean`                                                   | `true`  |
-| `stage`   | `stage`   | Defines the stage of the application                 | `"ACCEPTANCE" \| "DEV" \| "ETU" \| "ITU" \| "PROD" \| null` | `null`  |
-| `version` | `version` | Defines the version of the application               | `string`                                                    | `''`    |
+| Property  | Attribute | Description                                          | Type                                                                   | Default |
+| --------- | --------- | ---------------------------------------------------- | ---------------------------------------------------------------------- | ------- |
+| `padded`  | `padded`  | Defines whether the content section should be padded | `boolean`                                                              | `true`  |
+| `stage`   | `stage`   | Defines the stage of the application                 | `"ACCEPTANCE" \| "DEV" \| "ETU" \| "ITU" \| "LOCAL" \| "PROD" \| null` | `null`  |
+| `version` | `version` | Defines the version of the application               | `string`                                                               | `''`    |
 
 
 ## Slots

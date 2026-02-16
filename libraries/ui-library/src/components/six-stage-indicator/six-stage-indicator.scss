@@ -25,6 +25,12 @@
   width: 100%;
   height: 24px;
 
+  &--local {
+    @extend .indicator;
+    background-color: var(--six-color-marine);
+    color: var(--six-color-white);
+  }
+
   &--itu {
     @extend .indicator;
     background-color: var(--six-color-success-600);

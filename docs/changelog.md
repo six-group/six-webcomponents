@@ -6,7 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## Upcoming
 
-....
+### Added
+
+- Added stage `LOCAL` to `six-stage-indicator` and `six-root`
+
+### Fixed
+
+### Changed
 
 ## 5.3.0 - 2026-02-11
 
