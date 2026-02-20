@@ -1,0 +1,126 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <script type="module" src="/build/ui-library.esm.js"></script>
+    <script nomodule src="/build/ui-library.js"></script>
+    <link rel="stylesheet" href="/build/ui-library.css" />
+    <title>six-paginator</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Paginator</h2>
+      <p>The <code>six-paginator</code> component allows navigation through paginated content.</p>
+
+      <!-- BASIC -->
+      <h2>Basic example</h2>
+      <p>
+        The simplest version of the paginator requires <code>total-pages</code> and <code>total-results</code> as
+        parameters
+      </p>
+      <section>
+        <six-paginator total-pages="10" total-results="500"></six-paginator>
+      </section>
+
+      <!-- CURRENT PAGE -->
+      <h2>Setting the current page</h2>
+      <p>Use the <code>current-page</code> attribute (0-based index) to control the active page.</p>
+
+      <section>
+        <six-paginator total-pages="10" total-results="500" current-page="3"></six-paginator>
+      </section>
+
+      <!-- LENGTH -->
+      <h2>Controlling the amount of pages shown and clamping</h2>
+      <p>
+        Use the <code>length</code> prop to define how many page numbers are displayed. By default, if the number of
+        total pages is greater than the <code>length</code> parameter, the list will be clamped.
+      </p>
+
+      <section>
+        <six-paginator total-pages="20" total-results="500" length="5"></six-paginator>
+      </section>
+      <p>
+        To override this behaviour, you can set the <code>clamp</code> parameter to <code>false</code>. This will show
+        all available pages.
+      </p>
+
+      <section>
+        <six-paginator total-pages="20" total-results="500"></six-paginator>
+      </section>
+
+      <!-- RESULTS PER PAGE -->
+      <h2>Results Per Page Options</h2>
+      <p>
+        By default, three values are shown to the user so that they can choose how many items to show at once. Pass a
+        list to <code>results-per-page-options</code> and set a default using <code>results-per-page</code>. If no
+        default is provided, the first value of the choices will be used.
+      </p>
+
+      <section>
+        <six-paginator id="paginator-options" total-pages="15" total-results="500" results-per-page="50">
+        </six-paginator>
+        <script>
+          const paginatorOptions = document.getElementById('paginator-options');
+          paginatorOptions.resultsPerPageOptions = ['10', '20', '50', '100'];
+        </script>
+      </section>
+
+      <!-- DISABLED -->
+      <h2>Disabled State</h2>
+      <p>Use the <code>disabled</code> prop to disable all controls.</p>
+
+      <section>
+        <six-paginator total-pages="10" total-results="500" disabled></six-paginator>
+      </section>
+
+      <!-- SLOT CUSTOMIZATION -->
+      <h2>Slot Customization</h2>
+      <p>Use the <code>left</code> and <code>right</code> slots to override the default content.</p>
+
+      <section>
+        <six-paginator total-pages="12" total-results="640">
+          <div slot="left">
+            <strong>Some custom content to the left</strong>
+          </div>
+
+          <div slot="right">It can be anything you want! A nice icon for example? <six-icon>house</six-icon></div>
+        </six-paginator>
+      </section>
+
+      <!-- EVENTS -->
+      <h2>Events</h2>
+      <p>The paginator emits the following events:</p>
+
+      <ul>
+        <li>
+          <code>six-paginator-page-changed</code> – Fired when the page changes. This can be either when the user click
+          on a number directly, or by using one of the available arrows.
+        </li>
+        <li>
+          <code>six-paginator-results-per-page-changed</code> – Fired when the user changes their selection for the
+          number of items to show at once. Open up the console and see the messages.
+        </li>
+      </ul>
+
+      <section>
+        <six-paginator
+          total-pages="8"
+          total-results="200"
+          onchange="console.log(event)"
+          id="events-example"
+        ></six-paginator>
+        <script>
+          const paginator = document.getElementById('events-example');
+          paginator.addEventListener('six-paginator-page-changed', (event) => {
+            console.log('Page changed event fired', event.detail);
+          });
+          paginator.addEventListener('six-paginator-results-per-page-changed', (event) => {
+            console.log('Results per page changed event fired', event.detail);
+          });
+        </script>
+      </section>
+    </div>
+  </body>
+</html>

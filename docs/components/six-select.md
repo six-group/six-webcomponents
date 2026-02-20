@@ -750,6 +750,10 @@ Type: `Promise<void>`
 
 ## Dependencies
 
+### Used by
+
+ - [six-paginator](six-paginator.html)
+
 ### Depends on
 
 - [six-menu-item](six-menu-item.html)
@@ -784,6 +788,7 @@ graph TD;
   six-menu --> six-menu-item
   six-icon-button --> six-icon
   six-button --> six-spinner
+  six-paginator --> six-select
   style six-select fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

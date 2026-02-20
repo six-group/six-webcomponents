@@ -3,7 +3,7 @@ import { UiLibraryAngularModule } from '@six-group/ui-library-angular';
 
 @Component({
   selector: 'app-home',
-  imports: [UiLibraryAngularModule],
+  imports: [UiLibraryAngularModule, UiLibraryAngularModule],
   templateUrl: './home.html',
   styleUrl: './home.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

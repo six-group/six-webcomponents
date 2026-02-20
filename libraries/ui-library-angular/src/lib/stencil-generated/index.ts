@@ -39,6 +39,7 @@ export const DIRECTIVES = [
   d.SixMenuDivider,
   d.SixMenuItem,
   d.SixMenuLabel,
+  d.SixPaginator,
   d.SixPicto,
   d.SixProgressBar,
   d.SixProgressRing,

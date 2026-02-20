@@ -22,6 +22,7 @@ import { ItemPickerPaddingDirection, ItemPickerType } from "./components/six-ite
 import { SixItemPickerChangePayload } from "./components/six-item-picker/six-item-picker";
 import { SixLanguageSwitcherChangePayload, SixLanguageSwitcherInput } from "./components/six-language-switcher/six-language-switcher";
 import { SixMenuItemData as SixMenuItemData1, SixMenuItemSelectedPayload } from "./components/six-menu/six-menu";
+import { SixPaginatorPageChangedPayload, SixPaginatorResultsPerPageChangedPayload } from "./components/six-paginator/six-paginator";
 import { StageType } from "./components/six-stage-indicator/six-stage-indicator";
 import { SixSearchFieldChangePayload } from "./components/six-search-field/six-search-field";
 import { SixSelectChangePayload } from "./components/six-select/six-select";
@@ -46,6 +47,7 @@ export { ItemPickerPaddingDirection, ItemPickerType } from "./components/six-ite
 export { SixItemPickerChangePayload } from "./components/six-item-picker/six-item-picker";
 export { SixLanguageSwitcherChangePayload, SixLanguageSwitcherInput } from "./components/six-language-switcher/six-language-switcher";
 export { SixMenuItemData as SixMenuItemData1, SixMenuItemSelectedPayload } from "./components/six-menu/six-menu";
+export { SixPaginatorPageChangedPayload, SixPaginatorResultsPerPageChangedPayload } from "./components/six-paginator/six-paginator";
 export { StageType } from "./components/six-stage-indicator/six-stage-indicator";
 export { SixSearchFieldChangePayload } from "./components/six-search-field/six-search-field";
 export { SixSelectChangePayload } from "./components/six-select/six-select";
@@ -1506,6 +1508,44 @@ export namespace Components {
      */
     interface SixMenuLabel {
     }
+    interface SixPaginator {
+        /**
+          * Clamp the page numbers when they exceed the specified length.
+          * @default true
+         */
+        "clamp": boolean;
+        /**
+          * The current page being displayed. This must be 0 based
+         */
+        "currentPage"?: number;
+        /**
+          * Disable all controls.
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * The amount of clickable page numbers to show.
+          * @default 9
+         */
+        "length": number;
+        /**
+          * The results per page. Value must be one provided in the resultsPerPageOption. Otherwise the first value from the options will be used.
+         */
+        "resultsPerPage"?: number;
+        /**
+          * The possible results per page. Must be a list of integers. At least one value is required.
+          * @default [12, 24, 48]
+         */
+        "resultsPerPageOptions": Array<number>;
+        /**
+          * The total amount of pages.
+         */
+        "totalPages": number;
+        /**
+          * The total amount of results.
+         */
+        "totalResults": number;
+    }
     /**
      * @since 1.1
      * @status stable
@@ -2647,6 +2687,10 @@ export interface SixMenuCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLSixMenuElement;
 }
+export interface SixPaginatorCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSixPaginatorElement;
+}
 export interface SixRadioCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLSixRadioElement;
@@ -3284,6 +3328,24 @@ declare global {
         prototype: HTMLSixMenuLabelElement;
         new (): HTMLSixMenuLabelElement;
     };
+    interface HTMLSixPaginatorElementEventMap {
+        "six-paginator-results-per-page-changed": SixPaginatorResultsPerPageChangedPayload;
+        "six-paginator-page-changed": SixPaginatorPageChangedPayload;
+    }
+    interface HTMLSixPaginatorElement extends Components.SixPaginator, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSixPaginatorElementEventMap>(type: K, listener: (this: HTMLSixPaginatorElement, ev: SixPaginatorCustomEvent<HTMLSixPaginatorElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSixPaginatorElementEventMap>(type: K, listener: (this: HTMLSixPaginatorElement, ev: SixPaginatorCustomEvent<HTMLSixPaginatorElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLSixPaginatorElement: {
+        prototype: HTMLSixPaginatorElement;
+        new (): HTMLSixPaginatorElement;
+    };
     /**
      * @since 1.1
      * @status stable
@@ -3735,6 +3797,7 @@ declare global {
         "six-menu-divider": HTMLSixMenuDividerElement;
         "six-menu-item": HTMLSixMenuItemElement;
         "six-menu-label": HTMLSixMenuLabelElement;
+        "six-paginator": HTMLSixPaginatorElement;
         "six-picto": HTMLSixPictoElement;
         "six-progress-bar": HTMLSixProgressBarElement;
         "six-progress-ring": HTMLSixProgressRingElement;
@@ -5300,6 +5363,52 @@ declare namespace LocalJSX {
      */
     interface SixMenuLabel {
     }
+    interface SixPaginator {
+        /**
+          * Clamp the page numbers when they exceed the specified length.
+          * @default true
+         */
+        "clamp"?: boolean;
+        /**
+          * The current page being displayed. This must be 0 based
+         */
+        "currentPage"?: number;
+        /**
+          * Disable all controls.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * The amount of clickable page numbers to show.
+          * @default 9
+         */
+        "length"?: number;
+        /**
+          * Emitted whenever the page changes. This can be either due to one of the arrows bein pressed, or an explicit click on a page number.
+         */
+        "onSix-paginator-page-changed"?: (event: SixPaginatorCustomEvent<SixPaginatorPageChangedPayload>) => void;
+        /**
+          * Emitted after the user selects a value from the results per page select.
+         */
+        "onSix-paginator-results-per-page-changed"?: (event: SixPaginatorCustomEvent<SixPaginatorResultsPerPageChangedPayload>) => void;
+        /**
+          * The results per page. Value must be one provided in the resultsPerPageOption. Otherwise the first value from the options will be used.
+         */
+        "resultsPerPage"?: number;
+        /**
+          * The possible results per page. Must be a list of integers. At least one value is required.
+          * @default [12, 24, 48]
+         */
+        "resultsPerPageOptions"?: Array<number>;
+        /**
+          * The total amount of pages.
+         */
+        "totalPages": number;
+        /**
+          * The total amount of results.
+         */
+        "totalResults": number;
+    }
     /**
      * @since 1.1
      * @status stable
@@ -6470,6 +6579,7 @@ declare namespace LocalJSX {
         "six-menu-divider": SixMenuDivider;
         "six-menu-item": SixMenuItem;
         "six-menu-label": SixMenuLabel;
+        "six-paginator": SixPaginator;
         "six-picto": SixPicto;
         "six-progress-bar": SixProgressBar;
         "six-progress-ring": SixProgressRing;
@@ -6694,6 +6804,7 @@ declare module "@stencil/core" {
              * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
              */
             "six-menu-label": LocalJSX.SixMenuLabel & JSXBase.HTMLAttributes<HTMLSixMenuLabelElement>;
+            "six-paginator": LocalJSX.SixPaginator & JSXBase.HTMLAttributes<HTMLSixPaginatorElement>;
             /**
              * @since 1.1
              * @status stable
