@@ -25,13 +25,13 @@ export class SixPaginator {
 
   @Element() host!: HTMLSixPaginatorElement;
 
-  /** The current page being displayed. This should be 0 based */
+  /** The current page being displayed. This must be 0 based */
   @Prop({ mutable: true, reflect: true }) currentPage?: number;
 
-  /** The total amount of pages */
+  /** The total amount of pages. */
   @Prop() totalPages!: number;
 
-  /** The total amount of results */
+  /** The total amount of results. */
   @Prop() totalResults!: number;
 
   /** The possible results per page. Must be a list of integers. At least one value is required. */
@@ -43,17 +43,17 @@ export class SixPaginator {
   /** The amount of clickable page numbers to show. */
   @Prop() length: number = 9;
 
-  /** Clamp the page numbers when they exceed the specified length */
+  /** Clamp the page numbers when they exceed the specified length. */
   @Prop() clamp: boolean = true;
 
-  /** Disable all controls  */
+  /** Disable all controls.  */
   @Prop() disabled: boolean = false;
 
   /** Emitted after the user selects a value from the results per page select. */
   @Event({ eventName: 'six-paginator-results-per-page-changed' })
   sixResultsPerPageChanged!: EventEmitter<SixPaginatorResultsPerPageChangedPayload>;
 
-  /** Emitted whenever the page changes. This can be either due to one of the arrows bein pressed, or an explicit number. */
+  /** Emitted whenever the page changes. This can be either due to one of the arrows bein pressed, or an explicit click on a page number. */
   @Event({ eventName: 'six-paginator-page-changed' })
   sixPageChanged!: EventEmitter<SixPaginatorPageChangedPayload>;
 
@@ -62,8 +62,7 @@ export class SixPaginator {
       this.resultsPerPageOptions.indexOf(this.resultsPerPage ?? 0) > 0
         ? this.resultsPerPage
         : this.resultsPerPageOptions[0];
-    console.log('resultsper page options', this.resultsPerPageOptions);
-    console.log('resultsper page', this.resultsPerPage);
+
     this.currentPage = this.currentPage ?? 0;
   }
 
@@ -76,6 +75,7 @@ export class SixPaginator {
 
     this.sixResultsPerPageChanged.emit({ resultsPerPage: parsed } as SixPaginatorResultsPerPageChangedPayload);
   };
+
   private range(from: number, to: number): number[] {
     return Array.from({ length: to - from + 1 }, (_, i) => from + i);
   }
@@ -94,6 +94,7 @@ export class SixPaginator {
   private gapItem(): PaginationItem {
     return { displayValue: this.PLACEHOLDER };
   }
+
   private computeSelectorValues(): PaginationItem[] {
     if (this.totalPages <= this.length || !this.clamp) {
       return this.range(0, this.totalPages - 1).map((p) => this.pageItem(p));
