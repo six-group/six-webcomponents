@@ -1510,16 +1510,16 @@ export namespace Components {
     }
     interface SixPaginator {
         /**
-          * Clamp the page numbers when they exceed the specified length
+          * Clamp the page numbers when they exceed the specified length.
           * @default true
          */
         "clamp": boolean;
         /**
-          * The current page being displayed. This should be 0 based
+          * The current page being displayed. This must be 0 based
          */
         "currentPage"?: number;
         /**
-          * Disable all controls
+          * Disable all controls.
           * @default false
          */
         "disabled": boolean;
@@ -1538,11 +1538,11 @@ export namespace Components {
          */
         "resultsPerPageOptions": Array<number>;
         /**
-          * The total amount of pages
+          * The total amount of pages.
          */
         "totalPages": number;
         /**
-          * The total amount of results
+          * The total amount of results.
          */
         "totalResults": number;
     }
@@ -5365,16 +5365,16 @@ declare namespace LocalJSX {
     }
     interface SixPaginator {
         /**
-          * Clamp the page numbers when they exceed the specified length
+          * Clamp the page numbers when they exceed the specified length.
           * @default true
          */
         "clamp"?: boolean;
         /**
-          * The current page being displayed. This should be 0 based
+          * The current page being displayed. This must be 0 based
          */
         "currentPage"?: number;
         /**
-          * Disable all controls
+          * Disable all controls.
           * @default false
          */
         "disabled"?: boolean;
@@ -5384,7 +5384,7 @@ declare namespace LocalJSX {
          */
         "length"?: number;
         /**
-          * Emitted whenever the page changes. This can be either due to one of the arrows bein pressed, or an explicit number.
+          * Emitted whenever the page changes. This can be either due to one of the arrows bein pressed, or an explicit click on a page number.
          */
         "onSix-paginator-page-changed"?: (event: SixPaginatorCustomEvent<SixPaginatorPageChangedPayload>) => void;
         /**
@@ -5401,11 +5401,11 @@ declare namespace LocalJSX {
          */
         "resultsPerPageOptions"?: Array<number>;
         /**
-          * The total amount of pages
+          * The total amount of pages.
          */
         "totalPages": number;
         /**
-          * The total amount of results
+          * The total amount of results.
          */
         "totalResults": number;
     }

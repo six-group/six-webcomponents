@@ -1220,7 +1220,7 @@ export declare interface SixPaginator extends Components.SixPaginator {
    */
   'six-paginator-results-per-page-changed': EventEmitter<CustomEvent<ISixPaginatorSixPaginatorResultsPerPageChangedPayload>>;
   /**
-   * Emitted whenever the page changes. This can be either due to one of the arrows bein pressed, or an explicit number.
+   * Emitted whenever the page changes. This can be either due to one of the arrows bein pressed, or an explicit click on a page number.
    */
   'six-paginator-page-changed': EventEmitter<CustomEvent<ISixPaginatorSixPaginatorPageChangedPayload>>;
 }
