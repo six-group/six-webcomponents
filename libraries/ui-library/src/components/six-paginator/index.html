@@ -1,0 +1,32 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <script type="module" src="/build/ui-library.esm.js"></script>
+    <script nomodule src="/build/ui-library.js"></script>
+    <link rel="stylesheet" href="/build/ui-library.css" />
+    <title>six-input</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Six Paginator</h2>
+
+      <p>basic paginator</p>
+
+      <section>
+        <six-paginator totalPages="20" currentPage="5" id="test"></six-paginator>
+      </section>
+      <script type="module">
+        const element = document.getElementById('test');
+        element.addEventListener('six-paginator-results-per-page-changed', (event) => {
+          console.log('Results per page changed to: ' + event.detail.resultsPerPage);
+        });
+
+        element.addEventListener('six-paginator-page-changed', (event) => {
+          console.log('Page changed to: ' + event.detail.page);
+        });
+      </script>
+    </div>
+  </body>
+</html>
