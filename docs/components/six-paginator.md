@@ -1,4 +1,4 @@
-# six-paginator
+# Paginator
 
 
 
@@ -31,9 +31,9 @@
 
 ### Depends on
 
-- [six-icon-button](../six-icon-button)
-- [six-select](../six-select)
-- [six-menu-item](../six-menu-item)
+- [six-icon-button](six-icon-button.html)
+- [six-select](six-select.html)
+- [six-menu-item](six-menu-item.html)
 
 ### Graph
 ```mermaid

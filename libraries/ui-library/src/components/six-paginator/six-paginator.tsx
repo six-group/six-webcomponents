@@ -1,12 +1,13 @@
 import { Component, Element, Event, EventEmitter, h, Prop } from '@stencil/core';
 import { SixSelectChangePayload } from '../six-select/six-select';
 
-export interface ResultsPerPageChangedPayload {
+export interface SixPaginatorResultsPerPageChangedPayload {
   resultsPerPage: number;
 }
 
-export interface PageChangedPayload {
+export interface SixPaginatorPageChangedPayload {
   page: number;
+  idx: number;
 }
 
 type PaginationItem = {
@@ -24,46 +25,62 @@ export class SixPaginator {
 
   @Element() host!: HTMLSixPaginatorElement;
 
+  /** The current page being displayed. This should be 0 based */
+  @Prop({ mutable: true, reflect: true }) currentPage?: number;
+
   /** The total amount of pages */
-  @Prop() totalPages: number = 20;
+  @Prop() totalPages!: number;
 
-  /** The possible results per page. Must be a list of integers. At least one value is required!*/
-  @Prop() resultsPerPage: number[] = [12, 24, 48];
+  /** The total amount of results */
+  @Prop() totalResults!: number;
 
-  /** current page */
-  @Prop({ mutable: true }) currentPage: number = 0;
+  /** The possible results per page. Must be a list of integers. At least one value is required. */
+  @Prop() resultsPerPageOptions: Array<number> = [12, 24, 48];
+
+  /** The results per page. Value must be one provided in the resultsPerPageOption. Otherwise the first value from the options will be used. */
+  @Prop() resultsPerPage?: number;
+
+  /** The amount of clickable page numbers to show. */
+  @Prop() length: number = 9;
+
+  /** Clamp the page numbers when they exceed the specified length */
+  @Prop() clamp: boolean = true;
+
+  /** Disable all controls  */
+  @Prop() disabled: boolean = false;
 
   /** Emitted after the user selects a value from the results per page select. */
   @Event({ eventName: 'six-paginator-results-per-page-changed' })
-  sixResultsPerPageChanged!: EventEmitter<ResultsPerPageChangedPayload>;
+  sixResultsPerPageChanged!: EventEmitter<SixPaginatorResultsPerPageChangedPayload>;
 
-  /** Emitted either when the user explicitly clicks on a number, or when a back/forward button is pressed.
-   * The page number emitted is an index which is zero-based
-   */
+  /** Emitted whenever the page changes. This can be either due to one of the arrows bein pressed, or an explicit number. */
   @Event({ eventName: 'six-paginator-page-changed' })
-  sixPageChanged!: EventEmitter<PageChangedPayload>;
+  sixPageChanged!: EventEmitter<SixPaginatorPageChangedPayload>;
+
+  constructor() {
+    this.resultsPerPage =
+      this.resultsPerPageOptions.indexOf(this.resultsPerPage ?? 0) > 0
+        ? this.resultsPerPage
+        : this.resultsPerPageOptions[0];
+    console.log('resultsper page options', this.resultsPerPageOptions);
+    console.log('resultsper page', this.resultsPerPage);
+    this.currentPage = this.currentPage ?? 0;
+  }
 
   private resultsPerPageChangedHandler = (event: CustomEvent<SixSelectChangePayload>) => {
-    console.log('Event: ', event.detail.value);
     const parsed = parseInt(event.detail.value as string);
-    console.log('Parsed: ', parsed);
 
     if (isNaN(parsed)) {
-      console.error('Could not parse results per page value');
       return;
     }
 
-    const payload = { resultsPerPage: parsed } as ResultsPerPageChangedPayload;
-
-    console.log('Emitting payload: ', payload, '');
-
-    this.sixResultsPerPageChanged.emit(payload);
+    this.sixResultsPerPageChanged.emit({ resultsPerPage: parsed } as SixPaginatorResultsPerPageChangedPayload);
   };
   private range(from: number, to: number): number[] {
     return Array.from({ length: to - from + 1 }, (_, i) => from + i);
   }
 
-  private clamp(value: number, min: number, max: number): number {
+  private computeClamp(value: number, min: number, max: number): number {
     return Math.min(Math.max(value, min), max);
   }
 
@@ -78,22 +95,18 @@ export class SixPaginator {
     return { displayValue: this.PLACEHOLDER };
   }
   private computeSelectorValues(): PaginationItem[] {
-    const { currentPage, totalPages } = this;
-    const shownElements = 9;
-
-    if (totalPages <= shownElements) {
-      return this.range(0, totalPages - 1).map((p) => this.pageItem(p));
+    if (this.totalPages <= this.length || !this.clamp) {
+      return this.range(0, this.totalPages - 1).map((p) => this.pageItem(p));
     }
 
-    const windowSize = shownElements - 2;
+    const windowSize = this.length - 2;
     const half = Math.floor(windowSize / 2);
 
-    const start = this.clamp(currentPage - half, 1, totalPages - windowSize - 1);
-
+    const start = this.computeClamp(this.currentPage! - half, 1, this.totalPages - windowSize - 1);
     const end = start + windowSize - 1;
 
     const requiresStartGap = start > 1;
-    const requiresEndGap = end < totalPages - 2;
+    const requiresEndGap = end < this.totalPages - 2;
 
     const middleStart = requiresStartGap ? start + 1 : start;
     const middleEnd = requiresEndGap ? end - 1 : end;
@@ -103,60 +116,65 @@ export class SixPaginator {
       ...(requiresStartGap ? [this.gapItem()] : []),
       ...this.range(middleStart, middleEnd).map((p) => this.pageItem(p)),
       ...(requiresEndGap ? [this.gapItem()] : []),
-      this.pageItem(totalPages - 1),
+      this.pageItem(this.totalPages - 1),
     ];
   }
 
   private navigateToPage(page: number | undefined) {
-    if (page === undefined) {
-      console.log('Page is undefined');
-      return;
-    }
-
-    if (page > this.totalPages) {
-      console.log('Page is greater than total pages');
-      return;
-    }
-
-    if (page < 0) {
-      console.log('Page is less than 1');
+    if (this.disabled || page === undefined || page > this.totalPages || page < 0) {
       return;
     }
 
     this.currentPage = page;
-    this.sixPageChanged.emit({ page: this.currentPage });
+    this.sixPageChanged.emit({ idx: this.currentPage, page: this.currentPage + 1 });
   }
 
   private increasePage() {
-    this.navigateToPage(this.currentPage + 1);
+    this.navigateToPage(this.currentPage! + 1);
   }
   private decreasePage() {
-    this.navigateToPage(this.currentPage - 1);
+    this.navigateToPage(this.currentPage! - 1);
+  }
+
+  get isAtEnd() {
+    return this.currentPage === this.totalPages - 1;
+  }
+
+  get isAtStart() {
+    return this.currentPage === 0;
   }
 
   render() {
     return (
       <div class="paginator-parent">
-        <div class="paginator-side-child">Total Pages: {this.totalPages}</div>
+        <div class="paginator-side-child">
+          <slot name="left">Total Results: {this.totalResults}</slot>
+        </div>
         <div class="paginator-center-child">
           <div class="paginator-values-container">
             <six-icon-button
+              name="first_page"
+              onClick={() => this.navigateToPage(0)}
+              disabled={this.isAtStart || this.disabled}
+            ></six-icon-button>
+            <six-icon-button
               name="chevron_left"
               onClick={() => this.decreasePage()}
-              disabled={this.currentPage === 0}
+              disabled={this.isAtStart || this.disabled}
             ></six-icon-button>
             {this.computeSelectorValues()!.map((value) => {
               return (
                 <div
                   class={{
                     'paginator-value-selector': true,
+                    'paginator-value-selector--disabled': this.disabled,
+                    'paginator-value-selector--clamp': value.displayValue === this.PLACEHOLDER,
                   }}
                   onClick={() => this.navigateToPage(value.clickValue)}
                 >
                   <span
                     class={{
                       'paginator-value-selector--current': value.clickValue === this.currentPage,
-                      'paginator-value-selector--disabled': value.displayValue === this.PLACEHOLDER,
                     }}
                   >
                     {value.displayValue}
@@ -167,17 +185,29 @@ export class SixPaginator {
             <six-icon-button
               name="chevron_right"
               onClick={() => this.increasePage()}
-              disabled={this.currentPage === this.totalPages - 1}
+              disabled={this.isAtEnd || this.disabled}
+            ></six-icon-button>
+            <six-icon-button
+              name="last_page"
+              onClick={() => this.navigateToPage(this.totalPages - 1)}
+              disabled={this.isAtEnd || this.disabled}
             ></six-icon-button>
           </div>
         </div>
-        <div class="paginator-side-child">
-          Results per page:
-          <six-select value={this.resultsPerPage[0].toString()} onSix-select-change={this.resultsPerPageChangedHandler}>
-            {this.resultsPerPage.map((rpp) => (
-              <six-menu-item value={rpp.toString()}>{rpp}</six-menu-item>
-            ))}
-          </six-select>
+        <div class="paginator-side-child paginator-side-child--right">
+          <slot name="right">
+            <span>Results per page: </span>
+            <six-select
+              line
+              disabled={this.disabled}
+              value={this.resultsPerPage!.toString()}
+              onSix-select-change={this.resultsPerPageChangedHandler}
+            >
+              {this.resultsPerPageOptions.map((rpp) => (
+                <six-menu-item value={rpp.toString()}>{rpp}</six-menu-item>
+              ))}
+            </six-select>
+          </slot>
         </div>
       </div>
     );

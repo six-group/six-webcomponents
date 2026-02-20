@@ -22,7 +22,7 @@ import { ItemPickerPaddingDirection, ItemPickerType } from "./components/six-ite
 import { SixItemPickerChangePayload } from "./components/six-item-picker/six-item-picker";
 import { SixLanguageSwitcherChangePayload, SixLanguageSwitcherInput } from "./components/six-language-switcher/six-language-switcher";
 import { SixMenuItemData as SixMenuItemData1, SixMenuItemSelectedPayload } from "./components/six-menu/six-menu";
-import { PageChangedPayload, ResultsPerPageChangedPayload } from "./components/six-paginator/six-paginator";
+import { SixPaginatorPageChangedPayload, SixPaginatorResultsPerPageChangedPayload } from "./components/six-paginator/six-paginator";
 import { StageType } from "./components/six-stage-indicator/six-stage-indicator";
 import { SixSearchFieldChangePayload } from "./components/six-search-field/six-search-field";
 import { SixSelectChangePayload } from "./components/six-select/six-select";
@@ -47,7 +47,7 @@ export { ItemPickerPaddingDirection, ItemPickerType } from "./components/six-ite
 export { SixItemPickerChangePayload } from "./components/six-item-picker/six-item-picker";
 export { SixLanguageSwitcherChangePayload, SixLanguageSwitcherInput } from "./components/six-language-switcher/six-language-switcher";
 export { SixMenuItemData as SixMenuItemData1, SixMenuItemSelectedPayload } from "./components/six-menu/six-menu";
-export { PageChangedPayload, ResultsPerPageChangedPayload } from "./components/six-paginator/six-paginator";
+export { SixPaginatorPageChangedPayload, SixPaginatorResultsPerPageChangedPayload } from "./components/six-paginator/six-paginator";
 export { StageType } from "./components/six-stage-indicator/six-stage-indicator";
 export { SixSearchFieldChangePayload } from "./components/six-search-field/six-search-field";
 export { SixSelectChangePayload } from "./components/six-select/six-select";
@@ -1510,20 +1510,41 @@ export namespace Components {
     }
     interface SixPaginator {
         /**
-          * current page
-          * @default 0
+          * Clamp the page numbers when they exceed the specified length
+          * @default true
          */
-        "currentPage": number;
+        "clamp": boolean;
         /**
-          * The possible results per page. Must be a list of integers. At least one value is required!
+          * The current page being displayed. This should be 0 based
+         */
+        "currentPage"?: number;
+        /**
+          * Disable all controls
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * The amount of clickable page numbers to show.
+          * @default 9
+         */
+        "length": number;
+        /**
+          * The results per page. Value must be one provided in the resultsPerPageOption. Otherwise the first value from the options will be used.
+         */
+        "resultsPerPage"?: number;
+        /**
+          * The possible results per page. Must be a list of integers. At least one value is required.
           * @default [12, 24, 48]
          */
-        "resultsPerPage": number[];
+        "resultsPerPageOptions": Array<number>;
         /**
           * The total amount of pages
-          * @default 20
          */
         "totalPages": number;
+        /**
+          * The total amount of results
+         */
+        "totalResults": number;
     }
     /**
      * @since 1.1
@@ -3308,8 +3329,8 @@ declare global {
         new (): HTMLSixMenuLabelElement;
     };
     interface HTMLSixPaginatorElementEventMap {
-        "six-paginator-results-per-page-changed": ResultsPerPageChangedPayload;
-        "six-paginator-page-changed": PageChangedPayload;
+        "six-paginator-results-per-page-changed": SixPaginatorResultsPerPageChangedPayload;
+        "six-paginator-page-changed": SixPaginatorPageChangedPayload;
     }
     interface HTMLSixPaginatorElement extends Components.SixPaginator, HTMLStencilElement {
         addEventListener<K extends keyof HTMLSixPaginatorElementEventMap>(type: K, listener: (this: HTMLSixPaginatorElement, ev: SixPaginatorCustomEvent<HTMLSixPaginatorElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -5344,28 +5365,49 @@ declare namespace LocalJSX {
     }
     interface SixPaginator {
         /**
-          * current page
-          * @default 0
+          * Clamp the page numbers when they exceed the specified length
+          * @default true
+         */
+        "clamp"?: boolean;
+        /**
+          * The current page being displayed. This should be 0 based
          */
         "currentPage"?: number;
         /**
-          * Emitted either when the user explicitly clicks on a number, or when a back/forward button is pressed. The page number emitted is an index which is zero-based
+          * Disable all controls
+          * @default false
          */
-        "onSix-paginator-page-changed"?: (event: SixPaginatorCustomEvent<PageChangedPayload>) => void;
+        "disabled"?: boolean;
+        /**
+          * The amount of clickable page numbers to show.
+          * @default 9
+         */
+        "length"?: number;
+        /**
+          * Emitted whenever the page changes. This can be either due to one of the arrows bein pressed, or an explicit number.
+         */
+        "onSix-paginator-page-changed"?: (event: SixPaginatorCustomEvent<SixPaginatorPageChangedPayload>) => void;
         /**
           * Emitted after the user selects a value from the results per page select.
          */
-        "onSix-paginator-results-per-page-changed"?: (event: SixPaginatorCustomEvent<ResultsPerPageChangedPayload>) => void;
+        "onSix-paginator-results-per-page-changed"?: (event: SixPaginatorCustomEvent<SixPaginatorResultsPerPageChangedPayload>) => void;
         /**
-          * The possible results per page. Must be a list of integers. At least one value is required!
+          * The results per page. Value must be one provided in the resultsPerPageOption. Otherwise the first value from the options will be used.
+         */
+        "resultsPerPage"?: number;
+        /**
+          * The possible results per page. Must be a list of integers. At least one value is required.
           * @default [12, 24, 48]
          */
-        "resultsPerPage"?: number[];
+        "resultsPerPageOptions"?: Array<number>;
         /**
           * The total amount of pages
-          * @default 20
          */
-        "totalPages"?: number;
+        "totalPages": number;
+        /**
+          * The total amount of results
+         */
+        "totalResults": number;
     }
     /**
      * @since 1.1

@@ -1,15 +1,25 @@
 .paginator-parent {
   display: flex;
+  align-items: center;
+  width: 100%;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  border-top: solid var(--six-border-width) var(--six-color-web-rock-900);
 }
 
 .paginator-center-child {
   display: flex;
-  flex-grow: 1;
   justify-content: center;
   align-items: center;
 }
 
 .paginator-side-child {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  &--right {
+    justify-content: right;
+  }
 }
 
 .paginator-values-container {
@@ -31,6 +41,10 @@
     text-decoration: underline;
   }
   &--disabled {
+    cursor: not-allowed;
+    color: var(--six-color-web-rock-400);
+  }
+  &--clamp {
     cursor: not-allowed;
   }
 }

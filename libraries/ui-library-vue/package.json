@@ -22,7 +22,7 @@
     "test": "echo \"Error: run tests from root\" && exit 1",
     "build": "npm run tsc",
     "tsc": "tsc -p . --outDir ./dist",
-    "watch": "npm run build -- --watch"
+    "watch": "tsc -p . --outDir ./dist --watch"
   },
   "publishConfig": {
     "access": "public",

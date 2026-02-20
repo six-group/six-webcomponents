@@ -496,9 +496,14 @@ export const SixMenuLabel: StencilVueComponent<JSX.SixMenuLabel> = /*@__PURE__*/
 
 
 export const SixPaginator: StencilVueComponent<JSX.SixPaginator> = /*@__PURE__*/ defineContainer<JSX.SixPaginator>('six-paginator', undefined, [
-  'totalPages',
-  'resultsPerPage',
   'currentPage',
+  'totalPages',
+  'totalResults',
+  'resultsPerPageOptions',
+  'resultsPerPage',
+  'length',
+  'clamp',
+  'disabled',
   'six-paginator-results-per-page-changed',
   'six-paginator-page-changed'
 ], [
