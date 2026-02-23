@@ -8,19 +8,48 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
-- Added the ability to disable the `ValidationService` on Angular. See
-  [docs](./guide/angular.md#customisingdisabling-validationservice) for more details.
+- Added stage `LOCAL` to `six-stage-indicator` and `six-root`
 
 ### Fixed
 
-- `six-spinner` fix container alignment, which doesn't match svg size and position
-- `six-file-upload`: fixed drag and drop file handling not triggering file upload
+### Changed
 
-### Removed
+## 5.3.0 - 2026-02-11
+
+### Fixed
+
+- `six-select`: Fixed type-to-select interfering with autocomplete input by adding
+  `disableTypeToSelect` prop to `six-dropdown`
+- `six-select`: fixed menu-item alignment with the checkboxes in multiselect mode
+- Updated and fixed vulnerable dependencies within the libraries
 
 ### Changed
 
-### Deprecated
+- Replaced E2E test with comprehensive Playwright tests for most components covering functional
+  behavior, visual regression, and accessibility
+- New [Playwright testing guide](guide/contributing/testing.md) with patterns and best practices
+- Improved [Contributing](guide/contributing/getting-started.md) section in documentation
+- **⚠️Breaking**: Updated minimum Node.js version requirement to 24. CI workflows and package
+  engines now require Node.js >= 24.
+
+## 5.2.0 - 2025-12-11
+
+### Added
+
+- **⚠️Experimental**: Added the ability to disable the `ValidationService` on Angular. See
+  [docs](./guide/angular#customising-disabling-validationservice) for more details.
+- `six-dropdown` : Added `noScroll` property to disable the default panel scroll behavior. Defaults
+  to false.
+- Added `CheckboxMultiSelectValueAccessor` on Angular which binds checkbox values to an array analog
+  to a multiselect
+
+### Fixed
+
+- Updated the React dependency to mitigate CVE-2025-55182. See
+  [https://www.cve.org/CVERecord?id=CVE-2025-55182](https://www.cve.org/CVERecord?id=CVE-2025-55182)
+  for more details.
+- `six-spinner` fix container alignment, which doesn't match svg size and position
+- `six-file-upload`: fixed drag and drop file handling not triggering file upload
 
 ## 5.1.1 - 2025-11-04
 
@@ -290,7 +319,6 @@ documentation reflects the latest stable release.
   on the view port width.
 
 - Improved `six-select` functionality and appearance:
-
   - Display checked items as checkboxes in multiselect mode.
   - Group selected options on top in multiselect mode.
   - Added a button to select/deselect all items.

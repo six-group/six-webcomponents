@@ -151,8 +151,7 @@ export class SixDetails {
     body.style.overflow = 'hidden';
 
     requestAnimationFrame(() => {
-      // tslint:disable-next-line: no-unused-expression
-      body.clientWidth; // force a reflow
+      void body.clientWidth; // force a reflow
       body.style.height = '0';
     });
 

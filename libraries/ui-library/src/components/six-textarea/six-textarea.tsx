@@ -95,7 +95,7 @@ export class SixTextarea {
   @Prop() autocapitalize = 'off';
 
   /** The textarea's autocorrect attribute. */
-  @Prop() autocorrect: 'on' | 'off' = 'off';
+  @Prop() autocorrect = false;
 
   /** The textarea's autocomplete attribute. */
   @Prop() autocomplete = 'off';
@@ -318,7 +318,7 @@ export class SixTextarea {
             maxLength={this.maxlength}
             value={this.getValue()}
             autoCapitalize={this.autocapitalize}
-            autoCorrect={this.autocorrect}
+            autoCorrect={this.autocorrect ? 'on' : 'off'}
             autoFocus={this.autofocus}
             spellcheck={this.spellcheck}
             required={this.required}

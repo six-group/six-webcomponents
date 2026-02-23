@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="All Tests in playwright.config.ts" type="JavaScriptTestRunnerPlaywright" nameIsGenerated="true">
+    <config value="$PROJECT_DIR$/libraries/ui-library/playwright.config.ts" />
+    <node-interpreter value="project" />
+    <playwright-package value="$PROJECT_DIR$/node_modules/@playwright/test" />
+    <working-dir value="$PROJECT_DIR$/libraries/ui-library" />
+    <envs />
+    <scope-kind value="ALL" />
+    <method v="2" />
+  </configuration>
+</component>

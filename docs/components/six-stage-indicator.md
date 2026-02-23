@@ -19,6 +19,7 @@ Use the `stage` attribute to display a certain stage
 <docs-demo-six-stage-indicator-1></docs-demo-six-stage-indicator-1>
 
 ```html
+<six-stage-indicator stage="LOCAL"> LOCAL-webcomponents-123.3.2 </six-stage-indicator>
 <six-stage-indicator stage="DEV"> DEV-webcomponents-123.3.2 </six-stage-indicator>
 <six-stage-indicator stage="ITU"> ITU-webcomponents-123.3.2 </six-stage-indicator>
 <six-stage-indicator stage="ETU"> ETU-webcomponents-123.3.2 </six-stage-indicator>
@@ -33,9 +34,9 @@ Use the `stage` attribute to display a certain stage
 
 ## Properties
 
-| Property | Attribute | Description                    | Type                                                        | Default |
-| -------- | --------- | ------------------------------ | ----------------------------------------------------------- | ------- |
-| `stage`  | `stage`   | The indicators value attribute | `"ACCEPTANCE" \| "DEV" \| "ETU" \| "ITU" \| "PROD" \| null` | `null`  |
+| Property | Attribute | Description                    | Type                                                                   | Default |
+| -------- | --------- | ------------------------------ | ---------------------------------------------------------------------- | ------- |
+| `stage`  | `stage`   | The indicators value attribute | `"ACCEPTANCE" \| "DEV" \| "ETU" \| "ITU" \| "LOCAL" \| "PROD" \| null` | `null`  |
 
 
 ## Dependencies

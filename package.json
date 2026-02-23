@@ -1,6 +1,6 @@
 {
   "name": "@six-group/workspace",
-  "version": "5.1.1",
+  "version": "5.3.0",
   "scripts": {
     "start": "npm run start -w libraries/ui-library",
     "watch:lib": "npm run watch -w libraries/ui-library",
@@ -16,6 +16,9 @@
     "build:lib": "npm run build -w libraries",
     "lint:lib": "npm run lint -w libraries --if-present",
     "test": "npm run test -w libraries/ui-library",
+    "test:e2e": "npm run test:e2e -w libraries/ui-library",
+    "test:e2e-install": "npm run test:e2e-install -w libraries/ui-library",
+    "test:e2e-update-screenshots": "npm run test:e2e-update-screenshots -w libraries/ui-library",
     "demo:angular": "npm start -w examples/angular",
     "demo:vue": "npm run dev -w examples/vue",
     "demo:react": "npm run dev -w examples/react",
@@ -39,16 +42,22 @@
     "docs"
   ],
   "devDependencies": {
-    "@types/jest": "^29.5.11",
-    "eslint": "^8.57.1",
-    "eslint-config-prettier": "^10.1.5",
-    "eslint-plugin-prettier": "^4.2.1",
+    "@types/jest": "^29.5.14",
+    "eslint": "^9.39.2",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.5",
     "jest": "^29.7.0",
     "jest-cli": "^29.7.0",
     "npm-run-all2": "^8.0.4",
-    "pkg-pr-new": "^0.0.51",
-    "prettier": "^3.5.3",
-    "typescript": "^5.8.3"
+    "pkg-pr-new": "^0.0.63",
+    "prettier": "^3.8.0",
+    "typescript": "^5.9.3"
+  },
+  "overrides": {
+    "vitepress": {
+      "@docsearch/js": "3.9.0",
+      "@docsearch/css": "3.9.0"
+    }
   },
   "license": "Apache-2.0"
 }

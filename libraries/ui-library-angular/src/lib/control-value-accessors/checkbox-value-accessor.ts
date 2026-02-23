@@ -3,7 +3,7 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { ValueAccessor } from './value-accessor';
 
 @Directive({
-  selector: 'six-checkbox',
+  selector: 'six-checkbox:not([six-checkbox-group])',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -19,8 +19,10 @@ export class CheckboxValueAccessor extends ValueAccessor {
   }
 
   @HostListener('change', ['$event.target'])
-  handleChangeEvent(el: HTMLSixCheckboxElement): void {
-    this.handleValueChange(el, el.checked);
+  handleChangeEvent(el: EventTarget | null): void {
+    if (el) {
+      this.handleValueChange(el as HTMLElement, (el as HTMLSixCheckboxElement).checked);
+    }
   }
 
   override writeValue(value: any): void {

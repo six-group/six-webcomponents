@@ -739,6 +739,11 @@ export namespace Components {
          */
         "disableHideOnEnterAndSpace": boolean;
         /**
+          * A boolean flag that determines whether the type-to-select functionality is disabled. When set to `true`, users will not be able to select options by typing matching characters. When set to `false`, the type-to-select functionality remains enabled, allowing users to quickly navigate options by typing.
+          * @default false
+         */
+        "disableTypeToSelect": boolean;
+        /**
           * The distance in pixels from which to offset the panel away from its trigger.
           * @default 4
          */
@@ -772,6 +777,11 @@ export namespace Components {
           * @default false
          */
         "matchTriggerWidth": boolean;
+        /**
+          * Set to true if you want to disable the default dropdown panel scroll behavior.
+          * @default false
+         */
+        "noScroll": boolean;
         /**
           * Indicates whether the dropdown is open. You can use this in lieu of the show/hide methods.
           * @default false
@@ -1128,9 +1138,9 @@ export namespace Components {
         "autocomplete": string;
         /**
           * The input's autocorrect attribute.
-          * @default 'off'
+          * @default false
          */
-        "autocorrect": 'on' | 'off';
+        "autocorrect": boolean;
         /**
           * The input's autofocus attribute.
           * @default false
@@ -2232,9 +2242,9 @@ export namespace Components {
         "autocomplete": string;
         /**
           * The textarea's autocorrect attribute.
-          * @default 'off'
+          * @default false
          */
-        "autocorrect": 'on' | 'off';
+        "autocorrect": boolean;
         /**
           * The textarea's autofocus attribute.
           * @default false
@@ -4491,6 +4501,11 @@ declare namespace LocalJSX {
          */
         "disableHideOnEnterAndSpace"?: boolean;
         /**
+          * A boolean flag that determines whether the type-to-select functionality is disabled. When set to `true`, users will not be able to select options by typing matching characters. When set to `false`, the type-to-select functionality remains enabled, allowing users to quickly navigate options by typing.
+          * @default false
+         */
+        "disableTypeToSelect"?: boolean;
+        /**
           * The distance in pixels from which to offset the panel away from its trigger.
           * @default 4
          */
@@ -4520,6 +4535,11 @@ declare namespace LocalJSX {
           * @default false
          */
         "matchTriggerWidth"?: boolean;
+        /**
+          * Set to true if you want to disable the default dropdown panel scroll behavior.
+          * @default false
+         */
+        "noScroll"?: boolean;
         /**
           * Emitted when the async filter is triggered
          */
@@ -4916,9 +4936,9 @@ declare namespace LocalJSX {
         "autocomplete"?: string;
         /**
           * The input's autocorrect attribute.
-          * @default 'off'
+          * @default false
          */
-        "autocorrect"?: 'on' | 'off';
+        "autocorrect"?: boolean;
         /**
           * The input's autofocus attribute.
           * @default false
@@ -6056,9 +6076,9 @@ declare namespace LocalJSX {
         "autocomplete"?: string;
         /**
           * The textarea's autocorrect attribute.
-          * @default 'off'
+          * @default false
          */
-        "autocorrect"?: 'on' | 'off';
+        "autocorrect"?: boolean;
         /**
           * The textarea's autofocus attribute.
           * @default false

@@ -7,18 +7,16 @@ import { reactOutputTarget } from '@stencil/react-output-target';
 export const config: Config = {
   namespace: 'ui-library',
   globalStyle: 'src/global/base.css',
-  plugins: [
-    sass({
-      injectGlobalPaths: ['src/global/animation.scss'],
-    }),
-  ],
+  plugins: [sass()],
   extras: {
     // fixes VitePress doc build
     enableImportInjection: true,
   },
   outputTargets: [
     reactOutputTarget({
-      outDir: '../ui-library-react/src/lib/stencil-generated',
+      outDir: '../ui-library-react/src',
+      hydrateModule: '@six-group/ui-library/hydrate',
+      clientModule: '@six-group/ui-library-react',
     }),
     angularOutputTarget({
       componentCorePackage: '@six-group/ui-library',
@@ -81,10 +79,10 @@ export const config: Config = {
       customElementsExportBehavior: 'bundle',
       externalRuntime: false,
     },
-    /*    {
+    {
       type: 'dist-hydrate-script',
       dir: './hydrate',
-    },*/
+    },
     {
       type: 'docs-readme',
       footer: 'Copyright © 2021-present SIX-Group',
@@ -127,10 +125,12 @@ export const config: Config = {
         },
 
         { src: '**/*.html' },
+        { src: '**/*.scss' },
       ],
     },
   ],
   devServer: {
-    openBrowser: true,
+    address: 'localhost',
+    port: 3333,
   },
 };
