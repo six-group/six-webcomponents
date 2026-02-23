@@ -4,15 +4,15 @@ https://github.com/six-group/six-webcomponents/blob/dev/.github/CONTRIBUTING.md#
 -->
 
 <!-- PULL REQUEST TEMPLATE -->
-<!-- (Update "[ ]" to "[x]" to check a box) -->
 
 ### 🔗 Linked issue
 
-<!-- Please ensure there is an open issue and mention its number as #123 -->
+<!-- Please ensure there is an open issue and mention its number. For example, "resolves #123" -->
 
 ### ❓ Type of change
 
 <!-- What types of changes does your code introduce? Put an `x` in all the boxes that apply. -->
+<!-- (Update "[ ]" to "[x]" to check a box) -->
 
 - [ ] 📖 Documentation (updates to the documentation, readme or JSdoc annotations)
 - [ ] 🐞 Bug fix (a non-breaking change that fixes an issue)
@@ -23,26 +23,19 @@ https://github.com/six-group/six-webcomponents/blob/dev/.github/CONTRIBUTING.md#
 
 ### 📚 Description
 
-<!-- Describe your changes in detail -->
-<!-- Why is this change required? What problem does it solve? -->
-<!-- If it resolves an open issue, please link to the issue here. For example, "Resolves #1337" -->
+<!-- Describe your changes in detail. Why is this change required? What problem does it solve? -->
 
-### 📝 Checklist
+<!-- If you used AI tools to help with this contribution, please ensure the PR description and code reflect your own understanding.
+     Write in your own voice rather than copying AI-generated text. -->
 
-<!-- Put an `x` in all the boxes that apply. -->
-<!-- If your change requires a documentation PR, please link it appropriately -->
-<!-- If you're unsure about any of these, don't hesitate to ask. We're here to help! -->
+<!----------------------------------------------------------------------
+Before creating the pull request, please make sure you do the following:
 
-- [ ] I have linked an issue or discussion.
-- [ ] It's submitted to the `main` branch
-- [ ] When resolving a specific issue, it's referenced in the PR's title (e.g. `fix #xxx[,#xxx]`, where "xxx" is the issue number)
-- [ ] I have updated the documentation accordingly.
-- [ ] All tests are passing
-- [ ] New/updated tests are included
-- [ ] I have updated the "upcoming" section inside _docs/changelog.md_ explaining the changes I contributed
+- Check that there isn't already a PR that solves the problem the same way. If you find a duplicate, please help us reviewing it.
+- Read the contribution docs at https://github.com/six-group/six-webcomponents/blob/dev/.github/CONTRIBUTING.md
+- Ensure that PR title follows conventional commits (https://www.conventionalcommits.org)
+- Update the corresponding documentation if needed.
+- Include relevant tests that fail without this PR but pass with it.
 
-If adding a **new feature**, the PR's description includes:
-
-- [ ] A convincing reason for adding this feature (to avoid wasting your time, it's best to open a suggestion issue first and wait for approval before working on it)
-
-**Other information:**
+Thank you for contributing to the SIX Webcomponents!
+----------------------------------------------------------------------->
