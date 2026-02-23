@@ -54,8 +54,11 @@
       <six-menu-item value="change-password">Change password</six-menu-item>
       <six-menu-item value="logout">Logout</six-menu-item>
       <six-menu-item>
-        <six-language-switcher [selected]="language()" [languages]="languages"></six-language-switcher>
-        <!--        (six-language-switcher-change)="changeLanguage($event)"-->
+        <six-language-switcher
+          [selected]="language()"
+          [languages]="languages"
+          (six-language-switcher-change)="changeLanguage($event)"
+        ></six-language-switcher>
       </six-menu-item>
     </six-menu>
   </six-header-dropdown-item>

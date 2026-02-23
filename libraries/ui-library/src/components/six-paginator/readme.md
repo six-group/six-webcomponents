@@ -1,6 +1,6 @@
 # six-paginator
 
-
+<!-- EXAMPLES -->
 
 <!-- Auto Generated Below -->
 
