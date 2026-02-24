@@ -17,7 +17,7 @@ import { Components } from '@six-group/ui-library';
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['closable', 'duration', 'open', 'type'],
-  outputs: ['sixAlertShow:six-alert-show', 'sixAlertAfterShow:six-alert-after-show', 'sixAlertHide:six-alert-hide', 'sixAlertAfterHide:six-alert-after-hide'],
+  outputs: ['six-alert-show', 'six-alert-after-show', 'six-alert-hide', 'six-alert-after-hide'],
   standalone: false
 })
 export class SixAlert {
@@ -157,7 +157,7 @@ export declare interface SixBreadcrumbsItem extends Components.SixBreadcrumbsIte
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['caret', 'circle', 'disabled', 'download', 'href', 'loading', 'name', 'pill', 'reset', 'size', 'submit', 'target', 'type', 'value'],
-  outputs: ['sixButtonBlur:six-button-blur', 'sixButtonFocus:six-button-focus'],
+  outputs: ['six-button-blur', 'six-button-focus'],
   standalone: false
 })
 export class SixButton {
@@ -217,7 +217,7 @@ export declare interface SixCard extends Components.SixCard {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['checked', 'disabled', 'errorText', 'errorTextCount', 'indeterminate', 'invalid', 'label', 'name', 'required', 'value'],
-  outputs: ['sixCheckboxBlur:six-checkbox-blur', 'sixCheckboxChange:six-checkbox-change', 'sixCheckboxFocus:six-checkbox-focus'],
+  outputs: ['six-checkbox-blur', 'six-checkbox-change', 'six-checkbox-focus'],
   standalone: false
 })
 export class SixCheckbox {
@@ -260,7 +260,7 @@ export declare interface SixCheckbox extends Components.SixCheckbox {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['allowedDates', 'clearable', 'dateFormat', 'disabled', 'errorText', 'errorTextCount', 'helpText', 'invalid', 'label', 'language', 'max', 'min', 'name', 'placeholder', 'readonly', 'required', 'size', 'value'],
-  outputs: ['sixChange:six-change', 'sixBlur:six-blur'],
+  outputs: ['six-change', 'six-blur'],
   standalone: false
 })
 export class SixDate {
@@ -298,7 +298,7 @@ Does not contain event details.
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['allowedDates', 'clearable', 'closeOnSelect', 'containingElement', 'dateFormat', 'debounce', 'defaultDate', 'disabled', 'errorText', 'errorTextCount', 'hoist', 'iconPosition', 'inline', 'invalid', 'label', 'locale', 'max', 'min', 'name', 'open', 'placeholder', 'placement', 'readonly', 'required', 'size', 'type', 'value'],
-  outputs: ['sixDatepickerSelect:six-datepicker-select', 'sixDatepickerClear:six-datepicker-clear', 'sixDatepickerBlur:six-datepicker-blur'],
+  outputs: ['six-datepicker-select', 'six-datepicker-clear', 'six-datepicker-blur'],
   standalone: false
 })
 export class SixDatepicker {
@@ -342,7 +342,7 @@ export declare interface SixDatepicker extends Components.SixDatepicker {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['disabled', 'hasContent', 'inline', 'open', 'selectableEmpty', 'summary', 'summaryIcon', 'summaryIconSize'],
-  outputs: ['sixDetailsShow:six-details-show', 'sixDetailsAfterShow:six-details-after-show', 'sixDetailsHide:six-details-hide', 'sixDetailsAfterHide:six-details-after-hide'],
+  outputs: ['six-details-show', 'six-details-after-show', 'six-details-hide', 'six-details-after-hide'],
   standalone: false
 })
 export class SixDetails {
@@ -390,7 +390,7 @@ export declare interface SixDetails extends Components.SixDetails {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['label', 'noHeader', 'open'],
-  outputs: ['sixDialogShow:six-dialog-show', 'sixDialogAfterShow:six-dialog-after-show', 'sixDialogHide:six-dialog-hide', 'sixDialogAfterHide:six-dialog-after-hide', 'sixDialogInitialFocus:six-dialog-initial-focus', 'sixDialogRequestClose:six-dialog-request-close'],
+  outputs: ['six-dialog-show', 'six-dialog-after-show', 'six-dialog-hide', 'six-dialog-after-hide', 'six-dialog-initial-focus', 'six-dialog-request-close'],
   standalone: false
 })
 export class SixDialog {
@@ -452,7 +452,7 @@ the drawer will result in destructive behavior such as data loss.
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['contained', 'label', 'noHeader', 'open', 'placement'],
-  outputs: ['sixDrawerShow:six-drawer-show', 'sixDrawerAfterShow:six-drawer-after-show', 'sixDrawerHide:six-drawer-hide', 'sixDrawerAfterHide:six-drawer-after-hide', 'sixDrawerInitialFocus:six-drawer-initial-focus', 'sixDrawerRequestClose:six-drawer-request-close'],
+  outputs: ['six-drawer-show', 'six-drawer-after-show', 'six-drawer-hide', 'six-drawer-after-hide', 'six-drawer-initial-focus', 'six-drawer-request-close'],
   standalone: false
 })
 export class SixDrawer {
@@ -514,7 +514,7 @@ the drawer will result in destructive behavior such as data loss.
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['asyncFilter', 'autofocusFilter', 'closeOnSelect', 'containingElement', 'disableHideOnEnterAndSpace', 'disableTypeToSelect', 'distance', 'filter', 'filterDebounce', 'filterPlaceholder', 'hoist', 'matchTriggerWidth', 'noScroll', 'open', 'options', 'placement', 'skidding', 'virtualScroll'],
-  outputs: ['sixDropdownShow:six-dropdown-show', 'sixDropdownAfterShow:six-dropdown-after-show', 'sixDropdownHide:six-dropdown-hide', 'sixDropdownAfterHide:six-dropdown-after-hide', 'sixDropdownAutoFilterFired:six-dropdown-auto-filter-fired', 'sixAsyncFilterFired:six-async-filter-fired', 'sixDropdownScroll:six-dropdown-scroll'],
+  outputs: ['six-dropdown-show', 'six-dropdown-after-show', 'six-dropdown-hide', 'six-dropdown-after-hide', 'six-dropdown-auto-filter-fired', 'six-async-filter-fired', 'six-dropdown-scroll'],
   standalone: false
 })
 export class SixDropdown {
@@ -646,7 +646,7 @@ export declare interface SixFileList extends Components.SixFileList {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['date', 'identifier', 'name', 'nodelete', 'nodownload', 'size'],
-  outputs: ['sixFileListItemDownload:six-file-list-item-download', 'sixFileListItemRemove:six-file-list-item-remove'],
+  outputs: ['six-file-list-item-download', 'six-file-list-item-remove'],
   standalone: false
 })
 export class SixFileListItem {
@@ -684,7 +684,7 @@ export declare interface SixFileListItem extends Components.SixFileListItem {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['accept', 'compact', 'disabled', 'errorText', 'invalid', 'label', 'maxFileSize', 'multiple', 'uploading'],
-  outputs: ['sixFileUploadSuccess:six-file-upload-success', 'sixFileUploadFailure:six-file-upload-failure'],
+  outputs: ['six-file-upload-success', 'six-file-upload-failure'],
   standalone: false
 })
 export class SixFileUpload {
@@ -906,7 +906,7 @@ export declare interface SixIconButton extends Components.SixIconButton {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['autocapitalize', 'autocomplete', 'autocorrect', 'autofocus', 'clearable', 'disabled', 'dropdownSearch', 'errorText', 'errorTextCount', 'helpText', 'inputmode', 'invalid', 'label', 'line', 'max', 'maxlength', 'min', 'minlength', 'name', 'pattern', 'pill', 'placeholder', 'readonly', 'required', 'size', 'spellcheck', 'step', 'togglePassword', 'type', 'value'],
-  outputs: ['sixInputChange:six-input-change', 'sixInputClear:six-input-clear', 'sixInputInput:six-input-input', 'sixInputFocus:six-input-focus', 'sixInputBlur:six-input-blur'],
+  outputs: ['six-input-change', 'six-input-clear', 'six-input-input', 'six-input-focus', 'six-input-blur'],
   standalone: false
 })
 export class SixInput {
@@ -958,7 +958,7 @@ export declare interface SixInput extends Components.SixInput {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['debounce', 'interval', 'items', 'max', 'min', 'padded', 'paddingChar', 'paddingDirection', 'paddingLength', 'roundtrip', 'step', 'timeout', 'type', 'value'],
-  outputs: ['sixItemPickerChange:six-item-picker-change', 'sixItemPickerChangeDebounced:six-item-picker-change-debounced'],
+  outputs: ['six-item-picker-change', 'six-item-picker-change-debounced'],
   standalone: false
 })
 export class SixItemPicker {
@@ -995,7 +995,7 @@ export declare interface SixItemPicker extends Components.SixItemPicker {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['languages', 'selected'],
-  outputs: ['sixLanguageSwitcherChange:six-language-switcher-change'],
+  outputs: ['six-language-switcher-change'],
   standalone: false
 })
 export class SixLanguageSwitcher {
@@ -1097,7 +1097,7 @@ export declare interface SixMainContainer extends Components.SixMainContainer {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['disableKeyboardHandling', 'itemSize', 'items', 'itemsShown', 'removeBoxShadow', 'scrollingDebounce', 'virtualScroll'],
-  outputs: ['sixMenuItemSelected:six-menu-item-selected'],
+  outputs: ['six-menu-item-selected'],
   standalone: false
 })
 export class SixMenu {
@@ -1189,6 +1189,44 @@ export declare interface SixMenuLabel extends Components.SixMenuLabel {}
 
 
 @ProxyCmp({
+  inputs: ['clamp', 'currentPage', 'disabled', 'length', 'resultsPerPage', 'resultsPerPageOptions', 'totalPages', 'totalResults']
+})
+@Component({
+  selector: 'six-paginator',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['clamp', 'currentPage', 'disabled', 'length', 'resultsPerPage', 'resultsPerPageOptions', { name: 'totalPages', required: true }, { name: 'totalResults', required: true }],
+  outputs: ['six-paginator-results-per-page-changed', 'six-paginator-page-changed'],
+  standalone: false
+})
+export class SixPaginator {
+  protected el: HTMLSixPaginatorElement;
+  @Output() sixPaginatorResultsPerPageChanged = new EventEmitter<CustomEvent<ISixPaginatorSixPaginatorResultsPerPageChangedPayload>>();
+  @Output() sixPaginatorPageChanged = new EventEmitter<CustomEvent<ISixPaginatorSixPaginatorPageChangedPayload>>();
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+import type { SixPaginatorResultsPerPageChangedPayload as ISixPaginatorSixPaginatorResultsPerPageChangedPayload } from '@six-group/ui-library';
+import type { SixPaginatorPageChangedPayload as ISixPaginatorSixPaginatorPageChangedPayload } from '@six-group/ui-library';
+
+export declare interface SixPaginator extends Components.SixPaginator {
+  /**
+   * Emitted after the user selects a value from the results per page select.
+   */
+  'six-paginator-results-per-page-changed': EventEmitter<CustomEvent<ISixPaginatorSixPaginatorResultsPerPageChangedPayload>>;
+  /**
+   * Emitted whenever the page changes. This can be either due to one of the arrows bein pressed, or an explicit click on a page number.
+   */
+  'six-paginator-page-changed': EventEmitter<CustomEvent<ISixPaginatorSixPaginatorPageChangedPayload>>;
+}
+
+
+@ProxyCmp({
   inputs: ['size']
 })
 @Component({
@@ -1267,7 +1305,7 @@ export declare interface SixProgressRing extends Components.SixProgressRing {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['checked', 'disabled', 'invalid', 'name', 'value'],
-  outputs: ['sixRadioBlur:six-radio-blur', 'sixRadioChange:six-radio-change', 'sixRadioFocus:six-radio-focus'],
+  outputs: ['six-radio-blur', 'six-radio-change', 'six-radio-focus'],
   standalone: false
 })
 export class SixRadio {
@@ -1310,7 +1348,7 @@ export declare interface SixRadio extends Components.SixRadio {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['disabled', 'errorText', 'errorTextCount', 'helpText', 'invalid', 'label', 'max', 'min', 'name', 'required', 'step', 'tooltip', 'tooltipFormatter', 'value'],
-  outputs: ['sixRangeChange:six-range-change', 'sixRangeBlur:six-range-blur', 'sixRangeFocus:six-range-focus'],
+  outputs: ['six-range-change', 'six-range-blur', 'six-range-focus'],
   standalone: false
 })
 export class SixRange {
@@ -1352,7 +1390,7 @@ export declare interface SixRange extends Components.SixRange {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['disabled', 'errorText', 'errorTextCount', 'helpText', 'invalid', 'label', 'max', 'name', 'readonly', 'required', 'size', 'value'],
-  outputs: ['sixRatingBlur:six-rating-blur', 'sixRatingChange:six-rating-change', 'sixRatingFocus:six-rating-focus'],
+  outputs: ['six-rating-blur', 'six-rating-change', 'six-rating-focus'],
   standalone: false
 })
 export class SixRating {
@@ -1417,7 +1455,7 @@ export declare interface SixRoot extends Components.SixRoot {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['clearable', 'debounce', 'disabled', 'placeholder', 'value'],
-  outputs: ['sixSearchFieldChange:six-search-field-change'],
+  outputs: ['six-search-field-change'],
   standalone: false
 })
 export class SixSearchField {
@@ -1450,7 +1488,7 @@ export declare interface SixSearchField extends Components.SixSearchField {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['asyncFilter', 'autocomplete', 'clearable', 'disabled', 'errorText', 'errorTextCount', 'filter', 'filterDebounce', 'filterPlaceholder', 'helpText', 'hoist', 'inputDebounce', 'invalid', 'label', 'line', 'multiple', 'name', 'options', 'pill', 'placeholder', 'required', 'selectAllButton', 'selectAllText', 'size', 'value', 'virtualScroll'],
-  outputs: ['sixSelectChange:six-select-change', 'sixSelectFocus:six-select-focus', 'sixSelectBlur:six-select-blur'],
+  outputs: ['six-select-change', 'six-select-focus', 'six-select-blur'],
   standalone: false
 })
 export class SixSelect {
@@ -1494,7 +1532,7 @@ export declare interface SixSelect extends Components.SixSelect {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['open', 'position', 'toggled', 'width'],
-  outputs: ['sixSidebarShow:six-sidebar-show', 'sixSidebarAfterShow:six-sidebar-after-show', 'sixSidebarHide:six-sidebar-hide', 'sixSidebarAfterHide:six-sidebar-after-hide', 'sixSidebarInitialFocus:six-sidebar-initial-focus'],
+  outputs: ['six-sidebar-show', 'six-sidebar-after-show', 'six-sidebar-hide', 'six-sidebar-after-hide', 'six-sidebar-initial-focus'],
   standalone: false
 })
 export class SixSidebar {
@@ -1640,7 +1678,7 @@ export declare interface SixStageIndicator extends Components.SixStageIndicator 
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['checked', 'disabled', 'errorText', 'errorTextCount', 'invalid', 'label', 'name', 'required', 'value'],
-  outputs: ['sixSwitchBlur:six-switch-blur', 'sixSwitchChange:six-switch-change', 'sixSwitchFocus:six-switch-focus'],
+  outputs: ['six-switch-blur', 'six-switch-change', 'six-switch-focus'],
   standalone: false
 })
 export class SixSwitch {
@@ -1683,7 +1721,7 @@ export declare interface SixSwitch extends Components.SixSwitch {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['active', 'closable', 'disabled', 'hoverContent', 'panel'],
-  outputs: ['sixTabClose:six-tab-close'],
+  outputs: ['six-tab-close'],
   standalone: false
 })
 export class SixTab {
@@ -1716,7 +1754,7 @@ export declare interface SixTab extends Components.SixTab {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['noScrollControls', 'placement'],
-  outputs: ['sixTabShow:six-tab-show', 'sixTabHide:six-tab-hide'],
+  outputs: ['six-tab-show', 'six-tab-hide'],
   standalone: false
 })
 export class SixTabGroup {
@@ -1777,7 +1815,7 @@ export declare interface SixTabPanel extends Components.SixTabPanel {}
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['clearable', 'pill', 'size', 'type'],
-  outputs: ['sixTagClear:six-tag-clear'],
+  outputs: ['six-tag-clear'],
   standalone: false
 })
 export class SixTag {
@@ -1810,7 +1848,7 @@ export declare interface SixTag extends Components.SixTag {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['autocapitalize', 'autocomplete', 'autocorrect', 'autofocus', 'disabled', 'errorText', 'errorTextCount', 'helpText', 'inputmode', 'invalid', 'label', 'maxlength', 'minlength', 'name', 'placeholder', 'readonly', 'required', 'resize', 'rows', 'size', 'spellcheck', 'value'],
-  outputs: ['sixTextareaChange:six-textarea-change', 'sixTextareaInput:six-textarea-input', 'sixTextareaFocus:six-textarea-focus', 'sixTextareaBlur:six-textarea-blur'],
+  outputs: ['six-textarea-change', 'six-textarea-input', 'six-textarea-focus', 'six-textarea-blur'],
   standalone: false
 })
 export class SixTextarea {
@@ -1858,7 +1896,7 @@ export declare interface SixTextarea extends Components.SixTextarea {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['closeable', 'disableTooltip', 'disabled', 'elevated', 'iconName', 'label', 'size'],
-  outputs: ['sixTileClosed:six-tile-closed', 'sixTileSelected:six-tile-selected'],
+  outputs: ['six-tile-closed', 'six-tile-selected'],
   standalone: false
 })
 export class SixTile {
@@ -1896,7 +1934,7 @@ export declare interface SixTile extends Components.SixTile {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['clearable', 'debounce', 'defaultTime', 'disabled', 'errorText', 'errorTextCount', 'format', 'hoist', 'iconPosition', 'inline', 'interval', 'invalid', 'label', 'name', 'open', 'placeholder', 'placement', 'readonly', 'required', 'separator', 'size', 'timeout', 'value'],
-  outputs: ['sixTimepickerChange:six-timepicker-change', 'sixTimepickerChangeDebounced:six-timepicker-change-debounced', 'sixTimepickerClear:six-timepicker-clear'],
+  outputs: ['six-timepicker-change', 'six-timepicker-change-debounced', 'six-timepicker-clear'],
   standalone: false
 })
 export class SixTimepicker {
@@ -1940,7 +1978,7 @@ export declare interface SixTimepicker extends Components.SixTimepicker {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['content', 'disabled', 'distance', 'open', 'placement', 'skidding', 'trigger'],
-  outputs: ['sixTooltipShow:six-tooltip-show', 'sixTooltipAfterShow:six-tooltip-after-show', 'sixTooltipHide:six-tooltip-hide', 'sixTooltipAfterHide:six-tooltip-after-hide'],
+  outputs: ['six-tooltip-show', 'six-tooltip-after-show', 'six-tooltip-hide', 'six-tooltip-after-hide'],
   standalone: false
 })
 export class SixTooltip {
