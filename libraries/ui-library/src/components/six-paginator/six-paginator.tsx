@@ -155,11 +155,13 @@ export class SixPaginator {
           <div class="paginator-values-container">
             <six-icon-button
               name="first_page"
+              id="six-paginator-navigation-first"
               onClick={() => this.navigateToPage(0)}
               disabled={this.isAtStart || this.disabled}
             ></six-icon-button>
             <six-icon-button
               name="chevron_left"
+              id="six-paginator-navigation-prev"
               onClick={() => this.decreasePage()}
               disabled={this.isAtStart || this.disabled}
             ></six-icon-button>
@@ -185,11 +187,13 @@ export class SixPaginator {
             })}
             <six-icon-button
               name="chevron_right"
+              id="six-paginator-navigation-next"
               onClick={() => this.increasePage()}
               disabled={this.isAtEnd || this.disabled}
             ></six-icon-button>
             <six-icon-button
               name="last_page"
+              id="six-paginator-navigation-last"
               onClick={() => this.navigateToPage(this.totalPages - 1)}
               disabled={this.isAtEnd || this.disabled}
             ></six-icon-button>
@@ -199,6 +203,7 @@ export class SixPaginator {
           <slot name="right">
             <span>Results per page: </span>
             <six-select
+              id="six-paginator-results-per-page-select"
               line
               disabled={this.disabled}
               value={this.resultsPerPage!.toString()}
