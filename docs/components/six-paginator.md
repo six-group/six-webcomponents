@@ -1,6 +1,32 @@
 # Paginator
 
 
+<docs-demo-six-paginator-0></docs-demo-six-paginator-0>
+
+```html
+<div>
+  <div style="width: 100%; height: 200px; background-color: var(--six-color-web-rock-300)">
+    <div               id="paginator-page-0"
+      style="display: grid; align-items: center; justify-content: center; text-align: center; height: 100%"
+    >
+      <p>
+        This is the content for page one! You can control the pages through the arrows, or by clicking directly
+        on the number of the page you need.
+      </p>
+      <p>For all possible parameters, as well as events, check the docs for more details!</p>
+    </div>
+    <div id="paginator-page-1" style="display: none">This is page 2</div>
+    <div id="paginator-page-2" style="display: none">This is page 3</div>
+    <div id="paginator-page-3" style="display: none">This is page 4</div>
+    <div id="paginator-page-4" style="display: none">This is page 5</div>
+  </div>
+  <six-paginator id="paginator-basic" total-pages="5" total-results="20"></six-paginator>
+</div>
+```
+
+
+const paginatorBasic = document.getElementById('paginator-basic'); const contentPages = document.querySelectorAll('\[id^="paginator-page-"\]'); paginatorBasic.addEventListener('six-paginator-page-changed', (event) => { contentPages.forEach((page) => { page.style.display = 'none'; }); contentPages\[event.detail.idx\].style.display = 'block'; });
+
 ## Paginator
 
 The `six-paginator` component allows navigation through paginated content.
@@ -10,10 +36,10 @@ The `six-paginator` component allows navigation through paginated content.
 
 The simplest version of the paginator requires `total-pages` and `total-results` as parameters
 
-<docs-demo-six-paginator-0></docs-demo-six-paginator-0>
+<docs-demo-six-paginator-1></docs-demo-six-paginator-1>
 
 ```html
-<six-paginator total-pages="10" total-results="500"></six-paginator>
+<six-paginator total-pages="20" total-results="500"></six-paginator>
 ```
 
 
@@ -22,10 +48,10 @@ The simplest version of the paginator requires `total-pages` and `total-results`
 
 Use the `current-page` attribute (0-based index) to control the active page.
 
-<docs-demo-six-paginator-1></docs-demo-six-paginator-1>
+<docs-demo-six-paginator-2></docs-demo-six-paginator-2>
 
 ```html
-<six-paginator total-pages="10" total-results="500" current-page="3"></six-paginator>
+<six-paginator total-pages="20" total-results="500" current-page="3"></six-paginator>
 ```
 
 
@@ -34,7 +60,7 @@ Use the `current-page` attribute (0-based index) to control the active page.
 
 Use the `length` prop to define how many page numbers are displayed. By default, if the number of total pages is greater than the `length` parameter, the list will be clamped.
 
-<docs-demo-six-paginator-2></docs-demo-six-paginator-2>
+<docs-demo-six-paginator-3></docs-demo-six-paginator-3>
 
 ```html
 <six-paginator total-pages="20" total-results="500" length="5"></six-paginator>
@@ -43,10 +69,10 @@ Use the `length` prop to define how many page numbers are displayed. By default,
 
 To override this behaviour, you can set the `clamp` parameter to `false`. This will show all available pages.
 
-<docs-demo-six-paginator-3></docs-demo-six-paginator-3>
+<docs-demo-six-paginator-4></docs-demo-six-paginator-4>
 
 ```html
-<six-paginator total-pages="20" total-results="500"></six-paginator>
+<six-paginator total-pages="20" total-results="500" clamp="false"></six-paginator>
 ```
 
 
@@ -55,7 +81,7 @@ To override this behaviour, you can set the `clamp` parameter to `false`. This w
 
 By default, three values are shown to the user so that they can choose how many items to show at once. Pass a list to `results-per-page-options` and set a default using `results-per-page`. If no default is provided, the first value of the choices will be used.
 
-<docs-demo-six-paginator-4></docs-demo-six-paginator-4>
+<docs-demo-six-paginator-5></docs-demo-six-paginator-5>
 
 ```html
 <six-paginator id="paginator-options" total-pages="15" total-results="500" results-per-page="50">
@@ -72,7 +98,7 @@ By default, three values are shown to the user so that they can choose how many 
 
 Use the `disabled` prop to disable all controls.
 
-<docs-demo-six-paginator-5></docs-demo-six-paginator-5>
+<docs-demo-six-paginator-6></docs-demo-six-paginator-6>
 
 ```html
 <six-paginator total-pages="10" total-results="500" disabled></six-paginator>
@@ -84,7 +110,7 @@ Use the `disabled` prop to disable all controls.
 
 Use the `left` and `right` slots to override the default content.
 
-<docs-demo-six-paginator-6></docs-demo-six-paginator-6>
+<docs-demo-six-paginator-7></docs-demo-six-paginator-7>
 
 ```html
 <six-paginator total-pages="12" total-results="640">
@@ -105,7 +131,7 @@ The paginator emits the following events:
 *   `six-paginator-page-changed` – Fired when the page changes. This can be either when the user click on a number directly, or by using one of the available arrows.
 *   `six-paginator-results-per-page-changed` – Fired when the user changes their selection for the number of items to show at once. Open up the console and see the messages.
 
-<docs-demo-six-paginator-7></docs-demo-six-paginator-7>
+<docs-demo-six-paginator-8></docs-demo-six-paginator-8>
 
 ```html
 <six-paginator           total-pages="8"
@@ -136,7 +162,7 @@ The paginator emits the following events:
 | `clamp`                     | `clamp`            | Clamp the page numbers when they exceed the specified length.                                                                          | `boolean`             | `true`         |
 | `currentPage`               | `current-page`     | The current page being displayed. This must be 0 based                                                                                 | `number \| undefined` | `undefined`    |
 | `disabled`                  | `disabled`         | Disable all controls.                                                                                                                  | `boolean`             | `false`        |
-| `length`                    | `length`           | The amount of clickable page numbers to show.                                                                                          | `number`              | `9`            |
+| `length`                    | `length`           | The number of clickable page numbers to show.                                                                                          | `number`              | `9`            |
 | `resultsPerPage`            | `results-per-page` | The results per page. Value must be one provided in the resultsPerPageOption. Otherwise the first value from the options will be used. | `number \| undefined` | `undefined`    |
 | `resultsPerPageOptions`     | --                 | The possible results per page. Must be a list of integers. At least one value is required.                                             | `number[]`            | `[12, 24, 48]` |
 | `totalPages` _(required)_   | `total-pages`      | The total amount of pages.                                                                                                             | `number`              | `undefined`    |

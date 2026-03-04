@@ -40,10 +40,11 @@ export class SixPaginator {
   /** The results per page. Value must be one provided in the resultsPerPageOption. Otherwise the first value from the options will be used. */
   @Prop() resultsPerPage?: number;
 
-  /** The amount of clickable page numbers to show. */
+  /** The number of clickable page numbers to show. */
   @Prop() length: number = 9;
 
   /** Clamp the page numbers when they exceed the specified length. */
+  // eslint-disable-next-line @stencil-community/ban-default-true
   @Prop() clamp: boolean = true;
 
   /** Disable all controls.  */

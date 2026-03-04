@@ -1524,7 +1524,7 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * The amount of clickable page numbers to show.
+          * The number of clickable page numbers to show.
           * @default 9
          */
         "length": number;
@@ -5379,7 +5379,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * The amount of clickable page numbers to show.
+          * The number of clickable page numbers to show.
           * @default 9
          */
         "length"?: number;

@@ -1,12 +1,13 @@
 <template>
 <div>
 
-        <six-paginator           total-pages="8"
-          total-results="200"
-          onchange="console.log(event)"
-          id="events-example"
-        ></six-paginator>
-        
+        <six-paginator total-pages="12" total-results="640">
+          <div slot="left">
+            <strong>Some custom content to the left</strong>
+          </div>
+
+          <div slot="right">It can be anything you want! A nice icon for example? <six-icon>house</six-icon></div>
+        </six-paginator>
       
 </div>
 </template>
@@ -16,14 +17,6 @@
 <script>
 export default {
   name: 'docs-demo-six-paginator-7',
-  mounted() { 
-          const paginator = document.getElementById('events-example');
-          paginator.addEventListener('six-paginator-page-changed', (event) => {
-            console.log('Page changed event fired', event.detail);
-          });
-          paginator.addEventListener('six-paginator-results-per-page-changed', (event) => {
-            console.log('Results per page changed event fired', event.detail);
-          });
-         }
+  mounted() {  }
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
 <div>
 
-        <six-paginator total-pages="20" total-results="500" length="5"></six-paginator>
+        <six-paginator total-pages="20" total-results="500" current-page="3"></six-paginator>
       
 </div>
 </template>
