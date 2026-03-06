@@ -6,12 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## Upcoming
 
+### Added
+
+- New `six-paginator` component (experimental).
+
 ## 5.3.1 - 2026-03-06
 
 ### Added
 
 - Added stage `LOCAL` to `six-stage-indicator` and `six-root`
-- New `six-paginator` component (experimental).
 
 ### Fixed
 
