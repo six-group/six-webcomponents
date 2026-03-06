@@ -12,7 +12,7 @@
   "dependencies": {
     "@six-group/ui-library": "*",
     "@six-group/ui-library-vue": "*",
-    "nuxt": "^4.2.2"
+    "nuxt": "^4.3.1"
   },
   "optionalDependencies": {
     "@oxc-parser/binding-linux-x64-gnu": "^0.108.0",
