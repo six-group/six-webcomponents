@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## Upcoming
 
+## 5.3.1 - 2026-03-06
+
 ### Added
 
 - Added stage `LOCAL` to `six-stage-indicator` and `six-root`
@@ -14,8 +16,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - `six-item-picker`: Fixed a bug where the options would cycle indefinitely when the mouse is moved
   outside the component while clicked. Also affects `six-timepicker` and `six-datepicker`
-
-### Changed
 
 ## 5.3.0 - 2026-02-11
 
