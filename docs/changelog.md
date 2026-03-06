@@ -17,8 +17,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - `six-item-picker`: Fixed a bug where the options would cycle indefinitely when the mouse is moved
   outside the component while clicked. Also affects `six-timepicker` and `six-datepicker`
 
-### Changed
-
 ## 5.3.0 - 2026-02-11
 
 ### Fixed
