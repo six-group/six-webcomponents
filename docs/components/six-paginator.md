@@ -1,35 +1,42 @@
 # Paginator
 
 
-<docs-demo-six-paginator-0></docs-demo-six-paginator-0>
-
-```html
-<div>
-  <div style="width: 100%; height: 200px; background-color: var(--six-color-web-rock-300)">
-    <div               id="paginator-page-0"
-      style="display: grid; align-items: center; justify-content: center; text-align: center; height: 100%"
-    >
-      <p>
-        This is the content for page one! You can control the pages through the arrows, or by clicking directly
-        on the number of the page you need.
-      </p>
-      <p>For all possible parameters, as well as events, check the docs for more details!</p>
-    </div>
-    <div id="paginator-page-1" style="display: none">This is page 2</div>
-    <div id="paginator-page-2" style="display: none">This is page 3</div>
-    <div id="paginator-page-3" style="display: none">This is page 4</div>
-    <div id="paginator-page-4" style="display: none">This is page 5</div>
-  </div>
-  <six-paginator id="paginator-basic" total-pages="5" total-results="20"></six-paginator>
-</div>
-```
-
-
-const paginatorBasic = document.getElementById('paginator-basic'); const contentPages = document.querySelectorAll('\[id^="paginator-page-"\]'); paginatorBasic.addEventListener('six-paginator-page-changed', (event) => { contentPages.forEach((page) => { page.style.display = 'none'; }); contentPages\[event.detail.idx\].style.display = 'block'; });
-
 ## Paginator
 
 The `six-paginator` component allows navigation through paginated content.
+
+<docs-demo-six-paginator-0></docs-demo-six-paginator-0>
+
+```html
+<div style="width: 100%; height: 200px; background-color: var(--six-color-web-rock-300)">
+  <div             id="paginator-page-0"
+    style="display: grid; align-items: center; justify-content: center; text-align: center; height: 100%"
+  >
+    <p>
+      This is the content for page one! You can control the pages through the arrows, or by clicking directly on
+      the number of the page you need.
+    </p>
+    <p>For all possible parameters, as well as events, check the docs for more details!</p>
+  </div>
+  <div id="paginator-page-1" style="display: none">This is page 2</div>
+  <div id="paginator-page-2" style="display: none">This is page 3</div>
+  <div id="paginator-page-3" style="display: none">This is page 4</div>
+  <div id="paginator-page-4" style="display: none">This is page 5</div>
+</div>
+<six-paginator id="paginator-basic" total-pages="5" total-results="20"></six-paginator>
+<script type="module">
+  const paginatorBasic = document.getElementById('paginator-basic');
+  const contentPages = document.querySelectorAll('[id^="paginator-page-"]');
+
+  paginatorBasic.addEventListener('six-paginator-page-changed', (event) => {
+    contentPages.forEach((page) => {
+      page.style.display = 'none';
+    });
+    contentPages[event.detail.idx].style.display = 'block';
+  });
+</script>
+```
+
 
 
 ## Basic example
@@ -72,7 +79,7 @@ To override this behaviour, you can set the `clamp` parameter to `false`. This w
 <docs-demo-six-paginator-4></docs-demo-six-paginator-4>
 
 ```html
-<six-paginator total-pages="20" total-results="500" clamp="false"></six-paginator>
+<six-paginator total-pages="12" total-results="500" clamp="false"></six-paginator>
 ```
 
 
@@ -86,7 +93,7 @@ By default, three values are shown to the user so that they can choose how many 
 ```html
 <six-paginator id="paginator-options" total-pages="15" total-results="500" results-per-page="50">
 </six-paginator>
-<script>
+<script type="module">
   const paginatorOptions = document.getElementById('paginator-options');
   paginatorOptions.resultsPerPageOptions = ['10', '20', '50', '100'];
 </script>
@@ -129,7 +136,9 @@ Use the `left` and `right` slots to override the default content.
 The paginator emits the following events:
 
 *   `six-paginator-page-changed` – Fired when the page changes. This can be either when the user click on a number directly, or by using one of the available arrows.
-*   `six-paginator-results-per-page-changed` – Fired when the user changes their selection for the number of items to show at once. Open up the console and see the messages.
+*   `six-paginator-results-per-page-changed` – Fired when the user changes their selection for the number of items to show at once.
+
+To see the events, open up the console try it yourself.
 
 <docs-demo-six-paginator-8></docs-demo-six-paginator-8>
 
@@ -139,7 +148,7 @@ The paginator emits the following events:
   onchange="console.log(event)"
   id="events-example"
 ></six-paginator>
-<script>
+<script type="module">
   const paginator = document.getElementById('events-example');
   paginator.addEventListener('six-paginator-page-changed', (event) => {
     console.log('Page changed event fired', event.detail);
