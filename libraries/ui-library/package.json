@@ -79,7 +79,7 @@
     "@stencil/sass": "3.2.3",
     "@stencil/vue-output-target": "0.12.0",
     "@typescript-eslint/eslint-plugin": "^8.53.0",
-    "@typescript-eslint/parser": "^8.53.0",
+    "@typescript-eslint/parser": "^8.56.1",
     "cross-env": "^10.1.0",
     "puppeteer": "^24.35.0",
     "replace-in-file": "^8.4.0",
