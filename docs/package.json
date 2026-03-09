@@ -6,7 +6,7 @@
     "@six-group/ui-library": "*"
   },
   "devDependencies": {
-    "mermaid": "^11.12.3",
+    "mermaid": "^11.13.0",
     "node-html-parser": "^7.1.0",
     "rimraf": "^6.1.3",
     "shx": "^0.4.0",
