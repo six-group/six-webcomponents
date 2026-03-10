@@ -1,5 +1,6 @@
 import { Component, h, Prop } from '@stencil/core';
 import { focusVisible } from '../../utils/focus-visible';
+import { IconLibrary } from '../../utils/icon';
 
 /**
  * @since 1.0
@@ -45,6 +46,21 @@ export class SixIconButton {
   /** Tells the browser to download the linked file as this filename. Only used when `href` is set. */
   @Prop() download?: string;
 
+  /**
+   * Icon library to use when no `library` prop is provided.
+   * By default, all `<six-icon>` instances fall back to the globally configured
+   * default library (via `setDefaultIconLibrary()` / `getDefaultIconLibrary()`),
+   * which is `"material-icons"` unless changed at runtime.
+   *
+   * This allows teams to switch the default across an entire project without
+   * having to set the `library` prop on every `<six-icon>` instance.
+   *
+   * Icon library for this instance. Overrides the global default.
+   * - "material-icons"  → Material Icons
+   * - "material-symbols"  → Material Symbols
+   */
+  @Prop({ reflect: true }) library?: IconLibrary;
+
   componentDidLoad() {
     if (this.button != null) {
       focusVisible.observe(this.button);
@@ -81,7 +97,7 @@ export class SixIconButton {
           download={isLink && this.download != null ? this.download : undefined}
           rel={isLink && this.target != null ? 'noreferrer noopener' : undefined}
         >
-          <six-icon aria-hidden="true" size={this.size}>
+          <six-icon aria-hidden="true" size={this.size} library={this.library}>
             {this.name}
           </six-icon>
           <slot />

@@ -370,7 +370,8 @@ export const SixIconButton: StencilVueComponent<JSX.SixIconButton> = /*@__PURE__
   'html',
   'href',
   'target',
-  'download'
+  'download',
+  'library'
 ]);
 
 
@@ -789,6 +790,7 @@ export const SixTile: StencilVueComponent<JSX.SixTile> = /*@__PURE__*/ defineCon
   'disableTooltip',
   'disabled',
   'size',
+  'library',
   'six-tile-closed',
   'six-tile-selected'
 ], [

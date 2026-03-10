@@ -874,14 +874,14 @@ export declare interface SixIcon extends Components.SixIcon {}
 
 
 @ProxyCmp({
-  inputs: ['disabled', 'download', 'href', 'html', 'label', 'name', 'size', 'target']
+  inputs: ['disabled', 'download', 'href', 'html', 'label', 'library', 'name', 'size', 'target']
 })
 @Component({
   selector: 'six-icon-button',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['disabled', 'download', 'href', 'html', 'label', 'name', 'size', 'target'],
+  inputs: ['disabled', 'download', 'href', 'html', 'label', 'library', 'name', 'size', 'target'],
   standalone: false
 })
 export class SixIconButton {
@@ -1849,7 +1849,7 @@ export declare interface SixTextarea extends Components.SixTextarea {
 
 
 @ProxyCmp({
-  inputs: ['closeable', 'disableTooltip', 'disabled', 'elevated', 'iconName', 'label', 'size'],
+  inputs: ['closeable', 'disableTooltip', 'disabled', 'elevated', 'iconName', 'label', 'library', 'size'],
   methods: ['hide', 'show']
 })
 @Component({
@@ -1857,7 +1857,7 @@ export declare interface SixTextarea extends Components.SixTextarea {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['closeable', 'disableTooltip', 'disabled', 'elevated', 'iconName', 'label', 'size'],
+  inputs: ['closeable', 'disableTooltip', 'disabled', 'elevated', 'iconName', 'label', 'library', 'size'],
   outputs: ['sixTileClosed:six-tile-closed', 'sixTileSelected:six-tile-selected'],
   standalone: false
 })
