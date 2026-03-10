@@ -60,30 +60,29 @@
     "@types/resize-observer-browser": "^0.1.11"
   },
   "peerDependencies": {
-    "date-fns": ">=3.0.0"
+    "date-fns": "^4.1.0"
   },
   "devDependencies": {
-    "@axe-core/playwright": "^4.11.0",
-    "@playwright/test": "^1.57.0",
-    "@stencil/playwright": "^0.2.1",
+    "@axe-core/playwright": "^4.11.1",
+    "@fontsource-variable/material-symbols-outlined": "^5.2.38",
+    "@fontsource-variable/material-symbols-rounded": "^5.2.38",
+    "@fontsource-variable/material-symbols-sharp": "^5.2.38",
     "@fontsource/material-icons": "^5.2.7",
     "@fontsource/material-icons-outlined": "^5.2.6",
-    "@fontsource-variable/material-symbols-outlined": "^5.2.31",
-    "@fontsource-variable/material-symbols-rounded": "^5.2.31",
-    "@fontsource-variable/material-symbols-sharp": "^5.2.31",
     "@fontsource/noto-sans": "^5.2.10",
+    "@playwright/test": "^1.58.2",
     "@popperjs/core": "^2.11.8",
-    "@stencil-community/eslint-plugin": "0.x",
+    "@stencil-community/eslint-plugin": "^0.10.0",
     "@stencil/angular-output-target": "1.2.0",
-    "@stencil/react-output-target": "^1.3.2",
+    "@stencil/playwright": "^0.2.3",
+    "@stencil/react-output-target": "^1.4.2",
     "@stencil/sass": "3.2.3",
     "@stencil/vue-output-target": "0.12.0",
     "@typescript-eslint/eslint-plugin": "^8.53.0",
     "@typescript-eslint/parser": "^8.53.0",
     "cross-env": "^10.1.0",
-    "puppeteer": "^24.35.0",
     "replace-in-file": "^8.4.0",
-    "rimraf": "^6.1.2"
+    "rimraf": "^6.1.3"
   },
   "engines": {
     "node": ">=24"
