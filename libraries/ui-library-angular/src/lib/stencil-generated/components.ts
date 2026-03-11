@@ -1189,6 +1189,44 @@ export declare interface SixMenuLabel extends Components.SixMenuLabel {}
 
 
 @ProxyCmp({
+  inputs: ['clamp', 'currentPage', 'disabled', 'length', 'resultsPerPage', 'resultsPerPageOptions', 'totalPages', 'totalResults']
+})
+@Component({
+  selector: 'six-paginator',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['clamp', 'currentPage', 'disabled', 'length', 'resultsPerPage', 'resultsPerPageOptions', { name: 'totalPages', required: true }, { name: 'totalResults', required: true }],
+  outputs: ['sixPaginatorResultsPerPageChanged:six-paginator-results-per-page-changed', 'sixPaginatorPageChanged:six-paginator-page-changed'],
+  standalone: false
+})
+export class SixPaginator {
+  protected el: HTMLSixPaginatorElement;
+  @Output() sixPaginatorResultsPerPageChanged = new EventEmitter<CustomEvent<ISixPaginatorSixPaginatorResultsPerPageChangedPayload>>();
+  @Output() sixPaginatorPageChanged = new EventEmitter<CustomEvent<ISixPaginatorSixPaginatorPageChangedPayload>>();
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+import type { SixPaginatorResultsPerPageChangedPayload as ISixPaginatorSixPaginatorResultsPerPageChangedPayload } from '@six-group/ui-library';
+import type { SixPaginatorPageChangedPayload as ISixPaginatorSixPaginatorPageChangedPayload } from '@six-group/ui-library';
+
+export declare interface SixPaginator extends Components.SixPaginator {
+  /**
+   * Emitted after the user selects a value from the results per page select.
+   */
+  'six-paginator-results-per-page-changed': EventEmitter<CustomEvent<ISixPaginatorSixPaginatorResultsPerPageChangedPayload>>;
+  /**
+   * Emitted whenever the page changes. This can be either due to one of the arrows bein pressed, or an explicit click on a page number.
+   */
+  'six-paginator-page-changed': EventEmitter<CustomEvent<ISixPaginatorSixPaginatorPageChangedPayload>>;
+}
+
+
+@ProxyCmp({
   inputs: ['size']
 })
 @Component({

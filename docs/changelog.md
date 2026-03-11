@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - Added param library to choose the icon library also in `six-icon-button` and `six-tile` (default
   is material-icons)
+- New `six-paginator` component (experimental).
 
 ## 5.3.1 - 2026-03-06
 
