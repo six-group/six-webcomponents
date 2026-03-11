@@ -1109,6 +1109,10 @@ export namespace Components {
          */
         "label"?: string;
         /**
+          * Icon library to use when no `library` prop is provided. By default, all `<six-icon>` instances fall back to the globally configured default library (via `setDefaultIconLibrary()` / `getDefaultIconLibrary()`), which is `"material-icons"` unless changed at runtime.  This allows teams to switch the default across an entire project without having to set the `library` prop on every `<six-icon>` instance.  Icon library for this instance. Overrides the global default. - "material-icons"  → Material Icons - "material-symbols"  → Material Symbols
+         */
+        "library"?: IconLibrary;
+        /**
           * The name of the icon to draw.
          */
         "name"?: string;
@@ -2434,6 +2438,10 @@ export namespace Components {
           * @default ''
          */
         "label": string;
+        /**
+          * Icon library to use when no `library` prop is provided. By default, all `<six-icon>` instances fall back to the globally configured default library (via `setDefaultIconLibrary()` / `getDefaultIconLibrary()`), which is `"material-icons"` unless changed at runtime.  This allows teams to switch the default across an entire project without having to set the `library` prop on every `<six-icon>` instance.  Icon library for this instance. Overrides the global default. - "material-icons"  → Material Icons - "material-symbols"  → Material Symbols
+         */
+        "library"?: IconLibrary;
         /**
           * Shows the tile
          */
@@ -4968,6 +4976,10 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
+          * Icon library to use when no `library` prop is provided. By default, all `<six-icon>` instances fall back to the globally configured default library (via `setDefaultIconLibrary()` / `getDefaultIconLibrary()`), which is `"material-icons"` unless changed at runtime.  This allows teams to switch the default across an entire project without having to set the `library` prop on every `<six-icon>` instance.  Icon library for this instance. Overrides the global default. - "material-icons"  → Material Icons - "material-symbols"  → Material Symbols
+         */
+        "library"?: IconLibrary;
+        /**
           * The name of the icon to draw.
          */
         "name"?: string;
@@ -6329,6 +6341,10 @@ declare namespace LocalJSX {
           * @default ''
          */
         "label"?: string;
+        /**
+          * Icon library to use when no `library` prop is provided. By default, all `<six-icon>` instances fall back to the globally configured default library (via `setDefaultIconLibrary()` / `getDefaultIconLibrary()`), which is `"material-icons"` unless changed at runtime.  This allows teams to switch the default across an entire project without having to set the `library` prop on every `<six-icon>` instance.  Icon library for this instance. Overrides the global default. - "material-icons"  → Material Icons - "material-symbols"  → Material Symbols
+         */
+        "library"?: IconLibrary;
         /**
           * Emitted when the tile was closed.
          */
