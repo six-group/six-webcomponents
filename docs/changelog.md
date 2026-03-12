@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## Upcoming
 
+## 5.4.0 - 2026-03-12
+
 ### Added
 
 - Added param library to choose the icon library also in `six-icon-button` and `six-tile` (default
