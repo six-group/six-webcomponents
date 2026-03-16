@@ -1,6 +1,5 @@
 @use '../../../src/global/component';
 
-
 :host {
   --item-color: var(--six-color-web-rock-700);
   --item-color-hover: var(--six-color-web-rock-500);
@@ -24,7 +23,6 @@
   }
 
   six-button {
-
     &::part(base) {
       color: var(--item-color);
     }
@@ -32,9 +30,7 @@
     &::part(label) {
       padding-inline: var(--six-spacing-small);
     }
-
   }
-
 }
 
 :host([read-only]) six-button {
@@ -57,4 +53,3 @@
     color: var(--item-color-hover);
   }
 }
-
