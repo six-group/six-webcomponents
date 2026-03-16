@@ -152,10 +152,15 @@ export namespace Components {
      */
     interface SixBreadcrumbs {
         /**
-          * Defines an icon as a separator without having to place a slot *
-          * @default ''
+          * Defines an icon as a separator without having to place a slot. Default value: chevron_right *
+          * @default 'chevron_right'
          */
         "separatorIcon": string;
+        /**
+          * The breadcrumbs item size.
+          * @default 'medium'
+         */
+        "size": 'small' | 'medium' | 'large';
     }
     /**
      * Breadcrumb items are used inside breadcrumbs to represent different links.
@@ -172,11 +177,6 @@ export namespace Components {
           * @default false
          */
         "readonly": boolean;
-        /**
-          * The breadcrumbs item size.
-          * @default 'medium'
-         */
-        "size": 'small' | 'medium' | 'large';
         /**
           * Tells the browser where to open the link. Only used when `href` is set.
          */
@@ -3931,10 +3931,15 @@ declare namespace LocalJSX {
      */
     interface SixBreadcrumbs {
         /**
-          * Defines an icon as a separator without having to place a slot *
-          * @default ''
+          * Defines an icon as a separator without having to place a slot. Default value: chevron_right *
+          * @default 'chevron_right'
          */
         "separatorIcon"?: string;
+        /**
+          * The breadcrumbs item size.
+          * @default 'medium'
+         */
+        "size"?: 'small' | 'medium' | 'large';
     }
     /**
      * Breadcrumb items are used inside breadcrumbs to represent different links.
@@ -3951,11 +3956,6 @@ declare namespace LocalJSX {
           * @default false
          */
         "readonly"?: boolean;
-        /**
-          * The breadcrumbs item size.
-          * @default 'medium'
-         */
-        "size"?: 'small' | 'medium' | 'large';
         /**
           * Tells the browser where to open the link. Only used when `href` is set.
          */

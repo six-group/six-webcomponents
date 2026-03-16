@@ -19,22 +19,30 @@ import { Component, Element, h, Prop } from '@stencil/core';
 export class SixBreadcrumbs {
   @Element() host!: HTMLSixBreadcrumbsElement;
 
-  /** Defines an icon as a separator without having to place a slot **/
-  @Prop({ attribute: 'separator-icon', reflect: true }) separatorIcon: string = '';
+  /** The breadcrumbs item size. */
+  @Prop({ reflect: true }) size: 'small' | 'medium' | 'large' = 'medium';
+
+  /** Defines an icon as a separator without having to place a slot. Default value: chevron_right **/
+  @Prop({ attribute: 'separator-icon', reflect: true }) separatorIcon: string = 'chevron_right';
 
   private updateBreadcrumbItems = () => {
     const items = [...this.host.querySelectorAll('six-breadcrumbs-item')] as HTMLSixBreadcrumbsItemElement[];
 
-    items.forEach((item, index) => {
+    items.forEach(async (item, index) => {
+      await item.componentOnReady();
+
       // Append separators to each item if they don't already have one
       const separator = item.querySelector('[slot="separator"]');
       if (separator === null) {
         // No separator exists, add one
-        item.append(this.createSeparatorElement());
+        item.append(this.getSeparatorElement());
       } else if (separator.hasAttribute('data-default')) {
         // A default separator exists, replace it
-        separator.replaceWith(this.createSeparatorElement());
+        separator.replaceWith(this.getSeparatorElement());
       }
+
+      // Set each to equal size
+      item.shadowRoot?.querySelector('six-button')?.setAttribute('size', this.size);
 
       // The last breadcrumb item is the "current page"
       if (index === items.length - 1) {
@@ -45,34 +53,28 @@ export class SixBreadcrumbs {
     });
   };
 
-  private createSeparatorElement(): HTMLElement {
-    // Find a custom separator by checking direct children only
-    const customSeparator = this.getCustomSeparator();
-    console.log(customSeparator);
-    if (customSeparator) {
-      const clone = customSeparator.cloneNode(true) as HTMLElement;
-      clone.removeAttribute('id');
-      clone.setAttribute('data-default', '');
-      clone.slot = 'separator';
-      return clone;
+  private getSeparatorElement(): HTMLElement {
+    const slot = Array.from(this.host.children).find((child) => child.getAttribute('slot') === 'separator');
+    if (slot) {
+      return this.cloneSlottedElement(slot);
     }
-
-    // Create default separator element
-    const span = document.createElement('span');
-    span.innerText = '/';
-    span.slot = 'separator';
-    span.setAttribute('data-default', '');
-    return span;
+    return this.createDefaultIconElement();
   }
 
-  private getCustomSeparator() {
-    if (Boolean(this.separatorIcon?.length)) {
-      const sixIcon = document.createElement('six-icon');
-      sixIcon.innerText = this.separatorIcon;
-      sixIcon.setAttribute('size', 'small');
-      return sixIcon;
-    }
-    return Array.from(this.host.children).find((child) => child.getAttribute('slot') === 'separator');
+  private cloneSlottedElement(element: Element) {
+    const clone = element.cloneNode(true) as HTMLElement;
+    clone.removeAttribute('id');
+    clone.setAttribute('data-default', '');
+    return clone;
+  }
+
+  private createDefaultIconElement() {
+    const sixIcon = document.createElement('six-icon');
+    sixIcon.innerText = this.separatorIcon;
+    sixIcon.setAttribute('size', this.size);
+    sixIcon.setAttribute('data-default', '');
+    sixIcon.slot = 'separator';
+    return sixIcon;
   }
 
   render() {
