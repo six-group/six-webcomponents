@@ -35,7 +35,7 @@ jobs:
         run: npm run test:e2e
 
       - name: upload playwright report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         if: ${{ !cancelled() }}
         with:
           name: playwright-report
@@ -43,7 +43,7 @@ jobs:
           retention-days: 30
 
       - name: upload playwright test coverage
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         if: ${{ !cancelled() }}
         with:
           name: playwright-coverage-html
