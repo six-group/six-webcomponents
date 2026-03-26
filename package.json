@@ -55,7 +55,7 @@
   },
   "overrides": {
     "vitepress": {
-      "@docsearch/js": "3.9.0",
+      "@docsearch/js": "4.6.2",
       "@docsearch/css": "3.9.0"
     }
   },
