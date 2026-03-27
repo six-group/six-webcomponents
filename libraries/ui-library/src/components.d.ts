@@ -22,6 +22,7 @@ import { ItemPickerPaddingDirection, ItemPickerType } from "./components/six-ite
 import { SixItemPickerChangePayload } from "./components/six-item-picker/six-item-picker";
 import { SixLanguageSwitcherChangePayload, SixLanguageSwitcherInput } from "./components/six-language-switcher/six-language-switcher";
 import { SixMenuItemData as SixMenuItemData1, SixMenuItemSelectedPayload } from "./components/six-menu/six-menu";
+import { SixPaginatorPageChangedPayload, SixPaginatorResultsPerPageChangedPayload } from "./components/six-paginator/six-paginator";
 import { StageType } from "./components/six-stage-indicator/six-stage-indicator";
 import { SixTheme } from "./components/six-root/six-root";
 import { SixSearchFieldChangePayload } from "./components/six-search-field/six-search-field";
@@ -47,6 +48,7 @@ export { ItemPickerPaddingDirection, ItemPickerType } from "./components/six-ite
 export { SixItemPickerChangePayload } from "./components/six-item-picker/six-item-picker";
 export { SixLanguageSwitcherChangePayload, SixLanguageSwitcherInput } from "./components/six-language-switcher/six-language-switcher";
 export { SixMenuItemData as SixMenuItemData1, SixMenuItemSelectedPayload } from "./components/six-menu/six-menu";
+export { SixPaginatorPageChangedPayload, SixPaginatorResultsPerPageChangedPayload } from "./components/six-paginator/six-paginator";
 export { StageType } from "./components/six-stage-indicator/six-stage-indicator";
 export { SixTheme } from "./components/six-root/six-root";
 export { SixSearchFieldChangePayload } from "./components/six-search-field/six-search-field";
@@ -741,6 +743,11 @@ export namespace Components {
          */
         "disableHideOnEnterAndSpace": boolean;
         /**
+          * A boolean flag that determines whether the type-to-select functionality is disabled. When set to `true`, users will not be able to select options by typing matching characters. When set to `false`, the type-to-select functionality remains enabled, allowing users to quickly navigate options by typing.
+          * @default false
+         */
+        "disableTypeToSelect": boolean;
+        /**
           * The distance in pixels from which to offset the panel away from its trigger.
           * @default 4
          */
@@ -774,6 +781,11 @@ export namespace Components {
           * @default false
          */
         "matchTriggerWidth": boolean;
+        /**
+          * Set to true if you want to disable the default dropdown panel scroll behavior.
+          * @default false
+         */
+        "noScroll": boolean;
         /**
           * Indicates whether the dropdown is open. You can use this in lieu of the show/hide methods.
           * @default false
@@ -1099,6 +1111,10 @@ export namespace Components {
          */
         "label"?: string;
         /**
+          * Icon library to use when no `library` prop is provided. By default, all `<six-icon>` instances fall back to the globally configured default library (via `setDefaultIconLibrary()` / `getDefaultIconLibrary()`), which is `"material-icons"` unless changed at runtime.  This allows teams to switch the default across an entire project without having to set the `library` prop on every `<six-icon>` instance.  Icon library for this instance. Overrides the global default. - "material-icons"  → Material Icons - "material-symbols"  → Material Symbols
+         */
+        "library"?: IconLibrary;
+        /**
           * The name of the icon to draw.
          */
         "name"?: string;
@@ -1130,9 +1146,9 @@ export namespace Components {
         "autocomplete": string;
         /**
           * The input's autocorrect attribute.
-          * @default 'off'
+          * @default false
          */
-        "autocorrect": 'on' | 'off';
+        "autocorrect": boolean;
         /**
           * The input's autofocus attribute.
           * @default false
@@ -1497,6 +1513,44 @@ export namespace Components {
      * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
      */
     interface SixMenuLabel {
+    }
+    interface SixPaginator {
+        /**
+          * Clamp the page numbers when they exceed the specified length.
+          * @default true
+         */
+        "clamp": boolean;
+        /**
+          * The current page being displayed. This must be 0 based
+         */
+        "currentPage"?: number;
+        /**
+          * Disable all controls.
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * The number of clickable page numbers to show.
+          * @default 9
+         */
+        "length": number;
+        /**
+          * The results per page. Value must be one provided in the resultsPerPageOption. Otherwise the first value from the options will be used.
+         */
+        "resultsPerPage"?: number;
+        /**
+          * The possible results per page. Must be a list of integers. At least one value is required.
+          * @default [12, 24, 48]
+         */
+        "resultsPerPageOptions": Array<number>;
+        /**
+          * The total amount of pages.
+         */
+        "totalPages": number;
+        /**
+          * The total amount of results.
+         */
+        "totalResults": number;
     }
     /**
      * @since 1.1
@@ -2251,9 +2305,9 @@ export namespace Components {
         "autocomplete": string;
         /**
           * The textarea's autocorrect attribute.
-          * @default 'off'
+          * @default false
          */
-        "autocorrect": 'on' | 'off';
+        "autocorrect": boolean;
         /**
           * The textarea's autofocus attribute.
           * @default false
@@ -2424,6 +2478,10 @@ export namespace Components {
           * @default ''
          */
         "label": string;
+        /**
+          * Icon library to use when no `library` prop is provided. By default, all `<six-icon>` instances fall back to the globally configured default library (via `setDefaultIconLibrary()` / `getDefaultIconLibrary()`), which is `"material-icons"` unless changed at runtime.  This allows teams to switch the default across an entire project without having to set the `library` prop on every `<six-icon>` instance.  Icon library for this instance. Overrides the global default. - "material-icons"  → Material Icons - "material-symbols"  → Material Symbols
+         */
+        "library"?: IconLibrary;
         /**
           * Shows the tile
          */
@@ -2676,6 +2734,10 @@ export interface SixLanguageSwitcherCustomEvent<T> extends CustomEvent<T> {
 export interface SixMenuCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLSixMenuElement;
+}
+export interface SixPaginatorCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSixPaginatorElement;
 }
 export interface SixRadioCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -3318,6 +3380,24 @@ declare global {
         prototype: HTMLSixMenuLabelElement;
         new (): HTMLSixMenuLabelElement;
     };
+    interface HTMLSixPaginatorElementEventMap {
+        "six-paginator-results-per-page-changed": SixPaginatorResultsPerPageChangedPayload;
+        "six-paginator-page-changed": SixPaginatorPageChangedPayload;
+    }
+    interface HTMLSixPaginatorElement extends Components.SixPaginator, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSixPaginatorElementEventMap>(type: K, listener: (this: HTMLSixPaginatorElement, ev: SixPaginatorCustomEvent<HTMLSixPaginatorElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSixPaginatorElementEventMap>(type: K, listener: (this: HTMLSixPaginatorElement, ev: SixPaginatorCustomEvent<HTMLSixPaginatorElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLSixPaginatorElement: {
+        prototype: HTMLSixPaginatorElement;
+        new (): HTMLSixPaginatorElement;
+    };
     /**
      * @since 1.1
      * @status stable
@@ -3790,6 +3870,7 @@ declare global {
         "six-menu-divider": HTMLSixMenuDividerElement;
         "six-menu-item": HTMLSixMenuItemElement;
         "six-menu-label": HTMLSixMenuLabelElement;
+        "six-paginator": HTMLSixPaginatorElement;
         "six-picto": HTMLSixPictoElement;
         "six-progress-bar": HTMLSixProgressBarElement;
         "six-progress-ring": HTMLSixProgressRingElement;
@@ -4557,6 +4638,11 @@ declare namespace LocalJSX {
          */
         "disableHideOnEnterAndSpace"?: boolean;
         /**
+          * A boolean flag that determines whether the type-to-select functionality is disabled. When set to `true`, users will not be able to select options by typing matching characters. When set to `false`, the type-to-select functionality remains enabled, allowing users to quickly navigate options by typing.
+          * @default false
+         */
+        "disableTypeToSelect"?: boolean;
+        /**
           * The distance in pixels from which to offset the panel away from its trigger.
           * @default 4
          */
@@ -4586,6 +4672,11 @@ declare namespace LocalJSX {
           * @default false
          */
         "matchTriggerWidth"?: boolean;
+        /**
+          * Set to true if you want to disable the default dropdown panel scroll behavior.
+          * @default false
+         */
+        "noScroll"?: boolean;
         /**
           * Emitted when the async filter is triggered
          */
@@ -4951,6 +5042,10 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
+          * Icon library to use when no `library` prop is provided. By default, all `<six-icon>` instances fall back to the globally configured default library (via `setDefaultIconLibrary()` / `getDefaultIconLibrary()`), which is `"material-icons"` unless changed at runtime.  This allows teams to switch the default across an entire project without having to set the `library` prop on every `<six-icon>` instance.  Icon library for this instance. Overrides the global default. - "material-icons"  → Material Icons - "material-symbols"  → Material Symbols
+         */
+        "library"?: IconLibrary;
+        /**
           * The name of the icon to draw.
          */
         "name"?: string;
@@ -4982,9 +5077,9 @@ declare namespace LocalJSX {
         "autocomplete"?: string;
         /**
           * The input's autocorrect attribute.
-          * @default 'off'
+          * @default false
          */
-        "autocorrect"?: 'on' | 'off';
+        "autocorrect"?: boolean;
         /**
           * The input's autofocus attribute.
           * @default false
@@ -5345,6 +5440,52 @@ declare namespace LocalJSX {
      * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
      */
     interface SixMenuLabel {
+    }
+    interface SixPaginator {
+        /**
+          * Clamp the page numbers when they exceed the specified length.
+          * @default true
+         */
+        "clamp"?: boolean;
+        /**
+          * The current page being displayed. This must be 0 based
+         */
+        "currentPage"?: number;
+        /**
+          * Disable all controls.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * The number of clickable page numbers to show.
+          * @default 9
+         */
+        "length"?: number;
+        /**
+          * Emitted whenever the page changes. This can be either due to one of the arrows bein pressed, or an explicit click on a page number.
+         */
+        "onSix-paginator-page-changed"?: (event: SixPaginatorCustomEvent<SixPaginatorPageChangedPayload>) => void;
+        /**
+          * Emitted after the user selects a value from the results per page select.
+         */
+        "onSix-paginator-results-per-page-changed"?: (event: SixPaginatorCustomEvent<SixPaginatorResultsPerPageChangedPayload>) => void;
+        /**
+          * The results per page. Value must be one provided in the resultsPerPageOption. Otherwise the first value from the options will be used.
+         */
+        "resultsPerPage"?: number;
+        /**
+          * The possible results per page. Must be a list of integers. At least one value is required.
+          * @default [12, 24, 48]
+         */
+        "resultsPerPageOptions"?: Array<number>;
+        /**
+          * The total amount of pages.
+         */
+        "totalPages": number;
+        /**
+          * The total amount of results.
+         */
+        "totalResults": number;
     }
     /**
      * @since 1.1
@@ -6127,9 +6268,9 @@ declare namespace LocalJSX {
         "autocomplete"?: string;
         /**
           * The textarea's autocorrect attribute.
-          * @default 'off'
+          * @default false
          */
-        "autocorrect"?: 'on' | 'off';
+        "autocorrect"?: boolean;
         /**
           * The textarea's autofocus attribute.
           * @default false
@@ -6296,6 +6437,10 @@ declare namespace LocalJSX {
           * @default ''
          */
         "label"?: string;
+        /**
+          * Icon library to use when no `library` prop is provided. By default, all `<six-icon>` instances fall back to the globally configured default library (via `setDefaultIconLibrary()` / `getDefaultIconLibrary()`), which is `"material-icons"` unless changed at runtime.  This allows teams to switch the default across an entire project without having to set the `library` prop on every `<six-icon>` instance.  Icon library for this instance. Overrides the global default. - "material-icons"  → Material Icons - "material-symbols"  → Material Symbols
+         */
+        "library"?: IconLibrary;
         /**
           * Emitted when the tile was closed.
          */
@@ -6546,6 +6691,7 @@ declare namespace LocalJSX {
         "six-menu-divider": SixMenuDivider;
         "six-menu-item": SixMenuItem;
         "six-menu-label": SixMenuLabel;
+        "six-paginator": SixPaginator;
         "six-picto": SixPicto;
         "six-progress-bar": SixProgressBar;
         "six-progress-ring": SixProgressRing;
@@ -6771,6 +6917,7 @@ declare module "@stencil/core" {
              * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
              */
             "six-menu-label": LocalJSX.SixMenuLabel & JSXBase.HTMLAttributes<HTMLSixMenuLabelElement>;
+            "six-paginator": LocalJSX.SixPaginator & JSXBase.HTMLAttributes<HTMLSixPaginatorElement>;
             /**
              * @since 1.1
              * @status stable

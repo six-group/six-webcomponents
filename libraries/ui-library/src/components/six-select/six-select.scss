@@ -1,7 +1,7 @@
-@import 'src/global/component';
-@import '../../functional-components/form-control/form-control';
-@import 'src/global/mixins/hidden';
-@import 'src/global/mixins/hide-scrollbar';
+@use 'src/global/component';
+@use '../../functional-components/form-control/form-control';
+@use 'src/global/mixins/hidden' as *;
+@use 'src/global/mixins/hide-scrollbar' as *;
 
 :host,
 .select {

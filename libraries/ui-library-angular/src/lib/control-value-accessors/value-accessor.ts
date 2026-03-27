@@ -8,7 +8,7 @@ import { UI_LIBRARY_CONFIG, UiLibraryConfig } from '../ui-library-angular-config
 @Directive()
 export class ValueAccessor implements ControlValueAccessor, AfterViewInit, OnDestroy {
   private statusChanges?: Subscription;
-  private ngControl?: NgControl;
+  public ngControl?: NgControl;
   private initialErrorText?: string;
   private validationMessagesService = inject(ValidationMessagesService);
 

@@ -238,7 +238,7 @@ export class SixCheckbox {
               required={this.required}
               role="checkbox"
               aria-checked={this.checked ? 'true' : 'false'}
-              aria-labelledby={this.labelId}
+              aria-labelledby={this.label === '' ? this.textId : this.labelId}
               onChange={this.handleChange}
               onBlur={this.handleBlur}
               onFocus={this.handleFocus}

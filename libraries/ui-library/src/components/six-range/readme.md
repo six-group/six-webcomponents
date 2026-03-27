@@ -7,22 +7,22 @@
 
 ## Properties
 
-| Property           | Attribute           | Description                                                                                                      | Type                          | Default                               |
-| ------------------ | ------------------- | ---------------------------------------------------------------------------------------------------------------- | ----------------------------- | ------------------------------------- |
-| `disabled`         | `disabled`          | Set to true to disable the input.                                                                                | `boolean`                     | `false`                               |
-| `errorText`        | `error-text`        | The error message shown, if `invalid` is set to true.                                                            | `string \| string[]`          | `''`                                  |
-| `errorTextCount`   | `error-text-count`  | The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1                         | `number \| undefined`         | `undefined`                           |
-| `helpText`         | `help-text`         | The range's help text. Alternatively, you can use the help-text slot.                                            | `string`                      | `''`                                  |
-| `invalid`          | `invalid`           | If this property is set to true and an error message is provided by `errorText`, the error message is displayed. | `boolean`                     | `false`                               |
-| `label`            | `label`             | The label text.                                                                                                  | `string`                      | `''`                                  |
-| `max`              | `max`               | The input's max attribute.                                                                                       | `number`                      | `100`                                 |
-| `min`              | `min`               | The input's min attribute.                                                                                       | `number`                      | `0`                                   |
-| `name`             | `name`              | The input's name attribute.                                                                                      | `string`                      | `''`                                  |
-| `required`         | `required`          | Set to true to show an asterisk beneath the label.                                                               | `boolean`                     | `false`                               |
-| `step`             | `step`              | The input's step attribute.                                                                                      | `number`                      | `1`                                   |
-| `tooltip`          | `tooltip`           | The preferred placedment of the tooltip.                                                                         | `"bottom" \| "none" \| "top"` | `'top'`                               |
-| `tooltipFormatter` | `tooltip-formatter` | A function used to format the tooltip's value.                                                                   | `(value: number) => string`   | `(value: number) => value.toString()` |
-| `value`            | `value`             | The input's value attribute.                                                                                     | `number`                      | `0`                                   |
+| Property           | Attribute          | Description                                                                                                      | Type                          | Default                               |
+| ------------------ | ------------------ | ---------------------------------------------------------------------------------------------------------------- | ----------------------------- | ------------------------------------- |
+| `disabled`         | `disabled`         | Set to true to disable the input.                                                                                | `boolean`                     | `false`                               |
+| `errorText`        | `error-text`       | The error message shown, if `invalid` is set to true.                                                            | `string \| string[]`          | `''`                                  |
+| `errorTextCount`   | `error-text-count` | The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1                         | `number \| undefined`         | `undefined`                           |
+| `helpText`         | `help-text`        | The range's help text. Alternatively, you can use the help-text slot.                                            | `string`                      | `''`                                  |
+| `invalid`          | `invalid`          | If this property is set to true and an error message is provided by `errorText`, the error message is displayed. | `boolean`                     | `false`                               |
+| `label`            | `label`            | The label text.                                                                                                  | `string`                      | `''`                                  |
+| `max`              | `max`              | The input's max attribute.                                                                                       | `number`                      | `100`                                 |
+| `min`              | `min`              | The input's min attribute.                                                                                       | `number`                      | `0`                                   |
+| `name`             | `name`             | The input's name attribute.                                                                                      | `string`                      | `''`                                  |
+| `required`         | `required`         | Set to true to show an asterisk beneath the label.                                                               | `boolean`                     | `false`                               |
+| `step`             | `step`             | The input's step attribute.                                                                                      | `number`                      | `1`                                   |
+| `tooltip`          | `tooltip`          | The preferred placedment of the tooltip.                                                                         | `"bottom" \| "none" \| "top"` | `'top'`                               |
+| `tooltipFormatter` | --                 | A function used to format the tooltip's value.                                                                   | `(value: number) => string`   | `(value: number) => value.toString()` |
+| `value`            | `value`            | The input's value attribute.                                                                                     | `number`                      | `0`                                   |
 
 
 ## Events

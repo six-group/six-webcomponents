@@ -74,6 +74,7 @@
   --vp-button-brand-active-border: var(--vp-c-brand-2);
   --vp-button-brand-active-text: var(--vp-c-white);
   --vp-button-brand-active-bg: var(--vp-button-brand-bg);
+  --vp-layout-max-width: 1920px; /* For larger screens (ultrawide) scale it down to full hd size */
 }
 
 /* overwrite rounded design to follow six design (apart from the examples) */
@@ -106,4 +107,12 @@ code {
 .dark .vp-doc .line-numbers-wrapper,
 .theme-dark .vp-doc .line-numbers-wrapper {
   color: rgba(235, 235, 245, 0.3);
+}
+
+/*
+  Connected to --vp-layout-max-width. Width of the actual content is limited so the content is not
+  overly stretched.
+ */
+.content-container {
+  max-width: 1000px !important;
 }

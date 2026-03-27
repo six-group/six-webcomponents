@@ -7,11 +7,7 @@ import { reactOutputTarget } from '@stencil/react-output-target';
 export const config: Config = {
   namespace: 'ui-library',
   globalStyle: 'src/global/base.css',
-  plugins: [
-    sass({
-      injectGlobalPaths: ['src/global/animation.scss'],
-    }),
-  ],
+  plugins: [sass()],
   extras: {
     // fixes VitePress doc build
     enableImportInjection: true,
@@ -127,10 +123,12 @@ export const config: Config = {
         },
 
         { src: '**/*.html' },
+        { src: '**/*.scss' },
       ],
     },
   ],
   devServer: {
-    openBrowser: true,
+    address: 'localhost',
+    port: 3333,
   },
 };

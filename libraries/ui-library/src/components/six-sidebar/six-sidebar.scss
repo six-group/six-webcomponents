@@ -1,6 +1,6 @@
-@import 'src/global/component';
-@import 'src/global/mixins/hidden';
-@import 'src/global/mixins/scrollbar';
+@use 'src/global/component';
+@use 'src/global/mixins/hidden' as *;
+@use 'src/global/mixins/scrollbar' as *;
 
 :host {
   display: block;

@@ -19,7 +19,9 @@ export class SelectValueAccessor extends ValueAccessor {
   }
 
   @HostListener('change', ['$event.target'])
-  handleChangeEvent(el: HTMLSixSelectElement): void {
-    this.handleValueChange(el, el.value);
+  handleChangeEvent(el: EventTarget | null): void {
+    if (el) {
+      this.handleValueChange(el as HTMLElement, (el as HTMLSixSelectElement).value);
+    }
   }
 }

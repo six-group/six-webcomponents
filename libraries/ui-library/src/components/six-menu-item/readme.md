@@ -80,6 +80,7 @@ Type: `Promise<void>`
 
  - [six-dropdown](../six-dropdown)
  - [six-menu](../six-menu)
+ - [six-paginator](../six-paginator)
  - [six-select](../six-select)
 
 ### Depends on
@@ -95,6 +96,7 @@ graph TD;
   six-checkbox --> six-error
   six-dropdown --> six-menu-item
   six-menu --> six-menu-item
+  six-paginator --> six-menu-item
   six-select --> six-menu-item
   style six-menu-item fill:#f9f,stroke:#333,stroke-width:4px
 ```

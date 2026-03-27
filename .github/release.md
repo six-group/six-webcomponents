@@ -49,7 +49,8 @@ In the created branch, edit the file `docs/changelog.md` and replace the `Upcomi
 
 1. Commit the changes with a commit message of `docs: prepare changelog for release VERSION_NUMBER`.
 2. Push the branch to GitHub
-3. If you branched from main, create a Pull Request with `main` as the base branch. Otherwise, no PR needs to be created.
+3. If you branched from main, create a Pull Request with `main` as the base branch. Otherwise, no PR
+   needs to be created.
 
 A member of the Core Team should review the Pull Request. **But don't merge the Pull Request yet**.
 
@@ -58,10 +59,11 @@ A member of the Core Team should review the Pull Request. **But don't merge the 
 1. Go to
    [https://github.com/six-group/six-webcomponents/actions/workflows/release.yml](https://github.com/six-group/six-webcomponents/actions/workflows/release.yml)
 2. Select `Run workflow` on the top right of the list and set the following parameters:
-   - Branch: `release/<VERSION_NUMBER>`
+   - Branch: `release/<VERSION_NUMBER>` or `main` (which is the default)
    - The version to release: It must match the pattern `vVERSION_NUMBER`, so for the example above
      it would be `v4.2.3`. **Do not forget the leading `v`!**
    - Disable _Deploy Docs_ if you release a non-stable release (like RC or beta)
+   - Type of release `insider` or `regular` based on the release you want to create.
 3. Click on `Run Workflow`
 
 Once the workflow has completed successfully, check if new version was published on

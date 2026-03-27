@@ -17,3 +17,7 @@ docs/examples
 docs/components
 docs/.vitepress/cache
 .next
+playwright-report/
+test-results/
+coverage
+renovate.json

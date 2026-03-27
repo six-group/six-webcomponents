@@ -14,17 +14,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+        uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
-          node-version: 22
-          registry-url: 'https://registry.npmjs.org'
-          cache: 'npm'
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          node-version: 24
       - run: npm ci
-      - run: |
-          npx pkg-pr-new publish ./libraries/ui-library-angular/dist/ui-library-angular
-          npx pkg-pr-new publish ./libraries/ui-library
-          npx pkg-pr-new publish ./libraries/ui-library-vue
-          npx pkg-pr-new publish ./libraries/ui-library-react
+      - run: npm run build
+      - run: npx pkg-pr-new publish 'libraries/ui-library/' 'libraries/ui-library-vue/' 'libraries/ui-library-react/' 'libraries/ui-library-angular/dist/ui-library-angular/'

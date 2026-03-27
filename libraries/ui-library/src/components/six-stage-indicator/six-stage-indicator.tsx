@@ -1,6 +1,6 @@
 import { Component, h, Prop } from '@stencil/core';
 
-export type StageType = 'DEV' | 'ITU' | 'ETU' | 'ACCEPTANCE' | 'PROD' | null;
+export type StageType = 'LOCAL' | 'DEV' | 'ITU' | 'ETU' | 'ACCEPTANCE' | 'PROD' | null;
 
 @Component({
   tag: 'six-stage-indicator',

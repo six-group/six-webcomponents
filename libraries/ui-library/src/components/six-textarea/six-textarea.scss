@@ -1,5 +1,5 @@
-@import 'src/global/component';
-@import '../../functional-components/form-control/form-control';
+@use 'src/global/component';
+@use '../../functional-components/form-control/form-control';
 
 /**
  * @prop --height: The textarea height.

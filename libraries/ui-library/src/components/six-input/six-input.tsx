@@ -125,7 +125,7 @@ export class SixInput {
   @Prop() autocapitalize = 'off';
 
   /** The input's autocorrect attribute. */
-  @Prop() autocorrect: 'on' | 'off' = 'off';
+  @Prop() autocorrect = false;
 
   /** The input's autocomplete attribute. */
   @Prop() autocomplete = 'off';
@@ -391,7 +391,7 @@ export class SixInput {
             value={this.getValue()}
             autoCapitalize={this.autocapitalize}
             autoComplete={this.autocomplete}
-            autoCorrect={this.autocorrect}
+            autoCorrect={this.autocorrect ? 'on' : 'off'}
             autoFocus={this.autofocus}
             spellcheck={this.spellcheck}
             pattern={this.pattern}

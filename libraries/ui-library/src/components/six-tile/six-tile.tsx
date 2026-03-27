@@ -1,6 +1,7 @@
 import { Component, Element, Event, EventEmitter, h, Method, Prop, State } from '@stencil/core';
 import { EmptyPayload } from '../../utils/types';
 import { getSlot, hasSlot } from '../../utils/slot';
+import { IconLibrary } from '../../utils/icon';
 
 /**
  * @since 1.0
@@ -37,6 +38,21 @@ export class SixTile {
 
   /** The tile's size. */
   @Prop({ reflect: true }) size: 'small' | 'medium' | 'large' = 'medium';
+
+  /**
+   * Icon library to use when no `library` prop is provided.
+   * By default, all `<six-icon>` instances fall back to the globally configured
+   * default library (via `setDefaultIconLibrary()` / `getDefaultIconLibrary()`),
+   * which is `"material-icons"` unless changed at runtime.
+   *
+   * This allows teams to switch the default across an entire project without
+   * having to set the `library` prop on every `<six-icon>` instance.
+   *
+   * Icon library for this instance. Overrides the global default.
+   * - "material-icons"  → Material Icons
+   * - "material-symbols"  → Material Symbols
+   */
+  @Prop({ reflect: true }) library?: IconLibrary;
 
   @State() visible = true;
 

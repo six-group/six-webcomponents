@@ -3,6 +3,8 @@ www/
 loader/
 docs/
 coverage/
+playwright-report/
+test-results/
 
 *~
 *.sw[mnpcod]

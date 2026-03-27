@@ -1,5 +1,5 @@
-@import 'src/global/component';
-@import 'src/global/mixins/hide-scrollbar';
+@use 'src/global/component';
+@use 'src/global/mixins/hide-scrollbar' as *;
 
 :host {
   display: block;

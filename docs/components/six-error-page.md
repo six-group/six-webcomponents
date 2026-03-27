@@ -58,13 +58,13 @@ Set attribute `error-code` to show proper error page.
 
 ## Properties
 
-| Property            | Attribute            | Description                                                                        | Type                             | Default     |
-| ------------------- | -------------------- | ---------------------------------------------------------------------------------- | -------------------------------- | ----------- |
-| `customDescription` | `custom-description` | Defines a custom description.                                                      | `string[] \| undefined`          | `undefined` |
-| `customIcon`        | `custom-icon`        | Defines a custom icon.                                                             | `string \| undefined`            | `undefined` |
-| `customTitle`       | `custom-title`       | Defines a custom title.                                                            | `string \| undefined`            | `undefined` |
-| `errorCode`         | `error-code`         | Defines error Code and thus displays the proper error page.                        | `403 \| 404 \| 500 \| undefined` | `undefined` |
-| `language`          | `language`           | Defines language and thus displays the proper error page in the selected language. | `"de" \| "en"`                   | `'en'`      |
+| Property            | Attribute      | Description                                                                        | Type                             | Default     |
+| ------------------- | -------------- | ---------------------------------------------------------------------------------- | -------------------------------- | ----------- |
+| `customDescription` | --             | Defines a custom description.                                                      | `string[] \| undefined`          | `undefined` |
+| `customIcon`        | `custom-icon`  | Defines a custom icon.                                                             | `string \| undefined`            | `undefined` |
+| `customTitle`       | `custom-title` | Defines a custom title.                                                            | `string \| undefined`            | `undefined` |
+| `errorCode`         | `error-code`   | Defines error Code and thus displays the proper error page.                        | `403 \| 404 \| 500 \| undefined` | `undefined` |
+| `language`          | `language`     | Defines language and thus displays the proper error page in the selected language. | `"de" \| "en"`                   | `'en'`      |
 
 
 ## Shadow Parts

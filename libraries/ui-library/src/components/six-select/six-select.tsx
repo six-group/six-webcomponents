@@ -324,7 +324,7 @@ export class SixSelect {
   }
 
   private handleKeyDown = (event: KeyboardEvent) => {
-    if (this.virtualScroll || this.autocomplete) {
+    if (this.virtualScroll) {
       return;
     }
 
@@ -612,6 +612,7 @@ export class SixSelect {
           closeOnSelect={!this.multiple}
           containingElement={this.host}
           disableHideOnEnterAndSpace={this.autocomplete}
+          disableTypeToSelect={this.autocomplete}
           class={{
             select: true,
             'select--open': this.isOpen,
@@ -652,7 +653,7 @@ export class SixSelect {
             aria-describedby={this.helpTextId}
             aria-haspopup="true"
             aria-expanded={this.isOpen ? 'true' : 'false'}
-            tabIndex={this.disabled ? -1 : 0}
+            tabIndex={this.disabled || this.autocomplete ? -1 : 0}
             onBlur={this.handleBlur}
             onFocus={this.handleFocus}
           >

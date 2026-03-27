@@ -684,7 +684,7 @@ When using the `error-text` slot, it is recommended to use the `six-error` compo
 | `line`              | `line`               | Set to render as line                                                                                                                                                                                                                                                 | `boolean`                        | `false`                 |
 | `multiple`          | `multiple`           | Set to true to enable multiselect.                                                                                                                                                                                                                                    | `boolean`                        | `false`                 |
 | `name`              | `name`               | The select's name.                                                                                                                                                                                                                                                    | `string`                         | `''`                    |
-| `options`           | `options`            | Set the options to be shown in the dropdown (alternative to setting the elements via html)                                                                                                                                                                            | `SixMenuItemData[] \| null`      | `null`                  |
+| `options`           | --                   | Set the options to be shown in the dropdown (alternative to setting the elements via html)                                                                                                                                                                            | `SixMenuItemData[] \| null`      | `null`                  |
 | `pill`              | `pill`               | Set to true to draw a pill-style select with rounded edges.                                                                                                                                                                                                           | `boolean`                        | `false`                 |
 | `placeholder`       | `placeholder`        | The select's placeholder text.                                                                                                                                                                                                                                        | `string`                         | `''`                    |
 | `required`          | `required`           | Set to true to show an asterisk beneath the label.                                                                                                                                                                                                                    | `boolean`                        | `false`                 |
@@ -750,6 +750,10 @@ Type: `Promise<void>`
 
 ## Dependencies
 
+### Used by
+
+ - [six-paginator](six-paginator.html)
+
 ### Depends on
 
 - [six-menu-item](six-menu-item.html)
@@ -784,6 +788,7 @@ graph TD;
   six-menu --> six-menu-item
   six-icon-button --> six-icon
   six-button --> six-spinner
+  six-paginator --> six-select
   style six-select fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

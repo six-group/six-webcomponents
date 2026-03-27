@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property | Attribute | Description                    | Type                                                        | Default |
-| -------- | --------- | ------------------------------ | ----------------------------------------------------------- | ------- |
-| `stage`  | `stage`   | The indicators value attribute | `"ACCEPTANCE" \| "DEV" \| "ETU" \| "ITU" \| "PROD" \| null` | `null`  |
+| Property | Attribute | Description                    | Type                                                                   | Default |
+| -------- | --------- | ------------------------------ | ---------------------------------------------------------------------- | ------- |
+| `stage`  | `stage`   | The indicators value attribute | `"ACCEPTANCE" \| "DEV" \| "ETU" \| "ITU" \| "LOCAL" \| "PROD" \| null` | `null`  |
 
 
 ## Dependencies

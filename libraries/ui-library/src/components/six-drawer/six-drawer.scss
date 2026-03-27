@@ -1,5 +1,5 @@
-@import 'src/global/component';
-@import 'src/global/mixins/hidden';
+@use 'src/global/component';
+@use 'src/global/mixins/hidden' as *;
 
 /**
  * @prop --size: The preferred size of the drawer. This will be applied to the drawer's width or height depending on its

@@ -1,6 +1,6 @@
 # six-root
 
-Six root gives you a [basic layout](<https://en.wikipedia.org/wiki/Holy_grail_(web_design)>) skeleton and manages the application theme.
+Six root gives you a [basic layout](<https://en.wikipedia.org/wiki/Holy_grail_(web_design)>) skeleton.
 
 <!-- EXAMPLES -->
 
@@ -9,51 +9,11 @@ Six root gives you a [basic layout](<https://en.wikipedia.org/wiki/Holy_grail_(w
 
 ## Properties
 
-| Property  | Attribute | Description                                          | Type                                                        | Default   |
-| --------- | --------- | ---------------------------------------------------- | ----------------------------------------------------------- | --------- |
-| `padded`  | `padded`  | Defines whether the content section should be padded | `boolean`                                                   | `true`    |
-| `stage`   | `stage`   | Defines the stage of the application                 | `"ACCEPTANCE" \| "DEV" \| "ETU" \| "ITU" \| "PROD" \| null` | `null`    |
-| `theme`   | `theme`   | Defines the theme                                    | `"auto" \| "dark" \| "light"`                               | `'light'` |
-| `version` | `version` | Defines the version of the application               | `string`                                                    | `''`      |
-
-
-## Methods
-
-### `getTheme() => Promise<{ theme: SixTheme; appliedTheme: "light" | "dark"; }>`
-
-Gets the current theme and applied theme.
-
-#### Returns
-
-Type: `Promise<{ theme: SixTheme; appliedTheme: "light" | "dark"; }>`
-
-
-
-### `setTheme(theme: SixTheme) => Promise<void>`
-
-Sets the theme.
-
-#### Parameters
-
-| Name    | Type                          | Description |
-| ------- | ----------------------------- | ----------- |
-| `theme` | `"auto" \| "light" \| "dark"` |             |
-
-#### Returns
-
-Type: `Promise<void>`
-
-
-
-### `toggleTheme() => Promise<void>`
-
-Toggles between light and dark theme.
-
-#### Returns
-
-Type: `Promise<void>`
-
-
+| Property  | Attribute | Description                                          | Type                                                                   | Default |
+| --------- | --------- | ---------------------------------------------------- | ---------------------------------------------------------------------- | ------- |
+| `padded`  | `padded`  | Defines whether the content section should be padded | `boolean`                                                              | `true`  |
+| `stage`   | `stage`   | Defines the stage of the application                 | `"ACCEPTANCE" \| "DEV" \| "ETU" \| "ITU" \| "LOCAL" \| "PROD" \| null` | `null`  |
+| `version` | `version` | Defines the version of the application               | `string`                                                               | `''`    |
 
 
 ## Slots

@@ -44,12 +44,12 @@ Check below for configuring web components with Angular modules.
 3. In each standalone component, import the `UiLibraryAngularModule` module to get access to
    web-components components.
 
-   ```angular-html
+   ```angular-ts
    @Component({
-     selector: "some",
+     selector: 'some',
      imports: [UiLibraryAngularModule],
-     templateUrl: "./some.component.html",
-     styleUrl: "./some.component.scss"
+     templateUrl: './some.component.html',
+     styleUrl: './some.component.scss',
    })
    export class SomeComponent {}
    ```
@@ -60,7 +60,7 @@ This section explains how to configure web-components in an Angular application 
 
 1. Add `UiLibraryAngularModule.forRoot()` to your root angular module imports section.
 
-   ```ts
+   ```angular-ts
    @NgModule({
     declarations: [],
     imports: [
@@ -89,12 +89,11 @@ applied.
 
 So instead of doing:
 
-```angular2html
-// my-component.component.html
-<six-input [formControl]="formControl" [required]="true"></six-input>
+```angular-html
+// my-component.component.html <six-input [formControl]="formControl" [required]="true"></six-input>
 ```
 
-```ts
+```angular-ts
 // my-component.component.ts
 @Component({
   ...
@@ -116,12 +115,12 @@ UiLibraryAngularModule.forRoot(/* ... other options*/,{
 Now your component will apply the required flag automatically, without requiring you to set it
 manually:
 
-```angular2html
-// my-component.component.html
-<six-input [formControl]="formControl"></six-input> // <-- [required] prop can be omitted
+```angular-html
+// my-component.component.html <six-input [formControl]="formControl"></six-input> // <-- [required]
+prop can be omitted
 ```
 
-```ts
+```angular-ts
 // my-component.component.ts
 @Component({
   ...
@@ -132,7 +131,14 @@ export class MyComponent {
 }
 ```
 
-### Customising/Disabling `ValidationService`
+### <Badge type="warning" text="⚠️Experimental" /> Customising/Disabling `ValidationService`
+
+<six-alert type="warning" open style="margin-top: 8px">
+  <six-icon slot="icon">warning_amber</six-icon>
+  <strong>This feature is experimental</strong><br>
+  The API, behaviour and implementation may/will change in the future. Please proceed at your own risk.<br>
+  For any feedback, please open an issue on the <a href="https://github.com/six-group/six-webcomponents/issues">GitHub repository</a>.
+</six-alert>
 
 The Angular library ships with a built-in `ValidationService` that can be used to validate
 `FormControl`s.
@@ -150,7 +156,10 @@ UiLibraryAngularModule.forRoot(/* ... other options*/, {
 })
 ```
 
-WARNING: This will disable any sort of validation service. Even if you pass your own implementation!
+<six-alert type="info" open style="margin-top: 8px">
+  <six-icon slot="icon">info</six-icon>
+  <strong>Warning:</strong> This will disable any sort of validation service. Even if you pass your own implementation!
+</six-alert>
 
 ## Using the Components
 
@@ -190,7 +199,7 @@ first field that contains an error.
 
 To use it, simply add the `sixForm` directive and replace `ngSubmit` with `sixSubmit`:
 
-```html
+```angular-html
 <!-- add sixForm and replace (ngSubmit) with (sixSubmit) -->
 <form sixForm (sixSubmit)="onSubmit()" [formGroup]="form">
   <six-input>...</six-input>
@@ -217,7 +226,7 @@ component. This activates three directives that work together:
 
 Example usage:
 
-```html
+```angular-html
 <!-- add sixRouterLinkActive to six-sidebar to include the sidebar helper directives -->
 <six-sidebar position="left" [open]="open" sixRouterLinkActive>
   <six-sidebar-item-group routerLink="/home" name="Home" icon="home"></six-sidebar-item-group>

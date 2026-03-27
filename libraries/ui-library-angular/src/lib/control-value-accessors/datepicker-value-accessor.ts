@@ -19,7 +19,9 @@ export class DatepickerValueAccessor extends ValueAccessor {
   }
 
   @HostListener('change', ['$event.target'])
-  handleChangeEvent(el: HTMLSixDatepickerElement): void {
-    this.handleValueChange(el, el.value);
+  handleChangeEvent(el: EventTarget | null): void {
+    if (el) {
+      this.handleValueChange(el as HTMLElement, (el as HTMLSixDatepickerElement).value);
+    }
   }
 }

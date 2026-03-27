@@ -10,9 +10,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "express": "^4.18.2"
+    "express": "^5.2.1"
   },
   "dependencies": {
-    "@six-group/ui-library": "*"
+    "@six-group/ui-library": "^5.3.1"
   }
 }

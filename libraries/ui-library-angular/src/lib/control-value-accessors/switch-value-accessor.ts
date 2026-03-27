@@ -19,8 +19,10 @@ export class SwitchValueAccessor extends ValueAccessor {
   }
 
   @HostListener('change', ['$event.target'])
-  handleChangeEvent(el: HTMLSixSwitchElement): void {
-    this.handleValueChange(el, el.checked);
+  handleChangeEvent(el: EventTarget | null): void {
+    if (el) {
+      this.handleValueChange(el as HTMLElement, (el as HTMLSixSwitchElement).checked);
+    }
   }
 
   override writeValue(value: any): void {

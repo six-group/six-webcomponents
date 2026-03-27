@@ -18,6 +18,10 @@ import {
 } from './validators/six-ui-library-validators';
 import { SelectValueAccessor } from './control-value-accessors/select-value-accessor';
 import { CheckboxValueAccessor } from './control-value-accessors/checkbox-value-accessor';
+import {
+  CheckboxMultiSelectValueAccessor,
+  SixCheckboxGroupDirective,
+} from './control-value-accessors/checkbox-multi-select-value-accessor';
 import { RangeValueAccessor } from './control-value-accessors/range-value-accessor';
 import { SwitchValueAccessor } from './control-value-accessors/switch-value-accessor';
 import { TimepickerValueAccessor } from './control-value-accessors/timepicker-value-accessor';
@@ -45,6 +49,8 @@ import { DEFAULT_UI_LIBRARY_CONFIG, UI_LIBRARY_CONFIG, UiLibraryConfig } from '.
     TimepickerValueAccessor,
     SelectValueAccessor,
     CheckboxValueAccessor,
+    CheckboxMultiSelectValueAccessor,
+    SixCheckboxGroupDirective,
     SwitchValueAccessor,
     RangeValueAccessor,
 
@@ -84,6 +90,8 @@ import { DEFAULT_UI_LIBRARY_CONFIG, UI_LIBRARY_CONFIG, UiLibraryConfig } from '.
     TimepickerValueAccessor,
     SelectValueAccessor,
     CheckboxValueAccessor,
+    CheckboxMultiSelectValueAccessor,
+    SixCheckboxGroupDirective,
     SwitchValueAccessor,
     RangeValueAccessor,
 

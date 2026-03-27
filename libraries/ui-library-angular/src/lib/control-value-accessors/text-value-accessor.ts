@@ -20,7 +20,9 @@ export class TextValueAccessor extends ValueAccessor {
   }
 
   @HostListener('input', ['$event.target'])
-  handleInputEvent(el: HTMLSixInputElement): void {
-    this.handleValueChange(el, el.value);
+  handleInputEvent(el: EventTarget | null): void {
+    if (el) {
+      this.handleValueChange(el as HTMLElement, (el as HTMLSixInputElement).value);
+    }
   }
 }

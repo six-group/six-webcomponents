@@ -126,12 +126,16 @@ export class SixButton {
   };
 
   private mapSizeToIconSize(buttonSize: 'small' | 'medium' | 'large'): string {
-    const sizeMap = {
-      small: 'xSmall',
-      medium: 'small',
-      large: 'medium',
-    };
-    return sizeMap[buttonSize] || 'small'; // Default to small
+    switch (buttonSize) {
+      case 'small':
+        return 'xSmall';
+      case 'medium':
+        return 'small';
+      case 'large':
+        return 'medium';
+      default:
+        return 'small';
+    }
   }
 
   private handleBlur = () => {

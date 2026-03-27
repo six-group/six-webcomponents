@@ -1,3 +1,4 @@
+// TODO: :focus-visible is well supported in modern browsers and this helper should be replaced with it.
 //
 // Simulates :focus-visible behavior on an element by watching for certain keyboard and mouse heuristics and toggling a
 // `focus-visible` class. Works at the component level so no global polyfill is necessary.

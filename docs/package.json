@@ -6,14 +6,14 @@
     "@six-group/ui-library": "*"
   },
   "devDependencies": {
+    "mermaid": "^11.13.0",
+    "node-html-parser": "^7.1.0",
+    "rimraf": "^6.1.3",
     "shx": "^0.4.0",
-    "mermaid": "^11.2.1",
-    "node-html-parser": "^6.1.5",
-    "rimraf": "^5.0.1",
-    "turndown": "^7.1.2",
-    "vitepress": "^1.2.3",
+    "turndown": "^7.2.2",
+    "vitepress": "^1.6.4",
     "vitepress-plugin-mermaid": "^2.0.17",
-    "vue": "^3.4.21"
+    "vue": "^3.5.26"
   },
   "scripts": {
     "start": "vitepress dev",

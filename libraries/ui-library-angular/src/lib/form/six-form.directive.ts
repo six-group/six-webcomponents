@@ -28,10 +28,10 @@ export class SixFormDirective {
   /**
    * Emits an event when the form is valid and the form submission has been triggered.
    */
-  @Output() sixSubmit = new EventEmitter<SubmitEvent>();
+  @Output() sixSubmit = new EventEmitter<Event>();
 
   @HostListener('ngSubmit', ['$event'])
-  onNgSubmit(event: SubmitEvent): void {
+  onNgSubmit(event: Event): void {
     if (this.formGroupDirective.invalid) {
       focusInvalidField(this.formGroupDirective, this.elementRef);
     } else {

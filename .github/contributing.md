@@ -22,13 +22,11 @@ guidelines:
   This allows us to directly make minor edits / refactors and saves a lot of time.
 
 - If adding a new feature:
-
   - Add accompanying test case.
   - Provide a convincing reason to add this feature. Ideally, you should open a suggestion issue
     first and have it approved before working on it.
 
 - If fixing a bug:
-
   - If you are resolving a special issue, add `(fix #xxxx[,#xxxx])` (#xxxx is the issue id) in your
     PR title for a better release log, e.g. `update entities encoding/decoding (fix #3899)`.
   - Provide a detailed description of the bug in the PR. Live demo preferred.
@@ -57,10 +55,8 @@ guidelines:
 - Consider the performance / size impact of the changes, and whether the bug being fixes justifies
   the cost. If the bug being fixed is a very niche edge case, we should try to minimize the size /
   perf cost to make it worthwhile.
-
   - Is the code perf-sensitive (e.g. in "hot paths" like component updates or the vdom patch
     function?)
-
     - If the branch is dev-only, performance is less of a concern.
 
 ## Development Setup
