@@ -1424,14 +1424,15 @@ export declare interface SixRating extends Components.SixRating {
 
 
 @ProxyCmp({
-  inputs: ['padded', 'stage', 'version']
+  inputs: ['padded', 'stage', 'theme', 'version'],
+  methods: ['setTheme', 'getTheme', 'toggleTheme']
 })
 @Component({
   selector: 'six-root',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['padded', 'stage', 'version'],
+  inputs: ['padded', 'stage', 'theme', 'version'],
   standalone: false
 })
 export class SixRoot {
@@ -1883,6 +1884,38 @@ export declare interface SixTextarea extends Components.SixTextarea {
    * Emitted when the control loses focus. Access the new value via event.target.value.
    */
   'six-textarea-blur': EventEmitter<CustomEvent<ISixTextareaEmptyPayload>>;
+}
+
+
+@ProxyCmp({
+  inputs: ['disabled', 'label', 'size']
+})
+@Component({
+  selector: 'six-theme-switcher',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['disabled', 'label', 'size'],
+  outputs: ['sixThemeSwitcherChange:six-theme-switcher-change'],
+  standalone: false
+})
+export class SixThemeSwitcher {
+  protected el: HTMLSixThemeSwitcherElement;
+  @Output() sixThemeSwitcherChange = new EventEmitter<CustomEvent<ISixThemeSwitcherEmptyPayload>>();
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+import type { EmptyPayload as ISixThemeSwitcherEmptyPayload } from '@six-group/ui-library';
+
+export declare interface SixThemeSwitcher extends Components.SixThemeSwitcher {
+  /**
+   * Emitted when the theme is changed.
+   */
+  'six-theme-switcher-change': EventEmitter<CustomEvent<ISixThemeSwitcherEmptyPayload>>;
 }
 
 
