@@ -1,16 +1,16 @@
 <template>
 <div>
 
-    <six-breadcrumbs>
-      <six-icon slot="separator" size="small">arrow_right</six-icon>
-      <six-breadcrumbs-item>Home</six-breadcrumbs-item>
-      <six-breadcrumbs-item>Page</six-breadcrumbs-item>
-      <six-breadcrumbs-item>
-        <six-icon slot="suffix" size="small">lock</six-icon>
-        Current
-      </six-breadcrumbs-item>
-    </six-breadcrumbs>
-  
+        <six-breadcrumbs>
+          <six-icon slot="separator" size="small">arrow_right</six-icon>
+          <six-breadcrumbs-item>Home</six-breadcrumbs-item>
+          <six-breadcrumbs-item>Page</six-breadcrumbs-item>
+          <six-breadcrumbs-item>
+            <six-icon slot="suffix" size="small">lock</six-icon>
+            Current
+          </six-breadcrumbs-item>
+        </six-breadcrumbs>
+      
 </div>
 </template>
 <style>

@@ -2,7 +2,6 @@ import { test } from '../../test-utils/fixtures';
 import { expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
-
 test.describe('six-breadcrumbs', () => {
   test('should render breadcrumb items', async ({ page }) => {
     await page.setContent(`

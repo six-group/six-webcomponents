@@ -6,8 +6,17 @@ Breadcrumbs provide a group of links so users can easily navigate a website’s 
 <docs-demo-six-breadcrumbs-0></docs-demo-six-breadcrumbs-0>
 
 ```html
-<h2>Medium (default)</h2>
-<six-breadcrumbs size="medium">
+<h2>Large</h2>
+<six-breadcrumbs size="large">
+  <six-breadcrumbs-item>Level 1</six-breadcrumbs-item>
+  <six-breadcrumbs-item>Level 2</six-breadcrumbs-item>
+  <six-breadcrumbs-item>Level 3</six-breadcrumbs-item>
+  <six-breadcrumbs-item>You are here</six-breadcrumbs-item>
+</six-breadcrumbs>
+
+<h2>Medium</h2>
+<p>Default size</p>
+<six-breadcrumbs size="large">
   <six-breadcrumbs-item>Level 1</six-breadcrumbs-item>
   <six-breadcrumbs-item>Level 2</six-breadcrumbs-item>
   <six-breadcrumbs-item>Level 3</six-breadcrumbs-item>
