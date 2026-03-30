@@ -2,8 +2,6 @@ import { test } from '../../test-utils/fixtures';
 import { expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
-// TODO: six-breadcrumbs uses six-button with type="link" which has color contrast 3.12:1,
-// doesn't meet WCAG 2 AA (4.5:1)
 
 test.describe('six-breadcrumbs', () => {
   test('should render breadcrumb items', async ({ page }) => {
