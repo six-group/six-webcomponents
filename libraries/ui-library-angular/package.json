@@ -29,10 +29,10 @@
     "url": "git+https://github.com/six-group/six-webcomponents.git"
   },
   "devDependencies": {
-    "@angular/build": "^21.2.1",
-    "@angular/cli": "^21.2.1",
-    "@angular/compiler-cli": "^21.2.1",
-    "ng-packagr": "^21.2.0",
+    "@angular/build": "^21.2.5",
+    "@angular/cli": "^21.2.5",
+    "@angular/compiler-cli": "^21.2.6",
+    "ng-packagr": "^21.2.2",
     "typescript": "~5.9.3"
   },
   "sideEffects": false,
