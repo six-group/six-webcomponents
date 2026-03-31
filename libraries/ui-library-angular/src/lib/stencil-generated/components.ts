@@ -102,14 +102,14 @@ export declare interface SixBadge extends Components.SixBadge {}
 
 
 @ProxyCmp({
-  inputs: ['separatorIcon']
+  inputs: ['separatorIcon', 'size']
 })
 @Component({
   selector: 'six-breadcrumbs',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['separatorIcon'],
+  inputs: ['separatorIcon', 'size'],
   standalone: false
 })
 export class SixBreadcrumbs {
@@ -125,14 +125,14 @@ export declare interface SixBreadcrumbs extends Components.SixBreadcrumbs {}
 
 
 @ProxyCmp({
-  inputs: ['href', 'readonly', 'size', 'target']
+  inputs: ['href', 'readonly', 'target']
 })
 @Component({
   selector: 'six-breadcrumbs-item',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['href', 'readonly', 'size', 'target'],
+  inputs: ['href', 'readonly', 'target'],
   standalone: false
 })
 export class SixBreadcrumbsItem {

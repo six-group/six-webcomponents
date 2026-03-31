@@ -1,9 +1,8 @@
 <template>
 <div>
 
-        <div class="parent">
+        <div class="custom-styling">
           <six-breadcrumbs>
-            <six-icon slot="separator" size="small">arrow_forward</six-icon>
             <six-breadcrumbs-item>Home</six-breadcrumbs-item>
             <six-breadcrumbs-item>Page</six-breadcrumbs-item>
             <six-breadcrumbs-item>Current</six-breadcrumbs-item>
