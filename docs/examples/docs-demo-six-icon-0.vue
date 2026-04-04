@@ -5,8 +5,8 @@
           <six-icon>pie_chart</six-icon>
           <six-icon>settings</six-icon>
           <six-icon>sick</six-icon>
-          <six-icon>fort</six-icon>
-          <six-icon>castle</six-icon>
+          <six-icon src="fort"></six-icon>
+          <six-icon src="castle"></six-icon>
         </div>
       
 </div>
