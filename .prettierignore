@@ -20,3 +20,4 @@ docs/.vitepress/cache
 playwright-report/
 test-results/
 coverage
+renovate.json

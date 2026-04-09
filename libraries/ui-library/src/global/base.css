@@ -91,6 +91,7 @@ body > div.container {
   --six-focus-ring: var(--six-focus-ring-style) var(--six-focus-ring-width) var(--six-focus-ring-color);
   --six-focus-offset-input: 1px;
 
+  --six-button-font-size-small: var(--six-font-size-small);
   --six-button-font-size-medium: var(--six-font-size-medium);
   --six-button-font-size-large: var(--six-font-size-large);
 

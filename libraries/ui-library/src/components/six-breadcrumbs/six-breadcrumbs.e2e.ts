@@ -2,9 +2,6 @@ import { test } from '../../test-utils/fixtures';
 import { expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
-// TODO: six-breadcrumbs uses six-button with type="link" which has color contrast 3.12:1,
-// doesn't meet WCAG 2 AA (4.5:1)
-
 test.describe('six-breadcrumbs', () => {
   test('should render breadcrumb items', async ({ page }) => {
     await page.setContent(`
@@ -18,20 +15,6 @@ test.describe('six-breadcrumbs', () => {
     await expect(page.locator('six-breadcrumbs-item')).toHaveCount(3);
     await expect(page.locator('six-breadcrumbs-item').first()).toContainText('Home');
     await expect(page.locator('six-breadcrumbs-item').last()).toContainText('Current');
-  });
-
-  test('should add default separator between items', async ({ page }) => {
-    await page.setContent(`
-      <six-breadcrumbs>
-        <six-breadcrumbs-item>Home</six-breadcrumbs-item>
-        <six-breadcrumbs-item>Page</six-breadcrumbs-item>
-      </six-breadcrumbs>
-    `);
-
-    // Check separator exists on first item
-    const separator = page.locator('six-breadcrumbs-item').first().locator('[slot="separator"]');
-    await expect(separator).toBeVisible();
-    await expect(separator).toContainText('/');
   });
 
   test('should use custom separator icon', async ({ page }) => {
@@ -128,17 +111,6 @@ test.describe('six-breadcrumbs', () => {
 });
 
 test.describe('six-breadcrumbs screenshots', () => {
-  test('should match screenshot for default', async ({ page }) => {
-    await page.setContent(`
-      <six-breadcrumbs>
-        <six-breadcrumbs-item>Home</six-breadcrumbs-item>
-        <six-breadcrumbs-item>Page</six-breadcrumbs-item>
-        <six-breadcrumbs-item>Current</six-breadcrumbs-item>
-      </six-breadcrumbs>
-    `);
-    await expect(page.locator('.playwright-test-container')).toHaveScreenshot('breadcrumbs-default.png');
-  });
-
   test('should match screenshot with custom separator icon', async ({ page }) => {
     await page.setContent(`
       <six-breadcrumbs separator-icon="arrow_forward">

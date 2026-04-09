@@ -6,10 +6,29 @@ Breadcrumbs provide a group of links so users can easily navigate a website’s 
 <docs-demo-six-breadcrumbs-0></docs-demo-six-breadcrumbs-0>
 
 ```html
-<six-breadcrumbs>
-  <six-breadcrumbs-item>A</six-breadcrumbs-item>
-  <six-breadcrumbs-item>B</six-breadcrumbs-item>
-  <six-breadcrumbs-item>C</six-breadcrumbs-item>
+<h2>Large</h2>
+<six-breadcrumbs size="large">
+  <six-breadcrumbs-item>Level 1</six-breadcrumbs-item>
+  <six-breadcrumbs-item>Level 2</six-breadcrumbs-item>
+  <six-breadcrumbs-item>Level 3</six-breadcrumbs-item>
+  <six-breadcrumbs-item>You are here</six-breadcrumbs-item>
+</six-breadcrumbs>
+
+<h2>Medium</h2>
+<p>Default size</p>
+<six-breadcrumbs size="large">
+  <six-breadcrumbs-item>Level 1</six-breadcrumbs-item>
+  <six-breadcrumbs-item>Level 2</six-breadcrumbs-item>
+  <six-breadcrumbs-item>Level 3</six-breadcrumbs-item>
+  <six-breadcrumbs-item>You are here</six-breadcrumbs-item>
+</six-breadcrumbs>
+
+<h2>Small</h2>
+<six-breadcrumbs size="small">
+  <six-breadcrumbs-item>Level 1</six-breadcrumbs-item>
+  <six-breadcrumbs-item>Level 2</six-breadcrumbs-item>
+  <six-breadcrumbs-item>Level 3</six-breadcrumbs-item>
+  <six-breadcrumbs-item>You are here</six-breadcrumbs-item>
 </six-breadcrumbs>
 ```
 
@@ -22,10 +41,11 @@ Use the separator slot to change the separator that goes between breadcrumb item
 
 ```html
 <six-breadcrumbs>
-  <six-icon slot="separator" size="small">arrow_forward</six-icon>
-  <six-breadcrumbs-item>A</six-breadcrumbs-item>
-  <six-breadcrumbs-item>B</six-breadcrumbs-item>
-  <six-breadcrumbs-item>Current</six-breadcrumbs-item>
+  <six-icon slot="separator">arrow_right</six-icon>
+  <six-breadcrumbs-item>Level 1</six-breadcrumbs-item>
+  <six-breadcrumbs-item>Level 2</six-breadcrumbs-item>
+  <six-breadcrumbs-item>Level 3</six-breadcrumbs-item>
+  <six-breadcrumbs-item read-only>You are here</six-breadcrumbs-item>
 </six-breadcrumbs>
 ```
 
@@ -35,10 +55,11 @@ Using `separator-icon` attribute
 <docs-demo-six-breadcrumbs-2></docs-demo-six-breadcrumbs-2>
 
 ```html
-<six-breadcrumbs separator-icon="arrow_forward">
-  <six-breadcrumbs-item>A</six-breadcrumbs-item>
-  <six-breadcrumbs-item>B</six-breadcrumbs-item>
-  <six-breadcrumbs-item>Current</six-breadcrumbs-item>
+<six-breadcrumbs separator-icon="arrow_right">
+  <six-breadcrumbs-item>Level 1</six-breadcrumbs-item>
+  <six-breadcrumbs-item>Level 2</six-breadcrumbs-item>
+  <six-breadcrumbs-item>Level 3</six-breadcrumbs-item>
+  <six-breadcrumbs-item>You are here</six-breadcrumbs-item>
 </six-breadcrumbs>
 ```
 
@@ -51,7 +72,7 @@ Use the prefix slot to add content before any breadcrumb item.
 
 ```html
 <six-breadcrumbs>
-  <six-icon slot="separator" size="small">arrow_forward</six-icon>
+  <six-icon slot="separator" size="small">arrow_right</six-icon>
   <six-breadcrumbs-item>
     <six-icon slot="prefix" size="small">house</six-icon>
     Home
@@ -70,7 +91,7 @@ Use the suffix slot to add content after any breadcrumb item.
 
 ```html
 <six-breadcrumbs>
-  <six-icon slot="separator" size="small">arrow_forward</six-icon>
+  <six-icon slot="separator" size="small">arrow_right</six-icon>
   <six-breadcrumbs-item>Home</six-breadcrumbs-item>
   <six-breadcrumbs-item>Page</six-breadcrumbs-item>
   <six-breadcrumbs-item>
@@ -88,9 +109,8 @@ Use CSS custom properties to customize the appearance of breadcrumb items.
 <docs-demo-six-breadcrumbs-5></docs-demo-six-breadcrumbs-5>
 
 ```html
-<div class="parent">
+<div class="custom-styling">
   <six-breadcrumbs>
-    <six-icon slot="separator" size="small">arrow_forward</six-icon>
     <six-breadcrumbs-item>Home</six-breadcrumbs-item>
     <six-breadcrumbs-item>Page</six-breadcrumbs-item>
     <six-breadcrumbs-item>Current</six-breadcrumbs-item>
@@ -141,9 +161,10 @@ Breadcrumbs provide a group of links so users can easily navigate a website's hi
 
 ## Properties
 
-| Property        | Attribute        | Description                                                     | Type     | Default |
-| --------------- | ---------------- | --------------------------------------------------------------- | -------- | ------- |
-| `separatorIcon` | `separator-icon` | Defines an icon as a separator without having to place a slot * | `string` | `''`    |
+| Property        | Attribute        | Description                                                                                   | Type                             | Default           |
+| --------------- | ---------------- | --------------------------------------------------------------------------------------------- | -------------------------------- | ----------------- |
+| `separatorIcon` | `separator-icon` | Defines an icon as a separator without having to place a slot. Default value: chevron_right * | `string`                         | `'chevron_right'` |
+| `size`          | `size`           | The breadcrumbs item size.                                                                    | `"large" \| "medium" \| "small"` | `'medium'`        |
 
 
 ## Slots

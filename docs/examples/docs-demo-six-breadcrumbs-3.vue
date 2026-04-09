@@ -2,7 +2,7 @@
 <div>
 
         <six-breadcrumbs>
-          <six-icon slot="separator" size="small">arrow_forward</six-icon>
+          <six-icon slot="separator" size="small">arrow_right</six-icon>
           <six-breadcrumbs-item>
             <six-icon slot="prefix" size="small">house</six-icon>
             Home
