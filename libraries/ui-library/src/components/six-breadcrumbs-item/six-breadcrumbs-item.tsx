@@ -29,9 +29,6 @@ export class SixBreadcrumbsItem {
   /** Tells the browser where to open the link. Only used when `href` is set. */
   @Prop() target?: '_blank' | '_parent' | '_self' | '_top';
 
-  /** The breadcrumbs item size. */
-  @Prop({ reflect: true }) size: 'small' | 'medium' | 'large' = 'medium';
-
   /** Set to true to readonly the breadcrumb item. */
   @Prop({ attribute: 'read-only', reflect: true }) readonly: boolean = false;
 
@@ -41,17 +38,16 @@ export class SixBreadcrumbsItem {
         <six-button
           part="button"
           type="link"
-          class={{ 'breadcrumb-item-readonly': this.readonly }}
           href={this.readonly ? undefined : this.href}
           tabindex={this.readonly ? -1 : undefined}
           target={this.target}
-          size={this.size}
+          size="medium"
         >
           <slot name="prefix" slot="prefix" />
           <slot />
           <slot name="suffix" slot="suffix" />
         </six-button>
-        <span part="separator" class="breadcrumb-item__separator" aria-hidden="true">
+        <span part="separator" aria-hidden="true">
           <slot name="separator" />
         </span>
       </div>

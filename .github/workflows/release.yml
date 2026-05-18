@@ -85,8 +85,6 @@ jobs:
           node-version: 24
           registry-url: 'https://registry.npmjs.org'
           cache: 'npm'
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - run: npm ci
 
       - name: 'Set version in package.json files to ${{ inputs.version }}'

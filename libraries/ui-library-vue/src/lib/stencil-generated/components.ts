@@ -42,6 +42,7 @@ export const SixBadge: StencilVueComponent<JSX.SixBadge> = /*@__PURE__*/ defineC
 
 
 export const SixBreadcrumbs: StencilVueComponent<JSX.SixBreadcrumbs> = /*@__PURE__*/ defineContainer<JSX.SixBreadcrumbs>('six-breadcrumbs', undefined, [
+  'size',
   'separatorIcon'
 ]);
 
@@ -49,7 +50,6 @@ export const SixBreadcrumbs: StencilVueComponent<JSX.SixBreadcrumbs> = /*@__PURE
 export const SixBreadcrumbsItem: StencilVueComponent<JSX.SixBreadcrumbsItem> = /*@__PURE__*/ defineContainer<JSX.SixBreadcrumbsItem>('six-breadcrumbs-item', undefined, [
   'href',
   'target',
-  'size',
   'readonly'
 ]);
 

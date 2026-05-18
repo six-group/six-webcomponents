@@ -64,8 +64,6 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: 24
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - run: npm ci
       - run: npm run build
       - name: verify clean build
