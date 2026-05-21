@@ -20,7 +20,7 @@
   bottom: 0;
   left: 0;
   z-index: var(--six-z-index-dialog);
-  color: var(--six-color-web-rock-900);
+  color: var(--six-dialog-color);
 
   &:not(.dialog--visible) {
     @include hidden;

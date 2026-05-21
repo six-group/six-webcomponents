@@ -1,0 +1,103 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <script type="module" src="/build/ui-library.esm.js"></script>
+    <script nomodule src="/build/ui-library.js"></script>
+    <link rel="stylesheet" href="/build/ui-library.css" />
+    <title>six-theme-switcher</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Theme Switcher</h2>
+
+      <p>
+        The <code>six-theme-switcher</code> is a simple icon button that toggles between light and dark themes. It
+        automatically syncs with <code>six-root</code>'s theme management system.
+      </p>
+
+      <section>
+        <div style="background: grey">
+          <six-theme-switcher></six-theme-switcher>
+        </div>
+      </section>
+
+      <h2>Sizes</h2>
+
+      <p>Theme switchers inherit the same size options as icon buttons.</p>
+
+      <section>
+        <div style="background: grey">
+          <six-theme-switcher size="xSmall"></six-theme-switcher>
+          <six-theme-switcher size="small"></six-theme-switcher>
+          <six-theme-switcher size="medium"></six-theme-switcher>
+          <six-theme-switcher size="large"></six-theme-switcher>
+          <six-theme-switcher size="xLarge"></six-theme-switcher>
+        </div>
+      </section>
+
+      <h2>Disabled</h2>
+
+      <p>Set the <code>disabled</code> attribute to disable the theme switcher.</p>
+
+      <section>
+        <div style="background: grey">
+          <six-theme-switcher disabled></six-theme-switcher>
+        </div>
+      </section>
+
+      <h2>Custom Label</h2>
+
+      <p>
+        Provide a custom label for screen readers using the <code>label</code> attribute. This improves accessibility.
+      </p>
+
+      <section>
+        <div style="background: grey">
+          <six-theme-switcher label="Switch between light and dark mode"></six-theme-switcher>
+        </div>
+      </section>
+
+      <h2>With Tooltip</h2>
+
+      <p>Wrap a tooltip around the theme switcher to provide contextual information to the user.</p>
+
+      <section>
+        <div style="background: grey">
+          <six-tooltip content="Toggle theme">
+            <six-theme-switcher></six-theme-switcher>
+          </six-tooltip>
+        </div>
+      </section>
+
+      <h2>In Header</h2>
+
+      <p>The theme switcher is commonly used in application headers.</p>
+
+      <section>
+        <div style="border: 1px solid var(--six-color-web-rock-300); border-radius: 4px">
+          <six-root>
+            <six-header slot="header">
+              <six-header-item>
+                <six-icon-button name="menu"></six-icon-button>
+              </six-header-item>
+
+              <six-header-item>
+                <six-logo></six-logo>
+              </six-header-item>
+
+              <six-header-item style="margin-left: auto">
+                <six-theme-switcher></six-theme-switcher>
+              </six-header-item>
+
+              <six-header-item>
+                <six-icon-button name="settings"></six-icon-button>
+              </six-header-item>
+            </six-header>
+          </six-root>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

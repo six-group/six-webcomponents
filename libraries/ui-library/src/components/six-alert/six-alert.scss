@@ -15,8 +15,8 @@
   position: relative;
   display: flex;
   align-items: stretch;
-  background-color: var(--six-color-white);
-  border: solid 1px var(--six-color-web-rock-200);
+  background-color: var(--six-alert-background-color);
+  border: solid 1px var(--six-alert-border-color);
   border-top-width: 3px;
   border-radius: var(--six-border-radius-medium);
   box-shadow: var(--box-shadow);
@@ -24,7 +24,7 @@
   font-size: var(--six-font-size-small);
   font-weight: var(--six-font-weight-normal);
   line-height: 1.6;
-  color: var(--six-color-web-rock-700);
+  color: var(--six-alert-color);
   opacity: 0;
   transform: scale(0.9);
   transition:
@@ -58,10 +58,10 @@
 }
 
 .alert--primary {
-  border-top-color: var(--six-color-web-rock-900);
+  border-top-color: var(--six-alert-primary-color);
 
   .alert__icon {
-    color: var(--six-color-web-rock-900);
+    color: var(--six-alert-primary-color);
   }
 }
 

@@ -60,6 +60,7 @@ export const DIRECTIVES = [
   d.SixTabPanel,
   d.SixTag,
   d.SixTextarea,
+  d.SixThemeSwitcher,
   d.SixTile,
   d.SixTimepicker,
   d.SixTooltip

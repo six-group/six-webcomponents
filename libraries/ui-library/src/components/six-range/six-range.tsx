@@ -252,7 +252,7 @@ export class SixRange {
       this.nativeInput.style.background =
         '-webkit-linear-gradient(left, var(--track-color) 0%, var(--track-color) ' +
         percent +
-        '%, var(--six-color-web-rock-300) ' +
+        '%, var(--six-range-track-color-disabled) ' +
         percent +
         '%)';
     }

@@ -18,12 +18,14 @@
   }
 
   &__left-sidebar {
+    background: var(--six-root-main-background-color);
     height: 100%;
     overflow: scroll;
     grid-column: 1 / 2;
   }
 
   &__right-sidebar {
+    background: var(--six-root-main-background-color);
     height: 100%;
     overflow: scroll;
     grid-column: 3 / 4;
@@ -39,17 +41,14 @@ header {
   position: sticky;
   top: 0;
   z-index: var(--six-z-index-header);
-  // border fix
-  margin-right: 2px;
 }
 
 main {
   height: 100%;
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
+  background: var(--six-root-main-background-color);
   grid-column: 2 / 3;
   overflow: auto;
 }

@@ -24,6 +24,7 @@ import { SixLanguageSwitcherChangePayload, SixLanguageSwitcherInput } from "./co
 import { SixMenuItemData as SixMenuItemData1, SixMenuItemSelectedPayload } from "./components/six-menu/six-menu";
 import { SixPaginatorPageChangedPayload, SixPaginatorResultsPerPageChangedPayload } from "./components/six-paginator/six-paginator";
 import { StageType } from "./components/six-stage-indicator/six-stage-indicator";
+import { SixTheme } from "./components/six-root/six-root";
 import { SixSearchFieldChangePayload } from "./components/six-search-field/six-search-field";
 import { SixSelectChangePayload } from "./components/six-select/six-select";
 import { StageType as StageType1 } from "./components/six-stage-indicator/six-stage-indicator";
@@ -49,6 +50,7 @@ export { SixLanguageSwitcherChangePayload, SixLanguageSwitcherInput } from "./co
 export { SixMenuItemData as SixMenuItemData1, SixMenuItemSelectedPayload } from "./components/six-menu/six-menu";
 export { SixPaginatorPageChangedPayload, SixPaginatorResultsPerPageChangedPayload } from "./components/six-paginator/six-paginator";
 export { StageType } from "./components/six-stage-indicator/six-stage-indicator";
+export { SixTheme } from "./components/six-root/six-root";
 export { SixSearchFieldChangePayload } from "./components/six-search-field/six-search-field";
 export { SixSelectChangePayload } from "./components/six-select/six-select";
 export { StageType as StageType1 } from "./components/six-stage-indicator/six-stage-indicator";
@@ -1791,15 +1793,32 @@ export namespace Components {
      */
     interface SixRoot {
         /**
+          * Gets the current theme and applied theme.
+         */
+        "getTheme": () => Promise<{ theme: SixTheme; appliedTheme: "light" | "dark"; }>;
+        /**
           * Defines whether the content section should be padded
           * @default true
          */
         "padded": boolean;
         /**
+          * Sets the theme.
+         */
+        "setTheme": (theme: SixTheme) => Promise<void>;
+        /**
           * Defines the stage of the application
           * @default null
          */
         "stage": StageType;
+        /**
+          * Defines the theme
+          * @default 'light'
+         */
+        "theme": SixTheme;
+        /**
+          * Toggles between light and dark theme.
+         */
+        "toggleTheme": () => Promise<void>;
         /**
           * Defines the version of the application
           * @default ''
@@ -2401,6 +2420,27 @@ export namespace Components {
         "value": string;
     }
     /**
+     * @since 5.0
+     * @status stable
+     */
+    interface SixThemeSwitcher {
+        /**
+          * Set to true to disable the theme switcher.
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * A description that gets read by screen readers.
+          * @default 'Toggle theme'
+         */
+        "label": string;
+        /**
+          * The icon button's size.
+          * @default 'medium'
+         */
+        "size": 'xSmall' | 'small' | 'medium' | 'large' | 'xLarge' | 'xxLarge' | 'xxxLarge';
+    }
+    /**
      * @since 1.0
      * @status stable
      */
@@ -2742,6 +2782,10 @@ export interface SixTagCustomEvent<T> extends CustomEvent<T> {
 export interface SixTextareaCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLSixTextareaElement;
+}
+export interface SixThemeSwitcherCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSixThemeSwitcherElement;
 }
 export interface SixTileCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -3697,6 +3741,27 @@ declare global {
         prototype: HTMLSixTextareaElement;
         new (): HTMLSixTextareaElement;
     };
+    interface HTMLSixThemeSwitcherElementEventMap {
+        "six-theme-switcher-change": EmptyPayload;
+    }
+    /**
+     * @since 5.0
+     * @status stable
+     */
+    interface HTMLSixThemeSwitcherElement extends Components.SixThemeSwitcher, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSixThemeSwitcherElementEventMap>(type: K, listener: (this: HTMLSixThemeSwitcherElement, ev: SixThemeSwitcherCustomEvent<HTMLSixThemeSwitcherElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSixThemeSwitcherElementEventMap>(type: K, listener: (this: HTMLSixThemeSwitcherElement, ev: SixThemeSwitcherCustomEvent<HTMLSixThemeSwitcherElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLSixThemeSwitcherElement: {
+        prototype: HTMLSixThemeSwitcherElement;
+        new (): HTMLSixThemeSwitcherElement;
+    };
     interface HTMLSixTileElementEventMap {
         "six-tile-closed": EmptyPayload;
         "six-tile-selected": EmptyPayload;
@@ -3826,6 +3891,7 @@ declare global {
         "six-tab-panel": HTMLSixTabPanelElement;
         "six-tag": HTMLSixTagElement;
         "six-textarea": HTMLSixTextareaElement;
+        "six-theme-switcher": HTMLSixThemeSwitcherElement;
         "six-tile": HTMLSixTileElement;
         "six-timepicker": HTMLSixTimepickerElement;
         "six-tooltip": HTMLSixTooltipElement;
@@ -5692,6 +5758,11 @@ declare namespace LocalJSX {
          */
         "stage"?: StageType;
         /**
+          * Defines the theme
+          * @default 'light'
+         */
+        "theme"?: SixTheme;
+        /**
           * Defines the version of the application
           * @default ''
          */
@@ -6308,6 +6379,31 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     /**
+     * @since 5.0
+     * @status stable
+     */
+    interface SixThemeSwitcher {
+        /**
+          * Set to true to disable the theme switcher.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * A description that gets read by screen readers.
+          * @default 'Toggle theme'
+         */
+        "label"?: string;
+        /**
+          * Emitted when the theme is changed.
+         */
+        "onSix-theme-switcher-change"?: (event: SixThemeSwitcherCustomEvent<EmptyPayload>) => void;
+        /**
+          * The icon button's size.
+          * @default 'medium'
+         */
+        "size"?: 'xSmall' | 'small' | 'medium' | 'large' | 'xLarge' | 'xxLarge' | 'xxxLarge';
+    }
+    /**
      * @since 1.0
      * @status stable
      */
@@ -6616,6 +6712,7 @@ declare namespace LocalJSX {
         "six-tab-panel": SixTabPanel;
         "six-tag": SixTag;
         "six-textarea": SixTextarea;
+        "six-theme-switcher": SixThemeSwitcher;
         "six-tile": SixTile;
         "six-timepicker": SixTimepicker;
         "six-tooltip": SixTooltip;
@@ -6925,6 +7022,11 @@ declare module "@stencil/core" {
              * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
              */
             "six-textarea": LocalJSX.SixTextarea & JSXBase.HTMLAttributes<HTMLSixTextareaElement>;
+            /**
+             * @since 5.0
+             * @status stable
+             */
+            "six-theme-switcher": LocalJSX.SixThemeSwitcher & JSXBase.HTMLAttributes<HTMLSixThemeSwitcherElement>;
             /**
              * @since 1.0
              * @status stable

@@ -46,6 +46,10 @@ const searchActive = ref(false);
         <six-icon-button name="search" @click="searchActive = !searchActive" />
       </six-header-item>
 
+      <six-header-item>
+        <six-theme-switcher label="Toggle Theme" />
+      </six-header-item>
+
       <!-- search input -->
       <six-search-field slot="search-field" :debounce="600" clearable />
 
