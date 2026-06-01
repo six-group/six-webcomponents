@@ -207,10 +207,10 @@ The icons are available in different sizes. Default size is medium (24px).
 
 ```html
 <div style="display: flex; gap: 1em; min-height: 6rem; align-items: center">
-  <six-icon size="xSmall" src="/assets/test.svg"></six-icon>
-  <six-icon size="small" src="/assets/test.svg"></six-icon>
-  <six-icon size="large" src="/assets/test.svg"></six-icon>
-  <six-icon size="xxLarge" src="/assets/test.svg"></six-icon>
+  <six-icon size="xSmall" src="/assets/demo-icon.svg"></six-icon>
+  <six-icon size="small" src="/assets/demo-icon.svg"></six-icon>
+  <six-icon size="large" src="/assets/demo-icon.svg"></six-icon>
+  <six-icon size="xxLarge" src="/assets/demo-icon.svg"></six-icon>
 </div>
 ```
 
@@ -221,10 +221,10 @@ The icons are available in different sizes. Default size is medium (24px).
 
 ```html
 <div style="display: flex; gap: 1em; min-height: 6rem; align-items: center; fill: red">
-  <six-icon size="xSmall" src="/assets/test.svg" inline-svg></six-icon>
-  <six-icon size="small" src="/assets/test.svg" inline-svg></six-icon>
-  <six-icon size="large" src="/assets/test.svg" inline-svg></six-icon>
-  <six-icon size="xxLarge" src="/assets/test.svg" inline-svg></six-icon>
+  <six-icon size="xSmall" src="/assets/demo-icon.svg" inline-svg></six-icon>
+  <six-icon size="small" src="/assets/demo-icon.svg" inline-svg></six-icon>
+  <six-icon size="large" src="/assets/demo-icon.svg" inline-svg></six-icon>
+  <six-icon size="xxLarge" src="/assets/demo-icon.svg" inline-svg></six-icon>
 </div>
 ```
 

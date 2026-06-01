@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## Upcoming
 
 - `six-breadcrumbs` new style aligned with design guidelines. Added `size` interface property.
+- `six-icon`: Support for custom SVGs via new `src` and `inline-svg` props.
 
 ## 5.4.0 - 2026-03-12
 
