@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <defs>
+    <!-- Symbol used by your <use href="...#img"> logic -->
+    <symbol id="img" viewBox="0 0 24 24">
+      <!-- Outer circle -->
+      <circle cx="12" cy="12" r="10" />
+
+      <!-- Inner "check" mark -->
+      <path
+        d="M9.5 12.5 11 14l3.5-4"
+        fill="none"
+        stroke="white"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </symbol>
+  </defs>
+
+  <!-- This makes it render when used directly as <img src="demo-icon.svg"> -->
+  <use href="#img" />
+</svg>

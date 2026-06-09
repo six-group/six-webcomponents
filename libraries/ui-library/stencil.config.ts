@@ -121,7 +121,7 @@ export const config: Config = {
           dest: 'build/files',
           warn: true,
         },
-
+        { src: 'components/**/assets/**/*', dest: 'assets', warn: true },
         { src: '**/*.html' },
         { src: '**/*.scss' },
       ],
