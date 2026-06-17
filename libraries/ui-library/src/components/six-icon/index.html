@@ -7,13 +7,6 @@
     <script nomodule src="/build/ui-library.js"></script>
     <link rel="stylesheet" href="/build/ui-library.css" />
     <title>six-icon</title>
-
-    <script type="module">
-      document.addEventListener('DOMContentLoaded', () => {
-        // Set Material Symbols as the default for all <six-icon>
-        window.six.setDefaultIconLibrary('material-symbols');
-      });
-    </script>
   </head>
 
   <body>
@@ -34,8 +27,8 @@
           <six-icon>pie_chart</six-icon>
           <six-icon>settings</six-icon>
           <six-icon>sick</six-icon>
-          <six-icon>fort</six-icon>
-          <six-icon>castle</six-icon>
+          <six-icon name="fort"></six-icon>
+          <six-icon name="castle"></six-icon>
         </div>
       </section>
 
@@ -169,6 +162,26 @@
           <span style="font-size: 3rem">
             <six-icon size="inherit" symbols filled>search</six-icon>
           </span>
+        </div>
+      </section>
+
+      <h4>Custom SVG</h4>
+      <section>
+        <div style="display: flex; gap: 1em; min-height: 6rem; align-items: center">
+          <six-icon size="xSmall" src="/assets/demo-icon.svg"></six-icon>
+          <six-icon size="small" src="/assets/demo-icon.svg"></six-icon>
+          <six-icon size="large" src="/assets/demo-icon.svg"></six-icon>
+          <six-icon size="xxLarge" src="/assets/demo-icon.svg"></six-icon>
+        </div>
+      </section>
+
+      <h4>Custom SVG inline</h4>
+      <section>
+        <div style="display: flex; gap: 1em; min-height: 6rem; align-items: center; fill: red">
+          <six-icon size="xSmall" src="/assets/demo-icon.svg" inline-svg></six-icon>
+          <six-icon size="small" src="/assets/demo-icon.svg" inline-svg></six-icon>
+          <six-icon size="large" src="/assets/demo-icon.svg" inline-svg></six-icon>
+          <six-icon size="xxLarge" src="/assets/demo-icon.svg" inline-svg></six-icon>
         </div>
       </section>
     </div>
