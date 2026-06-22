@@ -23,9 +23,6 @@ jobs:
 
   e2e-tests:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      code-quality: write
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
@@ -54,18 +51,11 @@ jobs:
           retention-days: 30
 
       - name: code coverage report
-        uses: actions/upload-code-coverage@v1
+        uses: colinscz/cobertura-action@master
+        if: github.event_name == 'pull_request' && !cancelled()
         with:
-          file: libraries/ui-library/coverage/cobertura-coverage.xml
-          language: Typescript
-          label: code-coverage/jacoco
-
-  #      - name: code coverage report
-  #        uses: 5monkeys/cobertura-action@master
-  #        if: github.event_name == 'pull_request' && !cancelled()
-  #        with:
-  #          path: libraries/ui-library/coverage/cobertura-coverage.xml
-  #          minimum_coverage: 0
+          path: libraries/ui-library/coverage/cobertura-coverage.xml
+          minimum_coverage: 0
 
   build:
     runs-on: ubuntu-latest
