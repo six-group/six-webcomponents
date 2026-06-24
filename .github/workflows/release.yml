@@ -124,13 +124,14 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: 'Create GitHub release'
-        uses: actions/create-release@latest
+        uses: softprops/action-gh-release@v3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ inputs.version }}
-          release_name: '${{ inputs.version }}'
-          body: '${{ inputs.version }}'
+          name: '${{ inputs.version }}'
+          generate_release_notes: true
+          make_latest: true
 
       - name: 'Deploy Documentation'
         uses: JamesIves/github-pages-deploy-action@v4

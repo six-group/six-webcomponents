@@ -1,6 +1,6 @@
 {
   "name": "@six-group/workspace",
-  "version": "5.4.0",
+  "version": "5.5.0-rc.1",
   "scripts": {
     "start": "npm run start -w libraries/ui-library",
     "watch:lib": "npm run watch -w libraries/ui-library",
@@ -48,8 +48,8 @@
     "eslint-plugin-prettier": "^5.5.5",
     "jest": "^29.7.0",
     "jest-cli": "^29.7.0",
-    "npm-run-all2": "^8.0.4",
-    "pkg-pr-new": "^0.0.66",
+    "npm-run-all2": "^9.0.0",
+    "pkg-pr-new": "^0.0.75",
     "prettier": "^3.8.1",
     "typescript": "^5.9.3"
   },

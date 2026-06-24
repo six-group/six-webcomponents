@@ -334,6 +334,7 @@
   six-spinner {
     --indicator-color: currentColor;
     position: absolute;
+    font-size: inherit;
     height: 1em;
     width: 1em;
     top: calc(50% - 0.5em);
