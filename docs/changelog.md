@@ -18,6 +18,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- Added the ability to disable the `ValidationService` on Angular. See
+  [docs](./guide/angular.md#customisingdisabling-validationservice) for more details.
+- `six-root`: Added theme support (dark/light/auto) in coordination with design team.
 - Added param library to choose the icon library also in `six-icon-button` and `six-tile` (default
   is material-icons)
 - New `six-paginator` component (experimental).

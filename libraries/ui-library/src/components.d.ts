@@ -24,6 +24,7 @@ import { SixLanguageSwitcherChangePayload, SixLanguageSwitcherInput } from "./co
 import { SixMenuItemData as SixMenuItemData1, SixMenuItemSelectedPayload } from "./components/six-menu/six-menu";
 import { SixPaginatorPageChangedPayload, SixPaginatorResultsPerPageChangedPayload } from "./components/six-paginator/six-paginator";
 import { StageType } from "./components/six-stage-indicator/six-stage-indicator";
+import { SixTheme } from "./components/six-root/six-root";
 import { SixSearchFieldChangePayload } from "./components/six-search-field/six-search-field";
 import { SixSelectChangePayload } from "./components/six-select/six-select";
 import { StageType as StageType1 } from "./components/six-stage-indicator/six-stage-indicator";
@@ -49,6 +50,7 @@ export { SixLanguageSwitcherChangePayload, SixLanguageSwitcherInput } from "./co
 export { SixMenuItemData as SixMenuItemData1, SixMenuItemSelectedPayload } from "./components/six-menu/six-menu";
 export { SixPaginatorPageChangedPayload, SixPaginatorResultsPerPageChangedPayload } from "./components/six-paginator/six-paginator";
 export { StageType } from "./components/six-stage-indicator/six-stage-indicator";
+export { SixTheme } from "./components/six-root/six-root";
 export { SixSearchFieldChangePayload } from "./components/six-search-field/six-search-field";
 export { SixSelectChangePayload } from "./components/six-select/six-select";
 export { StageType as StageType1 } from "./components/six-stage-indicator/six-stage-indicator";
@@ -1815,15 +1817,32 @@ export namespace Components {
      */
     interface SixRoot {
         /**
+          * Gets the current theme and applied theme.
+         */
+        "getTheme": () => Promise<{ theme: SixTheme; appliedTheme: "light" | "dark"; }>;
+        /**
           * Defines whether the content section should be padded
           * @default true
          */
         "padded": boolean;
         /**
+          * Sets the theme.
+         */
+        "setTheme": (theme: SixTheme) => Promise<void>;
+        /**
           * Defines the stage of the application
           * @default null
          */
         "stage": StageType;
+        /**
+          * Defines the theme
+          * @default 'light'
+         */
+        "theme": SixTheme;
+        /**
+          * Toggles between light and dark theme.
+         */
+        "toggleTheme": () => Promise<void>;
         /**
           * Defines the version of the application
           * @default ''
@@ -2425,6 +2444,27 @@ export namespace Components {
         "value": string;
     }
     /**
+     * @since 5.0
+     * @status stable
+     */
+    interface SixThemeSwitcher {
+        /**
+          * Set to true to disable the theme switcher.
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * A description that gets read by screen readers.
+          * @default 'Toggle theme'
+         */
+        "label": string;
+        /**
+          * The icon button's size.
+          * @default 'medium'
+         */
+        "size": 'xSmall' | 'small' | 'medium' | 'large' | 'xLarge' | 'xxLarge' | 'xxxLarge';
+    }
+    /**
      * @since 1.0
      * @status stable
      */
@@ -2766,6 +2806,10 @@ export interface SixTagCustomEvent<T> extends CustomEvent<T> {
 export interface SixTextareaCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLSixTextareaElement;
+}
+export interface SixThemeSwitcherCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSixThemeSwitcherElement;
 }
 export interface SixTileCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -3732,6 +3776,27 @@ declare global {
         prototype: HTMLSixTextareaElement;
         new (): HTMLSixTextareaElement;
     };
+    interface HTMLSixThemeSwitcherElementEventMap {
+        "six-theme-switcher-change": EmptyPayload;
+    }
+    /**
+     * @since 5.0
+     * @status stable
+     */
+    interface HTMLSixThemeSwitcherElement extends Components.SixThemeSwitcher, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSixThemeSwitcherElementEventMap>(type: K, listener: (this: HTMLSixThemeSwitcherElement, ev: SixThemeSwitcherCustomEvent<HTMLSixThemeSwitcherElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSixThemeSwitcherElementEventMap>(type: K, listener: (this: HTMLSixThemeSwitcherElement, ev: SixThemeSwitcherCustomEvent<HTMLSixThemeSwitcherElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLSixThemeSwitcherElement: {
+        prototype: HTMLSixThemeSwitcherElement;
+        new (): HTMLSixThemeSwitcherElement;
+    };
     interface HTMLSixTileElementEventMap {
         "six-tile-closed": EmptyPayload;
         "six-tile-selected": EmptyPayload;
@@ -3861,14 +3926,13 @@ declare global {
         "six-tab-panel": HTMLSixTabPanelElement;
         "six-tag": HTMLSixTagElement;
         "six-textarea": HTMLSixTextareaElement;
+        "six-theme-switcher": HTMLSixThemeSwitcherElement;
         "six-tile": HTMLSixTileElement;
         "six-timepicker": HTMLSixTimepickerElement;
         "six-tooltip": HTMLSixTooltipElement;
     }
 }
 declare namespace LocalJSX {
-    type OneOf<K extends string, PropT, AttrT = PropT> = { [P in K]: PropT } & { [P in `attr:${K}` | `prop:${K}`]?: never } | { [P in `attr:${K}`]: AttrT } & { [P in K | `prop:${K}`]?: never } | { [P in `prop:${K}`]: PropT } & { [P in K | `attr:${K}`]?: never };
-
     /**
      * @since 1.0
      * @status stable
@@ -5753,6 +5817,11 @@ declare namespace LocalJSX {
          */
         "stage"?: StageType;
         /**
+          * Defines the theme
+          * @default 'light'
+         */
+        "theme"?: SixTheme;
+        /**
           * Defines the version of the application
           * @default ''
          */
@@ -6369,6 +6438,31 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     /**
+     * @since 5.0
+     * @status stable
+     */
+    interface SixThemeSwitcher {
+        /**
+          * Set to true to disable the theme switcher.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * A description that gets read by screen readers.
+          * @default 'Toggle theme'
+         */
+        "label"?: string;
+        /**
+          * Emitted when the theme is changed.
+         */
+        "onSix-theme-switcher-change"?: (event: SixThemeSwitcherCustomEvent<EmptyPayload>) => void;
+        /**
+          * The icon button's size.
+          * @default 'medium'
+         */
+        "size"?: 'xSmall' | 'small' | 'medium' | 'large' | 'xLarge' | 'xxLarge' | 'xxxLarge';
+    }
+    /**
      * @since 1.0
      * @status stable
      */
@@ -6618,616 +6712,69 @@ declare namespace LocalJSX {
          */
         "trigger"?: string;
     }
-
-    interface SixAlertAttributes {
-        "open": boolean;
-        "closable": boolean;
-        "type": AlertType;
-        "duration": number;
-    }
-    interface SixAvatarAttributes {
-        "image": string;
-        "alt": string;
-        "initials": string;
-        "shape": 'circle' | 'square' | 'rounded';
-    }
-    interface SixBadgeAttributes {
-        "type": 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'info' | 'action';
-        "pill": boolean;
-        "pulse": boolean;
-    }
-    interface SixBreadcrumbsAttributes {
-        "size": 'small' | 'medium' | 'large';
-        "separatorIcon": string;
-    }
-    interface SixBreadcrumbsItemAttributes {
-        "href": string;
-        "target": '_blank' | '_parent' | '_self' | '_top';
-        "readonly": boolean;
-    }
-    interface SixButtonAttributes {
-        "type": | 'secondary'
-    | 'primary'
-    | 'link'
-    | 'success'
-    | 'warning'
-    | 'danger'
-    | 'action'
-    | 'action-outline';
-        "size": 'small' | 'medium' | 'large';
-        "caret": boolean;
-        "disabled": boolean;
-        "loading": boolean;
-        "pill": boolean;
-        "circle": boolean;
-        "submit": boolean;
-        "reset": boolean;
-        "name": string;
-        "value": string;
-        "href": string;
-        "target": '_blank' | '_parent' | '_self' | '_top';
-        "download": string;
-    }
-    interface SixCheckboxAttributes {
-        "name": string;
-        "value": string;
-        "disabled": boolean;
-        "required": boolean;
-        "label": string;
-        "errorText": string | string[];
-        "errorTextCount": number;
-        "invalid": boolean;
-        "checked": boolean;
-        "indeterminate": boolean;
-    }
-    interface SixDateAttributes {
-        "language": Language;
-        "readonly": boolean;
-        "disabled": boolean;
-        "min": string;
-        "max": string;
-        "size": 'small' | 'medium' | 'large';
-        "required": boolean;
-        "placeholder": string;
-        "value": string | '';
-        "dateFormat": string;
-        "label": string;
-        "helpText": string;
-        "errorText": string | string[];
-        "errorTextCount": number;
-        "invalid": boolean;
-        "name": string;
-        "clearable": boolean;
-    }
-    interface SixDatepickerAttributes {
-        "type": 'date' | 'date-time';
-        "locale": 'en' | 'de' | 'fr' | 'it' | 'es';
-        "open": boolean;
-        "inline": boolean;
-        "readonly": boolean;
-        "disabled": boolean;
-        "closeOnSelect": boolean;
-        "placement": 'top' | 'bottom';
-        "size": 'small' | 'medium' | 'large';
-        "required": boolean;
-        "defaultDate": string;
-        "placeholder": string;
-        "label": string;
-        "errorText": string | string[];
-        "errorTextCount": number;
-        "invalid": boolean;
-        "dateFormat": SixDateFormats;
-        "debounce": number;
-        "name": string;
-        "clearable": boolean;
-        "iconPosition": 'left' | 'right';
-        "hoist": boolean;
-    }
-    interface SixDetailsAttributes {
-        "open": boolean;
-        "summary": string;
-        "summaryIcon": string;
-        "summaryIconSize": | 'inherit'
-    | 'xSmall'
-    | 'small'
-    | 'medium'
-    | 'large'
-    | 'xLarge'
-    | 'xxLarge'
-    | 'xxxLarge';
-        "disabled": boolean;
-        "inline": boolean;
-        "selectableEmpty": boolean;
-        "hasContent": boolean;
-    }
-    interface SixDialogAttributes {
-        "open": boolean;
-        "label": string;
-        "noHeader": boolean;
-    }
-    interface SixDrawerAttributes {
-        "open": boolean;
-        "label": string;
-        "placement": 'top' | 'right' | 'bottom' | 'left';
-        "contained": boolean;
-        "noHeader": boolean;
-    }
-    interface SixDropdownAttributes {
-        "open": boolean;
-        "placement": | 'top'
-    | 'top-start'
-    | 'top-end'
-    | 'bottom'
-    | 'bottom-start'
-    | 'bottom-end'
-    | 'right'
-    | 'right-start'
-    | 'right-end'
-    | 'left'
-    | 'left-start'
-    | 'left-end';
-        "closeOnSelect": boolean;
-        "distance": number;
-        "skidding": number;
-        "hoist": boolean;
-        "filter": boolean;
-        "noScroll": boolean;
-        "asyncFilter": boolean;
-        "filterPlaceholder": string;
-        "autofocusFilter": boolean;
-        "filterDebounce": number;
-        "disableHideOnEnterAndSpace": boolean;
-        "disableTypeToSelect": boolean;
-        "virtualScroll": boolean;
-        "matchTriggerWidth": boolean;
-    }
-    interface SixErrorPageAttributes {
-        "errorCode": 404 | 403 | 500;
-        "language": 'en' | 'de';
-        "customTitle": string;
-        "customIcon": string;
-    }
-    interface SixFileListItemAttributes {
-        "identifier": string;
-        "name": string;
-        "date": string;
-        "size": number;
-        "nodownload": boolean;
-        "nodelete": boolean;
-    }
-    interface SixFileUploadAttributes {
-        "compact": boolean;
-        "label": string;
-        "disabled": false;
-        "accept": string;
-        "multiple": false;
-        "maxFileSize": number;
-        "uploading": boolean;
-        "errorText": string | string[];
-        "invalid": boolean;
-    }
-    interface SixGroupLabelAttributes {
-        "size": 'small' | 'medium' | 'large';
-        "label": string;
-        "helpText": string;
-        "disabled": boolean;
-        "required": boolean;
-    }
-    interface SixHeaderAttributes {
-        "shiftContent": boolean;
-        "openSearch": boolean;
-    }
-    interface SixHeaderDropdownItemAttributes {
-        "filter": boolean;
-        "filterPlaceholder": string;
-    }
-    interface SixHeaderItemAttributes {
-        "active": boolean;
-    }
-    interface SixHeaderMenuButtonAttributes {
-        "caret": boolean;
-        "disabled": boolean;
-        "loading": boolean;
-        "submit": boolean;
-        "reset": boolean;
-    }
-    interface SixIconAttributes {
-        "name": string;
-        "src": string;
-        "inlineSvg": boolean;
-        "size": | 'inherit'
-    | 'xSmall'
-    | 'small'
-    | 'medium'
-    | 'large'
-    | 'xLarge'
-    | 'xxLarge'
-    | 'xxxLarge';
-        "filled": boolean;
-        "library": IconLibrary;
-    }
-    interface SixIconButtonAttributes {
-        "name": string;
-        "size": 'xSmall' | 'small' | 'medium' | 'large' | 'xLarge' | 'xxLarge' | 'xxxLarge';
-        "label": string;
-        "disabled": boolean;
-        "html": string;
-        "href": string;
-        "target": '_blank' | '_parent' | '_self' | '_top';
-        "download": string;
-        "library": IconLibrary;
-    }
-    interface SixInputAttributes {
-        "type": 'email' | 'number' | 'password' | 'search' | 'tel' | 'text' | 'url';
-        "size": 'small' | 'medium' | 'large';
-        "name": string;
-        "value": string;
-        "pill": boolean;
-        "helpText": string;
-        "placeholder": string;
-        "disabled": boolean;
-        "readonly": boolean;
-        "minlength": number;
-        "maxlength": number;
-        "min": number;
-        "max": number;
-        "step": number;
-        "pattern": string;
-        "dropdownSearch": boolean;
-        "required": boolean;
-        "autocapitalize": string;
-        "autocorrect": boolean;
-        "autocomplete": string;
-        "autofocus": boolean;
-        "spellcheck": boolean;
-        "label": string;
-        "errorText": string | string[];
-        "errorTextCount": number;
-        "invalid": boolean;
-        "clearable": boolean;
-        "togglePassword": boolean;
-        "inputmode": 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
-        "line": boolean;
-    }
-    interface SixItemPickerAttributes {
-        "value": string;
-        "type": ItemPickerType;
-        "min": string;
-        "max": string;
-        "roundtrip": boolean;
-        "step": number;
-        "padded": boolean;
-        "paddingLength": number;
-        "paddingChar": string;
-        "paddingDirection": ItemPickerPaddingDirection;
-        "timeout": number;
-        "interval": number;
-        "debounce": number;
-    }
-    interface SixLanguageSwitcherAttributes {
-        "selected": string;
-    }
-    interface SixLayoutGridAttributes {
-        "columns": number;
-    }
-    interface SixLogoAttributes {
-        "brand": 'six' | 'bme';
-    }
-    interface SixMainContainerAttributes {
-        "padded": boolean;
-    }
-    interface SixMenuAttributes {
-        "removeBoxShadow": boolean;
-        "itemsShown": number;
-        "virtualScroll": boolean;
-        "itemSize": number;
-        "scrollingDebounce": number;
-        "disableKeyboardHandling": boolean;
-    }
-    interface SixMenuItemAttributes {
-        "checkType": 'checkbox' | 'check';
-        "checked": boolean;
-        "value": string;
-        "disabled": boolean;
-    }
-    interface SixPaginatorAttributes {
-        "currentPage": number;
-        "totalPages": number;
-        "totalResults": number;
-        "resultsPerPage": number;
-        "length": number;
-        "clamp": boolean;
-        "disabled": boolean;
-    }
-    interface SixPictoAttributes {
-        "size": 'xSmall' | 'small' | 'medium' | 'large' | 'xLarge' | 'xxLarge' | 'xxxLarge' | '4xl';
-    }
-    interface SixProgressBarAttributes {
-        "percentage": number;
-        "indeterminate": boolean;
-    }
-    interface SixProgressRingAttributes {
-        "size": number;
-        "strokeWidth": number;
-        "percentage": number;
-    }
-    interface SixRadioAttributes {
-        "name": string;
-        "value": string;
-        "disabled": boolean;
-        "checked": boolean;
-        "invalid": boolean;
-    }
-    interface SixRangeAttributes {
-        "name": string;
-        "value": number;
-        "required": boolean;
-        "helpText": string;
-        "disabled": boolean;
-        "label": string;
-        "errorText": string | string[];
-        "errorTextCount": number;
-        "invalid": boolean;
-        "min": number;
-        "max": number;
-        "step": number;
-        "tooltip": 'top' | 'bottom' | 'none';
-    }
-    interface SixRatingAttributes {
-        "name": string;
-        "value": number;
-        "disabled": boolean;
-        "required": boolean;
-        "label": string;
-        "errorText": string | string[];
-        "errorTextCount": number;
-        "invalid": boolean;
-        "max": number;
-        "size": 'xSmall' | 'small' | 'medium' | 'large' | 'xLarge' | 'xxLarge' | 'xxxLarge';
-        "readonly": boolean;
-        "helpText": string;
-    }
-    interface SixRootAttributes {
-        "padded": boolean;
-        "stage": StageType;
-        "version": string;
-    }
-    interface SixSearchFieldAttributes {
-        "placeholder": string;
-        "debounce": number;
-        "disabled": boolean;
-        "value": string;
-        "clearable": boolean;
-    }
-    interface SixSelectAttributes {
-        "multiple": boolean;
-        "selectAllButton": boolean;
-        "selectAllText": string;
-        "disabled": boolean;
-        "name": string;
-        "placeholder": string;
-        "filterPlaceholder": string;
-        "filterDebounce": number;
-        "size": 'small' | 'medium' | 'large';
-        "hoist": boolean;
-        "value": string | string[];
-        "pill": boolean;
-        "helpText": string;
-        "required": boolean;
-        "clearable": boolean;
-        "label": string;
-        "errorText": string | string[];
-        "errorTextCount": number;
-        "invalid": boolean;
-        "line": boolean;
-        "filter": boolean;
-        "asyncFilter": boolean;
-        "autocomplete": boolean;
-        "inputDebounce": number;
-        "virtualScroll": boolean;
-    }
-    interface SixSidebarAttributes {
-        "position": 'left' | 'right';
-        "open": boolean;
-        "width": string;
-        "toggled": boolean;
-    }
-    interface SixSidebarItemAttributes {
-        "value": string;
-        "selected": boolean;
-        "disabled": boolean;
-        "icon": string;
-        "href": string | undefined;
-    }
-    interface SixSidebarItemGroupAttributes {
-        "name": string;
-        "icon": string;
-        "value": string;
-        "open": boolean;
-        "summaryIcon": string;
-        "href": string | undefined;
-    }
-    interface SixSpinnerAttributes {
-        "logo": 'six' | 'bme';
-        "six": boolean;
-    }
-    interface SixStageIndicatorAttributes {
-        "stage": StageType;
-    }
-    interface SixSwitchAttributes {
-        "name": string;
-        "value": string;
-        "disabled": boolean;
-        "required": boolean;
-        "checked": boolean;
-        "label": string;
-        "errorText": string | string[];
-        "errorTextCount": number;
-        "invalid": boolean;
-    }
-    interface SixTabAttributes {
-        "panel": string;
-        "active": boolean;
-        "closable": boolean;
-        "hoverContent": string;
-        "disabled": boolean;
-    }
-    interface SixTabGroupAttributes {
-        "placement": 'top' | 'bottom' | 'left' | 'right';
-        "noScrollControls": boolean;
-    }
-    interface SixTabPanelAttributes {
-        "name": string;
-        "active": boolean;
-    }
-    interface SixTagAttributes {
-        "type": 'primary' | 'success' | 'info' | 'warning' | 'danger' | 'action' | 'text';
-        "size": 'small' | 'medium' | 'large';
-        "pill": boolean;
-        "clearable": boolean;
-    }
-    interface SixTextareaAttributes {
-        "size": 'small' | 'medium' | 'large';
-        "name": string;
-        "value": string;
-        "helpText": string;
-        "placeholder": string;
-        "rows": number;
-        "resize": 'none' | 'vertical' | 'auto';
-        "disabled": boolean;
-        "readonly": boolean;
-        "minlength": number;
-        "maxlength": number;
-        "required": boolean;
-        "label": string;
-        "errorText": string | string[];
-        "errorTextCount": number;
-        "invalid": boolean;
-        "autocapitalize": string;
-        "autocorrect": boolean;
-        "autocomplete": string;
-        "autofocus": boolean;
-        "spellcheck": boolean;
-        "inputmode": 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
-    }
-    interface SixTileAttributes {
-        "label": string;
-        "iconName": string;
-        "closeable": boolean;
-        "elevated": boolean;
-        "disableTooltip": boolean;
-        "disabled": boolean;
-        "size": 'small' | 'medium' | 'large';
-        "library": IconLibrary;
-    }
-    interface SixTimepickerAttributes {
-        "format": TimeFormat;
-        "separator": string;
-        "value": string;
-        "open": boolean;
-        "inline": boolean;
-        "readonly": boolean;
-        "disabled": boolean;
-        "placement": 'top' | 'bottom';
-        "size": 'small' | 'medium' | 'large';
-        "required": boolean;
-        "placeholder": string;
-        "errorText": string | string[];
-        "errorTextCount": number;
-        "label": string;
-        "invalid": boolean;
-        "name": string;
-        "clearable": boolean;
-        "iconPosition": 'left' | 'right';
-        "hoist": boolean;
-        "timeout": number;
-        "interval": number;
-        "defaultTime": string;
-        "debounce": number;
-    }
-    interface SixTooltipAttributes {
-        "content": string;
-        "placement": | 'top'
-    | 'top-start'
-    | 'top-end'
-    | 'right'
-    | 'right-start'
-    | 'right-end'
-    | 'bottom'
-    | 'bottom-start'
-    | 'bottom-end'
-    | 'left'
-    | 'left-start'
-    | 'left-end';
-        "disabled": boolean;
-        "distance": number;
-        "open": boolean;
-        "skidding": number;
-        "trigger": string;
-    }
-
     interface IntrinsicElements {
-        "six-alert": Omit<SixAlert, keyof SixAlertAttributes> & { [K in keyof SixAlert & keyof SixAlertAttributes]?: SixAlert[K] } & { [K in keyof SixAlert & keyof SixAlertAttributes as `attr:${K}`]?: SixAlertAttributes[K] } & { [K in keyof SixAlert & keyof SixAlertAttributes as `prop:${K}`]?: SixAlert[K] };
-        "six-avatar": Omit<SixAvatar, keyof SixAvatarAttributes> & { [K in keyof SixAvatar & keyof SixAvatarAttributes]?: SixAvatar[K] } & { [K in keyof SixAvatar & keyof SixAvatarAttributes as `attr:${K}`]?: SixAvatarAttributes[K] } & { [K in keyof SixAvatar & keyof SixAvatarAttributes as `prop:${K}`]?: SixAvatar[K] };
-        "six-badge": Omit<SixBadge, keyof SixBadgeAttributes> & { [K in keyof SixBadge & keyof SixBadgeAttributes]?: SixBadge[K] } & { [K in keyof SixBadge & keyof SixBadgeAttributes as `attr:${K}`]?: SixBadgeAttributes[K] } & { [K in keyof SixBadge & keyof SixBadgeAttributes as `prop:${K}`]?: SixBadge[K] };
-        "six-breadcrumbs": Omit<SixBreadcrumbs, keyof SixBreadcrumbsAttributes> & { [K in keyof SixBreadcrumbs & keyof SixBreadcrumbsAttributes]?: SixBreadcrumbs[K] } & { [K in keyof SixBreadcrumbs & keyof SixBreadcrumbsAttributes as `attr:${K}`]?: SixBreadcrumbsAttributes[K] } & { [K in keyof SixBreadcrumbs & keyof SixBreadcrumbsAttributes as `prop:${K}`]?: SixBreadcrumbs[K] };
-        "six-breadcrumbs-item": Omit<SixBreadcrumbsItem, keyof SixBreadcrumbsItemAttributes> & { [K in keyof SixBreadcrumbsItem & keyof SixBreadcrumbsItemAttributes]?: SixBreadcrumbsItem[K] } & { [K in keyof SixBreadcrumbsItem & keyof SixBreadcrumbsItemAttributes as `attr:${K}`]?: SixBreadcrumbsItemAttributes[K] } & { [K in keyof SixBreadcrumbsItem & keyof SixBreadcrumbsItemAttributes as `prop:${K}`]?: SixBreadcrumbsItem[K] };
-        "six-button": Omit<SixButton, keyof SixButtonAttributes> & { [K in keyof SixButton & keyof SixButtonAttributes]?: SixButton[K] } & { [K in keyof SixButton & keyof SixButtonAttributes as `attr:${K}`]?: SixButtonAttributes[K] } & { [K in keyof SixButton & keyof SixButtonAttributes as `prop:${K}`]?: SixButton[K] };
+        "six-alert": SixAlert;
+        "six-avatar": SixAvatar;
+        "six-badge": SixBadge;
+        "six-breadcrumbs": SixBreadcrumbs;
+        "six-breadcrumbs-item": SixBreadcrumbsItem;
+        "six-button": SixButton;
         "six-card": SixCard;
-        "six-checkbox": Omit<SixCheckbox, keyof SixCheckboxAttributes> & { [K in keyof SixCheckbox & keyof SixCheckboxAttributes]?: SixCheckbox[K] } & { [K in keyof SixCheckbox & keyof SixCheckboxAttributes as `attr:${K}`]?: SixCheckboxAttributes[K] } & { [K in keyof SixCheckbox & keyof SixCheckboxAttributes as `prop:${K}`]?: SixCheckbox[K] };
-        "six-date": Omit<SixDate, keyof SixDateAttributes> & { [K in keyof SixDate & keyof SixDateAttributes]?: SixDate[K] } & { [K in keyof SixDate & keyof SixDateAttributes as `attr:${K}`]?: SixDateAttributes[K] } & { [K in keyof SixDate & keyof SixDateAttributes as `prop:${K}`]?: SixDate[K] };
-        "six-datepicker": Omit<SixDatepicker, keyof SixDatepickerAttributes> & { [K in keyof SixDatepicker & keyof SixDatepickerAttributes]?: SixDatepicker[K] } & { [K in keyof SixDatepicker & keyof SixDatepickerAttributes as `attr:${K}`]?: SixDatepickerAttributes[K] } & { [K in keyof SixDatepicker & keyof SixDatepickerAttributes as `prop:${K}`]?: SixDatepicker[K] };
-        "six-details": Omit<SixDetails, keyof SixDetailsAttributes> & { [K in keyof SixDetails & keyof SixDetailsAttributes]?: SixDetails[K] } & { [K in keyof SixDetails & keyof SixDetailsAttributes as `attr:${K}`]?: SixDetailsAttributes[K] } & { [K in keyof SixDetails & keyof SixDetailsAttributes as `prop:${K}`]?: SixDetails[K] };
-        "six-dialog": Omit<SixDialog, keyof SixDialogAttributes> & { [K in keyof SixDialog & keyof SixDialogAttributes]?: SixDialog[K] } & { [K in keyof SixDialog & keyof SixDialogAttributes as `attr:${K}`]?: SixDialogAttributes[K] } & { [K in keyof SixDialog & keyof SixDialogAttributes as `prop:${K}`]?: SixDialog[K] };
-        "six-drawer": Omit<SixDrawer, keyof SixDrawerAttributes> & { [K in keyof SixDrawer & keyof SixDrawerAttributes]?: SixDrawer[K] } & { [K in keyof SixDrawer & keyof SixDrawerAttributes as `attr:${K}`]?: SixDrawerAttributes[K] } & { [K in keyof SixDrawer & keyof SixDrawerAttributes as `prop:${K}`]?: SixDrawer[K] };
-        "six-dropdown": Omit<SixDropdown, keyof SixDropdownAttributes> & { [K in keyof SixDropdown & keyof SixDropdownAttributes]?: SixDropdown[K] } & { [K in keyof SixDropdown & keyof SixDropdownAttributes as `attr:${K}`]?: SixDropdownAttributes[K] } & { [K in keyof SixDropdown & keyof SixDropdownAttributes as `prop:${K}`]?: SixDropdown[K] };
+        "six-checkbox": SixCheckbox;
+        "six-date": SixDate;
+        "six-datepicker": SixDatepicker;
+        "six-details": SixDetails;
+        "six-dialog": SixDialog;
+        "six-drawer": SixDrawer;
+        "six-dropdown": SixDropdown;
         "six-error": SixError;
-        "six-error-page": Omit<SixErrorPage, keyof SixErrorPageAttributes> & { [K in keyof SixErrorPage & keyof SixErrorPageAttributes]?: SixErrorPage[K] } & { [K in keyof SixErrorPage & keyof SixErrorPageAttributes as `attr:${K}`]?: SixErrorPageAttributes[K] } & { [K in keyof SixErrorPage & keyof SixErrorPageAttributes as `prop:${K}`]?: SixErrorPage[K] };
+        "six-error-page": SixErrorPage;
         "six-file-list": SixFileList;
-        "six-file-list-item": Omit<SixFileListItem, keyof SixFileListItemAttributes> & { [K in keyof SixFileListItem & keyof SixFileListItemAttributes]?: SixFileListItem[K] } & { [K in keyof SixFileListItem & keyof SixFileListItemAttributes as `attr:${K}`]?: SixFileListItemAttributes[K] } & { [K in keyof SixFileListItem & keyof SixFileListItemAttributes as `prop:${K}`]?: SixFileListItem[K] };
-        "six-file-upload": Omit<SixFileUpload, keyof SixFileUploadAttributes> & { [K in keyof SixFileUpload & keyof SixFileUploadAttributes]?: SixFileUpload[K] } & { [K in keyof SixFileUpload & keyof SixFileUploadAttributes as `attr:${K}`]?: SixFileUploadAttributes[K] } & { [K in keyof SixFileUpload & keyof SixFileUploadAttributes as `prop:${K}`]?: SixFileUpload[K] };
+        "six-file-list-item": SixFileListItem;
+        "six-file-upload": SixFileUpload;
         "six-footer": SixFooter;
-        "six-group-label": Omit<SixGroupLabel, keyof SixGroupLabelAttributes> & { [K in keyof SixGroupLabel & keyof SixGroupLabelAttributes]?: SixGroupLabel[K] } & { [K in keyof SixGroupLabel & keyof SixGroupLabelAttributes as `attr:${K}`]?: SixGroupLabelAttributes[K] } & { [K in keyof SixGroupLabel & keyof SixGroupLabelAttributes as `prop:${K}`]?: SixGroupLabel[K] };
-        "six-header": Omit<SixHeader, keyof SixHeaderAttributes> & { [K in keyof SixHeader & keyof SixHeaderAttributes]?: SixHeader[K] } & { [K in keyof SixHeader & keyof SixHeaderAttributes as `attr:${K}`]?: SixHeaderAttributes[K] } & { [K in keyof SixHeader & keyof SixHeaderAttributes as `prop:${K}`]?: SixHeader[K] };
-        "six-header-dropdown-item": Omit<SixHeaderDropdownItem, keyof SixHeaderDropdownItemAttributes> & { [K in keyof SixHeaderDropdownItem & keyof SixHeaderDropdownItemAttributes]?: SixHeaderDropdownItem[K] } & { [K in keyof SixHeaderDropdownItem & keyof SixHeaderDropdownItemAttributes as `attr:${K}`]?: SixHeaderDropdownItemAttributes[K] } & { [K in keyof SixHeaderDropdownItem & keyof SixHeaderDropdownItemAttributes as `prop:${K}`]?: SixHeaderDropdownItem[K] };
-        "six-header-item": Omit<SixHeaderItem, keyof SixHeaderItemAttributes> & { [K in keyof SixHeaderItem & keyof SixHeaderItemAttributes]?: SixHeaderItem[K] } & { [K in keyof SixHeaderItem & keyof SixHeaderItemAttributes as `attr:${K}`]?: SixHeaderItemAttributes[K] } & { [K in keyof SixHeaderItem & keyof SixHeaderItemAttributes as `prop:${K}`]?: SixHeaderItem[K] };
-        "six-header-menu-button": Omit<SixHeaderMenuButton, keyof SixHeaderMenuButtonAttributes> & { [K in keyof SixHeaderMenuButton & keyof SixHeaderMenuButtonAttributes]?: SixHeaderMenuButton[K] } & { [K in keyof SixHeaderMenuButton & keyof SixHeaderMenuButtonAttributes as `attr:${K}`]?: SixHeaderMenuButtonAttributes[K] } & { [K in keyof SixHeaderMenuButton & keyof SixHeaderMenuButtonAttributes as `prop:${K}`]?: SixHeaderMenuButton[K] };
-        "six-icon": Omit<SixIcon, keyof SixIconAttributes> & { [K in keyof SixIcon & keyof SixIconAttributes]?: SixIcon[K] } & { [K in keyof SixIcon & keyof SixIconAttributes as `attr:${K}`]?: SixIconAttributes[K] } & { [K in keyof SixIcon & keyof SixIconAttributes as `prop:${K}`]?: SixIcon[K] };
-        "six-icon-button": Omit<SixIconButton, keyof SixIconButtonAttributes> & { [K in keyof SixIconButton & keyof SixIconButtonAttributes]?: SixIconButton[K] } & { [K in keyof SixIconButton & keyof SixIconButtonAttributes as `attr:${K}`]?: SixIconButtonAttributes[K] } & { [K in keyof SixIconButton & keyof SixIconButtonAttributes as `prop:${K}`]?: SixIconButton[K] };
-        "six-input": Omit<SixInput, keyof SixInputAttributes> & { [K in keyof SixInput & keyof SixInputAttributes]?: SixInput[K] } & { [K in keyof SixInput & keyof SixInputAttributes as `attr:${K}`]?: SixInputAttributes[K] } & { [K in keyof SixInput & keyof SixInputAttributes as `prop:${K}`]?: SixInput[K] };
-        "six-item-picker": Omit<SixItemPicker, keyof SixItemPickerAttributes> & { [K in keyof SixItemPicker & keyof SixItemPickerAttributes]?: SixItemPicker[K] } & { [K in keyof SixItemPicker & keyof SixItemPickerAttributes as `attr:${K}`]?: SixItemPickerAttributes[K] } & { [K in keyof SixItemPicker & keyof SixItemPickerAttributes as `prop:${K}`]?: SixItemPicker[K] };
-        "six-language-switcher": Omit<SixLanguageSwitcher, keyof SixLanguageSwitcherAttributes> & { [K in keyof SixLanguageSwitcher & keyof SixLanguageSwitcherAttributes]?: SixLanguageSwitcher[K] } & { [K in keyof SixLanguageSwitcher & keyof SixLanguageSwitcherAttributes as `attr:${K}`]?: SixLanguageSwitcherAttributes[K] } & { [K in keyof SixLanguageSwitcher & keyof SixLanguageSwitcherAttributes as `prop:${K}`]?: SixLanguageSwitcher[K] };
-        "six-layout-grid": Omit<SixLayoutGrid, keyof SixLayoutGridAttributes> & { [K in keyof SixLayoutGrid & keyof SixLayoutGridAttributes]?: SixLayoutGrid[K] } & { [K in keyof SixLayoutGrid & keyof SixLayoutGridAttributes as `attr:${K}`]?: SixLayoutGridAttributes[K] } & { [K in keyof SixLayoutGrid & keyof SixLayoutGridAttributes as `prop:${K}`]?: SixLayoutGrid[K] };
-        "six-logo": Omit<SixLogo, keyof SixLogoAttributes> & { [K in keyof SixLogo & keyof SixLogoAttributes]?: SixLogo[K] } & { [K in keyof SixLogo & keyof SixLogoAttributes as `attr:${K}`]?: SixLogoAttributes[K] } & { [K in keyof SixLogo & keyof SixLogoAttributes as `prop:${K}`]?: SixLogo[K] };
-        "six-main-container": Omit<SixMainContainer, keyof SixMainContainerAttributes> & { [K in keyof SixMainContainer & keyof SixMainContainerAttributes]?: SixMainContainer[K] } & { [K in keyof SixMainContainer & keyof SixMainContainerAttributes as `attr:${K}`]?: SixMainContainerAttributes[K] } & { [K in keyof SixMainContainer & keyof SixMainContainerAttributes as `prop:${K}`]?: SixMainContainer[K] };
-        "six-menu": Omit<SixMenu, keyof SixMenuAttributes> & { [K in keyof SixMenu & keyof SixMenuAttributes]?: SixMenu[K] } & { [K in keyof SixMenu & keyof SixMenuAttributes as `attr:${K}`]?: SixMenuAttributes[K] } & { [K in keyof SixMenu & keyof SixMenuAttributes as `prop:${K}`]?: SixMenu[K] };
+        "six-group-label": SixGroupLabel;
+        "six-header": SixHeader;
+        "six-header-dropdown-item": SixHeaderDropdownItem;
+        "six-header-item": SixHeaderItem;
+        "six-header-menu-button": SixHeaderMenuButton;
+        "six-icon": SixIcon;
+        "six-icon-button": SixIconButton;
+        "six-input": SixInput;
+        "six-item-picker": SixItemPicker;
+        "six-language-switcher": SixLanguageSwitcher;
+        "six-layout-grid": SixLayoutGrid;
+        "six-logo": SixLogo;
+        "six-main-container": SixMainContainer;
+        "six-menu": SixMenu;
         "six-menu-divider": SixMenuDivider;
-        "six-menu-item": Omit<SixMenuItem, keyof SixMenuItemAttributes> & { [K in keyof SixMenuItem & keyof SixMenuItemAttributes]?: SixMenuItem[K] } & { [K in keyof SixMenuItem & keyof SixMenuItemAttributes as `attr:${K}`]?: SixMenuItemAttributes[K] } & { [K in keyof SixMenuItem & keyof SixMenuItemAttributes as `prop:${K}`]?: SixMenuItem[K] };
+        "six-menu-item": SixMenuItem;
         "six-menu-label": SixMenuLabel;
-        "six-paginator": Omit<SixPaginator, keyof SixPaginatorAttributes> & { [K in keyof SixPaginator & keyof SixPaginatorAttributes]?: SixPaginator[K] } & { [K in keyof SixPaginator & keyof SixPaginatorAttributes as `attr:${K}`]?: SixPaginatorAttributes[K] } & { [K in keyof SixPaginator & keyof SixPaginatorAttributes as `prop:${K}`]?: SixPaginator[K] } & OneOf<"totalPages", SixPaginator["totalPages"], SixPaginatorAttributes["totalPages"]> & OneOf<"totalResults", SixPaginator["totalResults"], SixPaginatorAttributes["totalResults"]>;
-        "six-picto": Omit<SixPicto, keyof SixPictoAttributes> & { [K in keyof SixPicto & keyof SixPictoAttributes]?: SixPicto[K] } & { [K in keyof SixPicto & keyof SixPictoAttributes as `attr:${K}`]?: SixPictoAttributes[K] } & { [K in keyof SixPicto & keyof SixPictoAttributes as `prop:${K}`]?: SixPicto[K] };
-        "six-progress-bar": Omit<SixProgressBar, keyof SixProgressBarAttributes> & { [K in keyof SixProgressBar & keyof SixProgressBarAttributes]?: SixProgressBar[K] } & { [K in keyof SixProgressBar & keyof SixProgressBarAttributes as `attr:${K}`]?: SixProgressBarAttributes[K] } & { [K in keyof SixProgressBar & keyof SixProgressBarAttributes as `prop:${K}`]?: SixProgressBar[K] };
-        "six-progress-ring": Omit<SixProgressRing, keyof SixProgressRingAttributes> & { [K in keyof SixProgressRing & keyof SixProgressRingAttributes]?: SixProgressRing[K] } & { [K in keyof SixProgressRing & keyof SixProgressRingAttributes as `attr:${K}`]?: SixProgressRingAttributes[K] } & { [K in keyof SixProgressRing & keyof SixProgressRingAttributes as `prop:${K}`]?: SixProgressRing[K] };
-        "six-radio": Omit<SixRadio, keyof SixRadioAttributes> & { [K in keyof SixRadio & keyof SixRadioAttributes]?: SixRadio[K] } & { [K in keyof SixRadio & keyof SixRadioAttributes as `attr:${K}`]?: SixRadioAttributes[K] } & { [K in keyof SixRadio & keyof SixRadioAttributes as `prop:${K}`]?: SixRadio[K] };
-        "six-range": Omit<SixRange, keyof SixRangeAttributes> & { [K in keyof SixRange & keyof SixRangeAttributes]?: SixRange[K] } & { [K in keyof SixRange & keyof SixRangeAttributes as `attr:${K}`]?: SixRangeAttributes[K] } & { [K in keyof SixRange & keyof SixRangeAttributes as `prop:${K}`]?: SixRange[K] };
-        "six-rating": Omit<SixRating, keyof SixRatingAttributes> & { [K in keyof SixRating & keyof SixRatingAttributes]?: SixRating[K] } & { [K in keyof SixRating & keyof SixRatingAttributes as `attr:${K}`]?: SixRatingAttributes[K] } & { [K in keyof SixRating & keyof SixRatingAttributes as `prop:${K}`]?: SixRating[K] };
-        "six-root": Omit<SixRoot, keyof SixRootAttributes> & { [K in keyof SixRoot & keyof SixRootAttributes]?: SixRoot[K] } & { [K in keyof SixRoot & keyof SixRootAttributes as `attr:${K}`]?: SixRootAttributes[K] } & { [K in keyof SixRoot & keyof SixRootAttributes as `prop:${K}`]?: SixRoot[K] };
-        "six-search-field": Omit<SixSearchField, keyof SixSearchFieldAttributes> & { [K in keyof SixSearchField & keyof SixSearchFieldAttributes]?: SixSearchField[K] } & { [K in keyof SixSearchField & keyof SixSearchFieldAttributes as `attr:${K}`]?: SixSearchFieldAttributes[K] } & { [K in keyof SixSearchField & keyof SixSearchFieldAttributes as `prop:${K}`]?: SixSearchField[K] };
-        "six-select": Omit<SixSelect, keyof SixSelectAttributes> & { [K in keyof SixSelect & keyof SixSelectAttributes]?: SixSelect[K] } & { [K in keyof SixSelect & keyof SixSelectAttributes as `attr:${K}`]?: SixSelectAttributes[K] } & { [K in keyof SixSelect & keyof SixSelectAttributes as `prop:${K}`]?: SixSelect[K] };
-        "six-sidebar": Omit<SixSidebar, keyof SixSidebarAttributes> & { [K in keyof SixSidebar & keyof SixSidebarAttributes]?: SixSidebar[K] } & { [K in keyof SixSidebar & keyof SixSidebarAttributes as `attr:${K}`]?: SixSidebarAttributes[K] } & { [K in keyof SixSidebar & keyof SixSidebarAttributes as `prop:${K}`]?: SixSidebar[K] };
-        "six-sidebar-item": Omit<SixSidebarItem, keyof SixSidebarItemAttributes> & { [K in keyof SixSidebarItem & keyof SixSidebarItemAttributes]?: SixSidebarItem[K] } & { [K in keyof SixSidebarItem & keyof SixSidebarItemAttributes as `attr:${K}`]?: SixSidebarItemAttributes[K] } & { [K in keyof SixSidebarItem & keyof SixSidebarItemAttributes as `prop:${K}`]?: SixSidebarItem[K] };
-        "six-sidebar-item-group": Omit<SixSidebarItemGroup, keyof SixSidebarItemGroupAttributes> & { [K in keyof SixSidebarItemGroup & keyof SixSidebarItemGroupAttributes]?: SixSidebarItemGroup[K] } & { [K in keyof SixSidebarItemGroup & keyof SixSidebarItemGroupAttributes as `attr:${K}`]?: SixSidebarItemGroupAttributes[K] } & { [K in keyof SixSidebarItemGroup & keyof SixSidebarItemGroupAttributes as `prop:${K}`]?: SixSidebarItemGroup[K] };
-        "six-spinner": Omit<SixSpinner, keyof SixSpinnerAttributes> & { [K in keyof SixSpinner & keyof SixSpinnerAttributes]?: SixSpinner[K] } & { [K in keyof SixSpinner & keyof SixSpinnerAttributes as `attr:${K}`]?: SixSpinnerAttributes[K] } & { [K in keyof SixSpinner & keyof SixSpinnerAttributes as `prop:${K}`]?: SixSpinner[K] };
-        "six-stage-indicator": Omit<SixStageIndicator, keyof SixStageIndicatorAttributes> & { [K in keyof SixStageIndicator & keyof SixStageIndicatorAttributes]?: SixStageIndicator[K] } & { [K in keyof SixStageIndicator & keyof SixStageIndicatorAttributes as `attr:${K}`]?: SixStageIndicatorAttributes[K] } & { [K in keyof SixStageIndicator & keyof SixStageIndicatorAttributes as `prop:${K}`]?: SixStageIndicator[K] };
-        "six-switch": Omit<SixSwitch, keyof SixSwitchAttributes> & { [K in keyof SixSwitch & keyof SixSwitchAttributes]?: SixSwitch[K] } & { [K in keyof SixSwitch & keyof SixSwitchAttributes as `attr:${K}`]?: SixSwitchAttributes[K] } & { [K in keyof SixSwitch & keyof SixSwitchAttributes as `prop:${K}`]?: SixSwitch[K] };
-        "six-tab": Omit<SixTab, keyof SixTabAttributes> & { [K in keyof SixTab & keyof SixTabAttributes]?: SixTab[K] } & { [K in keyof SixTab & keyof SixTabAttributes as `attr:${K}`]?: SixTabAttributes[K] } & { [K in keyof SixTab & keyof SixTabAttributes as `prop:${K}`]?: SixTab[K] };
-        "six-tab-group": Omit<SixTabGroup, keyof SixTabGroupAttributes> & { [K in keyof SixTabGroup & keyof SixTabGroupAttributes]?: SixTabGroup[K] } & { [K in keyof SixTabGroup & keyof SixTabGroupAttributes as `attr:${K}`]?: SixTabGroupAttributes[K] } & { [K in keyof SixTabGroup & keyof SixTabGroupAttributes as `prop:${K}`]?: SixTabGroup[K] };
-        "six-tab-panel": Omit<SixTabPanel, keyof SixTabPanelAttributes> & { [K in keyof SixTabPanel & keyof SixTabPanelAttributes]?: SixTabPanel[K] } & { [K in keyof SixTabPanel & keyof SixTabPanelAttributes as `attr:${K}`]?: SixTabPanelAttributes[K] } & { [K in keyof SixTabPanel & keyof SixTabPanelAttributes as `prop:${K}`]?: SixTabPanel[K] };
-        "six-tag": Omit<SixTag, keyof SixTagAttributes> & { [K in keyof SixTag & keyof SixTagAttributes]?: SixTag[K] } & { [K in keyof SixTag & keyof SixTagAttributes as `attr:${K}`]?: SixTagAttributes[K] } & { [K in keyof SixTag & keyof SixTagAttributes as `prop:${K}`]?: SixTag[K] };
-        "six-textarea": Omit<SixTextarea, keyof SixTextareaAttributes> & { [K in keyof SixTextarea & keyof SixTextareaAttributes]?: SixTextarea[K] } & { [K in keyof SixTextarea & keyof SixTextareaAttributes as `attr:${K}`]?: SixTextareaAttributes[K] } & { [K in keyof SixTextarea & keyof SixTextareaAttributes as `prop:${K}`]?: SixTextarea[K] };
-        "six-tile": Omit<SixTile, keyof SixTileAttributes> & { [K in keyof SixTile & keyof SixTileAttributes]?: SixTile[K] } & { [K in keyof SixTile & keyof SixTileAttributes as `attr:${K}`]?: SixTileAttributes[K] } & { [K in keyof SixTile & keyof SixTileAttributes as `prop:${K}`]?: SixTile[K] };
-        "six-timepicker": Omit<SixTimepicker, keyof SixTimepickerAttributes> & { [K in keyof SixTimepicker & keyof SixTimepickerAttributes]?: SixTimepicker[K] } & { [K in keyof SixTimepicker & keyof SixTimepickerAttributes as `attr:${K}`]?: SixTimepickerAttributes[K] } & { [K in keyof SixTimepicker & keyof SixTimepickerAttributes as `prop:${K}`]?: SixTimepicker[K] };
-        "six-tooltip": Omit<SixTooltip, keyof SixTooltipAttributes> & { [K in keyof SixTooltip & keyof SixTooltipAttributes]?: SixTooltip[K] } & { [K in keyof SixTooltip & keyof SixTooltipAttributes as `attr:${K}`]?: SixTooltipAttributes[K] } & { [K in keyof SixTooltip & keyof SixTooltipAttributes as `prop:${K}`]?: SixTooltip[K] };
+        "six-paginator": SixPaginator;
+        "six-picto": SixPicto;
+        "six-progress-bar": SixProgressBar;
+        "six-progress-ring": SixProgressRing;
+        "six-radio": SixRadio;
+        "six-range": SixRange;
+        "six-rating": SixRating;
+        "six-root": SixRoot;
+        "six-search-field": SixSearchField;
+        "six-select": SixSelect;
+        "six-sidebar": SixSidebar;
+        "six-sidebar-item": SixSidebarItem;
+        "six-sidebar-item-group": SixSidebarItemGroup;
+        "six-spinner": SixSpinner;
+        "six-stage-indicator": SixStageIndicator;
+        "six-switch": SixSwitch;
+        "six-tab": SixTab;
+        "six-tab-group": SixTabGroup;
+        "six-tab-panel": SixTabPanel;
+        "six-tag": SixTag;
+        "six-textarea": SixTextarea;
+        "six-theme-switcher": SixThemeSwitcher;
+        "six-tile": SixTile;
+        "six-timepicker": SixTimepicker;
+        "six-tooltip": SixTooltip;
     }
 }
 export { LocalJSX as JSX };
@@ -7239,134 +6786,134 @@ declare module "@stencil/core" {
              * @status stable
              * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
              */
-            "six-alert": LocalJSX.IntrinsicElements["six-alert"] & JSXBase.HTMLAttributes<HTMLSixAlertElement>;
+            "six-alert": LocalJSX.SixAlert & JSXBase.HTMLAttributes<HTMLSixAlertElement>;
             /**
              * @since 1.0
              * @status stable
              * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
              */
-            "six-avatar": LocalJSX.IntrinsicElements["six-avatar"] & JSXBase.HTMLAttributes<HTMLSixAvatarElement>;
+            "six-avatar": LocalJSX.SixAvatar & JSXBase.HTMLAttributes<HTMLSixAvatarElement>;
             /**
              * @since 1.0
              * @status stable
              * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
              */
-            "six-badge": LocalJSX.IntrinsicElements["six-badge"] & JSXBase.HTMLAttributes<HTMLSixBadgeElement>;
+            "six-badge": LocalJSX.SixBadge & JSXBase.HTMLAttributes<HTMLSixBadgeElement>;
             /**
              * Breadcrumbs provide a group of links so users can easily navigate a website's hierarchy.
              * @since 5.0
              * @status beta
              */
-            "six-breadcrumbs": LocalJSX.IntrinsicElements["six-breadcrumbs"] & JSXBase.HTMLAttributes<HTMLSixBreadcrumbsElement>;
+            "six-breadcrumbs": LocalJSX.SixBreadcrumbs & JSXBase.HTMLAttributes<HTMLSixBreadcrumbsElement>;
             /**
              * Breadcrumb items are used inside breadcrumbs to represent different links.
              * @since 5.0
              * @status beta
              */
-            "six-breadcrumbs-item": LocalJSX.IntrinsicElements["six-breadcrumbs-item"] & JSXBase.HTMLAttributes<HTMLSixBreadcrumbsItemElement>;
+            "six-breadcrumbs-item": LocalJSX.SixBreadcrumbsItem & JSXBase.HTMLAttributes<HTMLSixBreadcrumbsItemElement>;
             /**
              * @since 1.0
              * @status stable
              * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
              */
-            "six-button": LocalJSX.IntrinsicElements["six-button"] & JSXBase.HTMLAttributes<HTMLSixButtonElement>;
+            "six-button": LocalJSX.SixButton & JSXBase.HTMLAttributes<HTMLSixButtonElement>;
             /**
              * @since 1.0
              * @status stable
              */
-            "six-card": LocalJSX.IntrinsicElements["six-card"] & JSXBase.HTMLAttributes<HTMLSixCardElement>;
+            "six-card": LocalJSX.SixCard & JSXBase.HTMLAttributes<HTMLSixCardElement>;
             /**
              * @since 1.0
              * @status stable
              * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
              */
-            "six-checkbox": LocalJSX.IntrinsicElements["six-checkbox"] & JSXBase.HTMLAttributes<HTMLSixCheckboxElement>;
+            "six-checkbox": LocalJSX.SixCheckbox & JSXBase.HTMLAttributes<HTMLSixCheckboxElement>;
             /**
              * A date picker component that allows users to select dates via a calendar popup or direct input.
              * @since 5.0
              * @status beta
              */
-            "six-date": LocalJSX.IntrinsicElements["six-date"] & JSXBase.HTMLAttributes<HTMLSixDateElement>;
+            "six-date": LocalJSX.SixDate & JSXBase.HTMLAttributes<HTMLSixDateElement>;
             /**
              * @since 1.0
              * @status deprecated. Use six-date instead.
              */
-            "six-datepicker": LocalJSX.IntrinsicElements["six-datepicker"] & JSXBase.HTMLAttributes<HTMLSixDatepickerElement>;
+            "six-datepicker": LocalJSX.SixDatepicker & JSXBase.HTMLAttributes<HTMLSixDatepickerElement>;
             /**
              * @since 1.0
              * @status stable
              * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
              */
-            "six-details": LocalJSX.IntrinsicElements["six-details"] & JSXBase.HTMLAttributes<HTMLSixDetailsElement>;
+            "six-details": LocalJSX.SixDetails & JSXBase.HTMLAttributes<HTMLSixDetailsElement>;
             /**
              * @since 1.0
              * @status stable
              * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
              */
-            "six-dialog": LocalJSX.IntrinsicElements["six-dialog"] & JSXBase.HTMLAttributes<HTMLSixDialogElement>;
+            "six-dialog": LocalJSX.SixDialog & JSXBase.HTMLAttributes<HTMLSixDialogElement>;
             /**
              * @since 1.0
              * @status stable
              * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
              */
-            "six-drawer": LocalJSX.IntrinsicElements["six-drawer"] & JSXBase.HTMLAttributes<HTMLSixDrawerElement>;
+            "six-drawer": LocalJSX.SixDrawer & JSXBase.HTMLAttributes<HTMLSixDrawerElement>;
             /**
              * @since 1.0
              * @status stable
              * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
              */
-            "six-dropdown": LocalJSX.IntrinsicElements["six-dropdown"] & JSXBase.HTMLAttributes<HTMLSixDropdownElement>;
+            "six-dropdown": LocalJSX.SixDropdown & JSXBase.HTMLAttributes<HTMLSixDropdownElement>;
             /**
              * @since 4.0
              * @status beta
              */
-            "six-error": LocalJSX.IntrinsicElements["six-error"] & JSXBase.HTMLAttributes<HTMLSixErrorElement>;
-            "six-error-page": LocalJSX.IntrinsicElements["six-error-page"] & JSXBase.HTMLAttributes<HTMLSixErrorPageElement>;
+            "six-error": LocalJSX.SixError & JSXBase.HTMLAttributes<HTMLSixErrorElement>;
+            "six-error-page": LocalJSX.SixErrorPage & JSXBase.HTMLAttributes<HTMLSixErrorPageElement>;
             /**
              * @since 2.0.0
              * @status experimental
              */
-            "six-file-list": LocalJSX.IntrinsicElements["six-file-list"] & JSXBase.HTMLAttributes<HTMLSixFileListElement>;
+            "six-file-list": LocalJSX.SixFileList & JSXBase.HTMLAttributes<HTMLSixFileListElement>;
             /**
              * @since 2.0.0
              * @status experimental
              */
-            "six-file-list-item": LocalJSX.IntrinsicElements["six-file-list-item"] & JSXBase.HTMLAttributes<HTMLSixFileListItemElement>;
+            "six-file-list-item": LocalJSX.SixFileListItem & JSXBase.HTMLAttributes<HTMLSixFileListItemElement>;
             /**
              * @since 2.0.0
              * @status experimental
              */
-            "six-file-upload": LocalJSX.IntrinsicElements["six-file-upload"] & JSXBase.HTMLAttributes<HTMLSixFileUploadElement>;
+            "six-file-upload": LocalJSX.SixFileUpload & JSXBase.HTMLAttributes<HTMLSixFileUploadElement>;
             /**
              * @since 1.0
              * @status stable
              */
-            "six-footer": LocalJSX.IntrinsicElements["six-footer"] & JSXBase.HTMLAttributes<HTMLSixFooterElement>;
+            "six-footer": LocalJSX.SixFooter & JSXBase.HTMLAttributes<HTMLSixFooterElement>;
             /**
              * @since 1.1
              * @status stable
              */
-            "six-group-label": LocalJSX.IntrinsicElements["six-group-label"] & JSXBase.HTMLAttributes<HTMLSixGroupLabelElement>;
+            "six-group-label": LocalJSX.SixGroupLabel & JSXBase.HTMLAttributes<HTMLSixGroupLabelElement>;
             /**
              * @since 1.0
              * @status stable
              */
-            "six-header": LocalJSX.IntrinsicElements["six-header"] & JSXBase.HTMLAttributes<HTMLSixHeaderElement>;
+            "six-header": LocalJSX.SixHeader & JSXBase.HTMLAttributes<HTMLSixHeaderElement>;
             /**
              * @since 4.2.7
              * @status stable
              */
-            "six-header-dropdown-item": LocalJSX.IntrinsicElements["six-header-dropdown-item"] & JSXBase.HTMLAttributes<HTMLSixHeaderDropdownItemElement>;
+            "six-header-dropdown-item": LocalJSX.SixHeaderDropdownItem & JSXBase.HTMLAttributes<HTMLSixHeaderDropdownItemElement>;
             /**
              * @since 4.2.7
              * @status stable
              */
-            "six-header-item": LocalJSX.IntrinsicElements["six-header-item"] & JSXBase.HTMLAttributes<HTMLSixHeaderItemElement>;
+            "six-header-item": LocalJSX.SixHeaderItem & JSXBase.HTMLAttributes<HTMLSixHeaderItemElement>;
             /**
              * @since 4.2.7
              * @status stable
              */
-            "six-header-menu-button": LocalJSX.IntrinsicElements["six-header-menu-button"] & JSXBase.HTMLAttributes<HTMLSixHeaderMenuButtonElement>;
+            "six-header-menu-button": LocalJSX.SixHeaderMenuButton & JSXBase.HTMLAttributes<HTMLSixHeaderMenuButtonElement>;
             /**
              * @since 1.0
              * @status stable
@@ -7382,185 +6929,190 @@ declare module "@stencil/core" {
              * @prop {'material-icons' | 'material-symbols'} [library]
              * Icon library to use when rendering ligature-based Material icons. Defaults to the globally configured library.
              */
-            "six-icon": LocalJSX.IntrinsicElements["six-icon"] & JSXBase.HTMLAttributes<HTMLSixIconElement>;
+            "six-icon": LocalJSX.SixIcon & JSXBase.HTMLAttributes<HTMLSixIconElement>;
             /**
              * @since 1.0
              * @status stable
              * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
              */
-            "six-icon-button": LocalJSX.IntrinsicElements["six-icon-button"] & JSXBase.HTMLAttributes<HTMLSixIconButtonElement>;
+            "six-icon-button": LocalJSX.SixIconButton & JSXBase.HTMLAttributes<HTMLSixIconButtonElement>;
             /**
              * @since 1.0
              * @status stable
              * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
              */
-            "six-input": LocalJSX.IntrinsicElements["six-input"] & JSXBase.HTMLAttributes<HTMLSixInputElement>;
+            "six-input": LocalJSX.SixInput & JSXBase.HTMLAttributes<HTMLSixInputElement>;
             /**
              * @since 2.0.0
              * @status experimental
              */
-            "six-item-picker": LocalJSX.IntrinsicElements["six-item-picker"] & JSXBase.HTMLAttributes<HTMLSixItemPickerElement>;
-            "six-language-switcher": LocalJSX.IntrinsicElements["six-language-switcher"] & JSXBase.HTMLAttributes<HTMLSixLanguageSwitcherElement>;
+            "six-item-picker": LocalJSX.SixItemPicker & JSXBase.HTMLAttributes<HTMLSixItemPickerElement>;
+            "six-language-switcher": LocalJSX.SixLanguageSwitcher & JSXBase.HTMLAttributes<HTMLSixLanguageSwitcherElement>;
             /**
              * @since 1.01
              * @status stable
              */
-            "six-layout-grid": LocalJSX.IntrinsicElements["six-layout-grid"] & JSXBase.HTMLAttributes<HTMLSixLayoutGridElement>;
+            "six-layout-grid": LocalJSX.SixLayoutGrid & JSXBase.HTMLAttributes<HTMLSixLayoutGridElement>;
             /**
              * @since 4.2.7
              * @status beta
              */
-            "six-logo": LocalJSX.IntrinsicElements["six-logo"] & JSXBase.HTMLAttributes<HTMLSixLogoElement>;
+            "six-logo": LocalJSX.SixLogo & JSXBase.HTMLAttributes<HTMLSixLogoElement>;
             /**
              * @since 1.01
              * @status stable
              */
-            "six-main-container": LocalJSX.IntrinsicElements["six-main-container"] & JSXBase.HTMLAttributes<HTMLSixMainContainerElement>;
+            "six-main-container": LocalJSX.SixMainContainer & JSXBase.HTMLAttributes<HTMLSixMainContainerElement>;
             /**
              * @since 1.0
              * @status stable
              * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
              */
-            "six-menu": LocalJSX.IntrinsicElements["six-menu"] & JSXBase.HTMLAttributes<HTMLSixMenuElement>;
+            "six-menu": LocalJSX.SixMenu & JSXBase.HTMLAttributes<HTMLSixMenuElement>;
             /**
              * @since 1.0
              * @status stable
              * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
              */
-            "six-menu-divider": LocalJSX.IntrinsicElements["six-menu-divider"] & JSXBase.HTMLAttributes<HTMLSixMenuDividerElement>;
+            "six-menu-divider": LocalJSX.SixMenuDivider & JSXBase.HTMLAttributes<HTMLSixMenuDividerElement>;
             /**
              * @since 1.0
              * @status stable
              * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
              */
-            "six-menu-item": LocalJSX.IntrinsicElements["six-menu-item"] & JSXBase.HTMLAttributes<HTMLSixMenuItemElement>;
+            "six-menu-item": LocalJSX.SixMenuItem & JSXBase.HTMLAttributes<HTMLSixMenuItemElement>;
             /**
              * @since 1.0
              * @status stable
              * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
              */
-            "six-menu-label": LocalJSX.IntrinsicElements["six-menu-label"] & JSXBase.HTMLAttributes<HTMLSixMenuLabelElement>;
-            "six-paginator": LocalJSX.IntrinsicElements["six-paginator"] & JSXBase.HTMLAttributes<HTMLSixPaginatorElement>;
+            "six-menu-label": LocalJSX.SixMenuLabel & JSXBase.HTMLAttributes<HTMLSixMenuLabelElement>;
+            "six-paginator": LocalJSX.SixPaginator & JSXBase.HTMLAttributes<HTMLSixPaginatorElement>;
             /**
              * @since 1.1
              * @status stable
              */
-            "six-picto": LocalJSX.IntrinsicElements["six-picto"] & JSXBase.HTMLAttributes<HTMLSixPictoElement>;
+            "six-picto": LocalJSX.SixPicto & JSXBase.HTMLAttributes<HTMLSixPictoElement>;
             /**
              * @since 1.0
              * @status stable
              * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
              */
-            "six-progress-bar": LocalJSX.IntrinsicElements["six-progress-bar"] & JSXBase.HTMLAttributes<HTMLSixProgressBarElement>;
+            "six-progress-bar": LocalJSX.SixProgressBar & JSXBase.HTMLAttributes<HTMLSixProgressBarElement>;
             /**
              * @since 1.0
              * @status stable
              * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
              */
-            "six-progress-ring": LocalJSX.IntrinsicElements["six-progress-ring"] & JSXBase.HTMLAttributes<HTMLSixProgressRingElement>;
+            "six-progress-ring": LocalJSX.SixProgressRing & JSXBase.HTMLAttributes<HTMLSixProgressRingElement>;
             /**
              * @since 1.0
              * @status stable
              * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
              */
-            "six-radio": LocalJSX.IntrinsicElements["six-radio"] & JSXBase.HTMLAttributes<HTMLSixRadioElement>;
+            "six-radio": LocalJSX.SixRadio & JSXBase.HTMLAttributes<HTMLSixRadioElement>;
             /**
              * @since 1.0
              * @status stable
              * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
              */
-            "six-range": LocalJSX.IntrinsicElements["six-range"] & JSXBase.HTMLAttributes<HTMLSixRangeElement>;
-            "six-rating": LocalJSX.IntrinsicElements["six-rating"] & JSXBase.HTMLAttributes<HTMLSixRatingElement>;
+            "six-range": LocalJSX.SixRange & JSXBase.HTMLAttributes<HTMLSixRangeElement>;
+            "six-rating": LocalJSX.SixRating & JSXBase.HTMLAttributes<HTMLSixRatingElement>;
             /**
              * @since 1.0
              * @status stable
              */
-            "six-root": LocalJSX.IntrinsicElements["six-root"] & JSXBase.HTMLAttributes<HTMLSixRootElement>;
+            "six-root": LocalJSX.SixRoot & JSXBase.HTMLAttributes<HTMLSixRootElement>;
             /**
              * @since 1.0
              * @status stable
              */
-            "six-search-field": LocalJSX.IntrinsicElements["six-search-field"] & JSXBase.HTMLAttributes<HTMLSixSearchFieldElement>;
-            /**
-             * @since 1.0
-             * @status stable
-             * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
-             */
-            "six-select": LocalJSX.IntrinsicElements["six-select"] & JSXBase.HTMLAttributes<HTMLSixSelectElement>;
-            /**
-             * @since 1.0
-             * @status stable
-             */
-            "six-sidebar": LocalJSX.IntrinsicElements["six-sidebar"] & JSXBase.HTMLAttributes<HTMLSixSidebarElement>;
-            /**
-             * @since 1.0
-             * @status stable
-             */
-            "six-sidebar-item": LocalJSX.IntrinsicElements["six-sidebar-item"] & JSXBase.HTMLAttributes<HTMLSixSidebarItemElement>;
-            /**
-             * @since 1.0
-             * @status stable
-             */
-            "six-sidebar-item-group": LocalJSX.IntrinsicElements["six-sidebar-item-group"] & JSXBase.HTMLAttributes<HTMLSixSidebarItemGroupElement>;
+            "six-search-field": LocalJSX.SixSearchField & JSXBase.HTMLAttributes<HTMLSixSearchFieldElement>;
             /**
              * @since 1.0
              * @status stable
              * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
              */
-            "six-spinner": LocalJSX.IntrinsicElements["six-spinner"] & JSXBase.HTMLAttributes<HTMLSixSpinnerElement>;
-            "six-stage-indicator": LocalJSX.IntrinsicElements["six-stage-indicator"] & JSXBase.HTMLAttributes<HTMLSixStageIndicatorElement>;
+            "six-select": LocalJSX.SixSelect & JSXBase.HTMLAttributes<HTMLSixSelectElement>;
+            /**
+             * @since 1.0
+             * @status stable
+             */
+            "six-sidebar": LocalJSX.SixSidebar & JSXBase.HTMLAttributes<HTMLSixSidebarElement>;
+            /**
+             * @since 1.0
+             * @status stable
+             */
+            "six-sidebar-item": LocalJSX.SixSidebarItem & JSXBase.HTMLAttributes<HTMLSixSidebarItemElement>;
+            /**
+             * @since 1.0
+             * @status stable
+             */
+            "six-sidebar-item-group": LocalJSX.SixSidebarItemGroup & JSXBase.HTMLAttributes<HTMLSixSidebarItemGroupElement>;
             /**
              * @since 1.0
              * @status stable
              * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
              */
-            "six-switch": LocalJSX.IntrinsicElements["six-switch"] & JSXBase.HTMLAttributes<HTMLSixSwitchElement>;
+            "six-spinner": LocalJSX.SixSpinner & JSXBase.HTMLAttributes<HTMLSixSpinnerElement>;
+            "six-stage-indicator": LocalJSX.SixStageIndicator & JSXBase.HTMLAttributes<HTMLSixStageIndicatorElement>;
             /**
              * @since 1.0
              * @status stable
              * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
              */
-            "six-tab": LocalJSX.IntrinsicElements["six-tab"] & JSXBase.HTMLAttributes<HTMLSixTabElement>;
+            "six-switch": LocalJSX.SixSwitch & JSXBase.HTMLAttributes<HTMLSixSwitchElement>;
             /**
              * @since 1.0
              * @status stable
              * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
              */
-            "six-tab-group": LocalJSX.IntrinsicElements["six-tab-group"] & JSXBase.HTMLAttributes<HTMLSixTabGroupElement>;
+            "six-tab": LocalJSX.SixTab & JSXBase.HTMLAttributes<HTMLSixTabElement>;
             /**
              * @since 1.0
              * @status stable
              * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
              */
-            "six-tab-panel": LocalJSX.IntrinsicElements["six-tab-panel"] & JSXBase.HTMLAttributes<HTMLSixTabPanelElement>;
+            "six-tab-group": LocalJSX.SixTabGroup & JSXBase.HTMLAttributes<HTMLSixTabGroupElement>;
             /**
              * @since 1.0
              * @status stable
              * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
              */
-            "six-tag": LocalJSX.IntrinsicElements["six-tag"] & JSXBase.HTMLAttributes<HTMLSixTagElement>;
+            "six-tab-panel": LocalJSX.SixTabPanel & JSXBase.HTMLAttributes<HTMLSixTabPanelElement>;
             /**
              * @since 1.0
              * @status stable
              * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
              */
-            "six-textarea": LocalJSX.IntrinsicElements["six-textarea"] & JSXBase.HTMLAttributes<HTMLSixTextareaElement>;
+            "six-tag": LocalJSX.SixTag & JSXBase.HTMLAttributes<HTMLSixTagElement>;
+            /**
+             * @since 1.0
+             * @status stable
+             * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
+             */
+            "six-textarea": LocalJSX.SixTextarea & JSXBase.HTMLAttributes<HTMLSixTextareaElement>;
+            /**
+             * @since 5.0
+             * @status stable
+             */
+            "six-theme-switcher": LocalJSX.SixThemeSwitcher & JSXBase.HTMLAttributes<HTMLSixThemeSwitcherElement>;
             /**
              * @since 1.0
              * @status stable
              */
-            "six-tile": LocalJSX.IntrinsicElements["six-tile"] & JSXBase.HTMLAttributes<HTMLSixTileElement>;
+            "six-tile": LocalJSX.SixTile & JSXBase.HTMLAttributes<HTMLSixTileElement>;
             /**
              * @since 2.0.0
              * @status experimental
              */
-            "six-timepicker": LocalJSX.IntrinsicElements["six-timepicker"] & JSXBase.HTMLAttributes<HTMLSixTimepickerElement>;
+            "six-timepicker": LocalJSX.SixTimepicker & JSXBase.HTMLAttributes<HTMLSixTimepickerElement>;
             /**
              * @since 1.0
              * @status stable
              * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
              */
-            "six-tooltip": LocalJSX.IntrinsicElements["six-tooltip"] & JSXBase.HTMLAttributes<HTMLSixTooltipElement>;
+            "six-tooltip": LocalJSX.SixTooltip & JSXBase.HTMLAttributes<HTMLSixTooltipElement>;
         }
     }
 }

@@ -61,21 +61,21 @@ export class SixSpinner {
       <svg viewBox="0 0 45 55" part="svg">
         <polygon
           fill="none"
-          stroke="black"
+          stroke="var(--six-logo-bme-color)"
           stroke-width="2"
           stroke-linecap="round"
           points="4.42 51.96 17.02 31.473 2 31.473 2 22.486 17.02 22.486 4.42 2 15.404 2 30.289 26.98 14.763 51.96 4.42 51.96"
         />
         <polygon
           fill="none"
-          stroke="black"
+          stroke="var(--six-logo-bme-color)"
           stroke-width="2"
           stroke-linecap="round"
           points="42 51.96 31.655 51.96 24.598 40.498 29.831 32.073 42 51.96"
         />
         <polygon
           fill="none"
-          stroke="black"
+          stroke="var(--six-logo-bme-color)"
           stroke-width="2"
           stroke-linecap="round"
           points="24.518 12.719 31.014 2 42 2 29.831 21.637 24.518 12.719"

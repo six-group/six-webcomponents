@@ -23,7 +23,7 @@
   min-height: var(--tile-size);
   width: var(--tile-size);
 
-  background-color: var(--six-color-clay-50);
+  background-color: var(--six-tile-background-color);
 
   display: inline-grid;
   grid-template-columns: 100%;
@@ -101,7 +101,7 @@
   justify-content: center;
   cursor: pointer;
   font-weight: var(--six-font-weight-normal);
-  color: var(--six-color-web-rock-900);
+  color: var(--six-tile-footer-color);
 
   &--small {
     @extend .tile__footer;
