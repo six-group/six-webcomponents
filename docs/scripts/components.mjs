@@ -48,10 +48,32 @@ function extractDemoStyle(node) {
   return styles;
 }
 
+function rewriteAssetSrc(html) {
+  // Rewrite absolute `/assets/...` src attributes to Vitepress' withBase() so
+  // generated demos work when the docs are served under a sub-path.
+  // Skips attributes that are already bound (`:src="..."`).
+  const assetSrcRegex = /\bsrc="(\/assets\/[^"]+)"/g;
+  let needsWithBase = false;
+  const rewritten = html.replace(assetSrcRegex, (_match, assetPath) => {
+    needsWithBase = true;
+    return `:src="withBase('${assetPath}')"`;
+  });
+  return { html: rewritten, needsWithBase };
+}
+
 function writeDemoComponent(tag, node) {
   const script = extractDemoScript(node);
   const style = extractDemoStyle(node);
-  const html = node.innerHTML;
+  const { html, needsWithBase } = rewriteAssetSrc(node.innerHTML);
+  const scriptLines = ['<script>'];
+  if (needsWithBase) {
+    scriptLines.push(`import { withBase } from 'vitepress';`, '');
+  }
+  scriptLines.push('export default {', `  name: '${tag}',`);
+  if (needsWithBase) {
+    scriptLines.push('  methods: { withBase },');
+  }
+  scriptLines.push(`  mounted() { ${script} }`, '}', '</script>');
   const componentContent = [
     '<template>',
     '<div>',
@@ -61,12 +83,7 @@ function writeDemoComponent(tag, node) {
     '<style>',
     style,
     '</style>',
-    '<script>',
-    'export default {',
-    `  name: '${tag}',`,
-    `  mounted() { ${script} }`,
-    '}',
-    '</script>',
+    ...scriptLines,
   ].join('\n');
   writeFileSync(path.join(examplesPath, `${tag}.vue`), componentContent, 'utf-8');
 }
