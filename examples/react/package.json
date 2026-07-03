@@ -13,7 +13,7 @@
     "@six-group/ui-library-react": "*",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
-    "react-router": "^7.13.2"
+    "react-router": "^7.4.0"
   },
   "devDependencies": {
     "@types/node": "^24.0.0",
@@ -21,7 +21,7 @@
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.2.0",
     "typescript": "5.9.3",
-    "vite": "^7.3.1",
+    "vite": "8.1.0",
     "vite-tsconfig-paths": "^6.1.1"
   }
 }
