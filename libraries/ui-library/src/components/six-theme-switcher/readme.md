@@ -1,6 +1,6 @@
 # six-theme-switcher
 
-A simple icon button that toggles between light and dark themes. Works with six-root's theme management system.
+A simple icon button that toggles between light and dark themes. Syncs with six-root's theme management system when present, and toggles the data-six-theme attribute directly otherwise.
 
 <!-- EXAMPLES -->
 

@@ -14,11 +14,9 @@ for (const path in modules) {
   exampleComponents.push(modules[path].default);
 }
 
-// Sync VitePress theme with HTML class
-function syncThemeClass(isDark: boolean) {
-  const htmlElement = document.documentElement;
-  htmlElement.classList.remove('theme-light', 'theme-dark');
-  htmlElement.classList.add(isDark ? 'theme-dark' : 'theme-light');
+// Sync VitePress theme with the SIX theme attribute
+function syncSixTheme(isDark: boolean) {
+  document.documentElement.setAttribute('data-six-theme', isDark ? 'dark' : 'light');
 }
 
 // Initialize theme class immediately on load (before Vue mounts)
@@ -27,7 +25,7 @@ if (typeof window !== 'undefined') {
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   const isDark =
     savedTheme === 'dark' || (savedTheme === 'auto' && prefersDark) || (!savedTheme && prefersDark);
-  syncThemeClass(isDark);
+  syncSixTheme(isDark);
 }
 
 export default {
@@ -49,14 +47,14 @@ export default {
   setup() {
     const { isDark } = useData();
 
-    // Set initial theme class on mount
+    // Set initial theme on mount
     onMounted(() => {
-      syncThemeClass(isDark.value);
+      syncSixTheme(isDark.value);
     });
 
-    // Watch for theme changes and update HTML class
+    // Watch for theme changes and update the attribute
     watch(isDark, (newIsDark) => {
-      syncThemeClass(newIsDark);
+      syncSixTheme(newIsDark);
     });
   },
 } satisfies Theme;

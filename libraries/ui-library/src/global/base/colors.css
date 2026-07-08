@@ -2,8 +2,14 @@
    DYNAMIC THEME COLOR SYSTEM
    ============================================
    Light theme is default.
-   Theme switcher component will toggle .theme-dark class
-   on <html> to switch colors.
+   Dark mode is activated via the data-six-theme="dark"
+   attribute on <html>, or automatically via the OS
+   preference when no attribute is set — see
+   dark-theme.css for the dark overrides.
+
+   The palette tokens defined in :root below are identical
+   in both themes; only the semantic component tokens are
+   remapped in dark mode.
 ============================================ */
 
 :root {
@@ -257,167 +263,6 @@ html {
 
   --six-scrollbar-background-color: var(--six-color-web-rock-300);
   --six-scrollbar-thumb-color: var(--six-color-web-rock-500);
-  --six-scrollbar-thumb-hover-color: var(--six-color-web-rock-600);
-
-  /* Firefox, Chrome, Safari, Edge, Opera */
-  scrollbar-color: var(--six-scrollbar-thumb-color) var(--six-scrollbar-background-color);
-
-  /* Safari */
-  &::-webkit-scrollbar-track {
-    background: var(--six-scrollbar-background-color);
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: var(--six-scrollbar-thumb-color);
-  }
-
-  &::-webkit-scrollbar-thumb:hover {
-    background: var(--six-scrollbar-thumb-hover-color);
-  }
-}
-
-.theme-dark {
-  color: white;
-
-  --six-color-dark-background-color: #151515;
-
-  --six-alert-background-color: var(--six-color-web-rock-900);
-  --six-alert-border-color: var(--six-color-web-rock-900);
-  --six-alert-color: var(--six-color-web-rock-400);
-  --six-alert-primary-color: var(--six-color-web-rock-700);
-
-  --six-card-border-color: var(--six-color-web-rock-900);
-
-  --six-file-upload-drop-zone-hover-background-color: var(--six-color-action-800);
-
-  --six-picto-background-color: var(--six-color-white);
-
-  --six-item-picker-color-disabled: var(--six-color-web-rock-800);
-  --six-item-picker-background-color-hover: var(--six-color-web-rock-900);
-
-  --six-file-list-item-icon-color-hover: var(--six-color-web-rock-300);
-
-  --six-dropdown-border-color: var(--six-color-web-rock-800);
-  --six-dropdown-background-color: var(--six-color-web-rock-900);
-
-  --six-date-panel-background-color: var(--six-color-web-rock-900);
-  --six-date-panel-border-color: var(--six-color-web-rock-700);
-  --six-date-cell-background-color-hover: var(--six-color-web-rock-800);
-  --six-date-cell-today-border-color: var(--six-color-web-rock-400);
-  --six-date-selector-background-color-hover: var(--six-color-web-rock-800);
-  --six-date-cell-outdated-color: var(--six-color-web-rock-700);
-
-  --six-dialog-color: var(--six-color-web-rock-200);
-
-  --six-logo-bme-color: var(--six-color-web-rock-600);
-
-  --six-language-switcher-color-hover: var(--six-color-web-rock-400);
-  --six-language-switcher-color-selected: var(--six-color-white);
-
-  --six-button-transparent-background-color-hover: var(--six-color-web-rock-900);
-  --six-button-secondary-border-color: var(--six-color-web-rock-100);
-  --six-button-secondary-color: var(--six-color-web-rock-100);
-  --six-button-primary-background-color: var(--six-color-web-rock-50);
-  --six-button-primary-background-color-hover: var(--six-color-web-rock-300);
-  --six-button-primary-background-color-active: var(--six-color-web-rock-400);
-  --six-button-primary-color: var(--six-color-black);
-  --six-button-background-color-disabled: var(--six-color-web-rock-600);
-  --six-button-border-color-disabled: var(--six-color-web-rock-600);
-  --six-button-color-disabled: var(--six-color-web-rock-400);
-
-  --six-input-background-color: var(--six-color-web-rock-900);
-  --six-input-background-color-hover: var(--six-color-web-rock-800);
-  --six-input-background-color-focus: var(--six-color-web-rock-800);
-  --six-input-background-color-disabled: var(--six-color-web-rock-700);
-  --six-input-border-color: var(--six-color-web-rock-500);
-  --six-input-border-color-hover: var(--six-color-web-rock-100);
-  --six-input-border-color-focus: var(--six-color-action-600);
-  --six-input-border-color-danger: var(--six-color-danger-800);
-  --six-input-border-color-disabled: var(--six-color-web-rock-500);
-  --six-input-color: var(--six-color-web-rock-50);
-  --six-input-color-hover: var(--six-color-web-rock-50);
-  --six-input-color-focus: var(--six-color-web-rock-50);
-  --six-input-color-disabled: var(--six-color-web-rock-600);
-  --six-input-icon-color: var(--six-color-web-rock-100);
-  --six-input-icon-color-hover: var(--six-color-web-rock-500);
-  --six-input-icon-color-focus: var(--six-color-web-rock-100);
-  --six-input-placeholder-color: var(--six-color-web-rock-400);
-  --six-input-placeholder-color-disabled: var(--six-color-web-rock-400);
-  --six-input-label-color: var(--six-color-web-rock-300);
-  --six-input-label-color-disabled: var(--six-color-web-rock-500);
-  --six-input-help-text-color: var(--six-color-web-rock-500);
-  --six-input-help-text-color-disabled: var(--six-color-web-rock-600);
-
-  --six-overlay-background-color: var(--six-color-web-rock-900);
-
-  --six-panel-background-color: var(--six-color-web-rock-800);
-  --six-panel-border-color: var(--six-color-clay-50);
-
-  --six-progress-track-color: var(--six-color-web-rock-900);
-  --six-progress-indicator-color: var(--six-color-danger-800);
-  --six-progress-label-color: var(--six-color-white);
-
-  --six-range-track-color: var(--six-color-web-rock-400);
-  --six-range-thumb-color: var(--six-color-web-rock-400);
-  --six-range-color-disabled: var(--six-color-web-rock-900);
-  --six-range-track-color-disabled: var(--six-color-web-rock-900);
-
-  --six-tile-background-color: var(--six-color-web-rock-900);
-  --six-tile-footer-color: var(--six-color-web-rock-100);
-
-  --six-timepicker-background-color: var(--six-color-web-rock-900);
-
-  --six-tooltip-background-color: var(--six-color-web-rock-100);
-  --six-tooltip-color: var(--six-color-black);
-
-  --six-avatar-color: var(--six-color-white);
-  --six-avatar-background-color: var(--six-color-web-rock-800);
-
-  --six-checkbox-color: var(--six-color-white);
-
-  --six-selection-control-color: var(--six-color-action-500);
-  --six-selection-control-color-disabled: var(--six-color-web-rock-400);
-
-  --six-details-color: var(--six-color-web-rock-300);
-  --six-details-body-background-color: var(--six-color-web-rock-800);
-
-  --six-drawer-color: var(--six-color-web-rock-200);
-  --six-drawer-background-color: var(--six-color-web-rock-900);
-
-  --six-footer-background-color: var(--six-color-web-rock-900);
-  --six-footer-color: var(--six-color-web-rock-400);
-
-  --six-header-background-color: var(--six-color-dark-background-color);
-  --six-header-border-color: var(--six-color-dark-background-color);
-  --six-header-border-color-open: var(--six-color-web-rock-800);
-  --six-header-selected-app-color-hover: var(--six-color-web-rock-500);
-
-  --six-menu-divider-color: var(--six-color-web-rock-600);
-  --six-menu-item-background-color: var(--six-color-web-rock-800);
-
-  --six-search-color: var(--six-color-action-600);
-
-  --six-sidebar-color: var(--six-color-web-rock-50);
-  --six-sidebar-background-color: var(--six-color-dark-background-color);
-  --six-sidebar-hover-background-color: var(--six-color-web-rock-900);
-  --six-sidebar-header-background-color: var(--six-color-web-rock-900);
-  --six-sidebar-border-color: var(--six-color-dark-background-color);
-  --six-sidebar-item-color-hover: var(--six-color-web-rock-400);
-
-  --six-tab-color: var(--six-color-web-rock-100);
-  --six-tab-color-active: var(--six-color-web-rock-100);
-  --six-tab-color-hover: var(--six-color-web-rock-300);
-  --six-tab-color-disabled: var(--six-color-web-rock-600);
-  --six-tab-border-color: var(--six-color-black);
-  --six-tab-border-color-active: var(--six-color-web-rock-100);
-
-  --six-rating-color: var(--six-color-web-rock-800);
-  --six-rating-color-active: var(--six-color-success-600);
-
-  --six-root-main-background-color: var(--six-color-web-rock-900);
-
-  --six-scrollbar-background-color: var(--six-color-web-rock-900);
-  --six-scrollbar-thumb-color: var(--six-color-web-rock-700);
   --six-scrollbar-thumb-hover-color: var(--six-color-web-rock-600);
 
   /* Firefox, Chrome, Safari, Edge, Opera */

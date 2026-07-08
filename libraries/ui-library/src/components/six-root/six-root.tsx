@@ -120,13 +120,20 @@ export class SixRoot {
   }
 
   private applyTheme() {
-    const appliedTheme = this.getAppliedTheme();
     const root = document.documentElement;
+    const appliedTheme = this.getAppliedTheme();
 
-    root.classList.remove('theme-light', 'theme-dark');
-    root.classList.add(`theme-${appliedTheme}`);
+    if (this.theme === 'auto') {
+      // No attribute means the stylesheet follows the OS preference (prefers-color-scheme)
+      root.removeAttribute('data-six-theme');
+    } else {
+      root.setAttribute('data-six-theme', this.theme);
+    }
 
     this.updateMetaThemeColor(appliedTheme);
+
+    // Notify listeners like six-theme-switcher so they can update their state
+    document.dispatchEvent(new CustomEvent('six-root-theme-change', { detail: { theme: this.theme, appliedTheme } }));
   }
 
   private updateMetaThemeColor(theme: 'light' | 'dark') {
@@ -140,7 +147,7 @@ export class SixRoot {
 
     const colors = {
       light: '#ffffff',
-      dark: '#000000',
+      dark: '#262626', // --six-color-web-rock-900, the dark page background
     };
 
     metaThemeColor.setAttribute('content', colors[theme] || colors.light);

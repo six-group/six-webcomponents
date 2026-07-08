@@ -63,6 +63,7 @@ export default withMermaid({
               items: [
                 { text: 'Tables', link: '/guide/styling/tables' },
                 { text: 'Colors', link: '/guide/styling/colors' },
+                { text: 'Dark Mode', link: '/guide/styling/dark-mode' },
                 { text: 'Spacing', link: '/guide/styling/spacing' },
                 { text: 'Typography', link: '/guide/styling/typography' },
                 { text: 'Shadows', link: '/guide/styling/shadows' },

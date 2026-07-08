@@ -3,6 +3,10 @@
 The Six Webcomponents library uses a comprehensive color system that includes brand colors, semantic
 status colors, and neutral tones.
 
+The palette tokens documented on this page resolve to the same values in light and dark mode. Dark
+mode works by remapping the semantic component tokens to different palette shades — see the
+[Dark Mode guide](./dark-mode.md).
+
 ## Brand Colors
 
 <div style="display: flex; align-items: center; margin-bottom: 24px;">
