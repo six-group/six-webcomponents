@@ -6,10 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## Upcoming
 
-## 5.5.0 - 2026-07-03
+### Added
 
-- `six-breadcrumbs` new style aligned with design guidelines. Added `size` interface property.
-- `six-icon`: Support for custom SVGs via new `src` and `inline-svg` props.
 - Dark mode: activated via the `data-six-theme="dark"` attribute on the root element, or
   automatically via the OS preference (`prefers-color-scheme`) when no attribute is set. Dark token
   overrides now live in `dark-theme.css` and follow the SIX dark mode design guidelines. See the
@@ -17,6 +15,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   attribute automatically (the previous `.theme-dark`/`.theme-light` classes are no longer used).
   `six-theme-switcher` now also works standalone — without a `six-root` it toggles the
   `data-six-theme` attribute directly and stays in sync with attribute and OS preference changes.
+
+## 5.5.0 - 2026-07-03
+
+- `six-breadcrumbs` new style aligned with design guidelines. Added `size` interface property.
+- `six-icon`: Support for custom SVGs via new `src` and `inline-svg` props.
 
 ### Fixed
 
@@ -27,9 +30,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
-- Added the ability to disable the `ValidationService` on Angular. See
-  [docs](./guide/angular.md#customisingdisabling-validationservice) for more details.
-- `six-root`: Added theme support (dark/light/auto) in coordination with design team.
 - Added param library to choose the icon library also in `six-icon-button` and `six-tile` (default
   is material-icons)
 - New `six-paginator` component (experimental).
