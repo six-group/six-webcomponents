@@ -6,20 +6,59 @@
  */
 
 /**
- * Colors
- --vp-code-block-color
+ * Colors - Light Theme
  * -------------------------------------------------------------------------- */
 
 :root {
+  /* Brand colors */
   --vp-c-brand-1: #de3919;
   --vp-c-brand-2: #e83c1a;
   --vp-c-brand-3: #f23f1b;
   --vp-c-brand-soft: #f7401b;
+
+  /* Text colors */
+  --vp-c-text-1: unset;
+
+  /* Layout */
   --vp-nav-logo-height: 14px;
+
+  /* Search */
   --vp-local-search-highlight-bg: none;
   --vp-local-search-highlight-text: var(--vp-c-brand-1);
+
+  /* Code blocks - Light theme */
   --vp-code-block-bg: #f6f6f7;
   --vp-code-bg: #f6f6f7;
+  --vp-code-color: #383a42;
+}
+
+/**
+ * Colors - Dark Theme
+ * -------------------------------------------------------------------------- */
+.dark,
+[data-six-theme='dark'] {
+  /* Code blocks - Dark theme */
+  --vp-code-block-bg: #1e1e1e;
+  --vp-code-bg: #1e1e1e;
+  --vp-code-color: #abb2bf;
+
+  /* Background colors */
+  --vp-c-bg: var(--six-color-web-rock-900);
+  --vp-c-bg-soft: #242424;
+  --vp-c-bg-mute: #2c2c2c;
+  --vp-c-bg-alt: #151515;
+
+  /* Divider colors */
+  --vp-c-divider: #2e2e2e;
+  --vp-c-gutter: #1a1a1a;
+
+  /* Text colors */
+  --vp-c-text-1: rgba(255, 255, 245, 0.86);
+  --vp-c-text-2: rgba(235, 235, 245, 0.6);
+  --vp-c-text-3: rgba(235, 235, 245, 0.38);
+
+  /* Sidebar */
+  --vp-sidebar-bg-color: #232323;
 }
 
 /**
@@ -46,6 +85,28 @@
 /* overwrite to match color of vitepress code background */
 code {
   background: var(--vp-code-bg);
+  color: var(--vp-code-color);
+}
+
+/* Code blocks styling */
+.vp-doc div[class*='language-'] {
+  background-color: var(--vp-code-block-bg);
+}
+
+.vp-doc div[class*='language-'] code {
+  color: var(--vp-code-color);
+}
+
+/* Improve code block header visibility in dark mode */
+.dark .vp-doc div[class*='language-'] .lang,
+[data-six-theme='dark'] .vp-doc div[class*='language-'] .lang {
+  color: rgba(235, 235, 245, 0.6);
+}
+
+/* Improve line numbers visibility */
+.dark .vp-doc .line-numbers-wrapper,
+[data-six-theme='dark'] .vp-doc .line-numbers-wrapper {
+  color: rgba(235, 235, 245, 0.3);
 }
 
 /*
@@ -54,4 +115,48 @@ code {
  */
 .content-container {
   max-width: 1400px !important;
+}
+
+/*
+  Page scrollbars follow the VitePress theme (.dark) instead of the SIX theme tokens,
+  which demos (e.g. the six-root example) can toggle at runtime.
+ */
+html {
+  scrollbar-color: var(--six-color-web-rock-500) var(--six-color-web-rock-300);
+}
+
+html::-webkit-scrollbar-track {
+  background: var(--six-color-web-rock-300);
+}
+
+html::-webkit-scrollbar-thumb {
+  background: var(--six-color-web-rock-500);
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background: var(--six-color-web-rock-600);
+}
+
+html.dark {
+  scrollbar-color: var(--six-color-web-rock-700) var(--six-color-web-rock-900);
+}
+
+html.dark::-webkit-scrollbar-track {
+  background: var(--six-color-web-rock-900);
+}
+
+html.dark::-webkit-scrollbar-thumb {
+  background: var(--six-color-web-rock-700);
+}
+
+html.dark::-webkit-scrollbar-thumb:hover {
+  background: var(--six-color-web-rock-600);
+}
+
+/*
+  Inside the six-root demo, scrollbars follow the SIX theme tokens again
+  (scrollbar-color is inherited, so the pinned page value would leak in here)
+ */
+.six-root-wrapper {
+  scrollbar-color: var(--six-scrollbar-thumb-color) var(--six-scrollbar-background-color);
 }

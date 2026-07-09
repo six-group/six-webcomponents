@@ -6,6 +6,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## Upcoming
 
+### Added
+
+- Dark mode: activated via the `data-six-theme="dark"` attribute on the root element, or
+  automatically via the OS preference (`prefers-color-scheme`) when no attribute is set. Dark token
+  overrides now live in `dark-theme.css` and follow the SIX dark mode design guidelines. See the
+  [Dark Mode guide](./guide/styling/dark-mode.md). `six-root` and `six-theme-switcher` manage the
+  attribute automatically (the previous `.theme-dark`/`.theme-light` classes are no longer used).
+  `six-theme-switcher` now also works standalone — without a `six-root` it toggles the
+  `data-six-theme` attribute directly and stays in sync with attribute and OS preference changes.
+
 ## 5.5.0 - 2026-07-03
 
 - `six-breadcrumbs` new style aligned with design guidelines. Added `size` interface property.

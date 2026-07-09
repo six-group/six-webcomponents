@@ -30,7 +30,7 @@
     color: var(--six-color-web-rock-500);
 
     &:hover {
-      background-color: var(--six-color-web-rock-100);
+      background-color: var(--six-item-picker-background-color-hover);
       border-radius: 100%;
     }
 
@@ -39,7 +39,7 @@
     }
 
     &--disabled {
-      color: var(--six-color-web-rock-300);
+      color: var(--six-item-picker-color-disabled);
       cursor: not-allowed;
 
       &:hover {
@@ -47,7 +47,7 @@
       }
 
       &:active {
-        color: var(--six-color-web-rock-300);
+        color: var(--six-item-picker-color-disabled);
       }
     }
 

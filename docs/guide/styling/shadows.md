@@ -10,6 +10,12 @@ interface.
 | `--six-shadow-medium-top` | 0 -10px 15px -3px rgb(0 0 0 / 0.1), 0 -4px 6px -4px rgb(0 0 0 / 0.1) | <div style="width: 6rem; height: 3rem; background-color: white; box-shadow: 0 -10px 15px -3px rgb(0 0 0 / 0.1), 0 -4px 6px -4px rgb(0 0 0 / 0.1); border-radius: 4px;"></div> |
 | `--six-shadow-large`      | 0 25px 50px -12px rgb(0 0 0 / 0.25)                                  | <div style="width: 6rem; height: 3rem; background-color: white; box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25); border-radius: 4px;"></div>                                  |
 
+## Dark Mode
+
+In [dark mode](./dark-mode.md) the shadow tokens are overridden with higher opacities for better
+visibility against dark backgrounds: `--six-shadow-small` and `--six-shadow-medium` use `0.3`
+opacity (instead of `0.1`), and `--six-shadow-large` uses `0.5` (instead of `0.25`).
+
 ## Example Usage
 
 ```css

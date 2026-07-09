@@ -602,7 +602,8 @@ export const SixRating: StencilVueComponent<JSX.SixRating> = /*@__PURE__*/ defin
 export const SixRoot: StencilVueComponent<JSX.SixRoot> = /*@__PURE__*/ defineContainer<JSX.SixRoot>('six-root', undefined, [
   'padded',
   'stage',
-  'version'
+  'version',
+  'theme'
 ]);
 
 
@@ -800,6 +801,16 @@ export const SixTextarea: StencilVueComponent<JSX.SixTextarea, JSX.SixTextarea["
   'six-textarea-blur'
 ],
 'value', 'input', undefined);
+
+
+export const SixThemeSwitcher: StencilVueComponent<JSX.SixThemeSwitcher> = /*@__PURE__*/ defineContainer<JSX.SixThemeSwitcher>('six-theme-switcher', undefined, [
+  'size',
+  'disabled',
+  'label',
+  'six-theme-switcher-change'
+], [
+  'six-theme-switcher-change'
+]);
 
 
 export const SixTile: StencilVueComponent<JSX.SixTile> = /*@__PURE__*/ defineContainer<JSX.SixTile>('six-tile', undefined, [

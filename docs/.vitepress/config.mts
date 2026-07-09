@@ -15,7 +15,6 @@ const componentNavItems = components.map((component) => {
 // https://vitepress.dev/reference/site-config
 export default withMermaid({
   ignoreDeadLinks: [/^https?:\/\/localhost/, './../wrappers/set-attributes'],
-  appearance: false,
   head: [['link', { rel: 'icon', href: 'favicon.ico' }]],
   title: 'Web Components',
   description: 'Component Library following the SIX Style Guide',
@@ -64,6 +63,7 @@ export default withMermaid({
               items: [
                 { text: 'Tables', link: '/guide/styling/tables' },
                 { text: 'Colors', link: '/guide/styling/colors' },
+                { text: 'Dark Mode', link: '/guide/styling/dark-mode' },
                 { text: 'Spacing', link: '/guide/styling/spacing' },
                 { text: 'Typography', link: '/guide/styling/typography' },
                 { text: 'Shadows', link: '/guide/styling/shadows' },
