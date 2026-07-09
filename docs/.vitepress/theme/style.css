@@ -116,3 +116,47 @@ code {
 .content-container {
   max-width: 1400px !important;
 }
+
+/*
+  Page scrollbars follow the VitePress theme (.dark) instead of the SIX theme tokens,
+  which demos (e.g. the six-root example) can toggle at runtime.
+ */
+html {
+  scrollbar-color: var(--six-color-web-rock-500) var(--six-color-web-rock-300);
+}
+
+html::-webkit-scrollbar-track {
+  background: var(--six-color-web-rock-300);
+}
+
+html::-webkit-scrollbar-thumb {
+  background: var(--six-color-web-rock-500);
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background: var(--six-color-web-rock-600);
+}
+
+html.dark {
+  scrollbar-color: var(--six-color-web-rock-700) var(--six-color-web-rock-900);
+}
+
+html.dark::-webkit-scrollbar-track {
+  background: var(--six-color-web-rock-900);
+}
+
+html.dark::-webkit-scrollbar-thumb {
+  background: var(--six-color-web-rock-700);
+}
+
+html.dark::-webkit-scrollbar-thumb:hover {
+  background: var(--six-color-web-rock-600);
+}
+
+/*
+  Inside the six-root demo, scrollbars follow the SIX theme tokens again
+  (scrollbar-color is inherited, so the pinned page value would leak in here)
+ */
+.six-root-wrapper {
+  scrollbar-color: var(--six-scrollbar-thumb-color) var(--six-scrollbar-background-color);
+}
