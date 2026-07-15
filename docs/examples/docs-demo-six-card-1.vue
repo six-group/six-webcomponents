@@ -1,10 +1,15 @@
 <template>
 <div>
 
-        <h3>Basic Usage</h3>
+        <h3>Media Cards</h3>
         <div style="max-width: 400px; margin: auto">
           <six-card>
+            <img               slot="media"
+              src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PScwIDAgMTAyNCA1MTInIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zyc+PHJlY3Qgd2lkdGg9JzEwMjQnIGhlaWdodD0nNTEyJyBmaWxsPScjY2NjY2NjJyAvPjwvc3ZnPg=="
+              alt="Grey placeholder"
+            >
             <h2 slot="header">Card Title</h2>
+            <h3 slot="header">Card Subtitle</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
@@ -18,7 +23,7 @@
 </style>
 <script>
 export default {
-  name: 'docs-demo-six-card-0',
+  name: 'docs-demo-six-card-1',
   mounted() {  }
 }
 </script>

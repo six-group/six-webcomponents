@@ -276,6 +276,11 @@ export namespace Components {
      * @status stable
      */
     interface SixCard {
+        /**
+          * Set to true to show a shadow.
+          * @default false
+         */
+        "shadow": boolean;
     }
     /**
      * @since 1.0
@@ -4092,6 +4097,11 @@ declare namespace LocalJSX {
      * @status stable
      */
     interface SixCard {
+        /**
+          * Set to true to show a shadow.
+          * @default false
+         */
+        "shadow"?: boolean;
     }
     /**
      * @since 1.0
@@ -6668,6 +6678,9 @@ declare namespace LocalJSX {
         "target": '_blank' | '_parent' | '_self' | '_top';
         "download": string;
     }
+    interface SixCardAttributes {
+        "shadow": boolean;
+    }
     interface SixCheckboxAttributes {
         "name": string;
         "value": string;
@@ -7173,7 +7186,7 @@ declare namespace LocalJSX {
         "six-breadcrumbs": Omit<SixBreadcrumbs, keyof SixBreadcrumbsAttributes> & { [K in keyof SixBreadcrumbs & keyof SixBreadcrumbsAttributes]?: SixBreadcrumbs[K] } & { [K in keyof SixBreadcrumbs & keyof SixBreadcrumbsAttributes as `attr:${K}`]?: SixBreadcrumbsAttributes[K] } & { [K in keyof SixBreadcrumbs & keyof SixBreadcrumbsAttributes as `prop:${K}`]?: SixBreadcrumbs[K] };
         "six-breadcrumbs-item": Omit<SixBreadcrumbsItem, keyof SixBreadcrumbsItemAttributes> & { [K in keyof SixBreadcrumbsItem & keyof SixBreadcrumbsItemAttributes]?: SixBreadcrumbsItem[K] } & { [K in keyof SixBreadcrumbsItem & keyof SixBreadcrumbsItemAttributes as `attr:${K}`]?: SixBreadcrumbsItemAttributes[K] } & { [K in keyof SixBreadcrumbsItem & keyof SixBreadcrumbsItemAttributes as `prop:${K}`]?: SixBreadcrumbsItem[K] };
         "six-button": Omit<SixButton, keyof SixButtonAttributes> & { [K in keyof SixButton & keyof SixButtonAttributes]?: SixButton[K] } & { [K in keyof SixButton & keyof SixButtonAttributes as `attr:${K}`]?: SixButtonAttributes[K] } & { [K in keyof SixButton & keyof SixButtonAttributes as `prop:${K}`]?: SixButton[K] };
-        "six-card": SixCard;
+        "six-card": Omit<SixCard, keyof SixCardAttributes> & { [K in keyof SixCard & keyof SixCardAttributes]?: SixCard[K] } & { [K in keyof SixCard & keyof SixCardAttributes as `attr:${K}`]?: SixCardAttributes[K] } & { [K in keyof SixCard & keyof SixCardAttributes as `prop:${K}`]?: SixCard[K] };
         "six-checkbox": Omit<SixCheckbox, keyof SixCheckboxAttributes> & { [K in keyof SixCheckbox & keyof SixCheckboxAttributes]?: SixCheckbox[K] } & { [K in keyof SixCheckbox & keyof SixCheckboxAttributes as `attr:${K}`]?: SixCheckboxAttributes[K] } & { [K in keyof SixCheckbox & keyof SixCheckboxAttributes as `prop:${K}`]?: SixCheckbox[K] };
         "six-date": Omit<SixDate, keyof SixDateAttributes> & { [K in keyof SixDate & keyof SixDateAttributes]?: SixDate[K] } & { [K in keyof SixDate & keyof SixDateAttributes as `attr:${K}`]?: SixDateAttributes[K] } & { [K in keyof SixDate & keyof SixDateAttributes as `prop:${K}`]?: SixDate[K] };
         "six-datepicker": Omit<SixDatepicker, keyof SixDatepickerAttributes> & { [K in keyof SixDatepicker & keyof SixDatepickerAttributes]?: SixDatepicker[K] } & { [K in keyof SixDatepicker & keyof SixDatepickerAttributes as `attr:${K}`]?: SixDatepickerAttributes[K] } & { [K in keyof SixDatepicker & keyof SixDatepickerAttributes as `prop:${K}`]?: SixDatepicker[K] };

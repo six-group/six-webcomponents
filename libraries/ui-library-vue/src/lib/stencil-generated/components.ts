@@ -77,7 +77,9 @@ export const SixButton: StencilVueComponent<JSX.SixButton> = /*@__PURE__*/ defin
 ]);
 
 
-export const SixCard: StencilVueComponent<JSX.SixCard> = /*@__PURE__*/ defineContainer<JSX.SixCard>('six-card', undefined);
+export const SixCard: StencilVueComponent<JSX.SixCard> = /*@__PURE__*/ defineContainer<JSX.SixCard>('six-card', undefined, [
+  'shadow'
+]);
 
 
 export const SixCheckbox: StencilVueComponent<JSX.SixCheckbox, JSX.SixCheckbox["checked"]> = /*@__PURE__*/ defineContainer<JSX.SixCheckbox, JSX.SixCheckbox["checked"]>('six-checkbox', undefined, [

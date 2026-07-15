@@ -1,12 +1,12 @@
 <template>
 <div>
 
-        <h3>Basic Usage</h3>
+        <h3>Tag</h3>
         <div style="max-width: 400px; margin: auto">
           <six-card>
             <h2 slot="header">Card Title</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            <h3 slot="header">Card Subtitle</h3>
+            <six-tag size="small" pill>Tag</six-tag>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
           </six-card>
         </div>
@@ -18,7 +18,7 @@
 </style>
 <script>
 export default {
-  name: 'docs-demo-six-card-0',
+  name: 'docs-demo-six-card-3',
   mounted() {  }
 }
 </script>

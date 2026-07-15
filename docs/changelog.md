@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## Upcoming
 
+### Added
+
+- `six-card`: New `media`, `header`, `header-actions`, `footer`, and `footer-actions` slots, and a
+  `shadow` prop to opt into a drop shadow (previously always on).
+
 ## 5.5.0 - 2026-07-03
 
 - `six-breadcrumbs` new style aligned with design guidelines. Added `size` interface property.
