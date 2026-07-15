@@ -1,15 +1,15 @@
 <template>
 <div>
 
-        <six-card>
-          <h1>Lorem ipsum.</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-        </six-card>
+        <h3>Basic Usage</h3>
+        <div style="max-width: 400px; margin: auto">
+          <six-card>
+            <h2 slot="header">Card Title</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+          </six-card>
+        </div>
       
 </div>
 </template>

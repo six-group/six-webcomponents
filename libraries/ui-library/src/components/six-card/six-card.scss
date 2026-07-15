@@ -1,8 +1,100 @@
 @use 'src/global/component';
 
 :host {
-  display: inline-block;
+  --six-card-padding: var(--six-spacing-medium);
+  display: block;
+  border: 1px solid var(--six-color-web-rock-300);
+  border-radius: var(--six-border-radius-medium);
+  background: var(--six-color-white);
+}
+
+:host(.card__shadow) {
   box-shadow: var(--six-shadow-medium);
-  border: 1px solid var(--six-color-web-rock-100);
-  padding: var(--six-spacing-medium);
+}
+
+.card__image {
+  line-height: 0;
+
+  ::slotted(img) {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
+
+.card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--six-spacing-small);
+  padding: var(--six-card-padding) var(--six-card-padding) 0 var(--six-card-padding);
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--six-spacing-xx-small);
+    min-width: 0;
+
+    ::slotted(*) {
+      margin: 0;
+    }
+
+    ::slotted(h1),
+    ::slotted(h2) {
+      font-size: var(--six-font-size-large);
+      font-weight: var(--six-font-weight-bold);
+      color: var(--six-color-web-rock-900);
+    }
+
+    ::slotted(h3),
+    ::slotted(h4),
+    ::slotted(h5),
+    ::slotted(h6) {
+      font-size: var(--six-font-size-small);
+      font-weight: var(--six-font-weight-normal);
+      color: var(--six-color-web-rock-900);
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+}
+
+.card__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--six-spacing-small);
+  padding: var(--six-card-padding);
+
+  ::slotted(*) {
+    margin: 0;
+  }
+
+  ::slotted(six-tag),
+  ::slotted(six-badge) {
+    align-self: flex-start;
+  }
+}
+
+.card__footer {
+  display: flex;
+  align-items: center;
+  gap: var(--six-spacing-medium);
+  padding: 0 var(--six-card-padding) var(--six-card-padding) var(--six-card-padding);
+
+  .card__footer__content {
+    display: flex;
+    align-items: center;
+    gap: var(--six-spacing-small);
+  }
+
+  .card__footer__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--six-spacing-small);
+    margin-left: auto;
+  }
 }

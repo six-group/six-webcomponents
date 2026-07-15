@@ -12,8 +12,8 @@ $margin: 1rem;
 
 .six-file-upload {
   six-card {
+    --six-card-padding: 0;
     box-shadow: none;
-    padding: 0;
     width: 100%;
   }
 
