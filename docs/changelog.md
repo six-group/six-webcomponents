@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## Upcoming
 
+### Fixed
+
+- `six-file-upload`: Fixed six-file-upload-success being emitted twice on file drop in Angular
+  applications using Zone.js.
+
 ## 5.5.0 - 2026-07-03
 
 - `six-breadcrumbs` new style aligned with design guidelines. Added `size` interface property.
