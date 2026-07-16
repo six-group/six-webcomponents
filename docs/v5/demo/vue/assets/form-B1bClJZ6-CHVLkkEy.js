@@ -1,0 +1,1 @@
+function e(e){let t=e.closest(`form`);if(t!=null){let e=document.createElement(`button`);e.type=`submit`,e.style.display=`none`,t.appendChild(e),e.click(),e.remove()}}export{e as t};

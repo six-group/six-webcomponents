@@ -1,0 +1,1 @@
+var e=(e,t=300)=>{let n;return r=>{clearTimeout(n),n=setTimeout(()=>e(r),t)}},t=(t,n)=>{let r=t._original||t;return{_original:t,emit:e(r.emit.bind(r),n)}};export{t as n,e as t};

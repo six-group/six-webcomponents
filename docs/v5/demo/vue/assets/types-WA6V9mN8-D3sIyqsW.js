@@ -1,0 +1,1 @@
+var e;(function(e){e.NUMBER=`number`,e.LETTER=`letter`,e.CAPITAL_LETTER=`capital-letter`,e.LOWER_LETTER=`lower-letter`,e.CUSTOM=`custom`})(e||={});var t;(function(e){e.BEFORE=`before`,e.AFTER=`after`})(t||={});export{e as n,t};
