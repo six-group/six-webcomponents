@@ -1,11 +1,12 @@
 <template>
 <div>
 
-        <h3>Basic Usage</h3>
+        <h3>Header Icon</h3>
         <div style="max-width: 400px; margin: auto">
           <six-card>
             <h2 slot="header">Card Title</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            <h3 slot="header">Card Subtitle</h3>
+            <six-icon slot="header-actions" name="headset" size="large"></six-icon>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
           </six-card>
@@ -18,7 +19,7 @@
 </style>
 <script>
 export default {
-  name: 'docs-demo-six-card-0',
+  name: 'docs-demo-six-card-2',
   mounted() {  }
 }
 </script>
