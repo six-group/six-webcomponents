@@ -68,28 +68,28 @@ export class SixFileUpload {
   /** Triggers when an uploaded file doesn't match MIME type or max file size. */
   @Event({ eventName: 'six-file-upload-failure' }) failure!: EventEmitter<SixFileUploadFailurePayload>;
 
-  @Listen('dragenter', { capture: false })
+  @Listen('dragenter', { capture: false, passive: false })
   dragenterHandler() {
     if (!this.disabled) {
       this.isOver = true;
     }
   }
 
-  @Listen('dragover', { capture: false })
+  @Listen('dragover', { capture: false, passive: false })
   dragoverHandler() {
     if (!this.disabled) {
       this.isOver = true;
     }
   }
 
-  @Listen('dragleave', { capture: false })
+  @Listen('dragleave', { capture: false, passive: false })
   dragleaveHandler() {
     if (!this.disabled) {
       this.isOver = false;
     }
   }
 
-  @Listen('drop', { capture: false })
+  @Listen('drop', { capture: false, passive: false })
   dropHandler(event: DragEvent) {
     if (!this.disabled) {
       this.isOver = false;
@@ -157,16 +157,16 @@ export class SixFileUpload {
 
   componentDidLoad() {
     ['dragenter', 'dragover', 'dragleave', 'drop'].forEach((eventName) => {
-      this.host.addEventListener(eventName, this.preventDefaults, false);
-      document.body.addEventListener(eventName, this.preventDefaults, false);
+      this.host.addEventListener(eventName, this.preventDefaults, { capture: false, passive: false });
+      document.body.addEventListener(eventName, this.preventDefaults, { capture: false, passive: false });
     });
     this.host.shadowRoot?.addEventListener('slotchange', this.handleSlotChange);
   }
 
   disconnectedCallback() {
     ['dragenter', 'dragover', 'dragleave', 'drop'].forEach((eventName) => {
-      this.host.removeEventListener(eventName, this.preventDefaults, false);
-      document.body.removeEventListener(eventName, this.preventDefaults, false);
+      this.host.removeEventListener(eventName, this.preventDefaults, { capture: false });
+      document.body.removeEventListener(eventName, this.preventDefaults, { capture: false });
     });
     this.host.shadowRoot?.removeEventListener('slotchange', this.handleSlotChange);
   }
