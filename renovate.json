@@ -8,7 +8,10 @@
   ],
   "ignoreDeps": [
     "node",
-    "npm"
+    "npm",
+    "@stencil/angular-output-target",
+    "@stencil/vue-output-target",
+    "@stencil/react-output-target"
   ],
   "packageRules": [
     {
