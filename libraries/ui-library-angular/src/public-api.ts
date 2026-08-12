@@ -6,6 +6,9 @@ import { ActiveSidebarDirective } from './lib/sidebar/active-sidebar.directive';
 
 export * from './lib/ui-library-angular.module';
 
+// configuration
+export * from './lib/ui-library-angular-config';
+
 // proxies
 export { DIRECTIVES } from './lib/stencil-generated';
 export * from './lib/stencil-generated/components';
