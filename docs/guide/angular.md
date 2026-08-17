@@ -161,6 +161,32 @@ UiLibraryAngularModule.forRoot(/* ... other options*/, {
   <strong>Warning:</strong> This will disable any sort of validation service. Even if you pass your own implementation!
 </six-alert>
 
+## Testing
+
+Components and directives of the library can be used in unit tests without calling
+`UiLibraryAngularModule.forRoot()`. The library configuration falls back to its defaults, so a plain
+`TestBed` setup is enough:
+
+```ts
+TestBed.configureTestingModule({
+  imports: [SomeComponentUsingSixComponents],
+});
+```
+
+Avoid `importProvidersFrom(UiLibraryAngularModule.forRoot())` in tests: `forRoot()` is meant for the
+application root and additionally registers the custom elements, which is unnecessary in unit tests.
+
+To test a specific configuration, provide `UI_LIBRARY_CONFIG` directly:
+
+```ts
+import { UI_LIBRARY_CONFIG } from '@six-group/ui-library-angular';
+
+TestBed.configureTestingModule({
+  imports: [SomeComponentUsingSixComponents],
+  providers: [{ provide: UI_LIBRARY_CONFIG, useValue: { showAsteriskOnRequiredValidator: true } }],
+});
+```
+
 ## Using the Components
 
 The components can be utilized just like any other Angular component. However, there's one caveat:

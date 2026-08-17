@@ -6,6 +6,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## Upcoming
 
+### Added
+
+- Angular: The `UI_LIBRARY_CONFIG` injection token, the `UiLibraryConfig` interface and
+  `DEFAULT_UI_LIBRARY_CONFIG` are now exported from `@six-group/ui-library-angular`.
+
+### Fixed
+
+- Angular: `UI_LIBRARY_CONFIG` now provides the default configuration itself, so unit tests no
+  longer need `importProvidersFrom(UiLibraryAngularModule.forRoot())`. Registering the custom
+  elements is memoized, so repeated `forRoot()` usage (e.g. one injector per test) no longer leads
+  to "JavaScript heap out of memory" errors.
+
 ## 5.5.1-rc.1 - 2026-07-20
 
 ### Fixed
