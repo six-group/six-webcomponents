@@ -4,7 +4,9 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
-## 5.5.1-rc.2 - 2026-08-17
+## Upcoming
+
+## 5.5.1 - 2026-08-18
 
 ### Added
 
@@ -17,11 +19,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   longer need `importProvidersFrom(UiLibraryAngularModule.forRoot())`. Registering the custom
   elements is memoized, so repeated `forRoot()` usage (e.g. one injector per test) no longer leads
   to "JavaScript heap out of memory" errors.
-
-## 5.5.1-rc.1 - 2026-07-20
-
-### Fixed
-
 - `six-file-upload`: Fixed six-file-upload-success being emitted twice on file drop in Angular
   applications using Zone.js.
 - Updated and fixed vulnerable dependencies within the libraries
