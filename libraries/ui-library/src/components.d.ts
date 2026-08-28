@@ -469,7 +469,7 @@ export namespace Components {
         "dateFormat": SixDateFormats;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `dateChange` event after each keystroke.
-          * @default DEFAULT_DEBOUNCE_FAST
+          * @default 300
          */
         "debounce": number;
         /**
@@ -1329,12 +1329,12 @@ export namespace Components {
     interface SixItemPicker {
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `six-item-picker-change-debounced` event. If you want your change debounce event to not trigger when keeping the nav button pressed before, make sure debounce is a bit bigger than timeout, otherwise keeping the button pressed will trigger the event twice: once you click (and keep pressed) and once you release
-          * @default DEFAULT_DEBOUNCE_FAST
+          * @default 300
          */
         "debounce": number;
         /**
           * Set the amount of time, in milliseconds, to wait between switching to next item when mouse button is held pressed.
-          * @default DEFAULT_DEBOUNCE_INSANELY_FAST
+          * @default 35
          */
         "interval": number;
         /**
@@ -1381,7 +1381,7 @@ export namespace Components {
         "step": number;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger faster switching between items.
-          * @default DEFAULT_DEBOUNCE_FAST
+          * @default 300
          */
         "timeout": number;
         /**
@@ -1398,7 +1398,7 @@ export namespace Components {
     interface SixLanguageSwitcher {
         /**
           * The languages which should be selectable options.
-          * @default DEFAULT_LANGUAGES
+          * @default ['EN', 'DE', 'ES']
          */
         "languages": string[] | SixLanguageSwitcherInput[];
         /**
@@ -1842,7 +1842,7 @@ export namespace Components {
         "clearable": boolean;
         /**
           * Debounce time in milliseconds, default is 300 ms
-          * @default DEFAULT_DEBOUNCE_FAST
+          * @default 300
          */
         "debounce": number;
         /**
@@ -1920,7 +1920,7 @@ export namespace Components {
         "hoist": boolean;
         /**
           * The debounce for when the input changes for autocompletes should be emitted
-          * @default DEFAULT_DEBOUNCE_FAST
+          * @default 300
          */
         "inputDebounce": number;
         /**
@@ -2488,7 +2488,7 @@ export namespace Components {
         "clearable": boolean;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `six-timepicker-change-debounced` event. If you want your change debounce event to not trigger when keeping the nav button pressed before, make sure debounce is a bit bigger than timeout, otherwise keeping the button pressed will trigger the event twice: once you click (and keep pressed) and once you release
-          * @default DEFAULT_DEBOUNCE_FAST
+          * @default 300
          */
         "debounce": number;
         /**
@@ -2531,7 +2531,7 @@ export namespace Components {
         "inline": boolean;
         /**
           * Set the amount of time, in milliseconds, to wait between switching to next timeunit (e.g. next hour) when mouse button is held pressed.
-          * @default DEFAULT_DEBOUNCE_INSANELY_FAST
+          * @default 35
          */
         "interval": number;
         /**
@@ -2588,7 +2588,7 @@ export namespace Components {
         "size": 'small' | 'medium' | 'large';
         /**
           * Set the amount of time, in milliseconds, to wait to trigger faster switching between timeunits (e.g. hours).
-          * @default DEFAULT_DEBOUNCE_FAST
+          * @default 300
          */
         "timeout": number;
         /**
@@ -4293,7 +4293,7 @@ declare namespace LocalJSX {
         "dateFormat"?: SixDateFormats;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `dateChange` event after each keystroke.
-          * @default DEFAULT_DEBOUNCE_FAST
+          * @default 300
          */
         "debounce"?: number;
         /**
@@ -5229,12 +5229,12 @@ declare namespace LocalJSX {
     interface SixItemPicker {
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `six-item-picker-change-debounced` event. If you want your change debounce event to not trigger when keeping the nav button pressed before, make sure debounce is a bit bigger than timeout, otherwise keeping the button pressed will trigger the event twice: once you click (and keep pressed) and once you release
-          * @default DEFAULT_DEBOUNCE_FAST
+          * @default 300
          */
         "debounce"?: number;
         /**
           * Set the amount of time, in milliseconds, to wait between switching to next item when mouse button is held pressed.
-          * @default DEFAULT_DEBOUNCE_INSANELY_FAST
+          * @default 35
          */
         "interval"?: number;
         /**
@@ -5289,7 +5289,7 @@ declare namespace LocalJSX {
         "step"?: number;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger faster switching between items.
-          * @default DEFAULT_DEBOUNCE_FAST
+          * @default 300
          */
         "timeout"?: number;
         /**
@@ -5306,7 +5306,7 @@ declare namespace LocalJSX {
     interface SixLanguageSwitcher {
         /**
           * The languages which should be selectable options.
-          * @default DEFAULT_LANGUAGES
+          * @default ['EN', 'DE', 'ES']
          */
         "languages"?: string[] | SixLanguageSwitcherInput[];
         /**
@@ -5770,7 +5770,7 @@ declare namespace LocalJSX {
         "clearable"?: boolean;
         /**
           * Debounce time in milliseconds, default is 300 ms
-          * @default DEFAULT_DEBOUNCE_FAST
+          * @default 300
          */
         "debounce"?: number;
         /**
@@ -5852,7 +5852,7 @@ declare namespace LocalJSX {
         "hoist"?: boolean;
         /**
           * The debounce for when the input changes for autocompletes should be emitted
-          * @default DEFAULT_DEBOUNCE_FAST
+          * @default 300
          */
         "inputDebounce"?: number;
         /**
@@ -6432,7 +6432,7 @@ declare namespace LocalJSX {
         "clearable"?: boolean;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `six-timepicker-change-debounced` event. If you want your change debounce event to not trigger when keeping the nav button pressed before, make sure debounce is a bit bigger than timeout, otherwise keeping the button pressed will trigger the event twice: once you click (and keep pressed) and once you release
-          * @default DEFAULT_DEBOUNCE_FAST
+          * @default 300
          */
         "debounce"?: number;
         /**
@@ -6475,7 +6475,7 @@ declare namespace LocalJSX {
         "inline"?: boolean;
         /**
           * Set the amount of time, in milliseconds, to wait between switching to next timeunit (e.g. next hour) when mouse button is held pressed.
-          * @default DEFAULT_DEBOUNCE_INSANELY_FAST
+          * @default 35
          */
         "interval"?: number;
         /**
@@ -6540,7 +6540,7 @@ declare namespace LocalJSX {
         "size"?: 'small' | 'medium' | 'large';
         /**
           * Set the amount of time, in milliseconds, to wait to trigger faster switching between timeunits (e.g. hours).
-          * @default DEFAULT_DEBOUNCE_FAST
+          * @default 300
          */
         "timeout"?: number;
         /**
