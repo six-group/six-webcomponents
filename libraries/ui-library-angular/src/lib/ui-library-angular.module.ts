@@ -1,4 +1,4 @@
-import { APP_INITIALIZER, ModuleWithProviders, NgModule, Type } from '@angular/core';
+import { ModuleWithProviders, NgModule, provideAppInitializer, Type } from '@angular/core';
 import { DIRECTIVES } from './stencil-generated';
 import { defineCustomElements } from '@six-group/ui-library/loader';
 import { TextValueAccessor } from './control-value-accessors/text-value-accessor';
@@ -34,6 +34,20 @@ import {
 } from './sidebar/active-sidebar.directive';
 import { DateValueAccessor } from './control-value-accessors/date-value-accessor';
 import { DEFAULT_UI_LIBRARY_CONFIG, UI_LIBRARY_CONFIG, UiLibraryConfig } from './ui-library-angular-config';
+
+/**
+ * Custom elements are registered in the global `customElements` registry, so registering them
+ * more than once is pointless and expensive. `forRoot()` may be called once per injector
+ * (e.g. once per test case), therefore the registration is memoized per JS realm.
+ */
+let customElementsRegistration: Promise<void> | undefined;
+
+const registerCustomElementsOnce = (): Promise<void> => {
+  customElementsRegistration ??= (async () => {
+    defineCustomElements();
+  })();
+  return customElementsRegistration;
+};
 
 @NgModule({
   declarations: [
@@ -131,11 +145,7 @@ export class UiLibraryAngularModule {
     return {
       ngModule: UiLibraryAngularModule,
       providers: [
-        {
-          provide: APP_INITIALIZER,
-          useFactory: () => async () => defineCustomElements(),
-          multi: true,
-        },
+        provideAppInitializer(() => registerCustomElementsOnce()),
         { provide: ValidationMessagesService, useClass: customValidationMessagesService ?? ValidationMessagesService },
         { provide: UI_LIBRARY_CONFIG, useValue: mergedConfig },
       ],

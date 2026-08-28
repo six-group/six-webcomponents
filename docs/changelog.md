@@ -6,10 +6,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## Upcoming
 
-## 5.5.1-rc.1 - 2026-07-20
+## 5.5.1 - 2026-08-18
+
+### Added
+
+- Angular: The `UI_LIBRARY_CONFIG` injection token, the `UiLibraryConfig` interface and
+  `DEFAULT_UI_LIBRARY_CONFIG` are now exported from `@six-group/ui-library-angular`.
 
 ### Fixed
 
+- Angular: `UI_LIBRARY_CONFIG` now provides the default configuration itself, so unit tests no
+  longer need `importProvidersFrom(UiLibraryAngularModule.forRoot())`. Registering the custom
+  elements is memoized, so repeated `forRoot()` usage (e.g. one injector per test) no longer leads
+  to "JavaScript heap out of memory" errors.
 - `six-file-upload`: Fixed six-file-upload-success being emitted twice on file drop in Angular
   applications using Zone.js.
 - Updated and fixed vulnerable dependencies within the libraries
