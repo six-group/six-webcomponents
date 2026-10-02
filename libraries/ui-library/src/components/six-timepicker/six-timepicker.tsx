@@ -245,6 +245,7 @@ export class SixTimepicker {
   componentDidLoad() {
     if (this.inputElement == null) return;
     const inputElement = this.inputElement;
+    inputElement.value = this.value;
 
     // emit debounced change event
     this.eventListeners.add(
