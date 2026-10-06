@@ -50,6 +50,54 @@ test.describe('six-date', () => {
     expect(value).toBe('2025-01-20');
   });
 
+  test('should emit six-change and change when a date is typed', async ({ page }) => {
+    await page.setContent('<six-date label="Date"></six-date>');
+    const changeSpy = await page.spyOnEvent('six-change');
+    const standardChangeSpy = await page.spyOnEvent('change');
+
+    await page.getByRole('textbox').fill('20.01.2025');
+    await page.keyboard.press('Tab');
+
+    await expect.poll(() => changeSpy.length).toBeGreaterThan(0);
+    await expect.poll(() => standardChangeSpy.length).toBeGreaterThan(0);
+    const value = await page.locator('six-date').evaluate((el: HTMLElement & { value: string }) => el.value);
+    expect(value).toBe('2025-01-20');
+  });
+
+  test('should emit six-change and change when a date is typed after being detached and re-attached', async ({
+    page,
+  }) => {
+    await page.setContent('<div id="container"><six-date label="Date"></six-date></div>');
+    await expect(page.getByRole('textbox')).toBeVisible();
+    await detachAndReattach(page);
+    const changeSpy = await page.spyOnEvent('six-change');
+    const standardChangeSpy = await page.spyOnEvent('change');
+
+    await page.getByRole('textbox').fill('20.01.2025');
+    await page.keyboard.press('Tab');
+
+    await expect.poll(() => changeSpy.length).toBeGreaterThan(0);
+    await expect.poll(() => standardChangeSpy.length).toBeGreaterThan(0);
+    const value = await page.locator('six-date').evaluate((el: HTMLElement & { value: string }) => el.value);
+    expect(value).toBe('2025-01-20');
+  });
+
+  test('should open popup and select a date after being detached and re-attached', async ({ page }) => {
+    await page.setContent('<div id="container"><six-date label="Date" value="2025-01-15"></six-date></div>');
+    await expect(page.getByRole('textbox')).toBeVisible();
+    await detachAndReattach(page);
+    const changeSpy = await page.spyOnEvent('six-change');
+
+    await page.locator('six-date').click();
+    await expectPanelToBeVisible(page);
+    await page.locator('six-date .panel [data-date="2025-01-20"]').click();
+
+    await expectPanelToBeHidden(page);
+    expect(changeSpy).toHaveReceivedEvent();
+    const value = await page.locator('six-date').evaluate((el: HTMLElement & { value: string }) => el.value);
+    expect(value).toBe('2025-01-20');
+  });
+
   test('should not open popup when disabled', async ({ page }) => {
     await page.setContent('<six-date label="Date" disabled></six-date>');
 
@@ -423,6 +471,15 @@ test.describe('six-date accessibility', () => {
     expect(results.violations).toEqual([]);
   });
 });
+
+/** Simulates a framework (e.g. a dialog) that takes the element out of the document and puts it back. */
+async function detachAndReattach(page: Page) {
+  await page.locator('six-date').evaluate((el) => {
+    const parent = el.parentElement as HTMLElement;
+    el.remove();
+    parent.appendChild(el);
+  });
+}
 
 // Popover-based visibility helpers (six-date uses Popover util with opacity transitions)
 function expectPanelToBeVisible(page: Page) {
