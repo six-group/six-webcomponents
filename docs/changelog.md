@@ -10,6 +10,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - `six-timepicker`: The input now displays a `value` that is set before the component has rendered
   for the first time (e.g. via the `value` attribute or a framework binding during initialization).
+- `six-timepicker`: Typing a time now keeps emitting `six-timepicker-change`,
+  `six-timepicker-change-debounced` and `change` after the element has been detached from and
+  re-attached to the document (e.g. when a dialog hides and shows its content). Previously the
+  listeners were removed on disconnect and never restored.
 
 ## 5.5.1 - 2026-08-18
 
