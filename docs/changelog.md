@@ -6,10 +6,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## Upcoming
 
+### Changed
+
+- `six-timepicker`: Pressing Enter in the input now applies the typed time immediately and closes
+  the popup.
+
 ### Fixed
 
 - `six-timepicker`: The input now displays a `value` that is set before the component has rendered
   for the first time (e.g. via the `value` attribute or a framework binding during initialization).
+- `six-timepicker`: Typing a time keeps emitting `six-timepicker-change`,
+  `six-timepicker-change-debounced` and `change`, and an open popup still closes on an outside
+  click, after the element has been detached from and re-attached to the document.
 
 ## 5.5.1 - 2026-08-18
 

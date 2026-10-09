@@ -3,6 +3,20 @@ h2 {
   margin-bottom: var(--six-spacing-x-large);
 }
 
+.dialog-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--six-spacing-medium);
+  margin-bottom: var(--six-spacing-medium);
+}
+
+.dialog-state {
+  display: flex;
+  flex-direction: column;
+  gap: var(--six-spacing-x-small);
+  font-size: var(--six-font-size-small);
+}
+
 .controls {
   display: flex;
   flex-direction: column;
