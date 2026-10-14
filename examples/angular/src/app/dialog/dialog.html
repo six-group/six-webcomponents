@@ -1,16 +1,32 @@
 <h2>Dialog Example</h2>
 
-<six-dialog
-  #myDialog
-  label="Dialog"
-  class="dialog-overview"
-  (six-dialog-request-close)="preventClosing.checked ? $event.preventDefault() : true"
->
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-  <six-button slot="footer" type="primary" (click)="myDialog.hide()">Close</six-button>
-</six-dialog>
+<div #dialogContainer>
+  <six-dialog
+    #myDialog
+    label="Dialog"
+    class="dialog-overview"
+    (six-dialog-request-close)="preventClosing.checked ? $event.preventDefault() : true"
+  >
+    <form class="dialog-form" [formGroup]="form">
+      <six-timepicker
+        label="Start time"
+        formControlName="startTime"
+        [required]="true"
+        (six-timepicker-change)="onTimeChange($event)"
+        (six-timepicker-change-debounced)="onTimeChangeDebounced($event)"
+      />
+    </form>
+    <div class="dialog-state">
+      <div>Form value: {{ form.value | json }}</div>
+      <div>Last six-timepicker-change: {{ lastTimeChange() }}</div>
+      <div>Last six-timepicker-change-debounced: {{ lastTimeChangeDebounced() }}</div>
+    </div>
+    <six-button slot="footer" type="primary" (click)="myDialog.hide()">Close</six-button>
+  </six-dialog>
+</div>
 
 <div class="controls">
   <six-button (click)="myDialog.show()">Show Dialog</six-button>
+  <six-button (click)="detachAndReattach(dialogContainer)">Detach &amp; re-attach dialog</six-button>
   <six-checkbox #preventClosing>Ignore Clicks on Overlay</six-checkbox>
 </div>
