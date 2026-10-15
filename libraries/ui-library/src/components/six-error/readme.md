@@ -9,6 +9,7 @@
 
 | Slot        | Description                 |
 | ----------- | --------------------------- |
+|             | The default slot            |
 | `"default"` | The error's message content |
 
 
