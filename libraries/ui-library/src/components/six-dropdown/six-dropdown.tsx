@@ -361,8 +361,7 @@ export class SixDropdown {
     // one for the selected menu items, and one for the other items.
     const selectionContainer = this.panelSlot?.assignedElements({ flatten: true }).filter(isSelectionContainer).at(0);
     const sixMenuElement = this.panelSlot?.assignedElements({ flatten: true }).filter(isSixMenu).at(0) as
-      | HTMLSixMenuElement
-      | undefined;
+      HTMLSixMenuElement | undefined;
     const selectionContainerItems = selectionContainer?.querySelectorAll('six-menu-item') || [];
     let sixMenuItems: HTMLSixMenuItemElement[] =
       sixMenuElement
@@ -483,8 +482,7 @@ export class SixDropdown {
 
   private getMenu(): HTMLSixMenuElement | undefined {
     return this.panelSlot?.assignedElements({ flatten: true }).filter(isSixMenu).at(0) as
-      | HTMLSixMenuElement
-      | undefined;
+      HTMLSixMenuElement | undefined;
   }
 
   private handleDocumentKeyDown = (event: Event) => {

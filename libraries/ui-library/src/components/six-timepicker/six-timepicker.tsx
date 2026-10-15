@@ -226,8 +226,11 @@ export class SixTimepicker {
    */
   @State() private popupValue: Time = {};
 
+  private inputTimeout?: ReturnType<typeof setTimeout>;
+
   connectedCallback() {
     this.eventListeners.forward('six-timepicker-change', 'change', this.host);
+    this.registerListeners();
   }
 
   componentWillLoad() {
@@ -236,16 +239,16 @@ export class SixTimepicker {
     if (this.inline) {
       this.open = true;
     }
-
-    if (this.open) {
-      this.eventListeners.add(document, 'mousedown', this.handleDocumentMouseDown);
-    }
   }
 
   componentDidLoad() {
     if (this.inputElement == null) return;
-    const inputElement = this.inputElement;
-    inputElement.value = this.value;
+    this.inputElement.value = this.value;
+    this.registerListeners();
+  }
+
+  private registerListeners() {
+    if (this.inputElement == null) return;
 
     // emit debounced change event
     this.eventListeners.add(
@@ -254,32 +257,48 @@ export class SixTimepicker {
       debounce((event: Event) => this.sixChangeDebounced.emit((event as CustomEvent).detail), this.debounce)
     );
 
-    // update value and popup value based on input-element value
-    this.eventListeners.add(
-      inputElement,
-      'six-input-input',
-      debounce((event: Event) => {
-        event.stopPropagation();
+    if (this.open) {
+      this.eventListeners.add(document, 'mousedown', this.handleDocumentMouseDown);
+    }
+  }
 
-        // emit empty event if time string is invalid
-        if (!isValidTimeString(inputElement.value, this.format)) {
-          this.value = inputElement.value;
-          this.sixChange.emit({
-            value: {},
-            valueAsString: '',
-          });
-          return;
-        } else {
-          // update value and popup value and emit the new value
-          this.value = inputElement.value;
-          this.popupValue = parseTimeString(inputElement.value, this.format);
-          this.sixChange.emit({
-            value: this.popupValue,
-            valueAsString: createTimeString(this.popupValue, this.format),
-          });
-        }
-      }, this.debounce)
-    );
+  private handleInput = () => {
+    clearTimeout(this.inputTimeout);
+    this.inputTimeout = setTimeout(() => this.applyInputValue(), this.debounce);
+  };
+
+  private handleInputKeyDown = (event: KeyboardEvent) => {
+    if (event.key !== 'Enter' || event.isComposing) return;
+    if (this.inputTimeout != null) {
+      this.applyInputValue();
+    }
+    this.closePopup();
+  };
+
+  // update value and popup value based on input-element value
+  private applyInputValue() {
+    clearTimeout(this.inputTimeout);
+    this.inputTimeout = undefined;
+    if (this.inputElement == null) return;
+    const inputValue = this.inputElement.value;
+
+    // emit empty event if time string is invalid
+    if (!isValidTimeString(inputValue, this.format)) {
+      this.value = inputValue;
+      this.sixChange.emit({
+        value: {},
+        valueAsString: '',
+      });
+      return;
+    }
+
+    // update value and popup value and emit the new value
+    this.value = inputValue;
+    this.popupValue = parseTimeString(inputValue, this.format);
+    this.sixChange.emit({
+      value: this.popupValue,
+      valueAsString: createTimeString(this.popupValue, this.format),
+    });
   }
 
   componentDidRender() {
@@ -556,6 +575,8 @@ export class SixTimepicker {
           ref={(el) => (this.inputElement = el)}
           part="input"
           onClick={() => this.openPopup()}
+          onSix-input-input={this.handleInput}
+          onKeyDown={this.handleInputKeyDown}
           placeholder={this.placeholder}
           readonly={this.readonly}
           disabled={this.disabled}

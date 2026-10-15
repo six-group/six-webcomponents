@@ -18,7 +18,7 @@ export const DaySelection = (props: {
         <div
           data-date={day.date}
           onClick={() => {
-            if (!day.disabled || day.outdated) {
+            if (!day.disabled) {
               props.dayClicked(day.date);
             }
           }}

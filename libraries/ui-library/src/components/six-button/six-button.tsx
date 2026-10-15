@@ -37,14 +37,7 @@ export class SixButton {
 
   /** The button's type. */
   @Prop({ reflect: true }) type:
-    | 'secondary'
-    | 'primary'
-    | 'link'
-    | 'success'
-    | 'warning'
-    | 'danger'
-    | 'action'
-    | 'action-outline' = 'primary';
+    'secondary' | 'primary' | 'link' | 'success' | 'warning' | 'danger' | 'action' | 'action-outline' = 'primary';
 
   /** The button's size. */
   @Prop({ reflect: true }) size: 'small' | 'medium' | 'large' = 'medium';
