@@ -193,6 +193,25 @@ test.describe('six-date', () => {
     await expect(enabledDay).not.toHaveClass(/cell--disabled/);
   });
 
+  test('should not select disabled days of the adjacent month', async ({ page }) => {
+    await page.setContent('<six-date label="Date" min="2026-10-14" value="2026-10-14"></six-date>');
+
+    const changeSpy = await page.spyOnEvent('six-change');
+
+    await page.locator('six-date').click();
+
+    // October 2026 view starts with the last days of September, which are before min
+    const disabledAdjacentMonthDay = page.locator('six-date .panel [data-date="2026-09-30"]');
+    await expect(disabledAdjacentMonthDay).toHaveClass(/cell--outdated/);
+    await expect(disabledAdjacentMonthDay).toHaveClass(/cell--disabled/);
+    await disabledAdjacentMonthDay.click();
+
+    await expectPanelToBeVisible(page);
+    expect(changeSpy).not.toHaveReceivedEvent();
+    const value = await page.locator('six-date').evaluate((el: HTMLElement & { value: string }) => el.value);
+    expect(value).toBe('2026-10-14');
+  });
+
   test('should respect max date constraint', async ({ page }) => {
     await page.setContent('<six-date label="Date" max="2025-01-20" value="2025-01-15"></six-date>');
 

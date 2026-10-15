@@ -13,6 +13,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Fixed
 
+- `six-date`: Disabled days of the previous or next month shown in the calendar (e.g. days before
+  `min`) can no longer be selected.
 - `six-timepicker`: The input now displays a `value` that is set before the component has rendered
   for the first time (e.g. via the `value` attribute or a framework binding during initialization).
 - `six-timepicker`: Typing a time keeps emitting `six-timepicker-change`,
