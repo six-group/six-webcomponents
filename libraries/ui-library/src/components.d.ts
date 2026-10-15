@@ -257,14 +257,7 @@ export namespace Components {
           * The button's type.
           * @default 'primary'
          */
-        "type": | 'secondary'
-    | 'primary'
-    | 'link'
-    | 'success'
-    | 'warning'
-    | 'danger'
-    | 'action'
-    | 'action-outline';
+        "type": 'secondary' | 'primary' | 'link' | 'success' | 'warning' | 'danger' | 'action' | 'action-outline';
         /**
           * An optional value for the button. Ignored when `href` is set.
           * @default ''
@@ -631,14 +624,7 @@ export namespace Components {
           * The icon's size.
           * @default 'inherit'
          */
-        "summaryIconSize": | 'inherit'
-    | 'xSmall'
-    | 'small'
-    | 'medium'
-    | 'large'
-    | 'xLarge'
-    | 'xxLarge'
-    | 'xxxLarge';
+        "summaryIconSize": 'inherit' | 'xSmall' | 'small' | 'medium' | 'large' | 'xLarge' | 'xxLarge' | 'xxxLarge';
     }
     /**
      * @since 1.0
@@ -1092,14 +1078,7 @@ export namespace Components {
           * The icon's size.
           * @default 'inherit'
          */
-        "size": | 'inherit'
-    | 'xSmall'
-    | 'small'
-    | 'medium'
-    | 'large'
-    | 'xLarge'
-    | 'xxLarge'
-    | 'xxxLarge';
+        "size": 'inherit' | 'xSmall' | 'small' | 'medium' | 'large' | 'xLarge' | 'xxLarge' | 'xxxLarge';
         /**
           * Path to SVG file or a data image
          */
@@ -4073,14 +4052,7 @@ declare namespace LocalJSX {
           * The button's type.
           * @default 'primary'
          */
-        "type"?: | 'secondary'
-    | 'primary'
-    | 'link'
-    | 'success'
-    | 'warning'
-    | 'danger'
-    | 'action'
-    | 'action-outline';
+        "type"?: 'secondary' | 'primary' | 'link' | 'success' | 'warning' | 'danger' | 'action' | 'action-outline';
         /**
           * An optional value for the button. Ignored when `href` is set.
           * @default ''
@@ -4467,14 +4439,7 @@ declare namespace LocalJSX {
           * The icon's size.
           * @default 'inherit'
          */
-        "summaryIconSize"?: | 'inherit'
-    | 'xSmall'
-    | 'small'
-    | 'medium'
-    | 'large'
-    | 'xLarge'
-    | 'xxLarge'
-    | 'xxxLarge';
+        "summaryIconSize"?: 'inherit' | 'xSmall' | 'small' | 'medium' | 'large' | 'xLarge' | 'xxLarge' | 'xxxLarge';
     }
     /**
      * @since 1.0
@@ -4996,14 +4961,7 @@ declare namespace LocalJSX {
           * The icon's size.
           * @default 'inherit'
          */
-        "size"?: | 'inherit'
-    | 'xSmall'
-    | 'small'
-    | 'medium'
-    | 'large'
-    | 'xLarge'
-    | 'xxLarge'
-    | 'xxxLarge';
+        "size"?: 'inherit' | 'xSmall' | 'small' | 'medium' | 'large' | 'xLarge' | 'xxLarge' | 'xxxLarge';
         /**
           * Path to SVG file or a data image
          */
@@ -6646,14 +6604,7 @@ declare namespace LocalJSX {
         "readonly": boolean;
     }
     interface SixButtonAttributes {
-        "type": | 'secondary'
-    | 'primary'
-    | 'link'
-    | 'success'
-    | 'warning'
-    | 'danger'
-    | 'action'
-    | 'action-outline';
+        "type": 'secondary' | 'primary' | 'link' | 'success' | 'warning' | 'danger' | 'action' | 'action-outline';
         "size": 'small' | 'medium' | 'large';
         "caret": boolean;
         "disabled": boolean;
@@ -6727,14 +6678,7 @@ declare namespace LocalJSX {
         "open": boolean;
         "summary": string;
         "summaryIcon": string;
-        "summaryIconSize": | 'inherit'
-    | 'xSmall'
-    | 'small'
-    | 'medium'
-    | 'large'
-    | 'xLarge'
-    | 'xxLarge'
-    | 'xxxLarge';
+        "summaryIconSize": 'inherit' | 'xSmall' | 'small' | 'medium' | 'large' | 'xLarge' | 'xxLarge' | 'xxxLarge';
         "disabled": boolean;
         "inline": boolean;
         "selectableEmpty": boolean;
@@ -6835,14 +6779,7 @@ declare namespace LocalJSX {
         "name": string;
         "src": string;
         "inlineSvg": boolean;
-        "size": | 'inherit'
-    | 'xSmall'
-    | 'small'
-    | 'medium'
-    | 'large'
-    | 'xLarge'
-    | 'xxLarge'
-    | 'xxxLarge';
+        "size": 'inherit' | 'xSmall' | 'small' | 'medium' | 'large' | 'xLarge' | 'xxLarge' | 'xxxLarge';
         "filled": boolean;
         "library": IconLibrary;
     }

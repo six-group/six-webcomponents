@@ -46,14 +46,7 @@ export class SixIcon {
 
   /** The icon's size. */
   @Prop({ reflect: true }) size:
-    | 'inherit'
-    | 'xSmall'
-    | 'small'
-    | 'medium'
-    | 'large'
-    | 'xLarge'
-    | 'xxLarge'
-    | 'xxxLarge' = 'inherit';
+    'inherit' | 'xSmall' | 'small' | 'medium' | 'large' | 'xLarge' | 'xxLarge' | 'xxxLarge' = 'inherit';
 
   /** If set to true the default material outlined icons are not used. */
   @Prop() filled = false;

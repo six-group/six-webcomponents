@@ -47,14 +47,7 @@ export class SixDetails {
 
   /** The icon's size. */
   @Prop({ reflect: true }) summaryIconSize:
-    | 'inherit'
-    | 'xSmall'
-    | 'small'
-    | 'medium'
-    | 'large'
-    | 'xLarge'
-    | 'xxLarge'
-    | 'xxxLarge' = 'inherit';
+    'inherit' | 'xSmall' | 'small' | 'medium' | 'large' | 'xLarge' | 'xxLarge' | 'xxxLarge' = 'inherit';
 
   /** Set to true to prevent the user from toggling the details. */
   @Prop() disabled = false;
