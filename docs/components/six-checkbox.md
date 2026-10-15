@@ -171,6 +171,7 @@ Type: `Promise<void>`
 
 | Slot           | Description                                                                                     |
 | -------------- | ----------------------------------------------------------------------------------------------- |
+|                | The default slot                                                                                |
 | `"error-text"` | Error text that is shown for validation errors. Alternatively, you can use the error-text prop. |
 | `"label"`      | The checkbox label.                                                                             |
 
