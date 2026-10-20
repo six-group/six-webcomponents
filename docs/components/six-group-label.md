@@ -100,6 +100,7 @@ Add descriptive help text to a select with the `help-text` attribute. For help t
 
 | Slot           | Description                                                                                     |
 | -------------- | ----------------------------------------------------------------------------------------------- |
+|                | The default slot                                                                                |
 | `"error-text"` | Error text that is shown for validation errors. Alternatively, you can use the error-text prop. |
 | `"help-text"`  | Help text that describes how to use the input.                                                  |
 | `"label"`      | The wrapped component's label. Alternatively, you can use the label prop.                       |
