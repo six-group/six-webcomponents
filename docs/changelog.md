@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## Upcoming
 
+### Fixed
+
+- `six-dialog`: The `six-dialog-request-close` event description no longer refers to a drawer.
+
 ## 5.5.2 - 2026-10-15
 
 ### Changed
