@@ -50,6 +50,14 @@ Type: `Promise<void>`
 
 
 
+## Slots
+
+| Slot      | Description |
+| --------- | ----------- |
+| `"icon"`  |             |
+| `"label"` |             |
+
+
 ## Shadow Parts
 
 | Part       | Description |

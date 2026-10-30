@@ -13,6 +13,14 @@
 | `filterPlaceholder` | `filter-placeholder` | The filter's placeholder text.                                                                                                                                                                                                                         | `string`  | `'Filter...'` |
 
 
+## Slots
+
+| Slot        | Description      |
+| ----------- | ---------------- |
+|             | The default slot |
+| `"trigger"` |                  |
+
+
 ## Dependencies
 
 ### Depends on

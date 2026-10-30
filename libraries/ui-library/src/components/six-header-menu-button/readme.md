@@ -16,6 +16,15 @@
 | `submit`   | `submit`   | Indicates if activating the button should submit the form. Ignored when `href` is set. | `boolean` | `false` |
 
 
+## Slots
+
+| Slot       | Description      |
+| ---------- | ---------------- |
+|            | The default slot |
+| `"prefix"` |                  |
+| `"suffix"` |                  |
+
+
 ## Dependencies
 
 ### Depends on

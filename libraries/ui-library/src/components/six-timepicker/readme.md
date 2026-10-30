@@ -64,9 +64,11 @@ Type: `Promise<void>`
 
 ## Slots
 
-| Slot           | Description                                                                                     |
-| -------------- | ----------------------------------------------------------------------------------------------- |
-| `"error-text"` | Error text that is shown for validation errors. Alternatively, you can use the error-text prop. |
+| Slot            | Description                                                                                     |
+| --------------- | ----------------------------------------------------------------------------------------------- |
+| `"custom-icon"` |                                                                                                 |
+| `"error-text"`  | Error text that is shown for validation errors. Alternatively, you can use the error-text prop. |
+| `"label"`       |                                                                                                 |
 
 
 ## Shadow Parts
