@@ -4474,7 +4474,7 @@ declare namespace LocalJSX {
          */
         "onSix-dialog-initial-focus"?: (event: SixDialogCustomEvent<EmptyPayload>) => void;
         /**
-          * Emitted when the user attempts to close the drawer by clicking the close button, clicking the overlay, or pressing escape. Calling `event.preventDefault()` will keep the drawer open. Avoid using this unless closing the drawer will result in destructive behavior such as data loss.
+          * Emitted when the user attempts to close the dialog by clicking the close button, clicking the overlay, or pressing escape. Calling `event.preventDefault()` will keep the dialog open. Avoid using this unless closing the dialog will result in destructive behavior such as data loss.
          */
         "onSix-dialog-request-close"?: (event: SixDialogCustomEvent<SixDialogRequestClose>) => void;
         /**
