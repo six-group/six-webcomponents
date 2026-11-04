@@ -186,6 +186,14 @@ To see the events, open up the console try it yourself.
 | `six-paginator-results-per-page-changed` | Emitted after the user selects a value from the results per page select.                                                            | `CustomEvent<SixPaginatorResultsPerPageChangedPayload>` |
 
 
+## Slots
+
+| Slot      | Description |
+| --------- | ----------- |
+| `"left"`  |             |
+| `"right"` |             |
+
+
 ## Dependencies
 
 ### Depends on

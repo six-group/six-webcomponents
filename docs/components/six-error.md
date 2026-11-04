@@ -20,6 +20,7 @@ Simple error container for forms. Used in the `error-text` slot for multiple inp
 
 | Slot        | Description                 |
 | ----------- | --------------------------- |
+|             | The default slot            |
 | `"default"` | The error's message content |
 
 

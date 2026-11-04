@@ -282,10 +282,11 @@ Type: `Promise<void>`
 
 ## Slots
 
-| Slot        | Description                                                        |
-| ----------- | ------------------------------------------------------------------ |
-|             | The details' content.                                              |
-| `"summary"` | The details' summary. Alternatively, you can use the summary prop. |
+| Slot             | Description                                                        |
+| ---------------- | ------------------------------------------------------------------ |
+|                  | The details' content.                                              |
+| `"summary"`      | The details' summary. Alternatively, you can use the summary prop. |
+| `"summary-icon"` |                                                                    |
 
 
 ## Shadow Parts

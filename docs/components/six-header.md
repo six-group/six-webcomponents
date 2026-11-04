@@ -137,6 +137,7 @@ Items in `six-header` reside within a flex container. Use flex properties to adj
 
 | Slot             | Description                                              |
 | ---------------- | -------------------------------------------------------- |
+|                  | The default slot                                         |
 | `"search-field"` | Used to define the search field component in the header. |
 
 

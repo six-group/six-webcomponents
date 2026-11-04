@@ -22,6 +22,13 @@ Icons buttons are simple, icon-only buttons that can be used for actions and in 
 | `target`   | `target`   | Tells the browser where to open the link. Only used when `href` is set.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | `"_blank" \| "_parent" \| "_self" \| "_top" \| undefined`                           | `undefined` |
 
 
+## Slots
+
+| Slot | Description      |
+| ---- | ---------------- |
+|      | The default slot |
+
+
 ## Shadow Parts
 
 | Part     | Description                   |

@@ -17,6 +17,7 @@
 
 | Slot             | Description                                              |
 | ---------------- | -------------------------------------------------------- |
+|                  | The default slot                                         |
 | `"search-field"` | Used to define the search field component in the header. |
 
 

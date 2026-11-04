@@ -183,6 +183,13 @@ Often icon buttons are combined with badges to signal new entries. For this simp
 | `target`   | `target`   | Tells the browser where to open the link. Only used when `href` is set.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | `"_blank" \| "_parent" \| "_self" \| "_top" \| undefined`                           | `undefined` |
 
 
+## Slots
+
+| Slot | Description      |
+| ---- | ---------------- |
+|      | The default slot |
+
+
 ## Shadow Parts
 
 | Part     | Description                   |

@@ -88,10 +88,12 @@ Type: `Promise<void>`
 
 ## Slots
 
-| Slot           | Description                                                                                     |
-| -------------- | ----------------------------------------------------------------------------------------------- |
-|                | Used to define a footer for the date picker.                                                    |
-| `"error-text"` | Error text that is shown for validation errors. Alternatively, you can use the error-text prop. |
+| Slot            | Description                                                                                     |
+| --------------- | ----------------------------------------------------------------------------------------------- |
+|                 | Used to define a footer for the date picker.                                                    |
+| `"custom-icon"` |                                                                                                 |
+| `"error-text"`  | Error text that is shown for validation errors. Alternatively, you can use the error-text prop. |
+| `"label"`       |                                                                                                 |
 
 
 ## Shadow Parts
