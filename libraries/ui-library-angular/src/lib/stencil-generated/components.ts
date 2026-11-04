@@ -434,9 +434,9 @@ allow you to set it on a different element in the dialog, such as an input or bu
    */
   'six-dialog-initial-focus': EventEmitter<CustomEvent<ISixDialogEmptyPayload>>;
   /**
-   * Emitted when the user attempts to close the drawer by clicking the close button, clicking the overlay, or
-pressing escape. Calling `event.preventDefault()` will keep the drawer open. Avoid using this unless closing
-the drawer will result in destructive behavior such as data loss.
+   * Emitted when the user attempts to close the dialog by clicking the close button, clicking the overlay, or
+pressing escape. Calling `event.preventDefault()` will keep the dialog open. Avoid using this unless closing
+the dialog will result in destructive behavior such as data loss.
    */
   'six-dialog-request-close': EventEmitter<CustomEvent<ISixDialogSixDialogRequestClose>>;
 }
