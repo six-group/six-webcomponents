@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## Upcoming
 
+### Removed
+
+- Removed experimental Nuxt example app
+
 ## 5.5.2 - 2026-10-15
 
 ### Changed
