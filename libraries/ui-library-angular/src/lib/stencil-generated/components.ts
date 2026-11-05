@@ -3,6 +3,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, Output, NgZone } from '@angular/core';
 
 import { ProxyCmp } from './angular-component-lib/utils';
+import { nullableBooleanAttribute } from './angular-component-lib/boolean-attribute';
 
 import { Components } from '@six-group/ui-library';
 
@@ -22,10 +23,10 @@ import { Components } from '@six-group/ui-library';
 })
 export class SixAlert {
   protected el: HTMLSixAlertElement;
-  @Output() sixAlertShow = new EventEmitter<CustomEvent<ISixAlertEmptyPayload>>();
-  @Output() sixAlertAfterShow = new EventEmitter<CustomEvent<ISixAlertEmptyPayload>>();
-  @Output() sixAlertHide = new EventEmitter<CustomEvent<ISixAlertEmptyPayload>>();
-  @Output() sixAlertAfterHide = new EventEmitter<CustomEvent<ISixAlertEmptyPayload>>();
+  @Output() sixAlertShow = new EventEmitter<SixAlertCustomEvent<ISixAlertEmptyPayload>>();
+  @Output() sixAlertAfterShow = new EventEmitter<SixAlertCustomEvent<ISixAlertEmptyPayload>>();
+  @Output() sixAlertHide = new EventEmitter<SixAlertCustomEvent<ISixAlertEmptyPayload>>();
+  @Output() sixAlertAfterHide = new EventEmitter<SixAlertCustomEvent<ISixAlertEmptyPayload>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -33,25 +34,26 @@ export class SixAlert {
 }
 
 
+import type { SixAlertCustomEvent } from '@six-group/ui-library';
 import type { EmptyPayload as ISixAlertEmptyPayload } from '@six-group/ui-library';
 
 export declare interface SixAlert extends Components.SixAlert {
   /**
    * Emitted when the alert opens. Calling `event.preventDefault()` will prevent it from being opened.
    */
-  'six-alert-show': EventEmitter<CustomEvent<ISixAlertEmptyPayload>>;
+  'six-alert-show': EventEmitter<SixAlertCustomEvent<ISixAlertEmptyPayload>>;
   /**
    * Emitted after the alert opens and all transitions are complete.
    */
-  'six-alert-after-show': EventEmitter<CustomEvent<ISixAlertEmptyPayload>>;
+  'six-alert-after-show': EventEmitter<SixAlertCustomEvent<ISixAlertEmptyPayload>>;
   /**
    * Emitted when the alert closes. Calling `event.preventDefault()` will prevent it from being closed.
    */
-  'six-alert-hide': EventEmitter<CustomEvent<ISixAlertEmptyPayload>>;
+  'six-alert-hide': EventEmitter<SixAlertCustomEvent<ISixAlertEmptyPayload>>;
   /**
    * Emitted after the alert closes and all transitions are complete.
    */
-  'six-alert-after-hide': EventEmitter<CustomEvent<ISixAlertEmptyPayload>>;
+  'six-alert-after-hide': EventEmitter<SixAlertCustomEvent<ISixAlertEmptyPayload>>;
 }
 
 
@@ -162,8 +164,8 @@ export declare interface SixBreadcrumbsItem extends Components.SixBreadcrumbsIte
 })
 export class SixButton {
   protected el: HTMLSixButtonElement;
-  @Output() sixButtonBlur = new EventEmitter<CustomEvent<ISixButtonEmptyPayload>>();
-  @Output() sixButtonFocus = new EventEmitter<CustomEvent<ISixButtonEmptyPayload>>();
+  @Output() sixButtonBlur = new EventEmitter<SixButtonCustomEvent<ISixButtonEmptyPayload>>();
+  @Output() sixButtonFocus = new EventEmitter<SixButtonCustomEvent<ISixButtonEmptyPayload>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -171,17 +173,18 @@ export class SixButton {
 }
 
 
+import type { SixButtonCustomEvent } from '@six-group/ui-library';
 import type { EmptyPayload as ISixButtonEmptyPayload } from '@six-group/ui-library';
 
 export declare interface SixButton extends Components.SixButton {
   /**
    * Emitted when the button loses focus.
    */
-  'six-button-blur': EventEmitter<CustomEvent<ISixButtonEmptyPayload>>;
+  'six-button-blur': EventEmitter<SixButtonCustomEvent<ISixButtonEmptyPayload>>;
   /**
    * Emitted when the button gains focus.
    */
-  'six-button-focus': EventEmitter<CustomEvent<ISixButtonEmptyPayload>>;
+  'six-button-focus': EventEmitter<SixButtonCustomEvent<ISixButtonEmptyPayload>>;
 }
 
 
@@ -222,9 +225,9 @@ export declare interface SixCard extends Components.SixCard {}
 })
 export class SixCheckbox {
   protected el: HTMLSixCheckboxElement;
-  @Output() sixCheckboxBlur = new EventEmitter<CustomEvent<ISixCheckboxEmptyPayload>>();
-  @Output() sixCheckboxChange = new EventEmitter<CustomEvent<ISixCheckboxEmptyPayload>>();
-  @Output() sixCheckboxFocus = new EventEmitter<CustomEvent<ISixCheckboxEmptyPayload>>();
+  @Output() sixCheckboxBlur = new EventEmitter<SixCheckboxCustomEvent<ISixCheckboxEmptyPayload>>();
+  @Output() sixCheckboxChange = new EventEmitter<SixCheckboxCustomEvent<ISixCheckboxEmptyPayload>>();
+  @Output() sixCheckboxFocus = new EventEmitter<SixCheckboxCustomEvent<ISixCheckboxEmptyPayload>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -232,21 +235,22 @@ export class SixCheckbox {
 }
 
 
+import type { SixCheckboxCustomEvent } from '@six-group/ui-library';
 import type { EmptyPayload as ISixCheckboxEmptyPayload } from '@six-group/ui-library';
 
 export declare interface SixCheckbox extends Components.SixCheckbox {
   /**
    * Emitted when the control loses focus.
    */
-  'six-checkbox-blur': EventEmitter<CustomEvent<ISixCheckboxEmptyPayload>>;
+  'six-checkbox-blur': EventEmitter<SixCheckboxCustomEvent<ISixCheckboxEmptyPayload>>;
   /**
    * Emitted when the control's checked state changes.
    */
-  'six-checkbox-change': EventEmitter<CustomEvent<ISixCheckboxEmptyPayload>>;
+  'six-checkbox-change': EventEmitter<SixCheckboxCustomEvent<ISixCheckboxEmptyPayload>>;
   /**
    * Emitted when the control gains focus.
    */
-  'six-checkbox-focus': EventEmitter<CustomEvent<ISixCheckboxEmptyPayload>>;
+  'six-checkbox-focus': EventEmitter<SixCheckboxCustomEvent<ISixCheckboxEmptyPayload>>;
 }
 
 
@@ -265,8 +269,8 @@ export declare interface SixCheckbox extends Components.SixCheckbox {
 })
 export class SixDate {
   protected el: HTMLSixDateElement;
-  @Output() sixChange = new EventEmitter<CustomEvent<string | ''>>();
-  @Output() sixBlur = new EventEmitter<CustomEvent<any>>();
+  @Output() sixChange = new EventEmitter<SixDateCustomEvent<string | ''>>();
+  @Output() sixBlur = new EventEmitter<SixDateCustomEvent<any>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -274,17 +278,19 @@ export class SixDate {
 }
 
 
+import type { SixDateCustomEvent } from '@six-group/ui-library';
+
 export declare interface SixDate extends Components.SixDate {
   /**
    * Emitted when the control's value changes.
 Event detail contains the new date value in ISO format (yyyy-MM-dd) or an empty string if cleared.
    */
-  'six-change': EventEmitter<CustomEvent<string | ''>>;
+  'six-change': EventEmitter<SixDateCustomEvent<string | ''>>;
   /**
    * Emitted when the control loses focus or the date picker popup is closed.
 Does not contain event details.
    */
-  'six-blur': EventEmitter<CustomEvent<any>>;
+  'six-blur': EventEmitter<SixDateCustomEvent<any>>;
 }
 
 
@@ -303,9 +309,9 @@ Does not contain event details.
 })
 export class SixDatepicker {
   protected el: HTMLSixDatepickerElement;
-  @Output() sixDatepickerSelect = new EventEmitter<CustomEvent<ISixDatepickerSixDatepickerSelectPayload>>();
-  @Output() sixDatepickerClear = new EventEmitter<CustomEvent<ISixDatepickerEmptyPayload>>();
-  @Output() sixDatepickerBlur = new EventEmitter<CustomEvent<ISixDatepickerSixDatepickerSelectPayload>>();
+  @Output() sixDatepickerSelect = new EventEmitter<SixDatepickerCustomEvent<ISixDatepickerSixDatepickerSelectPayload>>();
+  @Output() sixDatepickerClear = new EventEmitter<SixDatepickerCustomEvent<ISixDatepickerEmptyPayload>>();
+  @Output() sixDatepickerBlur = new EventEmitter<SixDatepickerCustomEvent<ISixDatepickerSixDatepickerSelectPayload>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -313,6 +319,7 @@ export class SixDatepicker {
 }
 
 
+import type { SixDatepickerCustomEvent } from '@six-group/ui-library';
 import type { SixDatepickerSelectPayload as ISixDatepickerSixDatepickerSelectPayload } from '@six-group/ui-library';
 import type { EmptyPayload as ISixDatepickerEmptyPayload } from '@six-group/ui-library';
 
@@ -320,15 +327,15 @@ export declare interface SixDatepicker extends Components.SixDatepicker {
   /**
    * Emitted when a option got selected.
    */
-  'six-datepicker-select': EventEmitter<CustomEvent<ISixDatepickerSixDatepickerSelectPayload>>;
+  'six-datepicker-select': EventEmitter<SixDatepickerCustomEvent<ISixDatepickerSixDatepickerSelectPayload>>;
   /**
    * Emitted when the clear button is activated.
    */
-  'six-datepicker-clear': EventEmitter<CustomEvent<ISixDatepickerEmptyPayload>>;
+  'six-datepicker-clear': EventEmitter<SixDatepickerCustomEvent<ISixDatepickerEmptyPayload>>;
   /**
    * Emitted when a option got selected.
    */
-  'six-datepicker-blur': EventEmitter<CustomEvent<ISixDatepickerSixDatepickerSelectPayload>>;
+  'six-datepicker-blur': EventEmitter<SixDatepickerCustomEvent<ISixDatepickerSixDatepickerSelectPayload>>;
 }
 
 
@@ -347,10 +354,10 @@ export declare interface SixDatepicker extends Components.SixDatepicker {
 })
 export class SixDetails {
   protected el: HTMLSixDetailsElement;
-  @Output() sixDetailsShow = new EventEmitter<CustomEvent<ISixDetailsEmptyPayload>>();
-  @Output() sixDetailsAfterShow = new EventEmitter<CustomEvent<ISixDetailsEmptyPayload>>();
-  @Output() sixDetailsHide = new EventEmitter<CustomEvent<ISixDetailsEmptyPayload>>();
-  @Output() sixDetailsAfterHide = new EventEmitter<CustomEvent<ISixDetailsEmptyPayload>>();
+  @Output() sixDetailsShow = new EventEmitter<SixDetailsCustomEvent<ISixDetailsEmptyPayload>>();
+  @Output() sixDetailsAfterShow = new EventEmitter<SixDetailsCustomEvent<ISixDetailsEmptyPayload>>();
+  @Output() sixDetailsHide = new EventEmitter<SixDetailsCustomEvent<ISixDetailsEmptyPayload>>();
+  @Output() sixDetailsAfterHide = new EventEmitter<SixDetailsCustomEvent<ISixDetailsEmptyPayload>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -358,25 +365,26 @@ export class SixDetails {
 }
 
 
+import type { SixDetailsCustomEvent } from '@six-group/ui-library';
 import type { EmptyPayload as ISixDetailsEmptyPayload } from '@six-group/ui-library';
 
 export declare interface SixDetails extends Components.SixDetails {
   /**
    * Emitted when the details opens. Calling `event.preventDefault()` will prevent it from being opened.
    */
-  'six-details-show': EventEmitter<CustomEvent<ISixDetailsEmptyPayload>>;
+  'six-details-show': EventEmitter<SixDetailsCustomEvent<ISixDetailsEmptyPayload>>;
   /**
    * Emitted after the details opens and all transitions are complete.
    */
-  'six-details-after-show': EventEmitter<CustomEvent<ISixDetailsEmptyPayload>>;
+  'six-details-after-show': EventEmitter<SixDetailsCustomEvent<ISixDetailsEmptyPayload>>;
   /**
    * Emitted when the details closes. Calling `event.preventDefault()` will prevent it from being closed.
    */
-  'six-details-hide': EventEmitter<CustomEvent<ISixDetailsEmptyPayload>>;
+  'six-details-hide': EventEmitter<SixDetailsCustomEvent<ISixDetailsEmptyPayload>>;
   /**
    * Emitted after the details closes and all transitions are complete.
    */
-  'six-details-after-hide': EventEmitter<CustomEvent<ISixDetailsEmptyPayload>>;
+  'six-details-after-hide': EventEmitter<SixDetailsCustomEvent<ISixDetailsEmptyPayload>>;
 }
 
 
@@ -395,12 +403,12 @@ export declare interface SixDetails extends Components.SixDetails {
 })
 export class SixDialog {
   protected el: HTMLSixDialogElement;
-  @Output() sixDialogShow = new EventEmitter<CustomEvent<ISixDialogEmptyPayload>>();
-  @Output() sixDialogAfterShow = new EventEmitter<CustomEvent<ISixDialogEmptyPayload>>();
-  @Output() sixDialogHide = new EventEmitter<CustomEvent<ISixDialogEmptyPayload>>();
-  @Output() sixDialogAfterHide = new EventEmitter<CustomEvent<ISixDialogEmptyPayload>>();
-  @Output() sixDialogInitialFocus = new EventEmitter<CustomEvent<ISixDialogEmptyPayload>>();
-  @Output() sixDialogRequestClose = new EventEmitter<CustomEvent<ISixDialogSixDialogRequestClose>>();
+  @Output() sixDialogShow = new EventEmitter<SixDialogCustomEvent<ISixDialogEmptyPayload>>();
+  @Output() sixDialogAfterShow = new EventEmitter<SixDialogCustomEvent<ISixDialogEmptyPayload>>();
+  @Output() sixDialogHide = new EventEmitter<SixDialogCustomEvent<ISixDialogEmptyPayload>>();
+  @Output() sixDialogAfterHide = new EventEmitter<SixDialogCustomEvent<ISixDialogEmptyPayload>>();
+  @Output() sixDialogInitialFocus = new EventEmitter<SixDialogCustomEvent<ISixDialogEmptyPayload>>();
+  @Output() sixDialogRequestClose = new EventEmitter<SixDialogCustomEvent<ISixDialogSixDialogRequestClose>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -408,6 +416,7 @@ export class SixDialog {
 }
 
 
+import type { SixDialogCustomEvent } from '@six-group/ui-library';
 import type { EmptyPayload as ISixDialogEmptyPayload } from '@six-group/ui-library';
 import type { SixDialogRequestClose as ISixDialogSixDialogRequestClose } from '@six-group/ui-library';
 
@@ -415,30 +424,30 @@ export declare interface SixDialog extends Components.SixDialog {
   /**
    * Emitted when the dialog opens. Calling `event.preventDefault()` will prevent it from being opened.
    */
-  'six-dialog-show': EventEmitter<CustomEvent<ISixDialogEmptyPayload>>;
+  'six-dialog-show': EventEmitter<SixDialogCustomEvent<ISixDialogEmptyPayload>>;
   /**
    * Emitted after the dialog opens and all transitions are complete.
    */
-  'six-dialog-after-show': EventEmitter<CustomEvent<ISixDialogEmptyPayload>>;
+  'six-dialog-after-show': EventEmitter<SixDialogCustomEvent<ISixDialogEmptyPayload>>;
   /**
    * Emitted when the dialog closes. Calling `event.preventDefault()` will prevent it from being closed.
    */
-  'six-dialog-hide': EventEmitter<CustomEvent<ISixDialogEmptyPayload>>;
+  'six-dialog-hide': EventEmitter<SixDialogCustomEvent<ISixDialogEmptyPayload>>;
   /**
    * Emitted after the dialog closes and all transitions are complete.
    */
-  'six-dialog-after-hide': EventEmitter<CustomEvent<ISixDialogEmptyPayload>>;
+  'six-dialog-after-hide': EventEmitter<SixDialogCustomEvent<ISixDialogEmptyPayload>>;
   /**
    * Emitted when the dialog opens and the panel gains focus. Calling `event.preventDefault()` will prevent focus and
 allow you to set it on a different element in the dialog, such as an input or button.
    */
-  'six-dialog-initial-focus': EventEmitter<CustomEvent<ISixDialogEmptyPayload>>;
+  'six-dialog-initial-focus': EventEmitter<SixDialogCustomEvent<ISixDialogEmptyPayload>>;
   /**
    * Emitted when the user attempts to close the drawer by clicking the close button, clicking the overlay, or
 pressing escape. Calling `event.preventDefault()` will keep the drawer open. Avoid using this unless closing
 the drawer will result in destructive behavior such as data loss.
    */
-  'six-dialog-request-close': EventEmitter<CustomEvent<ISixDialogSixDialogRequestClose>>;
+  'six-dialog-request-close': EventEmitter<SixDialogCustomEvent<ISixDialogSixDialogRequestClose>>;
 }
 
 
@@ -457,12 +466,12 @@ the drawer will result in destructive behavior such as data loss.
 })
 export class SixDrawer {
   protected el: HTMLSixDrawerElement;
-  @Output() sixDrawerShow = new EventEmitter<CustomEvent<ISixDrawerEmptyPayload>>();
-  @Output() sixDrawerAfterShow = new EventEmitter<CustomEvent<ISixDrawerEmptyPayload>>();
-  @Output() sixDrawerHide = new EventEmitter<CustomEvent<ISixDrawerEmptyPayload>>();
-  @Output() sixDrawerAfterHide = new EventEmitter<CustomEvent<ISixDrawerEmptyPayload>>();
-  @Output() sixDrawerInitialFocus = new EventEmitter<CustomEvent<ISixDrawerEmptyPayload>>();
-  @Output() sixDrawerRequestClose = new EventEmitter<CustomEvent<ISixDrawerSixDrawerRequestClose>>();
+  @Output() sixDrawerShow = new EventEmitter<SixDrawerCustomEvent<ISixDrawerEmptyPayload>>();
+  @Output() sixDrawerAfterShow = new EventEmitter<SixDrawerCustomEvent<ISixDrawerEmptyPayload>>();
+  @Output() sixDrawerHide = new EventEmitter<SixDrawerCustomEvent<ISixDrawerEmptyPayload>>();
+  @Output() sixDrawerAfterHide = new EventEmitter<SixDrawerCustomEvent<ISixDrawerEmptyPayload>>();
+  @Output() sixDrawerInitialFocus = new EventEmitter<SixDrawerCustomEvent<ISixDrawerEmptyPayload>>();
+  @Output() sixDrawerRequestClose = new EventEmitter<SixDrawerCustomEvent<ISixDrawerSixDrawerRequestClose>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -470,6 +479,7 @@ export class SixDrawer {
 }
 
 
+import type { SixDrawerCustomEvent } from '@six-group/ui-library';
 import type { EmptyPayload as ISixDrawerEmptyPayload } from '@six-group/ui-library';
 import type { SixDrawerRequestClose as ISixDrawerSixDrawerRequestClose } from '@six-group/ui-library';
 
@@ -477,30 +487,30 @@ export declare interface SixDrawer extends Components.SixDrawer {
   /**
    * Emitted when the drawer opens. Calling `event.preventDefault()` will prevent it from being opened.
    */
-  'six-drawer-show': EventEmitter<CustomEvent<ISixDrawerEmptyPayload>>;
+  'six-drawer-show': EventEmitter<SixDrawerCustomEvent<ISixDrawerEmptyPayload>>;
   /**
    * Emitted after the drawer opens and all transitions are complete.
    */
-  'six-drawer-after-show': EventEmitter<CustomEvent<ISixDrawerEmptyPayload>>;
+  'six-drawer-after-show': EventEmitter<SixDrawerCustomEvent<ISixDrawerEmptyPayload>>;
   /**
    * Emitted when the drawer closes. Calling `event.preventDefault()` will prevent it from being closed.
    */
-  'six-drawer-hide': EventEmitter<CustomEvent<ISixDrawerEmptyPayload>>;
+  'six-drawer-hide': EventEmitter<SixDrawerCustomEvent<ISixDrawerEmptyPayload>>;
   /**
    * Emitted after the drawer closes and all transitions are complete.
    */
-  'six-drawer-after-hide': EventEmitter<CustomEvent<ISixDrawerEmptyPayload>>;
+  'six-drawer-after-hide': EventEmitter<SixDrawerCustomEvent<ISixDrawerEmptyPayload>>;
   /**
    * Emitted when the drawer opens and the panel gains focus. Calling `event.preventDefault()` will prevent focus and
 allow you to set it on a different element in the drawer, such as an input or button.
    */
-  'six-drawer-initial-focus': EventEmitter<CustomEvent<ISixDrawerEmptyPayload>>;
+  'six-drawer-initial-focus': EventEmitter<SixDrawerCustomEvent<ISixDrawerEmptyPayload>>;
   /**
    * Emitted when the user attempts to close the drawer by clicking the close button, clicking the overlay, or
 pressing escape. Calling `event.preventDefault()` will keep the drawer open. Avoid using this unless closing
 the drawer will result in destructive behavior such as data loss.
    */
-  'six-drawer-request-close': EventEmitter<CustomEvent<ISixDrawerSixDrawerRequestClose>>;
+  'six-drawer-request-close': EventEmitter<SixDrawerCustomEvent<ISixDrawerSixDrawerRequestClose>>;
 }
 
 
@@ -519,13 +529,13 @@ the drawer will result in destructive behavior such as data loss.
 })
 export class SixDropdown {
   protected el: HTMLSixDropdownElement;
-  @Output() sixDropdownShow = new EventEmitter<CustomEvent<ISixDropdownEmptyPayload>>();
-  @Output() sixDropdownAfterShow = new EventEmitter<CustomEvent<ISixDropdownEmptyPayload>>();
-  @Output() sixDropdownHide = new EventEmitter<CustomEvent<ISixDropdownEmptyPayload>>();
-  @Output() sixDropdownAfterHide = new EventEmitter<CustomEvent<ISixDropdownEmptyPayload>>();
-  @Output() sixDropdownAutoFilterFired = new EventEmitter<CustomEvent<ISixDropdownSixDropdownAutoFilterPayload>>();
-  @Output() sixAsyncFilterFired = new EventEmitter<CustomEvent<ISixDropdownSixDropdownAsyncFilterPayload>>();
-  @Output() sixDropdownScroll = new EventEmitter<CustomEvent<ISixDropdownSixDropdownScrollPayload>>();
+  @Output() sixDropdownShow = new EventEmitter<SixDropdownCustomEvent<ISixDropdownEmptyPayload>>();
+  @Output() sixDropdownAfterShow = new EventEmitter<SixDropdownCustomEvent<ISixDropdownEmptyPayload>>();
+  @Output() sixDropdownHide = new EventEmitter<SixDropdownCustomEvent<ISixDropdownEmptyPayload>>();
+  @Output() sixDropdownAfterHide = new EventEmitter<SixDropdownCustomEvent<ISixDropdownEmptyPayload>>();
+  @Output() sixDropdownAutoFilterFired = new EventEmitter<SixDropdownCustomEvent<ISixDropdownSixDropdownAutoFilterPayload>>();
+  @Output() sixAsyncFilterFired = new EventEmitter<SixDropdownCustomEvent<ISixDropdownSixDropdownAsyncFilterPayload>>();
+  @Output() sixDropdownScroll = new EventEmitter<SixDropdownCustomEvent<ISixDropdownSixDropdownScrollPayload>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -533,6 +543,7 @@ export class SixDropdown {
 }
 
 
+import type { SixDropdownCustomEvent } from '@six-group/ui-library';
 import type { EmptyPayload as ISixDropdownEmptyPayload } from '@six-group/ui-library';
 import type { SixDropdownAutoFilterPayload as ISixDropdownSixDropdownAutoFilterPayload } from '@six-group/ui-library';
 import type { SixDropdownAsyncFilterPayload as ISixDropdownSixDropdownAsyncFilterPayload } from '@six-group/ui-library';
@@ -542,31 +553,31 @@ export declare interface SixDropdown extends Components.SixDropdown {
   /**
    * Emitted when the dropdown opens. Calling `event.preventDefault()` will prevent it from being opened.
    */
-  'six-dropdown-show': EventEmitter<CustomEvent<ISixDropdownEmptyPayload>>;
+  'six-dropdown-show': EventEmitter<SixDropdownCustomEvent<ISixDropdownEmptyPayload>>;
   /**
    * Emitted after the dropdown opens and all transitions are complete.
    */
-  'six-dropdown-after-show': EventEmitter<CustomEvent<ISixDropdownEmptyPayload>>;
+  'six-dropdown-after-show': EventEmitter<SixDropdownCustomEvent<ISixDropdownEmptyPayload>>;
   /**
    * Emitted when the dropdown closes. Calling `event.preventDefault()` will prevent it from being closed.
    */
-  'six-dropdown-hide': EventEmitter<CustomEvent<ISixDropdownEmptyPayload>>;
+  'six-dropdown-hide': EventEmitter<SixDropdownCustomEvent<ISixDropdownEmptyPayload>>;
   /**
    * Emitted after the dropdown closes and all transitions are complete.
    */
-  'six-dropdown-after-hide': EventEmitter<CustomEvent<ISixDropdownEmptyPayload>>;
+  'six-dropdown-after-hide': EventEmitter<SixDropdownCustomEvent<ISixDropdownEmptyPayload>>;
   /**
    * Emitted when the auto filter is triggered
    */
-  'six-dropdown-auto-filter-fired': EventEmitter<CustomEvent<ISixDropdownSixDropdownAutoFilterPayload>>;
+  'six-dropdown-auto-filter-fired': EventEmitter<SixDropdownCustomEvent<ISixDropdownSixDropdownAutoFilterPayload>>;
   /**
    * Emitted when the async filter is triggered
    */
-  'six-async-filter-fired': EventEmitter<CustomEvent<ISixDropdownSixDropdownAsyncFilterPayload>>;
+  'six-async-filter-fired': EventEmitter<SixDropdownCustomEvent<ISixDropdownSixDropdownAsyncFilterPayload>>;
   /**
    * Emitted when the user scrolls inside dropdown panel.
    */
-  'six-dropdown-scroll': EventEmitter<CustomEvent<ISixDropdownSixDropdownScrollPayload>>;
+  'six-dropdown-scroll': EventEmitter<SixDropdownCustomEvent<ISixDropdownSixDropdownScrollPayload>>;
 }
 
 
@@ -651,8 +662,8 @@ export declare interface SixFileList extends Components.SixFileList {}
 })
 export class SixFileListItem {
   protected el: HTMLSixFileListItemElement;
-  @Output() sixFileListItemDownload = new EventEmitter<CustomEvent<ISixFileListItemSixFileListDownloadPayload>>();
-  @Output() sixFileListItemRemove = new EventEmitter<CustomEvent<ISixFileListItemSixFileListRemovePayload>>();
+  @Output() sixFileListItemDownload = new EventEmitter<SixFileListItemCustomEvent<ISixFileListItemSixFileListDownloadPayload>>();
+  @Output() sixFileListItemRemove = new EventEmitter<SixFileListItemCustomEvent<ISixFileListItemSixFileListRemovePayload>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -660,6 +671,7 @@ export class SixFileListItem {
 }
 
 
+import type { SixFileListItemCustomEvent } from '@six-group/ui-library';
 import type { SixFileListDownloadPayload as ISixFileListItemSixFileListDownloadPayload } from '@six-group/ui-library';
 import type { SixFileListRemovePayload as ISixFileListItemSixFileListRemovePayload } from '@six-group/ui-library';
 
@@ -667,11 +679,11 @@ export declare interface SixFileListItem extends Components.SixFileListItem {
   /**
    * Triggered on file download.
    */
-  'six-file-list-item-download': EventEmitter<CustomEvent<ISixFileListItemSixFileListDownloadPayload>>;
+  'six-file-list-item-download': EventEmitter<SixFileListItemCustomEvent<ISixFileListItemSixFileListDownloadPayload>>;
   /**
    * Triggered on file remove.
    */
-  'six-file-list-item-remove': EventEmitter<CustomEvent<ISixFileListItemSixFileListRemovePayload>>;
+  'six-file-list-item-remove': EventEmitter<SixFileListItemCustomEvent<ISixFileListItemSixFileListRemovePayload>>;
 }
 
 
@@ -689,8 +701,8 @@ export declare interface SixFileListItem extends Components.SixFileListItem {
 })
 export class SixFileUpload {
   protected el: HTMLSixFileUploadElement;
-  @Output() sixFileUploadSuccess = new EventEmitter<CustomEvent<ISixFileUploadSixFileUploadSuccessPayload>>();
-  @Output() sixFileUploadFailure = new EventEmitter<CustomEvent<ISixFileUploadSixFileUploadFailurePayload>>();
+  @Output() sixFileUploadSuccess = new EventEmitter<SixFileUploadCustomEvent<ISixFileUploadSixFileUploadSuccessPayload>>();
+  @Output() sixFileUploadFailure = new EventEmitter<SixFileUploadCustomEvent<ISixFileUploadSixFileUploadFailurePayload>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -698,6 +710,7 @@ export class SixFileUpload {
 }
 
 
+import type { SixFileUploadCustomEvent } from '@six-group/ui-library';
 import type { SixFileUploadSuccessPayload as ISixFileUploadSixFileUploadSuccessPayload } from '@six-group/ui-library';
 import type { SixFileUploadFailurePayload as ISixFileUploadSixFileUploadFailurePayload } from '@six-group/ui-library';
 
@@ -705,11 +718,11 @@ export declare interface SixFileUpload extends Components.SixFileUpload {
   /**
    * Triggers when a file is added.
    */
-  'six-file-upload-success': EventEmitter<CustomEvent<ISixFileUploadSixFileUploadSuccessPayload>>;
+  'six-file-upload-success': EventEmitter<SixFileUploadCustomEvent<ISixFileUploadSixFileUploadSuccessPayload>>;
   /**
    * Triggers when an uploaded file doesn't match MIME type or max file size.
    */
-  'six-file-upload-failure': EventEmitter<CustomEvent<ISixFileUploadSixFileUploadFailurePayload>>;
+  'six-file-upload-failure': EventEmitter<SixFileUploadCustomEvent<ISixFileUploadSixFileUploadFailurePayload>>;
 }
 
 
@@ -911,11 +924,11 @@ export declare interface SixIconButton extends Components.SixIconButton {}
 })
 export class SixInput {
   protected el: HTMLSixInputElement;
-  @Output() sixInputChange = new EventEmitter<CustomEvent<ISixInputEmptyPayload>>();
-  @Output() sixInputClear = new EventEmitter<CustomEvent<ISixInputEmptyPayload>>();
-  @Output() sixInputInput = new EventEmitter<CustomEvent<ISixInputEmptyPayload>>();
-  @Output() sixInputFocus = new EventEmitter<CustomEvent<ISixInputEmptyPayload>>();
-  @Output() sixInputBlur = new EventEmitter<CustomEvent<ISixInputEmptyPayload>>();
+  @Output() sixInputChange = new EventEmitter<SixInputCustomEvent<ISixInputEmptyPayload>>();
+  @Output() sixInputClear = new EventEmitter<SixInputCustomEvent<ISixInputEmptyPayload>>();
+  @Output() sixInputInput = new EventEmitter<SixInputCustomEvent<ISixInputEmptyPayload>>();
+  @Output() sixInputFocus = new EventEmitter<SixInputCustomEvent<ISixInputEmptyPayload>>();
+  @Output() sixInputBlur = new EventEmitter<SixInputCustomEvent<ISixInputEmptyPayload>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -923,29 +936,30 @@ export class SixInput {
 }
 
 
+import type { SixInputCustomEvent } from '@six-group/ui-library';
 import type { EmptyPayload as ISixInputEmptyPayload } from '@six-group/ui-library';
 
 export declare interface SixInput extends Components.SixInput {
   /**
    * Emitted when the control's value changes. Access the new value via event.target.value.
    */
-  'six-input-change': EventEmitter<CustomEvent<ISixInputEmptyPayload>>;
+  'six-input-change': EventEmitter<SixInputCustomEvent<ISixInputEmptyPayload>>;
   /**
    * Emitted when the clear button is activated.
    */
-  'six-input-clear': EventEmitter<CustomEvent<ISixInputEmptyPayload>>;
+  'six-input-clear': EventEmitter<SixInputCustomEvent<ISixInputEmptyPayload>>;
   /**
    * Emitted when the control receives input. Access the new value via event.target.value.
    */
-  'six-input-input': EventEmitter<CustomEvent<ISixInputEmptyPayload>>;
+  'six-input-input': EventEmitter<SixInputCustomEvent<ISixInputEmptyPayload>>;
   /**
    * Emitted when the control gains focus.
    */
-  'six-input-focus': EventEmitter<CustomEvent<ISixInputEmptyPayload>>;
+  'six-input-focus': EventEmitter<SixInputCustomEvent<ISixInputEmptyPayload>>;
   /**
    * Emitted when the control loses focus. Access the new value via event.target.value.
    */
-  'six-input-blur': EventEmitter<CustomEvent<ISixInputEmptyPayload>>;
+  'six-input-blur': EventEmitter<SixInputCustomEvent<ISixInputEmptyPayload>>;
 }
 
 
@@ -963,8 +977,8 @@ export declare interface SixInput extends Components.SixInput {
 })
 export class SixItemPicker {
   protected el: HTMLSixItemPickerElement;
-  @Output() sixItemPickerChange = new EventEmitter<CustomEvent<ISixItemPickerSixItemPickerChangePayload>>();
-  @Output() sixItemPickerChangeDebounced = new EventEmitter<CustomEvent<ISixItemPickerSixItemPickerChangePayload>>();
+  @Output() sixItemPickerChange = new EventEmitter<SixItemPickerCustomEvent<ISixItemPickerSixItemPickerChangePayload>>();
+  @Output() sixItemPickerChangeDebounced = new EventEmitter<SixItemPickerCustomEvent<ISixItemPickerSixItemPickerChangePayload>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -972,17 +986,18 @@ export class SixItemPicker {
 }
 
 
+import type { SixItemPickerCustomEvent } from '@six-group/ui-library';
 import type { SixItemPickerChangePayload as ISixItemPickerSixItemPickerChangePayload } from '@six-group/ui-library';
 
 export declare interface SixItemPicker extends Components.SixItemPicker {
   /**
    * Emitted when the item picker's value changes
    */
-  'six-item-picker-change': EventEmitter<CustomEvent<ISixItemPickerSixItemPickerChangePayload>>;
+  'six-item-picker-change': EventEmitter<SixItemPickerCustomEvent<ISixItemPickerSixItemPickerChangePayload>>;
   /**
    * Emitted when the item picker's value changes, but debounced
    */
-  'six-item-picker-change-debounced': EventEmitter<CustomEvent<ISixItemPickerSixItemPickerChangePayload>>;
+  'six-item-picker-change-debounced': EventEmitter<SixItemPickerCustomEvent<ISixItemPickerSixItemPickerChangePayload>>;
 }
 
 
@@ -1000,7 +1015,7 @@ export declare interface SixItemPicker extends Components.SixItemPicker {
 })
 export class SixLanguageSwitcher {
   protected el: HTMLSixLanguageSwitcherElement;
-  @Output() sixLanguageSwitcherChange = new EventEmitter<CustomEvent<ISixLanguageSwitcherSixLanguageSwitcherChangePayload>>();
+  @Output() sixLanguageSwitcherChange = new EventEmitter<SixLanguageSwitcherCustomEvent<ISixLanguageSwitcherSixLanguageSwitcherChangePayload>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1008,13 +1023,14 @@ export class SixLanguageSwitcher {
 }
 
 
+import type { SixLanguageSwitcherCustomEvent } from '@six-group/ui-library';
 import type { SixLanguageSwitcherChangePayload as ISixLanguageSwitcherSixLanguageSwitcherChangePayload } from '@six-group/ui-library';
 
 export declare interface SixLanguageSwitcher extends Components.SixLanguageSwitcher {
   /**
    * Emitted when the language switchers value changes
    */
-  'six-language-switcher-change': EventEmitter<CustomEvent<ISixLanguageSwitcherSixLanguageSwitcherChangePayload>>;
+  'six-language-switcher-change': EventEmitter<SixLanguageSwitcherCustomEvent<ISixLanguageSwitcherSixLanguageSwitcherChangePayload>>;
 }
 
 
@@ -1102,7 +1118,7 @@ export declare interface SixMainContainer extends Components.SixMainContainer {}
 })
 export class SixMenu {
   protected el: HTMLSixMenuElement;
-  @Output() sixMenuItemSelected = new EventEmitter<CustomEvent<ISixMenuSixMenuItemSelectedPayload>>();
+  @Output() sixMenuItemSelected = new EventEmitter<SixMenuCustomEvent<ISixMenuSixMenuItemSelectedPayload>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1110,13 +1126,14 @@ export class SixMenu {
 }
 
 
+import type { SixMenuCustomEvent } from '@six-group/ui-library';
 import type { SixMenuItemSelectedPayload as ISixMenuSixMenuItemSelectedPayload } from '@six-group/ui-library';
 
 export declare interface SixMenu extends Components.SixMenu {
   /**
    * Emitted when a menu item is selected.
    */
-  'six-menu-item-selected': EventEmitter<CustomEvent<ISixMenuSixMenuItemSelectedPayload>>;
+  'six-menu-item-selected': EventEmitter<SixMenuCustomEvent<ISixMenuSixMenuItemSelectedPayload>>;
 }
 
 
@@ -1202,8 +1219,8 @@ export declare interface SixMenuLabel extends Components.SixMenuLabel {}
 })
 export class SixPaginator {
   protected el: HTMLSixPaginatorElement;
-  @Output() sixPaginatorResultsPerPageChanged = new EventEmitter<CustomEvent<ISixPaginatorSixPaginatorResultsPerPageChangedPayload>>();
-  @Output() sixPaginatorPageChanged = new EventEmitter<CustomEvent<ISixPaginatorSixPaginatorPageChangedPayload>>();
+  @Output() sixPaginatorResultsPerPageChanged = new EventEmitter<SixPaginatorCustomEvent<ISixPaginatorSixPaginatorResultsPerPageChangedPayload>>();
+  @Output() sixPaginatorPageChanged = new EventEmitter<SixPaginatorCustomEvent<ISixPaginatorSixPaginatorPageChangedPayload>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1211,6 +1228,7 @@ export class SixPaginator {
 }
 
 
+import type { SixPaginatorCustomEvent } from '@six-group/ui-library';
 import type { SixPaginatorResultsPerPageChangedPayload as ISixPaginatorSixPaginatorResultsPerPageChangedPayload } from '@six-group/ui-library';
 import type { SixPaginatorPageChangedPayload as ISixPaginatorSixPaginatorPageChangedPayload } from '@six-group/ui-library';
 
@@ -1218,11 +1236,11 @@ export declare interface SixPaginator extends Components.SixPaginator {
   /**
    * Emitted after the user selects a value from the results per page select.
    */
-  'six-paginator-results-per-page-changed': EventEmitter<CustomEvent<ISixPaginatorSixPaginatorResultsPerPageChangedPayload>>;
+  'six-paginator-results-per-page-changed': EventEmitter<SixPaginatorCustomEvent<ISixPaginatorSixPaginatorResultsPerPageChangedPayload>>;
   /**
    * Emitted whenever the page changes. This can be either due to one of the arrows bein pressed, or an explicit click on a page number.
    */
-  'six-paginator-page-changed': EventEmitter<CustomEvent<ISixPaginatorSixPaginatorPageChangedPayload>>;
+  'six-paginator-page-changed': EventEmitter<SixPaginatorCustomEvent<ISixPaginatorSixPaginatorPageChangedPayload>>;
 }
 
 
@@ -1310,9 +1328,9 @@ export declare interface SixProgressRing extends Components.SixProgressRing {}
 })
 export class SixRadio {
   protected el: HTMLSixRadioElement;
-  @Output() sixRadioBlur = new EventEmitter<CustomEvent<ISixRadioEmptyPayload>>();
-  @Output() sixRadioChange = new EventEmitter<CustomEvent<ISixRadioEmptyPayload>>();
-  @Output() sixRadioFocus = new EventEmitter<CustomEvent<ISixRadioEmptyPayload>>();
+  @Output() sixRadioBlur = new EventEmitter<SixRadioCustomEvent<ISixRadioEmptyPayload>>();
+  @Output() sixRadioChange = new EventEmitter<SixRadioCustomEvent<ISixRadioEmptyPayload>>();
+  @Output() sixRadioFocus = new EventEmitter<SixRadioCustomEvent<ISixRadioEmptyPayload>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1320,21 +1338,22 @@ export class SixRadio {
 }
 
 
+import type { SixRadioCustomEvent } from '@six-group/ui-library';
 import type { EmptyPayload as ISixRadioEmptyPayload } from '@six-group/ui-library';
 
 export declare interface SixRadio extends Components.SixRadio {
   /**
    * Emitted when the control loses focus.
    */
-  'six-radio-blur': EventEmitter<CustomEvent<ISixRadioEmptyPayload>>;
+  'six-radio-blur': EventEmitter<SixRadioCustomEvent<ISixRadioEmptyPayload>>;
   /**
    * Emitted when the control's checked state changes.
    */
-  'six-radio-change': EventEmitter<CustomEvent<ISixRadioEmptyPayload>>;
+  'six-radio-change': EventEmitter<SixRadioCustomEvent<ISixRadioEmptyPayload>>;
   /**
    * Emitted when the control gains focus.
    */
-  'six-radio-focus': EventEmitter<CustomEvent<ISixRadioEmptyPayload>>;
+  'six-radio-focus': EventEmitter<SixRadioCustomEvent<ISixRadioEmptyPayload>>;
 }
 
 
@@ -1353,9 +1372,9 @@ export declare interface SixRadio extends Components.SixRadio {
 })
 export class SixRange {
   protected el: HTMLSixRangeElement;
-  @Output() sixRangeChange = new EventEmitter<CustomEvent<ISixRangeEmptyPayload>>();
-  @Output() sixRangeBlur = new EventEmitter<CustomEvent<ISixRangeEmptyPayload>>();
-  @Output() sixRangeFocus = new EventEmitter<CustomEvent<ISixRangeEmptyPayload>>();
+  @Output() sixRangeChange = new EventEmitter<SixRangeCustomEvent<ISixRangeEmptyPayload>>();
+  @Output() sixRangeBlur = new EventEmitter<SixRangeCustomEvent<ISixRangeEmptyPayload>>();
+  @Output() sixRangeFocus = new EventEmitter<SixRangeCustomEvent<ISixRangeEmptyPayload>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1363,21 +1382,22 @@ export class SixRange {
 }
 
 
+import type { SixRangeCustomEvent } from '@six-group/ui-library';
 import type { EmptyPayload as ISixRangeEmptyPayload } from '@six-group/ui-library';
 
 export declare interface SixRange extends Components.SixRange {
   /**
    * Emitted when the control's value changes.
    */
-  'six-range-change': EventEmitter<CustomEvent<ISixRangeEmptyPayload>>;
+  'six-range-change': EventEmitter<SixRangeCustomEvent<ISixRangeEmptyPayload>>;
   /**
    * Emitted when the control loses focus.
    */
-  'six-range-blur': EventEmitter<CustomEvent<ISixRangeEmptyPayload>>;
+  'six-range-blur': EventEmitter<SixRangeCustomEvent<ISixRangeEmptyPayload>>;
   /**
    * Emitted when the control gains focus.
    */
-  'six-range-focus': EventEmitter<CustomEvent<ISixRangeEmptyPayload>>;
+  'six-range-focus': EventEmitter<SixRangeCustomEvent<ISixRangeEmptyPayload>>;
 }
 
 
@@ -1395,9 +1415,9 @@ export declare interface SixRange extends Components.SixRange {
 })
 export class SixRating {
   protected el: HTMLSixRatingElement;
-  @Output() sixRatingBlur = new EventEmitter<CustomEvent<number>>();
-  @Output() sixRatingChange = new EventEmitter<CustomEvent<number>>();
-  @Output() sixRatingFocus = new EventEmitter<CustomEvent<ISixRatingEmptyPayload>>();
+  @Output() sixRatingBlur = new EventEmitter<SixRatingCustomEvent<number>>();
+  @Output() sixRatingChange = new EventEmitter<SixRatingCustomEvent<number>>();
+  @Output() sixRatingFocus = new EventEmitter<SixRatingCustomEvent<ISixRatingEmptyPayload>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1405,21 +1425,22 @@ export class SixRating {
 }
 
 
+import type { SixRatingCustomEvent } from '@six-group/ui-library';
 import type { EmptyPayload as ISixRatingEmptyPayload } from '@six-group/ui-library';
 
 export declare interface SixRating extends Components.SixRating {
   /**
    * Emitted when the control loses focus.
    */
-  'six-rating-blur': EventEmitter<CustomEvent<number>>;
+  'six-rating-blur': EventEmitter<SixRatingCustomEvent<number>>;
   /**
    * Emitted when the control's checked state changes.
    */
-  'six-rating-change': EventEmitter<CustomEvent<number>>;
+  'six-rating-change': EventEmitter<SixRatingCustomEvent<number>>;
   /**
    * Emitted when the control gains focus.
    */
-  'six-rating-focus': EventEmitter<CustomEvent<ISixRatingEmptyPayload>>;
+  'six-rating-focus': EventEmitter<SixRatingCustomEvent<ISixRatingEmptyPayload>>;
 }
 
 
@@ -1460,7 +1481,7 @@ export declare interface SixRoot extends Components.SixRoot {}
 })
 export class SixSearchField {
   protected el: HTMLSixSearchFieldElement;
-  @Output() sixSearchFieldChange = new EventEmitter<CustomEvent<ISixSearchFieldSixSearchFieldChangePayload>>();
+  @Output() sixSearchFieldChange = new EventEmitter<SixSearchFieldCustomEvent<ISixSearchFieldSixSearchFieldChangePayload>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1468,13 +1489,14 @@ export class SixSearchField {
 }
 
 
+import type { SixSearchFieldCustomEvent } from '@six-group/ui-library';
 import type { SixSearchFieldChangePayload as ISixSearchFieldSixSearchFieldChangePayload } from '@six-group/ui-library';
 
 export declare interface SixSearchField extends Components.SixSearchField {
   /**
    * Emitted when a search is triggered
    */
-  'six-search-field-change': EventEmitter<CustomEvent<ISixSearchFieldSixSearchFieldChangePayload>>;
+  'six-search-field-change': EventEmitter<SixSearchFieldCustomEvent<ISixSearchFieldSixSearchFieldChangePayload>>;
 }
 
 
@@ -1493,9 +1515,9 @@ export declare interface SixSearchField extends Components.SixSearchField {
 })
 export class SixSelect {
   protected el: HTMLSixSelectElement;
-  @Output() sixSelectChange = new EventEmitter<CustomEvent<ISixSelectSixSelectChangePayload>>();
-  @Output() sixSelectFocus = new EventEmitter<CustomEvent<ISixSelectEmptyPayload>>();
-  @Output() sixSelectBlur = new EventEmitter<CustomEvent<ISixSelectEmptyPayload>>();
+  @Output() sixSelectChange = new EventEmitter<SixSelectCustomEvent<ISixSelectSixSelectChangePayload>>();
+  @Output() sixSelectFocus = new EventEmitter<SixSelectCustomEvent<ISixSelectEmptyPayload>>();
+  @Output() sixSelectBlur = new EventEmitter<SixSelectCustomEvent<ISixSelectEmptyPayload>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1503,6 +1525,7 @@ export class SixSelect {
 }
 
 
+import type { SixSelectCustomEvent } from '@six-group/ui-library';
 import type { SixSelectChangePayload as ISixSelectSixSelectChangePayload } from '@six-group/ui-library';
 import type { EmptyPayload as ISixSelectEmptyPayload } from '@six-group/ui-library';
 
@@ -1510,15 +1533,15 @@ export declare interface SixSelect extends Components.SixSelect {
   /**
    * Emitted when the control's value changes.
    */
-  'six-select-change': EventEmitter<CustomEvent<ISixSelectSixSelectChangePayload>>;
+  'six-select-change': EventEmitter<SixSelectCustomEvent<ISixSelectSixSelectChangePayload>>;
   /**
    * Emitted when the control gains focus.
    */
-  'six-select-focus': EventEmitter<CustomEvent<ISixSelectEmptyPayload>>;
+  'six-select-focus': EventEmitter<SixSelectCustomEvent<ISixSelectEmptyPayload>>;
   /**
    * Emitted when the control loses focus.
    */
-  'six-select-blur': EventEmitter<CustomEvent<ISixSelectEmptyPayload>>;
+  'six-select-blur': EventEmitter<SixSelectCustomEvent<ISixSelectEmptyPayload>>;
 }
 
 
@@ -1537,11 +1560,11 @@ export declare interface SixSelect extends Components.SixSelect {
 })
 export class SixSidebar {
   protected el: HTMLSixSidebarElement;
-  @Output() sixSidebarShow = new EventEmitter<CustomEvent<ISixSidebarEmptyPayload>>();
-  @Output() sixSidebarAfterShow = new EventEmitter<CustomEvent<ISixSidebarEmptyPayload>>();
-  @Output() sixSidebarHide = new EventEmitter<CustomEvent<ISixSidebarEmptyPayload>>();
-  @Output() sixSidebarAfterHide = new EventEmitter<CustomEvent<ISixSidebarEmptyPayload>>();
-  @Output() sixSidebarInitialFocus = new EventEmitter<CustomEvent<ISixSidebarEmptyPayload>>();
+  @Output() sixSidebarShow = new EventEmitter<SixSidebarCustomEvent<ISixSidebarEmptyPayload>>();
+  @Output() sixSidebarAfterShow = new EventEmitter<SixSidebarCustomEvent<ISixSidebarEmptyPayload>>();
+  @Output() sixSidebarHide = new EventEmitter<SixSidebarCustomEvent<ISixSidebarEmptyPayload>>();
+  @Output() sixSidebarAfterHide = new EventEmitter<SixSidebarCustomEvent<ISixSidebarEmptyPayload>>();
+  @Output() sixSidebarInitialFocus = new EventEmitter<SixSidebarCustomEvent<ISixSidebarEmptyPayload>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1549,30 +1572,31 @@ export class SixSidebar {
 }
 
 
+import type { SixSidebarCustomEvent } from '@six-group/ui-library';
 import type { EmptyPayload as ISixSidebarEmptyPayload } from '@six-group/ui-library';
 
 export declare interface SixSidebar extends Components.SixSidebar {
   /**
    * Emitted when the sidebar opens. Calling `event.preventDefault()` will prevent it from being opened.
    */
-  'six-sidebar-show': EventEmitter<CustomEvent<ISixSidebarEmptyPayload>>;
+  'six-sidebar-show': EventEmitter<SixSidebarCustomEvent<ISixSidebarEmptyPayload>>;
   /**
    * Emitted after the sidebar opens and all transitions are complete.
    */
-  'six-sidebar-after-show': EventEmitter<CustomEvent<ISixSidebarEmptyPayload>>;
+  'six-sidebar-after-show': EventEmitter<SixSidebarCustomEvent<ISixSidebarEmptyPayload>>;
   /**
    * Emitted when the sidebar closes. Calling `event.preventDefault()` will prevent it from being closed.
    */
-  'six-sidebar-hide': EventEmitter<CustomEvent<ISixSidebarEmptyPayload>>;
+  'six-sidebar-hide': EventEmitter<SixSidebarCustomEvent<ISixSidebarEmptyPayload>>;
   /**
    * Emitted after the sidebar closes and all transitions are complete.
    */
-  'six-sidebar-after-hide': EventEmitter<CustomEvent<ISixSidebarEmptyPayload>>;
+  'six-sidebar-after-hide': EventEmitter<SixSidebarCustomEvent<ISixSidebarEmptyPayload>>;
   /**
    * Emitted when the sidebar opens and the panel gains focus. Calling `event.preventDefault()` will prevent focus and
 allow you to set it on a different element in the sidebar, such as an input or button.
    */
-  'six-sidebar-initial-focus': EventEmitter<CustomEvent<ISixSidebarEmptyPayload>>;
+  'six-sidebar-initial-focus': EventEmitter<SixSidebarCustomEvent<ISixSidebarEmptyPayload>>;
 }
 
 
@@ -1683,9 +1707,9 @@ export declare interface SixStageIndicator extends Components.SixStageIndicator 
 })
 export class SixSwitch {
   protected el: HTMLSixSwitchElement;
-  @Output() sixSwitchBlur = new EventEmitter<CustomEvent<boolean>>();
-  @Output() sixSwitchChange = new EventEmitter<CustomEvent<boolean>>();
-  @Output() sixSwitchFocus = new EventEmitter<CustomEvent<ISixSwitchEmptyPayload>>();
+  @Output() sixSwitchBlur = new EventEmitter<SixSwitchCustomEvent<boolean>>();
+  @Output() sixSwitchChange = new EventEmitter<SixSwitchCustomEvent<boolean>>();
+  @Output() sixSwitchFocus = new EventEmitter<SixSwitchCustomEvent<ISixSwitchEmptyPayload>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1693,21 +1717,22 @@ export class SixSwitch {
 }
 
 
+import type { SixSwitchCustomEvent } from '@six-group/ui-library';
 import type { EmptyPayload as ISixSwitchEmptyPayload } from '@six-group/ui-library';
 
 export declare interface SixSwitch extends Components.SixSwitch {
   /**
    * Emitted when the control loses focus.
    */
-  'six-switch-blur': EventEmitter<CustomEvent<boolean>>;
+  'six-switch-blur': EventEmitter<SixSwitchCustomEvent<boolean>>;
   /**
    * Emitted when the control's checked state changes.
    */
-  'six-switch-change': EventEmitter<CustomEvent<boolean>>;
+  'six-switch-change': EventEmitter<SixSwitchCustomEvent<boolean>>;
   /**
    * Emitted when the control gains focus.
    */
-  'six-switch-focus': EventEmitter<CustomEvent<ISixSwitchEmptyPayload>>;
+  'six-switch-focus': EventEmitter<SixSwitchCustomEvent<ISixSwitchEmptyPayload>>;
 }
 
 
@@ -1726,7 +1751,7 @@ export declare interface SixSwitch extends Components.SixSwitch {
 })
 export class SixTab {
   protected el: HTMLSixTabElement;
-  @Output() sixTabClose = new EventEmitter<CustomEvent<ISixTabEmptyPayload>>();
+  @Output() sixTabClose = new EventEmitter<SixTabCustomEvent<ISixTabEmptyPayload>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1734,13 +1759,14 @@ export class SixTab {
 }
 
 
+import type { SixTabCustomEvent } from '@six-group/ui-library';
 import type { EmptyPayload as ISixTabEmptyPayload } from '@six-group/ui-library';
 
 export declare interface SixTab extends Components.SixTab {
   /**
    * Emitted when the tab is closable and the close button is activated.
    */
-  'six-tab-close': EventEmitter<CustomEvent<ISixTabEmptyPayload>>;
+  'six-tab-close': EventEmitter<SixTabCustomEvent<ISixTabEmptyPayload>>;
 }
 
 
@@ -1759,8 +1785,8 @@ export declare interface SixTab extends Components.SixTab {
 })
 export class SixTabGroup {
   protected el: HTMLSixTabGroupElement;
-  @Output() sixTabShow = new EventEmitter<CustomEvent<ISixTabGroupSixTabShowPayload>>();
-  @Output() sixTabHide = new EventEmitter<CustomEvent<ISixTabGroupSixTabHidePayload>>();
+  @Output() sixTabShow = new EventEmitter<SixTabGroupCustomEvent<ISixTabGroupSixTabShowPayload>>();
+  @Output() sixTabHide = new EventEmitter<SixTabGroupCustomEvent<ISixTabGroupSixTabHidePayload>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1768,6 +1794,7 @@ export class SixTabGroup {
 }
 
 
+import type { SixTabGroupCustomEvent } from '@six-group/ui-library';
 import type { SixTabShowPayload as ISixTabGroupSixTabShowPayload } from '@six-group/ui-library';
 import type { SixTabHidePayload as ISixTabGroupSixTabHidePayload } from '@six-group/ui-library';
 
@@ -1775,11 +1802,11 @@ export declare interface SixTabGroup extends Components.SixTabGroup {
   /**
    * Emitted when a tab is shown.
    */
-  'six-tab-show': EventEmitter<CustomEvent<ISixTabGroupSixTabShowPayload>>;
+  'six-tab-show': EventEmitter<SixTabGroupCustomEvent<ISixTabGroupSixTabShowPayload>>;
   /**
    * Emitted when a tab is hidden.
    */
-  'six-tab-hide': EventEmitter<CustomEvent<ISixTabGroupSixTabHidePayload>>;
+  'six-tab-hide': EventEmitter<SixTabGroupCustomEvent<ISixTabGroupSixTabHidePayload>>;
 }
 
 
@@ -1820,7 +1847,7 @@ export declare interface SixTabPanel extends Components.SixTabPanel {}
 })
 export class SixTag {
   protected el: HTMLSixTagElement;
-  @Output() sixTagClear = new EventEmitter<CustomEvent<ISixTagEmptyPayload>>();
+  @Output() sixTagClear = new EventEmitter<SixTagCustomEvent<ISixTagEmptyPayload>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1828,13 +1855,14 @@ export class SixTag {
 }
 
 
+import type { SixTagCustomEvent } from '@six-group/ui-library';
 import type { EmptyPayload as ISixTagEmptyPayload } from '@six-group/ui-library';
 
 export declare interface SixTag extends Components.SixTag {
   /**
    * Emitted when the clear button is activated.
    */
-  'six-tag-clear': EventEmitter<CustomEvent<ISixTagEmptyPayload>>;
+  'six-tag-clear': EventEmitter<SixTagCustomEvent<ISixTagEmptyPayload>>;
 }
 
 
@@ -1853,10 +1881,10 @@ export declare interface SixTag extends Components.SixTag {
 })
 export class SixTextarea {
   protected el: HTMLSixTextareaElement;
-  @Output() sixTextareaChange = new EventEmitter<CustomEvent<ISixTextareaEmptyPayload>>();
-  @Output() sixTextareaInput = new EventEmitter<CustomEvent<ISixTextareaEmptyPayload>>();
-  @Output() sixTextareaFocus = new EventEmitter<CustomEvent<ISixTextareaEmptyPayload>>();
-  @Output() sixTextareaBlur = new EventEmitter<CustomEvent<ISixTextareaEmptyPayload>>();
+  @Output() sixTextareaChange = new EventEmitter<SixTextareaCustomEvent<ISixTextareaEmptyPayload>>();
+  @Output() sixTextareaInput = new EventEmitter<SixTextareaCustomEvent<ISixTextareaEmptyPayload>>();
+  @Output() sixTextareaFocus = new EventEmitter<SixTextareaCustomEvent<ISixTextareaEmptyPayload>>();
+  @Output() sixTextareaBlur = new EventEmitter<SixTextareaCustomEvent<ISixTextareaEmptyPayload>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1864,25 +1892,26 @@ export class SixTextarea {
 }
 
 
+import type { SixTextareaCustomEvent } from '@six-group/ui-library';
 import type { EmptyPayload as ISixTextareaEmptyPayload } from '@six-group/ui-library';
 
 export declare interface SixTextarea extends Components.SixTextarea {
   /**
    * Emitted when the control's value changes. Access the new value via event.target.value.
    */
-  'six-textarea-change': EventEmitter<CustomEvent<ISixTextareaEmptyPayload>>;
+  'six-textarea-change': EventEmitter<SixTextareaCustomEvent<ISixTextareaEmptyPayload>>;
   /**
    * Emitted when the control receives input. Access the new value via event.target.value.
    */
-  'six-textarea-input': EventEmitter<CustomEvent<ISixTextareaEmptyPayload>>;
+  'six-textarea-input': EventEmitter<SixTextareaCustomEvent<ISixTextareaEmptyPayload>>;
   /**
    * Emitted when the control gains focus.
    */
-  'six-textarea-focus': EventEmitter<CustomEvent<ISixTextareaEmptyPayload>>;
+  'six-textarea-focus': EventEmitter<SixTextareaCustomEvent<ISixTextareaEmptyPayload>>;
   /**
    * Emitted when the control loses focus. Access the new value via event.target.value.
    */
-  'six-textarea-blur': EventEmitter<CustomEvent<ISixTextareaEmptyPayload>>;
+  'six-textarea-blur': EventEmitter<SixTextareaCustomEvent<ISixTextareaEmptyPayload>>;
 }
 
 
@@ -1901,8 +1930,8 @@ export declare interface SixTextarea extends Components.SixTextarea {
 })
 export class SixTile {
   protected el: HTMLSixTileElement;
-  @Output() sixTileClosed = new EventEmitter<CustomEvent<ISixTileEmptyPayload>>();
-  @Output() sixTileSelected = new EventEmitter<CustomEvent<ISixTileEmptyPayload>>();
+  @Output() sixTileClosed = new EventEmitter<SixTileCustomEvent<ISixTileEmptyPayload>>();
+  @Output() sixTileSelected = new EventEmitter<SixTileCustomEvent<ISixTileEmptyPayload>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1910,17 +1939,18 @@ export class SixTile {
 }
 
 
+import type { SixTileCustomEvent } from '@six-group/ui-library';
 import type { EmptyPayload as ISixTileEmptyPayload } from '@six-group/ui-library';
 
 export declare interface SixTile extends Components.SixTile {
   /**
    * Emitted when the tile was closed.
    */
-  'six-tile-closed': EventEmitter<CustomEvent<ISixTileEmptyPayload>>;
+  'six-tile-closed': EventEmitter<SixTileCustomEvent<ISixTileEmptyPayload>>;
   /**
    * Emitted when the tile is selected.
    */
-  'six-tile-selected': EventEmitter<CustomEvent<ISixTileEmptyPayload>>;
+  'six-tile-selected': EventEmitter<SixTileCustomEvent<ISixTileEmptyPayload>>;
 }
 
 
@@ -1939,9 +1969,9 @@ export declare interface SixTile extends Components.SixTile {
 })
 export class SixTimepicker {
   protected el: HTMLSixTimepickerElement;
-  @Output() sixTimepickerChange = new EventEmitter<CustomEvent<ISixTimepickerSixTimepickerChange>>();
-  @Output() sixTimepickerChangeDebounced = new EventEmitter<CustomEvent<ISixTimepickerSixTimepickerChange>>();
-  @Output() sixTimepickerClear = new EventEmitter<CustomEvent<ISixTimepickerEmptyPayload>>();
+  @Output() sixTimepickerChange = new EventEmitter<SixTimepickerCustomEvent<ISixTimepickerSixTimepickerChange>>();
+  @Output() sixTimepickerChangeDebounced = new EventEmitter<SixTimepickerCustomEvent<ISixTimepickerSixTimepickerChange>>();
+  @Output() sixTimepickerClear = new EventEmitter<SixTimepickerCustomEvent<ISixTimepickerEmptyPayload>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1949,6 +1979,7 @@ export class SixTimepicker {
 }
 
 
+import type { SixTimepickerCustomEvent } from '@six-group/ui-library';
 import type { SixTimepickerChange as ISixTimepickerSixTimepickerChange } from '@six-group/ui-library';
 import type { EmptyPayload as ISixTimepickerEmptyPayload } from '@six-group/ui-library';
 
@@ -1956,15 +1987,15 @@ export declare interface SixTimepicker extends Components.SixTimepicker {
   /**
    * Emitted when the timepicker's value changes
    */
-  'six-timepicker-change': EventEmitter<CustomEvent<ISixTimepickerSixTimepickerChange>>;
+  'six-timepicker-change': EventEmitter<SixTimepickerCustomEvent<ISixTimepickerSixTimepickerChange>>;
   /**
    * Emitted when the timepicker's value changes, but debounced
    */
-  'six-timepicker-change-debounced': EventEmitter<CustomEvent<ISixTimepickerSixTimepickerChange>>;
+  'six-timepicker-change-debounced': EventEmitter<SixTimepickerCustomEvent<ISixTimepickerSixTimepickerChange>>;
   /**
    * Emitted when the clear button is activated.
    */
-  'six-timepicker-clear': EventEmitter<CustomEvent<ISixTimepickerEmptyPayload>>;
+  'six-timepicker-clear': EventEmitter<SixTimepickerCustomEvent<ISixTimepickerEmptyPayload>>;
 }
 
 
@@ -1983,10 +2014,10 @@ export declare interface SixTimepicker extends Components.SixTimepicker {
 })
 export class SixTooltip {
   protected el: HTMLSixTooltipElement;
-  @Output() sixTooltipShow = new EventEmitter<CustomEvent<ISixTooltipEmptyPayload>>();
-  @Output() sixTooltipAfterShow = new EventEmitter<CustomEvent<ISixTooltipEmptyPayload>>();
-  @Output() sixTooltipHide = new EventEmitter<CustomEvent<ISixTooltipEmptyPayload>>();
-  @Output() sixTooltipAfterHide = new EventEmitter<CustomEvent<ISixTooltipEmptyPayload>>();
+  @Output() sixTooltipShow = new EventEmitter<SixTooltipCustomEvent<ISixTooltipEmptyPayload>>();
+  @Output() sixTooltipAfterShow = new EventEmitter<SixTooltipCustomEvent<ISixTooltipEmptyPayload>>();
+  @Output() sixTooltipHide = new EventEmitter<SixTooltipCustomEvent<ISixTooltipEmptyPayload>>();
+  @Output() sixTooltipAfterHide = new EventEmitter<SixTooltipCustomEvent<ISixTooltipEmptyPayload>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -1994,25 +2025,26 @@ export class SixTooltip {
 }
 
 
+import type { SixTooltipCustomEvent } from '@six-group/ui-library';
 import type { EmptyPayload as ISixTooltipEmptyPayload } from '@six-group/ui-library';
 
 export declare interface SixTooltip extends Components.SixTooltip {
   /**
    * Emitted when the tooltip begins to show. Calling `event.preventDefault()` will prevent it from being shown.
    */
-  'six-tooltip-show': EventEmitter<CustomEvent<ISixTooltipEmptyPayload>>;
+  'six-tooltip-show': EventEmitter<SixTooltipCustomEvent<ISixTooltipEmptyPayload>>;
   /**
    * Emitted after the tooltip has shown and all transitions are complete.
    */
-  'six-tooltip-after-show': EventEmitter<CustomEvent<ISixTooltipEmptyPayload>>;
+  'six-tooltip-after-show': EventEmitter<SixTooltipCustomEvent<ISixTooltipEmptyPayload>>;
   /**
    * Emitted when the tooltip begins to hide. Calling `event.preventDefault()` will prevent it from being hidden.
    */
-  'six-tooltip-hide': EventEmitter<CustomEvent<ISixTooltipEmptyPayload>>;
+  'six-tooltip-hide': EventEmitter<SixTooltipCustomEvent<ISixTooltipEmptyPayload>>;
   /**
    * Emitted after the tooltip has hidden and all transitions are complete.
    */
-  'six-tooltip-after-hide': EventEmitter<CustomEvent<ISixTooltipEmptyPayload>>;
+  'six-tooltip-after-hide': EventEmitter<SixTooltipCustomEvent<ISixTooltipEmptyPayload>>;
 }
 
 
