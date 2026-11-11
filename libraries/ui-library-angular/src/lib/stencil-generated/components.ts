@@ -3,7 +3,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, Output, NgZone } from '@angular/core';
 
 import { ProxyCmp } from './angular-component-lib/utils';
-import { nullableBooleanAttribute } from './angular-component-lib/boolean-attribute';
 
 import { Components } from '@six-group/ui-library';
 
