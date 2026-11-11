@@ -10,94 +10,119 @@
   </head>
   <body>
     <div class="container">
+      <h2>Card</h2>
+
+      <p>Cards group related content and actions about a single subject.</p>
       <section>
-        <h3>Basic Usage</h3>
-        <div style="max-width: 400px; margin: auto">
-          <six-card>
-            <h2 slot="header">Card Title</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-          </six-card>
-        </div>
+        <six-card style="max-width: 400px">
+          <h3 slot="header">Card Title</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </six-card>
       </section>
 
+      <h2>Examples</h2>
+
+      <h3>Subtitle</h3>
+      <p>
+        Add more elements to the <code>header</code> slot to show a subtitle. Use a heading for the title and a
+        non-heading element (e.g. <code>&lt;p&gt;</code>) for the subtitle, so the subtitle does not show up in the
+        page's heading outline.
+      </p>
       <section>
-        <h3>Media Cards</h3>
-        <div style="max-width: 400px; margin: auto">
-          <six-card>
-            <img
-              slot="media"
-              src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PScwIDAgMTAyNCA1MTInIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zyc+PHJlY3Qgd2lkdGg9JzEwMjQnIGhlaWdodD0nNTEyJyBmaWxsPScjY2NjY2NjJyAvPjwvc3ZnPg=="
-              alt="Grey placeholder"
-            />
-            <h2 slot="header">Card Title</h2>
-            <h3 slot="header">Card Subtitle</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-          </six-card>
-        </div>
+        <six-card style="max-width: 400px">
+          <h3 slot="header">Card Title</h3>
+          <p slot="header">Card Subtitle</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </six-card>
       </section>
 
+      <h3>Media</h3>
+      <p>Use the <code>media</code> slot to show an image at the top of the card.</p>
       <section>
-        <h3>Header Icon</h3>
-        <div style="max-width: 400px; margin: auto">
-          <six-card>
-            <h2 slot="header">Card Title</h2>
-            <h3 slot="header">Card Subtitle</h3>
-            <six-icon slot="header-actions" name="headset" size="large"></six-icon>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-          </six-card>
-        </div>
+        <six-card style="max-width: 400px">
+          <img
+            slot="media"
+            src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PScwIDAgMTAyNCA1MTInIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zyc+PHJlY3Qgd2lkdGg9JzEwMjQnIGhlaWdodD0nNTEyJyBmaWxsPScjY2NjY2NjJyAvPjwvc3ZnPg=="
+            alt="Grey placeholder"
+          />
+          <h3 slot="header">Card Title</h3>
+          <p slot="header">Card Subtitle</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </six-card>
       </section>
 
+      <h3>Header Actions</h3>
+      <p>Use the <code>header-actions</code> slot to place content, such as icon buttons, at the end of the header.</p>
       <section>
-        <h3>Tag</h3>
-        <div style="max-width: 400px; margin: auto">
-          <six-card>
-            <h2 slot="header">Card Title</h2>
-            <h3 slot="header">Card Subtitle</h3>
-            <six-tag size="small" pill>Tag</six-tag>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-          </six-card>
-        </div>
+        <six-card style="max-width: 400px">
+          <h3 slot="header">Card Title</h3>
+          <p slot="header">Card Subtitle</p>
+          <six-icon-button slot="header-actions" name="more_vert" label="More options"></six-icon-button>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </six-card>
       </section>
 
+      <h3>Tag</h3>
+      <p>Tags and badges placed in the default slot keep their natural width.</p>
       <section>
-        <h3>Card Buttons</h3>
-        <div style="max-width: 400px; margin: auto">
-          <six-card shadow>
-            <h2 slot="header">Card Title</h2>
-            <h3 slot="header">Card Subtitle</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            <six-button slot="footer-actions" type="secondary">Action 1</six-button>
-            <six-button slot="footer-actions" type="primary">Primary Action</six-button>
-          </six-card>
-        </div>
+        <six-card style="max-width: 400px">
+          <h3 slot="header">Card Title</h3>
+          <p slot="header">Card Subtitle</p>
+          <six-tag size="small" pill>Tag</six-tag>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </six-card>
       </section>
 
+      <h3>Footer Actions</h3>
+      <p>Use the <code>footer-actions</code> slot to place buttons at the end of the footer.</p>
       <section>
-        <h3>Footer with Icon Buttons and Action</h3>
-        <div style="max-width: 400px; margin: auto">
-          <six-card>
-            <img
-              slot="media"
-              src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PScwIDAgMTAyNCA1MTInIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zyc+PHJlY3Qgd2lkdGg9JzEwMjQnIGhlaWdodD0nNTEyJyBmaWxsPScjY2NjY2NjJyAvPjwvc3ZnPg=="
-              alt="Grey placeholder"
-            />
-            <h2 slot="header">Card Title</h2>
-            <h3 slot="header">Card Subtitle</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            <six-icon-button slot="footer" name="share" size="small" label="Share"></six-icon-button>
-            <six-icon-button slot="footer" name="edit" size="small" label="Edit"></six-icon-button>
-            <six-icon-button slot="footer" name="delete" size="small" label="Delete"></six-icon-button>
-            <six-button slot="footer-actions" type="primary">Button</six-button>
-          </six-card>
-        </div>
+        <six-card style="max-width: 400px">
+          <h3 slot="header">Card Title</h3>
+          <p slot="header">Card Subtitle</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+          <six-button slot="footer-actions" type="secondary">Cancel</six-button>
+          <six-button slot="footer-actions" type="primary">Save</six-button>
+        </six-card>
+      </section>
+
+      <h3>Footer</h3>
+      <p>
+        Use the <code>footer</code> slot to place content, such as icon buttons, at the start of the footer. It can be
+        combined with the <code>footer-actions</code> slot.
+      </p>
+      <section>
+        <six-card style="max-width: 400px">
+          <img
+            slot="media"
+            src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PScwIDAgMTAyNCA1MTInIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zyc+PHJlY3Qgd2lkdGg9JzEwMjQnIGhlaWdodD0nNTEyJyBmaWxsPScjY2NjY2NjJyAvPjwvc3ZnPg=="
+            alt="Grey placeholder"
+          />
+          <h3 slot="header">Card Title</h3>
+          <p slot="header">Card Subtitle</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+          <six-icon-button slot="footer" name="share" size="small" label="Share"></six-icon-button>
+          <six-icon-button slot="footer" name="edit" size="small" label="Edit"></six-icon-button>
+          <six-icon-button slot="footer" name="delete" size="small" label="Delete"></six-icon-button>
+          <six-button slot="footer-actions" type="primary">Open</six-button>
+        </six-card>
+      </section>
+
+      <h3>Elevated</h3>
+      <p>Use the <code>elevated</code> attribute to let the card cast a shadow.</p>
+      <section>
+        <six-card style="max-width: 400px" elevated>
+          <h3 slot="header">Card Title</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </six-card>
+      </section>
+
+      <h3>Custom Padding</h3>
+      <p>Set the <code>--six-card-padding</code> custom property to change the padding of the card sections.</p>
+      <section>
+        <six-card style="max-width: 400px; --six-card-padding: var(--six-spacing-x-large)">
+          <h3 slot="header">Card Title</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </six-card>
       </section>
     </div>
   </body>

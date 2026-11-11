@@ -8,8 +8,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
-- `six-card`: New `media`, `header`, `header-actions`, `footer`, and `footer-actions` slots, and a
-  `shadow` prop to opt into a drop shadow (previously always on).
+- `six-card`: New `media`, `header`, `header-actions`, `footer`, and `footer-actions` slots
+  (headings in the `header` slot are styled as title, other elements as subtitle), new `elevated`
+  prop to let the card cast a shadow, new `media`, `header`, `content`, and `footer` parts, and new
+  `--six-card-padding` and `--six-card-box-shadow` CSS custom properties.
+
+### Changed
+
+- `six-card`: Updated default appearance to match the design guidelines. The card no longer casts a
+  shadow by default (use the new `elevated` prop), is displayed as `block` instead of
+  `inline-block`, and has a darker border with rounded corners. Padding moved from the host to the
+  card sections (use `--six-card-padding` to adjust it).
 
 ### Removed
 

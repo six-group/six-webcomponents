@@ -1,18 +1,50 @@
 @use 'src/global/component';
 
+/**
+ * @prop --six-card-padding: The padding of the card sections.
+ * @prop --six-card-box-shadow: The box shadow of an elevated card.
+ */
 :host {
   --six-card-padding: var(--six-spacing-medium);
+  --six-card-box-shadow: var(--six-shadow-medium);
   display: block;
+}
+
+.card {
+  box-sizing: border-box;
+  height: 100%;
   border: 1px solid var(--six-color-web-rock-300);
   border-radius: var(--six-border-radius-medium);
   background: var(--six-color-white);
+
+  &--elevated {
+    box-shadow: var(--six-card-box-shadow);
+  }
 }
 
-:host(.card__shadow) {
-  box-shadow: var(--six-shadow-medium);
+// Sections are always rendered (so slotchange fires) and only shown when they have slotted content
+.card__media,
+.card__header,
+.card__header__actions,
+.card__footer,
+.card__footer__content,
+.card__footer__actions {
+  display: none;
 }
 
-.card__image {
+.card--has-media .card__media {
+  display: block;
+}
+
+.card--has-header .card__header,
+.card--has-header-actions .card__header__actions,
+.card--has-footer .card__footer,
+.card--has-footer-content .card__footer__content,
+.card--has-footer-actions .card__footer__actions {
+  display: flex;
+}
+
+.card__media {
   line-height: 0;
 
   ::slotted(img) {
@@ -23,7 +55,6 @@
 }
 
 .card__header {
-  display: flex;
   align-items: flex-start;
   justify-content: space-between;
   gap: var(--six-spacing-small);
@@ -35,29 +66,27 @@
     gap: var(--six-spacing-xx-small);
     min-width: 0;
 
+    // Non-heading elements (e.g. <p>) are styled as subtitle
     ::slotted(*) {
       margin: 0;
-    }
-
-    ::slotted(h1),
-    ::slotted(h2) {
-      font-size: var(--six-font-size-large);
-      font-weight: var(--six-font-weight-bold);
-      color: var(--six-color-web-rock-900);
-    }
-
-    ::slotted(h3),
-    ::slotted(h4),
-    ::slotted(h5),
-    ::slotted(h6) {
       font-size: var(--six-font-size-small);
       font-weight: var(--six-font-weight-normal);
       color: var(--six-color-web-rock-900);
     }
+
+    // Headings of any level are styled as title, so the level can match the page's heading outline
+    ::slotted(h1),
+    ::slotted(h2),
+    ::slotted(h3),
+    ::slotted(h4),
+    ::slotted(h5),
+    ::slotted(h6) {
+      font-size: var(--six-font-size-large);
+      font-weight: var(--six-font-weight-bold);
+    }
   }
 
   &__actions {
-    display: flex;
     align-items: center;
     flex-shrink: 0;
   }
@@ -80,19 +109,16 @@
 }
 
 .card__footer {
-  display: flex;
   align-items: center;
   gap: var(--six-spacing-medium);
   padding: 0 var(--six-card-padding) var(--six-card-padding) var(--six-card-padding);
 
   .card__footer__content {
-    display: flex;
     align-items: center;
     gap: var(--six-spacing-small);
   }
 
   .card__footer__actions {
-    display: flex;
     align-items: center;
     gap: var(--six-spacing-small);
     margin-left: auto;

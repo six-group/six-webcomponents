@@ -270,10 +270,10 @@ export namespace Components {
      */
     interface SixCard {
         /**
-          * Set to true to show a shadow.
+          * Set to true to let the card cast a shadow.
           * @default false
          */
-        "shadow": boolean;
+        "elevated": boolean;
     }
     /**
      * @since 1.0
@@ -4070,10 +4070,10 @@ declare namespace LocalJSX {
      */
     interface SixCard {
         /**
-          * Set to true to show a shadow.
+          * Set to true to let the card cast a shadow.
           * @default false
          */
-        "shadow"?: boolean;
+        "elevated"?: boolean;
     }
     /**
      * @since 1.0
@@ -6630,7 +6630,7 @@ declare namespace LocalJSX {
         "download": string;
     }
     interface SixCardAttributes {
-        "shadow": boolean;
+        "elevated": boolean;
     }
     interface SixCheckboxAttributes {
         "name": string;

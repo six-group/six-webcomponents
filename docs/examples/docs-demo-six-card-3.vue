@@ -1,15 +1,12 @@
 <template>
 <div>
 
-        <h3>Tag</h3>
-        <div style="max-width: 400px; margin: auto">
-          <six-card>
-            <h2 slot="header">Card Title</h2>
-            <h3 slot="header">Card Subtitle</h3>
-            <six-tag size="small" pill>Tag</six-tag>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-          </six-card>
-        </div>
+        <six-card style="max-width: 400px">
+          <h3 slot="header">Card Title</h3>
+          <p slot="header">Card Subtitle</p>
+          <six-icon-button slot="header-actions" name="more_vert" label="More options"></six-icon-button>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </six-card>
       
 </div>
 </template>
