@@ -186,13 +186,14 @@ export declare interface SixButton extends Components.SixButton {
 
 
 @ProxyCmp({
+  inputs: ['elevated']
 })
 @Component({
   selector: 'six-card',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: [],
+  inputs: ['elevated'],
   standalone: false
 })
 export class SixCard {
