@@ -78,8 +78,20 @@ export class SixTile {
 
   @State() hasLabelSlot = false;
 
-  componentWillLoad() {
+  /**
+   * The `icon` and `label` slots are only rendered once content for them was detected, so no
+   * `slotchange` event is fired for content added later. Observe the light DOM instead.
+   */
+  private mutationObserver = new MutationObserver(() => this.handleSlotChange());
+
+  connectedCallback() {
+    this.mutationObserver.observe(this.host, { childList: true, subtree: true, attributeFilter: ['slot'] });
+    // the light DOM may have changed while the tile was detached
     this.handleSlotChange();
+  }
+
+  disconnectedCallback() {
+    this.mutationObserver.disconnect();
   }
 
   private handleSlotChange = () => {
