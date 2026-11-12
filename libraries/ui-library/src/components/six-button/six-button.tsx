@@ -28,6 +28,13 @@ import { submitForm } from '../../utils/form';
 export class SixButton {
   private nativeButton?: HTMLButtonElement | HTMLAnchorElement;
 
+  /**
+   * Re-checks the slots when the light DOM changes. A `slotchange` event is not fired when the
+   * text of an already slotted text node changes (e.g. a framework filling an interpolated label
+   * after the button has loaded), so `hasLabel` would otherwise stay stale.
+   */
+  private mutationObserver = new MutationObserver(() => this.handleSlotChange());
+
   @Element() host!: HTMLSixButtonElement;
 
   @State() hasFocus = false;
@@ -84,8 +91,14 @@ export class SixButton {
   /** Emitted when the button gains focus. */
   @Event({ eventName: 'six-button-focus' }) sixFocus!: EventEmitter<EmptyPayload>;
 
-  componentWillLoad() {
+  connectedCallback() {
+    this.mutationObserver.observe(this.host, { childList: true, characterData: true, subtree: true });
+    // the light DOM may have changed while the button was detached
     this.handleSlotChange();
+  }
+
+  disconnectedCallback() {
+    this.mutationObserver.disconnect();
   }
 
   /** Sets focus on the button. */

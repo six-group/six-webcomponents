@@ -378,6 +378,30 @@ test.describe('six-sidebar-item-group', () => {
     await expect(link).toHaveAttribute('href', 'https://example.com');
   });
 
+  test('should update when children are added or removed after load', async ({ page }) => {
+    await page.setContent(`
+      <six-sidebar open>
+        <six-sidebar-item-group name="Group" icon="folder" href="https://example.com">
+        </six-sidebar-item-group>
+      </six-sidebar>
+    `);
+
+    const group = page.locator('six-sidebar-item-group');
+    const link = group.locator('a.six-sidebar-details__link');
+    await expect(link).toHaveCount(1);
+
+    await group.evaluate((el) => {
+      const item = document.createElement('six-sidebar-item');
+      item.textContent = 'Item';
+      el.appendChild(item);
+    });
+    await expect(link).toHaveCount(0);
+    await expect(group.locator('six-details.six-sidebar-item-group--childless')).toHaveCount(0);
+
+    await group.evaluate((el) => el.querySelector('six-sidebar-item')?.remove());
+    await expect(link).toHaveCount(1);
+  });
+
   test('should display custom summary icon slot', async ({ page }) => {
     await page.setContent(`
       <six-sidebar open>
