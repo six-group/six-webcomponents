@@ -68,7 +68,10 @@ definitions to your global style sheet file:
     themes: (
       alpine: (
         // fonts
-        font-family: ('Noto Sans', sans-serif),
+        font-family: (
+          'Noto Sans',
+          sans-serif,
+        ),
         font-size: 16px,
         // borders
         borders: false,
