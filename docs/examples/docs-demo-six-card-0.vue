@@ -1,13 +1,8 @@
 <template>
 <div>
 
-        <six-card>
-          <h1>Lorem ipsum.</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        <six-card style="max-width: 400px">
+          <h3 slot="header">Card Title</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
         </six-card>
       
