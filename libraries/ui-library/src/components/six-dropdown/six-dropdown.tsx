@@ -251,23 +251,27 @@ export class SixDropdown {
 
   private init() {
     this.initPopover();
-
-    // listen to filter
-    const filterInputElement = this.filterInputElement;
-    if (filterInputElement != null) {
-      this.eventListeners.add(
-        filterInputElement,
-        'six-input-input',
-        debounce(() => {
-          const filterValue = filterInputElement.value ?? '';
-          if (this.filter) {
-            this.applyFilter(filterValue);
-          }
-          this.emitFilterEvents(filterValue);
-        }, this.filterDebounce)
-      );
-    }
   }
+
+  @Watch('filterDebounce')
+  handleFilterDebounceChange() {
+    this.debouncedFilterInput = undefined;
+  }
+
+  // created lazily so it picks up the current filterDebounce
+  private debouncedFilterInput?: (args: void) => void;
+
+  // bound in render, so it also works when filter or asyncFilter is enabled after the dropdown has loaded
+  private handleFilterInput = () => {
+    this.debouncedFilterInput ??= debounce(() => {
+      const filterValue = this.filterInputElement?.value ?? '';
+      if (this.filter) {
+        this.applyFilter(filterValue);
+      }
+      this.emitFilterEvents(filterValue);
+    }, this.filterDebounce);
+    this.debouncedFilterInput();
+  };
 
   private applyFilter(filterTerm: string) {
     const lowerCaseFilterTerm = filterTerm.toLowerCase()?.trim() || '';
@@ -704,6 +708,7 @@ export class SixDropdown {
                 dropdown-search
                 aria-hidden={this.open ? 'false' : 'true'}
                 ref={(el) => (this.filterInputElement = el)}
+                onSix-input-input={this.handleFilterInput}
                 placeholder={this.filterPlaceholder}
               >
                 <six-icon class="filter__icon" slot="suffix" size="small">

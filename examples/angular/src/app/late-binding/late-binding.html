@@ -1,0 +1,33 @@
+<h2>Late Binding Example</h2>
+
+<section>
+  <h3>Dropdown filter enabled after load</h3>
+  <p>
+    The left dropdown binds <code>[filter]</code> to a toggle and starts without filter. After enabling it, typing in
+    the filter field must filter the items. The right dropdown binds <code>[filter]="true"</code>: navigate to another
+    page and back to open it a second time, then typing must still filter.
+  </p>
+  <div class="controls">
+    <six-switch #filterSwitch [checked]="filterEnabled()" (six-switch-change)="filterEnabled.set(filterSwitch.checked)">
+      Filter enabled
+    </six-switch>
+  </div>
+  <div class="preview">
+    <six-dropdown [filter]="filterEnabled()" filterPlaceholder="Filter fruits">
+      <six-button slot="trigger" [caret]="true">Toggled filter</six-button>
+      <six-menu>
+        @for (fruit of fruits; track fruit) {
+        <six-menu-item [value]="fruit">{{ fruit }}</six-menu-item>
+        }
+      </six-menu>
+    </six-dropdown>
+    <six-dropdown [filter]="true" filterPlaceholder="Filter fruits">
+      <six-button slot="trigger" [caret]="true">Bound filter</six-button>
+      <six-menu>
+        @for (fruit of fruits; track fruit) {
+        <six-menu-item [value]="fruit">{{ fruit }}</six-menu-item>
+        }
+      </six-menu>
+    </six-dropdown>
+  </div>
+</section>
