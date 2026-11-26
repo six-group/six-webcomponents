@@ -49,6 +49,33 @@ test.describe('six-tile', () => {
     await tile.evaluate((el: HTMLElement & { show: () => Promise<void> }) => el.show());
     await expect(tileDiv).toHaveClass(/tile--visible/);
   });
+
+  test('should render icon and label slots added after load', async ({ page }) => {
+    await page.setContent('<six-tile></six-tile>');
+
+    const tile = page.locator('six-tile');
+    await expect(tile).toHaveClass(/hydrated/);
+    await expect(tile.locator('slot[name="icon"]')).toHaveCount(0);
+    await expect(tile.locator('slot[name="label"]')).toHaveCount(0);
+
+    await tile.evaluate((el) => {
+      const icon = document.createElement('six-icon');
+      icon.slot = 'icon';
+      icon.textContent = 'dashboard';
+      const label = document.createElement('span');
+      label.slot = 'label';
+      label.textContent = 'Dashboard';
+      el.append(icon, label);
+    });
+    await expect(tile.locator('slot[name="icon"]')).toHaveCount(1);
+    await expect(tile.locator('slot[name="label"]')).toHaveCount(1);
+    const label = tile.locator('span[slot="label"]');
+    await expect(label).toBeVisible();
+
+    const selectedSpy = await page.spyOnEvent('six-tile-selected');
+    await label.click();
+    expect(selectedSpy).toHaveReceivedEventTimes(1);
+  });
 });
 
 test.describe('six-tile screenshots', () => {

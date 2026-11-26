@@ -10,6 +10,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - Removed experimental Nuxt example app
 
+### Fixed
+
+- `six-button`: The label padding (`button--has-label`) is now applied when the label text is set
+  after the button has loaded, e.g. an interpolated label in Angular (`{{ label }}`). Prefix and
+  suffix content added later is detected as well.
+- `six-dropdown` / `six-select`: Typing in the filter field now filters the options when `filter` or
+  `async-filter` is enabled after the component has loaded, e.g. via an Angular `[filter]="true"`
+  binding on a page that is opened a second time.
+- `six-sidebar-item-group`: Items added or removed after the group has loaded are now detected, so
+  the group no longer stays rendered as a link or as childless.
+- `six-tile`: Content for the `icon` and `label` slots added after the tile has loaded is now
+  rendered.
+
 ## 5.5.2 - 2026-10-15
 
 ### Changed

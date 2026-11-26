@@ -253,6 +253,50 @@ test.describe('six-dropdown filter', () => {
     await expect(page.getByRole('menuitem', { name: 'Cherry' })).toBeVisible();
   });
 
+  test('should filter items when filter is enabled after load', async ({ page }) => {
+    await page.setContent(`
+      <six-dropdown>
+        <six-button slot="trigger" caret>Options</six-button>
+        <six-menu>
+          <six-menu-item value="apple">Apple</six-menu-item>
+          <six-menu-item value="banana">Banana</six-menu-item>
+          <six-menu-item value="cherry">Cherry</six-menu-item>
+        </six-menu>
+      </six-dropdown>
+    `);
+
+    // Enable the filter after the dropdown has loaded, e.g. via an Angular [filter]="true" binding
+    await page.locator('six-dropdown').evaluate((el: HTMLSixDropdownElement) => (el.filter = true));
+
+    await page.locator('six-button').click();
+    await expect(page.getByRole('textbox')).toBeFocused();
+    await page.keyboard.type('ban');
+
+    await expect(page.getByRole('menuitem', { name: 'Apple' })).toBeHidden();
+    await expect(page.getByRole('menuitem', { name: 'Banana' })).toBeVisible();
+    await expect(page.getByRole('menuitem', { name: 'Cherry' })).toBeHidden();
+  });
+
+  test('should emit async filter event when asyncFilter is enabled after load', async ({ page }) => {
+    await page.setContent(`
+      <six-dropdown>
+        <six-button slot="trigger" caret>Options</six-button>
+        <six-menu>
+          <six-menu-item value="option1">Option 1</six-menu-item>
+        </six-menu>
+      </six-dropdown>
+    `);
+
+    await page.locator('six-dropdown').evaluate((el: HTMLSixDropdownElement) => (el.asyncFilter = true));
+    const asyncFilterSpy = await page.spyOnEvent('six-async-filter-fired');
+
+    await page.locator('six-button').click();
+    await expect(page.getByRole('textbox')).toBeFocused();
+    await page.keyboard.type('opt');
+
+    await expect.poll(() => asyncFilterSpy.lastEvent?.detail).toEqual({ filterValue: 'opt' });
+  });
+
   test('should show filter input when asyncFilter is enabled', async ({ page }) => {
     await page.setContent(`
       <six-dropdown async-filter open>

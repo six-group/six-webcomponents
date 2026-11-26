@@ -43,6 +43,46 @@ test.describe('six-button', () => {
     expect(blurSpy).toHaveReceivedEvent();
   });
 
+  test('should detect a label whose text is set after load', async ({ page }) => {
+    // Frameworks like Angular create an empty text node for an interpolated label and fill it
+    // later. Changing the text of a slotted node fires no slotchange event.
+    await page.setContent('<div id="container"></div>');
+    await page.evaluate(() => {
+      const button = document.createElement('six-button');
+      button.appendChild(document.createTextNode(''));
+      document.getElementById('container')!.appendChild(button);
+    });
+
+    const button = page.locator('six-button');
+    const base = button.locator('[part="base"]');
+    await expect(button).toHaveClass(/hydrated/);
+    await expect(base).not.toHaveClass(/button--has-label/);
+
+    await button.evaluate((el) => ((el.firstChild as Text).data = 'Label'));
+    await expect(base).toHaveClass(/button--has-label/);
+
+    await button.evaluate((el) => ((el.firstChild as Text).data = ''));
+    await expect(base).not.toHaveClass(/button--has-label/);
+  });
+
+  test('should detect prefix and suffix added after load', async ({ page }) => {
+    await page.setContent('<six-button>Label</six-button>');
+
+    const button = page.locator('six-button');
+    const base = button.locator('[part="base"]');
+    await expect(base).toHaveClass(/button--has-label/);
+    await expect(base).not.toHaveClass(/button--has-prefix/);
+
+    await button.evaluate((el) => {
+      const icon = document.createElement('six-icon');
+      icon.slot = 'prefix';
+      icon.textContent = 'settings';
+      el.appendChild(icon);
+    });
+    await expect(base).toHaveClass(/button--has-prefix/);
+    await expect(button.locator('six-icon')).toHaveAttribute('size', 'small');
+  });
+
   test('should block click when disabled or loading', async ({ page }) => {
     await page.setContent('<six-button disabled>Disabled</six-button>');
     const disabledClickSpy = await page.spyOnEvent('click');

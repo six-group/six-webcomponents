@@ -1,0 +1,22 @@
+:host {
+  display: block;
+}
+
+h2 {
+  margin-top: 0;
+  margin-bottom: var(--six-spacing-x-large);
+}
+
+section {
+  max-width: 50rem;
+  margin-bottom: var(--six-spacing-xx-large);
+}
+
+.controls,
+.preview {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--six-spacing-medium);
+  margin-bottom: var(--six-spacing-medium);
+}

@@ -117,7 +117,7 @@ export class SixSidebarItemGroup {
           </div>
         </div>
         {this.provideSlot('summary-icon')}
-        <slot />
+        <slot onSlotchange={this.handleSlotChange} />
       </six-details>
     );
 
