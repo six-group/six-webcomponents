@@ -7,959 +7,980 @@
 
 /* eslint-disable */
 
-import { type EmptyPayload, type SixAlertCustomEvent, type SixButtonCustomEvent, type SixCheckboxCustomEvent, type SixDateCustomEvent, type SixDatepickerCustomEvent, type SixDatepickerSelectPayload, type SixDetailsCustomEvent, type SixDialogCustomEvent, type SixDialogRequestClose, type SixDrawerCustomEvent, type SixDrawerRequestClose, type SixDropdownAsyncFilterPayload, type SixDropdownAutoFilterPayload, type SixDropdownCustomEvent, type SixDropdownScrollPayload, type SixFileListDownloadPayload, type SixFileListItemCustomEvent, type SixFileListRemovePayload, type SixFileUploadCustomEvent, type SixFileUploadFailurePayload, type SixFileUploadSuccessPayload, type SixInputCustomEvent, type SixItemPickerChangePayload, type SixItemPickerCustomEvent, type SixLanguageSwitcherChangePayload, type SixLanguageSwitcherCustomEvent, type SixMenuCustomEvent, type SixMenuItemSelectedPayload, type SixPaginatorCustomEvent, type SixPaginatorPageChangedPayload, type SixPaginatorResultsPerPageChangedPayload, type SixRadioCustomEvent, type SixRangeCustomEvent, type SixRatingCustomEvent, type SixSearchFieldChangePayload, type SixSearchFieldCustomEvent, type SixSelectChangePayload, type SixSelectCustomEvent, type SixSidebarCustomEvent, type SixSwitchCustomEvent, type SixTabCustomEvent, type SixTabGroupCustomEvent, type SixTabHidePayload, type SixTabShowPayload, type SixTagCustomEvent, type SixTextareaCustomEvent, type SixTileCustomEvent, type SixTimepickerChange, type SixTimepickerCustomEvent, type SixTooltipCustomEvent } from "@six-group/ui-library";
-import { SixAlert as SixAlertElement, defineCustomElement as defineSixAlert } from "@six-group/ui-library/dist/components/six-alert.js";
-import { SixAvatar as SixAvatarElement, defineCustomElement as defineSixAvatar } from "@six-group/ui-library/dist/components/six-avatar.js";
-import { SixBadge as SixBadgeElement, defineCustomElement as defineSixBadge } from "@six-group/ui-library/dist/components/six-badge.js";
-import { SixBreadcrumbsItem as SixBreadcrumbsItemElement, defineCustomElement as defineSixBreadcrumbsItem } from "@six-group/ui-library/dist/components/six-breadcrumbs-item.js";
-import { SixBreadcrumbs as SixBreadcrumbsElement, defineCustomElement as defineSixBreadcrumbs } from "@six-group/ui-library/dist/components/six-breadcrumbs.js";
-import { SixButton as SixButtonElement, defineCustomElement as defineSixButton } from "@six-group/ui-library/dist/components/six-button.js";
-import { SixCard as SixCardElement, defineCustomElement as defineSixCard } from "@six-group/ui-library/dist/components/six-card.js";
-import { SixCheckbox as SixCheckboxElement, defineCustomElement as defineSixCheckbox } from "@six-group/ui-library/dist/components/six-checkbox.js";
-import { SixDate as SixDateElement, defineCustomElement as defineSixDate } from "@six-group/ui-library/dist/components/six-date.js";
-import { SixDatepicker as SixDatepickerElement, defineCustomElement as defineSixDatepicker } from "@six-group/ui-library/dist/components/six-datepicker.js";
-import { SixDetails as SixDetailsElement, defineCustomElement as defineSixDetails } from "@six-group/ui-library/dist/components/six-details.js";
-import { SixDialog as SixDialogElement, defineCustomElement as defineSixDialog } from "@six-group/ui-library/dist/components/six-dialog.js";
-import { SixDrawer as SixDrawerElement, defineCustomElement as defineSixDrawer } from "@six-group/ui-library/dist/components/six-drawer.js";
-import { SixDropdown as SixDropdownElement, defineCustomElement as defineSixDropdown } from "@six-group/ui-library/dist/components/six-dropdown.js";
-import { SixErrorPage as SixErrorPageElement, defineCustomElement as defineSixErrorPage } from "@six-group/ui-library/dist/components/six-error-page.js";
-import { SixError as SixErrorElement, defineCustomElement as defineSixError } from "@six-group/ui-library/dist/components/six-error.js";
-import { SixFileListItem as SixFileListItemElement, defineCustomElement as defineSixFileListItem } from "@six-group/ui-library/dist/components/six-file-list-item.js";
-import { SixFileList as SixFileListElement, defineCustomElement as defineSixFileList } from "@six-group/ui-library/dist/components/six-file-list.js";
-import { SixFileUpload as SixFileUploadElement, defineCustomElement as defineSixFileUpload } from "@six-group/ui-library/dist/components/six-file-upload.js";
-import { SixFooter as SixFooterElement, defineCustomElement as defineSixFooter } from "@six-group/ui-library/dist/components/six-footer.js";
-import { SixGroupLabel as SixGroupLabelElement, defineCustomElement as defineSixGroupLabel } from "@six-group/ui-library/dist/components/six-group-label.js";
-import { SixHeaderDropdownItem as SixHeaderDropdownItemElement, defineCustomElement as defineSixHeaderDropdownItem } from "@six-group/ui-library/dist/components/six-header-dropdown-item.js";
-import { SixHeaderItem as SixHeaderItemElement, defineCustomElement as defineSixHeaderItem } from "@six-group/ui-library/dist/components/six-header-item.js";
-import { SixHeaderMenuButton as SixHeaderMenuButtonElement, defineCustomElement as defineSixHeaderMenuButton } from "@six-group/ui-library/dist/components/six-header-menu-button.js";
-import { SixHeader as SixHeaderElement, defineCustomElement as defineSixHeader } from "@six-group/ui-library/dist/components/six-header.js";
-import { SixIconButton as SixIconButtonElement, defineCustomElement as defineSixIconButton } from "@six-group/ui-library/dist/components/six-icon-button.js";
-import { SixIcon as SixIconElement, defineCustomElement as defineSixIcon } from "@six-group/ui-library/dist/components/six-icon.js";
-import { SixInput as SixInputElement, defineCustomElement as defineSixInput } from "@six-group/ui-library/dist/components/six-input.js";
-import { SixItemPicker as SixItemPickerElement, defineCustomElement as defineSixItemPicker } from "@six-group/ui-library/dist/components/six-item-picker.js";
-import { SixLanguageSwitcher as SixLanguageSwitcherElement, defineCustomElement as defineSixLanguageSwitcher } from "@six-group/ui-library/dist/components/six-language-switcher.js";
-import { SixLayoutGrid as SixLayoutGridElement, defineCustomElement as defineSixLayoutGrid } from "@six-group/ui-library/dist/components/six-layout-grid.js";
-import { SixLogo as SixLogoElement, defineCustomElement as defineSixLogo } from "@six-group/ui-library/dist/components/six-logo.js";
-import { SixMainContainer as SixMainContainerElement, defineCustomElement as defineSixMainContainer } from "@six-group/ui-library/dist/components/six-main-container.js";
-import { SixMenuDivider as SixMenuDividerElement, defineCustomElement as defineSixMenuDivider } from "@six-group/ui-library/dist/components/six-menu-divider.js";
-import { SixMenuItem as SixMenuItemElement, defineCustomElement as defineSixMenuItem } from "@six-group/ui-library/dist/components/six-menu-item.js";
-import { SixMenuLabel as SixMenuLabelElement, defineCustomElement as defineSixMenuLabel } from "@six-group/ui-library/dist/components/six-menu-label.js";
-import { SixMenu as SixMenuElement, defineCustomElement as defineSixMenu } from "@six-group/ui-library/dist/components/six-menu.js";
-import { SixPaginator as SixPaginatorElement, defineCustomElement as defineSixPaginator } from "@six-group/ui-library/dist/components/six-paginator.js";
-import { SixPicto as SixPictoElement, defineCustomElement as defineSixPicto } from "@six-group/ui-library/dist/components/six-picto.js";
-import { SixProgressBar as SixProgressBarElement, defineCustomElement as defineSixProgressBar } from "@six-group/ui-library/dist/components/six-progress-bar.js";
-import { SixProgressRing as SixProgressRingElement, defineCustomElement as defineSixProgressRing } from "@six-group/ui-library/dist/components/six-progress-ring.js";
-import { SixRadio as SixRadioElement, defineCustomElement as defineSixRadio } from "@six-group/ui-library/dist/components/six-radio.js";
-import { SixRange as SixRangeElement, defineCustomElement as defineSixRange } from "@six-group/ui-library/dist/components/six-range.js";
-import { SixRating as SixRatingElement, defineCustomElement as defineSixRating } from "@six-group/ui-library/dist/components/six-rating.js";
-import { SixRoot as SixRootElement, defineCustomElement as defineSixRoot } from "@six-group/ui-library/dist/components/six-root.js";
-import { SixSearchField as SixSearchFieldElement, defineCustomElement as defineSixSearchField } from "@six-group/ui-library/dist/components/six-search-field.js";
-import { SixSelect as SixSelectElement, defineCustomElement as defineSixSelect } from "@six-group/ui-library/dist/components/six-select.js";
-import { SixSidebarItemGroup as SixSidebarItemGroupElement, defineCustomElement as defineSixSidebarItemGroup } from "@six-group/ui-library/dist/components/six-sidebar-item-group.js";
-import { SixSidebarItem as SixSidebarItemElement, defineCustomElement as defineSixSidebarItem } from "@six-group/ui-library/dist/components/six-sidebar-item.js";
-import { SixSidebar as SixSidebarElement, defineCustomElement as defineSixSidebar } from "@six-group/ui-library/dist/components/six-sidebar.js";
-import { SixSpinner as SixSpinnerElement, defineCustomElement as defineSixSpinner } from "@six-group/ui-library/dist/components/six-spinner.js";
-import { SixStageIndicator as SixStageIndicatorElement, defineCustomElement as defineSixStageIndicator } from "@six-group/ui-library/dist/components/six-stage-indicator.js";
-import { SixSwitch as SixSwitchElement, defineCustomElement as defineSixSwitch } from "@six-group/ui-library/dist/components/six-switch.js";
-import { SixTabGroup as SixTabGroupElement, defineCustomElement as defineSixTabGroup } from "@six-group/ui-library/dist/components/six-tab-group.js";
-import { SixTabPanel as SixTabPanelElement, defineCustomElement as defineSixTabPanel } from "@six-group/ui-library/dist/components/six-tab-panel.js";
-import { SixTab as SixTabElement, defineCustomElement as defineSixTab } from "@six-group/ui-library/dist/components/six-tab.js";
-import { SixTag as SixTagElement, defineCustomElement as defineSixTag } from "@six-group/ui-library/dist/components/six-tag.js";
-import { SixTextarea as SixTextareaElement, defineCustomElement as defineSixTextarea } from "@six-group/ui-library/dist/components/six-textarea.js";
-import { SixTile as SixTileElement, defineCustomElement as defineSixTile } from "@six-group/ui-library/dist/components/six-tile.js";
-import { SixTimepicker as SixTimepickerElement, defineCustomElement as defineSixTimepicker } from "@six-group/ui-library/dist/components/six-timepicker.js";
-import { SixTooltip as SixTooltipElement, defineCustomElement as defineSixTooltip } from "@six-group/ui-library/dist/components/six-tooltip.js";
-import type { EventName, StencilReactComponent } from '@stencil/react-output-target/runtime';
-import { createComponent } from '@stencil/react-output-target/runtime';
 import React from 'react';
+import { createComponent } from '@stencil/react-output-target/runtime';
+import type { Components } from '@six-group/ui-library/dist/components';
+import { SixAlert as SixAlertElement, defineCustomElement as defineSixAlert } from '@six-group/ui-library/dist/components/six-alert.js';
+import { SixAvatar as SixAvatarElement, defineCustomElement as defineSixAvatar } from '@six-group/ui-library/dist/components/six-avatar.js';
+import { SixBadge as SixBadgeElement, defineCustomElement as defineSixBadge } from '@six-group/ui-library/dist/components/six-badge.js';
+import { SixBreadcrumbs as SixBreadcrumbsElement, defineCustomElement as defineSixBreadcrumbs } from '@six-group/ui-library/dist/components/six-breadcrumbs.js';
+import { SixBreadcrumbsItem as SixBreadcrumbsItemElement, defineCustomElement as defineSixBreadcrumbsItem } from '@six-group/ui-library/dist/components/six-breadcrumbs-item.js';
+import { SixButton as SixButtonElement, defineCustomElement as defineSixButton } from '@six-group/ui-library/dist/components/six-button.js';
+import { SixCard as SixCardElement, defineCustomElement as defineSixCard } from '@six-group/ui-library/dist/components/six-card.js';
+import { SixCheckbox as SixCheckboxElement, defineCustomElement as defineSixCheckbox } from '@six-group/ui-library/dist/components/six-checkbox.js';
+import { SixDate as SixDateElement, defineCustomElement as defineSixDate } from '@six-group/ui-library/dist/components/six-date.js';
+import { SixDatepicker as SixDatepickerElement, defineCustomElement as defineSixDatepicker } from '@six-group/ui-library/dist/components/six-datepicker.js';
+import { SixDetails as SixDetailsElement, defineCustomElement as defineSixDetails } from '@six-group/ui-library/dist/components/six-details.js';
+import { SixDialog as SixDialogElement, defineCustomElement as defineSixDialog } from '@six-group/ui-library/dist/components/six-dialog.js';
+import { SixDrawer as SixDrawerElement, defineCustomElement as defineSixDrawer } from '@six-group/ui-library/dist/components/six-drawer.js';
+import { SixDropdown as SixDropdownElement, defineCustomElement as defineSixDropdown } from '@six-group/ui-library/dist/components/six-dropdown.js';
+import { SixError as SixErrorElement, defineCustomElement as defineSixError } from '@six-group/ui-library/dist/components/six-error.js';
+import { SixErrorPage as SixErrorPageElement, defineCustomElement as defineSixErrorPage } from '@six-group/ui-library/dist/components/six-error-page.js';
+import { SixFileList as SixFileListElement, defineCustomElement as defineSixFileList } from '@six-group/ui-library/dist/components/six-file-list.js';
+import { SixFileListItem as SixFileListItemElement, defineCustomElement as defineSixFileListItem } from '@six-group/ui-library/dist/components/six-file-list-item.js';
+import { SixFileUpload as SixFileUploadElement, defineCustomElement as defineSixFileUpload } from '@six-group/ui-library/dist/components/six-file-upload.js';
+import { SixFooter as SixFooterElement, defineCustomElement as defineSixFooter } from '@six-group/ui-library/dist/components/six-footer.js';
+import { SixGroupLabel as SixGroupLabelElement, defineCustomElement as defineSixGroupLabel } from '@six-group/ui-library/dist/components/six-group-label.js';
+import { SixHeader as SixHeaderElement, defineCustomElement as defineSixHeader } from '@six-group/ui-library/dist/components/six-header.js';
+import { SixHeaderDropdownItem as SixHeaderDropdownItemElement, defineCustomElement as defineSixHeaderDropdownItem } from '@six-group/ui-library/dist/components/six-header-dropdown-item.js';
+import { SixHeaderItem as SixHeaderItemElement, defineCustomElement as defineSixHeaderItem } from '@six-group/ui-library/dist/components/six-header-item.js';
+import { SixHeaderMenuButton as SixHeaderMenuButtonElement, defineCustomElement as defineSixHeaderMenuButton } from '@six-group/ui-library/dist/components/six-header-menu-button.js';
+import { SixIcon as SixIconElement, defineCustomElement as defineSixIcon } from '@six-group/ui-library/dist/components/six-icon.js';
+import { SixIconButton as SixIconButtonElement, defineCustomElement as defineSixIconButton } from '@six-group/ui-library/dist/components/six-icon-button.js';
+import { SixInput as SixInputElement, defineCustomElement as defineSixInput } from '@six-group/ui-library/dist/components/six-input.js';
+import { SixItemPicker as SixItemPickerElement, defineCustomElement as defineSixItemPicker } from '@six-group/ui-library/dist/components/six-item-picker.js';
+import { SixLanguageSwitcher as SixLanguageSwitcherElement, defineCustomElement as defineSixLanguageSwitcher } from '@six-group/ui-library/dist/components/six-language-switcher.js';
+import { SixLayoutGrid as SixLayoutGridElement, defineCustomElement as defineSixLayoutGrid } from '@six-group/ui-library/dist/components/six-layout-grid.js';
+import { SixLogo as SixLogoElement, defineCustomElement as defineSixLogo } from '@six-group/ui-library/dist/components/six-logo.js';
+import { SixMainContainer as SixMainContainerElement, defineCustomElement as defineSixMainContainer } from '@six-group/ui-library/dist/components/six-main-container.js';
+import { SixMenu as SixMenuElement, defineCustomElement as defineSixMenu } from '@six-group/ui-library/dist/components/six-menu.js';
+import { SixMenuDivider as SixMenuDividerElement, defineCustomElement as defineSixMenuDivider } from '@six-group/ui-library/dist/components/six-menu-divider.js';
+import { SixMenuItem as SixMenuItemElement, defineCustomElement as defineSixMenuItem } from '@six-group/ui-library/dist/components/six-menu-item.js';
+import { SixMenuLabel as SixMenuLabelElement, defineCustomElement as defineSixMenuLabel } from '@six-group/ui-library/dist/components/six-menu-label.js';
+import { SixPaginator as SixPaginatorElement, defineCustomElement as defineSixPaginator } from '@six-group/ui-library/dist/components/six-paginator.js';
+import { SixPicto as SixPictoElement, defineCustomElement as defineSixPicto } from '@six-group/ui-library/dist/components/six-picto.js';
+import { SixProgressBar as SixProgressBarElement, defineCustomElement as defineSixProgressBar } from '@six-group/ui-library/dist/components/six-progress-bar.js';
+import { SixProgressRing as SixProgressRingElement, defineCustomElement as defineSixProgressRing } from '@six-group/ui-library/dist/components/six-progress-ring.js';
+import { SixRadio as SixRadioElement, defineCustomElement as defineSixRadio } from '@six-group/ui-library/dist/components/six-radio.js';
+import { SixRange as SixRangeElement, defineCustomElement as defineSixRange } from '@six-group/ui-library/dist/components/six-range.js';
+import { SixRating as SixRatingElement, defineCustomElement as defineSixRating } from '@six-group/ui-library/dist/components/six-rating.js';
+import { SixRoot as SixRootElement, defineCustomElement as defineSixRoot } from '@six-group/ui-library/dist/components/six-root.js';
+import { SixSearchField as SixSearchFieldElement, defineCustomElement as defineSixSearchField } from '@six-group/ui-library/dist/components/six-search-field.js';
+import { SixSelect as SixSelectElement, defineCustomElement as defineSixSelect } from '@six-group/ui-library/dist/components/six-select.js';
+import { SixSidebar as SixSidebarElement, defineCustomElement as defineSixSidebar } from '@six-group/ui-library/dist/components/six-sidebar.js';
+import { SixSidebarItem as SixSidebarItemElement, defineCustomElement as defineSixSidebarItem } from '@six-group/ui-library/dist/components/six-sidebar-item.js';
+import { SixSidebarItemGroup as SixSidebarItemGroupElement, defineCustomElement as defineSixSidebarItemGroup } from '@six-group/ui-library/dist/components/six-sidebar-item-group.js';
+import { SixSpinner as SixSpinnerElement, defineCustomElement as defineSixSpinner } from '@six-group/ui-library/dist/components/six-spinner.js';
+import { SixStageIndicator as SixStageIndicatorElement, defineCustomElement as defineSixStageIndicator } from '@six-group/ui-library/dist/components/six-stage-indicator.js';
+import { SixSwitch as SixSwitchElement, defineCustomElement as defineSixSwitch } from '@six-group/ui-library/dist/components/six-switch.js';
+import { SixTab as SixTabElement, defineCustomElement as defineSixTab } from '@six-group/ui-library/dist/components/six-tab.js';
+import { SixTabGroup as SixTabGroupElement, defineCustomElement as defineSixTabGroup } from '@six-group/ui-library/dist/components/six-tab-group.js';
+import { SixTabPanel as SixTabPanelElement, defineCustomElement as defineSixTabPanel } from '@six-group/ui-library/dist/components/six-tab-panel.js';
+import { SixTag as SixTagElement, defineCustomElement as defineSixTag } from '@six-group/ui-library/dist/components/six-tag.js';
+import { SixTextarea as SixTextareaElement, defineCustomElement as defineSixTextarea } from '@six-group/ui-library/dist/components/six-textarea.js';
+import { SixTile as SixTileElement, defineCustomElement as defineSixTile } from '@six-group/ui-library/dist/components/six-tile.js';
+import { SixTimepicker as SixTimepickerElement, defineCustomElement as defineSixTimepicker } from '@six-group/ui-library/dist/components/six-timepicker.js';
+import { SixTooltip as SixTooltipElement, defineCustomElement as defineSixTooltip } from '@six-group/ui-library/dist/components/six-tooltip.js';
+import type { EmptyPayload, SixAlertCustomEvent, SixButtonCustomEvent, SixCheckboxCustomEvent, SixDateCustomEvent, SixDatepickerSelectPayload, SixDatepickerCustomEvent, SixDetailsCustomEvent, SixDialogRequestClose, SixDialogCustomEvent, SixDrawerRequestClose, SixDrawerCustomEvent, SixDropdownAutoFilterPayload, SixDropdownAsyncFilterPayload, SixDropdownScrollPayload, SixDropdownCustomEvent, SixFileListDownloadPayload, SixFileListRemovePayload, SixFileListItemCustomEvent, SixFileUploadSuccessPayload, SixFileUploadFailurePayload, SixFileUploadCustomEvent, SixInputCustomEvent, SixItemPickerChangePayload, SixItemPickerCustomEvent, SixLanguageSwitcherChangePayload, SixLanguageSwitcherCustomEvent, SixMenuItemSelectedPayload, SixMenuCustomEvent, SixPaginatorResultsPerPageChangedPayload, SixPaginatorPageChangedPayload, SixPaginatorCustomEvent, SixRadioCustomEvent, SixRangeCustomEvent, SixRatingCustomEvent, SixSearchFieldChangePayload, SixSearchFieldCustomEvent, SixSelectChangePayload, SixSelectCustomEvent, SixSidebarCustomEvent, SixSwitchCustomEvent, SixTabCustomEvent, SixTabShowPayload, SixTabHidePayload, SixTabGroupCustomEvent, SixTagCustomEvent, SixTextareaCustomEvent, SixTileCustomEvent, SixTimepickerChange, SixTimepickerCustomEvent, SixTooltipCustomEvent } from '@six-group/ui-library';
+import type { StencilReactComponent, EventName } from '@stencil/react-output-target/runtime';
 
 export type SixAlertEvents = {
-    onSixAlertShow: EventName<SixAlertCustomEvent<EmptyPayload>>,
-    onSixAlertAfterShow: EventName<SixAlertCustomEvent<EmptyPayload>>,
-    onSixAlertHide: EventName<SixAlertCustomEvent<EmptyPayload>>,
-    onSixAlertAfterHide: EventName<SixAlertCustomEvent<EmptyPayload>>
+  onSixAlertShow: EventName<SixAlertCustomEvent<EmptyPayload>>,
+  onSixAlertAfterShow: EventName<SixAlertCustomEvent<EmptyPayload>>,
+  onSixAlertHide: EventName<SixAlertCustomEvent<EmptyPayload>>,
+  onSixAlertAfterHide: EventName<SixAlertCustomEvent<EmptyPayload>>
 };
 
-export const SixAlert: StencilReactComponent<SixAlertElement, SixAlertEvents> = /*@__PURE__*/ createComponent<SixAlertElement, SixAlertEvents>({
+export const SixAlert: StencilReactComponent<SixAlertElement, SixAlertEvents, Components.SixAlert> = /*@__PURE__*/ createComponent<SixAlertElement, SixAlertEvents, Components.SixAlert>({
     tagName: 'six-alert',
     elementClass: SixAlertElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
-        onSixAlertShow: 'six-alert-show',
-        onSixAlertAfterShow: 'six-alert-after-show',
-        onSixAlertHide: 'six-alert-hide',
-        onSixAlertAfterHide: 'six-alert-after-hide'
+      onSixAlertShow: 'six-alert-show',
+      onSixAlertAfterShow: 'six-alert-after-show',
+      onSixAlertHide: 'six-alert-hide',
+      onSixAlertAfterHide: 'six-alert-after-hide'
     } as SixAlertEvents,
-    defineCustomElement: defineSixAlert
+    defineCustomElement: defineSixAlert,
 });
 
 export type SixAvatarEvents = NonNullable<unknown>;
 
-export const SixAvatar: StencilReactComponent<SixAvatarElement, SixAvatarEvents> = /*@__PURE__*/ createComponent<SixAvatarElement, SixAvatarEvents>({
+export const SixAvatar: StencilReactComponent<SixAvatarElement, SixAvatarEvents, Components.SixAvatar> = /*@__PURE__*/ createComponent<SixAvatarElement, SixAvatarEvents, Components.SixAvatar>({
     tagName: 'six-avatar',
     elementClass: SixAvatarElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixAvatarEvents,
-    defineCustomElement: defineSixAvatar
+    defineCustomElement: defineSixAvatar,
 });
 
 export type SixBadgeEvents = NonNullable<unknown>;
 
-export const SixBadge: StencilReactComponent<SixBadgeElement, SixBadgeEvents> = /*@__PURE__*/ createComponent<SixBadgeElement, SixBadgeEvents>({
+export const SixBadge: StencilReactComponent<SixBadgeElement, SixBadgeEvents, Components.SixBadge> = /*@__PURE__*/ createComponent<SixBadgeElement, SixBadgeEvents, Components.SixBadge>({
     tagName: 'six-badge',
     elementClass: SixBadgeElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixBadgeEvents,
-    defineCustomElement: defineSixBadge
+    defineCustomElement: defineSixBadge,
 });
 
 export type SixBreadcrumbsEvents = NonNullable<unknown>;
 
-export const SixBreadcrumbs: StencilReactComponent<SixBreadcrumbsElement, SixBreadcrumbsEvents> = /*@__PURE__*/ createComponent<SixBreadcrumbsElement, SixBreadcrumbsEvents>({
+export const SixBreadcrumbs: StencilReactComponent<SixBreadcrumbsElement, SixBreadcrumbsEvents, Components.SixBreadcrumbs> = /*@__PURE__*/ createComponent<SixBreadcrumbsElement, SixBreadcrumbsEvents, Components.SixBreadcrumbs>({
     tagName: 'six-breadcrumbs',
     elementClass: SixBreadcrumbsElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixBreadcrumbsEvents,
-    defineCustomElement: defineSixBreadcrumbs
+    defineCustomElement: defineSixBreadcrumbs,
 });
 
 export type SixBreadcrumbsItemEvents = NonNullable<unknown>;
 
-export const SixBreadcrumbsItem: StencilReactComponent<SixBreadcrumbsItemElement, SixBreadcrumbsItemEvents> = /*@__PURE__*/ createComponent<SixBreadcrumbsItemElement, SixBreadcrumbsItemEvents>({
+export const SixBreadcrumbsItem: StencilReactComponent<SixBreadcrumbsItemElement, SixBreadcrumbsItemEvents, Components.SixBreadcrumbsItem> = /*@__PURE__*/ createComponent<SixBreadcrumbsItemElement, SixBreadcrumbsItemEvents, Components.SixBreadcrumbsItem>({
     tagName: 'six-breadcrumbs-item',
     elementClass: SixBreadcrumbsItemElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixBreadcrumbsItemEvents,
-    defineCustomElement: defineSixBreadcrumbsItem
+    defineCustomElement: defineSixBreadcrumbsItem,
 });
 
 export type SixButtonEvents = {
-    onSixButtonBlur: EventName<SixButtonCustomEvent<EmptyPayload>>,
-    onSixButtonFocus: EventName<SixButtonCustomEvent<EmptyPayload>>
+  onSixButtonBlur: EventName<SixButtonCustomEvent<EmptyPayload>>,
+  onSixButtonFocus: EventName<SixButtonCustomEvent<EmptyPayload>>
 };
 
-export const SixButton: StencilReactComponent<SixButtonElement, SixButtonEvents> = /*@__PURE__*/ createComponent<SixButtonElement, SixButtonEvents>({
+export const SixButton: StencilReactComponent<SixButtonElement, SixButtonEvents, Components.SixButton> = /*@__PURE__*/ createComponent<SixButtonElement, SixButtonEvents, Components.SixButton>({
     tagName: 'six-button',
     elementClass: SixButtonElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
-        onSixButtonBlur: 'six-button-blur',
-        onSixButtonFocus: 'six-button-focus'
+      onSixButtonBlur: 'six-button-blur',
+      onSixButtonFocus: 'six-button-focus'
     } as SixButtonEvents,
-    defineCustomElement: defineSixButton
+    defineCustomElement: defineSixButton,
 });
 
 export type SixCardEvents = NonNullable<unknown>;
 
-export const SixCard: StencilReactComponent<SixCardElement, SixCardEvents> = /*@__PURE__*/ createComponent<SixCardElement, SixCardEvents>({
+export const SixCard: StencilReactComponent<SixCardElement, SixCardEvents, Components.SixCard> = /*@__PURE__*/ createComponent<SixCardElement, SixCardEvents, Components.SixCard>({
     tagName: 'six-card',
     elementClass: SixCardElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixCardEvents,
-    defineCustomElement: defineSixCard
+    defineCustomElement: defineSixCard,
 });
 
 export type SixCheckboxEvents = {
-    onSixCheckboxBlur: EventName<SixCheckboxCustomEvent<EmptyPayload>>,
-    onSixCheckboxChange: EventName<SixCheckboxCustomEvent<EmptyPayload>>,
-    onSixCheckboxFocus: EventName<SixCheckboxCustomEvent<EmptyPayload>>
+  onSixCheckboxBlur: EventName<SixCheckboxCustomEvent<EmptyPayload>>,
+  onSixCheckboxChange: EventName<SixCheckboxCustomEvent<EmptyPayload>>,
+  onSixCheckboxFocus: EventName<SixCheckboxCustomEvent<EmptyPayload>>
 };
 
-export const SixCheckbox: StencilReactComponent<SixCheckboxElement, SixCheckboxEvents> = /*@__PURE__*/ createComponent<SixCheckboxElement, SixCheckboxEvents>({
+export const SixCheckbox: StencilReactComponent<SixCheckboxElement, SixCheckboxEvents, Components.SixCheckbox> = /*@__PURE__*/ createComponent<SixCheckboxElement, SixCheckboxEvents, Components.SixCheckbox>({
     tagName: 'six-checkbox',
     elementClass: SixCheckboxElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
-        onSixCheckboxBlur: 'six-checkbox-blur',
-        onSixCheckboxChange: 'six-checkbox-change',
-        onSixCheckboxFocus: 'six-checkbox-focus'
+      onSixCheckboxBlur: 'six-checkbox-blur',
+      onSixCheckboxChange: 'six-checkbox-change',
+      onSixCheckboxFocus: 'six-checkbox-focus'
     } as SixCheckboxEvents,
-    defineCustomElement: defineSixCheckbox
+    defineCustomElement: defineSixCheckbox,
 });
 
 export type SixDateEvents = {
-    onSixChange: EventName<SixDateCustomEvent<string | ''>>,
-    onSixBlur: EventName<SixDateCustomEvent<any>>
+  onSixChange: EventName<SixDateCustomEvent<string | ''>>,
+  onSixBlur: EventName<SixDateCustomEvent<any>>
 };
 
-export const SixDate: StencilReactComponent<SixDateElement, SixDateEvents> = /*@__PURE__*/ createComponent<SixDateElement, SixDateEvents>({
+export const SixDate: StencilReactComponent<SixDateElement, SixDateEvents, Components.SixDate> = /*@__PURE__*/ createComponent<SixDateElement, SixDateEvents, Components.SixDate>({
     tagName: 'six-date',
     elementClass: SixDateElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
-        onSixChange: 'six-change',
-        onSixBlur: 'six-blur'
+      onSixChange: 'six-change',
+      onSixBlur: 'six-blur'
     } as SixDateEvents,
-    defineCustomElement: defineSixDate
+    defineCustomElement: defineSixDate,
 });
 
 export type SixDatepickerEvents = {
-    onSixDatepickerSelect: EventName<SixDatepickerCustomEvent<SixDatepickerSelectPayload>>,
-    onSixDatepickerClear: EventName<SixDatepickerCustomEvent<EmptyPayload>>,
-    onSixDatepickerBlur: EventName<SixDatepickerCustomEvent<SixDatepickerSelectPayload>>
+  onSixDatepickerSelect: EventName<SixDatepickerCustomEvent<SixDatepickerSelectPayload>>,
+  onSixDatepickerClear: EventName<SixDatepickerCustomEvent<EmptyPayload>>,
+  onSixDatepickerBlur: EventName<SixDatepickerCustomEvent<SixDatepickerSelectPayload>>
 };
 
-export const SixDatepicker: StencilReactComponent<SixDatepickerElement, SixDatepickerEvents> = /*@__PURE__*/ createComponent<SixDatepickerElement, SixDatepickerEvents>({
+export const SixDatepicker: StencilReactComponent<SixDatepickerElement, SixDatepickerEvents, Components.SixDatepicker> = /*@__PURE__*/ createComponent<SixDatepickerElement, SixDatepickerEvents, Components.SixDatepicker>({
     tagName: 'six-datepicker',
     elementClass: SixDatepickerElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
-        onSixDatepickerSelect: 'six-datepicker-select',
-        onSixDatepickerClear: 'six-datepicker-clear',
-        onSixDatepickerBlur: 'six-datepicker-blur'
+      onSixDatepickerSelect: 'six-datepicker-select',
+      onSixDatepickerClear: 'six-datepicker-clear',
+      onSixDatepickerBlur: 'six-datepicker-blur'
     } as SixDatepickerEvents,
-    defineCustomElement: defineSixDatepicker
+    defineCustomElement: defineSixDatepicker,
 });
 
 export type SixDetailsEvents = {
-    onSixDetailsShow: EventName<SixDetailsCustomEvent<EmptyPayload>>,
-    onSixDetailsAfterShow: EventName<SixDetailsCustomEvent<EmptyPayload>>,
-    onSixDetailsHide: EventName<SixDetailsCustomEvent<EmptyPayload>>,
-    onSixDetailsAfterHide: EventName<SixDetailsCustomEvent<EmptyPayload>>
+  onSixDetailsShow: EventName<SixDetailsCustomEvent<EmptyPayload>>,
+  onSixDetailsAfterShow: EventName<SixDetailsCustomEvent<EmptyPayload>>,
+  onSixDetailsHide: EventName<SixDetailsCustomEvent<EmptyPayload>>,
+  onSixDetailsAfterHide: EventName<SixDetailsCustomEvent<EmptyPayload>>
 };
 
-export const SixDetails: StencilReactComponent<SixDetailsElement, SixDetailsEvents> = /*@__PURE__*/ createComponent<SixDetailsElement, SixDetailsEvents>({
+export const SixDetails: StencilReactComponent<SixDetailsElement, SixDetailsEvents, Components.SixDetails> = /*@__PURE__*/ createComponent<SixDetailsElement, SixDetailsEvents, Components.SixDetails>({
     tagName: 'six-details',
     elementClass: SixDetailsElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
-        onSixDetailsShow: 'six-details-show',
-        onSixDetailsAfterShow: 'six-details-after-show',
-        onSixDetailsHide: 'six-details-hide',
-        onSixDetailsAfterHide: 'six-details-after-hide'
+      onSixDetailsShow: 'six-details-show',
+      onSixDetailsAfterShow: 'six-details-after-show',
+      onSixDetailsHide: 'six-details-hide',
+      onSixDetailsAfterHide: 'six-details-after-hide'
     } as SixDetailsEvents,
-    defineCustomElement: defineSixDetails
+    defineCustomElement: defineSixDetails,
 });
 
 export type SixDialogEvents = {
-    onSixDialogShow: EventName<SixDialogCustomEvent<EmptyPayload>>,
-    onSixDialogAfterShow: EventName<SixDialogCustomEvent<EmptyPayload>>,
-    onSixDialogHide: EventName<SixDialogCustomEvent<EmptyPayload>>,
-    onSixDialogAfterHide: EventName<SixDialogCustomEvent<EmptyPayload>>,
-    onSixDialogInitialFocus: EventName<SixDialogCustomEvent<EmptyPayload>>,
-    onSixDialogRequestClose: EventName<SixDialogCustomEvent<SixDialogRequestClose>>
+  onSixDialogShow: EventName<SixDialogCustomEvent<EmptyPayload>>,
+  onSixDialogAfterShow: EventName<SixDialogCustomEvent<EmptyPayload>>,
+  onSixDialogHide: EventName<SixDialogCustomEvent<EmptyPayload>>,
+  onSixDialogAfterHide: EventName<SixDialogCustomEvent<EmptyPayload>>,
+  onSixDialogInitialFocus: EventName<SixDialogCustomEvent<EmptyPayload>>,
+  onSixDialogRequestClose: EventName<SixDialogCustomEvent<SixDialogRequestClose>>
 };
 
-export const SixDialog: StencilReactComponent<SixDialogElement, SixDialogEvents> = /*@__PURE__*/ createComponent<SixDialogElement, SixDialogEvents>({
+export const SixDialog: StencilReactComponent<SixDialogElement, SixDialogEvents, Components.SixDialog> = /*@__PURE__*/ createComponent<SixDialogElement, SixDialogEvents, Components.SixDialog>({
     tagName: 'six-dialog',
     elementClass: SixDialogElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
-        onSixDialogShow: 'six-dialog-show',
-        onSixDialogAfterShow: 'six-dialog-after-show',
-        onSixDialogHide: 'six-dialog-hide',
-        onSixDialogAfterHide: 'six-dialog-after-hide',
-        onSixDialogInitialFocus: 'six-dialog-initial-focus',
-        onSixDialogRequestClose: 'six-dialog-request-close'
+      onSixDialogShow: 'six-dialog-show',
+      onSixDialogAfterShow: 'six-dialog-after-show',
+      onSixDialogHide: 'six-dialog-hide',
+      onSixDialogAfterHide: 'six-dialog-after-hide',
+      onSixDialogInitialFocus: 'six-dialog-initial-focus',
+      onSixDialogRequestClose: 'six-dialog-request-close'
     } as SixDialogEvents,
-    defineCustomElement: defineSixDialog
+    defineCustomElement: defineSixDialog,
 });
 
 export type SixDrawerEvents = {
-    onSixDrawerShow: EventName<SixDrawerCustomEvent<EmptyPayload>>,
-    onSixDrawerAfterShow: EventName<SixDrawerCustomEvent<EmptyPayload>>,
-    onSixDrawerHide: EventName<SixDrawerCustomEvent<EmptyPayload>>,
-    onSixDrawerAfterHide: EventName<SixDrawerCustomEvent<EmptyPayload>>,
-    onSixDrawerInitialFocus: EventName<SixDrawerCustomEvent<EmptyPayload>>,
-    onSixDrawerRequestClose: EventName<SixDrawerCustomEvent<SixDrawerRequestClose>>
+  onSixDrawerShow: EventName<SixDrawerCustomEvent<EmptyPayload>>,
+  onSixDrawerAfterShow: EventName<SixDrawerCustomEvent<EmptyPayload>>,
+  onSixDrawerHide: EventName<SixDrawerCustomEvent<EmptyPayload>>,
+  onSixDrawerAfterHide: EventName<SixDrawerCustomEvent<EmptyPayload>>,
+  onSixDrawerInitialFocus: EventName<SixDrawerCustomEvent<EmptyPayload>>,
+  onSixDrawerRequestClose: EventName<SixDrawerCustomEvent<SixDrawerRequestClose>>
 };
 
-export const SixDrawer: StencilReactComponent<SixDrawerElement, SixDrawerEvents> = /*@__PURE__*/ createComponent<SixDrawerElement, SixDrawerEvents>({
+export const SixDrawer: StencilReactComponent<SixDrawerElement, SixDrawerEvents, Components.SixDrawer> = /*@__PURE__*/ createComponent<SixDrawerElement, SixDrawerEvents, Components.SixDrawer>({
     tagName: 'six-drawer',
     elementClass: SixDrawerElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
-        onSixDrawerShow: 'six-drawer-show',
-        onSixDrawerAfterShow: 'six-drawer-after-show',
-        onSixDrawerHide: 'six-drawer-hide',
-        onSixDrawerAfterHide: 'six-drawer-after-hide',
-        onSixDrawerInitialFocus: 'six-drawer-initial-focus',
-        onSixDrawerRequestClose: 'six-drawer-request-close'
+      onSixDrawerShow: 'six-drawer-show',
+      onSixDrawerAfterShow: 'six-drawer-after-show',
+      onSixDrawerHide: 'six-drawer-hide',
+      onSixDrawerAfterHide: 'six-drawer-after-hide',
+      onSixDrawerInitialFocus: 'six-drawer-initial-focus',
+      onSixDrawerRequestClose: 'six-drawer-request-close'
     } as SixDrawerEvents,
-    defineCustomElement: defineSixDrawer
+    defineCustomElement: defineSixDrawer,
 });
 
 export type SixDropdownEvents = {
-    onSixDropdownShow: EventName<SixDropdownCustomEvent<EmptyPayload>>,
-    onSixDropdownAfterShow: EventName<SixDropdownCustomEvent<EmptyPayload>>,
-    onSixDropdownHide: EventName<SixDropdownCustomEvent<EmptyPayload>>,
-    onSixDropdownAfterHide: EventName<SixDropdownCustomEvent<EmptyPayload>>,
-    onSixDropdownAutoFilterFired: EventName<SixDropdownCustomEvent<SixDropdownAutoFilterPayload>>,
-    onSixAsyncFilterFired: EventName<SixDropdownCustomEvent<SixDropdownAsyncFilterPayload>>,
-    onSixDropdownScroll: EventName<SixDropdownCustomEvent<SixDropdownScrollPayload>>
+  onSixDropdownShow: EventName<SixDropdownCustomEvent<EmptyPayload>>,
+  onSixDropdownAfterShow: EventName<SixDropdownCustomEvent<EmptyPayload>>,
+  onSixDropdownHide: EventName<SixDropdownCustomEvent<EmptyPayload>>,
+  onSixDropdownAfterHide: EventName<SixDropdownCustomEvent<EmptyPayload>>,
+  onSixDropdownAutoFilterFired: EventName<SixDropdownCustomEvent<SixDropdownAutoFilterPayload>>,
+  onSixAsyncFilterFired: EventName<SixDropdownCustomEvent<SixDropdownAsyncFilterPayload>>,
+  onSixDropdownScroll: EventName<SixDropdownCustomEvent<SixDropdownScrollPayload>>
 };
 
-export const SixDropdown: StencilReactComponent<SixDropdownElement, SixDropdownEvents> = /*@__PURE__*/ createComponent<SixDropdownElement, SixDropdownEvents>({
+export const SixDropdown: StencilReactComponent<SixDropdownElement, SixDropdownEvents, Components.SixDropdown> = /*@__PURE__*/ createComponent<SixDropdownElement, SixDropdownEvents, Components.SixDropdown>({
     tagName: 'six-dropdown',
     elementClass: SixDropdownElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
-        onSixDropdownShow: 'six-dropdown-show',
-        onSixDropdownAfterShow: 'six-dropdown-after-show',
-        onSixDropdownHide: 'six-dropdown-hide',
-        onSixDropdownAfterHide: 'six-dropdown-after-hide',
-        onSixDropdownAutoFilterFired: 'six-dropdown-auto-filter-fired',
-        onSixAsyncFilterFired: 'six-async-filter-fired',
-        onSixDropdownScroll: 'six-dropdown-scroll'
+      onSixDropdownShow: 'six-dropdown-show',
+      onSixDropdownAfterShow: 'six-dropdown-after-show',
+      onSixDropdownHide: 'six-dropdown-hide',
+      onSixDropdownAfterHide: 'six-dropdown-after-hide',
+      onSixDropdownAutoFilterFired: 'six-dropdown-auto-filter-fired',
+      onSixAsyncFilterFired: 'six-async-filter-fired',
+      onSixDropdownScroll: 'six-dropdown-scroll'
     } as SixDropdownEvents,
-    defineCustomElement: defineSixDropdown
+    defineCustomElement: defineSixDropdown,
 });
 
 export type SixErrorEvents = NonNullable<unknown>;
 
-export const SixError: StencilReactComponent<SixErrorElement, SixErrorEvents> = /*@__PURE__*/ createComponent<SixErrorElement, SixErrorEvents>({
+export const SixError: StencilReactComponent<SixErrorElement, SixErrorEvents, Components.SixError> = /*@__PURE__*/ createComponent<SixErrorElement, SixErrorEvents, Components.SixError>({
     tagName: 'six-error',
     elementClass: SixErrorElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixErrorEvents,
-    defineCustomElement: defineSixError
+    defineCustomElement: defineSixError,
 });
 
 export type SixErrorPageEvents = NonNullable<unknown>;
 
-export const SixErrorPage: StencilReactComponent<SixErrorPageElement, SixErrorPageEvents> = /*@__PURE__*/ createComponent<SixErrorPageElement, SixErrorPageEvents>({
+export const SixErrorPage: StencilReactComponent<SixErrorPageElement, SixErrorPageEvents, Components.SixErrorPage> = /*@__PURE__*/ createComponent<SixErrorPageElement, SixErrorPageEvents, Components.SixErrorPage>({
     tagName: 'six-error-page',
     elementClass: SixErrorPageElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixErrorPageEvents,
-    defineCustomElement: defineSixErrorPage
+    defineCustomElement: defineSixErrorPage,
 });
 
 export type SixFileListEvents = NonNullable<unknown>;
 
-export const SixFileList: StencilReactComponent<SixFileListElement, SixFileListEvents> = /*@__PURE__*/ createComponent<SixFileListElement, SixFileListEvents>({
+export const SixFileList: StencilReactComponent<SixFileListElement, SixFileListEvents, Components.SixFileList> = /*@__PURE__*/ createComponent<SixFileListElement, SixFileListEvents, Components.SixFileList>({
     tagName: 'six-file-list',
     elementClass: SixFileListElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixFileListEvents,
-    defineCustomElement: defineSixFileList
+    defineCustomElement: defineSixFileList,
 });
 
 export type SixFileListItemEvents = {
-    onSixFileListItemDownload: EventName<SixFileListItemCustomEvent<SixFileListDownloadPayload>>,
-    onSixFileListItemRemove: EventName<SixFileListItemCustomEvent<SixFileListRemovePayload>>
+  onSixFileListItemDownload: EventName<SixFileListItemCustomEvent<SixFileListDownloadPayload>>,
+  onSixFileListItemRemove: EventName<SixFileListItemCustomEvent<SixFileListRemovePayload>>
 };
 
-export const SixFileListItem: StencilReactComponent<SixFileListItemElement, SixFileListItemEvents> = /*@__PURE__*/ createComponent<SixFileListItemElement, SixFileListItemEvents>({
+export const SixFileListItem: StencilReactComponent<SixFileListItemElement, SixFileListItemEvents, Components.SixFileListItem> = /*@__PURE__*/ createComponent<SixFileListItemElement, SixFileListItemEvents, Components.SixFileListItem>({
     tagName: 'six-file-list-item',
     elementClass: SixFileListItemElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
-        onSixFileListItemDownload: 'six-file-list-item-download',
-        onSixFileListItemRemove: 'six-file-list-item-remove'
+      onSixFileListItemDownload: 'six-file-list-item-download',
+      onSixFileListItemRemove: 'six-file-list-item-remove'
     } as SixFileListItemEvents,
-    defineCustomElement: defineSixFileListItem
+    defineCustomElement: defineSixFileListItem,
 });
 
 export type SixFileUploadEvents = {
-    onSixFileUploadSuccess: EventName<SixFileUploadCustomEvent<SixFileUploadSuccessPayload>>,
-    onSixFileUploadFailure: EventName<SixFileUploadCustomEvent<SixFileUploadFailurePayload>>
+  onSixFileUploadSuccess: EventName<SixFileUploadCustomEvent<SixFileUploadSuccessPayload>>,
+  onSixFileUploadFailure: EventName<SixFileUploadCustomEvent<SixFileUploadFailurePayload>>
 };
 
-export const SixFileUpload: StencilReactComponent<SixFileUploadElement, SixFileUploadEvents> = /*@__PURE__*/ createComponent<SixFileUploadElement, SixFileUploadEvents>({
+export const SixFileUpload: StencilReactComponent<SixFileUploadElement, SixFileUploadEvents, Components.SixFileUpload> = /*@__PURE__*/ createComponent<SixFileUploadElement, SixFileUploadEvents, Components.SixFileUpload>({
     tagName: 'six-file-upload',
     elementClass: SixFileUploadElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
-        onSixFileUploadSuccess: 'six-file-upload-success',
-        onSixFileUploadFailure: 'six-file-upload-failure'
+      onSixFileUploadSuccess: 'six-file-upload-success',
+      onSixFileUploadFailure: 'six-file-upload-failure'
     } as SixFileUploadEvents,
-    defineCustomElement: defineSixFileUpload
+    defineCustomElement: defineSixFileUpload,
 });
 
 export type SixFooterEvents = NonNullable<unknown>;
 
-export const SixFooter: StencilReactComponent<SixFooterElement, SixFooterEvents> = /*@__PURE__*/ createComponent<SixFooterElement, SixFooterEvents>({
+export const SixFooter: StencilReactComponent<SixFooterElement, SixFooterEvents, Components.SixFooter> = /*@__PURE__*/ createComponent<SixFooterElement, SixFooterEvents, Components.SixFooter>({
     tagName: 'six-footer',
     elementClass: SixFooterElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixFooterEvents,
-    defineCustomElement: defineSixFooter
+    defineCustomElement: defineSixFooter,
 });
 
 export type SixGroupLabelEvents = NonNullable<unknown>;
 
-export const SixGroupLabel: StencilReactComponent<SixGroupLabelElement, SixGroupLabelEvents> = /*@__PURE__*/ createComponent<SixGroupLabelElement, SixGroupLabelEvents>({
+export const SixGroupLabel: StencilReactComponent<SixGroupLabelElement, SixGroupLabelEvents, Components.SixGroupLabel> = /*@__PURE__*/ createComponent<SixGroupLabelElement, SixGroupLabelEvents, Components.SixGroupLabel>({
     tagName: 'six-group-label',
     elementClass: SixGroupLabelElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixGroupLabelEvents,
-    defineCustomElement: defineSixGroupLabel
+    defineCustomElement: defineSixGroupLabel,
 });
 
 export type SixHeaderEvents = NonNullable<unknown>;
 
-export const SixHeader: StencilReactComponent<SixHeaderElement, SixHeaderEvents> = /*@__PURE__*/ createComponent<SixHeaderElement, SixHeaderEvents>({
+export const SixHeader: StencilReactComponent<SixHeaderElement, SixHeaderEvents, Components.SixHeader> = /*@__PURE__*/ createComponent<SixHeaderElement, SixHeaderEvents, Components.SixHeader>({
     tagName: 'six-header',
     elementClass: SixHeaderElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixHeaderEvents,
-    defineCustomElement: defineSixHeader
+    defineCustomElement: defineSixHeader,
 });
 
 export type SixHeaderDropdownItemEvents = NonNullable<unknown>;
 
-export const SixHeaderDropdownItem: StencilReactComponent<SixHeaderDropdownItemElement, SixHeaderDropdownItemEvents> = /*@__PURE__*/ createComponent<SixHeaderDropdownItemElement, SixHeaderDropdownItemEvents>({
+export const SixHeaderDropdownItem: StencilReactComponent<SixHeaderDropdownItemElement, SixHeaderDropdownItemEvents, Components.SixHeaderDropdownItem> = /*@__PURE__*/ createComponent<SixHeaderDropdownItemElement, SixHeaderDropdownItemEvents, Components.SixHeaderDropdownItem>({
     tagName: 'six-header-dropdown-item',
     elementClass: SixHeaderDropdownItemElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixHeaderDropdownItemEvents,
-    defineCustomElement: defineSixHeaderDropdownItem
+    defineCustomElement: defineSixHeaderDropdownItem,
 });
 
 export type SixHeaderItemEvents = NonNullable<unknown>;
 
-export const SixHeaderItem: StencilReactComponent<SixHeaderItemElement, SixHeaderItemEvents> = /*@__PURE__*/ createComponent<SixHeaderItemElement, SixHeaderItemEvents>({
+export const SixHeaderItem: StencilReactComponent<SixHeaderItemElement, SixHeaderItemEvents, Components.SixHeaderItem> = /*@__PURE__*/ createComponent<SixHeaderItemElement, SixHeaderItemEvents, Components.SixHeaderItem>({
     tagName: 'six-header-item',
     elementClass: SixHeaderItemElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixHeaderItemEvents,
-    defineCustomElement: defineSixHeaderItem
+    defineCustomElement: defineSixHeaderItem,
 });
 
 export type SixHeaderMenuButtonEvents = NonNullable<unknown>;
 
-export const SixHeaderMenuButton: StencilReactComponent<SixHeaderMenuButtonElement, SixHeaderMenuButtonEvents> = /*@__PURE__*/ createComponent<SixHeaderMenuButtonElement, SixHeaderMenuButtonEvents>({
+export const SixHeaderMenuButton: StencilReactComponent<SixHeaderMenuButtonElement, SixHeaderMenuButtonEvents, Components.SixHeaderMenuButton> = /*@__PURE__*/ createComponent<SixHeaderMenuButtonElement, SixHeaderMenuButtonEvents, Components.SixHeaderMenuButton>({
     tagName: 'six-header-menu-button',
     elementClass: SixHeaderMenuButtonElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixHeaderMenuButtonEvents,
-    defineCustomElement: defineSixHeaderMenuButton
+    defineCustomElement: defineSixHeaderMenuButton,
 });
 
 export type SixIconEvents = NonNullable<unknown>;
 
-export const SixIcon: StencilReactComponent<SixIconElement, SixIconEvents> = /*@__PURE__*/ createComponent<SixIconElement, SixIconEvents>({
+export const SixIcon: StencilReactComponent<SixIconElement, SixIconEvents, Components.SixIcon> = /*@__PURE__*/ createComponent<SixIconElement, SixIconEvents, Components.SixIcon>({
     tagName: 'six-icon',
     elementClass: SixIconElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixIconEvents,
-    defineCustomElement: defineSixIcon
+    defineCustomElement: defineSixIcon,
 });
 
 export type SixIconButtonEvents = NonNullable<unknown>;
 
-export const SixIconButton: StencilReactComponent<SixIconButtonElement, SixIconButtonEvents> = /*@__PURE__*/ createComponent<SixIconButtonElement, SixIconButtonEvents>({
+export const SixIconButton: StencilReactComponent<SixIconButtonElement, SixIconButtonEvents, Components.SixIconButton> = /*@__PURE__*/ createComponent<SixIconButtonElement, SixIconButtonEvents, Components.SixIconButton>({
     tagName: 'six-icon-button',
     elementClass: SixIconButtonElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixIconButtonEvents,
-    defineCustomElement: defineSixIconButton
+    defineCustomElement: defineSixIconButton,
 });
 
 export type SixInputEvents = {
-    onSixInputChange: EventName<SixInputCustomEvent<EmptyPayload>>,
-    onSixInputClear: EventName<SixInputCustomEvent<EmptyPayload>>,
-    onSixInputInput: EventName<SixInputCustomEvent<EmptyPayload>>,
-    onSixInputFocus: EventName<SixInputCustomEvent<EmptyPayload>>,
-    onSixInputBlur: EventName<SixInputCustomEvent<EmptyPayload>>
+  onSixInputChange: EventName<SixInputCustomEvent<EmptyPayload>>,
+  onSixInputClear: EventName<SixInputCustomEvent<EmptyPayload>>,
+  onSixInputInput: EventName<SixInputCustomEvent<EmptyPayload>>,
+  onSixInputFocus: EventName<SixInputCustomEvent<EmptyPayload>>,
+  onSixInputBlur: EventName<SixInputCustomEvent<EmptyPayload>>
 };
 
-export const SixInput: StencilReactComponent<SixInputElement, SixInputEvents> = /*@__PURE__*/ createComponent<SixInputElement, SixInputEvents>({
+export const SixInput: StencilReactComponent<SixInputElement, SixInputEvents, Components.SixInput> = /*@__PURE__*/ createComponent<SixInputElement, SixInputEvents, Components.SixInput>({
     tagName: 'six-input',
     elementClass: SixInputElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
-        onSixInputChange: 'six-input-change',
-        onSixInputClear: 'six-input-clear',
-        onSixInputInput: 'six-input-input',
-        onSixInputFocus: 'six-input-focus',
-        onSixInputBlur: 'six-input-blur'
+      onSixInputChange: 'six-input-change',
+      onSixInputClear: 'six-input-clear',
+      onSixInputInput: 'six-input-input',
+      onSixInputFocus: 'six-input-focus',
+      onSixInputBlur: 'six-input-blur'
     } as SixInputEvents,
-    defineCustomElement: defineSixInput
+    defineCustomElement: defineSixInput,
 });
 
 export type SixItemPickerEvents = {
-    onSixItemPickerChange: EventName<SixItemPickerCustomEvent<SixItemPickerChangePayload>>,
-    onSixItemPickerChangeDebounced: EventName<SixItemPickerCustomEvent<SixItemPickerChangePayload>>
+  onSixItemPickerChange: EventName<SixItemPickerCustomEvent<SixItemPickerChangePayload>>,
+  onSixItemPickerChangeDebounced: EventName<SixItemPickerCustomEvent<SixItemPickerChangePayload>>
 };
 
-export const SixItemPicker: StencilReactComponent<SixItemPickerElement, SixItemPickerEvents> = /*@__PURE__*/ createComponent<SixItemPickerElement, SixItemPickerEvents>({
+export const SixItemPicker: StencilReactComponent<SixItemPickerElement, SixItemPickerEvents, Components.SixItemPicker> = /*@__PURE__*/ createComponent<SixItemPickerElement, SixItemPickerEvents, Components.SixItemPicker>({
     tagName: 'six-item-picker',
     elementClass: SixItemPickerElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
-        onSixItemPickerChange: 'six-item-picker-change',
-        onSixItemPickerChangeDebounced: 'six-item-picker-change-debounced'
+      onSixItemPickerChange: 'six-item-picker-change',
+      onSixItemPickerChangeDebounced: 'six-item-picker-change-debounced'
     } as SixItemPickerEvents,
-    defineCustomElement: defineSixItemPicker
+    defineCustomElement: defineSixItemPicker,
 });
 
-export type SixLanguageSwitcherEvents = { onSixLanguageSwitcherChange: EventName<SixLanguageSwitcherCustomEvent<SixLanguageSwitcherChangePayload>> };
+export type SixLanguageSwitcherEvents = {
+  onSixLanguageSwitcherChange: EventName<SixLanguageSwitcherCustomEvent<SixLanguageSwitcherChangePayload>>
+};
 
-export const SixLanguageSwitcher: StencilReactComponent<SixLanguageSwitcherElement, SixLanguageSwitcherEvents> = /*@__PURE__*/ createComponent<SixLanguageSwitcherElement, SixLanguageSwitcherEvents>({
+export const SixLanguageSwitcher: StencilReactComponent<SixLanguageSwitcherElement, SixLanguageSwitcherEvents, Components.SixLanguageSwitcher> = /*@__PURE__*/ createComponent<SixLanguageSwitcherElement, SixLanguageSwitcherEvents, Components.SixLanguageSwitcher>({
     tagName: 'six-language-switcher',
     elementClass: SixLanguageSwitcherElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
-    events: { onSixLanguageSwitcherChange: 'six-language-switcher-change' } as SixLanguageSwitcherEvents,
-    defineCustomElement: defineSixLanguageSwitcher
+    events: {
+      onSixLanguageSwitcherChange: 'six-language-switcher-change'
+    } as SixLanguageSwitcherEvents,
+    defineCustomElement: defineSixLanguageSwitcher,
 });
 
 export type SixLayoutGridEvents = NonNullable<unknown>;
 
-export const SixLayoutGrid: StencilReactComponent<SixLayoutGridElement, SixLayoutGridEvents> = /*@__PURE__*/ createComponent<SixLayoutGridElement, SixLayoutGridEvents>({
+export const SixLayoutGrid: StencilReactComponent<SixLayoutGridElement, SixLayoutGridEvents, Components.SixLayoutGrid> = /*@__PURE__*/ createComponent<SixLayoutGridElement, SixLayoutGridEvents, Components.SixLayoutGrid>({
     tagName: 'six-layout-grid',
     elementClass: SixLayoutGridElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixLayoutGridEvents,
-    defineCustomElement: defineSixLayoutGrid
+    defineCustomElement: defineSixLayoutGrid,
 });
 
 export type SixLogoEvents = NonNullable<unknown>;
 
-export const SixLogo: StencilReactComponent<SixLogoElement, SixLogoEvents> = /*@__PURE__*/ createComponent<SixLogoElement, SixLogoEvents>({
+export const SixLogo: StencilReactComponent<SixLogoElement, SixLogoEvents, Components.SixLogo> = /*@__PURE__*/ createComponent<SixLogoElement, SixLogoEvents, Components.SixLogo>({
     tagName: 'six-logo',
     elementClass: SixLogoElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixLogoEvents,
-    defineCustomElement: defineSixLogo
+    defineCustomElement: defineSixLogo,
 });
 
 export type SixMainContainerEvents = NonNullable<unknown>;
 
-export const SixMainContainer: StencilReactComponent<SixMainContainerElement, SixMainContainerEvents> = /*@__PURE__*/ createComponent<SixMainContainerElement, SixMainContainerEvents>({
+export const SixMainContainer: StencilReactComponent<SixMainContainerElement, SixMainContainerEvents, Components.SixMainContainer> = /*@__PURE__*/ createComponent<SixMainContainerElement, SixMainContainerEvents, Components.SixMainContainer>({
     tagName: 'six-main-container',
     elementClass: SixMainContainerElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixMainContainerEvents,
-    defineCustomElement: defineSixMainContainer
+    defineCustomElement: defineSixMainContainer,
 });
 
-export type SixMenuEvents = { onSixMenuItemSelected: EventName<SixMenuCustomEvent<SixMenuItemSelectedPayload>> };
+export type SixMenuEvents = {
+  onSixMenuItemSelected: EventName<SixMenuCustomEvent<SixMenuItemSelectedPayload>>
+};
 
-export const SixMenu: StencilReactComponent<SixMenuElement, SixMenuEvents> = /*@__PURE__*/ createComponent<SixMenuElement, SixMenuEvents>({
+export const SixMenu: StencilReactComponent<SixMenuElement, SixMenuEvents, Components.SixMenu> = /*@__PURE__*/ createComponent<SixMenuElement, SixMenuEvents, Components.SixMenu>({
     tagName: 'six-menu',
     elementClass: SixMenuElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
-    events: { onSixMenuItemSelected: 'six-menu-item-selected' } as SixMenuEvents,
-    defineCustomElement: defineSixMenu
+    events: {
+      onSixMenuItemSelected: 'six-menu-item-selected'
+    } as SixMenuEvents,
+    defineCustomElement: defineSixMenu,
 });
 
 export type SixMenuDividerEvents = NonNullable<unknown>;
 
-export const SixMenuDivider: StencilReactComponent<SixMenuDividerElement, SixMenuDividerEvents> = /*@__PURE__*/ createComponent<SixMenuDividerElement, SixMenuDividerEvents>({
+export const SixMenuDivider: StencilReactComponent<SixMenuDividerElement, SixMenuDividerEvents, Components.SixMenuDivider> = /*@__PURE__*/ createComponent<SixMenuDividerElement, SixMenuDividerEvents, Components.SixMenuDivider>({
     tagName: 'six-menu-divider',
     elementClass: SixMenuDividerElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixMenuDividerEvents,
-    defineCustomElement: defineSixMenuDivider
+    defineCustomElement: defineSixMenuDivider,
 });
 
 export type SixMenuItemEvents = NonNullable<unknown>;
 
-export const SixMenuItem: StencilReactComponent<SixMenuItemElement, SixMenuItemEvents> = /*@__PURE__*/ createComponent<SixMenuItemElement, SixMenuItemEvents>({
+export const SixMenuItem: StencilReactComponent<SixMenuItemElement, SixMenuItemEvents, Components.SixMenuItem> = /*@__PURE__*/ createComponent<SixMenuItemElement, SixMenuItemEvents, Components.SixMenuItem>({
     tagName: 'six-menu-item',
     elementClass: SixMenuItemElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixMenuItemEvents,
-    defineCustomElement: defineSixMenuItem
+    defineCustomElement: defineSixMenuItem,
 });
 
 export type SixMenuLabelEvents = NonNullable<unknown>;
 
-export const SixMenuLabel: StencilReactComponent<SixMenuLabelElement, SixMenuLabelEvents> = /*@__PURE__*/ createComponent<SixMenuLabelElement, SixMenuLabelEvents>({
+export const SixMenuLabel: StencilReactComponent<SixMenuLabelElement, SixMenuLabelEvents, Components.SixMenuLabel> = /*@__PURE__*/ createComponent<SixMenuLabelElement, SixMenuLabelEvents, Components.SixMenuLabel>({
     tagName: 'six-menu-label',
     elementClass: SixMenuLabelElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixMenuLabelEvents,
-    defineCustomElement: defineSixMenuLabel
+    defineCustomElement: defineSixMenuLabel,
 });
 
 export type SixPaginatorEvents = {
-    onSixPaginatorResultsPerPageChanged: EventName<SixPaginatorCustomEvent<SixPaginatorResultsPerPageChangedPayload>>,
-    onSixPaginatorPageChanged: EventName<SixPaginatorCustomEvent<SixPaginatorPageChangedPayload>>
+  onSixPaginatorResultsPerPageChanged: EventName<SixPaginatorCustomEvent<SixPaginatorResultsPerPageChangedPayload>>,
+  onSixPaginatorPageChanged: EventName<SixPaginatorCustomEvent<SixPaginatorPageChangedPayload>>
 };
 
-export const SixPaginator: StencilReactComponent<SixPaginatorElement, SixPaginatorEvents> = /*@__PURE__*/ createComponent<SixPaginatorElement, SixPaginatorEvents>({
+export const SixPaginator: StencilReactComponent<SixPaginatorElement, SixPaginatorEvents, Components.SixPaginator, 'totalPages' | 'totalResults'> = /*@__PURE__*/ createComponent<SixPaginatorElement, SixPaginatorEvents, Components.SixPaginator, 'totalPages' | 'totalResults'>({
     tagName: 'six-paginator',
     elementClass: SixPaginatorElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
-        onSixPaginatorResultsPerPageChanged: 'six-paginator-results-per-page-changed',
-        onSixPaginatorPageChanged: 'six-paginator-page-changed'
+      onSixPaginatorResultsPerPageChanged: 'six-paginator-results-per-page-changed',
+      onSixPaginatorPageChanged: 'six-paginator-page-changed'
     } as SixPaginatorEvents,
-    defineCustomElement: defineSixPaginator
+    defineCustomElement: defineSixPaginator,
 });
 
 export type SixPictoEvents = NonNullable<unknown>;
 
-export const SixPicto: StencilReactComponent<SixPictoElement, SixPictoEvents> = /*@__PURE__*/ createComponent<SixPictoElement, SixPictoEvents>({
+export const SixPicto: StencilReactComponent<SixPictoElement, SixPictoEvents, Components.SixPicto> = /*@__PURE__*/ createComponent<SixPictoElement, SixPictoEvents, Components.SixPicto>({
     tagName: 'six-picto',
     elementClass: SixPictoElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixPictoEvents,
-    defineCustomElement: defineSixPicto
+    defineCustomElement: defineSixPicto,
 });
 
 export type SixProgressBarEvents = NonNullable<unknown>;
 
-export const SixProgressBar: StencilReactComponent<SixProgressBarElement, SixProgressBarEvents> = /*@__PURE__*/ createComponent<SixProgressBarElement, SixProgressBarEvents>({
+export const SixProgressBar: StencilReactComponent<SixProgressBarElement, SixProgressBarEvents, Components.SixProgressBar> = /*@__PURE__*/ createComponent<SixProgressBarElement, SixProgressBarEvents, Components.SixProgressBar>({
     tagName: 'six-progress-bar',
     elementClass: SixProgressBarElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixProgressBarEvents,
-    defineCustomElement: defineSixProgressBar
+    defineCustomElement: defineSixProgressBar,
 });
 
 export type SixProgressRingEvents = NonNullable<unknown>;
 
-export const SixProgressRing: StencilReactComponent<SixProgressRingElement, SixProgressRingEvents> = /*@__PURE__*/ createComponent<SixProgressRingElement, SixProgressRingEvents>({
+export const SixProgressRing: StencilReactComponent<SixProgressRingElement, SixProgressRingEvents, Components.SixProgressRing> = /*@__PURE__*/ createComponent<SixProgressRingElement, SixProgressRingEvents, Components.SixProgressRing>({
     tagName: 'six-progress-ring',
     elementClass: SixProgressRingElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixProgressRingEvents,
-    defineCustomElement: defineSixProgressRing
+    defineCustomElement: defineSixProgressRing,
 });
 
 export type SixRadioEvents = {
-    onSixRadioBlur: EventName<SixRadioCustomEvent<EmptyPayload>>,
-    onSixRadioChange: EventName<SixRadioCustomEvent<EmptyPayload>>,
-    onSixRadioFocus: EventName<SixRadioCustomEvent<EmptyPayload>>
+  onSixRadioBlur: EventName<SixRadioCustomEvent<EmptyPayload>>,
+  onSixRadioChange: EventName<SixRadioCustomEvent<EmptyPayload>>,
+  onSixRadioFocus: EventName<SixRadioCustomEvent<EmptyPayload>>
 };
 
-export const SixRadio: StencilReactComponent<SixRadioElement, SixRadioEvents> = /*@__PURE__*/ createComponent<SixRadioElement, SixRadioEvents>({
+export const SixRadio: StencilReactComponent<SixRadioElement, SixRadioEvents, Components.SixRadio> = /*@__PURE__*/ createComponent<SixRadioElement, SixRadioEvents, Components.SixRadio>({
     tagName: 'six-radio',
     elementClass: SixRadioElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
-        onSixRadioBlur: 'six-radio-blur',
-        onSixRadioChange: 'six-radio-change',
-        onSixRadioFocus: 'six-radio-focus'
+      onSixRadioBlur: 'six-radio-blur',
+      onSixRadioChange: 'six-radio-change',
+      onSixRadioFocus: 'six-radio-focus'
     } as SixRadioEvents,
-    defineCustomElement: defineSixRadio
+    defineCustomElement: defineSixRadio,
 });
 
 export type SixRangeEvents = {
-    onSixRangeChange: EventName<SixRangeCustomEvent<EmptyPayload>>,
-    onSixRangeBlur: EventName<SixRangeCustomEvent<EmptyPayload>>,
-    onSixRangeFocus: EventName<SixRangeCustomEvent<EmptyPayload>>
+  onSixRangeChange: EventName<SixRangeCustomEvent<EmptyPayload>>,
+  onSixRangeBlur: EventName<SixRangeCustomEvent<EmptyPayload>>,
+  onSixRangeFocus: EventName<SixRangeCustomEvent<EmptyPayload>>
 };
 
-export const SixRange: StencilReactComponent<SixRangeElement, SixRangeEvents> = /*@__PURE__*/ createComponent<SixRangeElement, SixRangeEvents>({
+export const SixRange: StencilReactComponent<SixRangeElement, SixRangeEvents, Components.SixRange> = /*@__PURE__*/ createComponent<SixRangeElement, SixRangeEvents, Components.SixRange>({
     tagName: 'six-range',
     elementClass: SixRangeElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
-        onSixRangeChange: 'six-range-change',
-        onSixRangeBlur: 'six-range-blur',
-        onSixRangeFocus: 'six-range-focus'
+      onSixRangeChange: 'six-range-change',
+      onSixRangeBlur: 'six-range-blur',
+      onSixRangeFocus: 'six-range-focus'
     } as SixRangeEvents,
-    defineCustomElement: defineSixRange
+    defineCustomElement: defineSixRange,
 });
 
 export type SixRatingEvents = {
-    onSixRatingBlur: EventName<SixRatingCustomEvent<number>>,
-    onSixRatingChange: EventName<SixRatingCustomEvent<number>>,
-    onSixRatingFocus: EventName<SixRatingCustomEvent<EmptyPayload>>
+  onSixRatingBlur: EventName<SixRatingCustomEvent<number>>,
+  onSixRatingChange: EventName<SixRatingCustomEvent<number>>,
+  onSixRatingFocus: EventName<SixRatingCustomEvent<EmptyPayload>>
 };
 
-export const SixRating: StencilReactComponent<SixRatingElement, SixRatingEvents> = /*@__PURE__*/ createComponent<SixRatingElement, SixRatingEvents>({
+export const SixRating: StencilReactComponent<SixRatingElement, SixRatingEvents, Components.SixRating> = /*@__PURE__*/ createComponent<SixRatingElement, SixRatingEvents, Components.SixRating>({
     tagName: 'six-rating',
     elementClass: SixRatingElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
-        onSixRatingBlur: 'six-rating-blur',
-        onSixRatingChange: 'six-rating-change',
-        onSixRatingFocus: 'six-rating-focus'
+      onSixRatingBlur: 'six-rating-blur',
+      onSixRatingChange: 'six-rating-change',
+      onSixRatingFocus: 'six-rating-focus'
     } as SixRatingEvents,
-    defineCustomElement: defineSixRating
+    defineCustomElement: defineSixRating,
 });
 
 export type SixRootEvents = NonNullable<unknown>;
 
-export const SixRoot: StencilReactComponent<SixRootElement, SixRootEvents> = /*@__PURE__*/ createComponent<SixRootElement, SixRootEvents>({
+export const SixRoot: StencilReactComponent<SixRootElement, SixRootEvents, Components.SixRoot> = /*@__PURE__*/ createComponent<SixRootElement, SixRootEvents, Components.SixRoot>({
     tagName: 'six-root',
     elementClass: SixRootElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixRootEvents,
-    defineCustomElement: defineSixRoot
+    defineCustomElement: defineSixRoot,
 });
 
-export type SixSearchFieldEvents = { onSixSearchFieldChange: EventName<SixSearchFieldCustomEvent<SixSearchFieldChangePayload>> };
+export type SixSearchFieldEvents = {
+  onSixSearchFieldChange: EventName<SixSearchFieldCustomEvent<SixSearchFieldChangePayload>>
+};
 
-export const SixSearchField: StencilReactComponent<SixSearchFieldElement, SixSearchFieldEvents> = /*@__PURE__*/ createComponent<SixSearchFieldElement, SixSearchFieldEvents>({
+export const SixSearchField: StencilReactComponent<SixSearchFieldElement, SixSearchFieldEvents, Components.SixSearchField> = /*@__PURE__*/ createComponent<SixSearchFieldElement, SixSearchFieldEvents, Components.SixSearchField>({
     tagName: 'six-search-field',
     elementClass: SixSearchFieldElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
-    events: { onSixSearchFieldChange: 'six-search-field-change' } as SixSearchFieldEvents,
-    defineCustomElement: defineSixSearchField
+    events: {
+      onSixSearchFieldChange: 'six-search-field-change'
+    } as SixSearchFieldEvents,
+    defineCustomElement: defineSixSearchField,
 });
 
 export type SixSelectEvents = {
-    onSixSelectChange: EventName<SixSelectCustomEvent<SixSelectChangePayload>>,
-    onSixSelectFocus: EventName<SixSelectCustomEvent<EmptyPayload>>,
-    onSixSelectBlur: EventName<SixSelectCustomEvent<EmptyPayload>>
+  onSixSelectChange: EventName<SixSelectCustomEvent<SixSelectChangePayload>>,
+  onSixSelectFocus: EventName<SixSelectCustomEvent<EmptyPayload>>,
+  onSixSelectBlur: EventName<SixSelectCustomEvent<EmptyPayload>>
 };
 
-export const SixSelect: StencilReactComponent<SixSelectElement, SixSelectEvents> = /*@__PURE__*/ createComponent<SixSelectElement, SixSelectEvents>({
+export const SixSelect: StencilReactComponent<SixSelectElement, SixSelectEvents, Components.SixSelect> = /*@__PURE__*/ createComponent<SixSelectElement, SixSelectEvents, Components.SixSelect>({
     tagName: 'six-select',
     elementClass: SixSelectElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
-        onSixSelectChange: 'six-select-change',
-        onSixSelectFocus: 'six-select-focus',
-        onSixSelectBlur: 'six-select-blur'
+      onSixSelectChange: 'six-select-change',
+      onSixSelectFocus: 'six-select-focus',
+      onSixSelectBlur: 'six-select-blur'
     } as SixSelectEvents,
-    defineCustomElement: defineSixSelect
+    defineCustomElement: defineSixSelect,
 });
 
 export type SixSidebarEvents = {
-    onSixSidebarShow: EventName<SixSidebarCustomEvent<EmptyPayload>>,
-    onSixSidebarAfterShow: EventName<SixSidebarCustomEvent<EmptyPayload>>,
-    onSixSidebarHide: EventName<SixSidebarCustomEvent<EmptyPayload>>,
-    onSixSidebarAfterHide: EventName<SixSidebarCustomEvent<EmptyPayload>>,
-    onSixSidebarInitialFocus: EventName<SixSidebarCustomEvent<EmptyPayload>>
+  onSixSidebarShow: EventName<SixSidebarCustomEvent<EmptyPayload>>,
+  onSixSidebarAfterShow: EventName<SixSidebarCustomEvent<EmptyPayload>>,
+  onSixSidebarHide: EventName<SixSidebarCustomEvent<EmptyPayload>>,
+  onSixSidebarAfterHide: EventName<SixSidebarCustomEvent<EmptyPayload>>,
+  onSixSidebarInitialFocus: EventName<SixSidebarCustomEvent<EmptyPayload>>
 };
 
-export const SixSidebar: StencilReactComponent<SixSidebarElement, SixSidebarEvents> = /*@__PURE__*/ createComponent<SixSidebarElement, SixSidebarEvents>({
+export const SixSidebar: StencilReactComponent<SixSidebarElement, SixSidebarEvents, Components.SixSidebar> = /*@__PURE__*/ createComponent<SixSidebarElement, SixSidebarEvents, Components.SixSidebar>({
     tagName: 'six-sidebar',
     elementClass: SixSidebarElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
-        onSixSidebarShow: 'six-sidebar-show',
-        onSixSidebarAfterShow: 'six-sidebar-after-show',
-        onSixSidebarHide: 'six-sidebar-hide',
-        onSixSidebarAfterHide: 'six-sidebar-after-hide',
-        onSixSidebarInitialFocus: 'six-sidebar-initial-focus'
+      onSixSidebarShow: 'six-sidebar-show',
+      onSixSidebarAfterShow: 'six-sidebar-after-show',
+      onSixSidebarHide: 'six-sidebar-hide',
+      onSixSidebarAfterHide: 'six-sidebar-after-hide',
+      onSixSidebarInitialFocus: 'six-sidebar-initial-focus'
     } as SixSidebarEvents,
-    defineCustomElement: defineSixSidebar
+    defineCustomElement: defineSixSidebar,
 });
 
 export type SixSidebarItemEvents = NonNullable<unknown>;
 
-export const SixSidebarItem: StencilReactComponent<SixSidebarItemElement, SixSidebarItemEvents> = /*@__PURE__*/ createComponent<SixSidebarItemElement, SixSidebarItemEvents>({
+export const SixSidebarItem: StencilReactComponent<SixSidebarItemElement, SixSidebarItemEvents, Components.SixSidebarItem> = /*@__PURE__*/ createComponent<SixSidebarItemElement, SixSidebarItemEvents, Components.SixSidebarItem>({
     tagName: 'six-sidebar-item',
     elementClass: SixSidebarItemElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixSidebarItemEvents,
-    defineCustomElement: defineSixSidebarItem
+    defineCustomElement: defineSixSidebarItem,
 });
 
 export type SixSidebarItemGroupEvents = NonNullable<unknown>;
 
-export const SixSidebarItemGroup: StencilReactComponent<SixSidebarItemGroupElement, SixSidebarItemGroupEvents> = /*@__PURE__*/ createComponent<SixSidebarItemGroupElement, SixSidebarItemGroupEvents>({
+export const SixSidebarItemGroup: StencilReactComponent<SixSidebarItemGroupElement, SixSidebarItemGroupEvents, Components.SixSidebarItemGroup> = /*@__PURE__*/ createComponent<SixSidebarItemGroupElement, SixSidebarItemGroupEvents, Components.SixSidebarItemGroup>({
     tagName: 'six-sidebar-item-group',
     elementClass: SixSidebarItemGroupElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixSidebarItemGroupEvents,
-    defineCustomElement: defineSixSidebarItemGroup
+    defineCustomElement: defineSixSidebarItemGroup,
 });
 
 export type SixSpinnerEvents = NonNullable<unknown>;
 
-export const SixSpinner: StencilReactComponent<SixSpinnerElement, SixSpinnerEvents> = /*@__PURE__*/ createComponent<SixSpinnerElement, SixSpinnerEvents>({
+export const SixSpinner: StencilReactComponent<SixSpinnerElement, SixSpinnerEvents, Components.SixSpinner> = /*@__PURE__*/ createComponent<SixSpinnerElement, SixSpinnerEvents, Components.SixSpinner>({
     tagName: 'six-spinner',
     elementClass: SixSpinnerElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixSpinnerEvents,
-    defineCustomElement: defineSixSpinner
+    defineCustomElement: defineSixSpinner,
 });
 
 export type SixStageIndicatorEvents = NonNullable<unknown>;
 
-export const SixStageIndicator: StencilReactComponent<SixStageIndicatorElement, SixStageIndicatorEvents> = /*@__PURE__*/ createComponent<SixStageIndicatorElement, SixStageIndicatorEvents>({
+export const SixStageIndicator: StencilReactComponent<SixStageIndicatorElement, SixStageIndicatorEvents, Components.SixStageIndicator> = /*@__PURE__*/ createComponent<SixStageIndicatorElement, SixStageIndicatorEvents, Components.SixStageIndicator>({
     tagName: 'six-stage-indicator',
     elementClass: SixStageIndicatorElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixStageIndicatorEvents,
-    defineCustomElement: defineSixStageIndicator
+    defineCustomElement: defineSixStageIndicator,
 });
 
 export type SixSwitchEvents = {
-    onSixSwitchBlur: EventName<SixSwitchCustomEvent<boolean>>,
-    onSixSwitchChange: EventName<SixSwitchCustomEvent<boolean>>,
-    onSixSwitchFocus: EventName<SixSwitchCustomEvent<EmptyPayload>>
+  onSixSwitchBlur: EventName<SixSwitchCustomEvent<boolean>>,
+  onSixSwitchChange: EventName<SixSwitchCustomEvent<boolean>>,
+  onSixSwitchFocus: EventName<SixSwitchCustomEvent<EmptyPayload>>
 };
 
-export const SixSwitch: StencilReactComponent<SixSwitchElement, SixSwitchEvents> = /*@__PURE__*/ createComponent<SixSwitchElement, SixSwitchEvents>({
+export const SixSwitch: StencilReactComponent<SixSwitchElement, SixSwitchEvents, Components.SixSwitch> = /*@__PURE__*/ createComponent<SixSwitchElement, SixSwitchEvents, Components.SixSwitch>({
     tagName: 'six-switch',
     elementClass: SixSwitchElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
-        onSixSwitchBlur: 'six-switch-blur',
-        onSixSwitchChange: 'six-switch-change',
-        onSixSwitchFocus: 'six-switch-focus'
+      onSixSwitchBlur: 'six-switch-blur',
+      onSixSwitchChange: 'six-switch-change',
+      onSixSwitchFocus: 'six-switch-focus'
     } as SixSwitchEvents,
-    defineCustomElement: defineSixSwitch
+    defineCustomElement: defineSixSwitch,
 });
 
-export type SixTabEvents = { onSixTabClose: EventName<SixTabCustomEvent<EmptyPayload>> };
+export type SixTabEvents = {
+  onSixTabClose: EventName<SixTabCustomEvent<EmptyPayload>>
+};
 
-export const SixTab: StencilReactComponent<SixTabElement, SixTabEvents> = /*@__PURE__*/ createComponent<SixTabElement, SixTabEvents>({
+export const SixTab: StencilReactComponent<SixTabElement, SixTabEvents, Components.SixTab> = /*@__PURE__*/ createComponent<SixTabElement, SixTabEvents, Components.SixTab>({
     tagName: 'six-tab',
     elementClass: SixTabElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
-    events: { onSixTabClose: 'six-tab-close' } as SixTabEvents,
-    defineCustomElement: defineSixTab
+    events: {
+      onSixTabClose: 'six-tab-close'
+    } as SixTabEvents,
+    defineCustomElement: defineSixTab,
 });
 
 export type SixTabGroupEvents = {
-    onSixTabShow: EventName<SixTabGroupCustomEvent<SixTabShowPayload>>,
-    onSixTabHide: EventName<SixTabGroupCustomEvent<SixTabHidePayload>>
+  onSixTabShow: EventName<SixTabGroupCustomEvent<SixTabShowPayload>>,
+  onSixTabHide: EventName<SixTabGroupCustomEvent<SixTabHidePayload>>
 };
 
-export const SixTabGroup: StencilReactComponent<SixTabGroupElement, SixTabGroupEvents> = /*@__PURE__*/ createComponent<SixTabGroupElement, SixTabGroupEvents>({
+export const SixTabGroup: StencilReactComponent<SixTabGroupElement, SixTabGroupEvents, Components.SixTabGroup> = /*@__PURE__*/ createComponent<SixTabGroupElement, SixTabGroupEvents, Components.SixTabGroup>({
     tagName: 'six-tab-group',
     elementClass: SixTabGroupElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
-        onSixTabShow: 'six-tab-show',
-        onSixTabHide: 'six-tab-hide'
+      onSixTabShow: 'six-tab-show',
+      onSixTabHide: 'six-tab-hide'
     } as SixTabGroupEvents,
-    defineCustomElement: defineSixTabGroup
+    defineCustomElement: defineSixTabGroup,
 });
 
 export type SixTabPanelEvents = NonNullable<unknown>;
 
-export const SixTabPanel: StencilReactComponent<SixTabPanelElement, SixTabPanelEvents> = /*@__PURE__*/ createComponent<SixTabPanelElement, SixTabPanelEvents>({
+export const SixTabPanel: StencilReactComponent<SixTabPanelElement, SixTabPanelEvents, Components.SixTabPanel> = /*@__PURE__*/ createComponent<SixTabPanelElement, SixTabPanelEvents, Components.SixTabPanel>({
     tagName: 'six-tab-panel',
     elementClass: SixTabPanelElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as SixTabPanelEvents,
-    defineCustomElement: defineSixTabPanel
+    defineCustomElement: defineSixTabPanel,
 });
 
-export type SixTagEvents = { onSixTagClear: EventName<SixTagCustomEvent<EmptyPayload>> };
+export type SixTagEvents = {
+  onSixTagClear: EventName<SixTagCustomEvent<EmptyPayload>>
+};
 
-export const SixTag: StencilReactComponent<SixTagElement, SixTagEvents> = /*@__PURE__*/ createComponent<SixTagElement, SixTagEvents>({
+export const SixTag: StencilReactComponent<SixTagElement, SixTagEvents, Components.SixTag> = /*@__PURE__*/ createComponent<SixTagElement, SixTagEvents, Components.SixTag>({
     tagName: 'six-tag',
     elementClass: SixTagElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
-    events: { onSixTagClear: 'six-tag-clear' } as SixTagEvents,
-    defineCustomElement: defineSixTag
+    events: {
+      onSixTagClear: 'six-tag-clear'
+    } as SixTagEvents,
+    defineCustomElement: defineSixTag,
 });
 
 export type SixTextareaEvents = {
-    onSixTextareaChange: EventName<SixTextareaCustomEvent<EmptyPayload>>,
-    onSixTextareaInput: EventName<SixTextareaCustomEvent<EmptyPayload>>,
-    onSixTextareaFocus: EventName<SixTextareaCustomEvent<EmptyPayload>>,
-    onSixTextareaBlur: EventName<SixTextareaCustomEvent<EmptyPayload>>
+  onSixTextareaChange: EventName<SixTextareaCustomEvent<EmptyPayload>>,
+  onSixTextareaInput: EventName<SixTextareaCustomEvent<EmptyPayload>>,
+  onSixTextareaFocus: EventName<SixTextareaCustomEvent<EmptyPayload>>,
+  onSixTextareaBlur: EventName<SixTextareaCustomEvent<EmptyPayload>>
 };
 
-export const SixTextarea: StencilReactComponent<SixTextareaElement, SixTextareaEvents> = /*@__PURE__*/ createComponent<SixTextareaElement, SixTextareaEvents>({
+export const SixTextarea: StencilReactComponent<SixTextareaElement, SixTextareaEvents, Components.SixTextarea> = /*@__PURE__*/ createComponent<SixTextareaElement, SixTextareaEvents, Components.SixTextarea>({
     tagName: 'six-textarea',
     elementClass: SixTextareaElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
-        onSixTextareaChange: 'six-textarea-change',
-        onSixTextareaInput: 'six-textarea-input',
-        onSixTextareaFocus: 'six-textarea-focus',
-        onSixTextareaBlur: 'six-textarea-blur'
+      onSixTextareaChange: 'six-textarea-change',
+      onSixTextareaInput: 'six-textarea-input',
+      onSixTextareaFocus: 'six-textarea-focus',
+      onSixTextareaBlur: 'six-textarea-blur'
     } as SixTextareaEvents,
-    defineCustomElement: defineSixTextarea
+    defineCustomElement: defineSixTextarea,
 });
 
 export type SixTileEvents = {
-    onSixTileClosed: EventName<SixTileCustomEvent<EmptyPayload>>,
-    onSixTileSelected: EventName<SixTileCustomEvent<EmptyPayload>>
+  onSixTileClosed: EventName<SixTileCustomEvent<EmptyPayload>>,
+  onSixTileSelected: EventName<SixTileCustomEvent<EmptyPayload>>
 };
 
-export const SixTile: StencilReactComponent<SixTileElement, SixTileEvents> = /*@__PURE__*/ createComponent<SixTileElement, SixTileEvents>({
+export const SixTile: StencilReactComponent<SixTileElement, SixTileEvents, Components.SixTile> = /*@__PURE__*/ createComponent<SixTileElement, SixTileEvents, Components.SixTile>({
     tagName: 'six-tile',
     elementClass: SixTileElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
-        onSixTileClosed: 'six-tile-closed',
-        onSixTileSelected: 'six-tile-selected'
+      onSixTileClosed: 'six-tile-closed',
+      onSixTileSelected: 'six-tile-selected'
     } as SixTileEvents,
-    defineCustomElement: defineSixTile
+    defineCustomElement: defineSixTile,
 });
 
 export type SixTimepickerEvents = {
-    onSixTimepickerChange: EventName<SixTimepickerCustomEvent<SixTimepickerChange>>,
-    onSixTimepickerChangeDebounced: EventName<SixTimepickerCustomEvent<SixTimepickerChange>>,
-    onSixTimepickerClear: EventName<SixTimepickerCustomEvent<EmptyPayload>>
+  onSixTimepickerChange: EventName<SixTimepickerCustomEvent<SixTimepickerChange>>,
+  onSixTimepickerChangeDebounced: EventName<SixTimepickerCustomEvent<SixTimepickerChange>>,
+  onSixTimepickerClear: EventName<SixTimepickerCustomEvent<EmptyPayload>>
 };
 
-export const SixTimepicker: StencilReactComponent<SixTimepickerElement, SixTimepickerEvents> = /*@__PURE__*/ createComponent<SixTimepickerElement, SixTimepickerEvents>({
+export const SixTimepicker: StencilReactComponent<SixTimepickerElement, SixTimepickerEvents, Components.SixTimepicker> = /*@__PURE__*/ createComponent<SixTimepickerElement, SixTimepickerEvents, Components.SixTimepicker>({
     tagName: 'six-timepicker',
     elementClass: SixTimepickerElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
-        onSixTimepickerChange: 'six-timepicker-change',
-        onSixTimepickerChangeDebounced: 'six-timepicker-change-debounced',
-        onSixTimepickerClear: 'six-timepicker-clear'
+      onSixTimepickerChange: 'six-timepicker-change',
+      onSixTimepickerChangeDebounced: 'six-timepicker-change-debounced',
+      onSixTimepickerClear: 'six-timepicker-clear'
     } as SixTimepickerEvents,
-    defineCustomElement: defineSixTimepicker
+    defineCustomElement: defineSixTimepicker,
 });
 
 export type SixTooltipEvents = {
-    onSixTooltipShow: EventName<SixTooltipCustomEvent<EmptyPayload>>,
-    onSixTooltipAfterShow: EventName<SixTooltipCustomEvent<EmptyPayload>>,
-    onSixTooltipHide: EventName<SixTooltipCustomEvent<EmptyPayload>>,
-    onSixTooltipAfterHide: EventName<SixTooltipCustomEvent<EmptyPayload>>
+  onSixTooltipShow: EventName<SixTooltipCustomEvent<EmptyPayload>>,
+  onSixTooltipAfterShow: EventName<SixTooltipCustomEvent<EmptyPayload>>,
+  onSixTooltipHide: EventName<SixTooltipCustomEvent<EmptyPayload>>,
+  onSixTooltipAfterHide: EventName<SixTooltipCustomEvent<EmptyPayload>>
 };
 
-export const SixTooltip: StencilReactComponent<SixTooltipElement, SixTooltipEvents> = /*@__PURE__*/ createComponent<SixTooltipElement, SixTooltipEvents>({
+export const SixTooltip: StencilReactComponent<SixTooltipElement, SixTooltipEvents, Components.SixTooltip> = /*@__PURE__*/ createComponent<SixTooltipElement, SixTooltipEvents, Components.SixTooltip>({
     tagName: 'six-tooltip',
     elementClass: SixTooltipElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
-        onSixTooltipShow: 'six-tooltip-show',
-        onSixTooltipAfterShow: 'six-tooltip-after-show',
-        onSixTooltipHide: 'six-tooltip-hide',
-        onSixTooltipAfterHide: 'six-tooltip-after-hide'
+      onSixTooltipShow: 'six-tooltip-show',
+      onSixTooltipAfterShow: 'six-tooltip-after-show',
+      onSixTooltipHide: 'six-tooltip-hide',
+      onSixTooltipAfterHide: 'six-tooltip-after-hide'
     } as SixTooltipEvents,
-    defineCustomElement: defineSixTooltip
+    defineCustomElement: defineSixTooltip,
 });

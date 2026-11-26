@@ -23,6 +23,10 @@
       "require": "./loader/index.cjs.js"
     },
     "./dist/ui-library/ui-library.css": "./dist/ui-library/ui-library.css",
+    "./dist/components": {
+      "types": "./dist/components/index.d.ts",
+      "import": "./dist/components/index.js"
+    },
     "./dist/components/*.js": {
       "types": "./dist/components/*.d.ts",
       "import": "./dist/components/*.js"
@@ -73,9 +77,9 @@
     "@playwright/test": "^1.61.1",
     "@popperjs/core": "^2.11.8",
     "@stencil-community/eslint-plugin": "^0.10.0",
-    "@stencil/angular-output-target": "1.5.3",
+    "@stencil/angular-output-target": "1.6.0",
     "@stencil/playwright": "^0.6.0",
-    "@stencil/react-output-target": "1.4.2",
+    "@stencil/react-output-target": "1.8.1",
     "@stencil/sass": "3.3.3",
     "@stencil/vue-output-target": "0.13.1",
     "@typescript-eslint/eslint-plugin": "^8.53.0",
